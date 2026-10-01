@@ -84,8 +84,8 @@ app.innerHTML = `
     </div>
     <div class="hint">
       <strong>Prototype</strong> — molette pour zoomer, glisser pour
-      déplacer. Fond de carte CARTO Dark Matter + frontières des pays en
-      superposition.
+      déplacer. Fond de carte vectoriel ou satellite (sélecteur en haut à
+      droite) + frontières et noms de pays en français en superposition.
     </div>
   </main>
 `;
@@ -266,38 +266,69 @@ const map = L.map("map", {
   zoomControl: true,
 });
 
-// Standard OpenStreetMap tiles — free, no API key required. CARTO's
-// previously-free "dark matter" basemap now requires a key, so we use plain
-// OSM tiles here and apply a CSS dark-mode filter (see .tile-layer-dark in
-// style.css) to approximate the atlas's dark navy theme.
-const tileLayer = L.tileLayer(
-  "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+// Deux fonds de carte, tous deux en tuiles Esri (gratuit, sans clé API) :
+// - "Plan" : fond vectoriel gris sombre SANS libellés intégrés (Canvas
+//   World_Dark_Gray_Base), pour que les seuls noms visibles sur la carte
+//   soient ceux que l'on dessine nous-mêmes en français (voir gCountryLabels
+//   plus bas) — un fond à libellés (OSM, Voyager...) les afficherait dans
+//   leur langue d'origine et on ne peut pas en changer la langue sans clé.
+// - "Satellite" : imagerie aérienne/satellite (World_Imagery), également
+//   sans libellés — nos propres libellés français restent la seule
+//   légende de noms de pays, avec un contour sombre pour rester lisibles
+//   sur l'imagerie.
+// Remplace les anciennes tuiles OSM + filtre CSS .tile-layer-dark (qui
+// inversait les couleurs d'un fond clair pour simuler un thème sombre).
+const vectorLayer = L.tileLayer(
+  "https://services.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}",
   {
     attribution:
-      '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-    subdomains: "abc",
-    maxZoom: 19,
-    className: "tile-layer-dark",
+      '&copy; <a href="https://www.esri.com">Esri</a> — Esri, HERE, Garmin, © OpenStreetMap contributors, GIS User Community',
+    maxZoom: 16,
   }
 );
-tileLayer.addTo(map);
+const satelliteLayer = L.tileLayer(
+  "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
+  {
+    attribution:
+      '&copy; <a href="https://www.esri.com">Esri</a> — Esri, Maxar, Earthstar Geographics, GIS User Community',
+    maxZoom: 19,
+  }
+);
+vectorLayer.addTo(map);
+
+L.control
+  .layers(
+    { Plan: vectorLayer, Satellite: satelliteLayer },
+    undefined,
+    { position: "topright", collapsed: false }
+  )
+  .addTo(map);
 
 // Detect tile load failures (e.g. sandboxed / offline environments) and show
 // a small notice instead of failing silently — the country layer underneath
-// still renders on the plain dark background either way.
+// still renders on the plain dark background either way. Wired to whichever
+// base layer is currently active.
 let tileErrorCount = 0;
 let tileLoadedOk = false;
-tileLayer.on("tileerror", () => {
-  tileErrorCount += 1;
-  if (tileErrorCount > 3 && !tileLoadedOk) {
+function watchTileLayer(layer: L.TileLayer) {
+  layer.on("tileerror", () => {
+    tileErrorCount += 1;
+    if (tileErrorCount > 3 && !tileLoadedOk) {
+      const note = document.getElementById("tile-fallback");
+      if (note) note.style.display = "block";
+    }
+  });
+  layer.on("tileload", () => {
+    tileLoadedOk = true;
     const note = document.getElementById("tile-fallback");
-    if (note) note.style.display = "block";
-  }
-});
-tileLayer.on("tileload", () => {
-  tileLoadedOk = true;
-  const note = document.getElementById("tile-fallback");
-  if (note) note.style.display = "none";
+    if (note) note.style.display = "none";
+  });
+}
+watchTileLayer(vectorLayer);
+watchTileLayer(satelliteLayer);
+map.on("baselayerchange", () => {
+  tileErrorCount = 0;
+  tileLoadedOk = false;
 });
 
 // ---------------------------------------------------------------------------
@@ -575,6 +606,37 @@ function redrawBorders() {
     });
 }
 
+// Dessine les libellés de pays (noms français) à l'ancre "continent
+// principal" de chaque pays (mainlandCentroid, déclaré plus bas — on ne
+// veut pas que le nom de la France se retrouve au milieu de l'Atlantique
+// à cause de ses territoires d'outre-mer). Un pays trop petit à l'écran
+// (moins de ~22px dans sa plus grande dimension, en pixels projetés
+// courants) voit son libellé masqué pour éviter la bouillie de texte en
+// vue dézoomée — il réapparaît naturellement en zoomant, puisque la
+// bbox grandit avec le zoom.
+const MIN_LABEL_PX = 22;
+function redrawCountryLabels() {
+  const zoom = map.getZoom();
+  const fontSize = Math.max(9, Math.min(14, 8.5 + zoom * 0.7));
+  gCountryLabels
+    .selectAll<SVGTextElement, SovFeature>("text")
+    .data(sovFeatures, (d: SovFeature) => d.properties.iso_a3 || d.properties.name)
+    .join("text")
+    .attr("class", "country-label")
+    .style("font-size", `${fontSize}px`)
+    .each(function (d: SovFeature) {
+      const bounds = geoPath.bounds(d as unknown as GeoJSON.GeoJSON);
+      const w = bounds[1][0] - bounds[0][0];
+      const h = bounds[1][1] - bounds[0][1];
+      const visible = Math.max(w, h) >= MIN_LABEL_PX;
+      const el = d3.select(this);
+      el.style("display", visible ? "" : "none");
+      if (!visible) return;
+      const [x, y] = projectLonLat(mainlandCentroid(d as unknown as GeoJSON.Feature));
+      el.attr("x", x).attr("y", y).text(frenchCountryName(d.properties.name));
+    });
+}
+
 // Repositionne le SVG de superposition pour qu'il couvre le viewport courant
 // (même logique que l'exemple classique Leaflet + D3 : le SVG est réancré à
 // chaque `moveend`/`zoom` sur l'origine du pane pour éviter les décalages
@@ -591,6 +653,7 @@ function resetOverlay() {
     .style("top", topLeft.y - pad + "px");
   overlayG.attr("transform", `translate(${-(topLeft.x - pad)},${-(topLeft.y - pad)})`);
   redrawBorders();
+  redrawCountryLabels();
   redrawInfraLayers();
   groupsRedraw?.();
   indicatorsRedraw?.();
@@ -749,6 +812,16 @@ const gLakes = overlayG.append("g").attr("id", "lakes-layer").style("display", "
 // dessiné en dernier, au-dessus de tous les autres calques, comme gLinks
 // dans l'artifact (~2862, ajouté après tous les autres groupes SVG).
 const gLinksLayer = overlayG.append("g").attr("id", "links-layer");
+// Libellés des pays en français — calque placé au-dessus de tous les
+// autres (dessiné en dernier), pour rester lisible par-dessus les liens,
+// surlignages de groupes, etc. Noms tirés de FR_NAMES.json via
+// frenchCountryName() (voir countryNames.ts) : indépendant du fond de
+// carte choisi (Plan/Satellite), qui ne porte lui-même aucun libellé —
+// voir le commentaire sur vectorLayer/satelliteLayer plus haut.
+const gCountryLabels = overlayG
+  .append("g")
+  .attr("id", "country-labels")
+  .style("pointer-events", "none");
 
 // Centre du territoire métropolitain (plus grand polygone d'un
 // MultiPolygon) plutôt que le centroïde géographique complet — porté de
