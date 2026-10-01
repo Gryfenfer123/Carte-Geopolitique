@@ -154,16 +154,24 @@ main.map-wrap {
   position: absolute;
   pointer-events: none;
 }
-.geo-overlay-svg path {
-  pointer-events: auto;
-}
-/* Les ports (cercles) et les capitales (groupes <g> cercle+texte) ne sont
+/* !important nécessaire : leaflet.css (importé plus haut) définit sa propre
+   règle `.leaflet-pane > svg path { pointer-events: none; }` pour ses
+   propres calques (GeoJSON, etc.), plus spécifique (2 sélecteurs de type)
+   que `.geo-overlay-svg path` (1 seul) — elle l'emportait donc sur celle-ci
+   et désactivait silencieusement TOUS les clics sur les pays (et les zones
+   de clic des pipelines/câbles/fleuves ci-dessous), malgré un rendu visuel
+   parfaitement correct. Repéré suite au retour de Martin (2026-10-01) :
+   "on peut pas cliquer sur un pays" une fois le fond de carte en vraies
+   tuiles (avant, sans svg enfant direct d'un .leaflet-pane, le problème
+   n'existait pas).
+   Les ports (cercles) et les capitales (groupes <g> cercle+texte) ne sont
    pas des <path> : la règle générique ci-dessus ne les couvre pas, il faut
    leur rendre les événements explicitement (sinon ils héritent du
    `pointer-events: none` du SVG parent et deviennent inertes). */
+.geo-overlay-svg path,
 .geo-overlay-svg circle,
 .geo-overlay-svg g.city {
-  pointer-events: auto;
+  pointer-events: auto !important;
 }
 
 /* Leaflet dark-theme adjustments */
@@ -563,7 +571,9 @@ aside.side-panel dd {
   stroke: transparent;
   stroke-width: 16px;
   cursor: pointer;
-  pointer-events: stroke;
+  /* !important : même raison que .geo-overlay-svg path ci-dessus — la règle
+     interne de leaflet.css l'emporterait sinon sur pointer-events: stroke. */
+  pointer-events: stroke !important;
 }
 
 .military-base {
@@ -587,7 +597,7 @@ aside.side-panel dd {
   stroke: transparent;
   stroke-width: 14px;
   cursor: pointer;
-  pointer-events: stroke;
+  pointer-events: stroke !important;
 }
 
 .river {
@@ -603,7 +613,7 @@ aside.side-panel dd {
   stroke: transparent;
   stroke-width: 10px;
   cursor: pointer;
-  pointer-events: stroke;
+  pointer-events: stroke !important;
 }
 
 .lake {
