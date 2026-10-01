@@ -469,10 +469,10 @@ export function initIndicatorsSystem(deps: {
   // Bootstrap
   // -------------------------------------------------------------------------
   const ready = Promise.all([
-    fetch("/data/raw/OWID_CATEGORIES.json").then((r) => r.json()) as Promise<OwidCategory[]>,
-    fetch("/data/raw/OWID_DATA.json").then((r) => r.json()) as Promise<Record<string, OwidCountryData>>,
-    fetch("/data/raw/DEFAULT_APPEARANCE.json").then((r) => r.json()) as Promise<Appearance>,
-    fetch("/data/raw/MAP_COLOR_META.json").then((r) => r.json()) as Promise<MapColorMeta[]>,
+    fetch(import.meta.env.BASE_URL + "data/raw/OWID_CATEGORIES.json").then((r) => r.json()) as Promise<OwidCategory[]>,
+    fetch(import.meta.env.BASE_URL + "data/raw/OWID_DATA.json").then((r) => r.json()) as Promise<Record<string, OwidCountryData>>,
+    fetch(import.meta.env.BASE_URL + "data/raw/DEFAULT_APPEARANCE.json").then((r) => r.json()) as Promise<Appearance>,
+    fetch(import.meta.env.BASE_URL + "data/raw/MAP_COLOR_META.json").then((r) => r.json()) as Promise<MapColorMeta[]>,
   ]).then(async ([cats, data, defAppearance, colorMeta]) => {
     categories = cats;
     owidData = data;
