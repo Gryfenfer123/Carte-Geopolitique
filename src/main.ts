@@ -300,7 +300,7 @@ L.control
   .layers(
     { Plan: vectorLayer, Satellite: satelliteLayer },
     undefined,
-    { position: "topright", collapsed: false }
+    { position: "bottomright", collapsed: false }
   )
   .addTo(map);
 
