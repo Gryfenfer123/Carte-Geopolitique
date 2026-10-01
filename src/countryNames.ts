@@ -32,8 +32,8 @@ const FLAG_OVERRIDE_ISO2: Record<string, string> = {
 export function loadCountryNameData(): Promise<void> {
   if (ready) return ready;
   ready = Promise.all([
-    fetch("/data/raw/FR_NAMES.json").then((r) => r.json()),
-    fetch("/data/raw/FLAG_SVG_ISO2.json").then((r) => r.json()),
+    fetch(import.meta.env.BASE_URL + "data/raw/FR_NAMES.json").then((r) => r.json()),
+    fetch(import.meta.env.BASE_URL + "data/raw/FLAG_SVG_ISO2.json").then((r) => r.json()),
   ]).then(([names, flags]) => {
     frNames = names;
     flagSvgIso2 = flags;
