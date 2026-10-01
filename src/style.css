@@ -1,0 +1,1465 @@
+@import "leaflet/dist/leaflet.css";
+
+:root {
+  --ink: #050810;
+  --surface: #0a0e18;
+  --surface-border: #1e2436;
+  --border: #1a1714;
+  --accent: #e8b34a;
+  --text: #f4f1e8;
+  --text-dim: #9aa0b4;
+  --land-fill: #aebcd4;
+  --land-fill-hover: #8fa1c2;
+  --land-stroke: #0c1220;
+  --land-border: #1a1714;
+
+  /* Couleurs des calques d'infrastructure — reprises à l'identique des
+     variables CSS de l'artifact source (realistic_final.html, :root). */
+  --disputed-line: #e8b34a;
+  --disputed-fill: #c9bfa9;
+  --port: #ffd166;
+  --port-ring: #241c00;
+  --strait: #ff6b6b;
+  --strait-ring: #3a0a0a;
+  --pipeline-gas: #7ec8e3;
+  --pipeline-oil: #c97a3d;
+  --base-marker: #e0435a;
+  --base-ring: #2a0a10;
+  --cable-line: #8f7fe8;
+  --river-line: #4fb3e8;
+  --lake-stroke: #0c1220;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background: var(--ink);
+  color: var(--text);
+  font: 14px "IBM Plex Sans", -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+#app {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
+
+header.app-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 10px 20px;
+  background: linear-gradient(180deg, #0a0e18 0%, #060811 100%);
+  border-bottom: 1px solid var(--surface-border);
+  z-index: 20;
+  flex: none;
+}
+
+.brand {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+
+.brand .mark {
+  font-family: "Fraunces", serif;
+  font-weight: 600;
+  font-size: 20px;
+  color: var(--accent);
+  letter-spacing: 0.01em;
+}
+
+.brand .sub {
+  font-size: 12px;
+  color: var(--text-dim);
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.badge {
+  font-size: 11px;
+  padding: 3px 9px;
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  border-radius: 999px;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.auth-trigger {
+  font: inherit;
+  font-size: 12.5px;
+  color: var(--text);
+  background: transparent;
+  border: 1px solid var(--surface-border);
+  border-radius: 6px;
+  padding: 6px 12px;
+  cursor: pointer;
+  transition: border-color 0.15s, color 0.15s;
+}
+
+.auth-trigger:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.auth-trigger.is-authed {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+main.map-wrap {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+}
+
+#map {
+  position: absolute;
+  inset: 0;
+  background: var(--ink);
+  /* z-index (even 0) forces #map to create its own stacking context, so
+     Leaflet's internal panes/controls (which use z-index up to 1000 in
+     leaflet.css) stay contained inside the map instead of escaping above
+     the app UI (side panel, header, modals...). */
+  z-index: 0;
+}
+
+/* OSM tiles are light by default (white/beige) — invert + adjust hue/
+   brightness to approximate a dark navy basemap consistent with the atlas's
+   theme, without needing a paid/keyed dark tile provider. */
+.tile-layer-dark {
+  filter: invert(1) hue-rotate(200deg) brightness(0.85) contrast(0.9)
+    saturate(0.6);
+}
+
+/* Couche SVG (D3) superposée aux tuiles pour les frontières et tous les
+   futurs calques (ports, câbles, pipelines, hémicycles...). */
+.geo-overlay-svg {
+  position: absolute;
+  pointer-events: none;
+}
+.geo-overlay-svg path {
+  pointer-events: auto;
+}
+/* Les ports (cercles) et les capitales (groupes <g> cercle+texte) ne sont
+   pas des <path> : la règle générique ci-dessus ne les couvre pas, il faut
+   leur rendre les événements explicitement (sinon ils héritent du
+   `pointer-events: none` du SVG parent et deviennent inertes). */
+.geo-overlay-svg circle,
+.geo-overlay-svg g.city {
+  pointer-events: auto;
+}
+
+/* Leaflet dark-theme adjustments */
+.leaflet-container {
+  background: var(--ink);
+  font-family: "IBM Plex Sans", sans-serif;
+}
+
+.leaflet-control-zoom a {
+  background: var(--surface) !important;
+  color: var(--text) !important;
+  border-color: var(--surface-border) !important;
+}
+
+.leaflet-control-zoom a:hover {
+  background: #131a2b !important;
+  color: var(--accent) !important;
+}
+
+.leaflet-control-attribution {
+  background: rgba(10, 14, 24, 0.75) !important;
+  color: var(--text-dim) !important;
+}
+
+.leaflet-control-attribution a {
+  color: var(--accent) !important;
+}
+
+.leaflet-popup-content-wrapper {
+  background: var(--surface);
+  color: var(--text);
+  border: 1px solid var(--surface-border);
+  border-radius: 8px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
+}
+
+.leaflet-popup-tip {
+  background: var(--surface);
+  border: 1px solid var(--surface-border);
+}
+
+.leaflet-popup-close-button {
+  color: var(--text-dim) !important;
+}
+
+.country-popup .name {
+  font-family: "Fraunces", serif;
+  font-weight: 600;
+  font-size: 16px;
+  color: var(--accent);
+  display: block;
+  margin-bottom: 2px;
+}
+
+.country-popup .meta {
+  font-size: 12px;
+  color: var(--text-dim);
+}
+
+/* Side panel */
+aside.side-panel {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 260px;
+  max-width: calc(100vw - 32px);
+  background: rgba(10, 14, 24, 0.92);
+  border: 1px solid var(--surface-border);
+  border-radius: 10px;
+  padding: 14px 16px;
+  z-index: 15;
+  backdrop-filter: blur(6px);
+}
+
+aside.side-panel h2 {
+  font-family: "Fraunces", serif;
+  font-weight: 600;
+  font-size: 17px;
+  margin: 0 0 4px;
+  color: var(--accent);
+}
+
+aside.side-panel .empty {
+  color: var(--text-dim);
+  font-size: 12.5px;
+  line-height: 1.5;
+}
+
+aside.side-panel dl {
+  margin: 8px 0 0;
+  font-size: 12.5px;
+}
+
+aside.side-panel dt {
+  color: var(--text-dim);
+  text-transform: uppercase;
+  font-size: 10.5px;
+  letter-spacing: 0.04em;
+  margin-top: 8px;
+}
+
+aside.side-panel dd {
+  margin: 2px 0 0;
+  color: var(--text);
+}
+
+.hint {
+  position: absolute;
+  bottom: 16px;
+  left: 16px;
+  z-index: 15;
+  font-size: 11.5px;
+  color: var(--text-dim);
+  background: rgba(10, 14, 24, 0.8);
+  border: 1px solid var(--surface-border);
+  border-radius: 6px;
+  padding: 6px 10px;
+  max-width: 320px;
+  line-height: 1.4;
+}
+
+.hint strong {
+  color: var(--accent);
+}
+
+/* Auth panel */
+.auth-panel {
+  position: absolute;
+  top: 60px;
+  right: 16px;
+  width: 260px;
+  max-width: calc(100vw - 32px);
+  background: rgba(10, 14, 24, 0.96);
+  border: 1px solid var(--surface-border);
+  border-radius: 10px;
+  padding: 16px;
+  z-index: 25;
+  backdrop-filter: blur(6px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.5);
+}
+
+.auth-panel h3 {
+  font-family: "Fraunces", serif;
+  font-weight: 600;
+  font-size: 15px;
+  margin: 0 0 10px;
+  color: var(--accent);
+}
+
+.auth-close {
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  background: none;
+  border: none;
+  color: var(--text-dim);
+  font-size: 18px;
+  line-height: 1;
+  cursor: pointer;
+  padding: 2px 4px;
+}
+
+.auth-close:hover {
+  color: var(--accent);
+}
+
+.auth-form,
+.entry-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.auth-form label,
+.entry-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 11.5px;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.auth-form input,
+.entry-form input,
+.entry-form textarea {
+  font: 13px "IBM Plex Sans", sans-serif;
+  text-transform: none;
+  letter-spacing: normal;
+  background: var(--surface);
+  border: 1px solid var(--surface-border);
+  border-radius: 6px;
+  padding: 7px 9px;
+  color: var(--text);
+}
+
+.auth-form input:focus,
+.entry-form input:focus,
+.entry-form textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+.entry-form textarea {
+  resize: vertical;
+  min-height: 64px;
+}
+
+.auth-submit {
+  font: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  background: var(--accent);
+  color: #0a0e18;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 12px;
+  cursor: pointer;
+  transition: opacity 0.15s;
+}
+
+.auth-submit:hover {
+  opacity: 0.9;
+}
+
+.auth-submit:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+.auth-switch {
+  margin-top: 10px;
+  background: none;
+  border: none;
+  color: var(--text-dim);
+  font-size: 11.5px;
+  cursor: pointer;
+  text-decoration: underline;
+  padding: 0;
+}
+
+.auth-switch:hover {
+  color: var(--accent);
+}
+
+.auth-error {
+  font-size: 11.5px;
+  color: #e8734a;
+  line-height: 1.4;
+}
+
+.auth-user {
+  font-size: 13px;
+  margin: 0 0 10px;
+}
+
+.role-tag {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: var(--text-dim);
+  border: 1px solid var(--surface-border);
+  border-radius: 999px;
+  padding: 1px 7px;
+  margin-left: 4px;
+}
+
+/* Dossier entries in the side panel */
+.entries-section {
+  margin-top: 12px;
+  border-top: 1px solid var(--surface-border);
+  padding-top: 10px;
+}
+
+.entries-section h3 {
+  font-family: "Fraunces", serif;
+  font-weight: 600;
+  font-size: 14px;
+  margin: 0 0 8px;
+  color: var(--accent);
+}
+
+.entries-loading,
+.entries-empty {
+  font-size: 12px;
+  color: var(--text-dim);
+  line-height: 1.5;
+}
+
+.entries-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-height: 220px;
+  overflow-y: auto;
+}
+
+.entry-item {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--surface-border);
+  border-radius: 6px;
+  padding: 8px 10px;
+}
+
+.entry-title {
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 3px;
+}
+
+.entry-preview {
+  font-size: 11.5px;
+  color: var(--text-dim);
+  line-height: 1.4;
+}
+
+.entry-form {
+  margin-top: 14px;
+  border-top: 1px solid var(--surface-border);
+  padding-top: 12px;
+}
+
+.entry-form h3 {
+  font-family: "Fraunces", serif;
+  font-weight: 600;
+  font-size: 14px;
+  margin: 0 0 4px;
+  color: var(--accent);
+}
+
+/* ---------------------------------------------------------------------
+   Calques cartographiques portés de l'artifact (territoires contestés,
+   fleuves/lacs, ports, détroits, pipelines, bases militaires, câbles
+   sous-marins, capitales) — mêmes règles visuelles que
+   realistic_final.html, adaptées au fait qu'ici aucune transformation
+   d'échelle CSS n'est appliquée au groupe SVG (les positions sont
+   recalculées en pixels réels à chaque zoom Leaflet), donc les
+   compensations `/k` de l'artifact (qui neutralisaient le scale() du
+   zoom D3) ne sont pas nécessaires : les tailles ci-dessous sont déjà
+   les tailles finales à l'écran.
+   --------------------------------------------------------------------- */
+.disputed-outline {
+  fill: transparent;
+  stroke: var(--disputed-line);
+  stroke-width: 0.9px;
+  cursor: pointer;
+}
+.disputed-outline:hover {
+  stroke: var(--accent);
+}
+
+.land-border.special {
+  stroke: var(--disputed-line) !important;
+  stroke-width: 0.9px !important;
+  stroke-dasharray: none;
+}
+
+.port {
+  fill: var(--port);
+  stroke: var(--port-ring);
+  stroke-width: 0.6px;
+  opacity: 0.85;
+  cursor: pointer;
+}
+
+.strait {
+  fill: var(--strait);
+  stroke: var(--strait-ring);
+  stroke-width: 0.8px;
+  cursor: pointer;
+}
+
+.pipeline {
+  fill: none;
+  stroke-width: 3.3px;
+  cursor: pointer;
+  opacity: 0.85;
+  pointer-events: none;
+}
+.pipeline-gaz {
+  stroke: var(--pipeline-gas);
+  stroke-dasharray: 0.1, 6.5;
+  stroke-linecap: round;
+}
+.pipeline-petrole {
+  stroke: var(--pipeline-oil);
+  stroke-dasharray: 0.1, 6.5;
+  stroke-linecap: round;
+}
+.pipeline-hit {
+  fill: none;
+  stroke: transparent;
+  stroke-width: 16px;
+  cursor: pointer;
+  pointer-events: stroke;
+}
+
+.military-base {
+  fill: var(--base-marker);
+  stroke: var(--base-ring);
+  stroke-width: 0.8px;
+  cursor: pointer;
+}
+
+.cable {
+  fill: none;
+  stroke: var(--cable-line);
+  stroke-width: 1.6px;
+  stroke-dasharray: 5, 3;
+  cursor: pointer;
+  opacity: 0.85;
+  pointer-events: none;
+}
+.cable-hit {
+  fill: none;
+  stroke: transparent;
+  stroke-width: 14px;
+  cursor: pointer;
+  pointer-events: stroke;
+}
+
+.river {
+  fill: none;
+  stroke: var(--river-line);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  opacity: 0.75;
+  pointer-events: none;
+}
+.river-hit {
+  fill: none;
+  stroke: transparent;
+  stroke-width: 10px;
+  cursor: pointer;
+  pointer-events: stroke;
+}
+
+.lake {
+  fill: var(--river-line);
+  stroke: var(--lake-stroke);
+  stroke-width: 0.4px;
+  cursor: pointer;
+}
+
+.city-dot {
+  fill: var(--text);
+  stroke: #000;
+  stroke-width: 0.4px;
+  opacity: 0.9;
+  cursor: pointer;
+}
+.city-label {
+  fill: var(--text);
+  font-family: "IBM Plex Sans", sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  paint-order: stroke;
+  stroke: #000;
+  stroke-width: 3px;
+  stroke-linejoin: round;
+  pointer-events: none;
+}
+
+/* Infobulle légère au survol des entités des calques ci-dessus — reprend
+   showTip()/hideTip() de l'artifact, qui n'affichent que le nom (jamais
+   la note), comportement reproduit à l'identique ici. */
+.entity-tooltip {
+  position: absolute;
+  z-index: 30;
+  pointer-events: none;
+  transform: translate(-50%, -100%);
+  background: rgba(10, 14, 24, 0.95);
+  border: 1px solid var(--surface-border);
+  color: var(--text);
+  font-size: 12.5px;
+  padding: 4px 9px;
+  border-radius: 6px;
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 0.1s;
+}
+.entity-tooltip.visible {
+  opacity: 1;
+}
+
+/* ===========================================================================
+   Recherche unifiée (barre du haut) — porté de #search/#search-input/
+   #search-results (~263-283 dans l'artifact source) : un petit panneau
+   flottant avec un menu déroulant de résultats, TOUJOURS visible (à ne pas
+   confondre avec la modale plein écran "Recherche dans les dossiers" —
+   #dossier-search-view plus bas — qui ne cherche que le contenu des
+   dossiers). Repositionné ici sous l'en-tête plutôt qu'en survol du
+   bandeau supérieur de l'artifact (layout différent de ce portage).
+   ========================================================================= */
+#search {
+  position: absolute;
+  left: 16px;
+  top: 16px;
+  z-index: 16;
+  width: 220px;
+  padding: 0;
+  overflow: hidden;
+  background: rgba(10, 14, 24, 0.92);
+  border: 1px solid var(--surface-border);
+  border-radius: 10px;
+}
+#search-input {
+  width: 100%;
+  box-sizing: border-box;
+  border: none;
+  outline: none;
+  background: transparent;
+  padding: 10px 12px;
+  font-family: inherit;
+  font-size: 13px;
+  color: var(--text);
+}
+#search-input::placeholder { color: var(--text-dim); }
+#search-results {
+  display: none;
+  flex-direction: column;
+  border-top: 1px solid var(--surface-border);
+  max-height: 260px;
+  overflow-y: auto;
+}
+#search-results.open { display: flex; }
+#search-results button {
+  appearance: none;
+  border: none;
+  background: transparent;
+  text-align: left;
+  padding: 8px 12px;
+  font-family: inherit;
+  font-size: 12.5px;
+  color: var(--text);
+  cursor: pointer;
+  display: block;
+}
+#search-results button:hover { background: var(--surface-border); }
+#search-results .search-sub { display: block; font-size: 10.5px; color: var(--text-dim); margin-top: 1px; }
+
+/* Légende des calques cartographiques */
+.map-legend {
+  position: absolute;
+  left: 16px;
+  top: 62px;
+  z-index: 15;
+  background: rgba(10, 14, 24, 0.92);
+  border: 1px solid var(--surface-border);
+  border-radius: 10px;
+  padding: 10px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  max-width: 230px;
+  backdrop-filter: blur(6px);
+}
+
+.map-legend .legend-chip {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 12px;
+  color: var(--text);
+  cursor: pointer;
+  user-select: none;
+}
+.map-legend .legend-chip input {
+  accent-color: var(--accent);
+  cursor: pointer;
+}
+.map-legend .legend-chip.static {
+  cursor: default;
+  color: var(--text-dim);
+}
+
+.map-legend .legend-swatch {
+  flex: none;
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+}
+.map-legend .legend-swatch.outline {
+  background: transparent;
+  border: 1.5px solid var(--disputed-line);
+  border-radius: 3px;
+}
+.map-legend .legend-swatch.dot-city {
+  width: 7px;
+  height: 7px;
+  background: var(--text);
+  border: 1px solid #000;
+}
+.map-legend .legend-swatch.dot-port {
+  background: var(--port);
+  border: 1px solid var(--port-ring);
+}
+.map-legend .legend-swatch.dot-base {
+  background: var(--base-marker);
+  border: 1px solid var(--base-ring);
+}
+.map-legend .legend-swatch.diamond {
+  border-radius: 2px;
+  background: var(--strait);
+  border: 1px solid var(--strait-ring);
+  transform: rotate(45deg);
+}
+.map-legend .legend-swatch.line {
+  width: 15px;
+  height: 0;
+  border-radius: 0;
+  border-top: 2px solid var(--pipeline-oil);
+}
+.map-legend .legend-swatch.line.cable {
+  border-top-color: var(--cable-line);
+  border-top-style: dashed;
+}
+.map-legend .legend-swatch.line.river {
+  border-top-color: var(--river-line);
+}
+.map-legend .legend-swatch.land {
+  border-radius: 3px;
+  background: var(--land-fill);
+}
+
+.tile-fallback-note {
+  position: absolute;
+  top: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 15;
+  font-size: 11.5px;
+  color: #e8b34a;
+  background: rgba(20, 12, 2, 0.9);
+  border: 1px solid #4a3512;
+  border-radius: 6px;
+  padding: 6px 12px;
+  max-width: 420px;
+  line-height: 1.4;
+  display: none;
+  text-align: center;
+}
+
+/* ===========================================================================
+   Fiche pays + dossier complet — porté de l'artifact source
+   (realistic_final.html). Réutilise les variables CSS déjà en place
+   ci-dessus (--surface, --surface-border, --accent, --text, --text-dim)
+   plutôt que les couleurs en dur de l'artifact (qui était en thème clair) :
+   ce portage garde le thème sombre déjà établi pour le reste du site.
+   ========================================================================= */
+
+.panel { box-sizing: border-box; }
+.muted { color: var(--text-dim); font-size: 12px; }
+.field-label {
+  display: block; font-size: 11px; font-weight: 600; text-transform: uppercase;
+  letter-spacing: 0.03em; color: var(--text-dim); margin: 12px 0 4px;
+}
+.btn-primary {
+  appearance: none; border: none; border-radius: 7px;
+  background: var(--accent); color: #241c00; font-weight: 600;
+  font-family: inherit; font-size: 12.5px; padding: 8px 14px; margin-top: 12px; cursor: pointer;
+}
+.btn-primary:hover { filter: brightness(1.06); }
+.btn-small {
+  appearance: none; border: 1px solid var(--surface-border); border-radius: 6px;
+  background: transparent; color: var(--text); font-family: inherit; font-size: 11.5px;
+  padding: 4px 9px; cursor: pointer;
+}
+.btn-small:hover { background: var(--surface-border); }
+.btn-small.active-mode { background: var(--accent); color: #241c00; font-weight: 600; border-color: var(--accent); }
+.close-x {
+  position: absolute; top: 12px; right: 12px;
+  appearance: none; border: none; background: transparent; cursor: pointer;
+  font-size: 16px; color: var(--text-dim); width: 26px; height: 26px; border-radius: 6px;
+}
+.close-x:hover { background: var(--surface-border); }
+
+/* --- Fiche pays (panneau latéral) ----------------------------------------- */
+#fiche-panel {
+  position: absolute; top: 16px; right: 16px; bottom: 16px;
+  width: min(320px, calc(100vw - 32px));
+  background: rgba(10, 14, 24, 0.94); border: 1px solid var(--surface-border);
+  border-radius: 10px; padding: 18px; z-index: 22; overflow-y: auto;
+  backdrop-filter: blur(6px); display: none;
+}
+#fiche-panel.open { display: block; }
+
+/* --- Autres panneaux latéraux (groupes, indicateurs, apparence...) : même
+   habillage que #fiche-panel — règle partagée manquante jusqu'ici, ce qui
+   laissait ces panneaux sans position ni repli par défaut. */
+.panel.side-panel {
+  position: absolute; top: 16px; right: 16px; bottom: 16px;
+  width: min(320px, calc(100vw - 32px));
+  background: rgba(10, 14, 24, 0.94); border: 1px solid var(--surface-border);
+  border-radius: 10px; padding: 18px; z-index: 22; overflow-y: auto;
+  backdrop-filter: blur(6px); display: none;
+}
+.panel.side-panel.open { display: block; }
+.panel.side-panel h2 { font-family: "Fraunces", serif; font-size: 17px; margin: 0 26px 4px 0; color: var(--accent); }
+#fiche-panel h2 { font-family: "Fraunces", serif; font-size: 17px; margin: 0 26px 4px 0; color: var(--accent); }
+.fiche-subtitle { margin: -2px 0 12px; text-transform: uppercase; font-size: 10.5px; letter-spacing: 0.04em; }
+#fiche-panel input[type="text"], #fiche-panel textarea {
+  width: 100%; box-sizing: border-box; font: 13px "IBM Plex Sans", sans-serif;
+  color: var(--text); background: rgba(255, 255, 255, 0.03); border: 1px solid var(--surface-border);
+  border-radius: 7px; padding: 7px 9px; resize: vertical;
+}
+#fiche-panel input:focus, #fiche-panel textarea:focus { outline: none; border-color: var(--accent); }
+#fiche-save-status { font-size: 11.5px; color: var(--text-dim); margin-top: 6px; min-height: 14px; }
+.flag-ico { display: inline-block; width: 1.1em; height: 0.825em; vertical-align: -0.08em; overflow: hidden; border-radius: 2px; }
+.flag-ico svg { width: 100%; height: 100%; display: block; }
+
+/* --- Boîte de dialogue maison (remplace confirm/prompt/alert) ------------- */
+#custom-dialog-overlay {
+  display: none; position: fixed; inset: 0; z-index: 20000;
+  background: rgba(2, 4, 8, 0.6); align-items: center; justify-content: center;
+}
+#custom-dialog-overlay.open { display: flex; }
+#custom-dialog-box {
+  background: var(--surface); color: var(--text); border-radius: 12px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5); padding: 20px 22px;
+  width: 340px; max-width: 90vw; font-family: "IBM Plex Sans", sans-serif;
+  border: 1px solid var(--surface-border);
+}
+#custom-dialog-message { font-size: 13.5px; line-height: 1.5; margin: 0 0 14px; white-space: pre-line; }
+#custom-dialog-input {
+  width: 100%; box-sizing: border-box; font: 13.5px "IBM Plex Sans", sans-serif; color: var(--text);
+  background: var(--surface); border: 1px solid var(--surface-border); border-radius: 7px;
+  padding: 8px 10px; margin-bottom: 14px;
+}
+#custom-dialog-actions { display: flex; justify-content: flex-end; gap: 8px; }
+
+/* --- Dossier (page plein écran) ------------------------------------------- */
+#dossier-view {
+  display: none; position: fixed; inset: 0; z-index: 9999;
+  background: var(--surface); color: var(--text); overflow-y: auto;
+  font-family: "IBM Plex Sans", sans-serif;
+}
+#dossier-view.open { display: block; }
+#dossier-inner { max-width: 760px; margin: 0 auto; padding: 24px 22px 60px; transition: max-width 140ms ease; }
+#dossier-inner.dossier-inner-wide { max-width: 1280px; }
+#dossier-inner.dossier-inner-text-editing { max-width: min(1100px, 92vw); }
+#dossier-back { margin-bottom: 18px; }
+#dossier-title { font-family: "Fraunces", serif; font-weight: 600; font-size: 30px; margin: 0 0 4px; color: var(--accent); }
+#dossier-subtitle { font-size: 12px; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 22px; color: var(--text-dim); }
+
+#dossier-summary-stats { font-size: 12.5px; margin-bottom: 16px; }
+#dossier-summary-themes { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 22px; margin-bottom: 8px; }
+.dossier-summary-card, .dsc-new-card {
+  appearance: none; border: 1px solid var(--surface-border); border-radius: 12px; overflow: hidden;
+  background: var(--surface); cursor: pointer; text-align: left; padding: 0; color: var(--text);
+  display: flex; flex-direction: column; font-family: inherit;
+}
+.dossier-summary-card:hover, .dsc-new-card:hover { border-color: var(--accent); }
+.dossier-summary-card.empty { opacity: 0.65; }
+.dsc-new-card {
+  align-items: center; justify-content: center; gap: 6px; min-height: 96px; font-size: 13px; color: var(--text-dim);
+}
+.dsc-banner { position: relative; height: 84px; background-size: cover; background-position: center; }
+.dsc-banner-pattern {
+  position: absolute; inset: 0;
+  background-image: radial-gradient(circle at 20% 30%, rgba(255,255,255,0.18) 0, transparent 45%),
+    radial-gradient(circle at 75% 70%, rgba(0,0,0,0.18) 0, transparent 50%);
+}
+.dsc-menu-btn, .dsc-del-btn {
+  position: absolute; top: 6px; appearance: none; border: none; border-radius: 6px;
+  background: rgba(5, 8, 16, 0.55); color: #fff; width: 24px; height: 24px; cursor: pointer; font-size: 11px;
+}
+.dsc-menu-btn:hover, .dsc-del-btn:hover { background: rgba(5, 8, 16, 0.8); }
+.dsc-menu-btn { right: 34px; }
+.dsc-del-btn { right: 6px; }
+.dsc-body { padding: 12px 14px 14px; }
+.dsc-name { font-family: "Fraunces", serif; font-weight: 600; font-size: 15px; margin-bottom: 3px; }
+.dsc-meta { font-size: 11.5px; color: var(--text-dim); }
+.dsc-preview { font-size: 12px; color: var(--text-dim); margin-top: 6px; line-height: 1.4; }
+
+.dossier-add-bar { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 6px; }
+#dossier-photo-status { font-size: 12px; color: var(--text-dim); min-height: 16px; margin-bottom: 10px; }
+.dossier-cat-select {
+  width: auto; max-width: 220px; font-size: 12.5px; padding: 7px 9px; font-family: inherit;
+  color: var(--text); background-color: var(--surface); border: 1px solid var(--surface-border); border-radius: 7px;
+}
+.dossier-form {
+  display: none; flex-direction: column; gap: 8px; border: 1px solid var(--surface-border);
+  border-radius: 10px; padding: 14px; margin: 12px 0; background: rgba(255, 255, 255, 0.02);
+}
+.dossier-form.open { display: flex; }
+.dossier-form input[type="text"], .dossier-form select {
+  width: 100%; box-sizing: border-box; font-family: inherit; font-size: 13.5px; color: var(--text);
+  background: var(--surface); border: 1px solid var(--surface-border); border-radius: 7px; padding: 8px 10px;
+}
+.dossier-form select option { background-color: var(--surface); color: var(--text); }
+.dossier-form-actions { display: flex; gap: 8px; align-items: center; }
+.dossier-form-actions .btn-primary { margin-top: 0; }
+.dossier-draft-toggle { display: flex; align-items: center; gap: 5px; font-size: 12px; color: var(--text-dim); margin-right: auto; cursor: pointer; }
+#dossier-section-bar { margin: 10px 0; }
+
+/* --- Éditeur de texte riche ------------------------------------------------ */
+.dossier-rt-toolbar { display: flex; flex-wrap: wrap; gap: 4px; align-items: center; margin-bottom: 2px; }
+.rt-group { display: flex; gap: 2px; }
+.rt-sep { width: 1px; align-self: stretch; background: var(--surface-border); margin: 0 2px; }
+.dossier-rt-toolbar button {
+  appearance: none; border: 1px solid var(--surface-border); border-radius: 6px; background: var(--surface);
+  color: var(--text); font-family: inherit; font-size: 12px; min-width: 26px; height: 26px; padding: 0 6px; cursor: pointer;
+}
+.dossier-rt-toolbar button:hover { background: var(--surface-border); }
+.rt-color-wrap { position: relative; display: inline-flex; }
+.rt-color-btn { border-bottom: 3px solid var(--accent) !important; }
+.rt-color-input-hidden { position: absolute; inset: 0; opacity: 0; cursor: pointer; width: 26px; height: 26px; }
+.rt-fontsize-select {
+  font-family: inherit; font-size: 11.5px; color: var(--text); background-color: var(--surface);
+  border: 1px solid var(--surface-border); border-radius: 6px; height: 26px;
+}
+.dossier-rt-findbar { display: none; gap: 6px; align-items: center; margin: 4px 0; flex-wrap: wrap; }
+.dossier-rt-findbar.open { display: flex; }
+.dossier-rt-findbar input {
+  font: 12.5px "IBM Plex Sans", sans-serif; color: var(--text); background: var(--surface);
+  border: 1px solid var(--surface-border); border-radius: 6px; padding: 5px 8px;
+}
+
+/* L'éditeur reste volontairement à fond blanc (comme une feuille de papier),
+   quel que soit le thème du reste du site — demande explicite de Martin
+   ("fond blanc pendant l'écriture"), identique à .dossier-rt-editor dans
+   l'artifact source (background:#fff;color-scheme:light). */
+.dossier-rt-editor {
+  min-height: 180px; max-height: 55vh; overflow-y: auto; border: 1px solid var(--surface-border);
+  border-radius: 8px; padding: 12px 14px; background: #fff; color: #1a1a1a; color-scheme: light;
+  font-size: 14px; line-height: 1.55;
+}
+.dossier-rt-editor:empty:before { content: attr(data-placeholder); color: #8a8577; }
+.dossier-rt-editor:focus { outline: 2px solid var(--accent); outline-offset: 1px; }
+.dossier-rt-editor h2, .dossier-entry.text .entry-body h2, #dossier-read-body h2 { font-family: "Fraunces", serif; font-size: 19px; margin: 10px 0 6px; }
+.dossier-rt-editor h3, .dossier-entry.text .entry-body h3, #dossier-read-body h3 { font-family: "Fraunces", serif; font-size: 16px; margin: 8px 0 5px; }
+.dossier-rt-editor p, .dossier-entry.text .entry-body p, #dossier-read-body p { margin: 0 0 8px; }
+.dossier-rt-editor ul, .dossier-rt-editor ol, .dossier-entry.text .entry-body ul, .dossier-entry.text .entry-body ol,
+#dossier-read-body ul, #dossier-read-body ol { margin: 0 0 8px; padding-left: 22px; }
+.dossier-rt-editor blockquote, .dossier-entry.text .entry-body blockquote, #dossier-read-body blockquote {
+  margin: 0 0 8px; padding: 4px 12px; border-left: 3px solid var(--accent); color: #5c5544;
+}
+#dossier-read-body blockquote { color: var(--text-dim); }
+.dossier-rt-editor table, .dossier-entry.text .entry-body table, #dossier-read-body table { border-collapse: collapse; margin: 6px 0 10px; width: 100%; }
+.dossier-rt-editor td, .dossier-rt-editor th, .dossier-entry.text .entry-body td, .dossier-entry.text .entry-body th,
+#dossier-read-body td, #dossier-read-body th { border: 1px solid var(--surface-border); padding: 5px 7px; font-size: 12.5px; }
+.dossier-rt-editor sup, .entry-body sup { font-size: 0.72em; top: -0.5em; }
+.dossier-rt-editor sub, .entry-body sub { font-size: 0.72em; bottom: -0.25em; }
+.dossier-rt-editor code, .entry-body code { background: rgba(0,0,0,0.06); border-radius: 3px; padding: 1px 4px; font-size: 0.9em; }
+.dossier-rt-editor pre, .entry-body pre { background: rgba(0,0,0,0.06); border-radius: 6px; padding: 8px 10px; overflow-x: auto; }
+.dossier-rt-editor hr, .entry-body hr { border: none; border-top: 1px solid var(--surface-border); margin: 14px 0; }
+.dossier-rt-editor mark.rt-find-hit, .entry-body mark.rt-find-hit { background: #ffd166; color: #241c00; border-radius: 2px; }
+ul.rt-checklist { list-style: none; padding-left: 4px !important; }
+li.rt-check { position: relative; padding-left: 22px; }
+li.rt-check:before {
+  content: ""; position: absolute; left: 0; top: 3px; width: 15px; height: 15px;
+  border: 1.5px solid #8a8577; border-radius: 3px; background: #fff;
+}
+li.rt-check[data-checked="true"]:before { background: var(--accent); border-color: var(--accent); }
+li.rt-check[data-checked="true"]:after {
+  content: ""; position: absolute; left: 4px; top: 5px; width: 8px; height: 4px;
+  border-left: 2px solid #241c00; border-bottom: 2px solid #241c00; transform: rotate(-45deg);
+}
+.dossier-rt-wordcount { font-size: 11px; color: var(--text-dim); text-align: right; }
+
+/* --- Étiquettes / sources (éditeur) ---------------------------------------- */
+.dossier-sources-label { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.03em; color: var(--text-dim); }
+.dossier-tags-chips-edit { display: flex; flex-wrap: wrap; gap: 5px; margin: 4px 0 6px; }
+.dossier-tag-chip-edit {
+  display: inline-flex; align-items: center; gap: 4px; background: rgba(255,255,255,0.05);
+  border: 1px solid var(--surface-border); border-radius: 10px; padding: 2px 4px 2px 9px; font-size: 11.5px;
+}
+.dossier-tag-chip-edit button { appearance: none; border: none; background: transparent; color: var(--text-dim); cursor: pointer; }
+#dossier-text-tags-input, .dossier-source-row input {
+  width: 100%; box-sizing: border-box; font: 12.5px "IBM Plex Sans", sans-serif; color: var(--text);
+  background: var(--surface); border: 1px solid var(--surface-border); border-radius: 7px; padding: 6px 9px; margin-top: 4px;
+}
+.dossier-source-row { display: flex; gap: 6px; margin-bottom: 6px; }
+.dossier-source-row input:first-child { flex: 1; }
+.dossier-source-row input:nth-child(2) { flex: 1; }
+
+/* --- Sous-sections ---------------------------------------------------------- */
+.dossier-section-group { border: 1px solid var(--surface-border); border-radius: 10px; margin: 0 0 16px; overflow: hidden; background: var(--surface); }
+.dossier-section-group.level-3 { margin-left: 24px; }
+.dossier-section-banner { height: 56px; position: relative; }
+.dossier-section-group.level-3 .dossier-section-banner { height: 40px; }
+.dossier-section-row { display: flex; align-items: center; gap: 8px; padding: 9px 12px; cursor: pointer; }
+.dossier-section-row .sec-name { font-family: "Fraunces", serif; font-weight: 600; font-size: 14px; flex: 1; }
+.dossier-section-group.level-3 .sec-name { font-family: inherit; font-size: 12.5px; font-weight: 600; }
+.dossier-section-row .sec-count { font-size: 11px; color: var(--text-dim); }
+.dossier-section-row .sec-caret { font-size: 10px; color: var(--text-dim); transition: transform 120ms ease; }
+.dossier-section-group.collapsed .sec-caret { transform: rotate(-90deg); }
+.dossier-section-group.collapsed .dossier-section-body,
+.dossier-section-group.collapsed .dossier-section-group,
+.dossier-section-group.collapsed .dossier-section-actions { display: none; }
+.dossier-section-actions { display: flex; gap: 2px; padding: 0 10px 8px; flex-wrap: wrap; }
+.dossier-section-body { padding: 0 12px 12px; display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 14px; }
+.dossier-unsectioned { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 14px; margin-bottom: 14px; }
+.drop-target-active { outline: 2px dashed var(--accent); outline-offset: 2px; }
+.dossier-drop-hint { grid-column: 1 / -1; }
+
+/* --- Entrées (mosaïque) ------------------------------------------------------ */
+#dossier-entries { margin-top: 6px; }
+.dossier-cat-section-title { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-dim); margin: 22px 0 10px; }
+.dossier-cat-section-title:first-child { margin-top: 0; }
+.dossier-entry {
+  position: relative; cursor: pointer; display: flex; flex-direction: column;
+  border: 1px solid var(--surface-border); border-radius: 12px; padding: 14px 16px;
+  background: var(--surface); transition: box-shadow 120ms ease, transform 120ms ease;
+}
+.dossier-entry:hover { box-shadow: 0 8px 20px rgba(0,0,0,0.3); transform: translateY(-1px); }
+.dossier-entry.link { cursor: default; }
+.dossier-entry .entry-del, .dossier-entry .entry-edit, .dossier-entry .entry-replace-photo,
+.dossier-entry .entry-fav, .dossier-entry .entry-history {
+  position: absolute; top: 8px; appearance: none; border: none; background: transparent; cursor: pointer;
+  font-size: 15px; color: var(--text-dim); width: 24px; height: 24px; border-radius: 6px;
+  opacity: 0; transition: opacity 120ms ease;
+}
+.dossier-entry:hover .entry-del, .dossier-entry:hover .entry-edit, .dossier-entry:hover .entry-replace-photo,
+.dossier-entry:hover .entry-fav, .dossier-entry:hover .entry-history { opacity: 1; }
+.dossier-entry .entry-del { right: 8px; }
+.dossier-entry .entry-edit { right: 34px; }
+.dossier-entry .entry-replace-photo { right: 60px; }
+.dossier-entry .entry-fav { right: 86px; }
+.dossier-entry .entry-history { right: 112px; }
+.dossier-entry .entry-del:hover, .dossier-entry .entry-edit:hover, .dossier-entry .entry-replace-photo:hover,
+.dossier-entry .entry-fav:hover, .dossier-entry .entry-history:hover { background: var(--surface-border); color: var(--accent); }
+.dossier-entry .entry-fav.active { opacity: 1; color: var(--accent); }
+.dossier-entry .entry-meta { font-size: 10px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 6px; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; min-height: 12px; }
+.dossier-entry .entry-date-hover { opacity: 0; transition: opacity 120ms ease; }
+.dossier-entry:hover .entry-date-hover { opacity: 1; }
+.entry-draft-badge { font-size: 9.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.03em; color: var(--accent); border: 1px solid var(--accent); border-radius: 10px; padding: 1px 7px; }
+.dossier-entry.text .entry-title { font-weight: 600; font-size: 14.5px; margin-bottom: 5px; color: var(--text); }
+.dossier-entry .entry-preview { font-size: 12.5px; line-height: 1.5; color: var(--text-dim); }
+.dossier-entry .entry-body { display: none; }
+#dossier-theme-view.reading-mode .entry-preview { display: none; }
+#dossier-theme-view.reading-mode .entry-body { display: block; font-size: 14px; line-height: 1.65; }
+#dossier-theme-view.reading-mode .entry-del, #dossier-theme-view.reading-mode .entry-edit,
+#dossier-theme-view.reading-mode .entry-replace-photo, #dossier-theme-view.reading-mode .entry-fav,
+#dossier-theme-view.reading-mode .entry-history, #dossier-theme-view.reading-mode .dossier-add-bar,
+#dossier-theme-view.reading-mode .dossier-section-actions { display: none !important; }
+#dossier-theme-view.reading-mode #dossier-inner { max-width: 680px; }
+.entry-body a[data-entity-kind], #dossier-read-body a[data-entity-kind] { color: var(--accent); text-decoration: underline; cursor: pointer; }
+.dossier-entry.photo img { max-width: 100%; border-radius: 8px; display: block; max-height: 160px; object-fit: cover; margin-bottom: 6px; }
+.dossier-entry.photo .entry-title { font-weight: 600; font-size: 13.5px; margin-bottom: 2px; }
+.dossier-entry.photo .entry-caption { font-size: 12px; color: var(--text-dim); }
+.dossier-entry.link a { color: var(--accent); font-weight: 600; font-size: 13.5px; word-break: break-all; }
+.dossier-entry .entry-wordcount { font-size: 10.5px; color: var(--text-dim); margin-top: 6px; }
+.entry-tags { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 8px; }
+.entry-tag-chip {
+  appearance: none; border: 1px solid var(--surface-border); border-radius: 10px;
+  background: rgba(255,255,255,0.03); color: var(--text-dim); font-size: 11px; padding: 2px 8px;
+}
+.entry-sources { font-size: 11px; color: var(--text-dim); margin-top: 6px; }
+.entry-sources a { color: var(--accent); }
+.entry-sources-label { font-weight: 600; }
+.yt-card { display: block; color: var(--text); text-decoration: none; }
+.yt-thumb-wrap { position: relative; border-radius: 8px; overflow: hidden; }
+.yt-thumb-wrap img { width: 100%; display: block; }
+.yt-play {
+  position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+  background: rgba(0,0,0,0.3); color: #fff;
+}
+.yt-label { font-size: 12.5px; margin-top: 6px; color: var(--text); }
+
+/* --- Lightbox photo --------------------------------------------------------- */
+#dossier-lightbox {
+  display: none; position: fixed; inset: 0; z-index: 20500; background: rgba(5,8,16,0.9);
+  align-items: center; justify-content: center; flex-direction: column; padding: 30px;
+}
+#dossier-lightbox.open { display: flex; }
+#dossier-lightbox img { max-width: 100%; max-height: 78vh; border-radius: 6px; box-shadow: 0 20px 60px rgba(0,0,0,0.5); }
+#dossier-lightbox-caption { color: var(--text); margin-top: 14px; font-size: 13.5px; text-align: center; max-width: 640px; }
+#dossier-lightbox-close { position: absolute; top: 18px; right: 20px; color: var(--text); background: none; border: none; font-size: 22px; cursor: pointer; }
+
+/* --- Vue de lecture d'une entrée -------------------------------------------- */
+#dossier-entry-read-view { display: none; }
+.dossier-read-topbar { display: flex; justify-content: space-between; margin-bottom: 18px; }
+#dossier-read-card { border: none !important; box-shadow: none !important; padding: 0 !important; cursor: default; }
+#dossier-read-title { font-family: "Fraunces", serif; font-weight: 600; font-size: 24px; margin: 6px 0 14px; color: var(--text); }
+#dossier-read-meta { font-size: 11px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.04em; }
+#dossier-read-wordcount { font-size: 11.5px; color: var(--text-dim); margin-top: 18px; }
+
+/* --- Sélecteur d'entité / historique (modales) ------------------------------ */
+#dossier-entity-picker, #dossier-history-modal {
+  display: none; position: fixed; inset: 0; z-index: 20200; background: rgba(2,4,8,0.6);
+  align-items: center; justify-content: center;
+}
+#dossier-entity-picker.open, #dossier-history-modal.open { display: flex; }
+#dossier-entity-picker-box, #dossier-history-box {
+  position: relative; background: var(--surface); border: 1px solid var(--surface-border); color: var(--text);
+  border-radius: 12px; padding: 20px 22px; width: 380px; max-width: 90vw; max-height: 80vh; overflow-y: auto;
+}
+#dossier-entity-picker-label { font-size: 12.5px; color: var(--text-dim); margin: 0 26px 10px 0; }
+#dossier-entity-picker-input {
+  width: 100%; box-sizing: border-box; font: 13px "IBM Plex Sans", sans-serif; color: var(--text);
+  background: var(--surface); border: 1px solid var(--surface-border); border-radius: 7px; padding: 8px 10px;
+}
+#dossier-entity-picker-results { max-height: 220px; overflow-y: auto; margin-top: 8px; display: flex; flex-direction: column; }
+#dossier-entity-picker-results button {
+  appearance: none; border: none; background: transparent; color: var(--text); text-align: left;
+  padding: 7px 6px; border-radius: 6px; cursor: pointer; font-size: 13px; display: flex; align-items: center; gap: 6px;
+}
+#dossier-entity-picker-results button:hover { background: var(--surface-border); }
+#dossier-history-box h2 { font-family: "Fraunces", serif; font-size: 16px; margin: 0 26px 12px 0; }
+.dossier-history-row { border: 1px solid var(--surface-border); border-radius: 8px; padding: 10px 12px; margin-bottom: 8px; }
+.dhr-when { font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.04em; color: var(--text-dim); }
+.dhr-title { font-weight: 600; font-size: 13px; margin-top: 3px; }
+.dhr-preview { font-size: 12px; color: var(--text-dim); margin-top: 4px; line-height: 1.4; }
+.dossier-history-row button { margin-top: 8px; }
+
+/* ===========================================================================
+   Hémicycle (entrées de dossier) — porté de l'artifact source
+   (realistic_final.html, ~830-882).
+   ========================================================================= */
+.hemicycle-order-hint { font-size: 11px; color: var(--text-dim); margin: 2px 0 8px; line-height: 1.4; }
+#dossier-hemicycle-parties { display: flex; flex-direction: column; gap: 6px; }
+.hemicycle-party-row { display: flex; align-items: center; gap: 6px; }
+.hemicycle-party-row .hp-move {
+  appearance: none; border: 1px solid var(--surface-border); border-radius: 6px; background: transparent;
+  color: var(--text-dim); cursor: pointer; width: 24px; height: 26px; flex: none; font-size: 11px; line-height: 1;
+}
+.hemicycle-party-row .hp-move:hover:not(:disabled) { background: var(--surface-border); color: var(--accent); }
+.hemicycle-party-row .hp-move:disabled { opacity: 0.3; cursor: default; }
+.hemicycle-party-row input.hp-name {
+  flex: 1; box-sizing: border-box; font-family: inherit; font-size: 12.5px; color: var(--text);
+  background: var(--surface); border: 1px solid var(--surface-border); border-radius: 6px; padding: 6px 8px;
+}
+.hemicycle-party-row .hp-color { width: 28px; height: 28px; padding: 0; border: none; border-radius: 6px; cursor: pointer; background: transparent; flex: none; }
+.hemicycle-party-row input.hp-seats {
+  width: 78px; box-sizing: border-box; font-family: inherit; font-size: 12.5px; color: var(--text);
+  background: var(--surface); border: 1px solid var(--surface-border); border-radius: 6px; padding: 6px 8px; flex: none;
+}
+.hemicycle-party-row .hp-remove {
+  appearance: none; border: 1px solid var(--surface-border); border-radius: 6px; background: transparent;
+  color: var(--text-dim); cursor: pointer; width: 26px; height: 26px; flex: none; font-size: 14px; line-height: 1;
+}
+.hemicycle-party-row .hp-remove:hover { background: var(--surface-border); color: #c0433a; }
+.dossier-hemicycle-row-fields { display: flex; gap: 8px; }
+.dossier-hemicycle-row-fields input { flex: 1; }
+.hemicycle-widget { display: flex; flex-direction: column; gap: 8px; }
+.hemicycle-svg-wrap { position: relative; width: 100%; }
+.hemicycle-svg { width: 100%; height: auto; display: block; overflow: visible; }
+.hemicycle-seat { cursor: pointer; stroke: rgba(0, 0, 0, 0.18); stroke-width: 0.4; transition: opacity 90ms ease; }
+.hemicycle-seat:hover { opacity: 0.75; }
+.hemicycle-seat.vacant { opacity: 0.55; }
+.hemicycle-tooltip {
+  position: absolute; pointer-events: none; left: 0; top: 0;
+  background: var(--surface); border: 1px solid var(--surface-border); border-radius: 6px;
+  padding: 4px 9px; font-size: 11.5px; color: var(--text); white-space: nowrap;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.28); opacity: 0; transition: opacity 90ms ease; z-index: 10;
+  transform: translate(-50%, -100%);
+}
+.hemicycle-tooltip.open { opacity: 1; }
+.hemicycle-legend { display: flex; flex-wrap: wrap; gap: 6px 12px; }
+.hemicycle-legend-row { display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--text); }
+.hemicycle-legend-row .hl-swatch { width: 11px; height: 11px; border-radius: 3px; flex: none; }
+.hemicycle-legend-row .hl-count { color: var(--text-dim); }
+.hemicycle-legend.compact { gap: 3px 10px; }
+.hemicycle-legend.compact .hemicycle-legend-row { font-size: 11px; }
+.hemicycle-empty-hint { font-size: 12px; color: var(--text-dim); }
+.dossier-entry.hemicycle { cursor: pointer; }
+.dossier-entry.hemicycle .hemicycle-widget { margin-bottom: 6px; }
+.dossier-entry.hemicycle .entry-title { font-weight: 600; font-size: 13.5px; color: var(--text); margin-bottom: 2px; }
+
+/* ===========================================================================
+   Groupes géopolitiques — panneau + surlignage carte + widget fiche pays.
+   ========================================================================= */
+#groups-panel { max-height: calc(100vh - 32px); overflow-y: auto; }
+#groups-list { margin: 10px 0; display: flex; flex-direction: column; gap: 2px; }
+.groups-cat-header { font-size: 10.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; color: var(--text-dim); margin: 12px 0 4px; }
+.groups-cat-header:first-child { margin-top: 0; }
+.group-row-wrap { border-radius: 8px; }
+.group-row { display: flex; align-items: center; gap: 8px; padding: 5px 4px; border-radius: 8px; }
+.group-row:hover { background: rgba(255, 255, 255, 0.03); }
+.group-row input[type="checkbox"] { accent-color: var(--accent); cursor: pointer; }
+.group-dot { width: 11px; height: 11px; border-radius: 50%; flex: none; display: inline-block; }
+.group-name { flex: 1; font-size: 12.5px; color: var(--text); }
+.group-members-toggle, .group-del {
+  appearance: none; border: none; background: transparent; color: var(--text-dim); cursor: pointer;
+  font-size: 13px; width: 22px; height: 22px; border-radius: 6px; flex: none;
+}
+.group-members-toggle:hover, .group-del:hover { background: var(--surface-border); color: var(--accent); }
+.group-del:hover { color: #c0433a; }
+.group-members-editor { padding: 6px 4px 10px 30px; display: flex; flex-direction: column; gap: 6px; }
+.group-editor-meta { display: flex; flex-direction: column; gap: 2px; margin-bottom: 4px; }
+.group-editor-meta input[type="text"] {
+  flex: 1; box-sizing: border-box; font: 12.5px "IBM Plex Sans", sans-serif; color: var(--text);
+  background: var(--surface); border: 1px solid var(--surface-border); border-radius: 7px; padding: 6px 9px;
+}
+.group-editor-meta input[type="color"] { width: 30px; height: 30px; padding: 0; border: none; border-radius: 6px; cursor: pointer; flex: none; }
+.group-editor-meta select {
+  font-family: inherit; font-size: 12px; color: var(--text); background-color: var(--surface);
+  border: 1px solid var(--surface-border); border-radius: 7px; padding: 6px 8px;
+}
+.group-members-editor input[type="text"] {
+  width: 100%; box-sizing: border-box; font: 12.5px "IBM Plex Sans", sans-serif; color: var(--text);
+  background: var(--surface); border: 1px solid var(--surface-border); border-radius: 7px; padding: 6px 9px;
+}
+.group-members-editor > div button {
+  appearance: none; border: none; background: transparent; color: var(--text); text-align: left;
+  padding: 6px; border-radius: 6px; cursor: pointer; font-size: 12.5px; display: flex; align-items: center; gap: 6px; width: 100%;
+}
+.group-members-editor > div button:hover { background: var(--surface-border); }
+.group-members-list, .fiche-groups { display: flex; flex-wrap: wrap; gap: 5px; margin: 4px 0; }
+.member-chip {
+  display: inline-flex; align-items: center; gap: 5px; background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--surface-border); border-radius: 10px; padding: 3px 5px 3px 9px; font-size: 11.5px; color: var(--text);
+}
+.member-chip button { appearance: none; border: none; background: transparent; color: var(--text-dim); cursor: pointer; }
+.member-chip button:hover { color: #c0433a; }
+.groups-new { display: flex; gap: 6px; margin-top: 14px; flex-wrap: wrap; }
+.groups-new input[type="text"] {
+  flex: 1; min-width: 120px; box-sizing: border-box; font: 12.5px "IBM Plex Sans", sans-serif; color: var(--text);
+  background: var(--surface); border: 1px solid var(--surface-border); border-radius: 7px; padding: 7px 9px;
+}
+.groups-new input[type="color"] { width: 30px; height: 30px; padding: 0; border: none; border-radius: 6px; cursor: pointer; flex: none; }
+.groups-new select {
+  font-family: inherit; font-size: 12px; color: var(--text); background-color: var(--surface);
+  border: 1px solid var(--surface-border); border-radius: 7px; padding: 6px 8px; flex: none;
+}
+path.group-highlight { fill-opacity: 0.28; stroke-width: 1.6px; pointer-events: none; }
+
+/* Mode "ajouter pays sur la carte" (fiche groupe) — porté de
+   #link-banner/.group-add-cursor (~722-731 dans l'artifact source). */
+#group-add-banner {
+  display: none;
+  position: absolute; left: 50%; top: 14px; transform: translateX(-50%);
+  padding: 8px 16px; border-radius: 6px; font-size: 12.5px; font-weight: 600;
+  background: rgba(232, 179, 74, 0.95); color: #241c00;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35); z-index: 20; max-width: min(480px, calc(100vw - 32px)); text-align: center;
+}
+#group-add-banner.open { display: block; }
+.map-wrap.group-add-cursor #map { cursor: crosshair; }
+
+/* ===========================================================================
+   Indicateurs OWID — panneau + légende + widget fiche pays.
+   ========================================================================= */
+#indicators-panel select {
+  width: 100%; box-sizing: border-box; font-family: inherit; font-size: 12.5px; color: var(--text);
+  background-color: var(--surface); border: 1px solid var(--surface-border); border-radius: 7px; padding: 7px 9px;
+}
+.owid-picker { display: flex; flex-direction: column; gap: 6px; }
+.owid-picker select {
+  width: 100%; box-sizing: border-box; font-family: inherit; font-size: 12px; color: var(--text);
+  background-color: var(--surface); border: 1px solid var(--surface-border); border-radius: 7px; padding: 6px 8px;
+}
+.fiche-indicator-value { font-size: 12.5px; color: var(--text); margin: 6px 0 2px; min-height: 14px; }
+.fiche-indicator-value .val { font-weight: 600; color: var(--accent); font-size: 15px; }
+.fiche-indicator-value .unit { color: var(--text-dim); font-size: 11px; }
+.fiche-indicator-value .year { color: var(--text-dim); font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.03em; }
+path.no-data { fill: rgba(255, 255, 255, 0.04) !important; }
+
+/* ===========================================================================
+   Panneau "Apparence" — porté à l'identique de l'artifact (~432-437).
+   ========================================================================= */
+.appearance-row { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 6px 0; font-size: 12.5px; color: var(--text); }
+.appearance-row input[type="color"] { width: 24px; height: 24px; padding: 0; border: none; border-radius: 5px; cursor: pointer; background: transparent; }
+.appearance-section-title { font-family: "Fraunces", serif; font-size: 13px; margin: 18px 0 2px; color: var(--text); }
+.appearance-section-title:first-of-type { margin-top: 4px; }
+.appearance-hint { font-size: 11px; color: var(--text-dim); margin: 0 0 4px; }
+
+/* ===========================================================================
+   Recherche dans les dossiers (loupe, modale plein écran séparée de la barre
+   du haut de carte) — src/search.ts, porté de #dossier-search-view
+   (~2060-2072). Réutilise les mêmes motifs visuels que la modale "dossier
+   plein écran" (#dossier-view) et les mêmes classes que l'artifact source
+   pour les résultats (.dossier-search-group/-entity/-result/-meta/-snippet/
+   -hit) — porté à l'identique de son CSS.
+   ========================================================================= */
+#dossier-search-view {
+  display: none; position: fixed; inset: 0; z-index: 10500;
+  background: var(--surface); color: var(--text); overflow-y: auto;
+  font-family: "IBM Plex Sans", sans-serif;
+}
+#dossier-search-view.open { display: block; }
+#dossier-search-inner { max-width: 760px; margin: 0 auto; padding: 24px 22px 60px; position: relative; }
+#dossier-search-title { font-family: "Fraunces", serif; font-weight: 600; font-size: 24px; margin: 0 60px 4px 0; color: var(--accent); }
+#dossier-search-subtitle { font-size: 12px; color: var(--text-dim); margin-bottom: 14px; line-height: 1.5; }
+.dossier-search-tabs { display: flex; gap: 6px; margin-bottom: 14px; }
+.dossier-search-tabs .btn-small.active-mode { background: var(--accent); color: #241c00; font-weight: 600; border-color: var(--accent); }
+#dossier-search-input {
+  width: 100%; box-sizing: border-box; font: 15px "IBM Plex Sans", sans-serif; color: var(--text);
+  background: rgba(255, 255, 255, 0.03); border: 1px solid var(--surface-border); border-radius: 9px;
+  padding: 11px 14px; margin-bottom: 18px;
+}
+#dossier-search-input:focus { outline: 2px solid var(--accent); outline-offset: 1px; }
+.dossier-search-group { margin-bottom: 18px; }
+.dossier-search-entity { font-family: "Fraunces", serif; font-weight: 600; font-size: 14px; margin-bottom: 6px; color: var(--accent); }
+.dossier-search-result {
+  display: block; width: 100%; text-align: left; appearance: none; border: 1px solid var(--surface-border);
+  border-radius: 8px; background: var(--surface); color: var(--text); font-family: inherit; padding: 8px 12px;
+  margin-bottom: 6px; cursor: pointer;
+}
+.dossier-search-result:hover { background: var(--surface-border); }
+.dossier-search-result-meta { font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.04em; color: var(--text-dim); margin-bottom: 3px; }
+.dossier-search-result-snippet { font-size: 12.5px; line-height: 1.45; color: var(--text); }
+.dossier-search-hit { background: var(--accent); color: #241c00; border-radius: 2px; padding: 0 1px; font-style: normal; }
+
+/* Flash bref sur l'entrée de dossier ciblée par la recherche — porté du
+   comportement de selectSearchEntry()/renderDossierSearchResults() dans
+   l'artifact (classe ajoutée puis retirée après ~1.8s). */
+.dossier-entry.search-flash { box-shadow: 0 0 0 2px var(--accent), 0 8px 20px rgba(0, 0, 0, 0.3); }
+
+/* ===========================================================================
+   Liens entre pays/groupes (src/links.ts) — porté de .links-section,
+   .link-row, #link-editor, #chronologie-panel et la frise chronologique
+   double curseur (~558-618, 717-778 dans l'artifact source).
+   ========================================================================= */
+.btn-danger {
+  appearance: none; border: none; border-radius: 7px; background: transparent; color: #c0433a;
+  font-weight: 600; font-family: inherit; font-size: 12.5px; padding: 8px 14px; margin-top: 12px; cursor: pointer;
+}
+.btn-danger:hover { text-decoration: underline; }
+
+.links-section { margin-top: 16px; }
+.fiche-links-header { display: flex; align-items: center; justify-content: space-between; font-size: 12px; font-weight: 600; color: var(--text); }
+.fiche-links-visibility { display: flex; align-items: center; gap: 7px; font-size: 12px; color: var(--text-dim); margin: 8px 0 2px; cursor: pointer; }
+.fiche-links-visibility input { accent-color: var(--accent); flex: none; }
+.fiche-links-list { margin-top: 8px; display: flex; flex-direction: column; gap: 6px; }
+.link-row {
+  display: flex; align-items: center; gap: 7px; font-size: 12.5px; color: var(--text); cursor: pointer;
+  padding: 6px 8px; border-radius: 7px; background: rgba(255, 255, 255, 0.03);
+}
+.link-row:hover { background: var(--surface-border); }
+.link-cat-dot { width: 8px; height: 8px; border-radius: 50%; flex: none; background: currentColor; }
+.link-row.link-diplomatie { color: var(--link-diplomatie, #5cb37e); }
+.link-row.link-conflit { color: var(--link-conflit, #e35c50); }
+.link-row.link-economie { color: var(--link-economie, #5b9fe0); }
+.link-row.link-culture { color: var(--link-culture, #c07de0); }
+.link-row.link-autre { color: var(--link-autre, #c9bfa9); }
+
+/* --- Frise chronologique (widget par fiche/éditeur + frise globale du bas,
+   #timeline-bar) — porté de initRangeSlider()/.rs-track (~742-778). ------ */
+.fiche-timeline { margin-top: 10px; }
+.fiche-timeline .timeline-top { font-size: 10px; }
+.fiche-timeline .rs-track { margin-top: 14px; }
+#timeline-bar {
+  padding-top: 10px; margin-top: 4px; border-top: 1px solid var(--surface-border);
+  display: none; flex-direction: column; gap: 1px;
+}
+#timeline-bar.open { display: flex; }
+.timeline-top { display: flex; align-items: center; justify-content: space-between; font-size: 10px; color: var(--text-dim); }
+.rs-track { position: relative; height: 18px; margin-top: 15px; cursor: pointer; }
+.rs-track::before { content: ""; position: absolute; top: 50%; left: 0; right: 0; height: 3px; transform: translateY(-50%); background: var(--surface-border); border-radius: 2px; }
+.rs-fill { position: absolute; top: 50%; height: 3px; transform: translateY(-50%); background: var(--accent); border-radius: 2px; pointer-events: none; }
+.rs-handle {
+  position: absolute; top: 50%; width: 14px; height: 14px; margin-left: -7px; transform: translateY(-50%);
+  border-radius: 50%; background: var(--accent); border: 2px solid var(--surface); box-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+  cursor: grab; touch-action: none;
+}
+.rs-handle::after { content: ""; position: absolute; top: 50%; left: 50%; width: 26px; height: 26px; transform: translate(-50%, -50%); }
+.rs-handle:active { cursor: grabbing; }
+.rs-handle:focus { outline: 2px solid var(--accent); outline-offset: 2px; }
+.rs-label {
+  position: absolute; top: -16px; left: 50%; transform: translateX(-50%); font-size: 9.5px; font-weight: 600;
+  color: var(--text); background: var(--surface); padding: 0 4px; border-radius: 3px; border: 1px solid var(--surface-border);
+  white-space: nowrap; pointer-events: none;
+}
+
+/* --- Tracés de liens sur la carte — porté de .link-line (~735-740). ---- */
+path.link-line { fill: none; stroke-width: 2px; cursor: pointer; vector-effect: non-scaling-stroke; opacity: 0.92; stroke-linecap: round; }
+path.link-diplomatie { stroke: var(--link-diplomatie, #5cb37e); }
+path.link-conflit { stroke: var(--link-conflit, #e35c50); }
+path.link-economie { stroke: var(--link-economie, #5b9fe0); }
+path.link-culture { stroke: var(--link-culture, #c07de0); }
+path.link-autre { stroke: var(--link-autre, #c9bfa9); }
+.map-legend .legend-swatch.line.accent { border-top-color: var(--accent); }
+
+/* --- Éditeur de lien (#link-editor) — porté de #link-editor (~717-720). */
+#link-editor { width: min(320px, calc(100vw - 32px)); }
+#link-editor input[type="text"], #link-editor textarea, #link-editor select {
+  width: 100%; box-sizing: border-box; font: 13px "IBM Plex Sans", sans-serif; color: var(--text);
+  background: rgba(255, 255, 255, 0.03); border: 1px solid var(--surface-border); border-radius: 7px; padding: 7px 9px; resize: vertical;
+}
+#link-editor select { background-color: var(--surface); font-family: inherit; }
+#link-editor input:focus, #link-editor textarea:focus, #link-editor select:focus { outline: none; border-color: var(--accent); }
+.link-dates { display: flex; gap: 10px; margin-top: 12px; }
+.link-dates > div { flex: 1; }
+.link-editor-actions { display: flex; align-items: center; }
+#link-save-status { font-size: 11.5px; color: var(--text-dim); margin-top: 6px; min-height: 14px; }
+
+/* --- Panneau Chronologie (#chronologie-panel) — porté de #chronologie-panel
+   / .chrono-row (~599-618). --------------------------------------------- */
+#chronologie-panel { width: min(380px, calc(100vw - 32px)); }
+.chrono-toolbar { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin: -4px 0 12px; }
+.chrono-count { font-size: 11.5px; color: var(--text-dim); }
+#chronologie-list { display: flex; flex-direction: column; gap: 8px; max-height: calc(100vh - 170px); overflow-y: auto; }
+.chrono-row { border: 1px solid var(--surface-border); border-radius: 9px; padding: 9px 11px; background: rgba(255, 255, 255, 0.03); font-size: 12.5px; color: var(--text); }
+.chrono-row-top { display: flex; align-items: center; gap: 7px; margin-bottom: 4px; }
+.chrono-cat-dot { width: 8px; height: 8px; border-radius: 50%; flex: none; }
+.chrono-date { font-size: 11px; color: var(--text-dim); margin-left: auto; flex: none; }
+.chrono-entities { display: flex; flex-wrap: wrap; align-items: center; gap: 5px; font-size: 13px; }
+.chrono-entity { cursor: pointer; font-weight: 600; color: var(--text); border-radius: 5px; padding: 1px 4px; margin: -1px -4px; }
+.chrono-entity:hover { background: var(--surface-border); text-decoration: underline; }
+.chrono-sep { color: var(--text-dim); }
+.chrono-desc { margin-top: 5px; color: var(--text-dim); font-size: 12px; line-height: 1.4; }
+.chrono-cat-label { font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.03em; color: var(--text-dim); }
