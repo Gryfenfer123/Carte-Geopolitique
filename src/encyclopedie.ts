@@ -31,9 +31,9 @@ export async function ensureEncyclopedieSeed(supabase: SupabaseClient, getSessio
 
   try {
     const [encCats, notionToEnc, notions] = await Promise.all([
-      fetch("/data/raw/ENCYCLOPEDIA_DOSSIER_CATEGORIES.json").then((r) => r.json()) as Promise<EncCategory[]>,
-      fetch("/data/raw/NOTION_TO_ENCYCLOPEDIA_CATEGORY.json").then((r) => r.json()) as Promise<Record<string, string>>,
-      fetch("/data/raw/NOTIONS_SEED.json").then((r) => r.json()) as Promise<Notion[]>,
+      fetch(import.meta.env.BASE_URL + "data/raw/ENCYCLOPEDIA_DOSSIER_CATEGORIES.json").then((r) => r.json()) as Promise<EncCategory[]>,
+      fetch(import.meta.env.BASE_URL + "data/raw/NOTION_TO_ENCYCLOPEDIA_CATEGORY.json").then((r) => r.json()) as Promise<Record<string, string>>,
+      fetch(import.meta.env.BASE_URL + "data/raw/NOTIONS_SEED.json").then((r) => r.json()) as Promise<Notion[]>,
     ]);
     void notionToEnc; // les 6 catégories de NOTIONS_SEED correspondent 1:1 aux 6 d'ENCYCLOPEDIA_DOSSIER_CATEGORIES (voir NOTION_TO_ENCYCLOPEDIA_CATEGORY.json) : on associe directement par index plutôt que par id de catégorie (uuid généré côté serveur, différent des id texte des fichiers source).
 
@@ -54,7 +54,7 @@ export async function ensureEncyclopedieSeed(supabase: SupabaseClient, getSessio
     // 2) NOTION_CATEGORIES_SEED partage les mêmes 6 noms qu'ENCYCLOPEDIA_DOSSIER_CATEGORIES
     // (vérifié par construction des deux fichiers source) : categoryId d'une
     // notion -> nom -> uuid de catégorie.
-    const notionCategories = (await fetch("/data/raw/NOTION_CATEGORIES_SEED.json").then((r) => r.json())) as NotionCategory[];
+    const notionCategories = (await fetch(import.meta.env.BASE_URL + "data/raw/NOTION_CATEGORIES_SEED.json").then((r) => r.json())) as NotionCategory[];
     const notionCatNameById = new Map(notionCategories.map((c) => [c.id, c.name]));
 
     let position = 0;
