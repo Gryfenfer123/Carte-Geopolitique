@@ -11,7 +11,7 @@ import { initIndicatorsSystem, type SovFeatureLike } from "./indicators";
 import { initLinksSystem, type LinkEntityKind } from "./links";
 import { ensureEncyclopedieSeed } from "./encyclopedie";
 import { initSearchSystem, normalizeSearch, type StaticSearchEntry } from "./search";
-import { frenchCountryName } from "./countryNames";
+import { frenchCountryName, loadCountryNameData } from "./countryNames";
 
 // ---------------------------------------------------------------------------
 // App shell
@@ -296,6 +296,11 @@ const satelliteLayer = L.tileLayer(
 );
 vectorLayer.addTo(map);
 
+// "bottomright" plutôt que "topright" : le panneau latéral (#fiche-panel /
+// .side-panel, z-index 15, hors de la pile d'empilement de #map) se
+// superpose sinon exactement au même coin et masque le sélecteur, puisque
+// #map crée sa propre pile (z-index: 0) dans laquelle les contrôles
+// Leaflet (z-index jusqu'à 1000) restent piégés derrière lui.
 L.control
   .layers(
     { Plan: vectorLayer, Satellite: satelliteLayer },
@@ -662,12 +667,23 @@ function resetOverlay() {
 
 map.on("zoom viewreset move", resetOverlay);
 
-fetch(import.meta.env.BASE_URL + "data/raw/SOV.json")
-  .then((r) => {
+// Chargé en parallèle avec les frontières : les libellés de pays (dessinés
+// dès le premier resetOverlay() ci-dessous) ont besoin de FR_NAMES.json
+// (chargé par loadCountryNameData(), déjà appelé indépendamment par
+// src/dossier.ts — l'appel ici est sans effet de bord supplémentaire, la
+// promesse est mise en cache au premier appel). Sans ce `Promise.all`, un
+// premier resetOverlay() pouvait s'exécuter avant la fin du chargement des
+// noms français et affichait alors les noms anglais (Natural Earth) le
+// temps d'un prochain zoom/déplacement — repéré en vérifiant le site en
+// conditions réelles (réseau plus lent qu'en local).
+Promise.all([
+  fetch(import.meta.env.BASE_URL + "data/raw/SOV.json").then((r) => {
     if (!r.ok) throw new Error(`HTTP ${r.status}`);
     return r.json();
-  })
-  .then((sovTopo) => {
+  }),
+  loadCountryNameData(),
+])
+  .then(([sovTopo]) => {
     const geo = topojson.feature(
       sovTopo,
       sovTopo.objects.sovereignty_50m
