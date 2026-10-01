@@ -230,7 +230,7 @@ export function initGroupsSystem(deps: {
     const session = deps.getSession();
     if (!session) return;
     try {
-      const seedRes = await fetch("/data/raw/ORG_GROUPS_SEED.json");
+      const seedRes = await fetch(import.meta.env.BASE_URL + "data/raw/ORG_GROUPS_SEED.json");
       const seed: OrgGroupSeedEntry[] = await seedRes.json();
       const slugToIsoA3 = new Map<string, string>();
       deps.getAllCountries().forEach((c) => slugToIsoA3.set(c.slug, c.isoA3));
