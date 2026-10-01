@@ -599,7 +599,7 @@ function resetOverlay() {
 
 map.on("zoom viewreset move", resetOverlay);
 
-fetch("/data/raw/SOV.json")
+fetch(import.meta.env.BASE_URL + "data/raw/SOV.json")
   .then((r) => {
     if (!r.ok) throw new Error(`HTTP ${r.status}`);
     return r.json();
@@ -1074,16 +1074,16 @@ function redrawInfraLayers() {
 }
 
 Promise.all([
-  fetch("/data/raw/DISP.json").then((r) => r.json()),
-  fetch("/data/raw/PORTS.json").then((r) => r.json()) as Promise<PortEntry[]>,
-  fetch("/data/raw/STRAITS.json").then((r) => r.json()) as Promise<StraitEntry[]>,
-  fetch("/data/raw/PIPELINES.json").then((r) => r.json()) as Promise<PipelineEntry[]>,
-  fetch("/data/raw/MILITARY_BASES.json").then((r) => r.json()) as Promise<BaseEntry[]>,
-  fetch("/data/raw/SUBMARINE_CABLES.json").then((r) => r.json()) as Promise<CableEntry[]>,
-  fetch("/data/raw/RIVERS.json").then((r) => r.json()) as Promise<RiverEntry[]>,
-  fetch("/data/raw/LAKES.json").then((r) => r.json()) as Promise<LakeEntry[]>,
-  fetch("/data/raw/CITIES.json").then((r) => r.json()) as Promise<CityEntry[]>,
-  fetch("/data/raw/BASE_TYPE_FR.json").then((r) => r.json()) as Promise<Record<string, string>>,
+  fetch(import.meta.env.BASE_URL + "data/raw/DISP.json").then((r) => r.json()),
+  fetch(import.meta.env.BASE_URL + "data/raw/PORTS.json").then((r) => r.json()) as Promise<PortEntry[]>,
+  fetch(import.meta.env.BASE_URL + "data/raw/STRAITS.json").then((r) => r.json()) as Promise<StraitEntry[]>,
+  fetch(import.meta.env.BASE_URL + "data/raw/PIPELINES.json").then((r) => r.json()) as Promise<PipelineEntry[]>,
+  fetch(import.meta.env.BASE_URL + "data/raw/MILITARY_BASES.json").then((r) => r.json()) as Promise<BaseEntry[]>,
+  fetch(import.meta.env.BASE_URL + "data/raw/SUBMARINE_CABLES.json").then((r) => r.json()) as Promise<CableEntry[]>,
+  fetch(import.meta.env.BASE_URL + "data/raw/RIVERS.json").then((r) => r.json()) as Promise<RiverEntry[]>,
+  fetch(import.meta.env.BASE_URL + "data/raw/LAKES.json").then((r) => r.json()) as Promise<LakeEntry[]>,
+  fetch(import.meta.env.BASE_URL + "data/raw/CITIES.json").then((r) => r.json()) as Promise<CityEntry[]>,
+  fetch(import.meta.env.BASE_URL + "data/raw/BASE_TYPE_FR.json").then((r) => r.json()) as Promise<Record<string, string>>,
 ])
   .then(
     ([
