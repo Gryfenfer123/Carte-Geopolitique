@@ -113,7 +113,7 @@ export function initGroupsSystem(deps: {
   `;
   while (root.firstChild) document.body.appendChild(root.firstChild);
   const $ = <T extends HTMLElement = HTMLElement>(id: string) => document.getElementById(id) as T;
-  const banner = document.getElementById("group-add-banner");
+  const banner = document.getElementById("link-banner");
   function showBanner(text: string) {
     if (!banner) return;
     banner.textContent = text;
