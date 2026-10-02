@@ -487,6 +487,36 @@ export function initIndicatorsSystem(deps: {
     await loadAppearance();
   });
 
+  // -------------------------------------------------------------------------
+  // Comparateur de pays (src/compareExport.ts) — une ligne par indicateur
+  // (toutes catégories confondues) pour un pays donné, dans l'ordre déjà
+  // chargé (categories/indicators), pas de liste figée : si Martin ajoute un
+  // indicateur côté JSON, il apparaît automatiquement ici aussi.
+  // -------------------------------------------------------------------------
+  function getCountryIndicatorRows(
+    nameOrIso: { name?: string; iso_a3?: string } | string
+  ): { category: string; label: string; unit: string; decimals: number; value: number | null; year: number | null }[] {
+    const iso3 = typeof nameOrIso === "string" ? nameOrIso : countryIso3(nameOrIso);
+    const rows: { category: string; label: string; unit: string; decimals: number; value: number | null; year: number | null }[] = [];
+    categories.forEach((cat) => {
+      cat.indicators.forEach((ind) => {
+        const e = owidEntry(iso3, ind.id);
+        rows.push({
+          category: cat.label,
+          label: ind.label,
+          unit: ind.unit,
+          decimals: ind.decimals,
+          value: e ? e.v : null,
+          year: e ? e.y : null,
+        });
+      });
+    });
+    return rows;
+  }
+  function formatCountryIndicatorValue(v: number | null, decimals: number): string {
+    return v === null ? "—" : formatOwidNumber(v, decimals);
+  }
+
   return {
     ready,
     openPanel: () => $("indicators-panel").classList.add("open"),
@@ -498,5 +528,7 @@ export function initIndicatorsSystem(deps: {
     onFicheClose: () => {
       currentFicheIso3 = null;
     },
+    getCountryIndicatorRows,
+    formatCountryIndicatorValue,
   };
 }

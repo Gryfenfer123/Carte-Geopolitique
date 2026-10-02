@@ -12,6 +12,8 @@ import { initLinksSystem, type LinkEntityKind } from "./links";
 import { ensureEncyclopedieSeed } from "./encyclopedie";
 import { initSearchSystem, normalizeSearch, type StaticSearchEntry } from "./search";
 import { frenchCountryName, loadCountryNameData } from "./countryNames";
+import { initPoiSystem } from "./poi";
+import { initCompareSystem, exportMapAsPng, exportAllData } from "./compareExport";
 
 // ---------------------------------------------------------------------------
 // App shell
@@ -62,6 +64,7 @@ app.innerHTML = `
         <label class="chip chip-toggle"><input type="checkbox" id="toggle-bases"><span class="dot" style="background:var(--base-marker);border-color:var(--base-ring);"></span>Bases militaires étrangères</label>
         <label class="chip chip-toggle"><input type="checkbox" id="toggle-cables"><span class="line-swatch" style="border-top-color:var(--cable-line);"></span>Câbles sous-marins</label>
         <label class="chip chip-toggle"><input type="checkbox" id="toggle-rivers-lakes"><span class="line-swatch" style="border-top-color:var(--river-line);"></span>Fleuves &amp; lacs</label>
+        <label class="chip chip-toggle"><input type="checkbox" id="toggle-pois" checked><span class="dot" style="background:var(--accent);border-color:var(--accent);"></span>Points d'intérêt</label>
         <label class="chip chip-toggle" id="toggle-all-links-row"><input type="checkbox" id="toggle-all-links"><span class="line-swatch accent"></span>Tous les liens (historique)</label>
         <button type="button" id="legend-collapse-btn" title="Réduire la légende" aria-label="Réduire la légende">&minus;</button>
       </div>
@@ -179,10 +182,14 @@ function announcePlaceholder(label: string) {
   banner.classList.add("open");
   setTimeout(() => banner.classList.remove("open"), 2200);
 }
-document.getElementById("poi-add-btn")!.addEventListener("click", () => announcePlaceholder("Points d'intérêt"));
-document.getElementById("export-png-btn")!.addEventListener("click", () => announcePlaceholder("Export de la carte en image"));
-document.getElementById("compare-btn")!.addEventListener("click", () => announcePlaceholder("Comparateur de pays"));
-document.getElementById("export-all-btn")!.addEventListener("click", () => announcePlaceholder("Export complet des données"));
+// poi-add-btn/export-png-btn/compare-btn/export-all-btn : câblés plus bas,
+// une fois la carte/les calques/les systèmes groupes-indicateurs créés (voir
+// initPoiSystem/initCompareSystem/exportMapAsPng/exportAllData, importés de
+// src/poi.ts et src/compareExport.ts — nouveaux cette session, voir
+// PORT_STATUS.md). `announcePlaceholder` reste utilisé ailleurs (aucun
+// bouton ne l'utilise plus directement, mais la fonction est conservée pour
+// signaler une éventuelle future fonctionnalité non portée).
+void announcePlaceholder;
 document.getElementById("sources-panel-close")!.addEventListener("click", () => {
   document.getElementById("sources-panel")!.classList.remove("open");
 });
@@ -343,6 +350,10 @@ function updateAuthTrigger() {
   }
 }
 
+function openAuthPanel() {
+  authPanel.hidden = false;
+  renderAuthPanel();
+}
 authTrigger.addEventListener("click", () => {
   authPanel.hidden = !authPanel.hidden;
   if (!authPanel.hidden) renderAuthPanel();
@@ -402,12 +413,20 @@ const map = L.map("map", {
 // fait pour "Auto" (qui n'a pas d'équivalent exact sur une pyramide de
 // tuiles — contrairement à l'image statique unique de l'artifact, un
 // fondu d'opacité continu entre deux pyramides de tuiles n'a pas de sens).
+// `crossOrigin: "anonymous"` : nécessaire pour que l'export PNG de la carte
+// (#export-png-btn, voir compareExport.ts::exportMapAsPng) puisse lire les
+// pixels de #map sans que le canvas ne soit "tainted" par ces tuiles
+// cross-origin — ça ne fonctionne que si Esri répond avec un en-tête
+// Access-Control-Allow-Origin permissif sur ces tuiles (ce qui est
+// documenté comme le cas pour ces services REST publics, mais non vérifié
+// dans un navigateur réel ici — voir PORT_STATUS.md).
 const vectorLayer = L.tileLayer(
   "https://services.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}",
   {
     attribution:
       '&copy; <a href="https://www.esri.com">Esri</a> — Esri, HERE, Garmin, © OpenStreetMap contributors, GIS User Community',
     maxZoom: 16,
+    crossOrigin: "anonymous",
   }
 );
 const satelliteLayer = L.tileLayer(
@@ -416,6 +435,7 @@ const satelliteLayer = L.tileLayer(
     attribution:
       '&copy; <a href="https://www.esri.com">Esri</a> — Esri, Maxar, Earthstar Geographics, GIS User Community',
     maxZoom: 19,
+    crossOrigin: "anonymous",
   }
 );
 vectorLayer.addTo(map);
@@ -435,9 +455,21 @@ document.getElementById("zoom-reset")!.addEventListener("click", () => map.setVi
 type MapStyleMode = "auto" | "satellite" | "vector";
 let styleMode: MapStyleMode = "auto";
 const AUTO_SATELLITE_MIN_ZOOM = 7;
+function isSatelliteActive(): boolean {
+  return styleMode === "satellite" || (styleMode === "auto" && map.getZoom() >= AUTO_SATELLITE_MIN_ZOOM);
+}
+// Opacité du remplissage des pays (calque SVG gLand, voir redrawBorders) :
+// dans l'artifact source, ce remplissage EST le rendu du fond de carte
+// (il n'y a pas de tuiles dessous). Ici, avec de vraies tuiles, le garder
+// semi-opaque en permanence recouvrait l'imagerie satellite d'un voile
+// terne (signalé par Martin). On ne le garde donc semi-opaque qu'en mode
+// Vectoriel (où il remplace visuellement l'absence de relief des tuiles
+// Esri Dark Gray) ; en Satellite, les pays n'ont plus que leur contour.
+function currentLandFillOpacity(): number {
+  return isSatelliteActive() ? 0 : 0.5;
+}
 function applyStyleMode() {
-  const wantSatellite =
-    styleMode === "satellite" || (styleMode === "auto" && map.getZoom() >= AUTO_SATELLITE_MIN_ZOOM);
+  const wantSatellite = isSatelliteActive();
   if (wantSatellite) {
     if (!map.hasLayer(satelliteLayer)) satelliteLayer.addTo(map);
     if (map.hasLayer(vectorLayer)) map.removeLayer(vectorLayer);
@@ -445,6 +477,7 @@ function applyStyleMode() {
     if (!map.hasLayer(vectorLayer)) vectorLayer.addTo(map);
     if (map.hasLayer(satelliteLayer)) map.removeLayer(satelliteLayer);
   }
+  gLand.selectAll<SVGPathElement, unknown>("path:not(:hover)").attr("fill-opacity", currentLandFillOpacity());
 }
 const STYLE_BUTTON_IDS: Record<MapStyleMode, string> = {
   auto: "style-auto",
@@ -624,6 +657,9 @@ let indicatorsRedraw: (() => void) | null = null;
 // calque gLinksLayer, positionné au-dessus de tous les autres calques —
 // voir sa déclaration près de gLakes).
 let linksRedraw: (() => void) | null = null;
+// Assigné plus bas, une fois src/poi.ts initialisé (après la création du
+// calque gPoiLayer, positionné au-dessus de tous les autres calques).
+let poiRedraw: (() => void) | null = null;
 
 // ---------------------------------------------------------------------------
 // Groupes géopolitiques + Indicateurs OWID + Encyclopédie — src/groups.ts,
@@ -678,7 +714,7 @@ ficheDeps.onFicheClose = () => {
 // emplacement à l'écran (haut-droite) : un seul ouvert à la fois, comme
 // closeOtherSidePanels() dans l'artifact (~8308).
 function closeOtherSidePanels(exceptId: string) {
-  ["groups-panel", "indicators-panel", "appearance-panel", "chronologie-panel", "infra-panel", "fiche-panel"].forEach((id) => {
+  ["groups-panel", "indicators-panel", "appearance-panel", "chronologie-panel", "infra-panel", "fiche-panel", "compare-panel"].forEach((id) => {
     if (id !== exceptId) document.getElementById(id)?.classList.remove("open");
   });
 }
@@ -742,14 +778,14 @@ function redrawBorders() {
         : null
     )
     .attr("fill", LAND_FILL)
-    .attr("fill-opacity", 0.5)
+    .attr("fill-opacity", currentLandFillOpacity())
     .attr("stroke", LAND_BORDER)
     .attr("stroke-width", 0.7)
     .style("cursor", "pointer")
     .on("mouseover", function () {
       d3.select(this)
         .attr("fill", LAND_FILL_HOVER)
-        .attr("fill-opacity", 0.75)
+        .attr("fill-opacity", Math.max(0.35, currentLandFillOpacity() + 0.35))
         .attr("stroke", ACCENT)
         .attr("stroke-width", 1.4);
     })
@@ -757,7 +793,7 @@ function redrawBorders() {
     .on("mouseout", function (_event, d) {
       d3.select(this)
         .attr("fill", LAND_FILL)
-        .attr("fill-opacity", 0.5)
+        .attr("fill-opacity", currentLandFillOpacity())
         .attr("stroke", LAND_BORDER)
         .attr("stroke-width", 0.7);
       hideEntityTip();
@@ -767,6 +803,7 @@ function redrawBorders() {
       // Mode "ajouter pays sur la carte" (édition d'un groupe, src/groups.ts) :
       // consomme le clic pour basculer l'appartenance au groupe plutôt que
       // d'ouvrir la fiche du pays — porté de resolveEntitySelection() (~8417).
+      if (poiSystem.isPlacementActive()) return;
       if (linksSystem?.handleMapCountryClick(d.properties.iso_a3)) return;
       if (groupsSystem.handleMapCountryClick(d.properties.iso_a3)) return;
       showCountry(d.properties);
@@ -793,6 +830,7 @@ function resetOverlay() {
   groupsRedraw?.();
   indicatorsRedraw?.();
   linksRedraw?.();
+  poiRedraw?.();
 }
 
 map.on("zoom viewreset move", resetOverlay);
@@ -960,6 +998,10 @@ const gLakes = overlayG.append("g").attr("id", "lakes-layer").style("display", "
 // dessiné en dernier, au-dessus de tous les autres calques, comme gLinks
 // dans l'artifact (~2862, ajouté après tous les autres groupes SVG).
 const gLinksLayer = overlayG.append("g").attr("id", "links-layer");
+// Points d'intérêt (src/poi.ts) — dessiné en tout dernier, au-dessus de
+// tous les autres calques (y compris les liens) : un point placé par
+// l'utilisateur doit toujours rester visible/cliquable par-dessus le reste.
+const gPoiLayer = overlayG.append("g").attr("id", "poi-layer");
 // NB : contrairement à une version antérieure de ce portage, aucun calque
 // de libellés de pays permanents n'est dessiné ici — l'artifact source
 // (Project Hailperry) n'affiche jamais de noms de pays en permanence sur
@@ -1046,6 +1088,52 @@ linksSystem = initLinksSystem({
 });
 linksRedraw = linksSystem.redraw;
 
+// Points d'intérêt (src/poi.ts) — câblé ici : a besoin de projectLonLat
+// (le pont géo) et coordonne son mode "clic sur la carte" avec
+// groupsSystem/linksSystem (un seul actif à la fois, même principe que
+// onBeforeMapAddMode/onBeforeLinkMode ci-dessus).
+const poiSystem = initPoiSystem({
+  supabase,
+  getSession: () => currentSession,
+  gPoiLayer,
+  projectLonLat: (lonlat) => projectLonLat(lonlat),
+  setMapCursor: (active) => document.querySelector(".map-wrap")!.classList.toggle("poi-add-cursor", active),
+  onBeforeMapAddMode: () => {
+    linksSystem?.exitLinkMode();
+    if (groupsSystem.isMapAddModeActive()) groupsSystem.exitMapAddMode();
+  },
+  closeOtherSidePanels: (exceptId) => closeOtherSidePanels(exceptId),
+  openAuthPanel: () => openAuthPanel(),
+  showBanner: (text) => {
+    const banner = document.getElementById("link-banner");
+    if (!banner) return;
+    banner.textContent = text;
+    banner.classList.add("open");
+  },
+});
+poiRedraw = poiSystem.redraw;
+map.on("click", (e) => {
+  poiSystem.handleMapClick(e.latlng);
+});
+document.getElementById("toggle-pois")!.addEventListener("change", (e) => {
+  poiSystem.setLayerVisible((e.target as HTMLInputElement).checked);
+});
+
+// En mode "placer un POI", un clic sur un détroit/port/pipeline/câble/base/
+// fleuve/capitale (couches dessinées par-dessus la carte, chacune avec son
+// propre `event.stopPropagation()` qui empêche le `map.on("click", ...)`
+// ci-dessus de se déclencher) doit poser le point d'intérêt à cet endroit
+// plutôt qu'ouvrir la fiche de l'entité cliquée — sinon le mode de
+// placement reste actif en silence tant qu'on n'a pas cliqué sur un pays
+// ou sur l'océan. Les gestionnaires de clic de ces couches (redrawInfraLayers,
+// plus bas) appellent cette fonction avant leur propre event.stopPropagation() :
+// si elle renvoie true, le clic a été consommé pour poser le POI.
+function consumePoiPlacementClick(event: MouseEvent): boolean {
+  if (!poiSystem.isPlacementActive()) return false;
+  poiSystem.handleMapClick(map.mouseEventToLatLng(event));
+  return true;
+}
+
 // Générateur de ligne courbe (pipelines/câbles/fleuves) équivalent au
 // `pipelineLine` de l'artifact, mais basé sur `projectLonLat` (le pont
 // géo Leaflet) plutôt que sur la projection Equal Earth fixe.
@@ -1112,6 +1200,7 @@ function redrawInfraLayers() {
     .on("mousemove", (event, d) => showEntityTip(event, (d.properties.NAME as string) || ""))
     .on("mouseleave", hideEntityTip)
     .on("click", (event, d) => {
+      if (consumePoiPlacementClick(event)) { event.stopPropagation(); return; }
       event.stopPropagation();
       const p = d.properties;
       showInfraEntity("Territoire contesté", (p.NAME as string) || "", [
@@ -1137,6 +1226,7 @@ function redrawInfraLayers() {
     .on("mousemove", (event, d) => showEntityTip(event, d.name))
     .on("mouseleave", hideEntityTip)
     .on("click", (event, d) => {
+      if (consumePoiPlacementClick(event)) { event.stopPropagation(); return; }
       event.stopPropagation();
       showInfraEntity(d.kind === "gaz" ? "Gazoduc" : "Oléoduc", d.name, [["Note", d.note]]);
     });
@@ -1159,6 +1249,7 @@ function redrawInfraLayers() {
     .on("mousemove", (event, d) => showEntityTip(event, d.cable.name))
     .on("mouseleave", hideEntityTip)
     .on("click", (event, d) => {
+      if (consumePoiPlacementClick(event)) { event.stopPropagation(); return; }
       event.stopPropagation();
       showInfraEntity("Câble sous-marin", d.cable.name, [
         ["Propriétaire", d.cable.owner],
@@ -1212,6 +1303,7 @@ function redrawInfraLayers() {
     )
     .on("mouseleave", hideEntityTip)
     .on("click", (event, d) => {
+      if (consumePoiPlacementClick(event)) { event.stopPropagation(); return; }
       event.stopPropagation();
       showInfraEntity("Base militaire étrangère", d.name, [
         ["Puissance", d.power],
@@ -1233,6 +1325,7 @@ function redrawInfraLayers() {
     .on("mousemove", (event, d) => showEntityTip(event, d.name))
     .on("mouseleave", hideEntityTip)
     .on("click", (event, d) => {
+      if (consumePoiPlacementClick(event)) { event.stopPropagation(); return; }
       event.stopPropagation();
       const rank = ports.indexOf(d) + 1;
       showInfraEntity("Port", d.name, [
@@ -1258,6 +1351,7 @@ function redrawInfraLayers() {
     .on("mousemove", (event, d) => showEntityTip(event, d.name))
     .on("mouseleave", hideEntityTip)
     .on("click", (event, d) => {
+      if (consumePoiPlacementClick(event)) { event.stopPropagation(); return; }
       event.stopPropagation();
       showInfraEntity("Détroit", d.name, [["Note", d.note]]);
     });
@@ -1288,6 +1382,7 @@ function redrawInfraLayers() {
     .on("mousemove", (event, d) => showEntityTip(event, d.n))
     .on("mouseleave", hideEntityTip)
     .on("click", (event, d) => {
+      if (consumePoiPlacementClick(event)) { event.stopPropagation(); return; }
       event.stopPropagation();
       showInfraEntity("Capitale", d.n, d.note ? [["Note", d.note]] : []);
     });
@@ -1533,3 +1628,44 @@ const searchSystem = initSearchSystem({
   revealSection: (sectionId, categoryId) => ficheDossier.revealSection(sectionId, categoryId),
 });
 document.getElementById("dossier-search-btn")!.addEventListener("click", () => searchSystem.openDossierSearch());
+
+// ---------------------------------------------------------------------------
+// Comparateur de pays + export PNG + export complet (src/compareExport.ts) —
+// câblés en tout dernier : le comparateur réutilise getAllCountryRefs() et
+// les indicateurs déjà chargés par indicatorsSystem ; les deux exports n'ont
+// besoin de rien d'autre que la carte/le SVG déjà créés et le client
+// Supabase. Voir PORT_STATUS.md pour ce qui est garanti vs. best-effort
+// (notamment l'export PNG, non vérifié dans un navigateur réel).
+// ---------------------------------------------------------------------------
+const compareSystem = initCompareSystem({
+  getAllCountries: getAllCountryRefs,
+  getCountryIndicatorRows: (c) => indicatorsSystem.getCountryIndicatorRows(c),
+  formatIndicatorValue: (v, decimals) => indicatorsSystem.formatCountryIndicatorValue(v, decimals),
+});
+document.getElementById("compare-btn")!.addEventListener("click", () => {
+  closeOtherSidePanels("compare-panel");
+  compareSystem.openPanel();
+});
+
+function showTransientBanner(text: string) {
+  const banner = document.getElementById("link-banner");
+  if (!banner) return;
+  banner.textContent = text;
+  banner.classList.add("open");
+  setTimeout(() => banner.classList.remove("open"), 4000);
+}
+
+document.getElementById("export-png-btn")!.addEventListener("click", () => {
+  showTransientBanner("Export de la carte en image…");
+  exportMapAsPng({
+    mapEl: document.getElementById("map")!,
+    svgEl: overlaySvg.node()!,
+    showBanner: showTransientBanner,
+  });
+});
+
+document.getElementById("export-all-btn")!.addEventListener("click", async () => {
+  showTransientBanner("Export de toutes les données en cours…");
+  const ok = await exportAllData(supabase);
+  showTransientBanner(ok ? "Export terminé — fichier téléchargé." : "Export téléchargé, mais certaines données n'ont pas pu être lues (voir la console).");
+});
