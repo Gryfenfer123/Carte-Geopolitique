@@ -745,11 +745,30 @@ main.map-wrap {
 #source {
   position: absolute; right: 16px; bottom: 56px;
   font-size: 11px; color: var(--text-dim); text-align: right; max-width: 260px; z-index: 14;
+  /* Texte d'attribution seul, sans lien ni bouton : pointer-events:none
+     indispensable, sinon son bloc (jusqu'à 260px de large) recouvre
+     silencieusement toute la rangée d'icônes bas-droite qui partage la
+     même ligne (right:16..432px ; bottom:56px) — #info-toggle, #poi-toggle,
+     #export-toggle, #compare-toggle etc. devenaient alors incliquables dès
+     que le curseur passait sur leur zone, le clic atterrissant sur ce texte
+     à la place (constaté en vérifiant le site en production, 2026-10-02). */
+  pointer-events: none;
 }
 
 /* --- Rangée d'icônes bas-droite (groupes/indicateurs/apparence/poi/
    export/comparateur/recherche-dossiers/notions/export-tout), empilée
    au-dessus de #style-switch, mêmes décalages `right` que l'artifact. ---- */
+#poi-toggle, #info-toggle, #groups-toggle, #indicators-toggle,
+#appearance-toggle, #chronologie-toggle, #export-toggle,
+#compare-toggle, #dossier-search-toggle, #notions-toggle,
+#export-all-toggle {
+  /* z-index explicite : sans lui, ces conteneurs (empilement "auto") se
+     retrouvaient sous #bottom-panel (la légende, qui peut s'étendre sur
+     2 lignes avec beaucoup de puces) dans une fenêtre étroite, rendant
+     ces boutons incliquables bien qu'ils restent visibles au survol —
+     constaté en vérifiant le site en production, 2026-10-02. */
+  z-index: 23;
+}
 #poi-toggle button, #info-toggle button, #groups-toggle button, #indicators-toggle button,
 #appearance-toggle button, #chronologie-toggle button, #export-toggle button,
 #compare-toggle button, #dossier-search-toggle button, #notions-toggle button,
