@@ -345,3 +345,173 @@ déjà à `map_features` et couvrent `'poi'` sans rien y changer.
 
 Aucun commit git n'a été fait (pas touché à git, conformément à la
 consigne).
+
+# Session du 2026-10-02 (suite 2) — 6 demandes de Martin
+
+`npm run build` (tsc && vite build) passe sans erreur à la fin de cette
+session. Aucun commit git, aucun déploiement (conformément à la consigne —
+Martin dépose lui-même les fichiers via l'interface web GitHub).
+
+## 1. Image + cadrage sur les catégories ET les sous-sections de dossier
+
+- **Migration requise, PAS ENCORE APPLIQUÉE** : `supabase/schema_v10.sql`
+  (déjà écrit par Martin avant cette session) doit être collé dans
+  Supabase → SQL Editor → Run. **Tant que ce n'est pas fait, rien de ce qui
+  suit ne fonctionne** : `dossier_categories.image_url`/`image_position`
+  n'existent pas encore côté base (les requêtes `select`/`update` qui les
+  visent échoueront), et `dossier_sections.image_position` non plus (seule
+  `cover_image_url` existait déjà avant, depuis schema_v1, mais elle n'était
+  lue/écrite par aucun code applicatif avant cette session — donc même les
+  sections n'ont aucune fonctionnalité image utilisable avant la migration).
+- `src/dossier.ts` : `Category`/`Section` étendus avec
+  `image_url`/`image_position` (catégories) et `cover_image_url`/
+  `image_position` (sections). `loadCategories()`/`addCategory()` et
+  `loadSections()`/`addSection()` lisent/écrivent ces colonnes.
+- Bannières de catégorie (`buildSummaryCard`, sommaire du dossier) et de
+  sous-section (`buildSectionGroupEl`) : affichent l'image en
+  `background-image`/`background-size:cover`/`background-position` (repli
+  sur le dégradé `categoryBannerGradient()` existant quand pas d'image).
+  Un 3ᵉ bouton icône `.dsc-image-btn` ("Changer l'image", même garde de
+  permission que les boutons renommer/supprimer déjà en place —
+  `!cat.builtin && isAdmin()` pour les catégories, `canModify(sec)` pour les
+  sections) ouvre un `<input type="file">` dédié et envoie vers
+  Supabase Storage (bucket `dossier-photos`, chemin `category-<id>/...` pour
+  une catégorie — globale, pas de `currentOwner` — et
+  `<ownerType>-<ownerId>/section-<id>/...` pour une section).
+- **Cadrage ("cadrer")** : glisser directement sur une bannière qui affiche
+  déjà une vraie image (pas sur le dégradé de repli, et pas sur un des 3
+  boutons icône) déplace son `background-position` en direct puis
+  l'enregistre au relâchement (`attachBannerDragReframe()`, nouvelle
+  fonction partagée par les deux bannières). Pas de bouton dédié pour entrer
+  en mode cadrage : le glisser direct a semblé l'interaction la plus simple
+  et la plus proche de "pouvoir la cadrer".
+- `src/style.css` : `.dsc-image-btn` (`right: 62px`, entre `.dsc-menu-btn`
+  à 34px et `.dsc-del-btn` à 6px), `.dsc-banner.has-image` (curseur grab),
+  `.dsc-banner.reframing` (curseur grabbing), `.dsc-reframe-label` (petite
+  étiquette "Glissez pour cadrer l'image" affichée pendant le glisser).
+- **Assomption non vérifiable sans navigateur réel** : aucun outil de
+  capture d'écran n'est disponible dans cet environnement — le
+  drag-to-reframe (calcul de position en %, mise à jour live du
+  `background-position`, blocage du clic parasite qui rouvrirait la fiche
+  catégorie après un glissé) n'a été vérifié que par lecture du code, pas
+  testé à la souris dans un vrai navigateur. Le build TypeScript passe et le
+  code a été relu avec soin, mais le *feel* exact du geste (sensibilité,
+  zone de déclenchement) reste à confirmer par Martin.
+
+## 2. Frise chronologique (filtrage des liens par date) — déjà existante
+
+Aucune nouvelle logique : le double curseur `#timeline-bar`/`globalSlider`
+(`src/links.ts`) existait déjà et fonctionnait déjà exactement comme
+l'artifact source. Seul changement : le libellé de la case à cocher de la
+légende (`src/main.ts`, `#toggle-all-links-row`) est passé de
+« Tous les liens (historique) » à « Tous les liens (frise chronologique) »
+pour que cette fonctionnalité (jusqu'ici un peu cachée) soit plus visible.
+
+## 3. Suppression du bouton/panneau "Chronologie"
+
+Fonctionnalité différente du point 2 ci-dessus (une simple LISTE triée des
+liens, sans filtrage de la carte) — retirée entièrement :
+- `src/main.ts` : markup `#chronologie-toggle`/`#chronologie-btn` retiré de
+  `app.innerHTML` ; `"chronologie-panel"` retiré du tableau de
+  `closeOtherSidePanels()`.
+- `src/links.ts` : markup `#chronologie-panel`, `renderChronologie()`,
+  `chronoSortKey()`, `chronoDateLabel()`, `chronoNewestFirst`, les
+  écouteurs `chronologie-btn`/`chronologie-close`/`chronologie-sort`, et
+  l'appel `renderChronologie()` dans `refreshLinkDisplays()` — tous
+  retirés. `grep -n chronologie src/links.ts` ne renvoie plus que des
+  commentaires (aucune référence fonctionnelle).
+- `src/style.css` : bloc `#chronologie-panel`/`.chrono-*` retiré ;
+  `#chronologie-toggle` retiré des listes de sélecteurs partagées de la
+  rangée d'icônes (décalages `right` des autres boutons **non renumérotés**,
+  conformément à la consigne — simplicité/faible risque avant tout).
+
+## 4. Barre de recherche unifiée : "tout rechercher" + suppression de la loupe "Recherche dans les dossiers"
+
+`src/search.ts` a été réécrit. La barre unifiée (`#search-input`, toujours
+visible) couvre maintenant tout : pays/groupes/notions/infrastructures
+(déjà le cas), **sections de TOUT owner_type** (généralisation de l'ancien
+`buildNotionEntries()`, qui ne couvrait que les sections encyclopédie de
+premier niveau — fondu dans un nouveau type de résultat `kind: "section"` ;
+cliquer résout le bon dossier (pays/groupe/Encyclopédie/mini-dossier) puis
+appelle `revealSection`), **liens entre pays/groupes** (`country_links`,
+entièrement nouveau — `kind: "link"`, utilise les libellés déjà dénormalisés
+sur chaque ligne `entity_a_label`/`entity_b_label` plutôt qu'un nouveau dep
+`getEntityLabel` — plus simple, pas de duplication de logique avec
+`src/links.ts`), et **étiquettes** (`dossier_entries.tags` est maintenant
+inclus dans le texte cherchable `matchText` de chaque entrée de dossier — un
+mot d'étiquette tape comme n'importe quel autre mot, pas de syntaxe `#`
+dédiée).
+
+L'ancienne loupe "Recherche dans les dossiers" (`#dossier-search-toggle`/
+`#dossier-search-btn`, modale plein écran `#dossier-search-view`,
+`runDossierSearch()`, etc.) a été entièrement retirée : markup et câblage
+dans `src/main.ts`, toute la logique dans `src/search.ts`
+(`openDossierSearch`/`closeDossierSearch`/`runDossierSearch`/
+`renderDossierSearchResults`/onglets — `initSearchSystem()` ne renvoie plus
+rien, `main.ts` ne stocke donc plus sa valeur de retour), et les règles CSS
+`#dossier-search-*`/`.dossier-search-*` dans `src/style.css`.
+
+Deux décisions explicites à signaler à Martin :
+- **Capacité abandonnée : "★ Favoris uniquement"**. L'ancienne modale avait
+  un onglet qui filtrait sur `dossier_entries.favorite`. Ça n'a pas été
+  recréé dans la barre unifiée — un filtre de session de recherche n'a pas
+  vraiment de sens sur une barre "aller à" toujours visible et à 10
+  résultats maximum. Si Martin veut retrouver ses entrées favorites, il
+  faudrait une interface différente (pas une barre de recherche).
+- **Catégories de dossier non indexées par leur nom seul** (pas de
+  `kind: "category"`). Une catégorie (`dossier_categories`) est globale/
+  partagée par tous les dossiers d'un même espace ("Histoire" existe une
+  seule fois et sert à tous les pays) — ce n'est pas un endroit unique vers
+  lequel naviguer, contrairement à une section qui, elle, appartient
+  toujours à un dossier précis. Chercher "Histoire" remonte donc les
+  sections et entrées qui en relèvent, mais pas une ligne "Histoire" à part
+  qui ne mènerait nulle part de sensé.
+
+## 5. Suppression de "Exporter toutes les données" (export JSON)
+
+`#export-all-toggle`/`#export-all-btn` retiré de `src/main.ts`
+(markup + câblage + import `exportAllData`). La fonction `exportAllData()`
+et son commentaire d'en-tête ("3. Export complet des données") retirés de
+`src/compareExport.ts`, ainsi que l'import désormais inutile de
+`SupabaseClient`. L'export PNG (`#export-png-btn`/`exportMapAsPng`) et le
+comparateur (`#compare-btn`/`initCompareSystem`) n'ont pas été touchés.
+`#export-all-toggle` retiré des listes de sélecteurs CSS partagées de la
+rangée d'icônes (offsets des autres boutons non renumérotés, même logique
+qu'au point 3).
+
+## 6. Suppression du mode de fond de carte "Auto"
+
+`src/main.ts` : `MapStyleMode` réduit à `"satellite" | "vector"` ; bouton
+`#style-auto` retiré de `app.innerHTML` ; `styleMode` par défaut passé de
+`"auto"` à `"vector"`, et la classe `active` initiale déplacée du bouton
+Auto (disparu) vers `#style-vector` dans le markup. `AUTO_SATELLITE_MIN_ZOOM`
+et l'écouteur `map.on("zoomend", ...)` qui ne servait qu'au mode Auto ont été
+retirés. `isSatelliteActive()` simplifié à `return styleMode === "satellite"`
+(le correctif récent d'opacité de remplissage des pays,
+`currentLandFillOpacity()`, qui appelle `isSatelliteActive()`, continue de
+fonctionner sans changement). `STYLE_BUTTON_IDS` n'a plus que 2 entrées — le
+compilateur TypeScript a forcé cette mise à jour (le type est
+`Record<MapStyleMode, string>`), confirmant qu'aucune référence à `auto` ne
+traîne ailleurs.
+
+## Vérification effectuée
+
+- `npm run build` (tsc && vite build) : passe sans erreur, seul
+  l'avertissement habituel sur la taille du chunk JS (préexistant, sans
+  rapport avec cette session).
+- Test de fumée headless (Playwright/Chromium,
+  `PLAYWRIGHT_BROWSERS_PATH=/opt/pw-browsers`, `vite preview`) : la page se
+  charge sans erreur JavaScript (`pageerror`/`console.error`), seules des
+  erreurs réseau `ERR_TUNNEL_CONNECTION_FAILED` apparaissent (attendu : pas
+  d'accès Internet sortant vers les tuiles Esri/Supabase dans cet
+  environnement). Vérifié par ce test : `#style-switch` n'a plus que 2
+  boutons (`style-photo`/`style-vector`), `style-vector` porte bien la
+  classe `active` par défaut, `#chronologie-toggle`/`#dossier-search-toggle`/
+  `#export-all-toggle` n'existent plus dans le DOM, et le libellé de la case
+  "Tous les liens" a bien changé.
+- **Non vérifié** (pas d'outil de capture d'écran disponible) : rendu visuel
+  exact des bannières avec image, et surtout le *feel* du geste de glisser-
+  cadrer (point 1) — voir l'assomption explicite dans la section 1
+  ci-dessus. Martin doit aussi exécuter `supabase/schema_v10.sql` dans le
+  SQL Editor de Supabase avant que quoi que ce soit lié aux images de
+  catégories/sections ne fonctionne.
