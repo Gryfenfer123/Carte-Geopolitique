@@ -18,40 +18,53 @@ import { frenchCountryName, loadCountryNameData } from "./countryNames";
 // ---------------------------------------------------------------------------
 
 const app = document.querySelector<HTMLDivElement>("#app")!;
+// ---------------------------------------------------------------------------
+// Coquille HTML — reconstruite pour reprendre, ID pour ID et classe pour
+// classe, la structure de l'artifact source (Project Hailperry :
+// #stage/header/#bottom-panel+#legend/#controls/#style-switch/#search/
+// rangée d'icônes bas-droite/#tooltip/#source/#link-banner). Les panneaux
+// latéraux complexes (#fiche-panel, #groups-panel, #indicators-panel,
+// #appearance-panel, #chronologie-panel, #notions-panel, #link-editor,
+// #dossier-view, #custom-dialog-overlay...) ne sont PAS ici : ils sont
+// déjà injectés dans document.body par src/dossier.ts/groups.ts/
+// indicators.ts/links.ts (voir leurs root.innerHTML respectifs), sur le
+// même principe que l'artifact — rien à dupliquer. Seule différence
+// volontaire avec l'artifact : <header> reste un élément de flux normal
+// (pas absolute) au-dessus de la carte, comme dans le reste de ce portage
+// (Supabase/auth n'existe pas dans l'artifact d'origine) — tout le reste
+// (légende, contrôles, bascule de fond de carte, rangée d'icônes) est
+// positionné en absolu PAR RAPPORT À .map-wrap avec les mêmes décalages
+// que l'artifact, puisque .map-wrap commence sous le header au lieu de
+// couvrir tout le viewport.
 app.innerHTML = `
   <header class="app-header">
     <div class="brand">
       <span class="mark">Carte Géopolitique</span>
-      <span class="sub">Prototype moteur tuiles</span>
+      <span class="sub">Relations internationales &middot; territoires &middot; tuiles satellite/plan</span>
     </div>
     <div class="header-right">
       <span class="badge">Preview</span>
-      <button id="dossier-search-btn" class="auth-trigger" type="button">Recherche dans les dossiers</button>
-      <button id="groups-btn" class="auth-trigger" type="button">Groupes</button>
-      <button id="indicators-btn" class="auth-trigger" type="button">Indicateurs</button>
-      <button id="chronologie-btn" class="auth-trigger" type="button">Chronologie</button>
-      <button id="appearance-btn" class="auth-trigger" type="button">Apparence</button>
-      <button id="encyclopedie-btn" class="auth-trigger" type="button">Encyclop&eacute;die</button>
       <button id="auth-trigger" class="auth-trigger" type="button">Se connecter</button>
     </div>
   </header>
-  <main class="map-wrap">
+  <main class="map-wrap" id="stage">
     <div id="map"></div>
-    <div id="search">
-      <input id="search-input" type="text" placeholder="Rechercher un pays…" autocomplete="off">
-      <div id="search-results"></div>
-    </div>
-    <div id="map-legend" class="map-legend">
-      <span class="legend-chip static"><span class="legend-swatch land"></span>Etats reconnus</span>
-      <label class="legend-chip"><input type="checkbox" id="toggle-disputed" /><span class="legend-swatch outline"></span>Statut contesté</label>
-      <label class="legend-chip"><input type="checkbox" id="toggle-cities" /><span class="legend-swatch dot-city"></span>Capitales</label>
-      <label class="legend-chip"><input type="checkbox" id="toggle-ports" /><span class="legend-swatch dot-port"></span>Grands ports (Top 40)</label>
-      <label class="legend-chip"><input type="checkbox" id="toggle-straits" /><span class="legend-swatch diamond"></span>Détroits</label>
-      <label class="legend-chip"><input type="checkbox" id="toggle-pipelines" /><span class="legend-swatch line"></span>Pipelines</label>
-      <label class="legend-chip"><input type="checkbox" id="toggle-bases" /><span class="legend-swatch dot-base"></span>Bases militaires étrangères</label>
-      <label class="legend-chip"><input type="checkbox" id="toggle-cables" /><span class="legend-swatch line cable"></span>Câbles sous-marins</label>
-      <label class="legend-chip"><input type="checkbox" id="toggle-rivers-lakes" /><span class="legend-swatch line river"></span>Fleuves &amp; lacs</label>
-      <label class="legend-chip"><input type="checkbox" id="toggle-all-links" /><span class="legend-swatch line accent"></span>Tous les liens (historique)</label>
+    <div id="scale-hint"></div>
+
+    <div id="bottom-panel" class="panel">
+      <div id="legend">
+        <span class="chip chip-static"><span class="swatch land"></span>Etats reconnus</span>
+        <label class="chip chip-toggle"><input type="checkbox" id="toggle-disputed"><span class="swatch disputed"></span>Statut contesté</label>
+        <label class="chip chip-toggle"><input type="checkbox" id="toggle-cities"><span class="dot city"></span>Capitales</label>
+        <label class="chip chip-toggle"><input type="checkbox" id="toggle-ports"><span class="dot"></span>Grands ports (Top 40)</label>
+        <label class="chip chip-toggle"><input type="checkbox" id="toggle-straits"><span class="diamond"></span>Détroits</label>
+        <label class="chip chip-toggle"><input type="checkbox" id="toggle-pipelines"><span class="line-swatch"></span>Pipelines</label>
+        <label class="chip chip-toggle"><input type="checkbox" id="toggle-bases"><span class="dot" style="background:var(--base-marker);border-color:var(--base-ring);"></span>Bases militaires étrangères</label>
+        <label class="chip chip-toggle"><input type="checkbox" id="toggle-cables"><span class="line-swatch" style="border-top-color:var(--cable-line);"></span>Câbles sous-marins</label>
+        <label class="chip chip-toggle"><input type="checkbox" id="toggle-rivers-lakes"><span class="line-swatch" style="border-top-color:var(--river-line);"></span>Fleuves &amp; lacs</label>
+        <label class="chip chip-toggle" id="toggle-all-links-row"><input type="checkbox" id="toggle-all-links"><span class="line-swatch accent"></span>Tous les liens (historique)</label>
+        <button type="button" id="legend-collapse-btn" title="Réduire la légende" aria-label="Réduire la légende">&minus;</button>
+      </div>
       <div id="timeline-bar">
         <div class="timeline-top">
           <span>Frise chronologique des liens</span>
@@ -64,16 +77,85 @@ app.innerHTML = `
         </div>
       </div>
     </div>
-    <div id="entity-tooltip" class="entity-tooltip"></div>
-    <div id="group-add-banner"></div>
-    <aside class="side-panel">
-      <h2 id="panel-title">Aucun pays sélectionné</h2>
-      <div id="panel-body" class="empty">
-        Cliquez sur un pays pour afficher ses informations ici. Ceci est une
-        maquette de l'interaction — les fiches complètes seront reliées à
-        cette vue plus tard.
+    <button type="button" id="legend-expand-btn" class="panel" title="Afficher la légende" aria-label="Afficher la légende">&#43;</button>
+
+    <div id="search" class="panel">
+      <input id="search-input" type="text" placeholder="Rechercher un pays…" autocomplete="off">
+      <div id="search-results"></div>
+    </div>
+
+    <div id="controls" class="panel">
+      <button id="zoom-in" title="Zoomer" aria-label="Zoomer">+</button>
+      <button id="zoom-out" title="D&eacute;zoomer" aria-label="D&eacute;zoomer">&minus;</button>
+      <button id="zoom-reset" title="R&eacute;initialiser la vue" aria-label="R&eacute;initialiser">&#8634;</button>
+    </div>
+
+    <div id="poi-toggle" class="panel">
+      <button id="poi-add-btn" title="Placer un point d'intérêt (à venir)" aria-label="Points d'intérêt"><svg class="icon-svg" style="width:17px;height:17px;" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.1-7-11a7 7 0 0 1 14 0c0 4.9-7 11-7 11Z"/><circle cx="12" cy="10" r="2.5"/></svg></button>
+    </div>
+    <div id="export-toggle" class="panel">
+      <button id="export-png-btn" title="Exporter la carte en image (à venir)" aria-label="Exporter la carte en image"><svg class="icon-svg" style="width:17px;height:17px;" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v13"/><path d="m6 11 6 6 6-6"/><path d="M4 20h16"/></svg></button>
+    </div>
+    <div id="compare-toggle" class="panel">
+      <button id="compare-btn" title="Comparer deux pays (à venir)" aria-label="Comparer deux pays"><svg class="icon-svg" style="width:17px;height:17px;" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="7" height="16" rx="1.5"/><rect x="14" y="4" width="7" height="16" rx="1.5"/><path d="M10 12h4"/><path d="m11.5 9.5 2.5 2.5-2.5 2.5"/></svg></button>
+    </div>
+    <div id="dossier-search-toggle" class="panel">
+      <button id="dossier-search-btn" title="Recherche dans les dossiers" aria-label="Recherche dans les dossiers"><svg class="icon-svg" style="width:17px;height:17px;" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m20 20-4.6-4.6"/><path d="M8 10.5h5"/></svg></button>
+    </div>
+
+    <div id="tooltip" class="panel"></div>
+
+    <div id="style-switch" class="panel">
+      <button id="style-auto" class="active" title="Plan vectoriel par défaut, satellite en zoomant">Auto</button>
+      <button id="style-photo" title="Toujours l'imagerie satellite">Satellite</button>
+      <button id="style-vector" title="Toujours le plan vectoriel">Vectoriel</button>
+    </div>
+
+    <div id="info-toggle" class="panel" style="display:none">
+      <button id="info-btn" title="Sources des données" aria-label="Sources des données">i</button>
+    </div>
+    <div id="groups-toggle" class="panel">
+      <button id="groups-btn" title="Groupes de pays" aria-label="Groupes de pays"><svg class="icon-svg" style="width:17px;height:17px;" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></button>
+    </div>
+    <div id="indicators-toggle" class="panel">
+      <button id="indicators-btn" title="Indicateurs (Our World in Data)" aria-label="Indicateurs"><svg class="icon-svg" style="width:17px;height:17px;" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></button>
+    </div>
+    <div id="appearance-toggle" class="panel">
+      <button id="appearance-btn" title="Apparence (couleurs, dégradés)" aria-label="Apparence"><svg class="icon-svg" style="width:17px;height:17px;" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="13.5" cy="6.5" r="0.6" fill="currentColor"/><circle cx="17.5" cy="10.5" r="0.6" fill="currentColor"/><circle cx="8.5" cy="7.5" r="0.6" fill="currentColor"/><circle cx="6.5" cy="12.5" r="0.6" fill="currentColor"/><path d="M12 2a10 10 0 1 0 0 20c1.1 0 2-.9 2-2 0-.5-.2-1-.5-1.3-.3-.4-.5-.8-.5-1.3 0-1.1.9-2 2-2h2.3c1.8 0 3.2-1.4 3.2-3.2A9.7 9.7 0 0 0 12 2Z"/></svg></button>
+    </div>
+    <div id="chronologie-toggle" class="panel">
+      <button id="chronologie-btn" title="Chronologie des liens" aria-label="Chronologie"><svg class="icon-svg" style="width:17px;height:17px;" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.2 3.2"/></svg></button>
+    </div>
+    <div id="notions-toggle" class="panel">
+      <button id="notions-btn" title="Encyclopédie (notions transversales)" aria-label="Encyclopédie"><svg class="icon-svg" style="width:17px;height:17px;" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 4.5h7a3 3 0 0 1 3 3v13a2.5 2.5 0 0 0-2.5-2.5H2Z"/><path d="M22 4.5h-7a3 3 0 0 0-3 3v13a2.5 2.5 0 0 1 2.5-2.5H22Z"/></svg></button>
+    </div>
+    <div id="export-all-toggle" class="panel">
+      <button id="export-all-btn" title="Exporter toutes les données (à venir)" aria-label="Exporter toutes les données"><svg class="icon-svg" style="width:17px;height:17px;" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M7 10l5 5 5-5"/><path d="M12 15V3"/></svg></button>
+    </div>
+
+    <div id="link-banner"></div>
+
+    <div id="sources-panel" class="panel">
+      <button class="close-x" id="sources-panel-close" aria-label="Fermer">&times;</button>
+      <h2>Sources des données</h2>
+      <p>NASA Visible Earth &middot; Natural Earth (fronti&egrave;res, capitales) &middot; Lloyd's List / World Shipping Council &middot; Our World in Data &middot; Esri (tuiles plan/satellite).</p>
+    </div>
+
+    <!-- Résumé minimal pour les entités d'infrastructure cliquées (ports,
+         détroits, pipelines, bases, câbles, fleuves, capitales) : pas de
+         dossier complet comme pour un pays (voir PORT_STATUS.md), même
+         habillage que les autres panneaux latéraux (.panel.side-panel). -->
+    <div id="infra-panel" class="panel side-panel">
+      <button class="close-x" id="infra-panel-close" aria-label="Fermer">&times;</button>
+      <h2 id="infra-panel-title">Aucune sélection</h2>
+      <div id="infra-panel-body" class="empty">
+        Cliquez sur un port, un détroit, un pipeline, une base militaire,
+        un câble sous-marin ou une capitale pour afficher un résumé ici.
       </div>
-    </aside>
+    </div>
+
+    <div id="source">Esri World Imagery / World Dark Gray &middot; Natural Earth (fronti&egrave;res, capitales) &middot; Lloyd's List / World Shipping Council 2024</div>
+
     <div class="auth-panel" id="auth-panel" hidden>
       <button class="auth-close" id="auth-close" type="button" aria-label="Fermer">&times;</button>
       <div id="auth-panel-body"></div>
@@ -82,13 +164,50 @@ app.innerHTML = `
       Les tuiles de fond de carte n'ont pas pu être chargées (réseau
       indisponible). Les frontières restent affichées sur fond sombre.
     </div>
-    <div class="hint">
-      <strong>Prototype</strong> — molette pour zoomer, glisser pour
-      déplacer. Fond de carte vectoriel ou satellite (sélecteur en haut à
-      droite) + frontières et noms de pays en français en superposition.
-    </div>
   </main>
 `;
+
+// Boutons/panneaux non (encore) implémentés côté TS — présents pour la
+// fidélité visuelle de la rangée d'icônes (voir PORT_STATUS.md) mais sans
+// fonctionnalité derrière : on le signale par un court message dans le
+// bandeau #link-banner plutôt que de laisser le clic silencieusement sans
+// effet.
+function announcePlaceholder(label: string) {
+  const banner = document.getElementById("link-banner");
+  if (!banner) return;
+  banner.textContent = label + " — fonctionnalité pas encore portée.";
+  banner.classList.add("open");
+  setTimeout(() => banner.classList.remove("open"), 2200);
+}
+document.getElementById("poi-add-btn")!.addEventListener("click", () => announcePlaceholder("Points d'intérêt"));
+document.getElementById("export-png-btn")!.addEventListener("click", () => announcePlaceholder("Export de la carte en image"));
+document.getElementById("compare-btn")!.addEventListener("click", () => announcePlaceholder("Comparateur de pays"));
+document.getElementById("export-all-btn")!.addEventListener("click", () => announcePlaceholder("Export complet des données"));
+document.getElementById("sources-panel-close")!.addEventListener("click", () => {
+  document.getElementById("sources-panel")!.classList.remove("open");
+});
+document.getElementById("info-btn")?.addEventListener("click", () => {
+  document.getElementById("sources-panel")!.classList.toggle("open");
+});
+
+// --- Repli de la légende (#bottom-panel ⇄ #legend-expand-btn) --------------
+document.getElementById("legend-collapse-btn")!.addEventListener("click", () => {
+  document.getElementById("bottom-panel")!.classList.add("legend-collapsed");
+  document.getElementById("legend-expand-btn")!.classList.add("visible");
+});
+document.getElementById("legend-expand-btn")!.addEventListener("click", () => {
+  document.getElementById("bottom-panel")!.classList.remove("legend-collapsed");
+  document.getElementById("legend-expand-btn")!.classList.remove("visible");
+});
+
+// Surligne en couleur accent la puce d'une case cochée (générique, comme
+// dans l'artifact : `#legend .chip-toggle` → `.active` au survol de l'état
+// `checked` de sa case).
+document.querySelectorAll<HTMLElement>("#legend .chip-toggle").forEach((chip) => {
+  const input = chip.querySelector("input[type=checkbox]") as HTMLInputElement | null;
+  if (!input) return;
+  input.addEventListener("change", () => chip.classList.toggle("active", input.checked));
+});
 
 // ---------------------------------------------------------------------------
 // Auth
@@ -263,21 +382,26 @@ const map = L.map("map", {
   minZoom: 2,
   maxZoom: 12,
   worldCopyJump: true,
-  zoomControl: true,
+  // Pas de contrôle Leaflet natif : les boutons +/-/réinitialiser et le
+  // sélecteur de fond de carte sont les nôtres (#controls, #style-switch),
+  // câblés plus bas, pour reprendre exactement le même habillage/placement
+  // que l'artifact source plutôt que les contrôles par défaut de Leaflet.
+  zoomControl: false,
 });
 
 // Deux fonds de carte, tous deux en tuiles Esri (gratuit, sans clé API) :
-// - "Plan" : fond vectoriel gris sombre SANS libellés intégrés (Canvas
-//   World_Dark_Gray_Base), pour que les seuls noms visibles sur la carte
-//   soient ceux que l'on dessine nous-mêmes en français (voir gCountryLabels
-//   plus bas) — un fond à libellés (OSM, Voyager...) les afficherait dans
-//   leur langue d'origine et on ne peut pas en changer la langue sans clé.
+// - "Vectoriel" : fond vectoriel gris sombre SANS libellés intégrés (Canvas
+//   World_Dark_Gray_Base) — un fond à libellés (OSM, Voyager...) les
+//   afficherait dans leur langue d'origine et on ne peut pas en changer la
+//   langue sans clé.
 // - "Satellite" : imagerie aérienne/satellite (World_Imagery), également
-//   sans libellés — nos propres libellés français restent la seule
-//   légende de noms de pays, avec un contour sombre pour rester lisibles
-//   sur l'imagerie.
-// Remplace les anciennes tuiles OSM + filtre CSS .tile-layer-dark (qui
-// inversait les couleurs d'un fond clair pour simuler un thème sombre).
+//   sans libellés.
+// Les trois boutons #style-auto/#style-photo/#style-vector (câblés plus
+// bas) reprennent la sémantique Auto/Satellite/Vectoriel de l'artifact ;
+// voir le commentaire au-dessus de leur gestionnaire de clic pour le choix
+// fait pour "Auto" (qui n'a pas d'équivalent exact sur une pyramide de
+// tuiles — contrairement à l'image statique unique de l'artifact, un
+// fondu d'opacité continu entre deux pyramides de tuiles n'a pas de sens).
 const vectorLayer = L.tileLayer(
   "https://services.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}",
   {
@@ -296,18 +420,49 @@ const satelliteLayer = L.tileLayer(
 );
 vectorLayer.addTo(map);
 
-// "bottomright" plutôt que "topright" : le panneau latéral (#fiche-panel /
-// .side-panel, z-index 15, hors de la pile d'empilement de #map) se
-// superpose sinon exactement au même coin et masque le sélecteur, puisque
-// #map crée sa propre pile (z-index: 0) dans laquelle les contrôles
-// Leaflet (z-index jusqu'à 1000) restent piégés derrière lui.
-L.control
-  .layers(
-    { Plan: vectorLayer, Satellite: satelliteLayer },
-    undefined,
-    { position: "bottomright", collapsed: false }
-  )
-  .addTo(map);
+// --- Boutons de zoom (#controls) --------------------------------------------
+document.getElementById("zoom-in")!.addEventListener("click", () => map.zoomIn());
+document.getElementById("zoom-out")!.addEventListener("click", () => map.zoomOut());
+document.getElementById("zoom-reset")!.addEventListener("click", () => map.setView([20, 10], 3, { animate: true }));
+
+// --- Bascule de fond de carte (#style-switch) : Auto / Satellite / Vectoriel -
+// "Auto" n'a pas d'équivalent exact de l'artifact (qui faisait un fondu
+// d'opacité continu entre l'image statique et les aplats vectoriels selon
+// le zoom `k` du zoom D3) : avec de vraies tuiles, on choisit l'équivalent
+// le plus sensé — passer automatiquement au satellite une fois suffisamment
+// zoomé (le plan vectoriel, sans détail de terrain, perd son intérêt à ce
+// niveau de zoom), et rester au plan vectoriel en deçà.
+type MapStyleMode = "auto" | "satellite" | "vector";
+let styleMode: MapStyleMode = "auto";
+const AUTO_SATELLITE_MIN_ZOOM = 7;
+function applyStyleMode() {
+  const wantSatellite =
+    styleMode === "satellite" || (styleMode === "auto" && map.getZoom() >= AUTO_SATELLITE_MIN_ZOOM);
+  if (wantSatellite) {
+    if (!map.hasLayer(satelliteLayer)) satelliteLayer.addTo(map);
+    if (map.hasLayer(vectorLayer)) map.removeLayer(vectorLayer);
+  } else {
+    if (!map.hasLayer(vectorLayer)) vectorLayer.addTo(map);
+    if (map.hasLayer(satelliteLayer)) map.removeLayer(satelliteLayer);
+  }
+}
+const STYLE_BUTTON_IDS: Record<MapStyleMode, string> = {
+  auto: "style-auto",
+  satellite: "style-photo",
+  vector: "style-vector",
+};
+document.querySelectorAll<HTMLButtonElement>("#style-switch button").forEach((btn) => {
+  btn.addEventListener("click", () => {
+    const mode = (Object.keys(STYLE_BUTTON_IDS) as MapStyleMode[]).find((m) => STYLE_BUTTON_IDS[m] === btn.id);
+    if (!mode) return;
+    styleMode = mode;
+    document.querySelectorAll("#style-switch button").forEach((b) => b.classList.toggle("active", b === btn));
+    applyStyleMode();
+  });
+});
+map.on("zoomend", () => {
+  if (styleMode === "auto") applyStyleMode();
+});
 
 // Detect tile load failures (e.g. sandboxed / offline environments) and show
 // a small notice instead of failing silently — the country layer underneath
@@ -347,8 +502,11 @@ type CountryProps = {
   continent: string;
 };
 
-const panelTitle = document.getElementById("panel-title")!;
-const panelBody = document.getElementById("panel-body")!;
+const panelTitle = document.getElementById("infra-panel-title")!;
+const panelBody = document.getElementById("infra-panel-body")!;
+document.getElementById("infra-panel-close")!.addEventListener("click", () => {
+  document.getElementById("infra-panel")!.classList.remove("open");
+});
 
 let selectedCountry: CountryProps | null = null;
 
@@ -411,6 +569,7 @@ const ficheDossier = initFicheDossierSystem(ficheDeps);
 
 async function showCountry(props: CountryProps) {
   selectedCountry = props;
+  closeOtherSidePanels("fiche-panel");
   const iso2 = ((props as unknown as Record<string, unknown>).ISO_A2 as string) || null;
   await ficheDossier.openFiche(countryPropsToRef(props, iso2));
 }
@@ -519,7 +678,7 @@ ficheDeps.onFicheClose = () => {
 // emplacement à l'écran (haut-droite) : un seul ouvert à la fois, comme
 // closeOtherSidePanels() dans l'artifact (~8308).
 function closeOtherSidePanels(exceptId: string) {
-  ["groups-panel", "indicators-panel", "appearance-panel", "chronologie-panel"].forEach((id) => {
+  ["groups-panel", "indicators-panel", "appearance-panel", "chronologie-panel", "infra-panel", "fiche-panel"].forEach((id) => {
     if (id !== exceptId) document.getElementById(id)?.classList.remove("open");
   });
 }
@@ -535,7 +694,7 @@ document.getElementById("appearance-btn")!.addEventListener("click", () => {
   closeOtherSidePanels("appearance-panel");
   indicatorsSystem.openAppearancePanel();
 });
-document.getElementById("encyclopedie-btn")!.addEventListener("click", async () => {
+document.getElementById("notions-btn")!.addEventListener("click", async () => {
   await ensureEncyclopedieSeed(supabase, () => currentSession);
   await ficheDossier.openEncyclopedieDossier();
 });
@@ -594,12 +753,15 @@ function redrawBorders() {
         .attr("stroke", ACCENT)
         .attr("stroke-width", 1.4);
     })
-    .on("mouseout", function () {
+    .on("mousemove", (event, d) => showEntityTip(event, frenchCountryName(d.properties.name)))
+    .on("mouseout", function (_event, d) {
       d3.select(this)
         .attr("fill", LAND_FILL)
         .attr("fill-opacity", 0.5)
         .attr("stroke", LAND_BORDER)
         .attr("stroke-width", 0.7);
+      hideEntityTip();
+      void d;
     })
     .on("click", (_event, d) => {
       // Mode "ajouter pays sur la carte" (édition d'un groupe, src/groups.ts) :
@@ -608,37 +770,6 @@ function redrawBorders() {
       if (linksSystem?.handleMapCountryClick(d.properties.iso_a3)) return;
       if (groupsSystem.handleMapCountryClick(d.properties.iso_a3)) return;
       showCountry(d.properties);
-    });
-}
-
-// Dessine les libellés de pays (noms français) à l'ancre "continent
-// principal" de chaque pays (mainlandCentroid, déclaré plus bas — on ne
-// veut pas que le nom de la France se retrouve au milieu de l'Atlantique
-// à cause de ses territoires d'outre-mer). Un pays trop petit à l'écran
-// (moins de ~22px dans sa plus grande dimension, en pixels projetés
-// courants) voit son libellé masqué pour éviter la bouillie de texte en
-// vue dézoomée — il réapparaît naturellement en zoomant, puisque la
-// bbox grandit avec le zoom.
-const MIN_LABEL_PX = 22;
-function redrawCountryLabels() {
-  const zoom = map.getZoom();
-  const fontSize = Math.max(9, Math.min(14, 8.5 + zoom * 0.7));
-  gCountryLabels
-    .selectAll<SVGTextElement, SovFeature>("text")
-    .data(sovFeatures, (d: SovFeature) => d.properties.iso_a3 || d.properties.name)
-    .join("text")
-    .attr("class", "country-label")
-    .style("font-size", `${fontSize}px`)
-    .each(function (d: SovFeature) {
-      const bounds = geoPath.bounds(d as unknown as GeoJSON.GeoJSON);
-      const w = bounds[1][0] - bounds[0][0];
-      const h = bounds[1][1] - bounds[0][1];
-      const visible = Math.max(w, h) >= MIN_LABEL_PX;
-      const el = d3.select(this);
-      el.style("display", visible ? "" : "none");
-      if (!visible) return;
-      const [x, y] = projectLonLat(mainlandCentroid(d as unknown as GeoJSON.Feature));
-      el.attr("x", x).attr("y", y).text(frenchCountryName(d.properties.name));
     });
 }
 
@@ -658,7 +789,6 @@ function resetOverlay() {
     .style("top", topLeft.y - pad + "px");
   overlayG.attr("transform", `translate(${-(topLeft.x - pad)},${-(topLeft.y - pad)})`);
   redrawBorders();
-  redrawCountryLabels();
   redrawInfraLayers();
   groupsRedraw?.();
   indicatorsRedraw?.();
@@ -769,7 +899,7 @@ const capitalSlug = (d: CityEntry) => slugify(d.n);
 // libellé de l'entité survolée (jamais la note complémentaire — c'est le
 // comportement exact de l'artifact source, où showEntityTip() appelle
 // showTip(event, label, undefined) en ignorant systématiquement la note).
-const tooltipEl = document.getElementById("entity-tooltip")! as HTMLDivElement;
+const tooltipEl = document.getElementById("tooltip")! as HTMLDivElement;
 function showEntityTip(event: MouseEvent, label: string) {
   const wrap = document.querySelector(".map-wrap")! as HTMLElement;
   const b = wrap.getBoundingClientRect();
@@ -788,6 +918,8 @@ function hideEntityTip() {
 // latéral que les pays, un résumé minimal de l'entité cliquée.
 function showInfraEntity(kindLabel: string, name: string, lines: [string, string][]) {
   selectedCountry = null;
+  closeOtherSidePanels("infra-panel");
+  document.getElementById("infra-panel")!.classList.add("open");
   panelTitle.textContent = name;
   panelBody.classList.remove("empty");
   panelBody.innerHTML = `
@@ -828,16 +960,15 @@ const gLakes = overlayG.append("g").attr("id", "lakes-layer").style("display", "
 // dessiné en dernier, au-dessus de tous les autres calques, comme gLinks
 // dans l'artifact (~2862, ajouté après tous les autres groupes SVG).
 const gLinksLayer = overlayG.append("g").attr("id", "links-layer");
-// Libellés des pays en français — calque placé au-dessus de tous les
-// autres (dessiné en dernier), pour rester lisible par-dessus les liens,
-// surlignages de groupes, etc. Noms tirés de FR_NAMES.json via
-// frenchCountryName() (voir countryNames.ts) : indépendant du fond de
-// carte choisi (Plan/Satellite), qui ne porte lui-même aucun libellé —
-// voir le commentaire sur vectorLayer/satelliteLayer plus haut.
-const gCountryLabels = overlayG
-  .append("g")
-  .attr("id", "country-labels")
-  .style("pointer-events", "none");
+// NB : contrairement à une version antérieure de ce portage, aucun calque
+// de libellés de pays permanents n'est dessiné ici — l'artifact source
+// (Project Hailperry) n'affiche jamais de noms de pays en permanence sur
+// la carte, seulement au survol (voir showEntityTip ci-dessus, branché sur
+// gLand dans redrawBorders) et dans la fiche/le dossier au clic. Le calque
+// "gCountryLabels"/"redrawCountryLabels()" qui existait ici (et la classe
+// CSS .country-label) a été retiré : il ne correspondait à aucune
+// fonctionnalité de l'artifact et provoquait un fort chevauchement de
+// texte à l'échelle mondiale.
 
 // Centre du territoire métropolitain (plus grand polygone d'un
 // MultiPolygon) plutôt que le centroïde géographique complet — porté de
@@ -899,12 +1030,12 @@ linksSystem = initLinksSystem({
     return g ? g.name : id;
   },
   showBanner: (text) => {
-    const banner = document.getElementById("group-add-banner");
+    const banner = document.getElementById("link-banner");
     if (!banner) return;
     banner.textContent = text;
     banner.classList.add("open");
   },
-  hideBanner: () => document.getElementById("group-add-banner")?.classList.remove("open"),
+  hideBanner: () => document.getElementById("link-banner")?.classList.remove("open"),
   setMapCursor: (active) => document.querySelector(".map-wrap")!.classList.toggle("group-add-cursor", active),
   onBeforeLinkMode: () => {
     if (groupsSystem.isMapAddModeActive()) groupsSystem.exitMapAddMode();
