@@ -74,7 +74,13 @@ export type DossierOwnerRef = {
   colorDot?: string;
 };
 
-type Category = { id: string; name: string; builtin: boolean; created_by: string | null };
+// image_url/image_position (catégories) et cover_image_url/image_position
+// (sections) : schema_v10.sql (2026-10-02) — image + cadrage ("object-
+// position" CSS, ex. "50% 30%") sur les bannières de thème et de
+// sous-section. image_url n'existait pas avant sur dossier_categories ;
+// cover_image_url existait déjà sur dossier_sections depuis schema_v1 mais
+// n'était lu/écrit par aucun code applicatif avant cette session.
+type Category = { id: string; name: string; builtin: boolean; created_by: string | null; image_url: string | null; image_position: string };
 type Section = {
   id: string;
   category_id: string;
@@ -84,6 +90,8 @@ type Section = {
   position: number;
   created_by: string | null;
   countries: string[]; // pays de référence associés (notions de l'Encyclopédie uniquement)
+  cover_image_url: string | null;
+  image_position: string;
 };
 type SourceRef = { label: string; url: string };
 export type HemicycleParty = { name: string; color: string; seats: number };
@@ -261,6 +269,103 @@ function categoryBannerGradient(id: string): string {
   for (let i = 0; i < id.length; i++) h = (h * 31 + id.charCodeAt(i)) >>> 0;
   const pal = CATEGORY_BANNER_PALETTE[h % CATEGORY_BANNER_PALETTE.length];
   return "linear-gradient(135deg," + pal[0] + "," + pal[1] + ")";
+}
+
+const CAMERA_ICON_SVG =
+  '<svg class="icon-svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2Z"/><circle cx="12" cy="13" r="4"/></svg>';
+
+// Cadrage à la souris/au doigt d'une bannière de catégorie ou de section qui
+// a une image (schema_v10.sql) — demande de Martin, 2026-10-02 : "pouvoir la
+// cadrer". Glisser directement sur la bannière (pas de bouton dédié : c'est
+// l'interaction la plus directe pour "cadrer une image") déplace en direct
+// son `background-position`, en pourcentage de la bannière elle-même, et
+// enregistre la position finale au relâchement. N'entre en action que si la
+// bannière affiche déjà une vraie image (pas le dégradé de repli) et que
+// l'utilisateur a le droit de modifier cette catégorie/section (même garde
+// que les boutons renommer/supprimer/image qui partagent la bannière) —
+// cliquer ces boutons ne doit pas aussi déclencher le cadrage (mousedown
+// vérifie `closest('button')`) et un vrai glissé ne doit pas, lui, rouvrir
+// accidentellement la fiche (la bannière d'une catégorie est un enfant d'un
+// <button> qui navigue au clic : on avale le prochain `click` une seule
+// fois quand un glissé a eu lieu).
+function attachBannerDragReframe(
+  banner: HTMLElement,
+  getImageUrl: () => string | null,
+  getCanEdit: () => boolean,
+  savePosition: (pos: string) => void
+) {
+  function clampPct(n: number): number {
+    return Math.max(0, Math.min(100, n));
+  }
+  function posFromClient(clientX: number, clientY: number): string {
+    const rect = banner.getBoundingClientRect();
+    const x = rect.width ? clampPct(((clientX - rect.left) / rect.width) * 100) : 50;
+    const y = rect.height ? clampPct(((clientY - rect.top) / rect.height) * 100) : 50;
+    return Math.round(x) + "% " + Math.round(y) + "%";
+  }
+  function begin(startX: number, startY: number) {
+    if (!getImageUrl() || !getCanEdit()) return;
+    let moved = false;
+    banner.classList.add("reframing");
+    const label = document.createElement("div");
+    label.className = "dsc-reframe-label";
+    label.textContent = "Glissez pour cadrer l'image";
+    banner.appendChild(label);
+    function suppressNextClick(e: Event) {
+      e.stopPropagation();
+      e.preventDefault();
+      banner.removeEventListener("click", suppressNextClick, true);
+    }
+    function move(cx: number, cy: number) {
+      if (Math.abs(cx - startX) > 2 || Math.abs(cy - startY) > 2) moved = true;
+      banner.style.backgroundPosition = posFromClient(cx, cy);
+    }
+    function end(cx: number, cy: number) {
+      banner.classList.remove("reframing");
+      label.remove();
+      window.removeEventListener("mousemove", onMouseMove);
+      window.removeEventListener("mouseup", onMouseUp);
+      window.removeEventListener("touchmove", onTouchMove);
+      window.removeEventListener("touchend", onTouchEnd);
+      if (moved) {
+        savePosition(posFromClient(cx, cy));
+        banner.addEventListener("click", suppressNextClick, true);
+      }
+    }
+    function onMouseMove(e: MouseEvent) {
+      move(e.clientX, e.clientY);
+    }
+    function onMouseUp(e: MouseEvent) {
+      end(e.clientX, e.clientY);
+    }
+    function onTouchMove(e: TouchEvent) {
+      const t = e.touches[0];
+      if (t) move(t.clientX, t.clientY);
+    }
+    function onTouchEnd(e: TouchEvent) {
+      const t = e.changedTouches[0];
+      end(t ? t.clientX : startX, t ? t.clientY : startY);
+    }
+    window.addEventListener("mousemove", onMouseMove);
+    window.addEventListener("mouseup", onMouseUp);
+    window.addEventListener("touchmove", onTouchMove, { passive: true });
+    window.addEventListener("touchend", onTouchEnd);
+  }
+  banner.addEventListener("mousedown", (e) => {
+    if ((e.target as HTMLElement).closest("button")) return;
+    if (e.button !== 0) return;
+    e.preventDefault();
+    begin(e.clientX, e.clientY);
+  });
+  banner.addEventListener(
+    "touchstart",
+    (e) => {
+      if ((e.target as HTMLElement).closest("button")) return;
+      const t = e.touches[0];
+      if (t) begin(t.clientX, t.clientY);
+    },
+    { passive: true }
+  );
 }
 
 // ---------------------------------------------------------------------------
@@ -497,6 +602,8 @@ export function initFicheDossierSystem(deps: {
             <button id="dossier-add-link-btn" class="btn-small">&#43; Lien</button>
             <button id="dossier-add-hemicycle-btn" class="btn-small">&#43; H&eacute;micycle</button>
             <input type="file" id="dossier-photo-input" accept="image/*" style="display:none;">
+            <input type="file" id="dossier-category-image-input" accept="image/*" style="display:none;">
+            <input type="file" id="dossier-section-image-input" accept="image/*" style="display:none;">
           </div>
           <div id="dossier-photo-status" class="muted"></div>
 
@@ -739,23 +846,33 @@ export function initFicheDossierSystem(deps: {
       /* best-effort */
     }
   }
+  function rowToCategory(row: Record<string, unknown>): Category {
+    return {
+      id: row.id as string,
+      name: row.name as string,
+      builtin: !!row.builtin,
+      created_by: (row.created_by as string) ?? null,
+      image_url: (row.image_url as string) ?? null,
+      image_position: (row.image_position as string) || "50% 50%",
+    };
+  }
   async function loadCategories(space: "country" | "encyclopedie") {
     currentCategorySpace = space;
     const { data, error } = await supabase
       .from("dossier_categories")
-      .select("id, name, builtin, created_by")
+      .select("id, name, builtin, created_by, image_url, image_position")
       .eq("space", space);
     categoryDocs.clear();
     if (!error && data) {
-      data.forEach((row) => categoryDocs.set(row.id, row as Category));
+      data.forEach((row) => categoryDocs.set(row.id as string, rowToCategory(row)));
     }
     if (categoryDocs.size === 0) {
       await ensureDefaultCategories(space);
       const retry = await supabase
         .from("dossier_categories")
-        .select("id, name, builtin, created_by")
+        .select("id, name, builtin, created_by, image_url, image_position")
         .eq("space", space);
-      if (retry.data) retry.data.forEach((row) => categoryDocs.set(row.id, row as Category));
+      if (retry.data) retry.data.forEach((row) => categoryDocs.set(row.id as string, rowToCategory(row)));
     }
   }
   function orderedCategories(): [string, Category][] {
@@ -769,10 +886,10 @@ export function initFicheDossierSystem(deps: {
     const { data, error } = await supabase
       .from("dossier_categories")
       .insert({ name, space: currentCategorySpace, builtin: false, created_by: session.user.id })
-      .select("id, name, builtin, created_by")
+      .select("id, name, builtin, created_by, image_url, image_position")
       .single();
     if (error || !data) return null;
-    categoryDocs.set(data.id, data as Category);
+    categoryDocs.set(data.id, rowToCategory(data));
     return data.id;
   }
   async function renameCategory(id: string) {
@@ -812,7 +929,7 @@ export function initFicheDossierSystem(deps: {
   async function loadSections(ownerType: DossierOwnerKind, ownerId: string) {
     const { data } = await supabase
       .from("dossier_sections")
-      .select("id, category_id, parent_section_id, title, collapsed, position, created_by, countries")
+      .select("id, category_id, parent_section_id, title, collapsed, position, created_by, countries, cover_image_url, image_position")
       .eq("owner_type", ownerType)
       .eq("owner_id", ownerId)
       .order("position", { ascending: true });
@@ -825,6 +942,8 @@ export function initFicheDossierSystem(deps: {
       position: row.position,
       created_by: row.created_by,
       countries: (row.countries as string[]) || [],
+      cover_image_url: (row.cover_image_url as string) ?? null,
+      image_position: (row.image_position as string) || "50% 50%",
     }));
   }
   function canCreateChildSection(sec: Section): boolean {
@@ -861,6 +980,8 @@ export function initFicheDossierSystem(deps: {
       position,
       created_by: session.user.id,
       countries: [],
+      cover_image_url: null,
+      image_position: "50% 50%",
     });
     return data.id;
   }
@@ -1409,6 +1530,12 @@ export function initFicheDossierSystem(deps: {
     const banner = document.createElement("div");
     banner.className = "dossier-section-banner dsc-banner";
     banner.style.backgroundImage = categoryBannerGradient(sec.id);
+    if (sec.cover_image_url) {
+      banner.classList.add("has-image");
+      banner.style.backgroundImage = "url('" + sec.cover_image_url + "')";
+      banner.style.backgroundSize = "cover";
+      banner.style.backgroundPosition = sec.image_position || "50% 50%";
+    }
     const pattern = document.createElement("div");
     pattern.className = "dsc-banner-pattern";
     banner.appendChild(pattern);
@@ -1426,6 +1553,7 @@ export function initFicheDossierSystem(deps: {
     };
     if (canModify(sec)) {
       banner.appendChild(mkIconBtn("dsc-menu-btn", "Renommer", "✎", () => renameSection(sec.id)));
+      banner.appendChild(mkIconBtn("dsc-image-btn", "Changer l'image", CAMERA_ICON_SVG, () => startSectionImageUpload(sec.id)));
       banner.appendChild(
         mkIconBtn(
           "dsc-del-btn",
@@ -1435,6 +1563,12 @@ export function initFicheDossierSystem(deps: {
         )
       );
     }
+    attachBannerDragReframe(
+      banner,
+      () => sec.cover_image_url,
+      () => canModify(sec),
+      (pos) => saveSectionImagePosition(sec, pos)
+    );
     group.appendChild(banner);
 
     const row = document.createElement("div");
@@ -1575,6 +1709,12 @@ export function initFicheDossierSystem(deps: {
     const banner = document.createElement("div");
     banner.className = "dsc-banner";
     banner.style.backgroundImage = categoryBannerGradient(id);
+    if (cat.image_url) {
+      banner.classList.add("has-image");
+      banner.style.backgroundImage = "url('" + cat.image_url + "')";
+      banner.style.backgroundSize = "cover";
+      banner.style.backgroundPosition = cat.image_position || "50% 50%";
+    }
     const pattern = document.createElement("div");
     pattern.className = "dsc-banner-pattern";
     banner.appendChild(pattern);
@@ -1590,6 +1730,16 @@ export function initFicheDossierSystem(deps: {
         renderDossierSummary();
       });
       banner.appendChild(menuBtn);
+      const imageBtn = document.createElement("button");
+      imageBtn.type = "button";
+      imageBtn.className = "dsc-image-btn";
+      imageBtn.title = "Changer l'image";
+      imageBtn.innerHTML = CAMERA_ICON_SVG;
+      imageBtn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        startCategoryImageUpload(id);
+      });
+      banner.appendChild(imageBtn);
       const delBtn = document.createElement("button");
       delBtn.type = "button";
       delBtn.className = "dsc-del-btn";
@@ -1603,6 +1753,12 @@ export function initFicheDossierSystem(deps: {
       });
       banner.appendChild(delBtn);
     }
+    attachBannerDragReframe(
+      banner,
+      () => cat.image_url,
+      () => !cat.builtin && isAdmin(),
+      (pos) => saveCategoryImagePosition(id, pos)
+    );
     card.appendChild(banner);
 
     const body = document.createElement("div");
@@ -2839,6 +2995,111 @@ export function initFicheDossierSystem(deps: {
       status.textContent = "Échec de l'envoi de la photo — réessayez (fichier trop volumineux ?).";
     }
   });
+
+  // -------------------------------------------------------------------------
+  // Image de bannière des catégories/sections (schema_v10.sql) — même motif
+  // d'upload que uploadPhoto() ci-dessus, mais vers deux chemins de
+  // stockage distincts puisque les catégories sont globales/partagées par
+  // "space" (pas de currentOwner à y mêler) alors que les sections
+  // appartiennent toujours à un dossier précis.
+  // -------------------------------------------------------------------------
+  let pendingCategoryImageId: string | null = null;
+  let pendingSectionImageId: string | null = null;
+  async function uploadCategoryImage(categoryId: string, file: File): Promise<string | null> {
+    if (!deps.getSession()) return null;
+    const path =
+      "category-" + categoryId + "/" + Date.now() + "-" + Math.random().toString(36).slice(2, 8) + "-" + file.name.replace(/[^a-zA-Z0-9._-]/g, "_");
+    const { error } = await supabase.storage.from("dossier-photos").upload(path, file, { upsert: false });
+    if (error) return null;
+    const { data } = supabase.storage.from("dossier-photos").getPublicUrl(path);
+    return data.publicUrl;
+  }
+  async function uploadSectionImage(sec: Section, file: File): Promise<string | null> {
+    if (!deps.getSession() || !currentOwner) return null;
+    const path =
+      currentOwner.type +
+      "-" +
+      currentOwner.id +
+      "/section-" +
+      sec.id +
+      "/" +
+      Date.now() +
+      "-" +
+      Math.random().toString(36).slice(2, 8) +
+      "-" +
+      file.name.replace(/[^a-zA-Z0-9._-]/g, "_");
+    const { error } = await supabase.storage.from("dossier-photos").upload(path, file, { upsert: false });
+    if (error) return null;
+    const { data } = supabase.storage.from("dossier-photos").getPublicUrl(path);
+    return data.publicUrl;
+  }
+  function startCategoryImageUpload(id: string) {
+    if (!deps.getSession()) return;
+    pendingCategoryImageId = id;
+    ($("dossier-category-image-input") as HTMLInputElement).click();
+  }
+  function startSectionImageUpload(id: string) {
+    if (!deps.getSession()) return;
+    pendingSectionImageId = id;
+    ($("dossier-section-image-input") as HTMLInputElement).click();
+  }
+  ($("dossier-category-image-input") as HTMLInputElement).addEventListener("change", async (e) => {
+    const files = Array.from((e.target as HTMLInputElement).files || []);
+    (e.target as HTMLInputElement).value = "";
+    const id = pendingCategoryImageId;
+    pendingCategoryImageId = null;
+    if (!files.length || !id) return;
+    const url = await uploadCategoryImage(id, files[0]);
+    if (!url) return;
+    const cat = categoryDocs.get(id);
+    if (cat) {
+      cat.image_url = url;
+      categoryDocs.set(id, cat);
+    }
+    try {
+      await supabase.from("dossier_categories").update({ image_url: url }).eq("id", id);
+    } catch {
+      /* ignore */
+    }
+    renderDossierSummary();
+  });
+  ($("dossier-section-image-input") as HTMLInputElement).addEventListener("change", async (e) => {
+    const files = Array.from((e.target as HTMLInputElement).files || []);
+    (e.target as HTMLInputElement).value = "";
+    const id = pendingSectionImageId;
+    pendingSectionImageId = null;
+    const sec = id ? currentSections.find((s) => s.id === id) : undefined;
+    if (!files.length || !sec) return;
+    const url = await uploadSectionImage(sec, files[0]);
+    if (!url) return;
+    sec.cover_image_url = url;
+    try {
+      await supabase.from("dossier_sections").update({ cover_image_url: url }).eq("id", sec.id);
+    } catch {
+      /* ignore */
+    }
+    renderDossierEntries();
+  });
+  async function saveCategoryImagePosition(id: string, pos: string) {
+    const cat = categoryDocs.get(id);
+    if (cat) {
+      cat.image_position = pos;
+      categoryDocs.set(id, cat);
+    }
+    try {
+      await supabase.from("dossier_categories").update({ image_position: pos }).eq("id", id);
+    } catch {
+      /* ignore */
+    }
+  }
+  async function saveSectionImagePosition(sec: Section, pos: string) {
+    sec.image_position = pos;
+    try {
+      await supabase.from("dossier_sections").update({ image_position: pos }).eq("id", sec.id);
+    } catch {
+      /* ignore */
+    }
+  }
 
   // -------------------------------------------------------------------------
   // Dossier (page plein écran) — généralisé à tout DossierOwnerRef (pays,

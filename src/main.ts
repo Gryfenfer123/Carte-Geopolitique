@@ -13,7 +13,7 @@ import { ensureEncyclopedieSeed } from "./encyclopedie";
 import { initSearchSystem, normalizeSearch, type StaticSearchEntry } from "./search";
 import { frenchCountryName, loadCountryNameData } from "./countryNames";
 import { initPoiSystem } from "./poi";
-import { initCompareSystem, exportMapAsPng, exportAllData } from "./compareExport";
+import { initCompareSystem, exportMapAsPng } from "./compareExport";
 
 // ---------------------------------------------------------------------------
 // App shell
@@ -65,7 +65,7 @@ app.innerHTML = `
         <label class="chip chip-toggle"><input type="checkbox" id="toggle-cables"><span class="line-swatch" style="border-top-color:var(--cable-line);"></span>Câbles sous-marins</label>
         <label class="chip chip-toggle"><input type="checkbox" id="toggle-rivers-lakes"><span class="line-swatch" style="border-top-color:var(--river-line);"></span>Fleuves &amp; lacs</label>
         <label class="chip chip-toggle"><input type="checkbox" id="toggle-pois" checked><span class="dot" style="background:var(--accent);border-color:var(--accent);"></span>Points d'intérêt</label>
-        <label class="chip chip-toggle" id="toggle-all-links-row"><input type="checkbox" id="toggle-all-links"><span class="line-swatch accent"></span>Tous les liens (historique)</label>
+        <label class="chip chip-toggle" id="toggle-all-links-row"><input type="checkbox" id="toggle-all-links"><span class="line-swatch accent"></span>Tous les liens (frise chronologique)</label>
         <button type="button" id="legend-collapse-btn" title="Réduire la légende" aria-label="Réduire la légende">&minus;</button>
       </div>
       <div id="timeline-bar">
@@ -102,16 +102,11 @@ app.innerHTML = `
     <div id="compare-toggle" class="panel">
       <button id="compare-btn" title="Comparer deux pays (à venir)" aria-label="Comparer deux pays"><svg class="icon-svg" style="width:17px;height:17px;" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="7" height="16" rx="1.5"/><rect x="14" y="4" width="7" height="16" rx="1.5"/><path d="M10 12h4"/><path d="m11.5 9.5 2.5 2.5-2.5 2.5"/></svg></button>
     </div>
-    <div id="dossier-search-toggle" class="panel">
-      <button id="dossier-search-btn" title="Recherche dans les dossiers" aria-label="Recherche dans les dossiers"><svg class="icon-svg" style="width:17px;height:17px;" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m20 20-4.6-4.6"/><path d="M8 10.5h5"/></svg></button>
-    </div>
-
     <div id="tooltip" class="panel"></div>
 
     <div id="style-switch" class="panel">
-      <button id="style-auto" class="active" title="Plan vectoriel par défaut, satellite en zoomant">Auto</button>
       <button id="style-photo" title="Toujours l'imagerie satellite">Satellite</button>
-      <button id="style-vector" title="Toujours le plan vectoriel">Vectoriel</button>
+      <button id="style-vector" class="active" title="Toujours le plan vectoriel">Vectoriel</button>
     </div>
 
     <div id="info-toggle" class="panel" style="display:none">
@@ -126,16 +121,9 @@ app.innerHTML = `
     <div id="appearance-toggle" class="panel">
       <button id="appearance-btn" title="Apparence (couleurs, dégradés)" aria-label="Apparence"><svg class="icon-svg" style="width:17px;height:17px;" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="13.5" cy="6.5" r="0.6" fill="currentColor"/><circle cx="17.5" cy="10.5" r="0.6" fill="currentColor"/><circle cx="8.5" cy="7.5" r="0.6" fill="currentColor"/><circle cx="6.5" cy="12.5" r="0.6" fill="currentColor"/><path d="M12 2a10 10 0 1 0 0 20c1.1 0 2-.9 2-2 0-.5-.2-1-.5-1.3-.3-.4-.5-.8-.5-1.3 0-1.1.9-2 2-2h2.3c1.8 0 3.2-1.4 3.2-3.2A9.7 9.7 0 0 0 12 2Z"/></svg></button>
     </div>
-    <div id="chronologie-toggle" class="panel">
-      <button id="chronologie-btn" title="Chronologie des liens" aria-label="Chronologie"><svg class="icon-svg" style="width:17px;height:17px;" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.2 3.2"/></svg></button>
-    </div>
     <div id="notions-toggle" class="panel">
       <button id="notions-btn" title="Encyclopédie (notions transversales)" aria-label="Encyclopédie"><svg class="icon-svg" style="width:17px;height:17px;" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 4.5h7a3 3 0 0 1 3 3v13a2.5 2.5 0 0 0-2.5-2.5H2Z"/><path d="M22 4.5h-7a3 3 0 0 0-3 3v13a2.5 2.5 0 0 1 2.5-2.5H22Z"/></svg></button>
     </div>
-    <div id="export-all-toggle" class="panel">
-      <button id="export-all-btn" title="Exporter toutes les données (à venir)" aria-label="Exporter toutes les données"><svg class="icon-svg" style="width:17px;height:17px;" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M7 10l5 5 5-5"/><path d="M12 15V3"/></svg></button>
-    </div>
-
     <div id="link-banner"></div>
 
     <div id="sources-panel" class="panel">
@@ -182,11 +170,10 @@ function announcePlaceholder(label: string) {
   banner.classList.add("open");
   setTimeout(() => banner.classList.remove("open"), 2200);
 }
-// poi-add-btn/export-png-btn/compare-btn/export-all-btn : câblés plus bas,
+// poi-add-btn/export-png-btn/compare-btn : câblés plus bas,
 // une fois la carte/les calques/les systèmes groupes-indicateurs créés (voir
-// initPoiSystem/initCompareSystem/exportMapAsPng/exportAllData, importés de
-// src/poi.ts et src/compareExport.ts — nouveaux cette session, voir
-// PORT_STATUS.md). `announcePlaceholder` reste utilisé ailleurs (aucun
+// initPoiSystem/initCompareSystem/exportMapAsPng, importés de
+// src/poi.ts et src/compareExport.ts). `announcePlaceholder` reste utilisé ailleurs (aucun
 // bouton ne l'utilise plus directement, mais la fonction est conservée pour
 // signaler une éventuelle future fonctionnalité non portée).
 void announcePlaceholder;
@@ -407,12 +394,10 @@ const map = L.map("map", {
 //   langue sans clé.
 // - "Satellite" : imagerie aérienne/satellite (World_Imagery), également
 //   sans libellés.
-// Les trois boutons #style-auto/#style-photo/#style-vector (câblés plus
-// bas) reprennent la sémantique Auto/Satellite/Vectoriel de l'artifact ;
-// voir le commentaire au-dessus de leur gestionnaire de clic pour le choix
-// fait pour "Auto" (qui n'a pas d'équivalent exact sur une pyramide de
-// tuiles — contrairement à l'image statique unique de l'artifact, un
-// fondu d'opacité continu entre deux pyramides de tuiles n'a pas de sens).
+// Les deux boutons #style-photo/#style-vector (câblés plus
+// bas) reprennent la sémantique Satellite/Vectoriel de l'artifact (le
+// troisième mode "Auto" — bascule satellite automatique au-delà d'un
+// certain zoom — a été retiré à la demande de Martin, 2026-10-02).
 // `crossOrigin: "anonymous"` : nécessaire pour que l'export PNG de la carte
 // (#export-png-btn, voir compareExport.ts::exportMapAsPng) puisse lire les
 // pixels de #map sans que le canvas ne soit "tainted" par ces tuiles
@@ -445,18 +430,14 @@ document.getElementById("zoom-in")!.addEventListener("click", () => map.zoomIn()
 document.getElementById("zoom-out")!.addEventListener("click", () => map.zoomOut());
 document.getElementById("zoom-reset")!.addEventListener("click", () => map.setView([20, 10], 3, { animate: true }));
 
-// --- Bascule de fond de carte (#style-switch) : Auto / Satellite / Vectoriel -
-// "Auto" n'a pas d'équivalent exact de l'artifact (qui faisait un fondu
-// d'opacité continu entre l'image statique et les aplats vectoriels selon
-// le zoom `k` du zoom D3) : avec de vraies tuiles, on choisit l'équivalent
-// le plus sensé — passer automatiquement au satellite une fois suffisamment
-// zoomé (le plan vectoriel, sans détail de terrain, perd son intérêt à ce
-// niveau de zoom), et rester au plan vectoriel en deçà.
-type MapStyleMode = "auto" | "satellite" | "vector";
-let styleMode: MapStyleMode = "auto";
-const AUTO_SATELLITE_MIN_ZOOM = 7;
+// --- Bascule de fond de carte (#style-switch) : Satellite / Vectoriel ------
+// Le mode "Auto" (bascule satellite automatique au-delà d'un certain zoom)
+// a été retiré (demande de Martin, 2026-10-02) : seuls Satellite et
+// Vectoriel restent, chacun choisi explicitement par le bouton correspondant.
+type MapStyleMode = "satellite" | "vector";
+let styleMode: MapStyleMode = "vector";
 function isSatelliteActive(): boolean {
-  return styleMode === "satellite" || (styleMode === "auto" && map.getZoom() >= AUTO_SATELLITE_MIN_ZOOM);
+  return styleMode === "satellite";
 }
 // Opacité du remplissage des pays (calque SVG gLand, voir redrawBorders) :
 // dans l'artifact source, ce remplissage EST le rendu du fond de carte
@@ -480,7 +461,6 @@ function applyStyleMode() {
   gLand.selectAll<SVGPathElement, unknown>("path:not(:hover)").attr("fill-opacity", currentLandFillOpacity());
 }
 const STYLE_BUTTON_IDS: Record<MapStyleMode, string> = {
-  auto: "style-auto",
   satellite: "style-photo",
   vector: "style-vector",
 };
@@ -492,9 +472,6 @@ document.querySelectorAll<HTMLButtonElement>("#style-switch button").forEach((bt
     document.querySelectorAll("#style-switch button").forEach((b) => b.classList.toggle("active", b === btn));
     applyStyleMode();
   });
-});
-map.on("zoomend", () => {
-  if (styleMode === "auto") applyStyleMode();
 });
 
 // Detect tile load failures (e.g. sandboxed / offline environments) and show
@@ -714,7 +691,7 @@ ficheDeps.onFicheClose = () => {
 // emplacement à l'écran (haut-droite) : un seul ouvert à la fois, comme
 // closeOtherSidePanels() dans l'artifact (~8308).
 function closeOtherSidePanels(exceptId: string) {
-  ["groups-panel", "indicators-panel", "appearance-panel", "chronologie-panel", "infra-panel", "fiche-panel", "compare-panel"].forEach((id) => {
+  ["groups-panel", "indicators-panel", "appearance-panel", "infra-panel", "fiche-panel", "compare-panel"].forEach((id) => {
     if (id !== exceptId) document.getElementById(id)?.classList.remove("open");
   });
 }
@@ -1611,7 +1588,7 @@ function getOwnerLabel(ownerType: string, ownerId: string): string | null {
   return null;
 }
 
-const searchSystem = initSearchSystem({
+initSearchSystem({
   supabase,
   getStaticEntries: buildStaticSearchEntries,
   getGroups: groupsSystem.getGroupsList,
@@ -1627,10 +1604,9 @@ const searchSystem = initSearchSystem({
   revealEntry: (entryId, categoryId) => ficheDossier.revealEntry(entryId, categoryId),
   revealSection: (sectionId, categoryId) => ficheDossier.revealSection(sectionId, categoryId),
 });
-document.getElementById("dossier-search-btn")!.addEventListener("click", () => searchSystem.openDossierSearch());
 
 // ---------------------------------------------------------------------------
-// Comparateur de pays + export PNG + export complet (src/compareExport.ts) —
+// Comparateur de pays + export PNG (src/compareExport.ts) —
 // câblés en tout dernier : le comparateur réutilise getAllCountryRefs() et
 // les indicateurs déjà chargés par indicatorsSystem ; les deux exports n'ont
 // besoin de rien d'autre que la carte/le SVG déjà créés et le client
@@ -1664,8 +1640,3 @@ document.getElementById("export-png-btn")!.addEventListener("click", () => {
   });
 });
 
-document.getElementById("export-all-btn")!.addEventListener("click", async () => {
-  showTransientBanner("Export de toutes les données en cours…");
-  const ok = await exportAllData(supabase);
-  showTransientBanner(ok ? "Export terminé — fichier téléchargé." : "Export téléchargé, mais certaines données n'ont pas pu être lues (voir la console).");
-});

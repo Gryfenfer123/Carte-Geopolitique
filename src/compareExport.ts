@@ -22,7 +22,6 @@
 //    internes (privés) des autres modules.
 // ---------------------------------------------------------------------------
 
-import type { SupabaseClient } from "@supabase/supabase-js";
 import html2canvas from "html2canvas";
 import { frenchCountryName, flagSvgSpan } from "./countryNames";
 import { normalizeSearch } from "./search";
@@ -255,64 +254,3 @@ export async function exportMapAsPng(opts: {
   }
 }
 
-// ---------------------------------------------------------------------------
-// 3. Export complet des données (JSON)
-// ---------------------------------------------------------------------------
-
-export async function exportAllData(supabase: SupabaseClient) {
-  const [
-    groups,
-    groupMembers,
-    groupCategories,
-    countryLinks,
-    mapFeatures,
-    dossierCategories,
-    dossierSections,
-    dossierEntries,
-    indicatorCategories,
-    indicators,
-    indicatorValues,
-  ] = await Promise.all([
-    supabase.from("groups").select("*"),
-    supabase.from("group_members").select("*"),
-    supabase.from("group_categories").select("*"),
-    supabase.from("country_links").select("*"),
-    supabase.from("map_features").select("*"),
-    supabase.from("dossier_categories").select("*"),
-    supabase.from("dossier_sections").select("*"),
-    supabase.from("dossier_entries").select("*"),
-    supabase.from("indicator_categories").select("*"),
-    supabase.from("indicators").select("*"),
-    supabase.from("indicator_values").select("*"),
-  ]);
-
-  const payload = {
-    exportedAt: new Date().toISOString(),
-    groups: groups.data ?? [],
-    groupMembers: groupMembers.data ?? [],
-    groupCategories: groupCategories.data ?? [],
-    countryLinks: countryLinks.data ?? [],
-    mapFeatures: mapFeatures.data ?? [],
-    dossiers: {
-      categories: dossierCategories.data ?? [],
-      sections: dossierSections.data ?? [],
-      entries: dossierEntries.data ?? [],
-    },
-    indicators: {
-      categories: indicatorCategories.data ?? [],
-      indicators: indicators.data ?? [],
-      values: indicatorValues.data ?? [],
-    },
-  };
-
-  downloadBlob(
-    new Blob([JSON.stringify(payload, null, 2)], { type: "application/json" }),
-    "carte-geopolitique-export.json"
-  );
-
-  const errors = [groups, groupMembers, groupCategories, countryLinks, mapFeatures, dossierCategories, dossierSections, dossierEntries, indicatorCategories, indicators, indicatorValues]
-    .map((r) => r.error)
-    .filter(Boolean);
-  if (errors.length) console.error("Export complet : certaines tables n'ont pas pu être lues :", errors);
-  return errors.length === 0;
-}

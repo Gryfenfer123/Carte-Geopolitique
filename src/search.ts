@@ -1,32 +1,29 @@
 // ---------------------------------------------------------------------------
-// Recherche — portée de l'artifact source (realistic_final.html) comme DEUX
-// interfaces séparées, fidèles à l'original (voir vérification du rapport de
-// portage précédent : les deux existent bel et bien dans le source, avec des
-// périmètres et comportements différents — la fusion en une seule modale
-// tentée dans une étape antérieure de ce portage était une simplification à
-// corriger) :
+// Recherche — barre unifiée du haut de carte (#search-input/#search-results),
+// TOUJOURS visible, un menu déroulant de 10 résultats maximum, à plat (pas
+// groupés par type), cherchant sur le NOM/libellé des pays, groupes,
+// sous-catégories/notions de dossier, ports/détroits/pipelines/bases/câbles/
+// capitales, les liens (country_links) ET le contenu des dossiers (texte/
+// titres/étiquettes) — searchIndexAll() fusionne tout. Cliquer un résultat
+// vole vers l'entité et ouvre sa fiche/son dossier (selectResult).
 //
-// 1. La barre de recherche unifiée du haut de carte (#search-input/
-//    #search-results, ~10065-10259 + SEARCH_INDEX_STATIC ~10075-10126) :
-//    TOUJOURS visible, un menu déroulant de 10 résultats maximum, à plat
-//    (pas groupés par type), cherchant sur le NOM/libellé des pays, groupes,
-//    notions, ports/détroits/pipelines/bases/câbles/capitales, ET (une fois
-//    l'index préchargé) le contenu des dossiers — searchIndexAll() fusionne
-//    tout. Cliquer un résultat vole vers l'entité et ouvre sa fiche/son
-//    dossier (selectSearchEntry, ~10261-10313).
-//
-// 2. La loupe "Recherche dans les dossiers" (#dossier-search-btn/
-//    #dossier-search-view, ~2060-2072, runDossierSearch ~11018-11052) : une
-//    modale plein écran séparée, qui ne cherche QUE dans le contenu des
-//    dossiers (texte/titres/thèmes/sous-sections de TOUS les dossiers,
-//    jamais les pays/groupes/ports/etc. par leur nom seul), avec un onglet
-//    "★ Favoris uniquement" (dossierSearchFavOnly) et le filtre "#étiquette"
-//    (isTagQuery), résultats groupés PAR ENTITÉ (renderDossierSearchResults,
-//    byEntity), sans limite à 10 (8 par entité).
+// Historique (demande de Martin, 2026-10-02) : cette barre couvrait déjà
+// presque tout (voir ancien commentaire d'en-tête) sauf les liens et une
+// partie des sous-sections/étiquettes. La seconde interface qui existait en
+// parallèle — la loupe "Recherche dans les dossiers" (#dossier-search-btn/
+// #dossier-search-view), une modale plein écran séparée qui ne cherchait que
+// le contenu des dossiers, avec un onglet "★ Favoris uniquement" et le
+// filtre "#étiquette" — a été RETIRÉE à cette occasion : la barre unifiée
+// couvre maintenant tout ce qu'elle cherchait (liens, sous-catégories/
+// sections de tout owner_type, étiquettes en texte libre), sauf le filtre
+// "Favoris uniquement" (abandonné délibérément — un filtre de session de
+// recherche n'a pas vraiment de sens sur une barre "aller à" toujours
+// visible ; voir PORT_STATUS.md).
 // ---------------------------------------------------------------------------
 
 import type { SupabaseClient } from "@supabase/supabase-js";
 import type { DossierOwnerKind, MiniDossierKind } from "./dossier";
+import { LINK_CATEGORY_META } from "./indicators";
 
 export function normalizeSearch(s: string): string {
   return (s || "")
@@ -45,6 +42,7 @@ export type StaticSearchEntry = {
 };
 
 type GroupLite = { id: string; name: string; color: string; members: Set<string> };
+type LinkEntityKindLite = "country" | "group";
 
 const ENTRY_TYPE_LABEL_FR: Record<string, string> = { text: "Texte", photo: "Photo", link: "Lien", hemicycle: "Hémicycle" };
 
@@ -100,11 +98,46 @@ type DossierEntryRow = {
 };
 type DossierSectionRow = { id: string; owner_type: DossierOwnerKind; owner_id: string; category_id: string | null; parent_section_id: string | null; title: string };
 type DossierCategoryRow = { id: string; name: string; space: "country" | "encyclopedie" };
+// Lignes country_links utiles à l'indexation — mêmes colonnes que
+// loadLinks() dans src/links.ts. Les libellés a/b sont déjà dénormalisés sur
+// chaque ligne (schema_v7.sql) : pas besoin de résoudre pays/groupe ici.
+type CountryLinkRow = {
+  id: string;
+  entity_a_kind: LinkEntityKindLite;
+  entity_a_id: string | null;
+  entity_a_label: string | null;
+  entity_b_kind: LinkEntityKindLite;
+  entity_b_id: string | null;
+  entity_b_label: string | null;
+  category: string;
+  description: string | null;
+  start_date: string | null;
+  end_date: string | null;
+};
 
 export type UnifiedSearchResult =
   | ({ kind: StaticSearchKind } & StaticSearchEntry)
   | { kind: "group"; id: string; label: string; sub: string; matchText: string; color: string }
-  | { kind: "notion"; id: string; label: string; sub: string; matchText: string; categoryId: string | null; sectionId: string }
+  | {
+      kind: "section";
+      id: string;
+      label: string;
+      sub: string;
+      matchText: string;
+      ownerType: DossierOwnerKind;
+      ownerId: string;
+      categoryId: string | null;
+      sectionId: string;
+    }
+  | {
+      kind: "link";
+      id: string;
+      label: string;
+      sub: string;
+      matchText: string;
+      a: { kind: LinkEntityKindLite; id: string };
+      b: { kind: LinkEntityKindLite; id: string };
+    }
   | {
       kind: "dossier-entry";
       id: string;
@@ -121,38 +154,14 @@ export type UnifiedSearchResult =
       status: "draft" | "published";
     };
 
-function escapeHtml(str: string): string {
-  return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#39;");
-}
-
-// Extrait ~110 caractères autour de la 1ère occurrence de `q` dans `text`,
-// avec le fragment trouvé mis en évidence — porté de buildDossierSnippetEl()
-// (~10939), construit ici en HTML (via un <span> déjà échappé).
-function buildSnippetHtml(text: string, q: string): string {
-  if (!q) return escapeHtml(text.slice(0, 130));
-  const lower = text.toLowerCase();
-  const idx = lower.indexOf(q);
-  if (idx === -1) return escapeHtml(text.slice(0, 130));
-  const start = Math.max(0, idx - 40);
-  const end = Math.min(text.length, idx + q.length + 70);
-  return (
-    (start > 0 ? "…" : "") +
-    escapeHtml(text.slice(start, idx)) +
-    '<strong class="dossier-search-hit">' +
-    escapeHtml(text.slice(idx, idx + q.length)) +
-    "</strong>" +
-    escapeHtml(text.slice(idx + q.length, end)) +
-    (end < text.length ? "…" : "")
-  );
-}
-
 export function initSearchSystem(deps: {
   supabase: SupabaseClient;
   getStaticEntries: () => StaticSearchEntry[];
   getGroups: () => GroupLite[];
   // Résout le libellé d'un propriétaire de dossier (pays/groupe/mini-
-  // dossier) pour l'affichage des résultats "dossier-entry" — évite à ce
-  // module de dupliquer les données déjà détenues par main.ts/groups.ts.
+  // dossier) pour l'affichage des résultats "dossier-entry"/"section" —
+  // évite à ce module de dupliquer les données déjà détenues par
+  // main.ts/groups.ts.
   getOwnerLabel: (ownerType: DossierOwnerKind, ownerId: string) => string | null;
   selectStatic: (entry: StaticSearchEntry) => void;
   openGroupDossier: (id: string, label: string, color?: string) => Promise<void>;
@@ -165,21 +174,28 @@ export function initSearchSystem(deps: {
   const { supabase } = deps;
 
   // -------------------------------------------------------------------------
-  // Index du contenu des dossiers — partagé par les deux interfaces — porté
-  // de ensureDossierSearchIndexLoaded() (~10869). L'artifact énumère chaque
-  // entité connue puis lit son propre dossier ; ici, faute de
-  // "collectionGroup", on lit directement TOUTES les lignes des 3 tables
-  // concernées (dossier_categories/dossier_sections/dossier_entries), tous
-  // owner_type confondus, en une requête chacune.
+  // Index du contenu des dossiers + des liens — porté de
+  // ensureDossierSearchIndexLoaded() (~10869), étendu à country_links pour
+  // que les liens entre pays/groupes soient eux aussi cherchables depuis la
+  // barre unifiée (demande de Martin, 2026-10-02 : "tout rechercher — un
+  // dossier, une catégorie, un lien, un pays, un groupe..."). L'artifact
+  // énumère chaque entité connue puis lit son propre dossier ; ici, faute de
+  // "collectionGroup", on lit directement TOUTES les lignes des tables
+  // concernées, tous owner_type confondus, en une requête chacune.
   // -------------------------------------------------------------------------
-  type DossierIndex = { entries: DossierEntryRow[]; sections: DossierSectionRow[]; categories: Map<string, DossierCategoryRow> };
+  type DossierIndex = {
+    entries: DossierEntryRow[];
+    sections: DossierSectionRow[];
+    categories: Map<string, DossierCategoryRow>;
+    links: CountryLinkRow[];
+  };
   let dossierIndexCache: DossierIndex | null = null;
   let dossierIndexLoading: Promise<DossierIndex | null> | null = null;
   async function ensureDossierIndexLoaded() {
     if (dossierIndexCache) return dossierIndexCache;
     if (dossierIndexLoading) return dossierIndexLoading;
     dossierIndexLoading = (async () => {
-      const [entriesRes, sectionsRes, categoriesRes] = await Promise.all([
+      const [entriesRes, sectionsRes, categoriesRes, linksRes] = await Promise.all([
         supabase
           .from("dossier_entries")
           .select(
@@ -188,6 +204,11 @@ export function initSearchSystem(deps: {
           .in("type", ["text", "photo", "link", "hemicycle"]),
         supabase.from("dossier_sections").select("id, owner_type, owner_id, category_id, parent_section_id, title"),
         supabase.from("dossier_categories").select("id, name, space"),
+        supabase
+          .from("country_links")
+          .select(
+            "id, entity_a_kind, entity_a_id, entity_a_label, entity_b_kind, entity_b_id, entity_b_label, category, description, start_date, end_date"
+          ),
       ]);
       const categories = new Map<string, DossierCategoryRow>();
       (categoriesRes.data || []).forEach((c) => categories.set(c.id, c as DossierCategoryRow));
@@ -195,6 +216,7 @@ export function initSearchSystem(deps: {
         entries: (entriesRes.data || []) as DossierEntryRow[],
         sections: (sectionsRes.data || []) as DossierSectionRow[],
         categories,
+        links: (linksRes.data || []) as CountryLinkRow[],
       };
       return dossierIndexCache;
     })();
@@ -206,49 +228,86 @@ export function initSearchSystem(deps: {
     if (categoryId && dossierIndexCache?.categories.has(categoryId)) return dossierIndexCache.categories.get(categoryId)!.name;
     return "Non classé";
   }
-  function sectionName(sectionId: string | null): string | null {
-    if (!sectionId || !dossierIndexCache) return null;
-    const sec = dossierIndexCache.sections.find((s) => s.id === sectionId);
-    return sec ? sec.title : null;
+  function ownerLabelFor(ownerType: DossierOwnerKind, ownerId: string): string {
+    return ownerType === "encyclopedie" ? "Encyclopédie" : deps.getOwnerLabel(ownerType, ownerId) || ownerId;
   }
-  // Notions de l'Encyclopédie — porté de buildNotionSearchEntries() (~10157).
-  function buildNotionEntries(): UnifiedSearchResult[] {
+  // Sous-catégories ("sections") de TOUT owner_type — généralise l'ancien
+  // buildNotionSearchEntries() (~10157), qui ne couvrait que les sections
+  // encyclopédie de premier niveau. Chaque section, quel que soit le dossier
+  // auquel elle appartient, devient ici un résultat cliquable à part entière
+  // (même une section sans aucune entrée dedans, ce qui n'était pas le cas
+  // avant : seul le CONTENU d'une section la rendait indirectement
+  // trouvable via buildDossierEntryEntries).
+  function buildSectionEntries(): UnifiedSearchResult[] {
     if (!dossierIndexCache) return [];
-    return dossierIndexCache.sections
-      .filter((s) => s.owner_type === "encyclopedie" && !s.parent_section_id)
-      .map((s) => {
-        const catName = categoryName(s.category_id);
+    return dossierIndexCache.sections.map((s) => {
+      const catName = categoryName(s.category_id);
+      const ownerLabel = ownerLabelFor(s.owner_type, s.owner_id);
+      const locParts = [ownerLabel];
+      if (catName && catName !== "Non classé") locParts.push(catName);
+      return {
+        kind: "section" as const,
+        id: s.id,
+        label: s.title || s.id,
+        sub: "Sous-catégorie · " + locParts.join(" / "),
+        matchText: normalizeSearch([s.title || "", ownerLabel, catName].filter(Boolean).join(" ")),
+        ownerType: s.owner_type,
+        ownerId: s.owner_id,
+        categoryId: s.category_id,
+        sectionId: s.id,
+      };
+    });
+  }
+  // Liens entre pays/groupes (country_links) — nouveau : ces lignes étaient
+  // jusqu'ici invisibles de la recherche. Les libellés a/b sont déjà
+  // dénormalisés sur chaque ligne (schema_v7.sql), donc pas besoin de
+  // résoudre pays/groupe ici (plus simple qu'un dep `getEntityLabel`
+  // supplémentaire — voir le commentaire de PORT_STATUS.md).
+  const linkCategoryLabel = new Map(LINK_CATEGORY_META.map((m) => [m.id, m.label]));
+  function buildLinkEntries(): UnifiedSearchResult[] {
+    if (!dossierIndexCache) return [];
+    return dossierIndexCache.links
+      .filter((r) => !!r.entity_a_id && !!r.entity_b_id) // lignes pré-v7 non migrées
+      .map((r) => {
+        const aLabel = r.entity_a_label || r.entity_a_id!;
+        const bLabel = r.entity_b_label || r.entity_b_id!;
+        const catLabel = linkCategoryLabel.get(r.category) || "Autre";
+        const dateRange = r.start_date ? " (" + r.start_date + "–" + (r.end_date || "présent") + ")" : "";
         return {
-          kind: "notion" as const,
-          id: s.id,
-          label: s.title || s.id,
-          sub: "Notion (Encyclopédie)" + (catName && catName !== "Non classé" ? " · " + catName : ""),
-          matchText: normalizeSearch(s.title || s.id),
-          categoryId: s.category_id,
-          sectionId: s.id,
+          kind: "link" as const,
+          id: r.id,
+          label: aLabel + " ↔ " + bLabel,
+          sub: "Lien · " + catLabel + dateRange,
+          matchText: normalizeSearch([aLabel, bLabel, catLabel, r.description || ""].filter(Boolean).join(" ")),
+          a: { kind: r.entity_a_kind, id: r.entity_a_id! },
+          b: { kind: r.entity_b_kind, id: r.entity_b_id! },
         };
       });
   }
   // Contenu des dossiers — porté de buildFolderEntrySearchEntries() (~10193).
+  // `tags` est désormais inclus dans matchText : porte la capacité de
+  // recherche "#étiquette" de l'ancienne modale "Recherche dans les
+  // dossiers" (retirée) — en texte libre plutôt qu'avec une syntaxe `#`
+  // dédiée (un mot d'étiquette tape simplement comme le reste).
   function buildDossierEntryEntries(): UnifiedSearchResult[] {
     if (!dossierIndexCache) return [];
     return dossierIndexCache.entries.map((row) => {
       const title = entryDisplayTitle(row);
       const catName = categoryName(row.category_id);
-      const secName = sectionName(row.section_id);
+      const secName = dossierIndexCache!.sections.find((s) => s.id === row.section_id)?.title || null;
       const excerpt = rowPlainText(row).slice(0, 160);
-      const ownerLabel =
-        row.owner_type === "encyclopedie" ? "Encyclopédie" : deps.getOwnerLabel(row.owner_type, row.owner_id) || row.owner_id;
+      const ownerLabel = ownerLabelFor(row.owner_type, row.owner_id);
       const typeLabel = ENTRY_TYPE_LABEL_FR[row.type] || "Entrée";
       const locParts = [ownerLabel];
       if (catName && catName !== "Non classé") locParts.push(catName);
       if (secName) locParts.push(secName);
+      const tagsText = (row.tags || []).join(" ");
       return {
         kind: "dossier-entry" as const,
         id: row.id,
         label: title,
         sub: typeLabel + " · dans " + locParts.join(" / "),
-        matchText: normalizeSearch([title, excerpt, ownerLabel, catName, secName || ""].filter(Boolean).join(" ")),
+        matchText: normalizeSearch([title, excerpt, ownerLabel, catName, secName || "", tagsText].filter(Boolean).join(" ")),
         ownerType: row.owner_type,
         ownerId: row.owner_id,
         ownerLabel,
@@ -271,11 +330,19 @@ export function initSearchSystem(deps: {
     }));
   }
 
-  // searchIndexAll() — porté à l'identique (~10221) : fusionne TOUT (statique
-  // + groupes + notions + contenu des dossiers) pour la barre du haut.
+  // searchIndexAll() — fusionne TOUT (statique + groupes + sections + liens +
+  // contenu des dossiers) pour la barre du haut. Les catégories de dossier
+  // (dossier_categories) ne sont volontairement PAS indexées à part : elles
+  // sont globales/partagées par tous les dossiers d'un même espace (pas une
+  // entité navigable unique — "Histoire" n'est pas UN endroit précis), alors
+  // que chaque section qu'elle contient l'est déjà via buildSectionEntries().
   function searchIndexAll(): UnifiedSearchResult[] {
     const staticEntries = deps.getStaticEntries() as unknown as UnifiedSearchResult[];
-    return staticEntries.concat(buildGroupEntries()).concat(buildNotionEntries()).concat(buildDossierEntryEntries());
+    return staticEntries
+      .concat(buildGroupEntries())
+      .concat(buildSectionEntries())
+      .concat(buildLinkEntries())
+      .concat(buildDossierEntryEntries());
   }
 
   async function selectResult(entry: UnifiedSearchResult) {
@@ -287,9 +354,21 @@ export function initSearchSystem(deps: {
       deps.revealEntry(entry.entryId, entry.categoryId);
       return;
     }
-    if (entry.kind === "notion") {
-      await deps.openEncyclopedieDossier();
+    if (entry.kind === "section") {
+      const ownerLabel = ownerLabelFor(entry.ownerType, entry.ownerId);
+      if (entry.ownerType === "country") await deps.openCountryDossierByIso(entry.ownerId);
+      else if (entry.ownerType === "group") await deps.openGroupDossier(entry.ownerId, ownerLabel);
+      else if (entry.ownerType === "encyclopedie") await deps.openEncyclopedieDossier();
+      else await deps.openMiniDossier(entry.ownerType as MiniDossierKind, entry.ownerId, ownerLabel);
       deps.revealSection(entry.sectionId, entry.categoryId);
+      return;
+    }
+    if (entry.kind === "link") {
+      // Ouvre le dossier du premier élément du lien (a) — même choix que
+      // pour un résultat "groupe" ci-dessous : on ouvre le dossier complet
+      // plutôt qu'un simple survol de carte.
+      if (entry.a.kind === "country") await deps.openCountryDossierByIso(entry.a.id);
+      else await deps.openGroupDossier(entry.a.id, entry.label.split(" ↔ ")[0] || entry.a.id);
       return;
     }
     if (entry.kind === "group") {
@@ -300,9 +379,9 @@ export function initSearchSystem(deps: {
   }
 
   // ===========================================================================
-  // 1. Barre de recherche unifiée du haut de carte — #search-input/
-  //    #search-results, déjà présents dans le DOM (main.ts, panneau flottant
-  //    "#search"). Menu déroulant à plat, 10 résultats max, toujours actif.
+  // Barre de recherche unifiée du haut de carte — #search-input/
+  // #search-results, déjà présents dans le DOM (main.ts, panneau flottant
+  // "#search"). Menu déroulant à plat, 10 résultats max, toujours actif.
   // ===========================================================================
   const topInput = document.getElementById("search-input") as HTMLInputElement | null;
   const topResults = document.getElementById("search-results");
@@ -358,188 +437,11 @@ export function initSearchSystem(deps: {
     document.addEventListener("click", (e) => {
       if (topWrap && !topWrap.contains(e.target as Node)) topResults.classList.remove("open");
     });
-    // Préchauffe l'index du contenu des dossiers dès le chargement — même
-    // esprit que le préchargement en arrière-plan de l'artifact.
+    // Préchauffe l'index du contenu des dossiers + des liens dès le
+    // chargement — même esprit que le préchargement en arrière-plan de
+    // l'artifact.
     ensureDossierIndexLoaded().catch(() => {});
   }
 
-  // ===========================================================================
-  // 2. Loupe "Recherche dans les dossiers" — modale plein écran séparée,
-  //    contenu des dossiers UNIQUEMENT, onglets Tout/Favoris, filtre
-  //    "#étiquette", résultats groupés par entité — porté de
-  //    #dossier-search-view/runDossierSearch/renderDossierSearchResults
-  //    (~2060-2072, 10961-11087).
-  // ===========================================================================
-  const root = document.createElement("div");
-  root.innerHTML = `
-    <div id="dossier-search-view">
-      <div id="dossier-search-inner">
-        <button id="dossier-search-close" class="close-x" aria-label="Fermer">&times;</button>
-        <h1 id="dossier-search-title">Recherche dans les dossiers</h1>
-        <div id="dossier-search-subtitle">Cherche dans le texte, les titres, les thèmes et les sous-sections de tous les dossiers (pays, groupes, points d'intérêt, Encyclopédie).</div>
-        <div class="dossier-search-tabs">
-          <button type="button" id="dossier-search-tab-all" class="btn-small active-mode">Tout</button>
-          <button type="button" id="dossier-search-tab-fav" class="btn-small">&#9733; Favoris uniquement</button>
-        </div>
-        <input type="text" id="dossier-search-input" placeholder="Rechercher un mot, une phrase… (ou #étiquette)" autocomplete="off">
-        <div id="dossier-search-results"></div>
-      </div>
-    </div>
-  `;
-  while (root.firstChild) document.body.appendChild(root.firstChild);
-  const $ = <T extends HTMLElement = HTMLElement>(id: string) => document.getElementById(id) as T;
-  const dInput = $("dossier-search-input") as HTMLInputElement;
-  const dResults = $("dossier-search-results");
-
-  type DossierMatch = {
-    row: DossierEntryRow;
-    ownerType: DossierOwnerKind;
-    ownerId: string;
-    ownerLabel: string;
-    text: string;
-    catName: string;
-    secName: string | null;
-  };
-
-  function renderDossierSearchResults(matches: DossierMatch[], q: string) {
-    dResults.innerHTML = "";
-    if (!matches.length) {
-      dResults.innerHTML = '<p class="muted">Aucun résultat.</p>';
-      return;
-    }
-    const byEntity = new Map<string, { label: string; items: DossierMatch[] }>();
-    matches.forEach((m) => {
-      const key = m.ownerType + ":" + m.ownerId;
-      if (!byEntity.has(key)) byEntity.set(key, { label: m.ownerLabel, items: [] });
-      byEntity.get(key)!.items.push(m);
-    });
-    byEntity.forEach((group) => {
-      const groupEl = document.createElement("div");
-      groupEl.className = "dossier-search-group";
-      const h = document.createElement("div");
-      h.className = "dossier-search-entity";
-      h.textContent = group.label;
-      groupEl.appendChild(h);
-      group.items.slice(0, 8).forEach((m) => {
-        const btn = document.createElement("button");
-        btn.type = "button";
-        btn.className = "dossier-search-result";
-        const meta = document.createElement("div");
-        meta.className = "dossier-search-result-meta";
-        meta.textContent = m.catName + (m.secName ? " › " + m.secName : "") + (m.row.title ? " · " + m.row.title : "");
-        if (m.row.status === "draft") {
-          const badge = document.createElement("span");
-          badge.className = "entry-draft-badge";
-          badge.style.marginLeft = "6px";
-          badge.textContent = "Brouillon";
-          meta.appendChild(badge);
-        }
-        btn.appendChild(meta);
-        const snippet = document.createElement("span");
-        snippet.className = "dossier-search-result-snippet";
-        snippet.innerHTML = buildSnippetHtml(m.text, q);
-        btn.appendChild(snippet);
-        btn.addEventListener("click", () => {
-          closeDossierSearch();
-          selectResult({
-            kind: "dossier-entry",
-            id: m.row.id,
-            label: entryDisplayTitle(m.row),
-            sub: "",
-            matchText: "",
-            ownerType: m.ownerType,
-            ownerId: m.ownerId,
-            ownerLabel: m.ownerLabel,
-            categoryId: m.row.category_id,
-            sectionId: m.row.section_id,
-            entryId: m.row.id,
-            snippet: m.text.slice(0, 160),
-            status: m.row.status,
-          });
-        });
-        groupEl.appendChild(btn);
-      });
-      dResults.appendChild(groupEl);
-    });
-  }
-
-  // Favoris (item 13 de l'artifact) : filtre du panneau existant, même cache.
-  let dossierSearchFavOnly = false;
-  async function runDossierSearch() {
-    const raw = dInput.value.trim();
-    const isTagQuery = raw.startsWith("#") && raw.length > 1;
-    const tagQuery = isTagQuery ? raw.slice(1).toLowerCase() : null;
-    if (!raw && !dossierSearchFavOnly) {
-      dResults.innerHTML = "";
-      return;
-    }
-    dResults.innerHTML = '<p class="muted">Recherche…</p>';
-    const cache = await ensureDossierIndexLoaded();
-    if (dInput.value.trim() !== raw) return; // retapé entre-temps : ce résultat est obsolète
-    const q = raw.toLowerCase();
-    const matches: DossierMatch[] = [];
-    (cache?.entries || []).forEach((row) => {
-      if (dossierSearchFavOnly && row.favorite !== true) return;
-      if (isTagQuery) {
-        if (!(row.tags || []).some((t) => t.toLowerCase() === tagQuery)) return;
-      } else if (raw) {
-        const text = rowPlainText(row);
-        const catName = categoryName(row.category_id);
-        const secName = sectionName(row.section_id);
-        const haystack = (text + " " + (row.title || "") + " " + catName + " " + (secName || "")).toLowerCase();
-        if (!haystack.includes(q)) return;
-      }
-      const ownerLabel =
-        row.owner_type === "encyclopedie" ? "Encyclopédie" : deps.getOwnerLabel(row.owner_type, row.owner_id) || row.owner_id;
-      matches.push({
-        row,
-        ownerType: row.owner_type,
-        ownerId: row.owner_id,
-        ownerLabel,
-        text: rowPlainText(row),
-        catName: categoryName(row.category_id),
-        secName: sectionName(row.section_id),
-      });
-    });
-    if (dInput.value.trim() !== raw) return;
-    renderDossierSearchResults(matches, isTagQuery ? "" : q);
-  }
-
-  let dossierSearchTimer: number | null = null;
-  dInput.addEventListener("input", () => {
-    if (dossierSearchTimer) window.clearTimeout(dossierSearchTimer);
-    dossierSearchTimer = window.setTimeout(runDossierSearch, 280);
-  });
-  $("dossier-search-tab-all").addEventListener("click", () => {
-    dossierSearchFavOnly = false;
-    $("dossier-search-tab-all").classList.add("active-mode");
-    $("dossier-search-tab-fav").classList.remove("active-mode");
-    runDossierSearch();
-  });
-  $("dossier-search-tab-fav").addEventListener("click", () => {
-    dossierSearchFavOnly = true;
-    $("dossier-search-tab-fav").classList.add("active-mode");
-    $("dossier-search-tab-all").classList.remove("active-mode");
-    runDossierSearch();
-  });
-
-  function openDossierSearch() {
-    $("dossier-search-view").classList.add("open");
-    dInput.value = "";
-    dResults.innerHTML = "";
-    dossierSearchFavOnly = false;
-    $("dossier-search-tab-all").classList.add("active-mode");
-    $("dossier-search-tab-fav").classList.remove("active-mode");
-    setTimeout(() => dInput.focus(), 30);
-    ensureDossierIndexLoaded(); // préchauffe le cache dès l'ouverture, avant la première frappe
-  }
-  function closeDossierSearch() {
-    $("dossier-search-view").classList.remove("open");
-  }
-  $("dossier-search-close").addEventListener("click", closeDossierSearch);
-  dInput.addEventListener("keydown", (e) => {
-    if (e.key === "Escape") closeDossierSearch();
-  });
-
-  return { openDossierSearch, closeDossierSearch };
+  return {};
 }

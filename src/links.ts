@@ -69,16 +69,6 @@ export function initLinksSystem(deps: {
   // ---------------------------------------------------------------------
   const root = document.createElement("div");
   root.innerHTML = `
-    <div id="chronologie-panel" class="panel side-panel">
-      <button class="close-x" id="chronologie-close" aria-label="Fermer">&times;</button>
-      <h2>Chronologie des liens</h2>
-      <p class="muted">Tous les liens créés entre pays et groupes, classés par date (date renseignée sur le lien, sinon date de création).</p>
-      <div class="chrono-toolbar">
-        <span class="chrono-count" id="chronologie-count"></span>
-        <button id="chronologie-sort" class="btn-small">Plus récents d'abord</button>
-      </div>
-      <div id="chronologie-list"></div>
-    </div>
     <div id="link-editor" class="panel side-panel">
       <button class="close-x" id="link-editor-close" aria-label="Fermer">&times;</button>
       <h2 id="link-editor-title">Lien</h2>
@@ -565,7 +555,6 @@ export function initLinksSystem(deps: {
       if (!allLinksMode) renderLinksForEntity(currentEntity.kind, currentEntity.id, currentEntityRange);
     }
     if (allLinksMode) renderAllLinks(allLinksRange);
-    if ($("chronologie-panel").classList.contains("open")) renderChronologie();
   }
 
   // -------------------------------------------------------------------
@@ -724,7 +713,7 @@ export function initLinksSystem(deps: {
     ($("link-date-end") as HTMLInputElement).value = opts.dateEnd || "";
     $("link-save-status").textContent = "";
     $("link-delete").style.display = "inline-block";
-    ["groups-panel", "indicators-panel", "appearance-panel", "chronologie-panel"].forEach((pid) =>
+    ["groups-panel", "indicators-panel", "appearance-panel"].forEach((pid) =>
       document.getElementById(pid)?.classList.remove("open")
     );
     linkEditor.classList.add("open");
@@ -787,109 +776,6 @@ export function initLinksSystem(deps: {
       if (currentEntity) renderLinksForEntity(currentEntity.kind, currentEntity.id, currentEntityRange);
       else deps.gLinksLayer.selectAll("*").remove();
     }
-  });
-
-  // -------------------------------------------------------------------
-  // Chronologie — porté de renderChronologie/chronoSortKey/
-  // chronoDateLabel (~4760-4856).
-  // -------------------------------------------------------------------
-  let chronoNewestFirst = true;
-  function chronoSortKey(l: LinkDoc): number {
-    const yearMatch = (l.dateStart || "").trim().match(/-?\d{3,4}/);
-    if (yearMatch) return parseInt(yearMatch[0], 10);
-    if (l.createdAt) {
-      const t = Date.parse(l.createdAt);
-      if (!isNaN(t)) return 1000 + t / 1e12;
-    }
-    return -Infinity;
-  }
-  function chronoDateLabel(l: LinkDoc): string {
-    if (l.dateStart) return l.dateStart + (l.dateEnd ? "–" + l.dateEnd : "");
-    if (l.createdAt) {
-      try {
-        return "ajouté le " + new Date(l.createdAt).toLocaleDateString("fr-FR", { year: "numeric", month: "short", day: "numeric" });
-      } catch {
-        return "";
-      }
-    }
-    return "date inconnue";
-  }
-  function renderChronologie() {
-    const list = $("chronologie-list");
-    list.innerHTML = "";
-    const entries = Array.from(linkDocs.entries());
-    $("chronologie-count").textContent = entries.length + (entries.length > 1 ? " liens" : " lien");
-    if (!entries.length) {
-      list.innerHTML =
-        '<p class="muted">Aucun lien créé pour le moment. Utilisez « + Nouveau lien » depuis la fiche d’un pays ou d’un groupe.</p>';
-      return;
-    }
-    entries.sort((a, b) => {
-      const ka = chronoSortKey(a[1]),
-        kb = chronoSortKey(b[1]);
-      return chronoNewestFirst ? kb - ka : ka - kb;
-    });
-    const catMeta: Record<string, string> = {};
-    LINK_CATEGORY_META.forEach((m) => (catMeta[m.id] = m.label));
-    entries.forEach(([, l]) => {
-      const row = document.createElement("div");
-      row.className = "chrono-row";
-
-      const top = document.createElement("div");
-      top.className = "chrono-row-top";
-      const dot = document.createElement("span");
-      dot.className = "chrono-cat-dot";
-      dot.style.background = "var(--link-" + (l.category || "autre") + ")";
-      top.appendChild(dot);
-      const catLabel = document.createElement("span");
-      catLabel.className = "chrono-cat-label";
-      catLabel.textContent = catMeta[l.category] || "Autre";
-      top.appendChild(catLabel);
-      const date = document.createElement("span");
-      date.className = "chrono-date";
-      date.textContent = chronoDateLabel(l);
-      top.appendChild(date);
-      row.appendChild(top);
-
-      const ents = document.createElement("div");
-      ents.className = "chrono-entities";
-      const aSpan = document.createElement("span");
-      aSpan.className = "chrono-entity";
-      aSpan.textContent = l.a.label || deps.entityLabel(l.a.kind, l.a.id);
-      aSpan.addEventListener("click", () => deps.selectEntity(l.a.kind, l.a.id));
-      const sep = document.createElement("span");
-      sep.className = "chrono-sep";
-      sep.textContent = "↔";
-      const bSpan = document.createElement("span");
-      bSpan.className = "chrono-entity";
-      bSpan.textContent = l.b.label || deps.entityLabel(l.b.kind, l.b.id);
-      bSpan.addEventListener("click", () => deps.selectEntity(l.b.kind, l.b.id));
-      ents.appendChild(aSpan);
-      ents.appendChild(sep);
-      ents.appendChild(bSpan);
-      row.appendChild(ents);
-
-      if (l.description) {
-        const desc = document.createElement("div");
-        desc.className = "chrono-desc";
-        desc.textContent = l.description.slice(0, 160);
-        row.appendChild(desc);
-      }
-      list.appendChild(row);
-    });
-  }
-  document.getElementById("chronologie-btn")?.addEventListener("click", () => {
-    ["groups-panel", "indicators-panel", "appearance-panel"].forEach((pid) => document.getElementById(pid)?.classList.remove("open"));
-    const panel = $("chronologie-panel");
-    const willOpen = !panel.classList.contains("open");
-    panel.classList.toggle("open");
-    if (willOpen) renderChronologie();
-  });
-  $("chronologie-close").addEventListener("click", () => $("chronologie-panel").classList.remove("open"));
-  $("chronologie-sort").addEventListener("click", (e) => {
-    chronoNewestFirst = !chronoNewestFirst;
-    (e.target as HTMLElement).textContent = chronoNewestFirst ? "Plus récents d'abord" : "Plus anciens d'abord";
-    renderChronologie();
   });
 
   // -------------------------------------------------------------------
