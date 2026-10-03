@@ -45,7 +45,7 @@
 import type { SupabaseClient, Session } from "@supabase/supabase-js";
 import * as d3 from "d3";
 import type { DossierOwnerKind, DossierOwnerRef } from "./dossier";
-import { customConfirm } from "./dossier";
+import { customConfirm, TRASH_ICON_SVG } from "./dossier";
 
 // --- Types -------------------------------------------------------------
 
@@ -109,6 +109,7 @@ function yearsLabel(birth: number | null, death: number | null): string {
 export function initGenealogySystem(deps: {
   supabase: SupabaseClient;
   getSession: () => Session | null;
+  getProfile: () => { id: string; role: string } | null;
   openAuthPanel: () => void;
   showBanner?: (msg: string) => void;
   // Libellé lisible d'un owner (pays/groupe/mini-dossier), pour le badge
@@ -123,6 +124,13 @@ export function initGenealogySystem(deps: {
   openOwnerTree: (ownerType: string, ownerId: string) => Promise<void>;
 }) {
   const { supabase } = deps;
+  // Point 4a (2026-10-03) : seul un compte admin peut modifier un arbre
+  // généalogique (voir supabase/schema_v13.sql pour le pendant RLS). Pas de
+  // fonction isAdmin() préexistante ici — même principe que
+  // src/dossier.ts/src/groups.ts.
+  function isAdmin(): boolean {
+    return deps.getProfile()?.role === "admin" && !document.body.classList.contains("read-only-mode");
+  }
   const $ = <T extends HTMLElement = HTMLElement>(id: string) => document.getElementById(id) as T;
 
   // --- DOM : construit une seule fois -------------------------------------
@@ -133,8 +141,8 @@ export function initGenealogySystem(deps: {
         <button id="genealogy-back" class="btn-small">&larr; Retour au dossier</button>
         <h2 id="genealogy-title"></h2>
         <div id="genealogy-toolbar">
-          <button id="genealogy-add-member" class="btn-small">&#43; Membre</button>
-          <button id="genealogy-link-mode" class="btn-small">&#128279; Lier deux membres</button>
+          <button id="genealogy-add-member" class="btn-small edit-control">&#43; Membre</button>
+          <button id="genealogy-link-mode" class="btn-small edit-control">&#128279; Lier deux membres</button>
           <span id="genealogy-link-hint" class="muted"></span>
         </div>
         <div id="genealogy-legend">
@@ -159,7 +167,7 @@ export function initGenealogySystem(deps: {
       <input type="text" id="gen-m-name" maxlength="160">
       <label class="field-label">Photo</label>
       <div id="gen-m-photo-preview" class="gen-photo-preview"></div>
-      <button id="gen-m-photo-btn" class="btn-small">Changer la photo</button>
+      <button id="gen-m-photo-btn" class="btn-small edit-control">Changer la photo</button>
       <input type="file" id="gen-m-photo-input" accept="image/*" style="display:none;">
       <div id="gen-m-photo-status" class="muted"></div>
       <label class="field-label">Naissance (année)</label>
@@ -247,9 +255,17 @@ export function initGenealogySystem(deps: {
     d3.select(canvasWrap as unknown as HTMLDivElement).call(zoomBehavior.transform, zoomTransform);
   }
 
+  // Point 4a (2026-10-03) : distingue "pas connecté" (ouvre le panneau de
+  // connexion, comme avant) de "connecté mais pas admin" (message de
+  // droits insuffisants — ouvrir openAuthPanel() n'aurait aucun sens
+  // puisque l'utilisateur EST déjà connecté).
   function requireAuthOr(action: () => void) {
     if (!deps.getSession()) {
       deps.openAuthPanel();
+      return;
+    }
+    if (!isAdmin()) {
+      deps.showBanner?.("Tu n'as pas les droits d'édition sur cet atlas.");
       return;
     }
     action();
@@ -464,7 +480,7 @@ export function initGenealogySystem(deps: {
       }
     }
     card.addEventListener("mousedown", (e) => {
-      if (isForeign || !deps.getSession()) return;
+      if (isForeign || !isAdmin()) return;
       moved = false;
       startScreenX = e.clientX;
       startScreenY = e.clientY;
@@ -475,7 +491,7 @@ export function initGenealogySystem(deps: {
       document.addEventListener("mouseup", onEnd);
     });
     card.addEventListener("touchstart", (e) => {
-      if (isForeign || !deps.getSession()) return;
+      if (isForeign || !isAdmin()) return;
       moved = false;
       const t = e.touches[0];
       startScreenX = t.clientX;
@@ -565,6 +581,10 @@ export function initGenealogySystem(deps: {
       deps.openAuthPanel();
       return;
     }
+    if (!isAdmin()) {
+      deps.showBanner?.("Tu n'as pas les droits d'édition sur cet atlas.");
+      return;
+    }
     const { data, error } = await supabase
       .from("genealogy_relations")
       .insert({ member_a_id: aId, member_b_id: bId, relation_type: type, created_by: session.user.id })
@@ -584,6 +604,7 @@ export function initGenealogySystem(deps: {
   }
 
   async function deleteRelation(id: string) {
+    if (!isAdmin()) return;
     if (!(await customConfirm("Supprimer ce lien ?"))) return;
     await supabase.from("genealogy_relations").delete().eq("id", id);
     relations = relations.filter((r) => r.id !== id);
@@ -606,7 +627,7 @@ export function initGenealogySystem(deps: {
     ($("gen-m-bio") as HTMLTextAreaElement).value = m?.bio || "";
     $("gen-m-photo-preview").innerHTML = m?.photo_url ? '<img src="' + escapeHtml(m.photo_url) + '" alt="">' : "";
     $("gen-m-save-status").textContent = "";
-    ($("gen-m-delete") as HTMLButtonElement).style.display = m ? "" : "none";
+    ($("gen-m-delete") as HTMLButtonElement).style.display = m && isAdmin() ? "" : "none";
     $("gen-m-relations").style.display = m ? "" : "none";
     if (m) renderRelationsList(m.id);
     $("gen-member-panel").classList.add("open");
@@ -639,14 +660,16 @@ export function initGenealogySystem(deps: {
         label = "Enfant de " + memberName(otherId);
       }
       row.innerHTML = '<span>' + escapeHtml(label) + "</span>";
-      const del = document.createElement("button");
-      del.type = "button";
-      del.className = "entry-del";
-      del.style.cssText = "position:static;opacity:1;";
-      del.textContent = "×";
-      del.title = "Supprimer ce lien";
-      del.addEventListener("click", () => deleteRelation(r.id));
-      row.appendChild(del);
+      if (isAdmin()) {
+        const del = document.createElement("button");
+        del.type = "button";
+        del.className = "entry-del edit-control";
+        del.style.cssText = "position:static;opacity:1;";
+        del.innerHTML = TRASH_ICON_SVG;
+        del.title = "Supprimer ce lien";
+        del.addEventListener("click", () => deleteRelation(r.id));
+        row.appendChild(del);
+      }
       list.appendChild(row);
     });
   }
@@ -654,6 +677,10 @@ export function initGenealogySystem(deps: {
   $("gen-m-photo-btn").addEventListener("click", () => {
     if (!deps.getSession()) {
       deps.openAuthPanel();
+      return;
+    }
+    if (!isAdmin()) {
+      deps.showBanner?.("Tu n'as pas les droits d'édition sur cet atlas.");
       return;
     }
     ($("gen-m-photo-input") as HTMLInputElement).click();
@@ -684,6 +711,10 @@ export function initGenealogySystem(deps: {
     const session = deps.getSession();
     if (!session || !currentOwner) {
       deps.openAuthPanel();
+      return;
+    }
+    if (!isAdmin()) {
+      deps.showBanner?.("Tu n'as pas les droits d'édition sur cet atlas.");
       return;
     }
     const name = ($("gen-m-name") as HTMLInputElement).value.trim();
@@ -770,7 +801,7 @@ export function initGenealogySystem(deps: {
   });
 
   $("gen-m-delete").addEventListener("click", async () => {
-    if (!editingMemberId) return;
+    if (!editingMemberId || !isAdmin()) return;
     if (!(await customConfirm("Supprimer ce membre et tous ses liens ?"))) return;
     const id = editingMemberId;
     await supabase.from("genealogy_relations").delete().or("member_a_id.eq." + id + ",member_b_id.eq." + id);

@@ -145,10 +145,15 @@ const DEFAULT_DOSSIER_CATEGORIES: { name: string }[] = [
   { name: "Histoire" },
   { name: "Politique" },
   { name: "Géographie" },
-  { name: "Actualité" },
   { name: "Droit" },
+  { name: "Actualité" },
   { name: "Culture générale" },
 ];
+// Ordre d'affichage fixe des catégories builtin (point 6, 2026-10-03) —
+// demande de Martin : Histoire/Politique/Géographie/Droit/Actualité/Culture
+// générale. orderedCategories() trie explicitement selon ce tableau au lieu
+// de dépendre de l'ordre renvoyé par Supabase (non garanti sans .order()).
+const CATEGORY_ORDER = ["Histoire", "Politique", "Géographie", "Droit", "Actualité", "Culture générale"];
 // Catégories par défaut de l'espace 'encyclopedie' — portées de
 // ENCYCLOPEDIA_DOSSIER_CATEGORIES.json (mêmes 6 catégories que
 // NOTION_CATEGORIES_SEED.json, migrées telles quelles par
@@ -280,6 +285,16 @@ function categoryBannerGradient(id: string): string {
 
 const CAMERA_ICON_SVG =
   '<svg class="icon-svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2Z"/><circle cx="12" cy="13" r="4"/></svg>';
+
+// Icône de suppression (poubelle) — convention du projet (point 8,
+// 2026-10-03) : TOUT bouton de suppression de l'app (entrée de dossier,
+// catégorie, dirigeant, membre de groupe, parti d'hémicycle, membre/relation
+// d'arbre généalogique, etc.) réutilise CETTE icône via la classe CSS
+// `.entry-del` (voir style.css) — NE JAMAIS réintroduire un glyphe "×" texte
+// brut nu pour une suppression, même pour un nouvel ajout futur. Exportée
+// pour réutilisation par src/genealogy.ts et src/groups.ts.
+export const TRASH_ICON_SVG =
+  '<svg class="icon-svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/></svg>';
 
 // Cadrage à la souris/au doigt d'une bannière de catégorie ou de section qui
 // a une image (schema_v10.sql) — demande de Martin, 2026-10-02 : "pouvoir la
@@ -556,6 +571,9 @@ export function initFicheDossierSystem(deps: {
   // ci-dessus, porté du bloc "Liens" de la fiche unifiée de l'artifact
   // (~1730-1747, kind-country-only + kind-group-only).
   renderFicheLinks?: (container: HTMLElement, country: CountryRef) => void;
+  // Widget "Points d'intérêt" (src/poi.ts) — point 5 (2026-10-03), même
+  // principe que renderFicheLinks ci-dessus.
+  renderFichePoi?: (container: HTMLElement, country: CountryRef) => void;
   onFicheClose?: () => void;
   // Point d'extension pour src/genealogy.ts — appelé au clic sur une
   // carte d'entrée de type "genealogy" (voir buildEntryEl) : dossier.ts
@@ -582,7 +600,8 @@ export function initFicheDossierSystem(deps: {
       </button>
       <label class="field-label">Dirigeants</label>
       <div id="fiche-leaders-list"></div>
-      <button type="button" id="fiche-leaders-add" class="btn-small">&#43; Ajouter un dirigeant</button>
+      <button type="button" id="fiche-leaders-add" class="btn-small edit-control">&#43; Ajouter un dirigeant</button>
+      <div id="fiche-extra-poi"></div>
       <label class="field-label">Infos clés</label>
       <textarea id="fiche-keyinfo" rows="3" placeholder="Résumé court"></textarea>
       <div id="fiche-extra-indicator"></div>
@@ -610,7 +629,7 @@ export function initFicheDossierSystem(deps: {
           <button id="dossier-reading-toggle" class="btn-small" style="float:right;">Mode lecture</button>
           <h2 id="dossier-theme-heading"></h2>
 
-          <div class="dossier-add-bar">
+          <div class="dossier-add-bar edit-control">
             <select id="dossier-entry-category" class="dossier-cat-select" title="Catégorie pour les nouvelles entrées"></select>
             <select id="dossier-entry-section" class="dossier-cat-select" title="Sous-section (optionnel)"></select>
             <button id="dossier-add-text-btn" class="btn-small">&#43; Texte</button>
@@ -764,7 +783,7 @@ export function initFicheDossierSystem(deps: {
           </div>
 
           <div id="dossier-section-bar" style="display:none;">
-            <button id="dossier-add-section-btn" class="btn-small">&#43; Sous-section dans cet onglet</button>
+            <button id="dossier-add-section-btn" class="btn-small edit-control">&#43; Sous-section dans cet onglet</button>
           </div>
 
           <div id="dossier-entries"></div>
@@ -839,14 +858,24 @@ export function initFicheDossierSystem(deps: {
   let editingHemicycleParties: HemicycleParty[] = [];
   let readingEntryId: string | null = null;
 
-  // Retour de Martin (2026-10-01) : tout compte connecté peut éditer
-  // directement (plus de restriction admin-only ni "créateur seul" —
-  // voir supabase/schema_v8.sql pour le pendant côté policies RLS).
+  // Retour de Martin (2026-10-03, point 4a) : seul un compte au rôle
+  // "admin" (profiles.role) peut éditer — la simple présence d'une session
+  // ne suffit plus (voir supabase/schema_v13.sql pour le pendant côté
+  // policies RLS, qui restaure l'admin-only sur toutes les tables
+  // concernées). canModify() délègue à isAdmin() : il n'y a plus de notion
+  // de "créateur seul" dans ce module (déjà le cas avant ce changement).
+  // Vérifie aussi le mode lecture global (point 4b, document.body.classList
+  // "read-only-mode", posé par main.ts) — même garde que les 5 autres
+  // modules (groups.ts/indicators.ts/links.ts/poi.ts/genealogy.ts) : sans
+  // elle, un admin qui active "Mode lecture" pour prévisualiser
+  // l'expérience d'un visiteur garderait quand même la possibilité
+  // d'éditer/glisser-déposer ICI (dossier.ts), incohérent avec tous les
+  // autres panneaux de l'app où le mode lecture désactive bien l'édition.
   function isAdmin(): boolean {
-    return !!deps.getSession();
+    return deps.getProfile()?.role === "admin" && !document.body.classList.contains("read-only-mode");
   }
   function canModify(_row: { created_by: string | null }): boolean {
-    return !!deps.getSession();
+    return isAdmin();
   }
   // -------------------------------------------------------------------------
   // Catégories
@@ -903,11 +932,18 @@ export function initFicheDossierSystem(deps: {
     }
   }
   function orderedCategories(): [string, Category][] {
-    const builtin = Array.from(categoryDocs.entries()).filter(([, c]) => c.builtin);
+    const builtin = Array.from(categoryDocs.entries())
+      .filter(([, c]) => c.builtin)
+      .sort((a, b) => {
+        const ia = CATEGORY_ORDER.indexOf(a[1].name);
+        const ib = CATEGORY_ORDER.indexOf(b[1].name);
+        return (ia === -1 ? CATEGORY_ORDER.length : ia) - (ib === -1 ? CATEGORY_ORDER.length : ib);
+      });
     const custom = Array.from(categoryDocs.entries()).filter(([, c]) => !c.builtin);
     return builtin.concat(custom);
   }
   async function addCategory(name: string): Promise<string | null> {
+    if (!isAdmin()) return null;
     const session = deps.getSession();
     if (!session) return null;
     const { data, error } = await supabase
@@ -977,7 +1013,7 @@ export function initFicheDossierSystem(deps: {
     return !sec.parent_section_id;
   }
   async function addSection(name: string, categoryId: string, parentSectionId: string | null): Promise<string | null> {
-    if (!currentOwner) return null;
+    if (!currentOwner || !isAdmin()) return null;
     const session = deps.getSession();
     if (!session) return null;
     const siblings = currentSections.filter(
@@ -1099,7 +1135,7 @@ export function initFicheDossierSystem(deps: {
   }
   async function moveSection(id: string, dir: 1 | -1) {
     const target = currentSections.find((s) => s.id === id);
-    if (!target) return;
+    if (!target || !canModify(target)) return;
     const siblings = currentSections
       .filter((s) => s.category_id === target.category_id && (s.parent_section_id || null) === (target.parent_section_id || null))
       .sort((a, b) => a.position - b.position);
@@ -1189,7 +1225,7 @@ export function initFicheDossierSystem(deps: {
     sources?: SourceRef[];
     status?: "draft" | "published";
   }): Promise<string | null> {
-    if (!currentOwner) return null;
+    if (!currentOwner || !isAdmin()) return null;
     const session = deps.getSession();
     if (!session) return null;
     const payload: Record<string, unknown> = {
@@ -1211,7 +1247,17 @@ export function initFicheDossierSystem(deps: {
       created_by: session.user.id,
     };
     const { data, error } = await supabase.from("dossier_entries").insert(payload).select("id").single();
-    if (error || !data) return null;
+    if (error || !data) {
+      // Point 1 (2026-10-03) : ne JAMAIS échouer silencieusement un insert —
+      // affiche le message d'erreur Supabase dans le statut partagé de la
+      // barre d'ajout (même conteneur que les erreurs d'upload de photo,
+      // #dossier-photo-status) pour qu'un futur bug similaire (ex. une
+      // contrainte CHECK manquante, cf. le fix généalogie de schema_v13.sql)
+      // soit visible immédiatement plutôt que de reproduire un échec muet.
+      const statusEl = document.getElementById("dossier-photo-status");
+      if (statusEl) statusEl.textContent = "Échec de l'ajout : " + (error?.message || "erreur inconnue.");
+      return null;
+    }
     await loadEntries(currentOwner.type, currentOwner.id);
     return data.id;
   }
@@ -1360,13 +1406,22 @@ export function initFicheDossierSystem(deps: {
     const div = document.createElement("div");
     div.className = "dossier-entry " + entry.type;
     div.dataset.entryId = entry.id;
-    div.draggable = true;
-    div.addEventListener("dragstart", (e) => {
-      e.dataTransfer!.setData("text/dossier-entry-id", entry.id);
-      e.dataTransfer!.effectAllowed = "move";
-      div.classList.add("dragging-entry");
-    });
-    div.addEventListener("dragend", () => div.classList.remove("dragging-entry"));
+    // Glisser-déposer gardé par canModify, comme pour les sections
+    // (row.draggable ci-dessous) : avant ce correctif, l'attribut restait
+    // à true même en mode lecture (ou pour un non-admin), ce qui laissait
+    // l'entrée "se soulever" visuellement au survol/ébauche de glisser
+    // sans que rien ne puisse être enregistré ensuite (le serveur refusait
+    // déjà le PATCH, mais l'affordance visuelle restait trompeuse —
+    // contraire à la demande "tout doit disparaître" en mode lecture).
+    if (canModify(entry)) {
+      div.draggable = true;
+      div.addEventListener("dragstart", (e) => {
+        e.dataTransfer!.setData("text/dossier-entry-id", entry.id);
+        e.dataTransfer!.effectAllowed = "move";
+        div.classList.add("dragging-entry");
+      });
+      div.addEventListener("dragend", () => div.classList.remove("dragging-entry"));
+    }
     div.addEventListener("click", (e) => {
       if ((e.target as HTMLElement).closest("button") || (e.target as HTMLElement).closest("a")) return;
       if (entry.type === "photo") {
@@ -1388,7 +1443,7 @@ export function initFicheDossierSystem(deps: {
     if (canEdit) {
       const del = document.createElement("button");
       del.className = "entry-del";
-      del.textContent = "×";
+      del.innerHTML = TRASH_ICON_SVG;
       del.title = "Supprimer cette entrée";
       del.addEventListener("click", (e) => {
         e.stopPropagation();
@@ -1622,34 +1677,23 @@ export function initFicheDossierSystem(deps: {
     // `.dossier-section-group[data-section-id="…"]` de l'artifact source.
     group.dataset.sectionId = sec.id;
 
-    // Glisser-déposer de sous-sections (point 3) : zone de dépôt sur TOUT
-    // le bloc (réordonner parmi ses frères ET changer de parent — voir
-    // moveSectionAfter), déclenché depuis `row` (le bandeau titre ▾ nom
-    // (n) ci-dessous) comme poignée de glisser — PAS depuis `banner`, qui
-    // porte déjà son propre geste mousedown (attachBannerDragReframe,
-    // cadrage de l'image au glisser) dont le preventDefault() sur
-    // mousedown empêcherait tout dragstart HTML5 natif de s'y déclencher.
-    // `row` ne contient aucun élément draggable imbriqué, contrairement au
-    // corps qui contient les entrées (elles-mêmes draggable="true", voir
-    // buildEntryEl) : le navigateur choisit toujours l'ancêtre draggable
-    // le plus proche du point de pression, donc glisser une entrée depuis
-    // le corps continue de déplacer l'ENTRÉE, jamais la section entière.
-    group.addEventListener("dragover", (e) => {
-      if (!e.dataTransfer!.types.includes("text/dossier-section-id")) return;
-      e.preventDefault();
-      e.stopPropagation();
-      e.dataTransfer!.dropEffect = "move";
-      group.classList.add("section-drop-target");
-    });
-    group.addEventListener("dragleave", () => group.classList.remove("section-drop-target"));
-    group.addEventListener("drop", (e) => {
-      const draggedId = e.dataTransfer!.getData("text/dossier-section-id");
-      group.classList.remove("section-drop-target");
-      if (!draggedId) return;
-      e.preventDefault();
-      e.stopPropagation();
-      void moveSectionAfter(draggedId, sec.id);
-    });
+    // Glisser-déposer de sous-sections (point 2, fix 2026-10-03) : la zone
+    // de dépôt valide est UNIQUEMENT le bandeau-titre (`row` ci-dessous, pas
+    // tout le `group`). `group` contient aussi, affiché juste en dessous,
+    // les sous-sous-sections (niveau 3) rattachées à cette section, chacune
+    // avec SA PROPRE zone de dépôt (son propre `group`/`row`,
+    // stopPropagation() inclus) — déposer sur TOUT le bloc `group` rendait
+    // donc très facile de toucher en réalité la zone de l'ENFANT plutôt que
+    // celle du PARENT : moveSectionAfter(draggedId, targetId=<id de
+    // l'enfant>) calcule alors newParentId = parent de cet enfant, et la
+    // section déposée (de niveau 2 autonome) DEVENAIT un niveau-3, absorbée
+    // comme frère de cet enfant — perçu par l'utilisateur comme "rentrée
+    // dans l'autre" alors qu'un simple réordonnancement était voulu. `row`
+    // n'est JAMAIS un ancêtre DOM d'un enfant imbriqué (il ne contient que
+    // le caret/nom/compteur), donc déposer sur le bandeau d'une section
+    // cible précisément CETTE section, jamais un de ses enfants rendus en
+    // dessous. Les listeners dragstart/dragend de `row` (poignée de
+    // glisser, plus bas) restent inchangés ; ceux-ci s'y ajoutent à côté.
 
     const banner = document.createElement("div");
     banner.className = "dossier-section-banner dsc-banner";
@@ -1676,16 +1720,19 @@ export function initFicheDossierSystem(deps: {
       return b;
     };
     if (canModify(sec)) {
-      banner.appendChild(mkIconBtn("dsc-menu-btn", "Renommer", "✎", () => renameSection(sec.id)));
-      banner.appendChild(mkIconBtn("dsc-image-btn", "Changer l'image", CAMERA_ICON_SVG, () => startSectionImageUpload(sec.id)));
-      banner.appendChild(
+      const actions = document.createElement("div");
+      actions.className = "dsc-banner-actions";
+      actions.appendChild(mkIconBtn("dsc-menu-btn", "Renommer", "✎", () => renameSection(sec.id)));
+      actions.appendChild(mkIconBtn("dsc-image-btn", "Changer l'image", CAMERA_ICON_SVG, () => startSectionImageUpload(sec.id)));
+      actions.appendChild(
         mkIconBtn(
           "dsc-del-btn",
           "Supprimer la sous-section",
-          '<svg class="icon-svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/></svg>',
+          TRASH_ICON_SVG,
           () => deleteSection(sec.id)
         )
       );
+      banner.appendChild(actions);
     }
     attachBannerDragReframe(
       banner,
@@ -1720,27 +1767,55 @@ export function initFicheDossierSystem(deps: {
       });
       row.addEventListener("dragend", () => group.classList.remove("dragging-section"));
     }
+    // Zone de dépôt restreinte au bandeau-titre (voir commentaire plus haut)
+    // — ajoutée à CÔTÉ des listeners dragstart/dragend ci-dessus, pas à leur
+    // place. Pas de garde canModify(sec) ici : comme avant le fix, c'est
+    // moveSectionAfter() qui vérifie les droits sur la section DÉPLACÉE ;
+    // row doit rester une cible de dépôt valide même si la section cible
+    // elle-même n'est pas modifiable par l'utilisateur courant.
+    row.addEventListener("dragover", (e) => {
+      if (!e.dataTransfer!.types.includes("text/dossier-section-id")) return;
+      e.preventDefault();
+      e.stopPropagation();
+      e.dataTransfer!.dropEffect = "move";
+      group.classList.add("section-drop-target");
+    });
+    row.addEventListener("dragleave", () => group.classList.remove("section-drop-target"));
+    row.addEventListener("drop", (e) => {
+      const draggedId = e.dataTransfer!.getData("text/dossier-section-id");
+      group.classList.remove("section-drop-target");
+      if (!draggedId) return;
+      e.preventDefault();
+      e.stopPropagation();
+      void moveSectionAfter(draggedId, sec.id);
+    });
     group.appendChild(row);
 
-    const actions = document.createElement("div");
-    actions.className = "dossier-section-actions";
-    const mkBtn = (label: string, title: string, fn: () => void) => {
-      const b = document.createElement("button");
-      b.type = "button";
-      b.textContent = label;
-      b.title = title;
-      b.addEventListener("click", (e) => {
-        e.stopPropagation();
-        fn();
-      });
-      return b;
-    };
-    if (canCreateChildSection(sec)) {
-      actions.appendChild(mkBtn("+", "Créer une sous-sous-catégorie dans « " + sec.name + " »", () => addChildSection(sec.id)));
+    // Point 4a (2026-10-03) : ces boutons (créer une sous-sous-catégorie,
+    // réordonner) n'étaient PAS gatés du tout auparavant — n'importe quel
+    // visiteur pouvait réordonner les sous-sections. Rendus uniquement si
+    // canModify(sec) (donc jamais en mode lecture global, voir point 4b).
+    if (canModify(sec)) {
+      const actions = document.createElement("div");
+      actions.className = "dossier-section-actions edit-control";
+      const mkBtn = (label: string, title: string, fn: () => void) => {
+        const b = document.createElement("button");
+        b.type = "button";
+        b.textContent = label;
+        b.title = title;
+        b.addEventListener("click", (e) => {
+          e.stopPropagation();
+          fn();
+        });
+        return b;
+      };
+      if (canCreateChildSection(sec)) {
+        actions.appendChild(mkBtn("+", "Créer une sous-sous-catégorie dans « " + sec.name + " »", () => addChildSection(sec.id)));
+      }
+      actions.appendChild(mkBtn("↑", "Monter", () => moveSection(sec.id, -1)));
+      actions.appendChild(mkBtn("↓", "Descendre", () => moveSection(sec.id, 1)));
+      group.appendChild(actions);
     }
-    actions.appendChild(mkBtn("↑", "Monter", () => moveSection(sec.id, -1)));
-    actions.appendChild(mkBtn("↓", "Descendre", () => moveSection(sec.id, 1)));
-    group.appendChild(actions);
 
     const body = document.createElement("div");
     body.className = "dossier-section-body dossier-drop-zone";
@@ -1787,9 +1862,13 @@ export function initFicheDossierSystem(deps: {
       unWrap.className = "dossier-unsectioned dossier-drop-zone";
       if (unsectioned.length) {
         unsectioned.forEach((entry) => unWrap.appendChild(buildEntryEl(entry)));
-      } else if (secs.length) {
+      } else if (secs.length && isAdmin()) {
+        // Visible seulement si on peut effectivement glisser une entrée
+        // (isAdmin()) : en mode lecture / pour un non-admin, les entrées
+        // ne sont plus draggable (buildEntryEl), donc ce texte d'aide au
+        // glisser-déposer n'a plus de sens et doit disparaître lui aussi.
         const hint = document.createElement("p");
-        hint.className = "muted dossier-drop-hint";
+        hint.className = "muted dossier-drop-hint edit-control";
         hint.textContent = "Déposez ici une entrée pour la sortir de ses sous-sections.";
         unWrap.appendChild(hint);
       }
@@ -1883,7 +1962,10 @@ export function initFicheDossierSystem(deps: {
     // pays à la fois, sans migration ni nouvelle table (demande de Martin,
     // 2026-10-03). Renommer/supprimer restent réservés aux catégories
     // non-builtin (inchangé).
-    if (deps.getSession()) {
+    const catActions = document.createElement("div");
+    catActions.className = "dsc-banner-actions";
+    let hasCatActions = false;
+    if (isAdmin()) {
       const imageBtn = document.createElement("button");
       imageBtn.type = "button";
       imageBtn.className = "dsc-image-btn";
@@ -1893,7 +1975,8 @@ export function initFicheDossierSystem(deps: {
         e.stopPropagation();
         startCategoryImageUpload(id);
       });
-      banner.appendChild(imageBtn);
+      catActions.appendChild(imageBtn);
+      hasCatActions = true;
     }
     if (!cat.builtin && isAdmin()) {
       const menuBtn = document.createElement("button");
@@ -1906,20 +1989,21 @@ export function initFicheDossierSystem(deps: {
         await renameCategory(id);
         renderDossierSummary();
       });
-      banner.appendChild(menuBtn);
+      catActions.appendChild(menuBtn);
       const delBtn = document.createElement("button");
       delBtn.type = "button";
       delBtn.className = "dsc-del-btn";
       delBtn.title = "Supprimer ce thème";
-      delBtn.innerHTML =
-        '<svg class="icon-svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/></svg>';
+      delBtn.innerHTML = TRASH_ICON_SVG;
       delBtn.addEventListener("click", async (e) => {
         e.stopPropagation();
         await deleteCategory(id);
         renderDossierSummary();
       });
-      banner.appendChild(delBtn);
+      catActions.appendChild(delBtn);
+      hasCatActions = true;
     }
+    if (hasCatActions) banner.appendChild(catActions);
     attachBannerDragReframe(
       banner,
       () => cat.image_url,
@@ -1985,7 +2069,7 @@ export function initFicheDossierSystem(deps: {
         : null;
       themesEl.appendChild(buildSummaryCard(id, cat, inCat.length, latest));
     });
-    if (deps.getSession()) {
+    if (isAdmin()) {
       const newCard = document.createElement("button");
       newCard.type = "button";
       newCard.className = "dsc-new-card";
@@ -2226,8 +2310,10 @@ export function initFicheDossierSystem(deps: {
       });
       const rm = document.createElement("button");
       rm.type = "button";
-      rm.className = "btn-small";
-      rm.textContent = "×";
+      rm.className = "btn-small entry-del";
+      rm.style.cssText = "position:static;opacity:1;";
+      rm.innerHTML = TRASH_ICON_SVG;
+      rm.title = "Retirer cette source";
       rm.addEventListener("click", () => {
         editingSourcesDraft.splice(idx, 1);
         renderSourcesEditor();
@@ -3048,8 +3134,9 @@ export function initFicheDossierSystem(deps: {
       });
       const rm = document.createElement("button");
       rm.type = "button";
-      rm.className = "hp-remove";
-      rm.textContent = "×";
+      rm.className = "hp-remove entry-del";
+      rm.style.cssText = "position:static;opacity:1;";
+      rm.innerHTML = TRASH_ICON_SVG;
       rm.title = "Retirer ce parti";
       rm.addEventListener("click", () => {
         editingHemicycleParties.splice(idx, 1);
@@ -3147,7 +3234,7 @@ export function initFicheDossierSystem(deps: {
   // -------------------------------------------------------------------------
   let replacingPhotoId: string | null = null;
   async function uploadPhoto(file: File): Promise<string | null> {
-    if (!currentOwner) return null;
+    if (!currentOwner || !isAdmin()) return null;
     const session = deps.getSession();
     if (!session) return null;
     const path = currentOwner.type + "-" + currentOwner.id + "/" + Date.now() + "-" + Math.random().toString(36).slice(2, 8) + "-" + file.name.replace(/[^a-zA-Z0-9._-]/g, "_");
@@ -3161,10 +3248,14 @@ export function initFicheDossierSystem(deps: {
       $("dossier-photo-status").textContent = "Connectez-vous pour ajouter une photo.";
       return;
     }
+    if (!isAdmin()) {
+      $("dossier-photo-status").textContent = "Tu n'as pas les droits d'édition sur cet atlas.";
+      return;
+    }
     ($("dossier-photo-input") as HTMLInputElement).click();
   });
   function startReplacePhoto(id: string) {
-    if (!deps.getSession()) return;
+    if (!isAdmin()) return;
     replacingPhotoId = id;
     ($("dossier-photo-input") as HTMLInputElement).click();
   }
@@ -3205,7 +3296,7 @@ export function initFicheDossierSystem(deps: {
   let pendingCategoryImageId: string | null = null;
   let pendingSectionImageId: string | null = null;
   async function uploadCategoryImage(categoryId: string, file: File): Promise<string | null> {
-    if (!deps.getSession()) return null;
+    if (!isAdmin()) return null;
     const path =
       "category-" + categoryId + "/" + Date.now() + "-" + Math.random().toString(36).slice(2, 8) + "-" + file.name.replace(/[^a-zA-Z0-9._-]/g, "_");
     const { error } = await supabase.storage.from("dossier-photos").upload(path, file, { upsert: false });
@@ -3214,7 +3305,7 @@ export function initFicheDossierSystem(deps: {
     return data.publicUrl;
   }
   async function uploadSectionImage(sec: Section, file: File): Promise<string | null> {
-    if (!deps.getSession() || !currentOwner) return null;
+    if (!isAdmin() || !currentOwner) return null;
     const path =
       currentOwner.type +
       "-" +
@@ -3233,12 +3324,12 @@ export function initFicheDossierSystem(deps: {
     return data.publicUrl;
   }
   function startCategoryImageUpload(id: string) {
-    if (!deps.getSession()) return;
+    if (!isAdmin()) return;
     pendingCategoryImageId = id;
     ($("dossier-category-image-input") as HTMLInputElement).click();
   }
   function startSectionImageUpload(id: string) {
-    if (!deps.getSession()) return;
+    if (!isAdmin()) return;
     pendingSectionImageId = id;
     ($("dossier-section-image-input") as HTMLInputElement).click();
   }
@@ -3421,6 +3512,18 @@ export function initFicheDossierSystem(deps: {
   function renderLeadersList() {
     const wrap = $("fiche-leaders-list");
     wrap.innerHTML = "";
+    if (!isAdmin()) {
+      // Point 4a/4b (2026-10-03) : lecture seule pour un visiteur non-admin
+      // (connecté ou pas) — pas de champs éditables ni de bouton de
+      // suppression, juste le statut/nom en texte.
+      currentLeaders.forEach((leader) => {
+        const row = document.createElement("div");
+        row.className = "fiche-leader-row fiche-leader-readonly";
+        row.textContent = [leader.status, leader.name].filter(Boolean).join(" — ") || "—";
+        wrap.appendChild(row);
+      });
+      return;
+    }
     currentLeaders.forEach((leader, idx) => {
       const row = document.createElement("div");
       row.className = "fiche-leader-row";
@@ -3436,7 +3539,7 @@ export function initFicheDossierSystem(deps: {
       rm.type = "button";
       rm.className = "entry-del";
       rm.style.cssText = "position:static;opacity:1;";
-      rm.textContent = "×";
+      rm.innerHTML = TRASH_ICON_SVG;
       rm.title = "Supprimer ce dirigeant";
       async function persist() {
         leader.status = statusInp.value.trim();
@@ -3489,6 +3592,10 @@ export function initFicheDossierSystem(deps: {
       $("fiche-save-status").textContent = "Connectez-vous pour ajouter un dirigeant.";
       return;
     }
+    if (!isAdmin()) {
+      $("fiche-save-status").textContent = "Tu n'as pas les droits d'édition sur cet atlas.";
+      return;
+    }
     currentLeaders.push({ id: null, status: "", name: "", position: currentLeaders.length });
     renderLeadersList();
     const inputs = $("fiche-leaders-list").querySelectorAll("input");
@@ -3531,6 +3638,9 @@ export function initFicheDossierSystem(deps: {
     deps.renderFicheIndicator?.($("fiche-extra-indicator"), country);
     deps.renderFicheGroups?.($("fiche-extra-groups"), country);
     deps.renderFicheLinks?.($("fiche-extra-links"), country);
+    deps.renderFichePoi?.($("fiche-extra-poi"), country);
+    ($("fiche-keyinfo") as HTMLTextAreaElement).readOnly = !isAdmin();
+    ($("fiche-notes") as HTMLTextAreaElement).readOnly = !isAdmin();
   }
   function closeFiche() {
     flushFicheSave();
@@ -3547,6 +3657,10 @@ export function initFicheDossierSystem(deps: {
     const notes = ($("fiche-notes") as HTMLTextAreaElement).value.trim();
     if (!session) {
       status.textContent = "Connectez-vous pour enregistrer.";
+      return;
+    }
+    if (!isAdmin()) {
+      status.textContent = "Tu n'as pas les droits d'édition sur cet atlas.";
       return;
     }
     status.textContent = "Enregistrement…";
@@ -3588,6 +3702,18 @@ export function initFicheDossierSystem(deps: {
     openDossier(currentFicheCountry);
   });
 
+  // Point 4b (2026-10-03) : rafraîchit ce qui est déjà affiché à l'écran
+  // (fiche/dossier déjà ouverts) quand le mode lecture global bascule, sans
+  // attendre une prochaine ouverture — voir onReadOnlyModeChanged dans
+  // main.ts. No-op si rien n'est ouvert.
+  function refreshForReadOnlyChange() {
+    if (currentFicheCountry) renderLeadersList();
+    if (currentOwner) {
+      renderDossierSummary();
+      renderDossierEntries();
+    }
+  }
+
   return {
     openFiche,
     closeFiche,
@@ -3597,5 +3723,6 @@ export function initFicheDossierSystem(deps: {
     openMiniDossier,
     revealEntry,
     revealSection,
+    refreshForReadOnlyChange,
   };
 }

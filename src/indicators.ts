@@ -114,6 +114,7 @@ function gradientToColorFn(stops: string[]): (t: number) => string {
 export function initIndicatorsSystem(deps: {
   supabase: SupabaseClient;
   getSession: () => { user: { id: string } } | null;
+  getProfile: () => { id: string; role: string } | null;
   gIndicatorLayer: d3.Selection<SVGGElement, unknown, HTMLElement | null, unknown>;
   geoPath: (f: GeoJSON.GeoJSON) => string | null;
   getSovFeatures: () => SovFeatureLike[];
@@ -148,7 +149,7 @@ export function initIndicatorsSystem(deps: {
       <h2>Apparence</h2>
       <p class="muted">Toutes les couleurs et dégradés utilisés sur la carte, personnalisables. Les changements s'appliquent immédiatement et sont sauvegardés.</p>
       <div id="appearance-body"></div>
-      <button id="appearance-reset" class="btn-small" style="margin-top:16px;">Réinitialiser toutes les couleurs</button>
+      <button id="appearance-reset" class="btn-small edit-control" style="margin-top:16px;">Réinitialiser toutes les couleurs</button>
     </div>
   `;
   while (root.firstChild) document.body.appendChild(root.firstChild);
@@ -177,10 +178,17 @@ export function initIndicatorsSystem(deps: {
     deps.onLinkColorsChanged?.();
   }
 
+  // Point 4a (2026-10-03) : seul un compte admin peut modifier/sauvegarder
+  // l'apparence globale (voir supabase/schema_v13.sql pour le pendant RLS).
+  // Pas de fonction isAdmin() préexistante dans ce module — en créer une,
+  // même principe que src/dossier.ts/src/groups.ts.
+  function isAdmin(): boolean {
+    return deps.getProfile()?.role === "admin" && !document.body.classList.contains("read-only-mode");
+  }
   let saveAppearanceTimer: number | null = null;
   function saveAppearance() {
     const session = deps.getSession();
-    if (!session) return;
+    if (!session || !isAdmin()) return;
     if (saveAppearanceTimer) window.clearTimeout(saveAppearanceTimer);
     saveAppearanceTimer = window.setTimeout(async () => {
       try {

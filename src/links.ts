@@ -62,6 +62,13 @@ export function initLinksSystem(deps: {
   selectEntity: (kind: LinkEntityKind, id: string) => void;
 }) {
   const { supabase } = deps;
+  // Point 4a (2026-10-03) : seul un compte admin peut créer/modifier un
+  // lien ou masquer les liens d'un pays (voir supabase/schema_v13.sql pour
+  // le pendant RLS). Pas de fonction isAdmin() préexistante ici — en créer
+  // une, même principe que src/dossier.ts/src/groups.ts.
+  function isAdmin(): boolean {
+    return deps.getProfile()?.role === "admin" && !document.body.classList.contains("read-only-mode");
+  }
 
   // ---------------------------------------------------------------------
   // DOM injecté une fois — panneau "Chronologie" et éditeur de lien,
@@ -162,7 +169,7 @@ export function initLinksSystem(deps: {
     linksHiddenByCountry.set(isoA3, hidden);
     redraw();
     const session = deps.getSession();
-    if (!session) return;
+    if (!session || !isAdmin()) return;
     try {
       await supabase
         .from("countries")
@@ -495,7 +502,7 @@ export function initLinksSystem(deps: {
     title.textContent = "Liens";
     const newBtn = document.createElement("button");
     newBtn.type = "button";
-    newBtn.className = "btn-small";
+    newBtn.className = "btn-small edit-control";
     newBtn.textContent = "+ Nouveau lien";
     newBtn.addEventListener("click", () => enterLinkModeFor(kind, id, label));
     header.appendChild(title);
@@ -648,6 +655,10 @@ export function initLinksSystem(deps: {
     const session = deps.getSession();
     if (!session) {
       status.textContent = "Connectez-vous pour enregistrer.";
+      return;
+    }
+    if (!isAdmin()) {
+      status.textContent = "Tu n'as pas les droits d'édition sur cet atlas.";
       return;
     }
     status.textContent = "Enregistrement…";

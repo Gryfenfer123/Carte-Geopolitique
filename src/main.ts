@@ -95,9 +95,6 @@ app.innerHTML = `
       <button id="zoom-reset" title="R&eacute;initialiser la vue" aria-label="R&eacute;initialiser">&#8634;</button>
     </div>
 
-    <div id="poi-toggle" class="panel">
-      <button id="poi-add-btn" title="Placer un point d'intérêt" aria-label="Points d'intérêt"><svg class="icon-svg" style="width:17px;height:17px;" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.1-7-11a7 7 0 0 1 14 0c0 4.9-7 11-7 11Z"/><circle cx="12" cy="10" r="2.5"/></svg></button>
-    </div>
     <div id="export-toggle" class="panel">
       <button id="export-png-btn" title="Exporter la carte en image" aria-label="Exporter la carte en image"><svg class="icon-svg" style="width:17px;height:17px;" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v13"/><path d="m6 11 6 6 6-6"/><path d="M4 20h16"/></svg></button>
     </div>
@@ -109,6 +106,10 @@ app.innerHTML = `
     <div id="style-switch" class="panel">
       <button id="style-photo" title="Toujours l'imagerie satellite">Satellite</button>
       <button id="style-vector" class="active" title="Toujours le plan vectoriel">Vectoriel</button>
+    </div>
+
+    <div id="readonly-toggle" class="panel">
+      <button id="readonly-toggle-btn" title="Mode lecture" aria-label="Basculer le mode lecture">Mode lecture</button>
     </div>
 
     <div id="info-toggle" class="panel" style="display:none">
@@ -360,6 +361,7 @@ supabase.auth.onAuthStateChange(async (_event, session) => {
   }
   updateAuthTrigger();
   renderAuthPanel();
+  applyReadOnlyState();
   // Refresh the selected country panel so the write form appears/disappears.
   if (selectedCountry) showCountry(selectedCountry);
 });
@@ -370,7 +372,59 @@ supabase.auth.getSession().then(async ({ data }) => {
     await loadProfile(data.session.user.id);
   }
   updateAuthTrigger();
+  applyReadOnlyState();
 });
+
+// ---------------------------------------------------------------------------
+// Mode lecture GLOBAL (point 4b, 2026-10-03) — toute la carte, pas
+// seulement l'intérieur d'un dossier. Un compte non-admin (pas connecté, OU
+// connecté mais rôle ≠ "admin") est TOUJOURS en lecture seule (pas de
+// notion de choix pour lui) ; un compte admin démarre en mode édition et
+// peut activer ce mode lui-même, pour prévisualiser l'expérience d'un
+// visiteur. L'état vit sur `document.body.classList.contains("read-only-
+// mode")` — chaque module (dossier.ts/groups.ts/indicators.ts/links.ts/
+// poi.ts/genealogy.ts) relit cette classe à l'intérieur de sa propre
+// fonction isAdmin() (voir leurs commentaires respectifs), donc TOUT ce qui
+// décide d'afficher un contrôle d'édition se recalcule correctement dès que
+// cette classe change — à condition que le composant concerné soit
+// RE-RENDU : readonlyChangeListeners ci-dessous laisse chaque module
+// s'abonner pour rafraîchir ce qu'il affiche déjà à l'écran (panneau
+// ouvert, dossier déjà affiché…) sans attendre une prochaine ouverture.
+let globalReadOnlyPreview = false; // choix explicite d'un compte admin (off par défaut)
+const readonlyChangeListeners: (() => void)[] = [];
+function onReadOnlyModeChanged(fn: () => void) {
+  readonlyChangeListeners.push(fn);
+}
+const readonlyBtn = document.getElementById("readonly-toggle-btn") as HTMLButtonElement;
+function applyReadOnlyState() {
+  const isAdminUser = currentProfile?.role === "admin";
+  const active = !isAdminUser || globalReadOnlyPreview;
+  document.body.classList.toggle("read-only-mode", active);
+  if (!isAdminUser) {
+    // Rien à éditer de toute façon pour un visiteur : le bouton reste
+    // visible mais désactivé, avec une info-bulle explicite plutôt que de
+    // disparaître (un bouton qui disparaît brutalement surprend davantage
+    // qu'un bouton clairement inactif).
+    readonlyBtn.disabled = true;
+    readonlyBtn.textContent = "Mode lecture";
+    readonlyBtn.title = "Lecture seule — tu n'as pas les droits d'édition.";
+    readonlyBtn.classList.remove("active");
+  } else {
+    readonlyBtn.disabled = false;
+    readonlyBtn.textContent = active ? "Quitter le mode lecture" : "Mode lecture";
+    readonlyBtn.title = active
+      ? "Revenir au mode édition"
+      : "Prévisualiser l'atlas comme un visiteur en lecture seule";
+    readonlyBtn.classList.toggle("active", active);
+  }
+  readonlyChangeListeners.forEach((fn) => fn());
+}
+readonlyBtn.addEventListener("click", () => {
+  if (currentProfile?.role !== "admin") return;
+  globalReadOnlyPreview = !globalReadOnlyPreview;
+  applyReadOnlyState();
+});
+applyReadOnlyState();
 
 // ---------------------------------------------------------------------------
 // Map init
@@ -675,6 +729,7 @@ const groupsSystem = initGroupsSystem({
 const indicatorsSystem = initIndicatorsSystem({
   supabase,
   getSession: () => currentSession,
+  getProfile: () => currentProfile,
   gIndicatorLayer,
   geoPath: (f) => geoPath(f),
   getSovFeatures: () => sovFeatures as unknown as SovFeatureLike[],
@@ -684,6 +739,7 @@ indicatorsRedraw = indicatorsSystem.redrawOnMapChange;
 ficheDeps.renderFicheIndicator = (container, country) => indicatorsSystem.renderFicheIndicator(container, country);
 ficheDeps.renderFicheGroups = (container, country) => groupsSystem.renderFicheGroups(container, country);
 ficheDeps.renderFicheLinks = (container, country) => linksSystem?.renderFicheLinksWidget(container, "country", country.isoA3, frenchCountryName(country.name));
+ficheDeps.renderFichePoi = (container, country) => poiSystem.renderFichePoiWidget(container, country);
 ficheDeps.onFicheClose = () => {
   indicatorsSystem.onFicheClose();
   linksSystem?.clearEntityLinks();
@@ -786,6 +842,20 @@ function redrawBorders() {
       if (linksSystem?.handleMapCountryClick(d.properties.iso_a3)) return;
       if (groupsSystem.handleMapCountryClick(d.properties.iso_a3)) return;
       showCountry(d.properties);
+    })
+    // Double-clic (point 7, 2026-10-03) : ouvre directement le dossier
+    // complet du pays, sans passer par la fiche latérale — même garde-fous
+    // que le simple clic (modes de placement POI/lien/groupe actifs).
+    .on("dblclick", (_event, d) => {
+      // Mêmes garde-fous que le simple clic ci-dessus : un mode de
+      // placement/sélection actif (POI/lien/groupe) a déjà consommé les
+      // deux clics qui précèdent ce double-clic — ne pas ouvrir le dossier
+      // en plus dans ce cas.
+      if (poiSystem.isPlacementActive()) return;
+      if (linksSystem?.handleMapCountryClick(d.properties.iso_a3)) return;
+      if (groupsSystem.handleMapCountryClick(d.properties.iso_a3)) return;
+      const c = getAllCountryRefs().find((x) => x.isoA3 === d.properties.iso_a3);
+      if (c) void ficheDossier.openDossier(c);
     });
 }
 
@@ -1133,8 +1203,10 @@ linksRedraw = linksSystem.redraw;
 const poiSystem = initPoiSystem({
   supabase,
   getSession: () => currentSession,
+  getProfile: () => currentProfile,
   gPoiLayer,
   projectLonLat: (lonlat) => projectLonLat(lonlat),
+  flyToLonLat: (lonlat, zoom) => flyToLonLat(lonlat, zoom),
   setMapCursor: (active) => document.querySelector(".map-wrap")!.classList.toggle("poi-add-cursor", active),
   onBeforeMapAddMode: () => {
     linksSystem?.exitLinkMode();
@@ -1156,6 +1228,14 @@ map.on("click", (e) => {
 });
 document.getElementById("toggle-pois")!.addEventListener("change", (e) => {
   poiSystem.setLayerVisible((e.target as HTMLInputElement).checked);
+});
+
+// Point 4b : rafraîchit ce qui est déjà affiché à l'écran quand le mode
+// lecture global bascule (voir applyReadOnlyState ci-dessus) — chaque
+// module décide lui-même s'il a quelque chose à rafraîchir.
+onReadOnlyModeChanged(() => {
+  ficheDossier.refreshForReadOnlyChange();
+  groupsSystem.refreshForReadOnlyChange();
 });
 
 // En mode "placer un POI", un clic sur un détroit/port/pipeline/câble/base/
@@ -1693,6 +1773,7 @@ function getOwnerLabel(ownerType: string, ownerId: string): string | null {
 const genealogySystem = initGenealogySystem({
   supabase,
   getSession: () => currentSession,
+  getProfile: () => currentProfile,
   openAuthPanel: () => openAuthPanel(),
   showBanner: (msg) => showTransientBanner(msg),
   getOwnerLabel,

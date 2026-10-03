@@ -22,6 +22,13 @@ export type PoiEntry = {
   lon: number;
   lat: number;
   created_by: string | null;
+  // Pays auquel le POI est rattaché (point 5, 2026-10-03) — country_id =
+  // countries.id = isoA3 (schema_v13.sql). null pour un POI "libre", non
+  // rattaché à un pays (voir le choix documenté plus bas : désormais tous
+  // les NOUVEAUX POI passent par la fiche d'un pays, mais un POI déjà sans
+  // pays — créé avant cette session — reste affiché sur la carte, juste
+  // absent de toute fiche).
+  country_id: string | null;
 };
 
 type MapFeatureRow = {
@@ -31,16 +38,24 @@ type MapFeatureRow = {
   note: string | null;
   geometry: { type: string; coordinates: [number, number] };
   created_by: string | null;
+  country_id: string | null;
 };
+
+// Minimal CountryRef nécessaire ici (évite d'importer tout src/dossier.ts
+// pour un seul type — même champ isoA3 que CountryRef de dossier.ts).
+type CountryLike = { isoA3: string; name: string };
 
 export function initPoiSystem(deps: {
   supabase: SupabaseClient;
   getSession: () => Session | null;
+  getProfile: () => { id: string; role: string } | null;
   // Calque D3 dédié aux marqueurs POI (créé dans main.ts, au-dessus de tous
   // les autres calques — un point placé par l'utilisateur doit rester
   // visible par-dessus ports/câbles/etc.).
   gPoiLayer: d3.Selection<SVGGElement, unknown, HTMLElement | null, unknown>;
   projectLonLat: (lonlat: [number, number]) => [number, number];
+  // Centre/zoome la carte sur un POI cliqué depuis la fiche pays.
+  flyToLonLat: (lonlat: [number, number], zoom: number) => void;
   // Bascule la classe CSS de curseur en croix sur la carte pendant le mode
   // placement — même principe que setMapAddCursor dans src/groups.ts.
   setMapCursor: (active: boolean) => void;
@@ -66,6 +81,16 @@ export function initPoiSystem(deps: {
 }) {
   const { supabase } = deps;
   const $ = <T extends HTMLElement = HTMLElement>(id: string) => document.getElementById(id) as T;
+  // Retours de Martin (2026-10-03, point 4a) : seul un compte au rôle
+  // "admin" peut créer/supprimer un POI — un compte connecté mais non-admin
+  // ne doit plus pouvoir écrire (voir supabase/schema_v13.sql pour le
+  // pendant RLS). isAdmin() centralise cette vérification, remplaçant les
+  // anciens appels directs à deps.getSession() pour gater une action
+  // d'écriture (le simple fait d'être connecté reste utilisé ailleurs,
+  // ex. savoir si on affiche un nom — ça n'a pas changé ici).
+  function isAdmin(): boolean {
+    return deps.getProfile()?.role === "admin" && !document.body.classList.contains("read-only-mode");
+  }
 
   // --- DOM : overlay de création (nom + note) --------------------------------
   const root = document.createElement("div");
@@ -93,12 +118,17 @@ export function initPoiSystem(deps: {
   const statusEl = $("poi-create-status");
   const submitBtn = $("poi-create-submit") as HTMLButtonElement;
 
-  // Bouton "placer un POI" (dans #poi-toggle, markup de main.ts).
-  const addBtn = document.getElementById("poi-add-btn") as HTMLButtonElement;
-
   // --- État -------------------------------------------------------------
   const pois: PoiEntry[] = [];
   let placementActive = false;
+  // Pays cible du POI en cours de création — point 5 (2026-10-03) : le
+  // mode placement ne démarre plus QUE depuis le bouton "+ Point d'intérêt"
+  // de la fiche d'un pays (voir renderFichePoiWidget plus bas ; l'ancien
+  // bouton générique #poi-add-btn de la barre d'outils, sans rattachement,
+  // a été retiré de main.ts). pendingCountryId est posé à l'entrée en mode
+  // placement et reste en mémoire jusqu'à la création effective, pour que
+  // le POI créé juste après soit automatiquement rattaché à ce pays.
+  let pendingCountryId: string | null = null;
   // Position cliquée en attente de création — conservée tant que l'overlay
   // de création est ouvert, même si l'utilisateur doit d'abord se connecter
   // (voir handleSubmit ci-dessous) : il ne perd pas son point en se
@@ -107,24 +137,22 @@ export function initPoiSystem(deps: {
 
   function setPlacementActive(active: boolean) {
     placementActive = active;
-    addBtn.classList.toggle("placing", active);
     deps.setMapCursor(active);
   }
 
-  function enterPlacementMode() {
+  // Démarre le mode placement pour un pays donné — appelé depuis le bouton
+  // "+ Point d'intérêt" de la fiche pays (src/dossier.ts, renderFichePoi).
+  function startPlacementForCountry(countryId: string) {
+    pendingCountryId = countryId;
     deps.onBeforeMapAddMode?.();
     setPlacementActive(true);
-    deps.showBanner("Cliquez sur la carte pour placer un point d'intérêt (Échap pour annuler).");
+    deps.showBanner("Cliquez sur la carte pour placer le point d'intérêt (Échap pour annuler).");
   }
   function exitPlacementMode() {
     setPlacementActive(false);
+    pendingCountryId = null;
     deps.hideBanner?.();
   }
-
-  addBtn.addEventListener("click", () => {
-    if (placementActive) exitPlacementMode();
-    else enterPlacementMode();
-  });
 
   document.addEventListener("keydown", (e) => {
     if (e.key === "Escape" && placementActive) exitPlacementMode();
@@ -141,6 +169,7 @@ export function initPoiSystem(deps: {
   function closeCreateOverlay() {
     overlay.classList.remove("open");
     pendingLatLng = null;
+    pendingCountryId = null;
   }
   $("poi-create-cancel").addEventListener("click", closeCreateOverlay);
   overlay.addEventListener("click", (e) => {
@@ -160,7 +189,12 @@ export function initPoiSystem(deps: {
       deps.openAuthPanel();
       return;
     }
+    if (!isAdmin()) {
+      statusEl.textContent = "Tu n'as pas les droits d'édition sur cet atlas.";
+      return;
+    }
     const note = noteInput.value.trim() || null;
+    const countryId = pendingCountryId;
     submitBtn.disabled = true;
     statusEl.textContent = "Enregistrement…";
     try {
@@ -172,8 +206,9 @@ export function initPoiSystem(deps: {
           note,
           geometry: { type: "Point", coordinates: [pendingLatLng.lng, pendingLatLng.lat] },
           created_by: session.user.id,
+          country_id: countryId,
         })
-        .select("id, name, note, geometry, created_by")
+        .select("id, name, note, geometry, created_by, country_id")
         .single();
       if (error) throw error;
       const row = data as MapFeatureRow;
@@ -184,9 +219,11 @@ export function initPoiSystem(deps: {
         lon: row.geometry.coordinates[0],
         lat: row.geometry.coordinates[1],
         created_by: row.created_by,
+        country_id: row.country_id,
       });
       redraw();
       closeCreateOverlay();
+      if (countryId) onPoiListChanged.forEach((fn) => fn(countryId));
     } catch (err) {
       console.error("Failed to create POI:", err);
       statusEl.textContent =
@@ -197,13 +234,21 @@ export function initPoiSystem(deps: {
   }
   submitBtn.addEventListener("click", handleSubmit);
 
+  // Petits callbacks enregistrés par renderFichePoiWidget pour rafraîchir sa
+  // liste quand un POI de son pays est créé/supprimé par un autre chemin
+  // (ex. overlay de création ouvert depuis la fiche, mais le widget a pu
+  // être démonté entre-temps — voir son propre re-render à l'ouverture).
+  const onPoiListChanged: ((countryId: string) => void)[] = [];
+
   // --- Clic sur la carte (placement) -----------------------------------
   // Appelé depuis main.ts sur chaque `map.on("click", ...)`. Renvoie true si
   // le clic a été consommé par le mode placement (pour que main.ts ne
   // déclenche pas d'autre comportement sur ce même clic, le cas échéant).
   function handleMapClick(latlng: { lat: number; lng: number }): boolean {
     if (!placementActive) return false;
+    const countryId = pendingCountryId;
     exitPlacementMode();
+    pendingCountryId = countryId;
     openCreateOverlay(latlng.lat, latlng.lng);
     return true;
   }
@@ -214,6 +259,22 @@ export function initPoiSystem(deps: {
   // poserait un POI.
   function isPlacementActive(): boolean {
     return placementActive;
+  }
+
+  // Supprime un POI (gaté admin, point 4a) — factorisé entre showPoi
+  // (panneau #infra-panel) et renderFichePoiWidget (fiche pays).
+  async function deletePoi(poi: PoiEntry): Promise<boolean> {
+    if (!isAdmin()) return false;
+    if (!window.confirm("Supprimer ce point d'intérêt ?")) return false;
+    const { error } = await supabase.from("map_features").delete().eq("id", poi.id);
+    if (error) {
+      console.error("Failed to delete POI:", error);
+      return false;
+    }
+    const idx = pois.findIndex((p) => p.id === poi.id);
+    if (idx !== -1) pois.splice(idx, 1);
+    redraw();
+    return true;
   }
 
   // --- Affichage/suppression d'un POI cliqué (réutilise #infra-panel) ---
@@ -242,25 +303,18 @@ export function initPoiSystem(deps: {
     }
     body.appendChild(dl);
 
-    const session = deps.getSession();
-    if (session) {
+    if (isAdmin()) {
       const delBtn = document.createElement("button");
       delBtn.type = "button";
-      delBtn.className = "btn-small";
+      delBtn.className = "btn-small edit-control";
       delBtn.style.marginTop = "10px";
       delBtn.textContent = "Supprimer ce point d'intérêt";
       delBtn.addEventListener("click", async () => {
-        if (!window.confirm("Supprimer ce point d'intérêt ?")) return;
         delBtn.disabled = true;
-        try {
-          const { error } = await supabase.from("map_features").delete().eq("id", poi.id);
-          if (error) throw error;
-          const idx = pois.findIndex((p) => p.id === poi.id);
-          if (idx !== -1) pois.splice(idx, 1);
-          redraw();
+        const ok = await deletePoi(poi);
+        if (ok) {
           panel.classList.remove("open");
-        } catch (err) {
-          console.error("Failed to delete POI:", err);
+        } else {
           delBtn.disabled = false;
           delBtn.textContent = "Échec de la suppression — réessayer";
         }
@@ -305,11 +359,11 @@ export function initPoiSystem(deps: {
   // --- Chargement initial -------------------------------------------------
   const ready = supabase
     .from("map_features")
-    .select("id, name, note, geometry, created_by")
+    .select("id, name, note, geometry, created_by, country_id")
     .eq("kind", "poi")
     .then(({ data, error }) => {
       if (error) {
-        console.error("Failed to load POIs (schema_v9.sql exécutée ?):", error);
+        console.error("Failed to load POIs (schema_v9.sql/schema_v13.sql exécutées ?):", error);
         return;
       }
       (data as MapFeatureRow[] | null)?.forEach((row) => {
@@ -320,10 +374,74 @@ export function initPoiSystem(deps: {
           lon: row.geometry.coordinates[0],
           lat: row.geometry.coordinates[1],
           created_by: row.created_by,
+          country_id: row.country_id ?? null,
         });
       });
       redraw();
     });
+
+  // --- Widget "Points d'intérêt" de la fiche pays (point 5, 2026-10-03) —
+  // même principe que renderFicheLinksWidget (src/links.ts) : liste les POI
+  // rattachés à ce pays (country_id === country.isoA3), cliquables (centre
+  // la carte dessus) et supprimables si admin, + bouton "+ Point d'intérêt"
+  // qui démarre le mode placement pour CE pays.
+  function renderFichePoiWidget(container: HTMLElement, country: CountryLike) {
+    function render() {
+      container.replaceChildren();
+      const label = document.createElement("label");
+      label.className = "field-label";
+      label.textContent = "Points d'intérêt";
+      container.appendChild(label);
+      const list = pois.filter((p) => p.country_id === country.isoA3);
+      if (list.length) {
+        const wrap = document.createElement("div");
+        wrap.className = "fiche-poi-list";
+        list.forEach((poi) => {
+          const row = document.createElement("div");
+          row.className = "fiche-poi-row";
+          const btn = document.createElement("button");
+          btn.type = "button";
+          btn.className = "fiche-poi-name";
+          btn.textContent = poi.name;
+          btn.title = "Centrer la carte sur ce point";
+          btn.addEventListener("click", () => {
+            deps.flyToLonLat([poi.lon, poi.lat], 7);
+            showPoi(poi);
+          });
+          row.appendChild(btn);
+          if (isAdmin()) {
+            const del = document.createElement("button");
+            del.type = "button";
+            del.className = "entry-del edit-control";
+            del.style.cssText = "position:static;opacity:1;";
+            del.innerHTML =
+              '<svg class="icon-svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/></svg>';
+            del.title = "Supprimer ce point d'intérêt";
+            del.addEventListener("click", async (e) => {
+              e.stopPropagation();
+              if (await deletePoi(poi)) render();
+            });
+            row.appendChild(del);
+          }
+          wrap.appendChild(row);
+        });
+        container.appendChild(wrap);
+      }
+      if (isAdmin()) {
+        const addBtn = document.createElement("button");
+        addBtn.type = "button";
+        addBtn.className = "btn-small edit-control";
+        addBtn.textContent = "+ Point d'intérêt";
+        addBtn.addEventListener("click", () => startPlacementForCountry(country.isoA3));
+        container.appendChild(addBtn);
+      }
+    }
+    render();
+    const idx = onPoiListChanged.push((countryId) => {
+      if (countryId === country.isoA3) render();
+    }) - 1;
+    void idx; // la fiche entière est reconstruite à chaque ouverture (voir dossier.ts openFiche) : pas besoin de désinscrire explicitement, les anciens callbacks ciblent un container détaché et deviennent inoffensifs.
+  }
 
   return {
     ready,
@@ -331,6 +449,8 @@ export function initPoiSystem(deps: {
     handleMapClick,
     isPlacementActive,
     exitPlacementMode,
+    startPlacementForCountry,
+    renderFichePoiWidget,
     setLayerVisible: (show: boolean) => {
       if (show) deps.gPoiLayer.style("display", null);
       else deps.gPoiLayer.style("display", "none");

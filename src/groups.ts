@@ -21,6 +21,7 @@
 import type { SupabaseClient, Session } from "@supabase/supabase-js";
 import * as d3 from "d3";
 import { frenchCountryName, flagSvgSpan } from "./countryNames";
+import { TRASH_ICON_SVG } from "./dossier";
 
 export type CountryLite = {
   isoA3: string;
@@ -102,7 +103,7 @@ export function initGroupsSystem(deps: {
       <h2>Groupes de pays</h2>
       <p class="muted">Cochez un groupe pour surligner ses pays membres sur la carte. Cliquez la flèche pour modifier son nom, sa couleur, sa catégorie et ses membres ; cliquez son nom pour ouvrir son dossier.</p>
       <div id="groups-list"></div>
-      <div class="groups-new">
+      <div class="groups-new edit-control">
         <input type="text" id="group-new-name" placeholder="Nom du groupe (ex. UE, OPEP...)">
         <input type="color" id="group-new-color" value="#e8b34a" title="Couleur du groupe">
         <select id="group-new-category"><option value="">— aucune catégorie —</option></select>
@@ -159,11 +160,13 @@ export function initGroupsSystem(deps: {
     if (e.key === "Escape" && mapAddModeGroupId) exitMapAddMode();
   });
 
-  // Retour de Martin (2026-10-01) : tout compte connecté peut éditer
-  // directement (plus de restriction admin-only ni "créateur seul" —
-  // voir supabase/schema_v8.sql pour le pendant côté policies RLS).
+  // Retour de Martin (2026-10-03, point 4a/4b) : seul un compte au rôle
+  // "admin" peut éditer (voir supabase/schema_v13.sql pour le pendant
+  // policies RLS), et même un admin n'édite plus si le mode lecture
+  // GLOBAL (point 4b, bouton en haut de la page) est actif — voir
+  // document.body.classList "read-only-mode", posée par main.ts.
   function isAdmin(): boolean {
-    return !!deps.getSession();
+    return deps.getProfile()?.role === "admin" && !document.body.classList.contains("read-only-mode");
   }
   function canModify(_row: { created_by: string | null }): boolean {
     return isAdmin();
@@ -434,21 +437,27 @@ export function initGroupsSystem(deps: {
       } else {
         chip.appendChild(document.createTextNode(iso3));
       }
-      const rm = document.createElement("button");
-      rm.type = "button";
-      rm.textContent = "×";
-      rm.title = "Retirer du groupe";
-      rm.addEventListener("click", () => toggleMember(groupId, iso3, false));
-      chip.appendChild(rm);
+      if (editable) {
+        const rm = document.createElement("button");
+        rm.type = "button";
+        rm.className = "edit-control";
+        rm.textContent = "×";
+        rm.title = "Retirer du groupe";
+        rm.addEventListener("click", () => toggleMember(groupId, iso3, false));
+        chip.appendChild(rm);
+      }
       chips.appendChild(chip);
     });
     container.appendChild(chips);
 
     // Mode "cliquer un pays sur la carte" — porté de #fiche-group-map-add
-    // (~1698, 8981-9011).
+    // (~1698, 8981-9011). Point 4a (2026-10-03) : n'existait pas gaté du
+    // tout — un visiteur non-admin pouvait ajouter des pays à un groupe.
+    // Rendu uniquement si `editable` (calculé plus haut à partir de
+    // canModify(gr)).
     const mapAddBtn = document.createElement("button");
     mapAddBtn.type = "button";
-    mapAddBtn.className = "btn-small" + (mapAddModeGroupId === groupId ? " active-mode" : "");
+    mapAddBtn.className = "btn-small edit-control" + (mapAddModeGroupId === groupId ? " active-mode" : "");
     mapAddBtn.style.marginBottom = "8px";
     mapAddBtn.textContent =
       mapAddModeGroupId === groupId ? "Terminé (cliquez des pays sur la carte)" : "\u{1F5FA} Ajouter pays sur la carte";
@@ -456,16 +465,17 @@ export function initGroupsSystem(deps: {
       if (mapAddModeGroupId === groupId) exitMapAddMode();
       else enterMapAddMode(groupId);
     });
-    container.appendChild(mapAddBtn);
+    if (editable) container.appendChild(mapAddBtn);
 
     const input = document.createElement("input");
     input.type = "text";
+    input.className = "edit-control";
     input.placeholder = "…ou rechercher un pays par nom";
     input.autocomplete = "off";
-    container.appendChild(input);
+    if (editable) container.appendChild(input);
     const results = document.createElement("div");
     results.id = "group-add-results-" + groupId;
-    container.appendChild(results);
+    if (editable) container.appendChild(results);
     input.addEventListener("input", () => {
       const q = normalize(input.value.trim());
       results.innerHTML = "";
@@ -549,8 +559,9 @@ export function initGroupsSystem(deps: {
     row.appendChild(toggle);
     if (canModify(gr)) {
       const del = document.createElement("button");
-      del.className = "group-del";
-      del.textContent = "×";
+      del.className = "group-del entry-del";
+      del.style.cssText = "position:static;opacity:1;";
+      del.innerHTML = TRASH_ICON_SVG;
       del.title = "Supprimer ce groupe";
       del.addEventListener("click", (e) => {
         e.stopPropagation();
@@ -624,7 +635,7 @@ export function initGroupsSystem(deps: {
 
   async function toggleMember(groupId: string, iso3: string, add: boolean) {
     const gr = groupDocs.get(groupId);
-    if (!gr) return;
+    if (!gr || !canModify(gr)) return;
     if (add) gr.members.add(iso3);
     else gr.members.delete(iso3);
     renderGroupsPanel();
@@ -668,6 +679,10 @@ export function initGroupsSystem(deps: {
     const session = deps.getSession();
     if (!session) {
       status.textContent = "Connectez-vous pour créer un groupe.";
+      return;
+    }
+    if (!isAdmin()) {
+      status.textContent = "Tu n'as pas les droits d'édition sur cet atlas.";
       return;
     }
     const color = colorInput.value || "#e8b34a";
@@ -736,15 +751,18 @@ export function initGroupsSystem(deps: {
       dot.style.background = gr.color || "#999";
       chip.appendChild(dot);
       chip.appendChild(document.createTextNode(gr.name || id));
-      const rm = document.createElement("button");
-      rm.type = "button";
-      rm.textContent = "×";
-      rm.title = "Retirer de ce groupe";
-      rm.addEventListener("click", () => {
-        toggleMember(id, country.isoA3, false);
-        renderFicheGroupsWidget(container, country);
-      });
-      chip.appendChild(rm);
+      if (canModify(gr)) {
+        const rm = document.createElement("button");
+        rm.type = "button";
+        rm.className = "edit-control";
+        rm.textContent = "×";
+        rm.title = "Retirer de ce groupe";
+        rm.addEventListener("click", () => {
+          toggleMember(id, country.isoA3, false);
+          renderFicheGroupsWidget(container, country);
+        });
+        chip.appendChild(rm);
+      }
       chipsWrap.appendChild(chip);
     });
     container.appendChild(chipsWrap);
@@ -752,8 +770,10 @@ export function initGroupsSystem(deps: {
     // Même traitement visuel que .dossier-cat-select (style.css) — select
     // natif mais thème sombre cohérent avec le reste de l'app (demande de
     // Martin : ce <select> "ajouter à un groupe" ressortait avec le chrome
-    // par défaut du navigateur).
-    select.className = "fiche-groups-select";
+    // par défaut du navigateur). Point 4a : visible seulement pour un admin
+    // (isAdmin() — pas de "groupe spécifique" ici puisque le select ajoute
+    // CE pays à un groupe EXISTANT, l'action concerne tous les groupes).
+    select.className = "fiche-groups-select edit-control";
     const placeholder = document.createElement("option");
     placeholder.value = "";
     placeholder.textContent = groupDocs.size ? "— ajouter à un groupe —" : "Aucun groupe créé pour l’instant";
@@ -809,6 +829,12 @@ export function initGroupsSystem(deps: {
       renderGroupsPanel();
     },
     closePanel: () => $("groups-panel").classList.remove("open"),
+    // Point 4b (2026-10-03) : rafraîchit le panneau groupes s'il est déjà
+    // ouvert quand le mode lecture global bascule (voir
+    // onReadOnlyModeChanged dans main.ts) — no-op sinon.
+    refreshForReadOnlyChange: () => {
+      if ($("groups-panel").classList.contains("open")) renderGroupsPanel();
+    },
     redrawHighlights: renderGroupHighlights,
     renderFicheGroups: renderFicheGroupsWidget,
     // Pour la recherche unifiée (src/search.ts) — porté de
