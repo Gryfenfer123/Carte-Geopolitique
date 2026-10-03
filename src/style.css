@@ -1751,6 +1751,18 @@ path.link-autre { stroke: var(--link-autre, #c9bfa9); }
   margin-bottom: 6px; display: flex; align-items: center; justify-content: center;
 }
 .gen-photo-preview img { width: 100%; height: 100%; object-fit: cover; display: block; }
+/* BUG (2026-10-03, signalé par Martin : "cliquer sur + Membre ne fait
+   rien") : #gen-member-panel hérite seulement de .panel.side-panel
+   (z-index 22, générique — voir #fiche-panel). Il s'affiche bien par-
+   dessus visuellement (son HTML vient après dans le DOM) mais reste
+   EN DESSOUS de #genealogy-view (z-index 10500, overlay plein écran qui
+   couvre tout le viewport) dans l'ordre d'empilement réel : tous les
+   clics sur ses champs (nom, dates, bouton Enregistrer...) atterrissent
+   en fait sur #genealogy-canvas-wrap juste en dessous (confirmé via
+   document.elementFromPoint), jamais sur le panneau — d'où l'impression
+   que rien ne se passe. Même classe de bug que .auth-panel (déjà réglé,
+   z-index 10600) et #readonly-toggle (10700), ici pour le panneau membre. */
+#gen-member-panel { z-index: 10700; }
 #gen-member-panel textarea { min-height: 70px; }
 #gen-m-relations { margin-top: 14px; border-top: 1px solid var(--surface-border); padding-top: 10px; }
 .gen-relation-row {
