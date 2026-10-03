@@ -749,6 +749,11 @@ export function initGroupsSystem(deps: {
     });
     container.appendChild(chipsWrap);
     const select = document.createElement("select");
+    // Même traitement visuel que .dossier-cat-select (style.css) — select
+    // natif mais thème sombre cohérent avec le reste de l'app (demande de
+    // Martin : ce <select> "ajouter à un groupe" ressortait avec le chrome
+    // par défaut du navigateur).
+    select.className = "fiche-groups-select";
     const placeholder = document.createElement("option");
     placeholder.value = "";
     placeholder.textContent = groupDocs.size ? "— ajouter à un groupe —" : "Aucun groupe créé pour l’instant";

@@ -163,7 +163,9 @@ const DEFAULT_ENCYCLOPEDIA_CATEGORIES: { name: string }[] = [
 // customAlert() dans l'artifact.
 // ---------------------------------------------------------------------------
 
-function customDialog(opts: {
+// Exportées pour réutilisation par src/genealogy.ts (mêmes boîtes de
+// dialogue que le reste du dossier, au lieu de dupliquer ce code).
+export function customDialog(opts: {
   message: string;
   showCancel?: boolean;
   showInput?: boolean;
@@ -216,10 +218,10 @@ function customDialog(opts: {
     else setTimeout(() => okBtn.focus(), 30);
   });
 }
-function customConfirm(message: string): Promise<boolean> {
+export function customConfirm(message: string): Promise<boolean> {
   return customDialog({ message, showCancel: true }) as Promise<boolean>;
 }
-function customPrompt(message: string, defaultValue?: string): Promise<string | null> {
+export function customPrompt(message: string, defaultValue?: string): Promise<string | null> {
   return customDialog({ message, showInput: true, defaultValue, showCancel: true }) as Promise<string | null>;
 }
 function customAlert(message: string): Promise<void> {
@@ -550,6 +552,12 @@ export function initFicheDossierSystem(deps: {
   // (~1730-1747, kind-country-only + kind-group-only).
   renderFicheLinks?: (container: HTMLElement, country: CountryRef) => void;
   onFicheClose?: () => void;
+  // Point d'extension pour src/genealogy.ts (arbre généalogique du
+  // dossier actuellement ouvert) — même principe que renderFicheGroups/
+  // renderFicheLinks ci-dessus : dossier.ts ignore tout de genealogy.ts,
+  // il se contente d'exposer le bouton et de relayer l'owner courant au
+  // clic (branché tardivement dans main.ts, cf. ficheDeps).
+  onOpenGenealogy?: (owner: DossierOwnerRef) => void;
 }) {
   const { supabase } = deps;
   loadCountryNameData();
@@ -583,6 +591,7 @@ export function initFicheDossierSystem(deps: {
         <button id="dossier-back" class="btn-small">&larr; Retour à la carte</button>
         <h1 id="dossier-title"><span id="dossier-title-flag" style="margin-right:8px;"></span><span id="dossier-title-text">Pays</span></h1>
         <div id="dossier-subtitle" class="muted">Dossier complet</div>
+        <button id="dossier-genealogy-btn" class="btn-small" style="margin-bottom:16px;">🌳 Généalogie</button>
 
         <div id="dossier-summary">
           <div id="dossier-summary-stats" class="muted"></div>
@@ -1661,7 +1670,18 @@ export function initFicheDossierSystem(deps: {
       }
       if (unsectioned.length || secs.length) container.appendChild(unWrap);
       registerSectionDropZone(unWrap, null);
-      secs.forEach((sec) => container.appendChild(buildSectionGroupEl(sec, filtered)));
+      // Sous-sections de même niveau (level-2) côte à côte dans une grille
+      // (.dossier-sections-grid, style.css) plutôt qu'empilées pleine
+      // largeur une par une — demande de Martin. Les enfants (level-3) ne
+      // sont pas concernés : ils restent ajoutés par buildSectionGroupEl
+      // comme descendants du <div> level-2 de leur parent, donc hors de
+      // cette grille qui ne reçoit que les sections de niveau 2.
+      if (secs.length) {
+        const secsGrid = document.createElement("div");
+        secsGrid.className = "dossier-sections-grid";
+        secs.forEach((sec) => secsGrid.appendChild(buildSectionGroupEl(sec, filtered)));
+        container.appendChild(secsGrid);
+      }
       return;
     }
     const cats = orderedCategories();
@@ -3170,6 +3190,9 @@ export function initFicheDossierSystem(deps: {
     $("dossier-view").classList.remove("open");
   }
   $("dossier-back").addEventListener("click", closeDossier);
+  $("dossier-genealogy-btn").addEventListener("click", () => {
+    if (currentOwner) deps.onOpenGenealogy?.(currentOwner);
+  });
 
   // -------------------------------------------------------------------------
   // Navigation directe depuis la recherche unifiée (src/search.ts) — porté de

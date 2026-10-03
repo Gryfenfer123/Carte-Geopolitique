@@ -5,7 +5,7 @@ import * as topojson from "topojson-client";
 import { supabase } from "./supabase";
 import type { Session } from "@supabase/supabase-js";
 import { createGeoBridge } from "./geobridge";
-import { initFicheDossierSystem, type CountryRef } from "./dossier";
+import { initFicheDossierSystem, type CountryRef, type DossierOwnerKind } from "./dossier";
 import { initGroupsSystem } from "./groups";
 import { initIndicatorsSystem, type SovFeatureLike } from "./indicators";
 import { initLinksSystem, type LinkEntityKind } from "./links";
@@ -14,6 +14,7 @@ import { initSearchSystem, normalizeSearch, type StaticSearchEntry } from "./sea
 import { frenchCountryName, loadCountryNameData } from "./countryNames";
 import { initPoiSystem } from "./poi";
 import { initCompareSystem, exportMapAsPng } from "./compareExport";
+import { initGenealogySystem } from "./genealogy";
 
 // ---------------------------------------------------------------------------
 // App shell
@@ -1623,6 +1624,52 @@ function getOwnerLabel(ownerType: string, ownerId: string): string | null {
   if (ownerType === "cable") return cables.find((c) => cableSlug(c) === ownerId)?.name || null;
   return null;
 }
+
+// Arbres généalogiques (src/genealogy.ts) — câblé ici (comme compareSystem
+// plus bas) : a besoin de getAllCountryRefs/groupsSystem/ficheDossier déjà
+// créés, et de getOwnerLabel (juste au-dessus) pour le badge "membre d'un
+// autre pays". openOwnerTree ferme implicitement l'arbre courant (ouvrir un
+// nouveau dossier via ficheDossier réinitialise #dossier-view) puis rouvre
+// l'arbre sur le nouvel owner — ficheDeps.onOpenGenealogy (assigné juste en
+// dessous) relie le bouton "🌳 Généalogie" de dossier.ts à ce module, même
+// schéma de référence tardive que ficheDeps.renderFicheGroups plus haut.
+const genealogySystem = initGenealogySystem({
+  supabase,
+  getSession: () => currentSession,
+  openAuthPanel: () => openAuthPanel(),
+  showBanner: (msg) => showTransientBanner(msg),
+  getOwnerLabel,
+  openOwnerTree: async (ownerType, ownerId) => {
+    if (ownerType === "country") {
+      const c = getAllCountryRefs().find((x) => x.isoA3 === ownerId);
+      if (!c) return;
+      await ficheDossier.openDossier(c);
+      await genealogySystem.openForOwner({
+        type: "country",
+        id: c.isoA3,
+        label: frenchCountryName(c.name),
+        categorySpace: "country",
+        flagSlug: c.slug,
+        iso2: c.iso2,
+      });
+    } else if (ownerType === "group") {
+      const g = groupsSystem.getGroupsList().find((x) => x.id === ownerId);
+      if (!g) return;
+      await ficheDossier.openGroupDossier(g.id, g.name, g.color);
+      await genealogySystem.openForOwner({ type: "group", id: g.id, label: g.name, categorySpace: "country", colorDot: g.color });
+    } else {
+      // Encyclopédie / mini-dossiers (port, détroit, pipeline, base, câble) :
+      // pas de navigation de dossier dédiée depuis ici, on rouvre juste
+      // l'arbre avec le même owner (cas limite, en pratique les relations
+      // transnationales concernent surtout des pays).
+      const label = getOwnerLabel(ownerType, ownerId) || ownerId;
+      await genealogySystem.openForOwner({ type: ownerType as DossierOwnerKind, id: ownerId, label, categorySpace: "country" });
+    }
+  },
+});
+ficheDeps.onOpenGenealogy = (owner) => {
+  void genealogySystem.openForOwner(owner);
+};
 
 initSearchSystem({
   supabase,
