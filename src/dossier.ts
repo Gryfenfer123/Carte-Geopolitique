@@ -850,27 +850,19 @@ export function initFicheDossierSystem(deps: {
   const categoryDocs = new Map<string, Category>();
   let currentCategorySpace: "country" | "encyclopedie" = "country";
   let currentSections: Section[] = [];
-  // Id de la section en cours de glisser-déposer (point 3bis, 2026-10-03) :
-  // nécessaire pour calculer la zone de dépôt (avant/après/dedans, voir
-  // sectionDropZone) PENDANT le dragover, où dataTransfer.getData() n'est
-  // pas lisible de façon fiable (restriction standard des navigateurs —
-  // seul dataTransfer.types l'est). Posée au dragstart de la ligne, vidée
-  // au dragend.
-  let draggingSectionId: string | null = null;
   let currentEntries: Entry[] = [];
   let activeCategory = "__all__";
-  // Pages "Sous-catégorie" / "Sous-sous-catégorie" (demande de Martin,
-  // 2026-10-03 : "ça doit être comme les catégories avec une nouvelle page
-  // qui s'ouvre quand on clique dessus... [la sous-sous-catégorie] doit
-  // AUSSI ouvrir une nouvelle page plein écran, et le dropdown n'apparaît
-  // qu'au niveau d'après") — activeSection = sous-catégorie (level-2)
-  // actuellement ouverte en plein écran, activeChildSection = sous-sous-
-  // catégorie (level-3) actuellement ouverte en plein écran. Les deux
-  // réutilisent #dossier-theme-view (même en-tête, même barre d'ajout
-  // d'entrée) : seul le contenu de #dossier-entries change selon la
-  // profondeur, voir renderDossierEntries().
-  let activeSection: string | null = null;
-  let activeChildSection: string | null = null;
+  // Pile de navigation "Sous-catégorie / sous-sous-catégorie / sous-sous-
+  // sous-catégorie / …" (demande de Martin, 2026-10-03, puis reprécisée le
+  // même jour : "je dois pouvoir rajouter des sous-sous-sous catégorie") —
+  // chaque niveau ouvre sa PROPRE page plein écran (toutes réutilisent
+  // #dossier-theme-view, même en-tête, même barre d'ajout d'entrée) ; seul
+  // le contenu de #dossier-entries change selon la profondeur, voir
+  // renderDossierEntries(). activeSectionPath contient les id de section du
+  // niveau 1 jusqu'au niveau actuellement ouvert (le dernier élément est la
+  // page affichée) — profondeur illimitée, dossier_sections le permet déjà
+  // nativement via parent_section_id.
+  let activeSectionPath: string[] = [];
   let editingEntryId: string | null = null;
   let editingSourcesDraft: SourceRef[] = [];
   let editingTagsDraft: string[] = [];
@@ -1028,9 +1020,6 @@ export function initFicheDossierSystem(deps: {
       image_position: (row.image_position as string) || "50% 50%",
     }));
   }
-  function canCreateChildSection(sec: Section): boolean {
-    return !sec.parent_section_id;
-  }
   async function addSection(name: string, categoryId: string, parentSectionId: string | null): Promise<string | null> {
     if (!currentOwner || !isAdmin()) return null;
     const session = deps.getSession();
@@ -1100,117 +1089,18 @@ export function initFicheDossierSystem(deps: {
       /* ignore */
     }
   }
-  // Glisser-déposer d'une sous-section (point 3, 2026-10-03) : dépose
-  // `draggedId` juste APRÈS `targetId` dans la liste de frères de ce
-  // dernier — ce qui réordonne (a) quand les deux partagent déjà le même
-  // parent_section_id, et déplace vers un autre parent (b) sinon (le
-  // nouveau parent de `draggedId` devient celui de `targetId`). Renumérote
-  // ensuite toute la liste de frères résultante en 0,1,2… et persiste
-  // position + parent_section_id de chacun.
-  function isSectionDescendantOf(candidateId: string, ancestorId: string): boolean {
-    let cur: Section | undefined = currentSections.find((s) => s.id === candidateId);
+  // Chemin complet (racine → feuille, bornes incluses) d'une section donnée,
+  // en remontant parent_section_id — sert à ouvrir directement la bonne
+  // page (profondeur N) depuis un id de section (revealSection/revealEntry)
+  // et à calculer le libellé de fil d'Ariane (renderCategoryHeading).
+  function sectionAncestryPath(sectionId: string): Section[] {
+    const chain: Section[] = [];
+    let cur: Section | undefined = currentSections.find((s) => s.id === sectionId);
     while (cur) {
-      if (cur.id === ancestorId) return true;
-      if (!cur.parent_section_id) return false;
-      cur = currentSections.find((s) => s.id === cur!.parent_section_id);
+      chain.unshift(cur);
+      cur = cur.parent_section_id ? currentSections.find((s) => s.id === cur!.parent_section_id) : undefined;
     }
-    return false;
-  }
-  // Point 3bis (2026-10-03, retour de Martin après coup : "quand je glisse
-  // une catégorie/sous-catégorie sur une autre, elle ne va pas dedans mais
-  // à côté") — AVANT ce correctif, déposer A sur B faisait toujours de A un
-  // FRÈRE de B (juste après lui dans la liste), jamais son enfant : il
-  // n'existait tout simplement aucun moyen d'imbriquer par glisser-déposer.
-  // Remplacé par un modèle à 3 zones sur la hauteur de la ligne cible
-  // (voir le dragover/drop de `row` plus bas, qui calcule la zone via
-  // e.clientY) : déposer sur le TIERS HAUT = avant B (frère) ; TIERS BAS =
-  // après B (frère) ; zone CENTRALE = dedans, B devient le parent de A —
-  // exactement le comportement demandé ("déposer SUR l'élément = imbriquer").
-  function canNestInto(draggedId: string, targetId: string): boolean {
-    if (draggedId === targetId) return false;
-    const dragged = currentSections.find((s) => s.id === draggedId);
-    const target = currentSections.find((s) => s.id === targetId);
-    if (!dragged || !target || !canModify(dragged)) return false;
-    if (isSectionDescendantOf(targetId, draggedId)) return false;
-    // Hiérarchie à 2 niveaux max (voir canCreateChildSection) : seule une
-    // section de niveau 1 (sans parent) peut recevoir des enfants, et une
-    // section qui a elle-même des enfants ne peut pas devenir enfant d'une
-    // autre (ses propres enfants se retrouveraient à un niveau 3 inexistant).
-    if (!canCreateChildSection(target)) return false;
-    const draggedHasChildren = currentSections.some((s) => s.parent_section_id === draggedId);
-    if (draggedHasChildren) return false;
-    return true;
-  }
-  async function nestSectionInto(draggedId: string, targetId: string) {
-    if (!canNestInto(draggedId, targetId)) return;
-    const dragged = currentSections.find((s) => s.id === draggedId)!;
-    const target = currentSections.find((s) => s.id === targetId)!;
-    dragged.parent_section_id = targetId;
-    dragged.category_id = target.category_id;
-    const siblings = currentSections
-      .filter((s) => s.id !== draggedId && s.category_id === target.category_id && s.parent_section_id === targetId)
-      .sort((a, b) => a.position - b.position);
-    siblings.push(dragged);
-    siblings.forEach((s, idx) => {
-      s.position = idx;
-    });
-    renderDossierEntries();
-    try {
-      await Promise.all(
-        siblings.map((s) =>
-          supabase.from("dossier_sections").update({ position: s.position, parent_section_id: s.parent_section_id, category_id: s.category_id }).eq("id", s.id)
-        )
-      );
-    } catch {
-      /* ignore */
-    }
-  }
-  async function moveSectionAdjacent(draggedId: string, targetId: string, where: "before" | "after") {
-    if (draggedId === targetId) return;
-    const dragged = currentSections.find((s) => s.id === draggedId);
-    const target = currentSections.find((s) => s.id === targetId);
-    if (!dragged || !target || !canModify(dragged)) return;
-    const newParentId = target.parent_section_id || null;
-    // Interdit silencieusement : se déposer sur l'un de ses propres
-    // descendants (boucle), ou devenir son propre parent.
-    if (newParentId === draggedId || isSectionDescendantOf(targetId, draggedId)) return;
-    // Une section qui a elle-même des enfants (niveau 2) ne peut pas
-    // devenir l'enfant d'une autre (niveau 3) — la hiérarchie du dossier
-    // n'a que 2 niveaux (voir canCreateChildSection) et ses propres
-    // enfants se retrouveraient orphelins d'un rendu à 3 niveaux.
-    const draggedHasChildren = currentSections.some((s) => s.parent_section_id === draggedId);
-    if (draggedHasChildren && newParentId) return;
-    dragged.parent_section_id = newParentId;
-    dragged.category_id = target.category_id;
-    const siblings = currentSections
-      .filter((s) => s.id !== draggedId && s.category_id === target.category_id && (s.parent_section_id || null) === (newParentId || null))
-      .sort((a, b) => a.position - b.position);
-    const targetIdx = siblings.findIndex((s) => s.id === targetId);
-    siblings.splice(where === "after" ? targetIdx + 1 : targetIdx, 0, dragged);
-    siblings.forEach((s, idx) => {
-      s.position = idx;
-    });
-    renderDossierEntries();
-    try {
-      await Promise.all(
-        siblings.map((s) =>
-          supabase.from("dossier_sections").update({ position: s.position, parent_section_id: s.parent_section_id, category_id: s.category_id }).eq("id", s.id)
-        )
-      );
-    } catch {
-      /* ignore */
-    }
-  }
-  // Détermine la zone de dépôt (tiers haut/bas = réordonner avant/après ;
-  // centre = imbriquer dedans, seulement si canNestInto le permet — sinon
-  // la zone centrale se comporte comme "après", pour qu'il y ait toujours
-  // une action valide quel que soit l'endroit où l'on relâche.
-  function sectionDropZone(e: DragEvent, row: HTMLElement, draggedId: string, targetId: string): "before" | "after" | "inside" {
-    const rect = row.getBoundingClientRect();
-    const ratio = (e.clientY - rect.top) / rect.height;
-    if (ratio < 0.3) return "before";
-    if (ratio > 0.7) return "after";
-    return canNestInto(draggedId, targetId) ? "inside" : "after";
+    return chain;
   }
   async function moveSection(id: string, dir: 1 | -1) {
     const target = currentSections.find((s) => s.id === id);
@@ -1233,24 +1123,6 @@ export function initFicheDossierSystem(deps: {
     } catch {
       /* ignore */
     }
-  }
-  async function toggleSectionCollapsed(sec: Section) {
-    sec.collapsed = !sec.collapsed;
-    renderDossierEntries();
-    try {
-      await supabase.from("dossier_sections").update({ collapsed: sec.collapsed }).eq("id", sec.id);
-    } catch {
-      /* ignore */
-    }
-  }
-  async function addChildSection(parentId: string) {
-    const name = ((await customPrompt("Nom de la nouvelle sous-sous-catégorie :")) || "").trim();
-    if (!name) return;
-    const parent = currentSections.find((s) => s.id === parentId);
-    if (!parent || !canCreateChildSection(parent)) return;
-    await addSection(name, parent.category_id, parentId);
-    populateSectionSelects();
-    renderDossierEntries();
   }
 
   // -------------------------------------------------------------------------
@@ -1744,19 +1616,37 @@ export function initFicheDossierSystem(deps: {
     });
   }
 
-  // Nombre d'entrées affiché sur une carte "sous-catégorie"/"sous-sous-
-  // catégorie" (demande de Martin : les cartes gardent nom + méta, jamais
-  // d'aperçu de texte) — pour une sous-catégorie (level-2), compte aussi
-  // les entrées de ses sous-sous-catégories (level-3), pour donner une
-  // vraie idée du contenu avant d'y entrer.
+  // Tous les id de sections descendantes (enfants, petits-enfants, …) d'une
+  // section donnée — profondeur illimitée (demande de Martin, 2026-10-03 :
+  // "je dois pouvoir rajouter des sous-sous-sous catégorie").
+  function allDescendantSectionIds(sectionId: string): string[] {
+    const direct = currentSections.filter((s) => s.parent_section_id === sectionId).map((s) => s.id);
+    return direct.concat(direct.flatMap((id) => allDescendantSectionIds(id)));
+  }
+  // Nombre d'entrées affiché sur une carte "sous-catégorie" (quel que soit
+  // son niveau) — demande de Martin : les cartes gardent nom + méta, jamais
+  // d'aperçu de texte ; compte aussi les entrées de TOUTES ses sous-
+  // catégories descendantes, pour donner une vraie idée du contenu avant
+  // d'y entrer.
   function sectionEntryCount(sec: Section, allEntries: Entry[]): number {
-    const childIds = currentSections.filter((s) => s.parent_section_id === sec.id).map((s) => s.id);
-    return allEntries.filter((e) => e.section_id === sec.id || (e.section_id && childIds.includes(e.section_id))).length;
+    const descendantIds = allDescendantSectionIds(sec.id);
+    return allEntries.filter((e) => e.section_id === sec.id || (e.section_id && descendantIds.includes(e.section_id))).length;
+  }
+  // Libellé du niveau de section qui serait créé à la profondeur `depth`
+  // (0 = à la racine de la catégorie, crée une "Sous-catégorie" ; 1 = à
+  // l'intérieur d'une sous-catégorie, crée une "Sous-sous-catégorie" ; etc.)
+  // — demande de Martin, 2026-10-03 : "je dois pouvoir rajouter des sous-
+  // sous-sous catégorie (ex : Pépin le Bref)", donc plus de plafond à 2
+  // niveaux ; au-delà des libellés usuels on retombe sur un libellé générique
+  // plutôt que de planter.
+  const SECTION_LEVEL_LABELS = ["Sous-catégorie", "Sous-sous-catégorie", "Sous-sous-sous-catégorie"];
+  function sectionLevelLabel(depth: number): string {
+    return SECTION_LEVEL_LABELS[depth] || "Sous-catégorie (niveau " + (depth + 1) + ")";
   }
 
-  // Carte "sous-catégorie"/"sous-sous-catégorie" cliquable qui ouvre une
-  // NOUVELLE PAGE plein écran (showSectionView/showChildSectionView) au
-  // lieu de dérouler son contenu sur place (demande de Martin, 2026-10-03
+  // Carte "sous-catégorie" (n'importe quel niveau) cliquable qui ouvre une
+  // NOUVELLE PAGE plein écran (openSectionPage) au lieu de dérouler son
+  // contenu sur place (demande de Martin, 2026-10-03
   // : "ça doit être comme les catégories avec une nouvelle page qui
   // s'ouvre quand on clique dessus, et pas un petit menu déroulant") —
   // même gabarit visuel que buildSummaryCard (bannière + nom + méta, sans
@@ -1839,196 +1729,15 @@ export function initFicheDossierSystem(deps: {
     }
     card.appendChild(body);
     card.addEventListener("click", onOpen);
+    // Glisser une entrée sur la carte la classe directement dans cette
+    // sous-catégorie, sans avoir à l'ouvrir d'abord (demande de Martin,
+    // 2026-10-03 : "je dois pouvoir le glisser dans une catégorie, une
+    // sous catégorie, ou n'importe"). Valable à n'importe quelle
+    // profondeur, buildSectionCard étant réutilisé à tous les niveaux.
+    registerSectionDropZone(card, sec.id);
     return card;
   }
 
-  function buildSectionGroupEl(sec: Section, allFiltered: Entry[]): HTMLElement {
-    const entries = allFiltered.filter((e) => e.section_id === sec.id);
-    const level = sec.parent_section_id ? 3 : 2;
-    const group = document.createElement("div");
-    group.className = "dossier-section-group level-" + level + (sec.collapsed ? " collapsed" : "");
-    // data-section-id : cible du défilement de la recherche unifiée
-    // (src/search.ts, revealSection) — identique au sélecteur
-    // `.dossier-section-group[data-section-id="…"]` de l'artifact source.
-    group.dataset.sectionId = sec.id;
-
-    // Glisser-déposer de sous-sections (point 2, fix 2026-10-03) : la zone
-    // de dépôt valide est UNIQUEMENT le bandeau-titre (`row` ci-dessous, pas
-    // tout le `group`). `group` contient aussi, affiché juste en dessous,
-    // les sous-sous-sections (niveau 3) rattachées à cette section, chacune
-    // avec SA PROPRE zone de dépôt (son propre `group`/`row`,
-    // stopPropagation() inclus) — déposer sur TOUT le bloc `group` rendait
-    // donc très facile de toucher en réalité la zone de l'ENFANT plutôt que
-    // celle du PARENT, avec un résultat non voulu dans les deux cas. `row`
-    // n'est JAMAIS un ancêtre DOM d'un enfant imbriqué (il ne contient que
-    // le caret/nom/compteur), donc déposer sur le bandeau d'une section
-    // cible précisément CETTE section, jamais un de ses enfants rendus en
-    // dessous. Les listeners dragstart/dragend de `row` (poignée de
-    // glisser, plus bas) restent inchangés ; ceux-ci s'y ajoutent à côté.
-
-    const banner = document.createElement("div");
-    banner.className = "dossier-section-banner dsc-banner";
-    banner.style.backgroundImage = categoryBannerGradient(sec.id);
-    if (sec.cover_image_url) {
-      banner.classList.add("has-image");
-      banner.style.backgroundImage = "url('" + sec.cover_image_url + "')";
-      banner.style.backgroundSize = "cover";
-      banner.style.backgroundPosition = sec.image_position || "50% 50%";
-    }
-    const pattern = document.createElement("div");
-    pattern.className = "dsc-banner-pattern";
-    banner.appendChild(pattern);
-    const mkIconBtn = (cls: string, title: string, innerHTML: string, fn: () => void) => {
-      const b = document.createElement("button");
-      b.type = "button";
-      b.className = cls;
-      b.title = title;
-      b.innerHTML = innerHTML;
-      b.addEventListener("click", (e) => {
-        e.stopPropagation();
-        fn();
-      });
-      return b;
-    };
-    if (canModify(sec)) {
-      const actions = document.createElement("div");
-      actions.className = "dsc-banner-actions";
-      actions.appendChild(mkIconBtn("dsc-menu-btn", "Renommer", "✎", () => renameSection(sec.id)));
-      actions.appendChild(mkIconBtn("dsc-image-btn", "Changer l'image", CAMERA_ICON_SVG, () => startSectionImageUpload(sec.id)));
-      actions.appendChild(
-        mkIconBtn(
-          "dsc-del-btn",
-          "Supprimer la sous-section",
-          TRASH_ICON_SVG,
-          () => deleteSection(sec.id)
-        )
-      );
-      banner.appendChild(actions);
-    }
-    attachBannerDragReframe(
-      banner,
-      () => sec.cover_image_url,
-      () => canModify(sec),
-      (pos) => saveSectionImagePosition(sec, pos)
-    );
-    group.appendChild(banner);
-
-    const row = document.createElement("div");
-    row.className = "dossier-section-row";
-    const caret = document.createElement("span");
-    caret.className = "sec-caret";
-    caret.textContent = "▾";
-    const name = document.createElement("span");
-    name.className = "sec-name";
-    name.textContent = sec.name;
-    const count = document.createElement("span");
-    count.className = "sec-count";
-    count.textContent = "(" + entries.length + ")";
-    row.appendChild(caret);
-    row.appendChild(name);
-    row.appendChild(count);
-    row.addEventListener("click", () => toggleSectionCollapsed(sec));
-    if (canModify(sec)) {
-      row.draggable = true;
-      row.title = "Glisser pour réordonner ou déplacer vers une autre sous-section";
-      row.addEventListener("dragstart", (e) => {
-        e.dataTransfer!.setData("text/dossier-section-id", sec.id);
-        e.dataTransfer!.effectAllowed = "move";
-        draggingSectionId = sec.id;
-        group.classList.add("dragging-section");
-      });
-      row.addEventListener("dragend", () => {
-        draggingSectionId = null;
-        group.classList.remove("dragging-section");
-      });
-    }
-    // Zone de dépôt restreinte au bandeau-titre (voir commentaire plus haut)
-    // — ajoutée à CÔTÉ des listeners dragstart/dragend ci-dessus, pas à leur
-    // place. Pas de garde canModify(sec) ici : comme avant le fix, ce sont
-    // nestSectionInto()/moveSectionAdjacent() qui vérifient les droits sur
-    // la section DÉPLACÉE ; row doit rester une cible de dépôt valide même
-    // si la section cible elle-même n'est pas modifiable par l'utilisateur
-    // courant.
-    //
-    // Modèle à 3 zones (point 3bis, 2026-10-03, cf. commentaire sur
-    // sectionDropZone) : le tiers haut/bas de la ligne réordonne avant/
-    // après la cible (frères), le tiers central imbrique dedans (la cible
-    // devient le parent). Indicateurs visuels distincts pour chaque zone
-    // (.drop-zone-before/-after/-inside, style.css) pour que ce soit clair
-    // en glissant, pas seulement au relâcher.
-    const clearDropIndicators = () => {
-      row.classList.remove("drop-zone-before", "drop-zone-after", "drop-zone-inside");
-    };
-    row.addEventListener("dragover", (e) => {
-      if (!e.dataTransfer!.types.includes("text/dossier-section-id")) return;
-      e.preventDefault();
-      e.stopPropagation();
-      e.dataTransfer!.dropEffect = "move";
-      const zone = draggingSectionId ? sectionDropZone(e, row, draggingSectionId, sec.id) : "after";
-      clearDropIndicators();
-      row.classList.add("drop-zone-" + zone);
-    });
-    row.addEventListener("dragleave", () => clearDropIndicators());
-    row.addEventListener("drop", (e) => {
-      const draggedId = e.dataTransfer!.getData("text/dossier-section-id");
-      const zone = draggedId ? sectionDropZone(e, row, draggedId, sec.id) : "after";
-      clearDropIndicators();
-      if (!draggedId) return;
-      e.preventDefault();
-      e.stopPropagation();
-      if (zone === "inside") void nestSectionInto(draggedId, sec.id);
-      else void moveSectionAdjacent(draggedId, sec.id, zone);
-    });
-    group.appendChild(row);
-
-    // Point 4a (2026-10-03) : ces boutons (créer une sous-sous-catégorie,
-    // réordonner) n'étaient PAS gatés du tout auparavant — n'importe quel
-    // visiteur pouvait réordonner les sous-sections. Rendus uniquement si
-    // canModify(sec) (donc jamais en mode lecture global, voir point 4b).
-    if (canModify(sec)) {
-      const actions = document.createElement("div");
-      actions.className = "dossier-section-actions edit-control";
-      const mkBtn = (label: string, title: string, fn: () => void) => {
-        const b = document.createElement("button");
-        b.type = "button";
-        b.textContent = label;
-        b.title = title;
-        b.addEventListener("click", (e) => {
-          e.stopPropagation();
-          fn();
-        });
-        return b;
-      };
-      if (canCreateChildSection(sec)) {
-        actions.appendChild(mkBtn("+", "Créer une sous-sous-catégorie dans « " + sec.name + " »", () => addChildSection(sec.id)));
-      }
-      actions.appendChild(mkBtn("↑", "Monter", () => moveSection(sec.id, -1)));
-      actions.appendChild(mkBtn("↓", "Descendre", () => moveSection(sec.id, 1)));
-      group.appendChild(actions);
-    }
-
-    const body = document.createElement("div");
-    body.className = "dossier-section-body dossier-drop-zone";
-    if (!entries.length && level === 2 && !currentSections.some((s) => s.parent_section_id === sec.id)) {
-      const p = document.createElement("p");
-      p.className = "muted";
-      p.style.margin = "0";
-      p.textContent = "Aucune entrée dans cette sous-section pour le moment. Glissez-y une entrée pour la classer ici.";
-      body.appendChild(p);
-    } else {
-      entries.forEach((entry) => body.appendChild(buildEntryEl(entry)));
-    }
-    group.appendChild(body);
-    registerSectionDropZone(body, sec.id);
-    registerSectionDropZone(row, sec.id);
-    if (level === 2) {
-      const children = currentSections
-        .filter((s) => s.parent_section_id === sec.id)
-        .sort((a, b) => a.position - b.position);
-      children.forEach((child) => group.appendChild(buildSectionGroupEl(child, allFiltered)));
-    }
-    return group;
-  }
 
   function renderDossierEntries() {
     const container = $("dossier-entries");
@@ -2043,90 +1752,61 @@ export function initFicheDossierSystem(deps: {
       const filtered = entries.filter((e) => (e.category_id || null) === activeCategory);
       const allSecsInCat = currentSections.filter((s) => s.category_id === activeCategory);
 
-      // Page 3 — sous-sous-catégorie ouverte en plein écran (demande de
-      // Martin, 2026-10-03, confirmée explicitement : "sous-sous-catégorie
-      // doit AUSSI ouvrir une nouvelle page plein écran"). Son contenu
-      // (les entrées) s'affiche via le menu déroulant existant
-      // (buildSectionGroupEl, caret de #toggleSectionCollapsed) — demande
-      // de Martin : "le dropdown n'apparaît qu'au niveau d'après".
-      if (activeChildSection) {
-        const child = allSecsInCat.find((s) => s.id === activeChildSection);
-        if (!child) {
-          container.innerHTML = '<p class="muted">Sous-sous-catégorie introuvable.</p>';
-          return;
-        }
-        container.appendChild(buildSectionGroupEl(child, filtered));
+      // Page générique, profondeur N (demande de Martin, 2026-10-03,
+      // confirmée explicitement : "sous-sous-catégorie doit AUSSI ouvrir
+      // une nouvelle page plein écran", puis reprécisée le même jour :
+      // "je dois pouvoir rajouter des sous-sous-sous catégorie" — donc
+      // plus de plafond à 2 niveaux. Chaque page affiche SES PROPRES
+      // entrées directement (PAS enveloppées dans une carte/bandeau
+      // affichant à nouveau le nom de la page courante — demande de
+      // Martin : "Test 2 devrait juste être seul à cet endroit car je
+      // suis DEJA dans la sous-sous-catégorie") + une grille de cartes
+      // pour descendre d'un niveau de plus.
+      const deepestId = activeSectionPath[activeSectionPath.length - 1] || null;
+      const deepest = deepestId ? allSecsInCat.find((s) => s.id === deepestId) : null;
+      if (deepestId && !deepest) {
+        container.innerHTML = '<p class="muted">Sous-catégorie introuvable.</p>';
         return;
       }
-
-      // Page 2 — sous-catégorie ouverte en plein écran : ses propres
-      // entrées (non classées dans une de ses sous-sous-catégories) +
-      // une grille de cartes "sous-sous-catégorie" (3 colonnes max,
-      // .dossier-sections-grid), chacune ouvrant la page 3 au clic.
-      if (activeSection) {
-        const sec = allSecsInCat.find((s) => s.id === activeSection);
-        if (!sec) {
-          container.innerHTML = '<p class="muted">Sous-catégorie introuvable.</p>';
-          return;
-        }
-        const children = allSecsInCat.filter((s) => s.parent_section_id === sec.id).sort((a, b) => a.position - b.position);
-        const directEntries = filtered.filter((e) => e.section_id === sec.id);
-        if (!directEntries.length && !children.length) {
-          container.innerHTML = '<p class="muted">Aucune entrée dans cette sous-catégorie pour le moment.</p>';
-          return;
-        }
-        if (directEntries.length) {
-          const unWrap = document.createElement("div");
-          unWrap.className = "dossier-unsectioned dossier-drop-zone";
-          directEntries.forEach((entry) => unWrap.appendChild(buildEntryEl(entry)));
-          container.appendChild(unWrap);
-          registerSectionDropZone(unWrap, sec.id);
-        }
-        if (children.length) {
-          const grid = document.createElement("div");
-          grid.className = "dossier-sections-grid";
-          children.forEach((child) => grid.appendChild(buildSectionCard(child, filtered, () => showChildSectionView(child.id))));
-          container.appendChild(grid);
-        }
+      const children = allSecsInCat.filter((s) => (s.parent_section_id || null) === deepestId).sort((a, b) => a.position - b.position);
+      const directEntries = deepestId
+        ? filtered.filter((e) => e.section_id === deepestId)
+        : filtered.filter((e) => !e.section_id || !allSecsInCat.some((s) => s.id === e.section_id));
+      if (!directEntries.length && !children.length) {
+        container.innerHTML = deepestId
+          ? '<p class="muted">Aucune entrée dans cette sous-catégorie pour le moment.</p>'
+          : '<p class="muted">Aucune entrée dans cette catégorie pour le moment.</p>';
         return;
       }
-
-      // Page 1 — catégorie ouverte (déjà existant) : ses entrées non
-      // classées + une grille de cartes "sous-catégorie" (demande de
-      // Martin : "ça doit être comme les catégories avec une nouvelle
-      // page qui s'ouvre quand on clique dessus, et pas un petit menu
-      // déroulant"), chacune ouvrant la page 2 au clic.
-      const secs = allSecsInCat.filter((s) => !s.parent_section_id).sort((a, b) => a.position - b.position);
-      if (!filtered.length && !allSecsInCat.length) {
-        container.innerHTML = '<p class="muted">Aucune entrée dans cette catégorie pour le moment.</p>';
-        return;
-      }
-      const unsectioned = filtered.filter((e) => !e.section_id || !allSecsInCat.some((s) => s.id === e.section_id));
-      const unWrap = document.createElement("div");
-      unWrap.className = "dossier-unsectioned dossier-drop-zone";
-      if (unsectioned.length) {
-        unsectioned.forEach((entry) => unWrap.appendChild(buildEntryEl(entry)));
-      } else if (secs.length && isAdmin()) {
+      if (directEntries.length) {
+        const unWrap = document.createElement("div");
+        unWrap.className = "dossier-unsectioned dossier-drop-zone";
+        directEntries.forEach((entry) => unWrap.appendChild(buildEntryEl(entry)));
+        container.appendChild(unWrap);
+        registerSectionDropZone(unWrap, deepestId);
+      } else if (children.length && isAdmin()) {
         // Visible seulement si on peut effectivement glisser une entrée
         // (isAdmin()) : en mode lecture / pour un non-admin, les entrées
         // ne sont plus draggable (buildEntryEl), donc ce texte d'aide au
         // glisser-déposer n'a plus de sens et doit disparaître lui aussi.
+        const unWrap = document.createElement("div");
+        unWrap.className = "dossier-unsectioned dossier-drop-zone";
         const hint = document.createElement("p");
         hint.className = "muted dossier-drop-hint edit-control";
         hint.textContent = "Déposez ici une entrée pour la sortir des sous-catégories.";
         unWrap.appendChild(hint);
+        container.appendChild(unWrap);
+        registerSectionDropZone(unWrap, deepestId);
       }
-      if (unsectioned.length || secs.length) container.appendChild(unWrap);
-      registerSectionDropZone(unWrap, null);
-      // Sous-catégories (level-2) en grille de cartes plein écran
-      // (.dossier-sections-grid, style.css) — chaque carte ouvre désormais
-      // sa PROPRE page (showSectionView) plutôt que de dérouler son
-      // contenu ici (ancien buildSectionGroupEl direct).
-      if (secs.length) {
-        const secsGrid = document.createElement("div");
-        secsGrid.className = "dossier-sections-grid";
-        secs.forEach((sec) => secsGrid.appendChild(buildSectionCard(sec, filtered, () => showSectionView(sec.id))));
-        container.appendChild(secsGrid);
+      // Sous-catégories du niveau suivant, en grille de cartes plein écran
+      // (.dossier-sections-grid, style.css) — chaque carte ouvre sa PROPRE
+      // page au clic, et peut aussi recevoir une entrée glissée dessus
+      // (voir registerSectionDropZone dans buildSectionCard).
+      if (children.length) {
+        const grid = document.createElement("div");
+        grid.className = "dossier-sections-grid";
+        children.forEach((child) => grid.appendChild(buildSectionCard(child, filtered, () => openSectionPage(child.id))));
+        container.appendChild(grid);
       }
       return;
     }
@@ -2175,27 +1855,24 @@ export function initFicheDossierSystem(deps: {
     } else {
       const cat = categoryDocs.get(activeCategory);
       const catName = cat ? cat.name : "";
-      const child = activeChildSection ? currentSections.find((s) => s.id === activeChildSection) : null;
-      const sec = activeSection ? currentSections.find((s) => s.id === activeSection) : null;
-      if (child) {
-        const parent = currentSections.find((s) => s.id === child.parent_section_id);
-        heading.textContent = catName + (parent ? " › " + parent.name : "") + " › " + child.name;
+      const path = activeSectionPath
+        .map((id) => currentSections.find((s) => s.id === id))
+        .filter((s): s is Section => !!s);
+      if (path.length) {
+        heading.textContent = catName + " › " + path.map((s) => s.name).join(" › ");
+        const parent = path.length > 1 ? path[path.length - 2] : null;
         backBtn.textContent = "← " + (parent ? parent.name : catName);
-      } else if (sec) {
-        heading.textContent = catName + " › " + sec.name;
-        backBtn.textContent = "← " + catName;
       } else {
         heading.textContent = catName;
         backBtn.textContent = "← Sommaire";
       }
     }
-    // Barre "+ Sous-section/sous-sous-section" : masquée tout en haut
-    // ("Toutes les entrées") ET sur la page 3 (sous-sous-catégorie, pas de
-    // niveau 4 — demande de Martin : hiérarchie à 2 niveaux de sections).
-    $("dossier-section-bar").style.display = activeCategory !== "__all__" && !activeChildSection ? "" : "none";
-    ($("dossier-add-section-btn") as HTMLButtonElement).textContent = activeSection
-      ? "+ Sous-sous-catégorie dans cet onglet"
-      : "+ Sous-catégorie dans cet onglet";
+    // Barre "+ Sous-catégorie" : masquée seulement tout en haut ("Toutes les
+    // entrées") — demande de Martin, 2026-10-03 : "je dois pouvoir rajouter
+    // des sous-sous-sous catégorie", donc plus de plafond de profondeur
+    // (voir sectionLevelLabel, qui donne le libellé du niveau suivant).
+    $("dossier-section-bar").style.display = activeCategory !== "__all__" ? "" : "none";
+    ($("dossier-add-section-btn") as HTMLButtonElement).textContent = "+ " + sectionLevelLabel(activeSectionPath.length) + " dans cet onglet";
     updateHemicycleButtonVisibility();
   }
 
@@ -2342,13 +2019,25 @@ export function initFicheDossierSystem(deps: {
     }
   }
 
+  // Synchronise le select "nouvelle entrée → sous-catégorie" (barre
+  // d'ajout) sur la page actuellement ouverte — corrige le bug signalé par
+  // Martin, 2026-10-03 : "quand je suis dans une sous sous catégorie et je
+  // créer un texte le texte apparait dans la catégorie et pas dans la sous
+  // sous [...]". Avant ce correctif, ce select n'était resynchronisé qu'à
+  // l'entrée dans la catégorie (showThemeView), jamais en descendant d'un
+  // niveau de plus — une nouvelle entrée retombait donc toujours au niveau
+  // le plus haut tant qu'on n'avait pas choisi la sous-catégorie à la main.
+  function syncEntrySectionSelectToCurrentPage() {
+    populateSectionSelects();
+    const deepest = activeSectionPath[activeSectionPath.length - 1] || "";
+    ($("dossier-entry-section") as HTMLSelectElement).value = deepest;
+  }
   function showDossierSummary() {
     $("dossier-entry-read-view").style.display = "none";
     $("dossier-summary").style.display = "";
     $("dossier-theme-view").style.display = "none";
     $("dossier-inner").classList.add("dossier-inner-wide");
-    activeSection = null;
-    activeChildSection = null;
+    activeSectionPath = [];
     renderDossierSummary();
   }
   function showThemeView(catId: string) {
@@ -2357,46 +2046,64 @@ export function initFicheDossierSystem(deps: {
     $("dossier-theme-view").style.display = "";
     $("dossier-inner").classList.remove("dossier-inner-wide");
     activeCategory = catId || "__all__";
-    activeSection = null;
-    activeChildSection = null;
+    activeSectionPath = [];
     populateCategorySelects();
     renderCategoryHeading();
     renderDossierEntries();
   }
-  // Page 2 (sous-catégorie) — demande de Martin, 2026-10-03 : clic sur une
-  // sous-catégorie ouvre une nouvelle page plutôt que de dérouler son
-  // contenu sur la page catégorie.
-  function showSectionView(sectionId: string) {
-    activeSection = sectionId;
-    activeChildSection = null;
+  // Ouvre la page plein écran d'une sous-catégorie, quel que soit son
+  // niveau de profondeur (demande de Martin, 2026-10-03, confirmée
+  // explicitement pour la 3e page, puis reprécisée le même jour pour une 4e
+  // : "je dois pouvoir rajouter des sous-sous-sous catégorie").
+  function openSectionPage(sectionId: string) {
+    activeSectionPath.push(sectionId);
     renderCategoryHeading();
+    syncEntrySectionSelectToCurrentPage();
     renderDossierEntries();
   }
-  // Page 3 (sous-sous-catégorie) — demande de Martin, confirmée
-  // explicitement : elle AUSSI ouvre sa propre page plein écran.
-  function showChildSectionView(childId: string) {
-    activeChildSection = childId;
+  // Ouvre directement la page d'un chemin de sections complet (racine →
+  // feuille) — utilisé par revealEntry/revealSection (recherche unifiée).
+  function openSectionPath(path: string[]) {
+    activeSectionPath = path.slice();
     renderCategoryHeading();
+    syncEntrySectionSelectToCurrentPage();
     renderDossierEntries();
   }
-  // Bouton "← Retour" : remonte d'un niveau à la fois (sous-sous-catégorie
-  // → sous-catégorie → catégorie → sommaire), jamais directement au
+  // Bouton "← Retour" : remonte d'un niveau à la fois, jamais directement au
   // sommaire depuis une page profonde.
   $("dossier-summary-back").addEventListener("click", () => {
-    if (activeChildSection) {
-      activeChildSection = null;
+    if (activeSectionPath.length) {
+      activeSectionPath.pop();
       renderCategoryHeading();
-      renderDossierEntries();
-      return;
-    }
-    if (activeSection) {
-      activeSection = null;
-      renderCategoryHeading();
+      syncEntrySectionSelectToCurrentPage();
       renderDossierEntries();
       return;
     }
     showDossierSummary();
   });
+  // Glisser une entrée sur la flèche "← Retour" la remonte d'un niveau de
+  // section (demande de Martin, 2026-10-03 : "pour le faire revenir à la
+  // catégorie d'avant, il faut la possibilité de le glisser sur la flèche
+  // retour en haut, et ça le mettra automatiquement à l'étape précédente").
+  {
+    const backBtn = $("dossier-summary-back");
+    backBtn.addEventListener("dragover", (e) => {
+      if (!e.dataTransfer!.types.includes("text/dossier-entry-id")) return;
+      if (activeCategory === "__all__" || !activeSectionPath.length) return;
+      e.preventDefault();
+      e.dataTransfer!.dropEffect = "move";
+      backBtn.classList.add("drop-target-active");
+    });
+    backBtn.addEventListener("dragleave", () => backBtn.classList.remove("drop-target-active"));
+    backBtn.addEventListener("drop", (e) => {
+      const entryId = e.dataTransfer!.getData("text/dossier-entry-id");
+      backBtn.classList.remove("drop-target-active");
+      if (!entryId || activeCategory === "__all__" || !activeSectionPath.length) return;
+      e.preventDefault();
+      const upId = activeSectionPath.length >= 2 ? activeSectionPath[activeSectionPath.length - 2] : null;
+      updateEntry(entryId, { section_id: upId });
+    });
+  }
 
   // -------------------------------------------------------------------------
   // Vue de lecture d'une entrée de texte
@@ -2541,24 +2248,30 @@ export function initFicheDossierSystem(deps: {
       const catId = catSel.value;
       const prev = secSel.value;
       const secs = currentSections.filter((s) => s.category_id === catId);
-      const top = secs.filter((s) => !s.parent_section_id).sort((a, b) => a.position - b.position);
-      const ordered: Section[] = [];
-      top.forEach((s) => {
-        ordered.push(s);
+      // Liste à plat, profondeur illimitée (demande de Martin, 2026-10-03 :
+      // "je dois pouvoir rajouter des sous-sous-sous catégorie"), indentée
+      // par "— " répété une fois par niveau pour rester lisible dans un
+      // simple <select>.
+      const ordered: { sec: Section; depth: number }[] = [];
+      const walk = (parentId: string | null, depth: number) => {
         secs
-          .filter((c) => c.parent_section_id === s.id)
+          .filter((s) => (s.parent_section_id || null) === parentId)
           .sort((a, b) => a.position - b.position)
-          .forEach((c) => ordered.push(c));
-      });
+          .forEach((s) => {
+            ordered.push({ sec: s, depth });
+            walk(s.id, depth + 1);
+          });
+      };
+      walk(null, 0);
       secSel.innerHTML = "";
       const noneOpt = document.createElement("option");
       noneOpt.value = "";
       noneOpt.textContent = secs.length ? "Sans sous-section" : "(aucune sous-section dans ce thème)";
       secSel.appendChild(noneOpt);
-      ordered.forEach((s) => {
+      ordered.forEach(({ sec, depth }) => {
         const opt = document.createElement("option");
-        opt.value = s.id;
-        opt.textContent = (s.parent_section_id ? "— " : "") + s.name;
+        opt.value = sec.id;
+        opt.textContent = "— ".repeat(depth) + sec.name;
         secSel.appendChild(opt);
       });
       if (secs.some((s) => s.id === prev)) secSel.value = prev;
@@ -2568,15 +2281,16 @@ export function initFicheDossierSystem(deps: {
     $(id).addEventListener("change", populateSectionSelects);
   });
   $("dossier-add-section-btn").addEventListener("click", async () => {
-    // Sur la page "sous-catégorie" (activeSection défini), ce bouton crée
-    // une sous-sous-catégorie DANS cette sous-catégorie plutôt qu'une
-    // nouvelle sous-catégorie de premier niveau — voir le libellé
-    // contextuel posé dans renderCategoryHeading().
-    const name = ((await customPrompt(activeSection ? "Nom de la nouvelle sous-sous-catégorie :" : "Nom de la nouvelle sous-section :")) || "").trim();
+    // Le niveau créé dépend de la page actuellement ouverte (profondeur
+    // activeSectionPath.length) — voir le libellé contextuel posé dans
+    // renderCategoryHeading() / sectionLevelLabel().
+    const depth = activeSectionPath.length;
+    const name = ((await customPrompt("Nom de la nouvelle " + sectionLevelLabel(depth).toLowerCase() + " :")) || "").trim();
     if (!name) return;
     const catId = ($("dossier-entry-category") as HTMLSelectElement).value;
     if (!catId) return;
-    await addSection(name, catId, activeSection || null);
+    const parentId = activeSectionPath[activeSectionPath.length - 1] || null;
+    await addSection(name, catId, parentId);
     populateSectionSelects();
     renderDossierEntries();
   });
@@ -3768,18 +3482,15 @@ export function initFicheDossierSystem(deps: {
   // juste avant l'appel.
   // -------------------------------------------------------------------------
   // Depuis la restructuration en pages (2026-10-03), une entrée/section
-  // classée dans une sous-catégorie ou sous-sous-catégorie n'est plus
-  // forcément déjà dans le DOM après showThemeView seul (elle n'est
+  // classée dans une sous-catégorie (quelle que soit sa profondeur) n'est
+  // plus forcément déjà dans le DOM après showThemeView seul (elle n'est
   // rendue que sur SA page) — on navigue d'abord jusqu'à la bonne
-  // profondeur (showSectionView/showChildSectionView) avant de défiler.
+  // profondeur (openSectionPath) avant de défiler.
   function revealEntry(entryId: string, categoryId: string | null) {
     showThemeView(categoryId || "__all__");
     const entry = currentEntries.find((e) => e.id === entryId);
     const sec = entry?.section_id ? currentSections.find((s) => s.id === entry.section_id) : null;
-    if (sec) {
-      if (sec.parent_section_id) showChildSectionView(sec.id);
-      else showSectionView(sec.id);
-    }
+    if (sec) openSectionPath(sectionAncestryPath(sec.id).map((s) => s.id));
     setTimeout(() => {
       const el = document.querySelector('.dossier-entry[data-entry-id="' + entryId + '"]');
       if (el) {
@@ -3793,17 +3504,15 @@ export function initFicheDossierSystem(deps: {
     showThemeView(categoryId || "__all__");
     const sec = currentSections.find((s) => s.id === sectionId);
     if (sec) {
-      if (sec.parent_section_id) {
-        showSectionView(sec.parent_section_id);
-        showChildSectionView(sec.id);
-      } else {
-        showSectionView(sec.id);
-      }
+      // La carte d'une section vit sur la page de SON PARENT (grille de
+      // cartes) — on ouvre donc le parent, pas la section elle-même, pour
+      // que la carte à mettre en évidence soit bien dans le DOM.
+      const path = sectionAncestryPath(sec.id).map((s) => s.id);
+      path.pop();
+      openSectionPath(path);
     }
     setTimeout(() => {
-      const el =
-        document.querySelector('.dossier-section-group[data-section-id="' + sectionId + '"]') ||
-        document.querySelector('.dossier-summary-card[data-section-id="' + sectionId + '"]');
+      const el = document.querySelector('.dossier-summary-card[data-section-id="' + sectionId + '"]');
       if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
     }, 90);
   }
