@@ -821,6 +821,38 @@ map.on("zoom viewreset move", resetOverlay);
 // noms français et affichait alors les noms anglais (Natural Earth) le
 // temps d'un prochain zoom/déplacement — repéré en vérifiant le site en
 // conditions réelles (réseau plus lent qu'en local).
+// Correctif ISO_A3 "-99" (bug Natural Earth) — le jeu de données
+// "sovereignty_50m" renvoie ISO_A3 = "-99" (chaîne non vide, donc
+// *truthy* : le `||` juste en dessous ne retombait jamais sur
+// ADM0_A3) pour 16 pays à la fois : France, États-Unis, Royaume-Uni,
+// Chine, Norvège, Pays-Bas, Danemark, Israël, Géorgie, Finlande,
+// Australie, Nouvelle-Zélande, Kosovo, Chypre du Nord, Somaliland et
+// le glacier de Siachen (territoire disputé, pas un pays). Résultat :
+// ces 16 pays partageaient TOUS le même identifiant "-99", donc le
+// même dossier/sous-sections/entrées en base (signalé par Martin,
+// 2026-10-03 : "les USA ont le même dossier que la France"). Les
+// géométries elles-mêmes (frontières dessinées) n'étaient jamais
+// affectées — uniquement cet identifiant utilisé pour tout le reste
+// (dossiers, recherche, fiche, comparateur...). Correctif : pour ces
+// 16 cas précis, on utilise le vrai code ISO 3166-1 alpha-3 standard
+// (ou, pour les 4 territoires sans code ISO officiel — Kosovo,
+// Chypre du Nord, Somaliland, Siachen —, le code ADM0_A3 du jeu de
+// données, unique par construction, simplement pour ne plus entrer
+// en collision avec un pays reconnu).
+const SOV_ISO_A3_FIX: Record<string, string> = {
+  France: "FRA",
+  "United States of America": "USA",
+  "United Kingdom": "GBR",
+  China: "CHN",
+  Norway: "NOR",
+  Netherlands: "NLD",
+  Denmark: "DNK",
+  Israel: "ISR",
+  Georgia: "GEO",
+  Finland: "FIN",
+  Australia: "AUS",
+  "New Zealand": "NZL",
+};
 Promise.all([
   fetch(import.meta.env.BASE_URL + "data/raw/SOV.json").then((r) => {
     if (!r.ok) throw new Error(`HTTP ${r.status}`);
@@ -835,12 +867,16 @@ Promise.all([
     ) as unknown as GeoJSON.FeatureCollection<GeoJSON.Geometry, Record<string, unknown>>;
     sovFeatures = geo.features.map((f) => {
       const props = f.properties as Record<string, unknown>;
+      const name = (props.NAME as string) || (props.ADMIN as string) || "";
+      const rawIso = props.ISO_A3 as string;
+      const iso_a3 =
+        rawIso && rawIso !== "-99" ? rawIso : SOV_ISO_A3_FIX[name] || (props.ADM0_A3 as string) || "";
       return {
         ...f,
         properties: {
-          name: (props.NAME as string) || (props.ADMIN as string) || "",
+          name,
           admin: (props.ADMIN as string) || "",
-          iso_a3: (props.ISO_A3 as string) || (props.ADM0_A3 as string) || "",
+          iso_a3,
           continent: (props.CONTINENT as string) || "",
           ...props,
         },
