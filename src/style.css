@@ -757,23 +757,26 @@ main.map-wrap {
 
 /* --- Bascule de fond de carte Auto/Satellite/Vectoriel (bas-droite) ------- */
 #style-switch { right: 16px; bottom: 16px; display: flex; gap: 2px; padding: 3px; }
-/* Mode lecture GLOBAL (point 4b, 2026-10-03) — bouton en haut de la page
-   (demande explicite de Martin : "ajouter un bouton pour l'activer et
-   désactiver en haut"), à gauche des boutons de zoom (#controls, top:16px;
-   right:16px, ~46px de large). Z-index 10700 impératif : ce bouton doit
-   rester cliquable au-dessus de TOUS les overlays plein écran existants
-   (#dossier-view:9999, #genealogy-view:10500, .auth-panel:10600), sinon
-   on ne peut plus basculer le mode lecture dès qu'un dossier ou un arbre
-   généalogique est ouvert — exactement le cas d'usage visé. (Initialement
-   placé en bas-droite avec z-index:23, ce qui le rendait injoignable dès
-   qu'un dossier était ouvert ; corrigé après vérification live.) */
-#readonly-toggle { top: 16px; right: 70px; z-index: 10700; }
+/* Mode lecture GLOBAL (point 4b, 2026-10-03 ; repositionné 2026-10-03
+   suivant, retour de Martin) — l'ancien bouton flottant (position:absolute,
+   z-index:10700 pour rester cliquable par-dessus les overlays plein écran
+   #dossier-view/#genealogy-view/.auth-panel) "se retrouve à passer devant
+   des éléments trop souvent" : déplacé dans le flux normal du <header>,
+   juste à côté du badge "Preview" (voir main.ts, .header-right) — demande
+   explicite de Martin. Conséquence assumée : comme le reste de la barre
+   d'en-tête, ce bouton n'est plus accessible pendant qu'une vue plein
+   écran (dossier complet, arbre généalogique) est ouverte — exactement le
+   même comportement que la recherche ou les boutons de zoom dans ce
+   cas-là, donc cohérent avec le reste de l'interface plutôt qu'un cas
+   particulier. Plus besoin de z-index dédié : le bouton suit simplement
+   le flux de .header-right, habillage repris de .auth-trigger. */
+#readonly-toggle { display: inline-flex; }
 #readonly-toggle-btn {
-  appearance: none; border: 1px solid var(--surface-border); border-radius: 7px;
-  background: var(--surface); color: var(--text); font-family: inherit; font-size: 11.5px;
-  font-weight: 600; padding: 7px 12px; cursor: pointer;
+  appearance: none; border: 1px solid var(--surface-border); border-radius: 6px;
+  background: transparent; color: var(--text); font-family: inherit; font-size: 12.5px;
+  font-weight: 600; padding: 6px 12px; cursor: pointer; transition: border-color 0.15s, color 0.15s;
 }
-#readonly-toggle-btn:hover:not(:disabled) { background: var(--surface-border); }
+#readonly-toggle-btn:hover:not(:disabled) { border-color: var(--accent); color: var(--accent); }
 #style-switch button {
   appearance: none; border: none; background: transparent;
   padding: 7px 11px; border-radius: 7px; font-family: inherit; font-size: 12px; color: var(--text);
@@ -783,15 +786,17 @@ main.map-wrap {
 #style-switch button:not(.active):hover { background: var(--surface-border); }
 
 #source {
-  position: absolute; right: 16px; bottom: 56px;
+  /* BUG (2026-10-03, re-signalé par Martin : "les menus chevauchent le
+     texte de la carte... World image...") : ce bloc partageait la MÊME
+     ligne (bottom:56px) que la rangée d'icônes bas-droite ci-dessous —
+     pointer-events:none évitait de bloquer les clics, mais visuellement
+     le texte d'attribution (jusqu'à 260px de large) passait bel et bien
+     SOUS les boutons ronds de cette rangée, les coupant en plein milieu
+     de mots par endroits. Remonté sur sa propre ligne, au-dessus de la
+     rangée d'icônes (qui culmine à bottom:56+34=90px), avec une marge de
+     respiration. */
+  position: absolute; right: 16px; bottom: 96px;
   font-size: 11px; color: var(--text-dim); text-align: right; max-width: 260px; z-index: 14;
-  /* Texte d'attribution seul, sans lien ni bouton : pointer-events:none
-     indispensable, sinon son bloc (jusqu'à 260px de large) recouvre
-     silencieusement toute la rangée d'icônes bas-droite qui partage la
-     même ligne (right:16..432px ; bottom:56px) — #info-toggle, #poi-toggle,
-     #export-toggle, #compare-toggle etc. devenaient alors incliquables dès
-     que le curseur passait sur leur zone, le clic atterrissant sur ce texte
-     à la place (constaté en vérifiant le site en production, 2026-10-02). */
   pointer-events: none;
 }
 
@@ -820,13 +825,21 @@ main.map-wrap {
 #appearance-toggle button:hover, #export-toggle button:hover,
 #compare-toggle button:hover, #notions-toggle button:hover { background: var(--surface-border); }
 
-#groups-toggle { right: 64px; bottom: 56px; }
-#indicators-toggle { right: 110px; bottom: 56px; }
-#appearance-toggle { right: 156px; bottom: 56px; }
-#export-toggle { right: 248px; bottom: 56px; }
-#compare-toggle { right: 294px; bottom: 56px; }
-#notions-toggle { right: 386px; bottom: 56px; }
+/* BUG (2026-10-03, re-signalé par Martin : "réordonne bien les menus en
+   bas à droite, ils sont tous décalés") : ces décalages `right` avaient
+   deux trous de 92px (right:156→248 et right:294→386) au lieu du pas
+   régulier de 46px (34px de bouton + 12px d'écart) partout ailleurs —
+   restes d'anciens boutons retirés (poi-toggle, recherche-dossiers...)
+   jamais recalés derrière eux, d'où des espacements irréguliers qui
+   donnaient l'impression que toute la rangée était "décalée". Repris à
+   plat avec un pas de 46px constant, dans le même ordre qu'avant. */
 #info-toggle { right: 16px; bottom: 56px; }
+#groups-toggle { right: 62px; bottom: 56px; }
+#indicators-toggle { right: 108px; bottom: 56px; }
+#appearance-toggle { right: 154px; bottom: 56px; }
+#export-toggle { right: 200px; bottom: 56px; }
+#compare-toggle { right: 246px; bottom: 56px; }
+#notions-toggle { right: 292px; bottom: 56px; }
 
 /* --- Bandeau central (mode "ajouter sur la carte", placeholders de
    fonctionnalités non portées) — porté de #link-banner. ------------------ */
@@ -1763,6 +1776,17 @@ path.link-autre { stroke: var(--link-autre, #c9bfa9); }
 }
 .gen-card:hover { border-color: var(--accent); }
 .gen-card-foreign { border: 2px solid var(--accent); opacity: 0.92; }
+/* Surbrillance "a dirigé le pays" (demande de Martin, 2026-10-03 :
+   "mettre la possibilité d'entourer un membre... mettre tout ceux qui ont
+   dirigés le pays en surbrillance") — case à cocher gen-m-leader sur la
+   fiche membre (genealogy.ts), bordure dorée + léger halo permanents sur
+   la carte, cumulable avec .gen-card-foreign (bordure accent déjà dorée,
+   le halo suffit alors à distinguer les deux). */
+.gen-card-leader { border-color: var(--accent); box-shadow: 0 0 0 2px rgba(232, 179, 74, 0.45), 0 6px 18px rgba(0,0,0,0.35); }
+.gen-m-leader-check {
+  display: flex; align-items: center; gap: 7px; font-size: 12.5px; color: var(--text);
+  margin: 10px 0 2px; cursor: pointer;
+}
 .gen-card-photo {
   width: 100%; height: 82px; border-radius: 7px; overflow: hidden; background: var(--surface-border);
   display: flex; align-items: center; justify-content: center; margin-bottom: 6px;
@@ -1783,6 +1807,9 @@ path.link-autre { stroke: var(--link-autre, #c9bfa9); }
   margin-bottom: 6px; display: flex; align-items: center; justify-content: center;
 }
 .gen-photo-preview img { width: 100%; height: 100%; object-fit: cover; display: block; }
+/* Glisser-déposer d'image (demande de Martin, 2026-10-03) — retour visuel
+   pendant le survol avec un fichier en cours de glissement. */
+.gen-photo-preview.gen-photo-drop-active { outline: 2px dashed var(--accent); outline-offset: 2px; }
 
 /* Recadrage de la photo (demande de Martin, 2026-10-03 : "faut ajouter la
    possibilité de recadrer la photo") — petit outil maison (pas de

@@ -1586,14 +1586,12 @@ export function initFicheDossierSystem(deps: {
       h.className = "entry-title";
       h.textContent = entry.title || entryPlainText(entry as DossierEntryLike).slice(0, 60) || "Sans titre";
       div.appendChild(h);
-      const preview = entryPlainText(entry as DossierEntryLike).trim();
-      if (preview) {
-        const p = document.createElement("div");
-        p.className = "entry-preview";
-        const cut = preview.slice(0, 140);
-        p.textContent = cut + (preview.length > 140 ? "…" : "");
-        div.appendChild(p);
-      }
+      // Aperçu des premières lignes retiré (demande de Martin, 2026-10-03 :
+      // "ne pas mettre le début des textes et juste le titre pour les
+      // textes... aucun aperçu de texte") — seul le titre reste visible
+      // tant que l'entrée n'est pas ouverte ; #entry-body (le contenu
+      // complet) n'est de toute façon affiché qu'en mode lecture
+      // (#dossier-theme-view.reading-mode), ce n'est pas un aperçu.
       const body = document.createElement("div");
       body.className = "entry-body";
       body.innerHTML = autoLinkEntryBody(sanitizeDossierHTML(entry.body || ""));
@@ -2106,16 +2104,10 @@ export function initFicheDossierSystem(deps: {
       ? count + " entrée" + (count > 1 ? "s" : "") + (latest ? " · " + relativeTimeFr(latest.updated_at || latest.created_at) : "")
       : "Aucune entrée pour le moment";
     body.appendChild(metaEl);
-    if (latest) {
-      const full = entryPlainText(latest as DossierEntryLike);
-      const preview = full.slice(0, 100).trim();
-      if (preview) {
-        const prevEl = document.createElement("div");
-        prevEl.className = "dsc-preview";
-        prevEl.textContent = preview + (full.length > 100 ? "…" : "");
-        body.appendChild(prevEl);
-      }
-    }
+    // Aperçu du texte de la dernière entrée retiré (demande de Martin,
+    // 2026-10-03 : "aucun aperçu de texte, pour les sections, sous
+    // sections... ou autres éléments") — seuls le nom et la méta (nombre
+    // d'entrées / date) restent visibles sur la carte de catégorie.
     card.appendChild(body);
     card.addEventListener("click", () => showThemeView(id));
     return card;

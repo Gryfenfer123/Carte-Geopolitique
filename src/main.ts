@@ -47,6 +47,9 @@ app.innerHTML = `
     </div>
     <div class="header-right">
       <span class="badge">Preview</span>
+      <div id="readonly-toggle">
+        <button id="readonly-toggle-btn" title="Mode lecture" aria-label="Basculer le mode lecture">Mode lecture</button>
+      </div>
       <button id="auth-trigger" class="auth-trigger" type="button">Se connecter</button>
     </div>
   </header>
@@ -106,10 +109,6 @@ app.innerHTML = `
     <div id="style-switch" class="panel">
       <button id="style-photo" title="Toujours l'imagerie satellite">Satellite</button>
       <button id="style-vector" class="active" title="Toujours le plan vectoriel">Vectoriel</button>
-    </div>
-
-    <div id="readonly-toggle" class="panel">
-      <button id="readonly-toggle-btn" title="Mode lecture" aria-label="Basculer le mode lecture">Mode lecture</button>
     </div>
 
     <div id="info-toggle" class="panel" style="display:none">

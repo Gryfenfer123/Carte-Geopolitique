@@ -71,6 +71,13 @@ type MemberRow = {
   pos_x: number;
   pos_y: number;
   created_by: string | null;
+  // Point demandé par Martin, 2026-10-03 : "mettre la possibilité
+  // d'entourer un membre, l'objectif est de mettre tout ceux qui ont
+  // dirigés le pays en surbrillance" — case à cocher sur la fiche membre
+  // (voir supabase/schema_v15.sql pour la colonne côté base), qui donne
+  // en permanence à la carte un style distinct (bordure dorée, voir
+  // .gen-card-leader dans style.css) sur l'arbre.
+  is_leader: boolean;
 };
 
 type RelationRow = {
@@ -204,6 +211,7 @@ export function initGenealogySystem(deps: {
       <input type="text" id="gen-m-title" placeholder="ex. Roi de France">
       <label class="field-label">Dynastie</label>
       <input type="text" id="gen-m-dynasty" placeholder="ex. Valois-Angoulême">
+      <label class="gen-m-leader-check"><input type="checkbox" id="gen-m-leader"> A dirigé le pays</label>
       <label class="field-label">Notes / biographie</label>
       <textarea id="gen-m-bio" rows="5"></textarea>
       <div id="gen-m-save-status" class="muted"></div>
@@ -329,7 +337,7 @@ export function initGenealogySystem(deps: {
     try {
       const { data: memberRows, error: memberErr } = await supabase
         .from("genealogy_members")
-        .select("id, owner_type, owner_id, name, photo_url, birth_year, death_year, title, dynasty, bio, pos_x, pos_y, created_by")
+        .select("id, owner_type, owner_id, name, photo_url, birth_year, death_year, title, dynasty, bio, pos_x, pos_y, created_by, is_leader")
         .eq("owner_type", owner.type)
         .eq("owner_id", owner.id);
       if (memberErr) throw memberErr;
@@ -351,7 +359,7 @@ export function initGenealogySystem(deps: {
         if (foreignIds.size) {
           const { data: fRows } = await supabase
             .from("genealogy_members")
-            .select("id, owner_type, owner_id, name, photo_url, birth_year, death_year, title, dynasty, bio, pos_x, pos_y, created_by")
+            .select("id, owner_type, owner_id, name, photo_url, birth_year, death_year, title, dynasty, bio, pos_x, pos_y, created_by, is_leader")
             .in("id", Array.from(foreignIds));
           (fRows as MemberRow[] | null)?.forEach((m) => foreignMembers.set(m.id, m));
         }
@@ -438,7 +446,7 @@ export function initGenealogySystem(deps: {
       if (!pos) return;
       const isForeign = !(currentOwner && m.owner_type === currentOwner.type && m.owner_id === currentOwner.id);
       const card = document.createElement("div");
-      card.className = "gen-card" + (isForeign ? " gen-card-foreign" : "");
+      card.className = "gen-card" + (isForeign ? " gen-card-foreign" : "") + (m.is_leader ? " gen-card-leader" : "");
       card.dataset.memberId = m.id;
       card.style.left = pos.x + "px";
       card.style.top = pos.y + "px";
@@ -466,28 +474,74 @@ export function initGenealogySystem(deps: {
     return "var(--cable-line)";
   }
 
+  function cardCenter(id: string): { x: number; y: number } | null {
+    const p = displayPos.get(id);
+    if (!p) return null;
+    return { x: p.x + CARD_W / 2, y: p.y + CARD_H / 2 };
+  }
+
+  function drawLine(x1: number, y1: number, x2: number, y2: number, type: RelationType, extraClass?: string) {
+    const NS = "http://www.w3.org/2000/svg";
+    const line = document.createElementNS(NS, "line");
+    line.setAttribute("x1", String(x1));
+    line.setAttribute("y1", String(y1));
+    line.setAttribute("x2", String(x2));
+    line.setAttribute("y2", String(y2));
+    line.setAttribute("stroke", linkColor(type));
+    line.setAttribute("stroke-width", type === "parent" ? "2.4" : "2");
+    if (type === "spouse") line.setAttribute("stroke-dasharray", "5,4");
+    if (type === "family") line.setAttribute("stroke-dasharray", "1.5,3.5");
+    line.setAttribute("class", "gen-link gen-link-" + type + (extraClass ? " " + extraClass : ""));
+    svg.appendChild(line);
+  }
+
+  // Point demandé par Martin, 2026-10-03 : "faire en sorte que la ligne
+  // parte du lien de mariage jusqu'à l'enfant (plutôt que faire 2 lignes
+  // qui partent de chaque parent), 1 seule qui part du milieu de la ligne
+  // qui lie les parents" — pour un enfant dont les DEUX parents sont
+  // connus sur cet arbre ET mariés entre eux (relation "spouse" entre les
+  // deux), on dessine UNE ligne du milieu de leur trait de mariage
+  // jusqu'à l'enfant, à la place des deux traits individuels
+  // parent→enfant. Dans tous les autres cas (un seul parent connu sur cet
+  // arbre, ou deux parents non mariés entre eux — réponse de Martin :
+  // "directement du parent connu" / pas de cas de parents non mariés chez
+  // lui) on garde le trait individuel d'origine, un par relation "parent".
   function renderLinks() {
     svg.innerHTML = "";
-    const NS = "http://www.w3.org/2000/svg";
+    const spouseKey = (a: string, b: string) => (a < b ? a + "|" + b : b + "|" + a);
+    const spousePairs = new Set<string>();
     relations.forEach((r) => {
-      const a = displayPos.get(r.member_a_id);
-      const b = displayPos.get(r.member_b_id);
+      if (r.relation_type === "spouse") spousePairs.add(spouseKey(r.member_a_id, r.member_b_id));
+    });
+    const parentRelsByChild = new Map<string, RelationRow[]>();
+    relations.forEach((r) => {
+      if (r.relation_type !== "parent") return;
+      const list = parentRelsByChild.get(r.member_b_id) || [];
+      list.push(r);
+      parentRelsByChild.set(r.member_b_id, list);
+    });
+    const mergedParentRelIds = new Set<string>();
+    parentRelsByChild.forEach((rels, childId) => {
+      if (rels.length !== 2) return;
+      const [p1, p2] = rels;
+      if (p1.member_a_id === p2.member_a_id) return; // même parent listé 2x, rien à fusionner
+      if (!spousePairs.has(spouseKey(p1.member_a_id, p2.member_a_id))) return;
+      const a = cardCenter(p1.member_a_id);
+      const b = cardCenter(p2.member_a_id);
+      const c = cardCenter(childId);
+      if (!a || !b || !c) return;
+      const midX = (a.x + b.x) / 2;
+      const midY = (a.y + b.y) / 2;
+      drawLine(midX, midY, c.x, c.y, "parent", "gen-link-from-marriage");
+      mergedParentRelIds.add(p1.id);
+      mergedParentRelIds.add(p2.id);
+    });
+    relations.forEach((r) => {
+      if (mergedParentRelIds.has(r.id)) return;
+      const a = cardCenter(r.member_a_id);
+      const b = cardCenter(r.member_b_id);
       if (!a || !b) return;
-      const ax = a.x + CARD_W / 2;
-      const ay = a.y + CARD_H / 2;
-      const bx = b.x + CARD_W / 2;
-      const by = b.y + CARD_H / 2;
-      const line = document.createElementNS(NS, "line");
-      line.setAttribute("x1", String(ax));
-      line.setAttribute("y1", String(ay));
-      line.setAttribute("x2", String(bx));
-      line.setAttribute("y2", String(by));
-      line.setAttribute("stroke", linkColor(r.relation_type));
-      line.setAttribute("stroke-width", r.relation_type === "parent" ? "2.4" : "2");
-      if (r.relation_type === "spouse") line.setAttribute("stroke-dasharray", "5,4");
-      if (r.relation_type === "family") line.setAttribute("stroke-dasharray", "1.5,3.5");
-      line.setAttribute("class", "gen-link gen-link-" + r.relation_type);
-      svg.appendChild(line);
+      drawLine(a.x, a.y, b.x, b.y, r.relation_type);
     });
   }
 
@@ -516,6 +570,22 @@ export function initGenealogySystem(deps: {
       document.removeEventListener("mouseup", onEnd);
       document.removeEventListener("touchmove", onMove);
       document.removeEventListener("touchend", onEnd);
+      // BUG (2026-10-03, signalé par Martin : "le membre apparaît mais on
+      // ne peut pas le bouger... et il fait bug son arbre d'origine") :
+      // un membre étranger (gen-card-foreign) a son pos_x/pos_y stocké
+      // dans le repère de SON arbre d'origine, pas de celui-ci — sa
+      // position ICI est recalculée à la volée (voir loadData, distance
+      // fixe depuis le membre local auquel il est relié) et JAMAIS
+      // persistée. Avant ce correctif, `isForeign` bloquait le glisser dès
+      // le mousedown (voir plus bas) : la carte semblait figée. Désormais
+      // le glisser est autorisé pour TOUT le monde (confort visuel, pour
+      // écarter une carte étrangère gênante), mais on n'écrit en base QUE
+      // pour un membre local (`!isForeign`) — écrire la position calculée
+      // ici dans la ligne réelle du membre étranger aurait littéralement
+      // déplacé son point d'origine dans SON PROPRE arbre à chaque glisser
+      // involontaire, le "cassant" au sens propre. La position d'un
+      // membre étranger reste donc purement visuelle pour cette ouverture
+      // de l'arbre (recalculée au prochain chargement).
       if (moved && !isForeign) {
         const pos = displayPos.get(member.id)!;
         member.pos_x = pos.x;
@@ -524,7 +594,7 @@ export function initGenealogySystem(deps: {
       }
     }
     card.addEventListener("mousedown", (e) => {
-      if (isForeign || !isAdmin()) return;
+      if (!isAdmin()) return;
       moved = false;
       startScreenX = e.clientX;
       startScreenY = e.clientY;
@@ -535,7 +605,7 @@ export function initGenealogySystem(deps: {
       document.addEventListener("mouseup", onEnd);
     });
     card.addEventListener("touchstart", (e) => {
-      if (isForeign || !isAdmin()) return;
+      if (!isAdmin()) return;
       moved = false;
       const t = e.touches[0];
       startScreenX = t.clientX;
@@ -731,6 +801,7 @@ export function initGenealogySystem(deps: {
     ($("gen-m-death") as HTMLInputElement).value = m?.death_year != null ? String(m.death_year) : "";
     ($("gen-m-title") as HTMLInputElement).value = m?.title || "";
     ($("gen-m-dynasty") as HTMLInputElement).value = m?.dynasty || "";
+    ($("gen-m-leader") as HTMLInputElement).checked = m?.is_leader || false;
     ($("gen-m-bio") as HTMLTextAreaElement).value = m?.bio || "";
     $("gen-m-photo-preview").innerHTML = m?.photo_url ? '<img src="' + escapeHtml(m.photo_url) + '" alt="">' : "";
     $("gen-m-save-status").textContent = "";
@@ -794,18 +865,44 @@ export function initGenealogySystem(deps: {
     }
     ($("gen-m-photo-input") as HTMLInputElement).click();
   });
-  ($("gen-m-photo-input") as HTMLInputElement).addEventListener("change", (e) => {
-    const file = (e.target as HTMLInputElement).files?.[0] || null;
-    (e.target as HTMLInputElement).value = "";
-    if (!file) return;
-    // Point demandé par Martin, 2026-10-03 : "faut ajouter la possibilité
-    // de recadrer la photo" — on ne prend plus le fichier tel quel, on
-    // ouvre d'abord l'outil de cadrage (openCropModal ci-dessous), qui
-    // produit lui-même le photoPendingFile final (un Blob recadré, pas le
-    // fichier original) une fois "Valider le cadrage" cliqué.
+  // Point demandé par Martin, 2026-10-03 : "faut ajouter la possibilité
+  // de recadrer la photo" — on ne prend plus le fichier tel quel, on
+  // ouvre d'abord l'outil de cadrage (openCropModal ci-dessous), qui
+  // produit lui-même le photoPendingFile final (un Blob recadré, pas le
+  // fichier original) une fois "Valider le cadrage" cliqué. Factorisé en
+  // fonction à part pour être appelable aussi bien depuis le <input
+  // type=file> que depuis un glisser-déposer (voir plus bas, point
+  // demandé par Martin : "possibilité... de la glisser sur l'emplacement,
+  // sans nécessairement ouvrir le dossier des téléchargements").
+  function loadFileIntoCrop(file: File | null) {
+    if (!file || !file.type.startsWith("image/")) return;
     const reader = new FileReader();
     reader.onload = () => openCropModal(String(reader.result));
     reader.readAsDataURL(file);
+  }
+  ($("gen-m-photo-input") as HTMLInputElement).addEventListener("change", (e) => {
+    const file = (e.target as HTMLInputElement).files?.[0] || null;
+    (e.target as HTMLInputElement).value = "";
+    loadFileIntoCrop(file);
+  });
+  // Glisser-déposer direct d'une image sur l'emplacement photo — plus
+  // besoin de passer par "Changer la photo" puis le sélecteur de fichiers
+  // natif du système. Gating identique aux autres actions d'édition
+  // (session + isAdmin) via requireAuthOr.
+  const photoDropZone = $("gen-m-photo-preview");
+  photoDropZone.addEventListener("dragover", (e) => {
+    e.preventDefault();
+    if (deps.getSession() && isAdmin()) photoDropZone.classList.add("gen-photo-drop-active");
+  });
+  photoDropZone.addEventListener("dragleave", () => {
+    photoDropZone.classList.remove("gen-photo-drop-active");
+  });
+  photoDropZone.addEventListener("drop", (e) => {
+    e.preventDefault();
+    photoDropZone.classList.remove("gen-photo-drop-active");
+    const file = e.dataTransfer?.files?.[0] || null;
+    if (!file) return;
+    requireAuthOr(() => loadFileIntoCrop(file));
   });
 
   // --- Recadrage de la photo (point demandé par Martin, 2026-10-03) ----------
@@ -967,6 +1064,7 @@ export function initGenealogySystem(deps: {
     const death = deathStr ? parseInt(deathStr, 10) : null;
     const title = ($("gen-m-title") as HTMLInputElement).value.trim() || null;
     const dynasty = ($("gen-m-dynasty") as HTMLInputElement).value.trim() || null;
+    const isLeader = ($("gen-m-leader") as HTMLInputElement).checked;
     const bio = ($("gen-m-bio") as HTMLTextAreaElement).value.trim() || null;
     $("gen-m-save-status").textContent = "Enregistrement…";
     try {
@@ -977,6 +1075,7 @@ export function initGenealogySystem(deps: {
           death_year: Number.isFinite(death) ? death : null,
           title,
           dynasty,
+          is_leader: isLeader,
           bio,
         };
         if (photoPendingFile) {
@@ -1015,12 +1114,13 @@ export function initGenealogySystem(deps: {
             death_year: Number.isFinite(death) ? death : null,
             title,
             dynasty,
+            is_leader: isLeader,
             bio,
             pos_x: pos.x,
             pos_y: pos.y,
             created_by: session.user.id,
           })
-          .select("id, owner_type, owner_id, name, photo_url, birth_year, death_year, title, dynasty, bio, pos_x, pos_y, created_by")
+          .select("id, owner_type, owner_id, name, photo_url, birth_year, death_year, title, dynasty, bio, pos_x, pos_y, created_by, is_leader")
           .single();
         if (error || !data) {
           $("gen-m-save-status").textContent = "Erreur d'enregistrement.";
@@ -1084,7 +1184,7 @@ export function initGenealogySystem(deps: {
       }
       const { data } = await supabase
         .from("genealogy_members")
-        .select("id, owner_type, owner_id, name, photo_url, birth_year, death_year, title, dynasty, bio, pos_x, pos_y, created_by")
+        .select("id, owner_type, owner_id, name, photo_url, birth_year, death_year, title, dynasty, bio, pos_x, pos_y, created_by, is_leader")
         .ilike("name", "%" + q + "%")
         .neq("id", fromId)
         .limit(15);
