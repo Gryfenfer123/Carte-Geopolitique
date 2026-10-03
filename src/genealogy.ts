@@ -49,7 +49,13 @@ import { customConfirm, TRASH_ICON_SVG } from "./dossier";
 
 // --- Types -------------------------------------------------------------
 
-type RelationType = "parent" | "spouse";
+// "family" ajouté à la demande de Martin, 2026-10-03 ("Rajoute un lien =>
+// Famille, pour en avoir 3 : Parent, Famille, Mariage") — lien symétrique,
+// même traitement que "spouse" (aucun sens parent/enfant), juste un
+// troisième type pour un lien de parenté qui n'est ni filiation directe ni
+// mariage (ex. frère/sœur, cousin·e, oncle/tante...). Voir
+// supabase/schema_v14.sql pour la contrainte CHECK côté base.
+type RelationType = "parent" | "spouse" | "family";
 
 type MemberRow = {
   id: string;
@@ -82,6 +88,25 @@ type DisplayPos = { x: number; y: number };
 
 const CARD_W = 158;
 const CARD_H = 176;
+// Aspect ratio de la zone photo de la carte (.gen-card-photo, voir
+// style.css : largeur 100% de CARD_W, hauteur fixe 82px) — réutilisé comme
+// ratio de cadrage dans le recadrage de photo (openCropModal ci-dessous)
+// pour que la photo recadrée remplisse exactement cette zone sans bande ni
+// recadrage navigateur imprévisible (object-fit: cover s'en charge déjà,
+// mais autant livrer une image déjà au bon ratio).
+const CARD_PHOTO_RATIO = CARD_W / 82;
+// Écart vertical minimum imposé entre un parent et son enfant lors de la
+// création d'un lien "parent" (point demandé par Martin, 2026-10-03:
+// "même si on peut déplacer, ceux nés plus tôt sont plus haut, ceux plus
+// tard plus bas, les enfants sont en dessous") — voir
+// enforceParentChildOrder ci-dessous. Le glisser-déposer libre reste
+// entièrement possible ensuite : seule la position DE DÉPART est corrigée.
+const GENERATION_GAP = 230;
+// Pixels par année pour le placement automatique d'un NOUVEAU membre selon
+// son année de naissance par rapport aux membres existants de cet arbre
+// (voir suggestYFromBirthYear) — purement indicatif, pas une échelle
+// temporelle stricte (le glisser-déposer reste libre après coup).
+const PX_PER_YEAR = 2.4;
 
 function escapeHtml(str: string): string {
   return str
@@ -147,6 +172,7 @@ export function initGenealogySystem(deps: {
         </div>
         <div id="genealogy-legend">
           <span class="gen-legend-item"><span class="gen-legend-line gen-legend-parent"></span>Parent &rarr; enfant</span>
+          <span class="gen-legend-item"><span class="gen-legend-line gen-legend-family"></span>Famille</span>
           <span class="gen-legend-item"><span class="gen-legend-line gen-legend-spouse"></span>Mariage</span>
           <span class="gen-legend-item"><span class="gen-legend-dot gen-legend-foreign"></span>Membre d'un autre pays</span>
         </div>
@@ -206,6 +232,21 @@ export function initGenealogySystem(deps: {
         <input type="text" id="gen-foreign-search-input" placeholder="Nom du membre recherch&eacute;…" autocomplete="off">
         <div id="gen-foreign-search-results"></div>
         <button id="gen-foreign-search-cancel" class="btn-small" style="margin-top:10px;">Annuler</button>
+      </div>
+    </div>
+
+    <div id="gen-photo-crop-modal" class="poi-overlay">
+      <div class="poi-overlay-box gen-crop-box">
+        <h3>Recadrer la photo</h3>
+        <div id="gen-crop-hint">Glissez le cadre pour le déplacer, la poignée (coin) pour le redimensionner.</div>
+        <div id="gen-crop-stage">
+          <img id="gen-crop-img" alt="">
+          <div id="gen-crop-rect"><div id="gen-crop-handle"></div></div>
+        </div>
+        <div class="dossier-form-actions" style="margin-top:10px;">
+          <button id="gen-crop-confirm" class="btn-primary">Valider le cadrage</button>
+          <button id="gen-crop-cancel" class="btn-small">Annuler</button>
+        </div>
       </div>
     </div>
   `;
@@ -420,7 +461,9 @@ export function initGenealogySystem(deps: {
   }
 
   function linkColor(type: RelationType): string {
-    return type === "parent" ? "var(--accent)" : "var(--cable-line)";
+    if (type === "parent") return "var(--accent)";
+    if (type === "family") return "var(--family-line)";
+    return "var(--cable-line)";
   }
 
   function renderLinks() {
@@ -442,6 +485,7 @@ export function initGenealogySystem(deps: {
       line.setAttribute("stroke", linkColor(r.relation_type));
       line.setAttribute("stroke-width", r.relation_type === "parent" ? "2.4" : "2");
       if (r.relation_type === "spouse") line.setAttribute("stroke-dasharray", "5,4");
+      if (r.relation_type === "family") line.setAttribute("stroke-dasharray", "1.5,3.5");
       line.setAttribute("class", "gen-link gen-link-" + r.relation_type);
       svg.appendChild(line);
     });
@@ -570,6 +614,7 @@ export function initGenealogySystem(deps: {
       addChoice(memberName(aId) + " est le parent de " + memberName(bId), () => createRelation(aId, bId, "parent"));
       addChoice(memberName(bId) + " est le parent de " + memberName(aId), () => createRelation(bId, aId, "parent"));
       addChoice(memberName(aId) + " et " + memberName(bId) + " sont mariés", () => createRelation(aId, bId, "spouse"));
+      addChoice(memberName(aId) + " et " + memberName(bId) + " sont de la même famille (sans lien direct)", () => createRelation(aId, bId, "family"));
       $("gen-relation-modal-cancel").onclick = cleanup;
       modal.classList.add("open");
     });
@@ -595,12 +640,74 @@ export function initGenealogySystem(deps: {
       return;
     }
     relations.push(data as RelationRow);
+    // Point demandé par Martin, 2026-10-03 : "même si on peut déplacer,
+    // [...] les enfants sont en dessous" — dès qu'un lien parent→enfant
+    // est créé, on corrige la position de départ de l'enfant s'il se
+    // trouve au-dessus (ou pas assez en dessous) de son parent. Le
+    // glisser-déposer reste entièrement libre après coup : ceci ne
+    // s'applique qu'une fois, à la création du lien.
+    if (type === "parent") await enforceParentChildOrder(aId, bId);
     // Un membre étranger référencé par une nouvelle relation n'est pas
     // forcément déjà dans foreignMembers/displayPos — on recharge les
     // données pour rester cohérent plutôt que de dupliquer la logique de
     // positionnement calculé de loadData().
     if (currentOwner) await loadData(currentOwner);
     if (editingMemberId) renderRelationsList(editingMemberId);
+  }
+
+  // Ne déplace que des membres LOCAUX à cet arbre (un membre étranger lié
+  // depuis un autre pays a sa position recalculée à la volée par
+  // computeForeignPosition/loadData à partir de son propre pos_x/pos_y —
+  // lui écrire une position ici serait incohérent avec son arbre d'origine).
+  async function enforceParentChildOrder(parentId: string, childId: string) {
+    const parentPos = displayPos.get(parentId);
+    const childPos = displayPos.get(childId);
+    const childMember = members.find((m) => m.id === childId);
+    if (!parentPos || !childPos || !childMember) return;
+    const minChildY = parentPos.y + GENERATION_GAP;
+    if (childPos.y >= minChildY) return;
+    const newPos = { x: childPos.x, y: minChildY };
+    displayPos.set(childId, newPos);
+    childMember.pos_y = newPos.y;
+    try {
+      await supabase.from("genealogy_members").update({ pos_y: newPos.y }).eq("id", childId);
+    } catch {
+      /* best-effort — loadData() rechargera de toute façon juste après */
+    }
+  }
+
+  // Placement automatique d'un NOUVEAU membre selon son année de naissance,
+  // par interpolation/extrapolation linéaire entre les membres existants de
+  // cet arbre dont l'année de naissance est connue (point demandé par
+  // Martin, 2026-10-03 : "ceux nés plus tôt sont plus haut, ceux plus tard
+  // plus bas"). Retourne null si aucune donnée de comparaison n'est
+  // disponible (premier membre de l'arbre, ou aucun autre membre n'a
+  // d'année de naissance renseignée) — l'appelant garde alors le
+  // positionnement par défaut (centre de la vue).
+  function suggestYFromBirthYear(birth: number | null): number | null {
+    if (birth == null) return null;
+    const known = members.filter((m) => m.birth_year != null && displayPos.has(m.id));
+    if (!known.length) return null;
+    let before: MemberRow | null = null;
+    let after: MemberRow | null = null;
+    known.forEach((m) => {
+      const by = m.birth_year as number;
+      if (by <= birth && (!before || by > (before as MemberRow).birth_year!)) before = m;
+      if (by >= birth && (!after || by < (after as MemberRow).birth_year!)) after = m;
+    });
+    if (before && after && (before as MemberRow).id !== (after as MemberRow).id) {
+      const b1 = before as MemberRow;
+      const b2 = after as MemberRow;
+      const y1 = displayPos.get(b1.id)!.y;
+      const y2 = displayPos.get(b2.id)!.y;
+      if (b2.birth_year === b1.birth_year) return y1;
+      const t = (birth - b1.birth_year!) / (b2.birth_year! - b1.birth_year!);
+      return y1 + (y2 - y1) * t;
+    }
+    const anchor = (before || after) as MemberRow | null;
+    if (!anchor) return null;
+    const dy = (birth - anchor.birth_year!) * PX_PER_YEAR;
+    return displayPos.get(anchor.id)!.y + dy;
   }
 
   async function deleteRelation(id: string) {
@@ -654,6 +761,8 @@ export function initGenealogySystem(deps: {
       let label: string;
       if (r.relation_type === "spouse") {
         label = "Marié(e) à " + memberName(otherId);
+      } else if (r.relation_type === "family") {
+        label = "Famille avec " + memberName(otherId);
       } else if (r.member_a_id === memberId) {
         label = "Parent de " + memberName(otherId);
       } else {
@@ -689,12 +798,142 @@ export function initGenealogySystem(deps: {
     const file = (e.target as HTMLInputElement).files?.[0] || null;
     (e.target as HTMLInputElement).value = "";
     if (!file) return;
-    photoPendingFile = file;
+    // Point demandé par Martin, 2026-10-03 : "faut ajouter la possibilité
+    // de recadrer la photo" — on ne prend plus le fichier tel quel, on
+    // ouvre d'abord l'outil de cadrage (openCropModal ci-dessous), qui
+    // produit lui-même le photoPendingFile final (un Blob recadré, pas le
+    // fichier original) une fois "Valider le cadrage" cliqué.
     const reader = new FileReader();
-    reader.onload = () => {
-      $("gen-m-photo-preview").innerHTML = '<img src="' + String(reader.result) + '" alt="">';
-    };
+    reader.onload = () => openCropModal(String(reader.result));
     reader.readAsDataURL(file);
+  });
+
+  // --- Recadrage de la photo (point demandé par Martin, 2026-10-03) ----------
+  // Petit outil de cadrage maison : rectangle à l'aspect ratio fixe
+  // (CARD_PHOTO_RATIO), déplaçable en glissant le cadre, redimensionnable en
+  // glissant la poignée du coin (#gen-crop-handle), toujours à cet aspect
+  // ratio. Les coordonnées de travail (cropRect, cropDisplayW/H) sont en
+  // pixels D'AFFICHAGE (taille CSS de l'image dans #gen-crop-stage) ; la
+  // conversion vers les pixels réels de l'image (naturalWidth/Height) ne se
+  // fait qu'au moment de dessiner sur le canvas final, dans
+  // gen-crop-confirm.
+  let cropNaturalW = 0;
+  let cropDisplayW = 0;
+  let cropDisplayH = 0;
+  let cropRect = { x: 0, y: 0, w: 0, h: 0 };
+  let cropDragMode: "move" | "resize" | null = null;
+  let cropDragStartX = 0;
+  let cropDragStartY = 0;
+  let cropStartRect = { x: 0, y: 0, w: 0, h: 0 };
+
+  function paintCropRect() {
+    const rectEl = $("gen-crop-rect");
+    rectEl.style.left = cropRect.x + "px";
+    rectEl.style.top = cropRect.y + "px";
+    rectEl.style.width = cropRect.w + "px";
+    rectEl.style.height = cropRect.h + "px";
+  }
+  function openCropModal(dataUrl: string) {
+    const img = $("gen-crop-img") as HTMLImageElement;
+    img.src = dataUrl;
+    img.onload = () => {
+      cropNaturalW = img.naturalWidth;
+      // La largeur/hauteur AFFICHÉE découle du CSS (width:100%, max-width
+      // 420px sur #gen-crop-stage) — on ne peut la mesurer qu'après layout,
+      // d'où le requestAnimationFrame.
+      requestAnimationFrame(() => {
+        const rect = img.getBoundingClientRect();
+        cropDisplayW = rect.width;
+        cropDisplayH = rect.height;
+        // Rectangle initial : le plus grand possible à CARD_PHOTO_RATIO,
+        // centré dans l'image affichée.
+        let w = cropDisplayW;
+        let h = w / CARD_PHOTO_RATIO;
+        if (h > cropDisplayH) {
+          h = cropDisplayH;
+          w = h * CARD_PHOTO_RATIO;
+        }
+        cropRect = { x: (cropDisplayW - w) / 2, y: (cropDisplayH - h) / 2, w, h };
+        paintCropRect();
+      });
+    };
+    $("gen-photo-crop-modal").classList.add("open");
+  }
+  function closeCropModal() {
+    $("gen-photo-crop-modal").classList.remove("open");
+  }
+  $("gen-crop-rect").addEventListener("mousedown", (e) => {
+    if ((e.target as HTMLElement).id === "gen-crop-handle") return;
+    cropDragMode = "move";
+    cropDragStartX = e.clientX;
+    cropDragStartY = e.clientY;
+    cropStartRect = { ...cropRect };
+    e.preventDefault();
+  });
+  $("gen-crop-handle").addEventListener("mousedown", (e) => {
+    cropDragMode = "resize";
+    cropDragStartX = e.clientX;
+    cropDragStartY = e.clientY;
+    cropStartRect = { ...cropRect };
+    e.stopPropagation();
+    e.preventDefault();
+  });
+  document.addEventListener("mousemove", (e) => {
+    if (!cropDragMode) return;
+    const dx = e.clientX - cropDragStartX;
+    const dy = e.clientY - cropDragStartY;
+    if (cropDragMode === "move") {
+      const x = Math.max(0, Math.min(cropStartRect.x + dx, cropDisplayW - cropStartRect.w));
+      const y = Math.max(0, Math.min(cropStartRect.y + dy, cropDisplayH - cropStartRect.h));
+      cropRect = { ...cropStartRect, x, y };
+    } else {
+      // Redimensionne depuis le coin bas-droit, aspect ratio verrouillé —
+      // borné pour ne jamais sortir de l'image ni passer sous une taille
+      // minimale utilisable.
+      let w = Math.max(40, cropStartRect.w + dx);
+      w = Math.min(w, cropDisplayW - cropStartRect.x, (cropDisplayH - cropStartRect.y) * CARD_PHOTO_RATIO);
+      const h = w / CARD_PHOTO_RATIO;
+      cropRect = { x: cropStartRect.x, y: cropStartRect.y, w, h };
+    }
+    paintCropRect();
+  });
+  document.addEventListener("mouseup", () => {
+    cropDragMode = null;
+  });
+  $("gen-crop-cancel").addEventListener("click", closeCropModal);
+  $("gen-crop-confirm").addEventListener("click", () => {
+    const img = $("gen-crop-img") as HTMLImageElement;
+    if (!cropDisplayW || !cropNaturalW) {
+      closeCropModal();
+      return;
+    }
+    const scale = cropNaturalW / cropDisplayW;
+    const sx = cropRect.x * scale;
+    const sy = cropRect.y * scale;
+    const sw = cropRect.w * scale;
+    const sh = cropRect.h * scale;
+    const outW = 480;
+    const outH = Math.round(outW / CARD_PHOTO_RATIO);
+    const canvas = document.createElement("canvas");
+    canvas.width = outW;
+    canvas.height = outH;
+    const ctx = canvas.getContext("2d");
+    if (!ctx) {
+      closeCropModal();
+      return;
+    }
+    ctx.drawImage(img, sx, sy, sw, sh, 0, 0, outW, outH);
+    canvas.toBlob(
+      (blob) => {
+        if (blob) {
+          photoPendingFile = new File([blob], "photo.jpg", { type: "image/jpeg" });
+          $("gen-m-photo-preview").innerHTML = '<img src="' + canvas.toDataURL("image/jpeg", 0.9) + '" alt="">';
+        }
+        closeCropModal();
+      },
+      "image/jpeg",
+      0.9,
+    );
   });
 
   async function uploadMemberPhoto(file: File, memberId: string): Promise<string | null> {
@@ -755,8 +994,17 @@ export function initGenealogySystem(deps: {
           : { x: 0, y: 0 };
         // Place le nouveau membre près du centre de la vue actuelle, avec un
         // petit décalage aléatoire pour éviter l'empilement exact si on en
-        // crée plusieurs d'affilée.
-        const pos = { x: center.x + Math.random() * 60 - 30, y: center.y + Math.random() * 60 - 30 };
+        // crée plusieurs d'affilée — SAUF si une année de naissance a été
+        // renseignée et que d'autres membres de cet arbre en ont une aussi :
+        // dans ce cas on préfère un Y suggéré par interpolation (voir
+        // suggestYFromBirthYear) pour que les plus âgés apparaissent par
+        // défaut plus haut que les plus jeunes, sans empêcher de glisser la
+        // carte ensuite.
+        const suggestedY = suggestYFromBirthYear(Number.isFinite(birth) ? birth : null);
+        const pos = {
+          x: center.x + Math.random() * 60 - 30,
+          y: suggestedY != null ? suggestedY : center.y + Math.random() * 60 - 30,
+        };
         const { data, error } = await supabase
           .from("genealogy_members")
           .insert({

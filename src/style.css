@@ -38,6 +38,13 @@
   --cable-line: #8f7fe8;
   --river-line: #4fb3e8;
   --lake-stroke: #0c1220;
+  /* Troisième type de lien généalogique "Famille" (point demandé par
+     Martin, 2026-10-03 : "Rajoute un lien => Famille, pour en avoir 3 :
+     Parent, Famille, Mariage") — vert, distinct du jaune --accent
+     (parent → enfant, trait plein) et du violet --cable-line (mariage,
+     tirets). Trait pointillé pour le différencier des deux autres au
+     premier coup d'œil même en noir et blanc. */
+  --family-line: #5cb37e;
 }
 
 * {
@@ -1275,15 +1282,37 @@ li.rt-check[data-checked="true"]:after {
    hors d'une `.dossier-entry` (positionnement absolu non pertinent) ajoute
    `style="position:static;opacity:1;"` en ligne pour rester visible et dans
    le flux — NE JAMAIS réintroduire un "×" texte brut nu dans ce projet,
-   même pour un nouvel ajout futur : ajoutez `.entry-del` à la place. */
+   même pour un nouvel ajout futur : ajoutez `.entry-del` à la place.
+
+   BUG (2026-10-03, re-signalé par Martin sur la liste des dirigeants —
+   "gros carré blanc... tu as mis des poubelles partout mais c'est pas ce
+   que je demandais") : l'apparence de base (fond transparent, taille
+   24x24, coin arrondi, couleur, survol) n'était définie QUE sous le
+   sélecteur `.dossier-entry .entry-del` — un bouton `.entry-del` utilisé
+   hors d'une `.dossier-entry` (fiche-leader-row, gen-relation-row,
+   gen-m-relations, groupes, partis d'hémicycle…) ne récupérait donc
+   AUCUN style de base, juste l'apparence par défaut du navigateur (fond
+   blanc, bordure, grand) — exactement le "carré blanc" signalé, répété
+   pour chaque bouton de suppression de la page. Fix : l'apparence de base
+   s'applique maintenant à `.entry-del`/`.entry-edit`/etc. partout, sans
+   condition d'ancêtre ; seuls le positionnement absolu et le fondu
+   "invisible tant qu'on ne survole pas la carte" restent réservés à
+   `.dossier-entry` (où ce comportement a du sens — ailleurs le bouton
+   doit rester visible en permanence, via l'inline
+   `style="position:static;opacity:1;"` déjà en place). */
+.entry-del, .entry-edit, .entry-replace-photo, .entry-fav, .entry-history {
+  display: inline-flex; align-items: center; justify-content: center;
+  appearance: none; border: none; background: transparent; cursor: pointer;
+  font-size: 15px; color: var(--text-dim); width: 24px; height: 24px; border-radius: 6px;
+  transition: background 120ms ease, color 120ms ease, opacity 120ms ease;
+}
+.entry-del:hover, .entry-edit:hover, .entry-replace-photo:hover, .entry-fav:hover, .entry-history:hover {
+  background: var(--surface-border); color: var(--accent);
+}
 .dossier-entry .entry-del, .dossier-entry .entry-edit, .dossier-entry .entry-replace-photo,
 .dossier-entry .entry-fav, .dossier-entry .entry-history {
-  position: absolute; top: 8px; appearance: none; border: none; background: transparent; cursor: pointer;
-  font-size: 15px; color: var(--text-dim); width: 24px; height: 24px; border-radius: 6px;
-  opacity: 0; transition: opacity 120ms ease;
+  position: absolute; top: 8px; opacity: 0;
 }
-.entry-del { display: inline-flex; align-items: center; justify-content: center; }
-.entry-del:hover { color: var(--accent); }
 .dossier-entry:hover .entry-del, .dossier-entry:hover .entry-edit, .dossier-entry:hover .entry-replace-photo,
 .dossier-entry:hover .entry-fav, .dossier-entry:hover .entry-history { opacity: 1; }
 .dossier-entry .entry-del { right: 8px; }
@@ -1291,8 +1320,6 @@ li.rt-check[data-checked="true"]:after {
 .dossier-entry .entry-replace-photo { right: 60px; }
 .dossier-entry .entry-fav { right: 86px; }
 .dossier-entry .entry-history { right: 112px; }
-.dossier-entry .entry-del:hover, .dossier-entry .entry-edit:hover, .dossier-entry .entry-replace-photo:hover,
-.dossier-entry .entry-fav:hover, .dossier-entry .entry-history:hover { background: var(--surface-border); color: var(--accent); }
 .dossier-entry .entry-fav.active { opacity: 1; color: var(--accent); }
 .dossier-entry .entry-meta { font-size: 10px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 6px; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; min-height: 12px; }
 .dossier-entry .entry-date-hover { opacity: 0; transition: opacity 120ms ease; }
@@ -1709,6 +1736,11 @@ path.link-autre { stroke: var(--link-autre, #c9bfa9); }
 .gen-legend-item { display: inline-flex; align-items: center; gap: 5px; }
 .gen-legend-line { display: inline-block; width: 22px; height: 0; border-top: 2.5px solid var(--accent); }
 .gen-legend-line.gen-legend-spouse { border-top: 2px dashed var(--cable-line); }
+/* Troisième type de lien "Famille" (demande de Martin, 2026-10-03) — voir
+   RelationType dans genealogy.ts et --family-line (:root, début du
+   fichier). Pointillés serrés pour le distinguer du tiret plus large de
+   gen-legend-spouse. */
+.gen-legend-line.gen-legend-family { border-top: 2px dotted var(--family-line); }
 .gen-legend-dot { display: inline-block; width: 9px; height: 9px; border-radius: 50%; background: var(--surface); border: 2px solid var(--accent); }
 
 #genealogy-canvas-wrap { position: relative; flex: 1; overflow: hidden; cursor: grab; background:
@@ -1751,6 +1783,31 @@ path.link-autre { stroke: var(--link-autre, #c9bfa9); }
   margin-bottom: 6px; display: flex; align-items: center; justify-content: center;
 }
 .gen-photo-preview img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+/* Recadrage de la photo (demande de Martin, 2026-10-03 : "faut ajouter la
+   possibilité de recadrer la photo") — petit outil maison (pas de
+   dépendance npm ajoutée) : rectangle de cadrage à l'aspect ratio fixe
+   (CARD_W/82, identique à .gen-card-photo) déplaçable (glisser le cadre)
+   et redimensionnable (glisser le coin #gen-crop-handle), voir
+   openCropModal()/genealogy.ts. Réutilise .poi-overlay (même z-index
+   20000 que gen-relation-modal/gen-foreign-search-modal, au-dessus de
+   #gen-member-panel qui l'ouvre). */
+.gen-crop-box { width: 460px; }
+#gen-crop-stage {
+  position: relative; width: 100%; max-width: 420px; margin: 4px auto 10px; overflow: hidden;
+  background: var(--ink); border-radius: 8px; -webkit-user-select: none; user-select: none;
+}
+#gen-crop-img { display: block; width: 100%; height: auto; pointer-events: none; -webkit-user-select: none; user-select: none; }
+#gen-crop-rect {
+  position: absolute; border: 2px solid var(--accent); cursor: move;
+  box-shadow: 0 0 0 2000px rgba(2, 4, 8, 0.6);
+}
+#gen-crop-handle {
+  position: absolute; right: -7px; bottom: -7px; width: 14px; height: 14px;
+  border-radius: 50%; background: var(--accent); border: 2px solid var(--surface); cursor: nwse-resize;
+}
+#gen-crop-hint { font-size: 11px; color: var(--text-dim); margin: -4px 0 4px; }
+
 /* BUG (2026-10-03, signalé par Martin : "cliquer sur + Membre ne fait
    rien") : #gen-member-panel hérite seulement de .panel.side-panel
    (z-index 22, générique — voir #fiche-panel). Il s'affiche bien par-
