@@ -850,6 +850,13 @@ export function initFicheDossierSystem(deps: {
   const categoryDocs = new Map<string, Category>();
   let currentCategorySpace: "country" | "encyclopedie" = "country";
   let currentSections: Section[] = [];
+  // Id de la section en cours de glisser-déposer (point 3bis, 2026-10-03) :
+  // nécessaire pour calculer la zone de dépôt (avant/après/dedans, voir
+  // sectionDropZone) PENDANT le dragover, où dataTransfer.getData() n'est
+  // pas lisible de façon fiable (restriction standard des navigateurs —
+  // seul dataTransfer.types l'est). Posée au dragstart de la ligne, vidée
+  // au dragend.
+  let draggingSectionId: string | null = null;
   let currentEntries: Entry[] = [];
   let activeCategory = "__all__";
   let editingEntryId: string | null = null;
@@ -1097,7 +1104,56 @@ export function initFicheDossierSystem(deps: {
     }
     return false;
   }
-  async function moveSectionAfter(draggedId: string, targetId: string) {
+  // Point 3bis (2026-10-03, retour de Martin après coup : "quand je glisse
+  // une catégorie/sous-catégorie sur une autre, elle ne va pas dedans mais
+  // à côté") — AVANT ce correctif, déposer A sur B faisait toujours de A un
+  // FRÈRE de B (juste après lui dans la liste), jamais son enfant : il
+  // n'existait tout simplement aucun moyen d'imbriquer par glisser-déposer.
+  // Remplacé par un modèle à 3 zones sur la hauteur de la ligne cible
+  // (voir le dragover/drop de `row` plus bas, qui calcule la zone via
+  // e.clientY) : déposer sur le TIERS HAUT = avant B (frère) ; TIERS BAS =
+  // après B (frère) ; zone CENTRALE = dedans, B devient le parent de A —
+  // exactement le comportement demandé ("déposer SUR l'élément = imbriquer").
+  function canNestInto(draggedId: string, targetId: string): boolean {
+    if (draggedId === targetId) return false;
+    const dragged = currentSections.find((s) => s.id === draggedId);
+    const target = currentSections.find((s) => s.id === targetId);
+    if (!dragged || !target || !canModify(dragged)) return false;
+    if (isSectionDescendantOf(targetId, draggedId)) return false;
+    // Hiérarchie à 2 niveaux max (voir canCreateChildSection) : seule une
+    // section de niveau 1 (sans parent) peut recevoir des enfants, et une
+    // section qui a elle-même des enfants ne peut pas devenir enfant d'une
+    // autre (ses propres enfants se retrouveraient à un niveau 3 inexistant).
+    if (!canCreateChildSection(target)) return false;
+    const draggedHasChildren = currentSections.some((s) => s.parent_section_id === draggedId);
+    if (draggedHasChildren) return false;
+    return true;
+  }
+  async function nestSectionInto(draggedId: string, targetId: string) {
+    if (!canNestInto(draggedId, targetId)) return;
+    const dragged = currentSections.find((s) => s.id === draggedId)!;
+    const target = currentSections.find((s) => s.id === targetId)!;
+    dragged.parent_section_id = targetId;
+    dragged.category_id = target.category_id;
+    const siblings = currentSections
+      .filter((s) => s.id !== draggedId && s.category_id === target.category_id && s.parent_section_id === targetId)
+      .sort((a, b) => a.position - b.position);
+    siblings.push(dragged);
+    siblings.forEach((s, idx) => {
+      s.position = idx;
+    });
+    renderDossierEntries();
+    try {
+      await Promise.all(
+        siblings.map((s) =>
+          supabase.from("dossier_sections").update({ position: s.position, parent_section_id: s.parent_section_id, category_id: s.category_id }).eq("id", s.id)
+        )
+      );
+    } catch {
+      /* ignore */
+    }
+  }
+  async function moveSectionAdjacent(draggedId: string, targetId: string, where: "before" | "after") {
     if (draggedId === targetId) return;
     const dragged = currentSections.find((s) => s.id === draggedId);
     const target = currentSections.find((s) => s.id === targetId);
@@ -1118,7 +1174,7 @@ export function initFicheDossierSystem(deps: {
       .filter((s) => s.id !== draggedId && s.category_id === target.category_id && (s.parent_section_id || null) === (newParentId || null))
       .sort((a, b) => a.position - b.position);
     const targetIdx = siblings.findIndex((s) => s.id === targetId);
-    siblings.splice(targetIdx + 1, 0, dragged);
+    siblings.splice(where === "after" ? targetIdx + 1 : targetIdx, 0, dragged);
     siblings.forEach((s, idx) => {
       s.position = idx;
     });
@@ -1132,6 +1188,17 @@ export function initFicheDossierSystem(deps: {
     } catch {
       /* ignore */
     }
+  }
+  // Détermine la zone de dépôt (tiers haut/bas = réordonner avant/après ;
+  // centre = imbriquer dedans, seulement si canNestInto le permet — sinon
+  // la zone centrale se comporte comme "après", pour qu'il y ait toujours
+  // une action valide quel que soit l'endroit où l'on relâche.
+  function sectionDropZone(e: DragEvent, row: HTMLElement, draggedId: string, targetId: string): "before" | "after" | "inside" {
+    const rect = row.getBoundingClientRect();
+    const ratio = (e.clientY - rect.top) / rect.height;
+    if (ratio < 0.3) return "before";
+    if (ratio > 0.7) return "after";
+    return canNestInto(draggedId, targetId) ? "inside" : "after";
   }
   async function moveSection(id: string, dir: 1 | -1) {
     const target = currentSections.find((s) => s.id === id);
@@ -1684,11 +1751,7 @@ export function initFicheDossierSystem(deps: {
     // avec SA PROPRE zone de dépôt (son propre `group`/`row`,
     // stopPropagation() inclus) — déposer sur TOUT le bloc `group` rendait
     // donc très facile de toucher en réalité la zone de l'ENFANT plutôt que
-    // celle du PARENT : moveSectionAfter(draggedId, targetId=<id de
-    // l'enfant>) calcule alors newParentId = parent de cet enfant, et la
-    // section déposée (de niveau 2 autonome) DEVENAIT un niveau-3, absorbée
-    // comme frère de cet enfant — perçu par l'utilisateur comme "rentrée
-    // dans l'autre" alors qu'un simple réordonnancement était voulu. `row`
+    // celle du PARENT, avec un résultat non voulu dans les deux cas. `row`
     // n'est JAMAIS un ancêtre DOM d'un enfant imbriqué (il ne contient que
     // le caret/nom/compteur), donc déposer sur le bandeau d'une section
     // cible précisément CETTE section, jamais un de ses enfants rendus en
@@ -1763,31 +1826,50 @@ export function initFicheDossierSystem(deps: {
       row.addEventListener("dragstart", (e) => {
         e.dataTransfer!.setData("text/dossier-section-id", sec.id);
         e.dataTransfer!.effectAllowed = "move";
+        draggingSectionId = sec.id;
         group.classList.add("dragging-section");
       });
-      row.addEventListener("dragend", () => group.classList.remove("dragging-section"));
+      row.addEventListener("dragend", () => {
+        draggingSectionId = null;
+        group.classList.remove("dragging-section");
+      });
     }
     // Zone de dépôt restreinte au bandeau-titre (voir commentaire plus haut)
     // — ajoutée à CÔTÉ des listeners dragstart/dragend ci-dessus, pas à leur
-    // place. Pas de garde canModify(sec) ici : comme avant le fix, c'est
-    // moveSectionAfter() qui vérifie les droits sur la section DÉPLACÉE ;
-    // row doit rester une cible de dépôt valide même si la section cible
-    // elle-même n'est pas modifiable par l'utilisateur courant.
+    // place. Pas de garde canModify(sec) ici : comme avant le fix, ce sont
+    // nestSectionInto()/moveSectionAdjacent() qui vérifient les droits sur
+    // la section DÉPLACÉE ; row doit rester une cible de dépôt valide même
+    // si la section cible elle-même n'est pas modifiable par l'utilisateur
+    // courant.
+    //
+    // Modèle à 3 zones (point 3bis, 2026-10-03, cf. commentaire sur
+    // sectionDropZone) : le tiers haut/bas de la ligne réordonne avant/
+    // après la cible (frères), le tiers central imbrique dedans (la cible
+    // devient le parent). Indicateurs visuels distincts pour chaque zone
+    // (.drop-zone-before/-after/-inside, style.css) pour que ce soit clair
+    // en glissant, pas seulement au relâcher.
+    const clearDropIndicators = () => {
+      row.classList.remove("drop-zone-before", "drop-zone-after", "drop-zone-inside");
+    };
     row.addEventListener("dragover", (e) => {
       if (!e.dataTransfer!.types.includes("text/dossier-section-id")) return;
       e.preventDefault();
       e.stopPropagation();
       e.dataTransfer!.dropEffect = "move";
-      group.classList.add("section-drop-target");
+      const zone = draggingSectionId ? sectionDropZone(e, row, draggingSectionId, sec.id) : "after";
+      clearDropIndicators();
+      row.classList.add("drop-zone-" + zone);
     });
-    row.addEventListener("dragleave", () => group.classList.remove("section-drop-target"));
+    row.addEventListener("dragleave", () => clearDropIndicators());
     row.addEventListener("drop", (e) => {
       const draggedId = e.dataTransfer!.getData("text/dossier-section-id");
-      group.classList.remove("section-drop-target");
+      const zone = draggedId ? sectionDropZone(e, row, draggedId, sec.id) : "after";
+      clearDropIndicators();
       if (!draggedId) return;
       e.preventDefault();
       e.stopPropagation();
-      void moveSectionAfter(draggedId, sec.id);
+      if (zone === "inside") void nestSectionInto(draggedId, sec.id);
+      else void moveSectionAdjacent(draggedId, sec.id, zone);
     });
     group.appendChild(row);
 

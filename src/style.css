@@ -1239,7 +1239,15 @@ li.rt-check[data-checked="true"]:after {
 /* Glisser-déposer de sous-sections (point 3, 2026-10-03) — voir
    moveSectionAfter dans dossier.ts. */
 .dossier-section-group.dragging-section { opacity: 0.45; }
-.dossier-section-group.section-drop-target { outline: 2px dashed var(--accent); outline-offset: 2px; }
+/* Indicateurs de zone de dépôt à 3 états (point 3bis, 2026-10-03,
+   src/dossier.ts::sectionDropZone) — remplacent l'ancien contour pointillé
+   générique .section-drop-target, qui ne distinguait pas "réordonner
+   avant/après" de "imbriquer dedans". Posés sur .dossier-section-row
+   (le bandeau-titre), pas sur .dossier-section-group, pour rester alignés
+   avec la zone de dépôt réelle (voir commentaire plus haut sur `row`). */
+.dossier-section-row.drop-zone-before { box-shadow: inset 0 3px 0 0 var(--accent); }
+.dossier-section-row.drop-zone-after { box-shadow: inset 0 -3px 0 0 var(--accent); }
+.dossier-section-row.drop-zone-inside { outline: 2px dashed var(--accent); outline-offset: -2px; background: color-mix(in srgb, var(--accent) 12%, transparent); }
 .dossier-drop-hint { grid-column: 1 / -1; }
 
 /* --- Entrées (mosaïque) ------------------------------------------------------ */
