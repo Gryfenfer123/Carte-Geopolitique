@@ -10,11 +10,15 @@
 // détail owner_type/owner_id, qui suit exactement la même convention que
 // dossier_sections/dossier_entries dans src/dossier.ts).
 //
-// Organisation retenue (confirmée par Martin) : UN arbre par dossier
-// (owner_type/owner_id identique à DossierOwnerRef de src/dossier.ts), ouvert
-// depuis ce dossier via le bouton "🌳 Généalogie" (câblé dans dossier.ts,
-// deps.onOpenGenealogy). Un membre appartient à l'arbre dans lequel il a été
-// créé, mais une RELATION entre deux membres peut traverser deux arbres
+// Organisation (mise à jour point 2, 2026-10-03 — changement d'architecture
+// confirmé avec Martin) : un arbre par ENTRÉE de dossier de type
+// "genealogy" (owner_type="entry", owner_id=l'id de l'entrée — voir
+// EntryType/onOpenGenealogyEntry de src/dossier.ts), plutôt qu'un seul
+// arbre par pays/groupe comme avant — un dossier peut donc avoir plusieurs
+// arbres indépendants (un par dynastie/section), ouverts depuis la carte
+// "🌳 <titre>" correspondante dans la barre d'ajout du dossier. Un membre
+// appartient à l'arbre dans lequel il a été créé, mais une RELATION entre
+// deux membres peut traverser deux arbres
 // (ex. mariage franco-espagnol) : genealogy_relations ne contraint pas
 // member_a_id/member_b_id à un même owner_id. Un membre d'un autre pays
 // apparaissant seulement parce qu'il est lié (classe .gen-card-foreign,
@@ -336,6 +340,39 @@ export function initGenealogySystem(deps: {
     renderLinks();
   }
 
+  // "entry" (point 2, 2026-10-03) : le genealogy_members.owner_id d'un
+  // membre étranger est désormais l'id d'une ENTRÉE de dossier, pas un
+  // pays/groupe directement — deps.getOwnerLabel ne sait résoudre que des
+  // owners de dossier classiques. On résout donc ce cas à part, à la
+  // volée et en cache (une seule requête par entrée visitée), via
+  // dossier_entries (title, owner_type, owner_id) -> deps.getOwnerLabel
+  // sur son PROPRE owner — "<pays> — <titre de l'arbre>".
+  const entryOwnerLabelCache = new Map<string, string>();
+  function resolveEntryOwnerLabel(entryId: string): string {
+    const cached = entryOwnerLabelCache.get(entryId);
+    if (cached !== undefined) return cached;
+    entryOwnerLabelCache.set(entryId, "…");
+    void supabase
+      .from("dossier_entries")
+      .select("title, owner_type, owner_id")
+      .eq("id", entryId)
+      .maybeSingle()
+      .then(({ data }) => {
+        let label = "Autre dossier";
+        if (data) {
+          const parentLabel = deps.getOwnerLabel(data.owner_type as string, data.owner_id as string);
+          const title = (data.title as string | null) || "Arbre généalogique";
+          label = parentLabel ? parentLabel + " — " + title : title;
+        }
+        entryOwnerLabelCache.set(entryId, label);
+        renderNodes();
+      });
+    return "…";
+  }
+  function foreignOwnerLabel(m: MemberRow): string {
+    return m.owner_type === "entry" ? resolveEntryOwnerLabel(m.owner_id) : deps.getOwnerLabel(m.owner_type, m.owner_id) || m.owner_type;
+  }
+
   function renderNodes() {
     nodesLayer.innerHTML = "";
     const known = allKnownMembers();
@@ -353,7 +390,7 @@ export function initGenealogySystem(deps: {
         ? '<img src="' + escapeHtml(m.photo_url) + '" alt="">'
         : '<span class="gen-card-initials">' + escapeHtml(initials(m.name)) + "</span>";
       const foreignBadge = isForeign
-        ? '<span class="gen-card-flag" title="Membre d\'un autre arbre">&#127757; ' + escapeHtml(deps.getOwnerLabel(m.owner_type, m.owner_id) || m.owner_type) + "</span>"
+        ? '<span class="gen-card-flag" title="Membre d\'un autre arbre">&#127757; ' + escapeHtml(foreignOwnerLabel(m)) + "</span>"
         : "";
       card.innerHTML =
         '<div class="gen-card-photo">' + photoHtml + "</div>" +
@@ -778,7 +815,7 @@ export function initGenealogySystem(deps: {
         row.type = "button";
         row.className = "btn-small gen-foreign-result";
         row.style.cssText = "display:block;width:100%;text-align:left;margin-top:4px;";
-        const ownerLabel = deps.getOwnerLabel(m.owner_type, m.owner_id) || m.owner_type;
+        const ownerLabel = foreignOwnerLabel(m);
         row.textContent = m.name + " — " + ownerLabel + (m.title ? " (" + m.title + ")" : "");
         row.addEventListener("click", async () => {
           modal.classList.remove("open");

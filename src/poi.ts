@@ -56,6 +56,13 @@ export function initPoiSystem(deps: {
   // de créer un POI sans être connecté.
   openAuthPanel: () => void;
   showBanner: (text: string) => void;
+  // Masque le bandeau #link-banner — câblé dans main.ts vers le même
+  // élément que showBanner ci-dessus (voir deps.hideBanner de
+  // src/links.ts pour le pattern identique déjà en place). Sans lui, le
+  // bandeau "Cliquez sur la carte pour placer un point d'intérêt" restait
+  // affiché indéfiniment une fois le mode placement quitté (bug confirmé
+  // 2026-10-03) : rien n'appelait jamais sa fermeture.
+  hideBanner?: () => void;
 }) {
   const { supabase } = deps;
   const $ = <T extends HTMLElement = HTMLElement>(id: string) => document.getElementById(id) as T;
@@ -111,6 +118,7 @@ export function initPoiSystem(deps: {
   }
   function exitPlacementMode() {
     setPlacementActive(false);
+    deps.hideBanner?.();
   }
 
   addBtn.addEventListener("click", () => {

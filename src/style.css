@@ -15,7 +15,12 @@
 
   /* Couleurs des calques d'infrastructure — reprises à l'identique des
      variables CSS de l'artifact source (realistic_final.html, :root). */
-  --disputed-line: #e8b34a;
+  /* Cyan électrique — tranche nettement sur --accent/--disputed-fill
+     (jaune-orangé/beige) et sur --strait/--base-marker (rouges), sans
+     entrer en collision avec --cable-line (violet) ni --river-line
+     (bleu, plus sombre et moins saturé) — demande de Martin, 2026-10-03 :
+     l'ancien --disputed-line (#e8b34a) était quasi identique à --accent. */
+  --disputed-line: #00e5ff;
   --disputed-fill: #c9bfa9;
   --port: #ffd166;
   --port-ring: #241c00;
@@ -25,6 +30,11 @@
   --pipeline-oil: #c97a3d;
   --base-marker: #e0435a;
   --base-ring: #2a0a10;
+  /* Zones naturelles (point 5, 2026-10-03) — vert distinct des autres
+     couleurs du thème (ports jaune, détroits/bases rouge, câbles violet,
+     fleuves bleu). */
+  --natural-marker: #5fb85a;
+  --natural-ring: #0e2a10;
   --cable-line: #8f7fe8;
   --river-line: #4fb3e8;
   --lake-stroke: #0c1220;
@@ -873,9 +883,18 @@ main.map-wrap {
 .close-x:hover { background: var(--surface-border); }
 
 /* --- Fiche pays (panneau latéral) ----------------------------------------- */
+/* bottom:110px (au lieu de 16px) dégage la rangée d'icônes bas-droite
+   (#poi-toggle/#export-toggle/#compare-toggle etc., right:16-432px,
+   bottom:56px, boutons de 34px de haut donc jusqu'à ~bottom:90px) avec
+   une marge confortable — ces panneaux couvraient toute la hauteur
+   (bottom:16) et jusqu'à right:336px (width:320px+16px), chevauchant
+   directement cette rangée (demande de Martin, 2026-10-03). width relevé
+   à min(420px, calc(100vw - 32px)) pour plus de place côté fiche pays.
+   overflow-y:auto conservé : le panneau reste défilable si son contenu
+   dépasse la hauteur désormais un peu réduite. */
 #fiche-panel {
-  position: absolute; top: 16px; right: 16px; bottom: 16px;
-  width: min(320px, calc(100vw - 32px));
+  position: absolute; top: 16px; right: 16px; bottom: 110px;
+  width: min(420px, calc(100vw - 32px));
   background: rgba(10, 14, 24, 0.94); border: 1px solid var(--surface-border);
   border-radius: 10px; padding: 18px; z-index: 22; overflow-y: auto;
   backdrop-filter: blur(6px); display: none;
@@ -884,10 +903,13 @@ main.map-wrap {
 
 /* --- Autres panneaux latéraux (groupes, indicateurs, apparence...) : même
    habillage que #fiche-panel — règle partagée manquante jusqu'ici, ce qui
-   laissait ces panneaux sans position ni repli par défaut. */
+   laissait ces panneaux sans position ni repli par défaut. Même ajustement
+   bottom/width que #fiche-panel ci-dessus, pour rester cohérent entre tous
+   les panneaux latéraux (aucun de ces panneaux n'a besoin de toute la
+   hauteur de l'écran : ce sont tous des formulaires/listes défilables). */
 .panel.side-panel {
-  position: absolute; top: 16px; right: 16px; bottom: 16px;
-  width: min(320px, calc(100vw - 32px));
+  position: absolute; top: 16px; right: 16px; bottom: 110px;
+  width: min(420px, calc(100vw - 32px));
   background: rgba(10, 14, 24, 0.94); border: 1px solid var(--surface-border);
   border-radius: 10px; padding: 18px; z-index: 22; overflow-y: auto;
   backdrop-filter: blur(6px); display: none;
@@ -903,6 +925,10 @@ main.map-wrap {
 }
 #fiche-panel input:focus, #fiche-panel textarea:focus { outline: none; border-color: var(--accent); }
 #fiche-save-status { font-size: 11.5px; color: var(--text-dim); margin-top: 6px; min-height: 14px; }
+/* Dirigeants multiples (point 8, 2026-10-03) — une ligne statut+nom par
+   dirigeant, même habillage que .dossier-source-row/.hemicycle-party-row. */
+.fiche-leader-row { display: flex; gap: 6px; margin-bottom: 6px; }
+.fiche-leader-row input[type="text"] { flex: 1; min-width: 0; }
 .flag-ico { display: inline-block; width: 1.1em; height: 0.825em; vertical-align: -0.08em; overflow: hidden; border-radius: 2px; }
 .flag-ico svg { width: 100%; height: 100%; display: block; }
 
@@ -933,7 +959,13 @@ main.map-wrap {
   font-family: "IBM Plex Sans", sans-serif;
 }
 #dossier-view.open { display: block; }
-#dossier-inner { max-width: 760px; margin: 0 auto; padding: 24px 22px 60px; transition: max-width 140ms ease; }
+/* Largeur de base relevée de 760px à 1240px (demande de Martin, 2026-10-03,
+   "dossiers plus larges" — plus de place pour les cases dossier/sous-
+   dossier) : à 1440px d'écran, il reste ~100px de marge de chaque côté,
+   et la grille à 4 colonnes de .dossier-sections-grid (ci-dessous) y
+   tient confortablement. .dossier-inner-wide (sommaire par thèmes) reste
+   inchangé, déjà assez large. */
+#dossier-inner { max-width: 1240px; margin: 0 auto; padding: 24px 22px 60px; transition: max-width 140ms ease; }
 #dossier-inner.dossier-inner-wide { max-width: 1280px; }
 #dossier-inner.dossier-inner-text-editing { max-width: min(1100px, 92vw); }
 #dossier-back { margin-bottom: 18px; }
@@ -1102,7 +1134,29 @@ li.rt-check[data-checked="true"]:after {
    src/dossier.ts, renderDossierEntries() ; les sous-sous-catégories
    (level-3) restent imbriquées, indentées, dans leur parent et ne sont
    donc pas concernées par cette grille. */
-.dossier-sections-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 22px; align-items: start; margin-bottom: 8px; }
+/* Point 11 (demande de Martin, 2026-10-03) : les deux <select> catégorie/
+   section de la barre d'ajout (#dossier-entry-category/#dossier-entry-
+   section) ne servent plus que de source de valeur par défaut pour les
+   formulaires individuels (+Texte/+Photo/+Lien/+Hémicycle/+Généalogie) —
+   masqués plutôt que supprimés du DOM pour garder ce comportement interne
+   intact (voir dossier.ts, populateCategorySelects/populateSectionSelects
+   et les handlers d'ouverture de chaque formulaire, qui lisent encore ces
+   deux éléments). Seuls les boutons d'ajout restent visibles.
+   La catégorie n'a de toute façon plus besoin d'être choisie manuellement
+   (une nouvelle entrée se crée dans la catégorie actuellement ouverte,
+   activeCategory) ; la section par défaut est "Sans sous-section" tant
+   qu'aucune n'a été sélectionnée via ce select caché — l'utilisateur peut
+   reclasser une entrée ensuite par glisser-déposer (comme déjà prévu par
+   registerSectionDropZone). */
+#dossier-entry-category, #dossier-entry-section { display: none; }
+
+/* 4 colonnes côte à côte à 1440px d'écran (demande de Martin, 2026-10-03) :
+   #dossier-inner fait jusqu'à 1240px de large (ci-dessus) moins le
+   padding (22px*2) = ~1196px utiles ; minmax(260px,1fr) avec un gap de
+   18px tient donc 4 colonnes (4*260 + 3*18 = 1094px ≤ 1196px) et repasse
+   naturellement à 3/2/1 colonne(s) sur un écran plus étroit grâce à
+   auto-fill. */
+.dossier-sections-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 18px; align-items: start; margin-bottom: 8px; }
 .dossier-section-group { border: 1px solid var(--surface-border); border-radius: 10px; margin: 0 0 16px; overflow: hidden; background: var(--surface); }
 .dossier-sections-grid > .dossier-section-group { margin-bottom: 0; }
 .dossier-section-group.level-3 { margin: 12px 12px 0 24px; }
@@ -1136,6 +1190,10 @@ li.rt-check[data-checked="true"]:after {
 .dossier-section-body { padding: 0 14px 14px; display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 14px; }
 .dossier-unsectioned { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 14px; margin-bottom: 14px; }
 .drop-target-active { outline: 2px dashed var(--accent); outline-offset: 2px; }
+/* Glisser-déposer de sous-sections (point 3, 2026-10-03) — voir
+   moveSectionAfter dans dossier.ts. */
+.dossier-section-group.dragging-section { opacity: 0.45; }
+.dossier-section-group.section-drop-target { outline: 2px dashed var(--accent); outline-offset: 2px; }
 .dossier-drop-hint { grid-column: 1 / -1; }
 
 /* --- Entrées (mosaïque) ------------------------------------------------------ */
@@ -1149,6 +1207,9 @@ li.rt-check[data-checked="true"]:after {
 }
 .dossier-entry:hover { box-shadow: 0 8px 20px rgba(0,0,0,0.3); transform: translateY(-1px); }
 .dossier-entry.link { cursor: default; }
+/* Entrée "genealogy" (point 2, 2026-10-03) : petite carte cliquable vers
+   l'overlay plein écran de src/genealogy.ts, pas de rendu inline. */
+.dossier-entry.genealogy .entry-title { font-weight: 600; font-size: 14.5px; color: var(--text); margin-bottom: 2px; }
 .dossier-entry .entry-del, .dossier-entry .entry-edit, .dossier-entry .entry-replace-photo,
 .dossier-entry .entry-fav, .dossier-entry .entry-history {
   position: absolute; top: 8px; appearance: none; border: none; background: transparent; cursor: pointer;
@@ -1559,7 +1620,8 @@ path.link-autre { stroke: var(--link-autre, #c9bfa9); }
 
 /* ===========================================================================
    Arbres généalogiques (src/genealogy.ts, schema_v11.sql) — overlay plein
-   écran ouvert depuis un dossier (bouton #dossier-genealogy-btn), au-dessus
+   écran ouvert depuis une entrée de dossier de type "genealogy" (point 2,
+   2026-10-03 ; #dossier-add-genealogy-btn), au-dessus
    de #dossier-view (z-index supérieur à son 9999) mais sous les boîtes de
    dialogue partagées (.poi-overlay/.custom-dialog, z-index 20000-30000).
    ========================================================================= */

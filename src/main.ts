@@ -63,6 +63,7 @@ app.innerHTML = `
         <label class="chip chip-toggle"><input type="checkbox" id="toggle-straits"><span class="diamond"></span>Détroits</label>
         <label class="chip chip-toggle"><input type="checkbox" id="toggle-pipelines"><span class="line-swatch"></span>Pipelines</label>
         <label class="chip chip-toggle"><input type="checkbox" id="toggle-bases"><span class="dot" style="background:var(--base-marker);border-color:var(--base-ring);"></span>Bases militaires étrangères</label>
+        <label class="chip chip-toggle"><input type="checkbox" id="toggle-natural"><span class="dot" style="background:var(--natural-marker);border-color:var(--natural-ring);"></span>Zones naturelles</label>
         <label class="chip chip-toggle"><input type="checkbox" id="toggle-cables"><span class="line-swatch" style="border-top-color:var(--cable-line);"></span>Câbles sous-marins</label>
         <label class="chip chip-toggle"><input type="checkbox" id="toggle-rivers-lakes"><span class="line-swatch" style="border-top-color:var(--river-line);"></span>Fleuves &amp; lacs</label>
         <label class="chip chip-toggle"><input type="checkbox" id="toggle-pois" checked><span class="dot" style="background:var(--accent);border-color:var(--accent);"></span>Points d'intérêt</label>
@@ -95,13 +96,13 @@ app.innerHTML = `
     </div>
 
     <div id="poi-toggle" class="panel">
-      <button id="poi-add-btn" title="Placer un point d'intérêt (à venir)" aria-label="Points d'intérêt"><svg class="icon-svg" style="width:17px;height:17px;" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.1-7-11a7 7 0 0 1 14 0c0 4.9-7 11-7 11Z"/><circle cx="12" cy="10" r="2.5"/></svg></button>
+      <button id="poi-add-btn" title="Placer un point d'intérêt" aria-label="Points d'intérêt"><svg class="icon-svg" style="width:17px;height:17px;" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.1-7-11a7 7 0 0 1 14 0c0 4.9-7 11-7 11Z"/><circle cx="12" cy="10" r="2.5"/></svg></button>
     </div>
     <div id="export-toggle" class="panel">
-      <button id="export-png-btn" title="Exporter la carte en image (à venir)" aria-label="Exporter la carte en image"><svg class="icon-svg" style="width:17px;height:17px;" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v13"/><path d="m6 11 6 6 6-6"/><path d="M4 20h16"/></svg></button>
+      <button id="export-png-btn" title="Exporter la carte en image" aria-label="Exporter la carte en image"><svg class="icon-svg" style="width:17px;height:17px;" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v13"/><path d="m6 11 6 6 6-6"/><path d="M4 20h16"/></svg></button>
     </div>
     <div id="compare-toggle" class="panel">
-      <button id="compare-btn" title="Comparer deux pays (à venir)" aria-label="Comparer deux pays"><svg class="icon-svg" style="width:17px;height:17px;" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="7" height="16" rx="1.5"/><rect x="14" y="4" width="7" height="16" rx="1.5"/><path d="M10 12h4"/><path d="m11.5 9.5 2.5 2.5-2.5 2.5"/></svg></button>
+      <button id="compare-btn" title="Comparer deux pays" aria-label="Comparer deux pays"><svg class="icon-svg" style="width:17px;height:17px;" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="7" height="16" rx="1.5"/><rect x="14" y="4" width="7" height="16" rx="1.5"/><path d="M10 12h4"/><path d="m11.5 9.5 2.5 2.5-2.5 2.5"/></svg></button>
     </div>
     <div id="tooltip" class="panel"></div>
 
@@ -123,7 +124,7 @@ app.innerHTML = `
       <button id="appearance-btn" title="Apparence (couleurs, dégradés)" aria-label="Apparence"><svg class="icon-svg" style="width:17px;height:17px;" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="13.5" cy="6.5" r="0.6" fill="currentColor"/><circle cx="17.5" cy="10.5" r="0.6" fill="currentColor"/><circle cx="8.5" cy="7.5" r="0.6" fill="currentColor"/><circle cx="6.5" cy="12.5" r="0.6" fill="currentColor"/><path d="M12 2a10 10 0 1 0 0 20c1.1 0 2-.9 2-2 0-.5-.2-1-.5-1.3-.3-.4-.5-.8-.5-1.3 0-1.1.9-2 2-2h2.3c1.8 0 3.2-1.4 3.2-3.2A9.7 9.7 0 0 0 12 2Z"/></svg></button>
     </div>
     <div id="notions-toggle" class="panel">
-      <button id="notions-btn" title="Encyclopédie (notions transversales)" aria-label="Encyclopédie"><svg class="icon-svg" style="width:17px;height:17px;" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 4.5h7a3 3 0 0 1 3 3v13a2.5 2.5 0 0 0-2.5-2.5H2Z"/><path d="M22 4.5h-7a3 3 0 0 0-3 3v13a2.5 2.5 0 0 1 2.5-2.5H22Z"/></svg></button>
+      <button id="notions-btn" title="Encyclopédie" aria-label="Encyclopédie"><svg class="icon-svg" style="width:17px;height:17px;" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 4.5h7a3 3 0 0 1 3 3v13a2.5 2.5 0 0 0-2.5-2.5H2Z"/><path d="M22 4.5h-7a3 3 0 0 0-3 3v13a2.5 2.5 0 0 1 2.5-2.5H22Z"/></svg></button>
     </div>
     <div id="link-banner"></div>
 
@@ -916,6 +917,9 @@ type CableEntry = { name: string; owner: string; note: string; points: [number, 
 type RiverEntry = { name: string; scalerank: number; points: [number, number][] };
 type LakeEntry = { name: string; type: string; coordinates: unknown };
 type CityEntry = LonLat & { n: string; note?: string };
+// Zones naturelles (point 5, 2026-10-03) — déserts/montagnes/volcans/
+// forêts/fosses océaniques, voir public/data/raw/NATURAL_FEATURES.json.
+type NaturalFeatureEntry = LonLat & { name: string; type: "desert" | "montagne" | "volcan" | "foret" | "fosse"; note: string };
 
 function slugify(s: string): string {
   return (
@@ -942,6 +946,25 @@ const portSlug = (d: PortEntry) => slugify(d.name);
 const straitSlug = (d: StraitEntry) => slugify(d.name);
 const pipelineSlug = (d: PipelineEntry) => slugify(d.name);
 const baseSlug = (d: BaseEntry) => slugify(d.name);
+const naturalSlug = (d: NaturalFeatureEntry) => slugify(d.name);
+const NATURAL_TYPE_FR: Record<NaturalFeatureEntry["type"], string> = {
+  desert: "Désert",
+  montagne: "Montagne",
+  volcan: "Volcan",
+  foret: "Forêt",
+  fosse: "Fosse océanique",
+};
+// Couleur par type (garde une seule couleur de legend --natural-marker,
+// mais distingue les symboles sur la carte — demande de Martin, "garde
+// au minimum des couleurs par type").
+const NATURAL_TYPE_COLOR: Record<NaturalFeatureEntry["type"], string> = {
+  desert: "#e3c05a",
+  montagne: "#9aa0b4",
+  volcan: "#e0435a",
+  foret: "#3fbf6e",
+  fosse: "#4fa7e8",
+};
+const naturalSymbol = d3.symbol().type(d3.symbolTriangle).size(34);
 const cableSlug = (d: CableEntry) => slugify(d.name);
 const riverSlug = (d: RiverEntry) => slugify(d.name);
 const capitalSlug = (d: CityEntry) => slugify(d.n);
@@ -999,6 +1022,7 @@ const gPorts = overlayG.append("g").attr("id", "ports-layer").style("display", "
 const gStraits = overlayG.append("g").attr("id", "straits-layer").style("display", "none");
 const gCities = overlayG.append("g").attr("id", "cities-layer").style("display", "none");
 const gBases = overlayG.append("g").attr("id", "bases-layer").style("display", "none");
+const gNatural = overlayG.append("g").attr("id", "natural-layer").style("display", "none");
 const gCables = overlayG.append("g").attr("id", "cables-layer").style("display", "none");
 // Couche invisible superposée aux câbles, même principe que gPipelinesHit.
 const gCablesHit = overlayG.append("g").attr("id", "cables-hit-layer").style("display", "none");
@@ -1124,6 +1148,7 @@ const poiSystem = initPoiSystem({
     banner.textContent = text;
     banner.classList.add("open");
   },
+  hideBanner: () => document.getElementById("link-banner")?.classList.remove("open"),
 });
 poiRedraw = poiSystem.redraw;
 map.on("click", (e) => {
@@ -1162,6 +1187,7 @@ let ports: PortEntry[] = [];
 let straits: StraitEntry[] = [];
 let pipelines: PipelineEntry[] = [];
 let bases: BaseEntry[] = [];
+let naturalFeatures: NaturalFeatureEntry[] = [];
 let cables: CableEntry[] = [];
 let rivers: RiverEntry[] = [];
 let lakes: LakeEntry[] = [];
@@ -1326,6 +1352,30 @@ function redrawInfraLayers() {
       ]);
     });
 
+  // --- Zones naturelles (point 5, 2026-10-03) ------------------------------
+  gNatural
+    .selectAll<SVGPathElement, NaturalFeatureEntry>("path.natural-feature")
+    .data(naturalFeatures)
+    .join("path")
+    .attr("class", "natural-feature")
+    .attr("data-slug", naturalSlug)
+    .attr("d", naturalSymbol)
+    .attr("fill", (d) => NATURAL_TYPE_COLOR[d.type])
+    .attr("transform", (d) => {
+      const c = projectLonLat([d.lon, d.lat]);
+      return "translate(" + c[0] + "," + c[1] + ")";
+    })
+    .on("mousemove", (event, d) => showEntityTip(event, d.name))
+    .on("mouseleave", hideEntityTip)
+    .on("click", (event, d) => {
+      if (consumePoiPlacementClick(event)) { event.stopPropagation(); return; }
+      event.stopPropagation();
+      showInfraEntity("Zone naturelle", d.name, [
+        ["Type", NATURAL_TYPE_FR[d.type]],
+        ["Note", d.note],
+      ]);
+    });
+
   // --- Ports -----------------------------------------------------------------
   gPorts
     .selectAll<SVGCircleElement, PortEntry>("circle")
@@ -1408,6 +1458,7 @@ Promise.all([
   fetch(import.meta.env.BASE_URL + "data/raw/STRAITS.json").then((r) => r.json()) as Promise<StraitEntry[]>,
   fetch(import.meta.env.BASE_URL + "data/raw/PIPELINES.json").then((r) => r.json()) as Promise<PipelineEntry[]>,
   fetch(import.meta.env.BASE_URL + "data/raw/MILITARY_BASES.json").then((r) => r.json()) as Promise<BaseEntry[]>,
+  fetch(import.meta.env.BASE_URL + "data/raw/NATURAL_FEATURES.json").then((r) => r.json()) as Promise<NaturalFeatureEntry[]>,
   fetch(import.meta.env.BASE_URL + "data/raw/SUBMARINE_CABLES.json").then((r) => r.json()) as Promise<CableEntry[]>,
   fetch(import.meta.env.BASE_URL + "data/raw/RIVERS.json").then((r) => r.json()) as Promise<RiverEntry[]>,
   fetch(import.meta.env.BASE_URL + "data/raw/LAKES.json").then((r) => r.json()) as Promise<LakeEntry[]>,
@@ -1421,6 +1472,7 @@ Promise.all([
       straitsData,
       pipelinesData,
       basesData,
+      naturalFeaturesData,
       cablesData,
       riversData,
       lakesData,
@@ -1437,6 +1489,7 @@ Promise.all([
       straits = straitsData;
       pipelines = pipelinesData;
       bases = basesData;
+      naturalFeatures = naturalFeaturesData;
       cables = cablesData;
       rivers = riversData;
       lakes = lakesData;
@@ -1481,6 +1534,9 @@ document.getElementById("toggle-pipelines")!.addEventListener("change", (e) => {
 });
 document.getElementById("toggle-bases")!.addEventListener("change", (e) => {
   setLayerVisible(gBases, (e.target as HTMLInputElement).checked);
+});
+document.getElementById("toggle-natural")!.addEventListener("change", (e) => {
+  setLayerVisible(gNatural, (e.target as HTMLInputElement).checked);
 });
 document.getElementById("toggle-cables")!.addEventListener("change", (e) => {
   const show = (e.target as HTMLInputElement).checked;
@@ -1630,9 +1686,10 @@ function getOwnerLabel(ownerType: string, ownerId: string): string | null {
 // créés, et de getOwnerLabel (juste au-dessus) pour le badge "membre d'un
 // autre pays". openOwnerTree ferme implicitement l'arbre courant (ouvrir un
 // nouveau dossier via ficheDossier réinitialise #dossier-view) puis rouvre
-// l'arbre sur le nouvel owner — ficheDeps.onOpenGenealogy (assigné juste en
-// dessous) relie le bouton "🌳 Généalogie" de dossier.ts à ce module, même
-// schéma de référence tardive que ficheDeps.renderFicheGroups plus haut.
+// l'arbre sur le nouvel owner — ficheDeps.onOpenGenealogyEntry (assigné
+// juste en dessous) relie les entrées "genealogy" de dossier.ts à ce
+// module, même schéma de référence tardive que ficheDeps.renderFicheGroups
+// plus haut.
 const genealogySystem = initGenealogySystem({
   supabase,
   getSession: () => currentSession,
@@ -1657,6 +1714,27 @@ const genealogySystem = initGenealogySystem({
       if (!g) return;
       await ficheDossier.openGroupDossier(g.id, g.name, g.color);
       await genealogySystem.openForOwner({ type: "group", id: g.id, label: g.name, categorySpace: "country", colorDot: g.color });
+    } else if (ownerType === "entry") {
+      // Membre étranger appartenant à l'arbre d'une entrée "genealogy"
+      // (point 2) : il faut d'abord retrouver le dossier (pays/groupe/
+      // mini-dossier/Encyclopédie) propriétaire de CETTE entrée avant de
+      // pouvoir ouvrir ce dossier puis l'arbre lui-même — l'entrée ne
+      // porte pas elle-même de type de dossier.
+      const { data } = await supabase.from("dossier_entries").select("id, title, owner_type, owner_id").eq("id", ownerId).maybeSingle();
+      if (!data) return;
+      const entryLabel = (data.title as string | null) || "Arbre généalogique";
+      const parentType = data.owner_type as string;
+      const parentId = data.owner_id as string;
+      if (parentType === "country") {
+        const c = getAllCountryRefs().find((x) => x.isoA3 === parentId);
+        if (c) await ficheDossier.openDossier(c);
+      } else if (parentType === "group") {
+        const g = groupsSystem.getGroupsList().find((x) => x.id === parentId);
+        if (g) await ficheDossier.openGroupDossier(g.id, g.name, g.color);
+      } else if (parentType === "encyclopedie") {
+        await ficheDossier.openEncyclopedieDossier();
+      }
+      await genealogySystem.openForOwner({ type: "entry", id: ownerId, label: entryLabel, categorySpace: "country" });
     } else {
       // Encyclopédie / mini-dossiers (port, détroit, pipeline, base, câble) :
       // pas de navigation de dossier dédiée depuis ici, on rouvre juste
@@ -1667,8 +1745,18 @@ const genealogySystem = initGenealogySystem({
     }
   },
 });
-ficheDeps.onOpenGenealogy = (owner) => {
-  void genealogySystem.openForOwner(owner);
+// Point 2 (2026-10-03) : l'ancien bouton unique "🌳 Généalogie" (un arbre
+// par pays/groupe) est remplacé par des entrées "genealogy" dans la barre
+// d'ajout du dossier — chaque entrée a son propre arbre indépendant
+// (owner = {type:"entry", id: entry.id}). dossier.ts ne connaît rien de
+// genealogy.ts : il relaie juste l'entrée cliquée ici.
+ficheDeps.onOpenGenealogyEntry = (entry) => {
+  void genealogySystem.openForOwner({
+    type: "entry",
+    id: entry.id,
+    label: entry.title || "Arbre généalogique",
+    categorySpace: "country",
+  });
 };
 
 initSearchSystem({

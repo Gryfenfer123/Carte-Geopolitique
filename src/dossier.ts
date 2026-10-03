@@ -62,7 +62,12 @@ export type CountryRef = {
 // qu'un pays ou un groupe. Le schéma Supabase (schema_v4.sql,
 // dossier_sections_owner_type_check / dossier_entries_owner_type_check)
 // accepte déjà ces valeurs.
-export type DossierOwnerKind = "country" | "group" | "encyclopedie" | "port" | "strait" | "pipeline" | "base" | "cable";
+// "entry" (2026-10-03, point 2) : owner d'un arbre généalogique qui vit
+// désormais dans une ENTRÉE du dossier (type "genealogy", voir EntryType
+// plus bas) plutôt que d'être unique par pays/groupe — un dossier peut
+// ainsi avoir plusieurs arbres indépendants (un par dynastie/section). Le
+// genealogy_members.owner_id correspondant est alors l'id de l'entrée.
+export type DossierOwnerKind = "country" | "group" | "encyclopedie" | "port" | "strait" | "pipeline" | "base" | "cable" | "entry";
 export type MiniDossierKind = "port" | "strait" | "pipeline" | "base" | "cable";
 export type DossierOwnerRef = {
   type: DossierOwnerKind;
@@ -110,7 +115,7 @@ type HistoryVersion = {
   hemicycle?: HemicycleData;
   archivedAt: number;
 };
-type EntryType = "text" | "photo" | "link" | "hemicycle";
+type EntryType = "text" | "photo" | "link" | "hemicycle" | "genealogy";
 type Entry = {
   id: string;
   type: EntryType;
@@ -552,12 +557,14 @@ export function initFicheDossierSystem(deps: {
   // (~1730-1747, kind-country-only + kind-group-only).
   renderFicheLinks?: (container: HTMLElement, country: CountryRef) => void;
   onFicheClose?: () => void;
-  // Point d'extension pour src/genealogy.ts (arbre généalogique du
-  // dossier actuellement ouvert) — même principe que renderFicheGroups/
-  // renderFicheLinks ci-dessus : dossier.ts ignore tout de genealogy.ts,
-  // il se contente d'exposer le bouton et de relayer l'owner courant au
-  // clic (branché tardivement dans main.ts, cf. ficheDeps).
-  onOpenGenealogy?: (owner: DossierOwnerRef) => void;
+  // Point d'extension pour src/genealogy.ts — appelé au clic sur une
+  // carte d'entrée de type "genealogy" (voir buildEntryEl) : dossier.ts
+  // ignore tout de genealogy.ts, il se contente de relayer l'entrée
+  // cliquée (branché tardivement dans main.ts, cf. ficheDeps). Remplace
+  // l'ancien bouton unique "🌳 Généalogie" en haut du dossier (un arbre
+  // par pays/groupe) — désormais chaque entrée "genealogy" a son propre
+  // arbre indépendant (owner = {type:"entry", id: entry.id}, point 2).
+  onOpenGenealogyEntry?: (entry: { id: string; title: string | null }) => void;
 }) {
   const { supabase } = deps;
   loadCountryNameData();
@@ -573,8 +580,9 @@ export function initFicheDossierSystem(deps: {
         <svg class="icon-svg" viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:13px;height:13px;vertical-align:-2px;margin-right:5px;"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7Z"/></svg>
         Ouvrir le dossier complet
       </button>
-      <label class="field-label">Dirigeant</label>
-      <input type="text" id="fiche-leader" placeholder="Ex. nom du chef d'État / de gouvernement">
+      <label class="field-label">Dirigeants</label>
+      <div id="fiche-leaders-list"></div>
+      <button type="button" id="fiche-leaders-add" class="btn-small">&#43; Ajouter un dirigeant</button>
       <label class="field-label">Infos clés</label>
       <textarea id="fiche-keyinfo" rows="3" placeholder="Résumé court"></textarea>
       <div id="fiche-extra-indicator"></div>
@@ -591,7 +599,6 @@ export function initFicheDossierSystem(deps: {
         <button id="dossier-back" class="btn-small">&larr; Retour à la carte</button>
         <h1 id="dossier-title"><span id="dossier-title-flag" style="margin-right:8px;"></span><span id="dossier-title-text">Pays</span></h1>
         <div id="dossier-subtitle" class="muted">Dossier complet</div>
-        <button id="dossier-genealogy-btn" class="btn-small" style="margin-bottom:16px;">🌳 Généalogie</button>
 
         <div id="dossier-summary">
           <div id="dossier-summary-stats" class="muted"></div>
@@ -610,6 +617,7 @@ export function initFicheDossierSystem(deps: {
             <button id="dossier-add-photo-btn" class="btn-small">&#43; Photo</button>
             <button id="dossier-add-link-btn" class="btn-small">&#43; Lien</button>
             <button id="dossier-add-hemicycle-btn" class="btn-small">&#43; H&eacute;micycle</button>
+            <button id="dossier-add-genealogy-btn" class="btn-small">&#43; G&eacute;n&eacute;alogie</button>
             <input type="file" id="dossier-photo-input" accept="image/*" style="display:none;">
             <input type="file" id="dossier-category-image-input" accept="image/*" style="display:none;">
             <input type="file" id="dossier-section-image-input" accept="image/*" style="display:none;">
@@ -742,6 +750,16 @@ export function initFicheDossierSystem(deps: {
             <div class="dossier-form-actions">
               <button id="dossier-hemicycle-save" class="btn-primary">Ajouter</button>
               <button id="dossier-hemicycle-cancel" class="btn-small">Annuler</button>
+            </div>
+          </div>
+
+          <div id="dossier-genealogy-entry-form" class="dossier-form">
+            <input type="text" id="dossier-genealogy-entry-title" placeholder="Titre de l'arbre (ex. Dynastie des Valois)">
+            <select id="dossier-genealogy-entry-category"></select>
+            <select id="dossier-genealogy-entry-section"></select>
+            <div class="dossier-form-actions">
+              <button id="dossier-genealogy-entry-save" class="btn-primary">Ajouter</button>
+              <button id="dossier-genealogy-entry-cancel" class="btn-small">Annuler</button>
             </div>
           </div>
 
@@ -1027,6 +1045,58 @@ export function initFicheDossierSystem(deps: {
       /* ignore */
     }
   }
+  // Glisser-déposer d'une sous-section (point 3, 2026-10-03) : dépose
+  // `draggedId` juste APRÈS `targetId` dans la liste de frères de ce
+  // dernier — ce qui réordonne (a) quand les deux partagent déjà le même
+  // parent_section_id, et déplace vers un autre parent (b) sinon (le
+  // nouveau parent de `draggedId` devient celui de `targetId`). Renumérote
+  // ensuite toute la liste de frères résultante en 0,1,2… et persiste
+  // position + parent_section_id de chacun.
+  function isSectionDescendantOf(candidateId: string, ancestorId: string): boolean {
+    let cur: Section | undefined = currentSections.find((s) => s.id === candidateId);
+    while (cur) {
+      if (cur.id === ancestorId) return true;
+      if (!cur.parent_section_id) return false;
+      cur = currentSections.find((s) => s.id === cur!.parent_section_id);
+    }
+    return false;
+  }
+  async function moveSectionAfter(draggedId: string, targetId: string) {
+    if (draggedId === targetId) return;
+    const dragged = currentSections.find((s) => s.id === draggedId);
+    const target = currentSections.find((s) => s.id === targetId);
+    if (!dragged || !target || !canModify(dragged)) return;
+    const newParentId = target.parent_section_id || null;
+    // Interdit silencieusement : se déposer sur l'un de ses propres
+    // descendants (boucle), ou devenir son propre parent.
+    if (newParentId === draggedId || isSectionDescendantOf(targetId, draggedId)) return;
+    // Une section qui a elle-même des enfants (niveau 2) ne peut pas
+    // devenir l'enfant d'une autre (niveau 3) — la hiérarchie du dossier
+    // n'a que 2 niveaux (voir canCreateChildSection) et ses propres
+    // enfants se retrouveraient orphelins d'un rendu à 3 niveaux.
+    const draggedHasChildren = currentSections.some((s) => s.parent_section_id === draggedId);
+    if (draggedHasChildren && newParentId) return;
+    dragged.parent_section_id = newParentId;
+    dragged.category_id = target.category_id;
+    const siblings = currentSections
+      .filter((s) => s.id !== draggedId && s.category_id === target.category_id && (s.parent_section_id || null) === (newParentId || null))
+      .sort((a, b) => a.position - b.position);
+    const targetIdx = siblings.findIndex((s) => s.id === targetId);
+    siblings.splice(targetIdx + 1, 0, dragged);
+    siblings.forEach((s, idx) => {
+      s.position = idx;
+    });
+    renderDossierEntries();
+    try {
+      await Promise.all(
+        siblings.map((s) =>
+          supabase.from("dossier_sections").update({ position: s.position, parent_section_id: s.parent_section_id, category_id: s.category_id }).eq("id", s.id)
+        )
+      );
+    } catch {
+      /* ignore */
+    }
+  }
   async function moveSection(id: string, dir: 1 | -1) {
     const target = currentSections.find((s) => s.id === id);
     if (!target) return;
@@ -1100,7 +1170,7 @@ export function initFicheDossierSystem(deps: {
       .select("*")
       .eq("owner_type", ownerType)
       .eq("owner_id", ownerId)
-      .in("type", ["text", "photo", "link", "hemicycle"])
+      .in("type", ["text", "photo", "link", "hemicycle", "genealogy"])
       .order("created_at", { ascending: true });
     currentEntries = (data || []).map(rowToEntry);
   }
@@ -1307,6 +1377,10 @@ export function initFicheDossierSystem(deps: {
         openEntryReadView(entry);
         return;
       }
+      if (entry.type === "genealogy") {
+        deps.onOpenGenealogyEntry?.({ id: entry.id, title: entry.title });
+        return;
+      }
       startEditEntry(entry);
     });
 
@@ -1471,6 +1545,18 @@ export function initFicheDossierSystem(deps: {
         src.textContent = h.source;
         div.appendChild(src);
       }
+    } else if (entry.type === "genealogy") {
+      // Petite carte cliquable — pas de rendu du widget généalogie inline,
+      // juste un lien vers l'overlay plein écran (src/genealogy.ts),
+      // owner = {type:"entry", id: entry.id} (point 2, 2026-10-03).
+      const icon = document.createElement("div");
+      icon.className = "entry-title";
+      icon.textContent = "🌳 " + (entry.title || "Arbre généalogique");
+      div.appendChild(icon);
+      const hint = document.createElement("div");
+      hint.className = "muted";
+      hint.textContent = "Cliquer pour ouvrir l'arbre généalogique";
+      div.appendChild(hint);
     }
 
     if (entry.tags && entry.tags.length) {
@@ -1536,6 +1622,35 @@ export function initFicheDossierSystem(deps: {
     // `.dossier-section-group[data-section-id="…"]` de l'artifact source.
     group.dataset.sectionId = sec.id;
 
+    // Glisser-déposer de sous-sections (point 3) : zone de dépôt sur TOUT
+    // le bloc (réordonner parmi ses frères ET changer de parent — voir
+    // moveSectionAfter), déclenché depuis `row` (le bandeau titre ▾ nom
+    // (n) ci-dessous) comme poignée de glisser — PAS depuis `banner`, qui
+    // porte déjà son propre geste mousedown (attachBannerDragReframe,
+    // cadrage de l'image au glisser) dont le preventDefault() sur
+    // mousedown empêcherait tout dragstart HTML5 natif de s'y déclencher.
+    // `row` ne contient aucun élément draggable imbriqué, contrairement au
+    // corps qui contient les entrées (elles-mêmes draggable="true", voir
+    // buildEntryEl) : le navigateur choisit toujours l'ancêtre draggable
+    // le plus proche du point de pression, donc glisser une entrée depuis
+    // le corps continue de déplacer l'ENTRÉE, jamais la section entière.
+    group.addEventListener("dragover", (e) => {
+      if (!e.dataTransfer!.types.includes("text/dossier-section-id")) return;
+      e.preventDefault();
+      e.stopPropagation();
+      e.dataTransfer!.dropEffect = "move";
+      group.classList.add("section-drop-target");
+    });
+    group.addEventListener("dragleave", () => group.classList.remove("section-drop-target"));
+    group.addEventListener("drop", (e) => {
+      const draggedId = e.dataTransfer!.getData("text/dossier-section-id");
+      group.classList.remove("section-drop-target");
+      if (!draggedId) return;
+      e.preventDefault();
+      e.stopPropagation();
+      void moveSectionAfter(draggedId, sec.id);
+    });
+
     const banner = document.createElement("div");
     banner.className = "dossier-section-banner dsc-banner";
     banner.style.backgroundImage = categoryBannerGradient(sec.id);
@@ -1595,6 +1710,16 @@ export function initFicheDossierSystem(deps: {
     row.appendChild(name);
     row.appendChild(count);
     row.addEventListener("click", () => toggleSectionCollapsed(sec));
+    if (canModify(sec)) {
+      row.draggable = true;
+      row.title = "Glisser pour réordonner ou déplacer vers une autre sous-section";
+      row.addEventListener("dragstart", (e) => {
+        e.dataTransfer!.setData("text/dossier-section-id", sec.id);
+        e.dataTransfer!.effectAllowed = "move";
+        group.classList.add("dragging-section");
+      });
+      row.addEventListener("dragend", () => group.classList.remove("dragging-section"));
+    }
     group.appendChild(row);
 
     const actions = document.createElement("div");
@@ -1708,6 +1833,18 @@ export function initFicheDossierSystem(deps: {
     }
   }
 
+  // Le bouton "+ Hémicycle" n'a de sens que pour les catégories "Politique"
+  // et "Histoire" (demande de Martin, 2026-10-03) — masqué (display:none,
+  // pas juste désactivé) dans toutes les autres catégories, y compris
+  // "Toutes les entrées". Comparaison par NOM (et non par id, qui est un
+  // uuid généré par la base) : voir DEFAULT_DOSSIER_CATEGORIES ci-dessus.
+  const HEMICYCLE_ALLOWED_CATEGORY_NAMES = ["Politique", "Histoire"];
+  function updateHemicycleButtonVisibility() {
+    const btn = $("dossier-add-hemicycle-btn") as HTMLButtonElement;
+    const cat = activeCategory !== "__all__" ? categoryDocs.get(activeCategory) : null;
+    const allowed = !!cat && HEMICYCLE_ALLOWED_CATEGORY_NAMES.includes(cat.name);
+    btn.style.display = allowed ? "" : "none";
+  }
   function renderCategoryHeading() {
     const heading = $("dossier-theme-heading");
     if (activeCategory === "__all__") {
@@ -1717,6 +1854,7 @@ export function initFicheDossierSystem(deps: {
       heading.textContent = cat ? cat.name : "";
     }
     $("dossier-section-bar").style.display = activeCategory !== "__all__" ? "" : "none";
+    updateHemicycleButtonVisibility();
   }
 
   // -------------------------------------------------------------------------
@@ -1738,6 +1876,25 @@ export function initFicheDossierSystem(deps: {
     const pattern = document.createElement("div");
     pattern.className = "dsc-banner-pattern";
     banner.appendChild(pattern);
+    // Bouton image : visible pour TOUTE catégorie (builtin ou non) dès
+    // qu'un compte est connecté — dossier_categories est une table GLOBALE
+    // partagée par "space" (schema_v1.sql), donc changer l'image d'une
+    // catégorie builtin comme "Histoire" la change pour tous les dossiers
+    // pays à la fois, sans migration ni nouvelle table (demande de Martin,
+    // 2026-10-03). Renommer/supprimer restent réservés aux catégories
+    // non-builtin (inchangé).
+    if (deps.getSession()) {
+      const imageBtn = document.createElement("button");
+      imageBtn.type = "button";
+      imageBtn.className = "dsc-image-btn";
+      imageBtn.title = "Changer l'image";
+      imageBtn.innerHTML = CAMERA_ICON_SVG;
+      imageBtn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        startCategoryImageUpload(id);
+      });
+      banner.appendChild(imageBtn);
+    }
     if (!cat.builtin && isAdmin()) {
       const menuBtn = document.createElement("button");
       menuBtn.type = "button";
@@ -1750,16 +1907,6 @@ export function initFicheDossierSystem(deps: {
         renderDossierSummary();
       });
       banner.appendChild(menuBtn);
-      const imageBtn = document.createElement("button");
-      imageBtn.type = "button";
-      imageBtn.className = "dsc-image-btn";
-      imageBtn.title = "Changer l'image";
-      imageBtn.innerHTML = CAMERA_ICON_SVG;
-      imageBtn.addEventListener("click", (e) => {
-        e.stopPropagation();
-        startCategoryImageUpload(id);
-      });
-      banner.appendChild(imageBtn);
       const delBtn = document.createElement("button");
       delBtn.type = "button";
       delBtn.className = "dsc-del-btn";
@@ -1776,7 +1923,7 @@ export function initFicheDossierSystem(deps: {
     attachBannerDragReframe(
       banner,
       () => cat.image_url,
-      () => !cat.builtin && isAdmin(),
+      () => isAdmin(),
       (pos) => saveCategoryImagePosition(id, pos)
     );
     card.appendChild(banner);
@@ -1988,7 +2135,7 @@ export function initFicheDossierSystem(deps: {
   // -------------------------------------------------------------------------
   function populateCategorySelects() {
     const cats = orderedCategories();
-    ([$("dossier-entry-category"), $("dossier-text-category"), $("dossier-link-category"), $("dossier-hemicycle-category")] as HTMLSelectElement[]).forEach((sel) => {
+    ([$("dossier-entry-category"), $("dossier-text-category"), $("dossier-link-category"), $("dossier-hemicycle-category"), $("dossier-genealogy-entry-category")] as HTMLSelectElement[]).forEach((sel) => {
       const prev = sel.value;
       sel.innerHTML = "";
       cats.forEach(([id, cat]) => {
@@ -2008,6 +2155,7 @@ export function initFicheDossierSystem(deps: {
       ["dossier-text-category", "dossier-text-section"],
       ["dossier-link-category", "dossier-link-section"],
       ["dossier-hemicycle-category", "dossier-hemicycle-section"],
+      ["dossier-genealogy-entry-category", "dossier-genealogy-entry-section"],
     ];
     pairs.forEach(([catSelId, secSelId]) => {
       const catSel = $(catSelId) as HTMLSelectElement;
@@ -2038,7 +2186,7 @@ export function initFicheDossierSystem(deps: {
       if (secs.some((s) => s.id === prev)) secSel.value = prev;
     });
   }
-  ["dossier-entry-category", "dossier-text-category", "dossier-link-category", "dossier-hemicycle-category"].forEach((id) => {
+  ["dossier-entry-category", "dossier-text-category", "dossier-link-category", "dossier-hemicycle-category", "dossier-genealogy-entry-category"].forEach((id) => {
     $(id).addEventListener("change", populateSectionSelects);
   });
   $("dossier-add-section-btn").addEventListener("click", async () => {
@@ -2664,6 +2812,7 @@ export function initFicheDossierSystem(deps: {
     $("dossier-inner").classList.remove("dossier-inner-text-editing");
     $("dossier-link-form").classList.remove("open");
     $("dossier-hemicycle-form").classList.remove("open");
+    $("dossier-genealogy-entry-form").classList.remove("open");
     ($("dossier-text-save") as HTMLButtonElement).textContent = "Ajouter";
     ($("dossier-link-save") as HTMLButtonElement).textContent = "Ajouter";
     ($("dossier-hemicycle-save") as HTMLButtonElement).textContent = "Ajouter";
@@ -2732,6 +2881,12 @@ export function initFicheDossierSystem(deps: {
       updateHemicyclePreview();
       ($("dossier-hemicycle-save") as HTMLButtonElement).textContent = "Enregistrer";
       $("dossier-hemicycle-form").classList.add("open");
+    } else if (entry.type === "genealogy") {
+      editingEntryId = null;
+      const title = await customPrompt("Titre de l'arbre :", entry.title || "");
+      if (title === null) return;
+      await updateEntry(entry.id, { title: title.trim() || null });
+      renderDossierEntries();
     }
   }
 
@@ -2955,6 +3110,30 @@ export function initFicheDossierSystem(deps: {
     }
     closeDossierForms();
     renderDossierEntries();
+  });
+
+  // -------------------------------------------------------------------------
+  // Formulaire "+ Généalogie" — crée une ENTRÉE de type "genealogy" (point 2,
+  // 2026-10-03), ouverte ensuite via deps.onOpenGenealogyEntry (son propre
+  // arbre indépendant, owner={type:"entry", id: entry.id}).
+  // -------------------------------------------------------------------------
+  $("dossier-add-genealogy-btn").addEventListener("click", () => {
+    closeDossierForms();
+    ($("dossier-genealogy-entry-title") as HTMLInputElement).value = "";
+    ($("dossier-genealogy-entry-category") as HTMLSelectElement).value = ($("dossier-entry-category") as HTMLSelectElement).value;
+    populateSectionSelects();
+    ($("dossier-genealogy-entry-section") as HTMLSelectElement).value = ($("dossier-entry-section") as HTMLSelectElement).value;
+    $("dossier-genealogy-entry-form").classList.add("open");
+  });
+  $("dossier-genealogy-entry-cancel").addEventListener("click", closeDossierForms);
+  $("dossier-genealogy-entry-save").addEventListener("click", async () => {
+    const title = ($("dossier-genealogy-entry-title") as HTMLInputElement).value.trim() || null;
+    const category = ($("dossier-genealogy-entry-category") as HTMLSelectElement).value || null;
+    const sectionId = ($("dossier-genealogy-entry-section") as HTMLSelectElement).value || null;
+    const id = await addEntry({ type: "genealogy", title, category_id: category, section_id: sectionId });
+    closeDossierForms();
+    renderDossierEntries();
+    if (id) deps.onOpenGenealogyEntry?.({ id, title });
   });
 
   $("dossier-reading-toggle").addEventListener("click", () => {
@@ -3190,9 +3369,6 @@ export function initFicheDossierSystem(deps: {
     $("dossier-view").classList.remove("open");
   }
   $("dossier-back").addEventListener("click", closeDossier);
-  $("dossier-genealogy-btn").addEventListener("click", () => {
-    if (currentOwner) deps.onOpenGenealogy?.(currentOwner);
-  });
 
   // -------------------------------------------------------------------------
   // Navigation directe depuis la recherche unifiée (src/search.ts) — porté de
@@ -3228,12 +3404,103 @@ export function initFicheDossierSystem(deps: {
   let ficheSaveTimer: number | null = null;
   const fichePanel = $("fiche-panel");
 
+  // -------------------------------------------------------------------------
+  // Dirigeants multiples (point 8, 2026-10-03) — public.country_leaders
+  // (schema_v12.sql), remplace le champ texte unique countries.leader.
+  // -------------------------------------------------------------------------
+  type Leader = { id: string | null; status: string; name: string; position: number };
+  let currentLeaders: Leader[] = [];
+  async function loadLeaders(isoA3: string): Promise<Leader[]> {
+    const { data } = await supabase
+      .from("country_leaders")
+      .select("id, status, name, position")
+      .eq("country_id", isoA3)
+      .order("position", { ascending: true });
+    return (data || []).map((row) => ({ id: row.id, status: row.status, name: row.name, position: row.position }));
+  }
+  function renderLeadersList() {
+    const wrap = $("fiche-leaders-list");
+    wrap.innerHTML = "";
+    currentLeaders.forEach((leader, idx) => {
+      const row = document.createElement("div");
+      row.className = "fiche-leader-row";
+      const statusInp = document.createElement("input");
+      statusInp.type = "text";
+      statusInp.placeholder = "Statut (ex. Président)";
+      statusInp.value = leader.status;
+      const nameInp = document.createElement("input");
+      nameInp.type = "text";
+      nameInp.placeholder = "Nom";
+      nameInp.value = leader.name;
+      const rm = document.createElement("button");
+      rm.type = "button";
+      rm.className = "entry-del";
+      rm.style.cssText = "position:static;opacity:1;";
+      rm.textContent = "×";
+      rm.title = "Supprimer ce dirigeant";
+      async function persist() {
+        leader.status = statusInp.value.trim();
+        leader.name = nameInp.value.trim();
+        if (!leader.status || !leader.name) return;
+        const session = deps.getSession();
+        if (!session || !currentFicheCountry) return;
+        try {
+          if (leader.id) {
+            await supabase.from("country_leaders").update({ status: leader.status, name: leader.name }).eq("id", leader.id);
+          } else {
+            const { data } = await supabase
+              .from("country_leaders")
+              .insert({
+                country_id: currentFicheCountry.isoA3,
+                status: leader.status,
+                name: leader.name,
+                position: idx,
+                created_by: session.user.id,
+              })
+              .select("id")
+              .single();
+            if (data) leader.id = data.id;
+          }
+        } catch {
+          /* best-effort */
+        }
+      }
+      statusInp.addEventListener("blur", persist);
+      nameInp.addEventListener("blur", persist);
+      rm.addEventListener("click", async () => {
+        currentLeaders.splice(idx, 1);
+        renderLeadersList();
+        if (leader.id) {
+          try {
+            await supabase.from("country_leaders").delete().eq("id", leader.id);
+          } catch {
+            /* ignore */
+          }
+        }
+      });
+      row.appendChild(statusInp);
+      row.appendChild(nameInp);
+      row.appendChild(rm);
+      wrap.appendChild(row);
+    });
+  }
+  $("fiche-leaders-add").addEventListener("click", () => {
+    if (!deps.getSession()) {
+      $("fiche-save-status").textContent = "Connectez-vous pour ajouter un dirigeant.";
+      return;
+    }
+    currentLeaders.push({ id: null, status: "", name: "", position: currentLeaders.length });
+    renderLeadersList();
+    const inputs = $("fiche-leaders-list").querySelectorAll("input");
+    (inputs[inputs.length - 2] as HTMLInputElement)?.focus();
+  });
+
   function fallbackKeyInfo(): string {
     return "";
   }
 
-  async function loadCountryRow(isoA3: string): Promise<{ key_info: string | null; notes: string | null; leader: string | null } | null> {
-    const { data } = await supabase.from("countries").select("key_info, notes, leader").eq("id", isoA3).maybeSingle();
+  async function loadCountryRow(isoA3: string): Promise<{ key_info: string | null; notes: string | null } | null> {
+    const { data } = await supabase.from("countries").select("key_info, notes").eq("id", isoA3).maybeSingle();
     return data || null;
   }
 
@@ -3252,13 +3519,15 @@ export function initFicheDossierSystem(deps: {
     $("fiche-subtitle").textContent = country.continent || "";
     $("fiche-save-status").textContent = "";
     ($("fiche-keyinfo") as HTMLTextAreaElement).value = "";
-    ($("fiche-leader") as HTMLInputElement).value = "";
     ($("fiche-notes") as HTMLTextAreaElement).value = "";
-    const row = await loadCountryRow(country.isoA3);
+    currentLeaders = [];
+    renderLeadersList();
+    const [row, leaders] = await Promise.all([loadCountryRow(country.isoA3), loadLeaders(country.isoA3)]);
     if (currentFicheCountry !== country) return;
     ($("fiche-keyinfo") as HTMLTextAreaElement).value = row?.key_info ?? fallbackKeyInfo();
-    ($("fiche-leader") as HTMLInputElement).value = row?.leader ?? "";
     ($("fiche-notes") as HTMLTextAreaElement).value = row?.notes ?? "";
+    currentLeaders = leaders;
+    renderLeadersList();
     deps.renderFicheIndicator?.($("fiche-extra-indicator"), country);
     deps.renderFicheGroups?.($("fiche-extra-groups"), country);
     deps.renderFicheLinks?.($("fiche-extra-links"), country);
@@ -3275,7 +3544,6 @@ export function initFicheDossierSystem(deps: {
     const status = $("fiche-save-status");
     const country = currentFicheCountry;
     const keyInfo = ($("fiche-keyinfo") as HTMLTextAreaElement).value.trim();
-    const leader = ($("fiche-leader") as HTMLInputElement).value.trim();
     const notes = ($("fiche-notes") as HTMLTextAreaElement).value.trim();
     if (!session) {
       status.textContent = "Connectez-vous pour enregistrer.";
@@ -3288,7 +3556,6 @@ export function initFicheDossierSystem(deps: {
         name_fr: frenchCountryName(country.name),
         continent: country.continent,
         key_info: keyInfo,
-        leader,
         notes,
         updated_at: new Date().toISOString(),
       });
@@ -3314,7 +3581,7 @@ export function initFicheDossierSystem(deps: {
       saveFiche();
     }
   }
-  ["fiche-leader", "fiche-keyinfo", "fiche-notes"].forEach((id) => $(id).addEventListener("input", scheduleFicheSave));
+  ["fiche-keyinfo", "fiche-notes"].forEach((id) => $(id).addEventListener("input", scheduleFicheSave));
   $("fiche-close").addEventListener("click", closeFiche);
   $("fiche-open-dossier").addEventListener("click", () => {
     if (!currentFicheCountry) return;
