@@ -88,20 +88,38 @@ type RelationRow = {
   created_by: string | null;
 };
 
+// Bug + demande de Martin, 2026-10-03 : "quand on bouge un membre d'un
+// autre arbre dans son nouvel arbre... ça ne sauvegarde pas sa position"
+// + "si un membre d'un autre arbre a dirigé le pays dans son arbre...
+// dans l'arbre dans lequel il arrive, il faut la possibilité de le
+// cocher (ce point est indépendant dans chaque arbre)" — pos_x/pos_y et
+// is_leader sur genealogy_members n'ont de sens que dans l'arbre
+// D'ORIGINE du membre (owner_type/owner_id de sa propre ligne). Pour un
+// membre étranger vu dans un AUTRE arbre, on a besoin d'un second
+// pos_x/pos_y et d'un second is_leader, propres à CETTE PAIRE
+// (membre, arbre visiteur) — voir supabase/schema_v16.sql
+// (genealogy_foreign_states, clé (member_id, owner_type, owner_id)).
+type ForeignStateRow = {
+  member_id: string;
+  pos_x: number | null;
+  pos_y: number | null;
+  is_leader: boolean;
+};
+
 // Position d'affichage calculée pour cette ouverture de l'arbre (voir note
 // ci-dessus sur les membres étrangers) — distincte de pos_x/pos_y (valeur
 // persistée, pertinente uniquement dans l'arbre d'origine du membre).
 type DisplayPos = { x: number; y: number };
 
-// Cartes agrandies (demande de Martin, 2026-10-03 : "faire tout plus
-// grand, les noms, les photos... pour pouvoir cadrer de plus grande
-// photo, avoir une plus grande partie de la photo") — ~1.4x les
-// dimensions précédentes (158x176, photo 82px de haut). Voir aussi
-// style.css (.gen-card-photo, .gen-card-name, etc.) pour l'habillage
-// assorti.
-const CARD_W = 220;
-const CARD_H = 248;
-const CARD_PHOTO_H = 118;
+// Cartes agrandies (demande de Martin, 2026-10-03, puis re-demandé le
+// même jour : "agrandit tout le monde, tout doit être plus grand dans
+// les arbres, c'est trop petit là") — second passage d'agrandissement
+// (~1.35x le précédent, lui-même ~1.4x l'original 158x176/82). Voir
+// aussi style.css (.gen-card-photo, .gen-card-name, etc.) pour
+// l'habillage assorti.
+const CARD_W = 300;
+const CARD_H = 340;
+const CARD_PHOTO_H = 160;
 // Aspect ratio de la zone photo de la carte (.gen-card-photo) — réutilisé
 // comme ratio de cadrage dans le recadrage de photo (openCropModal
 // ci-dessous) pour que la photo recadrée remplisse exactement cette zone
@@ -114,8 +132,9 @@ const CARD_PHOTO_RATIO = CARD_W / CARD_PHOTO_H;
 // tard plus bas, les enfants sont en dessous") — voir
 // enforceParentChildOrder ci-dessous. Le glisser-déposer libre reste
 // entièrement possible ensuite : seule la position DE DÉPART est corrigée.
-// Agrandi avec les cartes (230 → 300) pour garder un espacement cohérent.
-const GENERATION_GAP = 300;
+// Agrandi avec les cartes (230 → 300 → 400) pour garder un espacement
+// cohérent avec la nouvelle taille.
+const GENERATION_GAP = 400;
 // Pixels par année pour le placement automatique d'un NOUVEAU membre selon
 // son année de naissance par rapport aux membres existants de cet arbre
 // (voir suggestYFromBirthYear) — purement indicatif, pas une échelle
@@ -185,8 +204,8 @@ export function initGenealogySystem(deps: {
           <span id="genealogy-link-hint" class="muted"></span>
         </div>
         <div id="genealogy-legend">
-          <span class="gen-legend-item"><span class="gen-legend-line gen-legend-parent"></span>Parent &rarr; enfant</span>
-          <span class="gen-legend-item"><span class="gen-legend-line gen-legend-family"></span>Famille</span>
+          <span class="gen-legend-item"><span class="gen-legend-line gen-legend-parent"></span>Ascendant / Descendant</span>
+          <span class="gen-legend-item"><span class="gen-legend-line gen-legend-family"></span>Collatéraux</span>
           <span class="gen-legend-item"><span class="gen-legend-line gen-legend-spouse"></span>Mariage</span>
           <span class="gen-legend-item"><span class="gen-legend-dot gen-legend-foreign"></span>Membre d'un autre pays</span>
         </div>
@@ -286,6 +305,10 @@ export function initGenealogySystem(deps: {
   // Membres référencés par une relation mais appartenant à un autre arbre —
   // chargés à part (voir loadData), rendus en lecture seule (gen-card-foreign).
   let foreignMembers = new Map<string, MemberRow>();
+  // Position/is_leader "vus depuis CET arbre" pour un membre étranger —
+  // voir ForeignStateRow ci-dessus. Clé = member_id (unique dans le
+  // contexte d'un seul arbre ouvert à la fois).
+  let foreignStates = new Map<string, ForeignStateRow>();
   const displayPos = new Map<string, DisplayPos>();
   let linkModeActive = false;
   let linkFirstId: string | null = null;
@@ -353,6 +376,7 @@ export function initGenealogySystem(deps: {
     members = [];
     relations = [];
     foreignMembers = new Map();
+    foreignStates = new Map();
     try {
       const { data: memberRows, error: memberErr } = await supabase
         .from("genealogy_members")
@@ -381,6 +405,15 @@ export function initGenealogySystem(deps: {
             .select("id, owner_type, owner_id, name, photo_url, birth_year, death_year, title, dynasty, bio, pos_x, pos_y, created_by, is_leader")
             .in("id", Array.from(foreignIds));
           (fRows as MemberRow[] | null)?.forEach((m) => foreignMembers.set(m.id, m));
+          // État "vu depuis cet arbre" (position glissée ici + case "a
+          // dirigé le pays" propre à cet arbre) — voir ForeignStateRow.
+          const { data: fsRows } = await supabase
+            .from("genealogy_foreign_states")
+            .select("member_id, pos_x, pos_y, is_leader")
+            .eq("owner_type", owner.type)
+            .eq("owner_id", owner.id)
+            .in("member_id", Array.from(foreignIds));
+          (fsRows as ForeignStateRow[] | null)?.forEach((s) => foreignStates.set(s.member_id, s));
         }
       }
     } catch (err) {
@@ -388,14 +421,22 @@ export function initGenealogySystem(deps: {
       members = [];
       relations = [];
       foreignMembers = new Map();
+      foreignStates = new Map();
     }
     displayPos.clear();
     members.forEach((m) => displayPos.set(m.id, { x: m.pos_x, y: m.pos_y }));
-    // Position des membres étrangers (voir note en tête de fichier) : à
-    // distance fixe du premier membre local auquel ils sont reliés.
+    // Position des membres étrangers : si on l'a déjà glissé et enregistré
+    // DANS CET ARBRE (foreignStates, bug corrigé le 2026-10-03), on reprend
+    // cette position enregistrée ; sinon, à distance fixe du premier
+    // membre local auquel il est relié (comme avant).
     relations.forEach((r) => {
       [r.member_a_id, r.member_b_id].forEach((id) => {
         if (displayPos.has(id) || !foreignMembers.has(id)) return;
+        const saved = foreignStates.get(id);
+        if (saved && saved.pos_x != null && saved.pos_y != null) {
+          displayPos.set(id, { x: saved.pos_x, y: saved.pos_y });
+          return;
+        }
         const other = displayPos.has(r.member_a_id) ? r.member_a_id : r.member_b_id;
         const anchor = displayPos.get(other === id ? r.member_b_id : other);
         if (!anchor) return;
@@ -456,6 +497,14 @@ export function initGenealogySystem(deps: {
   function foreignOwnerLabel(m: MemberRow): string {
     return m.owner_type === "entry" ? resolveEntryOwnerLabel(m.owner_id) : deps.getOwnerLabel(m.owner_type, m.owner_id) || m.owner_type;
   }
+  // "A dirigé le pays" est indépendant par arbre pour un membre étranger
+  // (demande de Martin, 2026-10-03) : m.is_leader (colonne de sa propre
+  // ligne) ne vaut que dans SON arbre d'origine ; dans un autre arbre, on
+  // lit plutôt foreignStates (défaut : décoché, comme avant).
+  function effectiveIsLeader(m: MemberRow, isForeign: boolean): boolean {
+    if (!isForeign) return m.is_leader;
+    return foreignStates.get(m.id)?.is_leader || false;
+  }
 
   function renderNodes() {
     nodesLayer.innerHTML = "";
@@ -465,7 +514,7 @@ export function initGenealogySystem(deps: {
       if (!pos) return;
       const isForeign = !(currentOwner && m.owner_type === currentOwner.type && m.owner_id === currentOwner.id);
       const card = document.createElement("div");
-      card.className = "gen-card" + (m.is_leader ? " gen-card-leader" : "");
+      card.className = "gen-card" + (effectiveIsLeader(m, isForeign) ? " gen-card-leader" : "");
       card.dataset.memberId = m.id;
       card.style.left = pos.x + "px";
       card.style.top = pos.y + "px";
@@ -594,27 +643,40 @@ export function initGenealogySystem(deps: {
       document.removeEventListener("mouseup", onEnd);
       document.removeEventListener("touchmove", onMove);
       document.removeEventListener("touchend", onEnd);
-      // BUG (2026-10-03, signalé par Martin : "le membre apparaît mais on
-      // ne peut pas le bouger... et il fait bug son arbre d'origine") :
-      // un membre étranger (gen-card-foreign) a son pos_x/pos_y stocké
-      // dans le repère de SON arbre d'origine, pas de celui-ci — sa
-      // position ICI est recalculée à la volée (voir loadData, distance
-      // fixe depuis le membre local auquel il est relié) et JAMAIS
-      // persistée. Avant ce correctif, `isForeign` bloquait le glisser dès
-      // le mousedown (voir plus bas) : la carte semblait figée. Désormais
-      // le glisser est autorisé pour TOUT le monde (confort visuel, pour
-      // écarter une carte étrangère gênante), mais on n'écrit en base QUE
-      // pour un membre local (`!isForeign`) — écrire la position calculée
-      // ici dans la ligne réelle du membre étranger aurait littéralement
-      // déplacé son point d'origine dans SON PROPRE arbre à chaque glisser
-      // involontaire, le "cassant" au sens propre. La position d'un
-      // membre étranger reste donc purement visuelle pour cette ouverture
-      // de l'arbre (recalculée au prochain chargement).
+      // Glisser un membre LOCAL écrit directement dans sa ligne
+      // genealogy_members (pos_x/pos_y, repère de SON arbre).
+      //
+      // BUG (2026-10-03, signalé par Martin, puis re-signalé le même jour
+      // : "quand on bouge un membre d'un autre arbre... ça ne sauvegarde
+      // pas sa position") : écrire la position calculée ICI dans la ligne
+      // réelle du membre étranger déplacerait son point d'origine dans
+      // SON PROPRE arbre — donc on n'y touche jamais. Mais la position
+      // DANS CET ARBRE-CI doit malgré tout être mémorisée : on l'enregistre
+      // dans genealogy_foreign_states (clé member_id + arbre visiteur,
+      // voir ForeignStateRow/schema_v16.sql), relue par loadData() au
+      // prochain chargement de CET arbre précisément.
       if (moved && !isForeign) {
         const pos = displayPos.get(member.id)!;
         member.pos_x = pos.x;
         member.pos_y = pos.y;
         await supabase.from("genealogy_members").update({ pos_x: pos.x, pos_y: pos.y }).eq("id", member.id);
+      } else if (moved && isForeign && currentOwner) {
+        const pos = displayPos.get(member.id)!;
+        const st = foreignStates.get(member.id) || { member_id: member.id, pos_x: null, pos_y: null, is_leader: false };
+        st.pos_x = pos.x;
+        st.pos_y = pos.y;
+        foreignStates.set(member.id, st);
+        await supabase.from("genealogy_foreign_states").upsert(
+          {
+            member_id: member.id,
+            owner_type: currentOwner.type,
+            owner_id: currentOwner.id,
+            pos_x: pos.x,
+            pos_y: pos.y,
+            is_leader: st.is_leader,
+          },
+          { onConflict: "member_id,owner_type,owner_id" }
+        );
       }
     }
     card.addEventListener("mousedown", (e) => {
@@ -711,10 +773,15 @@ export function initGenealogySystem(deps: {
         });
         choices.appendChild(b);
       }
-      addChoice(memberName(aId) + " est le parent de " + memberName(bId), () => createRelation(aId, bId, "parent"));
-      addChoice(memberName(bId) + " est le parent de " + memberName(aId), () => createRelation(bId, aId, "parent"));
+      // Renommage demandé par Martin, 2026-10-03 : "la ligne jaune change
+      // de dénomination, on change parent-enfant et ça devient
+      // Ascendant/Descendant" / la ligne verte en pointillés "famille"
+      // devient "Collatéraux" — uniquement les LIBELLÉS affichés, la
+      // valeur interne "parent"/"family" (base de données) ne change pas.
+      addChoice(memberName(aId) + " est l'ascendant de " + memberName(bId), () => createRelation(aId, bId, "parent"));
+      addChoice(memberName(bId) + " est l'ascendant de " + memberName(aId), () => createRelation(bId, aId, "parent"));
       addChoice(memberName(aId) + " et " + memberName(bId) + " sont mariés", () => createRelation(aId, bId, "spouse"));
-      addChoice(memberName(aId) + " et " + memberName(bId) + " sont de la même famille (sans lien direct)", () => createRelation(aId, bId, "family"));
+      addChoice(memberName(aId) + " et " + memberName(bId) + " sont collatéraux (sans lien direct)", () => createRelation(aId, bId, "family"));
       $("gen-relation-modal-cancel").onclick = cleanup;
       modal.classList.add("open");
     });
@@ -828,8 +895,12 @@ export function initGenealogySystem(deps: {
   let foreignPanelMemberId: string | null = null;
   const GEN_M_FIELD_IDS = ["gen-m-name", "gen-m-birth", "gen-m-death", "gen-m-title", "gen-m-dynasty", "gen-m-bio"];
   function setMemberFieldsDisabled(disabled: boolean) {
+    // gen-m-leader n'est PAS inclus ici : sur le panneau d'un membre
+    // étranger, cette case reste modifiable (voir openForeignMemberPanel)
+    // puisque "a dirigé le pays" est indépendant par arbre, demande de
+    // Martin — les autres champs (nom/dates/titre/dynastie/bio) restent
+    // en lecture seule, ils ne concernent que l'arbre d'origine.
     GEN_M_FIELD_IDS.forEach((id) => (($(id) as HTMLInputElement | HTMLTextAreaElement).disabled = disabled));
-    ($("gen-m-leader") as HTMLInputElement).disabled = disabled;
   }
   function refreshPhotoRecropVisibility() {
     const hasPhoto = !!$("gen-m-photo-preview").querySelector("img");
@@ -842,6 +913,7 @@ export function initGenealogySystem(deps: {
     $("gen-m-photo-status").textContent = "";
     $("gen-m-foreign-banner").style.display = "none";
     setMemberFieldsDisabled(false);
+    ($("gen-m-leader") as HTMLInputElement).disabled = false;
     ($("gen-m-photo-btn") as HTMLButtonElement).style.display = "";
     const m = id ? members.find((x) => x.id === id) || null : null;
     $("gen-member-heading").textContent = m ? "Modifier le membre" : "Nouveau membre";
@@ -876,7 +948,11 @@ export function initGenealogySystem(deps: {
     ($("gen-m-death") as HTMLInputElement).value = m.death_year != null ? String(m.death_year) : "";
     ($("gen-m-title") as HTMLInputElement).value = m.title || "";
     ($("gen-m-dynasty") as HTMLInputElement).value = m.dynasty || "";
-    ($("gen-m-leader") as HTMLInputElement).checked = m.is_leader || false;
+    // "A dirigé le pays" reste modifiable même en lecture seule (demande
+    // de Martin : indépendant par arbre) — valeur lue depuis
+    // foreignStates (cet arbre), pas m.is_leader (l'arbre d'origine).
+    ($("gen-m-leader") as HTMLInputElement).checked = foreignStates.get(m.id)?.is_leader || false;
+    ($("gen-m-leader") as HTMLInputElement).disabled = !isAdmin();
     ($("gen-m-bio") as HTMLTextAreaElement).value = m.bio || "";
     $("gen-m-photo-preview").innerHTML = m.photo_url ? '<img src="' + escapeHtml(m.photo_url) + '" alt="">' : "";
     ($("gen-m-photo-btn") as HTMLButtonElement).style.display = "none";
@@ -921,11 +997,11 @@ export function initGenealogySystem(deps: {
       if (r.relation_type === "spouse") {
         label = "Marié(e) à " + memberName(otherId);
       } else if (r.relation_type === "family") {
-        label = "Famille avec " + memberName(otherId);
+        label = "Collatéraux avec " + memberName(otherId);
       } else if (r.member_a_id === memberId) {
-        label = "Parent de " + memberName(otherId);
+        label = "Ascendant de " + memberName(otherId);
       } else {
-        label = "Enfant de " + memberName(otherId);
+        label = "Descendant de " + memberName(otherId);
       }
       row.innerHTML = '<span>' + escapeHtml(label) + "</span>";
       if (isAdmin()) {
@@ -1291,7 +1367,36 @@ export function initGenealogySystem(deps: {
   GEN_M_FIELD_IDS.forEach((id) => {
     $(id).addEventListener("blur", () => void handleFieldAutosave());
   });
-  $("gen-m-leader").addEventListener("change", () => void handleFieldAutosave());
+  // "A dirigé le pays" sur le panneau d'un membre ÉTRANGER (demande de
+  // Martin : indépendant par arbre) — on n'enregistre PAS via le même
+  // chemin que les membres locaux (handleFieldAutosave, qui écrirait sur
+  // genealogy_members, la ligne de l'arbre d'ORIGINE), mais via
+  // genealogy_foreign_states, propre à l'arbre actuellement ouvert.
+  async function saveForeignLeaderFlag(memberId: string, checked: boolean) {
+    if (!currentOwner || !isAdmin()) return;
+    const st = foreignStates.get(memberId) || { member_id: memberId, pos_x: null, pos_y: null, is_leader: false };
+    st.is_leader = checked;
+    foreignStates.set(memberId, st);
+    await supabase.from("genealogy_foreign_states").upsert(
+      {
+        member_id: memberId,
+        owner_type: currentOwner.type,
+        owner_id: currentOwner.id,
+        pos_x: st.pos_x,
+        pos_y: st.pos_y,
+        is_leader: checked,
+      },
+      { onConflict: "member_id,owner_type,owner_id" }
+    );
+    renderAll();
+  }
+  $("gen-m-leader").addEventListener("change", () => {
+    if (foreignPanelMemberId) {
+      void saveForeignLeaderFlag(foreignPanelMemberId, ($("gen-m-leader") as HTMLInputElement).checked);
+      return;
+    }
+    void handleFieldAutosave();
+  });
 
   $("gen-m-delete").addEventListener("click", async () => {
     if (!editingMemberId || !isAdmin()) return;

@@ -1755,9 +1755,9 @@ path.link-autre { stroke: var(--link-autre, #c9bfa9); }
 #genealogy-title { font-family: "Fraunces", serif; font-size: 18px; color: var(--accent); margin: 0; flex: 1 1 auto; min-width: 160px; }
 #genealogy-toolbar { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
 #genealogy-link-hint { font-size: 11.5px; }
-#genealogy-legend { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; font-size: 11px; color: var(--text-dim); width: 100%; margin-top: 2px; }
+#genealogy-legend { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; font-size: 13px; color: var(--text-dim); width: 100%; margin-top: 2px; }
 .gen-legend-item { display: inline-flex; align-items: center; gap: 5px; }
-.gen-legend-line { display: inline-block; width: 22px; height: 0; border-top: 2.5px solid var(--accent); }
+.gen-legend-line { display: inline-block; width: 26px; height: 0; border-top: 3px solid var(--accent); }
 .gen-legend-line.gen-legend-spouse { border-top: 2px dashed var(--cable-line); }
 /* Troisième type de lien "Famille" (demande de Martin, 2026-10-03) — voir
    RelationType dans genealogy.ts et --family-line (:root, début du
@@ -1781,7 +1781,7 @@ path.link-autre { stroke: var(--link-autre, #c9bfa9); }
 
 .gen-card {
   position: absolute; box-sizing: border-box; background: var(--surface);
-  border: 1px solid var(--surface-border); border-radius: 11px; padding: 8px 9px 9px;
+  border: 1px solid var(--surface-border); border-radius: 13px; padding: 11px 12px 12px;
   box-shadow: 0 6px 18px rgba(0,0,0,0.35); cursor: pointer; user-select: none; text-align: center;
 }
 .gen-card:hover { border-color: var(--accent); }
@@ -1815,23 +1815,24 @@ path.link-autre { stroke: var(--link-autre, #c9bfa9); }
 }
 #gen-m-foreign-banner:hover { background: var(--accent); color: var(--ink); }
 #gen-m-foreign-banner::before { content: "↪"; font-size: 14px; }
-/* Cartes/photos agrandies (demande de Martin, 2026-10-03 : "faire tout
-   plus grand, les noms, les photos... pour pouvoir cadrer de plus grande
-   photo, avoir une plus grande partie de la photo") — hauteur alignée sur
-   la constante CARD_PHOTO_H de genealogy.ts (118px, contre 82px avant). */
+/* Cartes/photos agrandies (demande de Martin, 2026-10-03, ×2 : "faire
+   tout plus grand..." puis "agrandit tout le monde, tout doit être plus
+   grand dans les arbres, c'est trop petit là") — hauteur alignée sur la
+   constante CARD_PHOTO_H de genealogy.ts (160px, deuxième passage après
+   82px puis 118px). */
 .gen-card-photo {
-  width: 100%; height: 118px; border-radius: 7px; overflow: hidden; background: var(--surface-border);
-  display: flex; align-items: center; justify-content: center; margin-bottom: 7px;
+  width: 100%; height: 160px; border-radius: 9px; overflow: hidden; background: var(--surface-border);
+  display: flex; align-items: center; justify-content: center; margin-bottom: 9px;
 }
 .gen-card-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
-.gen-card-initials { font-family: "Fraunces", serif; font-size: 30px; color: var(--text-dim); }
+.gen-card-initials { font-family: "Fraunces", serif; font-size: 40px; color: var(--text-dim); }
 .gen-card-flag {
-  display: block; font-size: 10.5px; color: var(--accent); text-transform: uppercase; letter-spacing: 0.03em;
-  margin-bottom: 3px;
+  display: block; font-size: 14px; color: var(--accent); text-transform: uppercase; letter-spacing: 0.03em;
+  margin-bottom: 4px;
 }
-.gen-card-name { font-family: "Fraunces", serif; font-weight: 600; font-size: 17px; line-height: 1.25; }
-.gen-card-title-field { font-size: 13.5px; color: var(--text-dim); margin-top: 2px; }
-.gen-card-dates { font-size: 13.5px; color: var(--text-dim); margin-top: 3px; }
+.gen-card-name { font-family: "Fraunces", serif; font-weight: 600; font-size: 23px; line-height: 1.25; }
+.gen-card-title-field { font-size: 18px; color: var(--text-dim); margin-top: 3px; }
+.gen-card-dates { font-size: 18px; color: var(--text-dim); margin-top: 4px; }
 .gen-card.gen-link-selected { outline: 2px solid var(--accent); outline-offset: 2px; }
 /* Lien touchant un membre d'un autre arbre (demande de Martin ci-dessus) —
    pointillés fins + légère transparence, distincts des traits "parent"/
@@ -1842,7 +1843,7 @@ path.link-autre { stroke: var(--link-autre, #c9bfa9); }
 .gen-link-foreign { stroke-dasharray: 2.5,4.5 !important; opacity: 0.6; }
 
 .gen-photo-preview {
-  width: 100%; height: 154px; border-radius: 8px; overflow: hidden; background: var(--surface-border);
+  width: 100%; height: 210px; border-radius: 10px; overflow: hidden; background: var(--surface-border);
   margin-bottom: 6px; display: flex; align-items: center; justify-content: center;
 }
 .gen-photo-preview img { width: 100%; height: 100%; object-fit: cover; display: block; }
@@ -1858,9 +1859,9 @@ path.link-autre { stroke: var(--link-autre, #c9bfa9); }
    openCropModal()/genealogy.ts. Réutilise .poi-overlay (même z-index
    20000 que gen-relation-modal/gen-foreign-search-modal, au-dessus de
    #gen-member-panel qui l'ouvre). */
-.gen-crop-box { width: 520px; }
+.gen-crop-box { width: 600px; }
 #gen-crop-stage {
-  position: relative; width: 100%; max-width: 480px; margin: 4px auto 10px; overflow: hidden;
+  position: relative; width: 100%; max-width: 560px; margin: 4px auto 10px; overflow: hidden;
   background: var(--ink); border-radius: 8px; -webkit-user-select: none; user-select: none;
 }
 #gen-crop-img { display: block; width: 100%; height: auto; pointer-events: none; -webkit-user-select: none; user-select: none; }
