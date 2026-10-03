@@ -1087,6 +1087,12 @@ main.map-wrap {
 .dsc-name { font-family: "Fraunces", serif; font-weight: 600; font-size: 17px; margin-bottom: 4px; }
 .dsc-meta { font-size: 12.5px; color: var(--text-dim); }
 .dsc-preview { font-size: 13px; color: var(--text-dim); margin-top: 7px; line-height: 1.45; }
+/* Flèches ↑/↓ de réordonnancement sur une carte sous-catégorie/sous-sous-
+   catégorie (buildSectionCard, dossier.ts) — remplace le glisser-déposer
+   du bandeau de l'ancien système, qui n'a plus de sens une fois les
+   sections rendues en cartes de grille plutôt qu'empilées. */
+.dsc-move-actions { display: flex; gap: 6px; margin-top: 8px; }
+.dsc-move-actions .btn-small { padding: 3px 9px; }
 
 .dossier-add-bar { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 6px; }
 #dossier-photo-status { font-size: 12px; color: var(--text-dim); min-height: 16px; margin-bottom: 10px; }
@@ -1216,13 +1222,17 @@ li.rt-check[data-checked="true"]:after {
    registerSectionDropZone). */
 #dossier-entry-category, #dossier-entry-section { display: none; }
 
-/* 4 colonnes côte à côte à 1440px d'écran (demande de Martin, 2026-10-03) :
-   #dossier-inner fait jusqu'à 1240px de large (ci-dessus) moins le
-   padding (22px*2) = ~1196px utiles ; minmax(260px,1fr) avec un gap de
-   18px tient donc 4 colonnes (4*260 + 3*18 = 1094px ≤ 1196px) et repasse
-   naturellement à 3/2/1 colonne(s) sur un écran plus étroit grâce à
-   auto-fill. */
-.dossier-sections-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 18px; align-items: start; margin-bottom: 8px; }
+/* Grille des cartes "sous-catégorie" (page catégorie) ET "sous-sous-
+   catégorie" (page sous-catégorie) — demande explicite de Martin,
+   2026-10-03, pour la page sous-catégorie : "les sous-sous catégories
+   doivent bien prendre tout l'écran, avec 3 max en largeur" ; appliqué
+   aux deux pages par cohérence (même grille, même composant de carte,
+   voir buildSectionCard/dossier.ts). 3 colonnes fixes plutôt
+   qu'auto-fill (qui montait à 4 sur grand écran avant ce changement),
+   repasse à 2 puis 1 sur écran étroit via les media queries ci-dessous. */
+.dossier-sections-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; align-items: start; margin-bottom: 8px; }
+@media (max-width: 900px) { .dossier-sections-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 600px) { .dossier-sections-grid { grid-template-columns: 1fr; } }
 .dossier-section-group { border: 1px solid var(--surface-border); border-radius: 10px; margin: 0 0 16px; overflow: hidden; background: var(--surface); }
 .dossier-sections-grid > .dossier-section-group { margin-bottom: 0; }
 .dossier-section-group.level-3 { margin: 12px 12px 0 24px; }
@@ -1775,35 +1785,64 @@ path.link-autre { stroke: var(--link-autre, #c9bfa9); }
   box-shadow: 0 6px 18px rgba(0,0,0,0.35); cursor: pointer; user-select: none; text-align: center;
 }
 .gen-card:hover { border-color: var(--accent); }
-.gen-card-foreign { border: 2px solid var(--accent); opacity: 0.92; }
+/* Demande de Martin, 2026-10-03 : "je ne souhaite pas que la personne qui
+   vient d'un autre arbre soit en surbrillance, entourée en jaune, mais
+   simplement un reliement qui est distinct des autres" — on retire la
+   bordure/opacité spécifique .gen-card-foreign : la carte d'un membre
+   étranger a maintenant exactement le même style que les autres (le
+   badge .gen-card-flag suffit à l'identifier), et c'est désormais le
+   TRAIT qui le relie à l'arbre courant qui porte un style distinct, voir
+   .gen-link-foreign plus bas (renderLinks, genealogy.ts). */
 /* Surbrillance "a dirigé le pays" (demande de Martin, 2026-10-03 :
    "mettre la possibilité d'entourer un membre... mettre tout ceux qui ont
-   dirigés le pays en surbrillance") — case à cocher gen-m-leader sur la
-   fiche membre (genealogy.ts), bordure dorée + léger halo permanents sur
-   la carte, cumulable avec .gen-card-foreign (bordure accent déjà dorée,
-   le halo suffit alors à distinguer les deux). */
-.gen-card-leader { border-color: var(--accent); box-shadow: 0 0 0 2px rgba(232, 179, 74, 0.45), 0 6px 18px rgba(0,0,0,0.35); }
+   dirigés le pays en surbrillance", puis le 2026-10-03 : "je veux que ce
+   soit en rouge" — remplace la bordure/halo doré initial par du rouge). */
+.gen-card-leader { border-color: #e2493f; box-shadow: 0 0 0 2px rgba(226, 73, 63, 0.5), 0 6px 18px rgba(0,0,0,0.35); }
 .gen-m-leader-check {
   display: flex; align-items: center; gap: 7px; font-size: 12.5px; color: var(--text);
   margin: 10px 0 2px; cursor: pointer;
 }
+/* Bandeau "voir dans <arbre d'origine>" en tête de #gen-member-panel
+   quand on consulte un membre d'un autre arbre (demande de Martin,
+   2026-10-03 : "il faut que quand on clique dessus il y ait le menu
+   déroulant à droite... en haut de ce menu apparaît le nom de son arbre
+   d'origine, et si on clique dessus on y est amené" — voir
+   openForeignMemberPanel, genealogy.ts). */
+#gen-m-foreign-banner {
+  display: flex; align-items: center; gap: 6px; width: 100%; appearance: none; border: none;
+  background: var(--surface-border); color: var(--accent); font-size: 12.5px; font-weight: 600;
+  border-radius: 7px; padding: 8px 10px; margin: 0 0 12px; cursor: pointer; text-align: left;
+}
+#gen-m-foreign-banner:hover { background: var(--accent); color: var(--ink); }
+#gen-m-foreign-banner::before { content: "↪"; font-size: 14px; }
+/* Cartes/photos agrandies (demande de Martin, 2026-10-03 : "faire tout
+   plus grand, les noms, les photos... pour pouvoir cadrer de plus grande
+   photo, avoir une plus grande partie de la photo") — hauteur alignée sur
+   la constante CARD_PHOTO_H de genealogy.ts (118px, contre 82px avant). */
 .gen-card-photo {
-  width: 100%; height: 82px; border-radius: 7px; overflow: hidden; background: var(--surface-border);
-  display: flex; align-items: center; justify-content: center; margin-bottom: 6px;
+  width: 100%; height: 118px; border-radius: 7px; overflow: hidden; background: var(--surface-border);
+  display: flex; align-items: center; justify-content: center; margin-bottom: 7px;
 }
 .gen-card-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
-.gen-card-initials { font-family: "Fraunces", serif; font-size: 22px; color: var(--text-dim); }
+.gen-card-initials { font-family: "Fraunces", serif; font-size: 30px; color: var(--text-dim); }
 .gen-card-flag {
-  display: block; font-size: 9.5px; color: var(--accent); text-transform: uppercase; letter-spacing: 0.03em;
+  display: block; font-size: 10.5px; color: var(--accent); text-transform: uppercase; letter-spacing: 0.03em;
   margin-bottom: 3px;
 }
-.gen-card-name { font-family: "Fraunces", serif; font-weight: 600; font-size: 13px; line-height: 1.25; }
-.gen-card-title-field { font-size: 10.5px; color: var(--text-dim); margin-top: 1px; }
-.gen-card-dates { font-size: 10.5px; color: var(--text-dim); margin-top: 2px; }
+.gen-card-name { font-family: "Fraunces", serif; font-weight: 600; font-size: 17px; line-height: 1.25; }
+.gen-card-title-field { font-size: 13.5px; color: var(--text-dim); margin-top: 2px; }
+.gen-card-dates { font-size: 13.5px; color: var(--text-dim); margin-top: 3px; }
 .gen-card.gen-link-selected { outline: 2px solid var(--accent); outline-offset: 2px; }
+/* Lien touchant un membre d'un autre arbre (demande de Martin ci-dessus) —
+   pointillés fins + légère transparence, distincts des traits "parent"/
+   "mariage"/"famille" classiques (voir renderLinks, genealogy.ts), sans
+   rien changer à la carte elle-même. Les attributs stroke/stroke-dasharray
+   posés en JS (presentation attributes SVG) ont une priorité plus basse
+   que cette règle CSS, qui s'applique donc bien par-dessus. */
+.gen-link-foreign { stroke-dasharray: 2.5,4.5 !important; opacity: 0.6; }
 
 .gen-photo-preview {
-  width: 100%; height: 110px; border-radius: 8px; overflow: hidden; background: var(--surface-border);
+  width: 100%; height: 154px; border-radius: 8px; overflow: hidden; background: var(--surface-border);
   margin-bottom: 6px; display: flex; align-items: center; justify-content: center;
 }
 .gen-photo-preview img { width: 100%; height: 100%; object-fit: cover; display: block; }
@@ -1819,9 +1858,9 @@ path.link-autre { stroke: var(--link-autre, #c9bfa9); }
    openCropModal()/genealogy.ts. Réutilise .poi-overlay (même z-index
    20000 que gen-relation-modal/gen-foreign-search-modal, au-dessus de
    #gen-member-panel qui l'ouvre). */
-.gen-crop-box { width: 460px; }
+.gen-crop-box { width: 520px; }
 #gen-crop-stage {
-  position: relative; width: 100%; max-width: 420px; margin: 4px auto 10px; overflow: hidden;
+  position: relative; width: 100%; max-width: 480px; margin: 4px auto 10px; overflow: hidden;
   background: var(--ink); border-radius: 8px; -webkit-user-select: none; user-select: none;
 }
 #gen-crop-img { display: block; width: 100%; height: auto; pointer-events: none; -webkit-user-select: none; user-select: none; }

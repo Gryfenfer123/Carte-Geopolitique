@@ -93,22 +93,29 @@ type RelationRow = {
 // persistée, pertinente uniquement dans l'arbre d'origine du membre).
 type DisplayPos = { x: number; y: number };
 
-const CARD_W = 158;
-const CARD_H = 176;
-// Aspect ratio de la zone photo de la carte (.gen-card-photo, voir
-// style.css : largeur 100% de CARD_W, hauteur fixe 82px) — réutilisé comme
-// ratio de cadrage dans le recadrage de photo (openCropModal ci-dessous)
-// pour que la photo recadrée remplisse exactement cette zone sans bande ni
-// recadrage navigateur imprévisible (object-fit: cover s'en charge déjà,
-// mais autant livrer une image déjà au bon ratio).
-const CARD_PHOTO_RATIO = CARD_W / 82;
+// Cartes agrandies (demande de Martin, 2026-10-03 : "faire tout plus
+// grand, les noms, les photos... pour pouvoir cadrer de plus grande
+// photo, avoir une plus grande partie de la photo") — ~1.4x les
+// dimensions précédentes (158x176, photo 82px de haut). Voir aussi
+// style.css (.gen-card-photo, .gen-card-name, etc.) pour l'habillage
+// assorti.
+const CARD_W = 220;
+const CARD_H = 248;
+const CARD_PHOTO_H = 118;
+// Aspect ratio de la zone photo de la carte (.gen-card-photo) — réutilisé
+// comme ratio de cadrage dans le recadrage de photo (openCropModal
+// ci-dessous) pour que la photo recadrée remplisse exactement cette zone
+// sans bande ni recadrage navigateur imprévisible (object-fit: cover s'en
+// charge déjà, mais autant livrer une image déjà au bon ratio).
+const CARD_PHOTO_RATIO = CARD_W / CARD_PHOTO_H;
 // Écart vertical minimum imposé entre un parent et son enfant lors de la
 // création d'un lien "parent" (point demandé par Martin, 2026-10-03:
 // "même si on peut déplacer, ceux nés plus tôt sont plus haut, ceux plus
 // tard plus bas, les enfants sont en dessous") — voir
 // enforceParentChildOrder ci-dessous. Le glisser-déposer libre reste
 // entièrement possible ensuite : seule la position DE DÉPART est corrigée.
-const GENERATION_GAP = 230;
+// Agrandi avec les cartes (230 → 300) pour garder un espacement cohérent.
+const GENERATION_GAP = 300;
 // Pixels par année pour le placement automatique d'un NOUVEAU membre selon
 // son année de naissance par rapport aux membres existants de cet arbre
 // (voir suggestYFromBirthYear) — purement indicatif, pas une échelle
@@ -195,12 +202,21 @@ export function initGenealogySystem(deps: {
 
     <div id="gen-member-panel" class="panel side-panel">
       <button class="close-x" id="gen-member-close" aria-label="Fermer">&times;</button>
+      <!-- Bandeau "membre d'un autre arbre" (demande de Martin, 2026-10-03) —
+           affiché UNIQUEMENT en mode lecture d'un membre étranger (voir
+           openForeignMemberPanel), masqué sinon. Son clic ouvre l'arbre
+           d'origine via deps.openOwnerTree, au lieu de naviguer directement
+           au clic sur la carte comme avant. -->
+      <button type="button" id="gen-m-foreign-banner" style="display:none;"></button>
       <h2 id="gen-member-heading">Membre</h2>
       <label class="field-label">Nom</label>
       <input type="text" id="gen-m-name" maxlength="160">
       <label class="field-label">Photo</label>
       <div id="gen-m-photo-preview" class="gen-photo-preview"></div>
-      <button id="gen-m-photo-btn" class="btn-small edit-control">Changer la photo</button>
+      <div class="dossier-form-actions">
+        <button id="gen-m-photo-btn" class="btn-small edit-control">Changer la photo</button>
+        <button id="gen-m-photo-recrop-btn" class="btn-small edit-control" style="display:none;">Recadrer</button>
+      </div>
       <input type="file" id="gen-m-photo-input" accept="image/*" style="display:none;">
       <div id="gen-m-photo-status" class="muted"></div>
       <label class="field-label">Naissance (année)</label>
@@ -214,9 +230,12 @@ export function initGenealogySystem(deps: {
       <label class="gen-m-leader-check"><input type="checkbox" id="gen-m-leader"> A dirigé le pays</label>
       <label class="field-label">Notes / biographie</label>
       <textarea id="gen-m-bio" rows="5"></textarea>
+      <!-- Bouton "Enregistrer" retiré (demande de Martin, 2026-10-03 :
+           "tout doit se faire en temps réel à chaque modification") — voir
+           autosaveField()/autoCreateIfNeeded() : chaque champ s'enregistre
+           lui-même au blur (au changement pour la case à cocher). -->
       <div id="gen-m-save-status" class="muted"></div>
       <div class="dossier-form-actions" style="margin-top:10px;">
-        <button id="gen-m-save" class="btn-primary">Enregistrer</button>
         <button id="gen-m-delete" class="btn-small">Supprimer</button>
       </div>
       <div id="gen-m-relations">
@@ -446,7 +465,7 @@ export function initGenealogySystem(deps: {
       if (!pos) return;
       const isForeign = !(currentOwner && m.owner_type === currentOwner.type && m.owner_id === currentOwner.id);
       const card = document.createElement("div");
-      card.className = "gen-card" + (isForeign ? " gen-card-foreign" : "") + (m.is_leader ? " gen-card-leader" : "");
+      card.className = "gen-card" + (m.is_leader ? " gen-card-leader" : "");
       card.dataset.memberId = m.id;
       card.style.left = pos.x + "px";
       card.style.top = pos.y + "px";
@@ -532,7 +551,11 @@ export function initGenealogySystem(deps: {
       if (!a || !b || !c) return;
       const midX = (a.x + b.x) / 2;
       const midY = (a.y + b.y) / 2;
-      drawLine(midX, midY, c.x, c.y, "parent", "gen-link-from-marriage");
+      // Reliement distinct demandé par Martin pour un membre d'un autre
+      // arbre (voir .gen-link-foreign, style.css) — s'applique au trait
+      // fusionné dès que l'un des deux parents OU l'enfant est étranger.
+      const mergedForeign = foreignMembers.has(p1.member_a_id) || foreignMembers.has(p2.member_a_id) || foreignMembers.has(childId);
+      drawLine(midX, midY, c.x, c.y, "parent", "gen-link-from-marriage" + (mergedForeign ? " gen-link-foreign" : ""));
       mergedParentRelIds.add(p1.id);
       mergedParentRelIds.add(p2.id);
     });
@@ -541,7 +564,8 @@ export function initGenealogySystem(deps: {
       const a = cardCenter(r.member_a_id);
       const b = cardCenter(r.member_b_id);
       if (!a || !b) return;
-      drawLine(a.x, a.y, b.x, b.y, r.relation_type);
+      const foreignLink = foreignMembers.has(r.member_a_id) || foreignMembers.has(r.member_b_id);
+      drawLine(a.x, a.y, b.x, b.y, r.relation_type, foreignLink ? "gen-link-foreign" : undefined);
     });
   }
 
@@ -618,8 +642,14 @@ export function initGenealogySystem(deps: {
     });
     card.addEventListener("click", () => {
       if (moved) return;
+      // Demande de Martin, 2026-10-03 : "il faut que quand on clique
+      // dessus il y ait le menu déroulant à droite qui correspond à la
+      // personne... donc pas directement dès qu'on clique sur le gars
+      // comme maintenant" — on ouvre désormais le panneau (en lecture
+      // seule) au lieu de naviguer tout de suite vers l'arbre d'origine ;
+      // c'est le bandeau en haut du panneau qui permet d'y aller.
       if (isForeign) {
-        void deps.openOwnerTree(member.owner_type, member.owner_id);
+        openForeignMemberPanel(member);
         return;
       }
       if (linkModeActive) {
@@ -790,10 +820,29 @@ export function initGenealogySystem(deps: {
   }
 
   // --- Panneau membre (création / édition) ------------------------------------
+  // Quand on consulte un membre d'un autre arbre (foreignPanelMemberId non
+  // nul), le panneau est en LECTURE SEULE : champs désactivés, pas de
+  // bouton Supprimer/Recadrer/Changer la photo, pas de section Liens, et
+  // un bandeau #gen-m-foreign-banner en tête permet de rejoindre son
+  // arbre d'origine (voir openForeignMemberPanel ci-dessous).
+  let foreignPanelMemberId: string | null = null;
+  const GEN_M_FIELD_IDS = ["gen-m-name", "gen-m-birth", "gen-m-death", "gen-m-title", "gen-m-dynasty", "gen-m-bio"];
+  function setMemberFieldsDisabled(disabled: boolean) {
+    GEN_M_FIELD_IDS.forEach((id) => (($(id) as HTMLInputElement | HTMLTextAreaElement).disabled = disabled));
+    ($("gen-m-leader") as HTMLInputElement).disabled = disabled;
+  }
+  function refreshPhotoRecropVisibility() {
+    const hasPhoto = !!$("gen-m-photo-preview").querySelector("img");
+    ($("gen-m-photo-recrop-btn") as HTMLButtonElement).style.display = hasPhoto && !foreignPanelMemberId && isAdmin() ? "" : "none";
+  }
   function openMemberPanel(id: string | null) {
+    foreignPanelMemberId = null;
     editingMemberId = id;
     photoPendingFile = null;
     $("gen-m-photo-status").textContent = "";
+    $("gen-m-foreign-banner").style.display = "none";
+    setMemberFieldsDisabled(false);
+    ($("gen-m-photo-btn") as HTMLButtonElement).style.display = "";
     const m = id ? members.find((x) => x.id === id) || null : null;
     $("gen-member-heading").textContent = m ? "Modifier le membre" : "Nouveau membre";
     ($("gen-m-name") as HTMLInputElement).value = m?.name || "";
@@ -804,18 +853,57 @@ export function initGenealogySystem(deps: {
     ($("gen-m-leader") as HTMLInputElement).checked = m?.is_leader || false;
     ($("gen-m-bio") as HTMLTextAreaElement).value = m?.bio || "";
     $("gen-m-photo-preview").innerHTML = m?.photo_url ? '<img src="' + escapeHtml(m.photo_url) + '" alt="">' : "";
+    refreshPhotoRecropVisibility();
     $("gen-m-save-status").textContent = "";
     ($("gen-m-delete") as HTMLButtonElement).style.display = m && isAdmin() ? "" : "none";
     $("gen-m-relations").style.display = m ? "" : "none";
+    $("gen-m-link-foreign").style.display = "";
     if (m) renderRelationsList(m.id);
+    $("gen-member-panel").classList.add("open");
+  }
+  // Demande de Martin, 2026-10-03 : voir le commentaire sur card.addEventListener("click", ...)
+  // plus haut — on affiche le membre étranger en lecture seule plutôt que
+  // de naviguer directement vers son arbre d'origine.
+  function openForeignMemberPanel(m: MemberRow) {
+    foreignPanelMemberId = m.id;
+    editingMemberId = null;
+    photoPendingFile = null;
+    $("gen-m-photo-status").textContent = "";
+    setMemberFieldsDisabled(true);
+    $("gen-member-heading").textContent = m.name;
+    ($("gen-m-name") as HTMLInputElement).value = m.name || "";
+    ($("gen-m-birth") as HTMLInputElement).value = m.birth_year != null ? String(m.birth_year) : "";
+    ($("gen-m-death") as HTMLInputElement).value = m.death_year != null ? String(m.death_year) : "";
+    ($("gen-m-title") as HTMLInputElement).value = m.title || "";
+    ($("gen-m-dynasty") as HTMLInputElement).value = m.dynasty || "";
+    ($("gen-m-leader") as HTMLInputElement).checked = m.is_leader || false;
+    ($("gen-m-bio") as HTMLTextAreaElement).value = m.bio || "";
+    $("gen-m-photo-preview").innerHTML = m.photo_url ? '<img src="' + escapeHtml(m.photo_url) + '" alt="">' : "";
+    ($("gen-m-photo-btn") as HTMLButtonElement).style.display = "none";
+    ($("gen-m-photo-recrop-btn") as HTMLButtonElement).style.display = "none";
+    const banner = $("gen-m-foreign-banner") as HTMLButtonElement;
+    banner.style.display = "flex";
+    banner.textContent = foreignOwnerLabel(m);
+    banner.onclick = () => void deps.openOwnerTree(m.owner_type, m.owner_id);
+    $("gen-m-save-status").textContent = "";
+    ($("gen-m-delete") as HTMLButtonElement).style.display = "none";
+    $("gen-m-relations").style.display = "none";
+    $("gen-m-link-foreign").style.display = "none";
     $("gen-member-panel").classList.add("open");
   }
   function closeMemberPanel() {
     $("gen-member-panel").classList.remove("open");
     editingMemberId = null;
+    foreignPanelMemberId = null;
   }
   $("gen-member-close").addEventListener("click", closeMemberPanel);
   $("genealogy-add-member").addEventListener("click", () => requireAuthOr(() => openMemberPanel(null)));
+  ($("gen-m-photo-recrop-btn") as HTMLButtonElement).addEventListener("click", () => {
+    if (!editingMemberId || foreignPanelMemberId) return;
+    const m = members.find((x) => x.id === editingMemberId);
+    if (!m?.photo_url) return;
+    requireAuthOr(() => openCropModal(m.photo_url as string));
+  });
 
   function renderRelationsList(memberId: string) {
     const list = $("gen-m-relations-list");
@@ -932,6 +1020,11 @@ export function initGenealogySystem(deps: {
   }
   function openCropModal(dataUrl: string) {
     const img = $("gen-crop-img") as HTMLImageElement;
+    // "Recadrer" (bouton #gen-m-photo-recrop-btn) rouvre ce modal avec la
+    // photo_url DÉJÀ en ligne (pas une data: URL locale) — crossOrigin
+    // est nécessaire pour que drawImage()/toBlob() plus bas ne "tainte"
+    // pas le canvas (sans effet sur les data: URL du flux normal).
+    img.crossOrigin = "anonymous";
     img.src = dataUrl;
     img.onload = () => {
       cropNaturalW = img.naturalWidth;
@@ -1025,6 +1118,15 @@ export function initGenealogySystem(deps: {
         if (blob) {
           photoPendingFile = new File([blob], "photo.jpg", { type: "image/jpeg" });
           $("gen-m-photo-preview").innerHTML = '<img src="' + canvas.toDataURL("image/jpeg", 0.9) + '" alt="">';
+          refreshPhotoRecropVisibility();
+          // Temps réel (demande de Martin, 2026-10-03 : "retire le bouton
+          // enregistrer, tout doit se faire en temps réel") : si on
+          // modifie/recadre la photo d'un membre déjà créé, on l'envoie et
+          // on l'enregistre tout de suite, sans attendre un clic ailleurs.
+          // Pour un membre pas encore créé (editingMemberId nul), le
+          // fichier reste en attente dans photoPendingFile — il sera
+          // envoyé à la toute première sauvegarde (voir createMemberNow).
+          if (editingMemberId) void autosavePhotoNow(photoPendingFile);
         }
         closeCropModal();
       },
@@ -1043,21 +1145,47 @@ export function initGenealogySystem(deps: {
     return data.publicUrl;
   }
 
-  $("gen-m-save").addEventListener("click", async () => {
+  // Envoi + enregistrement immédiat d'une nouvelle photo (recadrée) pour un
+  // membre déjà créé — remplace l'ancien flux qui attendait un clic sur
+  // "Enregistrer".
+  async function autosavePhotoNow(file: File) {
+    if (!editingMemberId || !isAdmin()) return;
+    const id = editingMemberId;
+    $("gen-m-photo-status").textContent = "Envoi de la photo…";
+    const url = await uploadMemberPhoto(file, id);
+    if (!url) {
+      $("gen-m-photo-status").textContent = "Échec de l'envoi de la photo.";
+      return;
+    }
+    await supabase.from("genealogy_members").update({ photo_url: url }).eq("id", id);
+    const m = members.find((x) => x.id === id);
+    if (m) m.photo_url = url;
+    photoPendingFile = null;
+    $("gen-m-photo-status").textContent = "";
+    renderAll();
+  }
+
+  // --- Sauvegarde en temps réel (plus de bouton "Enregistrer", demande de
+  // Martin, 2026-10-03 : "retire le bouton enregistrer, tout doit se
+  // faire en temps réel à chaque modification, sans avoir besoin de
+  // cliquer sur le bouton") -------------------------------------------------
+  // Première sauvegarde d'un membre tout juste ouvert via "+ Membre" :
+  // insère la ligne dès que le nom (seul champ obligatoire) est renseigné,
+  // avec les valeurs actuelles de TOUS les champs du panneau — reprend
+  // exactement la logique de positionnement/upload-photo qui vivait avant
+  // dans le handler de clic sur "Enregistrer".
+  async function createMemberNow(): Promise<MemberRow | null> {
     const session = deps.getSession();
     if (!session || !currentOwner) {
       deps.openAuthPanel();
-      return;
+      return null;
     }
     if (!isAdmin()) {
       deps.showBanner?.("Tu n'as pas les droits d'édition sur cet atlas.");
-      return;
+      return null;
     }
     const name = ($("gen-m-name") as HTMLInputElement).value.trim();
-    if (!name) {
-      $("gen-m-save-status").textContent = "Le nom est obligatoire.";
-      return;
-    }
+    if (!name) return null;
     const birthStr = ($("gen-m-birth") as HTMLInputElement).value.trim();
     const deathStr = ($("gen-m-death") as HTMLInputElement).value.trim();
     const birth = birthStr ? parseInt(birthStr, 10) : null;
@@ -1067,9 +1195,20 @@ export function initGenealogySystem(deps: {
     const isLeader = ($("gen-m-leader") as HTMLInputElement).checked;
     const bio = ($("gen-m-bio") as HTMLTextAreaElement).value.trim() || null;
     $("gen-m-save-status").textContent = "Enregistrement…";
+    const center = canvasWrap
+      ? { x: (canvasWrap.clientWidth / 2 - zoomTransform.x) / zoomTransform.k, y: (canvasWrap.clientHeight / 2 - zoomTransform.y) / zoomTransform.k }
+      : { x: 0, y: 0 };
+    const suggestedY = suggestYFromBirthYear(Number.isFinite(birth) ? birth : null);
+    const pos = {
+      x: center.x + Math.random() * 60 - 30,
+      y: suggestedY != null ? suggestedY : center.y + Math.random() * 60 - 30,
+    };
     try {
-      if (editingMemberId) {
-        const patch: Record<string, unknown> = {
+      const { data, error } = await supabase
+        .from("genealogy_members")
+        .insert({
+          owner_type: currentOwner.type,
+          owner_id: currentOwner.id,
           name,
           birth_year: Number.isFinite(birth) ? birth : null,
           death_year: Number.isFinite(death) ? death : null,
@@ -1077,76 +1216,82 @@ export function initGenealogySystem(deps: {
           dynasty,
           is_leader: isLeader,
           bio,
-        };
-        if (photoPendingFile) {
-          $("gen-m-photo-status").textContent = "Envoi de la photo…";
-          const url = await uploadMemberPhoto(photoPendingFile, editingMemberId);
-          if (url) patch.photo_url = url;
-          $("gen-m-photo-status").textContent = url ? "" : "Échec de l'envoi de la photo.";
-        }
-        await supabase.from("genealogy_members").update(patch).eq("id", editingMemberId);
-        const m = members.find((x) => x.id === editingMemberId);
-        if (m) Object.assign(m, patch);
-      } else {
-        const center = canvasWrap
-          ? { x: (canvasWrap.clientWidth / 2 - zoomTransform.x) / zoomTransform.k, y: (canvasWrap.clientHeight / 2 - zoomTransform.y) / zoomTransform.k }
-          : { x: 0, y: 0 };
-        // Place le nouveau membre près du centre de la vue actuelle, avec un
-        // petit décalage aléatoire pour éviter l'empilement exact si on en
-        // crée plusieurs d'affilée — SAUF si une année de naissance a été
-        // renseignée et que d'autres membres de cet arbre en ont une aussi :
-        // dans ce cas on préfère un Y suggéré par interpolation (voir
-        // suggestYFromBirthYear) pour que les plus âgés apparaissent par
-        // défaut plus haut que les plus jeunes, sans empêcher de glisser la
-        // carte ensuite.
-        const suggestedY = suggestYFromBirthYear(Number.isFinite(birth) ? birth : null);
-        const pos = {
-          x: center.x + Math.random() * 60 - 30,
-          y: suggestedY != null ? suggestedY : center.y + Math.random() * 60 - 30,
-        };
-        const { data, error } = await supabase
-          .from("genealogy_members")
-          .insert({
-            owner_type: currentOwner.type,
-            owner_id: currentOwner.id,
-            name,
-            birth_year: Number.isFinite(birth) ? birth : null,
-            death_year: Number.isFinite(death) ? death : null,
-            title,
-            dynasty,
-            is_leader: isLeader,
-            bio,
-            pos_x: pos.x,
-            pos_y: pos.y,
-            created_by: session.user.id,
-          })
-          .select("id, owner_type, owner_id, name, photo_url, birth_year, death_year, title, dynasty, bio, pos_x, pos_y, created_by, is_leader")
-          .single();
-        if (error || !data) {
-          $("gen-m-save-status").textContent = "Erreur d'enregistrement.";
-          return;
-        }
-        const row = data as MemberRow;
-        if (photoPendingFile) {
-          $("gen-m-photo-status").textContent = "Envoi de la photo…";
-          const url = await uploadMemberPhoto(photoPendingFile, row.id);
-          if (url) {
-            await supabase.from("genealogy_members").update({ photo_url: url }).eq("id", row.id);
-            row.photo_url = url;
-          }
-          $("gen-m-photo-status").textContent = "";
-        }
-        members.push(row);
-        displayPos.set(row.id, { x: row.pos_x, y: row.pos_y });
-        editingMemberId = row.id;
+          pos_x: pos.x,
+          pos_y: pos.y,
+          created_by: session.user.id,
+        })
+        .select("id, owner_type, owner_id, name, photo_url, birth_year, death_year, title, dynasty, bio, pos_x, pos_y, created_by, is_leader")
+        .single();
+      if (error || !data) {
+        $("gen-m-save-status").textContent = "Erreur d'enregistrement.";
+        return null;
       }
+      const row = data as MemberRow;
+      if (photoPendingFile) {
+        $("gen-m-photo-status").textContent = "Envoi de la photo…";
+        const url = await uploadMemberPhoto(photoPendingFile, row.id);
+        if (url) {
+          await supabase.from("genealogy_members").update({ photo_url: url }).eq("id", row.id);
+          row.photo_url = url;
+        }
+        photoPendingFile = null;
+        $("gen-m-photo-status").textContent = "";
+      }
+      members.push(row);
+      displayPos.set(row.id, { x: row.pos_x, y: row.pos_y });
+      editingMemberId = row.id;
+      $("gen-member-heading").textContent = "Modifier le membre";
+      ($("gen-m-delete") as HTMLButtonElement).style.display = isAdmin() ? "" : "none";
+      $("gen-m-relations").style.display = "";
+      renderRelationsList(row.id);
+      refreshPhotoRecropVisibility();
       $("gen-m-save-status").textContent = "Enregistré ✓";
       $("genealogy-empty-hint").style.display = "none";
+      renderAll();
+      return row;
+    } catch {
+      $("gen-m-save-status").textContent = "Erreur d'enregistrement.";
+      return null;
+    }
+  }
+  // Sauvegarde d'un champ modifié sur un membre déjà créé — ré-envoie
+  // l'ensemble des champs du panneau (plus simple et sûr qu'un diff
+  // champ-par-champ, le coût est négligeable pour un usage personnel).
+  async function handleFieldAutosave() {
+    if (foreignPanelMemberId) return; // panneau en lecture seule
+    if (!editingMemberId) {
+      await createMemberNow();
+      return;
+    }
+    if (!isAdmin()) return;
+    const birthStr = ($("gen-m-birth") as HTMLInputElement).value.trim();
+    const deathStr = ($("gen-m-death") as HTMLInputElement).value.trim();
+    const birth = birthStr ? parseInt(birthStr, 10) : null;
+    const death = deathStr ? parseInt(deathStr, 10) : null;
+    const patch: Record<string, unknown> = {
+      name: ($("gen-m-name") as HTMLInputElement).value.trim(),
+      birth_year: Number.isFinite(birth) ? birth : null,
+      death_year: Number.isFinite(death) ? death : null,
+      title: ($("gen-m-title") as HTMLInputElement).value.trim() || null,
+      dynasty: ($("gen-m-dynasty") as HTMLInputElement).value.trim() || null,
+      is_leader: ($("gen-m-leader") as HTMLInputElement).checked,
+      bio: ($("gen-m-bio") as HTMLTextAreaElement).value.trim() || null,
+    };
+    $("gen-m-save-status").textContent = "Enregistrement…";
+    try {
+      await supabase.from("genealogy_members").update(patch).eq("id", editingMemberId);
+      const m = members.find((x) => x.id === editingMemberId);
+      if (m) Object.assign(m, patch);
+      $("gen-m-save-status").textContent = "Enregistré ✓";
       renderAll();
     } catch {
       $("gen-m-save-status").textContent = "Erreur d'enregistrement.";
     }
+  }
+  GEN_M_FIELD_IDS.forEach((id) => {
+    $(id).addEventListener("blur", () => void handleFieldAutosave());
   });
+  $("gen-m-leader").addEventListener("change", () => void handleFieldAutosave());
 
   $("gen-m-delete").addEventListener("click", async () => {
     if (!editingMemberId || !isAdmin()) return;
