@@ -103,8 +103,21 @@ const STAGE_TOP_PADDING = 70; // place pour la règle des années au-dessus des 
 const PERIOD_BAND_TOP = STAGE_TOP_PADDING;
 const PERIOD_BAND_H_MAIN = 150; // bande "primaire" (voie 0), pleine hauteur façon bandeau
 const PERIOD_BAND_H_SUB = 40; // bandes secondaires empilées (voie 1, 2, ...)
-const POINTS_GAP_ABOVE = 46; // espace entre le bas de la pile de bandes et la ligne des points
-const POINT_TICK_H = 26; // hauteur du tiret vertical reliant un point à la ligne de base
+// --- Points "chaînés" à leur période (refonte 2026-10-06, schéma de Martin) ---
+// Un point dont la date tombe DANS l'intervalle d'une période s'accroche
+// directement au bord inférieur de la bande de cette période, SANS aucun
+// espace (Martin : "attention la barre est bien en contact avec la
+// période, ce qui n'est pas le cas actuellement"). Plusieurs points à la
+// MÊME date (et rattachés à la même période, ou tous les deux "flottants")
+// s'empilent ensuite en chaîne continue sous ce point d'accroche, chacun
+// touchant directement le bas du précédent ("si je rajoute un évènement à
+// la même date, il se met en dessous, mais toujours bien relié au reste").
+// Un point dont la date ne tombe dans AUCUNE période retombe sur l'ancien
+// comportement : une ligne de base commune sous toute la pile de bandes
+// (POINTS_GAP_ABOVE conservé uniquement pour ce cas de repli).
+const POINTS_GAP_ABOVE = 46; // espace au-dessus de la ligne de base (points "flottants", sans période hôte)
+const POINT_TICK_H = 22; // hauteur du trait reliant un point au repère précédent (période ou point du dessus)
+const CHAIN_ROW_H = 74; // hauteur réservée par point empilé dans une chaîne (trait + puce + étiquette)
 
 function escapeHtml(str: string): string {
   return str
@@ -236,7 +249,13 @@ export function initTimelineSystem(deps: {
 
   const zoomBehavior = d3
     .zoom<HTMLDivElement, unknown>()
-    .scaleExtent([0.08, 6])
+    // Borne haute relevée (6 → 60) pour pouvoir zoomer assez pour
+    // distinguer des dates précises à quelques jours d'écart (demande de
+    // Martin : la frise doit s'adapter à une temporalité très courte, ex.
+    // "06/10/2026") — à 60, un jour (~1/365 d'année) occupe encore
+    // PX_PER_YEAR*60/365 ≈ 1px, et plusieurs jours redeviennent
+    // confortablement séparables.
+    .scaleExtent([0.08, 60])
     .filter((event: Event) => {
       if (event.type === "mousedown" || event.type === "touchstart") {
         return !(event.target as HTMLElement).closest(".tl-item");
@@ -417,9 +436,60 @@ export function initTimelineSystem(deps: {
     return found ? found.label : "Fiche liée";
   }
 
+  // Repère la période la plus "spécifique" (la plus courte) dont
+  // l'intervalle contient la date d'un point donné — s'il y en a
+  // plusieurs qui se chevauchent (ex. une période imbriquée ET sa
+  // période englobante), le point s'accroche à la plus précise des deux,
+  // exactement comme on choisirait de rattacher un évènement à "Affaire
+  // Dreyfus" plutôt qu'à "IIIe République" si les deux le contiennent.
+  function hostPeriodFor(point: TimelineItemRow): TimelineItemRow | null {
+    let best: TimelineItemRow | null = null;
+    let bestDur = Infinity;
+    for (const p of items) {
+      if (p.kind !== "period") continue;
+      const pEnd = p.end_year ?? p.start_year;
+      if (point.start_year < p.start_year || point.start_year > pEnd) continue;
+      const dur = pEnd - p.start_year;
+      if (dur < bestDur) {
+        bestDur = dur;
+        best = p;
+      }
+    }
+    return best;
+  }
+  function periodBandBottom(p: TimelineItemRow): number {
+    const lane = laneOf.get(p.id) || 0;
+    const isPrimary = lane < primaryLaneCount;
+    return periodBandTop(lane) + (isPrimary ? PERIOD_BAND_H_MAIN : PERIOD_BAND_H_SUB);
+  }
+
   function renderItems() {
     itemsLayer.innerHTML = "";
-    const baselineTop = pointsBaselineTop();
+    // Regroupe les points par (période hôte, date exacte) pour les
+    // empiler en chaîne continue — voir hostPeriodFor ci-dessus et le
+    // commentaire sur CHAIN_ROW_H. Les points sans période hôte
+    // retombent dans le groupe "flottant" (clé "none"), ancré sur
+    // l'ancienne ligne de base commune, mais eux aussi empilés par date
+    // exacte plutôt que superposés au même endroit comme avant.
+    const points = items.filter((it) => it.kind === "point");
+    const chainGroups = new Map<string, TimelineItemRow[]>();
+    const hostOf = new Map<string, TimelineItemRow | null>();
+    points.forEach((pt) => {
+      const host = hostPeriodFor(pt);
+      hostOf.set(pt.id, host);
+      const dateKey = String(Math.round(pt.start_year * 1e6));
+      const key = (host ? host.id : "none") + "|" + dateKey;
+      const group = chainGroups.get(key);
+      if (group) group.push(pt);
+      else chainGroups.set(key, [pt]);
+    });
+    const pointTop = new Map<string, number>();
+    chainGroups.forEach((group) => {
+      group.sort((a, b) => a.position - b.position);
+      const host = hostOf.get(group[0].id) || null;
+      const anchorTop = host ? periodBandBottom(host) : pointsBaselineTop();
+      group.forEach((pt, idx) => pointTop.set(pt.id, anchorTop + idx * CHAIN_ROW_H));
+    });
     // Trié pour que les points se rendent APRÈS les bandes de période dans
     // le DOM (empile correctement au survol/clic) — l'ordre des voies n'a
     // pas d'importance pour les périodes entre elles, le positionnement
@@ -430,14 +500,18 @@ export function initTimelineSystem(deps: {
       const card = document.createElement("div");
       card.dataset.itemId = it.id;
       if (it.kind === "point") {
-        // Point (événement ponctuel) : un petit repère sur la ligne de
-        // base commune à TOUS les points (sous l'empilement de bandes de
-        // période), relié à cette ligne par un tiret vertical — même
-        // disposition que l'exemple de Martin ("1815 Napoléon exilé...").
+        // Point (événement ponctuel) : accroché soit au bord inférieur de
+        // sa période hôte (sans aucun espace — "la barre est bien en
+        // contact avec la période"), soit, à défaut, sur la ligne de base
+        // commune sous l'empilement de bandes. Les points qui partagent
+        // exactement la même date (et la même période hôte) sont déjà
+        // empilés en chaîne par pointTop ci-dessus, chacun touchant
+        // directement le bas du précédent.
         const x = xForYear(it.start_year);
+        const top = pointTop.get(it.id) ?? pointsBaselineTop();
         card.className = "tl-item tl-item-point" + (link ? " tl-item-linked" : "");
         card.style.left = x - POINT_W / 2 + "px";
-        card.style.top = baselineTop + "px";
+        card.style.top = top + "px";
         card.style.width = POINT_W + "px";
         card.style.setProperty("--tl-tick-h", POINT_TICK_H + "px");
         card.innerHTML =

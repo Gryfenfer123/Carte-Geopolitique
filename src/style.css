@@ -2240,10 +2240,16 @@ path.link-autre { stroke: var(--link-autre, #c9bfa9); }
 .tl-handle-r { right: 0; }
 
 /* --- Points (événements ponctuels) -------------------------------------
-   Alignés sur une même ligne de base sous la pile de bandes
-   (pointsBaselineTop() dans frise.ts), chacun relié à cette ligne par un
-   tiret vertical — demande explicite de Martin ("tous les événements
-   rattachés par un tiret"). */
+   REFONTE 2026-10-06 (schéma de Martin) : un point dont la date tombe
+   dans l'intervalle d'une période s'accroche DIRECTEMENT au bord
+   inférieur de la bande de cette période, sans aucun espace ("la barre
+   est bien en contact avec la période") ; plusieurs points à la même
+   date (même période hôte) s'empilent ensuite en chaîne continue,
+   chacun touchant le bas du précédent ("relié au reste"). Un point sans
+   période hôte retombe sur l'ancienne ligne de base commune sous la
+   pile de bandes (pointsBaselineTop() dans frise.ts). Tout le calcul de
+   position (hostPeriodFor/periodBandBottom/chainGroups/CHAIN_ROW_H) est
+   dans renderItems() ; ce bloc CSS ne fait que l'habillage. */
 .tl-item-point { height: auto; text-align: center; }
 .tl-point-tick {
   width: 2px; height: var(--tl-tick-h, 26px); margin: 0 auto; opacity: 0.85;
