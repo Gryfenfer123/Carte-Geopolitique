@@ -416,27 +416,46 @@ export function defaultHemicyclePartyRow(idx: number): HemicycleParty {
 function computeHemicycleRows(N: number): { rows: { radius: number; seats: number }[]; dotRadius: number } {
   if (!N || N <= 0) return { rows: [], dotRadius: 3.4 };
   const minR = 14;
-  // BUG CORRIGÉ (2026-10-06, retour de Martin : "esthétique des points...
-  // à revoir pour les petits hémicycles, ex. Conseil de direction en
-  // Afghanistan") : rMax était fixe à 92 quel que soit N. Pour un petit
-  // hémicycle (quelques sièges), la boucle ci-dessous sort dès la 1ère
-  // itération (un seul arc de rayon 92 suffit largement à contenir, disons,
-  // 5 sièges) : les points gardaient alors leur taille maximale MAIS
-  // étalés sur un grand arc de 92 de rayon, avec un vide immense entre eux
-  // et le centre — rendu épars et disproportionné. On borne maintenant
-  // rMax en fonction de N (une rangée pleine d'environ 8-10 sièges
-  // occupant tout juste le rayon max) pour que les tout petits hémicycles
-  // se resserrent près du centre au lieu de s'étaler sur tout le widget.
-  const rMax = N >= 40 ? 92 : Math.max(minR + 8, Math.min(92, minR + N * 7));
+  const rMaxCap = 92;
+  // BUG CORRIGÉ (2026-10-06, puis re-corrigé le même jour — retour de
+  // Martin, capture d'écran à l'appui, montrant 30 sièges éparpillés en
+  // points isolés très espacés du centre au lieu d'un hémicycle compact
+  // façon Wikipédia). La 1ère tentative de correctif bornait rMax selon N,
+  // mais seulement pour les TOUT petits hémicycles (N < 40) — à partir de
+  // 40 sièges (et en pratique dès qu'on approchait ce seuil, comme les 30
+  // sièges de l'exemple), rMax repassait à 92 fixe. La boucle ci-dessous
+  // générait alors TOUJOURS la liste complète des rangées possibles entre
+  // minR et rMax (jusqu'à 9-10 rangées), puis répartissait les sièges
+  // PROPORTIONNELLEMENT à la capacité de chaque rangée — avec seulement 30
+  // sièges à répartir sur 9-10 rangées pouvant en contenir plus de 200 au
+  // total, chaque rangée ne recevait qu'1 ou 2 points, éparpillés sur tout
+  // le rayon (14 à 92) : d'où le motif de points isolés constaté.
+  //
+  // Nouvelle approche (identique à l'algorithme standard des diagrammes
+  // d'hémicycle, ex. Wikipédia) : on fait CROÎTRE le nombre de rangées
+  // depuis le centre (minR) vers l'extérieur, une rangée à la fois, et on
+  // s'arrête dès que la capacité cumulée des rangées déjà ajoutées suffit
+  // à contenir N sièges — au lieu de toujours utiliser le jeu complet de
+  // rangées jusqu'à rMax. Un hémicycle de 30 sièges n'utilise ainsi que
+  // les 3-4 rangées les plus internes (resserrées, denses), et seuls les
+  // très grands hémicycles (web proche ou au-delà de la capacité des
+  // rangées jusqu'à rMaxCap) utilisent tout le rayon disponible — auquel
+  // cas, comme avant, on réduit le rayon des points (dotRadius) pour que
+  // tout tienne.
   let dotRadius = 3.6;
   for (let attempt = 0; attempt < 30; attempt++) {
     const rowSpacing = dotRadius * 2 + 1.4;
-    const radii: number[] = [];
-    for (let r = rMax; r >= minR; r -= rowSpacing) radii.push(r);
-    if (!radii.length) radii.push(rMax);
     const seatSpacingArc = dotRadius * 2 + 1.0;
+    const radii: number[] = [];
+    let totalCap = 0;
+    for (let r = minR; r <= rMaxCap + 1e-6; r += rowSpacing) {
+      radii.push(r);
+      totalCap += Math.max(1, Math.floor((Math.PI * r) / seatSpacingArc) + 1);
+      if (totalCap >= N) break;
+    }
+    if (!radii.length) radii.push(minR);
     const capacities = radii.map((r) => Math.max(1, Math.floor((Math.PI * r) / seatSpacingArc) + 1));
-    const totalCap = capacities.reduce((a, b) => a + b, 0);
+    totalCap = capacities.reduce((a, b) => a + b, 0);
     if (totalCap >= N || dotRadius <= 0.6) {
       const seatsPerRow = capacities.map((c) => Math.floor((N * c) / totalCap));
       let assigned = seatsPerRow.reduce((a, b) => a + b, 0);
@@ -459,7 +478,7 @@ function computeHemicycleRows(N: number): { rows: { radius: number; seats: numbe
     }
     dotRadius -= 0.12;
   }
-  return { rows: [{ radius: rMax, seats: N }], dotRadius: 0.6 };
+  return { rows: [{ radius: rMaxCap, seats: N }], dotRadius: 0.6 };
 }
 
 // Construit le widget complet (SVG + légende + info-bulle locale) à partir
