@@ -1269,11 +1269,15 @@ const poiSystem = initPoiSystem({
 poiRedraw = poiSystem.redraw;
 
 // Carte historique "à la GeAcron" (src/historicalMap.ts, demande de
-// Martin, 2026-10-06) — ne dépend que de `map`, câblée ici au plus tôt
-// possible. Le lien bidirectionnel date ↔ vue historique (cliquer sur une
-// date dans une fiche/frise pour y atterrir) est une étape suivante : pour
-// l'instant seul le bouton "Vue historique" + le curseur sont en place.
-const historicalMapSystem = initHistoricalMapSystem({ map });
+// Martin, 2026-10-06, refonte le même jour en page séparée après retour
+// de Martin — voir l'en-tête de historicalMap.ts) — page plein écran
+// totalement indépendante, avec sa propre carte Leaflet : ne dépend plus
+// de `map` (la carte principale) pour éviter tout conflit avec son
+// interactivité. Le lien bidirectionnel date ↔ vue historique (cliquer
+// sur une date dans une fiche/frise pour y atterrir) est une étape
+// suivante : pour l'instant seul le bouton "Vue historique" + le curseur
+// sont en place.
+const historicalMapSystem = initHistoricalMapSystem();
 void historicalMapSystem;
 
 map.on("click", (e) => {

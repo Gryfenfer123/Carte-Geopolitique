@@ -801,11 +801,14 @@ main.map-wrap {
 /* --- Carte historique "à la GeAcron" (src/historicalMap.ts, demande de
    Martin, 2026-10-06) — rejoint la rangée d'icônes bas-droite existante
    (même règle `right`/`bottom:56px` que #notions-toggle et consorts, voir
-   plus bas) plutôt qu'une nouvelle position bas-gauche, qui chevauchait
-   #bottom-panel (la légende occupe exactement left:16px/bottom:16px) et
-   rendait les boutons inaccessibles au clic. Le panneau curseur, lui,
-   s'ouvre juste au-dessus de #style-switch (bas-droite) quand la vue est
-   active. */
+   plus bas).
+   REFONTE (2026-10-06, retour de Martin : la 1ère version ajoutait la
+   couche OHM directement sur la carte principale — ça entrait en conflit
+   avec l'interactivité existante des pays/POI et a fini par planter sous
+   le poids des centaines de features non filtrées, voir le bug ci-
+   dessous) : passe en page plein écran séparée, même famille que
+   #timeline-view (frises) — carte Leaflet indépendante, dédiée, qui ne
+   touche plus jamais à la carte principale. */
 #historical-toggle-btn {
   appearance: none; border: none; background: transparent;
   width: 34px; height: 34px; border-radius: 7px;
@@ -814,18 +817,24 @@ main.map-wrap {
 }
 #historical-toggle-btn.active { background: var(--accent); color: #241c00; }
 #historical-toggle-btn:not(.active):hover { background: var(--surface-border); }
-#historical-slider-panel {
-  /* Au-dessus à la fois de la rangée d'icônes (culmine à bottom:90px) et
-     du texte d'attribution #source (bottom:96px) — même marge de
-     respiration que celle déjà appliquée entre ces deux-là. */
-  display: none; right: 16px; bottom: 140px; width: min(420px, calc(100vw - 32px));
-  padding: 10px 14px;
+
+#historical-view {
+  display: none; position: fixed; inset: 0; z-index: 10500;
+  background: var(--surface); color: var(--text); font-family: "IBM Plex Sans", sans-serif;
+  flex-direction: column;
 }
-#historical-slider-panel.open { display: block; }
-#historical-slider-row { display: flex; align-items: center; gap: 10px; }
+#historical-view.open { display: flex; }
+#historical-topbar {
+  display: flex; align-items: center; gap: 14px; flex-wrap: wrap;
+  padding: 14px 20px; border-bottom: 1px solid var(--surface-border); background: var(--surface);
+  position: relative; z-index: 1;
+}
+#historical-title { font-family: "Fraunces", serif; font-size: 18px; color: var(--accent); margin: 0; flex: 0 0 auto; }
+#historical-toolbar { display: flex; align-items: center; gap: 10px; flex: 1 1 auto; min-width: 220px; }
 #historical-slider { flex: 1 1 auto; }
 #historical-slider-year { font-family: "Fraunces", serif; font-size: 14px; color: var(--accent); min-width: 72px; text-align: right; }
-#historical-slider-hint { font-size: 10.5px; margin-top: 6px; }
+#historical-map-container { flex: 1; position: relative; }
+#historical-slider-hint { font-size: 10.5px; padding: 6px 20px; border-top: 1px solid var(--surface-border); margin: 0; }
 #historical-slider-hint a { color: var(--accent); }
 
 #source {
