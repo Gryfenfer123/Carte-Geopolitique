@@ -129,7 +129,13 @@ type HistoryVersion = {
   hemicycle?: HemicycleData;
   archivedAt: number;
 };
-type EntryType = "text" | "photo" | "link" | "hemicycle" | "genealogy";
+// "frise" ajouté à la demande de Martin, 2026-10-06 ("Rajouter la
+// possibilité de créer des frises chronologiques, un peu sur le même
+// système que les arbres généalogiques") — même organisation que
+// "genealogy" ci-dessus : une entrée "frise" = une frise indépendante,
+// owner={type:"entry", id: entry.id}, portée par src/frise.ts (voir
+// onOpenFriseEntry ci-dessous).
+type EntryType = "text" | "photo" | "link" | "hemicycle" | "genealogy" | "frise";
 type Entry = {
   id: string;
   type: EntryType;
@@ -601,6 +607,10 @@ export function initFicheDossierSystem(deps: {
   // par pays/groupe) — désormais chaque entrée "genealogy" a son propre
   // arbre indépendant (owner = {type:"entry", id: entry.id}, point 2).
   onOpenGenealogyEntry?: (entry: { id: string; title: string | null }) => void;
+  // Même principe que onOpenGenealogyEntry ci-dessus, pour les frises
+  // chronologiques (src/frise.ts, demande de Martin, 2026-10-06) —
+  // owner = {type:"entry", id: entry.id}.
+  onOpenFriseEntry?: (entry: { id: string; title: string | null }) => void;
 }) {
   const { supabase } = deps;
   loadCountryNameData();
@@ -656,6 +666,7 @@ export function initFicheDossierSystem(deps: {
             <button id="dossier-add-link-btn" class="btn-small">&#43; Lien</button>
             <button id="dossier-add-hemicycle-btn" class="btn-small">&#43; H&eacute;micycle</button>
             <button id="dossier-add-genealogy-btn" class="btn-small">&#43; G&eacute;n&eacute;alogie</button>
+            <button id="dossier-add-frise-btn" class="btn-small">&#43; Frise</button>
             <input type="file" id="dossier-photo-input" accept="image/*" style="display:none;">
             <input type="file" id="dossier-category-image-input" accept="image/*" style="display:none;">
             <input type="file" id="dossier-section-image-input" accept="image/*" style="display:none;">
@@ -798,6 +809,16 @@ export function initFicheDossierSystem(deps: {
             <div class="dossier-form-actions">
               <button id="dossier-genealogy-entry-save" class="btn-primary">Ajouter</button>
               <button id="dossier-genealogy-entry-cancel" class="btn-small">Annuler</button>
+            </div>
+          </div>
+
+          <div id="dossier-frise-entry-form" class="dossier-form">
+            <input type="text" id="dossier-frise-entry-title" placeholder="Titre de la frise (ex. Histoire du Saint Empire)">
+            <select id="dossier-frise-entry-category"></select>
+            <select id="dossier-frise-entry-section"></select>
+            <div class="dossier-form-actions">
+              <button id="dossier-frise-entry-save" class="btn-primary">Ajouter</button>
+              <button id="dossier-frise-entry-cancel" class="btn-small">Annuler</button>
             </div>
           </div>
 
@@ -1222,7 +1243,7 @@ export function initFicheDossierSystem(deps: {
       .select("*")
       .eq("owner_type", ownerType)
       .eq("owner_id", ownerId)
-      .in("type", ["text", "photo", "link", "hemicycle", "genealogy"])
+      .in("type", ["text", "photo", "link", "hemicycle", "genealogy", "frise"])
       .order("created_at", { ascending: true });
     currentEntries = (data || []).map(rowToEntry);
   }
@@ -1452,6 +1473,10 @@ export function initFicheDossierSystem(deps: {
         deps.onOpenGenealogyEntry?.({ id: entry.id, title: entry.title });
         return;
       }
+      if (entry.type === "frise") {
+        deps.onOpenFriseEntry?.({ id: entry.id, title: entry.title });
+        return;
+      }
       startEditEntry(entry);
     });
 
@@ -1630,6 +1655,18 @@ export function initFicheDossierSystem(deps: {
         '<span class="gen-tree-open-icon" aria-hidden="true"></span><span class="gen-tree-open-label">' +
         "Généalogie" +
         (entry.title ? ' <span class="gen-tree-open-dash">&mdash;</span> ' + escapeHtml(entry.title) : "") +
+        "</span>";
+      div.appendChild(btn);
+    } else if (entry.type === "frise") {
+      // Même traitement que la carte "genealogy" ci-dessus (bouton stylé,
+      // pas de widget inline) — demande de Martin, 2026-10-06. Voir
+      // .frise-open-btn dans style.css.
+      const btn = document.createElement("div");
+      btn.className = "frise-open-btn";
+      btn.innerHTML =
+        '<span class="frise-open-icon" aria-hidden="true"></span><span class="frise-open-label">' +
+        "Frise" +
+        (entry.title ? ' <span class="frise-open-dash">&mdash;</span> ' + escapeHtml(entry.title) : "") +
         "</span>";
       div.appendChild(btn);
     }
@@ -2354,7 +2391,7 @@ export function initFicheDossierSystem(deps: {
   // -------------------------------------------------------------------------
   function populateCategorySelects() {
     const cats = orderedCategories();
-    ([$("dossier-entry-category"), $("dossier-text-category"), $("dossier-link-category"), $("dossier-hemicycle-category"), $("dossier-genealogy-entry-category")] as HTMLSelectElement[]).forEach((sel) => {
+    ([$("dossier-entry-category"), $("dossier-text-category"), $("dossier-link-category"), $("dossier-hemicycle-category"), $("dossier-genealogy-entry-category"), $("dossier-frise-entry-category")] as HTMLSelectElement[]).forEach((sel) => {
       const prev = sel.value;
       sel.innerHTML = "";
       cats.forEach(([id, cat]) => {
@@ -2375,6 +2412,7 @@ export function initFicheDossierSystem(deps: {
       ["dossier-link-category", "dossier-link-section"],
       ["dossier-hemicycle-category", "dossier-hemicycle-section"],
       ["dossier-genealogy-entry-category", "dossier-genealogy-entry-section"],
+      ["dossier-frise-entry-category", "dossier-frise-entry-section"],
     ];
     pairs.forEach(([catSelId, secSelId]) => {
       const catSel = $(catSelId) as HTMLSelectElement;
@@ -2411,7 +2449,7 @@ export function initFicheDossierSystem(deps: {
       if (secs.some((s) => s.id === prev)) secSel.value = prev;
     });
   }
-  ["dossier-entry-category", "dossier-text-category", "dossier-link-category", "dossier-hemicycle-category", "dossier-genealogy-entry-category"].forEach((id) => {
+  ["dossier-entry-category", "dossier-text-category", "dossier-link-category", "dossier-hemicycle-category", "dossier-genealogy-entry-category", "dossier-frise-entry-category"].forEach((id) => {
     $(id).addEventListener("change", populateSectionSelects);
   });
   $("dossier-add-section-btn").addEventListener("click", async () => {
@@ -3045,6 +3083,7 @@ export function initFicheDossierSystem(deps: {
     $("dossier-link-form").classList.remove("open");
     $("dossier-hemicycle-form").classList.remove("open");
     $("dossier-genealogy-entry-form").classList.remove("open");
+    $("dossier-frise-entry-form").classList.remove("open");
     ($("dossier-text-save") as HTMLButtonElement).textContent = "Ajouter";
     ($("dossier-link-save") as HTMLButtonElement).textContent = "Ajouter";
     ($("dossier-hemicycle-save") as HTMLButtonElement).textContent = "Ajouter";
@@ -3116,6 +3155,12 @@ export function initFicheDossierSystem(deps: {
     } else if (entry.type === "genealogy") {
       editingEntryId = null;
       const title = await customPrompt("Titre de l'arbre :", entry.title || "");
+      if (title === null) return;
+      await updateEntry(entry.id, { title: title.trim() || null });
+      renderDossierEntries();
+    } else if (entry.type === "frise") {
+      editingEntryId = null;
+      const title = await customPrompt("Titre de la frise :", entry.title || "");
       if (title === null) return;
       await updateEntry(entry.id, { title: title.trim() || null });
       renderDossierEntries();
@@ -3367,6 +3412,31 @@ export function initFicheDossierSystem(deps: {
     closeDossierForms();
     renderDossierEntries();
     if (id) deps.onOpenGenealogyEntry?.({ id, title });
+  });
+
+  // -------------------------------------------------------------------------
+  // Formulaire "+ Frise" — crée une ENTRÉE de type "frise" (demande de
+  // Martin, 2026-10-06), ouverte ensuite via deps.onOpenFriseEntry (sa
+  // propre frise indépendante, owner={type:"entry", id: entry.id}), même
+  // schéma que "+ Généalogie" ci-dessus.
+  // -------------------------------------------------------------------------
+  $("dossier-add-frise-btn").addEventListener("click", () => {
+    closeDossierForms();
+    ($("dossier-frise-entry-title") as HTMLInputElement).value = "";
+    ($("dossier-frise-entry-category") as HTMLSelectElement).value = ($("dossier-entry-category") as HTMLSelectElement).value;
+    populateSectionSelects();
+    ($("dossier-frise-entry-section") as HTMLSelectElement).value = ($("dossier-entry-section") as HTMLSelectElement).value;
+    $("dossier-frise-entry-form").classList.add("open");
+  });
+  $("dossier-frise-entry-cancel").addEventListener("click", closeDossierForms);
+  $("dossier-frise-entry-save").addEventListener("click", async () => {
+    const title = ($("dossier-frise-entry-title") as HTMLInputElement).value.trim() || null;
+    const category = ($("dossier-frise-entry-category") as HTMLSelectElement).value || null;
+    const sectionId = ($("dossier-frise-entry-section") as HTMLSelectElement).value || null;
+    const id = await addEntry({ type: "frise", title, category_id: category, section_id: sectionId });
+    closeDossierForms();
+    renderDossierEntries();
+    if (id) deps.onOpenFriseEntry?.({ id, title });
   });
 
   $("dossier-reading-toggle").addEventListener("click", () => {
