@@ -215,7 +215,11 @@ export function initGenealogySystem(deps: {
   // groupsSystem/ficheDossier) ; voir le commentaire de câblage dans
   // main.ts pour le détail de la référence circulaire (même schéma que
   // ficheDeps/linksSystem).
-  openOwnerTree: (ownerType: string, ownerId: string) => Promise<void>;
+  // focusMemberId optionnel (demande de Martin, 2026-10-06 : "le zoom sur
+  // l'arbre B se fasse directement sur le personnage cliqué dans l'arbre
+  // A") — centré/ouvert via focusMember() une fois l'arbre B chargé, voir
+  // le câblage dans main.ts::openOwnerTree.
+  openOwnerTree: (ownerType: string, ownerId: string, focusMemberId?: string) => Promise<void>;
   // Rattachement bidirectionnel membre d'arbre ↔ fiche/sous-catégorie du
   // même nom (demande de Martin, 2026-10-03) — résolution de navigation
   // déléguée à dossier.ts (seul à savoir comment ouvrir le bon dossier
@@ -455,6 +459,28 @@ export function initGenealogySystem(deps: {
   function resetView() {
     zoomTransform = d3.zoomIdentity.translate(canvasWrap.clientWidth / 2 - 400, canvasWrap.clientHeight / 2 - 300);
     d3.select(canvasWrap as unknown as HTMLDivElement).call(zoomBehavior.transform, zoomTransform);
+  }
+
+  // Centre le canevas sur un membre précis plutôt que sur le centre par
+  // défaut de l'arbre (demande de Martin : "lorsque l'on clique sur un
+  // renvoi dans un arbre généalogique, il faudrait que le zoom sur l'arbre
+  // B se fasse directement sur le personnage cliqué dans l'arbre A, et non
+  // un zoom sur le milieu de l'arbre"). Repose sur displayPos (repère du
+  // canevas, même valeurs que celles utilisées par renderNodes pour
+  // positionner les cartes), donc fonctionne aussi bien pour un membre
+  // LOCAL à cet arbre que pour un membre ÉTRANGER déjà rattaché (sa
+  // position dans CET arbre, calculée par computeForeignPosition/loadData).
+  function centerOnMember(memberId: string, k = 1) {
+    const pos = displayPos.get(memberId);
+    if (!pos) return;
+    const cx = pos.x + CARD_W / 2;
+    const cy = pos.y + CARD_H / 2;
+    const clampedK = Math.min(2.5, Math.max(0.25, k));
+    const next = d3.zoomIdentity
+      .translate(canvasWrap.clientWidth / 2 - cx * clampedK, canvasWrap.clientHeight / 2 - cy * clampedK)
+      .scale(clampedK);
+    zoomTransform = next;
+    d3.select(canvasWrap as unknown as HTMLDivElement).call(zoomBehavior.transform, next);
   }
 
   // Point 4a (2026-10-03) : distingue "pas connecté" (ouvre le panneau de
@@ -917,6 +943,17 @@ export function initGenealogySystem(deps: {
     });
     card.addEventListener("click", () => {
       if (moved) return;
+      // Demande de Martin, 2026-10-06 : "la possibilité de lier 2 membres
+      // tous deux issus d'un autre arbre / de faire librement des liens à
+      // partir de membres d'un autre arbre" — en mode "Lier deux membres",
+      // un membre ÉTRANGER doit pouvoir être choisi comme extrémité du
+      // lien exactement comme un membre local (le check doit donc passer
+      // AVANT le isForeign ci-dessous, qui sinon ouvrirait systématiquement
+      // le panneau en lecture seule à la place).
+      if (linkModeActive) {
+        handleLinkModeClick(member.id);
+        return;
+      }
       // Demande de Martin, 2026-10-03 : "il faut que quand on clique
       // dessus il y ait le menu déroulant à droite qui correspond à la
       // personne... donc pas directement dès qu'on clique sur le gars
@@ -925,10 +962,6 @@ export function initGenealogySystem(deps: {
       // c'est le bandeau en haut du panneau qui permet d'y aller.
       if (isForeign) {
         openForeignMemberPanel(member);
-        return;
-      }
-      if (linkModeActive) {
-        handleLinkModeClick(member.id);
         return;
       }
       openMemberPanel(member.id);
@@ -1335,7 +1368,7 @@ export function initGenealogySystem(deps: {
     const banner = $("gen-m-foreign-banner") as HTMLButtonElement;
     banner.style.display = "flex";
     banner.textContent = foreignOwnerLabel(m);
-    banner.onclick = () => void deps.openOwnerTree(m.owner_type, m.owner_id);
+    banner.onclick = () => void deps.openOwnerTree(m.owner_type, m.owner_id, m.id);
     $("gen-m-save-status").textContent = "";
     ($("gen-m-delete") as HTMLButtonElement).style.display = "none";
     // Retrait "local" (demande de Martin, 2026-10-06) — voir
@@ -1343,7 +1376,18 @@ export function initGenealogySystem(deps: {
     // ses liens dans SON arbre d'origine, seulement à cet arbre-ci.
     ($("gen-m-remove-from-tree") as HTMLButtonElement).style.display = isAdmin() ? "" : "none";
     $("gen-m-relations").style.display = "none";
-    $("gen-m-link-foreign").style.display = "none";
+    // Demande de Martin, 2026-10-06 : "la possibilité de lier 2 membres
+    // tous deux issus d'un autre arbre / de faire librement des liens à
+    // partir de membres d'un autre arbre" — jusqu'ici ce bouton n'existait
+    // que sur le panneau d'un membre LOCAL (ce qui empêchait de créer un
+    // lien dont les DEUX extrémités sont étrangères à cet arbre) ; visible
+    // aussi en lecture seule ici, comme "A dirigé le pays"/l'anneau de
+    // couleur ci-dessus, le lien lui-même n'étant pas propre à un arbre en
+    // particulier (voir gen-m-link-foreign ci-dessous, qui lit maintenant
+    // editingMemberId OU foreignPanelMemberId) — visibilité non filtrée par
+    // isAdmin() ici non plus (même convention que openMemberPanel
+    // ci-dessus : le droit est vérifié au clic, via requireAuthOr).
+    $("gen-m-link-foreign").style.display = "";
     $("gen-member-panel").classList.add("open");
   }
   function closeMemberPanel() {
@@ -1871,9 +1915,16 @@ export function initGenealogySystem(deps: {
   });
 
   // --- Lien vers un membre d'un autre pays (recherche globale) ----------------
+  // Source du lien : le membre local en cours d'édition (editingMemberId),
+  // OU, depuis le panneau en lecture seule d'un membre étranger déjà
+  // affiché dans cet arbre (foreignPanelMemberId) — demande de Martin,
+  // 2026-10-06 : permet de créer un lien dont les DEUX extrémités sont
+  // étrangères à cet arbre (ex. relier deux membres d'un même arbre
+  // d'origine, tous deux déjà rattachés individuellement à celui-ci).
   $("gen-m-link-foreign").addEventListener("click", () => {
-    if (!editingMemberId) return;
-    requireAuthOr(() => openForeignSearch(editingMemberId!));
+    const fromId = editingMemberId || foreignPanelMemberId;
+    if (!fromId) return;
+    requireAuthOr(() => openForeignSearch(fromId));
   });
   function openForeignSearch(fromId: string) {
     const modal = $("gen-foreign-search-modal");
@@ -1947,6 +1998,10 @@ export function initGenealogySystem(deps: {
   // bidirectionnel (ficheDeps.openGenealogyMember, src/main.ts) et par la
   // recherche unifiée (résultat "genealogy-member", src/search.ts).
   function focusMember(memberId: string) {
+    // Centre d'abord le canevas sur le membre (voir centerOnMember
+    // ci-dessus), PUIS ouvre son panneau — l'ordre inverse laisserait le
+    // panneau masquer la carte pendant l'animation de pan/zoom.
+    centerOnMember(memberId);
     const local = members.find((x) => x.id === memberId);
     if (local) {
       openMemberPanel(local.id);

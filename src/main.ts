@@ -1843,7 +1843,7 @@ function getOwnerLabel(ownerType: string, ownerId: string): string | null {
 // 2026-10-03) — référence genealogySystem avant son affectation, mais
 // n'est appelée qu'après (jamais au moment de la définition), donc sans
 // souci de TDZ.
-async function openOwnerTree(ownerType: string, ownerId: string) {
+async function openOwnerTree(ownerType: string, ownerId: string, focusMemberId?: string) {
   if (ownerType === "country") {
     const c = getAllCountryRefs().find((x) => x.isoA3 === ownerId);
     if (!c) return;
@@ -1890,6 +1890,10 @@ async function openOwnerTree(ownerType: string, ownerId: string) {
     const label = getOwnerLabel(ownerType, ownerId) || ownerId;
     await genealogySystem.openForOwner({ type: ownerType as DossierOwnerKind, id: ownerId, label, categorySpace: "country" });
   }
+  // Centre/ouvre directement sur le membre visé une fois l'arbre B chargé
+  // (voir le commentaire de focusMemberId côté genealogy.ts::GenealogyDeps)
+  // au lieu de laisser l'arbre sur sa vue par défaut (milieu de l'arbre).
+  if (focusMemberId) genealogySystem.focusMember(focusMemberId);
 }
 const genealogySystem = initGenealogySystem({
   supabase,
@@ -1907,8 +1911,7 @@ const genealogySystem = initGenealogySystem({
 // fiche — câblé tardivement comme ficheDeps.onOpenGenealogyEntry plus bas,
 // genealogySystem n'existant qu'à partir d'ici.
 ficheDeps.openGenealogyMember = async (ownerType, ownerId, memberId) => {
-  await openOwnerTree(ownerType, ownerId);
-  genealogySystem.focusMember(memberId);
+  await openOwnerTree(ownerType, ownerId, memberId);
 };
 ficheDeps.closeGenealogyTree = genealogySystem.closeView;
 // Point 2 (2026-10-03) : l'ancien bouton unique "🌳 Généalogie" (un arbre
