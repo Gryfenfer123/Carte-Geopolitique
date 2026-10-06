@@ -127,6 +127,14 @@ type RelationRow = {
   // Martin, 2026-10-06) — ignoré pour les 3 types existants, qui gardent
   // leur couleur fixe (voir linkColor).
   legend_item_id: string | null;
+  // Visibilité croisée au choix (schema_v23.sql, demande de Martin,
+  // 2026-10-06) — id du membre à ne JAMAIS faire apparaître comme
+  // "étranger" via CE lien précis dans un arbre autre que le sien
+  // (typiquement : le membre local, "d'un unique arbre", qu'on ne veut
+  // pas voir surgir automatiquement dans l'arbre d'origine de l'autre
+  // extrémité du lien, elle-même étrangère). null = comportement normal,
+  // visible partout où le lien touche un membre local. Voir loadData.
+  hide_member_id: string | null;
 };
 
 // Bug + demande de Martin, 2026-10-03 : "quand on bouge un membre d'un
@@ -366,7 +374,7 @@ export function initGenealogySystem(deps: {
          openCustomLinkLegendModal. -->
     <div id="gen-custom-link-modal" class="poi-overlay">
       <div class="poi-overlay-box">
-        <h3>Couleur / l&eacute;gende du lien</h3>
+        <h3>Lien personnalis&eacute;</h3>
         <select id="gen-custom-link-legend"></select>
         <div id="gen-custom-link-hint" class="muted" style="margin-top:6px;"></div>
         <div class="dossier-form-actions" style="margin-top:10px;">
@@ -585,11 +593,27 @@ export function initGenealogySystem(deps: {
       if (ids.length) {
         const { data: relRows, error: relErr } = await supabase
           .from("genealogy_relations")
-          .select("id, member_a_id, member_b_id, relation_type, created_by, legend_item_id")
+          .select("id, member_a_id, member_b_id, relation_type, created_by, legend_item_id, hide_member_id")
           .or("member_a_id.in.(" + ids.join(",") + "),member_b_id.in.(" + ids.join(",") + ")");
         if (relErr) throw relErr;
         relations = (relRows as RelationRow[] | null) || [];
         const localIds = new Set(ids);
+        // Visibilité croisée au choix (schema_v23.sql, demande de Martin,
+        // 2026-10-06 : "je dois avoir un message pour savoir si je veux
+        // faire apparaître la personne A dans l'arbre de la personne B" —
+        // exemple donné : lier Emma de Bavière, membre UNIQUEMENT de
+        // l'arbre "Test", à Ermengarde, étrangère dans "Test" mais LOCALE
+        // aux "Carolingiens" — jusqu'ici, la seule existence de ce lien
+        // suffisait à faire automatiquement apparaître Emma dans l'arbre
+        // Carolingiens dès qu'il se rechargeait, sans que personne ne l'ait
+        // demandé). createRelation (plus bas) demande confirmation et, en
+        // cas de refus, enregistre l'id du membre à ne JAMAIS "découvrir"
+        // comme étranger via CE lien précis dans hide_member_id. Un lien
+        // avec hide_member_id reste normalement visible dans l'arbre
+        // D'ORIGINE de ce membre (c'est forcément là qu'il a été créé et
+        // qu'il doit rester visible) — on l'exclut donc seulement
+        // lorsqu'on charge un AUTRE arbre que celui-ci.
+        relations = relations.filter((r) => !r.hide_member_id || localIds.has(r.hide_member_id));
         const foreignIds = new Set<string>();
         relations.forEach((r) => {
           if (!localIds.has(r.member_a_id)) foreignIds.add(r.member_a_id);
@@ -629,11 +653,16 @@ export function initGenealogySystem(deps: {
           const extendedIds = Array.from(new Set([...ids, ...Array.from(foreignIds)]));
           const { data: extraRelRows } = await supabase
             .from("genealogy_relations")
-            .select("id, member_a_id, member_b_id, relation_type, created_by, legend_item_id")
+            .select("id, member_a_id, member_b_id, relation_type, created_by, legend_item_id, hide_member_id")
             .in("member_a_id", extendedIds)
             .in("member_b_id", extendedIds);
           const knownRelIds = new Set(relations.map((r) => r.id));
           (extraRelRows as RelationRow[] | null)?.forEach((r) => {
+            // Même filtre hide_member_id que la requête principale
+            // ci-dessus (schema_v23.sql) — cette requête de secours ne
+            // doit pas réintroduire par la bande un lien volontairement
+            // masqué pour cet arbre.
+            if (r.hide_member_id && !localIds.has(r.hide_member_id)) return;
             if (!knownRelIds.has(r.id)) {
               relations.push(r);
               knownRelIds.add(r.id);
@@ -807,13 +836,18 @@ export function initGenealogySystem(deps: {
       const foreignBadge = isForeign
         ? '<span class="gen-card-flag" title="Membre d\'un autre arbre">&#127757; ' + escapeHtml(foreignOwnerLabel(m)) + "</span>"
         : "";
-      const ringChip = ring
-        ? '<span class="gen-card-ring-chip" style="background:' + escapeHtml(ring.color) + ';">' + escapeHtml(ring.label) + "</span>"
-        : "";
+      // Demande de Martin, 2026-10-06 : "retirer l'étiquette qui répète la
+      // légende au-dessus du nom du personnage, le contour suffit" — la
+      // puce .gen-card-ring-chip (couleur + libellé répété au-dessus du
+      // nom) faisait doublon avec le contour .gen-card-ringed déjà posé
+      // sur la carte (border-color + box-shadow, voir style.css), qui
+      // porte à lui seul la même information. Rien d'autre ne change :
+      // la couleur reste lisible sur le contour, et le libellé de la
+      // légende reste visible dans le panneau du membre (sélecteur
+      // "Anneau") et dans la bande de légende en haut de l'arbre.
       card.innerHTML =
         '<div class="gen-card-photo">' + photoHtml + "</div>" +
         foreignBadge +
-        ringChip +
         '<div class="gen-card-name">' + escapeHtml(m.name) + "</div>" +
         (m.title ? '<div class="gen-card-title-field">' + escapeHtml(m.title) + "</div>" : "") +
         '<div class="gen-card-dates">' + escapeHtml(yearsLabel(m.birth_year, m.death_year)) + "</div>";
@@ -1260,6 +1294,43 @@ export function initGenealogySystem(deps: {
     });
   }
 
+  // Demande de Martin, 2026-10-06 : "quand on crée un lien entre une
+  // personne qui est dans son arbre d'origine (personne A) [...] à une
+  // personne d'un autre arbre (personne B), je dois avoir un message pour
+  // savoir si je veux faire apparaître la personne A dans l'arbre de la
+  // personne B [...] actuellement, ça va automatiquement faire apparaître
+  // [A] dans l'arbre [de B]. Cela ne doit plus être automatique" — exemple
+  // donné : lier Emma de Bavière (membre d'un unique arbre, "Test") à
+  // Ermengarde (étrangère dans "Test", locale aux Carolingiens) ne doit
+  // plus faire automatiquement réapparaître Emma dans l'arbre Carolingiens
+  // au prochain chargement. Ne concerne QUE le cas où exactement un des
+  // deux membres est local à CET arbre et l'autre étranger (déjà visible
+  // ici via son propre arbre d'origine) : les deux autres cas (tous deux
+  // locaux, ou tous deux étrangers) ne posent pas cette question et créent
+  // le lien normalement, comme avant.
+  async function resolveHideMemberId(aId: string, bId: string): Promise<string | null> {
+    const aLocal = members.some((m) => m.id === aId);
+    const bLocal = members.some((m) => m.id === bId);
+    if (aLocal === bLocal) return null;
+    const localId = aLocal ? aId : bId;
+    const foreignId = aLocal ? bId : aId;
+    const foreignMember = foreignMembers.get(foreignId);
+    if (!foreignMember) return null;
+    const show = await customConfirm(
+      "Faire apparaître " +
+        memberName(localId) +
+        " dans l'arbre de " +
+        memberName(foreignId) +
+        " (" +
+        foreignOwnerLabel(foreignMember) +
+        ") ?\n\nOK : " +
+        memberName(localId) +
+        " apparaîtra aussi là-bas.\nAnnuler : le lien restera visible uniquement ici, " +
+        memberName(localId) +
+        " n'apparaîtra jamais dans cet autre arbre via ce lien."
+    );
+    return show ? null : localId;
+  }
   async function createRelation(aId: string, bId: string, type: RelationType, legendId: string | null = null) {
     const session = deps.getSession();
     if (!session) {
@@ -1270,10 +1341,11 @@ export function initGenealogySystem(deps: {
       deps.showBanner?.("Tu n'as pas les droits d'édition sur cet atlas.");
       return;
     }
+    const hideMemberId = await resolveHideMemberId(aId, bId);
     const { data, error } = await supabase
       .from("genealogy_relations")
-      .insert({ member_a_id: aId, member_b_id: bId, relation_type: type, created_by: session.user.id, legend_item_id: legendId })
-      .select("id, member_a_id, member_b_id, relation_type, created_by, legend_item_id")
+      .insert({ member_a_id: aId, member_b_id: bId, relation_type: type, created_by: session.user.id, legend_item_id: legendId, hide_member_id: hideMemberId })
+      .select("id, member_a_id, member_b_id, relation_type, created_by, legend_item_id, hide_member_id")
       .single();
     if (error || !data) {
       deps.showBanner?.("Erreur lors de la création du lien.");
@@ -1976,7 +2048,23 @@ export function initGenealogySystem(deps: {
   async function removeForeignMemberFromThisTree(memberId: string) {
     if (!currentOwner || !isAdmin()) return;
     if (!(await customConfirm("Retirer ce membre de cet arbre ? Il restera inchangé dans son arbre d'origine."))) return;
-    const touching = relations.filter((r) => r.member_a_id === memberId || r.member_b_id === memberId);
+    // BUG signalé par Martin, 2026-10-06 : "si je supprime un membre d'un
+    // arbre, dans un arbre qui n'est pas le sien, il ne doit y avoir aucun
+    // impact sur les liens de son arbre d'origine". Avant ce correctif, on
+    // supprimait TOUTES les relations touchant ce membre présentes dans
+    // `relations` — qui, depuis le correctif du 2026-10-06 sur les liens
+    // entre deux membres étrangers (voir loadData), peut aussi contenir
+    // une relation entre CE membre et un AUTRE membre étranger (ex. son
+    // conjoint, tous deux d'un pays tiers) : cette relation-là n'a rien à
+    // voir avec CET arbre-ci, elle existe (et doit continuer d'exister)
+    // dans leur arbre d'origine commun. On ne retire donc que les
+    // relations qui touchent un membre LOCAL à cet arbre — celles qui ont
+    // effectivement "attiré" ce membre étranger ici — jamais une relation
+    // entre deux membres tous deux étrangers à cet arbre.
+    const localIds = new Set(members.map((m) => m.id));
+    const touching = relations.filter(
+      (r) => (r.member_a_id === memberId || r.member_b_id === memberId) && (localIds.has(r.member_a_id) || localIds.has(r.member_b_id))
+    );
     for (const r of touching) {
       await supabase.from("genealogy_relations").delete().eq("id", r.id);
     }

@@ -1095,8 +1095,22 @@ main.map-wrap {
 .flag-ico svg { width: 100%; height: 100%; display: block; }
 
 /* --- Boîte de dialogue maison (remplace confirm/prompt/alert) ------------- */
+/* BUG signalé par Martin, 2026-10-06 : "quand on en supprime un, attention,
+   le message de confirmation apparaît derrière" (ex. suppression d'une
+   entrée de légende depuis #gen-legend-modal). customConfirm() est
+   générique et peut être invoqué PAR-DESSUS n'importe quel autre modal de
+   l'app (.poi-overlay, utilisé par #gen-legend-modal/#gen-custom-link-modal/
+   etc.) — or ce modal partageait EXACTEMENT le même z-index (20000) que
+   .poi-overlay, donc lequel des deux apparaissait au-dessus ne dépendait
+   que de l'ordre d'insertion dans le DOM (le module initialisé en dernier
+   "gagnait"), pas de la logique d'affichage voulue : la boîte de
+   confirmation, censée toujours bloquer par-dessus tout le reste, pouvait
+   donc se retrouver invisible derrière le modal qui l'a déclenchée. Un
+   z-index strictement supérieur à .poi-overlay (et à tout autre overlay de
+   l'app) garantit qu'elle reste toujours au-dessus, quel que soit l'ordre
+   d'initialisation des modules. */
 #custom-dialog-overlay {
-  display: none; position: fixed; inset: 0; z-index: 20000;
+  display: none; position: fixed; inset: 0; z-index: 20100;
   background: rgba(2, 4, 8, 0.6); align-items: center; justify-content: center;
 }
 #custom-dialog-overlay.open { display: flex; }
@@ -2070,7 +2084,17 @@ path.link-autre { stroke: var(--link-autre, #c9bfa9); }
    entrées (demande de Martin, 2026-10-06). Réutilise .gen-relation-row
    (déjà défini pour #gen-m-relations-list) pour chaque entrée. */
 #gen-legend-add-row input[type="color"] { width: 30px; height: 30px; padding: 0; border: none; border-radius: 6px; cursor: pointer; flex: none; }
-#gen-legend-add-row input[type="text"] { flex: 1; }
+/* BUG signalé par Martin, 2026-10-06 ("le nom ne va pas") : ce champ
+   n'avait JAMAIS reçu de couleur de texte/fond (seul "flex:1" était posé)
+   — il retombait donc sur le blanc/noir par défaut du navigateur,
+   détonnant dans la boîte de dialogue sombre et pouvant rendre le texte
+   tapé difficile à lire selon le thème système. Même habillage que les
+   autres champs texte de l'app (.panel.side-panel input, voir plus haut). */
+#gen-legend-add-row input[type="text"] {
+  flex: 1; box-sizing: border-box; font: 13px "IBM Plex Sans", sans-serif;
+  color: var(--text); background: rgba(255, 255, 255, 0.03); border: 1px solid var(--surface-border);
+  border-radius: 7px; padding: 7px 9px;
+}
 /* Choix "Statut" vs "Lien" à la création d'une entrée de légende (demande
    de Martin, 2026-10-06 : "différencier la création d'un lien [...] et
    un statut [...], ce n'est pas la même chose", schema_v22.sql). */
@@ -2083,7 +2107,27 @@ path.link-autre { stroke: var(--link-autre, #c9bfa9); }
 .gen-legend-manager-group:last-child { margin-bottom: 0; }
 .gen-legend-manager-heading { font-size: 11.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.03em; color: var(--text-dim); margin-bottom: 6px; }
 #gen-legend-list { max-height: 260px; overflow-y: auto; margin-top: 8px; }
-#gen-custom-link-modal select { width: 100%; }
+/* BUG signalé par Martin, 2026-10-06 ("menu ne va pas, blanc sur blanc") :
+   ce <select> n'avait JAMAIS reçu de style propre (seul "width:100%"
+   était posé) — il retombait donc entièrement sur le rendu natif du
+   navigateur (fond gris clair, texte noir), une boîte claire incongrue
+   au milieu d'une boîte de dialogue sombre. Même habillage que les
+   autres <select> de l'app. */
+#gen-custom-link-modal select {
+  width: 100%; box-sizing: border-box; font: 13px "IBM Plex Sans", sans-serif;
+  color: var(--text); background: rgba(255, 255, 255, 0.03); border: 1px solid var(--surface-border);
+  border-radius: 7px; padding: 7px 9px;
+}
+/* Texte blanc sur blanc signalé par Martin : poser color/background sur
+   le <select> LUI-MÊME ne restyle jamais la liste déroulante native une
+   fois ouverte (ses <option> gardent le fond blanc du système, qui plus
+   le texte clair hérité du select devenait illisible) — il faut styler
+   explicitement les <option>. S'applique aussi à .panel.side-panel select
+   (ex. #gen-m-legend, l'anneau de couleur sur la fiche membre) qui avait
+   la même lacune. */
+#gen-custom-link-modal select option,
+.panel.side-panel select option,
+#fiche-panel select option { background-color: var(--surface); color: var(--text); }
 
 .gen-photo-preview {
   width: 100%; height: 210px; border-radius: 10px; overflow: hidden; background: var(--surface-border);
