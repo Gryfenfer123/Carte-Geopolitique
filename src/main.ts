@@ -15,6 +15,9 @@ import { frenchCountryName, loadCountryNameData } from "./countryNames";
 import { initPoiSystem } from "./poi";
 import { initCompareSystem, exportMapAsPng } from "./compareExport";
 import { initGenealogySystem } from "./genealogy";
+import { initTimelineSystem } from "./frise";
+import { buildLinkIndexEntries } from "./linkIndex";
+import { initHistoricalMapSystem } from "./historicalMap";
 
 // ---------------------------------------------------------------------------
 // App shell
@@ -1264,6 +1267,15 @@ const poiSystem = initPoiSystem({
   hideBanner: () => document.getElementById("link-banner")?.classList.remove("open"),
 });
 poiRedraw = poiSystem.redraw;
+
+// Carte historique "à la GeAcron" (src/historicalMap.ts, demande de
+// Martin, 2026-10-06) — ne dépend que de `map`, câblée ici au plus tôt
+// possible. Le lien bidirectionnel date ↔ vue historique (cliquer sur une
+// date dans une fiche/frise pour y atterrir) est une étape suivante : pour
+// l'instant seul le bouton "Vue historique" + le curseur sont en place.
+const historicalMapSystem = initHistoricalMapSystem({ map });
+void historicalMapSystem;
+
 map.on("click", (e) => {
   poiSystem.handleMapClick(e.latlng);
 });
@@ -1896,6 +1908,36 @@ ficheDeps.onOpenGenealogyEntry = (entry) => {
     type: "entry",
     id: entry.id,
     label: entry.title || "Arbre généalogique",
+    categorySpace: "country",
+  });
+};
+
+// Frises chronologiques (src/frise.ts) — câblage identique à
+// genealogySystem ci-dessus (demande de Martin, 2026-10-06 : "un peu sur le
+// même système que les arbres généalogiques"). getLinkSearchEntries fournit
+// au module la même liste complète d'entités nommées (pays/groupes/sous-
+// catégories/entrées texte) que dossier.ts::autoLinkEntryBody, pour le lien
+// automatique par nom ET le picker de lien manuel.
+function getLinkSearchEntries() {
+  return buildLinkIndexEntries({
+    countries: getAllCountryRefs().map((c) => ({ slug: c.slug, label: frenchCountryName(c.name) })),
+    groups: groupsSystem.getGroupsList().map((g) => ({ id: g.id, label: g.name })),
+  });
+}
+const friseSystem = initTimelineSystem({
+  supabase,
+  getSession: () => currentSession,
+  getProfile: () => currentProfile,
+  openAuthPanel: () => openAuthPanel(),
+  showBanner: (msg) => showTransientBanner(msg),
+  openLinkedFiche: (target) => ficheDossier.openLinkTarget(target),
+  getLinkSearchEntries,
+});
+ficheDeps.onOpenFriseEntry = (entry) => {
+  void friseSystem.openForOwner({
+    type: "entry",
+    id: entry.id,
+    label: entry.title || "Frise chronologique",
     categorySpace: "country",
   });
 };
