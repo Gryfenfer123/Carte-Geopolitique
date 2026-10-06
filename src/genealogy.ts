@@ -70,6 +70,14 @@ type RelationType = "parent" | "spouse" | "family" | "custom";
 // libellé) propre à CET arbre (owner_type/owner_id), utilisée pour :
 // entourer un membre (MemberRow.legend_item_id / ForeignStateRow côté
 // arbre visiteur) et colorer un lien "custom" (RelationRow.legend_item_id).
+// "kind" (schema_v22.sql, demande de Martin, 2026-10-06 : "il faut
+// différencier la création d'un lien [...] et un statut [...], ce n'est
+// pas la même chose") — une entrée de légende sert SOIT à entourer un
+// membre ("status"), SOIT à colorer un lien "personnalisé" ("link"),
+// jamais les deux : les deux sélecteurs (anneau sur la fiche membre /
+// couleur d'un lien) ne proposent chacun que les entrées de leur kind
+// (voir renderLegendOptionsInto).
+type LegendItemKind = "status" | "link";
 type LegendItem = {
   id: string;
   owner_type: string;
@@ -77,6 +85,7 @@ type LegendItem = {
   color: string;
   label: string;
   position: number;
+  kind: LegendItemKind;
 };
 
 type MemberRow = {
@@ -374,10 +383,20 @@ export function initGenealogySystem(deps: {
       <div class="poi-overlay-box">
         <h3>L&eacute;gende de l'arbre</h3>
         <div id="gen-legend-list"></div>
-        <div class="dossier-form-actions" id="gen-legend-add-row" style="margin-top:10px;">
-          <input type="color" id="gen-legend-new-color" value="#e63946">
-          <input type="text" id="gen-legend-new-label" placeholder="Libell&eacute; (ex. Dirigeants)" maxlength="60">
-          <button id="gen-legend-add-btn" class="btn-small">&#43; Ajouter</button>
+        <div id="gen-legend-add-row" style="margin-top:10px;">
+          <!-- "Statut" (entoure un membre) vs "Lien" (colore une relation)
+               — demande de Martin, 2026-10-06 : "il faut différencier la
+               création d'un lien [...] et un statut [...], ce n'est pas
+               la même chose" (schema_v22.sql). -->
+          <div id="gen-legend-kind-row">
+            <label><input type="radio" name="gen-legend-kind" value="status" checked> Statut (entoure un membre)</label>
+            <label><input type="radio" name="gen-legend-kind" value="link"> Lien (couleur d'une relation)</label>
+          </div>
+          <div class="dossier-form-actions">
+            <input type="color" id="gen-legend-new-color" value="#e63946">
+            <input type="text" id="gen-legend-new-label" placeholder="Libell&eacute; (ex. Dirigeants)" maxlength="60">
+            <button id="gen-legend-add-btn" class="btn-small">&#43; Ajouter</button>
+          </div>
         </div>
         <button id="gen-legend-close" class="btn-small" style="margin-top:10px;">Fermer</button>
       </div>
@@ -510,7 +529,7 @@ export function initGenealogySystem(deps: {
     try {
       const { data: legendRows, error: legendErr } = await supabase
         .from("genealogy_legend_items")
-        .select("id, owner_type, owner_id, color, label, position")
+        .select("id, owner_type, owner_id, color, label, position, kind")
         .eq("owner_type", owner.type)
         .eq("owner_id", owner.id)
         .order("position");
@@ -593,6 +612,33 @@ export function initGenealogySystem(deps: {
             .eq("owner_id", owner.id)
             .in("member_id", Array.from(foreignIds));
           (fsRows as ForeignStateRow[] | null)?.forEach((s) => foreignStates.set(s.member_id, s));
+
+          // BUG signalé par Martin, 2026-10-06 : "si je fais un lien entre
+          // 2 personnes d'un autre arbre [...] le lien n'apparaît pas".
+          // Cause : la requête ci-dessus (.or("member_a_id.in(ids)...")) ne
+          // récupère que les relations touchant au moins un membre LOCAL —
+          // une relation entre DEUX membres tous deux étrangers (ex. Louis
+          // Ier et Ermengarde, chacun relié à cet arbre seulement via leur
+          // enfant local) n'a NI member_a_id NI member_b_id dans `ids`, donc
+          // n'est jamais chargée, même si les deux membres eux-mêmes le
+          // sont (via d'AUTRES relations). On refait donc un second passage,
+          // sur l'ensemble élargi (locaux + étrangers maintenant connus),
+          // pour récupérer ces relations purement "étranger ↔ étranger"
+          // manquées par le premier filtre — fusionnées sans doublon avec
+          // `relations` (déjà peuplé par la requête précédente).
+          const extendedIds = Array.from(new Set([...ids, ...Array.from(foreignIds)]));
+          const { data: extraRelRows } = await supabase
+            .from("genealogy_relations")
+            .select("id, member_a_id, member_b_id, relation_type, created_by, legend_item_id")
+            .in("member_a_id", extendedIds)
+            .in("member_b_id", extendedIds);
+          const knownRelIds = new Set(relations.map((r) => r.id));
+          (extraRelRows as RelationRow[] | null)?.forEach((r) => {
+            if (!knownRelIds.has(r.id)) {
+              relations.push(r);
+              knownRelIds.add(r.id);
+            }
+          });
         }
       }
     } catch (err) {
@@ -639,15 +685,19 @@ export function initGenealogySystem(deps: {
   // étranger) déjà affichée.
   function renderCustomLegendStrip() {
     const el = $("genealogy-legend-custom");
+    // Puce ronde pour un "statut" (entoure un membre) vs petit trait pour
+    // un "lien" (couleur d'une relation) — même distinction visuelle que
+    // la légende fixe au-dessus (dot "Membre d'un autre arbre" vs traits
+    // Ascendant/Collatéraux/Mariage), pour que la nature de chaque entrée
+    // personnalisée se voie d'un coup d'œil (schema_v22.sql).
     el.innerHTML = legendItems
-      .map(
-        (it) =>
-          '<span class="gen-legend-item"><span class="gen-legend-dot" style="background:' +
-          escapeHtml(it.color) +
-          ';"></span>' +
-          escapeHtml(it.label) +
-          "</span>"
-      )
+      .map((it) => {
+        const swatch =
+          it.kind === "link"
+            ? '<span class="gen-legend-line" style="border-top-color:' + escapeHtml(it.color) + ';"></span>'
+            : '<span class="gen-legend-dot" style="background:' + escapeHtml(it.color) + ';"></span>';
+        return '<span class="gen-legend-item">' + swatch + escapeHtml(it.label) + "</span>";
+      })
       .join("");
   }
 
@@ -658,15 +708,20 @@ export function initGenealogySystem(deps: {
 
   // Remplit un <select> avec "Aucune" + les entrées de légende de l'arbre
   // courant, puis sélectionne `selectedId` — réutilisé par le sélecteur
-  // d'anneau du panneau membre et par le modal de lien personnalisé.
-  function renderLegendOptionsInto(select: HTMLSelectElement, selectedId: string | null, noneLabel = "Aucune") {
+  // d'anneau du panneau membre (kind="status") et par le modal de lien
+  // personnalisé (kind="link") : chacun ne doit proposer que les entrées
+  // de SON kind (schema_v22.sql — "différencier la création d'un lien et
+  // un statut, ce n'est pas la même chose").
+  function renderLegendOptionsInto(select: HTMLSelectElement, selectedId: string | null, noneLabel = "Aucune", kind: LegendItemKind = "status") {
     select.innerHTML = '<option value="">' + escapeHtml(noneLabel) + "</option>";
-    legendItems.forEach((it) => {
-      const opt = document.createElement("option");
-      opt.value = it.id;
-      opt.textContent = it.label;
-      select.appendChild(opt);
-    });
+    legendItems
+      .filter((it) => it.kind === kind)
+      .forEach((it) => {
+        const opt = document.createElement("option");
+        opt.value = it.id;
+        opt.textContent = it.label;
+        select.appendChild(opt);
+      });
     select.value = selectedId || "";
   }
 
@@ -966,6 +1021,18 @@ export function initGenealogySystem(deps: {
       }
       openMemberPanel(member.id);
     });
+    // Demande de Martin, 2026-10-06 : "rajoute la possibilité de double
+    // clique sur une personne d'un autre arbre, c'est comme si on cliquait
+    // sur 'aller à son arbre'" — raccourci au double-clic, en plus du
+    // bandeau dans le panneau en lecture seule (openForeignMemberPanel) qui
+    // reste disponible pour qui préfère vérifier avant de naviguer. Ignoré
+    // en mode "Lier deux membres" (le double-clic y déclencherait deux
+    // sélections au lieu d'une navigation) et pour un membre local (rien à
+    // "rejoindre", le panneau d'édition s'ouvre déjà au simple clic).
+    card.addEventListener("dblclick", () => {
+      if (!isForeign || linkModeActive) return;
+      void deps.openOwnerTree(member.owner_type, member.owner_id, member.id);
+    });
   }
 
   // --- Gestion de la légende de l'arbre (demande de Martin, 2026-10-06) ------
@@ -974,18 +1041,34 @@ export function initGenealogySystem(deps: {
   // membres/liens qui l'utilisaient (on delete set null, schema_v17.sql),
   // ils retombent juste sans anneau/couleur — cohérent avec "ne jamais
   // rien supprimer de ce qui est fait".
-  function renderLegendManagerList() {
-    const list = $("gen-legend-list");
-    list.innerHTML = "";
-    if (!legendItems.length) {
-      list.innerHTML = '<p class="muted" style="margin:4px 0;">Aucune couleur enregistrée pour cet arbre encore.</p>';
-      return;
+  // Liste groupée en 2 sections, "Statuts" (anneau de membre) et "Liens"
+  // (couleur de relation) — demande de Martin, 2026-10-06 : "il faut
+  // différencier la création d'un lien [...] et un statut [...], ce
+  // n'est pas la même chose" (schema_v22.sql, voir LegendItemKind).
+  function renderLegendManagerGroup(kind: LegendItemKind, heading: string) {
+    const items = legendItems.filter((it) => it.kind === kind);
+    const section = document.createElement("div");
+    section.className = "gen-legend-manager-group";
+    const h = document.createElement("div");
+    h.className = "gen-legend-manager-heading";
+    h.textContent = heading;
+    section.appendChild(h);
+    if (!items.length) {
+      const empty = document.createElement("p");
+      empty.className = "muted";
+      empty.style.margin = "4px 0";
+      empty.textContent = "Aucune entrée pour l'instant.";
+      section.appendChild(empty);
+      return section;
     }
-    legendItems.forEach((it) => {
+    items.forEach((it) => {
       const row = document.createElement("div");
       row.className = "gen-relation-row";
-      row.innerHTML =
-        '<span class="gen-legend-dot" style="background:' + escapeHtml(it.color) + ';margin-right:7px;"></span><span>' + escapeHtml(it.label) + "</span>";
+      const swatch =
+        kind === "link"
+          ? '<span class="gen-legend-line" style="border-top-color:' + escapeHtml(it.color) + ';margin-right:7px;"></span>'
+          : '<span class="gen-legend-dot" style="background:' + escapeHtml(it.color) + ';margin-right:7px;"></span>';
+      row.innerHTML = swatch + "<span>" + escapeHtml(it.label) + "</span>";
       if (isAdmin()) {
         const del = document.createElement("button");
         del.type = "button";
@@ -996,8 +1079,15 @@ export function initGenealogySystem(deps: {
         del.addEventListener("click", () => void deleteLegendItem(it.id));
         row.appendChild(del);
       }
-      list.appendChild(row);
+      section.appendChild(row);
     });
+    return section;
+  }
+  function renderLegendManagerList() {
+    const list = $("gen-legend-list");
+    list.innerHTML = "";
+    list.appendChild(renderLegendManagerGroup("status", "🔵 Statuts — entourent un membre"));
+    list.appendChild(renderLegendManagerGroup("link", "— Liens — colorent une relation"));
   }
   // Le panneau membre (#gen-m-legend) est rempli au MOMENT où il s'ouvre
   // (openMemberPanel/openForeignMemberPanel) — s'il reste ouvert PENDANT
@@ -1021,7 +1111,7 @@ export function initGenealogySystem(deps: {
     refreshOpenMemberLegendSelect();
     renderAll();
   }
-  async function addLegendItem(color: string, label: string) {
+  async function addLegendItem(color: string, label: string, kind: LegendItemKind) {
     if (!currentOwner || !isAdmin() || !label.trim()) return;
     const session = deps.getSession();
     const { data, error } = await supabase
@@ -1033,8 +1123,9 @@ export function initGenealogySystem(deps: {
         label: label.trim(),
         position: legendItems.length,
         created_by: session?.user.id || null,
+        kind,
       })
-      .select("id, owner_type, owner_id, color, label, position")
+      .select("id, owner_type, owner_id, color, label, position, kind")
       .single();
     if (error || !data) {
       deps.showBanner?.("Erreur lors de l'ajout de la couleur.");
@@ -1049,6 +1140,7 @@ export function initGenealogySystem(deps: {
     renderLegendManagerList();
     ($("gen-legend-new-color") as HTMLInputElement).value = "#e63946";
     ($("gen-legend-new-label") as HTMLInputElement).value = "";
+    (document.querySelector('input[name="gen-legend-kind"][value="status"]') as HTMLInputElement).checked = true;
     ($("gen-legend-add-row") as HTMLDivElement).style.display = isAdmin() ? "" : "none";
     $("gen-legend-modal").classList.add("open");
   }
@@ -1057,8 +1149,10 @@ export function initGenealogySystem(deps: {
   $("gen-legend-add-btn").addEventListener("click", () => {
     const color = ($("gen-legend-new-color") as HTMLInputElement).value;
     const label = ($("gen-legend-new-label") as HTMLInputElement).value;
+    const kindInput = document.querySelector('input[name="gen-legend-kind"]:checked') as HTMLInputElement | null;
+    const kind: LegendItemKind = kindInput?.value === "link" ? "link" : "status";
     if (!label.trim()) return;
-    void addLegendItem(color, label).then(() => {
+    void addLegendItem(color, label, kind).then(() => {
       ($("gen-legend-new-label") as HTMLInputElement).value = "";
     });
   });
@@ -1147,10 +1241,10 @@ export function initGenealogySystem(deps: {
       const modal = $("gen-custom-link-modal");
       const select = $("gen-custom-link-legend") as HTMLSelectElement;
       const hint = $("gen-custom-link-hint");
-      renderLegendOptionsInto(select, null, "Aucune couleur particulière");
-      hint.textContent = legendItems.length
+      renderLegendOptionsInto(select, null, "Aucune couleur particulière", "link");
+      hint.textContent = legendItems.some((it) => it.kind === "link")
         ? ""
-        : "Aucune couleur enregistrée pour cet arbre encore — vous pouvez valider sans couleur, ou en créer une via le bouton 🎨 Légende.";
+        : "Aucune couleur \"Lien\" enregistrée pour cet arbre encore — vous pouvez valider sans couleur, ou en créer une via le bouton 🎨 Légende (choisir \"Lien\").";
       function cleanup() {
         modal.classList.remove("open");
       }

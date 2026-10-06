@@ -1954,6 +1954,18 @@ path.link-autre { stroke: var(--link-autre, #c9bfa9); }
    gen-legend-spouse. */
 .gen-legend-line.gen-legend-family { border-top: 2px dotted var(--family-line); }
 .gen-legend-dot { display: inline-block; width: 9px; height: 9px; border-radius: 50%; background: var(--surface); border: 2px solid var(--accent); }
+/* BUG signalé par Martin, 2026-10-06 ("il y a un chevauchement des textes
+   concernant les liens créés dans la légende") : #genealogy-legend-custom
+   (bande des entrées de légende PERSONNALISÉES de l'arbre, voir
+   renderCustomLegendStrip) est un <span> inséré tel quel dans la légende
+   fixe — ses .gen-legend-item successifs n'héritaient d'AUCUN espacement
+   propre (le gap:14px de #genealogy-legend ne s'applique qu'à SES propres
+   enfants directs, dont ce <span> ne compte que pour UN seul), d'où des
+   libellés collés/chevauchés les uns aux autres dès qu'il y en avait
+   plusieurs (ex. "Crush", "Petit fils", "Voisin"). En le rendant lui-même
+   flex avec le même gap, chaque entrée retrouve son espacement, qu'il y en
+   ait une ou dix. */
+#genealogy-legend-custom { display: inline-flex; align-items: center; flex-wrap: wrap; gap: 14px; }
 
 #genealogy-canvas-wrap { position: relative; flex: 1; overflow: hidden; cursor: grab; background:
   radial-gradient(circle at 50% 50%, rgba(255,255,255,0.035) 0, transparent 70%), var(--ink); }
@@ -2057,9 +2069,19 @@ path.link-autre { stroke: var(--link-autre, #c9bfa9); }
 /* Légende de l'arbre — gestionnaire (#gen-legend-modal) et liste des
    entrées (demande de Martin, 2026-10-06). Réutilise .gen-relation-row
    (déjà défini pour #gen-m-relations-list) pour chaque entrée. */
-#gen-legend-add-row { align-items: center; }
 #gen-legend-add-row input[type="color"] { width: 30px; height: 30px; padding: 0; border: none; border-radius: 6px; cursor: pointer; flex: none; }
 #gen-legend-add-row input[type="text"] { flex: 1; }
+/* Choix "Statut" vs "Lien" à la création d'une entrée de légende (demande
+   de Martin, 2026-10-06 : "différencier la création d'un lien [...] et
+   un statut [...], ce n'est pas la même chose", schema_v22.sql). */
+#gen-legend-kind-row { display: flex; align-items: center; gap: 16px; font-size: 12.5px; color: var(--text-dim); margin-bottom: 8px; }
+#gen-legend-kind-row label { display: flex; align-items: center; gap: 5px; cursor: pointer; }
+/* Liste groupée en 2 sections (renderLegendManagerGroup) plutôt qu'une
+   liste plate, pour que la distinction statut/lien se voie aussi en
+   relisant la légende, pas seulement au moment de la créer. */
+.gen-legend-manager-group { margin-bottom: 12px; }
+.gen-legend-manager-group:last-child { margin-bottom: 0; }
+.gen-legend-manager-heading { font-size: 11.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.03em; color: var(--text-dim); margin-bottom: 6px; }
 #gen-legend-list { max-height: 260px; overflow-y: auto; margin-top: 8px; }
 #gen-custom-link-modal select { width: 100%; }
 
