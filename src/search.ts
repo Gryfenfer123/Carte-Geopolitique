@@ -24,6 +24,7 @@
 import type { SupabaseClient } from "@supabase/supabase-js";
 import type { DossierOwnerKind, MiniDossierKind } from "./dossier";
 import { LINK_CATEGORY_META } from "./indicators";
+import { ensureLinkIndexLoaded, getLinkIndexCache, isLinkIndexLoaded } from "./linkIndex";
 
 export function normalizeSearch(s: string): string {
   return (s || "")
@@ -152,6 +153,20 @@ export type UnifiedSearchResult =
       entryId: string;
       snippet: string;
       status: "draft" | "published";
+    }
+  | {
+      // Personne d'un arbre généalogique (demande de Martin, 2026-10-03 :
+      // "recherche globale couvrant absolument tout, personne dans les
+      // arbres etc.") — jusqu'ici invisible de la recherche unifiée (voir
+      // search.ts, en-tête de fichier).
+      kind: "genealogy-member";
+      id: string;
+      label: string;
+      sub: string;
+      matchText: string;
+      ownerType: string;
+      ownerId: string;
+      memberId: string;
     };
 
 export function initSearchSystem(deps: {
@@ -170,6 +185,10 @@ export function initSearchSystem(deps: {
   openMiniDossier: (kind: MiniDossierKind, id: string, label: string) => Promise<void>;
   revealEntry: (entryId: string, categoryId: string | null) => void;
   revealSection: (sectionId: string, categoryId: string | null) => void;
+  // Ouvre l'arbre généalogique propriétaire du membre ET sélectionne sa
+  // fiche — même fonction que ficheDeps.openGenealogyMember (src/main.ts),
+  // réutilisée ici pour le résultat de recherche "genealogy-member".
+  openGenealogyMember: (ownerType: string, ownerId: string, memberId: string) => Promise<void> | void;
 }) {
   const { supabase } = deps;
 
@@ -330,22 +349,49 @@ export function initSearchSystem(deps: {
     }));
   }
 
+  // Personnes des arbres généalogiques, TOUS arbres confondus (demande de
+  // Martin, 2026-10-03 : "recherche globale couvrant absolument tout,
+  // personne dans les arbres etc.") — réutilise le cache de
+  // src/linkIndex.ts (déjà chargé pour l'auto-lien de texte/le rattachement
+  // bidirectionnel), pas de requête Supabase dédiée ici.
+  function buildGenealogyMemberEntries(): UnifiedSearchResult[] {
+    return getLinkIndexCache().members.map((m) => {
+      const ownerLabel = deps.getOwnerLabel(m.owner_type as DossierOwnerKind, m.owner_id) || "Arbre généalogique";
+      return {
+        kind: "genealogy-member" as const,
+        id: m.id,
+        label: m.name || "Sans nom",
+        sub: "Personne · arbre de " + ownerLabel,
+        matchText: normalizeSearch([m.name || "", ownerLabel].filter(Boolean).join(" ")),
+        ownerType: m.owner_type,
+        ownerId: m.owner_id,
+        memberId: m.id,
+      };
+    });
+  }
+
   // searchIndexAll() — fusionne TOUT (statique + groupes + sections + liens +
-  // contenu des dossiers) pour la barre du haut. Les catégories de dossier
-  // (dossier_categories) ne sont volontairement PAS indexées à part : elles
-  // sont globales/partagées par tous les dossiers d'un même espace (pas une
-  // entité navigable unique — "Histoire" n'est pas UN endroit précis), alors
-  // que chaque section qu'elle contient l'est déjà via buildSectionEntries().
+  // contenu des dossiers + personnes des arbres) pour la barre du haut. Les
+  // catégories de dossier (dossier_categories) ne sont volontairement PAS
+  // indexées à part : elles sont globales/partagées par tous les dossiers
+  // d'un même espace (pas une entité navigable unique — "Histoire" n'est
+  // pas UN endroit précis), alors que chaque section qu'elle contient l'est
+  // déjà via buildSectionEntries().
   function searchIndexAll(): UnifiedSearchResult[] {
     const staticEntries = deps.getStaticEntries() as unknown as UnifiedSearchResult[];
     return staticEntries
       .concat(buildGroupEntries())
       .concat(buildSectionEntries())
       .concat(buildLinkEntries())
-      .concat(buildDossierEntryEntries());
+      .concat(buildDossierEntryEntries())
+      .concat(buildGenealogyMemberEntries());
   }
 
   async function selectResult(entry: UnifiedSearchResult) {
+    if (entry.kind === "genealogy-member") {
+      await deps.openGenealogyMember(entry.ownerType, entry.ownerId, entry.memberId);
+      return;
+    }
     if (entry.kind === "dossier-entry") {
       if (entry.ownerType === "country") await deps.openCountryDossierByIso(entry.ownerId);
       else if (entry.ownerType === "group") await deps.openGroupDossier(entry.ownerId, entry.ownerLabel);
@@ -400,6 +446,11 @@ export function initSearchSystem(deps: {
         if (normalizeSearch(topInput.value.trim()) === q) runTopSearch();
       });
     }
+    if (!isLinkIndexLoaded()) {
+      void ensureLinkIndexLoaded(supabase).then(() => {
+        if (normalizeSearch(topInput.value.trim()) === q) runTopSearch();
+      });
+    }
     const matches = searchIndexAll()
       .filter((e) => e.matchText.includes(q))
       .slice(0, 10);
@@ -441,6 +492,7 @@ export function initSearchSystem(deps: {
     // chargement — même esprit que le préchargement en arrière-plan de
     // l'artifact.
     ensureDossierIndexLoaded().catch(() => {});
+    ensureLinkIndexLoaded(supabase).catch(() => {});
   }
 
   return {};

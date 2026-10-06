@@ -107,8 +107,8 @@ app.innerHTML = `
     <div id="tooltip" class="panel"></div>
 
     <div id="style-switch" class="panel">
-      <button id="style-photo" title="Toujours l'imagerie satellite">Satellite</button>
-      <button id="style-vector" class="active" title="Toujours le plan vectoriel">Vectoriel</button>
+      <button id="style-photo" class="active" title="Toujours l'imagerie satellite">Satellite</button>
+      <button id="style-vector" title="Toujours le plan vectoriel">Vectoriel</button>
     </div>
 
     <div id="info-toggle" class="panel" style="display:none">
@@ -159,6 +159,25 @@ app.innerHTML = `
     </div>
   </main>
 `;
+
+// #fiche-panel et les autres panneaux latéraux (.panel.side-panel) sont
+// injectés directement dans document.body par dossier.ts/groups.ts/
+// indicators.ts/links.ts/genealogy.ts (voir leur commentaire plus haut),
+// PAS dans .map-wrap — leur `position: absolute; top: 16px` (style.css) se
+// positionne donc par rapport au viewport entier, pas par rapport au bas du
+// header, et chevauchait le bandeau du haut (demande de Martin, 2026-10-03 :
+// "La fiche pays empiète sur le haut de la page, sur le bandeau"). On
+// mesure la hauteur réelle du header dans une variable CSS (--header-h),
+// que style.css utilise pour décaler ces panneaux sous le header — tenue à
+// jour au redimensionnement (le header peut passer sur deux lignes en
+// mobile/fenêtre étroite).
+function syncHeaderHeightVar() {
+  const header = document.querySelector("header.app-header") as HTMLElement | null;
+  if (!header) return;
+  document.documentElement.style.setProperty("--header-h", header.offsetHeight + "px");
+}
+syncHeaderHeightVar();
+window.addEventListener("resize", syncHeaderHeightVar);
 
 // Boutons/panneaux non (encore) implémentés côté TS — présents pour la
 // fidélité visuelle de la rangée d'icônes (voir PORT_STATUS.md) mais sans
@@ -460,6 +479,18 @@ const map = L.map("map", {
 // Access-Control-Allow-Origin permissif sur ces tuiles (ce qui est
 // documenté comme le cas pour ces services REST publics, mais non vérifié
 // dans un navigateur réel ici — voir PORT_STATUS.md).
+// Couture visible entre tuiles à l'export PNG (demande de Martin,
+// 2026-10-03 : "quand on exporte la carte en image c'est bug", voir
+// compareExport.ts/exportMapAsPng) : html2canvas rastérise chaque tuile
+// <img> séparément, et leur positionnement en sous-pixel par Leaflet
+// (translate3d non entier) laisse un fin liseré/grille visible entre
+// tuiles adjacentes une fois aplati en PNG — invisible à l'écran (le
+// navigateur lisse l'affichage live) mais flagrant à l'export. Correctif
+// (surdimensionner chaque tuile de 1px pour qu'elle chevauche très
+// légèrement ses voisines) appliqué directement en CSS sur .leaflet-tile
+// — voir style.css : un className passé ici à L.tileLayer() atterrit sur
+// le <div> conteneur de toute la couche, pas sur chaque <img> de tuile,
+// donc ne sert à rien ici (pas besoin de l'option className).
 const vectorLayer = L.tileLayer(
   "https://services.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}",
   {
@@ -478,7 +509,7 @@ const satelliteLayer = L.tileLayer(
     crossOrigin: "anonymous",
   }
 );
-vectorLayer.addTo(map);
+satelliteLayer.addTo(map);
 
 // --- Boutons de zoom (#controls) --------------------------------------------
 document.getElementById("zoom-in")!.addEventListener("click", () => map.zoomIn());
@@ -490,7 +521,12 @@ document.getElementById("zoom-reset")!.addEventListener("click", () => map.setVi
 // a été retiré (demande de Martin, 2026-10-02) : seuls Satellite et
 // Vectoriel restent, chacun choisi explicitement par le bouton correspondant.
 type MapStyleMode = "satellite" | "vector";
-let styleMode: MapStyleMode = "vector";
+// Mode de base au chargement : satellite, pas vectoriel (demande de Martin,
+// 2026-10-03 : "Le mode de base quand on arrive sur la carte c'est
+// vectorielle, passe en satellite de base") — voir aussi satelliteLayer
+// ajoutée directement à la carte ci-dessus (au lieu de vectorLayer) et le
+// bouton "Satellite" marqué .active par défaut dans le HTML du header.
+let styleMode: MapStyleMode = "satellite";
 function isSatelliteActive(): boolean {
   return styleMode === "satellite";
 }
@@ -735,6 +771,12 @@ const indicatorsSystem = initIndicatorsSystem({
 });
 groupsRedraw = groupsSystem.redrawHighlights;
 indicatorsRedraw = indicatorsSystem.redrawOnMapChange;
+// Branché tardivement comme renderFicheGroups/onFicheClose ailleurs dans ce
+// fichier : groupsSystem n'existe qu'à partir d'ici, mais dossier.ts relit
+// toujours deps.getGroups() au moment de l'appel (jamais destructuré), donc
+// cette affectation après coup suffit — sert à l'auto-lien de texte (un nom
+// de groupe mentionné devient un lien), voir dossier.ts/linkIndex.ts.
+ficheDeps.getGroups = () => groupsSystem.getGroupsList().map((g) => ({ id: g.id, name: g.name }));
 ficheDeps.renderFicheIndicator = (container, country) => indicatorsSystem.renderFicheIndicator(container, country);
 ficheDeps.renderFicheGroups = (container, country) => groupsSystem.renderFicheGroups(container, country);
 ficheDeps.renderFicheLinks = (container, country) => linksSystem?.renderFicheLinksWidget(container, "country", country.isoA3, frenchCountryName(country.name));
@@ -1769,6 +1811,61 @@ function getOwnerLabel(ownerType: string, ownerId: string): string | null {
 // juste en dessous) relie les entrées "genealogy" de dossier.ts à ce
 // module, même schéma de référence tardive que ficheDeps.renderFicheGroups
 // plus haut.
+// Extrait en fonction nommée (plutôt que définie inline dans l'objet passé
+// à initGenealogySystem) pour être réutilisable par ficheDeps.
+// openGenealogyMember ci-dessous (rattachement bidirectionnel membre
+// d'arbre ↔ fiche/sous-catégorie du même nom, demande de Martin,
+// 2026-10-03) — référence genealogySystem avant son affectation, mais
+// n'est appelée qu'après (jamais au moment de la définition), donc sans
+// souci de TDZ.
+async function openOwnerTree(ownerType: string, ownerId: string) {
+  if (ownerType === "country") {
+    const c = getAllCountryRefs().find((x) => x.isoA3 === ownerId);
+    if (!c) return;
+    await ficheDossier.openDossier(c);
+    await genealogySystem.openForOwner({
+      type: "country",
+      id: c.isoA3,
+      label: frenchCountryName(c.name),
+      categorySpace: "country",
+      flagSlug: c.slug,
+      iso2: c.iso2,
+    });
+  } else if (ownerType === "group") {
+    const g = groupsSystem.getGroupsList().find((x) => x.id === ownerId);
+    if (!g) return;
+    await ficheDossier.openGroupDossier(g.id, g.name, g.color);
+    await genealogySystem.openForOwner({ type: "group", id: g.id, label: g.name, categorySpace: "country", colorDot: g.color });
+  } else if (ownerType === "entry") {
+    // Membre étranger appartenant à l'arbre d'une entrée "genealogy"
+    // (point 2) : il faut d'abord retrouver le dossier (pays/groupe/
+    // mini-dossier/Encyclopédie) propriétaire de CETTE entrée avant de
+    // pouvoir ouvrir ce dossier puis l'arbre lui-même — l'entrée ne
+    // porte pas elle-même de type de dossier.
+    const { data } = await supabase.from("dossier_entries").select("id, title, owner_type, owner_id").eq("id", ownerId).maybeSingle();
+    if (!data) return;
+    const entryLabel = (data.title as string | null) || "Arbre généalogique";
+    const parentType = data.owner_type as string;
+    const parentId = data.owner_id as string;
+    if (parentType === "country") {
+      const c = getAllCountryRefs().find((x) => x.isoA3 === parentId);
+      if (c) await ficheDossier.openDossier(c);
+    } else if (parentType === "group") {
+      const g = groupsSystem.getGroupsList().find((x) => x.id === parentId);
+      if (g) await ficheDossier.openGroupDossier(g.id, g.name, g.color);
+    } else if (parentType === "encyclopedie") {
+      await ficheDossier.openEncyclopedieDossier();
+    }
+    await genealogySystem.openForOwner({ type: "entry", id: ownerId, label: entryLabel, categorySpace: "country" });
+  } else {
+    // Encyclopédie / mini-dossiers (port, détroit, pipeline, base, câble) :
+    // pas de navigation de dossier dédiée depuis ici, on rouvre juste
+    // l'arbre avec le même owner (cas limite, en pratique les relations
+    // transnationales concernent surtout des pays).
+    const label = getOwnerLabel(ownerType, ownerId) || ownerId;
+    await genealogySystem.openForOwner({ type: ownerType as DossierOwnerKind, id: ownerId, label, categorySpace: "country" });
+  }
+}
 const genealogySystem = initGenealogySystem({
   supabase,
   getSession: () => currentSession,
@@ -1776,55 +1873,19 @@ const genealogySystem = initGenealogySystem({
   openAuthPanel: () => openAuthPanel(),
   showBanner: (msg) => showTransientBanner(msg),
   getOwnerLabel,
-  openOwnerTree: async (ownerType, ownerId) => {
-    if (ownerType === "country") {
-      const c = getAllCountryRefs().find((x) => x.isoA3 === ownerId);
-      if (!c) return;
-      await ficheDossier.openDossier(c);
-      await genealogySystem.openForOwner({
-        type: "country",
-        id: c.isoA3,
-        label: frenchCountryName(c.name),
-        categorySpace: "country",
-        flagSlug: c.slug,
-        iso2: c.iso2,
-      });
-    } else if (ownerType === "group") {
-      const g = groupsSystem.getGroupsList().find((x) => x.id === ownerId);
-      if (!g) return;
-      await ficheDossier.openGroupDossier(g.id, g.name, g.color);
-      await genealogySystem.openForOwner({ type: "group", id: g.id, label: g.name, categorySpace: "country", colorDot: g.color });
-    } else if (ownerType === "entry") {
-      // Membre étranger appartenant à l'arbre d'une entrée "genealogy"
-      // (point 2) : il faut d'abord retrouver le dossier (pays/groupe/
-      // mini-dossier/Encyclopédie) propriétaire de CETTE entrée avant de
-      // pouvoir ouvrir ce dossier puis l'arbre lui-même — l'entrée ne
-      // porte pas elle-même de type de dossier.
-      const { data } = await supabase.from("dossier_entries").select("id, title, owner_type, owner_id").eq("id", ownerId).maybeSingle();
-      if (!data) return;
-      const entryLabel = (data.title as string | null) || "Arbre généalogique";
-      const parentType = data.owner_type as string;
-      const parentId = data.owner_id as string;
-      if (parentType === "country") {
-        const c = getAllCountryRefs().find((x) => x.isoA3 === parentId);
-        if (c) await ficheDossier.openDossier(c);
-      } else if (parentType === "group") {
-        const g = groupsSystem.getGroupsList().find((x) => x.id === parentId);
-        if (g) await ficheDossier.openGroupDossier(g.id, g.name, g.color);
-      } else if (parentType === "encyclopedie") {
-        await ficheDossier.openEncyclopedieDossier();
-      }
-      await genealogySystem.openForOwner({ type: "entry", id: ownerId, label: entryLabel, categorySpace: "country" });
-    } else {
-      // Encyclopédie / mini-dossiers (port, détroit, pipeline, base, câble) :
-      // pas de navigation de dossier dédiée depuis ici, on rouvre juste
-      // l'arbre avec le même owner (cas limite, en pratique les relations
-      // transnationales concernent surtout des pays).
-      const label = getOwnerLabel(ownerType, ownerId) || ownerId;
-      await genealogySystem.openForOwner({ type: ownerType as DossierOwnerKind, id: ownerId, label, categorySpace: "country" });
-    }
-  },
+  openOwnerTree,
+  openLinkedFiche: (target) => ficheDossier.openLinkTarget(target),
 });
+// Rattachement bidirectionnel membre d'arbre ↔ fiche/sous-catégorie du même
+// nom (demande de Martin, 2026-10-03) : ouvre l'arbre propriétaire du
+// membre (même logique que openOwnerTree ci-dessus) puis sélectionne sa
+// fiche — câblé tardivement comme ficheDeps.onOpenGenealogyEntry plus bas,
+// genealogySystem n'existant qu'à partir d'ici.
+ficheDeps.openGenealogyMember = async (ownerType, ownerId, memberId) => {
+  await openOwnerTree(ownerType, ownerId);
+  genealogySystem.focusMember(memberId);
+};
+ficheDeps.closeGenealogyTree = genealogySystem.closeView;
 // Point 2 (2026-10-03) : l'ancien bouton unique "🌳 Généalogie" (un arbre
 // par pays/groupe) est remplacé par des entrées "genealogy" dans la barre
 // d'ajout du dossier — chaque entrée a son propre arbre indépendant
@@ -1854,6 +1915,7 @@ initSearchSystem({
   openMiniDossier: (kind, id, label) => ficheDossier.openMiniDossier(kind, id, label),
   revealEntry: (entryId, categoryId) => ficheDossier.revealEntry(entryId, categoryId),
   revealSection: (sectionId, categoryId) => ficheDossier.revealSection(sectionId, categoryId),
+  openGenealogyMember: (ownerType, ownerId, memberId) => ficheDeps.openGenealogyMember?.(ownerType, ownerId, memberId),
 });
 
 // ---------------------------------------------------------------------------

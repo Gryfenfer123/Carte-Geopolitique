@@ -46,6 +46,7 @@ import type { SupabaseClient, Session } from "@supabase/supabase-js";
 import * as d3 from "d3";
 import type { DossierOwnerKind, DossierOwnerRef } from "./dossier";
 import { customConfirm, TRASH_ICON_SVG } from "./dossier";
+import { ensureLinkIndexLoaded, findLinkTargetForName, type LinkTarget } from "./linkIndex";
 
 // --- Types -------------------------------------------------------------
 
@@ -180,6 +181,12 @@ export function initGenealogySystem(deps: {
   // main.ts pour le détail de la référence circulaire (même schéma que
   // ficheDeps/linksSystem).
   openOwnerTree: (ownerType: string, ownerId: string) => Promise<void>;
+  // Rattachement bidirectionnel membre d'arbre ↔ fiche/sous-catégorie du
+  // même nom (demande de Martin, 2026-10-03) — résolution de navigation
+  // déléguée à dossier.ts (seul à savoir comment ouvrir le bon dossier
+  // pour une section/entrée/pays/groupe), voir resolveLinkTarget/
+  // openLinkTarget dans src/dossier.ts.
+  openLinkedFiche: (target: LinkTarget) => Promise<void>;
 }) {
   const { supabase } = deps;
   // Point 4a (2026-10-03) : seul un compte admin peut modifier un arbre
@@ -227,6 +234,9 @@ export function initGenealogySystem(deps: {
            d'origine via deps.openOwnerTree, au lieu de naviguer directement
            au clic sur la carte comme avant. -->
       <button type="button" id="gen-m-foreign-banner" style="display:none;"></button>
+      <!-- Rattachement bidirectionnel membre ↔ fiche/sous-catégorie du même
+           nom (demande de Martin, 2026-10-03) — voir renderFicheLinkBanner. -->
+      <button type="button" id="gen-m-fiche-link-banner" class="genealogy-link-banner" style="display:none;"></button>
       <h2 id="gen-member-heading">Membre</h2>
       <label class="field-label">Nom</label>
       <input type="text" id="gen-m-name" maxlength="160">
@@ -906,6 +916,24 @@ export function initGenealogySystem(deps: {
     const hasPhoto = !!$("gen-m-photo-preview").querySelector("img");
     ($("gen-m-photo-recrop-btn") as HTMLButtonElement).style.display = hasPhoto && !foreignPanelMemberId && isAdmin() ? "" : "none";
   }
+  // Rattachement bidirectionnel membre ↔ fiche/sous-catégorie du même nom
+  // (demande de Martin, 2026-10-03 : "je souhaite que une personne dans un
+  // arbre soit rattachée automatiquement à une fiche de la même personne
+  // [...] quelle que soit celui créé en premier"). Cherche une section ou
+  // une entrée texte PORTANT CE NOM (voir src/linkIndex.ts) et affiche un
+  // lien cliquable si trouvée — jamais d'affichage s'il n'y a rien.
+  function renderFicheLinkBanner(name: string | null) {
+    const btn = $("gen-m-fiche-link-banner") as HTMLButtonElement;
+    const target = name ? findLinkTargetForName(name, ["section", "entry"]) : null;
+    if (!target) {
+      btn.style.display = "none";
+      btn.onclick = null;
+      return;
+    }
+    btn.style.display = "flex";
+    btn.textContent = "📄 Voir la fiche « " + name + " » →";
+    btn.onclick = () => void deps.openLinkedFiche(target);
+  }
   function openMemberPanel(id: string | null) {
     foreignPanelMemberId = null;
     editingMemberId = id;
@@ -916,6 +944,7 @@ export function initGenealogySystem(deps: {
     ($("gen-m-leader") as HTMLInputElement).disabled = false;
     ($("gen-m-photo-btn") as HTMLButtonElement).style.display = "";
     const m = id ? members.find((x) => x.id === id) || null : null;
+    renderFicheLinkBanner(m?.name || null);
     $("gen-member-heading").textContent = m ? "Modifier le membre" : "Nouveau membre";
     ($("gen-m-name") as HTMLInputElement).value = m?.name || "";
     ($("gen-m-birth") as HTMLInputElement).value = m?.birth_year != null ? String(m.birth_year) : "";
@@ -942,6 +971,7 @@ export function initGenealogySystem(deps: {
     photoPendingFile = null;
     $("gen-m-photo-status").textContent = "";
     setMemberFieldsDisabled(true);
+    renderFicheLinkBanner(m.name || null);
     $("gen-member-heading").textContent = m.name;
     ($("gen-m-name") as HTMLInputElement).value = m.name || "";
     ($("gen-m-birth") as HTMLInputElement).value = m.birth_year != null ? String(m.birth_year) : "";
@@ -1324,6 +1354,11 @@ export function initGenealogySystem(deps: {
       $("gen-m-save-status").textContent = "Enregistré ✓";
       $("genealogy-empty-hint").style.display = "none";
       renderAll();
+      // Le panneau a été ouvert avant que le nom n'existe (renderFicheLinkBanner
+      // appelé avec name=null dans openMemberPanel) — maintenant que le membre
+      // est créé avec son nom, on peut (re)vérifier le rattachement vers une
+      // fiche/sous-catégorie du même nom (demande de Martin, 2026-10-03).
+      renderFicheLinkBanner(row.name || null);
       return row;
     } catch {
       $("gen-m-save-status").textContent = "Erreur d'enregistrement.";
@@ -1360,6 +1395,9 @@ export function initGenealogySystem(deps: {
       if (m) Object.assign(m, patch);
       $("gen-m-save-status").textContent = "Enregistré ✓";
       renderAll();
+      // Idem : si le nom a été modifié pour correspondre (ou plus
+      // correspondre) à une fiche/sous-catégorie, la bannière doit suivre.
+      renderFicheLinkBanner((patch.name as string) || null);
     } catch {
       $("gen-m-save-status").textContent = "Erreur d'enregistrement.";
     }
@@ -1476,11 +1514,45 @@ export function initGenealogySystem(deps: {
     setLinkMode(false);
     closeMemberPanel();
     resetView();
+    // Rafraîchit l'index de liens en parallèle (voir le même appel dans
+    // dossier.ts/openDossierForOwner) — pour que le rattachement
+    // bidirectionnel membre ↔ fiche tienne compte des sections/entrées
+    // créées ailleurs depuis la dernière ouverture d'un arbre.
+    void ensureLinkIndexLoaded(supabase, true);
     await loadData(owner);
+  }
+
+  // Ouvre la fiche d'un membre déjà chargé (son arbre vient d'être ouvert
+  // par deps.openOwnerTree côté main.ts) — utilisé par le rattachement
+  // bidirectionnel (ficheDeps.openGenealogyMember, src/main.ts) et par la
+  // recherche unifiée (résultat "genealogy-member", src/search.ts).
+  function focusMember(memberId: string) {
+    const local = members.find((x) => x.id === memberId);
+    if (local) {
+      openMemberPanel(local.id);
+      return;
+    }
+    const foreign = foreignMembers.get(memberId);
+    if (foreign) openForeignMemberPanel(foreign);
+  }
+
+  // Ferme la vue plein écran de l'arbre (mêmes effets que le bouton
+  // "← " — voir #genealogy-back ci-dessus) — utilisé quand on navigue
+  // AILLEURS depuis l'intérieur de l'arbre (ex. la bannière "Voir la
+  // fiche →" d'un membre, dossier.ts::resolveLinkTarget) : sans ça, la
+  // vue de l'arbre restait affichée au-dessus/derrière le dossier ouvert
+  // ensuite, et son canvas interceptait les clics par-dessus (bug
+  // constaté en testant le rattachement bidirectionnel, 2026-10-06).
+  function closeView() {
+    $("genealogy-view").classList.remove("open");
+    setLinkMode(false);
+    closeMemberPanel();
   }
 
   return {
     openForOwner,
+    focusMember,
+    closeView,
   };
 }
 

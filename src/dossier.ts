@@ -31,6 +31,7 @@ import {
   type DossierEntryLike,
 } from "./sanitize";
 import { loadCountryNameData, frenchCountryName, flagSvgSpan } from "./countryNames";
+import { ensureLinkIndexLoaded, buildLinkIndexEntries, findLinkTargetForName, autoLinkHtml, type LinkTarget } from "./linkIndex";
 
 // ---------------------------------------------------------------------------
 // Types
@@ -560,6 +561,23 @@ export function initFicheDossierSystem(deps: {
   // Toutes les features connues (pour l'auto-lien / le sélecteur de lien
   // interne) — clé = slug.
   getAllCountries: () => CountryRef[];
+  // Liste des groupes (src/groups.ts) — pour l'auto-lien de texte (un nom
+  // de groupe mentionné dans un texte peut devenir un lien), même rôle que
+  // getAllCountries ci-dessus.
+  getGroups?: () => { id: string; name: string }[];
+  // Rattachement bidirectionnel membre d'arbre ↔ fiche/sous-catégorie du
+  // même nom (demande de Martin, 2026-10-03) — ouvre l'arbre généalogique
+  // propriétaire du membre ET sélectionne sa fiche, depuis une bannière
+  // affichée sur la page d'une section/la vue de lecture d'une entrée dont
+  // le nom correspond à un membre existant. dossier.ts ne connaît rien de
+  // genealogy.ts, câblé tardivement comme onOpenGenealogyEntry ci-dessous.
+  openGenealogyMember?: (ownerType: string, ownerId: string, memberId: string) => Promise<void> | void;
+  // Ferme la vue plein écran de l'arbre généalogique si elle est ouverte —
+  // appelé par resolveLinkTarget avant de naviguer ailleurs (clic sur la
+  // bannière "Voir la fiche →" d'un membre, ou sur un lien automatique
+  // dans un texte) : sinon la vue de l'arbre reste affichée par-dessus/
+  // derrière le dossier ouvert ensuite et son canvas intercepte les clics.
+  closeGenealogyTree?: () => void;
   // Points d'extension pour les modules groupes/indicateurs (src/groups.ts,
   // src/indicators.ts) : appelés à chaque ouverture/fermeture de la fiche
   // pays pour peupler/vider les deux conteneurs #fiche-extra-indicator et
@@ -628,6 +646,7 @@ export function initFicheDossierSystem(deps: {
           <button id="dossier-summary-back" class="btn-small">&larr; Sommaire</button>
           <button id="dossier-reading-toggle" class="btn-small" style="float:right;">Mode lecture</button>
           <h2 id="dossier-theme-heading"></h2>
+          <button type="button" id="dossier-genealogy-link-banner" class="genealogy-link-banner" style="display:none;"></button>
 
           <div class="dossier-add-bar edit-control">
             <select id="dossier-entry-category" class="dossier-cat-select" title="Catégorie pour les nouvelles entrées"></select>
@@ -797,6 +816,7 @@ export function initFicheDossierSystem(deps: {
           <div id="dossier-read-card" class="dossier-entry text">
             <div class="entry-meta" id="dossier-read-meta"></div>
             <div class="entry-title" id="dossier-read-title"></div>
+            <button type="button" id="dossier-read-genealogy-link-banner" class="genealogy-link-banner" style="display:none;"></button>
             <div class="entry-body" id="dossier-read-body" style="display:block;"></div>
             <div class="entry-wordcount" id="dossier-read-wordcount" style="display:none;"></div>
           </div>
@@ -1270,85 +1290,85 @@ export function initFicheDossierSystem(deps: {
   }
 
   // -------------------------------------------------------------------------
-  // Sanitisation / auto-liens
-  // -------------------------------------------------------------------------
-  let autoLinkIndex: { slug: string; label: string }[] | null = null;
-  function buildAutoLinkIndex() {
-    if (autoLinkIndex) return autoLinkIndex;
-    const seen = new Map<string, { slug: string; label: string }>();
-    deps.getAllCountries().forEach((c) => {
-      const label = frenchCountryName(c.name);
-      if (label && label.length >= 3 && !seen.has(label.toLowerCase())) seen.set(label.toLowerCase(), { slug: c.slug, label });
-    });
-    autoLinkIndex = Array.from(seen.values()).sort((a, b) => b.label.length - a.label.length);
-    return autoLinkIndex;
+  // Sanitisation / auto-liens — demande de Martin, 2026-10-03 : "Liens
+  // automatiques dans les textes vers une fiche créée plus tard
+  // (rétroactif) + lien seulement à la première mention (façon
+  // Wikipédia)". Index + transformation du HTML délégués à src/linkIndex.ts
+  // (partagé avec genealogy.ts/search.ts) : l'index y est rechargé depuis
+  // Supabase à chaque ouverture de dossier/arbre (voir ensureLinkIndex ci-
+  // dessous et son appel dans openDossier/openGroupDossier/
+  // openEncyclopedieDossier/openMiniDossier plus bas), donc une entité
+  // créée après coup finit par se lier automatiquement, sans ré-édition du
+  // texte — "rétroactif" vient simplement du fait que le rendu relit
+  // l'index à chaque fois plutôt que de figer les liens dans le texte
+  // stocké.
+  async function ensureLinkIndex(force = false) {
+    await ensureLinkIndexLoaded(supabase, force);
   }
   function autoLinkEntryBody(html: string): string {
-    const idx = buildAutoLinkIndex();
-    if (!idx.length || !html) return html;
-    const template = document.createElement("template");
-    template.innerHTML = html;
-    const frag = template.content;
-    const escRe = (s: string) => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-    const pattern = new RegExp("\\b(" + idx.map((e) => escRe(e.label)).join("|") + ")\\b", "gi");
-    const byLower = new Map(idx.map((e) => [e.label.toLowerCase(), e]));
-    (function walk(node: Node) {
-      Array.from(node.childNodes).forEach((child) => {
-        if (child.nodeType === Node.ELEMENT_NODE) {
-          if ((child as Element).tagName === "A") return;
-          walk(child);
-          return;
-        }
-        if (child.nodeType !== Node.TEXT_NODE) return;
-        const text = child.textContent || "";
-        pattern.lastIndex = 0;
-        if (!pattern.test(text)) return;
-        pattern.lastIndex = 0;
-        const out = document.createDocumentFragment();
-        let last = 0;
-        let m: RegExpExecArray | null;
-        while ((m = pattern.exec(text))) {
-          if (m.index > last) out.appendChild(document.createTextNode(text.slice(last, m.index)));
-          const info = byLower.get(m[0].toLowerCase())!;
-          const a = document.createElement("a");
-          a.dataset.entityKind = "country";
-          a.dataset.entityId = info.slug;
-          a.textContent = m[0];
-          out.appendChild(a);
-          last = m.index + m[0].length;
-        }
-        if (last < text.length) out.appendChild(document.createTextNode(text.slice(last)));
-        child.replaceWith(out);
-      });
-    })(frag);
-    const div = document.createElement("div");
-    div.appendChild(frag);
-    return div.innerHTML;
+    if (!html) return html;
+    const entries = buildLinkIndexEntries({
+      countries: deps.getAllCountries().map((c) => ({ slug: c.slug, label: frenchCountryName(c.name) })),
+      groups: (deps.getGroups?.() ?? []).map((g) => ({ id: g.id, label: g.name })),
+    });
+    return autoLinkHtml(html, entries);
   }
-
-  $("dossier-entries").addEventListener("click", (e) => {
-    const a = (e.target as HTMLElement).closest("a[data-entity-kind]") as HTMLElement | null;
-    if (!a) return;
-    e.preventDefault();
-    e.stopPropagation();
-    const slug = a.dataset.entityId!;
-    const target = deps.getAllCountries().find((c) => c.slug === slug);
-    if (target) {
-      closeDossier();
-      openFiche(target);
+  // Résout un clic sur un lien auto-généré (data-link-target, JSON d'un
+  // LinkTarget) ou sur l'ancienne bannière "Voir dans l'arbre
+  // généalogique"/"Voir la fiche" (voir plus bas) — un seul point de
+  // navigation pour les 5 natures d'entité possibles.
+  async function resolveLinkTarget(target: LinkTarget) {
+    deps.closeGenealogyTree?.();
+    if (target.kind === "country") {
+      const c = deps.getAllCountries().find((x) => x.slug === target.slug);
+      if (c) {
+        closeDossier();
+        openFiche(c);
+      }
+      return;
     }
-  });
-  $("dossier-read-body").addEventListener("click", (e) => {
-    const a = (e.target as HTMLElement).closest("a[data-entity-kind]") as HTMLElement | null;
-    if (!a) return;
-    e.preventDefault();
-    const slug = a.dataset.entityId!;
-    const target = deps.getAllCountries().find((c) => c.slug === slug);
-    if (target) {
-      closeDossier();
-      openFiche(target);
+    if (target.kind === "group") {
+      const g = (deps.getGroups?.() ?? []).find((x) => x.id === target.id);
+      await openGroupDossier(target.id, g?.name || target.id);
+      return;
     }
-  });
+    if (target.kind === "section" || target.kind === "entry") {
+      const ownerType = target.ownerType;
+      const ownerId = target.ownerId;
+      if (ownerType === "country") {
+        const c = deps.getAllCountries().find((x) => x.isoA3 === ownerId);
+        if (c) await openDossier(c);
+      } else if (ownerType === "group") {
+        const g = (deps.getGroups?.() ?? []).find((x) => x.id === ownerId);
+        await openGroupDossier(ownerId, g?.name || ownerId);
+      } else if (ownerType === "encyclopedie") {
+        await openEncyclopedieDossier();
+      } else {
+        await openMiniDossier(ownerType as MiniDossierKind, ownerId, ownerId);
+      }
+      if (target.kind === "section") revealSection(target.sectionId, target.categoryId);
+      else revealEntry(target.entryId, target.categoryId);
+      return;
+    }
+    if (target.kind === "genealogy-member") {
+      await deps.openGenealogyMember?.(target.ownerType, target.ownerId, target.memberId);
+    }
+  }
+  function wireLinkClicks(container: HTMLElement) {
+    container.addEventListener("click", (e) => {
+      const a = (e.target as HTMLElement).closest("a[data-link-target]") as HTMLElement | null;
+      if (!a) return;
+      e.preventDefault();
+      e.stopPropagation();
+      try {
+        void resolveLinkTarget(JSON.parse(a.dataset.linkTarget!) as LinkTarget);
+      } catch {
+        /* ignore */
+      }
+    });
+  }
+  wireLinkClicks($("dossier-entries"));
+  wireLinkClicks($("dossier-read-body"));
 
   // -------------------------------------------------------------------------
   // Rendu des entrées / sections
@@ -1846,9 +1866,29 @@ export function initFicheDossierSystem(deps: {
     const allowed = !!cat && HEMICYCLE_ALLOWED_CATEGORY_NAMES.includes(cat.name);
     btn.style.display = allowed ? "" : "none";
   }
+  // Bannière "Voir dans l'arbre généalogique →" — demande de Martin,
+  // 2026-10-03 : "je souhaite que une personne dans un arbre soit rattachée
+  // automatiquement à une fiche de la même personne [...] quelle que soit
+  // celui créé en premier". Affichée sur la page d'une section dont le nom
+  // correspond EXACTEMENT (insensible à la casse) à un membre d'un arbre
+  // généalogique existant quelque part dans l'app (voir
+  // findLinkTargetForName/src/linkIndex.ts) ; même bannière réutilisée pour
+  // la vue de lecture d'une entrée (voir openEntryReadView).
+  function renderGenealogyLinkBanner(btn: HTMLElement, name: string | null) {
+    const target = name ? findLinkTargetForName(name, ["genealogy-member"]) : null;
+    if (!target) {
+      btn.style.display = "none";
+      btn.onclick = null;
+      return;
+    }
+    btn.style.display = "";
+    btn.textContent = "🌳 Voir « " + name + " » dans l'arbre généalogique →";
+    btn.onclick = () => void resolveLinkTarget(target);
+  }
   function renderCategoryHeading() {
     const heading = $("dossier-theme-heading");
     const backBtn = $("dossier-summary-back");
+    let deepestSectionName: string | null = null;
     if (activeCategory === "__all__") {
       heading.textContent = "Toutes les entrées";
       backBtn.textContent = "← Sommaire";
@@ -1862,11 +1902,13 @@ export function initFicheDossierSystem(deps: {
         heading.textContent = catName + " › " + path.map((s) => s.name).join(" › ");
         const parent = path.length > 1 ? path[path.length - 2] : null;
         backBtn.textContent = "← " + (parent ? parent.name : catName);
+        deepestSectionName = path[path.length - 1].name;
       } else {
         heading.textContent = catName;
         backBtn.textContent = "← Sommaire";
       }
     }
+    renderGenealogyLinkBanner($("dossier-genealogy-link-banner"), deepestSectionName);
     // Barre "+ Sous-catégorie" : masquée seulement tout en haut ("Toutes les
     // entrées") — demande de Martin, 2026-10-03 : "je dois pouvoir rajouter
     // des sous-sous-sous catégorie", donc plus de plafond de profondeur
@@ -2116,6 +2158,7 @@ export function initFicheDossierSystem(deps: {
     $("dossier-entry-read-view").style.display = "block";
     $("dossier-read-title").textContent = entry.title || entryPlainText(entry as DossierEntryLike).slice(0, 60) || "Sans titre";
     $("dossier-read-meta").textContent = dossierEntryDate(entry.created_at);
+    renderGenealogyLinkBanner($("dossier-read-genealogy-link-banner"), entry.title || null);
     $("dossier-read-body").innerHTML = autoLinkEntryBody(sanitizeDossierHTML(entry.body || ""));
     const words = wordCountForEntry(entry as DossierEntryLike);
     const wcEl = $("dossier-read-wordcount");
@@ -3437,12 +3480,21 @@ export function initFicheDossierSystem(deps: {
     $("dossier-theme-view").classList.remove("reading-mode");
     ($("dossier-reading-toggle") as HTMLButtonElement).textContent = "Mode lecture";
     $("dossier-view").classList.add("open");
+    // Rafraîchit l'index de liens (pays/groupes/sous-catégories/fiches/
+    // membres d'arbres) en parallèle du reste — demande de Martin,
+    // 2026-10-03 : liens auto rétroactifs dans les textes + rattachement
+    // bidirectionnel membre d'arbre/fiche. En parallèle (pas bloquant tant
+    // que ça n'a pas fini) : au pire les tout premiers rendus manquent les
+    // toutes dernières entités créées ailleurs, régénéré au prochain rendu.
+    const linkIndexPromise = ensureLinkIndex(true);
     await loadCategories(owner.categorySpace);
     if (currentOwner !== owner) return;
     await loadSections(owner.type, owner.id);
     if (currentOwner !== owner) return;
     populateCategorySelects();
     await loadEntries(owner.type, owner.id);
+    if (currentOwner !== owner) return;
+    await linkIndexPromise;
     if (currentOwner !== owner) return;
     showDossierSummary();
   }
@@ -3753,5 +3805,11 @@ export function initFicheDossierSystem(deps: {
     revealEntry,
     revealSection,
     refreshForReadOnlyChange,
+    // Rattachement bidirectionnel membre d'arbre ↔ fiche/sous-catégorie du
+    // même nom (demande de Martin, 2026-10-03) — genealogy.ts l'appelle
+    // pour naviguer vers une section/entrée depuis la bannière "Voir la
+    // fiche →" de la fiche d'un membre, sans avoir à dupliquer la logique
+    // de résolution owner_type → bon dossier (déjà dans resolveLinkTarget).
+    openLinkTarget: resolveLinkTarget,
   };
 }

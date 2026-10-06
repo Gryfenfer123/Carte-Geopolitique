@@ -157,6 +157,19 @@ main.map-wrap {
   z-index: 0;
 }
 
+/* Agrandit chaque tuile de fond de carte de 1px (sur les 2 axes) pour que
+   les tuiles adjacentes se chevauchent très légèrement — masque la couture
+   visible entre tuiles lors de l'export PNG (demande de Martin,
+   2026-10-03, "quand on exporte la carte en image c'est bug"). Sans
+   incidence visuelle à l'écran normal.
+   NOTE : ciblé directement sur .leaflet-tile (la classe que Leaflet pose
+   sur chaque <img> de tuile) et non sur un className custom passé à
+   L.tileLayer() — cette option-là s'applique au <div> conteneur de la
+   couche entière, pas à chaque tuile individuellement (vérifié en
+   testant dans un vrai navigateur ; corrige une première tentative qui
+   ne faisait rien). */
+.leaflet-tile { width: 257px !important; height: 257px !important; }
+
 /* Couche SVG (D3) superposée aux tuiles pour les frontières et tous les
    futurs calques (ports, câbles, pipelines, hémicycles...). */
 .geo-overlay-svg {
@@ -929,7 +942,12 @@ main.map-wrap {
    overflow-y:auto conservé : le panneau reste défilable si son contenu
    dépasse la hauteur désormais un peu réduite. */
 #fiche-panel {
-  position: absolute; top: 16px; right: 16px; bottom: 110px;
+  /* position:absolute ici se positionne par rapport au viewport (#fiche-panel
+     est déplacé dans document.body, pas dans .map-wrap — voir
+     syncHeaderHeightVar dans main.ts) : top doit donc tenir compte de la
+     hauteur réelle du header (--header-h) pour ne pas passer dessous/
+     chevaucher le bandeau du haut (demande de Martin, 2026-10-03). */
+  position: absolute; top: calc(var(--header-h, 64px) + 16px); right: 16px; bottom: 110px;
   width: min(420px, calc(100vw - 32px));
   background: rgba(10, 14, 24, 0.94); border: 1px solid var(--surface-border);
   border-radius: 10px; padding: 18px; z-index: 22; overflow-y: auto;
@@ -944,7 +962,7 @@ main.map-wrap {
    les panneaux latéraux (aucun de ces panneaux n'a besoin de toute la
    hauteur de l'écran : ce sont tous des formulaires/listes défilables). */
 .panel.side-panel {
-  position: absolute; top: 16px; right: 16px; bottom: 110px;
+  position: absolute; top: calc(var(--header-h, 64px) + 16px); right: 16px; bottom: 110px;
   width: min(420px, calc(100vw - 32px));
   background: rgba(10, 14, 24, 0.94); border: 1px solid var(--surface-border);
   border-radius: 10px; padding: 18px; z-index: 22; overflow-y: auto;
@@ -954,12 +972,21 @@ main.map-wrap {
 .panel.side-panel h2 { font-family: "Fraunces", serif; font-size: 17px; margin: 0 26px 4px 0; color: var(--accent); }
 #fiche-panel h2 { font-family: "Fraunces", serif; font-size: 17px; margin: 0 26px 4px 0; color: var(--accent); }
 .fiche-subtitle { margin: -2px 0 12px; text-transform: uppercase; font-size: 10.5px; letter-spacing: 0.04em; }
-#fiche-panel input[type="text"], #fiche-panel textarea {
+/* Étendu de "#fiche-panel input/textarea" à TOUT .panel.side-panel (demande
+   de Martin, 2026-10-03 : "Dans les arbres généalogiques, sur la fiche des
+   personnes, les zones d'écritures sont en blanc" — #gen-member-panel est
+   un .panel.side-panel comme #fiche-panel mais n'avait jamais hérité de cet
+   habillage "incrusté", resté scoped à #fiche-panel seul ; ses champs
+   gardaient donc le blanc par défaut du navigateur). Couvre aussi select,
+   pour les mêmes raisons. */
+.panel.side-panel input[type="text"], .panel.side-panel textarea, .panel.side-panel select,
+#fiche-panel input[type="text"], #fiche-panel textarea, #fiche-panel select {
   width: 100%; box-sizing: border-box; font: 13px "IBM Plex Sans", sans-serif;
   color: var(--text); background: rgba(255, 255, 255, 0.03); border: 1px solid var(--surface-border);
   border-radius: 7px; padding: 7px 9px; resize: vertical;
 }
-#fiche-panel input:focus, #fiche-panel textarea:focus { outline: none; border-color: var(--accent); }
+.panel.side-panel input:focus, .panel.side-panel textarea:focus, .panel.side-panel select:focus,
+#fiche-panel input:focus, #fiche-panel textarea:focus, #fiche-panel select:focus { outline: none; border-color: var(--accent); }
 #fiche-save-status { font-size: 11.5px; color: var(--text-dim); margin-top: 6px; min-height: 14px; }
 /* Dirigeants multiples (point 8, 2026-10-03) — une ligne statut+nom par
    dirigeant, même habillage que .dossier-source-row/.hemicycle-party-row. */
@@ -1815,6 +1842,18 @@ path.link-autre { stroke: var(--link-autre, #c9bfa9); }
 }
 #gen-m-foreign-banner:hover { background: var(--accent); color: var(--ink); }
 #gen-m-foreign-banner::before { content: "↪"; font-size: 14px; }
+/* Bandeau générique de rattachement bidirectionnel membre d'arbre ↔ fiche/
+   sous-catégorie du même nom (demande de Martin, 2026-10-03) — réutilisé
+   tel quel sur #gen-m-fiche-link-banner (genealogy.ts, fiche d'un membre)
+   ET sur #dossier-genealogy-link-banner/#dossier-read-genealogy-link-
+   banner (dossier.ts, page d'une section / vue de lecture d'une entrée).
+   Même habillage que #gen-m-foreign-banner pour rester cohérent. */
+.genealogy-link-banner {
+  display: flex; align-items: center; gap: 6px; width: 100%; max-width: max-content; appearance: none;
+  border: none; background: var(--surface-border); color: var(--accent); font-size: 12.5px; font-weight: 600;
+  border-radius: 7px; padding: 8px 10px; margin: 6px 0 12px; cursor: pointer; text-align: left;
+}
+.genealogy-link-banner:hover { background: var(--accent); color: var(--ink); }
 /* Cartes/photos agrandies (demande de Martin, 2026-10-03, ×2 : "faire
    tout plus grand..." puis "agrandit tout le monde, tout doit être plus
    grand dans les arbres, c'est trop petit là") — hauteur alignée sur la
