@@ -86,7 +86,20 @@ export type DossierOwnerRef = {
 // sous-section. image_url n'existait pas avant sur dossier_categories ;
 // cover_image_url existait déjà sur dossier_sections depuis schema_v1 mais
 // n'était lu/écrit par aucun code applicatif avant cette session.
-type Category = { id: string; name: string; builtin: boolean; created_by: string | null; image_url: string | null; image_position: string };
+// date_label (schema_v18.sql) : date libre optionnelle saisie à la
+// création d'une catégorie (ex. "1958-1962", "Moyen Âge"), affichée en
+// italique sous le titre centré de sa carte (demande de Martin,
+// 2026-10-06) — texte libre, pas une vraie date, donc pas de contrainte
+// de format.
+type Category = {
+  id: string;
+  name: string;
+  builtin: boolean;
+  created_by: string | null;
+  image_url: string | null;
+  image_position: string;
+  date_label: string | null;
+};
 type Section = {
   id: string;
   category_id: string;
@@ -256,19 +269,6 @@ function dossierEntryDate(ts: string | null | undefined): string {
     return "";
   }
 }
-function relativeTimeFr(ts: string | null | undefined): string {
-  if (!ts) return "";
-  const diff = Date.now() - new Date(ts).getTime();
-  const day = 86400000;
-  if (diff < day) return "aujourd'hui";
-  const days = Math.floor(diff / day);
-  if (days === 1) return "hier";
-  if (days < 30) return "il y a " + days + " jours";
-  const months = Math.floor(days / 30);
-  if (months < 12) return "il y a " + months + " mois";
-  return "il y a " + Math.floor(months / 12) + " an(s)";
-}
-
 const CATEGORY_BANNER_PALETTE: [string, string][] = [
   ["#e8697f", "#c94a63"],
   ["#7d6fd9", "#5b4bc4"],
@@ -941,13 +941,14 @@ export function initFicheDossierSystem(deps: {
       created_by: (row.created_by as string) ?? null,
       image_url: (row.image_url as string) ?? null,
       image_position: (row.image_position as string) || "50% 50%",
+      date_label: (row.date_label as string) ?? null,
     };
   }
   async function loadCategories(space: "country" | "encyclopedie") {
     currentCategorySpace = space;
     const { data, error } = await supabase
       .from("dossier_categories")
-      .select("id, name, builtin, created_by, image_url, image_position")
+      .select("id, name, builtin, created_by, image_url, image_position, date_label")
       .eq("space", space);
     categoryDocs.clear();
     if (!error && data) {
@@ -957,7 +958,7 @@ export function initFicheDossierSystem(deps: {
       await ensureDefaultCategories(space);
       const retry = await supabase
         .from("dossier_categories")
-        .select("id, name, builtin, created_by, image_url, image_position")
+        .select("id, name, builtin, created_by, image_url, image_position, date_label")
         .eq("space", space);
       if (retry.data) retry.data.forEach((row) => categoryDocs.set(row.id as string, rowToCategory(row)));
     }
@@ -973,14 +974,20 @@ export function initFicheDossierSystem(deps: {
     const custom = Array.from(categoryDocs.entries()).filter(([, c]) => !c.builtin);
     return builtin.concat(custom);
   }
-  async function addCategory(name: string): Promise<string | null> {
+  async function addCategory(name: string, dateLabel?: string | null): Promise<string | null> {
     if (!isAdmin()) return null;
     const session = deps.getSession();
     if (!session) return null;
     const { data, error } = await supabase
       .from("dossier_categories")
-      .insert({ name, space: currentCategorySpace, builtin: false, created_by: session.user.id })
-      .select("id, name, builtin, created_by, image_url, image_position")
+      .insert({
+        name,
+        space: currentCategorySpace,
+        builtin: false,
+        created_by: session.user.id,
+        date_label: dateLabel && dateLabel.trim() ? dateLabel.trim() : null,
+      })
+      .select("id, name, builtin, created_by, image_url, image_position, date_label")
       .single();
     if (error || !data) return null;
     categoryDocs.set(data.id, rowToCategory(data));
@@ -991,10 +998,15 @@ export function initFicheDossierSystem(deps: {
     if (!cat || cat.builtin || !isAdmin()) return;
     const name = await customPrompt("Renommer la catégorie :", cat.name);
     if (name === null || !name.trim()) return;
+    // Même geste pour modifier la date affichée sous le titre (demande de
+    // Martin, 2026-10-06 : "possibilité de modifier le recadrage/la date
+    // si besoin") — vide = aucune date.
+    const dateLabel = await customPrompt("Date à afficher sous le titre (laisser vide pour aucune) :", cat.date_label || "");
     cat.name = name.trim();
+    cat.date_label = dateLabel && dateLabel.trim() ? dateLabel.trim() : null;
     categoryDocs.set(id, cat);
     try {
-      await supabase.from("dossier_categories").update({ name: cat.name }).eq("id", id);
+      await supabase.from("dossier_categories").update({ name: cat.name, date_label: cat.date_label }).eq("id", id);
     } catch {
       /* ignore */
     }
@@ -1122,6 +1134,39 @@ export function initFicheDossierSystem(deps: {
     }
     return chain;
   }
+  // Glisser-déposer une sous-catégorie dans une autre (demande de Martin,
+  // 2026-10-06 : "Au niveau des catégories : si ce n'est pas fait =>
+  // possibilité de glisser une catégorie dans une autre") — rattache la
+  // section glissée comme ENFANT de la section cible (newParentId), en la
+  // plaçant si besoin dans la catégorie de la cible (une section peut
+  // ainsi traverser les catégories, pas seulement se réordonner à
+  // l'intérieur de la même). newParentId=null (dépose sur une carte de
+  // CATÉGORIE, pas de sous-catégorie) la remonte au premier niveau de
+  // cette catégorie. Garde anti-cycle : on ne peut jamais déposer une
+  // section sur elle-même ni sur l'une de ses propres descendantes (sans
+  // ça, on casserait l'arbre — un parent ne peut pas devenir l'enfant de
+  // son propre enfant).
+  async function reparentSection(id: string, newParentId: string | null, newCategoryId: string) {
+    const sec = currentSections.find((s) => s.id === id);
+    if (!sec || !canModify(sec)) return;
+    if (newParentId === id) return;
+    if (newParentId && allDescendantSectionIds(id).includes(newParentId)) return;
+    if ((sec.parent_section_id || null) === (newParentId || null) && sec.category_id === newCategoryId) return;
+    const siblings = currentSections.filter(
+      (s) => s.id !== id && s.category_id === newCategoryId && (s.parent_section_id || null) === (newParentId || null)
+    );
+    const position = siblings.length ? Math.max(...siblings.map((s) => s.position || 0)) + 1 : 0;
+    sec.parent_section_id = newParentId;
+    sec.category_id = newCategoryId;
+    sec.position = position;
+    renderDossierEntries();
+    try {
+      await supabase.from("dossier_sections").update({ parent_section_id: newParentId, category_id: newCategoryId, position }).eq("id", id);
+    } catch {
+      /* ignore */
+    }
+  }
+
   async function moveSection(id: string, dir: 1 | -1) {
     const target = currentSections.find((s) => s.id === id);
     if (!target || !canModify(target)) return;
@@ -1471,12 +1516,12 @@ export function initFicheDossierSystem(deps: {
       div.appendChild(hist);
     }
 
+    // Date retirée de la carte (demande de Martin, 2026-10-06 : "supprimer
+    // ... la date de modif, juste titre/image") — reste visible dans la
+    // vue de lecture (#dossier-read-meta) et l'historique, juste plus sur
+    // l'aperçu de la carte elle-même.
     const meta = document.createElement("div");
     meta.className = "entry-meta";
-    const dateSpan = document.createElement("span");
-    dateSpan.className = "entry-date-hover";
-    dateSpan.textContent = dossierEntryDate(entry.created_at);
-    meta.appendChild(dateSpan);
     if (entry.status === "draft") {
       const draftBadge = document.createElement("span");
       draftBadge.className = "entry-draft-badge";
@@ -1500,13 +1545,11 @@ export function initFicheDossierSystem(deps: {
       body.className = "entry-body";
       body.innerHTML = autoLinkEntryBody(sanitizeDossierHTML(entry.body || ""));
       div.appendChild(body);
-      const words = wordCountForEntry(entry as DossierEntryLike);
-      if (words > 0) {
-        const wc = document.createElement("div");
-        wc.className = "entry-wordcount";
-        wc.textContent = words + " mot" + (words > 1 ? "s" : "") + " · ~" + readingTimeMinutes(words) + " min de lecture";
-        div.appendChild(wc);
-      }
+      // Nombre de mots / temps de lecture retiré de l'aperçu de la carte
+      // (demande de Martin, 2026-10-06 : "supprimer ... nombre de mots et
+      // minutes de lecture ... juste titre/image") — reste disponible dans
+      // la vue de lecture (#dossier-read-wordcount, ligne ~821) et dans le
+      // total agrégé de la page (ligne ~2038), juste plus sur cette carte.
     } else if (entry.type === "photo") {
       const img = document.createElement("img");
       img.src = entry.photo_url || "";
@@ -1573,14 +1616,22 @@ export function initFicheDossierSystem(deps: {
       // Petite carte cliquable — pas de rendu du widget généalogie inline,
       // juste un lien vers l'overlay plein écran (src/genealogy.ts),
       // owner = {type:"entry", id: entry.id} (point 2, 2026-10-03).
-      const icon = document.createElement("div");
-      icon.className = "entry-title";
-      icon.textContent = "🌳 " + (entry.title || "Arbre généalogique");
-      div.appendChild(icon);
-      const hint = document.createElement("div");
-      hint.className = "muted";
-      hint.textContent = "Cliquer pour ouvrir l'arbre généalogique";
-      div.appendChild(hint);
+      //
+      // Bouton d'ouverture refait (demande de Martin, 2026-10-06 : "Retirer
+      // Emoji Arbre => Faire un beau bouton sur lequel cliquer, c'est super
+      // important les arbres généalogiques. Avec une belle écriture
+      // (ex : Généalogie — Mérovingiens ?).") — plus d'emoji 🌳, un vrai
+      // bouton stylé (.gen-tree-open-btn, voir style.css) avec un libellé
+      // "Généalogie — <titre>", toute la carte (.dossier-entry.genealogy)
+      // reste cliquable comme avant (voir le handler de clic plus haut).
+      const btn = document.createElement("div");
+      btn.className = "gen-tree-open-btn";
+      btn.innerHTML =
+        '<span class="gen-tree-open-icon" aria-hidden="true"></span><span class="gen-tree-open-label">' +
+        "Généalogie" +
+        (entry.title ? ' <span class="gen-tree-open-dash">&mdash;</span> ' + escapeHtml(entry.title) : "") +
+        "</span>";
+      div.appendChild(btn);
     }
 
     if (entry.tags && entry.tags.length) {
@@ -1619,9 +1670,14 @@ export function initFicheDossierSystem(deps: {
     return div;
   }
 
-  function registerSectionDropZone(el: HTMLElement, sectionId: string | null) {
+  // `categoryId` : catégorie à utiliser si une SECTION (pas une entrée)
+  // est déposée ici (voir reparentSection) — nécessaire uniquement pour ce
+  // cas, une entrée garde toujours sa propre category_id. Optionnel pour
+  // ne rien casser sur les appels existants qui ne déposent que des
+  // entrées (ex. backBtn, non concerné par ce paramètre).
+  function registerSectionDropZone(el: HTMLElement, sectionId: string | null, categoryId?: string) {
     el.addEventListener("dragover", (e) => {
-      if (!e.dataTransfer!.types.includes("text/dossier-entry-id")) return;
+      if (!e.dataTransfer!.types.includes("text/dossier-entry-id") && !e.dataTransfer!.types.includes("text/dossier-section-id")) return;
       e.preventDefault();
       e.dataTransfer!.dropEffect = "move";
       el.classList.add("drop-target-active");
@@ -1629,7 +1685,13 @@ export function initFicheDossierSystem(deps: {
     el.addEventListener("dragleave", () => el.classList.remove("drop-target-active"));
     el.addEventListener("drop", (e) => {
       const entryId = e.dataTransfer!.getData("text/dossier-entry-id");
+      const draggedSectionId = e.dataTransfer!.getData("text/dossier-section-id");
       el.classList.remove("drop-target-active");
+      if (draggedSectionId && categoryId) {
+        e.preventDefault();
+        if (draggedSectionId !== sectionId) void reparentSection(draggedSectionId, sectionId || null, categoryId);
+        return;
+      }
       if (!entryId) return;
       e.preventDefault();
       updateEntry(entryId, { section_id: sectionId || null });
@@ -1724,10 +1786,10 @@ export function initFicheDossierSystem(deps: {
     nameEl.className = "dsc-name";
     nameEl.textContent = sec.name;
     body.appendChild(nameEl);
-    const metaEl = document.createElement("div");
-    metaEl.className = "dsc-meta";
-    metaEl.textContent = count ? count + " entrée" + (count > 1 ? "s" : "") : "Aucune entrée pour le moment";
-    body.appendChild(metaEl);
+    // Nombre d'entrées retiré de la carte (demande de Martin, 2026-10-06 :
+    // "supprimer le nombre d'entrées... juste titre/image, centrer le
+    // titre") — `count` reste calculé (sert à ajouter/retirer la classe
+    // "empty" plus haut) mais ne s'affiche plus nulle part sur la carte.
     if (canModify(sec)) {
       const moveWrap = document.createElement("div");
       moveWrap.className = "dsc-move-actions edit-control";
@@ -1754,7 +1816,22 @@ export function initFicheDossierSystem(deps: {
     // 2026-10-03 : "je dois pouvoir le glisser dans une catégorie, une
     // sous catégorie, ou n'importe"). Valable à n'importe quelle
     // profondeur, buildSectionCard étant réutilisé à tous les niveaux.
-    registerSectionDropZone(card, sec.id);
+    // Demande de Martin, 2026-10-06 : "possibilité de glisser une
+    // catégorie dans une autre" — la même carte est AUSSI une source de
+    // glisser-déposer (card.draggable ci-dessous) : on peut déposer CETTE
+    // sous-catégorie sur une autre carte pour la rattacher comme enfant
+    // (voir reparentSection). categoryId ici = la catégorie à utiliser si
+    // UNE AUTRE section est déposée SUR celle-ci.
+    registerSectionDropZone(card, sec.id, sec.category_id);
+    if (canModify(sec)) {
+      card.draggable = true;
+      card.addEventListener("dragstart", (e) => {
+        e.dataTransfer!.setData("text/dossier-section-id", sec.id);
+        e.dataTransfer!.effectAllowed = "move";
+        card.classList.add("dragging-entry");
+      });
+      card.addEventListener("dragend", () => card.classList.remove("dragging-entry"));
+    }
     return card;
   }
 
@@ -1921,7 +1998,7 @@ export function initFicheDossierSystem(deps: {
   // -------------------------------------------------------------------------
   // Sommaire (cartes par thème)
   // -------------------------------------------------------------------------
-  function buildSummaryCard(id: string, cat: Category, count: number, latest: Entry | null): HTMLElement {
+  function buildSummaryCard(id: string, cat: Category, count: number): HTMLElement {
     const card = document.createElement("button");
     card.type = "button";
     card.className = "dossier-summary-card" + (count ? "" : " empty");
@@ -2000,16 +2077,18 @@ export function initFicheDossierSystem(deps: {
     nameEl.className = "dsc-name";
     nameEl.textContent = cat.name;
     body.appendChild(nameEl);
-    const metaEl = document.createElement("div");
-    metaEl.className = "dsc-meta";
-    metaEl.textContent = count
-      ? count + " entrée" + (count > 1 ? "s" : "") + (latest ? " · " + relativeTimeFr(latest.updated_at || latest.created_at) : "")
-      : "Aucune entrée pour le moment";
-    body.appendChild(metaEl);
-    // Aperçu du texte de la dernière entrée retiré (demande de Martin,
-    // 2026-10-03 : "aucun aperçu de texte, pour les sections, sous
-    // sections... ou autres éléments") — seuls le nom et la méta (nombre
-    // d'entrées / date) restent visibles sur la carte de catégorie.
+    // Nombre d'entrées + date de dernière modif retirés de la carte
+    // (demande de Martin, 2026-10-06 : "supprimer le nombre d'entrées...
+    // et la date de modif, juste titre/image, centrer le titre") — `count`/
+    // `latest` restent calculés par l'appelant (servent à la classe
+    // "empty" plus haut) mais ne s'affichent plus. À la place : la date
+    // LIBRE saisie à la création (date_label), en italique, si renseignée.
+    if (cat.date_label) {
+      const dateEl = document.createElement("div");
+      dateEl.className = "dsc-date";
+      dateEl.textContent = cat.date_label;
+      body.appendChild(dateEl);
+    }
     card.appendChild(body);
     card.addEventListener("click", () => showThemeView(id));
     return card;
@@ -2040,10 +2119,7 @@ export function initFicheDossierSystem(deps: {
     }
     cats.forEach(([id, cat]) => {
       const inCat = currentEntries.filter((e) => (e.category_id || null) === id);
-      const latest = inCat.length
-        ? inCat.reduce((a, b) => ((b.updated_at || b.created_at) > (a.updated_at || a.created_at) ? b : a))
-        : null;
-      themesEl.appendChild(buildSummaryCard(id, cat, inCat.length, latest));
+      themesEl.appendChild(buildSummaryCard(id, cat, inCat.length));
     });
     if (isAdmin()) {
       const newCard = document.createElement("button");
@@ -2053,7 +2129,11 @@ export function initFicheDossierSystem(deps: {
       newCard.addEventListener("click", async () => {
         const name = ((await customPrompt("Nom du nouveau thème :")) || "").trim();
         if (!name) return;
-        const id = await addCategory(name);
+        // Date libre optionnelle (demande de Martin, 2026-10-06) : annuler
+        // ou laisser vide saute simplement cette étape, la catégorie se
+        // crée quand même (le nom seul suffit).
+        const dateLabel = await customPrompt("Date à afficher sous le titre (optionnel, laisser vide pour aucune) :");
+        const id = await addCategory(name, dateLabel);
         renderDossierSummary();
         if (id) showThemeView(id);
       });
@@ -2130,7 +2210,7 @@ export function initFicheDossierSystem(deps: {
   {
     const backBtn = $("dossier-summary-back");
     backBtn.addEventListener("dragover", (e) => {
-      if (!e.dataTransfer!.types.includes("text/dossier-entry-id")) return;
+      if (!e.dataTransfer!.types.includes("text/dossier-entry-id") && !e.dataTransfer!.types.includes("text/dossier-section-id")) return;
       if (activeCategory === "__all__" || !activeSectionPath.length) return;
       e.preventDefault();
       e.dataTransfer!.dropEffect = "move";
@@ -2139,10 +2219,21 @@ export function initFicheDossierSystem(deps: {
     backBtn.addEventListener("dragleave", () => backBtn.classList.remove("drop-target-active"));
     backBtn.addEventListener("drop", (e) => {
       const entryId = e.dataTransfer!.getData("text/dossier-entry-id");
+      // Demande de Martin, 2026-10-06 : "possibilité de glisser une
+      // catégorie dans une autre" — une sous-catégorie glissée sur la
+      // flèche retour remonte elle aussi d'un niveau (même geste que pour
+      // une entrée, juste au-dessus), via reparentSection.
+      const draggedSectionId = e.dataTransfer!.getData("text/dossier-section-id");
       backBtn.classList.remove("drop-target-active");
-      if (!entryId || activeCategory === "__all__" || !activeSectionPath.length) return;
-      e.preventDefault();
+      if (activeCategory === "__all__" || !activeSectionPath.length) return;
       const upId = activeSectionPath.length >= 2 ? activeSectionPath[activeSectionPath.length - 2] : null;
+      if (draggedSectionId) {
+        e.preventDefault();
+        void reparentSection(draggedSectionId, upId, activeCategory);
+        return;
+      }
+      if (!entryId) return;
+      e.preventDefault();
       updateEntry(entryId, { section_id: upId });
     });
   }

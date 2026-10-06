@@ -1110,9 +1110,14 @@ main.map-wrap {
 }
 /* Padding/texte des cartes de dossier agrandis (demande "tout soit plus
    grand") — valeurs modestement augmentées, pas un redesign. */
-.dsc-body { padding: 16px 18px 18px; }
+/* Cartes recentrées, stats retirées (demande de Martin, 2026-10-06 :
+   "juste titre/image, centrer le titre") — .dsc-meta (nombre d'entrées,
+   date de modif) n'est plus généré par dossier.ts mais la règle reste au
+   cas où une ancienne carte mise en cache l'utilise encore. */
+.dsc-body { padding: 16px 18px 18px; text-align: center; }
 .dsc-name { font-family: "Fraunces", serif; font-weight: 600; font-size: 17px; margin-bottom: 4px; }
 .dsc-meta { font-size: 12.5px; color: var(--text-dim); }
+.dsc-date { font-style: italic; font-size: 12.5px; color: var(--text-dim); margin-top: 2px; }
 .dsc-preview { font-size: 13px; color: var(--text-dim); margin-top: 7px; line-height: 1.45; }
 /* Flèches ↑/↓ de réordonnancement sur une carte sous-catégorie/sous-sous-
    catégorie (buildSectionCard, dossier.ts) — remplace le glisser-déposer
@@ -1321,6 +1326,40 @@ li.rt-check[data-checked="true"]:after {
 /* Entrée "genealogy" (point 2, 2026-10-03) : petite carte cliquable vers
    l'overlay plein écran de src/genealogy.ts, pas de rendu inline. */
 .dossier-entry.genealogy .entry-title { font-weight: 600; font-size: 14.5px; color: var(--text); margin-bottom: 2px; }
+/* Bouton d'ouverture d'un arbre généalogique, refait sans emoji (demande
+   de Martin, 2026-10-06 : "Faire un beau bouton sur lequel cliquer...
+   Avec une belle écriture (ex : Généalogie — Mérovingiens ?)"). La carte
+   entière (.dossier-entry.genealogy) reste cliquable ; ceci n'est que
+   l'habillage visuel du contenu de la carte. */
+.dossier-entry.genealogy { padding: 0; border: none; background: none; box-shadow: none; }
+.dossier-entry.genealogy:hover { box-shadow: none; transform: none; }
+.gen-tree-open-btn {
+  display: flex; align-items: center; gap: 10px; width: 100%;
+  padding: 16px 18px; border-radius: 12px;
+  border: 1px solid var(--surface-border);
+  background: linear-gradient(135deg, rgba(var(--accent-rgb, 198, 158, 76), 0.14), var(--surface));
+  transition: box-shadow 150ms ease, transform 150ms ease, border-color 150ms ease;
+}
+.dossier-entry.genealogy:hover .gen-tree-open-btn {
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3); transform: translateY(-1px);
+  border-color: var(--accent);
+}
+.gen-tree-open-icon {
+  flex: 0 0 auto; width: 32px; height: 32px; border-radius: 50%;
+  background: var(--accent);
+  display: inline-block; position: relative;
+}
+.gen-tree-open-icon::before {
+  content: ""; position: absolute; inset: 7px;
+  background: var(--surface);
+  border-radius: 2px;
+  clip-path: polygon(50% 0%, 100% 38%, 82% 38%, 100% 70%, 65% 70%, 65% 100%, 35% 100%, 35% 70%, 0% 70%, 18% 38%, 0% 38%);
+}
+.gen-tree-open-label {
+  font-family: "Fraunces", serif; font-weight: 600; font-size: 16px; color: var(--text);
+  letter-spacing: 0.2px;
+}
+.gen-tree-open-dash { color: var(--text-dim); font-weight: 500; }
 /* Convention du projet (point 8, 2026-10-03) : TOUT bouton de suppression
    de l'app (entrées de dossier, dirigeants de la fiche pays, membres/
    relations d'arbre généalogique, groupes, partis d'hémicycle, sources,
@@ -1825,6 +1864,17 @@ path.link-autre { stroke: var(--link-autre, #c9bfa9); }
    dirigés le pays en surbrillance", puis le 2026-10-03 : "je veux que ce
    soit en rouge" — remplace la bordure/halo doré initial par du rouge). */
 .gen-card-leader { border-color: #e2493f; box-shadow: 0 0 0 2px rgba(226, 73, 63, 0.5), 0 6px 18px rgba(0,0,0,0.35); }
+/* Anneau de couleur au choix (demande de Martin, 2026-10-06 : "Possibilité
+   d'entourer un membre de la couleur que l'on souhaite avec la légende
+   que l'on souhaite") — indépendant de .gen-card-leader (ci-dessus, qui
+   reste disponible séparément) : la couleur vient de la légende de
+   l'arbre (--gen-ring-color, posée en inline par renderNodes) plutôt
+   que d'être fixe. */
+.gen-card-ringed { border-color: var(--gen-ring-color); box-shadow: 0 0 0 2px var(--gen-ring-color), 0 6px 18px rgba(0,0,0,0.35); }
+.gen-card-ring-chip {
+  display: inline-block; font-size: 11px; font-weight: 600; color: #fff; padding: 2px 8px;
+  border-radius: 10px; margin-bottom: 4px;
+}
 .gen-m-leader-check {
   display: flex; align-items: center; gap: 7px; font-size: 12.5px; color: var(--text);
   margin: 10px 0 2px; cursor: pointer;
@@ -1880,6 +1930,15 @@ path.link-autre { stroke: var(--link-autre, #c9bfa9); }
    posés en JS (presentation attributes SVG) ont une priorité plus basse
    que cette règle CSS, qui s'applique donc bien par-dessus. */
 .gen-link-foreign { stroke-dasharray: 2.5,4.5 !important; opacity: 0.6; }
+
+/* Légende de l'arbre — gestionnaire (#gen-legend-modal) et liste des
+   entrées (demande de Martin, 2026-10-06). Réutilise .gen-relation-row
+   (déjà défini pour #gen-m-relations-list) pour chaque entrée. */
+#gen-legend-add-row { align-items: center; }
+#gen-legend-add-row input[type="color"] { width: 30px; height: 30px; padding: 0; border: none; border-radius: 6px; cursor: pointer; flex: none; }
+#gen-legend-add-row input[type="text"] { flex: 1; }
+#gen-legend-list { max-height: 260px; overflow-y: auto; margin-top: 8px; }
+#gen-custom-link-modal select { width: 100%; }
 
 .gen-photo-preview {
   width: 100%; height: 210px; border-radius: 10px; overflow: hidden; background: var(--surface-border);
