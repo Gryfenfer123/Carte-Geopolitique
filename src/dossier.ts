@@ -415,8 +415,19 @@ export function defaultHemicyclePartyRow(idx: number): HemicycleParty {
 
 function computeHemicycleRows(N: number): { rows: { radius: number; seats: number }[]; dotRadius: number } {
   if (!N || N <= 0) return { rows: [], dotRadius: 3.4 };
-  const rMax = 92;
   const minR = 14;
+  // BUG CORRIGÉ (2026-10-06, retour de Martin : "esthétique des points...
+  // à revoir pour les petits hémicycles, ex. Conseil de direction en
+  // Afghanistan") : rMax était fixe à 92 quel que soit N. Pour un petit
+  // hémicycle (quelques sièges), la boucle ci-dessous sort dès la 1ère
+  // itération (un seul arc de rayon 92 suffit largement à contenir, disons,
+  // 5 sièges) : les points gardaient alors leur taille maximale MAIS
+  // étalés sur un grand arc de 92 de rayon, avec un vide immense entre eux
+  // et le centre — rendu épars et disproportionné. On borne maintenant
+  // rMax en fonction de N (une rangée pleine d'environ 8-10 sièges
+  // occupant tout juste le rayon max) pour que les tout petits hémicycles
+  // se resserrent près du centre au lieu de s'étaler sur tout le widget.
+  const rMax = N >= 40 ? 92 : Math.max(minR + 8, Math.min(92, minR + N * 7));
   let dotRadius = 3.6;
   for (let attempt = 0; attempt < 30; attempt++) {
     const rowSpacing = dotRadius * 2 + 1.4;
@@ -847,7 +858,10 @@ export function initFicheDossierSystem(deps: {
 
     <div id="dossier-lightbox">
       <button id="dossier-lightbox-close" aria-label="Fermer">&times;</button>
-      <img id="dossier-lightbox-img" src="" alt="">
+      <div id="dossier-lightbox-img-wrap">
+        <img id="dossier-lightbox-img" src="" alt="">
+      </div>
+      <div id="dossier-lightbox-zoom-hint">Molette ou pincement pour zoomer · glisser pour déplacer · double-clic pour réinitialiser</div>
       <div id="dossier-lightbox-caption"></div>
     </div>
 
@@ -2373,17 +2387,98 @@ export function initFicheDossierSystem(deps: {
   });
 
   // -------------------------------------------------------------------------
-  // Lightbox photo
+  // Lightbox photo — zoom/déplacement ajoutés (2026-10-06, demande de
+  // Martin : "quand on fait une image indiv, pouvoir l'ouvrir, puis
+  // zoomer"). L'ouverture existait déjà (simple <img> ajustée à l'écran) ;
+  // on ajoute ici un zoom à la molette (ou pincement tactile via le même
+  // événement "wheel" sur la plupart des trackpads), un déplacement à la
+  // souris une fois zoomé, et un double-clic pour zoomer/dézoomer
+  // rapidement — pattern lightbox classique, tout en CSS transform (pas de
+  // dépendance externe).
   // -------------------------------------------------------------------------
+  const LIGHTBOX_MIN_ZOOM = 1;
+  const LIGHTBOX_MAX_ZOOM = 4;
+  let lbZoom = 1;
+  let lbPanX = 0;
+  let lbPanY = 0;
+  let lbDragging = false;
+  let lbDragStartX = 0;
+  let lbDragStartY = 0;
+  let lbPanStartX = 0;
+  let lbPanStartY = 0;
+
+  function applyLightboxTransform() {
+    const img = $("dossier-lightbox-img") as HTMLImageElement;
+    img.style.transform = `translate(${lbPanX}px, ${lbPanY}px) scale(${lbZoom})`;
+    img.style.cursor = lbZoom > 1 ? (lbDragging ? "grabbing" : "grab") : "zoom-in";
+  }
+  function resetLightboxZoom() {
+    lbZoom = 1;
+    lbPanX = 0;
+    lbPanY = 0;
+    applyLightboxTransform();
+  }
+  function setLightboxZoom(next: number, anchorClientX?: number, anchorClientY?: number) {
+    const img = $("dossier-lightbox-img") as HTMLImageElement;
+    const clamped = Math.max(LIGHTBOX_MIN_ZOOM, Math.min(LIGHTBOX_MAX_ZOOM, next));
+    if (clamped === LIGHTBOX_MIN_ZOOM) {
+      resetLightboxZoom();
+      return;
+    }
+    // Zoome en gardant le point sous le curseur/doigt visuellement fixe,
+    // plutôt qu'un zoom toujours centré sur l'image — bien plus confortable
+    // pour inspecter un détail précis (carte, texte sur une photo...).
+    if (anchorClientX !== undefined && anchorClientY !== undefined) {
+      const rect = img.getBoundingClientRect();
+      const cx = anchorClientX - (rect.left + rect.width / 2);
+      const cy = anchorClientY - (rect.top + rect.height / 2);
+      const ratio = clamped / lbZoom;
+      lbPanX = cx + (lbPanX - cx) * ratio;
+      lbPanY = cy + (lbPanY - cy) * ratio;
+    }
+    lbZoom = clamped;
+    applyLightboxTransform();
+  }
   function openLightbox(entry: Entry) {
     const box = $("dossier-lightbox");
     ($("dossier-lightbox-img") as HTMLImageElement).src = entry.photo_url || "";
     $("dossier-lightbox-caption").textContent = entry.caption || entry.title || "";
+    resetLightboxZoom();
     box.classList.add("open");
   }
   $("dossier-lightbox-close").addEventListener("click", () => $("dossier-lightbox").classList.remove("open"));
   $("dossier-lightbox").addEventListener("click", (e) => {
     if ((e.target as HTMLElement).id === "dossier-lightbox") $("dossier-lightbox").classList.remove("open");
+  });
+  const lbImg = $("dossier-lightbox-img") as HTMLImageElement;
+  lbImg.addEventListener("wheel", (e) => {
+    e.preventDefault();
+    setLightboxZoom(lbZoom * (e.deltaY < 0 ? 1.25 : 0.8), e.clientX, e.clientY);
+  }, { passive: false });
+  lbImg.addEventListener("dblclick", (e) => {
+    e.preventDefault();
+    setLightboxZoom(lbZoom > 1 ? 1 : 2.5, e.clientX, e.clientY);
+  });
+  lbImg.addEventListener("mousedown", (e) => {
+    if (lbZoom <= 1) return;
+    e.preventDefault();
+    lbDragging = true;
+    lbDragStartX = e.clientX;
+    lbDragStartY = e.clientY;
+    lbPanStartX = lbPanX;
+    lbPanStartY = lbPanY;
+    applyLightboxTransform();
+  });
+  window.addEventListener("mousemove", (e) => {
+    if (!lbDragging) return;
+    lbPanX = lbPanStartX + (e.clientX - lbDragStartX);
+    lbPanY = lbPanStartY + (e.clientY - lbDragStartY);
+    applyLightboxTransform();
+  });
+  window.addEventListener("mouseup", () => {
+    if (!lbDragging) return;
+    lbDragging = false;
+    applyLightboxTransform();
   });
 
   // -------------------------------------------------------------------------

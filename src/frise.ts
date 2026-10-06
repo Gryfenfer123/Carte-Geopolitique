@@ -69,10 +69,42 @@ type TimelineItemRow = {
 // événements à quelques années d'écart, raisonnable pour une frise courant
 // sur plusieurs siècles sans dézoomer à l'extrême.
 const PX_PER_YEAR = 6;
-const LANE_HEIGHT = 92;
 const POINT_W = 26;
 const ITEM_MIN_W = 36;
 const STAGE_TOP_PADDING = 70; // place pour la règle des années au-dessus des items
+
+// ---------------------------------------------------------------------------
+// REFONTE VISUELLE (2026-10-06, retour de Martin sur la 1ère version :
+// "ça ne va pas non plus, je veux un rendu un peu comme [son exemple :
+// une frise-bandeau façon infographie, pleine hauteur, DA soignée] — là
+// c'est ultra simple et basique... L'idée c'est d'avoir quelque chose de
+// très complet, avec les périodes qui apparaissent sur la frise sur toute
+// une hauteur, tous les événements qui sont rattachés par un tiret etc.")
+//
+// Nouvelle organisation verticale de la frise, du haut vers le bas :
+// 1. La règle des années (déjà existante, inchangée, voir renderRuler).
+// 2. Les PÉRIODES, en bandes pleine couleur :
+//    - voie 0 ("primaire") : grande bande (PERIOD_BAND_H_MAIN) — les
+//      grandes ères qui ne se chevauchent pas entre elles (ex. "Second
+//      Empire" puis "IIIe République").
+//    - voies 1+ ("secondaires") : bandes fines empilées JUSTE EN DESSOUS
+//      de la bande primaire (PERIOD_BAND_H_SUB) — pour une période plus
+//      courte qui chevauche une grande ère (ex. "Affaire Dreyfus" pendant
+//      la IIIe République), confirmé par Martin ("rangées empilées,
+//      recommandé"). assignLanes() (ci-dessous) priorise maintenant les
+//      périodes les plus LONGUES pour la voie 0, plutôt que l'ordre
+//      d'apparition — sinon une courte période déclarée avant une grande
+//      aurait pu "voler" la voie primaire.
+// 3. Les POINTS (événements ponctuels), tous alignés sur une même ligne de
+//    base sous l'empilement de bandes, chacun relié à cette ligne par un
+//    petit tiret vertical (":before" en CSS) — exactement la mise en page
+//    "repères + tirets + dates" de l'exemple de Martin.
+// ---------------------------------------------------------------------------
+const PERIOD_BAND_TOP = STAGE_TOP_PADDING;
+const PERIOD_BAND_H_MAIN = 150; // bande "primaire" (voie 0), pleine hauteur façon bandeau
+const PERIOD_BAND_H_SUB = 40; // bandes secondaires empilées (voie 1, 2, ...)
+const POINTS_GAP_ABOVE = 46; // espace entre le bas de la pile de bandes et la ligne des points
+const POINT_TICK_H = 26; // hauteur du tiret vertical reliant un point à la ligne de base
 
 function escapeHtml(str: string): string {
   return str
@@ -269,23 +301,93 @@ export function initTimelineSystem(deps: {
     if (!items.length) $("timeline-empty-hint").style.display = "";
   }
 
-  // Évite que deux étapes qui se chevauchent en années se superposent à
-  // l'écran : greedy, items triés par début, chaque item va dans la
-  // première "voie" (lane) libre à ce moment-là (comme un diagramme de
-  // Gantt simple).
-  function assignLanes() {
-    laneOf.clear();
+  // Répartit les PÉRIODES en voies empilées quand elles se chevauchent
+  // dans le temps (demande de Martin, "rangées empilées" — voir le
+  // commentaire d'en-tête sur la refonte visuelle). Les POINTS n'occupent
+  // plus de voie : ils s'alignent tous sur une même ligne sous la pile de
+  // bandes (voir renderItems).
+  //
+  // Deux niveaux, pas un simple balayage chronologique classique (voir
+  // plus bas pourquoi) :
+  // - "PRIMAIRES" (voie(s) 0, grande bande) : une période est primaire si
+  //   AUCUNE autre période de la frise ne la contient entièrement dans le
+  //   temps (ex. "IIIe République", "Second Empire" — même courtes, tant
+  //   qu'elles ne sont imbriquées dans rien).
+  // - "IMBRIQUÉES" (voies 1+, bandes fines empilées) : une période
+  //   imbriquée DANS une autre (ex. "Affaire Dreyfus" pendant la "IIIe
+  //   République") — confirmé par Martin ("rangées empilées").
+  // Chaque groupe est ensuite réparti en voies via le balayage glouton
+  // standard (trié par date de DÉBUT, pas par durée — un balayage par
+  // durée casse la détection des voies libres : un essai précédent
+  // triait par durée décroissante, ce qui faisait croire qu'une voie
+  // était "occupée jusqu'à l'an X" même quand plus rien ne l'occupait
+  // réellement à l'année considérée, et décalait des périodes qui ne se
+  // chevauchent pourtant pas du tout).
+  // `buffer` : marge (en années) en dessous de laquelle deux items sont
+  // considérés comme "se touchant" et vont dans des voies différentes.
+  // 0 pour les bandes PRIMAIRES : deux ères qui se suivent exactement
+  // (Restauration se termine en 1830, Monarchie de Juillet commence en
+  // 1830) doivent former un seul bandeau continu sur la MÊME rangée —
+  // façon infographie — pas être décalées en escalier. 6 pour les voies
+  // imbriquées (bandes fines) où une petite marge reste utile pour la
+  // lisibilité du texte.
+  function sweepLanes(group: TimelineItemRow[], buffer: number): Map<string, number> {
+    const result = new Map<string, number>();
     const laneEndYear: number[] = [];
-    const sorted = items.slice().sort((a, b) => a.start_year - b.start_year);
+    const sorted = group.slice().sort((a, b) => a.start_year - b.start_year);
     sorted.forEach((it) => {
-      const endY = it.kind === "period" && it.end_year != null ? it.end_year : it.start_year;
+      const endY = it.end_year ?? it.start_year;
       let lane = 0;
       for (; lane < laneEndYear.length; lane++) {
-        if (laneEndYear[lane] + 6 < it.start_year) break;
+        if (laneEndYear[lane] + buffer <= it.start_year) break;
       }
       laneEndYear[lane] = endY;
-      laneOf.set(it.id, lane);
+      result.set(it.id, lane);
     });
+    return result;
+  }
+  let primaryLaneCount = 1; // toujours au moins 1 : la hauteur réservée à la bande primaire ne doit jamais s'effondrer à 0
+  function assignLanes() {
+    laneOf.clear();
+    const periods = items.filter((it) => it.kind === "period");
+    function containsOther(a: TimelineItemRow, b: TimelineItemRow): boolean {
+      const aEnd = a.end_year ?? a.start_year;
+      const bEnd = b.end_year ?? b.start_year;
+      return a.start_year <= b.start_year && aEnd >= bEnd && (a.start_year < b.start_year || aEnd > bEnd);
+    }
+    const nested = periods.filter((it) => periods.some((other) => other.id !== it.id && containsOther(other, it)));
+    const primary = periods.filter((it) => !nested.includes(it));
+
+    const primaryLanes = sweepLanes(primary, 0);
+    primaryLanes.forEach((lane, id) => laneOf.set(id, lane));
+    let maxPrimaryLane = -1;
+    primaryLanes.forEach((lane) => {
+      if (lane > maxPrimaryLane) maxPrimaryLane = lane;
+    });
+    primaryLaneCount = Math.max(1, maxPrimaryLane + 1); // toujours ≥1 : réserve la hauteur de la bande primaire même sans période primaire
+
+    const nestedLanes = sweepLanes(nested, 6);
+    nestedLanes.forEach((lane, id) => laneOf.set(id, primaryLaneCount + lane));
+  }
+  // Nombre de voies secondaires (imbriquées) actuellement utilisées —
+  // détermine où placer la ligne des points, en dessous de TOUTE la pile
+  // de bandes quel que soit l'endroit où elle est la plus haute sur
+  // l'axe des années.
+  function maxSubLaneCount(): number {
+    let max = 0;
+    laneOf.forEach((lane) => {
+      const sub = lane - primaryLaneCount + 1;
+      if (sub > max) max = sub;
+    });
+    return max;
+  }
+  function periodBandTop(lane: number): number {
+    return lane < primaryLaneCount
+      ? PERIOD_BAND_TOP + lane * PERIOD_BAND_H_MAIN
+      : PERIOD_BAND_TOP + primaryLaneCount * PERIOD_BAND_H_MAIN + (lane - primaryLaneCount) * PERIOD_BAND_H_SUB;
+  }
+  function pointsBaselineTop(): number {
+    return PERIOD_BAND_TOP + primaryLaneCount * PERIOD_BAND_H_MAIN + maxSubLaneCount() * PERIOD_BAND_H_SUB + POINTS_GAP_ABOVE;
   }
 
   function xForYear(year: number): number {
@@ -317,37 +419,94 @@ export function initTimelineSystem(deps: {
 
   function renderItems() {
     itemsLayer.innerHTML = "";
-    items.forEach((it) => {
-      const lane = laneOf.get(it.id) || 0;
-      const top = lane * LANE_HEIGHT;
+    const baselineTop = pointsBaselineTop();
+    // Trié pour que les points se rendent APRÈS les bandes de période dans
+    // le DOM (empile correctement au survol/clic) — l'ordre des voies n'a
+    // pas d'importance pour les périodes entre elles, le positionnement
+    // left/top fait tout le travail visuel.
+    const ordered = items.slice().sort((a, b) => (a.kind === b.kind ? 0 : a.kind === "period" ? -1 : 1));
+    ordered.forEach((it) => {
       const link = effectiveLink(it);
       const card = document.createElement("div");
       card.dataset.itemId = it.id;
-      card.style.top = top + "px";
-      card.style.borderColor = it.color || "var(--accent)";
       if (it.kind === "point") {
+        // Point (événement ponctuel) : un petit repère sur la ligne de
+        // base commune à TOUS les points (sous l'empilement de bandes de
+        // période), relié à cette ligne par un tiret vertical — même
+        // disposition que l'exemple de Martin ("1815 Napoléon exilé...").
         const x = xForYear(it.start_year);
         card.className = "tl-item tl-item-point" + (link ? " tl-item-linked" : "");
         card.style.left = x - POINT_W / 2 + "px";
+        card.style.top = baselineTop + "px";
         card.style.width = POINT_W + "px";
+        card.style.setProperty("--tl-tick-h", POINT_TICK_H + "px");
         card.innerHTML =
+          '<div class="tl-point-tick" style="background:' + escapeHtml(it.color || "var(--accent)") + ';"></div>' +
           '<div class="tl-point-dot" style="background:' + escapeHtml(it.color || "var(--accent)") + ';"></div>' +
           '<div class="tl-point-label">' + escapeHtml(it.title) + '<span class="tl-item-date">' + escapeHtml(dateLabelOrYears(it)) + "</span></div>";
       } else {
+        // Période : bande pleine couleur. Voie(s) primaire(s) = grande(s)
+        // bande(s) (façon bandeau d'ère, une période non imbriquée dans
+        // aucune autre) ; voies imbriquées = bandes fines empilées en
+        // dessous (une période contenue dans une autre, ex. "Affaire
+        // Dreyfus" dans "IIIe République") — voir assignLanes/
+        // periodBandTop pour le calcul des voies.
+        const lane = laneOf.get(it.id) || 0;
+        const isPrimary = lane < primaryLaneCount;
+        const top = periodBandTop(lane);
+        const h = isPrimary ? PERIOD_BAND_H_MAIN : PERIOD_BAND_H_SUB;
         const x1 = xForYear(it.start_year);
         const x2 = xForYear(it.end_year ?? it.start_year);
         const w = Math.max(ITEM_MIN_W, x2 - x1);
-        card.className = "tl-item tl-item-period" + (link ? " tl-item-linked" : "");
+        card.className = "tl-item tl-item-period" + (isPrimary ? " tl-item-period-main" : " tl-item-period-sub") + (link ? " tl-item-linked" : "");
         card.style.left = x1 + "px";
+        card.style.top = top + "px";
         card.style.width = w + "px";
+        card.style.height = h + "px";
+        card.style.background = it.color || "var(--accent)";
         card.innerHTML =
-          '<div class="tl-period-bar" style="background:' + escapeHtml(it.color || "var(--accent)") + ';"></div>' +
-          '<div class="tl-period-label">' + escapeHtml(it.title) + '<span class="tl-item-date">' + escapeHtml(dateLabelOrYears(it)) + "</span></div>" +
+          '<div class="tl-period-label">' + escapeHtml(it.title) + '</div>' +
+          '<div class="tl-item-date">' + escapeHtml(dateLabelOrYears(it)) + "</div>" +
           '<div class="tl-handle tl-handle-l" data-handle="start"></div>' +
           '<div class="tl-handle tl-handle-r" data-handle="end"></div>';
       }
       itemsLayer.appendChild(card);
       attachItemInteractions(card, it);
+    });
+    fitPeriodLabels();
+  }
+
+  // Les bandes primaires portent le texte DANS leur largeur (c'est elles
+  // qui ont le fond coloré — contrairement aux sous-bandes, voir le
+  // commentaire CSS de .tl-item-period-sub). Une ère courte (quelques
+  // décennies à l'échelle du zoom courant) peut être trop étroite pour son
+  // titre en capitales — on réduit alors progressivement le corps du texte
+  // jusqu'à ce qu'il tienne, plutôt que de le laisser déborder/se faire
+  // tronquer par l'overflow:hidden de la bande (ex. "RESTAURATION" coupé
+  // en "ESTAURATIO").
+  function fitPeriodLabels() {
+    const MIN_FONT = 9;
+    itemsLayer.querySelectorAll<HTMLDivElement>(".tl-item-period-main").forEach((card) => {
+      const label = card.querySelector<HTMLDivElement>(".tl-period-label");
+      if (!label) return;
+      label.style.fontSize = "";
+      let size = parseFloat(getComputedStyle(label).fontSize);
+      let guard = 0;
+      // Largeur : grâce à align-self:stretch + overflow-wrap:anywhere
+      // (style.css), le label passe normalement à la ligne au lieu de
+      // déborder — mais un titre très long sur une bande très étroite
+      // peut quand même déborder en hauteur une fois enroulé (la bande a
+      // une hauteur fixe, voir PERIOD_BAND_H_MAIN) : on réduit alors la
+      // taille jusqu'à ce que le contenu tienne dans les deux axes.
+      while (
+        (label.scrollWidth > label.clientWidth + 1 || card.scrollHeight > card.clientHeight + 1) &&
+        size > MIN_FONT &&
+        guard < 20
+      ) {
+        size -= 1;
+        label.style.fontSize = size + "px";
+        guard++;
+      }
     });
   }
 

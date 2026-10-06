@@ -236,6 +236,12 @@ export async function exportMapAsPng(opts: {
   svgEl: SVGSVGElement;
   showBanner: (text: string) => void;
 }) {
+  // Couture visible entre tuiles au PNG (voir style.css::.export-tile-fix) :
+  // corrigé en 2026-10-03 en surdimensionnant chaque tuile de 1px, mais ça
+  // restait actif en permanence à l'écran (bug signalé par Martin le
+  // 2026-10-06, "on voit les tuiles sur la carte tout le temps"). On
+  // n'active donc plus cette classe que le temps de la capture ci-dessous.
+  opts.mapEl.classList.add("export-tile-fix");
   try {
     const canvas = await html2canvas(opts.mapEl, {
       useCORS: true,
@@ -251,6 +257,8 @@ export async function exportMapAsPng(opts: {
   } catch (err) {
     console.error("Export PNG échoué, repli sur l'export SVG :", err);
     downloadSvgFallback(opts.svgEl, opts.showBanner);
+  } finally {
+    opts.mapEl.classList.remove("export-tile-fix");
   }
 }
 

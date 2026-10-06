@@ -91,7 +91,7 @@ app.innerHTML = `
     <button type="button" id="legend-expand-btn" class="panel" title="Afficher la légende" aria-label="Afficher la légende">&#43;</button>
 
     <div id="search" class="panel">
-      <input id="search-input" type="text" placeholder="Rechercher un pays…" autocomplete="off">
+      <input id="search-input" type="text" placeholder="Recherche…" autocomplete="off">
       <div id="search-results"></div>
     </div>
 
@@ -457,6 +457,15 @@ const map = L.map("map", {
   minZoom: 2,
   maxZoom: 12,
   worldCopyJump: true,
+  // Bornes verticales du pan (retour de Martin, 2026-10-06 : "bordures de
+  // carte à limiter, éviter qu'on puisse aller à l'infini en haut et en
+  // bas"). On garde `worldCopyJump` (défilement horizontal infini autour
+  // du globe, confortable sur un planisphère) mais on borne le pan
+  // vertical aux pôles — au-delà il n'y a plus de données à montrer. Marge
+  // de part et d'autre de ±180° en longitude (plutôt que pile ±180) pour
+  // ne pas gêner worldCopyJump près de la ligne de changement de date.
+  maxBounds: L.latLngBounds(L.latLng(-85, -200), L.latLng(85, 200)),
+  maxBoundsViscosity: 0.8,
   // Pas de contrôle Leaflet natif : les boutons +/-/réinitialiser et le
   // sélecteur de fond de carte sont les nôtres (#controls, #style-switch),
   // câblés plus bas, pour reprendre exactement le même habillage/placement

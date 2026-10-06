@@ -160,15 +160,19 @@ main.map-wrap {
 /* Agrandit chaque tuile de fond de carte de 1px (sur les 2 axes) pour que
    les tuiles adjacentes se chevauchent très légèrement — masque la couture
    visible entre tuiles lors de l'export PNG (demande de Martin,
-   2026-10-03, "quand on exporte la carte en image c'est bug"). Sans
-   incidence visuelle à l'écran normal.
-   NOTE : ciblé directement sur .leaflet-tile (la classe que Leaflet pose
-   sur chaque <img> de tuile) et non sur un className custom passé à
-   L.tileLayer() — cette option-là s'applique au <div> conteneur de la
-   couche entière, pas à chaque tuile individuellement (vérifié en
-   testant dans un vrai navigateur ; corrige une première tentative qui
-   ne faisait rien). */
-.leaflet-tile { width: 257px !important; height: 257px !important; }
+   2026-10-03, "quand on exporte la carte en image c'est bug").
+   BUG CORRIGÉ (2026-10-06, retour de Martin : "on voit les tuiles sur la
+   carte tout le temps, c'est gênant") : cette règle était appliquée EN
+   PERMANENCE sur .leaflet-tile, alors que le commentaire d'origine la
+   disait "sans incidence à l'écran normal" — en réalité, agrandir chaque
+   tuile de 257px au lieu de 256px SANS la repositionner en overlap
+   (pas de margin/transform négatif compensatoire) décale son coin
+   bas-droit de 1px en continu, ce qui créait une grille visible en
+   permanence, pas seulement à l'export. Corrigé en ne l'activant que
+   PENDANT l'export PNG, via la classe temporaire .export-tile-fix posée
+   sur #map juste avant html2canvas et retirée juste après (voir
+   compareExport.ts::exportMapAsPng) — jamais visible en usage normal. */
+#map.export-tile-fix .leaflet-tile { width: 257px !important; height: 257px !important; }
 
 /* Couche SVG (D3) superposée aux tuiles pour les frontières et tous les
    futurs calques (ports, câbles, pipelines, hémicycles...). */
@@ -512,6 +516,20 @@ main.map-wrap {
    --------------------------------------------------------------------- */
 .disputed-outline {
   fill: transparent;
+  /* BUG CORRIGÉ (2026-10-06, retour de Martin : "il faut le nom du
+     territoire contesté au survol, ex. Sahara occidental, Crimée,
+     Cachemire — et non le nom du pays") : un remplissage `transparent`
+     n'est PAS considéré "peint" par le test de survol SVG par défaut
+     (pointer-events: visiblePainted) — seul le TRAIT de contour recevait
+     le survol, pas l'intérieur du territoire. La souris "retombait" donc
+     sur le calque pays en dessous (gLand) dès qu'on n'était pas pile sur
+     le trait, affichant le nom du pays entier au lieu de celui du
+     territoire contesté. `pointer-events: visibleFill` fait compter le
+     remplissage pour le survol même transparent, sans changer son rendu
+     visuel (toujours invisible, juste le contour reste visible) — ce
+     calque étant dessiné APRÈS gLand (voir main.ts, ordre d'ajout des
+     groupes SVG), il passe maintenant prioritaire sur toute sa surface. */
+  pointer-events: visibleFill;
   stroke: var(--disputed-line);
   stroke-width: 0.9px;
   cursor: pointer;
@@ -833,9 +851,24 @@ main.map-wrap {
 #historical-toolbar { display: flex; align-items: center; gap: 10px; flex: 1 1 auto; min-width: 220px; }
 #historical-slider { flex: 1 1 auto; }
 #historical-slider-year { font-family: "Fraunces", serif; font-size: 14px; color: var(--accent); min-width: 72px; text-align: right; }
+/* Chargement du GeoJSON de l'année sélectionnée (voir historicalMap.ts::
+   renderYear/showLoading) — petit indicateur textuel discret plutôt qu'un
+   spinner séparé, le temps du fetch (~1 Mo par année, voir le commentaire
+   d'en-tête du fichier). */
+#historical-slider-year.loading { opacity: 0.55; }
+#historical-slider-year.loading::after { content: " ⋯"; }
 #historical-map-container { flex: 1; position: relative; }
 #historical-slider-hint { font-size: 10.5px; padding: 6px 20px; border-top: 1px solid var(--surface-border); margin: 0; }
 #historical-slider-hint a { color: var(--accent); }
+#historical-slider-hint-error { color: #e35c50; margin-bottom: 4px; }
+/* Tooltip de survol d'un territoire (nom seul, pas de clic → fiche pour
+   l'instant, voir l'en-tête de historicalMap.ts) — habillage cohérent
+   avec le reste de l'app plutôt que le style Leaflet par défaut. */
+.historical-tooltip {
+  background: var(--surface); color: var(--text); border: 1px solid var(--surface-border);
+  border-radius: 5px; font-family: "IBM Plex Sans", sans-serif; font-size: 12px; padding: 3px 8px;
+}
+.historical-tooltip::before { display: none; }
 
 #source {
   /* BUG (2026-10-03, re-signalé par Martin : "les menus chevauchent le
@@ -1529,7 +1562,21 @@ li.rt-check[data-checked="true"]:after {
   align-items: center; justify-content: center; flex-direction: column; padding: 30px;
 }
 #dossier-lightbox.open { display: flex; }
-#dossier-lightbox img { max-width: 100%; max-height: 78vh; border-radius: 6px; box-shadow: 0 20px 60px rgba(0,0,0,0.5); }
+/* Zoom/déplacement (2026-10-06, demande de Martin) — voir
+   dossier.ts::openLightbox et les écouteurs wheel/dblclick/mousedown juste
+   en dessous : `overflow: hidden` sur le conteneur recadre l'image une
+   fois zoomée (sinon elle déborderait de l'écran), et transform-origin
+   "center center" fait correspondre le calcul de setLightboxZoom (centré
+   sur le milieu de l'image avant d'ajuster pour l'ancrage souris). Pas de
+   transition CSS sur transform : au zoom/déplacement continu (molette,
+   glisser), une transition ajouterait un délai perceptible et désynchro-
+   niserait l'image du curseur. */
+#dossier-lightbox-img-wrap { overflow: hidden; max-width: 100%; max-height: 78vh; display: flex; align-items: center; justify-content: center; }
+#dossier-lightbox img {
+  max-width: 100%; max-height: 78vh; border-radius: 6px; box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+  transform-origin: center center; user-select: none; -webkit-user-drag: none;
+}
+#dossier-lightbox-zoom-hint { color: var(--text-dim); font-size: 10.5px; margin-top: 8px; }
 #dossier-lightbox-caption { color: var(--text); margin-top: 14px; font-size: 13.5px; text-align: center; max-width: 640px; }
 #dossier-lightbox-close { position: absolute; top: 18px; right: 20px; color: var(--text); background: none; border: none; font-size: 22px; cursor: pointer; }
 
@@ -2107,30 +2154,112 @@ path.link-autre { stroke: var(--link-autre, #c9bfa9); }
 #timeline-items { position: absolute; left: 0; top: 0; }
 #timeline-empty-hint { position: absolute; left: 50%; top: 55%; transform: translate(-50%, -50%); pointer-events: none; }
 
+/* ---------------------------------------------------------------------
+   REFONTE VISUELLE (2026-10-06, retour de Martin : "ça ne va pas, je veux
+   un rendu [...] avec les périodes qui apparaissent sur la frise sur
+   toute une hauteur [...] Avec une DA beaucoup moins IA, quelque chose de
+   vraiment bien fait" — référence donnée : une frise-bandeau façon
+   infographie, bandes pleine couleur sur toute la hauteur pour les
+   grandes ères, sous-bandes fines empilées pour les périodes imbriquées
+   (ex. "Affaire Dreyfus" dans "IIIe République"), événements ponctuels
+   alignés sous la frise et reliés par un tiret vertical).
+   Voir frise.ts (PERIOD_BAND_TOP/PERIOD_BAND_H_MAIN/PERIOD_BAND_H_SUB/
+   POINTS_GAP_ABOVE/POINT_TICK_H + assignLanes/periodBandTop/
+   pointsBaselineTop) pour tout le calcul de position ; ce bloc CSS ne
+   fait que l'habillage des mêmes classes .tl-item-* qu'avant (JS
+   d'interaction — drag, resize, clic — inchangé).
+   --------------------------------------------------------------------- */
 .tl-item {
   position: absolute; box-sizing: border-box; cursor: pointer; user-select: none;
 }
-.tl-item-point { height: 64px; text-align: center; }
-.tl-point-dot {
-  width: 18px; height: 18px; margin: 0 auto 4px; border-radius: 50%;
-  border: 2px solid var(--surface); box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+
+/* --- Bandes de période -------------------------------------------------- */
+.tl-item-period {
+  display: flex; flex-direction: column; justify-content: center; align-items: center;
+  text-align: center; padding: 0 10px; overflow: hidden;
+  box-shadow: inset 0 0 0 1px rgba(0,0,0,0.18), 0 6px 18px rgba(0,0,0,0.3);
+  transition: filter 120ms ease;
 }
-.tl-point-label, .tl-period-label {
-  font-size: 12px; font-weight: 600; color: var(--text); white-space: nowrap;
-  background: var(--surface); border: 1px solid var(--surface-border); border-radius: 7px;
-  padding: 4px 8px; display: inline-block; max-width: 260px; overflow: hidden; text-overflow: ellipsis;
+.tl-item-period:hover { filter: brightness(1.08); }
+/* Voie primaire (lane 0) — la grande bande "bandeau d'ère" : typo large,
+   capitales, look d'infographie plutôt qu'une carte UI classique. */
+.tl-item-period-main {
+  border-right: 2px solid rgba(0,0,0,0.25);
 }
-.tl-item-point:hover .tl-point-label, .tl-item-period:hover .tl-period-label { border-color: var(--accent); }
-.tl-item-date { display: block; font-size: 10.5px; font-weight: 500; color: var(--text-dim); margin-top: 1px; }
-.tl-item-period { height: 44px; }
-.tl-period-bar { height: 14px; border-radius: 7px; box-shadow: 0 2px 8px rgba(0,0,0,0.35); }
-.tl-period-label { margin-top: 4px; }
+.tl-item-period-main .tl-period-label {
+  font-family: "Fraunces", serif; font-weight: 700; font-size: 15px;
+  text-transform: uppercase; letter-spacing: 0.03em; line-height: 1.25;
+  color: #1a1308; text-shadow: 0 1px 0 rgba(255,255,255,0.18);
+  /* align-items:center sur .tl-item-period fait que ce label se
+     dimensionne par défaut à son contenu (shrink-to-fit) et ignore donc
+     la largeur réelle de la bande — on force ici sa largeur à celle du
+     conteneur (moins son padding) pour qu'il puisse réellement passer à
+     la ligne / se faire réduire par fitPeriodLabels() (frise.ts) au lieu
+     de déborder et d'être tronqué par overflow:hidden. */
+  align-self: stretch; overflow-wrap: anywhere; word-break: break-word;
+}
+.tl-item-period-main .tl-item-date {
+  font-family: "Fraunces", serif; font-size: 11.5px; font-weight: 600;
+  color: rgba(26,19,8,0.72); margin-top: 5px;
+}
+/* Voies secondaires (lane 1+) — sous-bandes fines empilées pour une
+   période qui en chevauche une plus large (demande de Martin : "rangées
+   empilées, comme l'Affaire Dreyfus sous la IIIe République"). Flèche
+   double (↔) au lieu d'un simple tiret entre les dates, façon repère
+   "parenthèse temporelle" plutôt qu'une bande pleine comme la primaire. */
+.tl-item-period-sub {
+  flex-direction: row; gap: 8px; border-top: 1px solid rgba(0,0,0,0.2);
+  background: transparent !important; box-shadow: none; color: var(--text);
+  /* Contrairement à la bande primaire (dont le texte doit rester DANS sa
+     largeur, puisque c'est elle qui porte la couleur de remplissage), une
+     sous-bande n'est qu'un repère de positionnement : si la période est
+     courte (quelques années = quelques dizaines de px), le texte doit
+     pouvoir déborder visiblement de part et d'autre plutôt qu'être
+     tronqué — les deux traits ::before/::after s'étirent alors pour
+     remplir l'espace réellement laissé libre. */
+  overflow: visible;
+}
+.tl-item-period-sub::before,
+.tl-item-period-sub::after {
+  content: ""; flex: 1 1 0; height: 1px; background: currentColor; opacity: 0.55; align-self: center;
+  min-width: 6px;
+}
+.tl-item-period-sub .tl-period-label {
+  font-size: 12px; font-weight: 600; white-space: nowrap;
+  color: var(--text);
+}
+.tl-item-period-sub .tl-item-date { font-size: 10.5px; color: var(--text-dim); white-space: nowrap; }
+.tl-item-period-sub:hover { filter: none; background: rgba(255,255,255,0.04) !important; }
+
 .tl-handle {
-  position: absolute; top: 0; width: 8px; height: 14px; cursor: ew-resize;
-  background: rgba(255,255,255,0.25); border-radius: 3px;
+  position: absolute; top: 0; bottom: 0; width: 9px; cursor: ew-resize;
+  background: rgba(255,255,255,0.22);
 }
-.tl-handle-l { left: -2px; }
-.tl-handle-r { right: -2px; }
+.tl-item-period-main .tl-handle { background: rgba(0,0,0,0.18); }
+.tl-handle-l { left: 0; }
+.tl-handle-r { right: 0; }
+
+/* --- Points (événements ponctuels) -------------------------------------
+   Alignés sur une même ligne de base sous la pile de bandes
+   (pointsBaselineTop() dans frise.ts), chacun relié à cette ligne par un
+   tiret vertical — demande explicite de Martin ("tous les événements
+   rattachés par un tiret"). */
+.tl-item-point { height: auto; text-align: center; }
+.tl-point-tick {
+  width: 2px; height: var(--tl-tick-h, 26px); margin: 0 auto; opacity: 0.85;
+}
+.tl-point-dot {
+  width: 11px; height: 11px; margin: -1px auto 7px; border-radius: 50%;
+  border: 2px solid var(--surface); box-shadow: 0 2px 6px rgba(0,0,0,0.4);
+}
+.tl-point-label {
+  font-size: 12px; font-weight: 600; color: var(--text); white-space: normal;
+  display: block; max-width: 150px; line-height: 1.3;
+}
+.tl-item-point:hover .tl-point-label { color: var(--accent); }
+.tl-item-date { display: block; font-size: 10.5px; font-weight: 500; color: var(--text-dim); margin-top: 2px; }
+.tl-item-point .tl-item-date { margin-top: 3px; }
+
 /* Un item lié (automatiquement par nom ou manuellement, voir
    effectiveLink/frise.ts) porte un petit indicateur 📄 avant son titre —
    purement visuel, le clic ouvre toujours le panneau d'abord (cohérent

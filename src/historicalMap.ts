@@ -4,127 +4,136 @@
 // bouton en bas qui fait basculer en 'vue historique' et qui permet ensuite
 // avec un curseur d'afficher l'époque souhaitée."
 //
-// Recherche technique menée avant ce fichier (voir la conversation) :
-// plusieurs sources de frontières historiques ont été comparées
-// (OpenHistoricalMap, historical-basemaps/aourednik, AtlasPI, Running
-// Reality). Martin a choisi explicitement la vraie continuité date par
-// date (plutôt que des instantanés figés tous les quelques siècles), ce
-// qui ne laisse qu'OpenHistoricalMap (OHM) comme source sérieuse : chaque
-// élément y porte un start_date/end_date (ou leur équivalent numérique
-// start_decdate/end_decdate) qui couvre n'importe quelle date, pas
-// seulement une liste d'années prédéfinies.
+// HISTORIQUE DE CE FICHIER (pour comprendre pourquoi c'est écrit ainsi) :
+// v1 (2026-10-06) : OpenHistoricalMap (OHM) en tuiles vectorielles
+// continues (Leaflet.VectorGrid). Deux problèmes réels remontés par
+// Martin : (a) un bug d'affichage (couches non filtrées de la tuile OHM
+// dessinées en centaines de petits cercles, corrigé une première fois)
+// puis (b) un problème de FOND : "c'est le fond de carte des pays
+// actuels" (le fond Esri Dark Gray montrait les frontières modernes sous
+// les tracés historiques) ET surtout "OpenHistoricalMap est incomplet
+// niveau frontière" — un problème de SOURCE DE DONNÉES, pas de code :
+// OHM est un projet communautaire façon OpenStreetMap, et sa couverture
+// en tracés de frontières historiques est pleine de trous.
 //
-// Contrainte technique importante : OHM distribue ses données en TUILES
-// VECTORIELLES (protobuf/MVT, https://vtiles.openhistoricalmap.org/...),
-// pensées pour être affichées avec MapLibre GL JS, qui a son propre plugin
-// officiel de filtre par date (maplibre-gl-dates). Cet atlas est construit
-// sur Leaflet (pas MapLibre) — migrer tout l'atlas vers MapLibre pour une
-// seule couche aurait été un chantier énorme et risqué pour l'existant, on
-// reste donc sur Leaflet (confirmé par Martin) via le plugin
-// Leaflet.VectorGrid, qui sait afficher des tuiles protobuf dans Leaflet.
-// En contrepartie, il n'existe PAS d'équivalent "clé en main" du filtre par
-// date pour Leaflet.VectorGrid : toute la logique de filtrage ci-dessous
-// (lecture de start_decdate/end_decdate sur chaque feature, masquage de
-// celles hors de la date choisie) est donc recodée nous-mêmes à partir de
-// la façon dont procède le plugin officiel MapLibre.
+// v2 (ce fichier) : recherche menée (voir la conversation) pour trouver
+// une alternative plus complète. Euratlas (dataset professionnel très
+// précis) a été écarté : Europe uniquement, et payant à l'unité (160€ PAR
+// SIÈCLE acheté séparément — des milliers d'euros pour couvrir l'an 1 à
+// 2000 sur le monde entier, inenvisageable). La seule alternative
+// gratuite, à l'échelle mondiale et avec des tracés propres et fiables
+// (contrairement à OHM) est le jeu de données "historical-basemaps"
+// (github.com/aourednik/historical-basemaps, licence GPL-3.0) — en
+// contrepartie, ce n'est PAS un curseur continu année par année : les
+// données n'existent que pour 54 années fixes (de -123000 à 2010,
+// réparties ci-dessous dans HISTORICAL_YEARS), listées dans le
+// index.json du dépôt. Martin a validé cette bascule explicitement
+// ("Bon on part sur historical basemap pour le moment en version test",
+// 2026-10-06) en connaissance de cette limite.
 //
-// REFONTE (2026-10-06, retour de Martin après un premier essai) : la
-// version initiale ajoutait la couche OHM directement SUR la carte
-// principale (deps.map). Deux problèmes réels en sont sortis :
-// 1. Un déluge de centaines de petits cercles bleus recouvrant toute la
-//    carte, puis un plantage du site. Cause : les tuiles OHM empilent
-//    PLUSIEURS couches (points, routes, lieux...) en plus de la couche de
-//    territoires qui nous intéresse (land_ohm_lines) — on ne stylait que
-//    cette dernière, et Leaflet.VectorGrid dessine toutes les AUTRES
-//    couches non listées avec un style par défaut (des petits cercles),
-//    une par point/feature, par milliers de tuiles → explosion du nombre
-//    d'éléments DOM/canvas. Corrigé ci-dessous avec un Proxy JS qui
-//    masque explicitement toute couche autre que land_ohm_lines, quel que
-//    soit son nom (on ne connaît pas la liste exhaustive des couches OHM
-//    à l'avance).
-// 2. La couche se superposait à l'interactivité déjà en place sur la
-//    carte principale (clic pays, POI...), ce qui entrait en conflit.
-// Comme suggéré par Martin, la vue historique est donc maintenant une
-// page séparée en plein écran (même famille que #timeline-view pour les
-// frises) avec sa PROPRE instance Leaflet, totalement indépendante de la
-// carte principale — plus aucun risque d'interférence. L'interactivité
-// clic-territoire → fiche (prévue, voir openAt ci-dessous pour le sens
-// inverse) reste volontairement désactivée pour l'instant
-// (interactive: false) le temps de valider que ce socle est stable ; elle
-// sera ajoutée dans une étape suivante une fois ce premier rendu
-// confirmé correct par Martin.
+// Conséquence sur l'UI : le curseur n'est plus un <input type=range> en
+// unité "année" (ça donnerait l'illusion d'un choix continu alors que la
+// donnée ne l'est pas) mais en unité "INDEX dans la liste des 54 années
+// disponibles" — l'étiquette affiche l'année réelle correspondante. Plus
+// honnête pour l'utilisateur, et ça évite d'avoir à calculer/afficher un
+// "repli sur l'année la plus proche" invisible.
 //
-// Pattern du fichier : initHistoricalMapSystem(), même esprit que les
-// autres modules plein écran (frise.ts, genealogy.ts) — DOM construit une
-// fois, état en closures, overlay propre géré entièrement ici (main.ts
-// n'a plus besoin de lui passer la carte principale).
+// "Version test" (mot de Martin) : les fichiers GeoJSON sont chargés à la
+// volée depuis raw.githubusercontent.com (CDN de GitHub, CORS ouvert,
+// pas de clé requise) plutôt que copiés dans ce dépôt — rapide à mettre
+// en place, facile à remplacer par une autre source plus tard sans
+// toucher au reste du code (toute la logique de ce fichier ne dépend que
+// de HISTORICAL_YEARS[i].filename et du format GeoJSON standard
+// {NAME, SUBJECTO, BORDERPRECISION, PARTOF} de ce dataset).
+//
+// Fond de carte : remplacé par un fond "physique" (relief/océans, SANS
+// frontières ni noms de pays modernes — Esri World_Physical_Map, même
+// famille Esri déjà utilisée ailleurs dans l'app, gratuit, sans clé),
+// conformément au retour de Martin ("fond neutre océan/relief").
+//
+// Reste de l'architecture (page plein écran séparée avec sa propre carte
+// Leaflet, indépendante de la carte principale) inchangée depuis la
+// refonte précédente — voir l'historique Git/les livraisons précédentes
+// pour le détail de ce choix.
 // ---------------------------------------------------------------------------
 
 import L from "leaflet";
-// leaflet.vectorgrid n'a pas de types officiels (plugin UMD qui étend la
-// globale L) — voir src/leaflet-vectorgrid.d.ts pour la déclaration
-// minimale ambient qui permet de l'utiliser sans "any" partout.
-import "leaflet.vectorgrid";
 
-const OHM_TILE_URL = "https://vtiles.openhistoricalmap.org/maps/osm/{z}/{x}/{y}.pbf";
-// Couche contenant les polygones de territoires/frontières dans les tuiles
-// OHM (confirmé par la recherche technique, forum OHM) — les autres
-// couches (points, routes, lieux, etc. — leur liste exacte varie et n'est
-// pas documentée de façon stable) ne nous intéressent pas pour une "vue
-// historique" centrée sur les territoires, et doivent être masquées
-// explicitement (voir le Proxy dans createLayer, et le bug qu'il corrige
-// dans le commentaire d'en-tête ci-dessus).
-const OHM_TERRITORY_LAYER = "land_ohm_lines";
+// Les 54 années disponibles dans historical-basemaps (lues depuis
+// index.json du dépôt le 2026-10-06, triées croissant) — chaque fichier
+// est un GeoJSON de polygones de territoires pour cette année-là.
+// Propriétés de chaque feature : NAME (nom affiché), SUBJECTO (puissance
+// coloniale/rattachement, utile pour une future carte choroplèthe),
+// PARTOF (aire culturelle), BORDERPRECISION (1=approximatif,
+// 2=moyennement précis, 3=déterminé par le droit international) — on
+// n'utilise pour l'instant que NAME (affichage + survol).
+const HISTORICAL_YEARS: { year: number; filename: string }[] = [
+  { year: -123000, filename: "world_bc123000.geojson" },
+  { year: -10000, filename: "world_bc10000.geojson" },
+  { year: -8000, filename: "world_bc8000.geojson" },
+  { year: -5000, filename: "world_bc5000.geojson" },
+  { year: -4000, filename: "world_bc4000.geojson" },
+  { year: -3000, filename: "world_bc3000.geojson" },
+  { year: -2000, filename: "world_bc2000.geojson" },
+  { year: -1500, filename: "world_bc1500.geojson" },
+  { year: -1000, filename: "world_bc1000.geojson" },
+  { year: -700, filename: "world_bc700.geojson" },
+  { year: -500, filename: "world_bc500.geojson" },
+  { year: -400, filename: "world_bc400.geojson" },
+  { year: -323, filename: "world_bc323.geojson" },
+  { year: -300, filename: "world_bc300.geojson" },
+  { year: -200, filename: "world_bc200.geojson" },
+  { year: -100, filename: "world_bc100.geojson" },
+  { year: -1, filename: "world_bc1.geojson" },
+  { year: 100, filename: "world_100.geojson" },
+  { year: 200, filename: "world_200.geojson" },
+  { year: 300, filename: "world_300.geojson" },
+  { year: 400, filename: "world_400.geojson" },
+  { year: 500, filename: "world_500.geojson" },
+  { year: 600, filename: "world_600.geojson" },
+  { year: 700, filename: "world_700.geojson" },
+  { year: 800, filename: "world_800.geojson" },
+  { year: 900, filename: "world_900.geojson" },
+  { year: 1000, filename: "world_1000.geojson" },
+  { year: 1100, filename: "world_1100.geojson" },
+  { year: 1200, filename: "world_1200.geojson" },
+  { year: 1279, filename: "world_1279.geojson" },
+  { year: 1300, filename: "world_1300.geojson" },
+  { year: 1400, filename: "world_1400.geojson" },
+  { year: 1492, filename: "world_1492.geojson" },
+  { year: 1500, filename: "world_1500.geojson" },
+  { year: 1530, filename: "world_1530.geojson" },
+  { year: 1600, filename: "world_1600.geojson" },
+  { year: 1650, filename: "world_1650.geojson" },
+  { year: 1700, filename: "world_1700.geojson" },
+  { year: 1715, filename: "world_1715.geojson" },
+  { year: 1783, filename: "world_1783.geojson" },
+  { year: 1800, filename: "world_1800.geojson" },
+  { year: 1815, filename: "world_1815.geojson" },
+  { year: 1878, filename: "world_1878.geojson" },
+  { year: 1880, filename: "world_1880.geojson" },
+  { year: 1900, filename: "world_1900.geojson" },
+  { year: 1914, filename: "world_1914.geojson" },
+  { year: 1920, filename: "world_1920.geojson" },
+  { year: 1930, filename: "world_1930.geojson" },
+  { year: 1938, filename: "world_1938.geojson" },
+  { year: 1945, filename: "world_1945.geojson" },
+  { year: 1960, filename: "world_1960.geojson" },
+  { year: 1994, filename: "world_1994.geojson" },
+  { year: 2000, filename: "world_2000.geojson" },
+  { year: 2010, filename: "world_2010.geojson" },
+];
+const HISTORICAL_DATA_BASE_URL = "https://raw.githubusercontent.com/aourednik/historical-basemaps/master/geojson/";
 
-// Bornes larges par défaut du curseur — l'essentiel de la donnée OHM
-// couvre l'Antiquité à aujourd'hui ; au-delà, la couverture devient trop
-// clairsemée pour être utile (projet communautaire, comme OpenStreetMap :
-// "des trous inévitables là où personne n'a encore contribué", comme
-// discuté avec Martin).
-const MIN_YEAR = -3000;
-const MAX_YEAR = new Date().getFullYear();
-
-type OhmFeatureProps = {
-  name?: string;
-  start_date?: string;
-  end_date?: string;
-  start_decdate?: number;
-  end_decdate?: number;
+type HistoricalFeatureProps = {
+  NAME?: string;
+  SUBJECTO?: string;
+  PARTOF?: string;
+  BORDERPRECISION?: number;
 };
 
-// Convertit un start_date/end_date texte (format OHM : "YYYY", "YYYY-MM"
-// ou "YYYY-MM-DD", éventuellement négatif pour l'avant J.-C.) en année
-// décimale approximative — repli utilisé seulement quand
-// start_decdate/end_decdate (déjà numériques, prioritaires) sont absents,
-// même ordre de priorité que le plugin officiel OHM (maplibre-gl-dates).
-function parseDecYear(dateStr: string | undefined): number | null {
-  if (!dateStr) return null;
-  const m = /^(-?\d+)(?:-(\d{2}))?(?:-(\d{2}))?/.exec(dateStr.trim());
-  if (!m) return null;
-  const year = parseInt(m[1], 10);
-  if (Number.isNaN(year)) return null;
-  const month = m[2] ? parseInt(m[2], 10) : 1;
-  return year + (month - 1) / 12;
-}
-function featureStart(props: OhmFeatureProps): number {
-  if (typeof props.start_decdate === "number") return props.start_decdate;
-  return parseDecYear(props.start_date) ?? -Infinity;
-}
-function featureEnd(props: OhmFeatureProps): number {
-  if (typeof props.end_decdate === "number") return props.end_decdate;
-  return parseDecYear(props.end_date) ?? Infinity;
-}
-
-// Style des territoires affichés — couleurs neutres (l'essentiel est le
-// tracé des frontières, pas un choroplèthe par pays à ce stade ; un
-// code-couleur par puissance coloniale/territoire pourra être ajouté plus
-// tard si Martin le demande, une fois la V1 validée).
-const TERRITORY_STYLE = { color: "#e8b34a", weight: 1.3, fillColor: "#e8b34a", fillOpacity: 0.12, opacity: 0.8 };
-// Style "invisible" appliqué à TOUTE couche OHM autre que
-// OHM_TERRITORY_LAYER (voir le Proxy dans createLayer) — un tableau vide
-// est la convention Leaflet.VectorGrid pour "ne rien dessiner pour cette
-// feature".
-const HIDDEN_STYLE: object[] = [];
+const TERRITORY_STYLE = { color: "#e8b34a", weight: 1.1, fillColor: "#e8b34a", fillOpacity: 0.22, opacity: 0.85 };
+const TERRITORY_HOVER_STYLE = { fillOpacity: 0.4, weight: 1.8 };
 
 export function initHistoricalMapSystem() {
   const $ = <T extends HTMLElement = HTMLElement>(id: string) => document.getElementById(id) as T;
@@ -138,128 +147,103 @@ export function initHistoricalMapSystem() {
       <div id="historical-topbar">
         <h2 id="historical-title">Vue historique</h2>
         <div id="historical-toolbar">
-          <input type="range" id="historical-slider" min="${MIN_YEAR}" max="${MAX_YEAR}" value="${MAX_YEAR}" step="1">
+          <input type="range" id="historical-slider" min="0" max="${HISTORICAL_YEARS.length - 1}" value="${HISTORICAL_YEARS.length - 1}" step="1">
           <span id="historical-slider-year"></span>
         </div>
         <button id="historical-view-close" class="close-x" aria-label="Fermer la vue historique">&times;</button>
       </div>
       <div id="historical-map-container"></div>
-      <p id="historical-slider-hint" class="muted">Données : <a href="https://www.openhistoricalmap.org/" target="_blank" rel="noopener">OpenHistoricalMap</a> (contributeurs OHM et OpenStreetMap, domaine public) — couverture très inégale selon les époques et les régions.</p>
+      <p id="historical-slider-hint" class="muted">Données : <a href="https://github.com/aourednik/historical-basemaps" target="_blank" rel="noopener">historical-basemaps</a> (A. Ourednik et contributeurs, licence GPL-3.0) — version test. ${HISTORICAL_YEARS.length} années disponibles (le curseur saute d'une année documentée à l'autre, pas de continuité totale).</p>
     </div>
   `;
   document.body.appendChild(root);
 
   let active = false;
-  let currentYear = MAX_YEAR;
+  let yearIndex = HISTORICAL_YEARS.length - 1;
   let hMap: L.Map | null = null;
-  let layer: L.Layer | null = null;
-  // Cache des tuiles déjà récupérées/décodées (clé "z/x/y") — le plugin
-  // Leaflet.VectorGrid refait un fetch réseau + un décodage protobuf à
-  // CHAQUE appel de redraw() (nécessaire pour réévaluer le filtre par
-  // date), ce qui serait beaucoup trop lourd si on redessinait à chaque
-  // frappe/glissement du curseur. On intercepte _getVectorTilePromise
-  // (méthode interne du plugin, voir node_modules/leaflet.vectorgrid) pour
-  // réutiliser la tuile déjà décodée : seul le STYLE est recalculé à
-  // chaque changement de date, jamais le réseau/décodage.
-  const tileCache = new Map<string, Promise<unknown>>();
+  let layer: L.GeoJSON | null = null;
+  let loadToken = 0; // évite qu'une réponse réseau en retard (vieux curseur) n'écrase un affichage plus récent
+  // Cache par nom de fichier — glisser le curseur en va-et-vient entre deux
+  // années déjà vues doit être instantané, pas re-télécharger ~1 Mo à
+  // chaque fois.
+  const dataCache = new Map<string, Promise<GeoJSON.FeatureCollection>>();
 
   function formatYear(y: number): string {
     return y < 0 ? Math.abs(y) + " av. J.-C." : String(y);
   }
 
-  function styleForFeature(props: OhmFeatureProps): object[] {
-    const start = featureStart(props);
-    const end = featureEnd(props);
-    if (currentYear < start || currentYear > end) return []; // masqué : hors de la période choisie
-    return [TERRITORY_STYLE];
+  function fetchYearData(filename: string): Promise<GeoJSON.FeatureCollection> {
+    const cached = dataCache.get(filename);
+    if (cached) return cached;
+    const p = fetch(HISTORICAL_DATA_BASE_URL + filename).then((r) => {
+      if (!r.ok) throw new Error("HTTP " + r.status);
+      return r.json() as Promise<GeoJSON.FeatureCollection>;
+    });
+    dataCache.set(filename, p);
+    return p;
   }
 
-  function createLayer(): L.Layer {
-    // BUG CORRIGÉ ICI (voir le commentaire d'en-tête) : un objet
-    // vectorTileLayerStyles ordinaire ne stylerait que les couches qu'on y
-    // liste explicitement (ici land_ohm_lines) — toute AUTRE couche
-    // présente dans les tuiles OHM (points, routes, lieux...) resterait
-    // dessinée avec le style par défaut du plugin (de petits cercles),
-    // par centaines/milliers, ce qui a fait planter le site. Un Proxy
-    // intercepte l'accès à n'importe quel nom de couche : seule
-    // OHM_TERRITORY_LAYER reçoit notre style réel, toute autre couche
-    // (quel que soit son nom, même inconnu à l'avance) reçoit un style
-    // vide → rien n'est dessiné pour elle.
-    const stylesProxy = new Proxy(
-      {},
-      {
-        get(_target, prop: string) {
-          if (prop === OHM_TERRITORY_LAYER) {
-            return (props: OhmFeatureProps) => styleForFeature(props);
-          }
-          return () => HIDDEN_STYLE;
-        },
-      }
-    );
-    // leaflet.vectorgrid étend la globale L mais n'a pas de types officiels
-    // (voir le commentaire d'en-tête + src/leaflet-vectorgrid.d.ts) — cast
-    // ponctuel nécessaire ici pour accéder à L.vectorGrid.protobuf et pour
-    // la méthode interne qu'on intercepte juste après.
-    const vg = (L as unknown as { vectorGrid: { protobuf: (url: string, opts: Record<string, unknown>) => L.Layer } }).vectorGrid.protobuf(
-      OHM_TILE_URL,
-      {
-        vectorTileLayerStyles: stylesProxy,
-        // Désactivé pour l'instant (voir commentaire d'en-tête, point sur
-        // l'interactivité) : réactivé quand le clic territoire → fiche
-        // sera câblé dans une prochaine étape.
-        interactive: false,
-        maxNativeZoom: 14,
-        // Les tuiles OHM empilent toute l'histoire dans chaque tuile (pour
-        // permettre un filtre purement côté client, sans requête par
-        // date) — notablement plus lourdes que des tuiles courantes,
-        // d'où le cache ci-dessous plutôt qu'un simple TileLayer.
-      }
-    );
-    const vgAny = vg as unknown as { _getVectorTilePromise: (coords: { x: number; y: number; z: number }) => Promise<unknown> };
-    const original = vgAny._getVectorTilePromise.bind(vgAny);
-    vgAny._getVectorTilePromise = (coords: { x: number; y: number; z: number }) => {
-      const key = coords.z + "/" + coords.x + "/" + coords.y;
-      const cached = tileCache.get(key);
-      if (cached) return cached;
-      const p = original(coords);
-      tileCache.set(key, p);
-      return p;
-    };
-    return vg;
-  }
-
-  // Carte Leaflet dédiée à la vue historique, totalement SÉPARÉE de la
-  // carte principale (deps.map n'existe plus ici, voir le commentaire
-  // d'en-tête) — créée paresseusement à la première ouverture, puis
-  // réutilisée (on ne la détruit jamais, juste cachée/affichée via
+  // Carte Leaflet dédiée à la vue historique, totalement séparée de la
+  // carte principale — créée paresseusement à la première ouverture, puis
+  // réutilisée (jamais détruite, juste cachée/affichée via
   // #historical-view.open).
   function ensureMap(): L.Map {
     if (hMap) return hMap;
     hMap = L.map("historical-map-container", { zoomControl: true, worldCopyJump: true, minZoom: 2 }).setView([25, 10], 3);
+    // Fond "physique" (relief + océans, SANS frontières ni noms de pays
+    // modernes) — corrige le retour de Martin ("c'est le fond de carte
+    // des pays actuelles") : même famille Esri déjà utilisée ailleurs
+    // dans l'app (gratuit, sans clé), mais la couche World_Physical_Map
+    // au lieu de World_Dark_Gray_Base/World_Imagery (celles-ci montrent
+    // les frontières/noms politiques actuels).
     L.tileLayer(
-      "https://services.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}",
+      "https://services.arcgisonline.com/ArcGIS/rest/services/World_Physical_Map/MapServer/tile/{z}/{y}/{x}",
       {
         attribution:
-          '&copy; <a href="https://www.esri.com">Esri</a> — Esri, HERE, Garmin, © OpenStreetMap contributors, GIS User Community',
-        maxZoom: 16,
+          '&copy; <a href="https://www.esri.com">Esri</a> — Esri, US National Park Service',
+        maxZoom: 8,
       }
     ).addTo(hMap);
-    layer = createLayer();
-    layer.addTo(hMap);
     return hMap;
   }
 
-  let redrawTimer: number | null = null;
-  function scheduleRedraw() {
-    // Le navigateur envoie un flot continu d'événements "input" pendant
-    // qu'on glisse le curseur — redessiner à chaque fois forcerait un
-    // recalcul de style (et un nouveau rendu) de centaines de features par
-    // frame. Un court débounce (~100ms) garde l'interaction fluide tout en
-    // restant quasi instantané pour l'utilisateur.
-    if (redrawTimer) window.clearTimeout(redrawTimer);
-    redrawTimer = window.setTimeout(() => {
-      (layer as unknown as { redraw?: () => void } | null)?.redraw?.();
-    }, 100);
+  function showLoading(on: boolean) {
+    $("historical-slider-year").classList.toggle("loading", on);
+  }
+
+  async function renderYear(index: number) {
+    const entry = HISTORICAL_YEARS[index];
+    const token = ++loadToken;
+    showLoading(true);
+    try {
+      const data = await fetchYearData(entry.filename);
+      if (token !== loadToken) return; // une sélection plus récente a entre-temps pris le dessus
+      const m = ensureMap();
+      if (layer) m.removeLayer(layer);
+      layer = L.geoJSON(data, {
+        style: () => TERRITORY_STYLE,
+        onEachFeature: (feature, lyr) => {
+          const props = (feature.properties || {}) as HistoricalFeatureProps;
+          const name = props.NAME || props.SUBJECTO || "";
+          if (name) lyr.bindTooltip(name, { sticky: true, className: "historical-tooltip" });
+          lyr.on("mouseover", () => (lyr as L.Path).setStyle(TERRITORY_HOVER_STYLE));
+          lyr.on("mouseout", () => (lyr as L.Path).setStyle(TERRITORY_STYLE));
+        },
+      }).addTo(m);
+      $("historical-slider-hint-error")?.remove();
+    } catch (err) {
+      if (token !== loadToken) return;
+      console.error("Vue historique : échec du chargement de " + entry.filename, err);
+      const hint = $("historical-slider-hint");
+      if (hint && !document.getElementById("historical-slider-hint-error")) {
+        const errEl = document.createElement("div");
+        errEl.id = "historical-slider-hint-error";
+        errEl.textContent = "Impossible de charger les données pour cette année (connexion réseau ?).";
+        hint.prepend(errEl);
+      }
+    } finally {
+      if (token === loadToken) showLoading(false);
+    }
   }
 
   function activate() {
@@ -272,6 +256,7 @@ export function initHistoricalMapSystem() {
     // besoin qu'on lui redise la taille réelle de son conteneur une fois
     // visible, sans quoi elle ne couvre souvent qu'un coin de l'écran.
     window.setTimeout(() => m.invalidateSize(), 50);
+    if (!layer) void renderYear(yearIndex);
   }
   function deactivate() {
     if (!active) return;
@@ -280,11 +265,11 @@ export function initHistoricalMapSystem() {
     $("historical-toggle-btn").classList.remove("active");
   }
 
-  function setYear(year: number) {
-    currentYear = Math.max(MIN_YEAR, Math.min(MAX_YEAR, Math.round(year)));
-    ($("historical-slider") as HTMLInputElement).value = String(currentYear);
-    $("historical-slider-year").textContent = formatYear(currentYear);
-    if (active) scheduleRedraw();
+  function setYearIndex(index: number) {
+    yearIndex = Math.max(0, Math.min(HISTORICAL_YEARS.length - 1, Math.round(index)));
+    ($("historical-slider") as HTMLInputElement).value = String(yearIndex);
+    $("historical-slider-year").textContent = formatYear(HISTORICAL_YEARS[yearIndex].year);
+    if (active) void renderYear(yearIndex);
   }
 
   $("historical-toggle-btn").addEventListener("click", () => {
@@ -293,19 +278,29 @@ export function initHistoricalMapSystem() {
   });
   $("historical-view-close").addEventListener("click", deactivate);
   $("historical-slider").addEventListener("input", (e) => {
-    setYear(parseInt((e.target as HTMLInputElement).value, 10));
+    setYearIndex(parseInt((e.target as HTMLInputElement).value, 10));
   });
-  setYear(currentYear);
+  setYearIndex(yearIndex);
 
   // openAt : point d'extension pour le lien bidirectionnel date ↔ vue
   // historique (demande de Martin : "si dans une fiche ou une frise on
   // met une date... quand je clique sur la date j'arrive sur la vue
   // historique") — câblage depuis les fiches/frises prévu dans une
-  // prochaine étape, une fois ce socle validé par Martin ; cette fonction
-  // est déjà prête à être appelée depuis main.ts à ce moment-là.
+  // prochaine étape. Avec des années fixes (voir en-tête), "year" est ici
+  // mappé sur l'année disponible la plus proche plutôt qu'affiché tel
+  // quel.
   function openAt(year: number) {
+    let closestIdx = 0;
+    let closestDist = Infinity;
+    HISTORICAL_YEARS.forEach((entry, i) => {
+      const dist = Math.abs(entry.year - year);
+      if (dist < closestDist) {
+        closestDist = dist;
+        closestIdx = i;
+      }
+    });
     activate();
-    setYear(year);
+    setYearIndex(closestIdx);
   }
 
   return {
