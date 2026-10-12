@@ -156,7 +156,31 @@ type ForeignStateRow = {
   pos_x: number | null;
   pos_y: number | null;
   is_leader: boolean;
+  // Déprécié depuis schema_v24.sql (statuts cumulés, genealogy_member_statuses
+  // ci-dessous) — plus lu/écrit par le code à partir de cette version,
+  // laissé en base par prudence (voir le commentaire de schema_v24.sql).
   legend_item_id: string | null;
+};
+
+// Statuts CUMULÉS d'un membre (schema_v24.sql, demande de Martin,
+// 2026-10-12) — remplace l'ancien anneau unique (MemberRow.legend_item_id
+// / ForeignStateRow.legend_item_id ci-dessus, désormais ignorés) : un
+// (membre, arbre visiteur) peut avoir N statuts, chacun une entrée de la
+// légende de CET arbre (kind="status"). `position` fixe l'ordre d'ajout
+// (le plus petit = ajouté en premier = anneau le plus proche de la
+// photo) — voir memberRingColors, qui les dessine dans cet ordre puis
+// ajoute l'anneau rouge "A dirigé le pays" (is_leader, séparé, TOUJOURS
+// le plus extérieur). owner_type/owner_id désigne toujours l'arbre
+// VISITEUR (= currentOwner au moment du chargement), qu'il s'agisse d'un
+// membre local ou étranger à cet arbre — un seul type de ligne, une seule
+// requête par arbre (voir loadMemberStatuses).
+type MemberStatusRow = {
+  id: string;
+  member_id: string;
+  owner_type: string;
+  owner_id: string;
+  legend_item_id: string;
+  position: number;
 };
 
 // Position d'affichage calculée pour cette ouverture de l'arbre (voir note
@@ -323,11 +347,21 @@ export function initGenealogySystem(deps: {
       <label class="field-label">Dynastie</label>
       <input type="text" id="gen-m-dynasty" placeholder="ex. Valois-Angoulême">
       <label class="gen-m-leader-check"><input type="checkbox" id="gen-m-leader"> A dirigé le pays</label>
-      <!-- Anneau de couleur au choix (demande de Martin, 2026-10-06) — la
-           liste vient de la légende de CET arbre (genealogy_legend_items),
-           voir refreshLegendSelect/renderLegendOptionsInto. -->
-      <label class="field-label">Couleur / l&eacute;gende (anneau)</label>
-      <select id="gen-m-legend"><option value="">Aucune</option></select>
+      <!-- Statuts CUMULÉS (plusieurs anneaux concentriques) — demande de
+           Martin, 2026-10-12 : "il faut que les statuts se cumulent [...]
+           si il a un statut qui l'entoure en vert [...] puis 'a gouverné
+           le pays', il doit être entouré en vert et autour en rouge".
+           Remplace l'ancien <select> à choix unique (gen-m-legend) : un
+           membre peut désormais avoir N statuts de la légende de CET
+           arbre (genealogy_member_statuses, schema_v24.sql), affichés en
+           chips dans l'ordre d'ajout — voir renderMemberStatusChips /
+           addMemberStatus / removeMemberStatus. "A dirigé le pays"
+           ci-dessus reste un champ séparé (is_leader, inchangé) : son
+           anneau rouge est ajouté automatiquement par-dessus, TOUJOURS le
+           plus extérieur (voir memberRingColors dans le rendu). -->
+      <label class="field-label">Statuts (anneaux cumulables)</label>
+      <div id="gen-m-statuses-chips" class="gen-m-statuses-chips"></div>
+      <select id="gen-m-status-add"><option value="">+ Ajouter un statut…</option></select>
       <label class="field-label">Notes / biographie</label>
       <textarea id="gen-m-bio" rows="5"></textarea>
       <!-- Bouton "Enregistrer" retiré (demande de Martin, 2026-10-03 :
@@ -451,6 +485,12 @@ export function initGenealogySystem(deps: {
   // Martin, 2026-10-06) — rechargée à chaque ouverture d'arbre (loadData),
   // comme members/relations.
   let legendItems: LegendItem[] = [];
+  // Statuts cumulés de L'ARBRE COURANT (schema_v24.sql, demande de Martin,
+  // 2026-10-12) — rechargés à chaque ouverture d'arbre (loadData), comme
+  // legendItems. Clé = member_id, valeur = SES statuts dans CET arbre,
+  // déjà triés par position ascendante (anneau le plus intérieur en
+  // premier) — voir loadMemberStatuses.
+  let memberStatuses = new Map<string, MemberStatusRow[]>();
   const displayPos = new Map<string, DisplayPos>();
   let linkModeActive = false;
   let linkFirstId: string | null = null;
@@ -553,6 +593,37 @@ export function initGenealogySystem(deps: {
     renderNodes();
   }
 
+  // Chargement des statuts cumulés de l'arbre (schema_v24.sql), hors du
+  // chemin critique de loadData — même principe que loadLegendItems
+  // ci-dessus : une table pas encore migrée ou un réseau lent/en échec ne
+  // fait qu'un arbre temporairement sans anneaux de statut, jamais un
+  // arbre qui ne charge pas du tout.
+  async function loadMemberStatuses(owner: DossierOwnerRef) {
+    try {
+      const { data: rows, error } = await supabase
+        .from("genealogy_member_statuses")
+        .select("id, member_id, owner_type, owner_id, legend_item_id, position")
+        .eq("owner_type", owner.type)
+        .eq("owner_id", owner.id)
+        .order("position");
+      if (error) throw error;
+      if (currentOwner !== owner) return;
+      const next = new Map<string, MemberStatusRow[]>();
+      (rows as MemberStatusRow[] | null)?.forEach((r) => {
+        const list = next.get(r.member_id) || [];
+        list.push(r);
+        next.set(r.member_id, list);
+      });
+      memberStatuses = next;
+    } catch (err) {
+      console.error("Échec du chargement des statuts (schema_v24.sql exécutée ?) :", err);
+      if (currentOwner !== owner) return;
+      memberStatuses = new Map();
+    }
+    renderNodes();
+    if ($("gen-member-panel").classList.contains("open")) renderMemberStatusChips();
+  }
+
   // --- Chargement des données ------------------------------------------------
   // Tout le corps est en try/catch : un échec réseau (sandbox sans accès à
   // supabase.co, ou simplement hors-ligne) peut faire REJETER la promesse
@@ -569,6 +640,7 @@ export function initGenealogySystem(deps: {
     foreignMembers = new Map();
     foreignStates = new Map();
     legendItems = [];
+    memberStatuses = new Map();
     try {
       const { data: memberRows, error: memberErr } = await supabase
         .from("genealogy_members")
@@ -589,6 +661,7 @@ export function initGenealogySystem(deps: {
       // (bande de légende + anneaux) une fois résolue, quel que soit le
       // délai.
       void loadLegendItems(owner);
+      void loadMemberStatuses(owner);
       const ids = members.map((m) => m.id);
       if (ids.length) {
         const { data: relRows, error: relErr } = await supabase
@@ -677,6 +750,7 @@ export function initGenealogySystem(deps: {
       foreignMembers = new Map();
       foreignStates = new Map();
       legendItems = [];
+      memberStatuses = new Map();
     }
     displayPos.clear();
     members.forEach((m) => displayPos.set(m.id, { x: m.pos_x, y: m.pos_y }));
@@ -754,6 +828,93 @@ export function initGenealogySystem(deps: {
     select.value = selectedId || "";
   }
 
+  // Id du membre actuellement affiché dans le panneau (local OU étranger —
+  // les statuts sont toujours propres à CET arbre pour les deux, voir le
+  // commentaire de MemberStatusRow) — null si le panneau est sur un
+  // membre tout juste ouvert via "+ Membre" et pas encore enregistré
+  // (pas encore d'id, voir createMemberNow).
+  function currentStatusMemberId(): string | null {
+    return editingMemberId || foreignPanelMemberId;
+  }
+  // Chips des statuts déjà assignés (ordre d'ajout, le plus ancien
+  // d'abord) + select "+ Ajouter un statut…" listant les entrées de
+  // légende "status" de CET arbre PAS ENCORE assignées à ce membre.
+  function renderMemberStatusChips() {
+    const chipsEl = $("gen-m-statuses-chips");
+    const addSelect = $("gen-m-status-add") as HTMLSelectElement;
+    const memberId = currentStatusMemberId();
+    const canEdit = isAdmin() && !!memberId;
+    chipsEl.innerHTML = "";
+    const current = memberId ? memberStatuses.get(memberId) || [] : [];
+    current.forEach((st) => {
+      const item = legendItemById(st.legend_item_id);
+      if (!item) return;
+      const chip = document.createElement("span");
+      chip.className = "gen-m-status-chip";
+      const dot = document.createElement("span");
+      dot.className = "gen-legend-dot";
+      dot.style.background = item.color;
+      chip.appendChild(dot);
+      chip.appendChild(document.createTextNode(item.label));
+      if (canEdit) {
+        const rm = document.createElement("button");
+        rm.type = "button";
+        rm.textContent = "×";
+        rm.title = "Retirer ce statut";
+        rm.addEventListener("click", () => void removeMemberStatus(st.id));
+        chip.appendChild(rm);
+      }
+      chipsEl.appendChild(chip);
+    });
+    const assignedIds = new Set(current.map((s) => s.legend_item_id));
+    addSelect.innerHTML = '<option value="">+ Ajouter un statut…</option>';
+    legendItems
+      .filter((it) => it.kind === "status" && !assignedIds.has(it.id))
+      .forEach((it) => {
+        const opt = document.createElement("option");
+        opt.value = it.id;
+        opt.textContent = it.label;
+        addSelect.appendChild(opt);
+      });
+    addSelect.disabled = !canEdit || !legendItems.some((it) => it.kind === "status" && !assignedIds.has(it.id));
+    addSelect.value = "";
+  }
+  async function addMemberStatus(legendId: string) {
+    const memberId = currentStatusMemberId();
+    if (!currentOwner || !memberId || !isAdmin() || !legendId) return;
+    const current = memberStatuses.get(memberId) || [];
+    const nextPosition = current.reduce((max, s) => Math.max(max, s.position), -1) + 1;
+    const { data, error } = await supabase
+      .from("genealogy_member_statuses")
+      .insert({
+        member_id: memberId,
+        owner_type: currentOwner.type,
+        owner_id: currentOwner.id,
+        legend_item_id: legendId,
+        position: nextPosition,
+        created_by: deps.getSession()?.user.id || null,
+      })
+      .select("id, member_id, owner_type, owner_id, legend_item_id, position")
+      .single();
+    if (error || !data) return;
+    memberStatuses.set(memberId, current.concat([data as MemberStatusRow]));
+    renderMemberStatusChips();
+    renderAll();
+  }
+  async function removeMemberStatus(statusRowId: string) {
+    const memberId = currentStatusMemberId();
+    if (!memberId || !isAdmin()) return;
+    await supabase.from("genealogy_member_statuses").delete().eq("id", statusRowId);
+    memberStatuses.set(memberId, (memberStatuses.get(memberId) || []).filter((s) => s.id !== statusRowId));
+    renderMemberStatusChips();
+    renderAll();
+  }
+  $("gen-m-status-add").addEventListener("change", () => {
+    const select = $("gen-m-status-add") as HTMLSelectElement;
+    const legendId = select.value;
+    if (legendId) void addMemberStatus(legendId);
+  });
+
   function allKnownMembers(): Map<string, MemberRow> {
     const m = new Map<string, MemberRow>();
     members.forEach((x) => m.set(x.id, x));
@@ -807,12 +968,30 @@ export function initGenealogySystem(deps: {
     if (!isForeign) return m.is_leader;
     return foreignStates.get(m.id)?.is_leader || false;
   }
-  // Anneau de couleur au choix (demande de Martin, 2026-10-06) — pour un
-  // membre étranger, lu depuis foreignStates (légende de L'ARBRE VISITEUR,
-  // CET arbre), pas depuis sa propre ligne (son arbre d'origine).
-  function effectiveLegendItemId(m: MemberRow, isForeign: boolean): string | null {
-    if (!isForeign) return m.legend_item_id;
-    return foreignStates.get(m.id)?.legend_item_id || null;
+  // Couleur rouge fixe de l'anneau "A dirigé le pays" — même couleur que
+  // l'ancien .gen-card-leader (style.css), reprise ici pour pouvoir
+  // l'empiler avec les anneaux de statut (voir memberRingColors).
+  const LEADER_RING_COLOR = "#e2493f";
+  // Anneaux CUMULÉS d'un membre (demande de Martin, 2026-10-12), du plus
+  // intérieur (collé à la photo) au plus extérieur :
+  //   1. ses statuts (memberStatuses, déjà triés par ordre d'ajout) ;
+  //   2. "A dirigé le pays" en dernier (TOUJOURS le plus extérieur de
+  //      tous), que ce soit vrai pour ce membre LOCALEMENT (m.is_leader)
+  //      ou pour CET arbre visiteur s'il est étranger (foreignStates) —
+  //      voir effectiveIsLeader. Scope toujours CET arbre (memberStatuses
+  //      est déjà chargé/filtré pour currentOwner, voir loadMemberStatuses).
+  function memberRingColors(m: MemberRow, isForeign: boolean): string[] {
+    const statuses = memberStatuses.get(m.id) || [];
+    const colors = statuses.map((s) => legendItemById(s.legend_item_id)?.color).filter((c): c is string => !!c);
+    if (effectiveIsLeader(m, isForeign)) colors.push(LEADER_RING_COLOR);
+    return colors;
+  }
+  // Construit le box-shadow empilé (un cercle concentric par couleur,
+  // 3px plus large que le précédent, même épaisseur 2px que l'ancien
+  // anneau unique) + le drop shadow habituel de la carte.
+  function ringsBoxShadow(colors: string[]): string {
+    const rings = colors.map((c, i) => "0 0 0 " + (2 + i * 3) + "px " + c);
+    return rings.concat(["0 6px 18px rgba(0,0,0,0.35)"]).join(", ");
   }
 
   function renderNodes() {
@@ -822,14 +1001,20 @@ export function initGenealogySystem(deps: {
       const pos = displayPos.get(m.id);
       if (!pos) return;
       const isForeign = !(currentOwner && m.owner_type === currentOwner.type && m.owner_id === currentOwner.id);
-      const ring = legendItemById(effectiveLegendItemId(m, isForeign));
+      const ringColors = memberRingColors(m, isForeign);
       const card = document.createElement("div");
-      card.className = "gen-card" + (effectiveIsLeader(m, isForeign) ? " gen-card-leader" : "") + (ring ? " gen-card-ringed" : "");
+      card.className = "gen-card" + (ringColors.length ? " gen-card-ringed" : "");
       card.dataset.memberId = m.id;
       card.style.left = pos.x + "px";
       card.style.top = pos.y + "px";
       card.style.width = CARD_W + "px";
-      if (ring) card.style.setProperty("--gen-ring-color", ring.color);
+      if (ringColors.length) {
+        card.style.borderColor = ringColors[0];
+        card.style.boxShadow = ringsBoxShadow(ringColors);
+      } else {
+        card.style.borderColor = "";
+        card.style.boxShadow = "";
+      }
       const photoHtml = m.photo_url
         ? '<img src="' + escapeHtml(m.photo_url) + '" alt="">'
         : '<span class="gen-card-initials">' + escapeHtml(initials(m.name)) + "</span>";
@@ -1123,17 +1308,15 @@ export function initGenealogySystem(deps: {
     list.appendChild(renderLegendManagerGroup("status", "🔵 Statuts — entourent un membre"));
     list.appendChild(renderLegendManagerGroup("link", "— Liens — colorent une relation"));
   }
-  // Le panneau membre (#gen-m-legend) est rempli au MOMENT où il s'ouvre
-  // (openMemberPanel/openForeignMemberPanel) — s'il reste ouvert PENDANT
-  // qu'on ajoute/supprime une couleur via le gestionnaire de légende (les
-  // deux sont accessibles en même temps, le bouton 🎨 Légende restant
-  // dans le bandeau haut), sa liste d'options doit être rafraîchie tout
-  // de suite, sans attendre une fermeture/réouverture du panneau.
+  // Les chips de statuts du panneau membre sont remplies au MOMENT où il
+  // s'ouvre (openMemberPanel/openForeignMemberPanel) — s'il reste ouvert
+  // PENDANT qu'on ajoute/supprime une couleur via le gestionnaire de
+  // légende (les deux sont accessibles en même temps, le bouton 🎨
+  // Légende restant dans le bandeau haut), la liste doit être rafraîchie
+  // tout de suite, sans attendre une fermeture/réouverture du panneau.
   function refreshOpenMemberLegendSelect() {
     if (!$("gen-member-panel").classList.contains("open")) return;
-    const select = $("gen-m-legend") as HTMLSelectElement;
-    const current = select.value;
-    renderLegendOptionsInto(select, current);
+    renderMemberStatusChips();
   }
   async function deleteLegendItem(id: string) {
     if (!isAdmin()) return;
@@ -1490,8 +1673,7 @@ export function initGenealogySystem(deps: {
     ($("gen-m-bio") as HTMLTextAreaElement).value = m?.bio || "";
     $("gen-m-photo-preview").innerHTML = m?.photo_url ? '<img src="' + escapeHtml(m.photo_url) + '" alt="">' : "";
     refreshPhotoRecropVisibility();
-    ($("gen-m-legend") as HTMLSelectElement).disabled = !isAdmin();
-    renderLegendOptionsInto($("gen-m-legend") as HTMLSelectElement, m?.legend_item_id || null);
+    renderMemberStatusChips();
     $("gen-m-save-status").textContent = "";
     ($("gen-m-delete") as HTMLButtonElement).style.display = m && isAdmin() ? "" : "none";
     ($("gen-m-remove-from-tree") as HTMLButtonElement).style.display = "none";
@@ -1525,12 +1707,14 @@ export function initGenealogySystem(deps: {
     $("gen-m-photo-preview").innerHTML = m.photo_url ? '<img src="' + escapeHtml(m.photo_url) + '" alt="">' : "";
     ($("gen-m-photo-btn") as HTMLButtonElement).style.display = "none";
     ($("gen-m-photo-recrop-btn") as HTMLButtonElement).style.display = "none";
-    // Anneau de couleur d'un membre étranger (demande de Martin,
-    // 2026-10-06) : modifiable même en lecture seule, comme "A dirigé le
-    // pays" — propre à CET arbre visiteur (foreignStates), pas à son
-    // arbre d'origine.
-    ($("gen-m-legend") as HTMLSelectElement).disabled = !isAdmin();
-    renderLegendOptionsInto($("gen-m-legend") as HTMLSelectElement, foreignStates.get(m.id)?.legend_item_id || null);
+    // Statuts (anneaux cumulés) d'un membre étranger (demande de Martin) :
+    // modifiables même en lecture seule, comme "A dirigé le pays" —
+    // toujours propres à CET arbre visiteur (memberStatuses est déjà
+    // scopé à currentOwner, voir loadMemberStatuses), pas à son arbre
+    // d'origine. foreignPanelMemberId est déjà posé plus haut, donc
+    // currentStatusMemberId() (utilisé par renderMemberStatusChips)
+    // retombe bien sur m.id ici.
+    renderMemberStatusChips();
     const banner = $("gen-m-foreign-banner") as HTMLButtonElement;
     banner.style.display = "flex";
     banner.textContent = foreignOwnerLabel(m);
@@ -1864,7 +2048,6 @@ export function initGenealogySystem(deps: {
     const dynasty = ($("gen-m-dynasty") as HTMLInputElement).value.trim() || null;
     const isLeader = ($("gen-m-leader") as HTMLInputElement).checked;
     const bio = ($("gen-m-bio") as HTMLTextAreaElement).value.trim() || null;
-    const legendId = ($("gen-m-legend") as HTMLSelectElement).value || null;
     $("gen-m-save-status").textContent = "Enregistrement…";
     const center = canvasWrap
       ? { x: (canvasWrap.clientWidth / 2 - zoomTransform.x) / zoomTransform.k, y: (canvasWrap.clientHeight / 2 - zoomTransform.y) / zoomTransform.k }
@@ -1890,7 +2073,6 @@ export function initGenealogySystem(deps: {
           pos_x: pos.x,
           pos_y: pos.y,
           created_by: session.user.id,
-          legend_item_id: legendId,
         })
         .select(
           "id, owner_type, owner_id, name, photo_url, birth_year, death_year, title, dynasty, bio, pos_x, pos_y, created_by, is_leader, legend_item_id"
@@ -1918,6 +2100,12 @@ export function initGenealogySystem(deps: {
       ($("gen-m-delete") as HTMLButtonElement).style.display = isAdmin() ? "" : "none";
       $("gen-m-relations").style.display = "";
       renderRelationsList(row.id);
+      // Les statuts (anneaux cumulés) dépendent d'un memberId réel — le
+      // panneau était ouvert sans id tant que ce membre n'existait pas
+      // encore (voir currentStatusMemberId), donc le select "+ Ajouter un
+      // statut…" était désactivé jusqu'ici : on le réactive maintenant
+      // que editingMemberId est posé.
+      renderMemberStatusChips();
       refreshPhotoRecropVisibility();
       $("gen-m-save-status").textContent = "Enregistré ✓";
       $("genealogy-empty-hint").style.display = "none";
@@ -1955,7 +2143,6 @@ export function initGenealogySystem(deps: {
       dynasty: ($("gen-m-dynasty") as HTMLInputElement).value.trim() || null,
       is_leader: ($("gen-m-leader") as HTMLInputElement).checked,
       bio: ($("gen-m-bio") as HTMLTextAreaElement).value.trim() || null,
-      legend_item_id: ($("gen-m-legend") as HTMLSelectElement).value || null,
     };
     $("gen-m-save-status").textContent = "Enregistrement…";
     try {
@@ -2005,37 +2192,14 @@ export function initGenealogySystem(deps: {
     }
     void handleFieldAutosave();
   });
-  // Anneau de couleur (demande de Martin, 2026-10-06) — même distinction
-  // que "A dirigé le pays" ci-dessus : écrit dans genealogy_foreign_states
-  // (CET arbre) pour un membre étranger, dans genealogy_members (via
-  // handleFieldAutosave) pour un membre local.
-  async function saveForeignLegendFlag(memberId: string, legendId: string | null) {
-    if (!currentOwner || !isAdmin()) return;
-    const st = foreignStates.get(memberId) || { member_id: memberId, pos_x: null, pos_y: null, is_leader: false, legend_item_id: null };
-    st.legend_item_id = legendId;
-    foreignStates.set(memberId, st);
-    await supabase.from("genealogy_foreign_states").upsert(
-      {
-        member_id: memberId,
-        owner_type: currentOwner.type,
-        owner_id: currentOwner.id,
-        pos_x: st.pos_x,
-        pos_y: st.pos_y,
-        is_leader: st.is_leader,
-        legend_item_id: legendId,
-      },
-      { onConflict: "member_id,owner_type,owner_id" }
-    );
-    renderAll();
-  }
-  $("gen-m-legend").addEventListener("change", () => {
-    const legendId = ($("gen-m-legend") as HTMLSelectElement).value || null;
-    if (foreignPanelMemberId) {
-      void saveForeignLegendFlag(foreignPanelMemberId, legendId);
-      return;
-    }
-    void handleFieldAutosave();
-  });
+  // Anneau de couleur UNIQUE (ancien <select> gen-m-legend) — remplacé
+  // par les statuts cumulés (schema_v24.sql, demande de Martin,
+  // 2026-10-12) : voir renderMemberStatusChips/addMemberStatus/
+  // removeMemberStatus, qui écrivent directement dans
+  // genealogy_member_statuses (toujours scopé à currentOwner, qu'il
+  // s'agisse d'un membre local ou étranger — plus de distinction
+  // local/étranger nécessaire à l'écriture, contrairement à "A dirigé le
+  // pays" ci-dessus qui reste sur son propre mécanisme).
   // Retrait "local" d'un membre d'un autre arbre (demande de Martin,
   // 2026-10-06 : "Pouvoir supprimer une personne d'un autre arbre dans le
   // nouveau sans le supprimer dans l'autre [...] il faut pouvoir

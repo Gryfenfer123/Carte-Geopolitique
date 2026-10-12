@@ -2028,18 +2028,17 @@ path.link-autre { stroke: var(--link-autre, #c9bfa9); }
    badge .gen-card-flag suffit à l'identifier), et c'est désormais le
    TRAIT qui le relie à l'arbre courant qui porte un style distinct, voir
    .gen-link-foreign plus bas (renderLinks, genealogy.ts). */
-/* Surbrillance "a dirigé le pays" (demande de Martin, 2026-10-03 :
-   "mettre la possibilité d'entourer un membre... mettre tout ceux qui ont
-   dirigés le pays en surbrillance", puis le 2026-10-03 : "je veux que ce
-   soit en rouge" — remplace la bordure/halo doré initial par du rouge). */
-.gen-card-leader { border-color: #e2493f; box-shadow: 0 0 0 2px rgba(226, 73, 63, 0.5), 0 6px 18px rgba(0,0,0,0.35); }
-/* Anneau de couleur au choix (demande de Martin, 2026-10-06 : "Possibilité
-   d'entourer un membre de la couleur que l'on souhaite avec la légende
-   que l'on souhaite") — indépendant de .gen-card-leader (ci-dessus, qui
-   reste disponible séparément) : la couleur vient de la légende de
-   l'arbre (--gen-ring-color, posée en inline par renderNodes) plutôt
-   que d'être fixe. */
-.gen-card-ringed { border-color: var(--gen-ring-color); box-shadow: 0 0 0 2px var(--gen-ring-color), 0 6px 18px rgba(0,0,0,0.35); }
+/* Anneaux CUMULÉS (demande de Martin, 2026-10-12 : "il faut que les
+   statuts se cumulent autour du personnage [...] si il a un statut qui
+   l'entoure en vert [...] puis 'a gouverné le pays', il doit être
+   entouré en vert et autour en rouge") — remplace les deux règles fixes
+   .gen-card-leader/.gen-card-ringed d'avant cette demande (une seule
+   couleur chacune, jamais combinées) : border-color/box-shadow sont
+   maintenant posés ENTIÈREMENT en inline par renderNodes/ringsBoxShadow
+   (genealogy.ts), un cercle concentrique par statut (+ "A dirigé le
+   pays" en rouge, toujours le plus extérieur) — .gen-card-ringed ne sert
+   plus qu'à documenter/cibler ces cartes au besoin, sans valeur propre. */
+.gen-card-ringed { /* border-color/box-shadow : voir le style inline posé par renderNodes */ }
 .gen-card-ring-chip {
   display: inline-block; font-size: 11px; font-weight: 600; color: #fff; padding: 2px 8px;
   border-radius: 10px; margin-bottom: 4px;
@@ -2047,6 +2046,36 @@ path.link-autre { stroke: var(--link-autre, #c9bfa9); }
 .gen-m-leader-check {
   display: flex; align-items: center; gap: 7px; font-size: 12.5px; color: var(--text);
   margin: 10px 0 2px; cursor: pointer;
+}
+/* Statuts cumulés d'un membre (demande de Martin, 2026-10-12) : liste de
+   chips sous forme de puces supprimables + un <select> pour en ajouter un
+   nouveau — même visuel que .dossier-tags-chips-edit/.dossier-tag-chip-edit
+   (mots-clés d'une entrée de dossier), avec un rond de couleur
+   (.gen-legend-dot) réutilisé comme pastille devant le libellé pour montrer
+   d'un coup d'œil la couleur de l'anneau correspondant. L'ordre d'affichage
+   des chips suit l'ordre d'ajout (position croissante), identique à
+   l'ordre des anneaux dessinés par renderNodes/ringsBoxShadow — sauf "A
+   dirigé le pays" qui n'apparaît pas ici (case à part, voir
+   .gen-m-leader-check juste au-dessus) puisqu'il est toujours l'anneau le
+   plus extérieur quel que soit son rang d'ajout. */
+#gen-m-statuses-chips {
+  display: flex; flex-wrap: wrap; gap: 5px; margin: 6px 0;
+}
+.gen-m-status-chip {
+  display: inline-flex; align-items: center; gap: 5px; background: rgba(255,255,255,0.05);
+  border: 1px solid var(--surface-border); border-radius: 10px; padding: 3px 4px 3px 8px; font-size: 11.5px;
+  color: var(--text);
+}
+.gen-m-status-chip .gen-legend-dot { flex: none; }
+.gen-m-status-chip button {
+  appearance: none; border: none; background: transparent; color: var(--text-dim); cursor: pointer;
+  font-size: 13px; line-height: 1; padding: 0 2px;
+}
+.gen-m-status-chip button:hover { color: var(--accent); }
+#gen-m-status-add {
+  width: 100%; box-sizing: border-box; font: 12.5px "IBM Plex Sans", sans-serif; color: var(--text);
+  background: var(--surface); border: 1px solid var(--surface-border); border-radius: 7px; padding: 6px 9px;
+  margin: 2px 0 10px;
 }
 /* Bandeau "voir dans <arbre d'origine>" en tête de #gen-member-panel
    quand on consulte un membre d'un autre arbre (demande de Martin,

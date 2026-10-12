@@ -23,15 +23,49 @@ export const DOSSIER_HTML_ALLOWED_TAGS: Record<string, string[]> = {
   // SPAN : seul vecteur de couleur / surlignage / taille de police.
   SPAN: ["style", "class"],
   // Liens internes uniquement : jamais de href, jamais d'attributs on* —
-  // seuls data-entity-kind/data-entity-id survivent, validés ensuite par
-  // sanitizeDossierHTML() (kind connu, cf. INTERNAL_LINK_KINDS).
-  A: ["data-entity-kind", "data-entity-id"],
+  // seuls data-entity-kind/data-entity-id (ancien mécanisme, pays) et
+  // data-link-target (nouveau, voir ci-dessous) survivent, validés ensuite
+  // par sanitizeDossierHTML() / sanitizeAttrValue().
+  A: ["data-entity-kind", "data-entity-id", "data-link-target"],
 };
 
 // Kinds acceptés pour un lien interne <a data-entity-kind="...">. L'artifact
 // source accepte 'country' et 'poi' ; ce portage se limite pour l'instant aux
 // pays (les points d'intérêt sont hors périmètre de cette étape).
 const INTERNAL_LINK_KINDS = new Set(["country"]);
+
+// data-link-target : lien manuel inséré via le bouton "Fiche/catégorie/
+// membre" du traitement de texte (demande de Martin, 2026-10-12) — même
+// format JSON que LinkTarget (src/linkIndex.ts), pour être résolu par le
+// même wireLinkClicks()/resolveLinkTarget() que les liens automatiques,
+// sans dupliquer la logique de clic. Validé ici (clé par clé, kind connu +
+// champs requis présents) avant d'être autorisé à survivre dans le HTML
+// stocké — sinon n'importe quel JSON arbitraire pourrait transiter par cet
+// attribut.
+const LINK_TARGET_KINDS = new Set(["country", "group", "section", "entry", "genealogy-member"]);
+function sanitizedLinkTargetJSON(raw: string): string | null {
+  let obj: unknown;
+  try {
+    obj = JSON.parse(raw);
+  } catch {
+    return null;
+  }
+  if (!obj || typeof obj !== "object") return null;
+  const o = obj as Record<string, unknown>;
+  const kind = o.kind;
+  if (typeof kind !== "string" || !LINK_TARGET_KINDS.has(kind)) return null;
+  const str = (k: string) => typeof o[k] === "string" && (o[k] as string).length > 0;
+  const strOrNull = (k: string) => o[k] === null || str(k);
+  if (kind === "country" && str("slug")) return JSON.stringify({ kind, slug: o.slug });
+  if (kind === "group" && str("id")) return JSON.stringify({ kind, id: o.id });
+  if (kind === "section" && str("ownerType") && str("ownerId") && str("sectionId") && strOrNull("categoryId"))
+    return JSON.stringify({ kind, ownerType: o.ownerType, ownerId: o.ownerId, categoryId: o.categoryId ?? null, sectionId: o.sectionId });
+  if (kind === "entry" && str("ownerType") && str("ownerId") && str("entryId") && strOrNull("categoryId"))
+    return JSON.stringify({ kind, ownerType: o.ownerType, ownerId: o.ownerId, categoryId: o.categoryId ?? null, entryId: o.entryId });
+  if (kind === "genealogy-member" && str("ownerType") && str("ownerId") && str("memberId"))
+    return JSON.stringify({ kind, ownerType: o.ownerType, ownerId: o.ownerId, memberId: o.memberId });
+  return null;
+}
 
 const DOSSIER_COLOR_RULE =
   /^(#[0-9a-fA-F]{3,8}|rgba?\(\s*\d{1,3}\s*,\s*\d{1,3}\s*,\s*\d{1,3}\s*(,\s*(0|1|0?\.\d{1,3})\s*)?\))$/;
@@ -71,6 +105,7 @@ function sanitizeAttrValue(tag: string, name: string, value: string): string | n
     return rule && rule.test(String(value || "").trim()) ? String(value).trim() : null;
   }
   if (name === "data-checked") return value === "true" ? "true" : "false";
+  if (name === "data-link-target") return sanitizedLinkTargetJSON(value);
   return value;
 }
 
@@ -125,7 +160,11 @@ export function sanitizeDossierHTML(html: string | null | undefined): string {
   Array.from(tmp.querySelectorAll("a")).forEach((a) => {
     const kind = a.getAttribute("data-entity-kind");
     const id = a.getAttribute("data-entity-id");
-    if (!kind || !id || !INTERNAL_LINK_KINDS.has(kind)) {
+    const hasEntityLink = !!kind && !!id && INTERNAL_LINK_KINDS.has(kind);
+    // data-link-target a déjà été validé (ou retiré) par sanitizeAttrValue
+    // ci-dessus — sa seule présence ici suffit à savoir qu'il est valide.
+    const hasTargetLink = a.hasAttribute("data-link-target");
+    if (!hasEntityLink && !hasTargetLink) {
       while (a.firstChild) a.parentNode!.insertBefore(a.firstChild, a);
       a.parentNode!.removeChild(a);
     }
