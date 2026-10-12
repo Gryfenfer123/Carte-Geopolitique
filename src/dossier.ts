@@ -31,7 +31,7 @@ import {
   type DossierEntryLike,
 } from "./sanitize";
 import { loadCountryNameData, frenchCountryName, flagSvgSpan } from "./countryNames";
-import { ensureLinkIndexLoaded, buildLinkIndexEntries, findLinkTargetForName, autoLinkHtml, type LinkTarget } from "./linkIndex";
+import { ensureLinkIndexLoaded, getLinkIndexCache, buildLinkIndexEntries, findLinkTargetForName, autoLinkHtml, type LinkTarget } from "./linkIndex";
 
 // ---------------------------------------------------------------------------
 // Types
@@ -768,6 +768,7 @@ export function initFicheDossierSystem(deps: {
                 <button type="button" data-action="table-row" title="Ajouter une ligne au tableau">+Ligne</button>
                 <button type="button" data-action="table-col" title="Ajouter une colonne au tableau">+Col.</button>
                 <button type="button" data-action="internal-link" title="Insérer un lien interne vers un pays">&#128279; Lien</button>
+                <button type="button" data-action="internal-link-entity" title="Insérer un lien vers une fiche, une catégorie ou un membre d'un arbre généalogique">&#128279; Fiche/membre</button>
               </div>
               <span class="rt-sep"></span>
               <div class="rt-group">
@@ -857,6 +858,11 @@ export function initFicheDossierSystem(deps: {
           </div>
 
           <div id="dossier-entries"></div>
+
+          <div id="dossier-theme-nav" style="display:none;">
+            <button type="button" id="dossier-theme-prev" class="dossier-theme-nav-btn dossier-theme-nav-prev" title="Thème précédent" aria-label="Thème précédent">&#8249;</button>
+            <button type="button" id="dossier-theme-next" class="dossier-theme-nav-btn dossier-theme-nav-next" title="Thème suivant" aria-label="Thème suivant">&#8250;</button>
+          </div>
         </div>
 
         <div id="dossier-entry-read-view">
@@ -1546,6 +1552,30 @@ export function initFicheDossierSystem(deps: {
         });
         div.appendChild(replace);
       }
+      if (entry.type === "text") {
+        const cover = document.createElement("button");
+        cover.className = "entry-replace-photo";
+        cover.innerHTML =
+          '<svg class="icon-svg" style="width:14px;height:14px;" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-5-5L5 21"/></svg>';
+        cover.title = entry.photo_url ? "Changer la couverture" : "Ajouter une couverture";
+        cover.addEventListener("click", (e) => {
+          e.stopPropagation();
+          startReplacePhoto(entry.id);
+        });
+        div.appendChild(cover);
+        if (entry.photo_url) {
+          const removeCover = document.createElement("button");
+          removeCover.className = "entry-replace-photo";
+          removeCover.innerHTML = TRASH_ICON_SVG;
+          removeCover.title = "Retirer la couverture";
+          removeCover.addEventListener("click", async (e) => {
+            e.stopPropagation();
+            await updateEntry(entry.id, { photo_url: null });
+            renderDossierEntries();
+          });
+          div.appendChild(removeCover);
+        }
+      }
     }
     const fav = document.createElement("button");
     fav.type = "button";
@@ -1593,6 +1623,19 @@ export function initFicheDossierSystem(deps: {
       h.className = "entry-title";
       h.textContent = entry.title || entryPlainText(entry as DossierEntryLike).slice(0, 60) || "Sans titre";
       div.appendChild(h);
+      // Couverture (demande de Martin, 2026-10-12) : une image de couverture
+      // pour un texte, affichée uniquement sur l'aperçu (la carte), sous le
+      // titre — jamais dans la vue de lecture/ouverte (openEntryReadView ne
+      // la rend pas, voir #dossier-read-card). Réutilise la même colonne
+      // photo_url que les entrées "photo" (aucune migration nécessaire) et
+      // le même mécanisme d'upload (startReplacePhoto/uploadPhoto).
+      if (entry.photo_url) {
+        const cover = document.createElement("img");
+        cover.className = "entry-cover";
+        cover.src = entry.photo_url;
+        cover.alt = "";
+        div.appendChild(cover);
+      }
       // Aperçu des premières lignes retiré (demande de Martin, 2026-10-03 :
       // "ne pas mettre le début des textes et juste le titre pour les
       // textes... aucun aperçu de texte") — seul le titre reste visible
@@ -2063,7 +2106,50 @@ export function initFicheDossierSystem(deps: {
     $("dossier-section-bar").style.display = activeCategory !== "__all__" ? "" : "none";
     ($("dossier-add-section-btn") as HTMLButtonElement).textContent = "+ " + sectionLevelLabel(activeSectionPath.length) + " dans cet onglet";
     updateHemicycleButtonVisibility();
+    updateThemeNavButtons();
   }
+
+  // Flèches "thème précédent/suivant" en bas à droite de #dossier-theme-view
+  // (demande de Martin, 2026-10-12) : visibles à n'importe quelle
+  // profondeur (catégorie / sous-catégorie / sous-sous-catégorie…), toujours
+  // à l'écoute de "la catégorie d'après" dans l'ordre d'affichage du
+  // sommaire (orderedCategories()) — jamais une navigation entre
+  // fiches/images, seulement entre thèmes de premier niveau. Masquées pour
+  // "__all__" (pas de thème courant) et aux deux bords (pas de wrap).
+  function adjacentCategoryId(dir: 1 | -1): string | null {
+    if (activeCategory === "__all__") return null;
+    const ids = orderedCategories().map(([id]) => id);
+    const idx = ids.indexOf(activeCategory);
+    if (idx === -1) return null;
+    const nextIdx = idx + dir;
+    return nextIdx >= 0 && nextIdx < ids.length ? ids[nextIdx] : null;
+  }
+  function updateThemeNavButtons() {
+    const nav = $("dossier-theme-nav");
+    const prevBtn = $("dossier-theme-prev") as HTMLButtonElement;
+    const nextBtn = $("dossier-theme-next") as HTMLButtonElement;
+    if (activeCategory === "__all__") {
+      nav.style.display = "none";
+      return;
+    }
+    nav.style.display = "";
+    const prevId = adjacentCategoryId(-1);
+    const nextId = adjacentCategoryId(1);
+    prevBtn.disabled = !prevId;
+    nextBtn.disabled = !nextId;
+    const prevCat = prevId ? categoryDocs.get(prevId) : null;
+    const nextCat = nextId ? categoryDocs.get(nextId) : null;
+    prevBtn.title = prevCat ? "Thème précédent : " + prevCat.name : "Thème précédent";
+    nextBtn.title = nextCat ? "Thème suivant : " + nextCat.name : "Thème suivant";
+  }
+  ($("dossier-theme-prev") as HTMLButtonElement).addEventListener("click", () => {
+    const id = adjacentCategoryId(-1);
+    if (id) showThemeView(id);
+  });
+  ($("dossier-theme-next") as HTMLButtonElement).addEventListener("click", () => {
+    const id = adjacentCategoryId(1);
+    if (id) showThemeView(id);
+  });
 
   // -------------------------------------------------------------------------
   // Sommaire (cartes par thème)
@@ -3044,6 +3130,24 @@ export function initFicheDossierSystem(deps: {
         rtPushHistory();
         scheduleTextAutosave();
       });
+    } else if (btn.dataset.action === "internal-link-entity") {
+      const sel = window.getSelection();
+      const range = sel && sel.rangeCount ? sel.getRangeAt(0).cloneRange() : null;
+      openLinkEntityPicker((target, label) => {
+        focusEditor();
+        if (range) {
+          try {
+            sel!.removeAllRanges();
+            sel!.addRange(range);
+          } catch {
+            /* ignore */
+          }
+        }
+        const jsonAttr = escapeHtml(JSON.stringify(target));
+        document.execCommand("insertHTML", false, '<a data-link-target="' + jsonAttr + '">' + escapeHtml(label) + "</a>&nbsp;");
+        rtPushHistory();
+        scheduleTextAutosave();
+      });
     }
     rtPushHistory();
     updateWordCountLive();
@@ -3180,6 +3284,73 @@ export function initFicheDossierSystem(deps: {
         });
         results.appendChild(btn);
       });
+    }
+    const closeBtn = $("dossier-entity-picker-close");
+    input.addEventListener("input", onInput);
+    closeBtn.addEventListener("click", close);
+    setTimeout(() => input.focus(), 30);
+  }
+
+  // Même panneau (#dossier-entity-picker) que openCountryPicker ci-dessus,
+  // mais pour chercher parmi les fiches (entrées texte), catégories/sous-
+  // catégories et membres d'arbre généalogique — demande de Martin,
+  // 2026-10-12, point 2 : bouton "Fiche/membre" du traitement de texte,
+  // insertion manuelle d'un lien qui doit pouvoir pointer vers n'importe
+  // laquelle de ces trois natures (le rattachement par nom reste automatique
+  // par ailleurs, ceci est le complément manuel). Réutilise l'index déjà
+  // chargé par ensureLinkIndex (voir openDossierForOwner) — pas de requête
+  // réseau supplémentaire ici.
+  function openLinkEntityPicker(onSelect: (target: LinkTarget, label: string) => void) {
+    const panel = $("dossier-entity-picker");
+    const input = $("dossier-entity-picker-input") as HTMLInputElement;
+    const results = $("dossier-entity-picker-results");
+    $("dossier-entity-picker-label").textContent = "Insérer un lien vers une fiche, une catégorie ou un membre d'arbre…";
+    input.value = "";
+    results.innerHTML = "";
+    panel.classList.add("open");
+    function close() {
+      panel.classList.remove("open");
+      input.removeEventListener("input", onInput);
+      closeBtn.removeEventListener("click", close);
+    }
+    function onInput() {
+      const q = normalize(input.value.trim());
+      results.innerHTML = "";
+      if (!q) return;
+      const cache = getLinkIndexCache();
+      type Row = { label: string; tag: string; target: LinkTarget };
+      const rows: Row[] = [];
+      cache.sections.forEach((s) => {
+        if (s.title) rows.push({ label: s.title, tag: "Catégorie", target: { kind: "section", ownerType: s.owner_type, ownerId: s.owner_id, categoryId: s.category_id, sectionId: s.id } });
+      });
+      cache.entries.forEach((e) => {
+        if (e.title) rows.push({ label: e.title, tag: "Fiche", target: { kind: "entry", ownerType: e.owner_type, ownerId: e.owner_id, categoryId: e.category_id, entryId: e.id } });
+      });
+      cache.members.forEach((m) => {
+        if (m.name) rows.push({ label: m.name, tag: "Membre d'arbre", target: { kind: "genealogy-member", ownerType: m.owner_type, ownerId: m.owner_id, memberId: m.id } });
+      });
+      const matches = rows.filter((r) => normalize(r.label).includes(q)).slice(0, 20);
+      matches.forEach((m) => {
+        const btn = document.createElement("button");
+        btn.type = "button";
+        btn.appendChild(document.createTextNode(m.label + " "));
+        const tag = document.createElement("span");
+        tag.className = "muted";
+        tag.style.fontSize = "11px";
+        tag.textContent = "(" + m.tag + ")";
+        btn.appendChild(tag);
+        btn.addEventListener("click", () => {
+          close();
+          onSelect(m.target, m.label);
+        });
+        results.appendChild(btn);
+      });
+      if (!matches.length) {
+        const none = document.createElement("p");
+        none.className = "muted";
+        none.textContent = "Aucun résultat.";
+        results.appendChild(none);
+      }
     }
     const closeBtn = $("dossier-entity-picker-close");
     input.addEventListener("input", onInput);
