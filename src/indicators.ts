@@ -79,7 +79,25 @@ function countryIso3(props: { name?: string; iso_a3?: string; ISO_A3?: unknown }
   return ISO3_OVERRIDES[props.name || ""] || null;
 }
 
+// Demande de Martin, 2026-10-14 : "quand c'est des grands nombres,
+// raccourcir (avec Milliards ou Millions… Pas des chiffres interminable)".
+// Un indicateur comme la population ou le PIB (déjà en valeur brute, pas
+// pré-réduite comme co2_total en Mt) peut valoir plusieurs centaines de
+// millions, voire plusieurs dizaines de milliers de milliards pour le PIB
+// des plus grandes économies — ces deux seuils suffisent, au-delà on reste
+// en "Md" (ex. PIB des USA : "19 493,17 Md" plutôt que
+// "19 493 170 182 843"). En dessous d'1 million, on garde le format complet
+// habituel (avec les décimales propres à l'indicateur) : un indice (0-1),
+// un pourcentage ou un ratio par habitant n'atteint jamais ce seuil et n'est
+// donc jamais raccourci.
 function formatOwidNumber(v: number, decimals: number): string {
+  const abs = Math.abs(v);
+  if (abs >= 1e9) {
+    return (v / 1e9).toLocaleString("fr-FR", { minimumFractionDigits: 0, maximumFractionDigits: 2 }) + " Md";
+  }
+  if (abs >= 1e6) {
+    return (v / 1e6).toLocaleString("fr-FR", { minimumFractionDigits: 0, maximumFractionDigits: 2 }) + " M";
+  }
   return v.toLocaleString("fr-FR", { minimumFractionDigits: decimals, maximumFractionDigits: decimals });
 }
 

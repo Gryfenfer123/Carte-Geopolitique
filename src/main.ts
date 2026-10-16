@@ -53,6 +53,7 @@ app.innerHTML = `
       <div id="readonly-toggle">
         <button id="readonly-toggle-btn" title="Mode lecture" aria-label="Basculer le mode lecture">Mode lecture</button>
       </div>
+      <button id="favorites-toggle-btn" class="btn-small" title="Favoris" aria-label="Voir mes favoris">&#9733; Favoris</button>
       <button id="auth-trigger" class="auth-trigger" type="button">Se connecter</button>
     </div>
   </header>
@@ -114,8 +115,8 @@ app.innerHTML = `
       <button id="style-vector" title="Toujours le plan vectoriel">Vectoriel</button>
     </div>
 
-    <div id="info-toggle" class="panel" style="display:none">
-      <button id="info-btn" title="Sources des données" aria-label="Sources des données">i</button>
+    <div id="info-toggle" class="panel">
+      <button id="info-btn" title="Sources" aria-label="Sources"><svg class="icon-svg" style="width:17px;height:17px;" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></button>
     </div>
     <div id="groups-toggle" class="panel">
       <button id="groups-btn" title="Groupes de pays" aria-label="Groupes de pays"><svg class="icon-svg" style="width:17px;height:17px;" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></button>
@@ -133,8 +134,16 @@ app.innerHTML = `
 
     <div id="sources-panel" class="panel">
       <button class="close-x" id="sources-panel-close" aria-label="Fermer">&times;</button>
-      <h2>Sources des données</h2>
-      <p>NASA Visible Earth &middot; Natural Earth (fronti&egrave;res, capitales) &middot; Lloyd's List / World Shipping Council &middot; Our World in Data &middot; Esri (tuiles plan/satellite).</p>
+      <h2>Sources</h2>
+      <div class="field-label">Sources générales</div>
+      <div id="sources-manual-list"></div>
+      <div id="sources-manual-add" class="edit-control" style="display:none;">
+        <input type="text" id="sources-manual-label" placeholder="Libellé (ex. Our World in Data)">
+        <input type="text" id="sources-manual-url" placeholder="URL (optionnel)">
+        <button id="sources-manual-add-btn" class="btn-small">&#43; Ajouter une source</button>
+      </div>
+      <div class="field-label" style="margin-top:14px;">Sources citées dans les dossiers</div>
+      <div id="sources-entries-list"></div>
     </div>
 
     <!-- Résumé minimal pour les entités d'infrastructure cliquées (ports,
@@ -205,7 +214,10 @@ document.getElementById("sources-panel-close")!.addEventListener("click", () => 
   document.getElementById("sources-panel")!.classList.remove("open");
 });
 document.getElementById("info-btn")?.addEventListener("click", () => {
-  document.getElementById("sources-panel")!.classList.toggle("open");
+  const panel = document.getElementById("sources-panel")!;
+  const nowOpen = !panel.classList.contains("open");
+  panel.classList.toggle("open", nowOpen);
+  if (nowOpen) void searchSystem.renderSourcesPanel();
 });
 
 // --- Repli de la légende (#bottom-panel ⇄ #legend-expand-btn) --------------
@@ -1958,8 +1970,10 @@ ficheDeps.onOpenFriseEntry = (entry) => {
   });
 };
 
-initSearchSystem({
+const searchSystem = initSearchSystem({
   supabase,
+  getSession: () => currentSession,
+  getProfile: () => currentProfile,
   getStaticEntries: buildStaticSearchEntries,
   getGroups: groupsSystem.getGroupsList,
   getOwnerLabel,
@@ -1974,6 +1988,13 @@ initSearchSystem({
   revealEntry: (entryId, categoryId) => ficheDossier.revealEntry(entryId, categoryId),
   revealSection: (sectionId, categoryId) => ficheDossier.revealSection(sectionId, categoryId),
   openGenealogyMember: (ownerType, ownerId, memberId) => ficheDeps.openGenealogyMember?.(ownerType, ownerId, memberId),
+});
+// Bouton "★ Favoris" du bandeau global, à côté de "Mode lecture" (demande
+// de Martin, 2026-10-14) — ouvre la page Favoris (#favorites-panel,
+// src/search.ts) listant toutes les entrées marquées favorites, tous
+// dossiers confondus.
+document.getElementById("favorites-toggle-btn")!.addEventListener("click", () => {
+  void searchSystem.openFavoritesPanel();
 });
 
 // ---------------------------------------------------------------------------

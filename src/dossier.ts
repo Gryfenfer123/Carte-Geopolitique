@@ -32,6 +32,7 @@ import {
 } from "./sanitize";
 import { loadCountryNameData, frenchCountryName, flagSvgSpan } from "./countryNames";
 import { ensureLinkIndexLoaded, getLinkIndexCache, buildLinkIndexEntries, findLinkTargetForName, autoLinkHtml, type LinkTarget } from "./linkIndex";
+import { openImageCropModal, readFileAsDataUrl } from "./imageCrop";
 
 // ---------------------------------------------------------------------------
 // Types
@@ -69,6 +70,15 @@ export type CountryRef = {
 // ainsi avoir plusieurs arbres indépendants (un par dynastie/section). Le
 // genealogy_members.owner_id correspondant est alors l'id de l'entrée.
 export type DossierOwnerKind = "country" | "group" | "encyclopedie" | "port" | "strait" | "pipeline" | "base" | "cable" | "entry";
+// "Dossier plat" (demande de Martin, 2026-10-14) : un groupe ne doit PAS
+// avoir la même division en catégories/sous-catégories qu'un pays — toutes
+// ses entrées vivent à plat, sans catégorie assignée, sans sommaire de
+// thèmes, sans flèches prev/next de thème. Seul "group" est concerné (pas
+// les mini-dossiers port/strait/pipeline/base/cable, qui gardent le même
+// classement que les pays).
+function isFlatDossierOwner(o: DossierOwnerRef | null): boolean {
+  return !!o && o.type === "group";
+}
 export type MiniDossierKind = "port" | "strait" | "pipeline" | "base" | "cable";
 export type DossierOwnerRef = {
   type: DossierOwnerKind;
@@ -1882,6 +1892,25 @@ export function initFicheDossierSystem(deps: {
       actions.className = "dsc-banner-actions";
       actions.appendChild(mkIconBtn("dsc-menu-btn", "Renommer", "✎", () => renameSection(sec.id)));
       actions.appendChild(mkIconBtn("dsc-image-btn", "Changer l'image", CAMERA_ICON_SVG, () => startSectionImageUpload(sec.id)));
+      // "Recadrer" (demande de Martin, 2026-10-14) — même principe que pour
+      // la bannière de catégorie ci-dessus : recadre l'image déjà en ligne.
+      if (sec.cover_image_url) {
+        actions.appendChild(
+          mkIconBtn("dsc-image-btn", "Recadrer l'image", "⤢", async () => {
+            const cropped = await openImageCropModal(sec.cover_image_url!, DOSSIER_BANNER_CROP_RATIO);
+            if (!cropped) return;
+            const url = await uploadSectionImage(sec, cropped);
+            if (!url) return;
+            sec.cover_image_url = url;
+            try {
+              await supabase.from("dossier_sections").update({ cover_image_url: url }).eq("id", sec.id);
+            } catch {
+              /* ignore */
+            }
+            renderDossierEntries();
+          })
+        );
+      }
       actions.appendChild(mkIconBtn("dsc-del-btn", "Supprimer", TRASH_ICON_SVG, () => deleteSection(sec.id)));
       banner.appendChild(actions);
     }
@@ -2020,6 +2049,20 @@ export function initFicheDossierSystem(deps: {
       }
       return;
     }
+    // Dossier "plat" (groupe — demande de Martin, 2026-10-14 : "pour les
+    // groupes, ne pas faire la division de Catégorie des pays") : liste
+    // continue de toutes les entrées, sans titre de catégorie entre elles
+    // ni bloc "Non classé" — un groupe n'a d'ailleurs jamais de catégorie
+    // assignée à ses entrées (voir isFlatDossierOwner()/populateCategorySelects,
+    // qui masquent/désactivent le choix de catégorie dans ce cas).
+    if (isFlatDossierOwner(currentOwner)) {
+      entries.forEach((entry) => container.appendChild(buildEntryEl(entry)));
+      if (!container.children.length) {
+        container.innerHTML =
+          '<p class="muted">Aucune entrée pour le moment. Utilisez les boutons ci-dessus pour ajouter du texte, une photo ou un lien.</p>';
+      }
+      return;
+    }
     const cats = orderedCategories();
     cats.forEach(([id, cat]) => {
       const inCat = entries.filter((e) => (e.category_id || null) === id);
@@ -2077,12 +2120,19 @@ export function initFicheDossierSystem(deps: {
   }
   function renderCategoryHeading() {
     const heading = $("dossier-theme-heading");
-    const backBtn = $("dossier-summary-back");
+    const backBtn = $("dossier-summary-back") as HTMLButtonElement;
     let deepestSectionName: string | null = null;
-    if (activeCategory === "__all__") {
+    // Dossier plat (groupe) : pas de sommaire vers lequel revenir, donc pas
+    // de flèche "← Sommaire" — voir isFlatDossierOwner().
+    if (isFlatDossierOwner(currentOwner)) {
+      heading.textContent = currentOwner!.label;
+      backBtn.style.display = "none";
+    } else if (activeCategory === "__all__") {
+      backBtn.style.display = "";
       heading.textContent = "Toutes les entrées";
       backBtn.textContent = "← Sommaire";
     } else {
+      backBtn.style.display = "";
       const cat = categoryDocs.get(activeCategory);
       const catName = cat ? cat.name : "";
       const path = activeSectionPath
@@ -2192,6 +2242,32 @@ export function initFicheDossierSystem(deps: {
       });
       catActions.appendChild(imageBtn);
       hasCatActions = true;
+      // "Recadrer" (demande de Martin, 2026-10-14) : rouvre l'outil de
+      // recadrage directement sur l'image DÉJÀ en ligne (pas besoin de la
+      // réimporter) — visible seulement si une image existe déjà.
+      if (cat.image_url) {
+        const recropBtn = document.createElement("button");
+        recropBtn.type = "button";
+        recropBtn.className = "dsc-image-btn";
+        recropBtn.title = "Recadrer l'image";
+        recropBtn.textContent = "⤢";
+        recropBtn.addEventListener("click", async (e) => {
+          e.stopPropagation();
+          const cropped = await openImageCropModal(cat.image_url!, DOSSIER_BANNER_CROP_RATIO);
+          if (!cropped) return;
+          const url = await uploadCategoryImage(id, cropped);
+          if (!url) return;
+          cat.image_url = url;
+          categoryDocs.set(id, cat);
+          try {
+            await supabase.from("dossier_categories").update({ image_url: url }).eq("id", id);
+          } catch {
+            /* ignore */
+          }
+          renderDossierSummary();
+        });
+        catActions.appendChild(recropBtn);
+      }
     }
     if (!cat.builtin && isAdmin()) {
       const menuBtn = document.createElement("button");
@@ -2590,7 +2666,12 @@ export function initFicheDossierSystem(deps: {
   // Sélecteurs de catégorie / sous-section (barre d'ajout + formulaires)
   // -------------------------------------------------------------------------
   function populateCategorySelects() {
-    const cats = orderedCategories();
+    // Dossier plat (groupe) : aucune catégorie à proposer — les selects
+    // restent vides (donc sel.value === "" partout, category_id enregistré
+    // à null) et sont masqués en CSS (.flat-dossier, voir style.css) pour ne
+    // pas laisser un menu déroulant vide traîner dans la barre d'ajout/les
+    // formulaires. Voir isFlatDossierOwner().
+    const cats: [string, Category][] = isFlatDossierOwner(currentOwner) ? [] : orderedCategories();
     ([$("dossier-entry-category"), $("dossier-text-category"), $("dossier-link-category"), $("dossier-hemicycle-category"), $("dossier-genealogy-entry-category"), $("dossier-frise-entry-category")] as HTMLSelectElement[]).forEach((sel) => {
       const prev = sel.value;
       sel.innerHTML = "";
@@ -3834,13 +3915,21 @@ export function initFicheDossierSystem(deps: {
     pendingSectionImageId = id;
     ($("dossier-section-image-input") as HTMLInputElement).click();
   }
+  // Ratio fixe de recadrage des bannières catégorie/sous-catégorie (demande
+  // de Martin, 2026-10-14, confirmée "ratio fixe") — proche du ratio
+  // d'affichage réel de .dsc-banner (~280-300px de large pour 150px de
+  // haut, soit environ 2:1), voir src/imageCrop.ts.
+  const DOSSIER_BANNER_CROP_RATIO = 2;
   ($("dossier-category-image-input") as HTMLInputElement).addEventListener("change", async (e) => {
     const files = Array.from((e.target as HTMLInputElement).files || []);
     (e.target as HTMLInputElement).value = "";
     const id = pendingCategoryImageId;
     pendingCategoryImageId = null;
     if (!files.length || !id) return;
-    const url = await uploadCategoryImage(id, files[0]);
+    const dataUrl = await readFileAsDataUrl(files[0]);
+    const cropped = await openImageCropModal(dataUrl, DOSSIER_BANNER_CROP_RATIO);
+    if (!cropped) return;
+    const url = await uploadCategoryImage(id, cropped);
     if (!url) return;
     const cat = categoryDocs.get(id);
     if (cat) {
@@ -3861,7 +3950,10 @@ export function initFicheDossierSystem(deps: {
     pendingSectionImageId = null;
     const sec = id ? currentSections.find((s) => s.id === id) : undefined;
     if (!files.length || !sec) return;
-    const url = await uploadSectionImage(sec, files[0]);
+    const dataUrl = await readFileAsDataUrl(files[0]);
+    const cropped = await openImageCropModal(dataUrl, DOSSIER_BANNER_CROP_RATIO);
+    if (!cropped) return;
+    const url = await uploadSectionImage(sec, cropped);
     if (!url) return;
     sec.cover_image_url = url;
     try {
@@ -3926,6 +4018,7 @@ export function initFicheDossierSystem(deps: {
     $("dossier-theme-view").classList.remove("reading-mode");
     ($("dossier-reading-toggle") as HTMLButtonElement).textContent = "Mode lecture";
     $("dossier-view").classList.add("open");
+    $("dossier-view").classList.toggle("flat-dossier", isFlatDossierOwner(owner));
     // Rafraîchit l'index de liens (pays/groupes/sous-catégories/fiches/
     // membres d'arbres) en parallèle du reste — demande de Martin,
     // 2026-10-03 : liens auto rétroactifs dans les textes + rattachement
@@ -3942,7 +4035,10 @@ export function initFicheDossierSystem(deps: {
     if (currentOwner !== owner) return;
     await linkIndexPromise;
     if (currentOwner !== owner) return;
-    showDossierSummary();
+    // Groupe : pas de sommaire de thèmes, on va direct à la liste à plat
+    // (demande de Martin, 2026-10-14) — voir isFlatDossierOwner().
+    if (isFlatDossierOwner(owner)) showThemeView("__all__");
+    else showDossierSummary();
   }
   async function openDossier(country: CountryRef) {
     await openDossierForOwner({

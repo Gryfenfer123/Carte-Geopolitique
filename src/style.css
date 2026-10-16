@@ -939,18 +939,49 @@ main.map-wrap {
 #link-banner.open { display: block; }
 .map-wrap.group-add-cursor #map { cursor: crosshair; }
 
-/* --- Panneau des sources (bouton #info-btn, masqué comme dans l'artifact —
-   redondant avec #source toujours visible — mais branché et accessible). */
+/* --- Page Sources (bouton #info-btn, rangée d'icônes bas-droite) ----------
+   Demande de Martin, 2026-10-14 : "Ajouter un page pour pouvoir mettre nos
+   sources (a mettre avec les éléments en bas à droite)", confirmée "les
+   deux" (agrégation auto + sources générales ajoutables à la main) — ce
+   panneau remplace le texte statique de crédits cartographiques qui
+   occupait #sources-panel jusqu'ici (migré en données, schema_v25.sql) par
+   deux listes dynamiques, voir renderSourcesPanel()/src/search.ts : les
+   sources générales (public.site_sources, éditables par un admin) et
+   l'agrégation automatique des sources citées entrée par entrée
+   (dossier_entries.sources) dans tous les dossiers. */
 #sources-panel {
   display: none;
   position: absolute; right: 16px; bottom: 104px;
-  width: min(340px, calc(100% - 32px));
-  max-height: min(60vh, 480px); overflow-y: auto;
+  width: min(380px, calc(100% - 32px));
+  max-height: min(70vh, 560px); overflow-y: auto;
   padding: 16px 18px;
 }
 #sources-panel.open { display: block; }
 #sources-panel h2 { font-family: "Fraunces", serif; font-size: 15px; margin: 0 0 10px; color: var(--text); }
 #sources-panel p { font-size: 12px; line-height: 1.5; color: var(--text-dim); margin: 0; }
+#sources-manual-list, #sources-entries-list { margin: 4px 0 2px; }
+.source-row-item {
+  display: flex; align-items: flex-start; justify-content: space-between; gap: 6px;
+  font-size: 12px; line-height: 1.5; color: var(--text-dim); padding: 4px 0;
+  border-bottom: 1px solid var(--surface-border);
+}
+.source-row-item:last-child { border-bottom: none; }
+.source-row-item a { color: var(--accent); text-decoration: none; }
+.source-row-item a:hover { text-decoration: underline; }
+.source-row-item .source-row-sub { display: block; font-size: 10.5px; color: var(--text-dim); margin-top: 1px; }
+.source-row-item button {
+  appearance: none; border: none; background: transparent; color: var(--text-dim); cursor: pointer;
+  font-size: 13px; line-height: 1; flex: none; padding: 0 2px;
+}
+.source-row-item button:hover { color: var(--accent); }
+.source-row-entry-btn {
+  appearance: none; border: none; background: transparent; color: var(--text); text-align: left;
+  cursor: pointer; font: inherit; padding: 0; flex: 1;
+}
+.source-row-entry-btn:hover { color: var(--accent); }
+#sources-manual-add { display: flex; gap: 6px; margin: 6px 0 2px; flex-wrap: wrap; }
+#sources-manual-add input { flex: 1; min-width: 110px; }
+#sources-manual-add .btn-small { flex: none; }
 
 .tile-fallback-note {
   position: absolute;
@@ -1043,6 +1074,21 @@ main.map-wrap {
 }
 .panel.side-panel.open { display: block; }
 .panel.side-panel h2 { font-family: "Fraunces", serif; font-size: 17px; margin: 0 26px 4px 0; color: var(--accent); }
+/* Page Favoris (#favorites-panel, src/search.ts) — demande de Martin,
+   2026-10-14 : "un endroit où retrouver les favoris qu'on a ajouté". Chaque
+   favori est un bouton pleine largeur (titre + "type · dans <dossier>"),
+   regroupés sous le nom du dossier d'origine (.dossier-cat-section-title,
+   déjà utilisé ailleurs dans le dossier pour les mêmes titres de groupe). */
+#favorites-list { margin-top: 10px; }
+.favorite-item {
+  display: flex; flex-direction: column; gap: 2px; width: 100%; text-align: left;
+  appearance: none; border: 1px solid var(--surface-border); background: rgba(255,255,255,0.03);
+  color: var(--text); border-radius: 8px; padding: 8px 10px; margin-bottom: 6px; cursor: pointer;
+  font-family: inherit;
+}
+.favorite-item:hover { border-color: var(--accent); background: rgba(255,255,255,0.06); }
+.favorite-item-title { font-size: 13px; font-weight: 600; }
+.favorite-item-sub { font-size: 11px; color: var(--text-dim); }
 #fiche-panel h2 { font-family: "Fraunces", serif; font-size: 17px; margin: 0 26px 4px 0; color: var(--accent); }
 .fiche-subtitle { margin: -2px 0 12px; text-transform: uppercase; font-size: 10.5px; letter-spacing: 0.04em; }
 /* Étendu de "#fiche-panel input/textarea" à TOUT .panel.side-panel (demande
@@ -1151,6 +1197,28 @@ main.map-wrap {
 }
 .dossier-theme-nav-btn:hover:not(:disabled) { transform: translateY(-1px); }
 .dossier-theme-nav-btn:disabled { opacity: 0.3; cursor: default; }
+/* Dossier plat (groupe — demande de Martin, 2026-10-14 : "pour les groupes,
+   ne pas faire la division de Catégorie des pays") : masque tout ce qui
+   relève du classement par catégorie/sous-catégorie — les sélecteurs
+   catégorie/sous-section de la barre d'ajout et de chaque formulaire
+   d'entrée (déjà vidés en JS, voir populateCategorySelects), et les flèches
+   de navigation entre thèmes (jamais pertinentes : un groupe n'a qu'un
+   seul "thème", la liste complète). Voir isFlatDossierOwner()/dossier.ts. */
+#dossier-view.flat-dossier #dossier-entry-category,
+#dossier-view.flat-dossier #dossier-entry-section,
+#dossier-view.flat-dossier #dossier-text-category,
+#dossier-view.flat-dossier #dossier-text-section,
+#dossier-view.flat-dossier #dossier-link-category,
+#dossier-view.flat-dossier #dossier-link-section,
+#dossier-view.flat-dossier #dossier-hemicycle-category,
+#dossier-view.flat-dossier #dossier-hemicycle-section,
+#dossier-view.flat-dossier #dossier-genealogy-entry-category,
+#dossier-view.flat-dossier #dossier-genealogy-entry-section,
+#dossier-view.flat-dossier #dossier-frise-entry-category,
+#dossier-view.flat-dossier #dossier-frise-entry-section,
+#dossier-view.flat-dossier #dossier-theme-nav {
+  display: none !important;
+}
 /* Largeur de base relevée de 760px à 1240px (demande de Martin, 2026-10-03,
    "dossiers plus larges" — plus de place pour les cases dossier/sous-
    dossier) : à 1440px d'écran, il reste ~100px de marge de chaque côté,
@@ -2210,6 +2278,26 @@ path.link-autre { stroke: var(--link-autre, #c9bfa9); }
   border-radius: 50%; background: var(--accent); border: 2px solid var(--surface); cursor: nwse-resize;
 }
 #gen-crop-hint { font-size: 11px; color: var(--text-dim); margin: -4px 0 4px; }
+/* Outil de recadrage générique (src/imageCrop.ts, #img-crop-modal) — demande
+   de Martin, 2026-10-14 : "Pouvoir recadrer une image dans les catégories
+   (pas possible actuellement)". Même principe visuel/CSS que le recadrage
+   de photo de membre d'arbre ci-dessus (#gen-crop-*), juste des ids
+   distincts puisque c'est un module séparé (dossier.ts l'utilise pour les
+   bannières de catégorie/sous-catégorie, à leur propre ratio d'affichage). */
+#img-crop-stage {
+  position: relative; width: 100%; max-width: 560px; margin: 4px auto 10px; overflow: hidden;
+  background: var(--ink); border-radius: 8px; -webkit-user-select: none; user-select: none;
+}
+#img-crop-img { display: block; width: 100%; height: auto; pointer-events: none; -webkit-user-select: none; user-select: none; }
+#img-crop-rect {
+  position: absolute; border: 2px solid var(--accent); cursor: move;
+  box-shadow: 0 0 0 2000px rgba(2, 4, 8, 0.6);
+}
+#img-crop-handle {
+  position: absolute; right: -7px; bottom: -7px; width: 14px; height: 14px;
+  border-radius: 50%; background: var(--accent); border: 2px solid var(--surface); cursor: nwse-resize;
+}
+#img-crop-hint { font-size: 11px; color: var(--text-dim); margin: -4px 0 4px; }
 
 /* BUG (2026-10-03, signalé par Martin : "cliquer sur + Membre ne fait
    rien") : #gen-member-panel hérite seulement de .panel.side-panel
