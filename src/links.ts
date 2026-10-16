@@ -26,6 +26,23 @@ import type { SupabaseClient, Session } from "@supabase/supabase-js";
 import * as d3 from "d3";
 import { LINK_CATEGORY_META } from "./indicators";
 
+// Subdivisions administratives par pays (demande de Martin, 2026-10-16,
+// voir supabase/schema_v26.sql) — logiquement sans rapport avec les liens,
+// mais rattachée ici car c'est le point d'entrée déjà câblé pour les
+// réglages "affichage carte" de la fiche pays (renderFicheLinksWidget ci-
+// dessous, même case kind === "country" que le toggle "Afficher les
+// liens"). Seuls les pays listés ici ont de vraies données de limites
+// (public/data/raw/subdivisions/<clé>.json, voir src/main.ts) : pas de
+// contrôle affiché pour un pays absent de cette liste plutôt qu'un bouton
+// qui ne ferait rien — cet environnement n'a pas accès à un jeu de données
+// mondial de limites administratives (Natural Earth/GADM), seuls les
+// États-Unis (us-atlas, données du Census Bureau) sont câblés pour
+// l'instant. Ajouter un pays = déposer son GeoJSON dans ce dossier + une
+// entrée ici.
+export const SUBDIVISION_AVAILABLE_TYPES: Record<string, { value: string; label: string; file: string }[]> = {
+  USA: [{ value: "state", label: "États", file: "USA.json" }],
+};
+
 export type LinkEntityKind = "country" | "group";
 export type LinkEntityRef = { kind: LinkEntityKind; id: string; label: string };
 export type LinkDoc = {
@@ -60,6 +77,9 @@ export function initLinksSystem(deps: {
   showTip: (event: MouseEvent, label: string) => void;
   hideTip: () => void;
   selectEntity: (kind: LinkEntityKind, id: string) => void;
+  // Prévient src/main.ts qu'un réglage de subdivisions a changé pour un
+  // pays, pour redessiner le calque sans attendre le prochain zoom/pan.
+  onSubdivisionSettingChanged?: () => void;
 }) {
   const { supabase } = deps;
   // Point 4a (2026-10-03) : seul un compte admin peut créer/modifier un
@@ -174,6 +194,53 @@ export function initLinksSystem(deps: {
       await supabase
         .from("countries")
         .upsert({ id: isoA3, name_fr: deps.getCountryFrenchName(isoA3), links_hidden: hidden }, { onConflict: "id" });
+    } catch {
+      /* best-effort : la préférence reste active pour la session en cours */
+    }
+  }
+
+  // -------------------------------------------------------------------
+  // Subdivisions administratives (supabase/schema_v26.sql) — même
+  // principe que isCountryLinksHidden/setCountryLinksHidden ci-dessus.
+  // -------------------------------------------------------------------
+  type SubdivisionSetting = { show: boolean; type: string | null };
+  const subdivisionByCountry = new Map<string, SubdivisionSetting>();
+
+  async function loadSubdivisionSettings() {
+    const { data } = await supabase.from("countries").select("id, show_subdivisions, subdivision_type");
+    subdivisionByCountry.clear();
+    (data || []).forEach((row) => {
+      const r = row as { id: string; show_subdivisions?: boolean; subdivision_type?: string | null };
+      subdivisionByCountry.set(r.id, { show: !!r.show_subdivisions, type: r.subdivision_type || null });
+    });
+  }
+  function getSubdivisionSetting(isoA3: string): SubdivisionSetting {
+    return subdivisionByCountry.get(isoA3) || { show: false, type: null };
+  }
+  // Pour src/main.ts : la liste des pays actuellement activés, avec leur
+  // type choisi (ou le premier type disponible par défaut) et le fichier
+  // de données correspondant — voir SUBDIVISION_AVAILABLE_TYPES plus haut.
+  function listEnabledSubdivisionCountries(): { isoA3: string; file: string }[] {
+    const out: { isoA3: string; file: string }[] = [];
+    subdivisionByCountry.forEach((setting, isoA3) => {
+      if (!setting.show) return;
+      const types = SUBDIVISION_AVAILABLE_TYPES[isoA3];
+      if (!types || !types.length) return;
+      const chosen = types.find((t) => t.value === setting.type) || types[0];
+      out.push({ isoA3, file: chosen.file });
+    });
+    return out;
+  }
+  async function setCountrySubdivisionSetting(isoA3: string, show: boolean, type: string | null) {
+    subdivisionByCountry.set(isoA3, { show, type });
+    deps.onSubdivisionSettingChanged?.();
+    const session = deps.getSession();
+    if (!session || !isAdmin()) return;
+    try {
+      await supabase.from("countries").upsert(
+        { id: isoA3, name_fr: deps.getCountryFrenchName(isoA3), show_subdivisions: show, subdivision_type: type },
+        { onConflict: "id" }
+      );
     } catch {
       /* best-effort : la préférence reste active pour la session en cours */
     }
@@ -519,6 +586,47 @@ export function initLinksSystem(deps: {
       visLabel.appendChild(cb);
       visLabel.appendChild(document.createTextNode("Afficher les liens de ce pays sur la carte"));
       section.appendChild(visLabel);
+
+      // Subdivisions administratives (demande de Martin, 2026-10-16) — pas
+      // de contrôle affiché si ce pays n'a pas de données disponibles (voir
+      // SUBDIVISION_AVAILABLE_TYPES) plutôt qu'une bascule qui ne ferait
+      // rien.
+      const subTypes = SUBDIVISION_AVAILABLE_TYPES[id];
+      if (subTypes && subTypes.length) {
+        const setting = getSubdivisionSetting(id);
+        const subWrap = document.createElement("div");
+        subWrap.className = "fiche-subdivisions-toggle";
+        const subLabel = document.createElement("label");
+        subLabel.className = "fiche-links-visibility";
+        const subCb = document.createElement("input");
+        subCb.type = "checkbox";
+        subCb.checked = setting.show;
+        subLabel.appendChild(subCb);
+        subLabel.appendChild(
+          document.createTextNode("Afficher les subdivisions administratives (au zoom)")
+        );
+        subWrap.appendChild(subLabel);
+        let typeSelect: HTMLSelectElement | null = null;
+        if (subTypes.length > 1) {
+          typeSelect = document.createElement("select");
+          typeSelect.className = "fiche-subdivisions-type";
+          subTypes.forEach((t) => {
+            const opt = document.createElement("option");
+            opt.value = t.value;
+            opt.textContent = t.label;
+            typeSelect!.appendChild(opt);
+          });
+          typeSelect.value = setting.type || subTypes[0].value;
+          typeSelect.disabled = !setting.show;
+          typeSelect.addEventListener("change", () => setCountrySubdivisionSetting(id, subCb.checked, typeSelect!.value));
+          subWrap.appendChild(typeSelect);
+        }
+        subCb.addEventListener("change", () => {
+          if (typeSelect) typeSelect.disabled = !subCb.checked;
+          setCountrySubdivisionSetting(id, subCb.checked, typeSelect ? typeSelect.value : subTypes[0].value);
+        });
+        section.appendChild(subWrap);
+      }
     }
 
     const timelineWrap = document.createElement("div");
@@ -792,7 +900,7 @@ export function initLinksSystem(deps: {
   // -------------------------------------------------------------------
   // Bootstrap
   // -------------------------------------------------------------------
-  const ready = Promise.all([loadLinks(), loadLinksHidden()]).then(() => {});
+  const ready = Promise.all([loadLinks(), loadLinksHidden(), loadSubdivisionSettings()]).then(() => {});
 
   return {
     ready,
@@ -803,5 +911,6 @@ export function initLinksSystem(deps: {
     isLinkModeActive: () => linkModeActive,
     exitLinkMode,
     redraw,
+    listEnabledSubdivisionCountries,
   };
 }

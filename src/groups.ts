@@ -744,8 +744,21 @@ export function initGroupsSystem(deps: {
       if (gr.members.has(country.isoA3)) memberOf.push([id, gr]);
     });
     memberOf.forEach(([id, gr]) => {
+      // Bug signalé par Martin, 2026-10-16 : "sur la fiche d'un pays, je ne
+      // peux pas cliquer sur un groupe ici pour ouvrir sa fiche" — ce chip
+      // n'avait qu'un bouton "×" (retirer du groupe), jamais de clic pour
+      // l'ouvrir, contrairement au nom de groupe dans le panneau Groupes
+      // (.group-name ci-dessus, qui fait déjà exactement ça). Le chip
+      // entier devient cliquable ; le bouton "×" reste cliquable à part
+      // (stopPropagation) pour ne pas ouvrir le dossier en même temps qu'on
+      // retire le pays du groupe.
+      // span (pas <button>) : un bouton "×" imbriqué juste en dessous serait
+      // un bouton DANS un bouton, invalide en HTML — même choix que
+      // .group-name ci-dessus (span + cursor:pointer, pas un <button>).
       const chip = document.createElement("span");
-      chip.className = "member-chip";
+      chip.className = "member-chip member-chip-clickable";
+      chip.title = "Ouvrir le dossier de ce groupe";
+      chip.addEventListener("click", () => deps.openGroupDossier(id, gr.name || id, gr.color));
       const dot = document.createElement("span");
       dot.className = "group-dot";
       dot.style.background = gr.color || "#999";
@@ -757,7 +770,8 @@ export function initGroupsSystem(deps: {
         rm.className = "edit-control";
         rm.textContent = "×";
         rm.title = "Retirer de ce groupe";
-        rm.addEventListener("click", () => {
+        rm.addEventListener("click", (e) => {
+          e.stopPropagation();
           toggleMember(id, country.isoA3, false);
           renderFicheGroupsWidget(container, country);
         });

@@ -383,14 +383,20 @@ export function initGenealogySystem(deps: {
       <div id="gen-m-relations">
         <label class="field-label">Liens</label>
         <div id="gen-m-relations-list"></div>
-        <div class="dossier-form-actions">
-          <button id="gen-m-link-foreign" class="btn-small">Lier &agrave; un membre d'un autre arbre</button>
-          <!-- Lien personnalisé propre à cet arbre (demande de Martin,
-               2026-10-06) — ouvre directement le choix de légende pour un
-               lien vers un AUTRE membre LOCAL (le cas "autre arbre" passe
-               déjà par openForeignSearch ci-dessus puis le même modal de
-               type de lien, qui propose aussi "Personnalisé"). -->
-        </div>
+      </div>
+      <!-- Bouton "Lier à un membre d'un autre arbre" sorti de #gen-m-relations
+           (bug signalé par Martin, 2026-10-16 : "Meinhard III de Bavière est
+           membre d'un autre arbre [...] je n'ai pas la possibilité [...] de
+           RAJOUTER encore un membre d'un autre arbre lié à lui [...] l'option
+           n'apparait pas") — openForeignMemberPanel masque #gen-m-relations
+           en entier (display:none, la liste de liens n'a de sens que pour un
+           membre LOCAL) puis tentait de réafficher CE bouton seul via son
+           propre style.display, sans effet puisqu'un enfant reste masqué
+           tant que son parent l'est. Bouton maintenant indépendant : visible
+           aussi bien pour un membre local (openMemberPanel) qu'étranger
+           (openForeignMemberPanel), voir gen-m-link-foreign plus bas. -->
+      <div class="dossier-form-actions">
+        <button id="gen-m-link-foreign" class="btn-small">Lier &agrave; un membre d'un autre arbre</button>
       </div>
     </div>
 
