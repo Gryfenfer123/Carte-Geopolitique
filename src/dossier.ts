@@ -313,6 +313,27 @@ const CAMERA_ICON_SVG =
 export const TRASH_ICON_SVG =
   '<svg class="icon-svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/></svg>';
 
+// Jeu d'icônes "badge" par type d'entrée (demande de Martin, 2026-10-16 :
+// "À l'instar du logo jaune arbre pour les arbres généalogiques, faire
+// pareil pour les documents, les liens et les frises. Mais revoir ce logo
+// de l'arbre, je ne veux pas quelque chose mal fait à l'IA comme mtn.") —
+// toutes ces icônes sont de vrais tracés SVG (traits propres, pas de hack
+// CSS clip-path à angles droits comme l'ancienne icône d'arbre), affichées
+// en blanc/`--surface` dans un médaillon rond `--accent` (voir
+// .entry-type-badge / .gen-tree-open-icon / .frise-open-icon /
+// .hemicycle-open-icon dans style.css). L'icône "arbre généalogique" est
+// repensée : plutôt qu'un sapin, un vrai pictogramme d'arbre de parenté
+// (un nœud ancêtre relié à deux descendants), plus lisible à petite
+// taille et plus juste sémantiquement pour une généalogie.
+export const DOC_ICON_SVG =
+  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3h7l4 4v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1Z"/><path d="M14 3v4h4"/><path d="M8.3 12h7.4M8.3 15.3h7.4M8.3 8.7h3.2"/></svg>';
+export const LINK_ICON_SVG =
+  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10 14.2 14.2 10"/><path d="M11.3 7 13 5.3a3 3 0 0 1 4.2 0l1.5 1.5a3 3 0 0 1 0 4.2L17 12.7"/><path d="M12.7 17 11 18.7a3 3 0 0 1-4.2 0L5.3 17.2a3 3 0 0 1 0-4.2L7 11.3"/></svg>';
+export const TREE_ICON_SVG =
+  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5.2" r="2.1"/><circle cx="5.6" cy="18.4" r="2.1"/><circle cx="18.4" cy="18.4" r="2.1"/><path d="M12 7.3v3.4M12 10.7 5.6 16.3M12 10.7l6.4 5.6"/></svg>';
+export const HEMICYCLE_ICON_SVG =
+  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4.2 17.5a7.8 7.8 0 0 1 15.6 0"/><circle cx="7.4" cy="13.9" r="1.3" fill="currentColor" stroke="none"/><circle cx="12" cy="12.1" r="1.3" fill="currentColor" stroke="none"/><circle cx="16.6" cy="13.9" r="1.3" fill="currentColor" stroke="none"/></svg>';
+
 // Cadrage à la souris/au doigt d'une bannière de catégorie ou de section qui
 // a une image (schema_v10.sql) — demande de Martin, 2026-10-02 : "pouvoir la
 // cadrer". Glisser directement sur la bannière (pas de bouton dédié : c'est
@@ -1526,6 +1547,10 @@ export function initFicheDossierSystem(deps: {
         deps.onOpenFriseEntry?.({ id: entry.id, title: entry.title });
         return;
       }
+      if (entry.type === "hemicycle") {
+        openHemicycleReadView(entry);
+        return;
+      }
       startEditEntry(entry);
     });
 
@@ -1630,8 +1655,13 @@ export function initFicheDossierSystem(deps: {
 
     if (entry.type === "text") {
       const h = document.createElement("div");
-      h.className = "entry-title";
-      h.textContent = entry.title || entryPlainText(entry as DossierEntryLike).slice(0, 60) || "Sans titre";
+      h.className = "entry-title entry-title-row";
+      h.innerHTML =
+        '<span class="entry-type-badge" aria-hidden="true">' +
+        DOC_ICON_SVG +
+        "</span><span>" +
+        escapeHtml(entry.title || entryPlainText(entry as DossierEntryLike).slice(0, 60) || "Sans titre") +
+        "</span>";
       div.appendChild(h);
       // Couverture (demande de Martin, 2026-10-12) : une image de couverture
       // pour un texte, affichée uniquement sur l'aperçu (la carte), sous le
@@ -1698,31 +1728,50 @@ export function initFicheDossierSystem(deps: {
         thumb.appendChild(play);
         a.appendChild(thumb);
         const cap = document.createElement("div");
-        cap.className = "yt-label";
-        cap.textContent = entry.label || "Voir sur YouTube";
+        cap.className = "yt-label entry-title-row";
+        cap.innerHTML =
+          '<span class="entry-type-badge" aria-hidden="true">' +
+          LINK_ICON_SVG +
+          "</span><span>" +
+          escapeHtml(entry.label || "Voir sur YouTube") +
+          "</span>";
         a.appendChild(cap);
         div.appendChild(a);
       } else {
         const a = document.createElement("a");
+        a.className = "entry-title-row";
         a.href = entry.link_url || "#";
         a.target = "_blank";
         a.rel = "noopener noreferrer";
-        a.textContent = entry.label || entry.link_url || "";
+        a.innerHTML =
+          '<span class="entry-type-badge" aria-hidden="true">' +
+          LINK_ICON_SVG +
+          "</span><span>" +
+          escapeHtml(entry.label || entry.link_url || "") +
+          "</span>";
         div.appendChild(a);
       }
     } else if (entry.type === "hemicycle") {
+      // Plus de rendu inline du widget sur la carte : même traitement
+      // "beau bouton" que généalogie/frise ci-dessous (demande de Martin,
+      // 2026-10-16 : "Faire également un bouton pour accéder à
+      // l'hémicycle (pas d'affichage direct lors de la création), on doit
+      // cliquer puis on arrive sur une page qui montre l'hémicycle.") — le
+      // widget complet n'est plus construit qu'à l'ouverture, voir
+      // openHemicycleReadView().
       const h = entry.hemicycle || { parties: [] };
-      div.appendChild(buildHemicycleWidget(h.parties || [], h.totalSeats, { compact: true }));
-      const title = document.createElement("div");
-      title.className = "entry-title";
-      title.textContent = h.title || entry.title || "Hémicycle";
-      div.appendChild(title);
-      if (h.source) {
-        const src = document.createElement("div");
-        src.className = "entry-caption";
-        src.textContent = h.source;
-        div.appendChild(src);
-      }
+      const btn = document.createElement("div");
+      btn.className = "hemicycle-open-btn";
+      btn.innerHTML =
+        '<span class="hemicycle-open-icon" aria-hidden="true">' +
+        HEMICYCLE_ICON_SVG +
+        '</span><span class="hemicycle-open-label">' +
+        "Hémicycle" +
+        ((h.title || entry.title)
+          ? ' <span class="hemicycle-open-dash">&mdash;</span> ' + escapeHtml(h.title || entry.title || "")
+          : "") +
+        "</span>";
+      div.appendChild(btn);
     } else if (entry.type === "genealogy") {
       // Petite carte cliquable — pas de rendu du widget généalogie inline,
       // juste un lien vers l'overlay plein écran (src/genealogy.ts),
@@ -1738,7 +1787,9 @@ export function initFicheDossierSystem(deps: {
       const btn = document.createElement("div");
       btn.className = "gen-tree-open-btn";
       btn.innerHTML =
-        '<span class="gen-tree-open-icon" aria-hidden="true"></span><span class="gen-tree-open-label">' +
+        '<span class="gen-tree-open-icon" aria-hidden="true">' +
+        TREE_ICON_SVG +
+        '</span><span class="gen-tree-open-label">' +
         "Généalogie" +
         (entry.title ? ' <span class="gen-tree-open-dash">&mdash;</span> ' + escapeHtml(entry.title) : "") +
         "</span>";
@@ -2483,14 +2534,42 @@ export function initFicheDossierSystem(deps: {
     $("dossier-read-meta").textContent = dossierEntryDate(entry.created_at);
     renderGenealogyLinkBanner($("dossier-read-genealogy-link-banner"), entry.title || null);
     $("dossier-read-body").innerHTML = autoLinkEntryBody(sanitizeDossierHTML(entry.body || ""));
-    const words = wordCountForEntry(entry as DossierEntryLike);
-    const wcEl = $("dossier-read-wordcount");
-    if (words > 0) {
-      wcEl.textContent = words + " mot" + (words > 1 ? "s" : "") + " · ~" + readingTimeMinutes(words) + " min de lecture";
-      wcEl.style.display = "";
-    } else {
-      wcEl.style.display = "none";
+    // Nombre de mots / temps de lecture retirés du bas de la vue de lecture
+    // (demande de Martin, 2026-10-16 : "Enlever le nombre de mots et le
+    // temps de lecture en bas des documents") — #dossier-read-wordcount
+    // reste dans le HTML (pour ne rien casser côté CSS) mais n'est plus
+    // jamais rempli ni affiché ici.
+    $("dossier-read-wordcount").style.display = "none";
+    $("dossier-view").scrollTop = 0;
+  }
+  // Vue de lecture plein cadre d'un hémicycle (demande de Martin,
+  // 2026-10-16 : bouton "Hémicycle" sur la carte -> clic -> page dédiée,
+  // le widget complet n'est plus jamais affiché directement sur la carte
+  // de la liste). Réutilise le même conteneur #dossier-entry-read-view
+  // que les textes (openEntryReadView ci-dessus), juste avec le widget
+  // SVG complet (buildHemicycleWidget, non compact) à la place du corps
+  // HTML — "Modifier" (dossier-read-edit) rouvre normalement le
+  // formulaire d'édition de l'hémicycle via startEditEntry.
+  function openHemicycleReadView(entry: Entry) {
+    readingEntryId = entry.id;
+    const h = entry.hemicycle || { parties: [] };
+    $("dossier-summary").style.display = "none";
+    $("dossier-theme-view").style.display = "none";
+    $("dossier-inner").classList.remove("dossier-inner-wide", "dossier-inner-text-editing");
+    $("dossier-entry-read-view").style.display = "block";
+    $("dossier-read-title").textContent = h.title || entry.title || "Hémicycle";
+    $("dossier-read-meta").textContent = dossierEntryDate(entry.created_at);
+    $("dossier-read-genealogy-link-banner").style.display = "none";
+    const body = $("dossier-read-body");
+    body.innerHTML = "";
+    body.appendChild(buildHemicycleWidget(h.parties || [], h.totalSeats, {}));
+    if (h.source) {
+      const src = document.createElement("div");
+      src.className = "entry-caption";
+      src.textContent = h.source;
+      body.appendChild(src);
     }
+    $("dossier-read-wordcount").style.display = "none";
     $("dossier-view").scrollTop = 0;
   }
   function closeEntryReadView() {

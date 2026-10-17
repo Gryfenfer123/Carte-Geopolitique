@@ -945,6 +945,7 @@ function resetOverlay() {
   indicatorsRedraw?.();
   linksRedraw?.();
   poiRedraw?.();
+  redrawSubdivisions();
 }
 
 map.on("zoom viewreset move", resetOverlay);
@@ -1052,9 +1053,22 @@ type CableEntry = { name: string; owner: string; note: string; points: [number, 
 type RiverEntry = { name: string; scalerank: number; points: [number, number][] };
 type LakeEntry = { name: string; type: string; coordinates: unknown };
 type CityEntry = LonLat & { n: string; note?: string };
-// Zones naturelles (point 5, 2026-10-03) — déserts/montagnes/volcans/
-// forêts/fosses océaniques, voir public/data/raw/NATURAL_FEATURES.json.
-type NaturalFeatureEntry = LonLat & { name: string; type: "desert" | "montagne" | "volcan" | "foret" | "fosse"; note: string };
+// Zones naturelles (point 5, 2026-10-03 ; refonte 2026-10-16) — déserts/
+// montagnes/volcans/forêts/fosses océaniques, voir
+// public/data/raw/NATURAL_FEATURES.json. `geometry` (ajouté le 2026-10-16,
+// demande de Martin : "je ne veux pas des triangles partout, mais de
+// belle zone délimité") est un polygone GeoJSON approximatif généré par
+// scripts/gen_natural_zones.py — PAS un contour cartographique exact (ce
+// sandbox n'a pas accès à un jeu de données de frontières réelles), mais
+// une zone organique dimensionnée/orientée à partir de la surface ou de
+// l'azimut réel connus de chaque entité, qui change d'échelle avec le
+// zoom comme les lacs (gLakes) au lieu d'un symbole de taille fixe.
+type NaturalFeatureEntry = LonLat & {
+  name: string;
+  type: "desert" | "montagne" | "volcan" | "foret" | "fosse";
+  note: string;
+  geometry?: GeoJSON.Polygon;
+};
 
 function slugify(s: string): string {
   return (
@@ -1099,7 +1113,9 @@ const NATURAL_TYPE_COLOR: Record<NaturalFeatureEntry["type"], string> = {
   foret: "#3fbf6e",
   fosse: "#4fa7e8",
 };
-const naturalSymbol = d3.symbol().type(d3.symbolTriangle).size(34);
+// Repli si une entrée n'a pas (encore) de `geometry` — petit disque de
+// taille fixe à l'ancienne, seulement utilisé en dernier recours.
+const naturalFallbackSymbol = d3.symbol().type(d3.symbolCircle).size(40);
 const cableSlug = (d: CableEntry) => slugify(d.name);
 const riverSlug = (d: RiverEntry) => slugify(d.name);
 const capitalSlug = (d: CityEntry) => slugify(d.n);
@@ -1167,6 +1183,12 @@ const gRiversHit = overlayG.append("g").attr("id", "rivers-hit-layer").style("di
 // Lacs : calque dédié, caché par défaut, activé via la même case à cocher
 // que les fleuves ("Fleuves & lacs" — fusion identique à l'artifact v66).
 const gLakes = overlayG.append("g").attr("id", "lakes-layer").style("display", "none");
+// Subdivisions administratives par pays (demande de Martin, 2026-10-16,
+// voir redrawSubdivisions() plus bas et src/links.ts/SUBDIVISION_AVAILABLE_TYPES)
+// — pas de chip de légende dédiée : purement piloté par le niveau de zoom
+// (SUBDIVISION_MIN_ZOOM) croisé avec la liste des pays activés dans leur
+// fiche, comme les capitales (CITY_LABEL_MIN_ZOOM) ci-dessous.
+const gSubdivisions = overlayG.append("g").attr("id", "subdivisions-layer").style("display", "none");
 // Liens entre pays/groupes (diplomatie/conflit/économie/culture/autre) —
 // dessiné en dernier, au-dessus de tous les autres calques, comme gLinks
 // dans l'artifact (~2862, ajouté après tous les autres groupes SVG).
@@ -1258,6 +1280,7 @@ linksSystem = initLinksSystem({
   showTip: (event, label) => showEntityTip(event, label),
   hideTip: () => hideEntityTip(),
   selectEntity: (kind, id) => selectLinkEntity(kind, id),
+  onSubdivisionSettingChanged: () => redrawSubdivisions(),
 });
 linksRedraw = linksSystem.redraw;
 
@@ -1387,6 +1410,90 @@ const baseSymbol = d3.symbol().type(d3.symbolStar).size(38);
 // l'artifact — comme seuil équivalent le plus proche.
 const CITY_LABEL_MIN_ZOOM = 6;
 
+// Subdivisions administratives par pays (demande de Martin, 2026-10-16,
+// voir SUBDIVISION_AVAILABLE_TYPES dans src/links.ts et
+// supabase/schema_v26.sql). Seuil de zoom à partir duquel les limites
+// deviennent utiles (en-dessous, un pays entier occupe déjà peu de place à
+// l'écran, voir chaque subdivision ne ferait qu'ajouter du bruit) — même
+// logique que CITY_LABEL_MIN_ZOOM ci-dessus.
+const SUBDIVISION_MIN_ZOOM = 4;
+type SubdivisionFeature = GeoJSON.Feature<GeoJSON.Geometry, { name: string; type: string }>;
+const subdivisionDataCache = new Map<string, SubdivisionFeature[] | null>();
+async function loadSubdivisionFile(file: string): Promise<SubdivisionFeature[] | null> {
+  if (subdivisionDataCache.has(file)) return subdivisionDataCache.get(file)!;
+  try {
+    const res = await fetch(import.meta.env.BASE_URL + "data/raw/subdivisions/" + file);
+    if (!res.ok) throw new Error(String(res.status));
+    const fc = (await res.json()) as GeoJSON.FeatureCollection<GeoJSON.Geometry, { name: string; type: string }>;
+    subdivisionDataCache.set(file, fc.features);
+    return fc.features;
+  } catch (err) {
+    console.error("Échec de chargement des subdivisions " + file + " :", err);
+    subdivisionDataCache.set(file, null);
+    return null;
+  }
+}
+// Redessine le calque des subdivisions — appelé au zoom/déplacement
+// (même déclencheur que redrawInfraLayers, voir map.on("zoom viewreset
+// move", ...) plus bas) et après tout changement de réglage dans la fiche
+// pays (onSubdivisionSettingChanged, voir l'appel à initLinksSystem).
+async function redrawSubdivisions() {
+  if (!linksSystem) return;
+  const zoom = map.getZoom();
+  const enabled = linksSystem.listEnabledSubdivisionCountries();
+  if (zoom < SUBDIVISION_MIN_ZOOM || !enabled.length) {
+    gSubdivisions.style("display", "none");
+    return;
+  }
+  const lists = await Promise.all(enabled.map((e) => loadSubdivisionFile(e.file)));
+  const all = lists.flat().filter((f): f is SubdivisionFeature => !!f);
+  gSubdivisions.style("display", null);
+  gSubdivisions
+    .selectAll<SVGPathElement, SubdivisionFeature>("path.subdivision-boundary")
+    .data(all)
+    .join("path")
+    .attr("class", "subdivision-boundary")
+    .attr("d", (d) => geoPath(d as unknown as GeoJSON.GeoJSON) || "")
+    .on("mousemove", (event, d) => showEntityTip(event, d.properties.name))
+    .on("mouseleave", hideEntityTip);
+}
+
+// Statuts des territoires contestés (demande de Martin, 2026-10-16 : "Le nom
+// des statuts contestés doit être en français, pas comme en anglais
+// actuellement") — NOTE_BRK (Natural Earth, disputed_50m) est une phrase en
+// anglais du type "Admin. by X; Claimed by Y" / "Self admin.; Claimed by Y" /
+// "Claimed by X and Y" / "Ceded to X by Y; Claimed by Z". Traduite ici
+// clause par clause plutôt que par une table figée (28 territoires au total,
+// mais quelques variantes de formulation) — les noms de pays à l'intérieur
+// passent par frenchCountryName (même table FR_NAMES.json que le reste de
+// l'app, déjà à jour pour tous les pays cités ici).
+function translateDisputedNote(note: string): string {
+  if (!note) return "";
+  return note
+    .split(";")
+    .map((clauseRaw) => {
+      const clause = clauseRaw.trim();
+      let m = clause.match(/^claimed by (.+) and (.+)$/i);
+      if (m) return "Revendiqué par " + frenchCountryName(m[1]) + " et " + frenchCountryName(m[2]);
+      m = clause.match(/^claimed by (.+)$/i);
+      if (m) return "Revendiqué par " + frenchCountryName(m[1]);
+      m = clause.match(/^ceded to (.+) by (.+)$/i);
+      if (m) return "Cédé à " + frenchCountryName(m[1]) + " par " + frenchCountryName(m[2]);
+      m = clause.match(/^admin\.? by (.+)$/i);
+      if (m) return "Administré par " + frenchCountryName(m[1]);
+      if (/^self admin\.?$/i.test(clause)) return "Autoadministré";
+      return clause;
+    })
+    .join(" ; ");
+}
+// Nom affiché d'un territoire contesté — passe par frenchCountryName comme
+// pour un pays normal (FR_NAMES.json couvre déjà la quasi-totalité des noms
+// Natural Earth utilisés ici : "N. Cyprus" -> "Chypre du Nord", etc.) ; les 3
+// absents (Guyane française, Golan, Crimée) sont ajoutés à FR_NAMES.json.
+function disputedTerritoryName(props: Record<string, unknown>): string {
+  return frenchCountryName((props.NAME as string) || "");
+}
+
 function redrawInfraLayers() {
   // --- Territoires contestés ---------------------------------------------
   gDisputed
@@ -1395,14 +1502,14 @@ function redrawInfraLayers() {
     .join("path")
     .attr("class", "disputed-outline")
     .attr("d", (d) => geoPath(d as unknown as GeoJSON.GeoJSON) || "")
-    .on("mousemove", (event, d) => showEntityTip(event, (d.properties.NAME as string) || ""))
+    .on("mousemove", (event, d) => showEntityTip(event, disputedTerritoryName(d.properties)))
     .on("mouseleave", hideEntityTip)
     .on("click", (event, d) => {
       if (consumePoiPlacementClick(event)) { event.stopPropagation(); return; }
       event.stopPropagation();
       const p = d.properties;
-      showInfraEntity("Territoire contesté", (p.NAME as string) || "", [
-        ["Note", (p.NOTE_BRK as string) || ""],
+      showInfraEntity("Territoire contesté", disputedTerritoryName(p), [
+        ["Statut", translateDisputedNote((p.NOTE_BRK as string) || "")],
       ]);
     });
 
@@ -1510,19 +1617,27 @@ function redrawInfraLayers() {
       ]);
     });
 
-  // --- Zones naturelles (point 5, 2026-10-03) ------------------------------
+  // --- Zones naturelles (point 5, 2026-10-03 ; refonte 2026-10-16) --------
+  // Fini le symbole triangle de taille fixe : chaque entité est maintenant
+  // une vraie zone GeoJSON (`geometry`, voir NaturalFeatureEntry plus haut)
+  // dessinée avec `geoPath`, exactement comme les lacs (gLakes) — la forme
+  // change donc d'échelle avec le zoom au lieu de rester un pictogramme
+  // minuscule. Repli sur un petit disque (naturalFallbackSymbol) si une
+  // entrée n'a pas de `geometry` (donnée non régénérée).
   gNatural
     .selectAll<SVGPathElement, NaturalFeatureEntry>("path.natural-feature")
     .data(naturalFeatures)
     .join("path")
     .attr("class", "natural-feature")
     .attr("data-slug", naturalSlug)
-    .attr("d", naturalSymbol)
+    .attr("d", (d) =>
+      d.geometry ? geoPath(d.geometry as unknown as GeoJSON.GeoJSON) : naturalFallbackSymbol()
+    )
+    .attr("transform", (d) => (d.geometry ? null : "translate(" + projectLonLat([d.lon, d.lat]).join(",") + ")"))
     .attr("fill", (d) => NATURAL_TYPE_COLOR[d.type])
-    .attr("transform", (d) => {
-      const c = projectLonLat([d.lon, d.lat]);
-      return "translate(" + c[0] + "," + c[1] + ")";
-    })
+    .attr("fill-opacity", (d) => (d.geometry ? 0.3 : 1))
+    .attr("stroke", (d) => (d.geometry ? NATURAL_TYPE_COLOR[d.type] : "none"))
+    .attr("stroke-width", (d) => (d.geometry ? 1.3 : 0))
     .on("mousemove", (event, d) => showEntityTip(event, d.name))
     .on("mouseleave", hideEntityTip)
     .on("click", (event, d) => {
