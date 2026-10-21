@@ -2536,3 +2536,37 @@ body.read-only-mode #timeline-add-period, body.read-only-mode #timeline-add-poin
 .dossier-unsectioned .dossier-entry .entry-title { text-align: center; }
 .frise-open-btn { justify-content: center; text-align: center; }
 .frise-open-label { align-items: center; }
+
+/* --- Frise : recherche, légende, survol, durées, catégories, fiches --- */
+#timeline-search-wrap { position: relative; }
+#timeline-search { font: inherit; font-size: 13px; padding: 5px 9px; width: 190px; box-sizing: border-box; border: 1px solid var(--surface-border); border-radius: 6px; background: var(--surface); color: var(--text); }
+#timeline-search-results { display: none; position: absolute; top: 100%; left: 0; z-index: 10650; width: 320px; max-width: 80vw; margin-top: 4px; background: var(--surface); border: 1px solid var(--surface-border); border-radius: 8px; box-shadow: 0 6px 20px rgba(0,0,0,0.35); overflow: hidden; }
+.tl-result { display: flex; align-items: center; gap: 8px; width: 100%; text-align: left; padding: 7px 10px; font: inherit; font-size: 13px; border: 0; border-bottom: 1px solid var(--surface-border); background: none; color: var(--text); cursor: pointer; }
+.tl-result:last-child { border-bottom: 0; }
+.tl-result:hover { background: var(--surface-border); }
+.tl-result.none { color: var(--text-dim); cursor: default; }
+#timeline-legend { display: flex; flex-wrap: wrap; gap: 6px; padding: 6px 16px; align-items: center; }
+.tl-legend-chip, .tl-catchip { display: inline-flex; align-items: center; gap: 6px; padding: 3px 10px; font: inherit; font-size: 12.5px; border: 1px solid var(--surface-border); border-radius: 999px; background: var(--surface); color: var(--text); cursor: pointer; }
+.tl-legend-chip.off { opacity: .45; text-decoration: line-through; }
+.tl-catchip.selected { border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent); }
+.tl-legend-all { font: inherit; font-size: 12px; background: none; border: 0; color: var(--accent); cursor: pointer; text-decoration: underline; }
+.tl-legend-dot { display: inline-block; width: 10px; height: 10px; border-radius: 50%; flex: none; }
+#tl-point-categories { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+#tl-hover-card { position: fixed; z-index: 10690; width: 230px; background: var(--surface); color: var(--text); border: 1px solid var(--surface-border); border-radius: 8px; box-shadow: 0 6px 20px rgba(0,0,0,0.35); overflow: hidden; pointer-events: none; font-size: 13px; }
+#tl-hover-card img, .tl-card-img { display: block; width: 100%; max-height: 130px; object-fit: cover; }
+.tl-card-img { border-radius: 6px; margin-bottom: 8px; }
+.tl-hover-body { padding: 8px 10px; }
+.tl-hover-cat { display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--text-dim); }
+.tl-bar { position: absolute; height: 8px; border-radius: 4px; opacity: .85; cursor: pointer; }
+.tl-stem-end { opacity: .45; }
+.tl-point.is-duration { font-weight: 600; }
+.tl-point.flash { animation: tl-flash 0.7s ease-in-out 3; }
+@keyframes tl-flash { 50% { box-shadow: 0 0 0 4px var(--accent); } }
+#tl-cat-overlay, #tl-fiches-overlay { display: none; position: fixed; inset: 0; z-index: 10600; background: rgba(0,0,0,0.45); align-items: center; justify-content: center; padding: 16px; }
+#tl-cat-overlay.open, #tl-fiches-overlay.open { display: flex; }
+#tl-cat-box, #tl-fiches-box { width: min(520px, 100%); max-height: 100%; overflow: auto; box-sizing: border-box; background: var(--surface); color: var(--text); border: 1px solid var(--surface-border); border-radius: 10px; padding: 18px 20px; font-family: "IBM Plex Sans", sans-serif; }
+#tl-cat-box h3, #tl-fiches-box h3 { margin: 0 0 12px; font-family: "Fraunces", serif; font-size: 19px; }
+.tl-cat-row, .tl-fiche-row { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+.tl-cat-row input[type="text"] { flex: 1; font: inherit; font-size: 13.5px; padding: 6px 8px; border: 1px solid var(--surface-border); border-radius: 6px; background: var(--surface); color: var(--text); }
+.tl-fiche-row span { flex: 1; font-size: 13.5px; }
+#tl-fiches-results, #tl-fiche-results { display: flex; flex-direction: column; }

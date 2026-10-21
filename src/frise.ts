@@ -70,15 +70,27 @@ type SectionRow = {
 };
 
 type Ancestor = { id: string; title: string };
-type FriseContext = { periodName: string; from: string; to: string };
+type FriseContext = { periodName: string; from: string; to: string; start?: FriseDate; end?: FriseDate };
+type Category = { id: string; name: string; color: string; position: number };
+type PointFiche = {
+  id: string;
+  title: string | null;
+  ownerType: string;
+  ownerId: string;
+  categoryId: string | null;
+  photo: string | null;
+};
 type Point = {
   eventId: string;
   title: string;
   date: FriseDate;
+  end: FriseDate | null; // date de fin : point "avec durée" (barre)
   side: "up" | "down";
-  color: string;
+  color: string; // couleur de la catégorie (ou ancienne couleur libre)
+  categoryId: string | null;
   stem: number | null; // hauteur de la tige en px, réglée à la main (null = automatique)
-  entryId: string | null;
+  fiches: PointFiche[];
+  subFriseId: string | null; // frise ouverte en cliquant sur un événement avec durée
   stemEl?: HTMLElement; // élément de tige affiché (rendu courant)
 };
 
@@ -86,6 +98,7 @@ const SECTION_COLUMNS =
   "id, title, category_id, parent_section_id, position, period_frise_id, period_start_year, period_start_month, period_start_day, period_start_circa, period_end_year, period_end_month, period_end_day, period_end_circa, period_color, period_is_transition, transition_after_id";
 
 const PALETTE = ["#c0392b", "#e67e22", "#d4ac0d", "#27ae60", "#16a085", "#2980b9", "#8e44ad", "#7f8c8d"];
+const NO_CATEGORY = "__none__";
 const DEFAULT_POINT_COLOR = "#2980b9";
 
 function esc(s: string): string {
@@ -141,6 +154,12 @@ export function initTimelineSystem(deps: {
   revealEntry: (entryId: string, categoryId: string | null) => void;
   // Recharge sous-catégories et entrées du dossier affiché (dossier.ts).
   refreshDossier: () => Promise<void>;
+  // Ouvre une fiche, même d'un autre pays / groupe (dossier.ts::openLinkTarget).
+  openFicheEverywhere: (f: { id: string; ownerType: string; ownerId: string; categoryId: string | null }) => Promise<void>;
+  // Nom lisible du propriétaire d'une fiche (pays, groupe...).
+  getOwnerLabel: (ownerType: string, ownerId: string) => string | null;
+  // Pays proposés pour créer la fiche d'un autre pays.
+  getCountryChoices: () => { id: string; label: string }[];
 }) {
   const { supabase } = deps;
 
@@ -171,6 +190,16 @@ export function initTimelineSystem(deps: {
   let context: FriseContext | null = null;
   let loadToken = 0;
   let suppressPointClick = false;
+  let pointEls = new Map<string, HTMLElement>(); // étiquettes affichées (pour la recherche)
+  let categories: Category[] = [];
+  let hiddenCats = new Set<string>();
+  let showDates = false;
+  try {
+    hiddenCats = new Set<string>(JSON.parse(localStorage.getItem("tl-hidden-cats") || "[]"));
+    showDates = localStorage.getItem("tl-show-dates") === "1";
+  } catch {
+    /* stockage indisponible : valeurs par défaut */
+  }
   let history: string[] = []; // frises visitées avant la frise courante (retour sans repasser par le dossier)
   let zoom = 1;
   // Dialogue période / transition
@@ -179,7 +208,6 @@ export function initTimelineSystem(deps: {
   let periodColor: string | null = null;
   // Dialogue point
   let editingPoint: Point | null = null;
-  let pointColor = DEFAULT_POINT_COLOR;
   let pointSide: "up" | "down" = "up";
 
   // --- DOM (construit une fois) --------------------------------------------------
@@ -190,20 +218,29 @@ export function initTimelineSystem(deps: {
         <button id="timeline-prev" class="btn-small" style="display:none;" aria-label="Frise précédente" title="Revenir à la frise précédente">&larr;</button>
         <button id="timeline-back" class="btn-small">Retour au dossier</button>
         <nav id="timeline-breadcrumb" aria-label="Frises parentes"></nav>
+        <div id="timeline-search-wrap">
+          <input id="timeline-search" type="search" placeholder="Chercher un point…" autocomplete="off" aria-label="Chercher un point">
+          <div id="timeline-search-results"></div>
+        </div>
         <div id="timeline-toolbar">
           <button id="timeline-add-point" class="btn-small edit-control">&#43; Point</button>
           <button id="timeline-add-period" class="btn-small edit-control">&#43; P&eacute;riode</button>
           <button id="timeline-zoom-out" class="btn-small" aria-label="Dézoomer">&minus;</button>
           <button id="timeline-zoom-in" class="btn-small" aria-label="Zoomer">&#43;</button>
           <button id="timeline-zoom-reset" class="btn-small">Recentrer</button>
+          <button id="timeline-toggle-dates" class="btn-small" title="Afficher les dates sur les étiquettes">Dates</button>
+          <button id="timeline-manage-cats" class="btn-small edit-control">Cat&eacute;gories</button>
+          <button id="timeline-export-pdf" class="btn-small" title="T&eacute;l&eacute;charger toute la frise en PDF">PDF</button>
         </div>
       </div>
       <div id="timeline-subtitle"></div>
+      <div id="timeline-legend"></div>
       <div id="timeline-scroll">
         <div id="timeline-stage"></div>
         <p id="timeline-empty-hint" class="muted" style="display:none;"></p>
       </div>
       <div id="tl-point-card" role="dialog" style="display:none;"></div>
+      <div id="tl-hover-card" style="display:none;"></div>
     </div>
 
     <div id="tl-period-overlay">
@@ -254,29 +291,85 @@ export function initTimelineSystem(deps: {
           <input type="text" id="tl-point-title" maxlength="160" placeholder="ex. Trait&eacute; de Verdun">
         </label>
         <fieldset class="tl-date">
-          <legend>Date</legend>
+          <legend id="tl-point-start-legend">Date</legend>
           <input type="text" inputmode="numeric" id="tl-point-year" placeholder="Ann&eacute;e" aria-label="Ann&eacute;e">
           <label class="tl-inline"><input type="checkbox" id="tl-point-bc"> av. J.-C.</label>
           <input type="text" inputmode="numeric" id="tl-point-month" placeholder="Mois" aria-label="Mois">
           <input type="text" inputmode="numeric" id="tl-point-day" placeholder="Jour" aria-label="Jour">
           <label class="tl-inline"><input type="checkbox" id="tl-point-circa"> vers</label>
         </fieldset>
+        <label class="tl-inline tl-end-toggle"><input type="checkbox" id="tl-point-duration"> Avec dur&eacute;e (barre entre deux dates)</label>
+        <fieldset class="tl-date" id="tl-point-end-fields" style="display:none;">
+          <legend>Date de fin</legend>
+          <input type="text" inputmode="numeric" id="tl-pend-year" placeholder="Ann&eacute;e" aria-label="Ann&eacute;e de fin">
+          <label class="tl-inline"><input type="checkbox" id="tl-pend-bc"> av. J.-C.</label>
+          <input type="text" inputmode="numeric" id="tl-pend-month" placeholder="Mois" aria-label="Mois de fin">
+          <input type="text" inputmode="numeric" id="tl-pend-day" placeholder="Jour" aria-label="Jour de fin">
+          <label class="tl-inline"><input type="checkbox" id="tl-pend-circa"> vers</label>
+        </fieldset>
+        <div class="tl-field">Cat&eacute;gorie
+          <div class="tl-catpick" id="tl-point-categories"></div>
+        </div>
         <div class="tl-field">Position
           <div class="tl-sides">
             <button type="button" class="btn-small" id="tl-side-up">&uarr; Au-dessus</button>
             <button type="button" class="btn-small" id="tl-side-down">&darr; En dessous</button>
           </div>
         </div>
-        <div class="tl-field">Couleur
-          <div class="tl-swatches" id="tl-point-colors"></div>
+        <div class="tl-field" id="tl-point-fiche-block">Fiche
+          <label class="tl-inline"><input type="radio" name="tl-fiche-mode" id="tl-fiche-new" checked> Cr&eacute;er une fiche vide dans le dossier de cette frise</label>
+          <label class="tl-inline"><input type="radio" name="tl-fiche-mode" id="tl-fiche-link"> Relier une fiche existante</label>
+          <div id="tl-fiche-search-block" style="display:none;">
+            <input type="text" id="tl-fiche-search" placeholder="Chercher une fiche par titre…" autocomplete="off">
+            <div id="tl-fiche-results" class="tl-results"></div>
+            <div id="tl-fiche-chosen" class="tl-note"></div>
+          </div>
         </div>
-        <p id="tl-point-note" class="tl-note">Une fiche vide, au nom du point, est cr&eacute;&eacute;e dans le dossier o&ugrave; se trouve cette frise.</p>
         <p id="tl-point-error" class="tl-error" role="alert"></p>
         <div class="tl-actions">
           <button type="button" class="btn-small" id="tl-point-delete">Supprimer le point</button>
           <span class="tl-spacer"></span>
           <button type="button" class="btn-small" id="tl-point-cancel">Annuler</button>
           <button type="button" class="btn-small tl-primary" id="tl-point-save">Enregistrer</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="tl-cat-overlay">
+      <div id="tl-cat-box" role="dialog" aria-modal="true">
+        <h3>Cat&eacute;gories de points</h3>
+        <p class="tl-note">Chaque cat&eacute;gorie a une couleur fixe. Elles servent &agrave; colorer les points et &agrave; filtrer la l&eacute;gende.</p>
+        <div id="tl-cat-list"></div>
+        <button type="button" class="btn-small" id="tl-cat-add">&#43; Ajouter une cat&eacute;gorie</button>
+        <p id="tl-cat-error" class="tl-error" role="alert"></p>
+        <div class="tl-actions">
+          <span class="tl-spacer"></span>
+          <button type="button" class="btn-small" id="tl-cat-cancel">Annuler</button>
+          <button type="button" class="btn-small tl-primary" id="tl-cat-save">Enregistrer</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="tl-fiches-overlay">
+      <div id="tl-fiches-box" role="dialog" aria-modal="true">
+        <h3 id="tl-fiches-heading">Fiches de l'&eacute;v&eacute;nement</h3>
+        <div id="tl-fiches-list"></div>
+        <div id="tl-fiches-admin">
+          <div class="tl-field">Relier une fiche existante
+            <input type="text" id="tl-fiches-search" placeholder="Chercher une fiche par titre…" autocomplete="off">
+            <div id="tl-fiches-results" class="tl-results"></div>
+          </div>
+          <div class="tl-field">Cr&eacute;er la fiche d'un autre pays
+            <div class="tl-sides">
+              <select id="tl-fiches-country"></select>
+              <button type="button" class="btn-small" id="tl-fiches-create">Cr&eacute;er sa fiche</button>
+            </div>
+          </div>
+        </div>
+        <p id="tl-fiches-error" class="tl-error" role="alert"></p>
+        <div class="tl-actions">
+          <span class="tl-spacer"></span>
+          <button type="button" class="btn-small" id="tl-fiches-close">Fermer</button>
         </div>
       </div>
     </div>
@@ -337,34 +430,67 @@ export function initTimelineSystem(deps: {
     return ((data as SectionRow[] | null) ?? []).filter((r) => r.period_start_year != null);
   }
 
+  async function fetchCategories(): Promise<Category[]> {
+    const { data } = await supabase.from("timeline_categories").select("id, name, color, position").order("position", { ascending: true });
+    return (data as Category[] | null) ?? [];
+  }
+
+  type EventRow = {
+    id: string;
+    title: string;
+    date_year: number;
+    date_month: number | null;
+    date_day: number | null;
+    date_circa: boolean;
+    date_end_year: number | null;
+    date_end_month: number | null;
+    date_end_day: number | null;
+    date_end_circa: boolean | null;
+    sub_frise_entry_id: string | null;
+  };
+  const EVENT_COLUMNS =
+    "id, title, date_year, date_month, date_day, date_circa, date_end_year, date_end_month, date_end_day, date_end_circa, sub_frise_entry_id";
+
   async function loadPoints(friseId: string): Promise<Point[]> {
     const { data: pl } = await supabase
       .from("timeline_placements")
-      .select("event_id, side, color, stem_length")
+      .select("event_id, side, color, stem_length, category_id")
       .eq("frise_entry_id", friseId);
-    const placements = (pl as { event_id: string; side: string | null; color: string | null; stem_length: number | null }[] | null) ?? [];
+    const placements =
+      (pl as { event_id: string; side: string | null; color: string | null; stem_length: number | null; category_id: string | null }[] | null) ?? [];
     if (!placements.length) return [];
     const ids = placements.map((p) => p.event_id);
-    const { data: ev } = await supabase
-      .from("timeline_events")
-      .select("id, title, date_year, date_month, date_day, date_circa")
-      .in("id", ids);
+    const { data: ev } = await supabase.from("timeline_events").select(EVENT_COLUMNS).in("id", ids);
     const { data: fi } = await supabase.from("timeline_event_fiches").select("entry_id, event_id").in("event_id", ids);
-    const fiche = new Map<string, string>();
-    for (const f of (fi as { entry_id: string; event_id: string }[] | null) ?? []) {
-      if (!fiche.has(f.event_id)) fiche.set(f.event_id, f.entry_id);
+    const links = (fi as { entry_id: string; event_id: string }[] | null) ?? [];
+    const entryInfo = new Map<string, PointFiche>();
+    if (links.length) {
+      const { data: en } = await supabase
+        .from("dossier_entries")
+        .select("id, title, owner_type, owner_id, category_id, photo_url")
+        .in("id", links.map((l) => l.entry_id));
+      for (const e of (en as { id: string; title: string | null; owner_type: string; owner_id: string; category_id: string | null; photo_url: string | null }[] | null) ?? []) {
+        entryInfo.set(e.id, { id: e.id, title: e.title, ownerType: e.owner_type, ownerId: e.owner_id, categoryId: e.category_id, photo: e.photo_url });
+      }
     }
     const out: Point[] = [];
-    for (const e of (ev as { id: string; title: string; date_year: number; date_month: number | null; date_day: number | null; date_circa: boolean }[] | null) ?? []) {
+    for (const e of (ev as EventRow[] | null) ?? []) {
       const p = placements.find((x) => x.event_id === e.id);
+      const cat = categories.find((c) => c.id === p?.category_id);
       out.push({
         eventId: e.id,
         title: e.title,
         date: { year: e.date_year, month: e.date_month, day: e.date_day, circa: !!e.date_circa },
+        end:
+          e.date_end_year != null
+            ? { year: e.date_end_year, month: e.date_end_month, day: e.date_end_day, circa: !!e.date_end_circa }
+            : null,
         side: p?.side === "up" ? "up" : "down",
-        color: p?.color || DEFAULT_POINT_COLOR,
+        color: cat?.color || p?.color || DEFAULT_POINT_COLOR,
+        categoryId: cat ? cat.id : null,
         stem: p?.stem_length ?? null,
-        entryId: fiche.get(e.id) ?? null,
+        fiches: links.filter((l) => l.event_id === e.id).map((l) => entryInfo.get(l.entry_id)).filter((x): x is PointFiche => !!x),
+        subFriseId: e.sub_frise_entry_id,
       });
     }
     return out;
@@ -392,25 +518,53 @@ export function initTimelineSystem(deps: {
         if (!subs.has(e.section_id)) subs.set(e.section_id, { id: e.id, title: e.title });
       }
     }
+    categories = await fetchCategories();
     const pts = await loadPoints(entry.id);
 
-    // Ancêtres : si cette frise est posée dans une période / transition d'une frise parente.
+    // Ancêtres : la frise parente, soit parce que celle-ci est posée dans une période / transition
+    // d'une frise, soit parce qu'elle est la sous-frise d'un événement avec durée.
     const chain: Ancestor[] = [];
     let ctx: FriseContext | null = null;
+    let evBounds: { eventId: string } | null = null;
     let cur: FriseEntry = entry;
-    for (let depth = 0; depth < 12 && cur.section_id; depth++) {
-      const sec = await fetchSection(cur.section_id);
-      if (!sec || !sec.period_frise_id) break;
-      const parent = await fetchEntry(sec.period_frise_id);
-      if (!parent) break;
-      if (depth === 0) {
-        const sibRows = (await fetchSectionRows(parent.id)).filter((r) => !r.period_is_transition);
-        const { segments } = layoutPeriods(sibRows.map(rowToPeriod));
-        const idx = sec.period_is_transition
-          ? segments.findIndex((s) => s.kind === "gap" && s.afterPeriodId === sec.transition_after_id)
-          : segments.findIndex((s) => s.kind === "period" && s.period.id === sec.id);
-        ctx = idx >= 0 ? describeBounds(segments, idx, sec.title) : { periodName: sec.title, from: "", to: "" };
+    for (let depth = 0; depth < 12; depth++) {
+      let parent: FriseEntry | null = null;
+      const sec = cur.section_id ? await fetchSection(cur.section_id) : null;
+      if (sec && sec.period_frise_id) {
+        parent = await fetchEntry(sec.period_frise_id);
+        if (parent && depth === 0) {
+          const sibRows = (await fetchSectionRows(parent.id)).filter((r) => !r.period_is_transition);
+          const { segments } = layoutPeriods(sibRows.map(rowToPeriod));
+          const idx = sec.period_is_transition
+            ? segments.findIndex((s) => s.kind === "gap" && s.afterPeriodId === sec.transition_after_id)
+            : segments.findIndex((s) => s.kind === "period" && s.period.id === sec.id);
+          ctx = idx >= 0 ? describeBounds(segments, idx, sec.title) : { periodName: sec.title, from: "", to: "" };
+        }
+      } else {
+        const { data: evs } = await supabase.from("timeline_events").select(EVENT_COLUMNS).eq("sub_frise_entry_id", cur.id);
+        const ev = ((evs as EventRow[] | null) ?? [])[0];
+        if (ev) {
+          const { data: pls } = await supabase.from("timeline_placements").select("frise_entry_id").eq("event_id", ev.id);
+          const parentId = ((pls as { frise_entry_id: string }[] | null) ?? [])[0]?.frise_entry_id;
+          parent = parentId ? await fetchEntry(parentId) : null;
+          if (parent && depth === 0) {
+            const start: FriseDate = { year: ev.date_year, month: ev.date_month, day: ev.date_day, circa: !!ev.date_circa };
+            const end: FriseDate | null =
+              ev.date_end_year != null
+                ? { year: ev.date_end_year, month: ev.date_end_month, day: ev.date_end_day, circa: !!ev.date_end_circa }
+                : null;
+            ctx = {
+              periodName: ev.title,
+              from: formatFriseDate(start),
+              to: end ? formatFriseDate(end) : "",
+              start,
+              end: end ?? start,
+            };
+            evBounds = { eventId: ev.id };
+          }
+        }
       }
+      if (!parent) break;
       chain.unshift({ id: parent.id, title: parent.title || "Frise" });
       cur = parent;
     }
@@ -424,6 +578,7 @@ export function initTimelineSystem(deps: {
     points = pts;
     ancestors = chain;
     context = ctx;
+    void evBounds;
     return true;
   }
 
@@ -432,16 +587,17 @@ export function initTimelineSystem(deps: {
     const prev = segments[index - 1];
     const next = segments[index + 1];
     if (seg.kind === "gap") {
-      const from = prev && prev.kind === "period" && prev.period.end ? formatFriseDate(prev.period.end) : "";
-      const to = next && next.kind === "period" ? formatFriseDate(next.period.start) : "";
-      return { periodName: name, from, to };
+      const start = prev && prev.kind === "period" && prev.period.end ? prev.period.end : undefined;
+      const end = next && next.kind === "period" ? next.period.start : undefined;
+      return { periodName: name, from: start ? formatFriseDate(start) : "", to: end ? formatFriseDate(end) : "", start, end };
     }
     const p = seg.period;
-    let to: string;
-    if (p.end && !seg.openEnded) to = formatFriseDate(p.end);
-    else if (next && next.kind === "period") to = formatFriseDate(next.period.start);
-    else to = "aujourd'hui";
-    return { periodName: name, from: formatFriseDate(p.start), to };
+    let end: FriseDate | undefined;
+    if (p.end && !seg.openEnded) end = p.end;
+    else if (next && next.kind === "period") end = next.period.start;
+    else end = { year: new Date().getFullYear(), month: null, day: null, circa: false };
+    const to = p.end && !seg.openEnded ? formatFriseDate(p.end) : next && next.kind === "period" ? formatFriseDate(next.period.start) : "aujourd'hui";
+    return { periodName: name, from: formatFriseDate(p.start), to, start: p.start, end };
   }
 
   // --- Rendu -----------------------------------------------------------------------
@@ -452,25 +608,39 @@ export function initTimelineSystem(deps: {
   // Les points dont la hauteur est réglée à la main gardent leur hauteur ; les autres
   // sont rangés automatiquement en branches empilées (niveaux).
   const RULER_H = 26;
-  type Placed = { p: Point; x: number; len: number; w: number };
-  function placeSide(items: { p: Point; x: number }[], side: "up" | "down"): Placed[] {
+  type Placed = { p: Point; x: number; x2: number; len: number; w: number };
+  function pointLabel(p: Point): string {
+    return showDates ? formatFriseDate(p.date) + (p.end ? " → " + formatFriseDate(p.end) : "") + " · " + p.title : p.title;
+  }
+  function placeSide(items: { p: Point; x: number; x2: number }[], side: "up" | "down"): Placed[] {
     const base = STEM_BASE + (side === "down" ? RULER_H : 0);
     const sorted = [...items].sort((a, b) => a.x - b.x || dateSortKey(a.p.date) - dateSortKey(b.p.date));
     const lastRight: number[] = [];
     const out: Placed[] = [];
     for (const it of sorted) {
-      const w = Math.min(textWidth(it.p.title) + LABEL_PAD, 260);
+      const w = Math.min(textWidth(pointLabel(it.p)) + LABEL_PAD, 300);
       if (it.p.stem != null) {
-        out.push({ p: it.p, x: it.x, len: it.p.stem, w });
+        out.push({ p: it.p, x: it.x, x2: it.x2, len: it.p.stem, w });
         continue;
       }
       let level = 0;
       while (level < lastRight.length && lastRight[level] > it.x - 2) level++;
-      lastRight[level] = it.x + 6 + w;
-      out.push({ p: it.p, x: it.x, len: base + level * STEM_STEP, w });
+      lastRight[level] = Math.max(it.x2, it.x + 6 + w);
+      out.push({ p: it.p, x: it.x, x2: it.x2, len: base + level * STEM_STEP, w });
     }
     return out;
   }
+
+  // Période "virtuelle" : une sous-frise sans période propre affiche la période (ou la durée)
+  // dont elle dépend comme bande unique, pour pouvoir y poser des points tout de suite.
+  function effectivePeriods(): Period[] {
+    if (periods.length) return periods;
+    if (context && context.start && context.end) {
+      return [{ id: VIRTUAL_ID, name: context.periodName, start: context.start, end: context.end, color: null }];
+    }
+    return [];
+  }
+  const VIRTUAL_ID = "__virtual__";
 
   function render() {
     if (!frise) return;
@@ -511,7 +681,8 @@ export function initTimelineSystem(deps: {
     const stage = $("timeline-stage");
     stage.innerHTML = "";
     const hint = $("timeline-empty-hint");
-    if (!periods.length) {
+    const eff = effectivePeriods();
+    if (!eff.length) {
       hint.style.display = "";
       hint.textContent = admin
         ? "Cette frise n'a pas encore de période. Utilise « + Période » : chaque période devient une sous-catégorie du dossier."
@@ -520,19 +691,25 @@ export function initTimelineSystem(deps: {
     }
     hint.style.display = "none";
 
-    const { segments, issues } = layoutPeriods(periods);
+    const { segments, issues } = layoutPeriods(eff);
     const scroll = $("timeline-scroll");
     const baseWidth = Math.max(scroll.clientWidth - 200, 320);
     const widths = computeLinearWidths(segments, baseWidth * zoom);
     const total = widths.reduce((s, w) => s + w, 0);
 
-    // Points : position x, niveaux (branches empilées) de chaque côté.
-    const placedItems: { p: Point; x: number }[] = [];
+    // Points : position x, niveaux (branches empilées) de chaque côté ; la légende filtre par catégorie.
+    renderLegend();
+    const placedItems: { p: Point; x: number; x2: number }[] = [];
     let outside = 0;
     for (const p of points) {
+      if (hiddenCats.has(p.categoryId ?? NO_CATEGORY)) continue;
       const x = xForDecimal(dateToDecimal(p.date), segments, widths);
-      if (x === null) outside++;
-      else placedItems.push({ p, x });
+      if (x === null) {
+        outside++;
+        continue;
+      }
+      const x2 = p.end ? (xForDecimal(dateToDecimal(p.end), segments, widths) ?? x) : x;
+      placedItems.push({ p, x, x2: Math.max(x, x2) });
     }
     const up = placeSide(placedItems.filter((i) => i.p.side === "up"), "up");
     const down = placeSide(placedItems.filter((i) => i.p.side === "down"), "down");
@@ -552,6 +729,7 @@ export function initTimelineSystem(deps: {
     band.className = "tl-band";
     segments.forEach((seg, i) => {
       const cell = document.createElement("div");
+      const isVirtual = seg.kind === "period" && seg.period.id === VIRTUAL_ID;
       cell.style.width = widths[i] + "px";
       cell.tabIndex = 0;
       cell.setAttribute("role", "button");
@@ -619,7 +797,7 @@ export function initTimelineSystem(deps: {
         });
         tools.appendChild(open);
       }
-      if (admin) {
+      if (admin && !isVirtual) {
         const edit = document.createElement("button");
         edit.type = "button";
         edit.className = "tl-tool edit-control";
@@ -631,7 +809,9 @@ export function initTimelineSystem(deps: {
         tools.appendChild(edit);
       }
       cell.appendChild(tools);
-      const go = () => void onCellActivate(seg);
+      const go = () => {
+        if (!isVirtual) void onCellActivate(seg);
+      };
       cell.addEventListener("click", go);
       cell.addEventListener("keydown", (ev) => {
         if (ev.key === "Enter" || ev.key === " ") {
@@ -678,6 +858,9 @@ export function initTimelineSystem(deps: {
     wrap.appendChild(layer);
     const bandEl = band;
     const BAND_H = 84;
+    pointEls = new Map();
+    type Parts = { stem: HTMLElement; stem2: HTMLElement | null; bar: HTMLElement | null };
+    const parts = new Map<string, Parts>();
     const drawSide = (list: Placed[], side: "up" | "down") => {
       [...list].sort((a, b) => b.len - a.len).forEach((it) => {
         const stem = document.createElement("span");
@@ -685,33 +868,71 @@ export function initTimelineSystem(deps: {
         stem.style.left = it.x - 1 + "px";
         stem.style.background = it.p.color;
         layer.appendChild(stem);
-        it.p.stemEl = stem;
+        let stem2: HTMLElement | null = null;
+        let bar: HTMLElement | null = null;
+        if (it.p.end) {
+          if (it.x2 - it.x > 12) {
+            stem2 = document.createElement("span");
+            stem2.className = "tl-stem tl-stem-end";
+            stem2.style.left = it.x2 - 1 + "px";
+            stem2.style.background = it.p.color;
+            layer.appendChild(stem2);
+          }
+          bar = document.createElement("span");
+          bar.className = "tl-bar";
+          bar.style.left = it.x + "px";
+          bar.style.width = Math.max(it.x2 - it.x, 6) + "px";
+          bar.style.background = it.p.color;
+          layer.appendChild(bar);
+        }
+        parts.set(it.p.eventId, { stem, stem2, bar });
       });
       list.forEach((it) => {
+        const pt = it.p;
+        const pr = parts.get(pt.eventId) as Parts;
         const lab = document.createElement("button");
         lab.type = "button";
-        lab.className = "tl-point" + (admin ? " movable" : "");
-        lab.textContent = it.p.title;
-        lab.title = it.p.title + " — " + formatFriseDate(it.p.date) + (admin ? " (glisser verticalement pour régler la hauteur)" : "");
+        lab.className = "tl-point" + (admin ? " movable" : "") + (pt.end ? " is-duration" : "") + (pt.subFriseId ? " has-sub" : "");
+        lab.textContent = pointLabel(pt) + (pt.subFriseId ? "  ›" : "");
         lab.style.left = it.x + 3 + "px";
-        lab.style.maxWidth = "260px";
-        lab.style.borderColor = it.p.color;
+        lab.style.maxWidth = "300px";
+        lab.style.borderColor = pt.color;
         layer.appendChild(lab);
+        pointEls.set(pt.eventId, lab);
         const dot = document.createElement("span");
         dot.className = "tl-dot";
         dot.style.left = it.x + "px";
-        dot.style.background = it.p.color;
+        dot.style.background = pt.color;
         layer.appendChild(dot);
         const place = (s: "up" | "down", len: number) => {
-          const stem = it.p.stemEl as HTMLElement;
           const stemTop = s === "up" ? upH - len : upH + BAND_H;
           const centerY = s === "up" ? stemTop : stemTop + len;
-          stem.style.top = stemTop + "px";
-          stem.style.height = len + "px";
-          lab.style.top = centerY + "px";
+          pr.stem.style.top = stemTop + "px";
+          pr.stem.style.height = len + "px";
+          if (pr.stem2) {
+            pr.stem2.style.top = stemTop + "px";
+            pr.stem2.style.height = len + "px";
+          }
+          if (pr.bar) pr.bar.style.top = centerY - 4 + "px";
+          // Une durée : la barre est à la hauteur de la tige, l'étiquette juste au-dessus.
+          lab.style.top = (pt.end ? centerY - 18 : centerY) + "px";
           dot.style.top = centerY + "px";
         };
         place(side, it.len);
+
+        // Survol : petit volet (dates, catégorie, image de la fiche).
+        const hoverTargets = [lab, ...(pr.bar ? [pr.bar] : [])];
+        for (const el of hoverTargets) {
+          el.addEventListener("mouseenter", () => showHover(pt, lab));
+          el.addEventListener("mouseleave", hideHover);
+          el.addEventListener("click", (ev) => {
+            ev.stopPropagation();
+            if (suppressPointClick) return;
+            hideHover();
+            openPointCard(pt, lab);
+          });
+        }
+        if (pr.bar) pr.bar.style.cursor = "pointer";
 
         // Hauteur à la main : on glisse le point verticalement (jamais horizontalement,
         // la date ne change pas). Passer de l'autre côté de la bande le fait changer de côté.
@@ -722,6 +943,7 @@ export function initTimelineSystem(deps: {
           lab.setPointerCapture(ev.pointerId);
           press = { moved: false, side: side, len: it.len };
           closePointCard();
+          hideHover();
         });
         lab.addEventListener("pointermove", (ev) => {
           if (!press) return;
@@ -747,27 +969,22 @@ export function initTimelineSystem(deps: {
           place(s, len);
         });
         const finish = async () => {
-          const pr = press;
+          const pressed = press;
           press = null;
           lab.classList.remove("dragging");
-          if (!pr || !pr.moved || !frise) return;
+          if (!pressed || !pressed.moved || !frise) return;
           suppressPointClick = true;
           setTimeout(() => (suppressPointClick = false), 0);
           const { error } = await supabase
             .from("timeline_placements")
-            .update({ side: pr.side, stem_length: pr.len })
+            .update({ side: pressed.side, stem_length: pressed.len })
             .eq("frise_entry_id", frise.id)
-            .eq("event_id", it.p.eventId);
+            .eq("event_id", pt.eventId);
           if (error) deps.showBanner?.("Échec de l'enregistrement de la hauteur : " + error.message);
           await reload();
         };
         lab.addEventListener("pointerup", () => void finish());
         lab.addEventListener("pointercancel", () => void finish());
-        lab.addEventListener("click", (ev) => {
-          ev.stopPropagation();
-          if (suppressPointClick) return;
-          openPointCard(it.p, lab);
-        });
       });
     };
     drawSide(up, "up");
@@ -1259,7 +1476,126 @@ export function initTimelineSystem(deps: {
     if (await load(frise.id)) render();
   }
 
-  // --- Points -------------------------------------------------------------------------------
+  // --- Légende et filtres par catégorie ----------------------------------------------------
+  function saveFilters() {
+    try {
+      localStorage.setItem("tl-hidden-cats", JSON.stringify([...hiddenCats]));
+    } catch {
+      /* ignoré */
+    }
+  }
+  function categoryName(id: string | null): string {
+    return categories.find((c) => c.id === id)?.name ?? "Sans catégorie";
+  }
+  function renderLegend() {
+    const box = $("timeline-legend");
+    box.innerHTML = "";
+    const present = new Map<string, { name: string; color: string; pos: number }>();
+    for (const p of points) {
+      const key = p.categoryId ?? NO_CATEGORY;
+      if (present.has(key)) continue;
+      const cat = categories.find((c) => c.id === p.categoryId);
+      present.set(key, { name: cat ? cat.name : "Sans catégorie", color: cat ? cat.color : p.color, pos: cat ? cat.position : 9999 });
+    }
+    if (!present.size) {
+      box.style.display = "none";
+      return;
+    }
+    box.style.display = "";
+    [...present.entries()]
+      .sort((a, b) => a[1].pos - b[1].pos)
+      .forEach(([key, info]) => {
+        const chip = document.createElement("button");
+        chip.type = "button";
+        chip.className = "tl-legend-chip" + (hiddenCats.has(key) ? " off" : "");
+        chip.title = hiddenCats.has(key) ? "Afficher cette catégorie" : "Masquer cette catégorie";
+        const dot = document.createElement("span");
+        dot.className = "tl-legend-dot";
+        dot.style.background = info.color;
+        chip.append(dot, document.createTextNode(info.name));
+        chip.addEventListener("click", () => {
+          if (hiddenCats.has(key)) hiddenCats.delete(key);
+          else hiddenCats.add(key);
+          saveFilters();
+          render();
+        });
+        box.appendChild(chip);
+      });
+    if ([...present.keys()].some((k) => hiddenCats.has(k))) {
+      const all = document.createElement("button");
+      all.type = "button";
+      all.className = "tl-legend-all";
+      all.textContent = "Tout afficher";
+      all.addEventListener("click", () => {
+        for (const k of present.keys()) hiddenCats.delete(k);
+        saveFilters();
+        render();
+      });
+      box.appendChild(all);
+    }
+  }
+
+  // --- Volet au survol -------------------------------------------------------------------------
+  let hoverTimer: number | null = null;
+  function hideHover() {
+    if (hoverTimer) window.clearTimeout(hoverTimer);
+    hoverTimer = null;
+    const card = document.getElementById("tl-hover-card");
+    if (card) card.style.display = "none";
+  }
+  function dateRangeText(p: Point): string {
+    return formatFriseDate(p.date) + (p.end ? " → " + formatFriseDate(p.end) : "");
+  }
+  function showHover(p: Point, anchor: HTMLElement) {
+    if (drag && drag.moved) return;
+    if (hoverTimer) window.clearTimeout(hoverTimer);
+    hoverTimer = window.setTimeout(() => {
+      const card = $("tl-hover-card");
+      if ($("tl-point-card").style.display !== "none") return;
+      card.innerHTML = "";
+      const photo = p.fiches.find((f) => f.photo)?.photo;
+      if (photo) {
+        const img = document.createElement("img");
+        img.src = photo;
+        img.alt = "";
+        card.appendChild(img);
+      }
+      const body = document.createElement("div");
+      body.className = "tl-hover-body";
+      const t = document.createElement("strong");
+      t.textContent = p.title;
+      const d = document.createElement("div");
+      d.className = "tl-card-date";
+      d.textContent = dateRangeText(p);
+      body.append(t, d);
+      const cat = document.createElement("div");
+      cat.className = "tl-hover-cat";
+      const dot = document.createElement("span");
+      dot.className = "tl-legend-dot";
+      dot.style.background = p.color;
+      cat.append(dot, document.createTextNode(categoryName(p.categoryId)));
+      body.appendChild(cat);
+      if (p.fiches.length > 1) {
+        const n = document.createElement("div");
+        n.className = "tl-card-date";
+        n.textContent = p.fiches.length + " fiches (plusieurs pays)";
+        body.appendChild(n);
+      }
+      card.appendChild(body);
+      card.style.display = "block";
+      const r = anchor.getBoundingClientRect();
+      const cw = card.offsetWidth;
+      const ch = card.offsetHeight;
+      card.style.left = Math.max(8, Math.min(window.innerWidth - cw - 8, r.left)) + "px";
+      const below = r.bottom + 8;
+      card.style.top = (below + ch > window.innerHeight ? Math.max(8, r.top - ch - 8) : below) + "px";
+    }, 220);
+  }
+
+  // --- Points ------------------------------------------------------------------------------------
+  let pointCategoryId: string | null = null;
+  let chosenFiche: PointFiche | null = null;
+
   function showPointError(msg: string) {
     $("tl-point-error").textContent = msg;
   }
@@ -1268,10 +1604,39 @@ export function initTimelineSystem(deps: {
     $("tl-side-up").classList.toggle("tl-primary", side === "up");
     $("tl-side-down").classList.toggle("tl-primary", side === "down");
   }
+  function renderCategoryPicker() {
+    const box = $("tl-point-categories");
+    box.innerHTML = "";
+    const choices: { id: string | null; name: string; color: string }[] = [
+      ...categories.map((c) => ({ id: c.id, name: c.name, color: c.color })),
+      { id: null, name: "Sans catégorie", color: DEFAULT_POINT_COLOR },
+    ];
+    for (const c of choices) {
+      const b = document.createElement("button");
+      b.type = "button";
+      b.className = "tl-catchip" + (pointCategoryId === c.id ? " selected" : "");
+      const dot = document.createElement("span");
+      dot.className = "tl-legend-dot";
+      dot.style.background = c.color;
+      b.append(dot, document.createTextNode(c.name));
+      b.addEventListener("click", () => {
+        pointCategoryId = c.id;
+        renderCategoryPicker();
+      });
+      box.appendChild(b);
+    }
+  }
+  function syncDurationFields() {
+    $("tl-point-end-fields").style.display = checked("tl-point-duration") ? "" : "none";
+    $("tl-point-start-legend").textContent = checked("tl-point-duration") ? "Début" : "Date";
+  }
+  function syncFicheMode() {
+    $("tl-fiche-search-block").style.display = checked("tl-fiche-link") ? "" : "none";
+  }
 
   function openPointDialog(point: Point | null) {
     if (!frise) return;
-    if (!periods.length) {
+    if (!effectivePeriods().length) {
       deps.showBanner?.("Crée d'abord au moins une période : les points se posent sur la bande.");
       return;
     }
@@ -1279,17 +1644,22 @@ export function initTimelineSystem(deps: {
     showPointError("");
     $("tl-point-heading").textContent = point ? "Modifier le point" : "Nouveau point";
     setField("tl-point-title", point ? point.title : "");
-    const pre = point ? point.date : null;
-    setField("tl-point-year", pre ? String(Math.abs(pre.year)) : "");
-    setChecked("tl-point-bc", !!pre && pre.year < 0);
-    setField("tl-point-month", pre?.month ? String(pre.month) : "");
-    setField("tl-point-day", pre?.day ? String(pre.day) : "");
-    setChecked("tl-point-circa", !!pre?.circa);
+    fillDate("tl-point", point ? point.date : null);
+    fillDate("tl-pend", point ? point.end : null);
+    setChecked("tl-point-duration", !!point?.end);
+    syncDurationFields();
     setSide(point ? point.side : "up");
-    pointColor = point ? point.color : DEFAULT_POINT_COLOR;
-    buildSwatches("tl-point-colors", false, () => pointColor, (c) => (pointColor = c || DEFAULT_POINT_COLOR));
+    pointCategoryId = point ? point.categoryId : (categories[0]?.id ?? null);
+    renderCategoryPicker();
+    chosenFiche = null;
+    setChecked("tl-fiche-new", true);
+    setChecked("tl-fiche-link", false);
+    setField("tl-fiche-search", "");
+    $("tl-fiche-results").innerHTML = "";
+    $("tl-fiche-chosen").textContent = "";
+    syncFicheMode();
+    $("tl-point-fiche-block").style.display = point ? "none" : "";
     $("tl-point-delete").style.display = point ? "" : "none";
-    $("tl-point-note").style.display = point ? "none" : "";
     $("tl-point-overlay").classList.add("open");
     ($("tl-point-title") as HTMLInputElement).focus();
   }
@@ -1298,35 +1668,75 @@ export function initTimelineSystem(deps: {
     editingPoint = null;
   }
 
+  // Recherche de fiches (texte) dans tous les dossiers, par titre.
+  async function searchFiches(query: string): Promise<PointFiche[]> {
+    const q = query.trim().replace(/[%,]/g, " ");
+    if (q.length < 2) return [];
+    const { data } = await supabase
+      .from("dossier_entries")
+      .select("id, title, owner_type, owner_id, category_id, photo_url")
+      .eq("type", "text")
+      .ilike("title", "%" + q + "%")
+      .limit(12);
+    return (
+      (data as { id: string; title: string | null; owner_type: string; owner_id: string; category_id: string | null; photo_url: string | null }[] | null) ?? []
+    ).map((e) => ({ id: e.id, title: e.title, ownerType: e.owner_type, ownerId: e.owner_id, categoryId: e.category_id, photo: e.photo_url }));
+  }
+  function ficheLabel(f: PointFiche): string {
+    const owner = deps.getOwnerLabel(f.ownerType, f.ownerId);
+    return (f.title || "Sans titre") + (owner ? " — " + owner : "");
+  }
+  function renderFicheResults(box: HTMLElement, list: PointFiche[], onPick: (f: PointFiche) => void) {
+    box.innerHTML = "";
+    if (!list.length) return;
+    for (const f of list) {
+      const b = document.createElement("button");
+      b.type = "button";
+      b.className = "tl-result";
+      b.textContent = ficheLabel(f);
+      b.addEventListener("click", () => onPick(f));
+      box.appendChild(b);
+    }
+  }
+  async function ficheAlreadyLinked(entryId: string): Promise<string | null> {
+    const { data } = await supabase.from("timeline_event_fiches").select("event_id").eq("entry_id", entryId).maybeSingle();
+    return (data as { event_id: string } | null)?.event_id ?? null;
+  }
+
   async function savePoint() {
     if (!frise) return;
     const title = fieldValue("tl-point-title").trim();
     if (!title) return showPointError("Donne un titre au point.");
-    const d = parseDateFields({
-      year: fieldValue("tl-point-year"),
-      bc: checked("tl-point-bc"),
-      month: fieldValue("tl-point-month"),
-      day: fieldValue("tl-point-day"),
-      circa: checked("tl-point-circa"),
-    });
+    const d = readDate("tl-point");
     if (!d.ok) return showPointError(d.error);
-    const { segments } = layoutPeriods(periods);
-    const dec = dateToDecimal(d.date);
-    const segIdx = locateSegment(dec, segments);
-    if (segIdx < 0) {
-      const first = layoutPeriods(periods).sorted[0];
+    let endDate: FriseDate | null = null;
+    if (checked("tl-point-duration")) {
+      const e = readDate("tl-pend");
+      if (!e.ok) return showPointError("Fin : " + e.error);
+      if (dateSortKey(e.date) < dateSortKey(d.date)) return showPointError("La fin ne peut pas être avant le début.");
+      endDate = e.date;
+    }
+    const { segments, sorted } = layoutPeriods(effectivePeriods());
+    const outOfBounds = (dt: FriseDate) => locateSegment(dateToDecimal(dt), segments) < 0;
+    if (outOfBounds(d.date) || (endDate && outOfBounds(endDate))) {
       const last = segments[segments.length - 1];
-      const lastEnd = last.kind === "period" && last.period.end && !last.openEnded ? formatFriseDate(last.period.end) : "aujourd'hui";
-      return showPointError("Cette date est en dehors de la frise (de " + formatFriseDate(first.start) + " à " + lastEnd + ").");
+      const lastEnd = last && last.kind === "period" && last.period.end && !last.openEnded ? formatFriseDate(last.period.end) : "aujourd'hui";
+      return showPointError("Cette date est en dehors de la frise (de " + formatFriseDate(sorted[0].start) + " à " + lastEnd + ").");
     }
     const session = deps.getSession();
     if (!session) return showPointError("Connexion requise.");
+    const cat = categories.find((c) => c.id === pointCategoryId) ?? null;
+    const color = cat ? cat.color : DEFAULT_POINT_COLOR;
     const ev = {
       title,
       date_year: d.date.year,
       date_month: d.date.month,
       date_day: d.date.day,
       date_circa: d.date.circa,
+      date_end_year: endDate ? endDate.year : null,
+      date_end_month: endDate ? endDate.month : null,
+      date_end_day: endDate ? endDate.day : null,
+      date_end_circa: endDate ? endDate.circa : false,
     };
     ($("tl-point-save") as HTMLButtonElement).disabled = true;
     try {
@@ -1336,52 +1746,62 @@ export function initTimelineSystem(deps: {
         if (r1.error) return showPointError("Échec : " + r1.error.message);
         const r2 = await supabase
           .from("timeline_placements")
-          .update({ side: pointSide, color: pointColor })
+          .update({ side: pointSide, color, category_id: cat ? cat.id : null })
           .eq("frise_entry_id", frise.id)
           .eq("event_id", pt.eventId);
         if (r2.error) return showPointError("Échec : " + r2.error.message);
-            } else {
-        // La fiche va dans le dossier où se trouve CETTE frise (pas dans celui d'une période) :
-        // une sous-frise est posée dans le dossier de sa période, ses fiches y sont donc rangées.
-        const secId = frise.section_id;
-        const catId = frise.category_id;
-        const fiche = await supabase
-          .from("dossier_entries")
-          .insert({
-            owner_type: frise.owner_type,
-            owner_id: frise.owner_id,
-            type: "text",
-            title,
-            category_id: catId,
-            section_id: secId,
-            tags: [],
-            sources: [],
-            status: "published",
-            created_by: session.user.id,
-          })
-          .select("id")
-          .single();
-        if (fiche.error || !fiche.data) return showPointError("Échec de la création de la fiche : " + (fiche.error?.message || "erreur inconnue."));
-        const entryId = fiche.data.id as string;
-        const evRes = await supabase
-          .from("timeline_events")
-          .insert({ ...ev, created_by: session.user.id })
-          .select("id")
-          .single();
+      } else {
+        const linking = checked("tl-fiche-link");
+        let entryId: string;
+        let createdFiche = false;
+        if (linking) {
+          if (!chosenFiche) return showPointError("Choisis la fiche à relier (ou crée une fiche vide).");
+          const other = await ficheAlreadyLinked(chosenFiche.id);
+          if (other) return showPointError("Cette fiche est déjà reliée à un autre événement.");
+          entryId = chosenFiche.id;
+        } else {
+          // La fiche va dans le dossier où se trouve CETTE frise (pas dans celui d'une période) :
+          // une sous-frise est posée dans le dossier de sa période, ses fiches y sont donc rangées.
+          const fiche = await supabase
+            .from("dossier_entries")
+            .insert({
+              owner_type: frise.owner_type,
+              owner_id: frise.owner_id,
+              type: "text",
+              title,
+              category_id: frise.category_id,
+              section_id: frise.section_id,
+              tags: [],
+              sources: [],
+              status: "published",
+              created_by: session.user.id,
+            })
+            .select("id")
+            .single();
+          if (fiche.error || !fiche.data) return showPointError("Échec de la création de la fiche : " + (fiche.error?.message || "erreur inconnue."));
+          entryId = fiche.data.id as string;
+          createdFiche = true;
+        }
+        const evRes = await supabase.from("timeline_events").insert({ ...ev, created_by: session.user.id }).select("id").single();
         if (evRes.error || !evRes.data) {
-          await supabase.from("dossier_entries").delete().eq("id", entryId);
+          if (createdFiche) await supabase.from("dossier_entries").delete().eq("id", entryId);
           return showPointError("Échec de la création du point : " + (evRes.error?.message || "erreur inconnue."));
         }
         const eventId = evRes.data.id as string;
         const link = await supabase.from("timeline_event_fiches").insert({ entry_id: entryId, event_id: eventId, created_by: session.user.id });
         const place = link.error
           ? link
-          : await supabase
-              .from("timeline_placements")
-              .insert({ frise_entry_id: frise.id, event_id: eventId, side: pointSide, color: pointColor, created_by: session.user.id });
+          : await supabase.from("timeline_placements").insert({
+              frise_entry_id: frise.id,
+              event_id: eventId,
+              side: pointSide,
+              color,
+              category_id: cat ? cat.id : null,
+              created_by: session.user.id,
+            });
         if (place.error) {
           await supabase.from("timeline_events").delete().eq("id", eventId);
-          await supabase.from("dossier_entries").delete().eq("id", entryId);
+          if (createdFiche) await supabase.from("dossier_entries").delete().eq("id", entryId);
           return showPointError("Échec : " + place.error.message);
         }
       }
@@ -1406,30 +1826,129 @@ export function initTimelineSystem(deps: {
     await reload();
   }
 
-  // Petite carte au clic sur un point : titre, date, ouvrir la fiche, modifier.
+  // --- Sous-frise d'un événement avec durée ------------------------------------------------
+  async function openEventSubFrise(p: Point) {
+    if (p.subFriseId) {
+      closePointCard();
+      await goTo(p.subFriseId);
+      return;
+    }
+    if (!isAdmin() || !frise) return;
+    const session = deps.getSession();
+    if (!session) return;
+    if (!frise.category_id) {
+      deps.showBanner?.("Cette frise doit être dans une catégorie du dossier pour accueillir une sous-frise.");
+      return;
+    }
+    const ok = await customConfirm("« " + p.title + " » n'a pas encore de frise.\nEn créer une (avec sa sous-catégorie) ?");
+    if (!ok) return;
+    const { data: sibs } = await supabase
+      .from("dossier_sections")
+      .select("position")
+      .eq("owner_type", frise.owner_type)
+      .eq("owner_id", frise.owner_id)
+      .eq("category_id", frise.category_id);
+    const maxPos = Math.max(-1, ...((sibs as { position: number | null }[] | null) ?? []).map((x) => x.position ?? 0));
+    const sec = await supabase
+      .from("dossier_sections")
+      .insert({
+        owner_type: frise.owner_type,
+        owner_id: frise.owner_id,
+        category_id: frise.category_id,
+        parent_section_id: frise.section_id,
+        title: p.title,
+        position: maxPos + 1,
+        created_by: session.user.id,
+      })
+      .select("id")
+      .single();
+    if (sec.error || !sec.data) {
+      deps.showBanner?.("Échec : " + (sec.error?.message || "erreur inconnue."));
+      return;
+    }
+    const ent = await supabase
+      .from("dossier_entries")
+      .insert({
+        owner_type: frise.owner_type,
+        owner_id: frise.owner_id,
+        type: "frise",
+        title: p.title,
+        category_id: frise.category_id,
+        section_id: sec.data.id,
+        tags: [],
+        sources: [],
+        status: "published",
+        created_by: session.user.id,
+      })
+      .select("id")
+      .single();
+    if (ent.error || !ent.data) {
+      deps.showBanner?.("Échec : " + (ent.error?.message || "erreur inconnue."));
+      return;
+    }
+    const up = await supabase.from("timeline_events").update({ sub_frise_entry_id: ent.data.id }).eq("id", p.eventId);
+    if (up.error) {
+      deps.showBanner?.("Échec : " + up.error.message);
+      return;
+    }
+    closePointCard();
+    await deps.refreshDossier();
+    await goTo(ent.data.id as string);
+  }
+
+  // --- Carte au clic sur un point -------------------------------------------------------------
   function openPointCard(p: Point, anchor: HTMLElement) {
+    hideHover();
     const card = $("tl-point-card");
     card.innerHTML = "";
+    const photo = p.fiches.find((f) => f.photo)?.photo;
+    if (photo) {
+      const img = document.createElement("img");
+      img.className = "tl-card-img";
+      img.src = photo;
+      img.alt = "";
+      card.appendChild(img);
+    }
     const h = document.createElement("strong");
     h.textContent = p.title;
     const d = document.createElement("div");
     d.className = "tl-card-date";
-    d.textContent = formatFriseDate(p.date);
+    d.textContent = dateRangeText(p) + " · " + categoryName(p.categoryId);
     card.append(h, d);
     const row = document.createElement("div");
     row.className = "tl-card-actions";
-    if (p.entryId) {
-      const entryId = p.entryId;
+    // Fiche à ouvrir en priorité : celle du dossier de cette frise.
+    const mine = p.fiches.find((f) => frise && f.ownerType === frise.owner_type && f.ownerId === frise.owner_id) ?? p.fiches[0];
+    if (mine) {
       const open = document.createElement("button");
       open.type = "button";
       open.className = "btn-small tl-primary";
       open.textContent = "Ouvrir la fiche";
-      open.addEventListener("click", async () => {
-        const e = await fetchEntry(entryId);
+      open.addEventListener("click", () => {
+        closePointCard();
         closeView();
-        deps.revealEntry(entryId, e ? e.category_id : null);
+        void deps.openFicheEverywhere({ id: mine.id, ownerType: mine.ownerType, ownerId: mine.ownerId, categoryId: mine.categoryId });
       });
       row.appendChild(open);
+    }
+    if (p.end && (p.subFriseId || isAdmin())) {
+      const sub = document.createElement("button");
+      sub.type = "button";
+      sub.className = "btn-small tl-primary";
+      sub.textContent = p.subFriseId ? "Ouvrir la frise" : "Créer la frise";
+      sub.addEventListener("click", () => void openEventSubFrise(p));
+      row.appendChild(sub);
+    }
+    if (p.fiches.length > 1 || isAdmin()) {
+      const more = document.createElement("button");
+      more.type = "button";
+      more.className = "btn-small";
+      more.textContent = p.fiches.length > 1 ? "Fiches (" + p.fiches.length + ")" : "Autres pays";
+      more.addEventListener("click", () => {
+        closePointCard();
+        void openFichesDialog(p);
+      });
+      row.appendChild(more);
     }
     if (isAdmin() && p.stem != null) {
       const auto = document.createElement("button");
@@ -1469,10 +1988,299 @@ export function initTimelineSystem(deps: {
   }
   document.addEventListener("pointerdown", (ev) => {
     const card = document.getElementById("tl-point-card");
-    if (card && card.style.display !== "none" && !card.contains(ev.target as Node) && !(ev.target as HTMLElement).closest(".tl-point")) {
-      closePointCard();
-    }
+    const t = ev.target as HTMLElement;
+    if (card && card.style.display !== "none" && !card.contains(t) && !t.closest(".tl-point, .tl-bar")) closePointCard();
   });
+
+  // --- Fiches d'un événement (une par pays) -------------------------------------------------------
+  let fichesPoint: Point | null = null;
+  function showFichesError(msg: string) {
+    $("tl-fiches-error").textContent = msg;
+  }
+  async function openFichesDialog(p: Point) {
+    fichesPoint = p;
+    showFichesError("");
+    $("tl-fiches-heading").textContent = "Fiches de « " + p.title + " »";
+    $("tl-fiches-admin").style.display = isAdmin() ? "" : "none";
+    setField("tl-fiches-search", "");
+    $("tl-fiches-results").innerHTML = "";
+    const sel = $("tl-fiches-country") as HTMLSelectElement;
+    sel.innerHTML = "";
+    const used = new Set(p.fiches.filter((f) => f.ownerType === "country").map((f) => f.ownerId));
+    for (const c of deps.getCountryChoices()) {
+      if (used.has(c.id)) continue;
+      const o = document.createElement("option");
+      o.value = c.id;
+      o.textContent = c.label;
+      sel.appendChild(o);
+    }
+    renderFichesList();
+    $("tl-fiches-overlay").classList.add("open");
+  }
+  function renderFichesList() {
+    const box = $("tl-fiches-list");
+    box.innerHTML = "";
+    const p = fichesPoint;
+    if (!p) return;
+    for (const f of p.fiches) {
+      const row = document.createElement("div");
+      row.className = "tl-fiche-row";
+      const name = document.createElement("span");
+      name.textContent = ficheLabel(f);
+      const open = document.createElement("button");
+      open.type = "button";
+      open.className = "btn-small";
+      open.textContent = "Ouvrir";
+      open.addEventListener("click", () => {
+        closeFichesDialog();
+        closeView();
+        void deps.openFicheEverywhere({ id: f.id, ownerType: f.ownerType, ownerId: f.ownerId, categoryId: f.categoryId });
+      });
+      row.append(name, open);
+      if (isAdmin() && p.fiches.length > 1) {
+        const un = document.createElement("button");
+        un.type = "button";
+        un.className = "btn-small";
+        un.textContent = "Délier";
+        un.title = "Retirer cette fiche de l'événement (la fiche reste dans le dossier)";
+        un.addEventListener("click", async () => {
+          const r = await supabase.from("timeline_event_fiches").delete().eq("entry_id", f.id);
+          if (r.error) return showFichesError("Échec : " + r.error.message);
+          p.fiches = p.fiches.filter((x) => x.id !== f.id);
+          renderFichesList();
+          await reload();
+        });
+        row.appendChild(un);
+      }
+      box.appendChild(row);
+    }
+  }
+  function closeFichesDialog() {
+    $("tl-fiches-overlay").classList.remove("open");
+    fichesPoint = null;
+  }
+  async function linkFicheToEvent(f: PointFiche) {
+    const p = fichesPoint;
+    const session = deps.getSession();
+    if (!p || !session) return;
+    if (p.fiches.some((x) => x.id === f.id)) return showFichesError("Cette fiche est déjà reliée à l'événement.");
+    const other = await ficheAlreadyLinked(f.id);
+    if (other) return showFichesError("Cette fiche est déjà reliée à un autre événement.");
+    const r = await supabase.from("timeline_event_fiches").insert({ entry_id: f.id, event_id: p.eventId, created_by: session.user.id });
+    if (r.error) return showFichesError("Échec : " + r.error.message);
+    p.fiches.push(f);
+    setField("tl-fiches-search", "");
+    $("tl-fiches-results").innerHTML = "";
+    showFichesError("");
+    renderFichesList();
+    await reload();
+  }
+  async function createCountryFiche() {
+    const p = fichesPoint;
+    const session = deps.getSession();
+    const country = ($("tl-fiches-country") as HTMLSelectElement).value;
+    if (!p || !session || !country) return;
+    const { data, error } = await supabase
+      .from("dossier_entries")
+      .insert({
+        owner_type: "country",
+        owner_id: country,
+        type: "text",
+        title: p.title,
+        category_id: p.fiches[0]?.categoryId ?? null,
+        section_id: null,
+        tags: [],
+        sources: [],
+        status: "published",
+        created_by: session.user.id,
+      })
+      .select("id")
+      .single();
+    if (error || !data) return showFichesError("Échec de la création : " + (error?.message || "erreur inconnue."));
+    const fiche: PointFiche = { id: data.id as string, title: p.title, ownerType: "country", ownerId: country, categoryId: p.fiches[0]?.categoryId ?? null, photo: null };
+    const r = await supabase.from("timeline_event_fiches").insert({ entry_id: fiche.id, event_id: p.eventId, created_by: session.user.id });
+    if (r.error) {
+      await supabase.from("dossier_entries").delete().eq("id", fiche.id);
+      return showFichesError("Échec : " + r.error.message);
+    }
+    p.fiches.push(fiche);
+    const sel = $("tl-fiches-country") as HTMLSelectElement;
+    sel.querySelector('option[value="' + country + '"]')?.remove();
+    showFichesError("");
+    renderFichesList();
+    await reload();
+  }
+
+  // --- Catégories (gestion) ---------------------------------------------------------------------------
+  type CatDraft = { id: string; name: string; color: string; isNew: boolean };
+  let catDraft: CatDraft[] = [];
+  let catSeq = 0;
+  function renderCatList() {
+    const box = $("tl-cat-list");
+    box.innerHTML = "";
+    catDraft.forEach((c) => {
+      const row = document.createElement("div");
+      row.className = "tl-cat-row";
+      const color = document.createElement("input");
+      color.type = "color";
+      color.className = "tl-color-input";
+      color.value = c.color;
+      color.addEventListener("input", () => (c.color = color.value));
+      const name = document.createElement("input");
+      name.type = "text";
+      name.maxLength = 60;
+      name.value = c.name;
+      name.placeholder = "Nom de la catégorie";
+      name.addEventListener("input", () => (c.name = name.value));
+      const del = document.createElement("button");
+      del.type = "button";
+      del.className = "btn-small";
+      del.textContent = "Supprimer";
+      del.addEventListener("click", () => {
+        catDraft = catDraft.filter((x) => x !== c);
+        renderCatList();
+      });
+      row.append(color, name, del);
+      box.appendChild(row);
+    });
+  }
+  function openCatDialog() {
+    catDraft = categories.map((c) => ({ id: c.id, name: c.name, color: c.color, isNew: false }));
+    $("tl-cat-error").textContent = "";
+    renderCatList();
+    $("tl-cat-overlay").classList.add("open");
+  }
+  function closeCatDialog() {
+    $("tl-cat-overlay").classList.remove("open");
+  }
+  async function saveCategories() {
+    const session = deps.getSession();
+    if (!session) return;
+    const err = (m: string) => ($("tl-cat-error").textContent = m);
+    const names = new Set<string>();
+    for (const c of catDraft) {
+      const n = c.name.trim();
+      if (!n) return err("Chaque catégorie doit avoir un nom.");
+      if (names.has(n.toLowerCase())) return err("Deux catégories portent le même nom : « " + n + " ».");
+      names.add(n.toLowerCase());
+    }
+    const keep = new Set(catDraft.filter((c) => !c.isNew).map((c) => c.id));
+    for (const old of categories) {
+      if (!keep.has(old.id)) {
+        const r = await supabase.from("timeline_categories").delete().eq("id", old.id);
+        if (r.error) return err("Échec : " + r.error.message);
+      }
+    }
+    let pos = 0;
+    for (const c of catDraft) {
+      const row = { name: c.name.trim(), color: c.color, position: pos++ };
+      const r = c.isNew
+        ? await supabase.from("timeline_categories").insert({ ...row, created_by: session.user.id })
+        : await supabase.from("timeline_categories").update(row).eq("id", c.id);
+      if (r.error) return err("Échec : " + r.error.message);
+    }
+    closeCatDialog();
+    await reload();
+  }
+
+  // --- Recherche d'un point ---------------------------------------------------------------------------
+  const plain = (t: string) => t.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase();
+  function closeSearchResults() {
+    const box = $("timeline-search-results");
+    box.innerHTML = "";
+    box.style.display = "none";
+  }
+  function focusPoint(p: Point) {
+    const key = p.categoryId ?? NO_CATEGORY;
+    if (hiddenCats.has(key)) {
+      hiddenCats.delete(key);
+      saveFilters();
+      render();
+    }
+    const el = pointEls.get(p.eventId);
+    if (!el) return;
+    el.scrollIntoView({ behavior: "smooth", block: "center", inline: "center" });
+    el.classList.add("flash");
+    setTimeout(() => el.classList.remove("flash"), 2200);
+  }
+  function runSearch() {
+    const q = plain(($("timeline-search") as HTMLInputElement).value.trim());
+    const box = $("timeline-search-results");
+    box.innerHTML = "";
+    if (!q) return closeSearchResults();
+    const hits = points
+      .filter((p) => plain(p.title).includes(q))
+      .sort((a, b) => dateSortKey(a.date) - dateSortKey(b.date))
+      .slice(0, 8);
+    box.style.display = "block";
+    if (!hits.length) {
+      const none = document.createElement("div");
+      none.className = "tl-result none";
+      none.textContent = "Aucun point trouvé";
+      box.appendChild(none);
+      return;
+    }
+    for (const p of hits) {
+      const b = document.createElement("button");
+      b.type = "button";
+      b.className = "tl-result";
+      const dot = document.createElement("span");
+      dot.className = "tl-legend-dot";
+      dot.style.background = p.color;
+      b.append(dot, document.createTextNode(p.title + " · " + dateRangeText(p)));
+      b.addEventListener("mousedown", (ev) => {
+        ev.preventDefault();
+        focusPoint(p);
+        closeSearchResults();
+      });
+      box.appendChild(b);
+    }
+  }
+
+  // --- Export PDF de toute la frise (indépendant du zoom courant) -------------------------------
+  async function exportPdf() {
+    if (!frise || !effectivePeriods().length) return deps.showBanner?.("Rien à exporter : la frise n'a pas de période.");
+    const btn = $("timeline-export-pdf") as HTMLButtonElement;
+    btn.disabled = true;
+    const savedZoom = zoom;
+    const savedLeft = scrollEl.scrollLeft;
+    const savedTop = scrollEl.scrollTop;
+    try {
+      const [{ toPng }, { jsPDF }] = await Promise.all([import("html-to-image"), import("jspdf")]);
+      hideHover();
+      closePointCard();
+      zoom = 2.5;
+      render();
+      await new Promise((r) => requestAnimationFrame(() => r(null)));
+      const stage = $("timeline-stage");
+      const w = Math.max(stage.scrollWidth, stage.offsetWidth);
+      const h = Math.max(stage.scrollHeight, stage.offsetHeight);
+      const bg = getComputedStyle($("timeline-view")).backgroundColor || "#ffffff";
+      const dataUrl = await toPng(stage, { width: w, height: h, pixelRatio: 2, backgroundColor: bg, cacheBust: true });
+      const pageW = 297;
+      const pageH = 210;
+      const margin = 10;
+      const titleH = 12;
+      const pdf = new jsPDF({ orientation: "landscape", unit: "mm", format: "a4" });
+      pdf.setFontSize(14);
+      pdf.text(frise.title || "Frise chronologique", margin, margin + 4);
+      const availW = pageW - 2 * margin;
+      const availH = pageH - 2 * margin - titleH;
+      const scale = Math.min(availW / w, availH / h);
+      pdf.addImage(dataUrl, "PNG", margin, margin + titleH, w * scale, h * scale);
+      const name = (frise.title || "frise").normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-zA-Z0-9]+/g, "-").toLowerCase();
+      pdf.save("frise-" + name + ".pdf");
+    } catch (e) {
+      deps.showBanner?.("Échec de l'export PDF : " + (e instanceof Error ? e.message : "erreur inconnue."));
+    } finally {
+      zoom = savedZoom;
+      render();
+      scrollEl.scrollLeft = savedLeft;
+      scrollEl.scrollTop = savedTop;
+      btn.disabled = false;
+    }
+  }
+  $("timeline-export-pdf").addEventListener("click", () => void exportPdf());
 
   // --- Événements de l'interface ------------------------------------------------------------
   $("timeline-back").addEventListener("click", closeView);
@@ -1493,6 +2301,73 @@ export function initTimelineSystem(deps: {
   });
   $("tl-period-overlay").addEventListener("click", (ev) => {
     if (ev.target === $("tl-period-overlay")) closePeriodDialog();
+  });
+  $("tl-point-duration").addEventListener("change", syncDurationFields);
+  $("tl-fiche-new").addEventListener("change", syncFicheMode);
+  $("tl-fiche-link").addEventListener("change", syncFicheMode);
+  let ficheSearchTimer: number | null = null;
+  $("tl-fiche-search").addEventListener("input", () => {
+    if (ficheSearchTimer) window.clearTimeout(ficheSearchTimer);
+    ficheSearchTimer = window.setTimeout(async () => {
+      const list = await searchFiches(fieldValue("tl-fiche-search"));
+      renderFicheResults($("tl-fiche-results"), list, (f) => {
+        chosenFiche = f;
+        $("tl-fiche-chosen").textContent = "Fiche choisie : " + ficheLabel(f);
+        $("tl-fiche-results").innerHTML = "";
+      });
+    }, 250);
+  });
+  let fichesSearchTimer: number | null = null;
+  $("tl-fiches-search").addEventListener("input", () => {
+    if (fichesSearchTimer) window.clearTimeout(fichesSearchTimer);
+    fichesSearchTimer = window.setTimeout(async () => {
+      const list = await searchFiches(fieldValue("tl-fiches-search"));
+      renderFicheResults($("tl-fiches-results"), list, (f) => void linkFicheToEvent(f));
+    }, 250);
+  });
+  $("tl-fiches-create").addEventListener("click", () => void createCountryFiche());
+  $("tl-fiches-close").addEventListener("click", closeFichesDialog);
+  $("tl-fiches-overlay").addEventListener("click", (ev) => {
+    if (ev.target === $("tl-fiches-overlay")) closeFichesDialog();
+  });
+  $("timeline-manage-cats").addEventListener("click", () => requireAdminOr(openCatDialog));
+  $("tl-cat-add").addEventListener("click", () => {
+    catDraft.push({ id: "new-" + ++catSeq, name: "", color: "#2980b9", isNew: true });
+    renderCatList();
+  });
+  $("tl-cat-cancel").addEventListener("click", closeCatDialog);
+  $("tl-cat-save").addEventListener("click", () => void saveCategories());
+  $("tl-cat-overlay").addEventListener("click", (ev) => {
+    if (ev.target === $("tl-cat-overlay")) closeCatDialog();
+  });
+  $("timeline-search").addEventListener("input", runSearch);
+  $("timeline-search").addEventListener("blur", () => setTimeout(closeSearchResults, 150));
+  $("timeline-search").addEventListener("keydown", (ev) => {
+    const key = (ev as KeyboardEvent).key;
+    if (key === "Escape") {
+      setField("timeline-search", "");
+      closeSearchResults();
+    } else if (key === "Enter") {
+      const q = plain(fieldValue("timeline-search").trim());
+      const first = points.filter((p) => plain(p.title).includes(q)).sort((a, b) => dateSortKey(a.date) - dateSortKey(b.date))[0];
+      if (first) {
+        focusPoint(first);
+        closeSearchResults();
+      }
+    }
+  });
+  const datesBtn = $("timeline-toggle-dates");
+  const syncDatesBtn = () => datesBtn.classList.toggle("tl-primary", showDates);
+  syncDatesBtn();
+  datesBtn.addEventListener("click", () => {
+    showDates = !showDates;
+    try {
+      localStorage.setItem("tl-show-dates", showDates ? "1" : "0");
+    } catch {
+      /* ignoré */
+    }
+    syncDatesBtn();
+    render();
   });
   $("tl-point-cancel").addEventListener("click", closePointDialog);
   $("tl-point-save").addEventListener("click", () => void savePoint());
