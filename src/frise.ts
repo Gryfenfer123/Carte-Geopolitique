@@ -171,6 +171,7 @@ export function initTimelineSystem(deps: {
   let context: FriseContext | null = null;
   let loadToken = 0;
   let suppressPointClick = false;
+  let history: string[] = []; // frises visitées avant la frise courante (retour sans repasser par le dossier)
   let zoom = 1;
   // Dialogue période / transition
   let editingPeriodId: string | null = null;
@@ -186,7 +187,8 @@ export function initTimelineSystem(deps: {
   root.innerHTML = `
     <div id="timeline-view">
       <div id="timeline-topbar">
-        <button id="timeline-back" class="btn-small">&larr; Retour au dossier</button>
+        <button id="timeline-prev" class="btn-small" style="display:none;" aria-label="Frise précédente" title="Revenir à la frise précédente">&larr;</button>
+        <button id="timeline-back" class="btn-small">Retour au dossier</button>
         <nav id="timeline-breadcrumb" aria-label="Frises parentes"></nav>
         <div id="timeline-toolbar">
           <button id="timeline-add-point" class="btn-small edit-control">&#43; Point</button>
@@ -268,7 +270,7 @@ export function initTimelineSystem(deps: {
         <div class="tl-field">Couleur
           <div class="tl-swatches" id="tl-point-colors"></div>
         </div>
-        <p id="tl-point-note" class="tl-note">Une fiche vide, au nom du point, est cr&eacute;&eacute;e dans la sous-cat&eacute;gorie de la p&eacute;riode correspondante.</p>
+        <p id="tl-point-note" class="tl-note">Une fiche vide, au nom du point, est cr&eacute;&eacute;e dans le dossier o&ugrave; se trouve cette frise.</p>
         <p id="tl-point-error" class="tl-error" role="alert"></p>
         <div class="tl-actions">
           <button type="button" class="btn-small" id="tl-point-delete">Supprimer le point</button>
@@ -483,7 +485,7 @@ export function initTimelineSystem(deps: {
       b.type = "button";
       b.className = "tl-crumb";
       b.textContent = a.title;
-      b.addEventListener("click", () => void openForEntry(a.id));
+      b.addEventListener("click", () => void goTo(a.id));
       bc.appendChild(b);
       const sep = document.createElement("span");
       sep.className = "tl-crumb-sep";
@@ -848,7 +850,7 @@ export function initTimelineSystem(deps: {
     }
     const sub = row ? subFrises.get(row.id) : undefined;
     if (sub) {
-      await openForEntry(sub.id);
+      await goTo(sub.id);
       return;
     }
     if (!isAdmin()) {
@@ -884,7 +886,24 @@ export function initTimelineSystem(deps: {
       return;
     }
     await deps.refreshDossier();
-    await openForEntry(data.id as string);
+    await goTo(data.id as string);
+  }
+
+  // Navigation DANS les frises (clic sur une période, fil d'Ariane) : on garde la frise
+  // quittée pour pouvoir y revenir avec la flèche en haut à gauche.
+  async function goTo(entryId: string) {
+    const from = frise ? frise.id : null;
+    if (from && from !== entryId) history.push(from);
+    await openForEntry(entryId);
+  }
+  function updatePrevButton() {
+    $("timeline-prev").style.display = history.length ? "" : "none";
+  }
+
+  async function openFromDossier(entryId: string) {
+    history = [];
+    frise = null;
+    await openForEntry(entryId);
   }
 
   async function openForEntry(entryId: string) {
@@ -897,6 +916,7 @@ export function initTimelineSystem(deps: {
       return;
     }
     if (fresh) zoom = 1;
+    updatePrevButton();
     render();
     if (fresh) centerView();
   }
@@ -913,6 +933,7 @@ export function initTimelineSystem(deps: {
     closePointDialog();
     closePointCard();
     document.body.classList.remove("tl-can-edit");
+    history = [];
   }
 
   // --- Déplacement (glisser) et zoom (molette), comme l'arbre généalogique ------------
@@ -1277,18 +1298,6 @@ export function initTimelineSystem(deps: {
     editingPoint = null;
   }
 
-  // Sous-catégorie qui doit accueillir la fiche d'un point : celle de la période où tombe
-  // sa date ; dans une transition, la sous-catégorie de la transition (créée si besoin) ;
-  // à défaut, celle où la frise est posée.
-  async function targetSectionFor(segments: Segment[], segIdx: number): Promise<{ secId: string | null; catId: string | null }> {
-    const seg = segments[segIdx];
-    let row: SectionRow | undefined | null;
-    if (seg.kind === "period") row = periodRows.find((r) => r.id === seg.period.id);
-    else row = transitionRows.find((r) => r.transition_after_id === seg.afterPeriodId) ?? (await ensureTransitionRow(seg.afterPeriodId));
-    if (row) return { secId: row.id, catId: row.category_id };
-    return { secId: frise ? frise.section_id : null, catId: frise ? frise.category_id : null };
-  }
-
   async function savePoint() {
     if (!frise) return;
     const title = fieldValue("tl-point-title").trim();
@@ -1331,22 +1340,11 @@ export function initTimelineSystem(deps: {
           .eq("frise_entry_id", frise.id)
           .eq("event_id", pt.eventId);
         if (r2.error) return showPointError("Échec : " + r2.error.message);
-        // Si la date a changé de période, la fiche suit — sauf si elle a été rangée à la main
-        // ailleurs (on ne la déplace que depuis la sous-catégorie de la frise ou d'une de ses périodes).
-        if (pt.entryId) {
-          const target = await targetSectionFor(segments, segIdx);
-          const { data: cur } = await supabase.from("dossier_entries").select("section_id").eq("id", pt.entryId).maybeSingle();
-          const curSec = (cur as { section_id: string | null } | null)?.section_id ?? null;
-          const automatic = new Set<string | null>([frise.section_id, ...periodRows.map((r) => r.id), ...transitionRows.map((r) => r.id)]);
-          if (cur && automatic.has(curSec) && curSec !== target.secId && target.secId) {
-            await supabase.from("dossier_entries").update({ section_id: target.secId, category_id: target.catId }).eq("id", pt.entryId);
-          }
-        }
-      } else {
-        // Fiche à créer : dans la sous-catégorie de la période (ou transition) où tombe la date.
-        const target = await targetSectionFor(segments, segIdx);
-        const secId = target.secId;
-        const catId = target.catId;
+            } else {
+        // La fiche va dans le dossier où se trouve CETTE frise (pas dans celui d'une période) :
+        // une sous-frise est posée dans le dossier de sa période, ses fiches y sont donc rangées.
+        const secId = frise.section_id;
+        const catId = frise.category_id;
         const fiche = await supabase
           .from("dossier_entries")
           .insert({
@@ -1478,6 +1476,11 @@ export function initTimelineSystem(deps: {
 
   // --- Événements de l'interface ------------------------------------------------------------
   $("timeline-back").addEventListener("click", closeView);
+  $("timeline-prev").addEventListener("click", () => {
+    const prev = history.pop();
+    if (prev) void openForEntry(prev);
+    updatePrevButton();
+  });
   $("timeline-add-period").addEventListener("click", () => requireAdminOr(() => void openPeriodDialog(null, null)));
   $("timeline-add-point").addEventListener("click", () => requireAdminOr(() => openPointDialog(null)));
   $("tl-period-cancel").addEventListener("click", closePeriodDialog);
@@ -1504,7 +1507,7 @@ export function initTimelineSystem(deps: {
   });
 
   return {
-    openForEntry,
+    openForEntry: openFromDossier,
     closeView,
   };
 }

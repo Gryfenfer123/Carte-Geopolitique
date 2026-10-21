@@ -2529,3 +2529,10 @@ body.read-only-mode #timeline-add-period, body.read-only-mode #timeline-add-poin
 .frise-open-sub { font-family: "IBM Plex Sans", sans-serif; font-size: 11.5px; font-weight: 400; color: var(--text-dim); }
 .dossier-unsectioned .dossier-entry { min-height: 96px; justify-content: center; }
 .dossier-unsectioned .dossier-entry.text .entry-title { font-family: "Fraunces", serif; font-size: 16px; }
+
+/* Titres centrés dans les pages de dossier */
+.dossier-cat-section-title { text-align: center; }
+.dossier-section-row .sec-name { text-align: center; }
+.dossier-unsectioned .dossier-entry .entry-title { text-align: center; }
+.frise-open-btn { justify-content: center; text-align: center; }
+.frise-open-label { align-items: center; }
