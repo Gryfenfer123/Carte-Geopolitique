@@ -2385,11 +2385,11 @@ path.link-autre { stroke: var(--link-autre, #c9bfa9); }
 #gen-relation-modal-choices button { white-space: normal; text-align: left; }
 
 /* ===========================================================================
-   Frises chronologiques (src/frise.ts, schema_v19.sql) — overlay plein
-   écran ouvert depuis une entrée de dossier de type "frise" (demande de
-   Martin, 2026-10-06 ; #dossier-add-frise-btn), même structure/empilement
-   que #genealogy-view ci-dessus (z-index identique, 10500 — les deux
-   overlays plein écran ne sont jamais ouverts en même temps).
+   Frises chronologiques (src/frise.ts, schema_v27.sql) — overlay plein écran
+   ouvert depuis une entrée de dossier de type "frise". Une bande entre deux
+   lignes, les périodes écrites dedans, les dates aux bornes partagées ;
+   la place au-dessus et au-dessous est réservée aux événements (étape 3).
+   z-index 10500, comme #genealogy-view.
    ========================================================================= */
 #timeline-view {
   display: none; position: fixed; inset: 0; z-index: 10500;
@@ -2398,152 +2398,81 @@ path.link-autre { stroke: var(--link-autre, #c9bfa9); }
 #timeline-view.open { display: flex; flex-direction: column; }
 #timeline-topbar {
   display: flex; align-items: center; gap: 14px; flex-wrap: wrap;
-  padding: 14px 20px; border-bottom: 1px solid var(--surface-border); background: var(--surface);
-  position: relative; z-index: 1;
+  padding: 10px 18px; border-bottom: 1px solid var(--surface-border);
 }
-#timeline-title { font-family: "Fraunces", serif; font-size: 18px; color: var(--accent); margin: 0; flex: 1 1 auto; min-width: 160px; }
-#timeline-toolbar { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
-#timeline-canvas-wrap {
-  position: relative; flex: 1; overflow: hidden; cursor: grab;
-  background: radial-gradient(circle at 50% 50%, rgba(255,255,255,0.035) 0, transparent 70%), var(--ink);
+#timeline-breadcrumb { display: flex; align-items: baseline; gap: 8px; flex: 1; min-width: 0; flex-wrap: wrap; }
+#timeline-title { margin: 0; font-family: "Fraunces", serif; font-size: 22px; font-weight: 600; }
+.tl-crumb {
+  background: none; border: none; padding: 0; cursor: pointer; font: inherit;
+  color: var(--accent); font-size: 14px;
 }
-#timeline-canvas-wrap:active { cursor: grabbing; }
-#timeline-stage { position: absolute; left: 0; top: 0; transform-origin: 0 0; width: 1px; height: 1px; }
-/* Règle des années — redessinée en coordonnées ÉCRAN (pas transformée par
-   #timeline-stage, voir renderRuler/frise.ts) : un <svg> séparé, plein
-   viewport, posé juste au-dessus du canevas pour que le texte des
-   graduations reste net quel que soit le zoom. */
-#timeline-ruler-svg { position: absolute; left: 0; top: 0; width: 100%; height: 100%; pointer-events: none; }
-.tl-ruler-line { stroke: var(--surface-border); stroke-width: 1; opacity: 0.6; }
-.tl-ruler-label { fill: var(--text-dim); font-size: 11px; font-family: "IBM Plex Sans", sans-serif; }
-.tl-ruler-today { stroke: var(--accent); stroke-width: 1.5; stroke-dasharray: 4,3; opacity: 0.8; }
-#timeline-items { position: absolute; left: 0; top: 0; }
-#timeline-empty-hint { position: absolute; left: 50%; top: 55%; transform: translate(-50%, -50%); pointer-events: none; }
+.tl-crumb:hover { text-decoration: underline; }
+.tl-crumb-sep { color: var(--text-dim); }
+#timeline-subtitle { padding: 8px 18px 0; font-size: 13px; color: var(--text-dim); }
+#timeline-scroll { flex: 1; overflow: auto; padding: 0 32px; display: flex; flex-direction: column; justify-content: center; }
+#timeline-stage { padding: 150px 0 150px; }
+#timeline-empty-hint { text-align: center; max-width: 520px; margin: 0 auto; }
+.tl-band-wrap { position: relative; }
+.tl-marks { position: relative; height: 26px; }
+.tl-mark {
+  position: absolute; bottom: 4px; transform: translateX(-4px); white-space: nowrap;
+  font-size: 12px; color: var(--text-dim); padding-left: 4px; border-left: 1px solid var(--text-dim);
+}
+.tl-mark.at-end { transform: translateX(calc(-100% + 4px)); padding: 0 4px 0 0; border-left: none; border-right: 1px solid var(--text-dim); font-style: italic; }
+.tl-band {
+  display: flex; height: 76px;
+  border-top: 2px solid var(--ink, var(--text)); border-bottom: 2px solid var(--ink, var(--text));
+}
+.tl-period {
+  position: relative; box-sizing: border-box; flex: none; padding: 8px 12px;
+  display: flex; flex-direction: column; justify-content: center; gap: 2px;
+  border-left: 1px solid var(--surface-border); cursor: pointer; overflow: hidden;
+}
+.tl-period:first-child { border-left: none; }
+.tl-period:hover, .tl-period:focus-visible { background: color-mix(in srgb, var(--accent) 10%, transparent); outline: none; }
+.tl-period-name { font-family: "Fraunces", serif; font-size: 17px; font-weight: 600; line-height: 1.15; }
+.tl-period-sub { font-size: 11px; color: var(--accent); min-height: 13px; }
+.tl-period-tools { position: absolute; right: 6px; bottom: 4px; display: none; gap: 4px; }
+.tl-period:hover .tl-period-tools, .tl-period:focus-within .tl-period-tools { display: flex; }
+.tl-tool {
+  font-size: 10.5px; padding: 2px 6px; border-radius: 4px; cursor: pointer;
+  border: 1px solid var(--surface-border); background: var(--surface); color: var(--text);
+}
+.tl-tool:hover { background: var(--surface-border); }
+.tl-gap {
+  position: relative; box-sizing: border-box; flex: none; display: flex; align-items: center; justify-content: center;
+  background: repeating-linear-gradient(135deg, transparent 0 6px, color-mix(in srgb, var(--text-dim) 22%, transparent) 6px 7px);
+  background-color: color-mix(in srgb, var(--text-dim) 10%, transparent);
+  border-left: 1px dashed var(--text-dim); border-right: 1px dashed var(--text-dim);
+}
+.tl-gap-label { font-size: 11.5px; font-style: italic; color: var(--text-dim); text-align: center; padding: 0 6px; line-height: 1.25; }
+.tl-issues { margin: 10px 0 0; font-size: 12.5px; color: #b3402a; }
+.edit-control.tl-tool { display: inline-block; }
+body.read-only-mode #timeline-add-period { display: none; }
 
-/* ---------------------------------------------------------------------
-   REFONTE VISUELLE (2026-10-06, retour de Martin : "ça ne va pas, je veux
-   un rendu [...] avec les périodes qui apparaissent sur la frise sur
-   toute une hauteur [...] Avec une DA beaucoup moins IA, quelque chose de
-   vraiment bien fait" — référence donnée : une frise-bandeau façon
-   infographie, bandes pleine couleur sur toute la hauteur pour les
-   grandes ères, sous-bandes fines empilées pour les périodes imbriquées
-   (ex. "Affaire Dreyfus" dans "IIIe République"), événements ponctuels
-   alignés sous la frise et reliés par un tiret vertical).
-   Voir frise.ts (PERIOD_BAND_TOP/PERIOD_BAND_H_MAIN/PERIOD_BAND_H_SUB/
-   POINTS_GAP_ABOVE/POINT_TICK_H + assignLanes/periodBandTop/
-   pointsBaselineTop) pour tout le calcul de position ; ce bloc CSS ne
-   fait que l'habillage des mêmes classes .tl-item-* qu'avant (JS
-   d'interaction — drag, resize, clic — inchangé).
-   --------------------------------------------------------------------- */
-.tl-item {
-  position: absolute; box-sizing: border-box; cursor: pointer; user-select: none;
+#tl-period-overlay {
+  display: none; position: fixed; inset: 0; z-index: 10600; background: rgba(0,0,0,0.45);
+  align-items: center; justify-content: center; padding: 16px;
 }
-
-/* --- Bandes de période -------------------------------------------------- */
-.tl-item-period {
-  display: flex; flex-direction: column; justify-content: center; align-items: center;
-  text-align: center; padding: 0 10px; overflow: hidden;
-  box-shadow: inset 0 0 0 1px rgba(0,0,0,0.18), 0 6px 18px rgba(0,0,0,0.3);
-  transition: filter 120ms ease;
+#tl-period-overlay.open { display: flex; }
+#tl-period-box {
+  width: min(520px, 100%); max-height: 100%; overflow: auto; box-sizing: border-box;
+  background: var(--surface); color: var(--text); border: 1px solid var(--surface-border);
+  border-radius: 10px; padding: 18px 20px; font-family: "IBM Plex Sans", sans-serif;
 }
-.tl-item-period:hover { filter: brightness(1.08); }
-/* Voie primaire (lane 0) — la grande bande "bandeau d'ère" : typo large,
-   capitales, look d'infographie plutôt qu'une carte UI classique. */
-.tl-item-period-main {
-  border-right: 2px solid rgba(0,0,0,0.25);
+#tl-period-box h3 { margin: 0 0 12px; font-family: "Fraunces", serif; font-size: 19px; }
+.tl-field { display: flex; flex-direction: column; gap: 4px; font-size: 12.5px; margin-bottom: 12px; }
+.tl-field input, .tl-field select, .tl-date input[type="text"] {
+  font: inherit; font-size: 13.5px; padding: 6px 8px; box-sizing: border-box;
+  border: 1px solid var(--surface-border); border-radius: 6px; background: var(--surface); color: var(--text);
 }
-.tl-item-period-main .tl-period-label {
-  font-family: "Fraunces", serif; font-weight: 700; font-size: 15px;
-  text-transform: uppercase; letter-spacing: 0.03em; line-height: 1.25;
-  color: #1a1308; text-shadow: 0 1px 0 rgba(255,255,255,0.18);
-  /* align-items:center sur .tl-item-period fait que ce label se
-     dimensionne par défaut à son contenu (shrink-to-fit) et ignore donc
-     la largeur réelle de la bande — on force ici sa largeur à celle du
-     conteneur (moins son padding) pour qu'il puisse réellement passer à
-     la ligne / se faire réduire par fitPeriodLabels() (frise.ts) au lieu
-     de déborder et d'être tronqué par overflow:hidden. */
-  align-self: stretch; overflow-wrap: anywhere; word-break: break-word;
-}
-.tl-item-period-main .tl-item-date {
-  font-family: "Fraunces", serif; font-size: 11.5px; font-weight: 600;
-  color: rgba(26,19,8,0.72); margin-top: 5px;
-}
-/* Voies secondaires (lane 1+) — sous-bandes fines empilées pour une
-   période qui en chevauche une plus large (demande de Martin : "rangées
-   empilées, comme l'Affaire Dreyfus sous la IIIe République"). Flèche
-   double (↔) au lieu d'un simple tiret entre les dates, façon repère
-   "parenthèse temporelle" plutôt qu'une bande pleine comme la primaire. */
-.tl-item-period-sub {
-  flex-direction: row; gap: 8px; border-top: 1px solid rgba(0,0,0,0.2);
-  background: transparent !important; box-shadow: none; color: var(--text);
-  /* Contrairement à la bande primaire (dont le texte doit rester DANS sa
-     largeur, puisque c'est elle qui porte la couleur de remplissage), une
-     sous-bande n'est qu'un repère de positionnement : si la période est
-     courte (quelques années = quelques dizaines de px), le texte doit
-     pouvoir déborder visiblement de part et d'autre plutôt qu'être
-     tronqué — les deux traits ::before/::after s'étirent alors pour
-     remplir l'espace réellement laissé libre. */
-  overflow: visible;
-}
-.tl-item-period-sub::before,
-.tl-item-period-sub::after {
-  content: ""; flex: 1 1 0; height: 1px; background: currentColor; opacity: 0.55; align-self: center;
-  min-width: 6px;
-}
-.tl-item-period-sub .tl-period-label {
-  font-size: 12px; font-weight: 600; white-space: nowrap;
-  color: var(--text);
-}
-.tl-item-period-sub .tl-item-date { font-size: 10.5px; color: var(--text-dim); white-space: nowrap; }
-.tl-item-period-sub:hover { filter: none; background: rgba(255,255,255,0.04) !important; }
-
-.tl-handle {
-  position: absolute; top: 0; bottom: 0; width: 9px; cursor: ew-resize;
-  background: rgba(255,255,255,0.22);
-}
-.tl-item-period-main .tl-handle { background: rgba(0,0,0,0.18); }
-.tl-handle-l { left: 0; }
-.tl-handle-r { right: 0; }
-
-/* --- Points (événements ponctuels) -------------------------------------
-   REFONTE 2026-10-06 (schéma de Martin) : un point dont la date tombe
-   dans l'intervalle d'une période s'accroche DIRECTEMENT au bord
-   inférieur de la bande de cette période, sans aucun espace ("la barre
-   est bien en contact avec la période") ; plusieurs points à la même
-   date (même période hôte) s'empilent ensuite en chaîne continue,
-   chacun touchant le bas du précédent ("relié au reste"). Un point sans
-   période hôte retombe sur l'ancienne ligne de base commune sous la
-   pile de bandes (pointsBaselineTop() dans frise.ts). Tout le calcul de
-   position (hostPeriodFor/periodBandBottom/chainGroups/CHAIN_ROW_H) est
-   dans renderItems() ; ce bloc CSS ne fait que l'habillage. */
-.tl-item-point { height: auto; text-align: center; }
-.tl-point-tick {
-  width: 2px; height: var(--tl-tick-h, 26px); margin: 0 auto; opacity: 0.85;
-}
-.tl-point-dot {
-  width: 11px; height: 11px; margin: -1px auto 7px; border-radius: 50%;
-  border: 2px solid var(--surface); box-shadow: 0 2px 6px rgba(0,0,0,0.4);
-}
-.tl-point-label {
-  font-size: 12px; font-weight: 600; color: var(--text); white-space: normal;
-  display: block; max-width: 150px; line-height: 1.3;
-}
-.tl-item-point:hover .tl-point-label { color: var(--accent); }
-.tl-item-date { display: block; font-size: 10.5px; font-weight: 500; color: var(--text-dim); margin-top: 2px; }
-.tl-item-point .tl-item-date { margin-top: 3px; }
-
-/* Un item lié (automatiquement par nom ou manuellement, voir
-   effectiveLink/frise.ts) porte un petit indicateur 📄 avant son titre —
-   purement visuel, le clic ouvre toujours le panneau d'abord (cohérent
-   avec le comportement d'une carte de membre généalogique). */
-.tl-item-linked .tl-point-label::before, .tl-item-linked .tl-period-label::before { content: "📄 "; }
-
-/* Même bug/correctif que #gen-member-panel ci-dessus (z-index 10700) : sans
-   ça, #tl-item-panel reste visuellement au-dessus de #timeline-view mais
-   EN DESSOUS dans l'empilement réel (tous deux à z-index 10500), et tous
-   les clics sur ses champs atterrissent sur #timeline-canvas-wrap. */
-#tl-item-panel { z-index: 10700; }
-#tl-item-panel textarea { min-height: 70px; }
-#tl-i-kind-row { font-size: 12.5px; color: var(--text-dim); margin: 4px 0 10px; }
-#tl-i-kind-row label { display: flex; align-items: center; gap: 5px; cursor: pointer; }
-#tl-link-picker-results { max-height: 220px; overflow-y: auto; margin-top: 8px; }
+.tl-date { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; border: 1px solid var(--surface-border); border-radius: 8px; padding: 8px 10px; margin: 0 0 12px; }
+.tl-date legend { font-size: 12px; color: var(--text-dim); padding: 0 4px; }
+.tl-date input[type="text"] { width: 74px; }
+.tl-date input[type="text"]:first-of-type { width: 92px; }
+.tl-inline { display: inline-flex; align-items: center; gap: 5px; font-size: 12.5px; }
+.tl-end-toggle { margin-bottom: 10px; }
+#tl-period-error { min-height: 18px; margin: 0 0 8px; font-size: 12.5px; color: #b3402a; }
+#tl-period-actions { display: flex; align-items: center; gap: 8px; }
+.tl-spacer { flex: 1; }
+.tl-primary { background: var(--accent); color: #fff; border-color: var(--accent); }

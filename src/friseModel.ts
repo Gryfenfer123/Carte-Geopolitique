@@ -1,0 +1,202 @@
+// ---------------------------------------------------------------------------
+// Frises chronologiques — logique pure (dates, périodes, bornes partagées,
+// trous de transition, largeurs). Aucune dépendance au DOM ni à Supabase :
+// testable seule. Modèle décrit dans supabase/schema_v27.sql et dans la
+// spécification du projet ("frises-chronologiques-specification").
+//
+// Rappels du modèle (validé avec Martin, 2026-10-21) :
+// - une période EST une sous-catégorie (dossier_sections) portant une date de
+//   début ; les périodes d'une frise ne se chevauchent pas ;
+// - la fin d'une période = le début de la suivante (borne partagée) ; une
+//   date de fin explicite ne sert qu'à un TROU DE TRANSITION grisé (avec un
+//   texte) ou à borner la dernière période (sinon : ouverte, jusqu'à
+//   aujourd'hui).
+// ---------------------------------------------------------------------------
+
+export type FriseDate = {
+  year: number; // négatif = avant J.-C. (pas d'année 0)
+  month: number | null; // 1-12
+  day: number | null; // 1-31, seulement si month est renseigné
+  circa: boolean; // "vers"
+};
+
+export type Period = {
+  id: string;
+  name: string;
+  start: FriseDate;
+  // Fin explicite (trou de transition ou fin de la dernière période).
+  end: FriseDate | null;
+  transitionLabel: string | null;
+};
+
+export type Segment =
+  | {
+      kind: "period";
+      period: Period;
+      startDec: number;
+      endDec: number;
+      openEnded: boolean; // dernière période sans fin explicite
+    }
+  | {
+      kind: "gap";
+      afterPeriodId: string;
+      startDec: number;
+      endDec: number;
+      label: string | null;
+    };
+
+export type LayoutIssue = { periodId: string; message: string };
+
+const MONTHS_SHORT = ["janv.", "févr.", "mars", "avr.", "mai", "juin", "juil.", "août", "sept.", "oct.", "nov.", "déc."];
+
+// --- Dates ------------------------------------------------------------------
+
+/** Clé de tri entière (même formule que timeline_events.sort_key en base). */
+export function dateSortKey(d: FriseDate): number {
+  return d.year * 10000 + (d.month ?? 0) * 100 + (d.day ?? 0);
+}
+
+/** Position décimale en années (pour la géométrie). */
+export function dateToDecimal(d: FriseDate): number {
+  const m = d.month ? d.month - 1 : 0;
+  const day = d.day ? d.day - 1 : 0;
+  return d.year + m / 12 + day / 365;
+}
+
+/** Année de référence pour "jusqu'à aujourd'hui". */
+export function currentYear(): number {
+  return new Date().getFullYear();
+}
+
+export function formatFriseDate(d: FriseDate): string {
+  const y = d.year < 0 ? `${-d.year} av. J.-C.` : String(d.year);
+  let s: string;
+  if (d.month && d.day) s = `${d.day} ${MONTHS_SHORT[d.month - 1]} ${y}`;
+  else if (d.month) s = `${MONTHS_SHORT[d.month - 1]} ${y}`;
+  else s = y;
+  return d.circa ? `vers ${s}` : s;
+}
+
+/**
+ * Valide les champs d'un formulaire de date. `year` est l'année telle que
+ * saisie (positive) et `bc` indique "av. J.-C.". Renvoie la date ou un
+ * message d'erreur en français.
+ */
+export function parseDateFields(input: {
+  year: string;
+  bc: boolean;
+  month: string;
+  day: string;
+  circa: boolean;
+}): { ok: true; date: FriseDate } | { ok: false; error: string } {
+  const yRaw = input.year.trim();
+  if (!/^\d{1,6}$/.test(yRaw)) return { ok: false, error: "L'année doit être un nombre (ex. 843)." };
+  const y = parseInt(yRaw, 10);
+  if (y === 0) return { ok: false, error: "L'année 0 n'existe pas : après 1 av. J.-C. vient l'an 1." };
+  const year = input.bc ? -y : y;
+  const month = input.month.trim() ? parseInt(input.month, 10) : null;
+  if (month !== null && (!Number.isInteger(month) || month < 1 || month > 12)) {
+    return { ok: false, error: "Le mois doit être compris entre 1 et 12." };
+  }
+  const dayRaw = input.day.trim();
+  let day: number | null = null;
+  if (dayRaw) {
+    if (month === null) return { ok: false, error: "Indique le mois avant de préciser le jour." };
+    if (!/^\d{1,2}$/.test(dayRaw)) return { ok: false, error: "Le jour doit être un nombre." };
+    day = parseInt(dayRaw, 10);
+    const maxDay = new Date(2001, month, 0).getDate() + (month === 2 ? 1 : 0); // février : 29 toléré (années bissextiles)
+    if (day < 1 || day > maxDay) return { ok: false, error: "Ce jour n'existe pas pour ce mois." };
+  }
+  return { ok: true, date: { year, month, day, circa: input.circa } };
+}
+
+// --- Périodes : bornes partagées, trous, chevauchements ---------------------
+
+/**
+ * Transforme les périodes d'une frise en segments consécutifs. Les périodes
+ * sont triées par date de début. Fin de chaque période :
+ *  - fin explicite STRICTEMENT avant le début de la suivante → la période
+ *    s'arrête là et un trou de transition grisé occupe l'intervalle ;
+ *  - sinon la fin est le début de la suivante (borne partagée) ; une fin
+ *    explicite qui dépasserait la suivante est ignorée et signalée.
+ * Dernière période : fin explicite, sinon ouverte jusqu'à `openEndYear`.
+ */
+export function layoutPeriods(
+  periods: Period[],
+  openEndYear: number = currentYear()
+): { segments: Segment[]; issues: LayoutIssue[]; sorted: Period[] } {
+  const sorted = [...periods].sort((a, b) => dateSortKey(a.start) - dateSortKey(b.start));
+  const segments: Segment[] = [];
+  const issues: LayoutIssue[] = [];
+  for (let i = 0; i < sorted.length; i++) {
+    const p = sorted[i];
+    const next = sorted[i + 1] ?? null;
+    const startDec = dateToDecimal(p.start);
+    if (next) {
+      const nextDec = dateToDecimal(next.start);
+      if (dateSortKey(next.start) === dateSortKey(p.start)) {
+        issues.push({ periodId: next.id, message: `« ${next.name} » commence à la même date que « ${p.name} ».` });
+      }
+      if (p.end) {
+        const endKey = dateSortKey(p.end);
+        if (endKey < dateSortKey(next.start) && endKey > dateSortKey(p.start)) {
+          const endDec = dateToDecimal(p.end);
+          segments.push({ kind: "period", period: p, startDec, endDec, openEnded: false });
+          segments.push({ kind: "gap", afterPeriodId: p.id, startDec: endDec, endDec: nextDec, label: p.transitionLabel });
+          continue;
+        }
+        if (endKey >= dateSortKey(next.start)) {
+          issues.push({
+            periodId: p.id,
+            message: `La fin de « ${p.name} » dépasse le début de « ${next.name} » : les périodes ne peuvent pas se chevaucher.`,
+          });
+        }
+      }
+      segments.push({ kind: "period", period: p, startDec, endDec: nextDec, openEnded: false });
+    } else {
+      const hasEnd = !!p.end && dateSortKey(p.end) > dateSortKey(p.start);
+      const endDec = hasEnd ? dateToDecimal(p.end as FriseDate) : Math.max(openEndYear, startDec + 1);
+      segments.push({ kind: "period", period: p, startDec, endDec, openEnded: !hasEnd });
+    }
+  }
+  return { segments, issues, sorted };
+}
+
+/**
+ * Largeur en pixels de chaque segment : proportionnelle à la durée, avec un
+ * minimum pour que les périodes courtes restent lisibles (la frise défile
+ * alors horizontalement si besoin).
+ */
+export function computeWidths(
+  segments: Segment[],
+  containerWidth: number,
+  opts: { minPeriod?: number; minGap?: number } = {}
+): number[] {
+  const minPeriod = opts.minPeriod ?? 150;
+  const minGap = opts.minGap ?? 60;
+  if (segments.length === 0) return [];
+  const total = segments.reduce((s, seg) => s + Math.max(seg.endDec - seg.startDec, 0), 0) || 1;
+  return segments.map((seg) => {
+    const prop = (Math.max(seg.endDec - seg.startDec, 0) / total) * containerWidth;
+    return Math.max(prop, seg.kind === "gap" ? minGap : minPeriod);
+  });
+}
+
+/**
+ * Abscisse (en pixels, depuis le bord gauche de la bande) d'une date décimale,
+ * par interpolation dans le segment qui la contient. Prévu pour placer les
+ * événements sur la bande (étape suivante). Hors bornes : null.
+ */
+export function xForDecimal(dec: number, segments: Segment[], widths: number[]): number | null {
+  let x = 0;
+  for (let i = 0; i < segments.length; i++) {
+    const seg = segments[i];
+    const w = widths[i];
+    if (dec >= seg.startDec && dec <= seg.endDec) {
+      const span = seg.endDec - seg.startDec || 1;
+      return x + ((dec - seg.startDec) / span) * w;
+    }
+    x += w;
+  }
+  return null;
+}

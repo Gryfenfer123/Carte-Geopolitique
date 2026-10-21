@@ -4416,9 +4416,21 @@ export function initFicheDossierSystem(deps: {
     }
   }
 
+  // Recharge sous-catégories et entrées du dossier plein écran ouvert, puis le
+  // ré-affiche — appelé par la frise (src/frise.ts) après avoir créé / modifié
+  // des périodes (= sous-catégories) ou une sous-frise. No-op si rien d'ouvert.
+  async function refreshCurrentDossier() {
+    if (!currentOwner) return;
+    await loadSections(currentOwner.type, currentOwner.id);
+    await loadEntries(currentOwner.type, currentOwner.id);
+    renderDossierSummary();
+    renderDossierEntries();
+  }
+
   return {
     openFiche,
     closeFiche,
+    refreshCurrentDossier,
     openDossier,
     openGroupDossier,
     openEncyclopedieDossier,

@@ -1,153 +1,99 @@
 // ---------------------------------------------------------------------------
-// Frises chronologiques — demande de Martin, 2026-10-06 : "Rajouter la
-// possibilité de créer des frises chronologiques, un peu sur le même
-// système que les arbres généalogiques, mais donc une frise. Chaque frise
-// avec ses dates, et très important, l'intérêt est de rajouter des étapes
-// sur la frise, soit un point (ex : traité de Verdun) ou une période entre
-// 2 dates (ex : Saint Empire germanique) [...] les éléments des frises
-// doivent êtres reliés à la fiche ou catégorie correspondante."
+// Frises chronologiques — NOUVEAU MODÈLE (schema_v27.sql, 2026-10-21).
+// Spécification : document de projet « frises-chronologiques-specification ».
 //
-// Schéma : supabase/schema_v19.sql (timeline_items) — PAS ENCORE EXÉCUTÉ en
-// production au moment de ce portage.
+// - Une frise est une ENTRÉE de dossier de type "frise", placée n'importe où
+//   (pays, groupe, catégorie, sous-catégorie à toute profondeur).
+// - Une PÉRIODE EST une sous-catégorie (dossier_sections) qui porte une date
+//   de début : renommer / déplacer la période = renommer / déplacer la
+//   sous-catégorie, rien à synchroniser. Les périodes d'une frise sont les
+//   sous-catégories dont period_frise_id = id de la frise ; elles sont
+//   rangées sous la section où la frise est posée.
+// - Bornes partagées : seule la date de début est stockée, la fin d'une
+//   période est le début de la suivante. Une fin explicite crée un trou de
+//   transition grisé (texte libre). Voir friseModel.ts.
+// - Une SOUS-FRISE est une frise posée dans la sous-catégorie d'une période.
+//   Profondeur illimitée.
+// - Les événements (étape 3) et leur lien avec les fiches (étape 4) viennent
+//   ensuite : l'écran réserve la place au-dessus et au-dessous de la bande.
 //
-// Organisation (confirmée par Martin, clarification 2026-10-06) : "Possibilité
-// de faire une frise par entrée, MAIS une frise globale se construit, en
-// mettant tout bout à bout, et si je clique sur la partie d'une frise dans
-// la frise globale, je suis amené vers la frise de l'entrée spécifique" —
-// EXACTEMENT la même organisation que les arbres généalogiques
-// (src/genealogy.ts) : une frise = tous les timeline_items qui partagent le
-// même (owner_type="entry", owner_id=l'id de l'entrée dossier de type
-// "frise"). La "frise globale" (vue fusionnée, tâche séparée) est une
-// requête sur TOUTE la table, triée chronologiquement.
-//
-// Lien élément ↔ fiche/catégorie (confirmé "Les deux") :
-// - AUTOMATIQUE : le titre de l'item est comparé (nom exact, insensible à
-//   la casse) aux entités connues (pays, groupes, sous-catégories, entrées
-//   texte) via deps.getLinkSearchEntries() — même esprit que
-//   linkIndex.ts::findLinkTargetForName, mais étendu ici aux pays/groupes
-//   (utile pour un item comme "Saint Empire romain" → pays "Allemagne").
-//   Jamais stocké en base : recalculé à chaque rendu, donc "rétroactif"
-//   comme le reste de l'auto-lien de l'app.
-// - MANUEL : un override explicite, choisi via un petit sélecteur de
-//   recherche (#tl-link-picker-modal, même pattern que la recherche de
-//   membre étranger en généalogie), stocké dans timeline_items.link_target
-//   (jsonb). Prioritaire sur l'automatique quand présent.
-//
-// Pattern du fichier : initTimelineSystem(deps) à l'identique de
-// src/genealogy.ts/src/dossier.ts — DOM construit une fois et injecté dans
-// document.body, jamais de framework.
+// Écriture réservée aux administrateurs (même régime que le reste de
+// l'appli, voir dossier.ts::isAdmin et schema_v13/v28).
 // ---------------------------------------------------------------------------
 
 import type { SupabaseClient, Session } from "@supabase/supabase-js";
-import * as d3 from "d3";
-import type { DossierOwnerRef } from "./dossier";
 import { customConfirm } from "./dossier";
-import { ensureLinkIndexLoaded, type LinkTarget, type LinkIndexEntry } from "./linkIndex";
+import {
+  computeWidths,
+  formatFriseDate,
+  layoutPeriods,
+  parseDateFields,
+  type FriseDate,
+  type Period,
+  type Segment,
+} from "./friseModel";
 
-// --- Types -------------------------------------------------------------
+// --- Types -------------------------------------------------------------------
 
-type ItemKind = "point" | "period";
-
-type TimelineItemRow = {
+type FriseEntry = {
   id: string;
+  title: string | null;
   owner_type: string;
   owner_id: string;
-  kind: ItemKind;
-  title: string;
-  description: string | null;
-  start_year: number;
-  end_year: number | null;
-  date_label: string | null;
-  color: string | null;
-  link_target: LinkTarget | null;
-  position: number;
-  created_by: string | null;
+  category_id: string | null;
+  section_id: string | null;
 };
 
-// Pixels par année sur le canevas, à zoom 1 (voir GENERATION_GAP/PX_PER_YEAR
-// de genealogy.ts pour l'équivalent) — assez large pour distinguer des
-// événements à quelques années d'écart, raisonnable pour une frise courant
-// sur plusieurs siècles sans dézoomer à l'extrême.
-const PX_PER_YEAR = 6;
-const POINT_W = 26;
-const ITEM_MIN_W = 36;
-const STAGE_TOP_PADDING = 70; // place pour la règle des années au-dessus des items
+type SectionRow = {
+  id: string;
+  title: string;
+  category_id: string;
+  parent_section_id: string | null;
+  position: number | null;
+  period_frise_id: string | null;
+  period_start_year: number | null;
+  period_start_month: number | null;
+  period_start_day: number | null;
+  period_start_circa: boolean | null;
+  period_end_year: number | null;
+  period_end_month: number | null;
+  period_end_day: number | null;
+  period_end_circa: boolean | null;
+  transition_label: string | null;
+};
 
-// ---------------------------------------------------------------------------
-// REFONTE VISUELLE (2026-10-06, retour de Martin sur la 1ère version :
-// "ça ne va pas non plus, je veux un rendu un peu comme [son exemple :
-// une frise-bandeau façon infographie, pleine hauteur, DA soignée] — là
-// c'est ultra simple et basique... L'idée c'est d'avoir quelque chose de
-// très complet, avec les périodes qui apparaissent sur la frise sur toute
-// une hauteur, tous les événements qui sont rattachés par un tiret etc.")
-//
-// Nouvelle organisation verticale de la frise, du haut vers le bas :
-// 1. La règle des années (déjà existante, inchangée, voir renderRuler).
-// 2. Les PÉRIODES, en bandes pleine couleur :
-//    - voie 0 ("primaire") : grande bande (PERIOD_BAND_H_MAIN) — les
-//      grandes ères qui ne se chevauchent pas entre elles (ex. "Second
-//      Empire" puis "IIIe République").
-//    - voies 1+ ("secondaires") : bandes fines empilées JUSTE EN DESSOUS
-//      de la bande primaire (PERIOD_BAND_H_SUB) — pour une période plus
-//      courte qui chevauche une grande ère (ex. "Affaire Dreyfus" pendant
-//      la IIIe République), confirmé par Martin ("rangées empilées,
-//      recommandé"). assignLanes() (ci-dessous) priorise maintenant les
-//      périodes les plus LONGUES pour la voie 0, plutôt que l'ordre
-//      d'apparition — sinon une courte période déclarée avant une grande
-//      aurait pu "voler" la voie primaire.
-// 3. Les POINTS (événements ponctuels), tous alignés sur une même ligne de
-//    base sous l'empilement de bandes, chacun relié à cette ligne par un
-//    petit tiret vertical (":before" en CSS) — exactement la mise en page
-//    "repères + tirets + dates" de l'exemple de Martin.
-// ---------------------------------------------------------------------------
-const PERIOD_BAND_TOP = STAGE_TOP_PADDING;
-const PERIOD_BAND_H_MAIN = 150; // bande "primaire" (voie 0), pleine hauteur façon bandeau
-const PERIOD_BAND_H_SUB = 40; // bandes secondaires empilées (voie 1, 2, ...)
-// --- Points "chaînés" à leur période (refonte 2026-10-06, schéma de Martin) ---
-// Un point dont la date tombe DANS l'intervalle d'une période s'accroche
-// directement au bord inférieur de la bande de cette période, SANS aucun
-// espace (Martin : "attention la barre est bien en contact avec la
-// période, ce qui n'est pas le cas actuellement"). Plusieurs points à la
-// MÊME date (et rattachés à la même période, ou tous les deux "flottants")
-// s'empilent ensuite en chaîne continue sous ce point d'accroche, chacun
-// touchant directement le bas du précédent ("si je rajoute un évènement à
-// la même date, il se met en dessous, mais toujours bien relié au reste").
-// Un point dont la date ne tombe dans AUCUNE période retombe sur l'ancien
-// comportement : une ligne de base commune sous toute la pile de bandes
-// (POINTS_GAP_ABOVE conservé uniquement pour ce cas de repli).
-const POINTS_GAP_ABOVE = 46; // espace au-dessus de la ligne de base (points "flottants", sans période hôte)
-const POINT_TICK_H = 22; // hauteur du trait reliant un point au repère précédent (période ou point du dessus)
-const CHAIN_ROW_H = 74; // hauteur réservée par point empilé dans une chaîne (trait + puce + étiquette)
+type Ancestor = { id: string; title: string };
 
-function escapeHtml(str: string): string {
-  return str
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(/"/g, "&quot;")
-    .replace(/'/g, "&#39;");
+type FriseContext = { periodName: string; from: string; to: string };
+
+const SECTION_COLUMNS =
+  "id, title, category_id, parent_section_id, position, period_frise_id, period_start_year, period_start_month, period_start_day, period_start_circa, period_end_year, period_end_month, period_end_day, period_end_circa, transition_label";
+
+function esc(s: string): string {
+  return s.replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c] as string);
 }
 
-function formatYear(y: number): string {
-  const r = Math.round(y);
-  return r < 0 ? Math.abs(r) + " av. J.-C." : String(r);
+function rowToPeriod(r: SectionRow): Period {
+  const start: FriseDate = {
+    year: r.period_start_year ?? 0,
+    month: r.period_start_month,
+    day: r.period_start_day,
+    circa: !!r.period_start_circa,
+  };
+  const end: FriseDate | null =
+    r.period_end_year != null
+      ? { year: r.period_end_year, month: r.period_end_month, day: r.period_end_day, circa: !!r.period_end_circa }
+      : null;
+  return { id: r.id, name: r.title, start, end, transitionLabel: r.transition_label };
 }
 
-function parseYearInput(raw: string): number | null {
-  const s = raw.trim().toLowerCase();
-  if (!s) return null;
-  const bc = /av\.?\s*j\.?-?c\.?/.test(s);
-  const digits = s.replace(/[^0-9.-]/g, "");
-  if (!digits) return null;
-  const n = parseFloat(digits);
-  if (Number.isNaN(n)) return null;
-  return bc ? -Math.abs(n) : n;
-}
-
-function dateLabelOrYears(it: TimelineItemRow): string {
-  if (it.date_label && it.date_label.trim()) return it.date_label.trim();
-  if (it.kind === "period" && it.end_year != null) return formatYear(it.start_year) + " – " + formatYear(it.end_year);
-  return formatYear(it.start_year);
+function dateColumns(prefix: "period_start" | "period_end", d: FriseDate | null): Record<string, unknown> {
+  return {
+    [prefix + "_year"]: d ? d.year : null,
+    [prefix + "_month"]: d ? d.month : null,
+    [prefix + "_day"]: d ? d.day : null,
+    [prefix + "_circa"]: d ? d.circa : false,
+  };
 }
 
 export function initTimelineSystem(deps: {
@@ -156,135 +102,17 @@ export function initTimelineSystem(deps: {
   getProfile: () => { id: string; role: string } | null;
   openAuthPanel: () => void;
   showBanner?: (msg: string) => void;
-  // Rattachement bidirectionnel item de frise ↔ fiche/sous-catégorie/pays/
-  // groupe (demande de Martin, "Les deux") — résolution de navigation
-  // déléguée à dossier.ts, même fonction que genealogy.ts::openLinkedFiche.
-  openLinkedFiche: (target: LinkTarget) => Promise<void>;
-  // Toutes les entités nommées connues (pays, groupes, sous-catégories,
-  // entrées texte) — pour le lien automatique par nom ET pour le picker de
-  // lien manuel (recherche). Même construction que dossier.ts::autoLinkEntryBody
-  // (buildLinkIndexEntries), fournie par main.ts.
-  getLinkSearchEntries: () => LinkIndexEntry[];
+  // Ouvre la page de la sous-catégorie (dossier.ts::revealSection).
+  revealSection: (sectionId: string, categoryId: string | null) => void;
+  // Recharge sous-catégories et entrées du dossier affiché (dossier.ts).
+  refreshDossier: () => Promise<void>;
 }) {
   const { supabase } = deps;
+
   function isAdmin(): boolean {
     return deps.getProfile()?.role === "admin" && !document.body.classList.contains("read-only-mode");
   }
-  const $ = <T extends HTMLElement = HTMLElement>(id: string) => document.getElementById(id) as T;
-
-  // --- DOM : construit une seule fois -------------------------------------
-  const root = document.createElement("div");
-  root.innerHTML = `
-    <div id="timeline-view">
-      <div id="timeline-topbar">
-        <button id="timeline-back" class="btn-small">&larr; Retour au dossier</button>
-        <h2 id="timeline-title"></h2>
-        <div id="timeline-toolbar">
-          <button id="timeline-add-point" class="btn-small edit-control">&#43; Point</button>
-          <button id="timeline-add-period" class="btn-small edit-control">&#43; P&eacute;riode</button>
-          <button id="timeline-zoom-reset" class="btn-small">Recentrer</button>
-        </div>
-      </div>
-      <div id="timeline-canvas-wrap">
-        <div id="timeline-stage">
-          <svg id="timeline-ruler-svg"></svg>
-          <div id="timeline-items"></div>
-        </div>
-        <div id="timeline-empty-hint" class="muted">Aucune étape pour le moment. Utilisez "&#43; Point" ou "&#43; Période" pour commencer la frise.</div>
-      </div>
-    </div>
-
-    <div id="tl-item-panel" class="panel side-panel">
-      <button class="close-x" id="tl-item-close" aria-label="Fermer">&times;</button>
-      <button type="button" id="tl-item-link-banner" class="genealogy-link-banner" style="display:none;"></button>
-      <h2 id="tl-item-heading">Étape</h2>
-      <label class="field-label">Titre</label>
-      <input type="text" id="tl-i-title" maxlength="200" placeholder="ex. Traité de Verdun">
-      <div id="tl-i-kind-row" class="dossier-form-actions">
-        <label><input type="radio" name="tl-i-kind" id="tl-i-kind-point" value="point"> Point (une date)</label>
-        <label><input type="radio" name="tl-i-kind" id="tl-i-kind-period" value="period"> Période (début &rarr; fin)</label>
-      </div>
-      <label class="field-label">Date de début (année, négatif = av. J.-C., ex. -753)</label>
-      <input type="text" id="tl-i-start" inputmode="numeric" placeholder="ex. 843">
-      <label class="field-label" id="tl-i-end-label">Date de fin (année)</label>
-      <input type="text" id="tl-i-end" inputmode="numeric" placeholder="ex. 1806">
-      <label class="field-label">Libellé de date affiché (optionnel, ex. "Août 843")</label>
-      <input type="text" id="tl-i-date-label" maxlength="120" placeholder="laisser vide = dates ci-dessus">
-      <label class="field-label">Couleur</label>
-      <input type="color" id="tl-i-color" value="#5aa9e6">
-      <label class="field-label">Description</label>
-      <textarea id="tl-i-desc" rows="6"></textarea>
-      <div id="tl-i-save-status" class="muted"></div>
-      <div class="field-label" style="margin-top:8px;">Lien vers une fiche / catégorie</div>
-      <div id="tl-i-link-auto" class="muted"></div>
-      <div id="tl-i-link-manual" class="dossier-form-actions"></div>
-      <div class="dossier-form-actions" style="margin-top:10px;">
-        <button id="tl-i-delete" class="btn-small">Supprimer</button>
-      </div>
-    </div>
-
-    <div id="tl-link-picker-modal" class="poi-overlay">
-      <div class="poi-overlay-box">
-        <h3>Choisir le lien de cette &eacute;tape</h3>
-        <input type="text" id="tl-link-picker-input" placeholder="Rechercher un pays, un groupe, une fiche…" autocomplete="off">
-        <div id="tl-link-picker-results"></div>
-        <button id="tl-link-picker-cancel" class="btn-small" style="margin-top:10px;">Annuler</button>
-      </div>
-    </div>
-  `;
-  document.body.appendChild(root);
-
-  // --- État ----------------------------------------------------------------
-  let currentOwner: DossierOwnerRef | null = null;
-  let items: TimelineItemRow[] = [];
-  const laneOf = new Map<string, number>();
-  let editingItemId: string | null = null;
-  let pendingNewKind: ItemKind | null = null;
-
-  let zoomTransform = d3.zoomIdentity;
-  const stage = $("timeline-stage");
-  const canvasWrap = $("timeline-canvas-wrap");
-  const ruler = $("timeline-ruler-svg") as unknown as SVGSVGElement;
-  const itemsLayer = $("timeline-items");
-
-  const zoomBehavior = d3
-    .zoom<HTMLDivElement, unknown>()
-    // Borne haute relevée (6 → 60) pour pouvoir zoomer assez pour
-    // distinguer des dates précises à quelques jours d'écart (demande de
-    // Martin : la frise doit s'adapter à une temporalité très courte, ex.
-    // "06/10/2026") — à 60, un jour (~1/365 d'année) occupe encore
-    // PX_PER_YEAR*60/365 ≈ 1px, et plusieurs jours redeviennent
-    // confortablement séparables.
-    .scaleExtent([0.08, 60])
-    .filter((event: Event) => {
-      if (event.type === "mousedown" || event.type === "touchstart") {
-        return !(event.target as HTMLElement).closest(".tl-item");
-      }
-      return true;
-    })
-    .on("zoom", (event: d3.D3ZoomEvent<HTMLDivElement, unknown>) => {
-      zoomTransform = event.transform;
-      stage.style.transform = "translate(" + zoomTransform.x + "px," + zoomTransform.y + "px) scale(" + zoomTransform.k + ")";
-      renderRuler();
-    });
-  d3.select(canvasWrap as unknown as HTMLDivElement).call(zoomBehavior);
-
-  function resetView() {
-    // Centre la vue sur l'année actuelle si rien n'a de date proche, sinon
-    // sur la moyenne des dates existantes — plus utile que de toujours
-    // repartir de l'an 0.
-    let centerYear = new Date().getFullYear();
-    if (items.length) {
-      const sum = items.reduce((acc, it) => acc + (it.start_year + (it.end_year ?? it.start_year)) / 2, 0);
-      centerYear = sum / items.length;
-    }
-    const x = canvasWrap.clientWidth / 2 - centerYear * PX_PER_YEAR;
-    const y = STAGE_TOP_PADDING + 20;
-    zoomTransform = d3.zoomIdentity.translate(x, y);
-    d3.select(canvasWrap as unknown as HTMLDivElement).call(zoomBehavior.transform, zoomTransform);
-  }
-
-  function requireAuthOr(action: () => void) {
+  function requireAdminOr(action: () => void) {
     if (!deps.getSession()) {
       deps.openAuthPanel();
       return;
@@ -295,665 +123,585 @@ export function initTimelineSystem(deps: {
     }
     action();
   }
+  const $ = <T extends HTMLElement = HTMLElement>(id: string) => document.getElementById(id) as T;
 
-  // --- Chargement ------------------------------------------------------------
-  async function loadData(owner: DossierOwnerRef) {
-    itemsLayer.innerHTML = "";
-    ruler.innerHTML = "";
-    $("timeline-empty-hint").style.display = "none";
-    items = [];
-    try {
-      const { data, error } = await supabase
-        .from("timeline_items")
-        .select("id, owner_type, owner_id, kind, title, description, start_year, end_year, date_label, color, link_target, position, created_by")
-        .eq("owner_type", owner.type)
-        .eq("owner_id", owner.id)
-        .order("start_year", { ascending: true });
-      if (error) throw error;
-      items = (data as TimelineItemRow[] | null) || [];
-    } catch (err) {
-      console.error("Échec du chargement de la frise (schema_v19.sql exécutée ? réseau indisponible ?) :", err);
-      items = [];
-    }
-    assignLanes();
-    renderAll();
-    if (!items.length) $("timeline-empty-hint").style.display = "";
-  }
+  // --- État --------------------------------------------------------------------
+  let frise: FriseEntry | null = null;
+  let periodRows: SectionRow[] = [];
+  let periods: Period[] = [];
+  let subFrises = new Map<string, { id: string; title: string | null }>();
+  let ancestors: Ancestor[] = [];
+  let context: FriseContext | null = null;
+  let editingPeriodId: string | null = null;
+  let loadToken = 0;
 
-  // Répartit les PÉRIODES en voies empilées quand elles se chevauchent
-  // dans le temps (demande de Martin, "rangées empilées" — voir le
-  // commentaire d'en-tête sur la refonte visuelle). Les POINTS n'occupent
-  // plus de voie : ils s'alignent tous sur une même ligne sous la pile de
-  // bandes (voir renderItems).
-  //
-  // Deux niveaux, pas un simple balayage chronologique classique (voir
-  // plus bas pourquoi) :
-  // - "PRIMAIRES" (voie(s) 0, grande bande) : une période est primaire si
-  //   AUCUNE autre période de la frise ne la contient entièrement dans le
-  //   temps (ex. "IIIe République", "Second Empire" — même courtes, tant
-  //   qu'elles ne sont imbriquées dans rien).
-  // - "IMBRIQUÉES" (voies 1+, bandes fines empilées) : une période
-  //   imbriquée DANS une autre (ex. "Affaire Dreyfus" pendant la "IIIe
-  //   République") — confirmé par Martin ("rangées empilées").
-  // Chaque groupe est ensuite réparti en voies via le balayage glouton
-  // standard (trié par date de DÉBUT, pas par durée — un balayage par
-  // durée casse la détection des voies libres : un essai précédent
-  // triait par durée décroissante, ce qui faisait croire qu'une voie
-  // était "occupée jusqu'à l'an X" même quand plus rien ne l'occupait
-  // réellement à l'année considérée, et décalait des périodes qui ne se
-  // chevauchent pourtant pas du tout).
-  // `buffer` : marge (en années) en dessous de laquelle deux items sont
-  // considérés comme "se touchant" et vont dans des voies différentes.
-  // 0 pour les bandes PRIMAIRES : deux ères qui se suivent exactement
-  // (Restauration se termine en 1830, Monarchie de Juillet commence en
-  // 1830) doivent former un seul bandeau continu sur la MÊME rangée —
-  // façon infographie — pas être décalées en escalier. 6 pour les voies
-  // imbriquées (bandes fines) où une petite marge reste utile pour la
-  // lisibilité du texte.
-  function sweepLanes(group: TimelineItemRow[], buffer: number): Map<string, number> {
-    const result = new Map<string, number>();
-    const laneEndYear: number[] = [];
-    const sorted = group.slice().sort((a, b) => a.start_year - b.start_year);
-    sorted.forEach((it) => {
-      const endY = it.end_year ?? it.start_year;
-      let lane = 0;
-      for (; lane < laneEndYear.length; lane++) {
-        if (laneEndYear[lane] + buffer <= it.start_year) break;
-      }
-      laneEndYear[lane] = endY;
-      result.set(it.id, lane);
-    });
-    return result;
-  }
-  let primaryLaneCount = 1; // toujours au moins 1 : la hauteur réservée à la bande primaire ne doit jamais s'effondrer à 0
-  function assignLanes() {
-    laneOf.clear();
-    const periods = items.filter((it) => it.kind === "period");
-    function containsOther(a: TimelineItemRow, b: TimelineItemRow): boolean {
-      const aEnd = a.end_year ?? a.start_year;
-      const bEnd = b.end_year ?? b.start_year;
-      return a.start_year <= b.start_year && aEnd >= bEnd && (a.start_year < b.start_year || aEnd > bEnd);
-    }
-    const nested = periods.filter((it) => periods.some((other) => other.id !== it.id && containsOther(other, it)));
-    const primary = periods.filter((it) => !nested.includes(it));
+  // --- DOM (construit une fois) --------------------------------------------------
+  const root = document.createElement("div");
+  root.innerHTML = `
+    <div id="timeline-view">
+      <div id="timeline-topbar">
+        <button id="timeline-back" class="btn-small">&larr; Retour au dossier</button>
+        <nav id="timeline-breadcrumb" aria-label="Frises parentes"></nav>
+        <div id="timeline-toolbar">
+          <button id="timeline-add-period" class="btn-small edit-control">&#43; P&eacute;riode</button>
+        </div>
+      </div>
+      <div id="timeline-subtitle"></div>
+      <div id="timeline-scroll">
+        <div id="timeline-stage"></div>
+        <p id="timeline-empty-hint" class="muted" style="display:none;"></p>
+      </div>
+    </div>
 
-    const primaryLanes = sweepLanes(primary, 0);
-    primaryLanes.forEach((lane, id) => laneOf.set(id, lane));
-    let maxPrimaryLane = -1;
-    primaryLanes.forEach((lane) => {
-      if (lane > maxPrimaryLane) maxPrimaryLane = lane;
-    });
-    primaryLaneCount = Math.max(1, maxPrimaryLane + 1); // toujours ≥1 : réserve la hauteur de la bande primaire même sans période primaire
+    <div id="tl-period-overlay">
+      <div id="tl-period-box" role="dialog" aria-modal="true">
+        <h3 id="tl-period-heading">Nouvelle p&eacute;riode</h3>
+        <label class="tl-field" id="tl-period-source-row">Sous-cat&eacute;gorie
+          <select id="tl-period-source"></select>
+        </label>
+        <label class="tl-field">Nom de la p&eacute;riode
+          <input type="text" id="tl-period-name" maxlength="120" placeholder="ex. Antiquit&eacute;">
+        </label>
+        <fieldset class="tl-date" id="tl-start-fields">
+          <legend>D&eacute;but</legend>
+          <input type="text" inputmode="numeric" id="tl-start-year" placeholder="Ann&eacute;e" aria-label="Ann&eacute;e de d&eacute;but">
+          <label class="tl-inline"><input type="checkbox" id="tl-start-bc"> av. J.-C.</label>
+          <input type="text" inputmode="numeric" id="tl-start-month" placeholder="Mois" aria-label="Mois de d&eacute;but">
+          <input type="text" inputmode="numeric" id="tl-start-day" placeholder="Jour" aria-label="Jour de d&eacute;but">
+          <label class="tl-inline"><input type="checkbox" id="tl-start-circa"> vers</label>
+        </fieldset>
+        <label class="tl-inline tl-end-toggle"><input type="checkbox" id="tl-end-enabled"> Cette p&eacute;riode a une fin propre (transition avant la suivante, ou fin de la derni&egrave;re)</label>
+        <div id="tl-end-block">
+          <fieldset class="tl-date" id="tl-end-fields">
+            <legend>Fin</legend>
+            <input type="text" inputmode="numeric" id="tl-end-year" placeholder="Ann&eacute;e" aria-label="Ann&eacute;e de fin">
+            <label class="tl-inline"><input type="checkbox" id="tl-end-bc"> av. J.-C.</label>
+            <input type="text" inputmode="numeric" id="tl-end-month" placeholder="Mois" aria-label="Mois de fin">
+            <input type="text" inputmode="numeric" id="tl-end-day" placeholder="Jour" aria-label="Jour de fin">
+            <label class="tl-inline"><input type="checkbox" id="tl-end-circa"> vers</label>
+          </fieldset>
+          <label class="tl-field">Texte du trou de transition (facultatif)
+            <input type="text" id="tl-transition-label" maxlength="200" placeholder="ex. Invasions et effondrement de l'Empire">
+          </label>
+        </div>
+        <p id="tl-period-error" role="alert"></p>
+        <div id="tl-period-actions">
+          <button type="button" class="btn-small" id="tl-period-remove">Retirer de la frise</button>
+          <span class="tl-spacer"></span>
+          <button type="button" class="btn-small" id="tl-period-cancel">Annuler</button>
+          <button type="button" class="btn-small tl-primary" id="tl-period-save">Enregistrer</button>
+        </div>
+      </div>
+    </div>
+  `;
+  while (root.firstChild) document.body.appendChild(root.firstChild);
 
-    const nestedLanes = sweepLanes(nested, 6);
-    nestedLanes.forEach((lane, id) => laneOf.set(id, primaryLaneCount + lane));
+  // --- Chargement ----------------------------------------------------------------
+  async function fetchEntry(id: string): Promise<FriseEntry | null> {
+    const { data } = await supabase
+      .from("dossier_entries")
+      .select("id, title, owner_type, owner_id, category_id, section_id")
+      .eq("id", id)
+      .maybeSingle();
+    return (data as FriseEntry | null) ?? null;
   }
-  // Nombre de voies secondaires (imbriquées) actuellement utilisées —
-  // détermine où placer la ligne des points, en dessous de TOUTE la pile
-  // de bandes quel que soit l'endroit où elle est la plus haute sur
-  // l'axe des années.
-  function maxSubLaneCount(): number {
-    let max = 0;
-    laneOf.forEach((lane) => {
-      const sub = lane - primaryLaneCount + 1;
-      if (sub > max) max = sub;
-    });
-    return max;
+  async function fetchSection(id: string): Promise<SectionRow | null> {
+    const { data } = await supabase.from("dossier_sections").select(SECTION_COLUMNS).eq("id", id).maybeSingle();
+    return (data as SectionRow | null) ?? null;
   }
-  function periodBandTop(lane: number): number {
-    return lane < primaryLaneCount
-      ? PERIOD_BAND_TOP + lane * PERIOD_BAND_H_MAIN
-      : PERIOD_BAND_TOP + primaryLaneCount * PERIOD_BAND_H_MAIN + (lane - primaryLaneCount) * PERIOD_BAND_H_SUB;
-  }
-  function pointsBaselineTop(): number {
-    return PERIOD_BAND_TOP + primaryLaneCount * PERIOD_BAND_H_MAIN + maxSubLaneCount() * PERIOD_BAND_H_SUB + POINTS_GAP_ABOVE;
+  async function fetchPeriodRows(friseId: string): Promise<SectionRow[]> {
+    const { data } = await supabase.from("dossier_sections").select(SECTION_COLUMNS).eq("period_frise_id", friseId);
+    return ((data as SectionRow[] | null) ?? []).filter((r) => r.period_start_year != null);
   }
 
-  function xForYear(year: number): number {
-    return year * PX_PER_YEAR;
-  }
-  function yearForX(x: number): number {
-    return x / PX_PER_YEAR;
-  }
+  async function load(entryId: string): Promise<boolean> {
+    const token = ++loadToken;
+    const entry = await fetchEntry(entryId);
+    if (!entry || token !== loadToken) return false;
+    const rows = await fetchPeriodRows(entry.id);
+    if (token !== loadToken) return false;
 
-  // --- Rendu -----------------------------------------------------------------
-  function renderAll() {
-    renderItems();
-    renderRuler();
-  }
-
-  function autoLinkFor(title: string): LinkTarget | null {
-    const key = (title || "").trim().toLowerCase();
-    if (key.length < 2) return null;
-    const entry = deps.getLinkSearchEntries().find((e) => e.label.trim().toLowerCase() === key);
-    return entry ? entry.target : null;
-  }
-  function effectiveLink(it: TimelineItemRow): LinkTarget | null {
-    return it.link_target || autoLinkFor(it.title);
-  }
-  function linkLabelFor(target: LinkTarget): string {
-    const found = deps.getLinkSearchEntries().find((e) => JSON.stringify(e.target) === JSON.stringify(target));
-    return found ? found.label : "Fiche liée";
-  }
-
-  // Repère la période la plus "spécifique" (la plus courte) dont
-  // l'intervalle contient la date d'un point donné — s'il y en a
-  // plusieurs qui se chevauchent (ex. une période imbriquée ET sa
-  // période englobante), le point s'accroche à la plus précise des deux,
-  // exactement comme on choisirait de rattacher un évènement à "Affaire
-  // Dreyfus" plutôt qu'à "IIIe République" si les deux le contiennent.
-  function hostPeriodFor(point: TimelineItemRow): TimelineItemRow | null {
-    let best: TimelineItemRow | null = null;
-    let bestDur = Infinity;
-    for (const p of items) {
-      if (p.kind !== "period") continue;
-      const pEnd = p.end_year ?? p.start_year;
-      if (point.start_year < p.start_year || point.start_year > pEnd) continue;
-      const dur = pEnd - p.start_year;
-      if (dur < bestDur) {
-        bestDur = dur;
-        best = p;
+    // Sous-frises : frises posées dans la sous-catégorie d'une période.
+    const subs = new Map<string, { id: string; title: string | null }>();
+    if (rows.length) {
+      const { data } = await supabase
+        .from("dossier_entries")
+        .select("id, title, section_id, created_at")
+        .eq("type", "frise")
+        .in("section_id", rows.map((r) => r.id))
+        .order("created_at", { ascending: true });
+      for (const e of (data as { id: string; title: string | null; section_id: string }[] | null) ?? []) {
+        if (!subs.has(e.section_id)) subs.set(e.section_id, { id: e.id, title: e.title });
       }
     }
-    return best;
-  }
-  function periodBandBottom(p: TimelineItemRow): number {
-    const lane = laneOf.get(p.id) || 0;
-    const isPrimary = lane < primaryLaneCount;
-    return periodBandTop(lane) + (isPrimary ? PERIOD_BAND_H_MAIN : PERIOD_BAND_H_SUB);
-  }
 
-  function renderItems() {
-    itemsLayer.innerHTML = "";
-    // Regroupe les points par (période hôte, date exacte) pour les
-    // empiler en chaîne continue — voir hostPeriodFor ci-dessus et le
-    // commentaire sur CHAIN_ROW_H. Les points sans période hôte
-    // retombent dans le groupe "flottant" (clé "none"), ancré sur
-    // l'ancienne ligne de base commune, mais eux aussi empilés par date
-    // exacte plutôt que superposés au même endroit comme avant.
-    const points = items.filter((it) => it.kind === "point");
-    const chainGroups = new Map<string, TimelineItemRow[]>();
-    const hostOf = new Map<string, TimelineItemRow | null>();
-    points.forEach((pt) => {
-      const host = hostPeriodFor(pt);
-      hostOf.set(pt.id, host);
-      const dateKey = String(Math.round(pt.start_year * 1e6));
-      const key = (host ? host.id : "none") + "|" + dateKey;
-      const group = chainGroups.get(key);
-      if (group) group.push(pt);
-      else chainGroups.set(key, [pt]);
-    });
-    const pointTop = new Map<string, number>();
-    chainGroups.forEach((group) => {
-      group.sort((a, b) => a.position - b.position);
-      const host = hostOf.get(group[0].id) || null;
-      const anchorTop = host ? periodBandBottom(host) : pointsBaselineTop();
-      group.forEach((pt, idx) => pointTop.set(pt.id, anchorTop + idx * CHAIN_ROW_H));
-    });
-    // Trié pour que les points se rendent APRÈS les bandes de période dans
-    // le DOM (empile correctement au survol/clic) — l'ordre des voies n'a
-    // pas d'importance pour les périodes entre elles, le positionnement
-    // left/top fait tout le travail visuel.
-    const ordered = items.slice().sort((a, b) => (a.kind === b.kind ? 0 : a.kind === "period" ? -1 : 1));
-    ordered.forEach((it) => {
-      const link = effectiveLink(it);
-      const card = document.createElement("div");
-      card.dataset.itemId = it.id;
-      if (it.kind === "point") {
-        // Point (événement ponctuel) : accroché soit au bord inférieur de
-        // sa période hôte (sans aucun espace — "la barre est bien en
-        // contact avec la période"), soit, à défaut, sur la ligne de base
-        // commune sous l'empilement de bandes. Les points qui partagent
-        // exactement la même date (et la même période hôte) sont déjà
-        // empilés en chaîne par pointTop ci-dessus, chacun touchant
-        // directement le bas du précédent.
-        const x = xForYear(it.start_year);
-        const top = pointTop.get(it.id) ?? pointsBaselineTop();
-        card.className = "tl-item tl-item-point" + (link ? " tl-item-linked" : "");
-        card.style.left = x - POINT_W / 2 + "px";
-        card.style.top = top + "px";
-        card.style.width = POINT_W + "px";
-        card.style.setProperty("--tl-tick-h", POINT_TICK_H + "px");
-        card.innerHTML =
-          '<div class="tl-point-tick" style="background:' + escapeHtml(it.color || "var(--accent)") + ';"></div>' +
-          '<div class="tl-point-dot" style="background:' + escapeHtml(it.color || "var(--accent)") + ';"></div>' +
-          '<div class="tl-point-label">' + escapeHtml(it.title) + '<span class="tl-item-date">' + escapeHtml(dateLabelOrYears(it)) + "</span></div>";
-      } else {
-        // Période : bande pleine couleur. Voie(s) primaire(s) = grande(s)
-        // bande(s) (façon bandeau d'ère, une période non imbriquée dans
-        // aucune autre) ; voies imbriquées = bandes fines empilées en
-        // dessous (une période contenue dans une autre, ex. "Affaire
-        // Dreyfus" dans "IIIe République") — voir assignLanes/
-        // periodBandTop pour le calcul des voies.
-        const lane = laneOf.get(it.id) || 0;
-        const isPrimary = lane < primaryLaneCount;
-        const top = periodBandTop(lane);
-        const h = isPrimary ? PERIOD_BAND_H_MAIN : PERIOD_BAND_H_SUB;
-        const x1 = xForYear(it.start_year);
-        const x2 = xForYear(it.end_year ?? it.start_year);
-        const w = Math.max(ITEM_MIN_W, x2 - x1);
-        card.className = "tl-item tl-item-period" + (isPrimary ? " tl-item-period-main" : " tl-item-period-sub") + (link ? " tl-item-linked" : "");
-        card.style.left = x1 + "px";
-        card.style.top = top + "px";
-        card.style.width = w + "px";
-        card.style.height = h + "px";
-        card.style.background = it.color || "var(--accent)";
-        card.innerHTML =
-          '<div class="tl-period-label">' + escapeHtml(it.title) + '</div>' +
-          '<div class="tl-item-date">' + escapeHtml(dateLabelOrYears(it)) + "</div>" +
-          '<div class="tl-handle tl-handle-l" data-handle="start"></div>' +
-          '<div class="tl-handle tl-handle-r" data-handle="end"></div>';
+    // Ancêtres : si cette frise est posée dans une période d'une frise parente,
+    // on remonte (fil d'Ariane + bornes de la période, calculées depuis la parente).
+    const chain: Ancestor[] = [];
+    let ctx: FriseContext | null = null;
+    let cur: FriseEntry = entry;
+    for (let depth = 0; depth < 12 && cur.section_id; depth++) {
+      const sec = await fetchSection(cur.section_id);
+      if (!sec || !sec.period_frise_id) break;
+      const parent = await fetchEntry(sec.period_frise_id);
+      if (!parent) break;
+      if (depth === 0) {
+        const sibRows = await fetchPeriodRows(parent.id);
+        const { segments } = layoutPeriods(sibRows.map(rowToPeriod));
+        const idx = segments.findIndex((s) => s.kind === "period" && s.period.id === sec.id);
+        if (idx >= 0) ctx = describeBounds(segments, idx);
+        else ctx = { periodName: sec.title, from: "", to: "" };
       }
-      itemsLayer.appendChild(card);
-      attachItemInteractions(card, it);
-    });
-    fitPeriodLabels();
+      chain.unshift({ id: parent.id, title: parent.title || "Frise" });
+      cur = parent;
+    }
+    if (token !== loadToken) return false;
+
+    frise = entry;
+    periodRows = rows;
+    periods = rows.map(rowToPeriod);
+    subFrises = subs;
+    ancestors = chain;
+    context = ctx;
+    return true;
   }
 
-  // Les bandes primaires portent le texte DANS leur largeur (c'est elles
-  // qui ont le fond coloré — contrairement aux sous-bandes, voir le
-  // commentaire CSS de .tl-item-period-sub). Une ère courte (quelques
-  // décennies à l'échelle du zoom courant) peut être trop étroite pour son
-  // titre en capitales — on réduit alors progressivement le corps du texte
-  // jusqu'à ce qu'il tienne, plutôt que de le laisser déborder/se faire
-  // tronquer par l'overflow:hidden de la bande (ex. "RESTAURATION" coupé
-  // en "ESTAURATIO").
-  function fitPeriodLabels() {
-    const MIN_FONT = 9;
-    itemsLayer.querySelectorAll<HTMLDivElement>(".tl-item-period-main").forEach((card) => {
-      const label = card.querySelector<HTMLDivElement>(".tl-period-label");
-      if (!label) return;
-      label.style.fontSize = "";
-      let size = parseFloat(getComputedStyle(label).fontSize);
-      let guard = 0;
-      // Largeur : grâce à align-self:stretch + overflow-wrap:anywhere
-      // (style.css), le label passe normalement à la ligne au lieu de
-      // déborder — mais un titre très long sur une bande très étroite
-      // peut quand même déborder en hauteur une fois enroulé (la bande a
-      // une hauteur fixe, voir PERIOD_BAND_H_MAIN) : on réduit alors la
-      // taille jusqu'à ce que le contenu tienne dans les deux axes.
-      while (
-        (label.scrollWidth > label.clientWidth + 1 || card.scrollHeight > card.clientHeight + 1) &&
-        size > MIN_FONT &&
-        guard < 20
-      ) {
-        size -= 1;
-        label.style.fontSize = size + "px";
-        guard++;
-      }
-    });
+  function describeBounds(segments: Segment[], index: number): FriseContext {
+    const seg = segments[index] as Extract<Segment, { kind: "period" }>;
+    const p = seg.period;
+    const after = segments[index + 1];
+    let to: string;
+    if (after && after.kind === "gap" && p.end) to = formatFriseDate(p.end);
+    else if (after && after.kind === "period") to = formatFriseDate(after.period.start);
+    else if (p.end && !seg.openEnded) to = formatFriseDate(p.end);
+    else to = "aujourd'hui";
+    return { periodName: p.name, from: formatFriseDate(p.start), to };
   }
 
-  // Règle des années — recalculée à chaque pan/zoom (voir le callback de
-  // zoomBehavior plus haut) : convertit les bords visibles de l'écran en
-  // années via l'inverse de zoomTransform, choisit un pas "rond" selon le
-  // niveau de zoom, dessine une ligne verticale + le libellé d'année à
-  // chaque graduation.
-  function renderRuler() {
-    ruler.innerHTML = "";
-    const w = canvasWrap.clientWidth || 800;
-    const h = canvasWrap.clientHeight || 600;
-    ruler.setAttribute("width", String(w));
-    ruler.setAttribute("height", String(h));
-    const k = zoomTransform.k;
-    const screenToDataX = (sx: number) => (sx - zoomTransform.x) / k;
-    const yearLeft = yearForX(screenToDataX(0));
-    const yearRight = yearForX(screenToDataX(w));
-    const pxPerYearEff = PX_PER_YEAR * k;
-    const steps = [1, 2, 5, 10, 20, 50, 100, 200, 500, 1000, 2000, 5000, 10000];
-    let step = steps[steps.length - 1];
-    for (const s of steps) {
-      if (s * pxPerYearEff >= 90) {
-        step = s;
-        break;
-      }
-    }
-    const first = Math.floor(yearLeft / step) * step;
-    const NS = "http://www.w3.org/2000/svg";
-    for (let y = first; y <= yearRight + step; y += step) {
-      const sx = xForYear(y) * k + zoomTransform.x;
-      const line = document.createElementNS(NS, "line");
-      line.setAttribute("x1", String(sx));
-      line.setAttribute("x2", String(sx));
-      line.setAttribute("y1", "0");
-      line.setAttribute("y2", String(h));
-      line.setAttribute("class", "tl-ruler-line");
-      ruler.appendChild(line);
-      const label = document.createElementNS(NS, "text");
-      label.setAttribute("x", String(sx + 4));
-      label.setAttribute("y", "18");
-      label.setAttribute("class", "tl-ruler-label");
-      label.textContent = formatYear(y);
-      ruler.appendChild(label);
-    }
-    // Ligne "aujourd'hui"
-    const todaySx = xForYear(new Date().getFullYear()) * k + zoomTransform.x;
-    if (todaySx >= -50 && todaySx <= w + 50) {
-      const line = document.createElementNS(NS, "line");
-      line.setAttribute("x1", String(todaySx));
-      line.setAttribute("x2", String(todaySx));
-      line.setAttribute("y1", "0");
-      line.setAttribute("y2", String(h));
-      line.setAttribute("class", "tl-ruler-today");
-      ruler.appendChild(line);
-    }
-  }
+  // --- Rendu -----------------------------------------------------------------------
+  function render() {
+    if (!frise) return;
+    const admin = isAdmin();
+    document.body.classList.toggle("tl-can-edit", admin);
 
-  // --- Interactions (clic / glisser) ------------------------------------------
-  function attachItemInteractions(card: HTMLDivElement, item: TimelineItemRow) {
-    let moved = false;
-    let dragMode: "move" | "start" | "end" | null = null;
-    let startScreenX = 0;
-    let startYearStart = 0;
-    let startYearEnd = 0;
+    // Fil d'Ariane des frises : parentes cliquables > frise courante.
+    const bc = $("timeline-breadcrumb");
+    bc.innerHTML = "";
+    for (const a of ancestors) {
+      const b = document.createElement("button");
+      b.type = "button";
+      b.className = "tl-crumb";
+      b.textContent = a.title;
+      b.addEventListener("click", () => void openForEntry(a.id));
+      bc.appendChild(b);
+      const sep = document.createElement("span");
+      sep.className = "tl-crumb-sep";
+      sep.textContent = "›";
+      bc.appendChild(sep);
+    }
+    const here = document.createElement("h2");
+    here.id = "timeline-title";
+    here.textContent = frise.title || "Frise chronologique";
+    bc.appendChild(here);
 
-    function beginDrag(e: MouseEvent | TouchEvent, mode: "move" | "start" | "end") {
-      if (!isAdmin()) return;
-      moved = false;
-      dragMode = mode;
-      const p = "touches" in e ? e.touches[0] : e;
-      startScreenX = p.clientX;
-      startYearStart = item.start_year;
-      startYearEnd = item.end_year ?? item.start_year;
-      document.addEventListener("mousemove", onMove);
-      document.addEventListener("mouseup", onEnd);
-      document.addEventListener("touchmove", onMove, { passive: true });
-      document.addEventListener("touchend", onEnd);
-    }
-    function onMove(e: MouseEvent | TouchEvent) {
-      const p = "touches" in e ? e.touches[0] : e;
-      const dx = (p.clientX - startScreenX) / zoomTransform.k;
-      const dYears = dx / PX_PER_YEAR;
-      if (Math.abs(dx) > 3) moved = true;
-      if (dragMode === "move") {
-        const dur = startYearEnd - startYearStart;
-        item.start_year = startYearStart + dYears;
-        if (item.kind === "period") item.end_year = item.start_year + dur;
-      } else if (dragMode === "start") {
-        item.start_year = Math.min(startYearStart + dYears, startYearEnd - 1);
-      } else if (dragMode === "end") {
-        item.end_year = Math.max(startYearEnd + dYears, item.start_year + 1);
-      }
-      assignLanes();
-      renderItems();
-    }
-    async function onEnd() {
-      document.removeEventListener("mousemove", onMove);
-      document.removeEventListener("mouseup", onEnd);
-      document.removeEventListener("touchmove", onMove);
-      document.removeEventListener("touchend", onEnd);
-      if (moved) {
-        item.start_year = Math.round(item.start_year * 100) / 100;
-        if (item.end_year != null) item.end_year = Math.round(item.end_year * 100) / 100;
-        await supabase.from("timeline_items").update({ start_year: item.start_year, end_year: item.end_year ?? null }).eq("id", item.id);
-        renderItems();
-        if (editingItemId === item.id) {
-          ($("tl-i-start") as HTMLInputElement).value = formatYear(item.start_year);
-          if (item.end_year != null) ($("tl-i-end") as HTMLInputElement).value = formatYear(item.end_year);
-        }
-      }
-      dragMode = null;
-    }
-    card.addEventListener("mousedown", (e) => {
-      const handle = (e.target as HTMLElement).closest(".tl-handle") as HTMLElement | null;
-      beginDrag(e, handle ? (handle.dataset.handle as "start" | "end") : "move");
-    });
-    card.addEventListener("touchstart", (e) => {
-      const handle = (e.target as HTMLElement).closest(".tl-handle") as HTMLElement | null;
-      beginDrag(e, handle ? (handle.dataset.handle as "start" | "end") : "move");
-    });
-    card.addEventListener("click", () => {
-      if (moved) return;
-      openItemPanel(item.id);
-    });
-  }
-
-  // --- Panneau étape (création / édition) -------------------------------------
-  let manualLinkDraft: LinkTarget | null = null;
-  function renderLinkSections(it: TimelineItemRow | null) {
-    // Le titre vient toujours du champ (pas de it.title) : pour une étape
-    // PAS ENCORE créée (it === null, premières frappes dans un nouveau
-    // panneau), it.title n'existe pas, mais le lien automatique doit déjà
-    // pouvoir se calculer sur ce qui est tapé.
-    const autoTarget = autoLinkFor(($("tl-i-title") as HTMLInputElement).value || it?.title || "");
-    const autoEl = $("tl-i-link-auto");
-    autoEl.textContent = autoTarget && !manualLinkDraft ? "Lien automatique (par nom) → " + linkLabelFor(autoTarget) : autoTarget ? "(lien automatique disponible, mais un lien manuel est actif)" : "Aucun lien automatique trouvé pour ce titre.";
-    const manualEl = $("tl-i-link-manual");
-    manualEl.innerHTML = "";
-    const pickBtn = document.createElement("button");
-    pickBtn.className = "btn-small";
-    pickBtn.textContent = manualLinkDraft ? "Changer le lien manuel (" + linkLabelFor(manualLinkDraft) + ")" : "Choisir un lien manuel";
-    pickBtn.addEventListener("click", () => openLinkPicker());
-    manualEl.appendChild(pickBtn);
-    if (manualLinkDraft) {
-      const clearBtn = document.createElement("button");
-      clearBtn.className = "btn-small";
-      clearBtn.textContent = "Retirer le lien manuel";
-      clearBtn.addEventListener("click", () => {
-        manualLinkDraft = null;
-        void persistField("link_target", null);
-        renderLinkSections(editingItemId ? items.find((x) => x.id === editingItemId) || null : null);
-      });
-      manualEl.appendChild(clearBtn);
-    }
-    const bannerBtn = $("tl-item-link-banner") as HTMLButtonElement;
-    const effective = manualLinkDraft || autoTarget;
-    if (effective) {
-      bannerBtn.style.display = "flex";
-      bannerBtn.textContent = "📄 Voir « " + linkLabelFor(effective) + " » →";
-      bannerBtn.onclick = () => void deps.openLinkedFiche(effective);
+    const sub = $("timeline-subtitle");
+    if (context && context.from) {
+      sub.innerHTML = "Période « <strong>" + esc(context.periodName) + "</strong> » · " + esc(context.from) + " → " + esc(context.to);
+      sub.style.display = "";
+    } else if (context) {
+      sub.innerHTML = "Période « <strong>" + esc(context.periodName) + "</strong> »";
+      sub.style.display = "";
     } else {
-      bannerBtn.style.display = "none";
-      bannerBtn.onclick = null;
+      sub.style.display = "none";
     }
-  }
-  function openLinkPicker() {
-    const modal = $("tl-link-picker-modal");
-    const input = $("tl-link-picker-input") as HTMLInputElement;
-    const results = $("tl-link-picker-results");
-    input.value = "";
-    function renderResults() {
-      const q = input.value.trim().toLowerCase();
-      const entries = deps.getLinkSearchEntries();
-      const matches = (q.length >= 1 ? entries.filter((e) => e.label.toLowerCase().includes(q)) : entries.slice(0, 40)).slice(0, 40);
-      results.innerHTML = "";
-      matches.forEach((e) => {
-        const row = document.createElement("button");
-        row.type = "button";
-        row.className = "btn-small gen-foreign-result";
-        row.style.cssText = "display:block;width:100%;text-align:left;margin-top:4px;";
-        row.textContent = e.label;
-        row.addEventListener("click", () => {
-          manualLinkDraft = e.target;
-          void persistField("link_target", e.target);
-          modal.classList.remove("open");
-          renderLinkSections(editingItemId ? items.find((x) => x.id === editingItemId) || null : null);
+
+    const stage = $("timeline-stage");
+    stage.innerHTML = "";
+    const hint = $("timeline-empty-hint");
+    if (!periods.length) {
+      hint.style.display = "";
+      hint.textContent = admin
+        ? "Cette frise n'a pas encore de période. Utilise « + Période » : chaque période devient une sous-catégorie du dossier."
+        : "Cette frise n'a pas encore de période.";
+      return;
+    }
+    hint.style.display = "none";
+
+    const { segments, issues } = layoutPeriods(periods);
+    const scroll = $("timeline-scroll");
+    const widths = computeWidths(segments, Math.max(scroll.clientWidth - 64, 320));
+    const total = widths.reduce((s, w) => s + w, 0);
+
+    const wrap = document.createElement("div");
+    wrap.className = "tl-band-wrap";
+    wrap.style.width = total + "px";
+
+    // Repères de dates (bornes partagées) au-dessus de la bande.
+    const marks = document.createElement("div");
+    marks.className = "tl-marks";
+    let x = 0;
+    segments.forEach((seg, i) => {
+      const date = seg.kind === "period" ? seg.period.start : periods.find((p) => p.id === seg.afterPeriodId)?.end;
+      if (date) addMark(marks, x, formatFriseDate(date), false);
+      x += widths[i];
+    });
+    const last = segments[segments.length - 1];
+    if (last.kind === "period") {
+      addMark(marks, total, last.period.end && !last.openEnded ? formatFriseDate(last.period.end) : "aujourd'hui", true);
+    }
+    wrap.appendChild(marks);
+
+    // La bande : deux lignes (haut/bas) entre lesquelles s'écrivent les périodes.
+    const band = document.createElement("div");
+    band.className = "tl-band";
+    segments.forEach((seg, i) => {
+      const cell = document.createElement("div");
+      cell.style.width = widths[i] + "px";
+      if (seg.kind === "gap") {
+        cell.className = "tl-gap";
+        cell.title = seg.label || "Transition";
+        const t = document.createElement("span");
+        t.className = "tl-gap-label";
+        t.textContent = seg.label || "";
+        cell.appendChild(t);
+      } else {
+        cell.className = "tl-period";
+        const p = seg.period;
+        const sub = subFrises.get(p.id);
+        cell.classList.toggle("has-sub", !!sub);
+        cell.tabIndex = 0;
+        cell.setAttribute("role", "button");
+        cell.title = sub ? "Ouvrir la sous-frise « " + (sub.title || p.name) + " »" : admin ? "Créer la sous-frise de cette période" : p.name;
+        cell.innerHTML =
+          '<span class="tl-period-name">' + esc(p.name) + "</span>" +
+          '<span class="tl-period-sub">' + (sub ? "sous-frise ›" : "") + "</span>";
+        const tools = document.createElement("span");
+        tools.className = "tl-period-tools";
+        const open = document.createElement("button");
+        open.type = "button";
+        open.className = "tl-tool";
+        open.textContent = "Sous-catégorie";
+        open.title = "Ouvrir la sous-catégorie « " + p.name + " » dans le dossier";
+        open.addEventListener("click", (ev) => {
+          ev.stopPropagation();
+          const row = periodRows.find((r) => r.id === p.id);
+          closeView();
+          deps.revealSection(p.id, row ? row.category_id : null);
         });
-        results.appendChild(row);
-      });
-      if (!matches.length) results.innerHTML = '<p class="muted">Aucun résultat.</p>';
+        tools.appendChild(open);
+        if (admin) {
+          const edit = document.createElement("button");
+          edit.type = "button";
+          edit.className = "tl-tool edit-control";
+          edit.textContent = "Modifier";
+          edit.addEventListener("click", (ev) => {
+            ev.stopPropagation();
+            requireAdminOr(() => openPeriodDialog(p.id));
+          });
+          tools.appendChild(edit);
+        }
+        cell.appendChild(tools);
+        const go = () => void onPeriodActivate(p);
+        cell.addEventListener("click", go);
+        cell.addEventListener("keydown", (ev) => {
+          if (ev.key === "Enter" || ev.key === " ") {
+            ev.preventDefault();
+            go();
+          }
+        });
+      }
+      band.appendChild(cell);
+    });
+    wrap.appendChild(band);
+
+    if (issues.length) {
+      const warn = document.createElement("p");
+      warn.className = "tl-issues";
+      warn.textContent = issues.map((i) => i.message).join(" ");
+      wrap.appendChild(warn);
     }
-    input.oninput = renderResults;
-    renderResults();
-    modal.classList.add("open");
-    setTimeout(() => input.focus(), 30);
-  }
-  $("tl-link-picker-cancel").addEventListener("click", () => $("tl-link-picker-modal").classList.remove("open"));
-
-  function setKindUI(kind: ItemKind) {
-    (($("tl-i-kind-point") as HTMLInputElement)).checked = kind === "point";
-    (($("tl-i-kind-period") as HTMLInputElement)).checked = kind === "period";
-    $("tl-i-end-label").style.display = kind === "period" ? "" : "none";
-    ($("tl-i-end") as HTMLInputElement).style.display = kind === "period" ? "" : "none";
+    stage.appendChild(wrap);
   }
 
-  // Enregistrement en temps réel, champ par champ (demande constante de
-  // Martin dans les autres modules de cet atlas : "tout doit se faire en
-  // temps réel à chaque modification") — crée l'étape à la première
-  // modification si elle n'existe pas encore (voir autoCreateIfNeeded).
-  async function autoCreateIfNeeded(): Promise<string | null> {
-    if (editingItemId) return editingItemId;
-    if (!currentOwner || !isAdmin() || !pendingNewKind) return null;
+  function addMark(container: HTMLElement, x: number, text: string, atEnd: boolean) {
+    const m = document.createElement("span");
+    m.className = "tl-mark" + (atEnd ? " at-end" : "");
+    m.style.left = x + "px";
+    m.textContent = text;
+    container.appendChild(m);
+  }
+
+  // --- Navigation -----------------------------------------------------------------
+  async function onPeriodActivate(p: Period) {
+    const sub = subFrises.get(p.id);
+    if (sub) {
+      await openForEntry(sub.id);
+      return;
+    }
+    if (!isAdmin()) {
+      deps.showBanner?.("Pas de sous-frise pour « " + p.name + " ».");
+      return;
+    }
+    const ok = await customConfirm("« " + p.name + " » n'a pas encore de sous-frise.\nEn créer une dans cette période ?");
+    if (!ok) return;
+    const row = periodRows.find((r) => r.id === p.id);
     const session = deps.getSession();
-    const title = ($("tl-i-title") as HTMLInputElement).value.trim() || (pendingNewKind === "point" ? "Nouveau point" : "Nouvelle période");
-    const startYear = parseYearInput(($("tl-i-start") as HTMLInputElement).value) ?? new Date().getFullYear();
-    const endYear = pendingNewKind === "period" ? parseYearInput(($("tl-i-end") as HTMLInputElement).value) ?? startYear + 10 : null;
+    if (!row || !frise || !session) return;
     const { data, error } = await supabase
-      .from("timeline_items")
+      .from("dossier_entries")
       .insert({
-        owner_type: currentOwner.type,
-        owner_id: currentOwner.id,
-        kind: pendingNewKind,
-        title,
-        description: null,
-        start_year: startYear,
-        end_year: endYear,
-        date_label: null,
-        color: ($("tl-i-color") as HTMLInputElement).value,
-        link_target: null,
-        position: items.length,
-        created_by: session?.user.id || null,
+        owner_type: frise.owner_type,
+        owner_id: frise.owner_id,
+        type: "frise",
+        title: p.name,
+        category_id: row.category_id,
+        section_id: row.id,
+        tags: [],
+        sources: [],
+        status: "published",
+        created_by: session.user.id,
       })
-      .select("id, owner_type, owner_id, kind, title, description, start_year, end_year, date_label, color, link_target, position, created_by")
+      .select("id")
       .single();
     if (error || !data) {
-      deps.showBanner?.("Erreur lors de la création de l'étape.");
-      return null;
+      deps.showBanner?.("Échec de la création de la sous-frise : " + (error?.message || "erreur inconnue."));
+      return;
     }
-    const row = data as TimelineItemRow;
-    items.push(row);
-    editingItemId = row.id;
-    pendingNewKind = null;
-    assignLanes();
-    renderAll();
-    return row.id;
-  }
-  async function persistField(field: string, value: unknown) {
-    const id = await autoCreateIfNeeded();
-    if (!id || !isAdmin()) return;
-    const it = items.find((x) => x.id === id);
-    if (!it) return;
-    (it as unknown as Record<string, unknown>)[field] = value;
-    try {
-      await supabase.from("timeline_items").update({ [field]: value }).eq("id", id);
-      $("tl-i-save-status").textContent = "Enregistré ✓";
-    } catch {
-      $("tl-i-save-status").textContent = "Erreur d'enregistrement";
-    }
-    assignLanes();
-    renderAll();
-  }
-  function wireAutosaveText(id: string, field: string, parse?: (raw: string) => unknown) {
-    const el = $(id) as HTMLInputElement | HTMLTextAreaElement;
-    el.addEventListener("blur", () => {
-      const raw = el.value;
-      void persistField(field, parse ? parse(raw) : raw.trim() || null);
-    });
+    await deps.refreshDossier();
+    await openForEntry(data.id as string);
   }
 
-  function openItemPanel(id: string | null, presetKind?: ItemKind) {
-    editingItemId = id;
-    pendingNewKind = id ? null : presetKind || "point";
-    manualLinkDraft = null;
-    const it = id ? items.find((x) => x.id === id) || null : null;
-    if (it) manualLinkDraft = it.link_target;
-    $("tl-item-heading").textContent = it ? "Modifier l'étape" : pendingNewKind === "period" ? "Nouvelle période" : "Nouveau point";
-    ($("tl-i-title") as HTMLInputElement).value = it?.title || "";
-    const kind = it?.kind || pendingNewKind || "point";
-    setKindUI(kind);
-    ($("tl-i-start") as HTMLInputElement).value = it ? formatYear(it.start_year) : "";
-    ($("tl-i-end") as HTMLInputElement).value = it?.end_year != null ? formatYear(it.end_year) : "";
-    ($("tl-i-date-label") as HTMLInputElement).value = it?.date_label || "";
-    ($("tl-i-color") as HTMLInputElement).value = it?.color || "#5aa9e6";
-    ($("tl-i-desc") as HTMLTextAreaElement).value = it?.description || "";
-    $("tl-i-save-status").textContent = "";
-    const canEdit = isAdmin();
-    ([
-      "tl-i-title", "tl-i-start", "tl-i-end", "tl-i-date-label", "tl-i-color", "tl-i-desc",
-    ] as const).forEach((fid) => (($(fid) as HTMLInputElement | HTMLTextAreaElement).disabled = !canEdit));
-    (($("tl-i-kind-point") as HTMLInputElement)).disabled = !canEdit;
-    (($("tl-i-kind-period") as HTMLInputElement)).disabled = !canEdit;
-    ($("tl-i-delete") as HTMLButtonElement).style.display = it && canEdit ? "" : "none";
-    renderLinkSections(it);
-    $("tl-item-panel").classList.add("open");
-  }
-  function closeItemPanel() {
-    $("tl-item-panel").classList.remove("open");
-    editingItemId = null;
-    pendingNewKind = null;
-    manualLinkDraft = null;
-  }
-  $("tl-item-close").addEventListener("click", closeItemPanel);
-
-  // Rafraîchit le lien automatique affiché À CHAQUE frappe (pas seulement
-  // au blur, qui déclenche l'enregistrement réel) — sinon le libellé
-  // "Lien automatique..." reste basé sur le titre tel qu'il était à
-  // l'ouverture du panneau (vide pour une nouvelle étape) jusqu'au départ
-  // du focus, ce qui donnait l'impression à tort qu'aucun lien n'existe.
-  ($("tl-i-title") as HTMLInputElement).addEventListener("input", () => {
-    renderLinkSections(editingItemId ? items.find((x) => x.id === editingItemId) || null : null);
-  });
-  wireAutosaveText("tl-i-title", "title");
-  wireAutosaveText("tl-i-start", "start_year", (raw) => parseYearInput(raw) ?? 0);
-  wireAutosaveText("tl-i-end", "end_year", (raw) => parseYearInput(raw));
-  wireAutosaveText("tl-i-date-label", "date_label", (raw) => raw.trim() || null);
-  wireAutosaveText("tl-i-desc", "description", (raw) => raw.trim() || null);
-  ($("tl-i-color") as HTMLInputElement).addEventListener("change", (e) => {
-    void persistField("color", (e.target as HTMLInputElement).value);
-  });
-  ($("tl-i-kind-point") as HTMLInputElement).addEventListener("change", () => {
-    setKindUI("point");
-    void persistField("kind", "point").then(() => persistField("end_year", null));
-  });
-  ($("tl-i-kind-period") as HTMLInputElement).addEventListener("change", () => {
-    setKindUI("period");
-    const it = editingItemId ? items.find((x) => x.id === editingItemId) : null;
-    const startY = it ? it.start_year : parseYearInput(($("tl-i-start") as HTMLInputElement).value) ?? new Date().getFullYear();
-    void persistField("kind", "period").then(() => persistField("end_year", startY + 10));
-  });
-  $("tl-i-delete").addEventListener("click", async () => {
-    if (!editingItemId || !isAdmin()) return;
-    if (!(await customConfirm("Supprimer cette étape de la frise ?"))) return;
-    await supabase.from("timeline_items").delete().eq("id", editingItemId);
-    items = items.filter((x) => x.id !== editingItemId);
-    closeItemPanel();
-    assignLanes();
-    renderAll();
-    if (!items.length) $("timeline-empty-hint").style.display = "";
-  });
-
-  $("timeline-add-point").addEventListener("click", () => requireAuthOr(() => openItemPanel(null, "point")));
-  $("timeline-add-period").addEventListener("click", () => requireAuthOr(() => openItemPanel(null, "period")));
-  $("timeline-zoom-reset").addEventListener("click", () => resetView());
-  $("timeline-back").addEventListener("click", () => {
-    $("timeline-view").classList.remove("open");
-    closeItemPanel();
-  });
-
-  async function openForOwner(owner: DossierOwnerRef) {
-    currentOwner = owner;
-    $("timeline-title").textContent = "Frise — " + owner.label;
+  async function openForEntry(entryId: string) {
     $("timeline-view").classList.add("open");
-    closeItemPanel();
-    // Rafraîchit l'index de liens (voir le même appel dans
-    // genealogy.ts::openForOwner/dossier.ts::openDossierForOwner) — pour
-    // que le lien automatique par nom tienne compte des sections/entrées
-    // créées ailleurs depuis la dernière ouverture d'une frise.
-    void ensureLinkIndexLoaded(supabase, true);
-    await loadData(owner);
-    resetView();
+    const ok = await load(entryId);
+    if (!ok) {
+      deps.showBanner?.("Frise introuvable.");
+      if (!frise) closeView();
+      return;
+    }
+    render();
   }
-  function focusItem(itemId: string) {
-    openItemPanel(itemId);
-  }
+
   function closeView() {
     $("timeline-view").classList.remove("open");
-    closeItemPanel();
+    closePeriodDialog();
+    document.body.classList.remove("tl-can-edit");
+    void deps.refreshDossier();
   }
 
+  // --- Dialogue de période ---------------------------------------------------------
+  function fieldValue(id: string): string {
+    return ($(id) as HTMLInputElement).value;
+  }
+  function setField(id: string, v: string) {
+    ($(id) as HTMLInputElement).value = v;
+  }
+  function checked(id: string): boolean {
+    return ($(id) as HTMLInputElement).checked;
+  }
+  function setChecked(id: string, v: boolean) {
+    ($(id) as HTMLInputElement).checked = v;
+  }
+  function fillDate(prefix: "tl-start" | "tl-end", d: FriseDate | null) {
+    setField(prefix + "-year", d ? String(Math.abs(d.year)) : "");
+    setChecked(prefix + "-bc", !!d && d.year < 0);
+    setField(prefix + "-month", d?.month ? String(d.month) : "");
+    setField(prefix + "-day", d?.day ? String(d.day) : "");
+    setChecked(prefix + "-circa", !!d?.circa);
+  }
+  function readDate(prefix: "tl-start" | "tl-end") {
+    return parseDateFields({
+      year: fieldValue(prefix + "-year"),
+      bc: checked(prefix + "-bc"),
+      month: fieldValue(prefix + "-month"),
+      day: fieldValue(prefix + "-day"),
+      circa: checked(prefix + "-circa"),
+    });
+  }
+  function showError(msg: string) {
+    $("tl-period-error").textContent = msg;
+  }
+  function syncEndBlock() {
+    $("tl-end-block").style.display = checked("tl-end-enabled") ? "" : "none";
+  }
+
+  async function openPeriodDialog(periodId: string | null) {
+    if (!frise) return;
+    editingPeriodId = periodId;
+    showError("");
+    const sourceRow = $("tl-period-source-row");
+    const sel = $("tl-period-source") as HTMLSelectElement;
+    if (periodId) {
+      const p = periods.find((x) => x.id === periodId);
+      if (!p) return;
+      $("tl-period-heading").textContent = "Modifier la période";
+      sourceRow.style.display = "none";
+      setField("tl-period-name", p.name);
+      fillDate("tl-start", p.start);
+      fillDate("tl-end", p.end);
+      setChecked("tl-end-enabled", !!p.end);
+      setField("tl-transition-label", p.transitionLabel || "");
+      $("tl-period-remove").style.display = "";
+    } else {
+      $("tl-period-heading").textContent = "Nouvelle période";
+      sourceRow.style.display = "";
+      // Sous-catégories existantes du même niveau, pas encore des périodes.
+      let q = supabase
+        .from("dossier_sections")
+        .select("id, title")
+        .eq("owner_type", frise.owner_type)
+        .eq("owner_id", frise.owner_id)
+        .is("period_frise_id", null);
+      q = frise.category_id ? q.eq("category_id", frise.category_id) : q;
+      q = frise.section_id ? q.eq("parent_section_id", frise.section_id) : q.is("parent_section_id", null);
+      const { data } = await q.order("position", { ascending: true });
+      sel.innerHTML = '<option value="">Nouvelle sous-catégorie</option>';
+      for (const s of (data as { id: string; title: string }[] | null) ?? []) {
+        const o = document.createElement("option");
+        o.value = s.id;
+        o.textContent = "Utiliser l'existante : " + s.title;
+        o.dataset.title = s.title;
+        sel.appendChild(o);
+      }
+      setField("tl-period-name", "");
+      fillDate("tl-start", null);
+      fillDate("tl-end", null);
+      setChecked("tl-end-enabled", false);
+      setField("tl-transition-label", "");
+      $("tl-period-remove").style.display = "none";
+    }
+    syncEndBlock();
+    $("tl-period-overlay").classList.add("open");
+    ($("tl-period-name") as HTMLInputElement).focus();
+  }
+  function closePeriodDialog() {
+    $("tl-period-overlay").classList.remove("open");
+    editingPeriodId = null;
+  }
+
+  async function savePeriod() {
+    if (!frise) return;
+    const name = fieldValue("tl-period-name").trim();
+    if (!name) return showError("Donne un nom à la période.");
+    const start = readDate("tl-start");
+    if (!start.ok) return showError("Début : " + start.error);
+    let end: FriseDate | null = null;
+    if (checked("tl-end-enabled")) {
+      const e = readDate("tl-end");
+      if (!e.ok) return showError("Fin : " + e.error);
+      end = e.date;
+    }
+    const label = fieldValue("tl-transition-label").trim() || null;
+
+    // Contrôle de cohérence sur la liste hypothétique : aucune nouvelle anomalie
+    // (chevauchement, même date de début) ne doit apparaître.
+    const before = new Set(layoutPeriods(periods).issues.map((i) => i.periodId + i.message));
+    const targetId = editingPeriodId ?? "__new__";
+    const candidate: Period = { id: targetId, name, start: start.date, end, transitionLabel: end ? label : null };
+    const hypothetical = periods.filter((p) => p.id !== editingPeriodId).concat(candidate);
+    const fresh = layoutPeriods(hypothetical).issues.filter((i) => !before.has(i.periodId + i.message));
+    if (fresh.length) return showError(fresh[0].message);
+
+    const cols = {
+      title: name,
+      period_frise_id: frise.id,
+      ...dateColumns("period_start", start.date),
+      ...dateColumns("period_end", end),
+      transition_label: end ? label : null,
+    };
+
+    ($("tl-period-save") as HTMLButtonElement).disabled = true;
+    try {
+      if (editingPeriodId) {
+        const { error } = await supabase.from("dossier_sections").update(cols).eq("id", editingPeriodId);
+        if (error) return showError("Échec de l'enregistrement : " + error.message);
+      } else {
+        const chosen = ($("tl-period-source") as HTMLSelectElement).value;
+        if (chosen) {
+          const { error } = await supabase.from("dossier_sections").update(cols).eq("id", chosen);
+          if (error) return showError("Échec de l'enregistrement : " + error.message);
+        } else {
+          const session = deps.getSession();
+          if (!session) return showError("Connexion requise.");
+          if (!frise.category_id) {
+            return showError("Cette frise n'est dans aucune catégorie : place-la d'abord dans une catégorie du dossier.");
+          }
+          const { data: sibs } = await supabase
+            .from("dossier_sections")
+            .select("position")
+            .eq("owner_type", frise.owner_type)
+            .eq("owner_id", frise.owner_id)
+            .eq("category_id", frise.category_id);
+          const maxPos = Math.max(-1, ...((sibs as { position: number | null }[] | null) ?? []).map((s) => s.position ?? 0));
+          const { error } = await supabase.from("dossier_sections").insert({
+            owner_type: frise.owner_type,
+            owner_id: frise.owner_id,
+            category_id: frise.category_id,
+            parent_section_id: frise.section_id,
+            position: maxPos + 1,
+            created_by: session.user.id,
+            ...cols,
+          });
+          if (error) return showError("Échec de l'enregistrement : " + error.message);
+        }
+      }
+    } finally {
+      ($("tl-period-save") as HTMLButtonElement).disabled = false;
+    }
+    closePeriodDialog();
+    await deps.refreshDossier();
+    await reload();
+  }
+
+  async function removePeriod() {
+    if (!editingPeriodId) return;
+    const p = periods.find((x) => x.id === editingPeriodId);
+    if (!p) return;
+    const ok = await customConfirm(
+      "Retirer « " + p.name + " » de la frise ?\nLa sous-catégorie et tout son contenu sont conservés dans le dossier ; elle cesse seulement d'être une période."
+    );
+    if (!ok) return;
+    const { error } = await supabase
+      .from("dossier_sections")
+      .update({
+        period_frise_id: null,
+        ...dateColumns("period_start", null),
+        ...dateColumns("period_end", null),
+        transition_label: null,
+      })
+      .eq("id", editingPeriodId);
+    if (error) return showError("Échec : " + error.message);
+    closePeriodDialog();
+    await deps.refreshDossier();
+    await reload();
+  }
+
+  async function reload() {
+    if (!frise) return;
+    if (await load(frise.id)) render();
+  }
+
+  // --- Événements de l'interface ------------------------------------------------------
+  $("timeline-back").addEventListener("click", closeView);
+  $("timeline-add-period").addEventListener("click", () => requireAdminOr(() => void openPeriodDialog(null)));
+  $("tl-period-cancel").addEventListener("click", closePeriodDialog);
+  $("tl-period-save").addEventListener("click", () => void savePeriod());
+  $("tl-period-remove").addEventListener("click", () => void removePeriod());
+  $("tl-end-enabled").addEventListener("change", syncEndBlock);
+  $("tl-period-source").addEventListener("change", () => {
+    const sel = $("tl-period-source") as HTMLSelectElement;
+    const opt = sel.selectedOptions[0];
+    if (opt && opt.dataset.title && !fieldValue("tl-period-name").trim()) setField("tl-period-name", opt.dataset.title);
+  });
+  $("tl-period-overlay").addEventListener("click", (ev) => {
+    if (ev.target === $("tl-period-overlay")) closePeriodDialog();
+  });
+  window.addEventListener("resize", () => {
+    if ($("timeline-view").classList.contains("open") && frise) render();
+  });
+
   return {
-    openForOwner,
-    focusItem,
+    openForEntry,
     closeView,
   };
 }
