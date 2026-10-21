@@ -1798,9 +1798,8 @@ export function initFicheDossierSystem(deps: {
       btn.className = "frise-open-btn";
       btn.innerHTML =
         '<span class="frise-open-icon" aria-hidden="true"></span><span class="frise-open-label">' +
-        "Frise" +
-        (entry.title ? ' <span class="frise-open-dash">&mdash;</span> ' + escapeHtml(entry.title) : "") +
-        "</span>";
+        escapeHtml(entry.title || "Frise chronologique") +
+        '<span class="frise-open-sub">Ouvrir la frise</span></span>';
       div.appendChild(btn);
     }
 
@@ -2064,35 +2063,53 @@ export function initFicheDossierSystem(deps: {
           : '<p class="muted">Aucune entrée dans cette catégorie pour le moment.</p>';
         return;
       }
-      if (directEntries.length) {
-        const unWrap = document.createElement("div");
-        unWrap.className = "dossier-unsectioned dossier-drop-zone";
-        directEntries.forEach((entry) => unWrap.appendChild(buildEntryEl(entry)));
-        container.appendChild(unWrap);
-        registerSectionDropZone(unWrap, deepestId);
-      } else if (children.length && isAdmin()) {
-        // Visible seulement si on peut effectivement glisser une entrée
-        // (isAdmin()) : en mode lecture / pour un non-admin, les entrées
-        // ne sont plus draggable (buildEntryEl), donc ce texte d'aide au
-        // glisser-déposer n'a plus de sens et doit disparaître lui aussi.
-        const unWrap = document.createElement("div");
-        unWrap.className = "dossier-unsectioned dossier-drop-zone";
-        const hint = document.createElement("p");
-        hint.className = "muted dossier-drop-hint edit-control";
-        hint.textContent = "Déposez ici une entrée pour la sortir des sous-catégories.";
-        unWrap.appendChild(hint);
-        container.appendChild(unWrap);
-        registerSectionDropZone(unWrap, deepestId);
+      // Page = trois blocs alignés sur les mêmes colonnes : la frise (s'il y en a une),
+      // les sous-catégories, puis les fiches et documents. Les titres de bloc
+      // n'apparaissent que lorsqu'il y a plusieurs blocs à distinguer.
+      const friseEntries = directEntries.filter((e) => e.type === "frise");
+      const otherEntries = directEntries.filter((e) => e.type !== "frise");
+      const blockCount = (friseEntries.length ? 1 : 0) + (children.length ? 1 : 0) + (otherEntries.length ? 1 : 0);
+      const addTitle = (text: string) => {
+        if (blockCount < 2) return;
+        const t = document.createElement("div");
+        t.className = "dossier-cat-section-title";
+        t.textContent = text;
+        container.appendChild(t);
+      };
+      if (friseEntries.length) {
+        addTitle("Frise chronologique");
+        const fWrap = document.createElement("div");
+        fWrap.className = "dossier-frise-block";
+        friseEntries.forEach((entry) => fWrap.appendChild(buildEntryEl(entry)));
+        container.appendChild(fWrap);
       }
       // Sous-catégories du niveau suivant, en grille de cartes plein écran
       // (.dossier-sections-grid, style.css) — chaque carte ouvre sa PROPRE
       // page au clic, et peut aussi recevoir une entrée glissée dessus
       // (voir registerSectionDropZone dans buildSectionCard).
       if (children.length) {
+        addTitle("Sous-catégories");
         const grid = document.createElement("div");
         grid.className = "dossier-sections-grid";
         children.forEach((child) => grid.appendChild(buildSectionCard(child, filtered, () => openSectionPage(child.id))));
         container.appendChild(grid);
+      }
+      if (otherEntries.length || (children.length && isAdmin()) || friseEntries.length) {
+        // Zone de dépôt (glisser une entrée dans cette page). Visible comme bloc
+        // seulement s'il y a des fiches ; sinon, pour un admin, une simple aide.
+        const unWrap = document.createElement("div");
+        unWrap.className = "dossier-unsectioned dossier-drop-zone";
+        if (otherEntries.length) {
+          addTitle("Fiches et documents");
+          otherEntries.forEach((entry) => unWrap.appendChild(buildEntryEl(entry)));
+        } else if (isAdmin()) {
+          const hint = document.createElement("p");
+          hint.className = "muted dossier-drop-hint edit-control";
+          hint.textContent = "Déposez ici une entrée pour la sortir des sous-catégories.";
+          unWrap.appendChild(hint);
+        }
+        if (unWrap.children.length) container.appendChild(unWrap);
+        registerSectionDropZone(unWrap, deepestId);
       }
       return;
     }

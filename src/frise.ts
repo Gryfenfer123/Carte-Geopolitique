@@ -1277,6 +1277,18 @@ export function initTimelineSystem(deps: {
     editingPoint = null;
   }
 
+  // Sous-catégorie qui doit accueillir la fiche d'un point : celle de la période où tombe
+  // sa date ; dans une transition, la sous-catégorie de la transition (créée si besoin) ;
+  // à défaut, celle où la frise est posée.
+  async function targetSectionFor(segments: Segment[], segIdx: number): Promise<{ secId: string | null; catId: string | null }> {
+    const seg = segments[segIdx];
+    let row: SectionRow | undefined | null;
+    if (seg.kind === "period") row = periodRows.find((r) => r.id === seg.period.id);
+    else row = transitionRows.find((r) => r.transition_after_id === seg.afterPeriodId) ?? (await ensureTransitionRow(seg.afterPeriodId));
+    if (row) return { secId: row.id, catId: row.category_id };
+    return { secId: frise ? frise.section_id : null, catId: frise ? frise.category_id : null };
+  }
+
   async function savePoint() {
     if (!frise) return;
     const title = fieldValue("tl-point-title").trim();
@@ -1319,24 +1331,22 @@ export function initTimelineSystem(deps: {
           .eq("frise_entry_id", frise.id)
           .eq("event_id", pt.eventId);
         if (r2.error) return showPointError("Échec : " + r2.error.message);
-      } else {
-        // Fiche à créer : dans la sous-catégorie de la période (ou transition) où tombe la date.
-        const seg = segments[segIdx];
-        let secId: string | null = frise.section_id;
-        let catId: string | null = frise.category_id;
-        if (seg.kind === "period") {
-          const row = periodRows.find((r) => r.id === seg.period.id);
-          if (row) {
-            secId = row.id;
-            catId = row.category_id;
-          }
-        } else {
-          const row = transitionRows.find((r) => r.transition_after_id === seg.afterPeriodId);
-          if (row) {
-            secId = row.id;
-            catId = row.category_id;
+        // Si la date a changé de période, la fiche suit — sauf si elle a été rangée à la main
+        // ailleurs (on ne la déplace que depuis la sous-catégorie de la frise ou d'une de ses périodes).
+        if (pt.entryId) {
+          const target = await targetSectionFor(segments, segIdx);
+          const { data: cur } = await supabase.from("dossier_entries").select("section_id").eq("id", pt.entryId).maybeSingle();
+          const curSec = (cur as { section_id: string | null } | null)?.section_id ?? null;
+          const automatic = new Set<string | null>([frise.section_id, ...periodRows.map((r) => r.id), ...transitionRows.map((r) => r.id)]);
+          if (cur && automatic.has(curSec) && curSec !== target.secId && target.secId) {
+            await supabase.from("dossier_entries").update({ section_id: target.secId, category_id: target.catId }).eq("id", pt.entryId);
           }
         }
+      } else {
+        // Fiche à créer : dans la sous-catégorie de la période (ou transition) où tombe la date.
+        const target = await targetSectionFor(segments, segIdx);
+        const secId = target.secId;
+        const catId = target.catId;
         const fiche = await supabase
           .from("dossier_entries")
           .insert({
