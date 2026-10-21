@@ -1657,11 +1657,7 @@ export function initFicheDossierSystem(deps: {
       const h = document.createElement("div");
       h.className = "entry-title entry-title-row";
       h.innerHTML =
-        '<span class="entry-type-badge" aria-hidden="true">' +
-        DOC_ICON_SVG +
-        "</span><span>" +
-        escapeHtml(entry.title || entryPlainText(entry as DossierEntryLike).slice(0, 60) || "Sans titre") +
-        "</span>";
+        "<span>" + escapeHtml(entry.title || entryPlainText(entry as DossierEntryLike).slice(0, 60) || "Sans titre") + "</span>";
       div.appendChild(h);
       // Couverture (demande de Martin, 2026-10-12) : une image de couverture
       // pour un texte, affichée uniquement sur l'aperçu (la carte), sous le

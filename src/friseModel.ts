@@ -221,3 +221,47 @@ export function xForDecimal(dec: number, segments: Segment[], widths: number[]):
   }
   return null;
 }
+
+/**
+ * Largeurs en pixels À L'ÉCHELLE : proportionnelles à la durée (même nombre de
+ * pixels par année partout), avec un tout petit minimum pour qu'une période
+ * très courte ou de durée nulle reste visible et cliquable. Cette échelle
+ * constante est ce qui rend la règle de graduation (niceTicks) exacte.
+ */
+export function computeLinearWidths(segments: Segment[], totalPx: number, minPx = 18): number[] {
+  if (segments.length === 0) return [];
+  const total = segments.reduce((s, seg) => s + Math.max(seg.endDec - seg.startDec, 0), 0) || 1;
+  return segments.map((seg) => Math.max((Math.max(seg.endDec - seg.startDec, 0) / total) * totalPx, minPx));
+}
+
+export type Tick = { dec: number; label: string; year: number; month: number | null };
+
+const TICK_STEPS = [1, 2, 5, 10, 20, 25, 50, 100, 200, 250, 500, 1000, 2000, 5000, 10000];
+
+/**
+ * Graduations de la règle : un pas "rond" (1, 2, 5, 10, 25, 50, 100… ans) choisi
+ * pour que deux repères soient espacés d'au moins `minGapPx` pixels ; en zoom
+ * fort (≥ ~1000 px par an), un repère par mois. `ppy` = pixels par année.
+ */
+export function niceTicks(startDec: number, endDec: number, ppy: number, minGapPx = 90): Tick[] {
+  const out: Tick[] = [];
+  if (!(ppy > 0) || endDec <= startDec) return out;
+  if (ppy / 12 >= minGapPx * 0.8) {
+    // Un repère par mois.
+    for (let y = Math.floor(startDec); y <= Math.ceil(endDec); y++) {
+      if (y === 0) continue;
+      for (let m = 1; m <= 12; m++) {
+        const dec = y + (m - 1) / 12;
+        if (dec < startDec - 1e-9 || dec > endDec + 1e-9) continue;
+        out.push({ dec, label: formatFriseDate({ year: y, month: m, day: null, circa: false }), year: y, month: m });
+      }
+    }
+    return out;
+  }
+  const step = TICK_STEPS.find((s) => s * ppy >= minGapPx) ?? TICK_STEPS[TICK_STEPS.length - 1];
+  for (let y = Math.ceil(startDec / step) * step; y <= endDec + 1e-9; y += step) {
+    if (y === 0) continue;
+    out.push({ dec: y, label: formatFriseDate({ year: y, month: null, day: null, circa: false }), year: y, month: null });
+  }
+  return out;
+}

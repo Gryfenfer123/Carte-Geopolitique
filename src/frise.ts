@@ -24,12 +24,13 @@
 import type { SupabaseClient, Session } from "@supabase/supabase-js";
 import { customConfirm } from "./dossier";
 import {
-  computeWidths,
+  computeLinearWidths,
   dateSortKey,
   dateToDecimal,
   formatFriseDate,
   layoutPeriods,
   locateSegment,
+  niceTicks,
   parseDateFields,
   xForDecimal,
   type FriseDate,
@@ -76,7 +77,9 @@ type Point = {
   date: FriseDate;
   side: "up" | "down";
   color: string;
+  stem: number | null; // hauteur de la tige en px, réglée à la main (null = automatique)
   entryId: string | null;
+  stemEl?: HTMLElement; // élément de tige affiché (rendu courant)
 };
 
 const SECTION_COLUMNS =
@@ -167,6 +170,7 @@ export function initTimelineSystem(deps: {
   let ancestors: Ancestor[] = [];
   let context: FriseContext | null = null;
   let loadToken = 0;
+  let suppressPointClick = false;
   let zoom = 1;
   // Dialogue période / transition
   let editingPeriodId: string | null = null;
@@ -281,7 +285,16 @@ export function initTimelineSystem(deps: {
   function buildSwatches(containerId: string, allowNone: boolean, get: () => string | null, set: (c: string | null) => void) {
     const box = $(containerId);
     box.innerHTML = "";
+    // Sélecteur de couleur complet (même palette que les autres couleurs de l'atlas).
+    const picker = document.createElement("input");
+    picker.type = "color";
+    picker.className = "tl-color-input";
+    picker.value = get() || "#2980b9";
+    picker.title = "Choisir une couleur";
+    box.appendChild(picker);
     const choices: (string | null)[] = allowNone ? [null, ...PALETTE] : [...PALETTE];
+    const buttons: HTMLButtonElement[] = [];
+    const refresh = () => buttons.forEach((el, i) => el.classList.toggle("selected", choices[i] === get()));
     for (const c of choices) {
       const b = document.createElement("button");
       b.type = "button";
@@ -289,13 +302,19 @@ export function initTimelineSystem(deps: {
       if (c) b.style.background = c;
       b.title = c ?? "Aucune couleur";
       b.setAttribute("aria-label", c ?? "Aucune couleur");
-      b.classList.toggle("selected", get() === c);
       b.addEventListener("click", () => {
         set(c);
-        box.querySelectorAll(".tl-swatch").forEach((el, i) => el.classList.toggle("selected", choices[i] === c));
+        if (c) picker.value = c;
+        refresh();
       });
+      buttons.push(b);
       box.appendChild(b);
     }
+    picker.addEventListener("input", () => {
+      set(picker.value);
+      refresh();
+    });
+    refresh();
   }
 
   // --- Chargement ----------------------------------------------------------------
@@ -319,9 +338,9 @@ export function initTimelineSystem(deps: {
   async function loadPoints(friseId: string): Promise<Point[]> {
     const { data: pl } = await supabase
       .from("timeline_placements")
-      .select("event_id, side, color")
+      .select("event_id, side, color, stem_length")
       .eq("frise_entry_id", friseId);
-    const placements = (pl as { event_id: string; side: string | null; color: string | null }[] | null) ?? [];
+    const placements = (pl as { event_id: string; side: string | null; color: string | null; stem_length: number | null }[] | null) ?? [];
     if (!placements.length) return [];
     const ids = placements.map((p) => p.event_id);
     const { data: ev } = await supabase
@@ -342,6 +361,7 @@ export function initTimelineSystem(deps: {
         date: { year: e.date_year, month: e.date_month, day: e.date_day, circa: !!e.date_circa },
         side: p?.side === "up" ? "up" : "down",
         color: p?.color || DEFAULT_POINT_COLOR,
+        stem: p?.stem_length ?? null,
         entryId: fiche.get(e.id) ?? null,
       });
     }
@@ -427,17 +447,25 @@ export function initTimelineSystem(deps: {
   const STEM_STEP = 30;
   const LABEL_PAD = 14;
 
-  type Placed = { p: Point; x: number; level: number; w: number };
-  function placeSide(items: { p: Point; x: number }[]): Placed[] {
+  // Les points dont la hauteur est réglée à la main gardent leur hauteur ; les autres
+  // sont rangés automatiquement en branches empilées (niveaux).
+  const RULER_H = 26;
+  type Placed = { p: Point; x: number; len: number; w: number };
+  function placeSide(items: { p: Point; x: number }[], side: "up" | "down"): Placed[] {
+    const base = STEM_BASE + (side === "down" ? RULER_H : 0);
     const sorted = [...items].sort((a, b) => a.x - b.x || dateSortKey(a.p.date) - dateSortKey(b.p.date));
     const lastRight: number[] = [];
     const out: Placed[] = [];
     for (const it of sorted) {
       const w = Math.min(textWidth(it.p.title) + LABEL_PAD, 260);
+      if (it.p.stem != null) {
+        out.push({ p: it.p, x: it.x, len: it.p.stem, w });
+        continue;
+      }
       let level = 0;
       while (level < lastRight.length && lastRight[level] > it.x - 2) level++;
       lastRight[level] = it.x + 6 + w;
-      out.push({ p: it.p, x: it.x, level, w });
+      out.push({ p: it.p, x: it.x, len: base + level * STEM_STEP, w });
     }
     return out;
   }
@@ -493,7 +521,7 @@ export function initTimelineSystem(deps: {
     const { segments, issues } = layoutPeriods(periods);
     const scroll = $("timeline-scroll");
     const baseWidth = Math.max(scroll.clientWidth - 200, 320);
-    const widths = computeWidths(segments, baseWidth * zoom);
+    const widths = computeLinearWidths(segments, baseWidth * zoom);
     const total = widths.reduce((s, w) => s + w, 0);
 
     // Points : position x, niveaux (branches empilées) de chaque côté.
@@ -504,17 +532,18 @@ export function initTimelineSystem(deps: {
       if (x === null) outside++;
       else placedItems.push({ p, x });
     }
-    const up = placeSide(placedItems.filter((i) => i.p.side === "up"));
-    const down = placeSide(placedItems.filter((i) => i.p.side === "down"));
-    const zoneH = (pl: Placed[]) => 60 + (pl.length ? Math.max(...pl.map((i) => i.level)) * STEM_STEP + STEM_BASE : 0);
+    const up = placeSide(placedItems.filter((i) => i.p.side === "up"), "up");
+    const down = placeSide(placedItems.filter((i) => i.p.side === "down"), "down");
+    const zoneH = (pl: Placed[]) => Math.max(80, (pl.length ? Math.max(...pl.map((i) => i.len)) : 0) + 40);
 
     const wrap = document.createElement("div");
     wrap.className = "tl-band-wrap";
     wrap.style.width = total + "px";
 
+    const upH = zoneH(up);
     const upZone = document.createElement("div");
     upZone.className = "tl-zone tl-zone-up";
-    upZone.style.height = zoneH(up) + "px";
+    upZone.style.height = upH + "px";
     wrap.appendChild(upZone);
 
     const band = document.createElement("div");
@@ -617,45 +646,130 @@ export function initTimelineSystem(deps: {
     downZone.style.height = zoneH(down) + "px";
     wrap.appendChild(downZone);
 
+    // Règle graduée (échelle constante : mêmes pixels par année sur toute la frise).
+    const startDec = segments[0].startDec;
+    const endDec = segments[segments.length - 1].endDec;
+    const ppy = total / Math.max(endDec - startDec, 1e-6);
+    const ruler = document.createElement("div");
+    ruler.className = "tl-ruler";
+    for (const t of niceTicks(startDec, endDec, ppy)) {
+      const x = xForDecimal(t.dec, segments, widths);
+      if (x === null) continue;
+      const tick = document.createElement("span");
+      tick.className = "tl-tick" + (t.month === 1 ? " year" : "");
+      tick.style.left = x + "px";
+      const lab = document.createElement("span");
+      lab.className = "tl-tick-label";
+      lab.textContent = t.label;
+      tick.appendChild(lab);
+      ruler.appendChild(tick);
+    }
+    downZone.appendChild(ruler);
+
     // Tiges et branches : les plus longues d'abord pour que, à date égale,
     // chaque segment de tige prenne la couleur de sa propre branche.
-    const drawSide = (zone: HTMLElement, list: Placed[], side: "up" | "down") => {
-      [...list].sort((a, b) => b.level - a.level).forEach((it) => {
-        const len = STEM_BASE + it.level * STEM_STEP;
+    // Couche unique pour les tiges, points et pastilles (coordonnées absolues) : un point
+    // glissé de l'autre côté de la bande ne change jamais de parent DOM (sinon le glissement
+    // serait interrompu).
+    const layer = document.createElement("div");
+    layer.className = "tl-layer";
+    wrap.appendChild(layer);
+    const bandEl = band;
+    const BAND_H = 84;
+    const drawSide = (list: Placed[], side: "up" | "down") => {
+      [...list].sort((a, b) => b.len - a.len).forEach((it) => {
         const stem = document.createElement("span");
         stem.className = "tl-stem";
         stem.style.left = it.x - 1 + "px";
-        stem.style.height = len + "px";
         stem.style.background = it.p.color;
-        stem.style[side === "up" ? "bottom" : "top"] = "0";
-        zone.appendChild(stem);
+        layer.appendChild(stem);
+        it.p.stemEl = stem;
       });
       list.forEach((it) => {
-        const len = STEM_BASE + it.level * STEM_STEP;
         const lab = document.createElement("button");
         lab.type = "button";
-        lab.className = "tl-point";
+        lab.className = "tl-point" + (admin ? " movable" : "");
         lab.textContent = it.p.title;
-        lab.title = it.p.title + " — " + formatFriseDate(it.p.date);
+        lab.title = it.p.title + " — " + formatFriseDate(it.p.date) + (admin ? " (glisser verticalement pour régler la hauteur)" : "");
         lab.style.left = it.x + 3 + "px";
         lab.style.maxWidth = "260px";
         lab.style.borderColor = it.p.color;
-        lab.style[side === "up" ? "bottom" : "top"] = len - 12 + "px";
-        lab.addEventListener("click", (ev) => {
-          ev.stopPropagation();
-          openPointCard(it.p, lab);
-        });
-        zone.appendChild(lab);
+        layer.appendChild(lab);
         const dot = document.createElement("span");
         dot.className = "tl-dot";
-        dot.style.left = it.x - 4 + "px";
+        dot.style.left = it.x + "px";
         dot.style.background = it.p.color;
-        dot.style[side === "up" ? "bottom" : "top"] = len - 4 + "px";
-        zone.appendChild(dot);
+        layer.appendChild(dot);
+        const place = (s: "up" | "down", len: number) => {
+          const stem = it.p.stemEl as HTMLElement;
+          const stemTop = s === "up" ? upH - len : upH + BAND_H;
+          const centerY = s === "up" ? stemTop : stemTop + len;
+          stem.style.top = stemTop + "px";
+          stem.style.height = len + "px";
+          lab.style.top = centerY + "px";
+          dot.style.top = centerY + "px";
+        };
+        place(side, it.len);
+
+        // Hauteur à la main : on glisse le point verticalement (jamais horizontalement,
+        // la date ne change pas). Passer de l'autre côté de la bande le fait changer de côté.
+        let press: { moved: boolean; side: "up" | "down"; len: number } | null = null;
+        lab.addEventListener("pointerdown", (ev) => {
+          if (!admin || ev.button !== 0) return;
+          ev.stopPropagation();
+          lab.setPointerCapture(ev.pointerId);
+          press = { moved: false, side: side, len: it.len };
+          closePointCard();
+        });
+        lab.addEventListener("pointermove", (ev) => {
+          if (!press) return;
+          const r = bandEl.getBoundingClientRect();
+          let s: "up" | "down";
+          let len: number;
+          if (ev.clientY <= r.top - 8) {
+            s = "up";
+            len = r.top - ev.clientY;
+          } else if (ev.clientY >= r.bottom + 8) {
+            s = "down";
+            len = ev.clientY - r.bottom;
+          } else {
+            s = (ev.clientY < (r.top + r.bottom) / 2 ? "up" : "down") as "up" | "down";
+            len = 8;
+          }
+          len = Math.round(Math.min(900, Math.max(8, len)));
+          if (!press.moved && s === press.side && Math.abs(len - press.len) < 4) return;
+          press.moved = true;
+          press.side = s;
+          press.len = len;
+          lab.classList.add("dragging");
+          place(s, len);
+        });
+        const finish = async () => {
+          const pr = press;
+          press = null;
+          lab.classList.remove("dragging");
+          if (!pr || !pr.moved || !frise) return;
+          suppressPointClick = true;
+          setTimeout(() => (suppressPointClick = false), 0);
+          const { error } = await supabase
+            .from("timeline_placements")
+            .update({ side: pr.side, stem_length: pr.len })
+            .eq("frise_entry_id", frise.id)
+            .eq("event_id", it.p.eventId);
+          if (error) deps.showBanner?.("Échec de l'enregistrement de la hauteur : " + error.message);
+          await reload();
+        };
+        lab.addEventListener("pointerup", () => void finish());
+        lab.addEventListener("pointercancel", () => void finish());
+        lab.addEventListener("click", (ev) => {
+          ev.stopPropagation();
+          if (suppressPointClick) return;
+          openPointCard(it.p, lab);
+        });
       });
     };
-    drawSide(upZone, up, "up");
-    drawSide(downZone, down, "down");
+    drawSide(up, "up");
+    drawSide(down, "down");
 
     const notes: string[] = issues.map((i) => i.message);
     if (outside) notes.push(outside + " point(s) ont une date en dehors de la frise et ne sont pas affichés.");
@@ -1308,6 +1422,19 @@ export function initTimelineSystem(deps: {
         deps.revealEntry(entryId, e ? e.category_id : null);
       });
       row.appendChild(open);
+    }
+    if (isAdmin() && p.stem != null) {
+      const auto = document.createElement("button");
+      auto.type = "button";
+      auto.className = "btn-small";
+      auto.textContent = "Hauteur auto";
+      auto.addEventListener("click", async () => {
+        closePointCard();
+        if (!frise) return;
+        await supabase.from("timeline_placements").update({ stem_length: null }).eq("frise_entry_id", frise.id).eq("event_id", p.eventId);
+        await reload();
+      });
+      row.appendChild(auto);
     }
     if (isAdmin()) {
       const edit = document.createElement("button");
