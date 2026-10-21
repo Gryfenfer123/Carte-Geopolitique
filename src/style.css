@@ -2408,7 +2408,8 @@ path.link-autre { stroke: var(--link-autre, #c9bfa9); }
 }
 .tl-crumb:hover { text-decoration: underline; }
 .tl-crumb-sep { color: var(--text-dim); }
-#timeline-subtitle { padding: 8px 18px 0; font-size: 13px; color: var(--text-dim); }
+#timeline-subbar { display: flex; align-items: center; gap: 12px; padding: 8px 18px 0; }
+#timeline-subtitle { font-size: 13px; color: var(--text-dim); }
 #timeline-scroll {
   flex: 1; overflow: hidden; display: flex; flex-direction: column; cursor: grab;
   touch-action: none; user-select: none; -webkit-user-select: none;

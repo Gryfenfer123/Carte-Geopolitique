@@ -672,6 +672,10 @@ export function initFicheDossierSystem(deps: {
   // chronologiques (src/frise.ts, demande de Martin, 2026-10-06) —
   // owner = {type:"entry", id: entry.id}.
   onOpenFriseEntry?: (entry: { id: string; title: string | null }) => void;
+  // Lien fiche <-> frise : la fiche est-elle reliée à un point de frise ? et ouvrir cette frise
+  // en centrant le point (src/frise.ts).
+  friseLinkForFiche?: (entryId: string) => Promise<boolean>;
+  onShowFicheOnFrise?: (entryId: string) => void;
 }) {
   const { supabase } = deps;
   loadCountryNameData();
@@ -899,6 +903,7 @@ export function initFicheDossierSystem(deps: {
         <div id="dossier-entry-read-view">
           <div class="dossier-read-topbar">
             <button id="dossier-read-back" class="btn-small">&larr; Retour</button>
+            <button id="dossier-read-frise" class="btn-small" style="display:none;">Voir sur la frise</button>
             <button id="dossier-read-edit" class="btn-small">&#9998; Modifier</button>
           </div>
           <div id="dossier-read-card" class="dossier-entry text">
@@ -1483,7 +1488,14 @@ export function initFicheDossierSystem(deps: {
         await openMiniDossier(ownerType as MiniDossierKind, ownerId, ownerId);
       }
       if (target.kind === "section") revealSection(target.sectionId, target.categoryId);
-      else revealEntry(target.entryId, target.categoryId);
+      else {
+        revealEntry(target.entryId, target.categoryId);
+        // Ouverture directe du texte de la fiche (depuis une frise) : même résultat qu'un clic sur la carte.
+        if ((target as { read?: boolean }).read) {
+          const entry = currentEntries.find((e) => e.id === target.entryId);
+          if (entry && entry.type === "text") openEntryReadView(entry);
+        }
+      }
       return;
     }
     if (target.kind === "genealogy-member") {
@@ -2554,7 +2566,20 @@ export function initFicheDossierSystem(deps: {
     // jamais rempli ni affiché ici.
     $("dossier-read-wordcount").style.display = "none";
     $("dossier-view").scrollTop = 0;
+    refreshFriseButton(entry.id);
   }
+  // Bouton « Voir sur la frise » : visible seulement si la fiche est reliée à un point de frise.
+  function refreshFriseButton(entryId: string) {
+    const btn = $("dossier-read-frise");
+    btn.style.display = "none";
+    if (!deps.friseLinkForFiche) return;
+    void deps.friseLinkForFiche(entryId).then((linked) => {
+      if (linked && readingEntryId === entryId) btn.style.display = "";
+    });
+  }
+  $("dossier-read-frise").addEventListener("click", () => {
+    if (readingEntryId) deps.onShowFicheOnFrise?.(readingEntryId);
+  });
   // Vue de lecture plein cadre d'un hémicycle (demande de Martin,
   // 2026-10-16 : bouton "Hémicycle" sur la carte -> clic -> page dédiée,
   // le widget complet n'est plus jamais affiché directement sur la carte
@@ -2573,6 +2598,7 @@ export function initFicheDossierSystem(deps: {
     $("dossier-read-title").textContent = h.title || entry.title || "Hémicycle";
     $("dossier-read-meta").textContent = dossierEntryDate(entry.created_at);
     $("dossier-read-genealogy-link-banner").style.display = "none";
+    $("dossier-read-frise").style.display = "none";
     const body = $("dossier-read-body");
     body.innerHTML = "";
     body.appendChild(buildHemicycleWidget(h.parties || [], h.totalSeats, {}));

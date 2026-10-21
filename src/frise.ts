@@ -193,14 +193,12 @@ export function initTimelineSystem(deps: {
   let pointEls = new Map<string, HTMLElement>(); // étiquettes affichées (pour la recherche)
   let categories: Category[] = [];
   let hiddenCats = new Set<string>();
-  let showDates = false;
+  const showDates = false; // l'affichage des dates se fait au survol (voir showHover)
   try {
     hiddenCats = new Set<string>(JSON.parse(localStorage.getItem("tl-hidden-cats") || "[]"));
-    showDates = localStorage.getItem("tl-show-dates") === "1";
   } catch {
     /* stockage indisponible : valeurs par défaut */
   }
-  let history: string[] = []; // frises visitées avant la frise courante (retour sans repasser par le dossier)
   let zoom = 1;
   // Dialogue période / transition
   let editingPeriodId: string | null = null;
@@ -215,7 +213,6 @@ export function initTimelineSystem(deps: {
   root.innerHTML = `
     <div id="timeline-view">
       <div id="timeline-topbar">
-        <button id="timeline-prev" class="btn-small" style="display:none;" aria-label="Frise précédente" title="Revenir à la frise précédente">&larr;</button>
         <button id="timeline-back" class="btn-small">Retour au dossier</button>
         <nav id="timeline-breadcrumb" aria-label="Frises parentes"></nav>
         <div id="timeline-search-wrap">
@@ -228,12 +225,14 @@ export function initTimelineSystem(deps: {
           <button id="timeline-zoom-out" class="btn-small" aria-label="Dézoomer">&minus;</button>
           <button id="timeline-zoom-in" class="btn-small" aria-label="Zoomer">&#43;</button>
           <button id="timeline-zoom-reset" class="btn-small">Recentrer</button>
-          <button id="timeline-toggle-dates" class="btn-small" title="Afficher les dates sur les étiquettes">Dates</button>
           <button id="timeline-manage-cats" class="btn-small edit-control">Cat&eacute;gories</button>
-          <button id="timeline-export-pdf" class="btn-small" title="T&eacute;l&eacute;charger toute la frise en PDF">PDF</button>
+          <button id="timeline-export-img" class="btn-small" title="T&eacute;l&eacute;charger toute la frise en image">Image</button>
         </div>
       </div>
-      <div id="timeline-subtitle"></div>
+      <div id="timeline-subbar">
+        <button id="timeline-prev" class="btn-small" style="display:none;" aria-label="Frise mère" title="Revenir à la frise mère">&larr; <span id="timeline-prev-label"></span></button>
+        <div id="timeline-subtitle"></div>
+      </div>
       <div id="timeline-legend"></div>
       <div id="timeline-scroll">
         <div id="timeline-stage"></div>
@@ -642,6 +641,31 @@ export function initTimelineSystem(deps: {
   }
   const VIRTUAL_ID = "__virtual__";
 
+  // Échelle adaptative : chaque segment garde une échelle linéaire interne (donc des
+  // graduations exactes), mais s'élargit tant qu'il contient de nombreux points ou des
+  // dates très proches, pour que les étiquettes restent lisibles. Tous les points comptent,
+  // filtrés ou non, pour que la mise en page ne bouge pas quand on masque une catégorie.
+  function adaptiveWidths(segments: Segment[], totalPx: number): number[] {
+    const lin = computeLinearWidths(segments, totalPx);
+    const perSeg: number[][] = segments.map(() => []);
+    for (const p of points) {
+      const dec = dateToDecimal(p.date);
+      const i = locateSegment(dec, segments);
+      if (i >= 0) perSeg[i].push(dec);
+    }
+    return segments.map((seg, i) => {
+      const decs = perSeg[i].sort((a, b) => a - b);
+      if (!decs.length) return lin[i];
+      const span = Math.max(seg.endDec - seg.startDec, 1e-6);
+      let need = decs.length * 120;
+      for (let k = 1; k < decs.length; k++) {
+        const gap = Math.max(decs[k] - decs[k - 1], span * 0.002);
+        need = Math.max(need, Math.min(decs.length * 260, (70 / gap) * span));
+      }
+      return Math.max(lin[i], need * zoom);
+    });
+  }
+
   function render() {
     if (!frise) return;
     const admin = isAdmin();
@@ -667,6 +691,8 @@ export function initTimelineSystem(deps: {
     here.textContent = frise.title || "Frise chronologique";
     bc.appendChild(here);
 
+    updatePrevButton();
+    $("timeline-subbar").style.display = ancestors.length || context ? "flex" : "none";
     const sub = $("timeline-subtitle");
     if (context && context.from) {
       sub.innerHTML = "« <strong>" + esc(context.periodName) + "</strong> » · " + esc(context.from) + " → " + esc(context.to);
@@ -694,7 +720,7 @@ export function initTimelineSystem(deps: {
     const { segments, issues } = layoutPeriods(eff);
     const scroll = $("timeline-scroll");
     const baseWidth = Math.max(scroll.clientWidth - 200, 320);
-    const widths = computeLinearWidths(segments, baseWidth * zoom);
+    const widths = adaptiveWidths(segments, baseWidth * zoom);
     const total = widths.reduce((s, w) => s + w, 0);
 
     // Points : position x, niveaux (branches empilées) de chaque côté ; la légende filtre par catégorie.
@@ -828,24 +854,27 @@ export function initTimelineSystem(deps: {
     downZone.style.height = zoneH(down) + "px";
     wrap.appendChild(downZone);
 
-    // Règle graduée (échelle constante : mêmes pixels par année sur toute la frise).
-    const startDec = segments[0].startDec;
-    const endDec = segments[segments.length - 1].endDec;
-    const ppy = total / Math.max(endDec - startDec, 1e-6);
+    // Règle graduée : échelle constante À L'INTÉRIEUR de chaque période (pixels par année).
     const ruler = document.createElement("div");
     ruler.className = "tl-ruler";
-    for (const t of niceTicks(startDec, endDec, ppy)) {
-      const x = xForDecimal(t.dec, segments, widths);
-      if (x === null) continue;
-      const tick = document.createElement("span");
-      tick.className = "tl-tick" + (t.month === 1 ? " year" : "");
-      tick.style.left = x + "px";
-      const lab = document.createElement("span");
-      lab.className = "tl-tick-label";
-      lab.textContent = t.label;
-      tick.appendChild(lab);
-      ruler.appendChild(tick);
-    }
+    let segX = 0;
+    segments.forEach((seg, i) => {
+      const w = widths[i];
+      const ppy = w / Math.max(seg.endDec - seg.startDec, 1e-6);
+      for (const t of niceTicks(seg.startDec, seg.endDec, ppy)) {
+        if (i < segments.length - 1 && t.dec >= seg.endDec - 1e-9) continue;
+        const x = segX + ((t.dec - seg.startDec) / Math.max(seg.endDec - seg.startDec, 1e-6)) * w;
+        const tick = document.createElement("span");
+        tick.className = "tl-tick" + (t.month === 1 ? " year" : "");
+        tick.style.left = x + "px";
+        const lab = document.createElement("span");
+        lab.className = "tl-tick-label";
+        lab.textContent = t.label;
+        tick.appendChild(lab);
+        ruler.appendChild(tick);
+      }
+      segX += w;
+    });
     downZone.appendChild(ruler);
 
     // Tiges et branches : les plus longues d'abord pour que, à date égale,
@@ -1107,18 +1136,20 @@ export function initTimelineSystem(deps: {
   }
 
   // Navigation DANS les frises (clic sur une période, fil d'Ariane) : on garde la frise
-  // quittée pour pouvoir y revenir avec la flèche en haut à gauche.
+  // parente reste accessible par la flèche sous le titre.
   async function goTo(entryId: string) {
-    const from = frise ? frise.id : null;
-    if (from && from !== entryId) history.push(from);
     await openForEntry(entryId);
   }
+  // Flèche vers la frise mère : disponible dès qu'on arrive dans une sous-frise, quelle que
+  // soit la façon dont on y est arrivé (depuis le dossier, une période, un point...).
   function updatePrevButton() {
-    $("timeline-prev").style.display = history.length ? "" : "none";
+    const parent = ancestors[ancestors.length - 1];
+    const btn = $("timeline-prev");
+    btn.style.display = parent ? "" : "none";
+    $("timeline-prev-label").textContent = parent ? parent.title : "";
   }
 
   async function openFromDossier(entryId: string) {
-    history = [];
     frise = null;
     await openForEntry(entryId);
   }
@@ -1133,7 +1164,6 @@ export function initTimelineSystem(deps: {
       return;
     }
     if (fresh) zoom = 1;
-    updatePrevButton();
     render();
     if (fresh) centerView();
   }
@@ -1150,7 +1180,6 @@ export function initTimelineSystem(deps: {
     closePointDialog();
     closePointCard();
     document.body.classList.remove("tl-can-edit");
-    history = [];
   }
 
   // --- Déplacement (glisser) et zoom (molette), comme l'arbre généalogique ------------
@@ -2237,41 +2266,81 @@ export function initTimelineSystem(deps: {
     }
   }
 
-  // --- Export PDF de toute la frise (indépendant du zoom courant) -------------------------------
-  async function exportPdf() {
+  // --- Export en image de toute la frise (indépendant du zoom courant) --------------------------
+  async function exportImage() {
     if (!frise || !effectivePeriods().length) return deps.showBanner?.("Rien à exporter : la frise n'a pas de période.");
-    const btn = $("timeline-export-pdf") as HTMLButtonElement;
+    const btn = $("timeline-export-img") as HTMLButtonElement;
     btn.disabled = true;
     const savedZoom = zoom;
     const savedLeft = scrollEl.scrollLeft;
     const savedTop = scrollEl.scrollTop;
     try {
-      const [{ toPng }, { jsPDF }] = await Promise.all([import("html-to-image"), import("jspdf")]);
+      const { toPng } = await import("html-to-image");
       hideHover();
       closePointCard();
-      zoom = 2.5;
+      zoom = 1.5;
       render();
       await new Promise((r) => requestAnimationFrame(() => r(null)));
       const stage = $("timeline-stage");
       const w = Math.max(stage.scrollWidth, stage.offsetWidth);
       const h = Math.max(stage.scrollHeight, stage.offsetHeight);
-      const bg = getComputedStyle($("timeline-view")).backgroundColor || "#ffffff";
+      const css = getComputedStyle($("timeline-view"));
+      const bg = css.backgroundColor || "#ffffff";
+      const fg = css.color || "#222222";
       const dataUrl = await toPng(stage, { width: w, height: h, pixelRatio: 2, backgroundColor: bg, cacheBust: true });
-      const pageW = 297;
-      const pageH = 210;
-      const margin = 10;
-      const titleH = 12;
-      const pdf = new jsPDF({ orientation: "landscape", unit: "mm", format: "a4" });
-      pdf.setFontSize(14);
-      pdf.text(frise.title || "Frise chronologique", margin, margin + 4);
-      const availW = pageW - 2 * margin;
-      const availH = pageH - 2 * margin - titleH;
-      const scale = Math.min(availW / w, availH / h);
-      pdf.addImage(dataUrl, "PNG", margin, margin + titleH, w * scale, h * scale);
+      const img = new Image();
+      await new Promise((res, rej) => {
+        img.onload = () => res(null);
+        img.onerror = () => rej(new Error("image illisible"));
+        img.src = dataUrl;
+      });
+      // En-tête : titre, période, légende des catégories affichées.
+      const S = 2;
+      const headH = 150 * S;
+      const canvas = document.createElement("canvas");
+      canvas.width = img.width;
+      canvas.height = img.height + headH;
+      const ctx = canvas.getContext("2d");
+      if (!ctx) throw new Error("Contexte 2D indisponible");
+      ctx.fillStyle = bg;
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      ctx.drawImage(img, 0, headH);
+      ctx.fillStyle = fg;
+      ctx.font = "600 " + 34 * S + "px 'Fraunces', serif";
+      ctx.fillText(frise.title || "Frise chronologique", 30 * S, 52 * S);
+      if (context && context.from) {
+        ctx.font = 15 * S + "px 'IBM Plex Sans', sans-serif";
+        ctx.fillText(context.periodName + " · " + context.from + " → " + context.to, 30 * S, 80 * S);
+      }
+      ctx.font = 15 * S + "px 'IBM Plex Sans', sans-serif";
+      let lx = 30 * S;
+      const present = new Map<string, { name: string; color: string }>();
+      for (const p of points) {
+        const key = p.categoryId ?? NO_CATEGORY;
+        if (hiddenCats.has(key) || present.has(key)) continue;
+        present.set(key, { name: categoryName(p.categoryId), color: p.color });
+      }
+      for (const c of present.values()) {
+        ctx.fillStyle = c.color;
+        ctx.beginPath();
+        ctx.arc(lx + 6 * S, 118 * S, 6 * S, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.fillStyle = fg;
+        ctx.fillText(c.name, lx + 18 * S, 123 * S);
+        lx += 18 * S + ctx.measureText(c.name).width + 28 * S;
+      }
+      const blob: Blob | null = await new Promise((resolve) => canvas.toBlob(resolve, "image/png"));
+      if (!blob) throw new Error("toBlob a renvoyé null");
       const name = (frise.title || "frise").normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-zA-Z0-9]+/g, "-").toLowerCase();
-      pdf.save("frise-" + name + ".pdf");
+      const a = document.createElement("a");
+      a.href = URL.createObjectURL(blob);
+      a.download = "frise-" + name + ".png";
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      setTimeout(() => URL.revokeObjectURL(a.href), 4000);
     } catch (e) {
-      deps.showBanner?.("Échec de l'export PDF : " + (e instanceof Error ? e.message : "erreur inconnue."));
+      deps.showBanner?.("Échec de l'export : " + (e instanceof Error ? e.message : "erreur inconnue."));
     } finally {
       zoom = savedZoom;
       render();
@@ -2280,14 +2349,13 @@ export function initTimelineSystem(deps: {
       btn.disabled = false;
     }
   }
-  $("timeline-export-pdf").addEventListener("click", () => void exportPdf());
+  $("timeline-export-img").addEventListener("click", () => void exportImage());
 
   // --- Événements de l'interface ------------------------------------------------------------
   $("timeline-back").addEventListener("click", closeView);
   $("timeline-prev").addEventListener("click", () => {
-    const prev = history.pop();
-    if (prev) void openForEntry(prev);
-    updatePrevButton();
+    const parent = ancestors[ancestors.length - 1];
+    if (parent) void openForEntry(parent.id);
   });
   $("timeline-add-period").addEventListener("click", () => requireAdminOr(() => void openPeriodDialog(null, null)));
   $("timeline-add-point").addEventListener("click", () => requireAdminOr(() => openPointDialog(null)));
@@ -2356,19 +2424,6 @@ export function initTimelineSystem(deps: {
       }
     }
   });
-  const datesBtn = $("timeline-toggle-dates");
-  const syncDatesBtn = () => datesBtn.classList.toggle("tl-primary", showDates);
-  syncDatesBtn();
-  datesBtn.addEventListener("click", () => {
-    showDates = !showDates;
-    try {
-      localStorage.setItem("tl-show-dates", showDates ? "1" : "0");
-    } catch {
-      /* ignoré */
-    }
-    syncDatesBtn();
-    render();
-  });
   $("tl-point-cancel").addEventListener("click", closePointDialog);
   $("tl-point-save").addEventListener("click", () => void savePoint());
   $("tl-point-delete").addEventListener("click", () => void deletePoint());
@@ -2381,8 +2436,27 @@ export function initTimelineSystem(deps: {
     if ($("timeline-view").classList.contains("open") && frise) render();
   });
 
+  // Lien fiche -> frise : frise (et point) où apparaît une fiche, s'il y en a une.
+  async function friseOfFiche(entryId: string): Promise<{ friseId: string; eventId: string } | null> {
+    const { data: link } = await supabase.from("timeline_event_fiches").select("event_id").eq("entry_id", entryId).maybeSingle();
+    const eventId = (link as { event_id: string } | null)?.event_id;
+    if (!eventId) return null;
+    const { data: pls } = await supabase.from("timeline_placements").select("frise_entry_id").eq("event_id", eventId);
+    const friseId = ((pls as { frise_entry_id: string }[] | null) ?? [])[0]?.frise_entry_id;
+    return friseId ? { friseId, eventId } : null;
+  }
+  async function openForFiche(entryId: string) {
+    const target = await friseOfFiche(entryId);
+    if (!target) return;
+    await openFromDossier(target.friseId);
+    const pt = points.find((p) => p.eventId === target.eventId);
+    if (pt) setTimeout(() => focusPoint(pt), 80);
+  }
+
   return {
     openForEntry: openFromDossier,
+    openForFiche,
+    isFicheOnFrise: async (entryId: string) => (await friseOfFiche(entryId)) !== null,
     closeView,
   };
 }

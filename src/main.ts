@@ -2067,10 +2067,12 @@ const friseSystem = initTimelineSystem({
   revealEntry: (entryId, categoryId) => ficheDossier.revealEntry(entryId, categoryId),
   refreshDossier: () => ficheDossier.refreshCurrentDossier(),
   openFicheEverywhere: (f) =>
-    ficheDossier.openLinkTarget({ kind: "entry", ownerType: f.ownerType as DossierOwnerKind, ownerId: f.ownerId, categoryId: f.categoryId, entryId: f.id }),
+    ficheDossier.openLinkTarget({ kind: "entry", ownerType: f.ownerType as DossierOwnerKind, ownerId: f.ownerId, categoryId: f.categoryId, entryId: f.id, read: true } as Parameters<typeof ficheDossier.openLinkTarget>[0]),
   getOwnerLabel,
   getCountryChoices: () => getAllCountryRefs().map((c) => ({ id: c.isoA3, label: frenchCountryName(c.name) })).sort((a, b) => a.label.localeCompare(b.label, "fr")),
 });
+ficheDeps.friseLinkForFiche = (id) => friseSystem.isFicheOnFrise(id);
+ficheDeps.onShowFicheOnFrise = (id) => void friseSystem.openForFiche(id);
 ficheDeps.onOpenFriseEntry = (entry) => {
   void friseSystem.openForEntry(entry.id);
 };
