@@ -385,19 +385,19 @@ export async function exportWorldAsPng(opts: {
     const d3 = await import("d3");
     const W = 2800;
     const mapH = 1450;
-    const legendH = opts.legend ? 150 : 0;
+    const legendH = 0;
     const canvas = document.createElement("canvas");
     canvas.width = W;
     canvas.height = mapH + legendH;
     const ctx = canvas.getContext("2d");
     if (!ctx) throw new Error("Contexte 2D indisponible");
-    ctx.fillStyle = "#ffffff";
+    ctx.fillStyle = "#cfe0ee";
     ctx.fillRect(0, 0, W, canvas.height);
     const collection = { type: "FeatureCollection", features: opts.features } as GeoJSON.FeatureCollection;
     const projection = d3.geoNaturalEarth1().fitExtent(
       [
-        [40, 40],
-        [W - 40, mapH - 40],
+        [10, 10],
+        [W - 10, mapH - 10],
       ],
       { type: "Sphere" } as unknown as d3.GeoPermissibleObjects
     );
@@ -430,22 +430,30 @@ export async function exportWorldAsPng(opts: {
       ctx.stroke();
     }
     if (opts.legend) {
-      const lx = 80;
-      const ly = mapH + 30;
-      const lw = 700;
+      const lw = 640;
+      const pw = lw + 70;
+      const ph = 160;
+      const px = 40;
+      const py = mapH - ph - 40;
+      ctx.fillStyle = "rgba(255,255,255,0.88)";
+      ctx.beginPath();
+      ctx.roundRect(px, py, pw, ph, 18);
+      ctx.fill();
+      const lx = px + 35;
+      const ly = py + 20;
       ctx.fillStyle = "#222222";
       ctx.font = "600 34px 'IBM Plex Sans', sans-serif";
-      ctx.fillText(opts.legend.title, lx, ly + 30);
+      ctx.fillText(opts.legend.title, lx, ly + 34);
       const g = ctx.createLinearGradient(lx, 0, lx + lw, 0);
       opts.legend.gradient.forEach((c, i, a) => g.addColorStop(a.length > 1 ? i / (a.length - 1) : 0, c));
       ctx.fillStyle = g;
-      ctx.fillRect(lx, ly + 50, lw, 24);
+      ctx.fillRect(lx, ly + 54, lw, 24);
       ctx.fillStyle = "#222222";
       ctx.font = "28px 'IBM Plex Sans', sans-serif";
       ctx.textAlign = "left";
-      ctx.fillText(opts.legend.min, lx, ly + 112);
+      ctx.fillText(opts.legend.min, lx, ly + 116);
       ctx.textAlign = "right";
-      ctx.fillText(opts.legend.max, lx + lw, ly + 112);
+      ctx.fillText(opts.legend.max, lx + lw, ly + 116);
       ctx.textAlign = "left";
     }
     const blob: Blob | null = await new Promise((resolve) => canvas.toBlob(resolve, "image/png"));
