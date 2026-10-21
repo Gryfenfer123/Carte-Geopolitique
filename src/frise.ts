@@ -671,6 +671,7 @@ export function initTimelineSystem(deps: {
     const admin = isAdmin();
     document.body.classList.toggle("tl-can-edit", admin);
     closePointCard();
+    hideHover();
 
     const bc = $("timeline-breadcrumb");
     bc.innerHTML = "";
@@ -1176,6 +1177,7 @@ export function initTimelineSystem(deps: {
 
   function closeView() {
     $("timeline-view").classList.remove("open");
+    hideHover();
     closePeriodDialog();
     closePointDialog();
     closePointCard();
@@ -1579,6 +1581,7 @@ export function initTimelineSystem(deps: {
     if (drag && drag.moved) return;
     if (hoverTimer) window.clearTimeout(hoverTimer);
     hoverTimer = window.setTimeout(() => {
+      if (!anchor.isConnected || !anchor.matches(":hover")) return;
       const card = $("tl-hover-card");
       if ($("tl-point-card").style.display !== "none") return;
       card.innerHTML = "";
