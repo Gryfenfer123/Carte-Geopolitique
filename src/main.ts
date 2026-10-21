@@ -13,7 +13,7 @@ import { ensureEncyclopedieSeed } from "./encyclopedie";
 import { initSearchSystem, normalizeSearch, type StaticSearchEntry } from "./search";
 import { frenchCountryName, loadCountryNameData } from "./countryNames";
 import { initPoiSystem } from "./poi";
-import { initCompareSystem, exportMapAsPng } from "./compareExport";
+import { initCompareSystem, exportWorldAsPng } from "./compareExport";
 import { initGenealogySystem } from "./genealogy";
 import { initTimelineSystem } from "./frise";
 import { initHistoricalMapSystem } from "./historicalMap";
@@ -2129,10 +2129,33 @@ function showTransientBanner(text: string) {
 }
 
 document.getElementById("export-png-btn")!.addEventListener("click", () => {
-  showTransientBanner("Export de la carte en image…");
-  exportMapAsPng({
-    mapEl: document.getElementById("map")!,
-    svgEl: overlaySvg.node()!,
+  showTransientBanner("Export du planisphère complet…");
+  const fills = new Map<string, string>();
+  gIndicatorLayer.selectAll<SVGPathElement, SovFeature>("path").each(function (d) {
+    const f = this.getAttribute("fill");
+    if (f && !this.classList.contains("no-data")) fills.set(d.properties.iso_a3, f);
+  });
+  const indicatorActive = gIndicatorLayer.style("display") !== "none";
+  const legendEl = document.getElementById("indicator-legend");
+  let legend = null as null | { title: string; gradient: string[]; min: string; max: string };
+  if (indicatorActive && legendEl && legendEl.style.display !== "none") {
+    const grad = document.getElementById("indicator-legend-gradient")!.style.background;
+    const ticks = document.querySelectorAll("#indicator-legend-ticks span");
+    legend = {
+      title: document.getElementById("indicator-legend-title")!.textContent || "",
+      gradient: grad.match(/#[0-9a-f]{3,8}|rgba?\([^)]*\)/gi) || [],
+      min: ticks[0]?.textContent || "",
+      max: ticks[1]?.textContent || "",
+    };
+  }
+  const cs = getComputedStyle(document.getElementById("map")!);
+  void exportWorldAsPng({
+    features: sovFeatures as unknown as GeoJSON.Feature[],
+    isoOf: (f) => (f.properties as { iso_a3: string }).iso_a3,
+    indicatorFill: (iso) => fills.get(iso) ?? null,
+    indicatorActive,
+    land: { fill: LAND_FILL, opacity: currentLandFillOpacity(), border: LAND_BORDER, background: cs.backgroundColor, text: getComputedStyle(document.body).color },
+    legend,
     showBanner: showTransientBanner,
   });
 });

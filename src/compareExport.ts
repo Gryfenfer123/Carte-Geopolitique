@@ -365,3 +365,94 @@ export async function exportMapAsPng(opts: {
     downloadSvgFallback(opts.svgEl, opts.showBanner);
   }
 }
+
+// ---------------------------------------------------------------------------
+// Export du planisphère complet (indépendant du zoom et de la position) :
+// le monde est redessiné à part sur un canvas, à partir des géométries des
+// pays, avec les couleurs d'indicateur actuellement affichées.
+// ---------------------------------------------------------------------------
+export async function exportWorldAsPng(opts: {
+  features: GeoJSON.Feature[];
+  isoOf: (f: GeoJSON.Feature) => string;
+  // Couleur de remplissage d'indicateur d'un pays (null = pas de donnée / pas d'indicateur).
+  indicatorFill: (iso: string) => string | null;
+  indicatorActive: boolean;
+  land: { fill: string; opacity: number; border: string; background: string; text: string };
+  legend: { title: string; gradient: string[]; min: string; max: string } | null;
+  showBanner: (text: string) => void;
+}) {
+  try {
+    const d3 = await import("d3");
+    const W = 2800;
+    const mapH = 1450;
+    const legendH = opts.legend ? 150 : 0;
+    const canvas = document.createElement("canvas");
+    canvas.width = W;
+    canvas.height = mapH + legendH;
+    const ctx = canvas.getContext("2d");
+    if (!ctx) throw new Error("Contexte 2D indisponible");
+    ctx.fillStyle = "#ffffff";
+    ctx.fillRect(0, 0, W, canvas.height);
+    const collection = { type: "FeatureCollection", features: opts.features } as GeoJSON.FeatureCollection;
+    const projection = d3.geoNaturalEarth1().fitExtent(
+      [
+        [40, 40],
+        [W - 40, mapH - 40],
+      ],
+      { type: "Sphere" } as unknown as d3.GeoPermissibleObjects
+    );
+    const path = d3.geoPath(projection, ctx);
+    // Océan.
+    ctx.beginPath();
+    path({ type: "Sphere" } as d3.GeoPermissibleObjects);
+    ctx.fillStyle = "#cfe0ee";
+    ctx.fill();
+    void collection;
+    for (const f of opts.features) {
+      const iso = opts.isoOf(f);
+      const col = opts.indicatorActive ? opts.indicatorFill(iso) : null;
+      ctx.beginPath();
+      path(f as d3.GeoPermissibleObjects);
+      if (col) {
+        ctx.globalAlpha = 1;
+        ctx.fillStyle = col;
+      } else if (opts.indicatorActive) {
+        ctx.globalAlpha = 1;
+        ctx.fillStyle = "#d9d9d9";
+      } else {
+        ctx.globalAlpha = 1;
+        ctx.fillStyle = opts.land.fill;
+      }
+      ctx.fill();
+      ctx.globalAlpha = 1;
+      ctx.strokeStyle = "#4a4a4a";
+      ctx.lineWidth = 1;
+      ctx.stroke();
+    }
+    if (opts.legend) {
+      const lx = 80;
+      const ly = mapH + 30;
+      const lw = 700;
+      ctx.fillStyle = "#222222";
+      ctx.font = "600 34px 'IBM Plex Sans', sans-serif";
+      ctx.fillText(opts.legend.title, lx, ly + 30);
+      const g = ctx.createLinearGradient(lx, 0, lx + lw, 0);
+      opts.legend.gradient.forEach((c, i, a) => g.addColorStop(a.length > 1 ? i / (a.length - 1) : 0, c));
+      ctx.fillStyle = g;
+      ctx.fillRect(lx, ly + 50, lw, 24);
+      ctx.fillStyle = "#222222";
+      ctx.font = "28px 'IBM Plex Sans', sans-serif";
+      ctx.textAlign = "left";
+      ctx.fillText(opts.legend.min, lx, ly + 112);
+      ctx.textAlign = "right";
+      ctx.fillText(opts.legend.max, lx + lw, ly + 112);
+      ctx.textAlign = "left";
+    }
+    const blob: Blob | null = await new Promise((resolve) => canvas.toBlob(resolve, "image/png"));
+    if (!blob) throw new Error("toBlob a renvoyé null");
+    downloadBlob(blob, "planisphere-geopolitique.png");
+  } catch (err) {
+    console.error("Export du planisphère échoué :", err);
+    opts.showBanner("Export impossible : " + (err instanceof Error ? err.message : "erreur inconnue"));
+  }
+}
