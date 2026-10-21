@@ -2064,6 +2064,7 @@ const friseSystem = initTimelineSystem({
   openAuthPanel: () => openAuthPanel(),
   showBanner: (msg) => showTransientBanner(msg),
   revealSection: (sectionId, categoryId) => ficheDossier.revealSection(sectionId, categoryId),
+  revealEntry: (entryId, categoryId) => ficheDossier.revealEntry(entryId, categoryId),
   refreshDossier: () => ficheDossier.refreshCurrentDossier(),
 });
 ficheDeps.onOpenFriseEntry = (entry) => {

@@ -7,10 +7,12 @@
 // Rappels du modèle (validé avec Martin, 2026-10-21) :
 // - une période EST une sous-catégorie (dossier_sections) portant une date de
 //   début ; les périodes d'une frise ne se chevauchent pas ;
-// - la fin d'une période = le début de la suivante (borne partagée) ; une
-//   date de fin explicite ne sert qu'à un TROU DE TRANSITION grisé (avec un
-//   texte) ou à borner la dernière période (sinon : ouverte, jusqu'à
-//   aujourd'hui).
+// - chaque période a une date de début ET une date de fin ; la fin d'une
+//   période peut être égale au début de la suivante (borne partagée, cas
+//   normal). Si la fin est AVANT le début de la suivante, l'intervalle devient
+//   automatiquement une TRANSITION (hachurée, grisée) ; la fin ne peut pas
+//   dépasser le début de la suivante (chevauchement). Anciennes données sans
+//   fin : la fin est le début de la suivante (ou aujourd'hui pour la dernière).
 // ---------------------------------------------------------------------------
 
 export type FriseDate = {
@@ -24,9 +26,9 @@ export type Period = {
   id: string;
   name: string;
   start: FriseDate;
-  // Fin explicite (trou de transition ou fin de la dernière période).
+  // Fin de la période (null seulement pour d'anciennes données).
   end: FriseDate | null;
-  transitionLabel: string | null;
+  color: string | null; // couleur d'affichage (#rrggbb) ou null
 };
 
 export type Segment =
@@ -42,7 +44,6 @@ export type Segment =
       afterPeriodId: string;
       startDec: number;
       endDec: number;
-      label: string | null;
     };
 
 export type LayoutIssue = { periodId: string; message: string };
@@ -113,53 +114,73 @@ export function parseDateFields(input: {
 // --- Périodes : bornes partagées, trous, chevauchements ---------------------
 
 /**
- * Transforme les périodes d'une frise en segments consécutifs. Les périodes
- * sont triées par date de début. Fin de chaque période :
- *  - fin explicite STRICTEMENT avant le début de la suivante → la période
- *    s'arrête là et un trou de transition grisé occupe l'intervalle ;
- *  - sinon la fin est le début de la suivante (borne partagée) ; une fin
- *    explicite qui dépasserait la suivante est ignorée et signalée.
- * Dernière période : fin explicite, sinon ouverte jusqu'à `openEndYear`.
+ * Transforme les périodes d'une frise en segments consécutifs, triées par
+ * date de début (puis de fin). Pour chaque période :
+ *  - fin explicite ; sinon début de la suivante ; sinon (dernière) ouverte
+ *    jusqu'à `openEndYear` ;
+ *  - fin strictement avant le début de la suivante → un segment "gap"
+ *    (transition) occupe l'intervalle ;
+ *  - fin égale au début de la suivante → borne partagée (cas normal, accepté) ;
+ *  - fin après le début de la suivante → chevauchement, signalé ;
+ *  - fin avant son propre début → signalé.
  */
 export function layoutPeriods(
   periods: Period[],
   openEndYear: number = currentYear()
 ): { segments: Segment[]; issues: LayoutIssue[]; sorted: Period[] } {
-  const sorted = [...periods].sort((a, b) => dateSortKey(a.start) - dateSortKey(b.start));
+  const endKey = (p: Period) => (p.end ? dateSortKey(p.end) : dateSortKey(p.start));
+  const sorted = [...periods].sort((a, b) => dateSortKey(a.start) - dateSortKey(b.start) || endKey(a) - endKey(b));
   const segments: Segment[] = [];
   const issues: LayoutIssue[] = [];
   for (let i = 0; i < sorted.length; i++) {
     const p = sorted[i];
     const next = sorted[i + 1] ?? null;
+    const startKey = dateSortKey(p.start);
     const startDec = dateToDecimal(p.start);
-    if (next) {
-      const nextDec = dateToDecimal(next.start);
-      if (dateSortKey(next.start) === dateSortKey(p.start)) {
-        issues.push({ periodId: next.id, message: `« ${next.name} » commence à la même date que « ${p.name} ».` });
-      }
-      if (p.end) {
-        const endKey = dateSortKey(p.end);
-        if (endKey < dateSortKey(next.start) && endKey > dateSortKey(p.start)) {
-          const endDec = dateToDecimal(p.end);
-          segments.push({ kind: "period", period: p, startDec, endDec, openEnded: false });
-          segments.push({ kind: "gap", afterPeriodId: p.id, startDec: endDec, endDec: nextDec, label: p.transitionLabel });
-          continue;
-        }
-        if (endKey >= dateSortKey(next.start)) {
-          issues.push({
-            periodId: p.id,
-            message: `La fin de « ${p.name} » dépasse le début de « ${next.name} » : les périodes ne peuvent pas se chevaucher.`,
-          });
-        }
-      }
-      segments.push({ kind: "period", period: p, startDec, endDec: nextDec, openEnded: false });
-    } else {
-      const hasEnd = !!p.end && dateSortKey(p.end) > dateSortKey(p.start);
+    if (p.end && dateSortKey(p.end) < startKey) {
+      issues.push({ periodId: p.id, message: `La fin de « ${p.name} » est avant son début.` });
+    }
+    if (!next) {
+      const hasEnd = !!p.end && dateSortKey(p.end) >= startKey;
       const endDec = hasEnd ? dateToDecimal(p.end as FriseDate) : Math.max(openEndYear, startDec + 1);
       segments.push({ kind: "period", period: p, startDec, endDec, openEnded: !hasEnd });
+      continue;
+    }
+    const nextKey = dateSortKey(next.start);
+    const nextDec = dateToDecimal(next.start);
+    const zeroLength = !!p.end && dateSortKey(p.end) === startKey;
+    if (nextKey === startKey && !zeroLength) {
+      issues.push({ periodId: next.id, message: `« ${next.name} » commence à la même date que « ${p.name} ».` });
+    }
+    if (p.end && dateSortKey(p.end) >= startKey) {
+      const eKey = dateSortKey(p.end);
+      if (eKey > nextKey) {
+        issues.push({
+          periodId: p.id,
+          message: `La fin de « ${p.name} » dépasse le début de « ${next.name} » : les périodes ne peuvent pas se chevaucher.`,
+        });
+        segments.push({ kind: "period", period: p, startDec, endDec: Math.max(nextDec, startDec), openEnded: false });
+      } else if (eKey < nextKey) {
+        const endDec = dateToDecimal(p.end);
+        segments.push({ kind: "period", period: p, startDec, endDec, openEnded: false });
+        segments.push({ kind: "gap", afterPeriodId: p.id, startDec: endDec, endDec: nextDec });
+      } else {
+        segments.push({ kind: "period", period: p, startDec, endDec: nextDec, openEnded: false });
+      }
+    } else {
+      segments.push({ kind: "period", period: p, startDec, endDec: Math.max(nextDec, startDec), openEnded: false });
     }
   }
   return { segments, issues, sorted };
+}
+
+/** Indice du segment qui contient une date décimale (début inclus, fin exclue, sauf le dernier). */
+export function locateSegment(dec: number, segments: Segment[]): number {
+  for (let i = 0; i < segments.length; i++) {
+    const last = i === segments.length - 1;
+    if (dec >= segments[i].startDec && (dec < segments[i].endDec || (last && dec <= segments[i].endDec))) return i;
+  }
+  return -1;
 }
 
 /**

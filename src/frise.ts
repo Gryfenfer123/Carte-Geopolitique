@@ -25,9 +25,13 @@ import type { SupabaseClient, Session } from "@supabase/supabase-js";
 import { customConfirm } from "./dossier";
 import {
   computeWidths,
+  dateSortKey,
+  dateToDecimal,
   formatFriseDate,
   layoutPeriods,
+  locateSegment,
   parseDateFields,
+  xForDecimal,
   type FriseDate,
   type Period,
   type Segment,
@@ -59,15 +63,27 @@ type SectionRow = {
   period_end_month: number | null;
   period_end_day: number | null;
   period_end_circa: boolean | null;
-  transition_label: string | null;
+  period_color: string | null;
+  period_is_transition: boolean | null;
+  transition_after_id: string | null;
 };
 
 type Ancestor = { id: string; title: string };
-
 type FriseContext = { periodName: string; from: string; to: string };
+type Point = {
+  eventId: string;
+  title: string;
+  date: FriseDate;
+  side: "up" | "down";
+  color: string;
+  entryId: string | null;
+};
 
 const SECTION_COLUMNS =
-  "id, title, category_id, parent_section_id, position, period_frise_id, period_start_year, period_start_month, period_start_day, period_start_circa, period_end_year, period_end_month, period_end_day, period_end_circa, transition_label";
+  "id, title, category_id, parent_section_id, position, period_frise_id, period_start_year, period_start_month, period_start_day, period_start_circa, period_end_year, period_end_month, period_end_day, period_end_circa, period_color, period_is_transition, transition_after_id";
+
+const PALETTE = ["#c0392b", "#e67e22", "#d4ac0d", "#27ae60", "#16a085", "#2980b9", "#8e44ad", "#7f8c8d"];
+const DEFAULT_POINT_COLOR = "#2980b9";
 
 function esc(s: string): string {
   return s.replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c] as string);
@@ -84,7 +100,7 @@ function rowToPeriod(r: SectionRow): Period {
     r.period_end_year != null
       ? { year: r.period_end_year, month: r.period_end_month, day: r.period_end_day, circa: !!r.period_end_circa }
       : null;
-  return { id: r.id, name: r.title, start, end, transitionLabel: r.transition_label };
+  return { id: r.id, name: r.title, start, end, color: r.period_color };
 }
 
 function dateColumns(prefix: "period_start" | "period_end", d: FriseDate | null): Record<string, unknown> {
@@ -96,6 +112,20 @@ function dateColumns(prefix: "period_start" | "period_end", d: FriseDate | null)
   };
 }
 
+let measureCtx: CanvasRenderingContext2D | null = null;
+function textWidth(text: string): number {
+  try {
+    if (!measureCtx) {
+      measureCtx = document.createElement("canvas").getContext("2d");
+      if (measureCtx) measureCtx.font = '600 13px "IBM Plex Sans", sans-serif';
+    }
+    if (measureCtx) return measureCtx.measureText(text).width;
+  } catch {
+    /* repli ci-dessous */
+  }
+  return text.length * 7.2;
+}
+
 export function initTimelineSystem(deps: {
   supabase: SupabaseClient;
   getSession: () => Session | null;
@@ -104,6 +134,8 @@ export function initTimelineSystem(deps: {
   showBanner?: (msg: string) => void;
   // Ouvre la page de la sous-catégorie (dossier.ts::revealSection).
   revealSection: (sectionId: string, categoryId: string | null) => void;
+  // Ouvre une fiche dans le dossier (dossier.ts::revealEntry).
+  revealEntry: (entryId: string, categoryId: string | null) => void;
   // Recharge sous-catégories et entrées du dossier affiché (dossier.ts).
   refreshDossier: () => Promise<void>;
 }) {
@@ -128,12 +160,22 @@ export function initTimelineSystem(deps: {
   // --- État --------------------------------------------------------------------
   let frise: FriseEntry | null = null;
   let periodRows: SectionRow[] = [];
+  let transitionRows: SectionRow[] = [];
   let periods: Period[] = [];
+  let points: Point[] = [];
   let subFrises = new Map<string, { id: string; title: string | null }>();
   let ancestors: Ancestor[] = [];
   let context: FriseContext | null = null;
-  let editingPeriodId: string | null = null;
   let loadToken = 0;
+  let zoom = 1;
+  // Dialogue période / transition
+  let editingPeriodId: string | null = null;
+  let dialogGapAfter: string | null = null; // non nul = on édite la transition après cette période
+  let periodColor: string | null = null;
+  // Dialogue point
+  let editingPoint: Point | null = null;
+  let pointColor = DEFAULT_POINT_COLOR;
+  let pointSide: "up" | "down" = "up";
 
   // --- DOM (construit une fois) --------------------------------------------------
   const root = document.createElement("div");
@@ -143,7 +185,11 @@ export function initTimelineSystem(deps: {
         <button id="timeline-back" class="btn-small">&larr; Retour au dossier</button>
         <nav id="timeline-breadcrumb" aria-label="Frises parentes"></nav>
         <div id="timeline-toolbar">
+          <button id="timeline-add-point" class="btn-small edit-control">&#43; Point</button>
           <button id="timeline-add-period" class="btn-small edit-control">&#43; P&eacute;riode</button>
+          <button id="timeline-zoom-out" class="btn-small" aria-label="Dézoomer">&minus;</button>
+          <button id="timeline-zoom-in" class="btn-small" aria-label="Zoomer">&#43;</button>
+          <button id="timeline-zoom-reset" class="btn-small">Recentrer</button>
         </div>
       </div>
       <div id="timeline-subtitle"></div>
@@ -151,6 +197,7 @@ export function initTimelineSystem(deps: {
         <div id="timeline-stage"></div>
         <p id="timeline-empty-hint" class="muted" style="display:none;"></p>
       </div>
+      <div id="tl-point-card" role="dialog" style="display:none;"></div>
     </div>
 
     <div id="tl-period-overlay">
@@ -159,19 +206,19 @@ export function initTimelineSystem(deps: {
         <label class="tl-field" id="tl-period-source-row">Sous-cat&eacute;gorie
           <select id="tl-period-source"></select>
         </label>
-        <label class="tl-field">Nom de la p&eacute;riode
+        <label class="tl-field">Nom
           <input type="text" id="tl-period-name" maxlength="120" placeholder="ex. Antiquit&eacute;">
         </label>
-        <fieldset class="tl-date" id="tl-start-fields">
-          <legend>D&eacute;but</legend>
-          <input type="text" inputmode="numeric" id="tl-start-year" placeholder="Ann&eacute;e" aria-label="Ann&eacute;e de d&eacute;but">
-          <label class="tl-inline"><input type="checkbox" id="tl-start-bc"> av. J.-C.</label>
-          <input type="text" inputmode="numeric" id="tl-start-month" placeholder="Mois" aria-label="Mois de d&eacute;but">
-          <input type="text" inputmode="numeric" id="tl-start-day" placeholder="Jour" aria-label="Jour de d&eacute;but">
-          <label class="tl-inline"><input type="checkbox" id="tl-start-circa"> vers</label>
-        </fieldset>
-        <label class="tl-inline tl-end-toggle"><input type="checkbox" id="tl-end-enabled"> Cette p&eacute;riode a une fin propre (transition avant la suivante, ou fin de la derni&egrave;re)</label>
-        <div id="tl-end-block">
+        <p id="tl-period-gapinfo"></p>
+        <div id="tl-period-dates">
+          <fieldset class="tl-date" id="tl-start-fields">
+            <legend>D&eacute;but</legend>
+            <input type="text" inputmode="numeric" id="tl-start-year" placeholder="Ann&eacute;e" aria-label="Ann&eacute;e de d&eacute;but">
+            <label class="tl-inline"><input type="checkbox" id="tl-start-bc"> av. J.-C.</label>
+            <input type="text" inputmode="numeric" id="tl-start-month" placeholder="Mois" aria-label="Mois de d&eacute;but">
+            <input type="text" inputmode="numeric" id="tl-start-day" placeholder="Jour" aria-label="Jour de d&eacute;but">
+            <label class="tl-inline"><input type="checkbox" id="tl-start-circa"> vers</label>
+          </fieldset>
           <fieldset class="tl-date" id="tl-end-fields">
             <legend>Fin</legend>
             <input type="text" inputmode="numeric" id="tl-end-year" placeholder="Ann&eacute;e" aria-label="Ann&eacute;e de fin">
@@ -180,12 +227,12 @@ export function initTimelineSystem(deps: {
             <input type="text" inputmode="numeric" id="tl-end-day" placeholder="Jour" aria-label="Jour de fin">
             <label class="tl-inline"><input type="checkbox" id="tl-end-circa"> vers</label>
           </fieldset>
-          <label class="tl-field">Texte du trou de transition (facultatif)
-            <input type="text" id="tl-transition-label" maxlength="200" placeholder="ex. Invasions et effondrement de l'Empire">
-          </label>
         </div>
-        <p id="tl-period-error" role="alert"></p>
-        <div id="tl-period-actions">
+        <div class="tl-field">Couleur
+          <div class="tl-swatches" id="tl-period-colors"></div>
+        </div>
+        <p id="tl-period-error" class="tl-error" role="alert"></p>
+        <div class="tl-actions">
           <button type="button" class="btn-small" id="tl-period-remove">Retirer de la frise</button>
           <span class="tl-spacer"></span>
           <button type="button" class="btn-small" id="tl-period-cancel">Annuler</button>
@@ -193,8 +240,63 @@ export function initTimelineSystem(deps: {
         </div>
       </div>
     </div>
+
+    <div id="tl-point-overlay">
+      <div id="tl-point-box" role="dialog" aria-modal="true">
+        <h3 id="tl-point-heading">Nouveau point</h3>
+        <label class="tl-field">Titre
+          <input type="text" id="tl-point-title" maxlength="160" placeholder="ex. Trait&eacute; de Verdun">
+        </label>
+        <fieldset class="tl-date">
+          <legend>Date</legend>
+          <input type="text" inputmode="numeric" id="tl-point-year" placeholder="Ann&eacute;e" aria-label="Ann&eacute;e">
+          <label class="tl-inline"><input type="checkbox" id="tl-point-bc"> av. J.-C.</label>
+          <input type="text" inputmode="numeric" id="tl-point-month" placeholder="Mois" aria-label="Mois">
+          <input type="text" inputmode="numeric" id="tl-point-day" placeholder="Jour" aria-label="Jour">
+          <label class="tl-inline"><input type="checkbox" id="tl-point-circa"> vers</label>
+        </fieldset>
+        <div class="tl-field">Position
+          <div class="tl-sides">
+            <button type="button" class="btn-small" id="tl-side-up">&uarr; Au-dessus</button>
+            <button type="button" class="btn-small" id="tl-side-down">&darr; En dessous</button>
+          </div>
+        </div>
+        <div class="tl-field">Couleur
+          <div class="tl-swatches" id="tl-point-colors"></div>
+        </div>
+        <p id="tl-point-note" class="tl-note">Une fiche vide, au nom du point, est cr&eacute;&eacute;e dans la sous-cat&eacute;gorie de la p&eacute;riode correspondante.</p>
+        <p id="tl-point-error" class="tl-error" role="alert"></p>
+        <div class="tl-actions">
+          <button type="button" class="btn-small" id="tl-point-delete">Supprimer le point</button>
+          <span class="tl-spacer"></span>
+          <button type="button" class="btn-small" id="tl-point-cancel">Annuler</button>
+          <button type="button" class="btn-small tl-primary" id="tl-point-save">Enregistrer</button>
+        </div>
+      </div>
+    </div>
   `;
   while (root.firstChild) document.body.appendChild(root.firstChild);
+
+  // --- Pastilles de couleur --------------------------------------------------------
+  function buildSwatches(containerId: string, allowNone: boolean, get: () => string | null, set: (c: string | null) => void) {
+    const box = $(containerId);
+    box.innerHTML = "";
+    const choices: (string | null)[] = allowNone ? [null, ...PALETTE] : [...PALETTE];
+    for (const c of choices) {
+      const b = document.createElement("button");
+      b.type = "button";
+      b.className = "tl-swatch" + (c === null ? " none" : "");
+      if (c) b.style.background = c;
+      b.title = c ?? "Aucune couleur";
+      b.setAttribute("aria-label", c ?? "Aucune couleur");
+      b.classList.toggle("selected", get() === c);
+      b.addEventListener("click", () => {
+        set(c);
+        box.querySelectorAll(".tl-swatch").forEach((el, i) => el.classList.toggle("selected", choices[i] === c));
+      });
+      box.appendChild(b);
+    }
+  }
 
   // --- Chargement ----------------------------------------------------------------
   async function fetchEntry(id: string): Promise<FriseEntry | null> {
@@ -209,19 +311,53 @@ export function initTimelineSystem(deps: {
     const { data } = await supabase.from("dossier_sections").select(SECTION_COLUMNS).eq("id", id).maybeSingle();
     return (data as SectionRow | null) ?? null;
   }
-  async function fetchPeriodRows(friseId: string): Promise<SectionRow[]> {
+  async function fetchSectionRows(friseId: string): Promise<SectionRow[]> {
     const { data } = await supabase.from("dossier_sections").select(SECTION_COLUMNS).eq("period_frise_id", friseId);
     return ((data as SectionRow[] | null) ?? []).filter((r) => r.period_start_year != null);
+  }
+
+  async function loadPoints(friseId: string): Promise<Point[]> {
+    const { data: pl } = await supabase
+      .from("timeline_placements")
+      .select("event_id, side, color")
+      .eq("frise_entry_id", friseId);
+    const placements = (pl as { event_id: string; side: string | null; color: string | null }[] | null) ?? [];
+    if (!placements.length) return [];
+    const ids = placements.map((p) => p.event_id);
+    const { data: ev } = await supabase
+      .from("timeline_events")
+      .select("id, title, date_year, date_month, date_day, date_circa")
+      .in("id", ids);
+    const { data: fi } = await supabase.from("timeline_event_fiches").select("entry_id, event_id").in("event_id", ids);
+    const fiche = new Map<string, string>();
+    for (const f of (fi as { entry_id: string; event_id: string }[] | null) ?? []) {
+      if (!fiche.has(f.event_id)) fiche.set(f.event_id, f.entry_id);
+    }
+    const out: Point[] = [];
+    for (const e of (ev as { id: string; title: string; date_year: number; date_month: number | null; date_day: number | null; date_circa: boolean }[] | null) ?? []) {
+      const p = placements.find((x) => x.event_id === e.id);
+      out.push({
+        eventId: e.id,
+        title: e.title,
+        date: { year: e.date_year, month: e.date_month, day: e.date_day, circa: !!e.date_circa },
+        side: p?.side === "up" ? "up" : "down",
+        color: p?.color || DEFAULT_POINT_COLOR,
+        entryId: fiche.get(e.id) ?? null,
+      });
+    }
+    return out;
   }
 
   async function load(entryId: string): Promise<boolean> {
     const token = ++loadToken;
     const entry = await fetchEntry(entryId);
     if (!entry || token !== loadToken) return false;
-    const rows = await fetchPeriodRows(entry.id);
+    const rows = await fetchSectionRows(entry.id);
     if (token !== loadToken) return false;
+    const pRows = rows.filter((r) => !r.period_is_transition);
+    const tRows = rows.filter((r) => r.period_is_transition);
 
-    // Sous-frises : frises posées dans la sous-catégorie d'une période.
+    // Sous-frises : frises posées dans la sous-catégorie d'une période ou d'une transition.
     const subs = new Map<string, { id: string; title: string | null }>();
     if (rows.length) {
       const { data } = await supabase
@@ -234,9 +370,9 @@ export function initTimelineSystem(deps: {
         if (!subs.has(e.section_id)) subs.set(e.section_id, { id: e.id, title: e.title });
       }
     }
+    const pts = await loadPoints(entry.id);
 
-    // Ancêtres : si cette frise est posée dans une période d'une frise parente,
-    // on remonte (fil d'Ariane + bornes de la période, calculées depuis la parente).
+    // Ancêtres : si cette frise est posée dans une période / transition d'une frise parente.
     const chain: Ancestor[] = [];
     let ctx: FriseContext | null = null;
     let cur: FriseEntry = entry;
@@ -246,11 +382,12 @@ export function initTimelineSystem(deps: {
       const parent = await fetchEntry(sec.period_frise_id);
       if (!parent) break;
       if (depth === 0) {
-        const sibRows = await fetchPeriodRows(parent.id);
+        const sibRows = (await fetchSectionRows(parent.id)).filter((r) => !r.period_is_transition);
         const { segments } = layoutPeriods(sibRows.map(rowToPeriod));
-        const idx = segments.findIndex((s) => s.kind === "period" && s.period.id === sec.id);
-        if (idx >= 0) ctx = describeBounds(segments, idx);
-        else ctx = { periodName: sec.title, from: "", to: "" };
+        const idx = sec.period_is_transition
+          ? segments.findIndex((s) => s.kind === "gap" && s.afterPeriodId === sec.transition_after_id)
+          : segments.findIndex((s) => s.kind === "period" && s.period.id === sec.id);
+        ctx = idx >= 0 ? describeBounds(segments, idx, sec.title) : { periodName: sec.title, from: "", to: "" };
       }
       chain.unshift({ id: parent.id, title: parent.title || "Frise" });
       cur = parent;
@@ -258,33 +395,59 @@ export function initTimelineSystem(deps: {
     if (token !== loadToken) return false;
 
     frise = entry;
-    periodRows = rows;
-    periods = rows.map(rowToPeriod);
+    periodRows = pRows;
+    transitionRows = tRows;
+    periods = pRows.map(rowToPeriod);
     subFrises = subs;
+    points = pts;
     ancestors = chain;
     context = ctx;
     return true;
   }
 
-  function describeBounds(segments: Segment[], index: number): FriseContext {
-    const seg = segments[index] as Extract<Segment, { kind: "period" }>;
+  function describeBounds(segments: Segment[], index: number, name: string): FriseContext {
+    const seg = segments[index];
+    const prev = segments[index - 1];
+    const next = segments[index + 1];
+    if (seg.kind === "gap") {
+      const from = prev && prev.kind === "period" && prev.period.end ? formatFriseDate(prev.period.end) : "";
+      const to = next && next.kind === "period" ? formatFriseDate(next.period.start) : "";
+      return { periodName: name, from, to };
+    }
     const p = seg.period;
-    const after = segments[index + 1];
     let to: string;
-    if (after && after.kind === "gap" && p.end) to = formatFriseDate(p.end);
-    else if (after && after.kind === "period") to = formatFriseDate(after.period.start);
-    else if (p.end && !seg.openEnded) to = formatFriseDate(p.end);
+    if (p.end && !seg.openEnded) to = formatFriseDate(p.end);
+    else if (next && next.kind === "period") to = formatFriseDate(next.period.start);
     else to = "aujourd'hui";
-    return { periodName: p.name, from: formatFriseDate(p.start), to };
+    return { periodName: name, from: formatFriseDate(p.start), to };
   }
 
   // --- Rendu -----------------------------------------------------------------------
+  const STEM_BASE = 26;
+  const STEM_STEP = 30;
+  const LABEL_PAD = 14;
+
+  type Placed = { p: Point; x: number; level: number; w: number };
+  function placeSide(items: { p: Point; x: number }[]): Placed[] {
+    const sorted = [...items].sort((a, b) => a.x - b.x || dateSortKey(a.p.date) - dateSortKey(b.p.date));
+    const lastRight: number[] = [];
+    const out: Placed[] = [];
+    for (const it of sorted) {
+      const w = Math.min(textWidth(it.p.title) + LABEL_PAD, 260);
+      let level = 0;
+      while (level < lastRight.length && lastRight[level] > it.x - 2) level++;
+      lastRight[level] = it.x + 6 + w;
+      out.push({ p: it.p, x: it.x, level, w });
+    }
+    return out;
+  }
+
   function render() {
     if (!frise) return;
     const admin = isAdmin();
     document.body.classList.toggle("tl-can-edit", admin);
+    closePointCard();
 
-    // Fil d'Ariane des frises : parentes cliquables > frise courante.
     const bc = $("timeline-breadcrumb");
     bc.innerHTML = "";
     for (const a of ancestors) {
@@ -306,10 +469,10 @@ export function initTimelineSystem(deps: {
 
     const sub = $("timeline-subtitle");
     if (context && context.from) {
-      sub.innerHTML = "Période « <strong>" + esc(context.periodName) + "</strong> » · " + esc(context.from) + " → " + esc(context.to);
+      sub.innerHTML = "« <strong>" + esc(context.periodName) + "</strong> » · " + esc(context.from) + " → " + esc(context.to);
       sub.style.display = "";
     } else if (context) {
-      sub.innerHTML = "Période « <strong>" + esc(context.periodName) + "</strong> »";
+      sub.innerHTML = "« <strong>" + esc(context.periodName) + "</strong> »";
       sub.style.display = "";
     } else {
       sub.style.display = "none";
@@ -329,122 +492,261 @@ export function initTimelineSystem(deps: {
 
     const { segments, issues } = layoutPeriods(periods);
     const scroll = $("timeline-scroll");
-    const widths = computeWidths(segments, Math.max(scroll.clientWidth - 64, 320));
+    const baseWidth = Math.max(scroll.clientWidth - 200, 320);
+    const widths = computeWidths(segments, baseWidth * zoom);
     const total = widths.reduce((s, w) => s + w, 0);
+
+    // Points : position x, niveaux (branches empilées) de chaque côté.
+    const placedItems: { p: Point; x: number }[] = [];
+    let outside = 0;
+    for (const p of points) {
+      const x = xForDecimal(dateToDecimal(p.date), segments, widths);
+      if (x === null) outside++;
+      else placedItems.push({ p, x });
+    }
+    const up = placeSide(placedItems.filter((i) => i.p.side === "up"));
+    const down = placeSide(placedItems.filter((i) => i.p.side === "down"));
+    const zoneH = (pl: Placed[]) => 60 + (pl.length ? Math.max(...pl.map((i) => i.level)) * STEM_STEP + STEM_BASE : 0);
 
     const wrap = document.createElement("div");
     wrap.className = "tl-band-wrap";
     wrap.style.width = total + "px";
 
-    // Repères de dates (bornes partagées) au-dessus de la bande.
-    const marks = document.createElement("div");
-    marks.className = "tl-marks";
-    let x = 0;
-    segments.forEach((seg, i) => {
-      const date = seg.kind === "period" ? seg.period.start : periods.find((p) => p.id === seg.afterPeriodId)?.end;
-      if (date) addMark(marks, x, formatFriseDate(date), false);
-      x += widths[i];
-    });
-    const last = segments[segments.length - 1];
-    if (last.kind === "period") {
-      addMark(marks, total, last.period.end && !last.openEnded ? formatFriseDate(last.period.end) : "aujourd'hui", true);
-    }
-    wrap.appendChild(marks);
+    const upZone = document.createElement("div");
+    upZone.className = "tl-zone tl-zone-up";
+    upZone.style.height = zoneH(up) + "px";
+    wrap.appendChild(upZone);
 
-    // La bande : deux lignes (haut/bas) entre lesquelles s'écrivent les périodes.
     const band = document.createElement("div");
     band.className = "tl-band";
     segments.forEach((seg, i) => {
       const cell = document.createElement("div");
       cell.style.width = widths[i] + "px";
+      cell.tabIndex = 0;
+      cell.setAttribute("role", "button");
+      let sectionRow: SectionRow | undefined;
+      let name: string;
+      let startText: string;
+      let color: string | null;
+      let onEdit: () => void;
       if (seg.kind === "gap") {
-        cell.className = "tl-gap";
-        cell.title = seg.label || "Transition";
-        const t = document.createElement("span");
-        t.className = "tl-gap-label";
-        t.textContent = seg.label || "";
-        cell.appendChild(t);
+        sectionRow = transitionRows.find((r) => r.transition_after_id === seg.afterPeriodId);
+        const prevP = periods.find((p) => p.id === seg.afterPeriodId);
+        name = sectionRow ? sectionRow.title : "";
+        startText = prevP?.end ? formatFriseDate(prevP.end) : "";
+        color = sectionRow?.period_color ?? null;
+        cell.className = "tl-gap tl-cell";
+        onEdit = () => requireAdminOr(() => void openPeriodDialog(null, seg.afterPeriodId));
       } else {
-        cell.className = "tl-period";
         const p = seg.period;
-        const sub = subFrises.get(p.id);
-        cell.classList.toggle("has-sub", !!sub);
-        cell.tabIndex = 0;
-        cell.setAttribute("role", "button");
-        cell.title = sub ? "Ouvrir la sous-frise « " + (sub.title || p.name) + " »" : admin ? "Créer la sous-frise de cette période" : p.name;
-        cell.innerHTML =
-          '<span class="tl-period-name">' + esc(p.name) + "</span>" +
-          '<span class="tl-period-sub">' + (sub ? "sous-frise ›" : "") + "</span>";
-        const tools = document.createElement("span");
-        tools.className = "tl-period-tools";
+        sectionRow = periodRows.find((r) => r.id === p.id);
+        name = p.name;
+        startText = formatFriseDate(p.start);
+        color = p.color;
+        cell.className = "tl-period tl-cell";
+        onEdit = () => requireAdminOr(() => void openPeriodDialog(p.id, null));
+      }
+      const subFrise = sectionRow ? subFrises.get(sectionRow.id) : undefined;
+      cell.title = subFrise
+        ? "Ouvrir la sous-frise « " + (subFrise.title || name) + " »"
+        : admin
+          ? "Cliquer pour créer la sous-frise"
+          : name;
+      if (color) {
+        cell.style.setProperty("--tl-color", color);
+        cell.classList.add("colored");
+      }
+      const nameEl = document.createElement("span");
+      nameEl.className = "tl-cell-name";
+      nameEl.textContent = name;
+      cell.appendChild(nameEl);
+      if (startText) {
+        const d = document.createElement("span");
+        d.className = "tl-date-start";
+        d.textContent = startText;
+        cell.appendChild(d);
+      }
+      if (i === segments.length - 1 && seg.kind === "period") {
+        const d = document.createElement("span");
+        d.className = "tl-date-end";
+        d.textContent = seg.period.end && !seg.openEnded ? formatFriseDate(seg.period.end) : "aujourd'hui";
+        cell.appendChild(d);
+      }
+      const tools = document.createElement("span");
+      tools.className = "tl-cell-tools";
+      if (sectionRow) {
+        const row = sectionRow;
         const open = document.createElement("button");
         open.type = "button";
         open.className = "tl-tool";
         open.textContent = "Sous-catégorie";
-        open.title = "Ouvrir la sous-catégorie « " + p.name + " » dans le dossier";
+        open.title = "Ouvrir la sous-catégorie « " + row.title + " » dans le dossier";
         open.addEventListener("click", (ev) => {
           ev.stopPropagation();
-          const row = periodRows.find((r) => r.id === p.id);
           closeView();
-          deps.revealSection(p.id, row ? row.category_id : null);
+          deps.revealSection(row.id, row.category_id);
         });
         tools.appendChild(open);
-        if (admin) {
-          const edit = document.createElement("button");
-          edit.type = "button";
-          edit.className = "tl-tool edit-control";
-          edit.textContent = "Modifier";
-          edit.addEventListener("click", (ev) => {
-            ev.stopPropagation();
-            requireAdminOr(() => openPeriodDialog(p.id));
-          });
-          tools.appendChild(edit);
-        }
-        cell.appendChild(tools);
-        const go = () => void onPeriodActivate(p);
-        cell.addEventListener("click", go);
-        cell.addEventListener("keydown", (ev) => {
-          if (ev.key === "Enter" || ev.key === " ") {
-            ev.preventDefault();
-            go();
-          }
-        });
       }
+      if (admin) {
+        const edit = document.createElement("button");
+        edit.type = "button";
+        edit.className = "tl-tool edit-control";
+        edit.textContent = "Modifier";
+        edit.addEventListener("click", (ev) => {
+          ev.stopPropagation();
+          onEdit();
+        });
+        tools.appendChild(edit);
+      }
+      cell.appendChild(tools);
+      const go = () => void onCellActivate(seg);
+      cell.addEventListener("click", go);
+      cell.addEventListener("keydown", (ev) => {
+        if (ev.key === "Enter" || ev.key === " ") {
+          ev.preventDefault();
+          go();
+        }
+      });
       band.appendChild(cell);
     });
     wrap.appendChild(band);
 
-    if (issues.length) {
+    const downZone = document.createElement("div");
+    downZone.className = "tl-zone tl-zone-down";
+    downZone.style.height = zoneH(down) + "px";
+    wrap.appendChild(downZone);
+
+    // Tiges et branches : les plus longues d'abord pour que, à date égale,
+    // chaque segment de tige prenne la couleur de sa propre branche.
+    const drawSide = (zone: HTMLElement, list: Placed[], side: "up" | "down") => {
+      [...list].sort((a, b) => b.level - a.level).forEach((it) => {
+        const len = STEM_BASE + it.level * STEM_STEP;
+        const stem = document.createElement("span");
+        stem.className = "tl-stem";
+        stem.style.left = it.x - 1 + "px";
+        stem.style.height = len + "px";
+        stem.style.background = it.p.color;
+        stem.style[side === "up" ? "bottom" : "top"] = "0";
+        zone.appendChild(stem);
+      });
+      list.forEach((it) => {
+        const len = STEM_BASE + it.level * STEM_STEP;
+        const lab = document.createElement("button");
+        lab.type = "button";
+        lab.className = "tl-point";
+        lab.textContent = it.p.title;
+        lab.title = it.p.title + " — " + formatFriseDate(it.p.date);
+        lab.style.left = it.x + 3 + "px";
+        lab.style.maxWidth = "260px";
+        lab.style.borderColor = it.p.color;
+        lab.style[side === "up" ? "bottom" : "top"] = len - 12 + "px";
+        lab.addEventListener("click", (ev) => {
+          ev.stopPropagation();
+          openPointCard(it.p, lab);
+        });
+        zone.appendChild(lab);
+        const dot = document.createElement("span");
+        dot.className = "tl-dot";
+        dot.style.left = it.x - 4 + "px";
+        dot.style.background = it.p.color;
+        dot.style[side === "up" ? "bottom" : "top"] = len - 4 + "px";
+        zone.appendChild(dot);
+      });
+    };
+    drawSide(upZone, up, "up");
+    drawSide(downZone, down, "down");
+
+    const notes: string[] = issues.map((i) => i.message);
+    if (outside) notes.push(outside + " point(s) ont une date en dehors de la frise et ne sont pas affichés.");
+    if (notes.length) {
       const warn = document.createElement("p");
       warn.className = "tl-issues";
-      warn.textContent = issues.map((i) => i.message).join(" ");
+      warn.textContent = notes.join(" ");
       wrap.appendChild(warn);
     }
     stage.appendChild(wrap);
   }
 
-  function addMark(container: HTMLElement, x: number, text: string, atEnd: boolean) {
-    const m = document.createElement("span");
-    m.className = "tl-mark" + (atEnd ? " at-end" : "");
-    m.style.left = x + "px";
-    m.textContent = text;
-    container.appendChild(m);
+  // --- Navigation ------------------------------------------------------------------
+  async function ensureTransitionRow(afterPeriodId: string): Promise<SectionRow | null> {
+    const existing = transitionRows.find((r) => r.transition_after_id === afterPeriodId);
+    if (existing) return existing;
+    const session = deps.getSession();
+    if (!frise || !frise.category_id || !session) {
+      deps.showBanner?.("Cette frise doit être dans une catégorie du dossier pour accueillir une transition.");
+      return null;
+    }
+    const { segments } = layoutPeriods(periods);
+    const idx = segments.findIndex((s) => s.kind === "gap" && s.afterPeriodId === afterPeriodId);
+    const prev = periods.find((p) => p.id === afterPeriodId);
+    const nextSeg = segments[idx + 1];
+    if (idx < 0 || !prev || !nextSeg || nextSeg.kind !== "period") return null;
+    return createTransitionRow(afterPeriodId, "Transition", prev.end ?? prev.start, nextSeg.period.start, null);
   }
 
-  // --- Navigation -----------------------------------------------------------------
-  async function onPeriodActivate(p: Period) {
-    const sub = subFrises.get(p.id);
+  async function createTransitionRow(
+    afterPeriodId: string,
+    title: string,
+    from: FriseDate,
+    to: FriseDate,
+    color: string | null
+  ): Promise<SectionRow | null> {
+    const session = deps.getSession();
+    if (!frise || !frise.category_id || !session) return null;
+    const { data, error } = await supabase
+      .from("dossier_sections")
+      .insert({
+        owner_type: frise.owner_type,
+        owner_id: frise.owner_id,
+        category_id: frise.category_id,
+        parent_section_id: frise.section_id,
+        title,
+        position: 1000 + periods.length,
+        created_by: session.user.id,
+        period_frise_id: frise.id,
+        period_is_transition: true,
+        transition_after_id: afterPeriodId,
+        period_color: color,
+        ...dateColumns("period_start", from),
+        ...dateColumns("period_end", to),
+      })
+      .select(SECTION_COLUMNS)
+      .single();
+    if (error || !data) {
+      deps.showBanner?.("Échec de la création de la transition : " + (error?.message || "erreur inconnue."));
+      return null;
+    }
+    const row = data as SectionRow;
+    transitionRows.push(row);
+    return row;
+  }
+
+  async function onCellActivate(seg: Segment) {
+    let row: SectionRow | undefined;
+    let name: string;
+    if (seg.kind === "gap") {
+      row = transitionRows.find((r) => r.transition_after_id === seg.afterPeriodId);
+      name = row ? row.title : "cette transition";
+    } else {
+      row = periodRows.find((r) => r.id === seg.period.id);
+      name = seg.period.name;
+    }
+    const sub = row ? subFrises.get(row.id) : undefined;
     if (sub) {
       await openForEntry(sub.id);
       return;
     }
     if (!isAdmin()) {
-      deps.showBanner?.("Pas de sous-frise pour « " + p.name + " ».");
+      deps.showBanner?.("Pas de sous-frise pour « " + name + " ».");
       return;
     }
-    const ok = await customConfirm("« " + p.name + " » n'a pas encore de sous-frise.\nEn créer une dans cette période ?");
+    const ok = await customConfirm("« " + name + " » n'a pas encore de sous-frise.\nEn créer une ici ?");
     if (!ok) return;
-    const row = periodRows.find((r) => r.id === p.id);
+    if (!row && seg.kind === "gap") {
+      row = (await ensureTransitionRow(seg.afterPeriodId)) ?? undefined;
+      name = row ? row.title : name;
+    }
     const session = deps.getSession();
     if (!row || !frise || !session) return;
     const { data, error } = await supabase
@@ -453,7 +755,7 @@ export function initTimelineSystem(deps: {
         owner_type: frise.owner_type,
         owner_id: frise.owner_id,
         type: "frise",
-        title: p.name,
+        title: row.title,
         category_id: row.category_id,
         section_id: row.id,
         tags: [],
@@ -473,23 +775,110 @@ export function initTimelineSystem(deps: {
 
   async function openForEntry(entryId: string) {
     $("timeline-view").classList.add("open");
+    const fresh = !frise || frise.id !== entryId;
     const ok = await load(entryId);
     if (!ok) {
       deps.showBanner?.("Frise introuvable.");
       if (!frise) closeView();
       return;
     }
+    if (fresh) zoom = 1;
     render();
+    if (fresh) centerView();
+  }
+
+  function centerView() {
+    const sc = $("timeline-scroll");
+    sc.scrollLeft = 0;
+    sc.scrollTop = Math.max(0, (sc.scrollHeight - sc.clientHeight) / 2);
   }
 
   function closeView() {
     $("timeline-view").classList.remove("open");
     closePeriodDialog();
+    closePointDialog();
+    closePointCard();
     document.body.classList.remove("tl-can-edit");
-    void deps.refreshDossier();
   }
 
-  // --- Dialogue de période ---------------------------------------------------------
+  // --- Déplacement (glisser) et zoom (molette), comme l'arbre généalogique ------------
+  const scrollEl = $("timeline-scroll");
+  let drag: { x: number; y: number; sl: number; st: number; moved: boolean } | null = null;
+  let suppressClick = false;
+  scrollEl.addEventListener("pointerdown", (ev) => {
+    if (ev.button !== 0) return;
+    if ((ev.target as HTMLElement).closest("input, select, textarea")) return;
+    drag = { x: ev.clientX, y: ev.clientY, sl: scrollEl.scrollLeft, st: scrollEl.scrollTop, moved: false };
+  });
+  window.addEventListener("pointermove", (ev) => {
+    if (!drag) return;
+    const dx = ev.clientX - drag.x;
+    const dy = ev.clientY - drag.y;
+    if (!drag.moved && Math.hypot(dx, dy) > 5) {
+      drag.moved = true;
+      scrollEl.classList.add("dragging");
+      closePointCard();
+    }
+    if (drag.moved) {
+      scrollEl.scrollLeft = drag.sl - dx;
+      scrollEl.scrollTop = drag.st - dy;
+    }
+  });
+  const endDrag = () => {
+    if (drag && drag.moved) {
+      suppressClick = true;
+      setTimeout(() => (suppressClick = false), 0);
+    }
+    drag = null;
+    scrollEl.classList.remove("dragging");
+  };
+  window.addEventListener("pointerup", endDrag);
+  window.addEventListener("pointercancel", endDrag);
+  scrollEl.addEventListener(
+    "click",
+    (ev) => {
+      if (suppressClick) {
+        ev.stopPropagation();
+        ev.preventDefault();
+        suppressClick = false;
+      }
+    },
+    true
+  );
+
+  function setZoom(newZoom: number, anchorClientX?: number) {
+    if (!frise || !periods.length) return;
+    const z = Math.min(10, Math.max(0.4, newZoom));
+    if (z === zoom) return;
+    const wrapEl = document.querySelector<HTMLElement>(".tl-band-wrap");
+    const rect = scrollEl.getBoundingClientRect();
+    const cx = (anchorClientX ?? rect.left + rect.width / 2) - rect.left;
+    const oldTotal = wrapEl ? wrapEl.offsetWidth : 1;
+    const left = wrapEl ? wrapEl.offsetLeft : 0;
+    const frac = (scrollEl.scrollLeft + cx - left) / oldTotal;
+    zoom = z;
+    render();
+    const nw = document.querySelector<HTMLElement>(".tl-band-wrap");
+    if (nw) scrollEl.scrollLeft = frac * nw.offsetWidth + nw.offsetLeft - cx;
+  }
+  scrollEl.addEventListener(
+    "wheel",
+    (ev) => {
+      if (!$("timeline-view").classList.contains("open") || !periods.length) return;
+      ev.preventDefault();
+      setZoom(zoom * Math.exp(-ev.deltaY * 0.0015), ev.clientX);
+    },
+    { passive: false }
+  );
+  $("timeline-zoom-in").addEventListener("click", () => setZoom(zoom * 1.4));
+  $("timeline-zoom-out").addEventListener("click", () => setZoom(zoom / 1.4));
+  $("timeline-zoom-reset").addEventListener("click", () => {
+    zoom = 1;
+    render();
+    centerView();
+  });
+
+  // --- Dialogue période / transition ------------------------------------------------------
   function fieldValue(id: string): string {
     return ($(id) as HTMLInputElement).value;
   }
@@ -502,14 +891,14 @@ export function initTimelineSystem(deps: {
   function setChecked(id: string, v: boolean) {
     ($(id) as HTMLInputElement).checked = v;
   }
-  function fillDate(prefix: "tl-start" | "tl-end", d: FriseDate | null) {
+  function fillDate(prefix: string, d: FriseDate | null) {
     setField(prefix + "-year", d ? String(Math.abs(d.year)) : "");
     setChecked(prefix + "-bc", !!d && d.year < 0);
     setField(prefix + "-month", d?.month ? String(d.month) : "");
     setField(prefix + "-day", d?.day ? String(d.day) : "");
     setChecked(prefix + "-circa", !!d?.circa);
   }
-  function readDate(prefix: "tl-start" | "tl-end") {
+  function readDate(prefix: string) {
     return parseDateFields({
       year: fieldValue(prefix + "-year"),
       bc: checked(prefix + "-bc"),
@@ -518,34 +907,50 @@ export function initTimelineSystem(deps: {
       circa: checked(prefix + "-circa"),
     });
   }
-  function showError(msg: string) {
+  function showPeriodError(msg: string) {
     $("tl-period-error").textContent = msg;
   }
-  function syncEndBlock() {
-    $("tl-end-block").style.display = checked("tl-end-enabled") ? "" : "none";
-  }
 
-  async function openPeriodDialog(periodId: string | null) {
+  async function openPeriodDialog(periodId: string | null, gapAfterId: string | null) {
     if (!frise) return;
     editingPeriodId = periodId;
-    showError("");
+    dialogGapAfter = gapAfterId;
+    showPeriodError("");
     const sourceRow = $("tl-period-source-row");
     const sel = $("tl-period-source") as HTMLSelectElement;
-    if (periodId) {
+    const dates = $("tl-period-dates");
+    const gapInfo = $("tl-period-gapinfo");
+    if (gapAfterId) {
+      // Transition : seuls le nom et la couleur se modifient, les dates viennent des périodes voisines.
+      const row = transitionRows.find((r) => r.transition_after_id === gapAfterId);
+      const { segments } = layoutPeriods(periods);
+      const idx = segments.findIndex((s) => s.kind === "gap" && s.afterPeriodId === gapAfterId);
+      const b = idx >= 0 ? describeBounds(segments, idx, "") : { from: "", to: "" };
+      $("tl-period-heading").textContent = "Transition";
+      sourceRow.style.display = "none";
+      dates.style.display = "none";
+      gapInfo.style.display = "";
+      gapInfo.textContent = "De " + b.from + " à " + b.to + " (calculée d'après les périodes voisines)." ;
+      setField("tl-period-name", row ? row.title : "");
+      periodColor = row?.period_color ?? null;
+      $("tl-period-remove").style.display = row ? "" : "none";
+    } else if (periodId) {
       const p = periods.find((x) => x.id === periodId);
       if (!p) return;
       $("tl-period-heading").textContent = "Modifier la période";
       sourceRow.style.display = "none";
+      dates.style.display = "";
+      gapInfo.style.display = "none";
       setField("tl-period-name", p.name);
       fillDate("tl-start", p.start);
       fillDate("tl-end", p.end);
-      setChecked("tl-end-enabled", !!p.end);
-      setField("tl-transition-label", p.transitionLabel || "");
+      periodColor = p.color;
       $("tl-period-remove").style.display = "";
     } else {
       $("tl-period-heading").textContent = "Nouvelle période";
       sourceRow.style.display = "";
-      // Sous-catégories existantes du même niveau, pas encore des périodes.
+      dates.style.display = "";
+      gapInfo.style.display = "none";
       let q = supabase
         .from("dossier_sections")
         .select("id, title")
@@ -564,67 +969,92 @@ export function initTimelineSystem(deps: {
         sel.appendChild(o);
       }
       setField("tl-period-name", "");
-      fillDate("tl-start", null);
+      // Début proposé : la fin de la dernière période.
+      const { sorted } = layoutPeriods(periods);
+      const last = sorted[sorted.length - 1];
+      fillDate("tl-start", last ? (last.end ?? last.start) : null);
       fillDate("tl-end", null);
-      setChecked("tl-end-enabled", false);
-      setField("tl-transition-label", "");
+      periodColor = null;
       $("tl-period-remove").style.display = "none";
     }
-    syncEndBlock();
+    buildSwatches("tl-period-colors", true, () => periodColor, (c) => (periodColor = c));
     $("tl-period-overlay").classList.add("open");
     ($("tl-period-name") as HTMLInputElement).focus();
   }
   function closePeriodDialog() {
     $("tl-period-overlay").classList.remove("open");
     editingPeriodId = null;
+    dialogGapAfter = null;
   }
 
   async function savePeriod() {
     if (!frise) return;
     const name = fieldValue("tl-period-name").trim();
-    if (!name) return showError("Donne un nom à la période.");
-    const start = readDate("tl-start");
-    if (!start.ok) return showError("Début : " + start.error);
-    let end: FriseDate | null = null;
-    if (checked("tl-end-enabled")) {
-      const e = readDate("tl-end");
-      if (!e.ok) return showError("Fin : " + e.error);
-      end = e.date;
-    }
-    const label = fieldValue("tl-transition-label").trim() || null;
-
-    // Contrôle de cohérence sur la liste hypothétique : aucune nouvelle anomalie
-    // (chevauchement, même date de début) ne doit apparaître.
-    const before = new Set(layoutPeriods(periods).issues.map((i) => i.periodId + i.message));
-    const targetId = editingPeriodId ?? "__new__";
-    const candidate: Period = { id: targetId, name, start: start.date, end, transitionLabel: end ? label : null };
-    const hypothetical = periods.filter((p) => p.id !== editingPeriodId).concat(candidate);
-    const fresh = layoutPeriods(hypothetical).issues.filter((i) => !before.has(i.periodId + i.message));
-    if (fresh.length) return showError(fresh[0].message);
-
-    const cols = {
-      title: name,
-      period_frise_id: frise.id,
-      ...dateColumns("period_start", start.date),
-      ...dateColumns("period_end", end),
-      transition_label: end ? label : null,
-    };
-
     ($("tl-period-save") as HTMLButtonElement).disabled = true;
     try {
+      // Transition : nom + couleur seulement.
+      if (dialogGapAfter) {
+        const afterId = dialogGapAfter;
+        const row = transitionRows.find((r) => r.transition_after_id === afterId);
+        if (row) {
+          const { error } = await supabase
+            .from("dossier_sections")
+            .update({ title: name || "Transition", period_color: periodColor })
+            .eq("id", row.id);
+          if (error) return showPeriodError("Échec de l'enregistrement : " + error.message);
+        } else {
+          const { segments } = layoutPeriods(periods);
+          const idx = segments.findIndex((s) => s.kind === "gap" && s.afterPeriodId === afterId);
+          const prev = periods.find((p) => p.id === afterId);
+          const nxt = segments[idx + 1];
+          if (idx < 0 || !prev || !nxt || nxt.kind !== "period") return showPeriodError("Transition introuvable.");
+          const created = await createTransitionRow(afterId, name || "Transition", prev.end ?? prev.start, nxt.period.start, periodColor);
+          if (!created) return showPeriodError("Impossible de créer la transition (la frise doit être dans une catégorie).");
+        }
+        closePeriodDialog();
+        await deps.refreshDossier();
+        await reload();
+        return;
+      }
+
+      if (!name) return showPeriodError("Donne un nom à la période.");
+      const start = readDate("tl-start");
+      if (!start.ok) return showPeriodError("Début : " + start.error);
+      const end = readDate("tl-end");
+      if (!end.ok) return showPeriodError("Fin : " + end.error);
+      if (dateSortKey(end.date) < dateSortKey(start.date)) {
+        return showPeriodError("La fin ne peut pas être avant le début.");
+      }
+
+      // Aucune NOUVELLE anomalie (chevauchement...) ne doit apparaître.
+      const before = new Set(layoutPeriods(periods).issues.map((i) => i.periodId + i.message));
+      const targetId = editingPeriodId ?? "__new__";
+      const candidate: Period = { id: targetId, name, start: start.date, end: end.date, color: periodColor };
+      const hypothetical = periods.filter((p) => p.id !== editingPeriodId).concat(candidate);
+      const fresh = layoutPeriods(hypothetical).issues.filter((i) => !before.has(i.periodId + i.message));
+      if (fresh.length) return showPeriodError(fresh[0].message);
+
+      const cols = {
+        title: name,
+        period_frise_id: frise.id,
+        period_is_transition: false,
+        period_color: periodColor,
+        ...dateColumns("period_start", start.date),
+        ...dateColumns("period_end", end.date),
+      };
       if (editingPeriodId) {
         const { error } = await supabase.from("dossier_sections").update(cols).eq("id", editingPeriodId);
-        if (error) return showError("Échec de l'enregistrement : " + error.message);
+        if (error) return showPeriodError("Échec de l'enregistrement : " + error.message);
       } else {
         const chosen = ($("tl-period-source") as HTMLSelectElement).value;
         if (chosen) {
           const { error } = await supabase.from("dossier_sections").update(cols).eq("id", chosen);
-          if (error) return showError("Échec de l'enregistrement : " + error.message);
+          if (error) return showPeriodError("Échec de l'enregistrement : " + error.message);
         } else {
           const session = deps.getSession();
-          if (!session) return showError("Connexion requise.");
+          if (!session) return showPeriodError("Connexion requise.");
           if (!frise.category_id) {
-            return showError("Cette frise n'est dans aucune catégorie : place-la d'abord dans une catégorie du dossier.");
+            return showPeriodError("Cette frise n'est dans aucune catégorie : place-la d'abord dans une catégorie du dossier.");
           }
           const { data: sibs } = await supabase
             .from("dossier_sections")
@@ -642,35 +1072,48 @@ export function initTimelineSystem(deps: {
             created_by: session.user.id,
             ...cols,
           });
-          if (error) return showError("Échec de l'enregistrement : " + error.message);
+          if (error) return showPeriodError("Échec de l'enregistrement : " + error.message);
         }
       }
+      closePeriodDialog();
+      await deps.refreshDossier();
+      await reload();
     } finally {
       ($("tl-period-save") as HTMLButtonElement).disabled = false;
     }
-    closePeriodDialog();
-    await deps.refreshDossier();
-    await reload();
   }
 
   async function removePeriod() {
-    if (!editingPeriodId) return;
-    const p = periods.find((x) => x.id === editingPeriodId);
-    if (!p) return;
+    let rowId: string | null = null;
+    let label = "";
+    if (dialogGapAfter) {
+      const row = transitionRows.find((r) => r.transition_after_id === dialogGapAfter);
+      if (!row) return;
+      rowId = row.id;
+      label = row.title;
+    } else if (editingPeriodId) {
+      const p = periods.find((x) => x.id === editingPeriodId);
+      if (!p) return;
+      rowId = p.id;
+      label = p.name;
+    }
+    if (!rowId) return;
     const ok = await customConfirm(
-      "Retirer « " + p.name + " » de la frise ?\nLa sous-catégorie et tout son contenu sont conservés dans le dossier ; elle cesse seulement d'être une période."
+      "Retirer « " + label + " » de la frise ?\nLa sous-catégorie et tout son contenu sont conservés dans le dossier ; elle cesse seulement d'apparaître dans la frise."
     );
     if (!ok) return;
     const { error } = await supabase
       .from("dossier_sections")
       .update({
         period_frise_id: null,
+        period_is_transition: false,
+        transition_after_id: null,
+        period_color: null,
         ...dateColumns("period_start", null),
         ...dateColumns("period_end", null),
-        transition_label: null,
       })
-      .eq("id", editingPeriodId);
-    if (error) return showError("Échec : " + error.message);
+      .eq("id", rowId);
+    if (error) return showPeriodError("Échec : " + error.message);
     closePeriodDialog();
     await deps.refreshDossier();
     await reload();
@@ -681,13 +1124,228 @@ export function initTimelineSystem(deps: {
     if (await load(frise.id)) render();
   }
 
-  // --- Événements de l'interface ------------------------------------------------------
+  // --- Points -------------------------------------------------------------------------------
+  function showPointError(msg: string) {
+    $("tl-point-error").textContent = msg;
+  }
+  function setSide(side: "up" | "down") {
+    pointSide = side;
+    $("tl-side-up").classList.toggle("tl-primary", side === "up");
+    $("tl-side-down").classList.toggle("tl-primary", side === "down");
+  }
+
+  function openPointDialog(point: Point | null) {
+    if (!frise) return;
+    if (!periods.length) {
+      deps.showBanner?.("Crée d'abord au moins une période : les points se posent sur la bande.");
+      return;
+    }
+    editingPoint = point;
+    showPointError("");
+    $("tl-point-heading").textContent = point ? "Modifier le point" : "Nouveau point";
+    setField("tl-point-title", point ? point.title : "");
+    const pre = point ? point.date : null;
+    setField("tl-point-year", pre ? String(Math.abs(pre.year)) : "");
+    setChecked("tl-point-bc", !!pre && pre.year < 0);
+    setField("tl-point-month", pre?.month ? String(pre.month) : "");
+    setField("tl-point-day", pre?.day ? String(pre.day) : "");
+    setChecked("tl-point-circa", !!pre?.circa);
+    setSide(point ? point.side : "up");
+    pointColor = point ? point.color : DEFAULT_POINT_COLOR;
+    buildSwatches("tl-point-colors", false, () => pointColor, (c) => (pointColor = c || DEFAULT_POINT_COLOR));
+    $("tl-point-delete").style.display = point ? "" : "none";
+    $("tl-point-note").style.display = point ? "none" : "";
+    $("tl-point-overlay").classList.add("open");
+    ($("tl-point-title") as HTMLInputElement).focus();
+  }
+  function closePointDialog() {
+    $("tl-point-overlay").classList.remove("open");
+    editingPoint = null;
+  }
+
+  async function savePoint() {
+    if (!frise) return;
+    const title = fieldValue("tl-point-title").trim();
+    if (!title) return showPointError("Donne un titre au point.");
+    const d = parseDateFields({
+      year: fieldValue("tl-point-year"),
+      bc: checked("tl-point-bc"),
+      month: fieldValue("tl-point-month"),
+      day: fieldValue("tl-point-day"),
+      circa: checked("tl-point-circa"),
+    });
+    if (!d.ok) return showPointError(d.error);
+    const { segments } = layoutPeriods(periods);
+    const dec = dateToDecimal(d.date);
+    const segIdx = locateSegment(dec, segments);
+    if (segIdx < 0) {
+      const first = layoutPeriods(periods).sorted[0];
+      const last = segments[segments.length - 1];
+      const lastEnd = last.kind === "period" && last.period.end && !last.openEnded ? formatFriseDate(last.period.end) : "aujourd'hui";
+      return showPointError("Cette date est en dehors de la frise (de " + formatFriseDate(first.start) + " à " + lastEnd + ").");
+    }
+    const session = deps.getSession();
+    if (!session) return showPointError("Connexion requise.");
+    const ev = {
+      title,
+      date_year: d.date.year,
+      date_month: d.date.month,
+      date_day: d.date.day,
+      date_circa: d.date.circa,
+    };
+    ($("tl-point-save") as HTMLButtonElement).disabled = true;
+    try {
+      if (editingPoint) {
+        const pt = editingPoint;
+        const r1 = await supabase.from("timeline_events").update({ ...ev, updated_at: new Date().toISOString() }).eq("id", pt.eventId);
+        if (r1.error) return showPointError("Échec : " + r1.error.message);
+        const r2 = await supabase
+          .from("timeline_placements")
+          .update({ side: pointSide, color: pointColor })
+          .eq("frise_entry_id", frise.id)
+          .eq("event_id", pt.eventId);
+        if (r2.error) return showPointError("Échec : " + r2.error.message);
+      } else {
+        // Fiche à créer : dans la sous-catégorie de la période (ou transition) où tombe la date.
+        const seg = segments[segIdx];
+        let secId: string | null = frise.section_id;
+        let catId: string | null = frise.category_id;
+        if (seg.kind === "period") {
+          const row = periodRows.find((r) => r.id === seg.period.id);
+          if (row) {
+            secId = row.id;
+            catId = row.category_id;
+          }
+        } else {
+          const row = transitionRows.find((r) => r.transition_after_id === seg.afterPeriodId);
+          if (row) {
+            secId = row.id;
+            catId = row.category_id;
+          }
+        }
+        const fiche = await supabase
+          .from("dossier_entries")
+          .insert({
+            owner_type: frise.owner_type,
+            owner_id: frise.owner_id,
+            type: "text",
+            title,
+            category_id: catId,
+            section_id: secId,
+            tags: [],
+            sources: [],
+            status: "published",
+            created_by: session.user.id,
+          })
+          .select("id")
+          .single();
+        if (fiche.error || !fiche.data) return showPointError("Échec de la création de la fiche : " + (fiche.error?.message || "erreur inconnue."));
+        const entryId = fiche.data.id as string;
+        const evRes = await supabase
+          .from("timeline_events")
+          .insert({ ...ev, created_by: session.user.id })
+          .select("id")
+          .single();
+        if (evRes.error || !evRes.data) {
+          await supabase.from("dossier_entries").delete().eq("id", entryId);
+          return showPointError("Échec de la création du point : " + (evRes.error?.message || "erreur inconnue."));
+        }
+        const eventId = evRes.data.id as string;
+        const link = await supabase.from("timeline_event_fiches").insert({ entry_id: entryId, event_id: eventId, created_by: session.user.id });
+        const place = link.error
+          ? link
+          : await supabase
+              .from("timeline_placements")
+              .insert({ frise_entry_id: frise.id, event_id: eventId, side: pointSide, color: pointColor, created_by: session.user.id });
+        if (place.error) {
+          await supabase.from("timeline_events").delete().eq("id", eventId);
+          await supabase.from("dossier_entries").delete().eq("id", entryId);
+          return showPointError("Échec : " + place.error.message);
+        }
+      }
+    } finally {
+      ($("tl-point-save") as HTMLButtonElement).disabled = false;
+    }
+    closePointDialog();
+    await deps.refreshDossier();
+    await reload();
+  }
+
+  async function deletePoint() {
+    const pt = editingPoint;
+    if (!pt || !frise) return;
+    const ok = await customConfirm("Supprimer le point « " + pt.title + " » de la frise ?\nSa fiche reste dans le dossier.");
+    if (!ok) return;
+    const r = await supabase.from("timeline_placements").delete().eq("frise_entry_id", frise.id).eq("event_id", pt.eventId);
+    if (r.error) return showPointError("Échec : " + r.error.message);
+    const { data: rest } = await supabase.from("timeline_placements").select("event_id").eq("event_id", pt.eventId);
+    if (!((rest as unknown[] | null) ?? []).length) await supabase.from("timeline_events").delete().eq("id", pt.eventId);
+    closePointDialog();
+    await reload();
+  }
+
+  // Petite carte au clic sur un point : titre, date, ouvrir la fiche, modifier.
+  function openPointCard(p: Point, anchor: HTMLElement) {
+    const card = $("tl-point-card");
+    card.innerHTML = "";
+    const h = document.createElement("strong");
+    h.textContent = p.title;
+    const d = document.createElement("div");
+    d.className = "tl-card-date";
+    d.textContent = formatFriseDate(p.date);
+    card.append(h, d);
+    const row = document.createElement("div");
+    row.className = "tl-card-actions";
+    if (p.entryId) {
+      const entryId = p.entryId;
+      const open = document.createElement("button");
+      open.type = "button";
+      open.className = "btn-small tl-primary";
+      open.textContent = "Ouvrir la fiche";
+      open.addEventListener("click", async () => {
+        const e = await fetchEntry(entryId);
+        closeView();
+        deps.revealEntry(entryId, e ? e.category_id : null);
+      });
+      row.appendChild(open);
+    }
+    if (isAdmin()) {
+      const edit = document.createElement("button");
+      edit.type = "button";
+      edit.className = "btn-small";
+      edit.textContent = "Modifier";
+      edit.addEventListener("click", () => {
+        closePointCard();
+        openPointDialog(p);
+      });
+      row.appendChild(edit);
+    }
+    card.appendChild(row);
+    card.style.display = "block";
+    const r = anchor.getBoundingClientRect();
+    const cw = card.offsetWidth;
+    card.style.left = Math.max(8, Math.min(window.innerWidth - cw - 8, r.left)) + "px";
+    const below = r.bottom + 8;
+    card.style.top = (below + card.offsetHeight > window.innerHeight ? Math.max(8, r.top - card.offsetHeight - 8) : below) + "px";
+  }
+  function closePointCard() {
+    const card = document.getElementById("tl-point-card");
+    if (card) card.style.display = "none";
+  }
+  document.addEventListener("pointerdown", (ev) => {
+    const card = document.getElementById("tl-point-card");
+    if (card && card.style.display !== "none" && !card.contains(ev.target as Node) && !(ev.target as HTMLElement).closest(".tl-point")) {
+      closePointCard();
+    }
+  });
+
+  // --- Événements de l'interface ------------------------------------------------------------
   $("timeline-back").addEventListener("click", closeView);
-  $("timeline-add-period").addEventListener("click", () => requireAdminOr(() => void openPeriodDialog(null)));
+  $("timeline-add-period").addEventListener("click", () => requireAdminOr(() => void openPeriodDialog(null, null)));
+  $("timeline-add-point").addEventListener("click", () => requireAdminOr(() => openPointDialog(null)));
   $("tl-period-cancel").addEventListener("click", closePeriodDialog);
   $("tl-period-save").addEventListener("click", () => void savePeriod());
   $("tl-period-remove").addEventListener("click", () => void removePeriod());
-  $("tl-end-enabled").addEventListener("change", syncEndBlock);
   $("tl-period-source").addEventListener("change", () => {
     const sel = $("tl-period-source") as HTMLSelectElement;
     const opt = sel.selectedOptions[0];
@@ -695,6 +1353,14 @@ export function initTimelineSystem(deps: {
   });
   $("tl-period-overlay").addEventListener("click", (ev) => {
     if (ev.target === $("tl-period-overlay")) closePeriodDialog();
+  });
+  $("tl-point-cancel").addEventListener("click", closePointDialog);
+  $("tl-point-save").addEventListener("click", () => void savePoint());
+  $("tl-point-delete").addEventListener("click", () => void deletePoint());
+  $("tl-side-up").addEventListener("click", () => setSide("up"));
+  $("tl-side-down").addEventListener("click", () => setSide("down"));
+  $("tl-point-overlay").addEventListener("click", (ev) => {
+    if (ev.target === $("tl-point-overlay")) closePointDialog();
   });
   window.addEventListener("resize", () => {
     if ($("timeline-view").classList.contains("open") && frise) render();

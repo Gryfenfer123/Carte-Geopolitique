@@ -2409,60 +2409,79 @@ path.link-autre { stroke: var(--link-autre, #c9bfa9); }
 .tl-crumb:hover { text-decoration: underline; }
 .tl-crumb-sep { color: var(--text-dim); }
 #timeline-subtitle { padding: 8px 18px 0; font-size: 13px; color: var(--text-dim); }
-#timeline-scroll { flex: 1; overflow: auto; padding: 0 32px; display: flex; flex-direction: column; justify-content: center; }
-#timeline-stage { padding: 150px 0 150px; }
-#timeline-empty-hint { text-align: center; max-width: 520px; margin: 0 auto; }
-.tl-band-wrap { position: relative; }
-.tl-marks { position: relative; height: 26px; }
-.tl-mark {
-  position: absolute; bottom: 4px; transform: translateX(-4px); white-space: nowrap;
-  font-size: 12px; color: var(--text-dim); padding-left: 4px; border-left: 1px solid var(--text-dim);
+#timeline-scroll {
+  flex: 1; overflow: hidden; display: flex; flex-direction: column; cursor: grab;
+  touch-action: none; user-select: none; -webkit-user-select: none;
 }
-.tl-mark.at-end { transform: translateX(calc(-100% + 4px)); padding: 0 4px 0 0; border-left: none; border-right: 1px solid var(--text-dim); font-style: italic; }
+#timeline-scroll.dragging { cursor: grabbing; }
+#timeline-stage { flex: none; width: max-content; min-width: 100%; margin: auto 0; padding: 120px 100px 120px 100px; box-sizing: border-box; }
+#timeline-empty-hint { text-align: center; max-width: 520px; margin: auto; }
+.tl-band-wrap { position: relative; }
+.tl-zone { position: relative; }
+.tl-stem { position: absolute; width: 2px; border-radius: 1px; }
+.tl-dot { position: absolute; width: 10px; height: 10px; border-radius: 50%; border: 2px solid var(--surface); box-sizing: border-box; }
+.tl-point {
+  position: absolute; z-index: 2; padding: 2px 8px; font: 600 13px "IBM Plex Sans", sans-serif;
+  background: var(--surface); color: var(--text); border: 1.5px solid; border-radius: 6px;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis; cursor: pointer;
+}
+.tl-point:hover { background: var(--surface-border); }
 .tl-band {
-  display: flex; height: 76px;
+  display: flex; height: 84px;
   border-top: 2px solid var(--ink, var(--text)); border-bottom: 2px solid var(--ink, var(--text));
 }
-.tl-period {
-  position: relative; box-sizing: border-box; flex: none; padding: 8px 12px;
-  display: flex; flex-direction: column; justify-content: center; gap: 2px;
-  border-left: 1px solid var(--surface-border); cursor: pointer; overflow: hidden;
+.tl-cell {
+  position: relative; box-sizing: border-box; flex: none; padding: 6px 10px;
+  display: flex; align-items: center; justify-content: center; text-align: center;
+  cursor: pointer; overflow: hidden;
 }
+.tl-period { border-left: 1px solid var(--surface-border); }
 .tl-period:first-child { border-left: none; }
-.tl-period:hover, .tl-period:focus-visible { background: color-mix(in srgb, var(--accent) 10%, transparent); outline: none; }
-.tl-period-name { font-family: "Fraunces", serif; font-size: 17px; font-weight: 600; line-height: 1.15; }
-.tl-period-sub { font-size: 11px; color: var(--accent); min-height: 13px; }
-.tl-period-tools { position: absolute; right: 6px; bottom: 4px; display: none; gap: 4px; }
-.tl-period:hover .tl-period-tools, .tl-period:focus-within .tl-period-tools { display: flex; }
+.tl-period.colored { background: color-mix(in srgb, var(--tl-color) 30%, transparent); }
+.tl-cell:hover, .tl-cell:focus-visible { outline: none; box-shadow: inset 0 0 0 100px color-mix(in srgb, var(--accent) 10%, transparent); }
+.tl-cell-name { font-family: "Fraunces", serif; font-size: 18px; font-weight: 600; line-height: 1.15; }
+.tl-gap .tl-cell-name { font-family: "IBM Plex Sans", sans-serif; font-size: 12.5px; font-weight: 400; font-style: italic; color: var(--text-dim); }
+.tl-date-start, .tl-date-end { position: absolute; bottom: 3px; font-size: 10.5px; color: var(--text-dim); white-space: nowrap; }
+.tl-date-start { left: 6px; }
+.tl-date-end { right: 6px; font-style: italic; }
+.tl-cell-tools { position: absolute; right: 6px; top: 4px; display: none; gap: 4px; }
+.tl-cell:hover .tl-cell-tools, .tl-cell:focus-within .tl-cell-tools { display: flex; }
 .tl-tool {
   font-size: 10.5px; padding: 2px 6px; border-radius: 4px; cursor: pointer;
   border: 1px solid var(--surface-border); background: var(--surface); color: var(--text);
 }
 .tl-tool:hover { background: var(--surface-border); }
 .tl-gap {
-  position: relative; box-sizing: border-box; flex: none; display: flex; align-items: center; justify-content: center;
   background: repeating-linear-gradient(135deg, transparent 0 6px, color-mix(in srgb, var(--text-dim) 22%, transparent) 6px 7px);
   background-color: color-mix(in srgb, var(--text-dim) 10%, transparent);
   border-left: 1px dashed var(--text-dim); border-right: 1px dashed var(--text-dim);
 }
-.tl-gap-label { font-size: 11.5px; font-style: italic; color: var(--text-dim); text-align: center; padding: 0 6px; line-height: 1.25; }
-.tl-issues { margin: 10px 0 0; font-size: 12.5px; color: #b3402a; }
+.tl-gap.colored { background-color: color-mix(in srgb, var(--tl-color) 22%, transparent); }
+.tl-issues { margin: 14px 0 0; font-size: 12.5px; color: #b3402a; max-width: 640px; white-space: normal; }
 .edit-control.tl-tool { display: inline-block; }
-body.read-only-mode #timeline-add-period { display: none; }
+body.read-only-mode #timeline-add-period, body.read-only-mode #timeline-add-point { display: none; }
 
-#tl-period-overlay {
+#tl-point-card {
+  position: fixed; z-index: 10700; min-width: 180px; max-width: 280px; padding: 10px 12px;
+  background: var(--surface); color: var(--text); border: 1px solid var(--surface-border);
+  border-radius: 8px; box-shadow: 0 6px 20px rgba(0,0,0,0.35); font-size: 13px;
+}
+.tl-card-date { color: var(--text-dim); font-size: 12px; margin: 2px 0 8px; }
+.tl-card-actions { display: flex; gap: 6px; flex-wrap: wrap; }
+
+#tl-period-overlay, #tl-point-overlay {
   display: none; position: fixed; inset: 0; z-index: 10600; background: rgba(0,0,0,0.45);
   align-items: center; justify-content: center; padding: 16px;
 }
-#tl-period-overlay.open { display: flex; }
-#tl-period-box {
+#tl-period-overlay.open, #tl-point-overlay.open { display: flex; }
+#tl-period-box, #tl-point-box {
   width: min(520px, 100%); max-height: 100%; overflow: auto; box-sizing: border-box;
   background: var(--surface); color: var(--text); border: 1px solid var(--surface-border);
   border-radius: 10px; padding: 18px 20px; font-family: "IBM Plex Sans", sans-serif;
 }
-#tl-period-box h3 { margin: 0 0 12px; font-family: "Fraunces", serif; font-size: 19px; }
+#tl-period-box h3, #tl-point-box h3 { margin: 0 0 12px; font-family: "Fraunces", serif; font-size: 19px; }
 .tl-field { display: flex; flex-direction: column; gap: 4px; font-size: 12.5px; margin-bottom: 12px; }
-.tl-field input, .tl-field select, .tl-date input[type="text"] {
+.tl-field input[type="text"], .tl-field select, .tl-date input[type="text"] {
   font: inherit; font-size: 13.5px; padding: 6px 8px; box-sizing: border-box;
   border: 1px solid var(--surface-border); border-radius: 6px; background: var(--surface); color: var(--text);
 }
@@ -2471,8 +2490,18 @@ body.read-only-mode #timeline-add-period { display: none; }
 .tl-date input[type="text"] { width: 74px; }
 .tl-date input[type="text"]:first-of-type { width: 92px; }
 .tl-inline { display: inline-flex; align-items: center; gap: 5px; font-size: 12.5px; }
-.tl-end-toggle { margin-bottom: 10px; }
-#tl-period-error { min-height: 18px; margin: 0 0 8px; font-size: 12.5px; color: #b3402a; }
-#tl-period-actions { display: flex; align-items: center; gap: 8px; }
+#tl-period-gapinfo { display: none; margin: 0 0 12px; font-size: 12.5px; color: var(--text-dim); }
+.tl-swatches { display: flex; gap: 8px; flex-wrap: wrap; }
+.tl-swatch {
+  width: 26px; height: 26px; border-radius: 50%; cursor: pointer; padding: 0;
+  border: 2px solid transparent; box-shadow: 0 0 0 1px var(--surface-border);
+}
+.tl-swatch.none { background: repeating-linear-gradient(45deg, transparent 0 4px, var(--surface-border) 4px 5px); }
+.tl-swatch.selected { border-color: var(--text); }
+.tl-sides { display: flex; gap: 8px; }
+.tl-note { margin: 0 0 10px; font-size: 12px; color: var(--text-dim); }
+.tl-error { min-height: 18px; margin: 0 0 8px; font-size: 12.5px; color: #b3402a; }
+.tl-actions { display: flex; align-items: center; gap: 8px; }
 .tl-spacer { flex: 1; }
 .tl-primary { background: var(--accent); color: #fff; border-color: var(--accent); }
+#timeline-toolbar { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
