@@ -505,7 +505,8 @@ const map = L.map("map", {
 // dans un navigateur réel ici — voir PORT_STATUS.md).
 // Couture visible entre tuiles à l'export PNG (demande de Martin,
 // 2026-10-03 : "quand on exporte la carte en image c'est bug", voir
-// compareExport.ts/exportMapAsPng) : html2canvas rastérise chaque tuile
+// compareExport.ts/exportMapAsPng ; l'export ne passe plus par html2canvas
+// depuis le 2026-10-21, la couture est gérée à l'assemblage) : l'export rastérise chaque tuile
 // <img> séparément, et leur positionnement en sous-pixel par Leaflet
 // (translate3d non entier) laisse un fin liseré/grille visible entre
 // tuiles adjacentes une fois aplati en PNG — invisible à l'écran (le

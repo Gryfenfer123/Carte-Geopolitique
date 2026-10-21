@@ -12,17 +12,16 @@
 //    indicateurs déjà chargés par src/indicators.ts (getCountryIndicatorRows,
 //    ajouté dans ce fichier pour cette session) plutôt qu'un second modèle
 //    de données.
-// 2. exportMapAsPng() — capture #map (tuiles Leaflet + overlay SVG D3) en
-//    PNG via html2canvas, avec repli en export SVG seul si le canvas est
-//    "taint" par les tuiles Esri (voir le commentaire au-dessus de la
-//    fonction pour le détail de ce qui est garanti vs. best-effort).
+// 2. exportMapAsPng() — assemble #map (tuiles Leaflet + overlay SVG D3) sur
+//    un <canvas> puis le télécharge en PNG, avec repli en export SVG seul si
+//    le canvas est "taint" par les tuiles Esri (voir le commentaire au-dessus
+//    de la fonction pour le détail).
 // 3. exportAllData() — un unique fichier JSON regroupant tout ce que
 //    l'application connaît (groupes, liens, POI, dossiers, indicateurs),
 //    via des requêtes Supabase fraîches plutôt qu'en allant lire les caches
 //    internes (privés) des autres modules.
 // ---------------------------------------------------------------------------
 
-import html2canvas from "html2canvas";
 import { frenchCountryName, flagSvgSpan } from "./countryNames";
 import { normalizeSearch } from "./search";
 
@@ -197,20 +196,23 @@ function escapeHtml(str: string): string {
 // 2. Export de la carte en PNG
 // ---------------------------------------------------------------------------
 //
-// Chemin principal : html2canvas(#map, {useCORS:true}) — fonctionne SI les
-// tuiles Esri (services.arcgisonline.com/server.arcgisonline.com) sont
-// servies avec un en-tête Access-Control-Allow-Origin permissif (ce qui est
-// documenté comme étant le cas pour les services REST publics d'Esri) ET
-// que les <img> de tuiles Leaflet sont chargées avec crossOrigin="anonymous"
-// (voir vectorLayer/satelliteLayer dans main.ts, option ajoutée pour cette
-// session). Ceci n'a PAS été vérifié dans un navigateur réel (aucun outil de
-// capture d'écran dans cet environnement) : c'est le chemin "best effort"
-// documenté comme tel dans PORT_STATUS.md.
+// Assemblage direct sur un <canvas>, SANS html2canvas (2026-10-21) :
+// html2canvas plaçait mal le calque SVG des pays (frontières, couleurs des
+// indicateurs, ports...) par rapport aux tuiles dès que la carte avait été
+// déplacée ou zoomée — le tracé se retrouvait décalé de plusieurs centaines
+// de pixels sur le fond satellite. On dessine donc nous-mêmes, dans l'ordre :
+//   1. les tuiles <img class="leaflet-tile">, à leur position réelle mesurée
+//      par getBoundingClientRect() (qui inclut déjà les transformations
+//      CSS du pane Leaflet) ;
+//   2. le SVG de superposition, sérialisé avec ses styles calculés recopiés
+//      en ligne (une image SVG autonome ne voit pas style.css), à sa propre
+//      position réelle mesurée de la même façon.
+// Les deux sont donc forcément alignés comme à l'écran.
 //
-// Si le canvas est malgré tout "tainted" par une image cross-origin
-// (SecurityError à la lecture des pixels), on se rabat sur un export du
-// tracé SVG seul (frontières/ports/etc., sans le fond de carte Esri), en
-// fichier .svg téléchargé directement — pas de perte silencieuse.
+// Les tuiles Esri sont servies avec un en-tête CORS permissif et chargées en
+// crossOrigin="anonymous" (voir main.ts) : le canvas n'est pas "taint". Si
+// malgré tout il l'était (SecurityError à toBlob), on se rabat sur un export
+// du tracé SVG seul (sans fond de carte), pas de perte silencieuse.
 function downloadBlob(blob: Blob, filename: string) {
   const url = URL.createObjectURL(blob);
   const a = document.createElement("a");
@@ -222,11 +224,128 @@ function downloadBlob(blob: Blob, filename: string) {
   setTimeout(() => URL.revokeObjectURL(url), 2000);
 }
 
-function downloadSvgFallback(svgEl: SVGSVGElement, showBanner: (text: string) => void) {
+// Propriétés de présentation SVG recopiées en ligne sur chaque élément du
+// clone : tout ce que style.css ou D3 peut avoir fixé et qui change le rendu.
+const SVG_STYLE_PROPS = [
+  "display",
+  "visibility",
+  "opacity",
+  "fill",
+  "fill-opacity",
+  "fill-rule",
+  "stroke",
+  "stroke-width",
+  "stroke-opacity",
+  "stroke-dasharray",
+  "stroke-dashoffset",
+  "stroke-linecap",
+  "stroke-linejoin",
+  "stroke-miterlimit",
+  "paint-order",
+  "vector-effect",
+  "font-family",
+  "font-size",
+  "font-weight",
+  "font-style",
+  "letter-spacing",
+  "text-anchor",
+  "dominant-baseline",
+];
+
+// Clone autonome du SVG de superposition : mêmes dimensions que celles
+// affichées, styles calculés recopiés en ligne, sans le positionnement CSS
+// (left/top) qui ne sert qu'à l'écran.
+function buildStyledSvgClone(svgEl: SVGSVGElement): SVGSVGElement {
   const clone = svgEl.cloneNode(true) as SVGSVGElement;
-  if (!clone.getAttribute("xmlns")) clone.setAttribute("xmlns", "http://www.w3.org/2000/svg");
-  const serializer = new XMLSerializer();
-  const svgString = serializer.serializeToString(clone);
+  const srcEls: Element[] = [svgEl, ...Array.from(svgEl.querySelectorAll("*"))];
+  const dstEls: Element[] = [clone, ...Array.from(clone.querySelectorAll("*"))];
+  for (let i = 0; i < srcEls.length; i++) {
+    const cs = getComputedStyle(srcEls[i]);
+    const dst = dstEls[i] as SVGElement;
+    for (const prop of SVG_STYLE_PROPS) {
+      dst.style.setProperty(prop, cs.getPropertyValue(prop));
+    }
+  }
+  const r = svgEl.getBoundingClientRect();
+  clone.setAttribute("xmlns", "http://www.w3.org/2000/svg");
+  clone.setAttribute("width", String(r.width));
+  clone.setAttribute("height", String(r.height));
+  clone.style.removeProperty("left");
+  clone.style.removeProperty("top");
+  clone.style.removeProperty("position");
+  return clone;
+}
+
+// Opacité effective d'un élément (produit de celles de ses ancêtres jusqu'à
+// `stopAt`) ; 0 s'il est masqué. Les couches Satellite/Vectoriel sont
+// basculées par opacité côté Leaflet : une couche cachée ne doit pas sortir.
+function effectiveOpacity(el: Element, stopAt: Element): number {
+  let o = 1;
+  for (let n: Element | null = el; n && n !== stopAt; n = n.parentElement) {
+    const cs = getComputedStyle(n);
+    if (cs.display === "none" || cs.visibility === "hidden") return 0;
+    o *= parseFloat(cs.opacity || "1");
+  }
+  return o;
+}
+
+function loadImage(url: string): Promise<HTMLImageElement> {
+  return new Promise((resolve, reject) => {
+    const img = new Image();
+    img.onload = () => resolve(img);
+    img.onerror = () => reject(new Error("Chargement de l'image SVG du tracé impossible"));
+    img.src = url;
+  });
+}
+
+async function renderMapToCanvas(mapEl: HTMLElement, svgEl: SVGSVGElement): Promise<HTMLCanvasElement> {
+  const rect = mapEl.getBoundingClientRect();
+  const scale = Math.min(window.devicePixelRatio || 1, 2);
+  const canvas = document.createElement("canvas");
+  canvas.width = Math.round(rect.width * scale);
+  canvas.height = Math.round(rect.height * scale);
+  const ctx = canvas.getContext("2d");
+  if (!ctx) throw new Error("Contexte 2D du canvas indisponible");
+  ctx.scale(scale, scale);
+
+  // Fond du conteneur (visible là où aucune tuile n'est chargée).
+  const bg = getComputedStyle(mapEl).backgroundColor;
+  if (bg && bg !== "rgba(0, 0, 0, 0)" && bg !== "transparent") {
+    ctx.fillStyle = bg;
+    ctx.fillRect(0, 0, rect.width, rect.height);
+  }
+
+  // 1. Tuiles, dans l'ordre du DOM (= ordre d'empilement des couches).
+  const tiles = Array.from(mapEl.querySelectorAll<HTMLImageElement>("img.leaflet-tile"));
+  for (const img of tiles) {
+    if (!img.complete || img.naturalWidth === 0) continue;
+    const op = effectiveOpacity(img, mapEl);
+    if (op <= 0) continue;
+    const r = img.getBoundingClientRect();
+    // +1px de débordement pour éviter la couture entre tuiles voisines (sauf
+    // si la tuile est translucide, où le recouvrement se verrait).
+    const grow = op >= 1 ? 1 : 0;
+    ctx.globalAlpha = op;
+    ctx.drawImage(img, r.left - rect.left, r.top - rect.top, r.width + grow, r.height + grow);
+  }
+  ctx.globalAlpha = 1;
+
+  // 2. Calque SVG (pays, indicateurs, ports, liens, POI...).
+  const clone = buildStyledSvgClone(svgEl);
+  const svgString = new XMLSerializer().serializeToString(clone);
+  const svgUrl = URL.createObjectURL(new Blob([svgString], { type: "image/svg+xml;charset=utf-8" }));
+  try {
+    const svgImg = await loadImage(svgUrl);
+    const sr = svgEl.getBoundingClientRect();
+    ctx.drawImage(svgImg, sr.left - rect.left, sr.top - rect.top, sr.width, sr.height);
+  } finally {
+    URL.revokeObjectURL(svgUrl);
+  }
+  return canvas;
+}
+
+function downloadSvgFallback(svgEl: SVGSVGElement, showBanner: (text: string) => void) {
+  const svgString = new XMLSerializer().serializeToString(buildStyledSvgClone(svgEl));
   downloadBlob(new Blob([svgString], { type: "image/svg+xml" }), "carte-geopolitique.svg");
   showBanner("Export PNG impossible (tuiles satellite/plan protégées) — export SVG des tracés uniquement.");
 }
@@ -236,29 +355,13 @@ export async function exportMapAsPng(opts: {
   svgEl: SVGSVGElement;
   showBanner: (text: string) => void;
 }) {
-  // Couture visible entre tuiles au PNG (voir style.css::.export-tile-fix) :
-  // corrigé en 2026-10-03 en surdimensionnant chaque tuile de 1px, mais ça
-  // restait actif en permanence à l'écran (bug signalé par Martin le
-  // 2026-10-06, "on voit les tuiles sur la carte tout le temps"). On
-  // n'active donc plus cette classe que le temps de la capture ci-dessous.
-  opts.mapEl.classList.add("export-tile-fix");
   try {
-    const canvas = await html2canvas(opts.mapEl, {
-      useCORS: true,
-      backgroundColor: null,
-      // Exclut tout contrôle Leaflet résiduel qui pourrait traîner dans
-      // #map (attribution, etc.) — les vrais boutons/panneaux de l'UI sont
-      // des frères de #map dans le DOM, déjà hors du sous-arbre capturé.
-      ignoreElements: (el) => el.classList.contains("leaflet-control-container"),
-    });
+    const canvas = await renderMapToCanvas(opts.mapEl, opts.svgEl);
     const blob: Blob | null = await new Promise((resolve) => canvas.toBlob(resolve, "image/png"));
     if (!blob) throw new Error("toBlob a renvoyé null");
     downloadBlob(blob, "carte-geopolitique.png");
   } catch (err) {
     console.error("Export PNG échoué, repli sur l'export SVG :", err);
     downloadSvgFallback(opts.svgEl, opts.showBanner);
-  } finally {
-    opts.mapEl.classList.remove("export-tile-fix");
   }
 }
-
