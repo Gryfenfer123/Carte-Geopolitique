@@ -2258,7 +2258,7 @@ path.link-autre { stroke: var(--link-autre, #c9bfa9); }
    rien changer à la carte elle-même. Les attributs stroke/stroke-dasharray
    posés en JS (presentation attributes SVG) ont une priorité plus basse
    que cette règle CSS, qui s'applique donc bien par-dessus. */
-.gen-link-foreign { stroke-dasharray: 2.5,4.5 !important; opacity: 0.6; }
+/* Liens vers un membre d'un autre arbre : même style que les autres (demande de Martin, 2026-10-22). */
 
 /* Légende de l'arbre — gestionnaire (#gen-legend-modal) et liste des
    entrées (demande de Martin, 2026-10-06). Réutilise .gen-relation-row

@@ -1299,9 +1299,9 @@ export function initGenealogySystem(deps: {
   // (genealogyRouting.ts) pour ne jamais passer sur un portrait.
   let cardRects: Rect[] = [];
 
-  function drawLine(x1: number, y1: number, x2: number, y2: number, type: RelationType, extraClass?: string, legend?: LegendItem | null) {
+  function drawLine(x1: number, y1: number, x2: number, y2: number, type: RelationType, extraClass?: string, legend?: LegendItem | null, descend = false) {
     const NS = "http://www.w3.org/2000/svg";
-    const pts = routeAround({ x: x1, y: y1 }, { x: x2, y: y2 }, cardRects);
+    const pts = routeAround({ x: x1, y: y1 }, { x: x2, y: y2 }, cardRects, 14, descend);
     const line = document.createElementNS(NS, "polyline");
     line.setAttribute("points", pts.map((q) => Math.round(q.x * 10) / 10 + "," + Math.round(q.y * 10) / 10).join(" "));
     line.setAttribute("fill", "none");
@@ -1359,7 +1359,11 @@ export function initGenealogySystem(deps: {
       // arbre (voir .gen-link-foreign, style.css) — s'applique au trait
       // fusionné dès que l'un des deux parents OU l'enfant est étranger.
       const mergedForeign = foreignMembers.has(p1.member_a_id) || foreignMembers.has(p2.member_a_id) || foreignMembers.has(childId);
-      drawLine(midX, midY, c.x, c.y, "parent", "gen-link-from-marriage" + (mergedForeign ? " gen-link-foreign" : ""));
+      // Descendance : le trait arrive par le HAUT de la carte de l'enfant et ne
+      // remonte jamais (demande de Martin, 2026-10-22).
+      const childTop = c.y - CARD_H / 2;
+      const goesDown = childTop > midY;
+      drawLine(midX, midY, c.x, goesDown ? childTop : c.y, "parent", "gen-link-from-marriage" + (mergedForeign ? " gen-link-foreign" : ""), undefined, goesDown);
       mergedParentRelIds.add(p1.id);
       mergedParentRelIds.add(p2.id);
     });
@@ -1369,7 +1373,11 @@ export function initGenealogySystem(deps: {
       const b = cardCenter(r.member_b_id);
       if (!a || !b) return;
       const foreignLink = foreignMembers.has(r.member_a_id) || foreignMembers.has(r.member_b_id);
-      drawLine(a.x, a.y, b.x, b.y, r.relation_type, foreignLink ? "gen-link-foreign" : undefined, legendItemById(r.legend_item_id));
+      // Parent -> enfant : du bas de la carte du parent vers le haut de celle
+      // de l'enfant (le trait descend toujours) quand l'enfant est plus bas.
+      const down = r.relation_type === "parent" && b.y - CARD_H / 2 > a.y + CARD_H / 2;
+      if (down) drawLine(a.x, a.y + CARD_H / 2, b.x, b.y - CARD_H / 2, r.relation_type, foreignLink ? "gen-link-foreign" : undefined, legendItemById(r.legend_item_id), true);
+      else drawLine(a.x, a.y, b.x, b.y, r.relation_type, foreignLink ? "gen-link-foreign" : undefined, legendItemById(r.legend_item_id));
     });
   }
 

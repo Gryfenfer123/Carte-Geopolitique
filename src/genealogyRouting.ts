@@ -80,7 +80,7 @@ function firstBlocker(a: Pt, b: Pt, obs: Rect[]): Rect | null {
   return best;
 }
 
-function route(a: Pt, b: Pt, obs: Rect[], depth: number): Pt[] | null {
+function route(a: Pt, b: Pt, obs: Rect[], depth: number, down: number): Pt[] | null {
   const blocker = firstBlocker(a, b, obs);
   if (!blocker) return [a, b];
   if (depth >= MAX_DEPTH) return null;
@@ -91,14 +91,17 @@ function route(a: Pt, b: Pt, obs: Rect[], depth: number): Pt[] | null {
     { x: blocker.x, y: blocker.y + blocker.h },
   ]
     .filter((c) => !obs.some((r) => containsStrict(r, c)))
+    // down = 2 : descente stricte (jamais de remontée, jamais plus bas que l'arrivée) ;
+    // down = 1 : jamais de remontée seulement ; 0 : libre.
+    .filter((c) => down === 0 || (c.y >= a.y - 0.5 && (down === 1 || c.y <= b.y + 0.5)))
     .sort((p, q) => len(a, p) + len(p, b) - (len(a, q) + len(q, b)))
     .slice(0, 3);
   let best: Pt[] | null = null;
   let bestLen = Infinity;
   for (const c of corners) {
-    const first = route(a, c, obs, depth + 1);
+    const first = route(a, c, obs, depth + 1, down);
     if (!first) continue;
-    const second = route(c, b, obs, depth + 1);
+    const second = route(c, b, obs, depth + 1, down);
     if (!second) continue;
     const path = first.concat(second.slice(1));
     const l = pathLen(path);
@@ -130,7 +133,7 @@ function simplify(pts: Pt[]): Pt[] {
  * extrémités du lien). `pad` = marge laissée autour des cartes. Si aucun
  * contournement n'est possible (cas extrême), renvoie le trait droit.
  */
-export function routeAround(a: Pt, b: Pt, cards: Rect[], pad = 14): Pt[] {
+export function routeAround(a: Pt, b: Pt, cards: Rect[], pad = 14, descend = false): Pt[] {
   const obs = cards
     .filter((r) => !containsStrict(r, a) && !containsStrict(r, b))
     .map((r) => inflate(r, pad));
@@ -139,8 +142,15 @@ export function routeAround(a: Pt, b: Pt, cards: Rect[], pad = 14): Pt[] {
   const usable = obs.filter((r) => !containsStrict(r, a) && !containsStrict(r, b));
   const quick = firstBlocker(a, b, usable);
   if (!quick) return [a, b];
-  const path = route(a, b, usable, 0);
-  return path ? simplify(path) : [a, b];
+  // Lien de descendance : le trait ne doit jamais remonter (demande de
+  // Martin, 2026-10-22). On essaie d'abord une descente stricte, puis sans
+  // remontée, puis libre.
+  const levels = descend && b.y > a.y ? [2, 1, 0] : [0];
+  for (const lv of levels) {
+    const path = route(a, b, usable, 0, lv);
+    if (path) return simplify(path);
+  }
+  return [a, b];
 }
 
 /** Nombre de cartes réellement traversées par une ligne brisée (pour les tests). */
