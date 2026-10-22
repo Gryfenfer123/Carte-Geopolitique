@@ -1,119 +1,87 @@
-# Carte Géopolitique — Prototype moteur tuiles
+# Carte Géopolitique
 
-Ceci est un **prototype autonome** destiné à valider une nouvelle technique de
-carte pour le projet Carte Géopolitique : remplacer la projection SVG fixe
-(D3.js) actuelle par une **vraie carte à tuiles, zoomable et navigable
-librement** (comme Google Maps / OpenStreetMap), avec les frontières des pays
-en superposition.
+Atlas interactif du monde pour les études de relations internationales : une vraie carte à
+tuiles (zoomable librement) avec, pour chaque pays, un dossier de notes structuré, et des
+liens entre pays, des groupes (OTAN, BRICS…), des indicateurs chiffrés, des arbres
+généalogiques de dynasties et des frises chronologiques.
 
-Ce prototype ne contient **pas** encore :
-- les fiches pays complètes (dossiers, indicateurs, hémicycles, etc.) ;
-- de backend ni de compte utilisateur (Supabase viendra plus tard) ;
-- l'édition multi-utilisateur.
+Projet personnel de Martin. Site publié automatiquement sur GitHub Pages.
 
-Il sert uniquement à prouver que la technique « carte à tuiles + frontières
-en overlay » fonctionne bien et peut reprendre l'identité visuelle actuelle
-(bleu marine sombre, accent doré, polices Fraunces / IBM Plex Sans).
+## Ce que l'appli permet (d'après le code actuel)
 
-## Ce qui est utilisé
+- **Carte** à vraies tuiles (Leaflet), fonds Vectoriel ou Satellite, frontières des pays en
+  surbrillance au survol, subdivisions administratives, zoom et déplacement libres.
+- **Fiche et dossier par pays** : catégories → sous-catégories → entrées (texte riche, photo
+  recadrable, lien, hémicycle, arbre généalogique, frise), favoris, historique des versions.
+- **Groupes géopolitiques** et **liens** entre pays/groupes tracés sur la carte.
+- **Indicateurs** (santé, éducation, économie, numérique…) affichés en carte colorée et dans
+  les fiches ; **comparateur** de deux pays.
+- **Arbres généalogiques** des dynasties, interactifs, croisant plusieurs pays.
+- **Frises chronologiques** : périodes, sous-frises, événements (en cours de construction —
+  voir `docs/specs/frises-chronologiques.md`).
+- **Carte historique** par époque ; **encyclopédie** de notions ; **points d'intérêt** ;
+  ports, détroits, pipelines, câbles sous-marins, bases militaires, fleuves, zones naturelles.
+- **Recherche** dans les noms et le contenu des dossiers ; **exports** PNG de la carte et JSON
+  complet des données ; **mode lecture** ; comptes (connexion).
 
-- **Vite + TypeScript** (pas de framework lourd, projet volontairement
-  minimal).
-- **Leaflet.js** pour la carte (pan/zoom fluide, molette de zoom, contrôles
-  standards).
-- Fond de carte **CARTO "Dark Matter"** (gratuit, sans clé API, basé sur les
-  données OpenStreetMap) — choisi pour son thème sombre qui s'accorde avec
-  la charte actuelle.
-- Les **frontières des pays** proviennent du jeu de données déjà utilisé
-  dans l'atlas (`countries_50m.geojson`), simplifié (propriétés allégées)
-  et copié dans `public/data/countries.geojson`.
+## Documentation
 
-## Lancer le projet en local
+| Pour… | Lire |
+|---|---|
+| Comprendre comment c'est construit, et ses faiblesses connues | [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) |
+| Travailler sur le projet (règles obligatoires) | [`docs/CONVENTIONS.md`](docs/CONVENTIONS.md) et [`CLAUDE.md`](CLAUDE.md) |
+| Savoir ce qui est décidé et pourquoi | [`docs/DECISIONS.md`](docs/DECISIONS.md) |
+| La base de données, les migrations, les droits | [`docs/BASE_DE_DONNEES.md`](docs/BASE_DE_DONNEES.md) |
+| Les frises chronologiques | [`docs/specs/frises-chronologiques.md`](docs/specs/frises-chronologiques.md) |
 
-Prérequis : [Node.js](https://nodejs.org/) (version 18 ou plus récente) et
-npm, déjà installés sur la plupart des systèmes récents.
+## Lancer le projet sur son ordinateur
 
-```bash
-# 1. Installer les dépendances (une seule fois)
-npm install
-
-# 2. Lancer le serveur de développement
-npm run dev
-```
-
-Puis ouvrez l'adresse affichée dans le terminal (en général
-`http://localhost:5173`) dans votre navigateur.
-
-Pour générer une version statique prête à héberger (par exemple sur
-Netlify, Vercel, GitHub Pages...) :
+Prérequis : [Node.js](https://nodejs.org/) 20 ou plus récent (le déploiement utilise Node 20).
 
 ```bash
-npm run build
+npm ci          # installer les dépendances (une seule fois)
+cp .env.example .env.local   # puis renseigner les deux valeurs Supabase
+npm run dev     # serveur de développement → http://localhost:5173
 ```
 
-Le résultat est généré dans le dossier `dist/`. Ce dossier peut être
-déposé tel quel sur n'importe quel hébergement statique.
+Les deux valeurs de `.env.local` (`VITE_SUPABASE_URL`, `VITE_SUPABASE_ANON_KEY`) se trouvent
+dans le tableau de bord Supabase (Project Settings → API). Sans elles, la carte s'affiche mais
+les dossiers et la connexion ne fonctionnent pas.
 
-## Remarque sur le fond de carte
+## Vérifier avant de publier
 
-Le fond de carte (tuiles CARTO) nécessite un accès Internet classique
-depuis le navigateur qui l'affiche. Si les tuiles ne se chargent pas (par
-exemple sur un réseau très restreint), un message discret l'indique en
-haut de la carte, mais **les frontières des pays restent visibles** sur un
-fond sombre uni — l'interaction (survol, clic, panneau d'information)
-continue de fonctionner normalement.
-
-## Interaction
-
-- **Molette de la souris** : zoomer / dézoomer.
-- **Glisser-déposer** : déplacer la carte.
-- **Survol d'un pays** : mise en surbrillance de son territoire.
-- **Clic sur un pays** : ouvre une info-bulle avec son nom, et affiche ses
-  informations de base dans le panneau à droite (une future étape reliera
-  ce panneau aux vraies fiches pays de l'atlas).
-
-## Structure du projet
-
-```
-atlas-web/
-├── index.html          Page HTML principale (polices, titre)
-├── src/
-│   ├── main.ts          Logique de la carte (Leaflet, overlay pays, panneau)
-│   └── style.css         Thème visuel (couleurs reprises de l'atlas)
-├── public/
-│   └── data/
-│       └── countries.geojson   Frontières des pays (source allégée)
-└── package.json
+```bash
+npm run check:repo   # dépôt sain : pas de doublon, pas de secret, pas de fichier égaré
+npm run build        # typage strict + construction ; doit passer sans erreur
 ```
 
-## Supabase (authentification + dossiers pays)
+## Publication
 
-Ce prototype est maintenant connecté à un vrai projet Supabase :
+À chaque push sur `main`, GitHub Actions (`.github/workflows/deploy-pages.yml`) vérifie le
+dépôt, construit le site et le publie sur GitHub Pages sous `/Carte-Geopolitique/`.
+**Si une vérification échoue, rien n'est publié** : regarder l'onglet *Actions* du dépôt
+(✔ vert = publié, ✘ rouge = bloqué, avec le détail de l'erreur).
+Les autres branches et les pull requests sont vérifiées par `verify.yml`, sans publication.
 
-- Client : `src/supabase.ts`, configuré via les variables d'environnement
-  `VITE_SUPABASE_URL` et `VITE_SUPABASE_ANON_KEY` (fichier `.env.local`,
-  **non commité** — voir `.env.example` pour le modèle).
-- **Connexion / inscription** : bouton en haut à droite de l'en-tête
-  ("Se connecter" → devient le nom d'utilisateur une fois connecté). Le
-  panneau gère à la fois la connexion et la création de compte (bascule
-  simple entre les deux modes), avec des messages d'erreur en français.
-- **Dossier pays** : au clic sur un pays, le panneau affiche désormais les
-  entrées existantes (`dossier_entries` où `owner_type='country'` et
-  `owner_id` = code ISO A3 du pays), avec un état vide convivial si aucune
-  entrée n'existe encore.
-- **Ajout d'entrée** : si l'utilisateur est connecté, un petit formulaire
-  (titre + texte brut) apparaît sous le dossier du pays sélectionné et
-  permet d'ajouter une entrée de type `text`. La liste se rafraîchit
-  automatiquement après l'ajout. Le formulaire n'apparaît pas du tout si
-  personne n'est connecté (en plus de la sécurité RLS côté serveur).
+## Structure
 
-## Prochaines étapes envisagées
+```
+index.html            page unique
+src/                  tout le code (TypeScript) et le CSS
+public/data/          données statiques (frontières, indicateurs, ports, câbles…)
+supabase/             migrations SQL (exécutées à la main dans Supabase)
+scripts/              outils hors site (vérification du dépôt, génération de données)
+docs/                 documentation, spécifications, archives
+.github/workflows/    déploiement et vérifications automatiques
+```
 
-- Remplacer l'aperçu texte brut des entrées par un rendu riche
-  (`body_html`) et un éditeur adapté.
-- Ajouter la gestion des catégories/sections de dossier (actuellement,
-  les entrées créées via ce prototype n'ont pas de `category_id` /
-  `section_id` — colonnes nullable dans le schéma actuel).
-- Ajouter les couches optionnelles existantes dans l'atlas (ports,
-  pipelines, câbles, bases militaires, etc.) comme calques Leaflet
-  superposables.
+Détail module par module : [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md).
+
+## Sources de données et licences
+
+- Fonds de carte : tuiles Esri (World_Dark_Gray_Base, World_Imagery).
+- Frontières : jeu de données de pays (`public/data/countries.geojson`).
+- Indicateurs : compilés à partir de sources publiques (CIA Factbook, Banque mondiale,
+  OMS/UNICEF, UNESCO, ITU, OCDE, FAS) ; voir `docs/DECISIONS.md`.
+- Drapeaux : « flag-icons » (licence MIT).
+- Carte historique : OpenHistoricalMap.
