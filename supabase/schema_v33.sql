@@ -1,8 +1,10 @@
 -- schema_v33.sql — Arbres généalogiques « Wettin » et « Hohenzollern » (dynasties allemandes)
 -- À lancer dans le SQL Editor de Supabase (une seule fois). Rien n'est supprimé ni modifié :
 -- il ne fait QUE des ajouts : 2 arbres (Allemagne > Dynastie > Wettin et > Hohenzollern), leurs membres,
--- quelques membres créés dans les arbres d'origine des épouses (Wittelsbach, Habsbourg, Hohenstaufen, Welf,
+-- quelques membres créés dans les arbres d'origine des épouses (Wittelsbach, Habsbourg, Welf,
 -- Oldenbourg, Jagellon, Orange-Nassau, Hanovre, Saxe-Cobourg, Bourbon-Parme, Bragance), plus les liens.
+-- Wettin : seulement la partie utile à l'histoire allemande (de 1423 aux rois de Saxe) ; Auguste II est créé dans l'arbre polonais « Wettin »,
+-- qui fait le pont. Deux anneaux de légende (branche ernestine verte, branche albertine bleue) ; Auguste III reçoit l'anneau rouge.
 -- Les membres déjà présents dans tes autres arbres sont RETROUVÉS par leur identifiant et reliés, jamais recréés.
 -- Si un identifiant n'est pas trouvé, le script s'arrête sans rien écrire.
 
@@ -14,6 +16,8 @@ declare
   cat_id constant uuid := '428a2e75-c8e3-51a1-b12a-bfe7a4018659';
   tree_wet uuid;
   tree_hoh uuid;
+  leg_ern uuid;
+  leg_alb uuid;
 begin
   if exists (select 1 from public.dossier_entries where section_id in (sec_wet, sec_hoh) and type = 'genealogy') then
     raise exception 'Un arbre existe déjà dans la sous-catégorie Wettin ou Hohenzollern (Allemagne) : rien n''a été fait.';
@@ -27,212 +31,133 @@ begin
   insert into public.dossier_entries (owner_type, owner_id, type, title, category_id, section_id, created_by)
   values ('country', 'DEU', 'genealogy', 'Hohenzollern', cat_id, sec_hoh, admin_id) returning id into tree_hoh;
 
+  insert into public.genealogy_legend_items (owner_type, owner_id, color, label, position, created_by, kind)
+  values ('entry', tree_wet::text, '#1a9850', 'Branche ernestine', 0, admin_id, 'status') returning id into leg_ern;
+  insert into public.genealogy_legend_items (owner_type, owner_id, color, label, position, created_by, kind)
+  values ('entry', tree_wet::text, '#1f4fbf', 'Branche albertine', 1, admin_id, 'status') returning id into leg_alb;
+
   create temp table _m (code text primary key, id uuid not null default gen_random_uuid()) on commit drop;
 
-  insert into _m(code) values ('conrad');
-  insert into public.genealogy_members (id, owner_type, owner_id, name, photo_url, birth_year, death_year, title, dynasty, pos_x, pos_y, created_by, is_leader)
-    select id, 'entry', tree_wet::text, 'Conrad Ier « le Pieux »', 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/Dresden_Fuerstenzug_Konrad_der_Grosse.jpg/330px-Dresden_Fuerstenzug_Konrad_der_Grosse.jpg', 1098, 1157, 'Margrave de Misnie et de Lusace', 'Maison de Wettin', 0, 0, admin_id, false from _m where code = 'conrad';
-  insert into _m(code) values ('otto');
-  insert into public.genealogy_members (id, owner_type, owner_id, name, photo_url, birth_year, death_year, title, dynasty, pos_x, pos_y, created_by, is_leader)
-    select id, 'entry', tree_wet::text, 'Othon Ier « le Riche »', 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/Freiberg_Otto_der_Reiche_Brunnendenkmal.jpg/330px-Freiberg_Otto_der_Reiche_Brunnendenkmal.jpg', 1125, 1190, 'Margrave de Misnie', 'Maison de Wettin', 0, 420, admin_id, false from _m where code = 'otto';
-  insert into _m(code) values ('hedw');
-  insert into public.genealogy_members (id, owner_type, owner_id, name, photo_url, birth_year, death_year, title, dynasty, pos_x, pos_y, created_by, is_leader)
-    select id, 'entry', tree_wet::text, 'Hedwige de Brandebourg', null, 1140, 1203, 'Margravine de Misnie', 'Ascanie / Wettin', 450, 420, admin_id, false from _m where code = 'hedw';
-  insert into _m(code) values ('albert1');
-  insert into public.genealogy_members (id, owner_type, owner_id, name, photo_url, birth_year, death_year, title, dynasty, pos_x, pos_y, created_by, is_leader)
-    select id, 'entry', tree_wet::text, 'Albert Ier « le Fier »', 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/63/Dresden_F%C3%BCrstenzug_081.JPG/330px-Dresden_F%C3%BCrstenzug_081.JPG', 1158, 1195, 'Margrave de Misnie', 'Maison de Wettin', -600, 840, admin_id, false from _m where code = 'albert1';
-  insert into _m(code) values ('thierry');
-  insert into public.genealogy_members (id, owner_type, owner_id, name, photo_url, birth_year, death_year, title, dynasty, pos_x, pos_y, created_by, is_leader)
-    select id, 'entry', tree_wet::text, 'Thierry Ier « l''Exilé »', null, 1162, 1221, 'Margrave de Misnie et de Basse-Lusace', 'Maison de Wettin', 0, 840, admin_id, false from _m where code = 'thierry';
-  insert into _m(code) values ('jutta');
-  insert into public.genealogy_members (id, owner_type, owner_id, name, photo_url, birth_year, death_year, title, dynasty, pos_x, pos_y, created_by, is_leader)
-    select id, 'entry', tree_wet::text, 'Jutta de Thuringe', null, 1184, 1235, 'Margravine de Misnie', 'Ludowingiens / Wettin', 450, 840, admin_id, false from _m where code = 'jutta';
-  insert into _m(code) values ('henri3');
-  insert into public.genealogy_members (id, owner_type, owner_id, name, photo_url, birth_year, death_year, title, dynasty, pos_x, pos_y, created_by, is_leader)
-    select id, 'entry', tree_wet::text, 'Henri III « l''Illustre »', 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Codex_Manesse_Markgraf_Heinrich_von_Mei%C3%9Fen.jpg/330px-Codex_Manesse_Markgraf_Heinrich_von_Mei%C3%9Fen.jpg', 1215, 1288, 'Margrave de Misnie, landgrave de Thuringe', 'Maison de Wettin', 0, 1260, admin_id, false from _m where code = 'henri3';
-  insert into _m(code) values ('constance');
-  insert into public.genealogy_members (id, owner_type, owner_id, name, photo_url, birth_year, death_year, title, dynasty, pos_x, pos_y, created_by, is_leader)
-    select id, 'entry', tree_wet::text, 'Constance d''Autriche', null, 1212, 1243, 'Margravine de Misnie', 'Babenberg / Wettin', 450, 1260, admin_id, false from _m where code = 'constance';
-  insert into _m(code) values ('albert2');
-  insert into public.genealogy_members (id, owner_type, owner_id, name, photo_url, birth_year, death_year, title, dynasty, pos_x, pos_y, created_by, is_leader)
-    select id, 'entry', tree_wet::text, 'Albert II « le Dégénéré »', 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Marketa_Albercht2.jpg/330px-Marketa_Albercht2.jpg', 1240, 1314, 'Landgrave de Thuringe, margrave de Misnie', 'Maison de Wettin', 0, 1680, admin_id, false from _m where code = 'albert2';
-  insert into _m(code) values ('fred1');
-  insert into public.genealogy_members (id, owner_type, owner_id, name, photo_url, birth_year, death_year, title, dynasty, pos_x, pos_y, created_by, is_leader)
-    select id, 'entry', tree_wet::text, 'Frédéric Ier « le Mordu »', 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/Dresden_F%C3%BCrstenzug_084_%28cropped%29_-_Frederick_I%2C_Margrave_of_Meissen.JPG/330px-Dresden_F%C3%BCrstenzug_084_%28cropped%29_-_Frederick_I%2C_Margrave_of_Meissen.JPG', 1257, 1323, 'Margrave de Misnie, landgrave de Thuringe', 'Maison de Wettin', 0, 2100, admin_id, false from _m where code = 'fred1';
-  insert into _m(code) values ('elob');
-  insert into public.genealogy_members (id, owner_type, owner_id, name, photo_url, birth_year, death_year, title, dynasty, pos_x, pos_y, created_by, is_leader)
-    select id, 'entry', tree_wet::text, 'Élisabeth de Lobdeburg-Arnshaugk', null, 1286, 1359, 'Margravine de Misnie', 'Lobdeburg-Arnshaugk / Wettin', 450, 2100, admin_id, false from _m where code = 'elob';
-  insert into _m(code) values ('fred2');
-  insert into public.genealogy_members (id, owner_type, owner_id, name, photo_url, birth_year, death_year, title, dynasty, pos_x, pos_y, created_by, is_leader)
-    select id, 'entry', tree_wet::text, 'Frédéric II « le Sérieux »', 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Dresden_F%C3%BCrstenzug_084_%28cropped%29_-_Frederick_II%2C_Margrave_of_Meissen.JPG/330px-Dresden_F%C3%BCrstenzug_084_%28cropped%29_-_Frederick_II%2C_Margrave_of_Meissen.JPG', 1310, 1349, 'Margrave de Misnie, landgrave de Thuringe', 'Maison de Wettin', 0, 2520, admin_id, false from _m where code = 'fred2';
   insert into _m(code) values ('elmis');
   insert into public.genealogy_members (id, owner_type, owner_id, name, photo_url, birth_year, death_year, title, dynasty, pos_x, pos_y, created_by, is_leader)
-    select id, 'entry', tree_wet::text, 'Élisabeth de Misnie', null, 1329, 1375, 'Burgravine de Nuremberg', 'Maison de Wettin', -500, 2940, admin_id, false from _m where code = 'elmis';
-  insert into _m(code) values ('fred3');
-  insert into public.genealogy_members (id, owner_type, owner_id, name, photo_url, birth_year, death_year, title, dynasty, pos_x, pos_y, created_by, is_leader)
-    select id, 'entry', tree_wet::text, 'Frédéric III « le Sévère »', 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/Friedrich_Strenge_Albrechtsburg-2.jpg/330px-Friedrich_Strenge_Albrechtsburg-2.jpg', 1332, 1381, 'Landgrave de Thuringe, margrave de Misnie', 'Maison de Wettin', 0, 2940, admin_id, false from _m where code = 'fred3';
-  insert into _m(code) values ('cathhen');
-  insert into public.genealogy_members (id, owner_type, owner_id, name, photo_url, birth_year, death_year, title, dynasty, pos_x, pos_y, created_by, is_leader)
-    select id, 'entry', tree_wet::text, 'Catherine de Henneberg', null, 1334, 1397, 'Margravine de Misnie', 'Henneberg / Wettin', 450, 2940, admin_id, false from _m where code = 'cathhen';
+    select id, 'entry', tree_wet::text, 'Élisabeth de Misnie', null, 1329, 1375, 'Burgravine de Nuremberg', 'Maison de Wettin', -3000, 0, admin_id, false from _m where code = 'elmis';
   insert into _m(code) values ('fredb');
   insert into public.genealogy_members (id, owner_type, owner_id, name, photo_url, birth_year, death_year, title, dynasty, pos_x, pos_y, created_by, is_leader)
-    select id, 'entry', tree_wet::text, 'Frédéric Ier « le Belliqueux »', 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Friedrich_I._von_Sachsen%2C_1370-1428_%28AT_KHM_GG4792%29.jpg/330px-Friedrich_I._von_Sachsen%2C_1370-1428_%28AT_KHM_GG4792%29.jpg', 1370, 1428, 'Margrave de Misnie, 1er électeur de Saxe (1423)', 'Maison de Wettin', 0, 3360, admin_id, false from _m where code = 'fredb';
+    select id, 'entry', tree_wet::text, 'Frédéric Ier « le Belliqueux »', 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Friedrich_I._von_Sachsen%2C_1370-1428_%28AT_KHM_GG4792%29.jpg/330px-Friedrich_I._von_Sachsen%2C_1370-1428_%28AT_KHM_GG4792%29.jpg', 1370, 1428, 'Margrave de Misnie, 1er électeur de Saxe (1423)', 'Maison de Wettin', 0, 0, admin_id, false from _m where code = 'fredb';
   insert into _m(code) values ('fredd');
   insert into public.genealogy_members (id, owner_type, owner_id, name, photo_url, birth_year, death_year, title, dynasty, pos_x, pos_y, created_by, is_leader)
-    select id, 'entry', tree_wet::text, 'Frédéric II « le Doux »', 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/Friedrich_II._der_Sanftm%C3%BCtige%2C_Kurf%C3%BCrst_von_Sachsen_%28AT_KHM_GG4793%29.jpg/330px-Friedrich_II._der_Sanftm%C3%BCtige%2C_Kurf%C3%BCrst_von_Sachsen_%28AT_KHM_GG4793%29.jpg', 1412, 1464, 'Électeur de Saxe', 'Maison de Wettin', 0, 3780, admin_id, false from _m where code = 'fredd';
+    select id, 'entry', tree_wet::text, 'Frédéric II « le Doux »', 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/Friedrich_II._der_Sanftm%C3%BCtige%2C_Kurf%C3%BCrst_von_Sachsen_%28AT_KHM_GG4793%29.jpg/330px-Friedrich_II._der_Sanftm%C3%BCtige%2C_Kurf%C3%BCrst_von_Sachsen_%28AT_KHM_GG4793%29.jpg', 1412, 1464, 'Électeur de Saxe', 'Maison de Wettin', 0, 420, admin_id, false from _m where code = 'fredd';
   insert into _m(code) values ('cathsax');
   insert into public.genealogy_members (id, owner_type, owner_id, name, photo_url, birth_year, death_year, title, dynasty, pos_x, pos_y, created_by, is_leader)
-    select id, 'entry', tree_wet::text, 'Catherine de Saxe', null, 1421, 1476, 'Électrice de Brandebourg', 'Maison de Wettin', -500, 3780, admin_id, false from _m where code = 'cathsax';
+    select id, 'entry', tree_wet::text, 'Catherine de Saxe', null, 1421, 1476, 'Électrice de Brandebourg', 'Maison de Wettin', -500, 420, admin_id, false from _m where code = 'cathsax';
   insert into _m(code) values ('anna');
   insert into public.genealogy_members (id, owner_type, owner_id, name, photo_url, birth_year, death_year, title, dynasty, pos_x, pos_y, created_by, is_leader)
-    select id, 'entry', tree_wet::text, 'Anne de Saxe', 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d8/Albrecht_Achilles_Gripsholm.JPG/330px-Albrecht_Achilles_Gripsholm.JPG', 1437, 1512, 'Électrice de Brandebourg', 'Maison de Wettin', 500, 4200, admin_id, false from _m where code = 'anna';
+    select id, 'entry', tree_wet::text, 'Anne de Saxe', 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d8/Albrecht_Achilles_Gripsholm.JPG/330px-Albrecht_Achilles_Gripsholm.JPG', 1437, 1512, 'Électrice de Brandebourg', 'Maison de Wettin', 500, 840, admin_id, false from _m where code = 'anna';
   insert into _m(code) values ('ernest');
   insert into public.genealogy_members (id, owner_type, owner_id, name, photo_url, birth_year, death_year, title, dynasty, pos_x, pos_y, created_by, is_leader)
-    select id, 'entry', tree_wet::text, 'Ernest de Saxe', 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/Ernst_Kurf%C3%BCrst_von_Sachsen%2C_1441-1486_%28AT_KHM_GG4795%29.jpg/330px-Ernst_Kurf%C3%BCrst_von_Sachsen%2C_1441-1486_%28AT_KHM_GG4795%29.jpg', 1441, 1486, 'Électeur de Saxe, landgrave de Thuringe (ligne ernestine)', 'Maison de Wettin', -1500, 4200, admin_id, false from _m where code = 'ernest';
+    select id, 'entry', tree_wet::text, 'Ernest de Saxe', 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/Ernst_Kurf%C3%BCrst_von_Sachsen%2C_1441-1486_%28AT_KHM_GG4795%29.jpg/330px-Ernst_Kurf%C3%BCrst_von_Sachsen%2C_1441-1486_%28AT_KHM_GG4795%29.jpg', 1441, 1486, 'Électeur de Saxe, landgrave de Thuringe (ligne ernestine)', 'Maison de Wettin', -1500, 840, admin_id, false from _m where code = 'ernest';
   insert into _m(code) values ('albertc');
   insert into public.genealogy_members (id, owner_type, owner_id, name, photo_url, birth_year, death_year, title, dynasty, pos_x, pos_y, created_by, is_leader)
-    select id, 'entry', tree_wet::text, 'Albert III « le Courageux »', 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/Herzog-Albrecht-der-Beherzt.jpg/330px-Herzog-Albrecht-der-Beherzt.jpg', 1443, 1500, 'Duc de Saxe (ligne albertine)', 'Maison de Wettin', 2000, 4200, admin_id, false from _m where code = 'albertc';
+    select id, 'entry', tree_wet::text, 'Albert III « le Courageux »', 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/Herzog-Albrecht-der-Beherzt.jpg/330px-Herzog-Albrecht-der-Beherzt.jpg', 1443, 1500, 'Duc de Saxe (ligne albertine)', 'Maison de Wettin', 2000, 840, admin_id, false from _m where code = 'albertc';
   insert into _m(code) values ('sidonie');
   insert into public.genealogy_members (id, owner_type, owner_id, name, photo_url, birth_year, death_year, title, dynasty, pos_x, pos_y, created_by, is_leader)
-    select id, 'entry', tree_wet::text, 'Sidonie de Bohême', 'https://upload.wikimedia.org/wikipedia/commons/4/48/Sidonie_von_Podiebrad.jpg', 1449, 1510, 'Duchesse de Saxe', 'Poděbrady / Wettin', 2450, 4200, admin_id, false from _m where code = 'sidonie';
+    select id, 'entry', tree_wet::text, 'Sidonie de Bohême', 'https://upload.wikimedia.org/wikipedia/commons/4/48/Sidonie_von_Podiebrad.jpg', 1449, 1510, 'Duchesse de Saxe', 'Poděbrady / Wettin', 2450, 840, admin_id, false from _m where code = 'sidonie';
   insert into _m(code) values ('freds');
   insert into public.genealogy_members (id, owner_type, owner_id, name, photo_url, birth_year, death_year, title, dynasty, pos_x, pos_y, created_by, is_leader)
-    select id, 'entry', tree_wet::text, 'Frédéric III « le Sage »', 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/Kurf%C3%BCrst-Friedrich-III-von-Sachsen.jpg/330px-Kurf%C3%BCrst-Friedrich-III-von-Sachsen.jpg', 1463, 1525, 'Électeur de Saxe', 'Maison de Wettin', -2100, 4620, admin_id, false from _m where code = 'freds';
+    select id, 'entry', tree_wet::text, 'Frédéric III « le Sage »', 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/Kurf%C3%BCrst-Friedrich-III-von-Sachsen.jpg/330px-Kurf%C3%BCrst-Friedrich-III-von-Sachsen.jpg', 1463, 1525, 'Électeur de Saxe', 'Maison de Wettin', -2100, 1260, admin_id, false from _m where code = 'freds';
   insert into _m(code) values ('jeanc');
   insert into public.genealogy_members (id, owner_type, owner_id, name, photo_url, birth_year, death_year, title, dynasty, pos_x, pos_y, created_by, is_leader)
-    select id, 'entry', tree_wet::text, 'Jean « le Constant »', 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/Lucas_Cranach_the_Elder_-_Portrait_of_Johann_the_Steadfast_1509.jpg/330px-Lucas_Cranach_the_Elder_-_Portrait_of_Johann_the_Steadfast_1509.jpg', 1468, 1532, 'Électeur de Saxe', 'Maison de Wettin', -1500, 4620, admin_id, false from _m where code = 'jeanc';
+    select id, 'entry', tree_wet::text, 'Jean « le Constant »', 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/Lucas_Cranach_the_Elder_-_Portrait_of_Johann_the_Steadfast_1509.jpg/330px-Lucas_Cranach_the_Elder_-_Portrait_of_Johann_the_Steadfast_1509.jpg', 1468, 1532, 'Électeur de Saxe', 'Maison de Wettin', -1500, 1260, admin_id, false from _m where code = 'jeanc';
   insert into _m(code) values ('sophiem');
   insert into public.genealogy_members (id, owner_type, owner_id, name, photo_url, birth_year, death_year, title, dynasty, pos_x, pos_y, created_by, is_leader)
-    select id, 'entry', tree_wet::text, 'Sophie de Mecklembourg', 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Sophie_of_Mecklenburg_%281481%E2%80%931503%29.jpg/330px-Sophie_of_Mecklenburg_%281481%E2%80%931503%29.jpg', 1481, 1503, 'Électrice de Saxe', 'Mecklembourg / Wettin', -1000, 4620, admin_id, false from _m where code = 'sophiem';
+    select id, 'entry', tree_wet::text, 'Sophie de Mecklembourg', 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Sophie_of_Mecklenburg_%281481%E2%80%931503%29.jpg/330px-Sophie_of_Mecklenburg_%281481%E2%80%931503%29.jpg', 1481, 1503, 'Électrice de Saxe', 'Mecklembourg / Wettin', -1000, 1260, admin_id, false from _m where code = 'sophiem';
   insert into _m(code) values ('jf1');
   insert into public.genealogy_members (id, owner_type, owner_id, name, photo_url, birth_year, death_year, title, dynasty, pos_x, pos_y, created_by, is_leader)
-    select id, 'entry', tree_wet::text, 'Jean-Frédéric Ier « le Magnanime »', 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/Lucas_Cranach_d._%C3%84._044.jpg/330px-Lucas_Cranach_d._%C3%84._044.jpg', 1503, 1554, 'Électeur de Saxe (1532-1547), duc de Saxe', 'Maison de Wettin', -1500, 5040, admin_id, false from _m where code = 'jf1';
+    select id, 'entry', tree_wet::text, 'Jean-Frédéric Ier « le Magnanime »', 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/Lucas_Cranach_d._%C3%84._044.jpg/330px-Lucas_Cranach_d._%C3%84._044.jpg', 1503, 1554, 'Électeur de Saxe (1532-1547), duc de Saxe', 'Maison de Wettin', -1500, 1680, admin_id, false from _m where code = 'jf1';
   insert into _m(code) values ('sibylle');
   insert into public.genealogy_members (id, owner_type, owner_id, name, photo_url, birth_year, death_year, title, dynasty, pos_x, pos_y, created_by, is_leader)
-    select id, 'entry', tree_wet::text, 'Sibylle de Clèves', 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Bemberg_Fondation_Toulouse_-_Portrait_de_Sibylle_de_Cl%C3%A8ve%2C_%C3%A9lectrice_de_Saxe_-_Lucas_I_Cranach_-_Inv.1086_Huile_sur_panneau_1531.jpg/330px-Bemberg_Fondation_Toulouse_-_Portrait_de_Sibylle_de_Cl%C3%A8ve%2C_%C3%A9lectrice_de_Saxe_-_Lucas_I_Cranach_-_Inv.1086_Huile_sur_panneau_1531.jpg', 1512, 1554, 'Électrice de Saxe', 'La Marck-Clèves / Wettin', -1000, 5040, admin_id, false from _m where code = 'sibylle';
-  insert into _m(code) values ('jguil');
-  insert into public.genealogy_members (id, owner_type, owner_id, name, photo_url, birth_year, death_year, title, dynasty, pos_x, pos_y, created_by, is_leader)
-    select id, 'entry', tree_wet::text, 'Jean-Guillaume de Saxe-Weimar', 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Jean-Guillaume-de-Saxe-Weimar.jpg/330px-Jean-Guillaume-de-Saxe-Weimar.jpg', 1530, 1573, 'Duc de Saxe-Weimar', 'Maison de Wettin', -1500, 5460, admin_id, false from _m where code = 'jguil';
-  insert into _m(code) values ('jean2');
-  insert into public.genealogy_members (id, owner_type, owner_id, name, photo_url, birth_year, death_year, title, dynasty, pos_x, pos_y, created_by, is_leader)
-    select id, 'entry', tree_wet::text, 'Jean II de Saxe-Weimar', 'https://upload.wikimedia.org/wikipedia/commons/b/bf/Johann_of_Saxe-Weimar-Jena.jpg', 1570, 1605, 'Duc de Saxe-Weimar', 'Maison de Wettin', -1500, 5880, admin_id, false from _m where code = 'jean2';
-  insert into _m(code) values ('ernestp');
-  insert into public.genealogy_members (id, owner_type, owner_id, name, photo_url, birth_year, death_year, title, dynasty, pos_x, pos_y, created_by, is_leader)
-    select id, 'entry', tree_wet::text, 'Ernest Ier « le Pieux »', 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Ernest_I%2C_duke_of_Saxe-Gotha-Altenburg.jpg/330px-Ernest_I%2C_duke_of_Saxe-Gotha-Altenburg.jpg', 1601, 1675, 'Duc de Saxe-Gotha', 'Maison de Wettin', -1500, 6300, admin_id, false from _m where code = 'ernestp';
-  insert into _m(code) values ('fgo1');
-  insert into public.genealogy_members (id, owner_type, owner_id, name, photo_url, birth_year, death_year, title, dynasty, pos_x, pos_y, created_by, is_leader)
-    select id, 'entry', tree_wet::text, 'Frédéric Ier de Saxe-Gotha-Altenbourg', 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Frederick_I_of_Saxe-Gotha-Altenburg.jpg/330px-Frederick_I_of_Saxe-Gotha-Altenburg.jpg', 1646, 1691, 'Duc de Saxe-Gotha-Altenbourg', 'Maison de Wettin', -2300, 6720, admin_id, false from _m where code = 'fgo1';
-  insert into _m(code) values ('jeanern');
-  insert into public.genealogy_members (id, owner_type, owner_id, name, photo_url, birth_year, death_year, title, dynasty, pos_x, pos_y, created_by, is_leader)
-    select id, 'entry', tree_wet::text, 'Jean-Ernest IV de Saxe-Saalfeld', 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Johannernstsaalfeld.jpg/330px-Johannernstsaalfeld.jpg', 1658, 1729, 'Duc de Saxe-Saalfeld', 'Maison de Wettin', -900, 6720, admin_id, false from _m where code = 'jeanern';
-  insert into _m(code) values ('fgo2');
-  insert into public.genealogy_members (id, owner_type, owner_id, name, photo_url, birth_year, death_year, title, dynasty, pos_x, pos_y, created_by, is_leader)
-    select id, 'entry', tree_wet::text, 'Frédéric II de Saxe-Gotha-Altenbourg', 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/79/FriedrichIISaGoAlt.jpg/330px-FriedrichIISaGoAlt.jpg', 1676, 1732, 'Duc de Saxe-Gotha-Altenbourg', 'Maison de Wettin', -2300, 7140, admin_id, false from _m where code = 'fgo2';
-  insert into _m(code) values ('madaug');
-  insert into public.genealogy_members (id, owner_type, owner_id, name, photo_url, birth_year, death_year, title, dynasty, pos_x, pos_y, created_by, is_leader)
-    select id, 'entry', tree_wet::text, 'Madeleine-Augusta d''Anhalt-Zerbst', 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/Magdalena_Augusta_von_Anhalt-Zerbst.jpg/330px-Magdalena_Augusta_von_Anhalt-Zerbst.jpg', 1679, 1740, 'Duchesse de Saxe-Gotha-Altenbourg', 'Anhalt-Zerbst / Wettin', -1800, 7140, admin_id, false from _m where code = 'madaug';
-  insert into _m(code) values ('fjos');
-  insert into public.genealogy_members (id, owner_type, owner_id, name, photo_url, birth_year, death_year, title, dynasty, pos_x, pos_y, created_by, is_leader)
-    select id, 'entry', tree_wet::text, 'François-Josias de Saxe-Cobourg-Saalfeld', 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/Francis_Josias%2C_duke_of_Saxe-Coburg-Saalfeld.jpg/330px-Francis_Josias%2C_duke_of_Saxe-Coburg-Saalfeld.jpg', 1697, 1764, 'Duc de Saxe-Cobourg-Saalfeld', 'Maison de Wettin', -900, 7140, admin_id, false from _m where code = 'fjos';
-  insert into _m(code) values ('efred');
-  insert into public.genealogy_members (id, owner_type, owner_id, name, photo_url, birth_year, death_year, title, dynasty, pos_x, pos_y, created_by, is_leader)
-    select id, 'entry', tree_wet::text, 'Ernest-Frédéric de Saxe-Cobourg-Saalfeld', 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Ernesto_Federico_de_Wettin_Saalfeld.jpg/330px-Ernesto_Federico_de_Wettin_Saalfeld.jpg', 1724, 1800, 'Duc de Saxe-Cobourg-Saalfeld', 'Maison de Wettin', -900, 7560, admin_id, false from _m where code = 'efred';
-  insert into _m(code) values ('fran');
-  insert into public.genealogy_members (id, owner_type, owner_id, name, photo_url, birth_year, death_year, title, dynasty, pos_x, pos_y, created_by, is_leader)
-    select id, 'entry', tree_wet::text, 'François de Saxe-Cobourg-Saalfeld', 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/Johann_Heinrich_Schr%C3%B6der_-_Herzog_Franz_Friedrich_Anton_von_Sachsen-Coburg-Saalfeld.jpg/330px-Johann_Heinrich_Schr%C3%B6der_-_Herzog_Franz_Friedrich_Anton_von_Sachsen-Coburg-Saalfeld.jpg', 1750, 1806, 'Duc de Saxe-Cobourg-Saalfeld', 'Maison de Wettin', -900, 7980, admin_id, false from _m where code = 'fran';
-  insert into _m(code) values ('augreuss');
-  insert into public.genealogy_members (id, owner_type, owner_id, name, photo_url, birth_year, death_year, title, dynasty, pos_x, pos_y, created_by, is_leader)
-    select id, 'entry', tree_wet::text, 'Augusta Reuss d''Ebersdorf', 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b3/Augusta_di_Reuss-Ebersdorf%2C_duchessa_di_Sassonia-Coburgo-Saalfeld.jpg/330px-Augusta_di_Reuss-Ebersdorf%2C_duchessa_di_Sassonia-Coburgo-Saalfeld.jpg', 1757, 1831, 'Duchesse de Saxe-Cobourg-Saalfeld', 'Reuss / Wettin', -400, 7980, admin_id, false from _m where code = 'augreuss';
-  insert into _m(code) values ('ernest1');
-  insert into public.genealogy_members (id, owner_type, owner_id, name, photo_url, birth_year, death_year, title, dynasty, pos_x, pos_y, created_by, is_leader)
-    select id, 'entry', tree_wet::text, 'Ernest Ier de Saxe-Cobourg et Gotha', 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/22/Ernst_I%2C_Duke_of_Saxe-Coburg_and_Gotha_-_Dawe_1818-19.jpg/330px-Ernst_I%2C_Duke_of_Saxe-Coburg_and_Gotha_-_Dawe_1818-19.jpg', 1784, 1844, 'Duc de Saxe-Cobourg et Gotha', 'Maison de Wettin', -1200, 8400, admin_id, false from _m where code = 'ernest1';
-  insert into _m(code) values ('louisegotha');
-  insert into public.genealogy_members (id, owner_type, owner_id, name, photo_url, birth_year, death_year, title, dynasty, pos_x, pos_y, created_by, is_leader)
-    select id, 'entry', tree_wet::text, 'Louise de Saxe-Gotha-Altenbourg', null, 1800, 1831, 'Duchesse de Saxe-Cobourg et Gotha', 'Maison de Wettin', -700, 8400, admin_id, false from _m where code = 'louisegotha';
-  insert into _m(code) values ('ernest2');
-  insert into public.genealogy_members (id, owner_type, owner_id, name, photo_url, birth_year, death_year, title, dynasty, pos_x, pos_y, created_by, is_leader)
-    select id, 'entry', tree_wet::text, 'Ernest II de Saxe-Cobourg et Gotha', 'https://upload.wikimedia.org/wikipedia/commons/0/02/ErnstIIofSCG.jpg', 1818, 1893, 'Duc de Saxe-Cobourg et Gotha', 'Maison de Wettin', -1200, 8820, admin_id, false from _m where code = 'ernest2';
+    select id, 'entry', tree_wet::text, 'Sibylle de Clèves', 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Bemberg_Fondation_Toulouse_-_Portrait_de_Sibylle_de_Cl%C3%A8ve%2C_%C3%A9lectrice_de_Saxe_-_Lucas_I_Cranach_-_Inv.1086_Huile_sur_panneau_1531.jpg/330px-Bemberg_Fondation_Toulouse_-_Portrait_de_Sibylle_de_Cl%C3%A8ve%2C_%C3%A9lectrice_de_Saxe_-_Lucas_I_Cranach_-_Inv.1086_Huile_sur_panneau_1531.jpg', 1512, 1554, 'Électrice de Saxe', 'La Marck-Clèves / Wettin', -1000, 1680, admin_id, false from _m where code = 'sibylle';
   insert into _m(code) values ('georges');
   insert into public.genealogy_members (id, owner_type, owner_id, name, photo_url, birth_year, death_year, title, dynasty, pos_x, pos_y, created_by, is_leader)
-    select id, 'entry', tree_wet::text, 'Georges « le Barbu »', 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/22/Georg_der_B%C3%A4rtige_2.jpg/330px-Georg_der_B%C3%A4rtige_2.jpg', 1471, 1539, 'Duc de Saxe', 'Maison de Wettin', 1500, 4620, admin_id, false from _m where code = 'georges';
+    select id, 'entry', tree_wet::text, 'Georges « le Barbu »', 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/22/Georg_der_B%C3%A4rtige_2.jpg/330px-Georg_der_B%C3%A4rtige_2.jpg', 1471, 1539, 'Duc de Saxe', 'Maison de Wettin', 1500, 1260, admin_id, false from _m where code = 'georges';
   insert into _m(code) values ('henrip');
   insert into public.genealogy_members (id, owner_type, owner_id, name, photo_url, birth_year, death_year, title, dynasty, pos_x, pos_y, created_by, is_leader)
-    select id, 'entry', tree_wet::text, 'Henri IV « le Pieux »', 'https://upload.wikimedia.org/wikipedia/commons/1/15/Lucas_Cranach_d._%C3%84._042_small.jpg', 1473, 1541, 'Duc de Saxe', 'Maison de Wettin', 2500, 4620, admin_id, false from _m where code = 'henrip';
+    select id, 'entry', tree_wet::text, 'Henri IV « le Pieux »', 'https://upload.wikimedia.org/wikipedia/commons/1/15/Lucas_Cranach_d._%C3%84._042_small.jpg', 1473, 1541, 'Duc de Saxe', 'Maison de Wettin', 2500, 1260, admin_id, false from _m where code = 'henrip';
   insert into _m(code) values ('catm');
   insert into public.genealogy_members (id, owner_type, owner_id, name, photo_url, birth_year, death_year, title, dynasty, pos_x, pos_y, created_by, is_leader)
-    select id, 'entry', tree_wet::text, 'Catherine de Mecklembourg', 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/06/Lucas_Cranach_the_Elder_-_Duchess_Katharina_von_Mecklenburg_-_Google_Art_ProjectFXD_crop.jpg/330px-Lucas_Cranach_the_Elder_-_Duchess_Katharina_von_Mecklenburg_-_Google_Art_ProjectFXD_crop.jpg', 1487, 1561, 'Duchesse de Saxe', 'Mecklembourg / Wettin', 3000, 4620, admin_id, false from _m where code = 'catm';
+    select id, 'entry', tree_wet::text, 'Catherine de Mecklembourg', 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/06/Lucas_Cranach_the_Elder_-_Duchess_Katharina_von_Mecklenburg_-_Google_Art_ProjectFXD_crop.jpg/330px-Lucas_Cranach_the_Elder_-_Duchess_Katharina_von_Mecklenburg_-_Google_Art_ProjectFXD_crop.jpg', 1487, 1561, 'Duchesse de Saxe', 'Mecklembourg / Wettin', 3000, 1260, admin_id, false from _m where code = 'catm';
   insert into _m(code) values ('madsax');
   insert into public.genealogy_members (id, owner_type, owner_id, name, photo_url, birth_year, death_year, title, dynasty, pos_x, pos_y, created_by, is_leader)
-    select id, 'entry', tree_wet::text, 'Madeleine de Saxe', 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Portrait_of_Magdalena_of_Saxony%2C_Wife_of_Elector_Joachim_II_of_Brandenburg%2C_c._1529%2C_by_Lucas_Cranach_the_Elder_-_Art_Institute_of_Chicago_-_DSC00095.JPG/330px-Portrait_of_Magdalena_of_Saxony%2C_Wife_of_Elector_Joachim_II_of_Brandenburg%2C_c._1529%2C_by_Lucas_Cranach_the_Elder_-_Art_Institute_of_Chicago_-_DSC00095.JPG', 1507, 1534, 'Électrice de Brandebourg', 'Maison de Wettin', 1500, 5040, admin_id, false from _m where code = 'madsax';
+    select id, 'entry', tree_wet::text, 'Madeleine de Saxe', 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Portrait_of_Magdalena_of_Saxony%2C_Wife_of_Elector_Joachim_II_of_Brandenburg%2C_c._1529%2C_by_Lucas_Cranach_the_Elder_-_Art_Institute_of_Chicago_-_DSC00095.JPG/330px-Portrait_of_Magdalena_of_Saxony%2C_Wife_of_Elector_Joachim_II_of_Brandenburg%2C_c._1529%2C_by_Lucas_Cranach_the_Elder_-_Art_Institute_of_Chicago_-_DSC00095.JPG', 1507, 1534, 'Électrice de Brandebourg', 'Maison de Wettin', 1500, 1680, admin_id, false from _m where code = 'madsax';
   insert into _m(code) values ('maurice');
   insert into public.genealogy_members (id, owner_type, owner_id, name, photo_url, birth_year, death_year, title, dynasty, pos_x, pos_y, created_by, is_leader)
-    select id, 'entry', tree_wet::text, 'Maurice', 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Moritz_Sachsen.JPG/330px-Moritz_Sachsen.JPG', 1521, 1553, 'Duc de Saxe, électeur de Saxe (1547)', 'Maison de Wettin', 2500, 5040, admin_id, false from _m where code = 'maurice';
+    select id, 'entry', tree_wet::text, 'Maurice', 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Moritz_Sachsen.JPG/330px-Moritz_Sachsen.JPG', 1521, 1553, 'Duc de Saxe, électeur de Saxe (1547)', 'Maison de Wettin', 2500, 1680, admin_id, false from _m where code = 'maurice';
   insert into _m(code) values ('agnes');
   insert into public.genealogy_members (id, owner_type, owner_id, name, photo_url, birth_year, death_year, title, dynasty, pos_x, pos_y, created_by, is_leader)
-    select id, 'entry', tree_wet::text, 'Agnès de Hesse', 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/Agnes_of_Hesse.JPG/330px-Agnes_of_Hesse.JPG', 1527, 1555, 'Électrice de Saxe', 'Hesse / Wettin', 2950, 5040, admin_id, false from _m where code = 'agnes';
+    select id, 'entry', tree_wet::text, 'Agnès de Hesse', 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/Agnes_of_Hesse.JPG/330px-Agnes_of_Hesse.JPG', 1527, 1555, 'Électrice de Saxe', 'Hesse / Wettin', 2950, 1680, admin_id, false from _m where code = 'agnes';
   insert into _m(code) values ('auguste');
   insert into public.genealogy_members (id, owner_type, owner_id, name, photo_url, birth_year, death_year, title, dynasty, pos_x, pos_y, created_by, is_leader)
-    select id, 'entry', tree_wet::text, 'Auguste Ier', 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a3/Lucas_Cranach_d._J._012_detail.jpg/330px-Lucas_Cranach_d._J._012_detail.jpg', 1526, 1586, 'Électeur de Saxe', 'Maison de Wettin', 3500, 5040, admin_id, false from _m where code = 'auguste';
+    select id, 'entry', tree_wet::text, 'Auguste Ier', 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a3/Lucas_Cranach_d._J._012_detail.jpg/330px-Lucas_Cranach_d._J._012_detail.jpg', 1526, 1586, 'Électeur de Saxe', 'Maison de Wettin', 3500, 1680, admin_id, false from _m where code = 'auguste';
   insert into _m(code) values ('chr1');
   insert into public.genealogy_members (id, owner_type, owner_id, name, photo_url, birth_year, death_year, title, dynasty, pos_x, pos_y, created_by, is_leader)
-    select id, 'entry', tree_wet::text, 'Christian Ier', 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/Christian_I_of_Saxony.jpg/330px-Christian_I_of_Saxony.jpg', 1560, 1591, 'Électeur de Saxe', 'Maison de Wettin', 3500, 5460, admin_id, false from _m where code = 'chr1';
+    select id, 'entry', tree_wet::text, 'Christian Ier', 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/Christian_I_of_Saxony.jpg/330px-Christian_I_of_Saxony.jpg', 1560, 1591, 'Électeur de Saxe', 'Maison de Wettin', 3500, 2100, admin_id, false from _m where code = 'chr1';
   insert into _m(code) values ('chr2');
   insert into public.genealogy_members (id, owner_type, owner_id, name, photo_url, birth_year, death_year, title, dynasty, pos_x, pos_y, created_by, is_leader)
-    select id, 'entry', tree_wet::text, 'Christian II', 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Zacharias_Wehme_-_Prince_Elector_Christian_II_of_Saxony_%28ca._1601-1606%29_-_Google_Art_Project.jpg/330px-Zacharias_Wehme_-_Prince_Elector_Christian_II_of_Saxony_%28ca._1601-1606%29_-_Google_Art_Project.jpg', 1583, 1611, 'Électeur de Saxe', 'Maison de Wettin', 3000, 5880, admin_id, false from _m where code = 'chr2';
+    select id, 'entry', tree_wet::text, 'Christian II', 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Zacharias_Wehme_-_Prince_Elector_Christian_II_of_Saxony_%28ca._1601-1606%29_-_Google_Art_Project.jpg/330px-Zacharias_Wehme_-_Prince_Elector_Christian_II_of_Saxony_%28ca._1601-1606%29_-_Google_Art_Project.jpg', 1583, 1611, 'Électeur de Saxe', 'Maison de Wettin', 3000, 2520, admin_id, false from _m where code = 'chr2';
   insert into _m(code) values ('jg1');
   insert into public.genealogy_members (id, owner_type, owner_id, name, photo_url, birth_year, death_year, title, dynasty, pos_x, pos_y, created_by, is_leader)
-    select id, 'entry', tree_wet::text, 'Jean-Georges Ier', 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Johann_Georg_I_Saxony.jpg/330px-Johann_Georg_I_Saxony.jpg', 1585, 1656, 'Électeur de Saxe', 'Maison de Wettin', 4000, 5880, admin_id, false from _m where code = 'jg1';
+    select id, 'entry', tree_wet::text, 'Jean-Georges Ier', 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Johann_Georg_I_Saxony.jpg/330px-Johann_Georg_I_Saxony.jpg', 1585, 1656, 'Électeur de Saxe', 'Maison de Wettin', 4000, 2520, admin_id, false from _m where code = 'jg1';
   insert into _m(code) values ('jg2');
   insert into public.genealogy_members (id, owner_type, owner_id, name, photo_url, birth_year, death_year, title, dynasty, pos_x, pos_y, created_by, is_leader)
-    select id, 'entry', tree_wet::text, 'Jean-Georges II', 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Johan_Georg_II_Johann_Fink%2C_vor_1675.jpg/330px-Johan_Georg_II_Johann_Fink%2C_vor_1675.jpg', 1613, 1680, 'Électeur de Saxe', 'Maison de Wettin', 4000, 6300, admin_id, false from _m where code = 'jg2';
+    select id, 'entry', tree_wet::text, 'Jean-Georges II', 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Johan_Georg_II_Johann_Fink%2C_vor_1675.jpg/330px-Johan_Georg_II_Johann_Fink%2C_vor_1675.jpg', 1613, 1680, 'Électeur de Saxe', 'Maison de Wettin', 4000, 2940, admin_id, false from _m where code = 'jg2';
   insert into _m(code) values ('jg3');
   insert into public.genealogy_members (id, owner_type, owner_id, name, photo_url, birth_year, death_year, title, dynasty, pos_x, pos_y, created_by, is_leader)
-    select id, 'entry', tree_wet::text, 'Jean-Georges III', 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/1647_Johann_Georg.JPG/330px-1647_Johann_Georg.JPG', 1647, 1691, 'Électeur de Saxe', 'Maison de Wettin', 4000, 6720, admin_id, false from _m where code = 'jg3';
+    select id, 'entry', tree_wet::text, 'Jean-Georges III', 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/1647_Johann_Georg.JPG/330px-1647_Johann_Georg.JPG', 1647, 1691, 'Électeur de Saxe', 'Maison de Wettin', 4000, 3360, admin_id, false from _m where code = 'jg3';
   insert into _m(code) values ('jg4');
   insert into public.genealogy_members (id, owner_type, owner_id, name, photo_url, birth_year, death_year, title, dynasty, pos_x, pos_y, created_by, is_leader)
-    select id, 'entry', tree_wet::text, 'Jean-Georges IV', 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Johann_Georg_IV_von_Sachsen.jpg/330px-Johann_Georg_IV_von_Sachsen.jpg', 1668, 1694, 'Électeur de Saxe', 'Maison de Wettin', 3500, 7140, admin_id, false from _m where code = 'jg4';
+    select id, 'entry', tree_wet::text, 'Jean-Georges IV', 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Johann_Georg_IV_von_Sachsen.jpg/330px-Johann_Georg_IV_von_Sachsen.jpg', 1668, 1694, 'Électeur de Saxe', 'Maison de Wettin', 3500, 3780, admin_id, false from _m where code = 'jg4';
   insert into _m(code) values ('fa1');
   insert into public.genealogy_members (id, owner_type, owner_id, name, photo_url, birth_year, death_year, title, dynasty, pos_x, pos_y, created_by, is_leader)
-    select id, 'entry', tree_wet::text, 'Frédéric-Auguste Ier « Auguste II le Fort »', 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/August_der_Starke_%281670-1733%29.jpg/330px-August_der_Starke_%281670-1733%29.jpg', 1670, 1733, 'Électeur de Saxe, roi de Pologne (Auguste II)', 'Maison de Wettin', 4500, 7140, admin_id, true from _m where code = 'fa1';
+    select id, 'entry', '7482cd8d-c426-4789-b4ec-48fe08c8d4ae', 'Frédéric-Auguste Ier « Auguste II le Fort »', 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/August_der_Starke_%281670-1733%29.jpg/330px-August_der_Starke_%281670-1733%29.jpg', 1670, 1733, 'Électeur de Saxe, roi de Pologne (Auguste II)', 'Maison de Wettin', 417, -130, admin_id, true from _m where code = 'fa1';
   insert into _m(code) values ('fc');
   insert into public.genealogy_members (id, owner_type, owner_id, name, photo_url, birth_year, death_year, title, dynasty, pos_x, pos_y, created_by, is_leader)
-    select id, 'entry', tree_wet::text, 'Frédéric-Christian', 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Anton_raphael_mengs_portrait_of_friedrich_christian_prince_of_saxony_t111526%29.jpg/330px-Anton_raphael_mengs_portrait_of_friedrich_christian_prince_of_saxony_t111526%29.jpg', 1722, 1763, 'Électeur de Saxe (1763)', 'Maison de Wettin', 4500, 7980, admin_id, false from _m where code = 'fc';
+    select id, 'entry', tree_wet::text, 'Frédéric-Christian', 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Anton_raphael_mengs_portrait_of_friedrich_christian_prince_of_saxony_t111526%29.jpg/330px-Anton_raphael_mengs_portrait_of_friedrich_christian_prince_of_saxony_t111526%29.jpg', 1722, 1763, 'Électeur de Saxe (1763)', 'Maison de Wettin', 4500, 4620, admin_id, false from _m where code = 'fc';
   insert into _m(code) values ('xav');
   insert into public.genealogy_members (id, owner_type, owner_id, name, photo_url, birth_year, death_year, title, dynasty, pos_x, pos_y, created_by, is_leader)
-    select id, 'entry', tree_wet::text, 'François-Xavier de Saxe', 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/Franciszek_Ksawery_Wettin.jpeg/330px-Franciszek_Ksawery_Wettin.jpeg', 1730, 1806, 'Administrateur de Saxe (1763-1768), comte de Lusace', 'Maison de Wettin', 5400, 7980, admin_id, false from _m where code = 'xav';
+    select id, 'entry', tree_wet::text, 'François-Xavier de Saxe', 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/Franciszek_Ksawery_Wettin.jpeg/330px-Franciszek_Ksawery_Wettin.jpeg', 1730, 1806, 'Administrateur de Saxe (1763-1768), comte de Lusace', 'Maison de Wettin', 5400, 4620, admin_id, false from _m where code = 'xav';
   insert into _m(code) values ('fa3');
   insert into public.genealogy_members (id, owner_type, owner_id, name, photo_url, birth_year, death_year, title, dynasty, pos_x, pos_y, created_by, is_leader)
-    select id, 'entry', tree_wet::text, 'Frédéric-Auguste Ier « le Juste »', 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/Frederick_Augustus_I_of_Saxony_by_Marcello_Bacciarelli_%28ca_1808-1809%29.png/330px-Frederick_Augustus_I_of_Saxony_by_Marcello_Bacciarelli_%28ca_1808-1809%29.png', 1750, 1827, 'Électeur puis 1er roi de Saxe (1806), duc de Varsovie', 'Maison de Wettin', 4000, 8400, admin_id, false from _m where code = 'fa3';
+    select id, 'entry', tree_wet::text, 'Frédéric-Auguste Ier « le Juste »', 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/Frederick_Augustus_I_of_Saxony_by_Marcello_Bacciarelli_%28ca_1808-1809%29.png/330px-Frederick_Augustus_I_of_Saxony_by_Marcello_Bacciarelli_%28ca_1808-1809%29.png', 1750, 1827, 'Électeur puis 1er roi de Saxe (1806), duc de Varsovie', 'Maison de Wettin', 4000, 5040, admin_id, false from _m where code = 'fa3';
   insert into _m(code) values ('antoine');
   insert into public.genealogy_members (id, owner_type, owner_id, name, photo_url, birth_year, death_year, title, dynasty, pos_x, pos_y, created_by, is_leader)
-    select id, 'entry', tree_wet::text, 'Antoine Ier', 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Anton-sachsen.jpg/330px-Anton-sachsen.jpg', 1755, 1836, 'Roi de Saxe', 'Maison de Wettin', 5000, 8400, admin_id, false from _m where code = 'antoine';
+    select id, 'entry', tree_wet::text, 'Antoine Ier', 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Anton-sachsen.jpg/330px-Anton-sachsen.jpg', 1755, 1836, 'Roi de Saxe', 'Maison de Wettin', 5000, 5040, admin_id, false from _m where code = 'antoine';
   insert into _m(code) values ('maxs');
   insert into public.genealogy_members (id, owner_type, owner_id, name, photo_url, birth_year, death_year, title, dynasty, pos_x, pos_y, created_by, is_leader)
-    select id, 'entry', tree_wet::text, 'Maximilien de Saxe', 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/81/Maximilian_Saxony.jpg/330px-Maximilian_Saxony.jpg', 1759, 1838, 'Prince de Saxe', 'Maison de Wettin', 6000, 8400, admin_id, false from _m where code = 'maxs';
+    select id, 'entry', tree_wet::text, 'Maximilien de Saxe', 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/81/Maximilian_Saxony.jpg/330px-Maximilian_Saxony.jpg', 1759, 1838, 'Prince de Saxe', 'Maison de Wettin', 6000, 5040, admin_id, false from _m where code = 'maxs';
   insert into _m(code) values ('fa2k');
   insert into public.genealogy_members (id, owner_type, owner_id, name, photo_url, birth_year, death_year, title, dynasty, pos_x, pos_y, created_by, is_leader)
-    select id, 'entry', tree_wet::text, 'Frédéric-Auguste II', 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Friedrich_August_II_of_Saxony.jpg/330px-Friedrich_August_II_of_Saxony.jpg', 1797, 1854, 'Roi de Saxe', 'Maison de Wettin', 6000, 8820, admin_id, false from _m where code = 'fa2k';
+    select id, 'entry', tree_wet::text, 'Frédéric-Auguste II', 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Friedrich_August_II_of_Saxony.jpg/330px-Friedrich_August_II_of_Saxony.jpg', 1797, 1854, 'Roi de Saxe', 'Maison de Wettin', 6000, 5460, admin_id, false from _m where code = 'fa2k';
   insert into _m(code) values ('jeans');
   insert into public.genealogy_members (id, owner_type, owner_id, name, photo_url, birth_year, death_year, title, dynasty, pos_x, pos_y, created_by, is_leader)
-    select id, 'entry', tree_wet::text, 'Jean Ier', 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/45/Louis_Ferdinand_von_Rayski_-_K%C3%B6nig_Johann_von_Sachsen%2C_1870.jpg/330px-Louis_Ferdinand_von_Rayski_-_K%C3%B6nig_Johann_von_Sachsen%2C_1870.jpg', 1801, 1873, 'Roi de Saxe', 'Maison de Wettin', 6900, 8820, admin_id, false from _m where code = 'jeans';
+    select id, 'entry', tree_wet::text, 'Jean Ier', 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/45/Louis_Ferdinand_von_Rayski_-_K%C3%B6nig_Johann_von_Sachsen%2C_1870.jpg/330px-Louis_Ferdinand_von_Rayski_-_K%C3%B6nig_Johann_von_Sachsen%2C_1870.jpg', 1801, 1873, 'Roi de Saxe', 'Maison de Wettin', 6900, 5460, admin_id, false from _m where code = 'jeans';
   insert into _m(code) values ('alberts');
   insert into public.genealogy_members (id, owner_type, owner_id, name, photo_url, birth_year, death_year, title, dynasty, pos_x, pos_y, created_by, is_leader)
-    select id, 'entry', tree_wet::text, 'Albert Ier', 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/AK_Portrait_K%C3%B6nig_Albert_von_Sachsen_in_Uniform.png/330px-AK_Portrait_K%C3%B6nig_Albert_von_Sachsen_in_Uniform.png', 1828, 1902, 'Roi de Saxe', 'Maison de Wettin', 6900, 9240, admin_id, false from _m where code = 'alberts';
+    select id, 'entry', tree_wet::text, 'Albert Ier', 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/AK_Portrait_K%C3%B6nig_Albert_von_Sachsen_in_Uniform.png/330px-AK_Portrait_K%C3%B6nig_Albert_von_Sachsen_in_Uniform.png', 1828, 1902, 'Roi de Saxe', 'Maison de Wettin', 6900, 5880, admin_id, false from _m where code = 'alberts';
   insert into _m(code) values ('carola');
   insert into public.genealogy_members (id, owner_type, owner_id, name, photo_url, birth_year, death_year, title, dynasty, pos_x, pos_y, created_by, is_leader)
-    select id, 'entry', tree_wet::text, 'Carola de Vasa', 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Carola_of_Vasa_Queen_of_Saxe.jpg/330px-Carola_of_Vasa_Queen_of_Saxe.jpg', 1833, 1907, 'Reine de Saxe', 'Holstein-Gottorp (Vasa) / Wettin', 7400, 9240, admin_id, false from _m where code = 'carola';
+    select id, 'entry', tree_wet::text, 'Carola de Vasa', 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Carola_of_Vasa_Queen_of_Saxe.jpg/330px-Carola_of_Vasa_Queen_of_Saxe.jpg', 1833, 1907, 'Reine de Saxe', 'Holstein-Gottorp (Vasa) / Wettin', 7400, 5880, admin_id, false from _m where code = 'carola';
   insert into _m(code) values ('georgess');
   insert into public.genealogy_members (id, owner_type, owner_id, name, photo_url, birth_year, death_year, title, dynasty, pos_x, pos_y, created_by, is_leader)
-    select id, 'entry', tree_wet::text, 'Georges Ier', 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/George_of_Saxony_by_Nicola_Perscheid_c1900.jpg/330px-George_of_Saxony_by_Nicola_Perscheid_c1900.jpg', 1832, 1904, 'Roi de Saxe', 'Maison de Wettin', 8000, 9240, admin_id, false from _m where code = 'georgess';
+    select id, 'entry', tree_wet::text, 'Georges Ier', 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/George_of_Saxony_by_Nicola_Perscheid_c1900.jpg/330px-George_of_Saxony_by_Nicola_Perscheid_c1900.jpg', 1832, 1904, 'Roi de Saxe', 'Maison de Wettin', 8000, 5880, admin_id, false from _m where code = 'georgess';
   insert into _m(code) values ('fa3k');
   insert into public.genealogy_members (id, owner_type, owner_id, name, photo_url, birth_year, death_year, title, dynasty, pos_x, pos_y, created_by, is_leader)
-    select id, 'entry', tree_wet::text, 'Frédéric-Auguste III', 'https://upload.wikimedia.org/wikipedia/commons/9/92/Friedrich_August_III_von_Sachsen_in_Paradeuniform.jpg', 1865, 1932, 'Dernier roi de Saxe (abdique en 1918)', 'Maison de Wettin', 8000, 9660, admin_id, false from _m where code = 'fa3k';
+    select id, 'entry', tree_wet::text, 'Frédéric-Auguste III', 'https://upload.wikimedia.org/wikipedia/commons/9/92/Friedrich_August_III_von_Sachsen_in_Paradeuniform.jpg', 1865, 1932, 'Dernier roi de Saxe (abdique en 1918)', 'Maison de Wettin', 8000, 6300, admin_id, false from _m where code = 'fa3k';
   insert into _m(code) values ('mthur');
   insert into public.genealogy_members (id, owner_type, owner_id, name, photo_url, birth_year, death_year, title, dynasty, pos_x, pos_y, created_by, is_leader)
-    select id, 'entry', tree_wet::text, 'Marguerite de Thuringe', null, 1449, 1501, 'Électrice de Brandebourg', 'Maison de Wettin', -500, 5040, admin_id, false from _m where code = 'mthur';
+    select id, 'entry', tree_wet::text, 'Marguerite de Thuringe', null, 1449, 1501, 'Électrice de Brandebourg', 'Maison de Wettin', -3000, 420, admin_id, false from _m where code = 'mthur';
   insert into _m(code) values ('augweim');
   insert into public.genealogy_members (id, owner_type, owner_id, name, photo_url, birth_year, death_year, title, dynasty, pos_x, pos_y, created_by, is_leader)
-    select id, 'entry', tree_wet::text, 'Augusta de Saxe-Weimar-Eisenach', 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Augusta_von_Preussen.jpg/330px-Augusta_von_Preussen.jpg', 1811, 1890, 'Reine de Prusse, impératrice allemande', 'Maison de Wettin', -500, 6300, admin_id, false from _m where code = 'augweim';
+    select id, 'entry', tree_wet::text, 'Augusta de Saxe-Weimar-Eisenach', 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Augusta_von_Preussen.jpg/330px-Augusta_von_Preussen.jpg', 1811, 1890, 'Reine de Prusse, impératrice allemande', 'Maison de Wettin', -3000, 840, admin_id, false from _m where code = 'augweim';
   insert into _m(code) values ('f5');
   insert into public.genealogy_members (id, owner_type, owner_id, name, photo_url, birth_year, death_year, title, dynasty, pos_x, pos_y, created_by, is_leader)
     select id, 'entry', tree_hoh::text, 'Frédéric V de Nuremberg', null, 1332, 1398, 'Burgrave de Nuremberg', 'Maison de Hohenzollern', 0, 0, admin_id, false from _m where code = 'f5';
@@ -350,9 +275,6 @@ begin
   insert into _m(code) values ('chri');
   insert into public.genealogy_members (id, owner_type, owner_id, name, photo_url, birth_year, death_year, title, dynasty, pos_x, pos_y, created_by, is_leader)
     select id, 'entry', tree_hoh::text, 'Christiane-Éberhardine de Brandebourg-Bayreuth', 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Christiane_Eberhardine_von_Brandenburg-Bayreuth.PNG/330px-Christiane_Eberhardine_von_Brandenburg-Bayreuth.PNG', 1671, 1727, 'Reine de Pologne, électrice de Saxe', 'Maison de Hohenzollern', -1100, 3780, admin_id, false from _m where code = 'chri';
-  insert into _m(code) values ('mathb');
-  insert into public.genealogy_members (id, owner_type, owner_id, name, photo_url, birth_year, death_year, title, dynasty, pos_x, pos_y, created_by, is_leader)
-    select id, 'entry', 'e76d91a3-1b9c-4703-85b3-9f711b6d6199', 'Mathilde de Bavière', null, 1313, 1346, 'Margravine de Misnie', 'Wittelsbach', 6400, 0, admin_id, false from _m where code = 'mathb';
   insert into _m(code) values ('elbl');
   insert into public.genealogy_members (id, owner_type, owner_id, name, photo_url, birth_year, death_year, title, dynasty, pos_x, pos_y, created_by, is_leader)
     select id, 'entry', 'e76d91a3-1b9c-4703-85b3-9f711b6d6199', 'Élisabeth de Bavière-Landshut', 'https://upload.wikimedia.org/wikipedia/commons/6/62/Elisabeth_von_Bayern-Landshut.jpg', 1383, 1442, 'Burgravine de Nuremberg, électrice de Brandebourg', 'Wittelsbach', 6400, 420, admin_id, false from _m where code = 'elbl';
@@ -380,9 +302,6 @@ begin
   insert into _m(code) values ('lt');
   insert into public.genealogy_members (id, owner_type, owner_id, name, photo_url, birth_year, death_year, title, dynasty, pos_x, pos_y, created_by, is_leader)
     select id, 'entry', '6b34bc03-d0ad-4c48-a485-f541cecafd5d', 'Louise-Antoinette de Habsbourg-Toscane', 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/Luise_von_Toskana.jpg/330px-Luise_von_Toskana.jpg', 1870, 1947, 'Princesse héritière puis reine consort de Saxe (divorcée en 1903)', 'Habsbourg-Toscane', 10800, 420, admin_id, false from _m where code = 'lt';
-  insert into _m(code) values ('margsic');
-  insert into public.genealogy_members (id, owner_type, owner_id, name, photo_url, birth_year, death_year, title, dynasty, pos_x, pos_y, created_by, is_leader)
-    select id, 'entry', '19aed0d5-8c4a-4125-b821-8fc6bc357dab', 'Marguerite de Sicile', 'https://upload.wikimedia.org/wikipedia/commons/7/7d/MarketaStaufska.jpg', 1241, 1270, 'Landgravine de Thuringe, margravine de Misnie', 'Hohenstaufen', 2500, 0, admin_id, false from _m where code = 'margsic';
   insert into _m(code) values ('cathbr');
   insert into public.genealogy_members (id, owner_type, owner_id, name, photo_url, birth_year, death_year, title, dynasty, pos_x, pos_y, created_by, is_leader)
     select id, 'entry', 'db5ef554-cbb9-448f-89fa-b656bf1d1147', 'Catherine de Brunswick-Lunebourg', 'https://upload.wikimedia.org/wikipedia/commons/d/d0/Catherine%2C_electress_of_Saxony.jpg', 1395, 1442, 'Électrice de Saxe', 'Welf', 2700, 0, admin_id, false from _m where code = 'cathbr';
@@ -455,34 +374,6 @@ begin
     return r;
   end $f$;
 
-  insert into public.genealogy_relations (member_a_id, member_b_id, relation_type, created_by) values (pg_temp.res('conrad'), pg_temp.res('otto'), 'parent', admin_id);
-  insert into public.genealogy_relations (member_a_id, member_b_id, relation_type, created_by) values (pg_temp.res('otto'), pg_temp.res('hedw'), 'spouse', admin_id);
-  insert into public.genealogy_relations (member_a_id, member_b_id, relation_type, created_by) values (pg_temp.res('otto'), pg_temp.res('albert1'), 'parent', admin_id);
-  insert into public.genealogy_relations (member_a_id, member_b_id, relation_type, created_by) values (pg_temp.res('hedw'), pg_temp.res('albert1'), 'parent', admin_id);
-  insert into public.genealogy_relations (member_a_id, member_b_id, relation_type, created_by) values (pg_temp.res('otto'), pg_temp.res('thierry'), 'parent', admin_id);
-  insert into public.genealogy_relations (member_a_id, member_b_id, relation_type, created_by) values (pg_temp.res('hedw'), pg_temp.res('thierry'), 'parent', admin_id);
-  insert into public.genealogy_relations (member_a_id, member_b_id, relation_type, created_by) values (pg_temp.res('thierry'), pg_temp.res('jutta'), 'spouse', admin_id);
-  insert into public.genealogy_relations (member_a_id, member_b_id, relation_type, created_by) values (pg_temp.res('thierry'), pg_temp.res('henri3'), 'parent', admin_id);
-  insert into public.genealogy_relations (member_a_id, member_b_id, relation_type, created_by) values (pg_temp.res('jutta'), pg_temp.res('henri3'), 'parent', admin_id);
-  insert into public.genealogy_relations (member_a_id, member_b_id, relation_type, created_by) values (pg_temp.res('henri3'), pg_temp.res('constance'), 'spouse', admin_id);
-  insert into public.genealogy_relations (member_a_id, member_b_id, relation_type, created_by) values (pg_temp.res('henri3'), pg_temp.res('albert2'), 'parent', admin_id);
-  insert into public.genealogy_relations (member_a_id, member_b_id, relation_type, created_by) values (pg_temp.res('constance'), pg_temp.res('albert2'), 'parent', admin_id);
-  insert into public.genealogy_relations (member_a_id, member_b_id, relation_type, created_by) values (pg_temp.res('albert2'), pg_temp.res('margsic'), 'spouse', admin_id);
-  insert into public.genealogy_relations (member_a_id, member_b_id, relation_type, created_by) values (pg_temp.res('albert2'), pg_temp.res('fred1'), 'parent', admin_id);
-  insert into public.genealogy_relations (member_a_id, member_b_id, relation_type, created_by) values (pg_temp.res('margsic'), pg_temp.res('fred1'), 'parent', admin_id);
-  insert into public.genealogy_relations (member_a_id, member_b_id, relation_type, created_by) values (pg_temp.res('x:df121566'), pg_temp.res('margsic'), 'parent', admin_id);
-  insert into public.genealogy_relations (member_a_id, member_b_id, relation_type, created_by) values (pg_temp.res('fred1'), pg_temp.res('elob'), 'spouse', admin_id);
-  insert into public.genealogy_relations (member_a_id, member_b_id, relation_type, created_by) values (pg_temp.res('fred1'), pg_temp.res('fred2'), 'parent', admin_id);
-  insert into public.genealogy_relations (member_a_id, member_b_id, relation_type, created_by) values (pg_temp.res('elob'), pg_temp.res('fred2'), 'parent', admin_id);
-  insert into public.genealogy_relations (member_a_id, member_b_id, relation_type, created_by) values (pg_temp.res('fred2'), pg_temp.res('mathb'), 'spouse', admin_id);
-  insert into public.genealogy_relations (member_a_id, member_b_id, relation_type, created_by) values (pg_temp.res('x:32744ff5'), pg_temp.res('mathb'), 'parent', admin_id);
-  insert into public.genealogy_relations (member_a_id, member_b_id, relation_type, created_by) values (pg_temp.res('fred2'), pg_temp.res('fred3'), 'parent', admin_id);
-  insert into public.genealogy_relations (member_a_id, member_b_id, relation_type, created_by) values (pg_temp.res('mathb'), pg_temp.res('fred3'), 'parent', admin_id);
-  insert into public.genealogy_relations (member_a_id, member_b_id, relation_type, created_by) values (pg_temp.res('fred2'), pg_temp.res('elmis'), 'parent', admin_id);
-  insert into public.genealogy_relations (member_a_id, member_b_id, relation_type, created_by) values (pg_temp.res('mathb'), pg_temp.res('elmis'), 'parent', admin_id);
-  insert into public.genealogy_relations (member_a_id, member_b_id, relation_type, created_by) values (pg_temp.res('fred3'), pg_temp.res('cathhen'), 'spouse', admin_id);
-  insert into public.genealogy_relations (member_a_id, member_b_id, relation_type, created_by) values (pg_temp.res('fred3'), pg_temp.res('fredb'), 'parent', admin_id);
-  insert into public.genealogy_relations (member_a_id, member_b_id, relation_type, created_by) values (pg_temp.res('cathhen'), pg_temp.res('fredb'), 'parent', admin_id);
   insert into public.genealogy_relations (member_a_id, member_b_id, relation_type, created_by) values (pg_temp.res('fredb'), pg_temp.res('cathbr'), 'spouse', admin_id);
   insert into public.genealogy_relations (member_a_id, member_b_id, relation_type, created_by) values (pg_temp.res('fredb'), pg_temp.res('fredd'), 'parent', admin_id);
   insert into public.genealogy_relations (member_a_id, member_b_id, relation_type, created_by) values (pg_temp.res('cathbr'), pg_temp.res('fredd'), 'parent', admin_id);
@@ -510,31 +401,6 @@ begin
   insert into public.genealogy_relations (member_a_id, member_b_id, relation_type, created_by) values (pg_temp.res('jeanc'), pg_temp.res('jf1'), 'parent', admin_id);
   insert into public.genealogy_relations (member_a_id, member_b_id, relation_type, created_by) values (pg_temp.res('sophiem'), pg_temp.res('jf1'), 'parent', admin_id);
   insert into public.genealogy_relations (member_a_id, member_b_id, relation_type, created_by) values (pg_temp.res('jf1'), pg_temp.res('sibylle'), 'spouse', admin_id);
-  insert into public.genealogy_relations (member_a_id, member_b_id, relation_type, created_by) values (pg_temp.res('jf1'), pg_temp.res('jguil'), 'parent', admin_id);
-  insert into public.genealogy_relations (member_a_id, member_b_id, relation_type, created_by) values (pg_temp.res('sibylle'), pg_temp.res('jguil'), 'parent', admin_id);
-  insert into public.genealogy_relations (member_a_id, member_b_id, relation_type, created_by) values (pg_temp.res('jguil'), pg_temp.res('jean2'), 'parent', admin_id);
-  insert into public.genealogy_relations (member_a_id, member_b_id, relation_type, created_by) values (pg_temp.res('jean2'), pg_temp.res('ernestp'), 'parent', admin_id);
-  insert into public.genealogy_relations (member_a_id, member_b_id, relation_type, created_by) values (pg_temp.res('ernestp'), pg_temp.res('fgo1'), 'parent', admin_id);
-  insert into public.genealogy_relations (member_a_id, member_b_id, relation_type, created_by) values (pg_temp.res('ernestp'), pg_temp.res('jeanern'), 'parent', admin_id);
-  insert into public.genealogy_relations (member_a_id, member_b_id, relation_type, created_by) values (pg_temp.res('fgo1'), pg_temp.res('fgo2'), 'parent', admin_id);
-  insert into public.genealogy_relations (member_a_id, member_b_id, relation_type, created_by) values (pg_temp.res('fgo2'), pg_temp.res('madaug'), 'spouse', admin_id);
-  insert into public.genealogy_relations (member_a_id, member_b_id, relation_type, created_by) values (pg_temp.res('fgo2'), pg_temp.res('x:9b566a15'), 'parent', admin_id);
-  insert into public.genealogy_relations (member_a_id, member_b_id, relation_type, created_by) values (pg_temp.res('madaug'), pg_temp.res('x:9b566a15'), 'parent', admin_id);
-  insert into public.genealogy_relations (member_a_id, member_b_id, relation_type, created_by) values (pg_temp.res('jeanern'), pg_temp.res('fjos'), 'parent', admin_id);
-  insert into public.genealogy_relations (member_a_id, member_b_id, relation_type, created_by) values (pg_temp.res('fjos'), pg_temp.res('efred'), 'parent', admin_id);
-  insert into public.genealogy_relations (member_a_id, member_b_id, relation_type, created_by) values (pg_temp.res('efred'), pg_temp.res('fran'), 'parent', admin_id);
-  insert into public.genealogy_relations (member_a_id, member_b_id, relation_type, created_by) values (pg_temp.res('fran'), pg_temp.res('augreuss'), 'spouse', admin_id);
-  insert into public.genealogy_relations (member_a_id, member_b_id, relation_type, created_by) values (pg_temp.res('fran'), pg_temp.res('ernest1'), 'parent', admin_id);
-  insert into public.genealogy_relations (member_a_id, member_b_id, relation_type, created_by) values (pg_temp.res('augreuss'), pg_temp.res('ernest1'), 'parent', admin_id);
-  insert into public.genealogy_relations (member_a_id, member_b_id, relation_type, created_by) values (pg_temp.res('fran'), pg_temp.res('x:a1f6258c'), 'parent', admin_id);
-  insert into public.genealogy_relations (member_a_id, member_b_id, relation_type, created_by) values (pg_temp.res('augreuss'), pg_temp.res('x:a1f6258c'), 'parent', admin_id);
-  insert into public.genealogy_relations (member_a_id, member_b_id, relation_type, created_by) values (pg_temp.res('fran'), pg_temp.res('x:55c3b278'), 'parent', admin_id);
-  insert into public.genealogy_relations (member_a_id, member_b_id, relation_type, created_by) values (pg_temp.res('augreuss'), pg_temp.res('x:55c3b278'), 'parent', admin_id);
-  insert into public.genealogy_relations (member_a_id, member_b_id, relation_type, created_by) values (pg_temp.res('ernest1'), pg_temp.res('louisegotha'), 'spouse', admin_id);
-  insert into public.genealogy_relations (member_a_id, member_b_id, relation_type, created_by) values (pg_temp.res('ernest1'), pg_temp.res('ernest2'), 'parent', admin_id);
-  insert into public.genealogy_relations (member_a_id, member_b_id, relation_type, created_by) values (pg_temp.res('louisegotha'), pg_temp.res('ernest2'), 'parent', admin_id);
-  insert into public.genealogy_relations (member_a_id, member_b_id, relation_type, created_by) values (pg_temp.res('ernest1'), pg_temp.res('x:0d53db23'), 'parent', admin_id);
-  insert into public.genealogy_relations (member_a_id, member_b_id, relation_type, created_by) values (pg_temp.res('louisegotha'), pg_temp.res('x:0d53db23'), 'parent', admin_id);
   insert into public.genealogy_relations (member_a_id, member_b_id, relation_type, created_by) values (pg_temp.res('albertc'), pg_temp.res('sidonie'), 'spouse', admin_id);
   insert into public.genealogy_relations (member_a_id, member_b_id, relation_type, created_by) values (pg_temp.res('albertc'), pg_temp.res('georges'), 'parent', admin_id);
   insert into public.genealogy_relations (member_a_id, member_b_id, relation_type, created_by) values (pg_temp.res('sidonie'), pg_temp.res('georges'), 'parent', admin_id);
@@ -714,6 +580,59 @@ begin
   insert into public.genealogy_relations (member_a_id, member_b_id, relation_type, created_by) values (pg_temp.res('x:8a2b6b83'), pg_temp.res('annedk'), 'parent', admin_id);
   insert into public.genealogy_relations (member_a_id, member_b_id, relation_type, created_by) values (pg_temp.res('x:d5423c1a'), pg_temp.res('hdk'), 'parent', admin_id);
   insert into public.genealogy_relations (member_a_id, member_b_id, relation_type, created_by) values (pg_temp.res('x:2e636bc1'), pg_temp.res('hdk'), 'parent', admin_id);
+  insert into public.genealogy_member_statuses (member_id, owner_type, owner_id, legend_item_id, position, created_by) values (pg_temp.res('ernest'), 'entry', tree_wet::text, leg_ern, 0, admin_id);
+  insert into public.genealogy_member_statuses (member_id, owner_type, owner_id, legend_item_id, position, created_by) values (pg_temp.res('freds'), 'entry', tree_wet::text, leg_ern, 0, admin_id);
+  insert into public.genealogy_member_statuses (member_id, owner_type, owner_id, legend_item_id, position, created_by) values (pg_temp.res('jeanc'), 'entry', tree_wet::text, leg_ern, 0, admin_id);
+  insert into public.genealogy_member_statuses (member_id, owner_type, owner_id, legend_item_id, position, created_by) values (pg_temp.res('sophiem'), 'entry', tree_wet::text, leg_ern, 0, admin_id);
+  insert into public.genealogy_member_statuses (member_id, owner_type, owner_id, legend_item_id, position, created_by) values (pg_temp.res('jf1'), 'entry', tree_wet::text, leg_ern, 0, admin_id);
+  insert into public.genealogy_member_statuses (member_id, owner_type, owner_id, legend_item_id, position, created_by) values (pg_temp.res('sibylle'), 'entry', tree_wet::text, leg_ern, 0, admin_id);
+  insert into public.genealogy_member_statuses (member_id, owner_type, owner_id, legend_item_id, position, created_by) values (pg_temp.res('augweim'), 'entry', tree_wet::text, leg_ern, 0, admin_id);
+  insert into public.genealogy_member_statuses (member_id, owner_type, owner_id, legend_item_id, position, created_by) values (pg_temp.res('elb43'), 'entry', tree_wet::text, leg_ern, 0, admin_id);
+  insert into public.genealogy_member_statuses (member_id, owner_type, owner_id, legend_item_id, position, created_by) values (pg_temp.res('x:0c89f180'), 'entry', tree_wet::text, leg_ern, 0, admin_id);
+  insert into public.genealogy_member_statuses (member_id, owner_type, owner_id, legend_item_id, position, created_by) values (pg_temp.res('albertc'), 'entry', tree_wet::text, leg_alb, 0, admin_id);
+  insert into public.genealogy_member_statuses (member_id, owner_type, owner_id, legend_item_id, position, created_by) values (pg_temp.res('sidonie'), 'entry', tree_wet::text, leg_alb, 0, admin_id);
+  insert into public.genealogy_member_statuses (member_id, owner_type, owner_id, legend_item_id, position, created_by) values (pg_temp.res('georges'), 'entry', tree_wet::text, leg_alb, 0, admin_id);
+  insert into public.genealogy_member_statuses (member_id, owner_type, owner_id, legend_item_id, position, created_by) values (pg_temp.res('henrip'), 'entry', tree_wet::text, leg_alb, 0, admin_id);
+  insert into public.genealogy_member_statuses (member_id, owner_type, owner_id, legend_item_id, position, created_by) values (pg_temp.res('catm'), 'entry', tree_wet::text, leg_alb, 0, admin_id);
+  insert into public.genealogy_member_statuses (member_id, owner_type, owner_id, legend_item_id, position, created_by) values (pg_temp.res('madsax'), 'entry', tree_wet::text, leg_alb, 0, admin_id);
+  insert into public.genealogy_member_statuses (member_id, owner_type, owner_id, legend_item_id, position, created_by) values (pg_temp.res('maurice'), 'entry', tree_wet::text, leg_alb, 0, admin_id);
+  insert into public.genealogy_member_statuses (member_id, owner_type, owner_id, legend_item_id, position, created_by) values (pg_temp.res('agnes'), 'entry', tree_wet::text, leg_alb, 0, admin_id);
+  insert into public.genealogy_member_statuses (member_id, owner_type, owner_id, legend_item_id, position, created_by) values (pg_temp.res('auguste'), 'entry', tree_wet::text, leg_alb, 0, admin_id);
+  insert into public.genealogy_member_statuses (member_id, owner_type, owner_id, legend_item_id, position, created_by) values (pg_temp.res('chr1'), 'entry', tree_wet::text, leg_alb, 0, admin_id);
+  insert into public.genealogy_member_statuses (member_id, owner_type, owner_id, legend_item_id, position, created_by) values (pg_temp.res('chr2'), 'entry', tree_wet::text, leg_alb, 0, admin_id);
+  insert into public.genealogy_member_statuses (member_id, owner_type, owner_id, legend_item_id, position, created_by) values (pg_temp.res('jg1'), 'entry', tree_wet::text, leg_alb, 0, admin_id);
+  insert into public.genealogy_member_statuses (member_id, owner_type, owner_id, legend_item_id, position, created_by) values (pg_temp.res('jg2'), 'entry', tree_wet::text, leg_alb, 0, admin_id);
+  insert into public.genealogy_member_statuses (member_id, owner_type, owner_id, legend_item_id, position, created_by) values (pg_temp.res('jg3'), 'entry', tree_wet::text, leg_alb, 0, admin_id);
+  insert into public.genealogy_member_statuses (member_id, owner_type, owner_id, legend_item_id, position, created_by) values (pg_temp.res('jg4'), 'entry', tree_wet::text, leg_alb, 0, admin_id);
+  insert into public.genealogy_member_statuses (member_id, owner_type, owner_id, legend_item_id, position, created_by) values (pg_temp.res('fc'), 'entry', tree_wet::text, leg_alb, 0, admin_id);
+  insert into public.genealogy_member_statuses (member_id, owner_type, owner_id, legend_item_id, position, created_by) values (pg_temp.res('xav'), 'entry', tree_wet::text, leg_alb, 0, admin_id);
+  insert into public.genealogy_member_statuses (member_id, owner_type, owner_id, legend_item_id, position, created_by) values (pg_temp.res('fa3'), 'entry', tree_wet::text, leg_alb, 0, admin_id);
+  insert into public.genealogy_member_statuses (member_id, owner_type, owner_id, legend_item_id, position, created_by) values (pg_temp.res('antoine'), 'entry', tree_wet::text, leg_alb, 0, admin_id);
+  insert into public.genealogy_member_statuses (member_id, owner_type, owner_id, legend_item_id, position, created_by) values (pg_temp.res('maxs'), 'entry', tree_wet::text, leg_alb, 0, admin_id);
+  insert into public.genealogy_member_statuses (member_id, owner_type, owner_id, legend_item_id, position, created_by) values (pg_temp.res('fa2k'), 'entry', tree_wet::text, leg_alb, 0, admin_id);
+  insert into public.genealogy_member_statuses (member_id, owner_type, owner_id, legend_item_id, position, created_by) values (pg_temp.res('jeans'), 'entry', tree_wet::text, leg_alb, 0, admin_id);
+  insert into public.genealogy_member_statuses (member_id, owner_type, owner_id, legend_item_id, position, created_by) values (pg_temp.res('alberts'), 'entry', tree_wet::text, leg_alb, 0, admin_id);
+  insert into public.genealogy_member_statuses (member_id, owner_type, owner_id, legend_item_id, position, created_by) values (pg_temp.res('carola'), 'entry', tree_wet::text, leg_alb, 0, admin_id);
+  insert into public.genealogy_member_statuses (member_id, owner_type, owner_id, legend_item_id, position, created_by) values (pg_temp.res('georgess'), 'entry', tree_wet::text, leg_alb, 0, admin_id);
+  insert into public.genealogy_member_statuses (member_id, owner_type, owner_id, legend_item_id, position, created_by) values (pg_temp.res('fa3k'), 'entry', tree_wet::text, leg_alb, 0, admin_id);
+  insert into public.genealogy_member_statuses (member_id, owner_type, owner_id, legend_item_id, position, created_by) values (pg_temp.res('barbej'), 'entry', tree_wet::text, leg_alb, 0, admin_id);
+  insert into public.genealogy_member_statuses (member_id, owner_type, owner_id, legend_item_id, position, created_by) values (pg_temp.res('annedk'), 'entry', tree_wet::text, leg_alb, 0, admin_id);
+  insert into public.genealogy_member_statuses (member_id, owner_type, owner_id, legend_item_id, position, created_by) values (pg_temp.res('sophiebr'), 'entry', tree_wet::text, leg_alb, 0, admin_id);
+  insert into public.genealogy_member_statuses (member_id, owner_type, owner_id, legend_item_id, position, created_by) values (pg_temp.res('hdk'), 'entry', tree_wet::text, leg_alb, 0, admin_id);
+  insert into public.genealogy_member_statuses (member_id, owner_type, owner_id, legend_item_id, position, created_by) values (pg_temp.res('msp'), 'entry', tree_wet::text, leg_alb, 0, admin_id);
+  insert into public.genealogy_member_statuses (member_id, owner_type, owner_id, legend_item_id, position, created_by) values (pg_temp.res('msbay'), 'entry', tree_wet::text, leg_alb, 0, admin_id);
+  insert into public.genealogy_member_statuses (member_id, owner_type, owner_id, legend_item_id, position, created_by) values (pg_temp.res('asdk'), 'entry', tree_wet::text, leg_alb, 0, admin_id);
+  insert into public.genealogy_member_statuses (member_id, owner_type, owner_id, legend_item_id, position, created_by) values (pg_temp.res('fa1'), 'entry', tree_wet::text, leg_alb, 0, admin_id);
+  insert into public.genealogy_member_statuses (member_id, owner_type, owner_id, legend_item_id, position, created_by) values (pg_temp.res('x:ae05a240'), 'entry', tree_wet::text, leg_alb, 0, admin_id);
+  insert into public.genealogy_member_statuses (member_id, owner_type, owner_id, legend_item_id, position, created_by) values (pg_temp.res('x:bb30cf99'), 'entry', tree_wet::text, leg_alb, 0, admin_id);
+  insert into public.genealogy_member_statuses (member_id, owner_type, owner_id, legend_item_id, position, created_by) values (pg_temp.res('mab'), 'entry', tree_wet::text, leg_alb, 0, admin_id);
+  insert into public.genealogy_member_statuses (member_id, owner_type, owner_id, legend_item_id, position, created_by) values (pg_temp.res('amdp'), 'entry', tree_wet::text, leg_alb, 0, admin_id);
+  insert into public.genealogy_member_statuses (member_id, owner_type, owner_id, legend_item_id, position, created_by) values (pg_temp.res('cbp'), 'entry', tree_wet::text, leg_alb, 0, admin_id);
+  insert into public.genealogy_member_statuses (member_id, owner_type, owner_id, legend_item_id, position, created_by) values (pg_temp.res('amb'), 'entry', tree_wet::text, leg_alb, 0, admin_id);
+  insert into public.genealogy_member_statuses (member_id, owner_type, owner_id, legend_item_id, position, created_by) values (pg_temp.res('mapor'), 'entry', tree_wet::text, leg_alb, 0, admin_id);
+  insert into public.genealogy_member_statuses (member_id, owner_type, owner_id, legend_item_id, position, created_by) values (pg_temp.res('lt'), 'entry', tree_wet::text, leg_alb, 0, admin_id);
+  -- Auguste III (roi de Pologne) : anneau rouge « a dirigé le pays » (absent jusqu'ici)
+  update public.genealogy_members set is_leader = true where id = pg_temp.ext('ae05a240');
 
-  raise notice 'Arbres Wettin et Hohenzollern créés : % membres, % liens.', (select count(*) from _m), 259;
+  raise notice 'Arbres Wettin et Hohenzollern créés : % membres, % liens.', (select count(*) from _m), 206;
 end $$;
