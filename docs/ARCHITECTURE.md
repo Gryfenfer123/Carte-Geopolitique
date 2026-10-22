@@ -65,6 +65,7 @@ périmé : des copies à la racine étaient ignorées par le build).
 | `search.ts` | Barre de recherche (noms + contenu des dossiers) | 734 |
 | `encyclopedie.ts` | Encyclopédie (notions), semis initial | 95 |
 | `genealogy.ts` / `genealogyLayout.ts` | Arbres généalogiques interactifs ; mise en page par échelle de dates | 2 652 / 424 |
+| `genealogyRouting.ts` | Tracé des liens de l'arbre : lignes brisées qui contournent toutes les cartes (logique pure) | ~150 |
 | `frise.ts` / `friseModel.ts` | Frises chronologiques (interface) / logique pure (dates, périodes, largeurs) | 2 465 / 267 |
 | `historicalMap.ts` | Carte historique par époque (OpenHistoricalMap) | 310 |
 | `poi.ts` | Points d'intérêt posés sur la carte | 459 |

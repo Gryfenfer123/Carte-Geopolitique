@@ -43,6 +43,7 @@
 // ---------------------------------------------------------------------------
 
 import { computeLayout, guessFemale, yearToY } from "./genealogyLayout";
+import { routeAround, type Rect } from "./genealogyRouting";
 import type { SupabaseClient, Session } from "@supabase/supabase-js";
 import * as d3 from "d3";
 import type { DossierOwnerKind, DossierOwnerRef } from "./dossier";
@@ -212,12 +213,12 @@ const CARD_PHOTO_RATIO = CARD_W / CARD_PHOTO_H;
 // entièrement possible ensuite : seule la position DE DÉPART est corrigée.
 // Agrandi avec les cartes (230 → 300 → 400) pour garder un espacement
 // cohérent avec la nouvelle taille.
-const GENERATION_GAP = 400;
+const GENERATION_GAP = 460;
 // Pixels par année pour le placement automatique d'un NOUVEAU membre selon
 // son année de naissance par rapport aux membres existants de cet arbre
 // (voir suggestYFromBirthYear) — purement indicatif, pas une échelle
 // temporelle stricte (le glisser-déposer reste libre après coup).
-const PX_PER_YEAR = 16;
+const PX_PER_YEAR = 18;
 // Échelle de dates (demande de Martin, 2026-10-22) : un membre se place à
 // une hauteur liée à son année de naissance (yearToY, genealogyLayout.ts) ;
 // glisser-déposer reste libre dans une bande de ±BAND_YEARS ans autour de
@@ -1275,13 +1276,17 @@ export function initGenealogySystem(deps: {
     return { x: p.x + CARD_W / 2, y: p.y + CARD_H / 2 };
   }
 
+  // Rectangles de toutes les cartes affichées : les liens les contournent
+  // (genealogyRouting.ts) pour ne jamais passer sur un portrait.
+  let cardRects: Rect[] = [];
+
   function drawLine(x1: number, y1: number, x2: number, y2: number, type: RelationType, extraClass?: string, legend?: LegendItem | null) {
     const NS = "http://www.w3.org/2000/svg";
-    const line = document.createElementNS(NS, "line");
-    line.setAttribute("x1", String(x1));
-    line.setAttribute("y1", String(y1));
-    line.setAttribute("x2", String(x2));
-    line.setAttribute("y2", String(y2));
+    const pts = routeAround({ x: x1, y: y1 }, { x: x2, y: y2 }, cardRects);
+    const line = document.createElementNS(NS, "polyline");
+    line.setAttribute("points", pts.map((q) => Math.round(q.x * 10) / 10 + "," + Math.round(q.y * 10) / 10).join(" "));
+    line.setAttribute("fill", "none");
+    line.setAttribute("stroke-linejoin", "round");
     line.setAttribute("stroke", linkColor(type, legend));
     line.setAttribute("stroke-width", type === "parent" ? "2.4" : "2");
     if (type === "spouse") line.setAttribute("stroke-dasharray", "5,4");
@@ -1305,6 +1310,8 @@ export function initGenealogySystem(deps: {
   // lui) on garde le trait individuel d'origine, un par relation "parent".
   function renderLinks() {
     svg.innerHTML = "";
+    cardRects = [];
+    displayPos.forEach((p) => cardRects.push({ x: p.x, y: p.y, w: CARD_W, h: CARD_H }));
     const spouseKey = (a: string, b: string) => (a < b ? a + "|" + b : b + "|" + a);
     const spousePairs = new Set<string>();
     relations.forEach((r) => {

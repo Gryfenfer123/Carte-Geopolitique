@@ -55,12 +55,12 @@ type Block = {
 };
 type Hints = { order: Map<string, string[]>; claims: Set<string> }; // ordre des enfants par principal ; membres rattachés à leur conjoint
 
-const SG = 50; // marge horizontale minimale entre deux cartes
+const SG = 110; // marge horizontale minimale entre deux cartes
 
 export function computeLayout(nodes: LayoutNode[], rels: LayoutRel[], o: LayoutOptions): Map<string, Pos> {
   const CW = o.cardW;
   const CH = o.cardH;
-  const S = CW + 40; // pas entre deux conjoints collés
+  const S = CW + 80; // pas entre deux conjoints collés
   const byId = new Map(nodes.map((n) => [n.id, n]));
   const parentsOf = new Map<string, string[]>();
   const childrenOf = new Map<string, string[]>();
