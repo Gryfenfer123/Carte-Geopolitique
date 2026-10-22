@@ -357,7 +357,7 @@ begin
   insert into public.genealogy_members (id, owner_type, owner_id, name, photo_url, birth_year, death_year, title, dynasty, pos_x, pos_y, created_by, is_leader)
     select id, 'entry', '14db1138-55b4-48b7-b4de-c79e51127284', 'Marie-Anne de Portugal', 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/MariaAnnasaxe.jpg/330px-MariaAnnasaxe.jpg', 1843, 1884, 'Reine de Saxe', 'Maison de Bragance', 3000, 0, admin_id, false from _m where code = 'mapor';
 
-  create function pg_temp.ext(prefix text) returns uuid language plpgsql as $f$
+  create function pg_temp.ext(prefix text) returns uuid language plpgsql stable as $f$
   declare r uuid; k int;
   begin
     select count(*) into k from public.genealogy_members where id::text like prefix || '%';
@@ -365,7 +365,7 @@ begin
     select id into r from public.genealogy_members where id::text like prefix || '%';
     return r;
   end $f$;
-  create function pg_temp.res(c text) returns uuid language plpgsql as $f$
+  create function pg_temp.res(c text) returns uuid language plpgsql stable as $f$
   declare r uuid;
   begin
     if c like 'x:%' then return pg_temp.ext(substr(c, 3)); end if;
