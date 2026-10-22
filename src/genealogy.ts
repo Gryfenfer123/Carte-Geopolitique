@@ -733,6 +733,24 @@ export function initGenealogySystem(deps: {
         } catch {
           /* colonne pinned absente : ignoré */
         }
+        // Membres étrangers MASQUÉS dans cet arbre (schema_v37.sql, demande
+        // de Martin, 2026-10-22) : « Retirer de cet arbre » ne supprime plus
+        // aucun lien, il masque seulement le membre ici.
+        try {
+          const { data: hidRows, error: hidErr } = await supabase
+            .from("genealogy_foreign_states")
+            .select("member_id")
+            .eq("owner_type", owner.type)
+            .eq("owner_id", owner.id)
+            .eq("hidden", true);
+          if (!hidErr) {
+            const hidden = new Set((hidRows as { member_id: string }[] | null)?.map((r) => r.member_id) || []);
+            hidden.forEach((id) => foreignIds.delete(id));
+            relations = relations.filter((r) => !hidden.has(r.member_a_id) && !hidden.has(r.member_b_id));
+          }
+        } catch {
+          /* colonne hidden absente : ignoré */
+        }
         if (foreignIds.size) {
           const { data: fRows } = await supabase
             .from("genealogy_members")
@@ -988,13 +1006,14 @@ export function initGenealogySystem(deps: {
           pos_y: st?.pos_y ?? null,
           is_leader: st?.is_leader ?? false,
           pinned: true,
+          hidden: false,
         };
       });
     if (!rows.length) return true;
     const { error } = await supabase.from("genealogy_foreign_states").upsert(rows, { onConflict: "member_id,owner_type,owner_id" });
     if (error) {
-      console.error("Épinglage impossible (schema_v36.sql exécutée ?) :", error);
-      deps.showBanner?.("Impossible d'afficher ces membres ici : exécute d'abord schema_v36.sql dans Supabase.");
+      console.error("Épinglage impossible (schema_v36/v37.sql exécutées ?) :", error);
+      deps.showBanner?.("Impossible d'afficher ces membres ici : exécute d'abord schema_v36.sql puis schema_v37.sql dans Supabase.");
       return false;
     }
     return true;
@@ -2440,12 +2459,9 @@ export function initGenealogySystem(deps: {
   // Retrait "local" d'un membre d'un autre arbre (demande de Martin,
   // 2026-10-06 : "Pouvoir supprimer une personne d'un autre arbre dans le
   // nouveau sans le supprimer dans l'autre [...] il faut pouvoir
-  // modifier, exploiter un membre d'un autre arbre facilement") — ne
-  // supprime QUE ce qui concerne CET arbre : les liens qui relient ce
-  // membre à un membre LOCAL (tous les liens chargés le touchant en sont,
-  // voir le commentaire de loadData sur foreignIds) et sa ligne
-  // genealogy_foreign_states pour cet arbre. Le membre lui-même et ses
-  // liens/relations DANS SON ARBRE D'ORIGINE ne sont jamais touchés.
+  // modifier, exploiter un membre d'un autre arbre facilement") — masque
+  // seulement le membre dans CET arbre. Plus AUCUN lien n'est supprimé
+  // (correctif 2026-10-22).
   async function removeForeignMemberFromThisTree(memberId: string) {
     if (!currentOwner || !isAdmin()) return;
     if (!(await customConfirm("Retirer ce membre de cet arbre ? Il restera inchangé dans son arbre d'origine."))) return;
@@ -2462,16 +2478,30 @@ export function initGenealogySystem(deps: {
     // relations qui touchent un membre LOCAL à cet arbre — celles qui ont
     // effectivement "attiré" ce membre étranger ici — jamais une relation
     // entre deux membres tous deux étrangers à cet arbre.
-    const localIds = new Set(members.map((m) => m.id));
-    const touching = relations.filter(
-      (r) => (r.member_a_id === memberId || r.member_b_id === memberId) && (localIds.has(r.member_a_id) || localIds.has(r.member_b_id))
+    // Nouveau comportement (2026-10-22) : AUCUN lien n'est supprimé. Les liens
+    // réels (ex. Sophie de Brandebourg → Christian II) appartiennent à
+    // l'arbre d'origine ; ici on se contente de masquer le membre (colonne
+    // hidden de genealogy_foreign_states, schema_v37.sql).
+    const st = foreignStates.get(memberId);
+    const { error } = await supabase.from("genealogy_foreign_states").upsert(
+      {
+        member_id: memberId,
+        owner_type: currentOwner.type,
+        owner_id: currentOwner.id,
+        pos_x: st?.pos_x ?? null,
+        pos_y: st?.pos_y ?? null,
+        is_leader: st?.is_leader ?? false,
+        pinned: false,
+        hidden: true,
+      },
+      { onConflict: "member_id,owner_type,owner_id" }
     );
-    for (const r of touching) {
-      await supabase.from("genealogy_relations").delete().eq("id", r.id);
+    if (error) {
+      console.error("Masquage impossible (schema_v37.sql exécutée ?) :", error);
+      deps.showBanner?.("Impossible de retirer ce membre : exécute d'abord schema_v37.sql dans Supabase.");
+      return;
     }
-    await supabase.from("genealogy_foreign_states").delete().eq("member_id", memberId).eq("owner_type", currentOwner.type).eq("owner_id", currentOwner.id);
-    const touchingIds = new Set(touching.map((r) => r.id));
-    relations = relations.filter((r) => !touchingIds.has(r.id));
+    relations = relations.filter((r) => r.member_a_id !== memberId && r.member_b_id !== memberId);
     foreignMembers.delete(memberId);
     foreignStates.delete(memberId);
     displayPos.delete(memberId);

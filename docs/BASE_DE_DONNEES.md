@@ -108,4 +108,5 @@ RLS**. Règles :
 | v34 | Correctif de v33 |
 | v35 | Correctif : ascendants d'Élisabeth de Misnie |
 | v36 | Membres d'un autre arbre « épinglés » (`pinned`) |
+| v37 | Masquer un membre étranger dans un arbre (`hidden`) sans supprimer ses liens |
 | `data_owid_load.sql` + `owid_chunks/` | Chargement des données d'indicateurs (rejouable, upserts) — à exécuter après v1 à v7 |
