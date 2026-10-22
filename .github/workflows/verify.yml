@@ -1,0 +1,39 @@
+name: Vérifier le code
+
+# Vérifie les branches autres que main et les demandes de fusion (pull requests),
+# SANS rien publier. La branche main est vérifiée par le workflow de déploiement,
+# qui ne publie que si tout est vert.
+
+on:
+  push:
+    branches-ignore: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: verify-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  verifier:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Récupérer le code
+        uses: actions/checkout@v4
+
+      - name: Installer Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Installer les dépendances
+        run: npm ci
+
+      - name: Vérifier la santé du dépôt (doublons, secrets, fichiers égarés)
+        run: npm run check:repo
+
+      - name: Construire le site (typage strict puis construction)
+        run: npm run build

@@ -6,6 +6,8 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
+    "typecheck": "tsc --noEmit",
+    "check:repo": "node scripts/check-repo.mjs",
     "preview": "vite preview"
   },
   "devDependencies": {

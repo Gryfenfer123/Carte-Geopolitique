@@ -30,7 +30,10 @@ jobs:
       - name: Installer les dépendances
         run: npm ci
 
-      - name: Construire le site
+      - name: Vérifier la santé du dépôt (doublons, secrets, fichiers égarés)
+        run: npm run check:repo
+
+      - name: Construire le site (typage strict puis construction)
         run: npm run build
 
       - name: Préparer la publication Pages

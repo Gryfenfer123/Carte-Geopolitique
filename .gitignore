@@ -1,2 +1,6 @@
 node_modules/
 dist/
+
+# Identifiants locaux : ne jamais commiter
+.env.local
+.env.*.local
