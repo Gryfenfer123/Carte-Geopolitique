@@ -42,6 +42,7 @@
 // jamais de framework.
 // ---------------------------------------------------------------------------
 
+import { computeLayout, guessFemale, yearToY } from "./genealogyLayout";
 import type { SupabaseClient, Session } from "@supabase/supabase-js";
 import * as d3 from "d3";
 import type { DossierOwnerKind, DossierOwnerRef } from "./dossier";
@@ -216,7 +217,14 @@ const GENERATION_GAP = 400;
 // son année de naissance par rapport aux membres existants de cet arbre
 // (voir suggestYFromBirthYear) — purement indicatif, pas une échelle
 // temporelle stricte (le glisser-déposer reste libre après coup).
-const PX_PER_YEAR = 2.4;
+const PX_PER_YEAR = 16;
+// Échelle de dates (demande de Martin, 2026-10-22) : un membre se place à
+// une hauteur liée à son année de naissance (yearToY, genealogyLayout.ts) ;
+// glisser-déposer reste libre dans une bande de ±BAND_YEARS ans autour de
+// cette hauteur — au-delà, la carte est retenue (Maj enfoncée = libre,
+// pour relier un conjoint d'une autre époque).
+const BAND_YEARS = 40;
+const LAYOUT_OPTS = { originYear: 1000, pxPerYear: PX_PER_YEAR };
 
 function escapeHtml(str: string): string {
   return str
@@ -293,6 +301,8 @@ export function initGenealogySystem(deps: {
                légende que l'on souhaite" + "créer de nouveaux liens, avec
                la légende, la couleur souhaitée, propre à chaque arbre") —
                voir openLegendManager. -->
+          <button id="genealogy-auto-layout" class="btn-small edit-control" title="Range tout l'arbre selon les dates : couples sur une même ligne, enfants centrés sous leurs parents">&#128197; Organiser par dates</button>
+          <button id="genealogy-auto-layout-undo" class="btn-small edit-control" style="display:none;">&#8630; Annuler l'organisation</button>
           <button id="genealogy-manage-legend" class="btn-small edit-control">&#127912; L&eacute;gende</button>
           <span id="genealogy-link-hint" class="muted"></span>
         </div>
@@ -813,6 +823,106 @@ export function initGenealogySystem(deps: {
     if (!members.length) $("genealogy-empty-hint").style.display = "";
   }
 
+  // --- Échelle de dates ----------------------------------------------------
+  // Hauteur "attendue" d'un membre = année de naissance sur l'échelle,
+  // décalée de la médiane (hauteur réelle − hauteur de l'échelle) des
+  // membres locaux datés de CET arbre : chaque arbre garde son propre
+  // repère, donc un arbre ancien non encore organisé n'est pas bousculé.
+  function yearForExpectation(m: MemberRow): number | null {
+    if (m.birth_year != null) return m.birth_year;
+    if (m.death_year != null) return m.death_year - 55;
+    return null;
+  }
+  function treeYBaseline(): number {
+    const offs: number[] = [];
+    members.forEach((m) => {
+      const yr = yearForExpectation(m);
+      const pos = displayPos.get(m.id);
+      if (yr != null && pos) offs.push(pos.y - yearToY(yr, LAYOUT_OPTS));
+    });
+    if (!offs.length) return 0;
+    offs.sort((a, b) => a - b);
+    return offs[Math.floor(offs.length / 2)];
+  }
+  function expectedY(m: MemberRow): number | null {
+    const yr = yearForExpectation(m);
+    if (yr == null) return null;
+    return treeYBaseline() + yearToY(yr, LAYOUT_OPTS);
+  }
+
+  // Organisation automatique (bouton "Organiser par dates").
+  let layoutUndo: { local: Map<string, { x: number; y: number }>; foreign: Map<string, { x: number | null; y: number | null }> } | null = null;
+  async function applyPositions(local: Map<string, { x: number; y: number }>, foreign: Map<string, { x: number | null; y: number | null }>) {
+    if (!currentOwner) return;
+    const jobs: Promise<unknown>[] = [];
+    local.forEach((p, id) => {
+      const m = members.find((x) => x.id === id);
+      if (m) {
+        m.pos_x = p.x as number;
+        m.pos_y = p.y as number;
+      }
+      jobs.push(Promise.resolve(supabase.from("genealogy_members").update({ pos_x: p.x, pos_y: p.y }).eq("id", id)));
+    });
+    const rows: Record<string, unknown>[] = [];
+    foreign.forEach((p, id) => {
+      const st = foreignStates.get(id) || { member_id: id, pos_x: null, pos_y: null, is_leader: false, legend_item_id: null };
+      st.pos_x = p.x;
+      st.pos_y = p.y;
+      foreignStates.set(id, st);
+      rows.push({ member_id: id, owner_type: currentOwner!.type, owner_id: currentOwner!.id, pos_x: p.x, pos_y: p.y, is_leader: st.is_leader });
+    });
+    if (rows.length) jobs.push(Promise.resolve(supabase.from("genealogy_foreign_states").upsert(rows, { onConflict: "member_id,owner_type,owner_id" })));
+    await Promise.all(jobs);
+    await loadData(currentOwner);
+  }
+  async function autoLayoutTree() {
+    if (!currentOwner || !isAdmin()) return;
+    if (!members.length) return;
+    if (
+      !(await customConfirm(
+        "Organiser tout cet arbre selon les dates ?\n\nLes positions de tous les membres (y compris ceux d'autres arbres affichés ici) seront recalculées : couples sur une même ligne, enfants centrés sous leurs parents. Un bouton « Annuler l'organisation » permet de revenir en arrière juste après."
+      ))
+    )
+      return;
+    const known = allKnownMembers();
+    const nodes = Array.from(known.values()).map((m) => ({ id: m.id, birth: m.birth_year, death: m.death_year, name: m.name, female: guessFemale(m.name, m.title) }));
+    const rels = relations.filter((r) => known.has(r.member_a_id) && known.has(r.member_b_id)).map((r) => ({ a: r.member_a_id, b: r.member_b_id, type: r.relation_type }));
+    const pos = computeLayout(nodes, rels, {
+      cardW: CARD_W,
+      cardH: CARD_H,
+      ...LAYOUT_OPTS,
+      minGen: GENERATION_GAP,
+      stdGen: GENERATION_GAP,
+      localIds: new Set(members.map((m) => m.id)),
+    });
+    // Sauvegarde pour pouvoir annuler.
+    const undoLocal = new Map<string, { x: number; y: number }>();
+    members.forEach((m) => undoLocal.set(m.id, { x: m.pos_x, y: m.pos_y }));
+    const undoForeign = new Map<string, { x: number | null; y: number | null }>();
+    foreignMembers.forEach((_m, id) => {
+      const st = foreignStates.get(id);
+      undoForeign.set(id, { x: st?.pos_x ?? null, y: st?.pos_y ?? null });
+    });
+    const newLocal = new Map<string, { x: number; y: number }>();
+    const newForeign = new Map<string, { x: number | null; y: number | null }>();
+    pos.forEach((p, id) => {
+      if (undoLocal.has(id)) newLocal.set(id, p);
+      else if (undoForeign.has(id)) newForeign.set(id, p);
+    });
+    await applyPositions(newLocal, newForeign);
+    layoutUndo = { local: undoLocal, foreign: undoForeign };
+    $("genealogy-auto-layout-undo").style.display = "";
+    deps.showBanner?.("Arbre organisé selon les dates.");
+  }
+  $("genealogy-auto-layout").addEventListener("click", () => requireAuthOr(() => void autoLayoutTree()));
+  $("genealogy-auto-layout-undo").addEventListener("click", () => {
+    const u = layoutUndo;
+    if (!u) return;
+    layoutUndo = null;
+    $("genealogy-auto-layout-undo").style.display = "none";
+    requireAuthOr(() => void applyPositions(u.local, u.foreign));
+  });
+
   // Place les membres étrangers qui n'ont pas de position : ceux reliés
   // seulement à un AUTRE étranger (parents d'un étranger, épinglés — demande
   // de Martin, 2026-10-22). Un parent est posé une génération au-dessus de
@@ -1251,7 +1361,14 @@ export function initGenealogySystem(deps: {
       const dy = (p.clientY - startScreenY) / zoomTransform.k;
       if (Math.abs(dx) > 3 || Math.abs(dy) > 3) moved = true;
       const nx = startPosX + dx;
-      const ny = startPosY + dy;
+      let ny = startPosY + dy;
+      // Bande de dates : voir BAND_YEARS. Maj enfoncée = déplacement libre.
+      const free = "shiftKey" in ev && (ev as MouseEvent).shiftKey;
+      const expY = free ? null : expectedY(member);
+      if (expY != null) {
+        const band = BAND_YEARS * PX_PER_YEAR;
+        ny = Math.min(Math.max(ny, Math.min(expY - band, startPosY)), Math.max(expY + band, startPosY));
+      }
       card.style.left = nx + "px";
       card.style.top = ny + "px";
       displayPos.set(member.id, { x: nx, y: ny });
