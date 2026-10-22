@@ -43,7 +43,6 @@
 // ---------------------------------------------------------------------------
 
 import { computeLayout, guessFemale, yearToY } from "./genealogyLayout";
-import { routeAround, type Rect } from "./genealogyRouting";
 import type { SupabaseClient, Session } from "@supabase/supabase-js";
 import * as d3 from "d3";
 import type { DossierOwnerKind, DossierOwnerRef } from "./dossier";
@@ -1295,17 +1294,13 @@ export function initGenealogySystem(deps: {
     return { x: p.x + CARD_W / 2, y: p.y + CARD_H / 2 };
   }
 
-  // Rectangles de toutes les cartes affichées : les liens les contournent
-  // (genealogyRouting.ts) pour ne jamais passer sur un portrait.
-  let cardRects: Rect[] = [];
-
   function drawLine(x1: number, y1: number, x2: number, y2: number, type: RelationType, extraClass?: string, legend?: LegendItem | null) {
     const NS = "http://www.w3.org/2000/svg";
-    const pts = routeAround({ x: x1, y: y1 }, { x: x2, y: y2 }, cardRects);
-    const line = document.createElementNS(NS, "polyline");
-    line.setAttribute("points", pts.map((q) => Math.round(q.x * 10) / 10 + "," + Math.round(q.y * 10) / 10).join(" "));
-    line.setAttribute("fill", "none");
-    line.setAttribute("stroke-linejoin", "round");
+    const line = document.createElementNS(NS, "line");
+    line.setAttribute("x1", String(x1));
+    line.setAttribute("y1", String(y1));
+    line.setAttribute("x2", String(x2));
+    line.setAttribute("y2", String(y2));
     line.setAttribute("stroke", linkColor(type, legend));
     line.setAttribute("stroke-width", type === "parent" ? "2.4" : "2");
     if (type === "spouse") line.setAttribute("stroke-dasharray", "5,4");
@@ -1329,8 +1324,6 @@ export function initGenealogySystem(deps: {
   // lui) on garde le trait individuel d'origine, un par relation "parent".
   function renderLinks() {
     svg.innerHTML = "";
-    cardRects = [];
-    displayPos.forEach((p) => cardRects.push({ x: p.x, y: p.y, w: CARD_W, h: CARD_H }));
     const spouseKey = (a: string, b: string) => (a < b ? a + "|" + b : b + "|" + a);
     const spousePairs = new Set<string>();
     relations.forEach((r) => {

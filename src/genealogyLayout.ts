@@ -332,6 +332,63 @@ export function computeLayout(nodes: LayoutNode[], rels: LayoutRel[], o: LayoutO
     return { out, used };
   }
 
+  // Traits tels que l'appli les dessine (renderLinks) : un trait fusionné
+  // « milieu du mariage -> enfant » quand l'enfant a exactement deux parents
+  // mariés entre eux, sinon un trait centre à centre. Sert à PÉNALISER les
+  // dispositions où un trait passerait sur une autre carte (demande de
+  // Martin, 2026-10-22 : jamais de trait sur un portrait).
+  type Seg = { from: string[]; to: string; skip: string[] };
+  const segs: Seg[] = [];
+  const spouseSet = new Set(spouseLinks.map(([a, b]) => (a < b ? a + "|" + b : b + "|" + a)));
+  const mergedPairs = new Set<string>();
+  parentsOf.forEach((ps, child) => {
+    if (ps.length === 2 && spouseSet.has(ps[0] < ps[1] ? ps[0] + "|" + ps[1] : ps[1] + "|" + ps[0])) {
+      segs.push({ from: [ps[0], ps[1]], to: child, skip: [child] });
+      ps.forEach((q) => mergedPairs.add(q + ">" + child));
+    }
+  });
+  parentLinks.forEach(([a, b]) => {
+    if (!mergedPairs.has(a + ">" + b)) segs.push({ from: [a], to: b, skip: [a, b] });
+  });
+  spouseLinks.forEach(([a, b]) => segs.push({ from: [a], to: b, skip: [a, b] }));
+
+  function crossings(out: Map<string, Pos>): number {
+    let n = 0;
+    const ids = Array.from(out.keys());
+    for (const sg of segs) {
+      const f = sg.from.map((id) => out.get(id));
+      const t = out.get(sg.to);
+      if (!t || f.some((q) => !q)) continue;
+      const x1 = f.reduce((a, q) => a + q!.x + CW / 2, 0) / f.length;
+      const y1 = f.reduce((a, q) => a + q!.y + CH / 2, 0) / f.length;
+      const x2 = t.x + CW / 2;
+      const y2 = t.y + CH / 2;
+      const lox = Math.min(x1, x2);
+      const hix = Math.max(x1, x2);
+      const loy = Math.min(y1, y2);
+      const hiy = Math.max(y1, y2);
+      for (const id of ids) {
+        if (sg.skip.includes(id)) continue;
+        const q = out.get(id)!;
+        if (q.x + CW < lox || q.x > hix || q.y + CH < loy || q.y > hiy) continue;
+        // Liang-Barsky sur le rectangle de la carte (légèrement réduit)
+        const rx0 = q.x + 4, rx1 = q.x + CW - 4, ry0 = q.y + 4, ry1 = q.y + CH - 4;
+        const dx = x2 - x1, dy = y2 - y1;
+        let t0 = 0, t1 = 1, ok = true;
+        for (const [pp, qq] of [[-dx, x1 - rx0], [dx, rx1 - x1], [-dy, y1 - ry0], [dy, ry1 - y1]]) {
+          if (pp === 0) { if (qq < 0) { ok = false; break; } }
+          else {
+            const r = qq / pp;
+            if (pp < 0) { if (r > t1) { ok = false; break; } if (r > t0) t0 = r; }
+            else { if (r < t0) { ok = false; break; } if (r < t1) t1 = r; }
+          }
+        }
+        if (ok && t0 < t1) n++;
+      }
+    }
+    return n;
+  }
+
   // Coût d'une disposition : mariages non voisins (très pénalisés), traits
   // parent -> enfant longs, écarts à l'ordre chronologique des fratries.
   function cost(out: Map<string, Pos>, used: Map<string, string[]>): number {
@@ -356,6 +413,7 @@ export function computeLayout(nodes: LayoutNode[], rels: LayoutRel[], o: LayoutO
     });
     const xs = Array.from(out.values()).map((p) => p.x);
     c += (Math.max(...xs) - Math.min(...xs)) * 0.01;
+    c += crossings(out) * 600;
     return c;
   }
 
@@ -373,7 +431,7 @@ export function computeLayout(nodes: LayoutNode[], rels: LayoutRel[], o: LayoutO
     return seed / 4294967296;
   };
   const crossPersons = Array.from(new Set(spouseLinks.filter(([a, b]) => hasParents(a) && hasParents(b)).flatMap(([a, b]) => [a, b])));
-  if (crossPersons.length) {
+  if (crossPersons.length || crossings(cur.out) > 0) {
     const total = 6000;
     for (let it = 0; it < total && Date.now() - t0 < BUDGET; it++) {
       let h2: Hints;
