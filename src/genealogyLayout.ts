@@ -86,58 +86,157 @@ export function computeLayout(nodes: LayoutNode[], rels: LayoutRel[], o: LayoutO
     return sortByBirth(Array.from(set));
   }
 
+  const hasParents = (id: string) => (parentsOf.get(id) || []).length > 0;
   const placed = new Set<string>();
   const parentsBlockBirth = (ids: string[]) => {
     const ys = ids.map(birth).filter((v): v is number => v != null);
     return ys.length ? ys.reduce((s, v) => s + v, 0) / ys.length : null;
   };
 
-  function block(p: string): Block {
+  // dir : côté du principal tourné vers le milieu de ses parents (-1 gauche /
+  // +1 droite / 0 pile en dessous) ; son conjoint se place du côté OPPOSÉ,
+  // pour que le trait venant des parents n'arrive jamais à travers la carte
+  // du conjoint (demande de Martin : aucun trait ne coupe un cadre).
+  function block(p: string, dir = 0): Block {
     placed.add(p);
-    const partners = partnersOf(p).filter((q) => !placed.has(q));
+    // Partenaires : on rattache aussi les autres conjoints d'un partenaire
+    // (ex. un homme marié deux fois, dont la 1re épouse est déjà dans la
+    // rangée), pour qu'aucun ne reste isolé ailleurs dans l'arbre.
+    // Un partenaire qui a lui-même des parents dans l'arbre ET appartient à
+    // cet arbre est posé par la branche de SES parents (sinon tous les traits
+    // venant de ses parents traverseraient l'arbre) : on ne rattache ici que
+    // les partenaires sans parents affichés, venus d'un autre arbre, ou quand
+    // le principal est lui-même une racine. Seul le lien de mariage est alors long.
+    const partners = partnersOf(p).filter((q) => !placed.has(q) && (!hasParents(q) || !hasParents(p) || !o.localIds.has(q)));
+    for (let i = 0; i < partners.length; i++) {
+      partnersOf(partners[i]).forEach((r) => { if (r !== p && !placed.has(r) && !partners.includes(r) && (!hasParents(r) || !o.localIds.has(r))) partners.push(r); });
+    }
     partners.forEach((q) => placed.add(q));
-    // Rangée : le mari est à gauche de l'épouse. Un principal "mari" (ou
-    // sans info) a ses partenaires à droite ; une principale "épouse" a ses
-    // partenaires (maris) à gauche.
+    // Disposition de la rangée. Un principal "épouse" a ses maris à gauche ;
+    // sinon le principal est à gauche de sa (première) partenaire. Avec deux
+    // partenaires : [partenaire 1, principal, partenaire 2].
     const wifeFirst = (id: string) => isFemale(id) ?? (husbandOf.get(id) ? false : undefined);
     const pf = wifeFirst(p);
     const principalIsWife =
       partners.length > 0 &&
       (pf === true ? partners.every((q) => wifeFirst(q) !== true) : pf === undefined ? partners.every((q) => wifeFirst(q) === false) : false);
-    const row: string[] = [];
-    const offs: number[] = [];
-    if (principalIsWife) {
-      partners.slice().reverse().forEach((q, i) => { row.push(q); offs.push(-S * (partners.length - i)); });
-      row.push(p); offs.push(0);
-    } else {
-      row.push(p); offs.push(0);
-      partners.forEach((q, i) => { row.push(q); offs.push(S * (i + 1)); });
+    const sides: number[] = []; // -1 gauche / +1 droite, par partenaire
+    partners.forEach((_q, i) => {
+      if (partners.length >= 2) sides.push(i === 0 ? -1 : 1);
+      else if (dir !== 0) sides.push(dir);
+      else sides.push(principalIsWife ? -1 : 1);
+    });
+    // Enfants regroupés par partenaire (puis les "seuls" avec le premier groupe).
+    const kidGroups: string[][] = partners.map(() => []);
+    const soloKids: string[] = [];
+    const allKidIds: string[] = [];
+    [p, ...partners].forEach((r) => (childrenOf.get(r) || []).forEach((c) => { if (!allKidIds.includes(c)) allKidIds.push(c); }));
+    sortByBirth(allKidIds).forEach((c) => {
+      if (placed.has(c) && c !== p) {
+        /* déjà posé ailleurs (ex. partenaire d'un autre) */
+      }
+      const ps = parentsOf.get(c) || [];
+      const j = partners.findIndex((q) => ps.includes(q));
+      if (j >= 0) kidGroups[j].push(c);
+      else soloKids.push(c);
+    });
+    if (partners.length) kidGroups[0] = sortByBirth([...kidGroups[0], ...soloKids]);
+    // Blocs enfants, dans l'ordre gauche -> droite des groupes.
+    const order = partners.map((_q, j) => j).sort((x, y) => sides[x] - sides[y] || x - y);
+    const groupBlocks: Block[][] = partners.map(() => []);
+    const plan: { j: number; c: string }[] = [];
+    order.forEach((j) => kidGroups[j].forEach((c) => { if (!placed.has(c)) plan.push({ j, c }); }));
+    const dirOf = (i: number, n: number) => (i < (n - 1) / 2 - 0.01 ? -1 : i > (n - 1) / 2 + 0.01 ? 1 : 0);
+    plan.forEach(({ j, c }, i) => { if (!placed.has(c)) groupBlocks[j].push(block(c, dirOf(i, plan.length))); });
+    const soloBlocks: Block[] = [];
+    if (!partners.length) {
+      const sk = sortByBirth(soloKids).filter((c) => !placed.has(c));
+      sk.forEach((c, i) => { if (!placed.has(c)) soloBlocks.push(block(c, dirOf(i, sk.length))); });
     }
-    const kidIds: string[] = [];
-    row.forEach((r) => (childrenOf.get(r) || []).forEach((c) => { if (!kidIds.includes(c)) kidIds.push(c); }));
-    const kids: Block[] = [];
-    sortByBirth(kidIds).forEach((c) => { if (!placed.has(c)) kids.push(block(c)); });
-    const rowMin = Math.min(...offs) - CW / 2;
-    const rowMax = Math.max(...offs) + CW / 2;
-    const rowMid = (Math.min(...offs) + Math.max(...offs)) / 2;
-    const kidOrigins: number[] = [];
-    let min = rowMin;
-    let max = rowMax;
-    if (kids.length) {
+
+    // Séquence des blocs d'un groupe : origines (centres des principaux) et étendue.
+    const seq = (bl: Block[]) => {
+      const origins: number[] = [];
       let cursor = 0;
-      kids.forEach((k) => {
+      bl.forEach((k) => {
         const origin = cursor - k.min;
-        kidOrigins.push(origin);
+        origins.push(origin);
         cursor = origin + k.max + SG;
       });
-      const delta = rowMid - (kidOrigins[0] + kidOrigins[kidOrigins.length - 1]) / 2;
-      for (let i = 0; i < kidOrigins.length; i++) kidOrigins[i] += delta;
-      kids.forEach((k, i) => {
-        min = Math.min(min, kidOrigins[i] + k.min);
-        max = Math.max(max, kidOrigins[i] + k.max);
+      const first = origins[0];
+      const last = origins[origins.length - 1];
+      const ac = (first + last) / 2;
+      let gMin = Infinity;
+      let gMax = -Infinity;
+      bl.forEach((k, i) => { gMin = Math.min(gMin, origins[i] + k.min); gMax = Math.max(gMax, origins[i] + k.max); });
+      return { origins, span: last - first, ac, gMin, gMax };
+    };
+    const seqs = groupBlocks.map((bl) => (bl.length ? seq(bl) : null));
+    // Écart de chaque couple : assez large pour que les traits partant du
+    // milieu du lien de mariage descendent dans l'espace libre entre les deux
+    // cartes (jamais à travers une carte), et enfants symétriques autour.
+    const d = partners.map((_q, j) => Math.max(S, seqs[j] ? 0.5 * seqs[j]!.span + CW + 60 : S));
+    // Anti-chevauchement des groupes d'enfants de part et d'autre du principal.
+    const mids = () => partners.map((_q, j) => (sides[j] * d[j]) / 2);
+    for (let guard = 0; guard < 8; guard++) {
+      const m = mids();
+      let grew = false;
+      const act = order.filter((j) => seqs[j]);
+      for (let a2 = 0; a2 + 1 < act.length; a2++) {
+        const j1 = act[a2];
+        const j2 = act[a2 + 1];
+        const r1 = m[j1] + (seqs[j1]!.gMax - seqs[j1]!.ac);
+        const l2 = m[j2] + (seqs[j2]!.gMin - seqs[j2]!.ac);
+        const ov = r1 + SG - l2;
+        if (ov > 0) {
+          d[j1] += ov;
+          d[j2] += ov;
+          grew = true;
+        }
+      }
+      if (!grew) break;
+    }
+    // Positions des cartes de la rangée.
+    const rowIds: string[] = [p];
+    const rowOffs: number[] = [0];
+    const lefts = partners.map((_q, j) => j).filter((j) => sides[j] < 0);
+    const rights = partners.map((_q, j) => j).filter((j) => sides[j] > 0);
+    lefts.forEach((j) => { rowIds.unshift(partners[j]); rowOffs.unshift(-d[j]); });
+    let extra = 0;
+    rights.forEach((j) => {
+      const x = d[j] + extra;
+      rowIds.push(partners[j]);
+      rowOffs.push(x);
+      extra += 0;
+    });
+    // Étendues
+    const kids: Block[] = [];
+    const kidOrigins: number[] = [];
+    let min = Math.min(...rowOffs) - CW / 2;
+    let max = Math.max(...rowOffs) + CW / 2;
+    order.forEach((j) => {
+      const sq = seqs[j];
+      if (!sq) return;
+      const mid = (sides[j] * d[j]) / 2;
+      groupBlocks[j].forEach((k, i) => {
+        const o2 = mid + (sq.origins[i] - sq.ac);
+        kids.push(k);
+        kidOrigins.push(o2);
+        min = Math.min(min, o2 + k.min);
+        max = Math.max(max, o2 + k.max);
+      });
+    });
+    if (soloBlocks.length) {
+      const sq = seq(soloBlocks);
+      soloBlocks.forEach((k, i) => {
+        const o2 = sq.origins[i] - sq.ac;
+        kids.push(k);
+        kidOrigins.push(o2);
+        min = Math.min(min, o2 + k.min);
+        max = Math.max(max, o2 + k.max);
       });
     }
-    return { main: p, row, offs, kids, kidOrigins, min, max };
+    return { main: p, row: rowIds, offs: rowOffs, kids, kidOrigins, min, max };
   }
 
   const out = new Map<string, Pos>();
@@ -158,7 +257,6 @@ export function computeLayout(nodes: LayoutNode[], rels: LayoutRel[], o: LayoutO
   }
 
   // --- 1. Arbres issus des racines de l'arbre ouvert (priorité aux locaux) ---
-  const hasParents = (id: string) => (parentsOf.get(id) || []).length > 0;
   const rootCands = sortByBirth(nodes.map((n) => n.id).filter((id) => !hasParents(id)));
   const localFirst = [...rootCands.filter((id) => o.localIds.has(id)), ...rootCands.filter((id) => !o.localIds.has(id))];
   let cursorX = 0;
