@@ -398,6 +398,14 @@ export function initGenealogySystem(deps: {
       <div class="dossier-form-actions">
         <button id="gen-m-link-foreign" class="btn-small">Lier &agrave; un membre d'un autre arbre</button>
       </div>
+      <!-- Demande de Martin, 2026-10-22 : faire apparaître, dans l'arbre
+           ouvert, les proches d'un membre d'un autre arbre (parents +
+           conjoints / enfants) sans recréer de lien. Visibles seulement sur
+           le panneau d'un membre étranger (openForeignMemberPanel). -->
+      <div class="dossier-form-actions" id="gen-m-show-relatives-row" style="display:none;">
+        <button id="gen-m-show-parents" class="btn-small">Afficher ses parents et conjoint(s) ici</button>
+        <button id="gen-m-show-children" class="btn-small">Afficher ses enfants ici</button>
+      </div>
     </div>
 
     <div id="gen-relation-modal" class="poi-overlay">
@@ -698,6 +706,22 @@ export function initGenealogySystem(deps: {
           if (!localIds.has(r.member_a_id)) foreignIds.add(r.member_a_id);
           if (!localIds.has(r.member_b_id)) foreignIds.add(r.member_b_id);
         });
+        // Membres d'un autre arbre épinglés dans CET arbre (schema_v36.sql,
+        // demande de Martin, 2026-10-22) : affichés même sans lien direct
+        // avec un membre local (ex. les parents d'un étranger lui-même
+        // relié à un local). Requête isolée : si schema_v36.sql n'est pas
+        // encore exécutée, on l'ignore sans casser le chargement.
+        try {
+          const { data: pinRows, error: pinErr } = await supabase
+            .from("genealogy_foreign_states")
+            .select("member_id")
+            .eq("owner_type", owner.type)
+            .eq("owner_id", owner.id)
+            .eq("pinned", true);
+          if (!pinErr) (pinRows as { member_id: string }[] | null)?.forEach((r) => { if (!localIds.has(r.member_id)) foreignIds.add(r.member_id); });
+        } catch {
+          /* colonne pinned absente : ignoré */
+        }
         if (foreignIds.size) {
           const { data: fRows } = await supabase
             .from("genealogy_members")
@@ -783,9 +807,86 @@ export function initGenealogySystem(deps: {
         displayPos.set(id, { x: anchor.x + Math.cos(angle) * 260, y: anchor.y + Math.sin(angle) * 260 });
       });
     });
+    placeRemainingForeign();
     renderAll();
     renderCustomLegendStrip();
     if (!members.length) $("genealogy-empty-hint").style.display = "";
+  }
+
+  // Place les membres étrangers qui n'ont pas de position : ceux reliés
+  // seulement à un AUTRE étranger (parents d'un étranger, épinglés — demande
+  // de Martin, 2026-10-22). Un parent est posé une génération au-dessus de
+  // son enfant, un enfant en dessous, un conjoint à côté ; on décale
+  // ensuite horizontalement pour éviter de superposer une carte. Position
+  // purement calculée (glisser-déposer pour fixer, comme avant).
+  function placeRemainingForeign() {
+    const free = (x: number, y: number) => {
+      for (const p of displayPos.values()) if (Math.abs(p.x - x) < CARD_W + 40 && Math.abs(p.y - y) < 200) return false;
+      return true;
+    };
+    const put = (id: string, x: number, y: number) => {
+      let guard = 0;
+      while (!free(x, y) && guard++ < 60) x += CARD_W + 40;
+      displayPos.set(id, { x, y });
+    };
+    const pending = Array.from(foreignMembers.keys()).filter((id) => !displayPos.has(id));
+    let progress = true;
+    while (pending.length && progress) {
+      progress = false;
+      for (const id of pending.slice()) {
+        const saved = foreignStates.get(id);
+        if (saved && saved.pos_x != null && saved.pos_y != null) {
+          displayPos.set(id, { x: saved.pos_x, y: saved.pos_y });
+        } else {
+          const r = relations.find((rr) => (rr.member_a_id === id && displayPos.has(rr.member_b_id)) || (rr.member_b_id === id && displayPos.has(rr.member_a_id)));
+          if (!r) continue;
+          const otherId = r.member_a_id === id ? r.member_b_id : r.member_a_id;
+          const o = displayPos.get(otherId)!;
+          if (r.relation_type === "parent") put(id, o.x, r.member_a_id === id ? o.y - GENERATION_GAP : o.y + GENERATION_GAP);
+          else put(id, o.x + CARD_W + 40, o.y);
+        }
+        pending.splice(pending.indexOf(id), 1);
+        progress = true;
+      }
+    }
+    // Reste sans voisin placé (épinglé sans aucun lien chargé) : rangée en bas.
+    let maxY = 0;
+    displayPos.forEach((p) => { if (p.y > maxY) maxY = p.y; });
+    pending.forEach((id, i) => {
+      const saved = foreignStates.get(id);
+      if (saved && saved.pos_x != null && saved.pos_y != null) displayPos.set(id, { x: saved.pos_x, y: saved.pos_y });
+      else put(id, i * (CARD_W + 40), maxY + GENERATION_GAP);
+    });
+  }
+
+  // Épingle des membres d'un autre arbre dans CET arbre (colonne pinned de
+  // genealogy_foreign_states, schema_v36.sql) : conserve leurs éventuelles
+  // position / case « a dirigé le pays » déjà enregistrées.
+  async function pinForeignMembers(ids: string[]): Promise<boolean> {
+    if (!currentOwner || !ids.length) return true;
+    const localIds = new Set(members.map((m) => m.id));
+    const rows = Array.from(new Set(ids))
+      .filter((id) => !localIds.has(id))
+      .map((id) => {
+        const st = foreignStates.get(id);
+        return {
+          member_id: id,
+          owner_type: currentOwner!.type,
+          owner_id: currentOwner!.id,
+          pos_x: st?.pos_x ?? null,
+          pos_y: st?.pos_y ?? null,
+          is_leader: st?.is_leader ?? false,
+          pinned: true,
+        };
+      });
+    if (!rows.length) return true;
+    const { error } = await supabase.from("genealogy_foreign_states").upsert(rows, { onConflict: "member_id,owner_type,owner_id" });
+    if (error) {
+      console.error("Épinglage impossible (schema_v36.sql exécutée ?) :", error);
+      deps.showBanner?.("Impossible d'afficher ces membres ici : exécute d'abord schema_v36.sql dans Supabase.");
+      return false;
+    }
+    return true;
   }
 
   // Bande de légende personnalisée dans le bandeau haut de l'arbre
@@ -1541,6 +1642,10 @@ export function initGenealogySystem(deps: {
       return;
     }
     relations.push(data as RelationRow);
+    // Demande de Martin, 2026-10-22 : relier un membre étranger à un AUTRE
+    // membre étranger doit faire apparaître le nouveau dans cet arbre
+    // (jusqu'ici il n'apparaissait que s'il était lié à un membre local).
+    await pinForeignMembers([aId, bId]);
     // Point demandé par Martin, 2026-10-03 : "même si on peut déplacer,
     // [...] les enfants sont en dessous" — dès qu'un lien parent→enfant
     // est créé, on corrige la position de départ de l'enfant s'il se
@@ -1685,6 +1790,7 @@ export function initGenealogySystem(deps: {
     ($("gen-m-remove-from-tree") as HTMLButtonElement).style.display = "none";
     $("gen-m-relations").style.display = m ? "" : "none";
     $("gen-m-link-foreign").style.display = "";
+    $("gen-m-show-relatives-row").style.display = "none";
     if (m) renderRelationsList(m.id);
     $("gen-member-panel").classList.add("open");
   }
@@ -1744,6 +1850,7 @@ export function initGenealogySystem(deps: {
     // isAdmin() ici non plus (même convention que openMemberPanel
     // ci-dessus : le droit est vérifié au clic, via requireAuthOr).
     $("gen-m-link-foreign").style.display = "";
+    $("gen-m-show-relatives-row").style.display = isAdmin() ? "flex" : "none";
     $("gen-member-panel").classList.add("open");
   }
   function closeMemberPanel() {
@@ -2250,6 +2357,46 @@ export function initGenealogySystem(deps: {
   $("gen-m-remove-from-tree").addEventListener("click", () => {
     if (!foreignPanelMemberId) return;
     void removeForeignMemberFromThisTree(foreignPanelMemberId);
+  });
+
+  // Affiche dans CET arbre les proches (déjà liés dans leur arbre d'origine)
+  // d'un membre étranger : parents + conjoint(s), ou enfants — sans créer
+  // aucun lien (demande de Martin, 2026-10-22).
+  async function showRelativesHere(memberId: string, kind: "parents" | "children") {
+    if (!currentOwner || !isAdmin()) return;
+    const localIds = new Set(members.map((m) => m.id));
+    const { data, error } = await supabase
+      .from("genealogy_relations")
+      .select("id, member_a_id, member_b_id, relation_type, hide_member_id")
+      .or("member_a_id.eq." + memberId + ",member_b_id.eq." + memberId);
+    if (error) {
+      deps.showBanner?.("Erreur lors de la lecture des liens.");
+      return;
+    }
+    const ids: string[] = [];
+    ((data as RelationRow[] | null) || []).forEach((r) => {
+      if (r.hide_member_id && !localIds.has(r.hide_member_id)) return;
+      const other = r.member_a_id === memberId ? r.member_b_id : r.member_a_id;
+      if (kind === "parents") {
+        if (r.relation_type === "spouse" || (r.relation_type === "parent" && r.member_b_id === memberId)) ids.push(other);
+      } else if (r.relation_type === "parent" && r.member_a_id === memberId) ids.push(other);
+    });
+    const fresh = ids.filter((id) => !localIds.has(id) && !foreignMembers.has(id));
+    if (!ids.length) {
+      deps.showBanner?.(kind === "parents" ? "Aucun parent ni conjoint enregistré pour ce membre." : "Aucun enfant enregistré pour ce membre.");
+      return;
+    }
+    if (!fresh.length) {
+      deps.showBanner?.("Ces proches sont déjà affichés dans cet arbre.");
+      return;
+    }
+    if (await pinForeignMembers(fresh)) await loadData(currentOwner);
+  }
+  $("gen-m-show-parents").addEventListener("click", () => {
+    if (foreignPanelMemberId) void showRelativesHere(foreignPanelMemberId, "parents");
+  });
+  $("gen-m-show-children").addEventListener("click", () => {
+    if (foreignPanelMemberId) void showRelativesHere(foreignPanelMemberId, "children");
   });
 
   $("gen-m-delete").addEventListener("click", async () => {
