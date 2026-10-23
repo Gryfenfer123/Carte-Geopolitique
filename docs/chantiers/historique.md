@@ -1,6 +1,8 @@
 # Chantier « historique » (carte historique) — journal
 
 ## Dernières nouvelles (la plus récente en haut)
+- 2026-10-23 — **Nouvelle carte historique livrée (Cliopatria, année par année, monde entier)** : remplace historical-basemaps. Données allégées dans `public/data/historique/` (13 Mo), outils dans `scripts/historique/`, crédit CC BY dans la page. Retour arrière possible : commit `a3776d7` (l'étiquette Git n'a pas pu être poussée).
+  Prochaine étape : valider avec Martin l'aspect sur le site déployé (fonds de carte Esri), puis choisir entre : couche « suzeraineté » (lignes RELATION), noms français via Wikidata, ou lien territoires ↔ fiches / dirigeants des arbres (migration `historique_v1`).
 - 2026-10-23 — étude des sources de données pour la carte historique (voir « Sources étudiées » ci-dessous) ; aucun code touché.
   Prochaine étape : télécharger et inspecter Cliopatria (champs, licence du fichier, liens avec les dynasties) puis décider avec Martin.
 - 2026-10-23 — chantier créé (séparé de « carte » à la demande de Martin) ; journal créé ; aucun code touché. Prochaine étape : état des lieux de la carte historique actuelle et recueil de ce que Martin veut construire.
@@ -25,3 +27,50 @@ dirigeant des arbres généalogiques, ce que cela représente sur la carte).
 | Euratlas | Très précis. | Europe seulement, payant (160 € par siècle) — écarté le 2026-10-06. |
 
 Pas étudiés pour l'instant : CShapes (frontières 1886–aujourd'hui), GeaCron (propriétaire), Chronas, Wikidata (liens dirigeants ↔ États).
+
+## Livraison du 2026-10-23 : carte historique Cliopatria
+
+**Ce qui existe maintenant**
+- Page « Vue historique » : curseur de -3400 à 2024 (année par année), saisie directe de l'année (négatif = avant J.-C.), boutons ±1 / ±10 / ±100,
+  lecture automatique (1 à 100 ans par seconde), zones prédéfinies (Monde, Europe, Méditerranée et Proche-Orient, Afrique, Asie, Amériques).
+- Survol : nom du territoire et de son ensemble ; l'ensemble entier (ex. Empire espagnol) se surligne. Clic : fiche (période de validité du
+  tracé, superficie, liens Wikipédia et Wikidata). Noms des territoires assez grands posés sur la carte, sans chevauchement.
+- Couleur = par ensemble (champ `MemberOf` de la source, ex. « Holy Roman Empire »), sinon par entité ; stable à toutes les époques.
+- Chargement à la demande : index (0,49 Mo, 0,14 Mo compressé) + morceaux de ~0,45 Mo ; toutes les données = 13 Mo (3,6 Mo compressés).
+
+**Vérifié** (build de production servi en local, vrai navigateur Chromium, sans accès aux fonds de carte Esri) : `check:repo` et `build` passent ;
+`scripts/historique/tester-modele.mjs` (logique pure sur les vraies données : 5 425 années toutes non vides, cas Han/Rome/Mongols/Ming/Ottomans/
+Qing/Allemagne 1914 présents au bon moment, décodage des 10 018 tracés) ; `verifier_donnees.py` (0 polygone invalide ; recouvrement moyen 99 % avec
+les contours d'origine sur 1 500 lignes, le plus faible ≈ 85 % sur de minuscules territoires) ; ouverture/fermeture, survol, clic, fiche, boutons,
+clavier, bornes (999999 → 2024, -99999 → -3400, champ vide ignoré), lecture/pause, 100 ans/s sans blocage, affichage mobile 390 px, aucune erreur JS
+(hors ressources externes inaccessibles). Rapidité : 20–400 ms par année, 42 Mo de mémoire JS.
+
+**Non vérifié**
+- L'apparence avec le vrai fond de carte physique Esri (inaccessible depuis l'environnement de travail ; l'adresse des tuiles est inchangée).
+- Le site déployé sur GitHub Pages (onglet Actions à contrôler après le push).
+- La précision historique des tracés : on reprend la source telle quelle (voir `public/data/historique/SOURCE.md`), aucun contrôle par un historien.
+
+**Limites connues, à dire à Martin**
+- Un tracé vaut pour une **période** (médiane 8 ans, de 1 à plus de 900 ans) : la carte ne change que quand une entité change de tracé.
+- Cliopatria ne couvre que les **entités politiques** : les régions sans État cartographié restent vides (ex. Amérique du Nord avant la colonisation).
+- Le Saint-Empire n'apparaît pas comme un seul bloc : seul le sous-ensemble « Holy Roman Empire Minor States » est son membre dans la source ;
+  la suzeraineté sur les électorats, duchés, etc. est codée dans des lignes de type RELATION (alliance, vassalité, union personnelle), écartées pour l'instant.
+- Noms en anglais (ceux de la source). Les identifiants Wikidata permettront d'obtenir des noms français.
+- Année 0 : présente dans la source (45 lignes la contiennent), affichée telle quelle ; convention exacte pour les années avant J.-C. non précisée par la source.
+- Les couleurs sont tirées d'un code de hachage du nom : deux voisins peuvent parfois avoir des teintes proches.
+- Tracés simplifiés : au zoom maximal (8), les contours sont visiblement moins fins que la réalité (précision ≈ 1 km).
+
+**Autres constats**
+- La table de la migration `schema_v20` (correspondance territoire → fiche, clé = nom OpenHistoricalMap) n'est lue par aucun code actuel ; elle sera
+  remplacée par une table clé = identifiant Wikidata quand on branchera territoires ↔ fiches (`historique_v1`, pas encore écrite).
+- `leaflet.vectorgrid` (package.json) et `src/leaflet-vectorgrid.d.ts` ne servaient plus à rien avant ce chantier (reste de la v1 OpenHistoricalMap) : à
+  retirer par un commit dédié (fichiers partagés, non touchés ici).
+- Le dépôt n'accepte pas l'envoi d'étiquettes Git depuis l'environnement de travail (retour arrière = commit `a3776d7`).
+
+## Pistes pour la suite (rien n'est décidé, à voir avec Martin)
+1. **Lien territoires ↔ dossiers** : table `historique_v1` (identifiant Wikidata ↔ entrée de dossier), clic « ouvrir la fiche » dans la vue historique.
+2. **Dirigeants des arbres ↔ carte** : table « membre ↔ entité, de telle année à telle année » (sourcée, saisie ou pré-remplie à relire), bouton « voir sur la
+   carte » depuis un membre d'arbre, liste des dirigeants depuis un territoire.
+3. **Couche suzeraineté** (lignes RELATION : vassalités, alliances, unions personnelles) pour montrer les empires qui dépassent leurs membres directs.
+4. **Noms français** via Wikidata (identifiants déjà dans les données).
+5. Fond de carte et habillage à revoir avec le fond Esri réel.

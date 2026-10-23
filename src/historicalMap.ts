@@ -1,145 +1,72 @@
 // ---------------------------------------------------------------------------
-// Carte historique "à la GeAcron" — demande de Martin, 2026-10-06 :
-// "Possibilité de faire la carte historique, à la gaecron. Rajout d'un
-// bouton en bas qui fait basculer en 'vue historique' et qui permet ensuite
-// avec un curseur d'afficher l'époque souhaitée."
+// Carte historique « à la GeAcron » — demande de Martin, 2026-10-06 : « un
+// bouton en bas qui fait basculer en vue historique et qui permet ensuite avec
+// un curseur d'afficher l'époque souhaitée ».
 //
-// HISTORIQUE DE CE FICHIER (pour comprendre pourquoi c'est écrit ainsi) :
-// v1 (2026-10-06) : OpenHistoricalMap (OHM) en tuiles vectorielles
-// continues (Leaflet.VectorGrid). Deux problèmes réels remontés par
-// Martin : (a) un bug d'affichage (couches non filtrées de la tuile OHM
-// dessinées en centaines de petits cercles, corrigé une première fois)
-// puis (b) un problème de FOND : "c'est le fond de carte des pays
-// actuels" (le fond Esri Dark Gray montrait les frontières modernes sous
-// les tracés historiques) ET surtout "OpenHistoricalMap est incomplet
-// niveau frontière" — un problème de SOURCE DE DONNÉES, pas de code :
-// OHM est un projet communautaire façon OpenStreetMap, et sa couverture
-// en tracés de frontières historiques est pleine de trous.
+// HISTORIQUE DE CE FICHIER (pourquoi il est écrit ainsi) :
+//  - v1 (2026-10-06) : OpenHistoricalMap en tuiles vectorielles — jugé « incomplet niveau
+//    frontière » par Martin.
+//  - v2 (2026-10-06) : historical-basemaps (54 années fixes, GPL-3.0), validé « en version
+//    test » — pas de continuité, pas d'identifiant d'entité, donc aucun lien possible avec
+//    les dynasties et les arbres généalogiques.
+//  - v3 (2026-10-23, ce fichier) : Cliopatria (Seshat Global History Databank, CC BY 4.0).
+//    Demande de Martin : « avoir l'évolution année après année de l'ensemble de la carte du
+//    monde, de l'Europe, de tout ça » et, à terme, voir à la tête de quel empire était un
+//    membre d'un arbre généalogique. Chaque entité a ici des dates et un identifiant Wikidata,
+//    ce qui rend ce lien possible. Les données sont préparées par
+//    scripts/historique/preparer_cliopatria.py ; la logique pure est dans historiqueModel.ts,
+//    le chargement dans historiqueData.ts.
 //
-// v2 (ce fichier) : recherche menée (voir la conversation) pour trouver
-// une alternative plus complète. Euratlas (dataset professionnel très
-// précis) a été écarté : Europe uniquement, et payant à l'unité (160€ PAR
-// SIÈCLE acheté séparément — des milliers d'euros pour couvrir l'an 1 à
-// 2000 sur le monde entier, inenvisageable). La seule alternative
-// gratuite, à l'échelle mondiale et avec des tracés propres et fiables
-// (contrairement à OHM) est le jeu de données "historical-basemaps"
-// (github.com/aourednik/historical-basemaps, licence GPL-3.0) — en
-// contrepartie, ce n'est PAS un curseur continu année par année : les
-// données n'existent que pour 54 années fixes (de -123000 à 2010,
-// réparties ci-dessous dans HISTORICAL_YEARS), listées dans le
-// index.json du dépôt. Martin a validé cette bascule explicitement
-// ("Bon on part sur historical basemap pour le moment en version test",
-// 2026-10-06) en connaissance de cette limite.
+// Page plein écran avec sa propre carte Leaflet, indépendante de la carte principale (choix
+// maintenu depuis la refonte du 2026-10-06 : la couche sur la carte principale entrait en
+// conflit avec l'interactivité des pays).
 //
-// Conséquence sur l'UI : le curseur n'est plus un <input type=range> en
-// unité "année" (ça donnerait l'illusion d'un choix continu alors que la
-// donnée ne l'est pas) mais en unité "INDEX dans la liste des 54 années
-// disponibles" — l'étiquette affiche l'année réelle correspondante. Plus
-// honnête pour l'utilisateur, et ça évite d'avoir à calculer/afficher un
-// "repli sur l'année la plus proche" invisible.
-//
-// "Version test" (mot de Martin) : les fichiers GeoJSON sont chargés à la
-// volée depuis raw.githubusercontent.com (CDN de GitHub, CORS ouvert,
-// pas de clé requise) plutôt que copiés dans ce dépôt — rapide à mettre
-// en place, facile à remplacer par une autre source plus tard sans
-// toucher au reste du code (toute la logique de ce fichier ne dépend que
-// de HISTORICAL_YEARS[i].filename et du format GeoJSON standard
-// {NAME, SUBJECTO, BORDERPRECISION, PARTOF} de ce dataset).
-//
-// Fond de carte : remplacé par un fond "physique" (relief/océans, SANS
-// frontières ni noms de pays modernes — Esri World_Physical_Map, même
-// famille Esri déjà utilisée ailleurs dans l'app, gratuit, sans clé),
-// conformément au retour de Martin ("fond neutre océan/relief").
-//
-// Reste de l'architecture (page plein écran séparée avec sa propre carte
-// Leaflet, indépendante de la carte principale) inchangée depuis la
-// refonte précédente — voir l'historique Git/les livraisons précédentes
-// pour le détail de ce choix.
+// Résolution réelle de la source : un tracé vaut pour une PÉRIODE (durée médiane ≈ 8 ans, de 1
+// à plus de 900 ans). Le curseur avance bien année par année, mais la carte ne change que
+// lorsqu'une entité change de tracé.
 // ---------------------------------------------------------------------------
 
 import L from "leaflet";
+import "./historique.css";
+import { assurerTraces, chargerIndex, traceChargee } from "./historiqueData";
+import {
+  ANNEE_MAX,
+  ANNEE_MIN,
+  bornerAnnee,
+  couleurDuGroupe,
+  decoderTrace,
+  formatAnnee,
+  formatPeriode,
+  groupeDeLigne,
+  lienWikidata,
+  lienWikipedia,
+  lignesALAnnee,
+  nomDeLigne,
+} from "./historiqueModel";
+import type { HistoriqueIndex, Ligne, TraceDecodee } from "./historiqueModel";
 
-// Les 54 années disponibles dans historical-basemaps (lues depuis
-// index.json du dépôt le 2026-10-06, triées croissant) — chaque fichier
-// est un GeoJSON de polygones de territoires pour cette année-là.
-// Propriétés de chaque feature : NAME (nom affiché), SUBJECTO (puissance
-// coloniale/rattachement, utile pour une future carte choroplèthe),
-// PARTOF (aire culturelle), BORDERPRECISION (1=approximatif,
-// 2=moyennement précis, 3=déterminé par le droit international) — on
-// n'utilise pour l'instant que NAME (affichage + survol).
-const HISTORICAL_YEARS: { year: number; filename: string }[] = [
-  { year: -123000, filename: "world_bc123000.geojson" },
-  { year: -10000, filename: "world_bc10000.geojson" },
-  { year: -8000, filename: "world_bc8000.geojson" },
-  { year: -5000, filename: "world_bc5000.geojson" },
-  { year: -4000, filename: "world_bc4000.geojson" },
-  { year: -3000, filename: "world_bc3000.geojson" },
-  { year: -2000, filename: "world_bc2000.geojson" },
-  { year: -1500, filename: "world_bc1500.geojson" },
-  { year: -1000, filename: "world_bc1000.geojson" },
-  { year: -700, filename: "world_bc700.geojson" },
-  { year: -500, filename: "world_bc500.geojson" },
-  { year: -400, filename: "world_bc400.geojson" },
-  { year: -323, filename: "world_bc323.geojson" },
-  { year: -300, filename: "world_bc300.geojson" },
-  { year: -200, filename: "world_bc200.geojson" },
-  { year: -100, filename: "world_bc100.geojson" },
-  { year: -1, filename: "world_bc1.geojson" },
-  { year: 100, filename: "world_100.geojson" },
-  { year: 200, filename: "world_200.geojson" },
-  { year: 300, filename: "world_300.geojson" },
-  { year: 400, filename: "world_400.geojson" },
-  { year: 500, filename: "world_500.geojson" },
-  { year: 600, filename: "world_600.geojson" },
-  { year: 700, filename: "world_700.geojson" },
-  { year: 800, filename: "world_800.geojson" },
-  { year: 900, filename: "world_900.geojson" },
-  { year: 1000, filename: "world_1000.geojson" },
-  { year: 1100, filename: "world_1100.geojson" },
-  { year: 1200, filename: "world_1200.geojson" },
-  { year: 1279, filename: "world_1279.geojson" },
-  { year: 1300, filename: "world_1300.geojson" },
-  { year: 1400, filename: "world_1400.geojson" },
-  { year: 1492, filename: "world_1492.geojson" },
-  { year: 1500, filename: "world_1500.geojson" },
-  { year: 1530, filename: "world_1530.geojson" },
-  { year: 1600, filename: "world_1600.geojson" },
-  { year: 1650, filename: "world_1650.geojson" },
-  { year: 1700, filename: "world_1700.geojson" },
-  { year: 1715, filename: "world_1715.geojson" },
-  { year: 1783, filename: "world_1783.geojson" },
-  { year: 1800, filename: "world_1800.geojson" },
-  { year: 1815, filename: "world_1815.geojson" },
-  { year: 1878, filename: "world_1878.geojson" },
-  { year: 1880, filename: "world_1880.geojson" },
-  { year: 1900, filename: "world_1900.geojson" },
-  { year: 1914, filename: "world_1914.geojson" },
-  { year: 1920, filename: "world_1920.geojson" },
-  { year: 1930, filename: "world_1930.geojson" },
-  { year: 1938, filename: "world_1938.geojson" },
-  { year: 1945, filename: "world_1945.geojson" },
-  { year: 1960, filename: "world_1960.geojson" },
-  { year: 1994, filename: "world_1994.geojson" },
-  { year: 2000, filename: "world_2000.geojson" },
-  { year: 2010, filename: "world_2010.geojson" },
+const ANNEE_DE_DEPART = 1500;
+const REGIONS: { nom: string; bornes: L.LatLngBoundsLiteral }[] = [
+  { nom: "Monde", bornes: [[-58, -170], [78, 180]] },
+  { nom: "Europe", bornes: [[34, -14], [62, 45]] },
+  { nom: "Méditerranée et Proche-Orient", bornes: [[10, -12], [48, 70]] },
+  { nom: "Afrique", bornes: [[-36, -20], [38, 55]] },
+  { nom: "Asie", bornes: [[-10, 55], [58, 150]] },
+  { nom: "Amériques", bornes: [[-56, -135], [72, -30]] },
 ];
-const HISTORICAL_DATA_BASE_URL = "https://raw.githubusercontent.com/aourednik/historical-basemaps/master/geojson/";
+const VITESSES = [1, 5, 10, 25, 50, 100]; // années par seconde pendant la lecture
+const STYLE_NORMAL = { weight: 1, fillOpacity: 0.55, opacity: 0.9 };
+const STYLE_SURVOL = { weight: 2.2, fillOpacity: 0.78, opacity: 1 };
+const DELAI_CURSEUR_MS = 120; // on attend que le curseur se pose avant de charger des fichiers
+const MAX_TRACES_EN_MEMOIRE = 4000;
 
-type HistoricalFeatureProps = {
-  NAME?: string;
-  SUBJECTO?: string;
-  PARTOF?: string;
-  BORDERPRECISION?: number;
-};
-
-const TERRITORY_STYLE = { color: "#e8b34a", weight: 1.1, fillColor: "#e8b34a", fillOpacity: 0.22, opacity: 0.85 };
-const TERRITORY_HOVER_STYLE = { fillOpacity: 0.4, weight: 1.8 };
+type Visible = { ligne: Ligne; nom: string; groupe: string; decode: TraceDecodee; calque: L.Polygon };
 
 export function initHistoricalMapSystem() {
   const $ = <T extends HTMLElement = HTMLElement>(id: string) => document.getElementById(id) as T;
 
-  const root = document.createElement("div");
-  root.innerHTML = `
+  const racine = document.createElement("div");
+  racine.innerHTML = `
     <div id="historical-toggle" class="panel">
       <button id="historical-toggle-btn" title="Vue historique" aria-label="Vue historique"><svg class="icon-svg" style="width:17px;height:17px;" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg></button>
     </div>
@@ -147,164 +74,322 @@ export function initHistoricalMapSystem() {
       <div id="historical-topbar">
         <h2 id="historical-title">Vue historique</h2>
         <div id="historical-toolbar">
-          <input type="range" id="historical-slider" min="0" max="${HISTORICAL_YEARS.length - 1}" value="${HISTORICAL_YEARS.length - 1}" step="1">
-          <span id="historical-slider-year"></span>
+          <div class="historique-rangee">
+            <input type="range" id="historical-slider" min="${ANNEE_MIN}" max="${ANNEE_MAX}" value="${ANNEE_DE_DEPART}" step="1" aria-label="Année">
+            <span id="historical-slider-year"></span>
+          </div>
+          <div class="historique-rangee historique-commandes">
+            <span class="historique-groupe">
+              ${[-100, -10, -1].map((p) => `<button type="button" data-pas="${p}" title="Reculer de ${-p} an${-p > 1 ? "s" : ""}">−${-p}</button>`).join("")}
+              <label class="historique-annee">Année <input type="number" id="historical-year-input" min="${ANNEE_MIN}" max="${ANNEE_MAX}" step="1" title="Négatif = avant J.-C. (ex. −500)"></label>
+              ${[1, 10, 100].map((p) => `<button type="button" data-pas="${p}" title="Avancer de ${p} an${p > 1 ? "s" : ""}">+${p}</button>`).join("")}
+            </span>
+            <span class="historique-groupe">
+              <button type="button" id="historical-play" title="Faire défiler les années">▶ Lecture</button>
+              <select id="historical-speed" aria-label="Vitesse de lecture">${VITESSES.map((v) => `<option value="${v}"${v === 10 ? " selected" : ""}>${v} an${v > 1 ? "s" : ""}/s</option>`).join("")}</select>
+              <select id="historical-region" aria-label="Zone affichée">${REGIONS.map((r, i) => `<option value="${i}">${r.nom}</option>`).join("")}</select>
+            </span>
+          </div>
         </div>
         <button id="historical-view-close" class="close-x" aria-label="Fermer la vue historique">&times;</button>
       </div>
-      <div id="historical-map-container"></div>
-      <p id="historical-slider-hint" class="muted">Données : <a href="https://github.com/aourednik/historical-basemaps" target="_blank" rel="noopener">historical-basemaps</a> (A. Ourednik et contributeurs, licence GPL-3.0) — version test. ${HISTORICAL_YEARS.length} années disponibles (le curseur saute d'une année documentée à l'autre, pas de continuité totale).</p>
+      <div id="historical-map-container">
+        <div id="historical-info" hidden></div>
+      </div>
+      <p id="historical-slider-hint" class="muted">Données : <a href="https://github.com/Seshat-Global-History-Databank/cliopatria" target="_blank" rel="noopener">Cliopatria</a> v0.2.1 — Seshat Global History Databank (Bennett et al., <a href="https://doi.org/10.1038/s41597-025-04516-9" target="_blank" rel="noopener">Scientific Data, 2025</a>), licence <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a> ; contours simplifiés pour le web. Les frontières, noms et dates du passé sont débattus par les historiens : ces cartes montrent une version possible.</p>
     </div>
   `;
-  document.body.appendChild(root);
+  document.body.appendChild(racine);
 
-  let active = false;
-  let yearIndex = HISTORICAL_YEARS.length - 1;
-  let hMap: L.Map | null = null;
-  let layer: L.GeoJSON | null = null;
-  let loadToken = 0; // évite qu'une réponse réseau en retard (vieux curseur) n'écrase un affichage plus récent
-  // Cache par nom de fichier — glisser le curseur en va-et-vient entre deux
-  // années déjà vues doit être instantané, pas re-télécharger ~1 Mo à
-  // chaque fois.
-  const dataCache = new Map<string, Promise<GeoJSON.FeatureCollection>>();
+  let actif = false;
+  let annee = ANNEE_DE_DEPART;
+  let index: HistoriqueIndex | null = null;
+  let carte: L.Map | null = null;
+  let couchePolygones: L.FeatureGroup | null = null;
+  let coucheEtiquettes: L.LayerGroup | null = null;
+  let visibles: Visible[] = [];
+  let groupeSelectionne: string | null = null;
+  let jeton = 0; // une réponse réseau en retard ne doit pas écraser un affichage plus récent
+  let enChargement = false;
+  let minuterie: number | undefined;
+  let lecture: number | undefined;
+  const decodes = new Map<number, TraceDecodee>();
 
-  function formatYear(y: number): string {
-    return y < 0 ? Math.abs(y) + " av. J.-C." : String(y);
+  const etiquetteAnnee = $("historical-slider-year");
+  const curseur = $<HTMLInputElement>("historical-slider");
+  const champAnnee = $<HTMLInputElement>("historical-year-input");
+
+  function decoder(idTrace: number, brut: number[][][]): TraceDecodee {
+    let d = decodes.get(idTrace);
+    if (!d) {
+      if (decodes.size >= MAX_TRACES_EN_MEMOIRE) decodes.clear();
+      d = decoderTrace(brut);
+      decodes.set(idTrace, d);
+    }
+    return d;
   }
 
-  function fetchYearData(filename: string): Promise<GeoJSON.FeatureCollection> {
-    const cached = dataCache.get(filename);
-    if (cached) return cached;
-    const p = fetch(HISTORICAL_DATA_BASE_URL + filename).then((r) => {
-      if (!r.ok) throw new Error("HTTP " + r.status);
-      return r.json() as Promise<GeoJSON.FeatureCollection>;
+  // Carte Leaflet dédiée, créée à la première ouverture puis réutilisée.
+  function assurerCarte(): L.Map {
+    if (carte) return carte;
+    carte = L.map("historical-map-container", {
+      zoomControl: true,
+      minZoom: 2,
+      maxZoom: 8,
+      preferCanvas: true,
+      maxBounds: [[-85, -190], [85, 190]],
+      maxBoundsViscosity: 0.8,
     });
-    dataCache.set(filename, p);
-    return p;
+    // Fond « physique » (relief et océans, SANS frontières ni noms de pays modernes) — retour de
+    // Martin du 2026-10-06 : « c'est le fond de carte des pays actuels ».
+    L.tileLayer("https://services.arcgisonline.com/ArcGIS/rest/services/World_Physical_Map/MapServer/tile/{z}/{y}/{x}", {
+      attribution: '&copy; <a href="https://www.esri.com">Esri</a> — Esri, US National Park Service',
+      maxZoom: 8,
+    }).addTo(carte);
+    couchePolygones = L.featureGroup().addTo(carte);
+    coucheEtiquettes = L.layerGroup().addTo(carte);
+    carte.fitBounds(REGIONS[0].bornes);
+    // Les étiquettes dépendent de la taille des territoires à l'écran : on les recalcule quand le zoom change.
+    carte.on("zoomend", placerEtiquettes);
+    carte.on("click", () => fermerFiche());
+    return carte;
   }
 
-  // Carte Leaflet dédiée à la vue historique, totalement séparée de la
-  // carte principale — créée paresseusement à la première ouverture, puis
-  // réutilisée (jamais détruite, juste cachée/affichée via
-  // #historical-view.open).
-  function ensureMap(): L.Map {
-    if (hMap) return hMap;
-    hMap = L.map("historical-map-container", { zoomControl: true, worldCopyJump: true, minZoom: 2 }).setView([25, 10], 3);
-    // Fond "physique" (relief + océans, SANS frontières ni noms de pays
-    // modernes) — corrige le retour de Martin ("c'est le fond de carte
-    // des pays actuelles") : même famille Esri déjà utilisée ailleurs
-    // dans l'app (gratuit, sans clé), mais la couche World_Physical_Map
-    // au lieu de World_Dark_Gray_Base/World_Imagery (celles-ci montrent
-    // les frontières/noms politiques actuels).
-    L.tileLayer(
-      "https://services.arcgisonline.com/ArcGIS/rest/services/World_Physical_Map/MapServer/tile/{z}/{y}/{x}",
-      {
-        attribution:
-          '&copy; <a href="https://www.esri.com">Esri</a> — Esri, US National Park Service',
-        maxZoom: 8,
-      }
-    ).addTo(hMap);
-    return hMap;
+  function styleDuGroupe(groupe: string, survol: boolean) {
+    const c = couleurDuGroupe(groupe);
+    const selectionne = groupe === groupeSelectionne;
+    return { color: c.contour, fillColor: c.remplissage, ...(survol || selectionne ? STYLE_SURVOL : STYLE_NORMAL) };
   }
 
-  function showLoading(on: boolean) {
-    $("historical-slider-year").classList.toggle("loading", on);
+  function surligner(groupe: string, survol: boolean) {
+    for (const v of visibles) if (v.groupe === groupe) v.calque.setStyle(styleDuGroupe(groupe, survol));
   }
 
-  async function renderYear(index: number) {
-    const entry = HISTORICAL_YEARS[index];
-    const token = ++loadToken;
-    showLoading(true);
-    try {
-      const data = await fetchYearData(entry.filename);
-      if (token !== loadToken) return; // une sélection plus récente a entre-temps pris le dessus
-      const m = ensureMap();
-      if (layer) m.removeLayer(layer);
-      layer = L.geoJSON(data, {
-        style: () => TERRITORY_STYLE,
-        onEachFeature: (feature, lyr) => {
-          const props = (feature.properties || {}) as HistoricalFeatureProps;
-          const name = props.NAME || props.SUBJECTO || "";
-          if (name) lyr.bindTooltip(name, { sticky: true, className: "historical-tooltip" });
-          lyr.on("mouseover", () => (lyr as L.Path).setStyle(TERRITORY_HOVER_STYLE));
-          lyr.on("mouseout", () => (lyr as L.Path).setStyle(TERRITORY_STYLE));
-        },
-      }).addTo(m);
-      $("historical-slider-hint-error")?.remove();
-    } catch (err) {
-      if (token !== loadToken) return;
-      console.error("Vue historique : échec du chargement de " + entry.filename, err);
-      const hint = $("historical-slider-hint");
-      if (hint && !document.getElementById("historical-slider-hint-error")) {
-        const errEl = document.createElement("div");
-        errEl.id = "historical-slider-hint-error";
-        errEl.textContent = "Impossible de charger les données pour cette année (connexion réseau ?).";
-        hint.prepend(errEl);
-      }
-    } finally {
-      if (token === loadToken) showLoading(false);
+  function dessiner(idx: HistoriqueIndex, lignes: Ligne[]) {
+    assurerCarte();
+    couchePolygones!.clearLayers();
+    visibles = [];
+    for (const ligne of lignes) {
+      const brut = traceChargee(idx, ligne[3]);
+      if (!brut) continue;
+      const decode = decoder(ligne[3], brut);
+      const nom = nomDeLigne(idx, ligne);
+      const groupe = groupeDeLigne(idx, ligne);
+      // bubblingMouseEvents:false → un clic sur un territoire n'est pas pris pour un clic sur le fond (qui ferme la fiche)
+      const calque = L.polygon(decode.latlngs, { ...styleDuGroupe(groupe, false), bubblingMouseEvents: false });
+      calque.bindTooltip(groupe !== nom ? `${nom} — ${groupe}` : nom, { sticky: true, className: "historical-tooltip" });
+      calque.on("mouseover", () => surligner(groupe, true));
+      calque.on("mouseout", () => surligner(groupe, false));
+      calque.on("click", () => selectionner(idx, ligne, groupe));
+      couchePolygones!.addLayer(calque);
+      visibles.push({ ligne, nom, groupe, decode, calque });
+    }
+    placerEtiquettes();
+  }
+
+  // Étiquettes : seulement pour les territoires assez grands pour contenir leur nom à l'écran actuel,
+  // sans jamais se chevaucher (les plus grands passent en premier).
+  function placerEtiquettes() {
+    if (!carte || !coucheEtiquettes) return;
+    coucheEtiquettes.clearLayers();
+    const posees: { x0: number; y0: number; x1: number; y1: number }[] = [];
+    for (const v of visibles) {
+      const largeurTexte = v.nom.length * 6.3 + 10;
+      const [[sud, ouest], [nord, est]] = v.decode.boite;
+      const a = carte.latLngToContainerPoint([nord, ouest]);
+      const b = carte.latLngToContainerPoint([sud, est]);
+      if (Math.abs(b.x - a.x) < largeurTexte || Math.abs(b.y - a.y) < 18) continue;
+      const c = carte.latLngToContainerPoint(v.decode.centre);
+      const boite = { x0: c.x - largeurTexte / 2, x1: c.x + largeurTexte / 2, y0: c.y - 9, y1: c.y + 9 };
+      if (posees.some((p) => boite.x0 < p.x1 && boite.x1 > p.x0 && boite.y0 < p.y1 && boite.y1 > p.y0)) continue;
+      posees.push(boite);
+      const texte = document.createElement("span");
+      texte.textContent = v.nom;
+      L.marker(v.decode.centre, {
+        icon: L.divIcon({ className: "historical-label", html: texte, iconSize: [0, 0] }),
+        interactive: false,
+        keyboard: false,
+      }).addTo(coucheEtiquettes);
     }
   }
 
-  function activate() {
-    if (active) return;
-    active = true;
+  function selectionner(idx: HistoriqueIndex, ligne: Ligne, groupe: string) {
+    const ancien = groupeSelectionne;
+    groupeSelectionne = groupe;
+    if (ancien) surligner(ancien, false);
+    surligner(groupe, false);
+    const meta = idx.meta[ligne[0]];
+    const nom = nomDeLigne(idx, ligne);
+    const wikipedia = lienWikipedia(meta);
+    const wikidata = lienWikidata(meta);
+    const fiche = $("historical-info");
+    fiche.replaceChildren();
+    const titre = document.createElement("h3");
+    titre.textContent = nom;
+    fiche.append(titre);
+    const ligneTexte = (texte: string) => {
+      const p = document.createElement("p");
+      p.textContent = texte;
+      fiche.append(p);
+    };
+    if (groupe !== nom) ligneTexte(`Membre de : ${groupe}`);
+    ligneTexte(`Ce tracé vaut pour : ${formatPeriode(ligne[1], ligne[2])}`);
+    ligneTexte(`Superficie d'après le tracé : environ ${ligne[5].toLocaleString("fr-FR")} km²`);
+    const liens = document.createElement("p");
+    for (const [libelle, url] of [["Wikipédia (anglais)", wikipedia], ["Wikidata", wikidata]] as const) {
+      if (!url) continue;
+      const a = document.createElement("a");
+      a.href = url;
+      a.target = "_blank";
+      a.rel = "noopener";
+      a.textContent = libelle;
+      liens.append(a, " ");
+    }
+    if (liens.childNodes.length) fiche.append(liens);
+    const fermer = document.createElement("button");
+    fermer.type = "button";
+    fermer.className = "close-x";
+    fermer.setAttribute("aria-label", "Fermer");
+    fermer.textContent = "×";
+    fermer.addEventListener("click", fermerFiche);
+    fiche.append(fermer);
+    fiche.hidden = false;
+  }
+
+  function fermerFiche() {
+    const ancien = groupeSelectionne;
+    groupeSelectionne = null;
+    if (ancien) surligner(ancien, false);
+    $("historical-info").hidden = true;
+  }
+
+  function montrerErreur(on: boolean) {
+    const existant = document.getElementById("historical-slider-hint-error");
+    if (!on) return existant?.remove();
+    if (existant) return;
+    const e = document.createElement("div");
+    e.id = "historical-slider-hint-error";
+    e.textContent = "Impossible de charger les données pour cette année (connexion réseau ?).";
+    $("historical-slider-hint").prepend(e);
+  }
+
+  async function afficher(an: number) {
+    const mon = ++jeton;
+    enChargement = true;
+    etiquetteAnnee.classList.add("loading");
+    try {
+      index ??= await chargerIndex();
+      const lignes = lignesALAnnee(index, an);
+      await assurerTraces(index, lignes);
+      if (mon !== jeton) return; // une sélection plus récente a pris le dessus
+      dessiner(index, lignes);
+      montrerErreur(false);
+      void precharger(index, an);
+    } catch (err) {
+      if (mon !== jeton) return;
+      console.error("Vue historique : échec du chargement pour l'année " + an, err);
+      montrerErreur(true);
+    } finally {
+      if (mon === jeton) {
+        enChargement = false;
+        etiquetteAnnee.classList.remove("loading");
+      }
+    }
+  }
+
+  // Pendant qu'on regarde une année, on prépare discrètement la suivante (lecture fluide).
+  async function precharger(idx: HistoriqueIndex, an: number) {
+    try {
+      await assurerTraces(idx, lignesALAnnee(idx, bornerAnnee(an + 15)));
+    } catch {
+      /* sans importance : le vrai chargement réessaiera */
+    }
+  }
+
+  function definirAnnee(valeur: number, immediat = false) {
+    annee = bornerAnnee(valeur);
+    curseur.value = String(annee);
+    champAnnee.value = String(annee);
+    etiquetteAnnee.textContent = formatAnnee(annee);
+    if (!actif) return;
+    window.clearTimeout(minuterie);
+    if (immediat) void afficher(annee);
+    else minuterie = window.setTimeout(() => void afficher(annee), DELAI_CURSEUR_MS);
+  }
+
+  function arreterLecture() {
+    if (lecture !== undefined) window.clearInterval(lecture);
+    lecture = undefined;
+    $("historical-play").textContent = "▶ Lecture";
+  }
+
+  function demarrerLecture() {
+    if (annee >= ANNEE_MAX) definirAnnee(ANNEE_MIN, true);
+    const vitesse = parseInt($<HTMLSelectElement>("historical-speed").value, 10);
+    const pas = vitesse <= 5 ? 1 : vitesse / 5;
+    const cadence = vitesse <= 5 ? 1000 / vitesse : 200;
+    $("historical-play").textContent = "⏸ Pause";
+    lecture = window.setInterval(() => {
+      if (enChargement) return; // on n'avance pas tant que l'image précédente n'est pas prête
+      if (annee >= ANNEE_MAX) return arreterLecture();
+      definirAnnee(annee + pas, true);
+    }, cadence);
+  }
+
+  function activer() {
+    if (actif) return;
+    actif = true;
     $("historical-view").classList.add("open");
     $("historical-toggle-btn").classList.add("active");
-    const m = ensureMap();
-    // La carte était masquée (display:none) à sa création : Leaflet a
-    // besoin qu'on lui redise la taille réelle de son conteneur une fois
-    // visible, sans quoi elle ne couvre souvent qu'un coin de l'écran.
-    window.setTimeout(() => m.invalidateSize(), 50);
-    if (!layer) void renderYear(yearIndex);
+    const m = assurerCarte();
+    // La carte était masquée à sa création : Leaflet doit relire la taille réelle de son conteneur.
+    window.setTimeout(() => {
+      m.invalidateSize();
+      m.fitBounds(REGIONS[parseInt($<HTMLSelectElement>("historical-region").value, 10)].bornes);
+    }, 50);
+    void afficher(annee);
   }
-  function deactivate() {
-    if (!active) return;
-    active = false;
+
+  function desactiver() {
+    if (!actif) return;
+    actif = false;
+    arreterLecture();
     $("historical-view").classList.remove("open");
     $("historical-toggle-btn").classList.remove("active");
   }
 
-  function setYearIndex(index: number) {
-    yearIndex = Math.max(0, Math.min(HISTORICAL_YEARS.length - 1, Math.round(index)));
-    ($("historical-slider") as HTMLInputElement).value = String(yearIndex);
-    $("historical-slider-year").textContent = formatYear(HISTORICAL_YEARS[yearIndex].year);
-    if (active) void renderYear(yearIndex);
-  }
-
-  $("historical-toggle-btn").addEventListener("click", () => {
-    if (active) deactivate();
-    else activate();
+  $("historical-toggle-btn").addEventListener("click", () => (actif ? desactiver() : activer()));
+  $("historical-view-close").addEventListener("click", desactiver);
+  curseur.addEventListener("input", () => definirAnnee(parseInt(curseur.value, 10)));
+  champAnnee.addEventListener("change", () => {
+    const n = parseInt(champAnnee.value, 10);
+    definirAnnee(Number.isNaN(n) ? annee : n, true);
   });
-  $("historical-view-close").addEventListener("click", deactivate);
-  $("historical-slider").addEventListener("input", (e) => {
-    setYearIndex(parseInt((e.target as HTMLInputElement).value, 10));
+  racine.querySelectorAll<HTMLButtonElement>("button[data-pas]").forEach((b) =>
+    b.addEventListener("click", () => definirAnnee(annee + parseInt(b.dataset.pas!, 10), true)),
+  );
+  $("historical-play").addEventListener("click", () => (lecture === undefined ? demarrerLecture() : arreterLecture()));
+  $("historical-speed").addEventListener("change", () => {
+    if (lecture !== undefined) {
+      arreterLecture();
+      demarrerLecture();
+    }
   });
-  setYearIndex(yearIndex);
+  $("historical-region").addEventListener("change", (e) => {
+    const i = parseInt((e.target as HTMLSelectElement).value, 10);
+    carte?.fitBounds(REGIONS[i].bornes);
+  });
+  definirAnnee(annee);
 
-  // openAt : point d'extension pour le lien bidirectionnel date ↔ vue
-  // historique (demande de Martin : "si dans une fiche ou une frise on
-  // met une date... quand je clique sur la date j'arrive sur la vue
-  // historique") — câblage depuis les fiches/frises prévu dans une
-  // prochaine étape. Avec des années fixes (voir en-tête), "year" est ici
-  // mappé sur l'année disponible la plus proche plutôt qu'affiché tel
-  // quel.
-  function openAt(year: number) {
-    let closestIdx = 0;
-    let closestDist = Infinity;
-    HISTORICAL_YEARS.forEach((entry, i) => {
-      const dist = Math.abs(entry.year - year);
-      if (dist < closestDist) {
-        closestDist = dist;
-        closestIdx = i;
-      }
-    });
-    activate();
-    setYearIndex(closestIdx);
+  // Point d'extension pour le lien date ↔ vue historique (demande de Martin du 2026-10-06 : cliquer
+  // une date dans une fiche ou une frise ouvre la carte à cette époque) — câblage prévu plus tard.
+  function openAt(an: number) {
+    definirAnnee(an, true); // si la vue est déjà ouverte, ceci l'affiche ; sinon activer() s'en charge
+    activer();
   }
 
   return {
     openAt,
-    isActive: () => active,
+    isActive: () => actif,
   };
 }

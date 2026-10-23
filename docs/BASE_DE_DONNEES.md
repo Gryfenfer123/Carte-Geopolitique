@@ -96,7 +96,7 @@ RLS**. Règles :
 | v11 | Arbres généalogiques (dynasties) |
 | v12 | Dirigeants multiples par pays |
 | v19 | Frises — **ancien prototype, abandonné** |
-| v20 | Correspondance territoire historique → fiche actuelle |
+| v20 | Correspondance territoire historique → fiche actuelle (clé = nom OpenHistoricalMap ; **non utilisée** par la carte historique actuelle, voir `chantiers/historique.md`) |
 | v24 | Statuts cumulés autour d'un membre (anneaux concentriques) |
 | v26 | Subdivisions administratives par pays |
 | v27 | Frises — nouveau modèle |

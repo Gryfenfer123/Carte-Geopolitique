@@ -1,0 +1,206 @@
+#!/usr/bin/env python3
+"""Prépare les données Cliopatria pour la carte historique du site.
+
+POURQUOI CE SCRIPT (Martin, 2026-10-23) : la carte historique doit montrer l'évolution année par année du
+monde entier. La source retenue est Cliopatria (Seshat Global History Databank, licence CC BY 4.0), mais son
+fichier fait 172 Mo : on ne peut pas l'envoyer tel quel dans un navigateur. Ce script le transforme en
+fichiers légers (index + morceaux de tracés) que le site charge à la demande, SANS rien inventer :
+on ne fait que (1) simplifier légèrement les contours, (2) coder les coordonnées plus court.
+Ce sont des modifications à indiquer (exigence de la licence CC BY) : voir public/data/historique/SOURCE.md.
+
+SOURCE (à télécharger soi-même, elle n'est pas dans le dépôt) :
+  https://github.com/Seshat-Global-History-Databank/cliopatria  → fichier cliopatria.geojson.zip (version 0.2.1)
+  Décompresser, puis :
+      pip install shapely
+      python3 scripts/historique/preparer_cliopatria.py chemin/vers/cliopatria_polities_only_v021.geojson
+
+CE QUI EST GARDÉ / ÉCARTÉ
+  - gardé : les lignes de type POLITY dont le nom ne commence pas par « ( » = les entités qu'on peint sur la
+    carte. Les entités entre parenthèses, ex. « (Holy Roman Empire) », sont des ENSEMBLES (union de leurs
+    membres, champ Components) : on ne les peint pas (ce serait doubler leurs membres) mais on retient leur nom
+    comme « groupe » de chaque membre (champ MemberOf) pour colorer et surligner les ensembles.
+  - écarté pour l'instant : les lignes de type RELATION (alliances, vassalités, unions personnelles) : ce sont
+    des zones qui chevauchent les entités ; elles pourront devenir une couche à part plus tard.
+
+FORMAT PRODUIT (dans public/data/historique/)
+  index.json   {version, noms[], meta[], lignes[], morceaux[]}
+      noms[i]            : un nom (entité ou ensemble)
+      meta[j]            : [indexNom, pageWikipedia, idWikidata, idSeshat]  (valeurs distinctes)
+      lignes[k]          : [indexMeta, anneeDebut, anneeFin, idTrace, indexNomEnsemble(-1 si aucun), aireKm2]
+                           une ligne = « de anneeDebut à anneeFin incluses, cette entité a CE tracé »
+      morceaux[m]        : [premierIdTrace, nombreDeTraces]  → fichier geo_<mmm>.json
+  geo_NNN.json  liste de tracés ; un tracé = liste de polygones ; un polygone = liste d'anneaux (le 1er = contour,
+                les suivants = trous) ; un anneau = suite d'entiers [x0, y0, dx1, dy1, …] en centièmes de degré
+                (x = longitude, y = latitude ; le 1er point est absolu, les suivants sont des écarts ; le point
+                de fermeture n'est pas répété).
+"""
+import hashlib
+import json
+import math
+import os
+import sys
+
+import shapely
+from shapely.geometry import mapping, shape
+from shapely.validation import make_valid
+
+VERSION_SOURCE = "0.2.1"
+CENTIEMES = 100  # précision des coordonnées : 0,01° ≈ 1 km
+TAILLE_MORCEAU = 450_000  # octets visés par fichier de tracés (le site ne charge que ceux dont il a besoin)
+
+
+def tolerance(geom):
+    """Simplification proportionnelle à la taille de la forme : les petits territoires gardent du détail,
+    les grands empires sont allégés davantage (au plus ≈ 8 km, invisible à l'échelle du monde)."""
+    minx, miny, maxx, maxy = geom.bounds
+    largeur, hauteur = max(maxx - minx, 0.01), max(maxy - miny, 0.01)
+    return min(0.08, max(0.01, 0.012 * math.sqrt(largeur * hauteur)))
+
+
+def coder_anneau(coords):
+    """Anneau → entiers [x0, y0, dx1, dy1, …] ; retourne None si l'anneau devient dégénéré."""
+    points = []
+    for lon, lat in coords:
+        p = (round(lon * CENTIEMES), round(lat * CENTIEMES))
+        if not points or p != points[-1]:
+            points.append(p)
+    if len(points) > 1 and points[0] == points[-1]:
+        points.pop()  # point de fermeture non répété
+    if len(points) < 3:
+        return None
+    flat = [points[0][0], points[0][1]]
+    for (x0, y0), (x1, y1) in zip(points, points[1:]):
+        flat += [x1 - x0, y1 - y0]
+    return flat
+
+
+def coder_geometrie(geom):
+    """Géométrie shapely → liste de polygones codés (liste d'anneaux). None si tout est dégénéré."""
+    polys = []
+    g = mapping(geom)
+    morceaux = g["coordinates"] if g["type"] == "MultiPolygon" else [g["coordinates"]]
+    for poly in morceaux:
+        anneaux = []
+        for i, anneau in enumerate(poly):
+            a = coder_anneau(anneau)
+            if a is None:
+                if i == 0:
+                    anneaux = []
+                    break
+                continue  # un trou dégénéré est simplement ignoré
+            anneaux.append(a)
+        if anneaux:
+            polys.append(anneaux)
+    return polys or None
+
+
+def simplifier(geom):
+    """Simplifie CHAQUE partie séparément, avec une tolérance adaptée à sa propre taille.
+    (Réglée sur l'ensemble, la tolérance d'un empire éparpillé — comptoirs, îles — écrasait ses petites parties :
+    constaté sur « First French colonial empire » 1805 et « Republic of Venice » 1285, recouvrement ≈ 0,7–0,85.)"""
+    sortie = []
+    for partie in shapely.get_parts(geom):
+        if partie.geom_type != "Polygon":
+            continue  # points/lignes parasites issus d'une réparation de géométrie
+        s = partie.simplify(tolerance(partie), preserve_topology=True)
+        sortie.append(partie if s.is_empty else s)
+    return shapely.union_all(sortie)  # fusionne d'éventuels recouvrements entre parties après simplification
+
+
+def preparer_trace(geometrie_geojson):
+    geom = shape(geometrie_geojson)
+    if not geom.is_valid:
+        geom = make_valid(geom)
+    # set_precision cale les points sur la grille de 0,01° ET répare les croisements que l'arrondi
+    # ferait apparaître : les polygones produits sont toujours valides (contrôlé par verifier_donnees.py).
+    pas = 1 / CENTIEMES
+    simple = shapely.set_precision(simplifier(geom), pas)
+    codee = coder_geometrie(simple) if not simple.is_empty else None
+    if codee is None:  # tout petit territoire écrasé par la grille : on garde le contour d'origine
+        codee = coder_geometrie(shapely.set_precision(geom, pas))
+    return codee
+
+
+def main():
+    if len(sys.argv) < 2:
+        sys.exit(__doc__)
+    source = sys.argv[1]
+    dossier_sortie = sys.argv[2] if len(sys.argv) > 2 else os.path.join(
+        os.path.dirname(os.path.abspath(__file__)), "..", "..", "public", "data", "historique"
+    )
+    os.makedirs(dossier_sortie, exist_ok=True)
+
+    print("Lecture de", source)
+    with open(source, encoding="utf8") as f:
+        data = json.load(f)
+    entites = [
+        ft for ft in data["features"]
+        if ft["properties"]["Type"] == "POLITY" and not ft["properties"]["Name"].startswith("(")
+    ]
+    entites.sort(key=lambda ft: (ft["properties"]["FromYear"], ft["properties"]["ToYear"], ft["properties"]["Name"]))
+    print(len(entites), "lignes à dessiner sur", len(data["features"]))
+
+    noms, idx_nom = [], {}
+
+    def nom(n):
+        if n not in idx_nom:
+            idx_nom[n] = len(noms)
+            noms.append(n)
+        return idx_nom[n]
+
+    metas, idx_meta = [], {}
+    traces, idx_trace = [], {}  # traces[id] = (codage JSON compact)
+    lignes = []
+    for ft in entites:
+        p = ft["properties"]
+        cle_meta = (p["Name"], p["Wikipedia"], p["Wikidata"], p["SeshatID"])
+        if cle_meta not in idx_meta:
+            idx_meta[cle_meta] = len(metas)
+            metas.append([nom(p["Name"]), p["Wikipedia"], p["Wikidata"], p["SeshatID"]])
+        codee = preparer_trace(ft["geometry"])
+        if codee is None:
+            sys.exit("Tracé vide pour " + p["Name"] + " " + str(p["FromYear"]))
+        texte = json.dumps(codee, separators=(",", ":"))
+        h = hashlib.md5(texte.encode()).hexdigest()
+        if h not in idx_trace:
+            idx_trace[h] = len(traces)
+            traces.append(texte)
+        ensemble = nom(p["MemberOf"]) if p["MemberOf"] else -1
+        lignes.append([idx_meta[cle_meta], p["FromYear"], p["ToYear"], idx_trace[h], ensemble, round(p["Area"])])
+    print(len(traces), "tracés distincts (au lieu de", len(lignes), "lignes)")
+
+    # Découpage des tracés en morceaux d'environ TAILLE_MORCEAU octets, dans l'ordre de première apparition
+    # dans le temps : un visiteur qui parcourt les siècles ne télécharge que les morceaux utiles.
+    # (les lignes sont triées par année de début : l'ordre de première apparition = ordre des identifiants,
+    #  car idx_trace est attribué au fil de ce parcours)
+    morceaux, courant, taille, debut = [], [], 0, 0
+    for i, t in enumerate(traces):
+        courant.append(t)
+        taille += len(t) + 1
+        if taille >= TAILLE_MORCEAU:
+            morceaux.append((debut, courant))
+            debut, courant, taille = i + 1, [], 0
+    if courant:
+        morceaux.append((debut, courant))
+    for old in os.listdir(dossier_sortie):
+        if old.startswith("geo_") and old.endswith(".json"):
+            os.remove(os.path.join(dossier_sortie, old))
+    for m, (premier, liste) in enumerate(morceaux):
+        with open(os.path.join(dossier_sortie, "geo_%03d.json" % m), "w", encoding="utf8") as f:
+            f.write("[" + ",".join(liste) + "]")
+
+    index = {
+        "version": VERSION_SOURCE,
+        "noms": noms,
+        "meta": metas,
+        "lignes": lignes,
+        "morceaux": [[premier, len(liste)] for premier, liste in morceaux],
+    }
+    with open(os.path.join(dossier_sortie, "index.json"), "w", encoding="utf8") as f:
+        json.dump(index, f, ensure_ascii=False, separators=(",", ":"))
+    total = sum(os.path.getsize(os.path.join(dossier_sortie, n)) for n in os.listdir(dossier_sortie) if n.endswith(".json"))
+    print(len(morceaux), "morceaux ; total", round(total / 1e6, 1), "Mo dans", os.path.normpath(dossier_sortie))
+
+
+if __name__ == "__main__":
+    main()
