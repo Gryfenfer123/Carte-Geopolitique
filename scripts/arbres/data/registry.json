@@ -23110,6 +23110,346 @@
    "title": "Quinzième et dernier shogun",
    "g": "h",
    "script": 88
+  },
+  "kr.taejo": {
+   "id": "b79acb03-8bcd-5487-98c4-bb750e037cfa",
+   "name": "Taejo (Yi Seong-gye)",
+   "b": 1335,
+   "d": 1408,
+   "tree": "KR_JOS",
+   "title": "Fondateur de Joseon (1392-1398)",
+   "g": "h",
+   "script": 89
+  },
+  "kr.jeongjong": {
+   "id": "fd20d656-8693-520a-9f5f-f4e99eacfc4c",
+   "name": "Jeongjong (Yi Bang-gwa)",
+   "b": 1357,
+   "d": 1419,
+   "tree": "KR_JOS",
+   "title": "Roi (1398-1400)",
+   "g": "h",
+   "script": 89
+  },
+  "kr.taejong": {
+   "id": "439dd911-bae0-51f3-93c6-e70beb4e9fd4",
+   "name": "Taejong (Yi Bang-won)",
+   "b": 1367,
+   "d": 1422,
+   "tree": "KR_JOS",
+   "title": "Roi (1400-1418)",
+   "g": "h",
+   "script": 89
+  },
+  "kr.sejong": {
+   "id": "a2363b5a-cf15-5583-a052-61f006c699d3",
+   "name": "Sejong le Grand (Yi Do)",
+   "b": 1397,
+   "d": 1450,
+   "tree": "KR_JOS",
+   "title": "Roi (1418-1450), inventeur du hangeul",
+   "g": "h",
+   "script": 89
+  },
+  "kr.munjong": {
+   "id": "8124b59c-655f-5c34-b510-d0cce301f8eb",
+   "name": "Munjong (Yi Hyang)",
+   "b": 1414,
+   "d": 1452,
+   "tree": "KR_JOS",
+   "title": "Roi (1450-1452)",
+   "g": "h",
+   "script": 89
+  },
+  "kr.danjong": {
+   "id": "af62574b-d0e5-5720-85fe-090a68572912",
+   "name": "Danjong (Yi Hong-wi)",
+   "b": 1441,
+   "d": 1457,
+   "tree": "KR_JOS",
+   "title": "Roi (1452-1455)",
+   "g": "h",
+   "script": 89
+  },
+  "kr.sejo": {
+   "id": "0082a7cc-4cdf-5031-801a-fb8377b1d859",
+   "name": "Sejo (Yi Yu)",
+   "b": 1417,
+   "d": 1468,
+   "tree": "KR_JOS",
+   "title": "Roi (1455-1468)",
+   "g": "h",
+   "script": 89
+  },
+  "kr.yejong": {
+   "id": "cc4ed8e3-bb10-5592-a206-d0f9f1189042",
+   "name": "Yejong (Yi Hwang)",
+   "b": 1450,
+   "d": 1469,
+   "tree": "KR_JOS",
+   "title": "Roi (1468-1469)",
+   "g": "h",
+   "script": 89
+  },
+  "kr.seongjong": {
+   "id": "8f10ab82-b70b-53b0-9e8c-c0e8ad342c57",
+   "name": "Seongjong (Yi Hyeol)",
+   "b": 1457,
+   "d": 1494,
+   "tree": "KR_JOS",
+   "title": "Roi (1469-1494)",
+   "g": "h",
+   "script": 89
+  },
+  "kr.yeonsan": {
+   "id": "5e8a4ffd-1ead-5a16-a30d-4e949723c8d4",
+   "name": "Yeonsangun (Yi Yung)",
+   "b": 1476,
+   "d": 1506,
+   "tree": "KR_JOS",
+   "title": "Roi (1494-1506), détrôné",
+   "g": "h",
+   "script": 89
+  },
+  "kr.jungjong": {
+   "id": "4ba22a20-51df-5e0e-9cf4-7058ab3d16b8",
+   "name": "Jungjong (Yi Yeok)",
+   "b": 1488,
+   "d": 1544,
+   "tree": "KR_JOS",
+   "title": "Roi (1506-1544)",
+   "g": "h",
+   "script": 89
+  },
+  "kr.injong": {
+   "id": "40184ea8-e755-5a7b-8aa2-9fca7c7028b8",
+   "name": "Injong (Yi Ho)",
+   "b": 1515,
+   "d": 1545,
+   "tree": "KR_JOS",
+   "title": "Roi (1544-1545)",
+   "g": "h",
+   "script": 89
+  },
+  "kr.myeongjong": {
+   "id": "76897351-a2b2-5310-9064-dd5ed793fcae",
+   "name": "Myeongjong (Yi Hwan)",
+   "b": 1534,
+   "d": 1567,
+   "tree": "KR_JOS",
+   "title": "Roi (1545-1567)",
+   "g": "h",
+   "script": 89
+  },
+  "kr.seonjo": {
+   "id": "1c78a768-c6ca-5eaa-a542-4e9637713553",
+   "name": "Seonjo (Yi Yeon)",
+   "b": 1552,
+   "d": 1608,
+   "tree": "KR_JOS",
+   "title": "Roi (1567-1608), guerre d'Imjin",
+   "g": "h",
+   "script": 89
+  },
+  "kr.gwanghae": {
+   "id": "7a23b49d-1bc6-5112-8983-7904f6b62de8",
+   "name": "Gwanghaegun (Yi Hon)",
+   "b": 1575,
+   "d": 1641,
+   "tree": "KR_JOS",
+   "title": "Roi (1608-1623), détrôné",
+   "g": "h",
+   "script": 89
+  },
+  "kr.injo": {
+   "id": "36256d80-57fe-5b77-8aa6-17bffabdc754",
+   "name": "Injo (Yi Jong)",
+   "b": 1595,
+   "d": 1649,
+   "tree": "KR_JOS",
+   "title": "Roi (1623-1649)",
+   "g": "h",
+   "script": 89
+  },
+  "kr.hyojong": {
+   "id": "89badc38-b733-5884-bc24-2fe08edca651",
+   "name": "Hyojong (Yi Ho)",
+   "b": 1619,
+   "d": 1659,
+   "tree": "KR_JOS",
+   "title": "Roi (1649-1659)",
+   "g": "h",
+   "script": 89
+  },
+  "kr.hyeonjong": {
+   "id": "053f749d-9a57-54a7-9e76-28173d0681df",
+   "name": "Hyeonjong (Yi Yeon)",
+   "b": 1641,
+   "d": 1674,
+   "tree": "KR_JOS",
+   "title": "Roi (1659-1674)",
+   "g": "h",
+   "script": 89
+  },
+  "kr.sukjong": {
+   "id": "e48d1491-be67-5a7f-b7a8-c9244cf4d87f",
+   "name": "Sukjong (Yi Sun)",
+   "b": 1661,
+   "d": 1720,
+   "tree": "KR_JOS",
+   "title": "Roi (1674-1720)",
+   "g": "h",
+   "script": 89
+  },
+  "kr.gyeongjong": {
+   "id": "c533c415-865d-5ac7-b359-998459b3ba49",
+   "name": "Gyeongjong (Yi Yun)",
+   "b": 1688,
+   "d": 1724,
+   "tree": "KR_JOS",
+   "title": "Roi (1720-1724)",
+   "g": "h",
+   "script": 89
+  },
+  "kr.yeongjo": {
+   "id": "b6ef8974-eecd-5368-bf2c-d0f2a3b732f2",
+   "name": "Yeongjo (Yi Geum)",
+   "b": 1694,
+   "d": 1776,
+   "tree": "KR_JOS",
+   "title": "Roi (1724-1776)",
+   "g": "h",
+   "script": 89
+  },
+  "kr.jeongjo": {
+   "id": "aeba0717-6732-5ea0-9b98-06396bc01c1c",
+   "name": "Jeongjo (Yi San)",
+   "b": 1752,
+   "d": 1800,
+   "tree": "KR_JOS",
+   "title": "Roi (1776-1800)",
+   "g": "h",
+   "script": 89
+  },
+  "kr.sunjo": {
+   "id": "b838195f-80df-5d4f-8985-9b6aa189a6c7",
+   "name": "Sunjo (Yi Gong)",
+   "b": 1790,
+   "d": 1834,
+   "tree": "KR_JOS",
+   "title": "Roi (1800-1834)",
+   "g": "h",
+   "script": 89
+  },
+  "kr.heonjong": {
+   "id": "b2da0ece-3004-5915-8e66-950f758199e3",
+   "name": "Heonjong (Yi Hwan)",
+   "b": 1827,
+   "d": 1849,
+   "tree": "KR_JOS",
+   "title": "Roi (1834-1849)",
+   "g": "h",
+   "script": 89
+  },
+  "kr.cheoljong": {
+   "id": "c45cf3d7-e47e-572f-802e-549c8b0d3871",
+   "name": "Cheoljong (Yi Byeon)",
+   "b": 1831,
+   "d": 1864,
+   "tree": "KR_JOS",
+   "title": "Roi (1849-1864)",
+   "g": "h",
+   "script": 89
+  },
+  "kr.gojong": {
+   "id": "f5f17bd0-4642-5ef6-89e8-ef837ef9b586",
+   "name": "Gojong (Yi Myeong-bok)",
+   "b": 1852,
+   "d": 1919,
+   "tree": "KR_JOS",
+   "title": "Roi (1864-1897) puis premier empereur coréen (1897-1907)",
+   "g": "h",
+   "script": 89
+  },
+  "kr.sunjong": {
+   "id": "1e511180-9766-55d9-9350-d58ecc1838d7",
+   "name": "Sunjong (Yi Cheok)",
+   "b": 1874,
+   "d": 1926,
+   "tree": "KR_JOS",
+   "title": "Dernier empereur de Corée (1907-1910)",
+   "g": "h",
+   "script": 89
+  },
+  "kr.deokjong": {
+   "id": "b717dd02-fc99-5ada-acff-2d69961cd177",
+   "name": "Deokjong (prince héritier Uigyeong)",
+   "b": 1438,
+   "d": 1457,
+   "tree": "KR_JOS",
+   "title": "Père de Seongjong, roi à titre posthume",
+   "g": "h",
+   "script": 89
+  },
+  "kr.deokheung": {
+   "id": "b045d3b5-45d5-5662-a5ca-6e07d5189cab",
+   "name": "Prince Deokheung",
+   "b": 1530,
+   "d": 1559,
+   "tree": "KR_JOS",
+   "title": "Père de Seonjo",
+   "g": "h",
+   "script": 89
+  },
+  "kr.jeongwon": {
+   "id": "881f06ef-b6a6-5a65-93a8-050d694e5ed7",
+   "name": "Prince Jeongwon (Wonjong)",
+   "b": 1580,
+   "d": 1619,
+   "tree": "KR_JOS",
+   "title": "Père d'Injo, roi à titre posthume",
+   "g": "h",
+   "script": 89
+  },
+  "kr.sado": {
+   "id": "b90f5a99-ba2d-530a-950f-a3270d680c19",
+   "name": "Prince héritier Sado",
+   "b": 1735,
+   "d": 1762,
+   "tree": "KR_JOS",
+   "title": "Père de Jeongjo",
+   "g": "h",
+   "script": 89
+  },
+  "kr.hyomyeong": {
+   "id": "4c6a1522-f041-53a6-93e9-68247a758511",
+   "name": "Prince héritier Hyomyeong",
+   "b": 1809,
+   "d": 1830,
+   "tree": "KR_JOS",
+   "title": "Père de Heonjong",
+   "g": "h",
+   "script": 89
+  },
+  "kr.daewongun": {
+   "id": "df4c7a36-6ec7-5aac-93e7-9281912185ee",
+   "name": "Heungseon Daewongun (Yi Ha-eung)",
+   "b": 1820,
+   "d": 1898,
+   "tree": "KR_JOS",
+   "title": "Régent, père de Gojong",
+   "g": "h",
+   "script": 89
+  },
+  "kr.min": {
+   "id": "1015791d-fbe6-53a9-88d2-5eb30f191c96",
+   "name": "Impératrice Myeongseong (reine Min)",
+   "b": 1851,
+   "d": 1895,
+   "tree": "KR_JOS",
+   "title": "Épouse de Gojong, assassinée",
+   "g": "f",
+   "script": 89
   }
  },
  "trees": {
@@ -23748,6 +24088,12 @@
    "country": "JPN",
    "dynasty": "Tokugawa",
    "script": 88
+  },
+  "KR_JOS": {
+   "entry": "aad25d66-fdcd-585d-9357-c52687f693d2",
+   "country": "KOR",
+   "dynasty": "Joseon",
+   "script": 89
   }
  },
  "flags": [
@@ -27866,6 +28212,13 @@
    "tree": "JP_MIN",
    "reason": "Famille Hōjō : sans arbre",
    "script": 88
+  },
+  {
+   "name": "Impératrice Myeongseong (reine Min)",
+   "b": 1851,
+   "tree": "KR_JOS",
+   "reason": "Famille Min (Yeoheung) : sans arbre",
+   "script": 89
   }
  ],
  "scripts": {
@@ -28264,6 +28617,14 @@
     "Ashikaga (JPN)",
     "Oda et Toyotomi (JPN)",
     "Tokugawa (JPN)"
+   ]
+  },
+  "89": {
+   "label": "Corée — dynastie Joseon (Yi) de Taejo à Sunjong, avec l'Empire coréen",
+   "members": 34,
+   "rels": 35,
+   "trees": [
+    "Joseon (KOR)"
    ]
   }
  },
@@ -47572,6 +47933,181 @@
    "f1c028a0-fdf8-598f-872c-3794c3a8cdd0",
    "4cb961c8-c35b-5f82-9614-7a6b7fbeeec6",
    "family"
+  ],
+  [
+   "b79acb03-8bcd-5487-98c4-bb750e037cfa",
+   "fd20d656-8693-520a-9f5f-f4e99eacfc4c",
+   "parent"
+  ],
+  [
+   "b79acb03-8bcd-5487-98c4-bb750e037cfa",
+   "439dd911-bae0-51f3-93c6-e70beb4e9fd4",
+   "parent"
+  ],
+  [
+   "439dd911-bae0-51f3-93c6-e70beb4e9fd4",
+   "a2363b5a-cf15-5583-a052-61f006c699d3",
+   "parent"
+  ],
+  [
+   "a2363b5a-cf15-5583-a052-61f006c699d3",
+   "8124b59c-655f-5c34-b510-d0cce301f8eb",
+   "parent"
+  ],
+  [
+   "8124b59c-655f-5c34-b510-d0cce301f8eb",
+   "af62574b-d0e5-5720-85fe-090a68572912",
+   "parent"
+  ],
+  [
+   "a2363b5a-cf15-5583-a052-61f006c699d3",
+   "0082a7cc-4cdf-5031-801a-fb8377b1d859",
+   "parent"
+  ],
+  [
+   "0082a7cc-4cdf-5031-801a-fb8377b1d859",
+   "cc4ed8e3-bb10-5592-a206-d0f9f1189042",
+   "parent"
+  ],
+  [
+   "0082a7cc-4cdf-5031-801a-fb8377b1d859",
+   "b717dd02-fc99-5ada-acff-2d69961cd177",
+   "parent"
+  ],
+  [
+   "b717dd02-fc99-5ada-acff-2d69961cd177",
+   "8f10ab82-b70b-53b0-9e8c-c0e8ad342c57",
+   "parent"
+  ],
+  [
+   "8f10ab82-b70b-53b0-9e8c-c0e8ad342c57",
+   "5e8a4ffd-1ead-5a16-a30d-4e949723c8d4",
+   "parent"
+  ],
+  [
+   "8f10ab82-b70b-53b0-9e8c-c0e8ad342c57",
+   "4ba22a20-51df-5e0e-9cf4-7058ab3d16b8",
+   "parent"
+  ],
+  [
+   "4ba22a20-51df-5e0e-9cf4-7058ab3d16b8",
+   "40184ea8-e755-5a7b-8aa2-9fca7c7028b8",
+   "parent"
+  ],
+  [
+   "4ba22a20-51df-5e0e-9cf4-7058ab3d16b8",
+   "76897351-a2b2-5310-9064-dd5ed793fcae",
+   "parent"
+  ],
+  [
+   "4ba22a20-51df-5e0e-9cf4-7058ab3d16b8",
+   "b045d3b5-45d5-5662-a5ca-6e07d5189cab",
+   "parent"
+  ],
+  [
+   "b045d3b5-45d5-5662-a5ca-6e07d5189cab",
+   "1c78a768-c6ca-5eaa-a542-4e9637713553",
+   "parent"
+  ],
+  [
+   "1c78a768-c6ca-5eaa-a542-4e9637713553",
+   "7a23b49d-1bc6-5112-8983-7904f6b62de8",
+   "parent"
+  ],
+  [
+   "1c78a768-c6ca-5eaa-a542-4e9637713553",
+   "881f06ef-b6a6-5a65-93a8-050d694e5ed7",
+   "parent"
+  ],
+  [
+   "881f06ef-b6a6-5a65-93a8-050d694e5ed7",
+   "36256d80-57fe-5b77-8aa6-17bffabdc754",
+   "parent"
+  ],
+  [
+   "36256d80-57fe-5b77-8aa6-17bffabdc754",
+   "89badc38-b733-5884-bc24-2fe08edca651",
+   "parent"
+  ],
+  [
+   "89badc38-b733-5884-bc24-2fe08edca651",
+   "053f749d-9a57-54a7-9e76-28173d0681df",
+   "parent"
+  ],
+  [
+   "053f749d-9a57-54a7-9e76-28173d0681df",
+   "e48d1491-be67-5a7f-b7a8-c9244cf4d87f",
+   "parent"
+  ],
+  [
+   "e48d1491-be67-5a7f-b7a8-c9244cf4d87f",
+   "c533c415-865d-5ac7-b359-998459b3ba49",
+   "parent"
+  ],
+  [
+   "e48d1491-be67-5a7f-b7a8-c9244cf4d87f",
+   "b6ef8974-eecd-5368-bf2c-d0f2a3b732f2",
+   "parent"
+  ],
+  [
+   "b6ef8974-eecd-5368-bf2c-d0f2a3b732f2",
+   "b90f5a99-ba2d-530a-950f-a3270d680c19",
+   "parent"
+  ],
+  [
+   "b90f5a99-ba2d-530a-950f-a3270d680c19",
+   "aeba0717-6732-5ea0-9b98-06396bc01c1c",
+   "parent"
+  ],
+  [
+   "aeba0717-6732-5ea0-9b98-06396bc01c1c",
+   "b838195f-80df-5d4f-8985-9b6aa189a6c7",
+   "parent"
+  ],
+  [
+   "b838195f-80df-5d4f-8985-9b6aa189a6c7",
+   "4c6a1522-f041-53a6-93e9-68247a758511",
+   "parent"
+  ],
+  [
+   "4c6a1522-f041-53a6-93e9-68247a758511",
+   "b2da0ece-3004-5915-8e66-950f758199e3",
+   "parent"
+  ],
+  [
+   "df4c7a36-6ec7-5aac-93e7-9281912185ee",
+   "f5f17bd0-4642-5ef6-89e8-ef837ef9b586",
+   "parent"
+  ],
+  [
+   "f5f17bd0-4642-5ef6-89e8-ef837ef9b586",
+   "1e511180-9766-55d9-9350-d58ecc1838d7",
+   "parent"
+  ],
+  [
+   "b6ef8974-eecd-5368-bf2c-d0f2a3b732f2",
+   "c45cf3d7-e47e-572f-802e-549c8b0d3871",
+   "family"
+  ],
+  [
+   "b838195f-80df-5d4f-8985-9b6aa189a6c7",
+   "c45cf3d7-e47e-572f-802e-549c8b0d3871",
+   "family"
+  ],
+  [
+   "c45cf3d7-e47e-572f-802e-549c8b0d3871",
+   "f5f17bd0-4642-5ef6-89e8-ef837ef9b586",
+   "family"
+  ],
+  [
+   "f5f17bd0-4642-5ef6-89e8-ef837ef9b586",
+   "1015791d-fbe6-53a9-88d2-5eb30f191c96",
+   "spouse"
+  ],
+  [
+   "1015791d-fbe6-53a9-88d2-5eb30f191c96",
+   "1e511180-9766-55d9-9350-d58ecc1838d7",
+   "parent"
   ]
  ],
  "dateflags": [
