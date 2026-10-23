@@ -24760,6 +24760,236 @@
    "title": "Reine de Danemark",
    "g": "f",
    "script": 93
+  },
+  "ha.tancred": {
+   "id": "90a6febb-27ff-5eed-92e8-3cb353329f5d",
+   "name": "Tancrède de Hauteville",
+   "b": 980,
+   "d": 1041,
+   "tree": "IT_HAU",
+   "title": "Seigneur normand, père des Hauteville d'Italie",
+   "g": "h",
+   "script": 94
+  },
+  "ha.wia": {
+   "id": "0c33dd90-fe79-5979-97c2-50f153389464",
+   "name": "Guillaume Bras-de-Fer",
+   "b": 1010,
+   "d": 1046,
+   "tree": "IT_HAU",
+   "title": "Premier comte d'Apulie",
+   "g": "h",
+   "script": 94
+  },
+  "ha.drogo": {
+   "id": "3f15cd4f-a764-5721-ab14-721d356f8363",
+   "name": "Drogon de Hauteville",
+   "b": 1010,
+   "d": 1051,
+   "tree": "IT_HAU",
+   "title": "Comte d'Apulie",
+   "g": "h",
+   "script": 94
+  },
+  "ha.humphrey": {
+   "id": "5a8ea3eb-7c1d-5a44-add5-079831d6e2b8",
+   "name": "Onfroi de Hauteville",
+   "b": 1010,
+   "d": 1057,
+   "tree": "IT_HAU",
+   "title": "Comte d'Apulie",
+   "g": "h",
+   "script": 94
+  },
+  "ha.guiscard": {
+   "id": "147883b2-250e-542c-bc5a-07c568536c51",
+   "name": "Robert Guiscard",
+   "b": 1015,
+   "d": 1085,
+   "tree": "IT_HAU",
+   "title": "Duc de Pouille et de Calabre",
+   "g": "h",
+   "script": 94
+  },
+  "ha.roger1": {
+   "id": "e79e4742-367f-514c-b87b-b9a8d7ccbfd2",
+   "name": "Roger Ier de Sicile",
+   "b": 1031,
+   "d": 1101,
+   "tree": "IT_HAU",
+   "title": "Grand comte de Sicile",
+   "g": "h",
+   "script": 94
+  },
+  "ha.alberada": {
+   "id": "22a95b32-b29d-59ea-b3e5-a023469e5ab9",
+   "name": "Alberade de Buonalbergo",
+   "b": null,
+   "d": null,
+   "tree": "IT_HAU",
+   "title": "Première épouse de Robert Guiscard",
+   "g": "f",
+   "script": 94
+  },
+  "ha.sichelgaita": {
+   "id": "e47a9c23-352f-5fdb-9d3f-d32742788366",
+   "name": "Sikelgaïta de Salerne",
+   "b": 1040,
+   "d": 1090,
+   "tree": "IT_HAU",
+   "title": "Seconde épouse de Robert Guiscard",
+   "g": "f",
+   "script": 94
+  },
+  "ha.bohemond1": {
+   "id": "cfaef95f-43b2-5c43-becc-e8782facb573",
+   "name": "Bohémond Ier de Tarente",
+   "b": 1058,
+   "d": 1111,
+   "tree": "IT_HAU",
+   "title": "Prince d'Antioche, chef de la 1re croisade",
+   "g": "h",
+   "script": 94
+  },
+  "ha.borsa": {
+   "id": "9927b075-c15d-519b-9c8c-012e974b4ebb",
+   "name": "Roger Borsa",
+   "b": 1060,
+   "d": 1111,
+   "tree": "IT_HAU",
+   "title": "Duc de Pouille",
+   "g": "h",
+   "script": 94
+  },
+  "ha.bohemond2": {
+   "id": "6c08352a-1d4a-5e3a-8457-9b17f328240f",
+   "name": "Bohémond II d'Antioche",
+   "b": 1108,
+   "d": 1130,
+   "tree": "IT_HAU",
+   "title": "Prince d'Antioche",
+   "g": "h",
+   "script": 94
+  },
+  "ha.adelaide": {
+   "id": "faf8d9f2-24d5-50f4-a026-b4db932045d0",
+   "name": "Adélaïde del Vasto",
+   "b": 1075,
+   "d": 1118,
+   "tree": "IT_HAU",
+   "title": "Comtesse de Sicile, reine de Jérusalem",
+   "g": "f",
+   "script": 94
+  },
+  "ha.roger2": {
+   "id": "4399d4f0-afa5-5c61-b022-4e4784331625",
+   "name": "Roger II de Sicile",
+   "b": 1095,
+   "d": 1154,
+   "tree": "IT_HAU",
+   "title": "Premier roi de Sicile",
+   "g": "h",
+   "script": 94
+  },
+  "ha.elvira": {
+   "id": "7f1aa5df-e5c3-5b63-9688-3f9b9ebd1368",
+   "name": "Elvire de Castille",
+   "b": 1100,
+   "d": 1135,
+   "tree": "IT_HAU",
+   "title": "Reine de Sicile",
+   "g": "f",
+   "script": 94
+  },
+  "ha.william1": {
+   "id": "2b6baa10-1b65-5a35-bf3b-2f3e308a05be",
+   "name": "Guillaume Ier le Mauvais",
+   "b": 1131,
+   "d": 1166,
+   "tree": "IT_HAU",
+   "title": "Roi de Sicile",
+   "g": "h",
+   "script": 94
+  },
+  "ha.roger_apulia": {
+   "id": "1592762d-d1a4-59eb-81a8-bfb4b10b3156",
+   "name": "Roger, duc de Pouille",
+   "b": 1118,
+   "d": 1148,
+   "tree": "IT_HAU",
+   "title": "Fils de Roger II",
+   "g": "h",
+   "script": 94
+  },
+  "ha.tancred_l": {
+   "id": "aba63a5f-cde0-5146-b0ae-8eb85d52e2cf",
+   "name": "Tancrède de Lecce",
+   "b": 1138,
+   "d": 1194,
+   "tree": "IT_HAU",
+   "title": "Roi de Sicile",
+   "g": "h",
+   "script": 94
+  },
+  "ha.margaret_nav": {
+   "id": "1ea528ad-f044-5b7a-9298-2894fc91c6c1",
+   "name": "Marguerite de Navarre",
+   "b": 1128,
+   "d": 1183,
+   "tree": "IT_HAU",
+   "title": "Reine de Sicile, régente",
+   "g": "f",
+   "script": 94
+  },
+  "ha.william2": {
+   "id": "ae11a514-334d-5fb8-b3d9-9bb982f21ad2",
+   "name": "Guillaume II le Bon",
+   "b": 1153,
+   "d": 1189,
+   "tree": "IT_HAU",
+   "title": "Roi de Sicile",
+   "g": "h",
+   "script": 94
+  },
+  "pl.joan_eng": {
+   "id": "d2bc229d-9ea3-5b64-8a2c-eeb422b8a7d8",
+   "name": "Jeanne d'Angleterre (1165-1199)",
+   "b": 1165,
+   "d": 1199,
+   "tree": "GB_PLA",
+   "title": "Reine de Sicile, comtesse de Toulouse",
+   "g": "f",
+   "script": 94
+  },
+  "ha.sibylla": {
+   "id": "1bd74a80-2834-57bc-99d4-8635a50f2186",
+   "name": "Sibylle d'Acerra",
+   "b": null,
+   "d": null,
+   "tree": "IT_HAU",
+   "title": "Reine de Sicile, épouse de Tancrède",
+   "g": "f",
+   "script": 94
+  },
+  "ha.william3": {
+   "id": "d5e93fcd-61c4-5a83-b7de-c7418bcab0ff",
+   "name": "Guillaume III de Sicile",
+   "b": 1185,
+   "d": 1198,
+   "tree": "IT_HAU",
+   "title": "Roi de Sicile (1194)",
+   "g": "h",
+   "script": 94
+  },
+  "ha.beatrice_rethel": {
+   "id": "debd5644-87c5-5256-a55c-03bfd6518aa4",
+   "name": "Béatrice de Rethel",
+   "b": 1130,
+   "d": 1185,
+   "tree": "IT_HAU",
+   "title": "Reine de Sicile, 3e épouse de Roger II",
+   "g": "f",
+   "script": 94
   }
  },
  "trees": {
@@ -25476,6 +25706,12 @@
    "country": "CZE",
    "dynasty": "Přemyslides",
    "script": null
+  },
+  "IT_HAU": {
+   "entry": "ea00181b-77f0-5dc4-845b-50bacdaaed6d",
+   "country": "ITA",
+   "dynasty": "Hauteville",
+   "script": 94
   }
  },
  "flags": [
@@ -29741,6 +29977,55 @@
    "tree": "DK_EST",
    "reason": "Maison Slesvig : sans arbre",
    "script": 93
+  },
+  {
+   "name": "Alberade de Buonalbergo",
+   "b": null,
+   "tree": "IT_HAU",
+   "reason": "Maison Buonalbergo : sans arbre",
+   "script": 94
+  },
+  {
+   "name": "Sikelgaïta de Salerne",
+   "b": 1040,
+   "tree": "IT_HAU",
+   "reason": "Maison Salerne (Lombards) : sans arbre",
+   "script": 94
+  },
+  {
+   "name": "Adélaïde del Vasto",
+   "b": 1075,
+   "tree": "IT_HAU",
+   "reason": "Maison Aleramici : sans arbre",
+   "script": 94
+  },
+  {
+   "name": "Elvire de Castille",
+   "b": 1100,
+   "tree": "IT_HAU",
+   "reason": "Maison Castille-León : sans arbre",
+   "script": 94
+  },
+  {
+   "name": "Marguerite de Navarre",
+   "b": 1128,
+   "tree": "IT_HAU",
+   "reason": "Maison Navarre : sans arbre",
+   "script": 94
+  },
+  {
+   "name": "Sibylle d'Acerra",
+   "b": null,
+   "tree": "IT_HAU",
+   "reason": "Maison Acerra : sans arbre",
+   "script": 94
+  },
+  {
+   "name": "Béatrice de Rethel",
+   "b": 1130,
+   "tree": "IT_HAU",
+   "reason": "Maison Rethel : sans arbre",
+   "script": 94
   }
  ],
  "scripts": {
@@ -30177,6 +30462,14 @@
    "members": 25,
    "rels": 41,
    "trees": []
+  },
+  "94": {
+   "label": "Italie — Hauteville : Normands d'Italie du Sud, comtes puis rois de Sicile, et princes d'Antioche",
+   "members": 23,
+   "rels": 33,
+   "trees": [
+    "Hauteville (ITA)"
+   ]
   }
  },
  "relist": [
@@ -50634,6 +50927,171 @@
    "2ce43858-816c-54b1-bce1-fd03ec722644",
    "345d74b4-9bc4-5875-90bb-09645b39ae57",
    "parent"
+  ],
+  [
+   "90a6febb-27ff-5eed-92e8-3cb353329f5d",
+   "0c33dd90-fe79-5979-97c2-50f153389464",
+   "parent"
+  ],
+  [
+   "90a6febb-27ff-5eed-92e8-3cb353329f5d",
+   "3f15cd4f-a764-5721-ab14-721d356f8363",
+   "parent"
+  ],
+  [
+   "90a6febb-27ff-5eed-92e8-3cb353329f5d",
+   "5a8ea3eb-7c1d-5a44-add5-079831d6e2b8",
+   "parent"
+  ],
+  [
+   "90a6febb-27ff-5eed-92e8-3cb353329f5d",
+   "147883b2-250e-542c-bc5a-07c568536c51",
+   "parent"
+  ],
+  [
+   "90a6febb-27ff-5eed-92e8-3cb353329f5d",
+   "e79e4742-367f-514c-b87b-b9a8d7ccbfd2",
+   "parent"
+  ],
+  [
+   "147883b2-250e-542c-bc5a-07c568536c51",
+   "22a95b32-b29d-59ea-b3e5-a023469e5ab9",
+   "spouse"
+  ],
+  [
+   "147883b2-250e-542c-bc5a-07c568536c51",
+   "e47a9c23-352f-5fdb-9d3f-d32742788366",
+   "spouse"
+  ],
+  [
+   "147883b2-250e-542c-bc5a-07c568536c51",
+   "cfaef95f-43b2-5c43-becc-e8782facb573",
+   "parent"
+  ],
+  [
+   "22a95b32-b29d-59ea-b3e5-a023469e5ab9",
+   "cfaef95f-43b2-5c43-becc-e8782facb573",
+   "parent"
+  ],
+  [
+   "147883b2-250e-542c-bc5a-07c568536c51",
+   "9927b075-c15d-519b-9c8c-012e974b4ebb",
+   "parent"
+  ],
+  [
+   "e47a9c23-352f-5fdb-9d3f-d32742788366",
+   "9927b075-c15d-519b-9c8c-012e974b4ebb",
+   "parent"
+  ],
+  [
+   "cfaef95f-43b2-5c43-becc-e8782facb573",
+   "6c08352a-1d4a-5e3a-8457-9b17f328240f",
+   "parent"
+  ],
+  [
+   "e79e4742-367f-514c-b87b-b9a8d7ccbfd2",
+   "faf8d9f2-24d5-50f4-a026-b4db932045d0",
+   "spouse"
+  ],
+  [
+   "e79e4742-367f-514c-b87b-b9a8d7ccbfd2",
+   "4399d4f0-afa5-5c61-b022-4e4784331625",
+   "parent"
+  ],
+  [
+   "faf8d9f2-24d5-50f4-a026-b4db932045d0",
+   "4399d4f0-afa5-5c61-b022-4e4784331625",
+   "parent"
+  ],
+  [
+   "4399d4f0-afa5-5c61-b022-4e4784331625",
+   "7f1aa5df-e5c3-5b63-9688-3f9b9ebd1368",
+   "spouse"
+  ],
+  [
+   "4399d4f0-afa5-5c61-b022-4e4784331625",
+   "2b6baa10-1b65-5a35-bf3b-2f3e308a05be",
+   "parent"
+  ],
+  [
+   "7f1aa5df-e5c3-5b63-9688-3f9b9ebd1368",
+   "2b6baa10-1b65-5a35-bf3b-2f3e308a05be",
+   "parent"
+  ],
+  [
+   "4399d4f0-afa5-5c61-b022-4e4784331625",
+   "1592762d-d1a4-59eb-81a8-bfb4b10b3156",
+   "parent"
+  ],
+  [
+   "7f1aa5df-e5c3-5b63-9688-3f9b9ebd1368",
+   "1592762d-d1a4-59eb-81a8-bfb4b10b3156",
+   "parent"
+  ],
+  [
+   "1592762d-d1a4-59eb-81a8-bfb4b10b3156",
+   "aba63a5f-cde0-5146-b0ae-8eb85d52e2cf",
+   "parent"
+  ],
+  [
+   "2b6baa10-1b65-5a35-bf3b-2f3e308a05be",
+   "1ea528ad-f044-5b7a-9298-2894fc91c6c1",
+   "spouse"
+  ],
+  [
+   "2b6baa10-1b65-5a35-bf3b-2f3e308a05be",
+   "ae11a514-334d-5fb8-b3d9-9bb982f21ad2",
+   "parent"
+  ],
+  [
+   "1ea528ad-f044-5b7a-9298-2894fc91c6c1",
+   "ae11a514-334d-5fb8-b3d9-9bb982f21ad2",
+   "parent"
+  ],
+  [
+   "4433a65f-3db3-4d8a-bb05-64e228145658",
+   "d2bc229d-9ea3-5b64-8a2c-eeb422b8a7d8",
+   "parent"
+  ],
+  [
+   "ba3d69dd-6641-4814-b199-7efbc8d62cba",
+   "d2bc229d-9ea3-5b64-8a2c-eeb422b8a7d8",
+   "parent"
+  ],
+  [
+   "ae11a514-334d-5fb8-b3d9-9bb982f21ad2",
+   "d2bc229d-9ea3-5b64-8a2c-eeb422b8a7d8",
+   "spouse"
+  ],
+  [
+   "aba63a5f-cde0-5146-b0ae-8eb85d52e2cf",
+   "1bd74a80-2834-57bc-99d4-8635a50f2186",
+   "spouse"
+  ],
+  [
+   "aba63a5f-cde0-5146-b0ae-8eb85d52e2cf",
+   "d5e93fcd-61c4-5a83-b7de-c7418bcab0ff",
+   "parent"
+  ],
+  [
+   "1bd74a80-2834-57bc-99d4-8635a50f2186",
+   "d5e93fcd-61c4-5a83-b7de-c7418bcab0ff",
+   "parent"
+  ],
+  [
+   "4399d4f0-afa5-5c61-b022-4e4784331625",
+   "debd5644-87c5-5256-a55c-03bfd6518aa4",
+   "spouse"
+  ],
+  [
+   "4399d4f0-afa5-5c61-b022-4e4784331625",
+   "5bb15ac8-132c-4ca2-a227-0e0254422770",
+   "parent"
+  ],
+  [
+   "debd5644-87c5-5256-a55c-03bfd6518aa4",
+   "5bb15ac8-132c-4ca2-a227-0e0254422770",
+   "parent"
   ]
  ],
  "dateflags": [
@@ -58245,6 +58703,125 @@
    "d": 1221,
    "note": "naissance vers 1194",
    "script": 93
+  },
+  {
+   "name": "Tancrède de Hauteville",
+   "b": 980,
+   "d": 1041,
+   "note": "naissance vers 980",
+   "script": 94
+  },
+  {
+   "name": "Guillaume Bras-de-Fer",
+   "b": 1010,
+   "d": 1046,
+   "note": "naissance vers 1010",
+   "script": 94
+  },
+  {
+   "name": "Drogon de Hauteville",
+   "b": 1010,
+   "d": 1051,
+   "note": "naissance vers 1010",
+   "script": 94
+  },
+  {
+   "name": "Onfroi de Hauteville",
+   "b": 1010,
+   "d": 1057,
+   "note": "naissance vers 1010",
+   "script": 94
+  },
+  {
+   "name": "Robert Guiscard",
+   "b": 1015,
+   "d": 1085,
+   "note": "naissance vers 1015",
+   "script": 94
+  },
+  {
+   "name": "Roger Ier de Sicile",
+   "b": 1031,
+   "d": 1101,
+   "note": "naissance vers 1031",
+   "script": 94
+  },
+  {
+   "name": "Alberade de Buonalbergo",
+   "b": null,
+   "d": null,
+   "note": "dates non données",
+   "script": 94
+  },
+  {
+   "name": "Sikelgaïta de Salerne",
+   "b": 1040,
+   "d": 1090,
+   "note": "naissance vers 1040",
+   "script": 94
+  },
+  {
+   "name": "Bohémond Ier de Tarente",
+   "b": 1058,
+   "d": 1111,
+   "note": "naissance vers 1058",
+   "script": 94
+  },
+  {
+   "name": "Roger Borsa",
+   "b": 1060,
+   "d": 1111,
+   "note": "naissance vers 1060",
+   "script": 94
+  },
+  {
+   "name": "Adélaïde del Vasto",
+   "b": 1075,
+   "d": 1118,
+   "note": "naissance vers 1075",
+   "script": 94
+  },
+  {
+   "name": "Elvire de Castille",
+   "b": 1100,
+   "d": 1135,
+   "note": "naissance vers 1100",
+   "script": 94
+  },
+  {
+   "name": "Tancrède de Lecce",
+   "b": 1138,
+   "d": 1194,
+   "note": "naissance vers 1138 ; fils naturel de Roger de Pouille",
+   "script": 94
+  },
+  {
+   "name": "Marguerite de Navarre",
+   "b": 1128,
+   "d": 1183,
+   "note": "naissance vers 1128",
+   "script": 94
+  },
+  {
+   "name": "Sibylle d'Acerra",
+   "b": null,
+   "d": null,
+   "note": "dates non données",
+   "script": 94
+  },
+  {
+   "name": "Guillaume III de Sicile",
+   "b": 1185,
+   "d": 1198,
+   "note": "naissance vers 1185",
+   "script": 94
+  },
+  {
+   "name": "Béatrice de Rethel",
+   "b": 1130,
+   "d": 1185,
+   "note": "naissance vers 1130",
+   "script": 94
   }
  ],
  "pins": [
@@ -58639,6 +59216,14 @@
   [
    "345d74b4-9bc4-5875-90bb-09645b39ae57",
    "DK_EST"
+  ],
+  [
+   "d2bc229d-9ea3-5b64-8a2c-eeb422b8a7d8",
+   "IT_HAU"
+  ],
+  [
+   "5bb15ac8-132c-4ca2-a227-0e0254422770",
+   "IT_HAU"
   ]
  ],
  "xmoved": {
