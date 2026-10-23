@@ -133,4 +133,5 @@ RLS**. Règles :
 | v58 | Données : Chine (3/…) — arbres Cao Wei, Shu Han et Wu oriental (Trois Royaumes) ; Cao Jie reliée à Xian (Han), dame Sun reliée à Liu Bei — à exécuter après v57 |
 | v59 | Données : Chine (4/…) — arbre Jin (Sima Yi → Gong de Jin, 57 membres) — à exécuter après v58 |
 | v60 | Photos : 209 portraits Wikipédia/Wikimedia ajoutés aux membres sans photo (ne remplace jamais une photo existante) — à exécuter après v59 |
+| arbres_v61 | Wittelsbach : branches palatine, Simmern, Deux-Ponts, Neubourg, Sulzbach, Landshut, rois de Bavière (+102 membres, relie les 9 isolés) |
 | `data_owid_load.sql` + `owid_chunks/` | Chargement des données d'indicateurs (rejouable, upserts) — à exécuter après v1 à v7 |
