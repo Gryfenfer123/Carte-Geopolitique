@@ -13344,8 +13344,8 @@
   "ha.maria_antonia_ds": {
    "id": "bc82232b-8f85-5d71-8d0f-1c209cc9af67",
    "name": "Marie-Antonia des Deux-Siciles",
-   "b": null,
-   "d": null,
+   "b": 1814,
+   "d": 1898,
    "tree": "IT_BS",
    "title": "Grande-duchesse de Toscane (seconde épouse de Léopold II)",
    "g": "f",
@@ -14470,6 +14470,486 @@
    "title": "Princesse",
    "g": "f",
    "script": 68
+  },
+  "bs.francois1": {
+   "id": "6810f3c6-de62-5c04-b47f-398a36c1b426",
+   "name": "François Ier des Deux-Siciles",
+   "b": 1777,
+   "d": 1830,
+   "tree": "IT_BS",
+   "title": "Roi des Deux-Siciles",
+   "g": "h",
+   "script": 69
+  },
+  "bs.mchristine": {
+   "id": "c1d66452-0561-5cf6-a825-027b0bdfd7d3",
+   "name": "Marie-Christine de Bourbon-Siciles (reine de Sardaigne)",
+   "b": 1779,
+   "d": 1849,
+   "tree": "IT_BS",
+   "title": "Reine de Sardaigne",
+   "g": "f",
+   "script": 69
+  },
+  "bs.mamelie": {
+   "id": "49e31bcc-d86f-5ffe-b66e-a499f3b671c2",
+   "name": "Marie-Amélie de Bourbon-Siciles",
+   "b": 1782,
+   "d": 1866,
+   "tree": "IT_BS",
+   "title": "Reine des Français",
+   "g": "f",
+   "script": 69
+  },
+  "bs.mantoinette": {
+   "id": "4c715634-91fd-54d9-948e-accc3795bfe8",
+   "name": "Marie-Antoinette de Bourbon-Siciles",
+   "b": 1784,
+   "d": 1806,
+   "tree": "IT_BS",
+   "title": "Princesse des Asturies",
+   "g": "f",
+   "script": 69
+  },
+  "bs.leopold_sal": {
+   "id": "fcd2c9c5-7df5-5266-811f-4de58a397413",
+   "name": "Léopold de Bourbon-Siciles, prince de Salerne",
+   "b": 1790,
+   "d": 1851,
+   "tree": "IT_BS",
+   "title": "Prince de Salerne",
+   "g": "h",
+   "script": 69
+  },
+  "bs.clementine": {
+   "id": "8f91d84d-c52b-5ae4-b442-63fce928faeb",
+   "name": "Marie-Clémentine d'Autriche",
+   "b": 1777,
+   "d": 1801,
+   "tree": "IT_BS",
+   "title": "Reine des Deux-Siciles",
+   "g": "f",
+   "script": 69
+  },
+  "bs.isabelle_esp": {
+   "id": "6b815d25-3f6c-5057-bb63-d61567bbaad7",
+   "name": "Marie-Isabelle d'Espagne",
+   "b": 1789,
+   "d": 1848,
+   "tree": "IT_BS",
+   "title": "Reine des Deux-Siciles",
+   "g": "f",
+   "script": 69
+  },
+  "bs.mcaroline": {
+   "id": "51aa896d-fbd3-5a8e-b02c-89efabb01ae1",
+   "name": "Marie-Caroline de Bourbon-Siciles (duchesse de Berry)",
+   "b": 1798,
+   "d": 1870,
+   "tree": "IT_BS",
+   "title": "Duchesse de Berry",
+   "g": "f",
+   "script": 69
+  },
+  "bs.luisa_carlotta": {
+   "id": "cd8c37ab-d526-5156-9dc1-6112f803bc88",
+   "name": "Louise-Charlotte de Bourbon-Siciles",
+   "b": 1804,
+   "d": 1844,
+   "tree": "IT_BS",
+   "title": "Infante d'Espagne",
+   "g": "f",
+   "script": 69
+  },
+  "bs.ferdinand2": {
+   "id": "b6706767-ed3b-5ee5-b5ab-78f2bd6c6371",
+   "name": "Ferdinand II des Deux-Siciles",
+   "b": 1810,
+   "d": 1859,
+   "tree": "IT_BS",
+   "title": "Roi des Deux-Siciles",
+   "g": "h",
+   "script": 69
+  },
+  "bs.carlo_capua": {
+   "id": "622158dc-2736-5450-bb11-fc8deead7a93",
+   "name": "Charles de Bourbon-Siciles, prince de Capoue",
+   "b": 1811,
+   "d": 1862,
+   "tree": "IT_BS",
+   "title": "Prince de Capoue",
+   "g": "h",
+   "script": 69
+  },
+  "bs.leopold_syr": {
+   "id": "415b05e0-67c4-5ee5-bdc5-ffcb9b915eb1",
+   "name": "Léopold de Bourbon-Siciles, comte de Syracuse",
+   "b": 1813,
+   "d": 1860,
+   "tree": "IT_BS",
+   "title": "Comte de Syracuse",
+   "g": "h",
+   "script": 69
+  },
+  "bs.antonio": {
+   "id": "c3232d28-6f9e-5558-9f06-c4b9eb144951",
+   "name": "Antoine de Bourbon-Siciles, comte de Lecce",
+   "b": 1816,
+   "d": 1843,
+   "tree": "IT_BS",
+   "title": "Comte de Lecce",
+   "g": "h",
+   "script": 69
+  },
+  "bs.mamalia": {
+   "id": "66f41a1e-260b-5437-946c-18df3fbfa9ce",
+   "name": "Marie-Amélie de Bourbon-Siciles (infante)",
+   "b": 1818,
+   "d": 1857,
+   "tree": "IT_BS",
+   "title": "Infante d'Espagne et du Portugal",
+   "g": "f",
+   "script": 69
+  },
+  "bs.mcarolina2": {
+   "id": "830f2357-f7ca-5fa6-b5ea-a8e764222a4c",
+   "name": "Marie-Caroline de Bourbon-Siciles (1820-1861)",
+   "b": 1820,
+   "d": 1861,
+   "tree": "IT_BS",
+   "title": "Comtesse de Montemolín",
+   "g": "f",
+   "script": 69
+  },
+  "bs.teresa": {
+   "id": "53be97f4-d98b-5c36-b889-74f72127cb88",
+   "name": "Thérèse-Christine de Bourbon-Siciles",
+   "b": 1822,
+   "d": 1889,
+   "tree": "IT_BS",
+   "title": "Impératrice du Brésil",
+   "g": "f",
+   "script": 69
+  },
+  "bs.aquila": {
+   "id": "cbb2bc49-d93b-5390-bcb6-deb875372c79",
+   "name": "Louis de Bourbon-Siciles, comte d'Aquila",
+   "b": 1824,
+   "d": 1897,
+   "tree": "IT_BS",
+   "title": "Comte d'Aquila",
+   "g": "h",
+   "script": 69
+  },
+  "bs.trapani": {
+   "id": "4ea02c2b-fb5b-561e-aabf-43ed025a7287",
+   "name": "François de Bourbon-Siciles, comte de Trapani",
+   "b": 1827,
+   "d": 1892,
+   "tree": "IT_BS",
+   "title": "Comte de Trapani",
+   "g": "h",
+   "script": 69
+  },
+  "bs.louise_artois": {
+   "id": "c732d411-4e8d-5316-90dd-e09444b8c7a8",
+   "name": "Louise d'Artois",
+   "b": 1819,
+   "d": 1864,
+   "tree": "IT_PAR",
+   "title": "Duchesse de Parme",
+   "g": "f",
+   "script": 69
+  },
+  "bs.mcristina_savoie": {
+   "id": "90d3dc84-460e-5c26-8762-83eebc65af2a",
+   "name": "Marie-Christine de Savoie (reine des Deux-Siciles)",
+   "b": 1812,
+   "d": 1836,
+   "tree": "IT_SAV",
+   "title": "Reine des Deux-Siciles",
+   "g": "f",
+   "script": 69
+  },
+  "bs.mtheresa_aut": {
+   "id": "e4f2aaa8-fd0e-5f5a-a321-e3e0a747a191",
+   "name": "Marie-Thérèse d'Autriche-Teschen",
+   "b": 1816,
+   "d": 1867,
+   "tree": "IT_BS",
+   "title": "Reine des Deux-Siciles",
+   "g": "f",
+   "script": 69
+  },
+  "bs.francois2": {
+   "id": "a15abf57-f28b-5352-bef2-b6c0f8dcda97",
+   "name": "François II des Deux-Siciles",
+   "b": 1836,
+   "d": 1894,
+   "tree": "IT_BS",
+   "title": "Dernier roi des Deux-Siciles",
+   "g": "h",
+   "script": 69
+  },
+  "bs.marie_sophie": {
+   "id": "77c3c271-4a28-5e41-8529-be5925f582e2",
+   "name": "Marie-Sophie de Bavière",
+   "b": 1841,
+   "d": 1925,
+   "tree": "DE_WIT",
+   "title": "Reine des Deux-Siciles",
+   "g": "f",
+   "script": 69
+  },
+  "bs.mat_louise": {
+   "id": "4d221f17-13da-543c-972f-4ec443bd0151",
+   "name": "Mathilde-Louise de Bavière",
+   "b": 1843,
+   "d": 1925,
+   "tree": "DE_WIT",
+   "title": "Comtesse de Trani",
+   "g": "f",
+   "script": 69
+  },
+  "bs.trani": {
+   "id": "210bfcdf-2064-5fe2-8f00-024ab1be574b",
+   "name": "Louis de Bourbon-Siciles, comte de Trani",
+   "b": 1838,
+   "d": 1886,
+   "tree": "IT_BS",
+   "title": "Comte de Trani",
+   "g": "h",
+   "script": 69
+  },
+  "bs.caserte": {
+   "id": "6a905953-b15a-5844-89c7-c2826231ef6d",
+   "name": "Alphonse de Bourbon-Siciles, comte de Caserte",
+   "b": 1841,
+   "d": 1934,
+   "tree": "IT_BS",
+   "title": "Comte de Caserte, chef de la maison",
+   "g": "h",
+   "script": 69
+  },
+  "bs.girgenti": {
+   "id": "7acd0fe4-3e4f-5f3e-9c6b-9d8c2bcefa79",
+   "name": "Gaétan de Bourbon-Siciles, comte de Girgenti",
+   "b": 1846,
+   "d": 1871,
+   "tree": "IT_BS",
+   "title": "Comte de Girgenti",
+   "g": "h",
+   "script": 69
+  },
+  "bs.pasquale": {
+   "id": "5798e197-45f9-5602-8804-ef761a2feb17",
+   "name": "Pascal de Bourbon-Siciles, comte de Bari",
+   "b": 1852,
+   "d": 1904,
+   "tree": "IT_BS",
+   "title": "Comte de Bari",
+   "g": "h",
+   "script": 69
+  },
+  "bs.mimmacolata": {
+   "id": "00f8af58-b4fc-528d-93e2-1679c8856eaa",
+   "name": "Marie-Immaculée de Bourbon-Siciles",
+   "b": 1844,
+   "d": 1899,
+   "tree": "IT_BS",
+   "title": "Archiduchesse d'Autriche",
+   "g": "f",
+   "script": 69
+  },
+  "bs.mpia": {
+   "id": "cdc1ba79-9355-57d6-b414-1f177f44ba46",
+   "name": "Marie-Pie de Bourbon-Siciles",
+   "b": 1849,
+   "d": 1882,
+   "tree": "IT_BS",
+   "title": "Duchesse de Parme",
+   "g": "f",
+   "script": 69
+  },
+  "bs.mluisa": {
+   "id": "d9fea5a0-ec92-5474-bd4a-a16dc7db796f",
+   "name": "Marie-Louise de Bourbon-Siciles",
+   "b": 1855,
+   "d": 1874,
+   "tree": "IT_BS",
+   "title": "Comtesse de Bardi",
+   "g": "f",
+   "script": 69
+  },
+  "pa.louis_et": {
+   "id": "b933c7de-9d12-5eb0-86e2-6741ae574998",
+   "name": "Louis Ier d'Étrurie",
+   "b": 1773,
+   "d": 1803,
+   "tree": "IT_PAR",
+   "title": "Roi d'Étrurie",
+   "g": "h",
+   "script": 69
+  },
+  "pa.ml_esp": {
+   "id": "7a146c9c-8054-54aa-8935-e9c097bbdbad",
+   "name": "Marie-Louise d'Espagne (reine d'Étrurie)",
+   "b": 1782,
+   "d": 1824,
+   "tree": "IT_PAR",
+   "title": "Reine d'Étrurie, duchesse de Lucques",
+   "g": "f",
+   "script": 69
+  },
+  "pa.charles2": {
+   "id": "3b2692a8-1083-514f-b31b-7992d6fcc08b",
+   "name": "Charles II de Parme",
+   "b": 1799,
+   "d": 1883,
+   "tree": "IT_PAR",
+   "title": "Duc de Lucques puis de Parme",
+   "g": "h",
+   "script": 69
+  },
+  "pa.mt_savoie": {
+   "id": "93cd2aac-c660-5578-8421-bb55206b9913",
+   "name": "Marie-Thérèse de Savoie (duchesse de Parme)",
+   "b": 1803,
+   "d": 1879,
+   "tree": "IT_SAV",
+   "title": "Duchesse de Parme",
+   "g": "f",
+   "script": 69
+  },
+  "pa.charles3": {
+   "id": "80627984-0e5d-54ce-b4b6-c60a0421421b",
+   "name": "Charles III de Parme",
+   "b": 1823,
+   "d": 1854,
+   "tree": "IT_PAR",
+   "title": "Duc de Parme",
+   "g": "h",
+   "script": 69
+  },
+  "pa.marguerite": {
+   "id": "84a905a5-c86e-5fee-902c-d2a58a8f3117",
+   "name": "Marguerite de Bourbon-Parme",
+   "b": 1847,
+   "d": 1893,
+   "tree": "IT_PAR",
+   "title": "Duchesse de Madrid",
+   "g": "f",
+   "script": 69
+  },
+  "pa.henri_bardi": {
+   "id": "6c85ff78-8585-5690-9c7c-26458c4b7d68",
+   "name": "Henri de Bourbon-Parme, comte de Bardi",
+   "b": 1851,
+   "d": 1905,
+   "tree": "IT_PAR",
+   "title": "Comte de Bardi",
+   "g": "h",
+   "script": 69
+  },
+  "pa.henri": {
+   "id": "eac85d8c-ccd2-5043-bd4b-307cfa818ad4",
+   "name": "Henri de Bourbon-Parme, duc de Parme",
+   "b": 1873,
+   "d": 1939,
+   "tree": "IT_PAR",
+   "title": "Duc de Parme (titulaire)",
+   "g": "h",
+   "script": 69
+  },
+  "pa.joseph": {
+   "id": "7927c3b8-9276-555a-b93a-eaad1798f13b",
+   "name": "Joseph de Bourbon-Parme, duc de Parme",
+   "b": 1875,
+   "d": 1950,
+   "tree": "IT_PAR",
+   "title": "Duc de Parme (titulaire)",
+   "g": "h",
+   "script": 69
+  },
+  "pa.elie": {
+   "id": "2781a0f2-da78-510e-a603-42d7b0e126b6",
+   "name": "Élie de Bourbon-Parme",
+   "b": 1880,
+   "d": 1959,
+   "tree": "IT_PAR",
+   "title": "Duc de Parme (titulaire)",
+   "g": "h",
+   "script": 69
+  },
+  "pa.sixte": {
+   "id": "fef03a5a-d921-5dbf-baf1-1234c1edb13c",
+   "name": "Sixte de Bourbon-Parme",
+   "b": 1886,
+   "d": 1934,
+   "tree": "IT_PAR",
+   "title": "Prince de Bourbon-Parme",
+   "g": "h",
+   "script": 69
+  },
+  "pa.xavier": {
+   "id": "1b48fd38-ce1b-5d1e-aa17-c844fc008636",
+   "name": "Xavier de Bourbon-Parme",
+   "b": 1889,
+   "d": 1977,
+   "tree": "IT_PAR",
+   "title": "Duc de Parme (titulaire), prétendant carliste",
+   "g": "h",
+   "script": 69
+  },
+  "pa.louis": {
+   "id": "a4ad0c99-f28f-5738-9a7b-0c54fd36e24f",
+   "name": "Louis de Bourbon-Parme",
+   "b": 1899,
+   "d": 1967,
+   "tree": "IT_PAR",
+   "title": "Prince de Bourbon-Parme",
+   "g": "h",
+   "script": 69
+  },
+  "pa.gaetan": {
+   "id": "981ed719-444b-5443-9de3-6b052a102010",
+   "name": "Gaétan de Bourbon-Parme",
+   "b": 1905,
+   "d": 1958,
+   "tree": "IT_PAR",
+   "title": "Prince de Bourbon-Parme",
+   "g": "h",
+   "script": 69
+  },
+  "pa.marie_anne": {
+   "id": "54f5b1fd-5037-5842-9bcb-c920ee66eddd",
+   "name": "Marie-Anne d'Autriche (duchesse de Parme)",
+   "b": 1882,
+   "d": 1940,
+   "tree": "IT_PAR",
+   "title": "Duchesse de Parme",
+   "g": "f",
+   "script": 69
+  },
+  "pa.robert_hugues": {
+   "id": "ebf25ee3-ac5b-50b9-b151-715cd84ad9dd",
+   "name": "Robert-Hugues de Bourbon-Parme",
+   "b": 1909,
+   "d": 1974,
+   "tree": "IT_PAR",
+   "title": "Duc de Parme (titulaire)",
+   "g": "h",
+   "script": 69
+  },
+  "pa.alicia": {
+   "id": "eafe5f66-2ccc-5df0-b42d-79f429487f4d",
+   "name": "Alice de Bourbon-Parme (1917-2017)",
+   "b": 1917,
+   "d": 2017,
+   "tree": "IT_PAR",
+   "title": "Duchesse de Calabre",
+   "g": "f",
+   "script": 69
   }
  },
  "trees": {
@@ -18121,6 +18601,34 @@
    "tree": "IT_SAV",
    "reason": "Maison Saxe-Cobourg : sans arbre",
    "script": 68
+  },
+  {
+   "name": "Marie-Isabelle d'Espagne",
+   "b": 1789,
+   "tree": "IT_BS",
+   "reason": "Bourbon d'Espagne : voir arbre Bourbons",
+   "script": 69
+  },
+  {
+   "name": "Louise d'Artois",
+   "b": 1819,
+   "tree": "IT_PAR",
+   "reason": "Bourbon de France : père (duc de Berry) non encore en base",
+   "script": 69
+  },
+  {
+   "name": "Marie-Louise d'Espagne (reine d'Étrurie)",
+   "b": 1782,
+   "tree": "IT_PAR",
+   "reason": "Bourbon d'Espagne : voir arbre Bourbons",
+   "script": 69
+  },
+  {
+   "name": "Marie-Anne d'Autriche (duchesse de Parme)",
+   "b": 1882,
+   "tree": "IT_PAR",
+   "reason": "Archiduchesse (Autriche-Teschen) : à relier à Habsbourg",
+   "script": 69
   }
  ],
  "scripts": {
@@ -18368,6 +18876,12 @@
    "trees": [
     "Maison de Savoie (ITA)"
    ]
+  },
+  "69": {
+   "label": "Italie — Deux-Siciles et Parme : Ferdinand Ier et ses enfants, François Ier, Ferdinand II, François II ; Parme de Philippe à Élie",
+   "members": 48,
+   "rels": 139,
+   "trees": []
   }
  },
  "relist": [
@@ -30615,6 +31129,701 @@
    "2504d667-6a2e-5728-a2f2-2a88df94faf9",
    "df30df3a-9aa4-5f1f-b84b-11c75d2022ea",
    "parent"
+  ],
+  [
+   "0cf75cb7-03fe-44e4-895a-cd9964a4bdd2",
+   "8b9e281c-22bc-43a0-b649-acb0e1f08c46",
+   "parent"
+  ],
+  [
+   "0cd7f2c2-4e76-4a5e-96b6-6bd701dbcc9b",
+   "8b9e281c-22bc-43a0-b649-acb0e1f08c46",
+   "parent"
+  ],
+  [
+   "8b9e281c-22bc-43a0-b649-acb0e1f08c46",
+   "4ec820bc-326d-4bdb-8387-58ab1c819d07",
+   "spouse"
+  ],
+  [
+   "8b9e281c-22bc-43a0-b649-acb0e1f08c46",
+   "6810f3c6-de62-5c04-b47f-398a36c1b426",
+   "parent"
+  ],
+  [
+   "4ec820bc-326d-4bdb-8387-58ab1c819d07",
+   "6810f3c6-de62-5c04-b47f-398a36c1b426",
+   "parent"
+  ],
+  [
+   "8b9e281c-22bc-43a0-b649-acb0e1f08c46",
+   "c1d66452-0561-5cf6-a825-027b0bdfd7d3",
+   "parent"
+  ],
+  [
+   "4ec820bc-326d-4bdb-8387-58ab1c819d07",
+   "c1d66452-0561-5cf6-a825-027b0bdfd7d3",
+   "parent"
+  ],
+  [
+   "8b9e281c-22bc-43a0-b649-acb0e1f08c46",
+   "49e31bcc-d86f-5ffe-b66e-a499f3b671c2",
+   "parent"
+  ],
+  [
+   "4ec820bc-326d-4bdb-8387-58ab1c819d07",
+   "49e31bcc-d86f-5ffe-b66e-a499f3b671c2",
+   "parent"
+  ],
+  [
+   "8b9e281c-22bc-43a0-b649-acb0e1f08c46",
+   "4c715634-91fd-54d9-948e-accc3795bfe8",
+   "parent"
+  ],
+  [
+   "4ec820bc-326d-4bdb-8387-58ab1c819d07",
+   "4c715634-91fd-54d9-948e-accc3795bfe8",
+   "parent"
+  ],
+  [
+   "8b9e281c-22bc-43a0-b649-acb0e1f08c46",
+   "fcd2c9c5-7df5-5266-811f-4de58a397413",
+   "parent"
+  ],
+  [
+   "4ec820bc-326d-4bdb-8387-58ab1c819d07",
+   "fcd2c9c5-7df5-5266-811f-4de58a397413",
+   "parent"
+  ],
+  [
+   "8b9e281c-22bc-43a0-b649-acb0e1f08c46",
+   "9dba805e-4191-5249-a27a-2a49a9b2bf66",
+   "parent"
+  ],
+  [
+   "4ec820bc-326d-4bdb-8387-58ab1c819d07",
+   "9dba805e-4191-5249-a27a-2a49a9b2bf66",
+   "parent"
+  ],
+  [
+   "8b9e281c-22bc-43a0-b649-acb0e1f08c46",
+   "05377808-48b5-567a-840e-c5dc2c3ad987",
+   "parent"
+  ],
+  [
+   "4ec820bc-326d-4bdb-8387-58ab1c819d07",
+   "05377808-48b5-567a-840e-c5dc2c3ad987",
+   "parent"
+  ],
+  [
+   "c1d66452-0561-5cf6-a825-027b0bdfd7d3",
+   "fd3afe05-f336-530b-9ce6-336d9ebeab8d",
+   "spouse"
+  ],
+  [
+   "49e31bcc-d86f-5ffe-b66e-a499f3b671c2",
+   "86246879-dacc-4537-a5ef-6328904b270e",
+   "spouse"
+  ],
+  [
+   "6810f3c6-de62-5c04-b47f-398a36c1b426",
+   "8f91d84d-c52b-5ae4-b442-63fce928faeb",
+   "spouse"
+  ],
+  [
+   "6810f3c6-de62-5c04-b47f-398a36c1b426",
+   "6b815d25-3f6c-5057-bb63-d61567bbaad7",
+   "spouse"
+  ],
+  [
+   "6810f3c6-de62-5c04-b47f-398a36c1b426",
+   "cd8c37ab-d526-5156-9dc1-6112f803bc88",
+   "parent"
+  ],
+  [
+   "6b815d25-3f6c-5057-bb63-d61567bbaad7",
+   "cd8c37ab-d526-5156-9dc1-6112f803bc88",
+   "parent"
+  ],
+  [
+   "6810f3c6-de62-5c04-b47f-398a36c1b426",
+   "c18e5e5e-4612-4399-9a60-9505e109a8d7",
+   "parent"
+  ],
+  [
+   "6b815d25-3f6c-5057-bb63-d61567bbaad7",
+   "c18e5e5e-4612-4399-9a60-9505e109a8d7",
+   "parent"
+  ],
+  [
+   "6810f3c6-de62-5c04-b47f-398a36c1b426",
+   "b6706767-ed3b-5ee5-b5ab-78f2bd6c6371",
+   "parent"
+  ],
+  [
+   "6b815d25-3f6c-5057-bb63-d61567bbaad7",
+   "b6706767-ed3b-5ee5-b5ab-78f2bd6c6371",
+   "parent"
+  ],
+  [
+   "6810f3c6-de62-5c04-b47f-398a36c1b426",
+   "622158dc-2736-5450-bb11-fc8deead7a93",
+   "parent"
+  ],
+  [
+   "6b815d25-3f6c-5057-bb63-d61567bbaad7",
+   "622158dc-2736-5450-bb11-fc8deead7a93",
+   "parent"
+  ],
+  [
+   "6810f3c6-de62-5c04-b47f-398a36c1b426",
+   "415b05e0-67c4-5ee5-bdc5-ffcb9b915eb1",
+   "parent"
+  ],
+  [
+   "6b815d25-3f6c-5057-bb63-d61567bbaad7",
+   "415b05e0-67c4-5ee5-bdc5-ffcb9b915eb1",
+   "parent"
+  ],
+  [
+   "6810f3c6-de62-5c04-b47f-398a36c1b426",
+   "bc82232b-8f85-5d71-8d0f-1c209cc9af67",
+   "parent"
+  ],
+  [
+   "6b815d25-3f6c-5057-bb63-d61567bbaad7",
+   "bc82232b-8f85-5d71-8d0f-1c209cc9af67",
+   "parent"
+  ],
+  [
+   "6810f3c6-de62-5c04-b47f-398a36c1b426",
+   "c3232d28-6f9e-5558-9f06-c4b9eb144951",
+   "parent"
+  ],
+  [
+   "6b815d25-3f6c-5057-bb63-d61567bbaad7",
+   "c3232d28-6f9e-5558-9f06-c4b9eb144951",
+   "parent"
+  ],
+  [
+   "6810f3c6-de62-5c04-b47f-398a36c1b426",
+   "66f41a1e-260b-5437-946c-18df3fbfa9ce",
+   "parent"
+  ],
+  [
+   "6b815d25-3f6c-5057-bb63-d61567bbaad7",
+   "66f41a1e-260b-5437-946c-18df3fbfa9ce",
+   "parent"
+  ],
+  [
+   "6810f3c6-de62-5c04-b47f-398a36c1b426",
+   "830f2357-f7ca-5fa6-b5ea-a8e764222a4c",
+   "parent"
+  ],
+  [
+   "6b815d25-3f6c-5057-bb63-d61567bbaad7",
+   "830f2357-f7ca-5fa6-b5ea-a8e764222a4c",
+   "parent"
+  ],
+  [
+   "6810f3c6-de62-5c04-b47f-398a36c1b426",
+   "53be97f4-d98b-5c36-b889-74f72127cb88",
+   "parent"
+  ],
+  [
+   "6b815d25-3f6c-5057-bb63-d61567bbaad7",
+   "53be97f4-d98b-5c36-b889-74f72127cb88",
+   "parent"
+  ],
+  [
+   "6810f3c6-de62-5c04-b47f-398a36c1b426",
+   "cbb2bc49-d93b-5390-bcb6-deb875372c79",
+   "parent"
+  ],
+  [
+   "6b815d25-3f6c-5057-bb63-d61567bbaad7",
+   "cbb2bc49-d93b-5390-bcb6-deb875372c79",
+   "parent"
+  ],
+  [
+   "6810f3c6-de62-5c04-b47f-398a36c1b426",
+   "4ea02c2b-fb5b-561e-aabf-43ed025a7287",
+   "parent"
+  ],
+  [
+   "6b815d25-3f6c-5057-bb63-d61567bbaad7",
+   "4ea02c2b-fb5b-561e-aabf-43ed025a7287",
+   "parent"
+  ],
+  [
+   "6810f3c6-de62-5c04-b47f-398a36c1b426",
+   "51aa896d-fbd3-5a8e-b02c-89efabb01ae1",
+   "parent"
+  ],
+  [
+   "8f91d84d-c52b-5ae4-b442-63fce928faeb",
+   "51aa896d-fbd3-5a8e-b02c-89efabb01ae1",
+   "parent"
+  ],
+  [
+   "51aa896d-fbd3-5a8e-b02c-89efabb01ae1",
+   "c732d411-4e8d-5316-90dd-e09444b8c7a8",
+   "parent"
+  ],
+  [
+   "aef2eefa-1afd-5c55-9394-ca7634a98936",
+   "90d3dc84-460e-5c26-8762-83eebc65af2a",
+   "parent"
+  ],
+  [
+   "8fc5377c-8fef-56fb-982a-7e0061096e72",
+   "90d3dc84-460e-5c26-8762-83eebc65af2a",
+   "parent"
+  ],
+  [
+   "b6706767-ed3b-5ee5-b5ab-78f2bd6c6371",
+   "90d3dc84-460e-5c26-8762-83eebc65af2a",
+   "spouse"
+  ],
+  [
+   "b6706767-ed3b-5ee5-b5ab-78f2bd6c6371",
+   "e4f2aaa8-fd0e-5f5a-a321-e3e0a747a191",
+   "spouse"
+  ],
+  [
+   "b6706767-ed3b-5ee5-b5ab-78f2bd6c6371",
+   "a15abf57-f28b-5352-bef2-b6c0f8dcda97",
+   "parent"
+  ],
+  [
+   "90d3dc84-460e-5c26-8762-83eebc65af2a",
+   "a15abf57-f28b-5352-bef2-b6c0f8dcda97",
+   "parent"
+  ],
+  [
+   "f4f8b4c2-5d64-55a3-a000-f61b13276a8f",
+   "77c3c271-4a28-5e41-8529-be5925f582e2",
+   "parent"
+  ],
+  [
+   "58271324-b2aa-5bc4-82c6-33c8cd8b2023",
+   "77c3c271-4a28-5e41-8529-be5925f582e2",
+   "parent"
+  ],
+  [
+   "a15abf57-f28b-5352-bef2-b6c0f8dcda97",
+   "77c3c271-4a28-5e41-8529-be5925f582e2",
+   "spouse"
+  ],
+  [
+   "f4f8b4c2-5d64-55a3-a000-f61b13276a8f",
+   "4d221f17-13da-543c-972f-4ec443bd0151",
+   "parent"
+  ],
+  [
+   "58271324-b2aa-5bc4-82c6-33c8cd8b2023",
+   "4d221f17-13da-543c-972f-4ec443bd0151",
+   "parent"
+  ],
+  [
+   "b6706767-ed3b-5ee5-b5ab-78f2bd6c6371",
+   "210bfcdf-2064-5fe2-8f00-024ab1be574b",
+   "parent"
+  ],
+  [
+   "e4f2aaa8-fd0e-5f5a-a321-e3e0a747a191",
+   "210bfcdf-2064-5fe2-8f00-024ab1be574b",
+   "parent"
+  ],
+  [
+   "b6706767-ed3b-5ee5-b5ab-78f2bd6c6371",
+   "6a905953-b15a-5844-89c7-c2826231ef6d",
+   "parent"
+  ],
+  [
+   "e4f2aaa8-fd0e-5f5a-a321-e3e0a747a191",
+   "6a905953-b15a-5844-89c7-c2826231ef6d",
+   "parent"
+  ],
+  [
+   "b6706767-ed3b-5ee5-b5ab-78f2bd6c6371",
+   "cc7fdc37-e9f7-514f-b259-c9318802ebb9",
+   "parent"
+  ],
+  [
+   "e4f2aaa8-fd0e-5f5a-a321-e3e0a747a191",
+   "cc7fdc37-e9f7-514f-b259-c9318802ebb9",
+   "parent"
+  ],
+  [
+   "b6706767-ed3b-5ee5-b5ab-78f2bd6c6371",
+   "00f8af58-b4fc-528d-93e2-1679c8856eaa",
+   "parent"
+  ],
+  [
+   "e4f2aaa8-fd0e-5f5a-a321-e3e0a747a191",
+   "00f8af58-b4fc-528d-93e2-1679c8856eaa",
+   "parent"
+  ],
+  [
+   "b6706767-ed3b-5ee5-b5ab-78f2bd6c6371",
+   "7acd0fe4-3e4f-5f3e-9c6b-9d8c2bcefa79",
+   "parent"
+  ],
+  [
+   "e4f2aaa8-fd0e-5f5a-a321-e3e0a747a191",
+   "7acd0fe4-3e4f-5f3e-9c6b-9d8c2bcefa79",
+   "parent"
+  ],
+  [
+   "b6706767-ed3b-5ee5-b5ab-78f2bd6c6371",
+   "cdc1ba79-9355-57d6-b414-1f177f44ba46",
+   "parent"
+  ],
+  [
+   "e4f2aaa8-fd0e-5f5a-a321-e3e0a747a191",
+   "cdc1ba79-9355-57d6-b414-1f177f44ba46",
+   "parent"
+  ],
+  [
+   "b6706767-ed3b-5ee5-b5ab-78f2bd6c6371",
+   "5798e197-45f9-5602-8804-ef761a2feb17",
+   "parent"
+  ],
+  [
+   "e4f2aaa8-fd0e-5f5a-a321-e3e0a747a191",
+   "5798e197-45f9-5602-8804-ef761a2feb17",
+   "parent"
+  ],
+  [
+   "b6706767-ed3b-5ee5-b5ab-78f2bd6c6371",
+   "d9fea5a0-ec92-5474-bd4a-a16dc7db796f",
+   "parent"
+  ],
+  [
+   "e4f2aaa8-fd0e-5f5a-a321-e3e0a747a191",
+   "d9fea5a0-ec92-5474-bd4a-a16dc7db796f",
+   "parent"
+  ],
+  [
+   "210bfcdf-2064-5fe2-8f00-024ab1be574b",
+   "4d221f17-13da-543c-972f-4ec443bd0151",
+   "spouse"
+  ],
+  [
+   "cc7fdc37-e9f7-514f-b259-c9318802ebb9",
+   "67be1780-45c1-5d47-891c-f1eb7fc0a82d",
+   "spouse"
+  ],
+  [
+   "0890d048-341b-4d5f-80b7-f39cf1d94470",
+   "3757589a-f61f-45b2-abb5-16b2ca8d2e5e",
+   "parent"
+  ],
+  [
+   "2df9c2fd-8fd9-4bb4-b23a-f064afb0e301",
+   "3757589a-f61f-45b2-abb5-16b2ca8d2e5e",
+   "parent"
+  ],
+  [
+   "3757589a-f61f-45b2-abb5-16b2ca8d2e5e",
+   "fa488603-f5b1-47e9-ae65-1121d0c99376",
+   "spouse"
+  ],
+  [
+   "3757589a-f61f-45b2-abb5-16b2ca8d2e5e",
+   "281354f9-b018-47b1-842b-768179bf86a1",
+   "parent"
+  ],
+  [
+   "fa488603-f5b1-47e9-ae65-1121d0c99376",
+   "281354f9-b018-47b1-842b-768179bf86a1",
+   "parent"
+  ],
+  [
+   "3757589a-f61f-45b2-abb5-16b2ca8d2e5e",
+   "9a0cd092-51a7-46c6-b32c-3087043a62e1",
+   "parent"
+  ],
+  [
+   "fa488603-f5b1-47e9-ae65-1121d0c99376",
+   "9a0cd092-51a7-46c6-b32c-3087043a62e1",
+   "parent"
+  ],
+  [
+   "3757589a-f61f-45b2-abb5-16b2ca8d2e5e",
+   "a1d8a44a-24f5-4ced-839c-b9437b443e0c",
+   "parent"
+  ],
+  [
+   "fa488603-f5b1-47e9-ae65-1121d0c99376",
+   "a1d8a44a-24f5-4ced-839c-b9437b443e0c",
+   "parent"
+  ],
+  [
+   "9a0cd092-51a7-46c6-b32c-3087043a62e1",
+   "2cb1bbdb-51ee-4775-a210-f7b011498d89",
+   "spouse"
+  ],
+  [
+   "9a0cd092-51a7-46c6-b32c-3087043a62e1",
+   "be02f650-8f01-4dae-895c-6d140c9f7249",
+   "parent"
+  ],
+  [
+   "2cb1bbdb-51ee-4775-a210-f7b011498d89",
+   "be02f650-8f01-4dae-895c-6d140c9f7249",
+   "parent"
+  ],
+  [
+   "9a0cd092-51a7-46c6-b32c-3087043a62e1",
+   "b933c7de-9d12-5eb0-86e2-6741ae574998",
+   "parent"
+  ],
+  [
+   "2cb1bbdb-51ee-4775-a210-f7b011498d89",
+   "b933c7de-9d12-5eb0-86e2-6741ae574998",
+   "parent"
+  ],
+  [
+   "b933c7de-9d12-5eb0-86e2-6741ae574998",
+   "7a146c9c-8054-54aa-8935-e9c097bbdbad",
+   "spouse"
+  ],
+  [
+   "b933c7de-9d12-5eb0-86e2-6741ae574998",
+   "3b2692a8-1083-514f-b31b-7992d6fcc08b",
+   "parent"
+  ],
+  [
+   "7a146c9c-8054-54aa-8935-e9c097bbdbad",
+   "3b2692a8-1083-514f-b31b-7992d6fcc08b",
+   "parent"
+  ],
+  [
+   "aef2eefa-1afd-5c55-9394-ca7634a98936",
+   "93cd2aac-c660-5578-8421-bb55206b9913",
+   "parent"
+  ],
+  [
+   "8fc5377c-8fef-56fb-982a-7e0061096e72",
+   "93cd2aac-c660-5578-8421-bb55206b9913",
+   "parent"
+  ],
+  [
+   "3b2692a8-1083-514f-b31b-7992d6fcc08b",
+   "93cd2aac-c660-5578-8421-bb55206b9913",
+   "spouse"
+  ],
+  [
+   "3b2692a8-1083-514f-b31b-7992d6fcc08b",
+   "80627984-0e5d-54ce-b4b6-c60a0421421b",
+   "parent"
+  ],
+  [
+   "93cd2aac-c660-5578-8421-bb55206b9913",
+   "80627984-0e5d-54ce-b4b6-c60a0421421b",
+   "parent"
+  ],
+  [
+   "80627984-0e5d-54ce-b4b6-c60a0421421b",
+   "c732d411-4e8d-5316-90dd-e09444b8c7a8",
+   "spouse"
+  ],
+  [
+   "80627984-0e5d-54ce-b4b6-c60a0421421b",
+   "84a905a5-c86e-5fee-902c-d2a58a8f3117",
+   "parent"
+  ],
+  [
+   "c732d411-4e8d-5316-90dd-e09444b8c7a8",
+   "84a905a5-c86e-5fee-902c-d2a58a8f3117",
+   "parent"
+  ],
+  [
+   "80627984-0e5d-54ce-b4b6-c60a0421421b",
+   "28ec5941-c762-55eb-9a3e-9707bec8f6bb",
+   "parent"
+  ],
+  [
+   "c732d411-4e8d-5316-90dd-e09444b8c7a8",
+   "28ec5941-c762-55eb-9a3e-9707bec8f6bb",
+   "parent"
+  ],
+  [
+   "80627984-0e5d-54ce-b4b6-c60a0421421b",
+   "e16532e2-2991-55f6-a2ec-995da6554585",
+   "parent"
+  ],
+  [
+   "c732d411-4e8d-5316-90dd-e09444b8c7a8",
+   "e16532e2-2991-55f6-a2ec-995da6554585",
+   "parent"
+  ],
+  [
+   "80627984-0e5d-54ce-b4b6-c60a0421421b",
+   "6c85ff78-8585-5690-9c7c-26458c4b7d68",
+   "parent"
+  ],
+  [
+   "c732d411-4e8d-5316-90dd-e09444b8c7a8",
+   "6c85ff78-8585-5690-9c7c-26458c4b7d68",
+   "parent"
+  ],
+  [
+   "28ec5941-c762-55eb-9a3e-9707bec8f6bb",
+   "cdc1ba79-9355-57d6-b414-1f177f44ba46",
+   "spouse"
+  ],
+  [
+   "28ec5941-c762-55eb-9a3e-9707bec8f6bb",
+   "3b4a908a-29f0-568c-ad69-94c7c556c2d2",
+   "spouse"
+  ],
+  [
+   "6c85ff78-8585-5690-9c7c-26458c4b7d68",
+   "00f8af58-b4fc-528d-93e2-1679c8856eaa",
+   "spouse"
+  ],
+  [
+   "28ec5941-c762-55eb-9a3e-9707bec8f6bb",
+   "c419e705-7c40-5bf1-8cfe-8ca23a46de6b",
+   "parent"
+  ],
+  [
+   "cdc1ba79-9355-57d6-b414-1f177f44ba46",
+   "c419e705-7c40-5bf1-8cfe-8ca23a46de6b",
+   "parent"
+  ],
+  [
+   "28ec5941-c762-55eb-9a3e-9707bec8f6bb",
+   "eac85d8c-ccd2-5043-bd4b-307cfa818ad4",
+   "parent"
+  ],
+  [
+   "cdc1ba79-9355-57d6-b414-1f177f44ba46",
+   "eac85d8c-ccd2-5043-bd4b-307cfa818ad4",
+   "parent"
+  ],
+  [
+   "28ec5941-c762-55eb-9a3e-9707bec8f6bb",
+   "7927c3b8-9276-555a-b93a-eaad1798f13b",
+   "parent"
+  ],
+  [
+   "cdc1ba79-9355-57d6-b414-1f177f44ba46",
+   "7927c3b8-9276-555a-b93a-eaad1798f13b",
+   "parent"
+  ],
+  [
+   "28ec5941-c762-55eb-9a3e-9707bec8f6bb",
+   "2781a0f2-da78-510e-a603-42d7b0e126b6",
+   "parent"
+  ],
+  [
+   "cdc1ba79-9355-57d6-b414-1f177f44ba46",
+   "2781a0f2-da78-510e-a603-42d7b0e126b6",
+   "parent"
+  ],
+  [
+   "28ec5941-c762-55eb-9a3e-9707bec8f6bb",
+   "fef03a5a-d921-5dbf-baf1-1234c1edb13c",
+   "parent"
+  ],
+  [
+   "3b4a908a-29f0-568c-ad69-94c7c556c2d2",
+   "fef03a5a-d921-5dbf-baf1-1234c1edb13c",
+   "parent"
+  ],
+  [
+   "28ec5941-c762-55eb-9a3e-9707bec8f6bb",
+   "1b48fd38-ce1b-5d1e-aa17-c844fc008636",
+   "parent"
+  ],
+  [
+   "3b4a908a-29f0-568c-ad69-94c7c556c2d2",
+   "1b48fd38-ce1b-5d1e-aa17-c844fc008636",
+   "parent"
+  ],
+  [
+   "28ec5941-c762-55eb-9a3e-9707bec8f6bb",
+   "e53ccc75-fde3-532e-b0ef-5fc82bece33d",
+   "parent"
+  ],
+  [
+   "3b4a908a-29f0-568c-ad69-94c7c556c2d2",
+   "e53ccc75-fde3-532e-b0ef-5fc82bece33d",
+   "parent"
+  ],
+  [
+   "28ec5941-c762-55eb-9a3e-9707bec8f6bb",
+   "f65f36f4-f4e3-57ba-83e8-a74ecbc31788",
+   "parent"
+  ],
+  [
+   "3b4a908a-29f0-568c-ad69-94c7c556c2d2",
+   "f65f36f4-f4e3-57ba-83e8-a74ecbc31788",
+   "parent"
+  ],
+  [
+   "28ec5941-c762-55eb-9a3e-9707bec8f6bb",
+   "4d570f58-da0d-542e-a02f-ef68239f826c",
+   "parent"
+  ],
+  [
+   "3b4a908a-29f0-568c-ad69-94c7c556c2d2",
+   "4d570f58-da0d-542e-a02f-ef68239f826c",
+   "parent"
+  ],
+  [
+   "28ec5941-c762-55eb-9a3e-9707bec8f6bb",
+   "a4ad0c99-f28f-5738-9a7b-0c54fd36e24f",
+   "parent"
+  ],
+  [
+   "3b4a908a-29f0-568c-ad69-94c7c556c2d2",
+   "a4ad0c99-f28f-5738-9a7b-0c54fd36e24f",
+   "parent"
+  ],
+  [
+   "28ec5941-c762-55eb-9a3e-9707bec8f6bb",
+   "981ed719-444b-5443-9de3-6b052a102010",
+   "parent"
+  ],
+  [
+   "3b4a908a-29f0-568c-ad69-94c7c556c2d2",
+   "981ed719-444b-5443-9de3-6b052a102010",
+   "parent"
+  ],
+  [
+   "2781a0f2-da78-510e-a603-42d7b0e126b6",
+   "54f5b1fd-5037-5842-9bcb-c920ee66eddd",
+   "spouse"
+  ],
+  [
+   "2781a0f2-da78-510e-a603-42d7b0e126b6",
+   "ebf25ee3-ac5b-50b9-b151-715cd84ad9dd",
+   "parent"
+  ],
+  [
+   "54f5b1fd-5037-5842-9bcb-c920ee66eddd",
+   "ebf25ee3-ac5b-50b9-b151-715cd84ad9dd",
+   "parent"
+  ],
+  [
+   "2781a0f2-da78-510e-a603-42d7b0e126b6",
+   "eafe5f66-2ccc-5df0-b42d-79f429487f4d",
+   "parent"
+  ],
+  [
+   "54f5b1fd-5037-5842-9bcb-c920ee66eddd",
+   "eafe5f66-2ccc-5df0-b42d-79f429487f4d",
+   "parent"
+  ],
+  [
+   "a4ad0c99-f28f-5738-9a7b-0c54fd36e24f",
+   "f5af23ce-ef07-5cfc-9ee9-8cc10d9d4cf6",
+   "spouse"
   ]
  ],
  "dateflags": [
@@ -36343,6 +37552,62 @@
    "d": null,
    "note": "dates non données par la page de Charles-Albert",
    "script": 68
+  },
+  {
+   "name": "Marie-Clémentine d'Autriche",
+   "b": 1777,
+   "d": 1801,
+   "note": "archiduchesse, fille de Léopold II",
+   "script": 69
+  },
+  {
+   "name": "Marie-Isabelle d'Espagne",
+   "b": 1789,
+   "d": 1848,
+   "note": "dates connues par ailleurs, non données par la page de François Ier",
+   "script": 69
+  },
+  {
+   "name": "Louise d'Artois",
+   "b": 1819,
+   "d": 1864,
+   "note": "dates connues par ailleurs, non données par la page de Charles III de Parme",
+   "script": 69
+  },
+  {
+   "name": "Marie-Christine de Savoie (reine des Deux-Siciles)",
+   "b": 1812,
+   "d": 1836,
+   "note": "naissance connue par ailleurs, non donnée par la page de Ferdinand II",
+   "script": 69
+  },
+  {
+   "name": "Marie-Thérèse d'Autriche-Teschen",
+   "b": 1816,
+   "d": 1867,
+   "note": "naissance connue par ailleurs",
+   "script": 69
+  },
+  {
+   "name": "Marie-Louise d'Espagne (reine d'Étrurie)",
+   "b": 1782,
+   "d": 1824,
+   "note": "dates connues par ailleurs",
+   "script": 69
+  },
+  {
+   "name": "Charles II de Parme",
+   "b": 1799,
+   "d": 1883,
+   "note": "dates connues par ailleurs, non données par la page de Charles III",
+   "script": 69
+  },
+  {
+   "name": "Marie-Thérèse de Savoie (duchesse de Parme)",
+   "b": 1803,
+   "d": 1879,
+   "note": "dates connues par ailleurs",
+   "script": 69
   }
  ],
  "pins": [
@@ -36421,6 +37686,42 @@
   [
    "d9c16e7f-c96a-5339-aa7b-f91a13b27ccd",
    "IT_SAV"
+  ],
+  [
+   "fd3afe05-f336-530b-9ce6-336d9ebeab8d",
+   "IT_BS"
+  ],
+  [
+   "86246879-dacc-4537-a5ef-6328904b270e",
+   "IT_BS"
+  ],
+  [
+   "67be1780-45c1-5d47-891c-f1eb7fc0a82d",
+   "IT_BS"
+  ],
+  [
+   "0890d048-341b-4d5f-80b7-f39cf1d94470",
+   "IT_PAR"
+  ],
+  [
+   "2df9c2fd-8fd9-4bb4-b23a-f064afb0e301",
+   "IT_PAR"
+  ],
+  [
+   "fa488603-f5b1-47e9-ae65-1121d0c99376",
+   "IT_PAR"
+  ],
+  [
+   "a1d8a44a-24f5-4ced-839c-b9437b443e0c",
+   "IT_PAR"
+  ],
+  [
+   "2cb1bbdb-51ee-4775-a210-f7b011498d89",
+   "IT_PAR"
+  ],
+  [
+   "f5af23ce-ef07-5cfc-9ee9-8cc10d9d4cf6",
+   "IT_PAR"
   ]
  ],
  "xmoved": {

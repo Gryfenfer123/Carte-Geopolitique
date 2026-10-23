@@ -34,6 +34,14 @@ def X(prefix):
     return 'x:' + c[0]
 
 
+def R(prefix):
+    """Retrouve un membre existant par préfixe d'identifiant, qu'il vienne de la copie de la base (X) ou d'un script précédent (code du registre)."""
+    c = [k for k, v in REG['members'].items() if v['id'].startswith(prefix)]
+    if len(c) == 1:
+        return c[0]
+    return X(prefix)
+
+
 def Xname(name, b=None, tree_prefix=None):
     c = [m for m in SNAP['m'] if m[2] == name and (b is None or m[3] == b) and (tree_prefix is None or ENT.get(m[1], [''])[0].startswith(tree_prefix) or m[1].startswith(tree_prefix))]
     if len(c) != 1:

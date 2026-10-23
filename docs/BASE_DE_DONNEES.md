@@ -141,4 +141,5 @@ RLS**. Règles :
 | arbres_v66 | arbres_v66 | Petites dynasties allemandes : 13 membres (enfants de Barberousse, Conradin, Manfred, Liudolf, Conrad II d'Italie) |
 | arbres_v67 | Luxembourg et Carolingiens : 12 membres (Henri V, enfants de Charles IV, Zwentibold…) |
 | arbres_v68 | Maison de Savoie : arbre créé, 84 membres (comtes, ducs, rois de Sardaigne et d'Italie jusqu'à Emmanuel-Philibert) |
+| arbres_v69 | Bourbon-Siciles et Parme complétés : 48 membres (enfants de Ferdinand Ier, François Ier, Ferdinand II ; Parme de Louis d'Étrurie à Élie) |
 | `data_owid_load.sql` + `owid_chunks/` | Chargement des données d'indicateurs (rejouable, upserts) — à exécuter après v1 à v7 |

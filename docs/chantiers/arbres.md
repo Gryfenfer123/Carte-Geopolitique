@@ -2,6 +2,8 @@
 
 ## Dernières nouvelles (la plus récente en haut)
 
+- 2026-10-23 — v69 : Bourbon-Siciles + Parme (48 membres). Prochain : Hauteville, Médicis, Este, Visconti/Sforza, Pays-Bas, Scandinavie…
+
 - 2026-10-23 — v68 : arbre Maison de Savoie créé (84 membres). Victor-Emmanuel III déplacé ici. Prochain : Italie (Bourbon-Siciles, Parme, Médicis, Este, Visconti/Sforza, Hauteville), Pays-Bas, Scandinavie…
 
 - 2026-10-23 — v67 : Luxembourg + Carolingiens complétés (12 membres). Allemagne : reste les petites maisons royales (Conradiens, Supplinbourg, Nassau, Schwarzburg).
@@ -21,7 +23,7 @@
 
 Code : `src/genealogy.ts`, `genealogyLayers.ts`, `genealogyBus.ts`, `genealogyLod.ts/.css`, `genealogyLayersWorker.ts`,
 `genealogyLayout.ts`, `genealogyRouting.ts`. Outils de remplissage : [`scripts/arbres/`](../../scripts/arbres/README.md).
-Prochaine migration : **arbres_v69** (`supabase/arbres/arbres_v69.sql`) — générateur : `Gen(69, "…")`.  (v68 livrée, à exécuter par Martin si ce n'est pas déjà fait.)
+Prochaine migration : **arbres_v70** (`supabase/arbres/arbres_v70.sql`) — générateur : `Gen(70, "…")`.  (v69 livrée, à exécuter par Martin si ce n'est pas déjà fait.)
 
 ## Règles de contenu (décidées par Martin — ne pas rouvrir)
 - Un pays n'a que les dynasties qui ont **régné sur lui**. Dynastie étrangère : branche principale dans son pays
