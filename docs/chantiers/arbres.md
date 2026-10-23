@@ -105,4 +105,4 @@ Xia/Shang exclus ; Zhou sans dates inventées.
 Sima Zhou → Sima Jin → Yuan de Jin non confirmée ; fautes de saisie de la base d'origine (Vratislav II 1061, Boleslas II
 920, Victoire 1768/1786, Hedwige de Żagań) ; entrées parasites à nettoyer par Martin (« tesq », « On est en direct ? »,
 « Geoffroy Stammegna », doublon Nassau `8e0f6e5d`, doublon Luxembourg `cbce1152`, « MAISON DE HABSBOURG » `49c99143`,
-« Charles 1er de Habsbourg » `2b832845`).
+« Charles 1er de Habsbourg » `2b832845`) ; « Richard Plantagenêt » `d36cc690` (arbre York) : mort noté 1411 au lieu de 1460 (3 alertes `check.py` en découlent).
