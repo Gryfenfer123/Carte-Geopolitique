@@ -77,7 +77,7 @@ Plan :
 4. Placements multiples, remontée sur la frise parente, placement automatique des fiches créées à la main :
    - **FAIT (2026-10-23)** : *placements multiples* — bouton « Frises » sur la carte d'un point : voir sur quelles frises il apparaît (et les ouvrir), l'ajouter à une autre frise (recherche par titre), le retirer d'une frise ; c'est toujours le même événement (référence). *Remontée sur la frise parente* — même dialogue : « Afficher aussi sur la frise parente » (un placement de plus sur la frise parente). Fiche ouverte depuis un point présent sur plusieurs frises : « Voir sur la frise » propose la liste. Code : `src/friseEvents.ts` (base), `src/friseMulti.ts` (dialogue), `src/friseDateFields.ts`.
    - **Aussi 2026-10-23** : une fiche créée depuis « + Point » se range désormais dans la **sous-catégorie de la période qui contient la date du point** (§4) ; avant, elle allait dans le dossier où la frise est posée.
-   - À FAIRE : « placer sur une frise » depuis une fiche existante, placement automatique des fiches créées à la main.
+   - **FAIT (2026-10-23)** : « Placer sur une frise » depuis une fiche existante (bouton dans la lecture de la fiche, même dialogue) ; placement automatique des fiches créées à la main : dans le formulaire « + Texte », si la sous-catégorie choisie est une période de frise, un bloc « Date » facultatif apparaît ; avec une date, le point est créé et placé sur la frise (`src/friseAutoPlace.ts`). Étape 4 terminée.
 
 > Note (2026-10-23) : l'avancement ci-dessus a été relu dans le code ; il est à jour à cette date.
 > Aucune migration n'a été nécessaire pour les placements multiples : `timeline_placements`
@@ -93,3 +93,8 @@ Plan :
 - Le point ajouté à une autre frise reprend le côté (haut/bas), la catégorie et la couleur qu'il a sur la frise d'où l'on vient.
 - La remontée proposée dans le dialogue concerne la frise **parente directe**. Pour une frise plus haut (grand-parent), utiliser la recherche « Chercher une frise par titre ».
 - Pas d'indicateur visuel, sur la frise parente, des points venus d'une sous-frise (non demandé).
+- Placement automatique d'une fiche créée à la main : la date est **facultative** ; sans date, la fiche est créée normalement, sans point.
+- La date doit tomber dans la période de la sous-catégorie choisie ; sinon la fiche n'est pas créée, le formulaire reste ouvert avec le texte tapé, et un message explique le refus.
+- Les brouillons ne sont pas placés sur la frise.
+- Le point créé automatiquement est placé côté « haut », sans catégorie ; sa couleur est celle de la période. Modifiable ensuite via « Modifier ».
+- Une erreur de placement ne bloque jamais la création de la fiche (message affiché, fiche conservée).

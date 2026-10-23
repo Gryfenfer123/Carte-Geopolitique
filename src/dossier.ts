@@ -676,6 +676,14 @@ export function initFicheDossierSystem(deps: {
   // en centrant le point (src/frise.ts).
   friseLinkForFiche?: (entryId: string) => Promise<boolean>;
   onShowFicheOnFrise?: (entryId: string) => void;
+  // Fiche créée à la main dans une période de frise : placement automatique (src/friseAutoPlace.ts).
+  // onNewTextFormChange : le formulaire « + Texte » s'ouvre (true) / se ferme (false) ;
+  // checkNewFiche : contrôle avant création, false = ne pas enregistrer ; afterFicheCreated : après création.
+  onNewTextFormChange?: (open: boolean) => void;
+  checkNewFiche?: (sectionId: string | null) => Promise<boolean>;
+  afterFicheCreated?: (entryId: string, sectionId: string | null) => Promise<void>;
+  // « Placer sur une frise » depuis la lecture d'une fiche (src/friseMulti.ts).
+  placeFicheOnFrise?: (entryId: string, title: string | null) => void;
 }) {
   const { supabase } = deps;
   loadCountryNameData();
@@ -904,6 +912,7 @@ export function initFicheDossierSystem(deps: {
           <div class="dossier-read-topbar">
             <button id="dossier-read-back" class="btn-small">&larr; Retour</button>
             <button id="dossier-read-frise" class="btn-small" style="display:none;">Voir sur la frise</button>
+            <button id="dossier-read-place-frise" class="btn-small" style="display:none;">Placer sur une frise</button>
             <button id="dossier-read-edit" class="btn-small">&#9998; Modifier</button>
           </div>
           <div id="dossier-read-card" class="dossier-entry text">
@@ -2567,6 +2576,8 @@ export function initFicheDossierSystem(deps: {
     $("dossier-read-wordcount").style.display = "none";
     $("dossier-view").scrollTop = 0;
     refreshFriseButton(entry.id);
+    // Administrateur seulement : placer cette fiche sur une frise sans la déplacer.
+    $("dossier-read-place-frise").style.display = deps.placeFicheOnFrise && isAdmin() ? "" : "none";
   }
   // Bouton « Voir sur la frise » : visible seulement si la fiche est reliée à un point de frise.
   function refreshFriseButton(entryId: string) {
@@ -2579,6 +2590,10 @@ export function initFicheDossierSystem(deps: {
   }
   $("dossier-read-frise").addEventListener("click", () => {
     if (readingEntryId) deps.onShowFicheOnFrise?.(readingEntryId);
+  });
+  $("dossier-read-place-frise").addEventListener("click", () => {
+    const entry = currentEntries.find((e) => e.id === readingEntryId);
+    if (entry) deps.placeFicheOnFrise?.(entry.id, entry.title || null);
   });
   // Vue de lecture plein cadre d'un hémicycle (demande de Martin,
   // 2026-10-16 : bouton "Hémicycle" sur la carte -> clic -> page dédiée,
@@ -2599,6 +2614,7 @@ export function initFicheDossierSystem(deps: {
     $("dossier-read-meta").textContent = dossierEntryDate(entry.created_at);
     $("dossier-read-genealogy-link-banner").style.display = "none";
     $("dossier-read-frise").style.display = "none";
+    $("dossier-read-place-frise").style.display = "none";
     const body = $("dossier-read-body");
     body.innerHTML = "";
     body.appendChild(buildHemicycleWidget(h.parties || [], h.totalSeats, {}));
@@ -3562,6 +3578,7 @@ export function initFicheDossierSystem(deps: {
   // -------------------------------------------------------------------------
   function closeDossierForms() {
     flushTextAutosave();
+    deps.onNewTextFormChange?.(false);
     $("dossier-text-form").classList.remove("open");
     $("dossier-inner").classList.remove("dossier-inner-text-editing");
     $("dossier-link-form").classList.remove("open");
@@ -3651,7 +3668,9 @@ export function initFicheDossierSystem(deps: {
     }
   }
 
-  async function saveTextForm() {
+  // Renvoie false seulement si l'enregistrement est refusé (date de frise incorrecte) : le formulaire
+  // reste alors ouvert, avec le texte tapé (voir le gestionnaire de #dossier-text-save).
+  async function saveTextForm(): Promise<boolean> {
     const title = ($("dossier-text-title") as HTMLInputElement).value.trim();
     const bodyRaw = editor.innerHTML;
     const body = sanitizeDossierHTML(bodyRaw);
@@ -3664,13 +3683,16 @@ export function initFicheDossierSystem(deps: {
     const tags = editingTagsDraft.slice();
     const status: "draft" | "published" = ($("dossier-text-draft") as HTMLInputElement).checked ? "draft" : "published";
     const hasStructuralContent = /<(table|hr|ul class="rt-checklist"|ol|pre)/i.test(body);
-    if (!bodyText && !hasStructuralContent) return;
+    if (!bodyText && !hasStructuralContent) return true;
     if (editingEntryId) {
       await updateEntry(editingEntryId, { title, body, category_id: category, section_id: sectionId, sources, tags, status });
     } else {
-      await addEntry({ type: "text", title, body, category_id: category, section_id: sectionId, sources, tags, status });
+      if (deps.checkNewFiche && !(await deps.checkNewFiche(sectionId))) return false;
+      const newId = await addEntry({ type: "text", title, body, category_id: category, section_id: sectionId, sources, tags, status });
+      if (newId) await deps.afterFicheCreated?.(newId, sectionId);
     }
     renderDossierEntries();
+    return true;
   }
   $("dossier-add-text-btn").addEventListener("click", () => {
     closeDossierForms();
@@ -3687,10 +3709,11 @@ export function initFicheDossierSystem(deps: {
     renderTagsEditor();
     $("dossier-text-form").classList.add("open");
     $("dossier-inner").classList.add("dossier-inner-text-editing");
+    deps.onNewTextFormChange?.(true);
   });
   $("dossier-text-cancel").addEventListener("click", closeDossierForms);
   $("dossier-text-save").addEventListener("click", async () => {
-    await saveTextForm();
+    if ((await saveTextForm()) === false) return;
     ($("dossier-text-title") as HTMLInputElement).value = "";
     editor.innerHTML = "";
     closeDossierForms();

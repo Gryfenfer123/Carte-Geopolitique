@@ -16,6 +16,7 @@ import { initPoiSystem } from "./poi";
 import { initCompareSystem, exportWorldAsPng } from "./compareExport";
 import { initGenealogySystem } from "./genealogy";
 import { initTimelineSystem } from "./frise";
+import { initFriseAutoPlace } from "./friseAutoPlace";
 import { initHistoricalMapSystem } from "./historicalMap";
 
 // ---------------------------------------------------------------------------
@@ -2073,6 +2074,12 @@ const friseSystem = initTimelineSystem({
 });
 ficheDeps.friseLinkForFiche = (id) => friseSystem.isFicheOnFrise(id);
 ficheDeps.onShowFicheOnFrise = (id) => void friseSystem.openForFiche(id);
+ficheDeps.placeFicheOnFrise = (id, title) => void friseSystem.placeFiche(id, title);
+// Fiche créée à la main dans une période de frise : champ date + placement automatique (src/friseAutoPlace.ts).
+const friseAutoPlace = initFriseAutoPlace({ supabase, getSession: () => currentSession, showBanner: (msg) => showTransientBanner(msg) });
+ficheDeps.onNewTextFormChange = friseAutoPlace.onFormChange;
+ficheDeps.checkNewFiche = friseAutoPlace.checkNewFiche;
+ficheDeps.afterFicheCreated = friseAutoPlace.afterFicheCreated;
 ficheDeps.onOpenFriseEntry = (entry) => {
   void friseSystem.openForEntry(entry.id);
 };
