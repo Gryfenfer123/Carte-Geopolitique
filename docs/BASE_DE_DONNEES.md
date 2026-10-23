@@ -67,8 +67,9 @@ RLS**. Règles :
 
 ## Écrire une nouvelle migration
 
-1. Numéro = plus grand numéro existant + 1 (aujourd'hui : **v37**). Fichier
-   `supabase/schema_v37.sql`. Jamais deux fichiers avec le même numéro.
+1. Nom = `supabase/<chantier>/<chantier>_vN.sql` (chantiers : arbres, frises, carte, groupes, dossiers, indicateurs ;
+   voir `docs/CHANTIERS.md`), **N = plus grand numéro de ce chantier + 1** (arbres continue à **arbres_v61** ; les autres
+   commencent à v1). Les fichiers `schema_v1…v60` ci-dessous gardent leur nom. Jamais deux fichiers avec le même nom.
 2. En-tête : date, raison (la demande de Martin), ce que le script ajoute/modifie.
 3. **Idempotente** (`if not exists`, `drop policy if exists`…) et **sans suppression de
    données**, sauf accord explicite de Martin.

@@ -14,7 +14,8 @@ résultat reste solide, relisable par un développeur, et que chaque session rep
 
 ## 1. Avant de commencer une session
 
-1. Lire `CLAUDE.md`, puis `docs/ARCHITECTURE.md` et `docs/DECISIONS.md`.
+1. Lire `CLAUDE.md`, puis `docs/ARCHITECTURE.md` et `docs/DECISIONS.md`, puis `docs/CHANTIERS.md` et le journal
+   de son chantier (`docs/chantiers/`). Une conversation = un chantier ; `git pull --rebase` avant chaque push.
 2. Pour les frises : `docs/specs/frises-chronologiques.md` (document de référence).
 3. Pour la base : `docs/BASE_DE_DONNEES.md`.
 4. Vérifier l'état réel : `git log --oneline -10`, `git status`. **Ne pas se fier à un résumé de
@@ -75,8 +76,10 @@ visuel sans navigateur.
 
 Tout est dans `docs/BASE_DE_DONNEES.md` ; l'essentiel :
 
-- Nouvelle migration = `supabase/schema_vN.sql` avec **N = plus grand numéro + 1**, jamais de
-  doublon de numéro, **idempotente**, **sans suppression de données** sans accord explicite.
+- Nouvelle migration = `supabase/<chantier>/<chantier>_vN.sql` avec **N = plus grand numéro de CE chantier + 1**
+  (un compteur par chantier, voir `docs/CHANTIERS.md` ; les anciennes `schema_v1…v60` gardent leur nom),
+  jamais de doublon de numéro, **idempotente**, **sans suppression de données** sans accord explicite.
+  Réserver le numéro en poussant le fichier tout de suite quand plusieurs conversations travaillent en parallèle.
 - **Ne jamais modifier une migration déjà exécutée** : en écrire une corrective.
 - Toute nouvelle table : **RLS activée et policies écrites dans la même migration**.
 - Prévenir Martin que le fichier est **à exécuter dans le SQL Editor**, et que le code qui en

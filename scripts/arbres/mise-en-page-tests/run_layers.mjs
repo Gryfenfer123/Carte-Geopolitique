@@ -1,0 +1,10 @@
+import fs from 'fs';
+import {computeLayersLayout} from './layers.mjs';
+const f=process.argv[2]; const d=JSON.parse(fs.readFileSync(f,'utf8'));
+const nodes=d.m.map((m,i)=>({id:'n'+i,name:m[0],birth:m[1]}));
+const rels=d.r.map(r=>({a:'n'+r[0],b:'n'+r[1],type:r[2]==='p'?'parent':r[2]==='s'?'spouse':'family'}));
+const t=Date.now();
+const res=computeLayersLayout(nodes,rels,{cardW:300,cardH:340,originYear:1000,pxPerYear:22,rowYears:25,gapX:130,spouseGap:150,budgetMs:4000});
+console.error('ms',Date.now()-t,JSON.stringify(res.stats));
+console.error(res.longEdgeIds.map(([a,b])=>nodes[+a.slice(1)].name+' -> '+nodes[+b.slice(1)].name).join('\n'));
+fs.writeFileSync(process.argv[3],JSON.stringify({nodes,rels,pos:Object.fromEntries(res.pos)}));

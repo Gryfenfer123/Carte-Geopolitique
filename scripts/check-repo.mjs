@@ -14,7 +14,8 @@
 //      fichiers de configuration autorisés : le code vit dans src/ ;
 //   3. index.html pointe vers un script qui existe ;
 //   4. aucun secret : pas de clé « service_role » ni « sb_secret_ » ;
-//   5. migrations Supabase : pas deux fichiers avec le même numéro.
+//   5. migrations Supabase : pas deux fichiers avec le même numéro (anciennes : supabase/schema_vN.sql ;
+//      nouvelles : supabase/<chantier>/<chantier>_vN.sql, un compteur par chantier, voir docs/CHANTIERS.md).
 //
 // Code de sortie : 0 = tout va bien, 1 = au moins un problème (message clair).
 
@@ -89,16 +90,30 @@ for (const f of fichiers) {
 }
 
 // 5. Numéros de migration uniques ---------------------------------------------
+// Anciennes migrations (v1 à v60) : supabase/schema_vN.sql, un seul compteur.
+// Nouvelles : supabase/<chantier>/<chantier>_vN.sql, un compteur PAR chantier.
+const chantiers = new Set(["arbres", "frises", "carte", "groupes", "dossiers", "indicateurs"]);
 const parNumero = new Map();
 for (const f of fichiers) {
-  const m = f.match(/^supabase\/schema_v(\d+)[^/]*\.sql$/);
-  if (!m) continue;
-  const n = Number(m[1]);
-  parNumero.set(n, [...(parNumero.get(n) ?? []), f]);
+  let cle = null;
+  let m = f.match(/^supabase\/schema_v(\d+)[^/]*\.sql$/);
+  if (m) cle = `schema|${Number(m[1])}`;
+  const n = f.match(/^supabase\/([^/]+)\/([^/]+)_v(\d+)[^/]*\.sql$/);
+  if (n) {
+    if (!chantiers.has(n[1]) || n[1] !== n[2]) {
+      erreurs.push(
+        `Migration mal nommée : « ${f} ». Format attendu : supabase/<chantier>/<chantier>_vN.sql avec <chantier> parmi ${[...chantiers].join(", ")}.`,
+      );
+    } else {
+      cle = `${n[1]}|${Number(n[3])}`;
+    }
+  }
+  if (cle) parNumero.set(cle, [...(parNumero.get(cle) ?? []), f]);
 }
-for (const [n, liste] of parNumero) {
+for (const [cle, liste] of parNumero) {
   if (liste.length > 1) {
-    erreurs.push(`Deux migrations portent le numéro v${n} : ${liste.join(", ")}. Un numéro = un seul fichier.`);
+    const [nom, num] = cle.split("|");
+    erreurs.push(`Deux migrations portent le même numéro (${nom} v${num}) : ${liste.join(", ")}. Un numéro = un seul fichier.`);
   }
 }
 

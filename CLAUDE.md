@@ -10,7 +10,9 @@ Martin **ne programme pas** : il décrit en français, tu fais, tu expliques sim
 2. `docs/DECISIONS.md` — ce qui est décidé (on n'y revient pas sans Martin)
 3. `docs/CONVENTIONS.md` — **les règles de travail détaillées (obligatoires)**
 4. `docs/BASE_DE_DONNEES.md` — Supabase, migrations, droits d'accès
-5. `docs/specs/frises-chronologiques.md` — si la tâche touche aux frises
+5. `docs/CHANTIERS.md` — **quel chantier est le tien** (une conversation = un chantier) + son journal
+   dans `docs/chantiers/` ; outils d'arbres : `scripts/arbres/README.md`
+6. `docs/specs/frises-chronologiques.md` — si la tâche touche aux frises
 
 ## Les règles qui comptent le plus
 
@@ -23,8 +25,9 @@ Martin **ne programme pas** : il décrit en français, tu fais, tu expliques sim
 4. **Nouvelle fonctionnalité = nouveau module** ; ne pas grossir `dossier.ts`, `genealogy.ts`,
    `frise.ts`, `main.ts`, `style.css`. Logique pure dans un fichier sans DOM.
 5. **Minimalisme** : pas de fonctionnalité non demandée, pas de dépendance sans justification.
-6. **Migrations SQL** : `schema_vN.sql` suivant (jamais de doublon de numéro), idempotente,
-   sans suppression de données, RLS incluse ; **c'est Martin qui l'exécute** — le lui dire.
+6. **Migrations SQL** : `supabase/<chantier>/<chantier>_vN.sql` (un compteur par chantier, voir
+   `docs/CHANTIERS.md` ; jamais de doublon), idempotente, sans suppression de données, RLS incluse ;
+   **c'est Martin qui l'exécute** — le lui dire. Les anciennes `schema_v1…v60` ne se renomment pas.
 7. **Aucun secret** (`service_role`) dans le dépôt. Texte riche = toujours via `sanitize.ts`.
 8. **Données** : source fiable notée, jamais de valeur inventée.
 9. **Docs dans le même commit** que le changement (`docs/`).

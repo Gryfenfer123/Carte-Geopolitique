@@ -39,8 +39,8 @@ src/                       TOUT le code TypeScript et le CSS (rien d'autre à la
 public/data/               données statiques copiées telles quelles dans le site
   countries.geojson          frontières des pays
   raw/*.json                 indicateurs, ports, câbles, pipelines, bases, villes, noms FR, drapeaux…
-supabase/                  migrations SQL (exécutées à la main par Martin)
-scripts/                   outils hors site (génération de données, vérification du dépôt)
+supabase/                  migrations SQL (exécutées à la main par Martin) : anciennes `schema_vN.sql` + un dossier par chantier
+scripts/                   outils hors site : vérification du dépôt, `arbres/` (générateur de dynasties), `photos/`
 docs/                      cette documentation ; docs/specs = spécifications validées ; docs/archive = historique
 .github/workflows/         déploiement + vérifications automatiques
 ```
