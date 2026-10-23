@@ -164,4 +164,5 @@ RLS**. Règles :
 | arbres_v92 | arbres_v92 : Écosse, Dunkeld, Balliol, Bruce (35 membres, 2 nouveaux arbres) |
 | arbres_v93 | arbres_v93 : Danemark médiéval (25 membres) + correctif de dates v92 |
 | arbres_v94 | arbres_v94 : Hauteville (nouvel arbre, 23 membres) |
+| arbres_v95 | arbres_v95 : Este, Gonzague, Farnèse (3 nouveaux arbres, 40 membres) |
 | `data_owid_load.sql` + `owid_chunks/` | Chargement des données d'indicateurs (rejouable, upserts) — à exécuter après v1 à v7 |
