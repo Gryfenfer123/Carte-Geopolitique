@@ -264,6 +264,12 @@ export function computeLayersLayout(nodes: LNode[], rels: LRel[], o: LayersOptio
     const aboveX = (e: Edge, i: number) => (i === 0 ? parentPoint(e) : e.dummies[i - 1].x);
     const belowX = (e: Edge, i: number) => (i === e.dummies.length - 1 ? cardX(e.child) : e.dummies[i + 1].x);
 
+    // famille à enfant unique : le trait doit tomber droit (pas de virage inutile)
+    const only = (e: Edge) => {
+      const sibs = new Set<string>();
+      e.parents.forEach((p) => kids(p).forEach((c) => { if (par(c).length === e.parents.length && par(c).every((q) => e.parents.includes(q))) sibs.add(c); }));
+      return sibs.size <= 1;
+    };
     function pullsOf(it: Item): { v: number; w: number }[] {
       const out: { v: number; w: number }[] = [];
       if (it.kind === "d") {
@@ -277,7 +283,7 @@ export function computeLayersLayout(nodes: LNode[], rels: LRel[], o: LayersOptio
         const e = edgesOfChild.get(m);
         if (e) {
           const a = e.dummies.length ? e.dummies[e.dummies.length - 1].x : parentPoint(e);
-          out.push({ v: a - offOf(u, m), w: 1.2 });
+          out.push({ v: a - offOf(u, m), w: only(e) ? 5 : 1.2 });
         }
         for (const ed of edgesOfParent.get(m) || []) {
           const b = ed.dummies.length ? ed.dummies[0].x : cardX(ed.child);
@@ -292,7 +298,7 @@ export function computeLayersLayout(nodes: LNode[], rels: LRel[], o: LayersOptio
             v = (b * ed.parents.length - ox * others.length) / mine.length - mo;
             v = 0.5 * v + 0.5 * (b - mo);
           }
-          out.push({ v, w: 1 });
+          out.push({ v, w: only(ed) ? 5 : 1 });
         }
       }
       return out;
@@ -611,6 +617,47 @@ export function computeLayersLayout(nodes: LNode[], rels: LRel[], o: LayersOptio
       }
       restore(bestSnap);
     }
+    // alignement exact des familles à enfant unique : pas de virage inutile (demande de
+    // Martin). D'abord de bas en haut (un parent qui n'a qu'un enfant se place pile
+    // au-dessus de lui), puis de haut en bas (un enfant unique se place pile sous le
+    // milieu de ses parents). Les voisins limitent le déplacement (jamais de chevauchement).
+    const clampTo = (l: Item[], i: number, want: number) => {
+      const it = l[i];
+      const lo = i > 0 ? l[i - 1].x + sepOf(l[i - 1], it) : -Infinity;
+      const hi = i + 1 < l.length ? l[i + 1].x - sepOf(it, l[i + 1]) : Infinity;
+      it.x = Math.min(hi, Math.max(lo, want));
+    };
+    const align = (reps: number) => {
+    for (let rep = 0; rep < reps; rep++) {
+      for (let ri = rowsArr.length - 1; ri >= 0; ri--) {
+        const l = rowsArr[ri];
+        for (let i = 0; i < l.length; i++) {
+          const it = l[i];
+          if (it.kind !== "u") continue;
+          const u = it.u!;
+          const mine = new Set<Edge>();
+          u.order.forEach((m) => (edgesOfParent.get(m) || []).forEach((ed) => mine.add(ed)));
+          if (mine.size !== 1) continue;
+          const ed = Array.from(mine)[0];
+          if (ed.dummies.length || !only(ed) || !ed.parents.every((q) => unitOf.get(q) === u)) continue;
+          const pointOff = ed.parents.reduce((sum, q) => sum + offOf(u, q), 0) / ed.parents.length;
+          clampTo(l, i, cardX(ed.child) - pointOff);
+        }
+      }
+      for (const l of rowsArr) {
+        for (let i = 0; i < l.length; i++) {
+          const it = l[i];
+          if (it.kind !== "u") continue;
+          const u = it.u!;
+          const bloods = u.order.filter((m) => edgesOfChild.has(m));
+          if (bloods.length !== 1) continue;
+          const e = edgesOfChild.get(bloods[0])!;
+          if (e.dummies.length || !only(e)) continue;
+          clampTo(l, i, parentPoint(e) - offOf(u, bloods[0]));
+        }
+      }
+    }
+    };
     const settle = (n: number) => {
       for (let k = 0; k < n; k++) {
         const down = k % 2 === 0;
@@ -627,6 +674,7 @@ export function computeLayersLayout(nodes: LNode[], rels: LRel[], o: LayersOptio
           solveRow(l, 0.6);
         }
       }
+      align(2);
     };
     settle(12);
     // recherche locale : échanger deux voisins d'une ligne, ou retourner un couple,
@@ -663,7 +711,8 @@ export function computeLayersLayout(nodes: LNode[], rels: LRel[], o: LayersOptio
       }
       restore(cur);
     }
-    settle(8);
+    settle(80);
+    align(6);
     const ev = evaluate();
     const cx = new Map<string, number>();
     const row = new Map<string, number>();

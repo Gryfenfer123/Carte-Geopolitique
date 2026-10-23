@@ -217,7 +217,7 @@ const CARD_PHOTO_RATIO = CARD_W / CARD_PHOTO_H;
 // entièrement possible ensuite : seule la position DE DÉPART est corrigée.
 // Agrandi avec les cartes (230 → 300 → 400) pour garder un espacement
 // cohérent avec la nouvelle taille.
-const GENERATION_GAP = 550;
+const GENERATION_GAP = 640;
 // Une ligne de génération = 33 ans (une génération de dynastes) : les parents et
 // leurs enfants tombent presque toujours sur deux lignes voisines, donc peu de
 // traits traversent plusieurs lignes (genealogyLayers.ts).
@@ -953,7 +953,7 @@ export function initGenealogySystem(deps: {
     const nodes = Array.from(known.values()).map((m) => ({ id: m.id, birth: m.birth_year, death: m.death_year, name: m.name, female: guessFemale(m.name, m.title) }));
     const rels = relations.filter((r) => known.has(r.member_a_id) && known.has(r.member_b_id)).map((r) => ({ a: r.member_a_id, b: r.member_b_id, type: r.relation_type }));
     const layoutNodes = nodes.map((n) => ({ id: n.id, birth: n.birth, name: n.name }));
-    const layoutOpts = { cardW: CARD_W, cardH: CARD_H, ...LAYOUT_OPTS, rowYears: ROW_YEARS, gapX: 130, spouseGap: 150, budgetMs: LAYOUT_BUDGET_MS };
+    const layoutOpts = { cardW: CARD_W, cardH: CARD_H, ...LAYOUT_OPTS, rowYears: ROW_YEARS, gapX: 200, spouseGap: 190, budgetMs: LAYOUT_BUDGET_MS };
     const pos = await computeLayoutAsync(layoutNodes, rels, layoutOpts);
     // Sauvegarde pour pouvoir annuler.
     const undoLocal = new Map<string, { x: number; y: number }>();

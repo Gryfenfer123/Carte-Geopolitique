@@ -65,7 +65,8 @@ export function planBuses(edges: BusEdge[], o: BusOptions): Map<string, Pt[]> {
     const busY = b.endY - o.above - b.lane * o.lane;
     for (const e of b.edges) {
       if (busY <= e.start.y + 10) continue; // pas la place : tracé diagonal
-      const raw: Pt[] = [e.start, { x: e.start.x, y: busY }, { x: e.end.x, y: busY }, e.end];
+      const straight = Math.abs(e.start.x - e.end.x) < 4;
+      const raw: Pt[] = straight ? [e.start, { x: e.start.x, y: e.end.y }] : [e.start, { x: e.start.x, y: busY }, { x: e.end.x, y: busY }, e.end];
       const pts = raw.filter((p, i) => i === 0 || Math.abs(p.x - raw[i - 1].x) > 0.5 || Math.abs(p.y - raw[i - 1].y) > 0.5);
       if (countCrossings(pts, o.cards.filter((r) => !(e.start.x > r.x + 1 && e.start.x < r.x + r.w - 1 && e.start.y > r.y + 1 && e.start.y < r.y + r.h - 1)).filter((r) => !(e.end.x > r.x && e.end.x < r.x + r.w && e.end.y >= r.y && e.end.y <= r.y + r.h + 1))) > 0) continue;
       out.set(e.id, pts);
