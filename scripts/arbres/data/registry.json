@@ -12749,6 +12749,546 @@
    "title": "Princesse de Prusse",
    "g": "f",
    "script": 63
+  },
+  "wf.adelheid": {
+   "id": "5e1c693a-e77d-5d8d-a207-8d5a1021c630",
+   "name": "Adélaïde de Montferrat",
+   "b": null,
+   "d": null,
+   "tree": "DE_WEL",
+   "title": "Duchesse de Brunswick-Lunebourg",
+   "g": "f",
+   "script": 64
+  },
+  "wf.albert2": {
+   "id": "c39739d9-d080-5b6f-a7ce-dbf6defe3359",
+   "name": "Albert II le Gros",
+   "b": 1268,
+   "d": 1318,
+   "tree": "DE_WEL",
+   "title": "Duc de Brunswick-Lunebourg",
+   "g": "h",
+   "script": 64
+  },
+  "wf.rixa": {
+   "id": "fd016073-2338-5b9e-b148-8ce2135080ff",
+   "name": "Rixa de Werle",
+   "b": null,
+   "d": null,
+   "tree": "DE_WEL",
+   "title": "Duchesse de Brunswick-Lunebourg",
+   "g": "f",
+   "script": 64
+  },
+  "wf.magnus1": {
+   "id": "49f555d0-bad4-5696-a59b-b005f7f3a918",
+   "name": "Magnus Ier le Pieux",
+   "b": 1304,
+   "d": 1369,
+   "tree": "DE_WEL",
+   "title": "Duc de Brunswick-Lunebourg",
+   "g": "h",
+   "script": 64
+  },
+  "wf.sophie_stendal": {
+   "id": "70d53858-53dd-5d7d-a089-d2d7350d80fd",
+   "name": "Sophie de Brandebourg-Stendal",
+   "b": null,
+   "d": 1356,
+   "tree": "DE_WEL",
+   "title": "Duchesse de Brunswick-Lunebourg",
+   "g": "f",
+   "script": 64
+  },
+  "wf.magnus2": {
+   "id": "f9265945-a846-5cd8-a1b2-cc0ab1da27b9",
+   "name": "Magnus II Torquatus",
+   "b": 1328,
+   "d": 1373,
+   "tree": "DE_WEL",
+   "title": "Duc de Brunswick-Lunebourg",
+   "g": "h",
+   "script": 64
+  },
+  "wf.catherine_anhalt": {
+   "id": "83214f8a-ac6a-5372-b7ed-397464d7853b",
+   "name": "Catherine d'Anhalt-Bernbourg",
+   "b": null,
+   "d": null,
+   "tree": "DE_WEL",
+   "title": "Duchesse de Brunswick-Lunebourg",
+   "g": "f",
+   "script": 64
+  },
+  "wf.bernard1": {
+   "id": "5490e124-790a-5497-b526-45717f290540",
+   "name": "Bernard Ier de Brunswick-Lunebourg",
+   "b": null,
+   "d": 1434,
+   "tree": "DE_WEL",
+   "title": "Duc de Brunswick-Lunebourg",
+   "g": "h",
+   "script": 64
+  },
+  "wf.henri_doux": {
+   "id": "80e537e3-0f21-5bba-9f99-3031adafa494",
+   "name": "Henri le Doux",
+   "b": null,
+   "d": 1416,
+   "tree": "DE_WEL",
+   "title": "Duc de Brunswick-Lunebourg",
+   "g": "h",
+   "script": 64
+  },
+  "wf.sophie_pom": {
+   "id": "0daddf1b-38cf-5fd1-866e-9f956b7b8dce",
+   "name": "Sophie de Poméranie",
+   "b": null,
+   "d": 1406,
+   "tree": "DE_WEL",
+   "title": "Duchesse de Brunswick-Lunebourg",
+   "g": "f",
+   "script": 64
+  },
+  "wf.marg_saxe_w": {
+   "id": "d4953097-a9f2-57db-9e85-2e4ef840657b",
+   "name": "Marguerite de Saxe-Wittenberg",
+   "b": null,
+   "d": 1429,
+   "tree": "DE_WEL",
+   "title": "Duchesse de Brunswick-Lunebourg",
+   "g": "f",
+   "script": 64
+  },
+  "wf.frederic2": {
+   "id": "f9f92b66-0002-5c33-ac67-800d1c08772b",
+   "name": "Frédéric II le Pieux de Brunswick-Lunebourg",
+   "b": 1418,
+   "d": 1478,
+   "tree": "DE_WEL",
+   "title": "Duc de Brunswick-Lunebourg",
+   "g": "h",
+   "script": 64
+  },
+  "wf.magdalene_br": {
+   "id": "e335819c-1c35-5dab-9baf-2375a408d64d",
+   "name": "Madeleine de Brandebourg",
+   "b": 1412,
+   "d": 1454,
+   "tree": "DE_HOH",
+   "title": "Duchesse de Brunswick-Lunebourg",
+   "g": "f",
+   "script": 64
+  },
+  "wf.otto5": {
+   "id": "f8fb1fe4-45e4-5f68-8939-217f045df61f",
+   "name": "Otton V le Victorieux",
+   "b": 1439,
+   "d": 1471,
+   "tree": "DE_WEL",
+   "title": "Duc de Brunswick-Lunebourg",
+   "g": "h",
+   "script": 64
+  },
+  "wf.anne_nassau": {
+   "id": "41c3994b-d1db-58b0-a24e-b10f95cf5010",
+   "name": "Anne de Nassau-Siegen",
+   "b": null,
+   "d": null,
+   "tree": "DE_WEL",
+   "title": "Duchesse de Brunswick-Lunebourg",
+   "g": "f",
+   "script": 64
+  },
+  "wf.henri_moyen": {
+   "id": "32df9e49-569f-5b33-b16b-9b5c2ef0e3a3",
+   "name": "Henri le Moyen",
+   "b": 1468,
+   "d": 1532,
+   "tree": "DE_WEL",
+   "title": "Duc de Brunswick-Lunebourg",
+   "g": "h",
+   "script": 64
+  },
+  "wf.marg_saxe": {
+   "id": "c0d1d21e-cb1b-56a6-9527-7a8abc2d9866",
+   "name": "Marguerite de Saxe (1469-1528)",
+   "b": 1469,
+   "d": 1528,
+   "tree": "DE_WET",
+   "title": "Duchesse de Brunswick-Lunebourg",
+   "g": "f",
+   "script": 64
+  },
+  "wf.ernest_conf": {
+   "id": "5ff82d8f-14b1-57c5-9f2a-61277a672051",
+   "name": "Ernest le Confesseur",
+   "b": 1497,
+   "d": 1546,
+   "tree": "DE_WEL",
+   "title": "Duc de Brunswick-Lunebourg",
+   "g": "h",
+   "script": 64
+  },
+  "wf.sophie_meck": {
+   "id": "64ffdfd1-44a0-5218-9ddf-84f9f1b43e7f",
+   "name": "Sophie de Mecklembourg-Schwerin",
+   "b": null,
+   "d": 1541,
+   "tree": "DE_WEL",
+   "title": "Duchesse de Brunswick-Lunebourg",
+   "g": "f",
+   "script": 64
+  },
+  "wf.henri_dann": {
+   "id": "e3b47c83-9525-5104-90d6-63ecbce9d91b",
+   "name": "Henri de Brunswick-Dannenberg",
+   "b": 1533,
+   "d": 1598,
+   "tree": "DE_WEL",
+   "title": "Duc de Brunswick-Dannenberg",
+   "g": "h",
+   "script": 64
+  },
+  "wf.guillaume_lun": {
+   "id": "fe6fb459-b027-5181-b1a1-604fd6ef3273",
+   "name": "Guillaume le Jeune de Brunswick-Lunebourg",
+   "b": 1535,
+   "d": 1592,
+   "tree": "DE_WEL",
+   "title": "Duc de Brunswick-Lunebourg (Celle)",
+   "g": "h",
+   "script": 64
+  },
+  "wf.dorothee_dk": {
+   "id": "6707cea2-cec9-5e4a-aff5-aaf96aade2ca",
+   "name": "Dorothée de Danemark (1546-1617)",
+   "b": 1546,
+   "d": 1617,
+   "tree": "DK_OLD",
+   "title": "Duchesse de Brunswick-Lunebourg",
+   "g": "f",
+   "script": 64
+  },
+  "wf.georges": {
+   "id": "17cd4f93-35eb-5d1e-b6d0-fe69993935e0",
+   "name": "Georges de Brunswick-Calenberg",
+   "b": 1582,
+   "d": 1641,
+   "tree": "DE_WEL",
+   "title": "Duc de Brunswick-Calenberg",
+   "g": "h",
+   "script": 64
+  },
+  "wf.anne_eleonore": {
+   "id": "a4ff09d5-4d81-5c83-bd2e-5cac235f88bb",
+   "name": "Anne-Éléonore de Hesse-Darmstadt",
+   "b": null,
+   "d": null,
+   "tree": "DE_WEL",
+   "title": "Duchesse de Brunswick-Calenberg",
+   "g": "f",
+   "script": 64
+  },
+  "wf.guillaume_vict": {
+   "id": "05dd2230-59fa-5f33-93f6-d02475a87d41",
+   "name": "Guillaume le Victorieux",
+   "b": 1392,
+   "d": 1482,
+   "tree": "DE_WEL",
+   "title": "Duc de Brunswick-Wolfenbüttel",
+   "g": "h",
+   "script": 64
+  },
+  "wf.guillaume2_cal": {
+   "id": "43966718-c0b2-568a-b990-465a99a93792",
+   "name": "Guillaume II de Brunswick-Calenberg",
+   "b": 1425,
+   "d": 1503,
+   "tree": "DE_WEL",
+   "title": "Duc de Brunswick-Calenberg-Göttingen",
+   "g": "h",
+   "script": 64
+  },
+  "wf.eric1": {
+   "id": "776d0598-f6ee-5fd7-8d09-9bbdb0a9cce8",
+   "name": "Éric Ier de Brunswick-Calenberg",
+   "b": 1470,
+   "d": 1540,
+   "tree": "DE_WEL",
+   "title": "Duc de Brunswick-Calenberg-Göttingen",
+   "g": "h",
+   "script": 64
+  },
+  "wf.elisabeth_br": {
+   "id": "41d8c65f-2a0c-5342-87c2-1c61a8e59c11",
+   "name": "Élisabeth de Brandebourg (duchesse de Calenberg)",
+   "b": null,
+   "d": null,
+   "tree": "DE_HOH",
+   "title": "Duchesse de Brunswick-Calenberg-Göttingen",
+   "g": "f",
+   "script": 64
+  },
+  "wf.ursule": {
+   "id": "f6412c5d-236f-5a75-bbce-38398d494e6a",
+   "name": "Ursule de Saxe-Lauenbourg",
+   "b": 1545,
+   "d": 1620,
+   "tree": "DE_WEL",
+   "title": "Duchesse de Brunswick-Dannenberg",
+   "g": "f",
+   "script": 64
+  },
+  "wf.auguste_jeune": {
+   "id": "c0bf73d3-c72e-566c-a2b2-031cdeb1f1d7",
+   "name": "Auguste le Jeune de Brunswick-Wolfenbüttel",
+   "b": 1579,
+   "d": 1666,
+   "tree": "DE_WEL",
+   "title": "Duc de Brunswick-Wolfenbüttel",
+   "g": "h",
+   "script": 64
+  },
+  "wf.dorothea_az": {
+   "id": "a8016993-b166-5757-b37b-1db55d442c6b",
+   "name": "Dorothée d'Anhalt-Zerbst",
+   "b": null,
+   "d": 1634,
+   "tree": "DE_WEL",
+   "title": "Duchesse de Brunswick-Wolfenbüttel",
+   "g": "f",
+   "script": 64
+  },
+  "wf.anton_ulrich": {
+   "id": "74020134-ba09-5823-b1ad-4ca5a39a8b75",
+   "name": "Antoine-Ulrich de Brunswick-Wolfenbüttel",
+   "b": 1633,
+   "d": 1714,
+   "tree": "DE_WEL",
+   "title": "Duc de Brunswick-Wolfenbüttel",
+   "g": "h",
+   "script": 64
+  },
+  "wf.elisabeth_juliane": {
+   "id": "ac01e4e8-5b32-5e6d-ad5b-995ddac13be8",
+   "name": "Élisabeth-Julienne de Schleswig-Holstein-Norbourg",
+   "b": 1634,
+   "d": 1704,
+   "tree": "DE_WEL",
+   "title": "Duchesse de Brunswick-Wolfenbüttel",
+   "g": "f",
+   "script": 64
+  },
+  "wf.louis_rodolphe": {
+   "id": "70020bae-9f68-5371-8787-f79ce1e40aa2",
+   "name": "Louis-Rodolphe de Brunswick-Wolfenbüttel",
+   "b": 1671,
+   "d": 1735,
+   "tree": "DE_WEL",
+   "title": "Duc de Brunswick-Wolfenbüttel",
+   "g": "h",
+   "script": 64
+  },
+  "wf.christine_louise": {
+   "id": "58648c90-5602-51bc-a6ba-b4117a147343",
+   "name": "Christine-Louise d'Oettingen-Oettingen",
+   "b": null,
+   "d": null,
+   "tree": "DE_WEL",
+   "title": "Duchesse de Brunswick-Wolfenbüttel",
+   "g": "f",
+   "script": 64
+  },
+  "wf.antoinette_amelie": {
+   "id": "5ddf7e11-1623-56a1-bbb5-46a547fc83d6",
+   "name": "Antoinette-Amélie de Brunswick-Wolfenbüttel",
+   "b": 1696,
+   "d": 1762,
+   "tree": "DE_WEL",
+   "title": "Duchesse de Brunswick-Wolfenbüttel-Bevern",
+   "g": "f",
+   "script": 64
+  },
+  "wf.ferdinand_albert1": {
+   "id": "fd805151-ca13-59c2-b932-b8823c0d58c9",
+   "name": "Ferdinand-Albert Ier de Brunswick-Bevern",
+   "b": null,
+   "d": null,
+   "tree": "DE_WEL",
+   "title": "Duc de Brunswick-Bevern",
+   "g": "h",
+   "script": 64
+  },
+  "wf.christine_wilh": {
+   "id": "6565d969-1429-5fb9-ab2d-2f529393fc89",
+   "name": "Christine-Wilhelmine de Hesse-Eschwege",
+   "b": null,
+   "d": null,
+   "tree": "DE_WEL",
+   "title": "Duchesse de Brunswick-Bevern",
+   "g": "f",
+   "script": 64
+  },
+  "wf.ferdinand_albert2": {
+   "id": "77d734e9-ba0f-5d3a-bcfb-c85e9d0789b5",
+   "name": "Ferdinand-Albert II de Brunswick-Wolfenbüttel",
+   "b": 1680,
+   "d": 1735,
+   "tree": "DE_WEL",
+   "title": "Duc de Brunswick-Wolfenbüttel",
+   "g": "h",
+   "script": 64
+  },
+  "wf.charles1_bw": {
+   "id": "489777c8-e246-5c27-b60b-27d53c723ded",
+   "name": "Charles Ier de Brunswick-Wolfenbüttel",
+   "b": 1713,
+   "d": 1780,
+   "tree": "DE_WEL",
+   "title": "Duc de Brunswick-Wolfenbüttel",
+   "g": "h",
+   "script": 64
+  },
+  "wf.philippine": {
+   "id": "da866a7c-849a-53dc-af93-293fb08cf3ca",
+   "name": "Philippine-Charlotte de Prusse",
+   "b": 1716,
+   "d": 1801,
+   "tree": "DE_HOH",
+   "title": "Duchesse de Brunswick-Wolfenbüttel",
+   "g": "f",
+   "script": 64
+  },
+  "wf.ernest_auguste_roi": {
+   "id": "cd9f9696-6d55-5258-92a7-4c22eda70a6c",
+   "name": "Ernest-Auguste Ier de Hanovre (roi)",
+   "b": 1771,
+   "d": 1851,
+   "tree": "DE_WEL",
+   "title": "Roi de Hanovre (1837-1851)",
+   "g": "h",
+   "script": 64
+  },
+  "wf.frederica_ms": {
+   "id": "4d4e9aa1-c6f5-56ec-952f-788e1cd8c9b4",
+   "name": "Frédérique de Mecklembourg-Strelitz",
+   "b": null,
+   "d": 1841,
+   "tree": "DE_WEL",
+   "title": "Reine de Hanovre",
+   "g": "f",
+   "script": 64
+  },
+  "wf.georges5": {
+   "id": "29f349f4-df2c-52ad-b2e0-a6de57007784",
+   "name": "Georges V de Hanovre",
+   "b": 1819,
+   "d": 1878,
+   "tree": "DE_WEL",
+   "title": "Dernier roi de Hanovre (1851-1866)",
+   "g": "h",
+   "script": 64
+  },
+  "wf.marie_alt": {
+   "id": "804c9b10-d499-5e2f-9cd6-414906216a0c",
+   "name": "Marie de Saxe-Altenbourg",
+   "b": null,
+   "d": null,
+   "tree": "DE_WET",
+   "title": "Reine de Hanovre",
+   "g": "f",
+   "script": 64
+  },
+  "wf.ernest_auguste_cp": {
+   "id": "9e9d6897-93c4-5353-bc64-26e48cc17a70",
+   "name": "Ernest-Auguste de Hanovre (1845-1923)",
+   "b": 1845,
+   "d": 1923,
+   "tree": "DE_WEL",
+   "title": "Prince héritier de Hanovre, duc de Cumberland",
+   "g": "h",
+   "script": 64
+  },
+  "wf.thyra": {
+   "id": "0000157c-2f45-5f07-a034-ff370b5e0db9",
+   "name": "Thyra de Danemark",
+   "b": 1853,
+   "d": 1933,
+   "tree": "DK_GLU",
+   "title": "Princesse héritière de Hanovre",
+   "g": "f",
+   "script": 64
+  },
+  "wf.ernest_auguste_bs": {
+   "id": "cc065089-6510-5764-8384-4bf16c4365bf",
+   "name": "Ernest-Auguste de Brunswick",
+   "b": 1887,
+   "d": 1953,
+   "tree": "DE_WEL",
+   "title": "Duc de Brunswick (1913-1918)",
+   "g": "h",
+   "script": 64
+  },
+  "wf.ernest_auguste4": {
+   "id": "183bf9c1-4073-5dfc-b19b-f77212df2a94",
+   "name": "Ernest-Auguste de Hanovre (1914-1987)",
+   "b": 1914,
+   "d": 1987,
+   "tree": "DE_WEL",
+   "title": "Chef de la maison de Hanovre",
+   "g": "h",
+   "script": 64
+  },
+  "wf.georges_guillaume": {
+   "id": "c889e7b6-d7ec-50d8-821e-ead56d554bee",
+   "name": "Georges-Guillaume de Hanovre",
+   "b": 1915,
+   "d": 2006,
+   "tree": "DE_WEL",
+   "title": "Prince de Hanovre",
+   "g": "h",
+   "script": 64
+  },
+  "wf.christian_oscar": {
+   "id": "c8b3daf5-c724-5039-80c0-0fafeda6a41e",
+   "name": "Christian-Oscar de Hanovre",
+   "b": 1919,
+   "d": 1981,
+   "tree": "DE_WEL",
+   "title": "Prince de Hanovre",
+   "g": "h",
+   "script": 64
+  },
+  "wf.welf_henri": {
+   "id": "d54c92e1-3c7d-5714-9a35-1a20e3b50a52",
+   "name": "Welf-Henri de Hanovre",
+   "b": 1923,
+   "d": 1997,
+   "tree": "DE_WEL",
+   "title": "Prince de Hanovre",
+   "g": "h",
+   "script": 64
+  },
+  "wf.ortrud": {
+   "id": "0f6e1faa-fbec-5c76-b0fd-49dbc407fb40",
+   "name": "Ortrud de Schleswig-Holstein-Sonderbourg-Glücksbourg",
+   "b": 1925,
+   "d": 1980,
+   "tree": "DK_GLU",
+   "title": "Princesse de Hanovre",
+   "g": "f",
+   "script": 64
+  },
+  "wf.ernest_auguste5": {
+   "id": "9ac9fd09-fbe9-51d7-be42-83965d0c16e9",
+   "name": "Ernest-Auguste de Hanovre (né en 1954)",
+   "b": 1954,
+   "d": null,
+   "tree": "DE_WEL",
+   "title": "Chef actuel de la maison de Hanovre",
+   "g": "h",
+   "script": 64
   }
  },
  "trees": {
@@ -12965,7 +13505,7 @@
   "DK_GLU": {
    "entry": "78bf5e64-5a01-48df-8ae2-e80934de7e4d",
    "country": "DNK",
-   "dynasty": "Glücksbourg",
+   "dynasty": "Schleswig-Holstein-Glücksbourg",
    "script": null
   },
   "DE_WELF": {
@@ -16011,6 +16551,118 @@
    "tree": "DE_HOH",
    "reason": "Maison d'Isenbourg : sans arbre",
    "script": 63
+  },
+  {
+   "name": "Adélaïde de Montferrat",
+   "b": null,
+   "tree": "DE_WEL",
+   "reason": "Maison de Montferrat : sans arbre",
+   "script": 64
+  },
+  {
+   "name": "Rixa de Werle",
+   "b": null,
+   "tree": "DE_WEL",
+   "reason": "Maison de Werle (Mecklembourg) : sans arbre",
+   "script": 64
+  },
+  {
+   "name": "Sophie de Brandebourg-Stendal",
+   "b": null,
+   "tree": "DE_WEL",
+   "reason": "Maison d'Ascanie (Brandebourg-Stendal) : sans arbre",
+   "script": 64
+  },
+  {
+   "name": "Catherine d'Anhalt-Bernbourg",
+   "b": null,
+   "tree": "DE_WEL",
+   "reason": "Maison d'Anhalt : sans arbre",
+   "script": 64
+  },
+  {
+   "name": "Sophie de Poméranie",
+   "b": null,
+   "tree": "DE_WEL",
+   "reason": "Maison de Poméranie : sans arbre",
+   "script": 64
+  },
+  {
+   "name": "Marguerite de Saxe-Wittenberg",
+   "b": null,
+   "tree": "DE_WEL",
+   "reason": "Maison d'Ascanie (Saxe-Wittenberg) : sans arbre",
+   "script": 64
+  },
+  {
+   "name": "Anne de Nassau-Siegen",
+   "b": null,
+   "tree": "DE_WEL",
+   "reason": "Maison de Nassau-Siegen : sans arbre",
+   "script": 64
+  },
+  {
+   "name": "Sophie de Mecklembourg-Schwerin",
+   "b": null,
+   "tree": "DE_WEL",
+   "reason": "Maison de Mecklembourg-Schwerin : sans arbre",
+   "script": 64
+  },
+  {
+   "name": "Anne-Éléonore de Hesse-Darmstadt",
+   "b": null,
+   "tree": "DE_WEL",
+   "reason": "Maison de Hesse : sans arbre",
+   "script": 64
+  },
+  {
+   "name": "Élisabeth de Brandebourg (duchesse de Calenberg)",
+   "b": null,
+   "tree": "DE_HOH",
+   "reason": "Ses parents (probablement Joachim Ier Nestor) ne sont pas donnés par la page d'Éric Ier : à confirmer",
+   "script": 64
+  },
+  {
+   "name": "Ursule de Saxe-Lauenbourg",
+   "b": 1545,
+   "tree": "DE_WEL",
+   "reason": "Maison de Saxe-Lauenbourg : sans arbre",
+   "script": 64
+  },
+  {
+   "name": "Dorothée d'Anhalt-Zerbst",
+   "b": null,
+   "tree": "DE_WEL",
+   "reason": "Maison d'Anhalt : sans arbre",
+   "script": 64
+  },
+  {
+   "name": "Élisabeth-Julienne de Schleswig-Holstein-Norbourg",
+   "b": 1634,
+   "tree": "DE_WEL",
+   "reason": "Maison de Schleswig-Holstein-Sonderbourg : sans arbre",
+   "script": 64
+  },
+  {
+   "name": "Christine-Louise d'Oettingen-Oettingen",
+   "b": null,
+   "tree": "DE_WEL",
+   "reason": "Maison d'Oettingen : sans arbre",
+   "script": 64
+  },
+  {
+   "name": "Christine-Wilhelmine de Hesse-Eschwege",
+   "b": null,
+   "tree": "DE_WEL",
+   "reason": "Maison de Hesse : sans arbre",
+   "script": 64
+  },
+  {
+   "name": "Frédérique de Mecklembourg-Strelitz",
+   "b": null,
+   "tree": "DE_WEL",
+   "reason": "Maison de Mecklembourg-Strelitz : sans arbre",
+   "script": 64
   }
  ],
  "scripts": {
@@ -16225,6 +16877,12 @@
    "label": "Allemagne — Hohenzollern : branches de Brandebourg-Kulmbach et Bayreuth, famille de Marie de Prusse, empereurs et chef actuel de la maison",
    "members": 20,
    "rels": 43,
+   "trees": []
+  },
+  "64": {
+   "label": "Allemagne — Welf : de Brunswick-Lunebourg à Hanovre, Wolfenbüttel-Bevern, maison de Hanovre actuelle",
+   "members": 54,
+   "rels": 123,
    "trees": []
   }
  },
@@ -26718,6 +27376,621 @@
    "f7b8d776-ff26-5cf4-8625-d02af2aa043f",
    "de579ea8-ac43-59db-bce5-51008ae7f595",
    "spouse"
+  ],
+  [
+   "132eebeb-c142-4ed4-82f0-745b0c0770f1",
+   "5e1c693a-e77d-5d8d-a207-8d5a1021c630",
+   "spouse"
+  ],
+  [
+   "132eebeb-c142-4ed4-82f0-745b0c0770f1",
+   "c39739d9-d080-5b6f-a7ce-dbf6defe3359",
+   "parent"
+  ],
+  [
+   "5e1c693a-e77d-5d8d-a207-8d5a1021c630",
+   "c39739d9-d080-5b6f-a7ce-dbf6defe3359",
+   "parent"
+  ],
+  [
+   "c39739d9-d080-5b6f-a7ce-dbf6defe3359",
+   "fd016073-2338-5b9e-b148-8ce2135080ff",
+   "spouse"
+  ],
+  [
+   "c39739d9-d080-5b6f-a7ce-dbf6defe3359",
+   "49f555d0-bad4-5696-a59b-b005f7f3a918",
+   "parent"
+  ],
+  [
+   "fd016073-2338-5b9e-b148-8ce2135080ff",
+   "49f555d0-bad4-5696-a59b-b005f7f3a918",
+   "parent"
+  ],
+  [
+   "49f555d0-bad4-5696-a59b-b005f7f3a918",
+   "70d53858-53dd-5d7d-a089-d2d7350d80fd",
+   "spouse"
+  ],
+  [
+   "49f555d0-bad4-5696-a59b-b005f7f3a918",
+   "f9265945-a846-5cd8-a1b2-cc0ab1da27b9",
+   "parent"
+  ],
+  [
+   "70d53858-53dd-5d7d-a089-d2d7350d80fd",
+   "f9265945-a846-5cd8-a1b2-cc0ab1da27b9",
+   "parent"
+  ],
+  [
+   "f9265945-a846-5cd8-a1b2-cc0ab1da27b9",
+   "83214f8a-ac6a-5372-b7ed-397464d7853b",
+   "spouse"
+  ],
+  [
+   "f9265945-a846-5cd8-a1b2-cc0ab1da27b9",
+   "5490e124-790a-5497-b526-45717f290540",
+   "parent"
+  ],
+  [
+   "83214f8a-ac6a-5372-b7ed-397464d7853b",
+   "5490e124-790a-5497-b526-45717f290540",
+   "parent"
+  ],
+  [
+   "f9265945-a846-5cd8-a1b2-cc0ab1da27b9",
+   "80e537e3-0f21-5bba-9f99-3031adafa494",
+   "parent"
+  ],
+  [
+   "83214f8a-ac6a-5372-b7ed-397464d7853b",
+   "80e537e3-0f21-5bba-9f99-3031adafa494",
+   "parent"
+  ],
+  [
+   "80e537e3-0f21-5bba-9f99-3031adafa494",
+   "0daddf1b-38cf-5fd1-866e-9f956b7b8dce",
+   "spouse"
+  ],
+  [
+   "80e537e3-0f21-5bba-9f99-3031adafa494",
+   "57881858-1254-467a-979e-5721c541d872",
+   "parent"
+  ],
+  [
+   "0daddf1b-38cf-5fd1-866e-9f956b7b8dce",
+   "57881858-1254-467a-979e-5721c541d872",
+   "parent"
+  ],
+  [
+   "5490e124-790a-5497-b526-45717f290540",
+   "d4953097-a9f2-57db-9e85-2e4ef840657b",
+   "spouse"
+  ],
+  [
+   "5490e124-790a-5497-b526-45717f290540",
+   "f9f92b66-0002-5c33-ac67-800d1c08772b",
+   "parent"
+  ],
+  [
+   "d4953097-a9f2-57db-9e85-2e4ef840657b",
+   "f9f92b66-0002-5c33-ac67-800d1c08772b",
+   "parent"
+  ],
+  [
+   "cc4d49c8-b7fc-4394-a12a-cc7fc83d6853",
+   "e335819c-1c35-5dab-9baf-2375a408d64d",
+   "parent"
+  ],
+  [
+   "55bbdc66-ea56-4da2-9260-e5b449c6ddac",
+   "e335819c-1c35-5dab-9baf-2375a408d64d",
+   "parent"
+  ],
+  [
+   "f9f92b66-0002-5c33-ac67-800d1c08772b",
+   "e335819c-1c35-5dab-9baf-2375a408d64d",
+   "spouse"
+  ],
+  [
+   "f9f92b66-0002-5c33-ac67-800d1c08772b",
+   "f8fb1fe4-45e4-5f68-8939-217f045df61f",
+   "parent"
+  ],
+  [
+   "e335819c-1c35-5dab-9baf-2375a408d64d",
+   "f8fb1fe4-45e4-5f68-8939-217f045df61f",
+   "parent"
+  ],
+  [
+   "f8fb1fe4-45e4-5f68-8939-217f045df61f",
+   "41c3994b-d1db-58b0-a24e-b10f95cf5010",
+   "spouse"
+  ],
+  [
+   "f8fb1fe4-45e4-5f68-8939-217f045df61f",
+   "32df9e49-569f-5b33-b16b-9b5c2ef0e3a3",
+   "parent"
+  ],
+  [
+   "41c3994b-d1db-58b0-a24e-b10f95cf5010",
+   "32df9e49-569f-5b33-b16b-9b5c2ef0e3a3",
+   "parent"
+  ],
+  [
+   "062d7d2f-68fe-4d1c-a764-7d1c258c4a0c",
+   "c0d1d21e-cb1b-56a6-9527-7a8abc2d9866",
+   "parent"
+  ],
+  [
+   "d6d007e4-d508-4f99-a114-03af191da6a6",
+   "c0d1d21e-cb1b-56a6-9527-7a8abc2d9866",
+   "parent"
+  ],
+  [
+   "32df9e49-569f-5b33-b16b-9b5c2ef0e3a3",
+   "c0d1d21e-cb1b-56a6-9527-7a8abc2d9866",
+   "spouse"
+  ],
+  [
+   "32df9e49-569f-5b33-b16b-9b5c2ef0e3a3",
+   "5ff82d8f-14b1-57c5-9f2a-61277a672051",
+   "parent"
+  ],
+  [
+   "c0d1d21e-cb1b-56a6-9527-7a8abc2d9866",
+   "5ff82d8f-14b1-57c5-9f2a-61277a672051",
+   "parent"
+  ],
+  [
+   "5ff82d8f-14b1-57c5-9f2a-61277a672051",
+   "64ffdfd1-44a0-5218-9ddf-84f9f1b43e7f",
+   "spouse"
+  ],
+  [
+   "5ff82d8f-14b1-57c5-9f2a-61277a672051",
+   "e3b47c83-9525-5104-90d6-63ecbce9d91b",
+   "parent"
+  ],
+  [
+   "64ffdfd1-44a0-5218-9ddf-84f9f1b43e7f",
+   "e3b47c83-9525-5104-90d6-63ecbce9d91b",
+   "parent"
+  ],
+  [
+   "5ff82d8f-14b1-57c5-9f2a-61277a672051",
+   "fe6fb459-b027-5181-b1a1-604fd6ef3273",
+   "parent"
+  ],
+  [
+   "64ffdfd1-44a0-5218-9ddf-84f9f1b43e7f",
+   "fe6fb459-b027-5181-b1a1-604fd6ef3273",
+   "parent"
+  ],
+  [
+   "cc9ca1f6-0af2-436b-be83-537544cce10a",
+   "6707cea2-cec9-5e4a-aff5-aaf96aade2ca",
+   "parent"
+  ],
+  [
+   "8a2b6b83-1d5d-417e-9549-074f3c690ad6",
+   "6707cea2-cec9-5e4a-aff5-aaf96aade2ca",
+   "parent"
+  ],
+  [
+   "fe6fb459-b027-5181-b1a1-604fd6ef3273",
+   "6707cea2-cec9-5e4a-aff5-aaf96aade2ca",
+   "spouse"
+  ],
+  [
+   "fe6fb459-b027-5181-b1a1-604fd6ef3273",
+   "17cd4f93-35eb-5d1e-b6d0-fe69993935e0",
+   "parent"
+  ],
+  [
+   "6707cea2-cec9-5e4a-aff5-aaf96aade2ca",
+   "17cd4f93-35eb-5d1e-b6d0-fe69993935e0",
+   "parent"
+  ],
+  [
+   "17cd4f93-35eb-5d1e-b6d0-fe69993935e0",
+   "a4ff09d5-4d81-5c83-bd2e-5cac235f88bb",
+   "spouse"
+  ],
+  [
+   "17cd4f93-35eb-5d1e-b6d0-fe69993935e0",
+   "84913c2a-8ee7-4350-af07-80d77d2afd5f",
+   "parent"
+  ],
+  [
+   "a4ff09d5-4d81-5c83-bd2e-5cac235f88bb",
+   "84913c2a-8ee7-4350-af07-80d77d2afd5f",
+   "parent"
+  ],
+  [
+   "17cd4f93-35eb-5d1e-b6d0-fe69993935e0",
+   "d6e108bd-f34d-4534-8d19-492e56998fca",
+   "parent"
+  ],
+  [
+   "a4ff09d5-4d81-5c83-bd2e-5cac235f88bb",
+   "d6e108bd-f34d-4534-8d19-492e56998fca",
+   "parent"
+  ],
+  [
+   "17cd4f93-35eb-5d1e-b6d0-fe69993935e0",
+   "9cf848f8-ff32-401e-a539-6504aa842d7d",
+   "parent"
+  ],
+  [
+   "a4ff09d5-4d81-5c83-bd2e-5cac235f88bb",
+   "9cf848f8-ff32-401e-a539-6504aa842d7d",
+   "parent"
+  ],
+  [
+   "80e537e3-0f21-5bba-9f99-3031adafa494",
+   "05dd2230-59fa-5f33-93f6-d02475a87d41",
+   "parent"
+  ],
+  [
+   "0daddf1b-38cf-5fd1-866e-9f956b7b8dce",
+   "05dd2230-59fa-5f33-93f6-d02475a87d41",
+   "parent"
+  ],
+  [
+   "05dd2230-59fa-5f33-93f6-d02475a87d41",
+   "43966718-c0b2-568a-b990-465a99a93792",
+   "parent"
+  ],
+  [
+   "43966718-c0b2-568a-b990-465a99a93792",
+   "776d0598-f6ee-5fd7-8d09-9bbdb0a9cce8",
+   "parent"
+  ],
+  [
+   "776d0598-f6ee-5fd7-8d09-9bbdb0a9cce8",
+   "41d8c65f-2a0c-5342-87c2-1c61a8e59c11",
+   "spouse"
+  ],
+  [
+   "776d0598-f6ee-5fd7-8d09-9bbdb0a9cce8",
+   "c9a9aee7-d43d-40ec-9270-086e83910bc0",
+   "parent"
+  ],
+  [
+   "41d8c65f-2a0c-5342-87c2-1c61a8e59c11",
+   "c9a9aee7-d43d-40ec-9270-086e83910bc0",
+   "parent"
+  ],
+  [
+   "e3b47c83-9525-5104-90d6-63ecbce9d91b",
+   "f6412c5d-236f-5a75-bbce-38398d494e6a",
+   "spouse"
+  ],
+  [
+   "e3b47c83-9525-5104-90d6-63ecbce9d91b",
+   "c0bf73d3-c72e-566c-a2b2-031cdeb1f1d7",
+   "parent"
+  ],
+  [
+   "f6412c5d-236f-5a75-bbce-38398d494e6a",
+   "c0bf73d3-c72e-566c-a2b2-031cdeb1f1d7",
+   "parent"
+  ],
+  [
+   "e3b47c83-9525-5104-90d6-63ecbce9d91b",
+   "04832037-17d9-54d4-9e9a-31a349e2f930",
+   "parent"
+  ],
+  [
+   "f6412c5d-236f-5a75-bbce-38398d494e6a",
+   "04832037-17d9-54d4-9e9a-31a349e2f930",
+   "parent"
+  ],
+  [
+   "c0bf73d3-c72e-566c-a2b2-031cdeb1f1d7",
+   "a8016993-b166-5757-b37b-1db55d442c6b",
+   "spouse"
+  ],
+  [
+   "c0bf73d3-c72e-566c-a2b2-031cdeb1f1d7",
+   "74020134-ba09-5823-b1ad-4ca5a39a8b75",
+   "parent"
+  ],
+  [
+   "a8016993-b166-5757-b37b-1db55d442c6b",
+   "74020134-ba09-5823-b1ad-4ca5a39a8b75",
+   "parent"
+  ],
+  [
+   "74020134-ba09-5823-b1ad-4ca5a39a8b75",
+   "ac01e4e8-5b32-5e6d-ad5b-995ddac13be8",
+   "spouse"
+  ],
+  [
+   "74020134-ba09-5823-b1ad-4ca5a39a8b75",
+   "70020bae-9f68-5371-8787-f79ce1e40aa2",
+   "parent"
+  ],
+  [
+   "ac01e4e8-5b32-5e6d-ad5b-995ddac13be8",
+   "70020bae-9f68-5371-8787-f79ce1e40aa2",
+   "parent"
+  ],
+  [
+   "70020bae-9f68-5371-8787-f79ce1e40aa2",
+   "58648c90-5602-51bc-a6ba-b4117a147343",
+   "spouse"
+  ],
+  [
+   "70020bae-9f68-5371-8787-f79ce1e40aa2",
+   "5ddf7e11-1623-56a1-bbb5-46a547fc83d6",
+   "parent"
+  ],
+  [
+   "58648c90-5602-51bc-a6ba-b4117a147343",
+   "5ddf7e11-1623-56a1-bbb5-46a547fc83d6",
+   "parent"
+  ],
+  [
+   "70020bae-9f68-5371-8787-f79ce1e40aa2",
+   "78641e98-45cf-4f08-bf5a-e928bb5f8a5d",
+   "parent"
+  ],
+  [
+   "58648c90-5602-51bc-a6ba-b4117a147343",
+   "78641e98-45cf-4f08-bf5a-e928bb5f8a5d",
+   "parent"
+  ],
+  [
+   "70020bae-9f68-5371-8787-f79ce1e40aa2",
+   "2557b841-e6dd-5952-b801-d8b3c3f1959c",
+   "parent"
+  ],
+  [
+   "58648c90-5602-51bc-a6ba-b4117a147343",
+   "2557b841-e6dd-5952-b801-d8b3c3f1959c",
+   "parent"
+  ],
+  [
+   "fd805151-ca13-59c2-b932-b8823c0d58c9",
+   "6565d969-1429-5fb9-ab2d-2f529393fc89",
+   "spouse"
+  ],
+  [
+   "fd805151-ca13-59c2-b932-b8823c0d58c9",
+   "77d734e9-ba0f-5d3a-bcfb-c85e9d0789b5",
+   "parent"
+  ],
+  [
+   "6565d969-1429-5fb9-ab2d-2f529393fc89",
+   "77d734e9-ba0f-5d3a-bcfb-c85e9d0789b5",
+   "parent"
+  ],
+  [
+   "77d734e9-ba0f-5d3a-bcfb-c85e9d0789b5",
+   "5ddf7e11-1623-56a1-bbb5-46a547fc83d6",
+   "spouse"
+  ],
+  [
+   "77d734e9-ba0f-5d3a-bcfb-c85e9d0789b5",
+   "489777c8-e246-5c27-b60b-27d53c723ded",
+   "parent"
+  ],
+  [
+   "5ddf7e11-1623-56a1-bbb5-46a547fc83d6",
+   "489777c8-e246-5c27-b60b-27d53c723ded",
+   "parent"
+  ],
+  [
+   "77d734e9-ba0f-5d3a-bcfb-c85e9d0789b5",
+   "7fb9d519-bfd3-5b00-a650-5692a49cb66f",
+   "parent"
+  ],
+  [
+   "5ddf7e11-1623-56a1-bbb5-46a547fc83d6",
+   "7fb9d519-bfd3-5b00-a650-5692a49cb66f",
+   "parent"
+  ],
+  [
+   "77d734e9-ba0f-5d3a-bcfb-c85e9d0789b5",
+   "94922288-cf91-436a-a9b7-6f92f933c8af",
+   "parent"
+  ],
+  [
+   "5ddf7e11-1623-56a1-bbb5-46a547fc83d6",
+   "94922288-cf91-436a-a9b7-6f92f933c8af",
+   "parent"
+  ],
+  [
+   "77d734e9-ba0f-5d3a-bcfb-c85e9d0789b5",
+   "66143a5f-dd98-4370-aeb9-890a609dc90e",
+   "parent"
+  ],
+  [
+   "5ddf7e11-1623-56a1-bbb5-46a547fc83d6",
+   "66143a5f-dd98-4370-aeb9-890a609dc90e",
+   "parent"
+  ],
+  [
+   "77d734e9-ba0f-5d3a-bcfb-c85e9d0789b5",
+   "433ca589-4444-4d74-a7ea-2072c1a29acb",
+   "parent"
+  ],
+  [
+   "5ddf7e11-1623-56a1-bbb5-46a547fc83d6",
+   "433ca589-4444-4d74-a7ea-2072c1a29acb",
+   "parent"
+  ],
+  [
+   "55b81f56-d3db-450f-b5d0-03483dbe59fd",
+   "da866a7c-849a-53dc-af93-293fb08cf3ca",
+   "parent"
+  ],
+  [
+   "f8d7ed90-7a17-4dec-bd3c-a62b222078a8",
+   "da866a7c-849a-53dc-af93-293fb08cf3ca",
+   "parent"
+  ],
+  [
+   "489777c8-e246-5c27-b60b-27d53c723ded",
+   "da866a7c-849a-53dc-af93-293fb08cf3ca",
+   "spouse"
+  ],
+  [
+   "489777c8-e246-5c27-b60b-27d53c723ded",
+   "b0e4cc8c-95b9-5ffa-b366-91796dda0b0f",
+   "parent"
+  ],
+  [
+   "da866a7c-849a-53dc-af93-293fb08cf3ca",
+   "b0e4cc8c-95b9-5ffa-b366-91796dda0b0f",
+   "parent"
+  ],
+  [
+   "c0b6b4e8-0629-44b2-986f-76bac44ae592",
+   "cd9f9696-6d55-5258-92a7-4c22eda70a6c",
+   "parent"
+  ],
+  [
+   "24b3c567-c758-435c-a6e4-b79b6c1a24a3",
+   "cd9f9696-6d55-5258-92a7-4c22eda70a6c",
+   "parent"
+  ],
+  [
+   "cd9f9696-6d55-5258-92a7-4c22eda70a6c",
+   "4d4e9aa1-c6f5-56ec-952f-788e1cd8c9b4",
+   "spouse"
+  ],
+  [
+   "cd9f9696-6d55-5258-92a7-4c22eda70a6c",
+   "29f349f4-df2c-52ad-b2e0-a6de57007784",
+   "parent"
+  ],
+  [
+   "4d4e9aa1-c6f5-56ec-952f-788e1cd8c9b4",
+   "29f349f4-df2c-52ad-b2e0-a6de57007784",
+   "parent"
+  ],
+  [
+   "8c42b435-aa84-5831-b976-d56830e20a00",
+   "804c9b10-d499-5e2f-9cd6-414906216a0c",
+   "parent"
+  ],
+  [
+   "29f349f4-df2c-52ad-b2e0-a6de57007784",
+   "804c9b10-d499-5e2f-9cd6-414906216a0c",
+   "spouse"
+  ],
+  [
+   "29f349f4-df2c-52ad-b2e0-a6de57007784",
+   "9e9d6897-93c4-5353-bc64-26e48cc17a70",
+   "parent"
+  ],
+  [
+   "804c9b10-d499-5e2f-9cd6-414906216a0c",
+   "9e9d6897-93c4-5353-bc64-26e48cc17a70",
+   "parent"
+  ],
+  [
+   "fd479735-1bf3-4898-a8fd-8d4dfd71a4ca",
+   "0000157c-2f45-5f07-a034-ff370b5e0db9",
+   "parent"
+  ],
+  [
+   "7d1a58e1-331a-4bf0-aaef-27b0f146b64a",
+   "0000157c-2f45-5f07-a034-ff370b5e0db9",
+   "parent"
+  ],
+  [
+   "9e9d6897-93c4-5353-bc64-26e48cc17a70",
+   "0000157c-2f45-5f07-a034-ff370b5e0db9",
+   "spouse"
+  ],
+  [
+   "9e9d6897-93c4-5353-bc64-26e48cc17a70",
+   "cc065089-6510-5764-8384-4bf16c4365bf",
+   "parent"
+  ],
+  [
+   "0000157c-2f45-5f07-a034-ff370b5e0db9",
+   "cc065089-6510-5764-8384-4bf16c4365bf",
+   "parent"
+  ],
+  [
+   "cc065089-6510-5764-8384-4bf16c4365bf",
+   "0965c6d6-5f0e-5a5f-8659-e650d01566fa",
+   "spouse"
+  ],
+  [
+   "cc065089-6510-5764-8384-4bf16c4365bf",
+   "40b3669a-7b2d-52f3-89e8-6d92fff915b3",
+   "parent"
+  ],
+  [
+   "0965c6d6-5f0e-5a5f-8659-e650d01566fa",
+   "40b3669a-7b2d-52f3-89e8-6d92fff915b3",
+   "parent"
+  ],
+  [
+   "cc065089-6510-5764-8384-4bf16c4365bf",
+   "183bf9c1-4073-5dfc-b19b-f77212df2a94",
+   "parent"
+  ],
+  [
+   "0965c6d6-5f0e-5a5f-8659-e650d01566fa",
+   "183bf9c1-4073-5dfc-b19b-f77212df2a94",
+   "parent"
+  ],
+  [
+   "cc065089-6510-5764-8384-4bf16c4365bf",
+   "c889e7b6-d7ec-50d8-821e-ead56d554bee",
+   "parent"
+  ],
+  [
+   "0965c6d6-5f0e-5a5f-8659-e650d01566fa",
+   "c889e7b6-d7ec-50d8-821e-ead56d554bee",
+   "parent"
+  ],
+  [
+   "cc065089-6510-5764-8384-4bf16c4365bf",
+   "c8b3daf5-c724-5039-80c0-0fafeda6a41e",
+   "parent"
+  ],
+  [
+   "0965c6d6-5f0e-5a5f-8659-e650d01566fa",
+   "c8b3daf5-c724-5039-80c0-0fafeda6a41e",
+   "parent"
+  ],
+  [
+   "cc065089-6510-5764-8384-4bf16c4365bf",
+   "d54c92e1-3c7d-5714-9a35-1a20e3b50a52",
+   "parent"
+  ],
+  [
+   "0965c6d6-5f0e-5a5f-8659-e650d01566fa",
+   "d54c92e1-3c7d-5714-9a35-1a20e3b50a52",
+   "parent"
+  ],
+  [
+   "183bf9c1-4073-5dfc-b19b-f77212df2a94",
+   "0f6e1faa-fbec-5c76-b0fd-49dbc407fb40",
+   "spouse"
+  ],
+  [
+   "183bf9c1-4073-5dfc-b19b-f77212df2a94",
+   "9ac9fd09-fbe9-51d7-be42-83965d0c16e9",
+   "parent"
+  ],
+  [
+   "0f6e1faa-fbec-5c76-b0fd-49dbc407fb40",
+   "9ac9fd09-fbe9-51d7-be42-83965d0c16e9",
+   "parent"
+  ],
+  [
+   "9ac9fd09-fbe9-51d7-be42-83965d0c16e9",
+   "d187a81f-eea1-5173-9535-3b503da92d59",
+   "spouse"
   ]
  ],
  "dateflags": [
@@ -32047,6 +33320,174 @@
    "d": null,
    "note": "dates non données par la page de Georges-Frédéric",
    "script": 63
+  },
+  {
+   "name": "Adélaïde de Montferrat",
+   "b": null,
+   "d": null,
+   "note": "dates non données par la page d'Albert II",
+   "script": 64
+  },
+  {
+   "name": "Albert II le Gros",
+   "b": 1268,
+   "d": 1318,
+   "note": "naissance « vers 1268 » (page d'Albert II)",
+   "script": 64
+  },
+  {
+   "name": "Rixa de Werle",
+   "b": null,
+   "d": null,
+   "note": "dates non données par la page d'Albert II",
+   "script": 64
+  },
+  {
+   "name": "Sophie de Brandebourg-Stendal",
+   "b": null,
+   "d": 1356,
+   "note": "naissance non donnée par la page de Magnus Ier",
+   "script": 64
+  },
+  {
+   "name": "Magnus II Torquatus",
+   "b": 1328,
+   "d": 1373,
+   "note": "naissance 1328 (encadré) ou vers 1324 (texte) selon la page de Magnus II",
+   "script": 64
+  },
+  {
+   "name": "Catherine d'Anhalt-Bernbourg",
+   "b": null,
+   "d": null,
+   "note": "dates non données par la page de Magnus II",
+   "script": 64
+  },
+  {
+   "name": "Bernard Ier de Brunswick-Lunebourg",
+   "b": null,
+   "d": 1434,
+   "note": "naissance entre 1358 et 1364 (page allemande), laissée vide",
+   "script": 64
+  },
+  {
+   "name": "Henri le Doux",
+   "b": null,
+   "d": 1416,
+   "note": "naissance non donnée par la page d'Henri le Doux",
+   "script": 64
+  },
+  {
+   "name": "Sophie de Poméranie",
+   "b": null,
+   "d": 1406,
+   "note": "naissance non donnée par la page d'Henri le Doux",
+   "script": 64
+  },
+  {
+   "name": "Marguerite de Saxe-Wittenberg",
+   "b": null,
+   "d": 1429,
+   "note": "naissance non donnée par la page de Bernard Ier (de.wikipedia)",
+   "script": 64
+  },
+  {
+   "name": "Anne de Nassau-Siegen",
+   "b": null,
+   "d": null,
+   "note": "dates non données par la page d'Otton V",
+   "script": 64
+  },
+  {
+   "name": "Henri le Moyen",
+   "b": 1468,
+   "d": 1532,
+   "note": "naissance 1468 (page d'Henri le Moyen) ; vers 1467 sur la page d'Otton V",
+   "script": 64
+  },
+  {
+   "name": "Ernest le Confesseur",
+   "b": 1497,
+   "d": 1546,
+   "note": "mort 1546 (encadré) ou 1547 (texte) selon les sources",
+   "script": 64
+  },
+  {
+   "name": "Sophie de Mecklembourg-Schwerin",
+   "b": null,
+   "d": 1541,
+   "note": "naissance non donnée par la page d'Ernest",
+   "script": 64
+  },
+  {
+   "name": "Anne-Éléonore de Hesse-Darmstadt",
+   "b": null,
+   "d": null,
+   "note": "dates non données par la page de Georges",
+   "script": 64
+  },
+  {
+   "name": "Guillaume le Victorieux",
+   "b": 1392,
+   "d": 1482,
+   "note": "naissance « vers 1392 » (page de Guillaume le Victorieux) ; la page d'Henri le Doux donne le même âge",
+   "script": 64
+  },
+  {
+   "name": "Guillaume II de Brunswick-Calenberg",
+   "b": 1425,
+   "d": 1503,
+   "note": "naissance « vers 1425 » (page de Guillaume le Victorieux)",
+   "script": 64
+  },
+  {
+   "name": "Élisabeth de Brandebourg (duchesse de Calenberg)",
+   "b": null,
+   "d": null,
+   "note": "dates non données par la page d'Éric Ier",
+   "script": 64
+  },
+  {
+   "name": "Dorothée d'Anhalt-Zerbst",
+   "b": null,
+   "d": 1634,
+   "note": "naissance non donnée par la page d'Auguste le Jeune",
+   "script": 64
+  },
+  {
+   "name": "Christine-Louise d'Oettingen-Oettingen",
+   "b": null,
+   "d": null,
+   "note": "dates non données par la page de Louis-Rodolphe",
+   "script": 64
+  },
+  {
+   "name": "Ferdinand-Albert Ier de Brunswick-Bevern",
+   "b": null,
+   "d": null,
+   "note": "dates non données par la page de Ferdinand-Albert II",
+   "script": 64
+  },
+  {
+   "name": "Christine-Wilhelmine de Hesse-Eschwege",
+   "b": null,
+   "d": null,
+   "note": "dates non données par la page de Ferdinand-Albert II",
+   "script": 64
+  },
+  {
+   "name": "Frédérique de Mecklembourg-Strelitz",
+   "b": null,
+   "d": 1841,
+   "note": "naissance non donnée par la page d'Ernest-Auguste Ier",
+   "script": 64
+  },
+  {
+   "name": "Marie de Saxe-Altenbourg",
+   "b": null,
+   "d": null,
+   "note": "dates non données par la page de Georges V",
+   "script": 64
   }
  ],
  "pins": [
@@ -32061,6 +33502,18 @@
   [
    "8921ecd5-ecc9-445d-989a-bc73149b8720",
    "HU_ANJ"
+  ],
+  [
+   "275a9db4-0971-4171-a2df-f2047a6008f6",
+   "DE_WEL"
+  ],
+  [
+   "5c634b84-4c08-489f-8e2c-70cdef87afbc",
+   "DE_WEL"
+  ],
+  [
+   "4891ab20-866d-45bc-91d7-17e89f04ba98",
+   "DE_WEL"
   ]
  ],
  "xmoved": {
