@@ -168,4 +168,5 @@ RLS**. Règles :
 | arbres_v96 | arbres_v96 : Gediminides, Lituanie (nouvel arbre, 9 membres) |
 | arbres_v97 | v97 : Corée, dynastie Goryeo (37 membres, nouvel arbre KR_GOR) |
 | arbres_v98 | v98 : Portugal, maison de Bourgogne (23 membres, nouvel arbre PT_BOU) + Pierre de Coimbra et Henri le Navigateur dans Aviz |
+| arbres_v99 | v99 : Portugal, maison de Bragance de Pierre III à Manuel II + Brésil impérial (21 membres) |
 | `data_owid_load.sql` + `owid_chunks/` | Chargement des données d'indicateurs (rejouable, upserts) — à exécuter après v1 à v7 |

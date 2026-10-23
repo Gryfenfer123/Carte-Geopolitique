@@ -26080,6 +26080,216 @@
    "title": "Infant, duc de Viseu, promoteur des Découvertes",
    "g": "h",
    "script": 98
+  },
+  "pb.catherine": {
+   "id": "2bfc323d-6df2-5bdd-b742-6d1671732606",
+   "name": "Catherine de Bragance",
+   "b": 1638,
+   "d": 1705,
+   "tree": "PT_BRA",
+   "title": "Reine d'Angleterre, épouse de Charles II",
+   "g": "f",
+   "script": 99
+  },
+  "pb.pedro3": {
+   "id": "51d981e8-c7fb-532a-a50e-4f1abbcbac28",
+   "name": "Pierre III",
+   "b": 1717,
+   "d": 1786,
+   "tree": "PT_BRA",
+   "title": "Roi consort du Portugal (1777-1786)",
+   "g": "h",
+   "script": 99
+  },
+  "pb.mariana": {
+   "id": "6dafcc36-6e9a-5468-8315-01d072f66f56",
+   "name": "Mariana Victoria d'Espagne",
+   "b": 1718,
+   "d": 1781,
+   "tree": "ES_BOU",
+   "title": "Reine du Portugal, épouse de Joseph Ier",
+   "g": "f",
+   "script": 99
+  },
+  "pb.joao6": {
+   "id": "a3b37039-6986-52fd-b961-0578dc076e77",
+   "name": "Jean VI",
+   "b": 1767,
+   "d": 1826,
+   "tree": "PT_BRA",
+   "title": "Roi du Portugal (1816-1826)",
+   "g": "h",
+   "script": 99
+  },
+  "pb.carlota": {
+   "id": "53d94cac-4e9d-519e-a56e-bb9bdc81c992",
+   "name": "Charlotte-Joachime d'Espagne (Carlota Joaquina)",
+   "b": 1775,
+   "d": 1830,
+   "tree": "ES_BOU",
+   "title": "Reine du Portugal, épouse de Jean VI",
+   "g": "f",
+   "script": 99
+  },
+  "pb.pedro4": {
+   "id": "264bc1c4-eceb-53c2-aca0-5fe41c065531",
+   "name": "Pierre IV (Pierre Ier du Brésil)",
+   "b": 1798,
+   "d": 1834,
+   "tree": "PT_BRA",
+   "title": "Empereur du Brésil (1822-1831), roi du Portugal (1826)",
+   "g": "h",
+   "script": 99
+  },
+  "pb.leopoldina": {
+   "id": "210ce06f-90f3-5645-95c7-0d7a5a355f2d",
+   "name": "Marie-Léopoldine d'Autriche",
+   "b": 1797,
+   "d": 1826,
+   "tree": "AT_HL",
+   "title": "Impératrice du Brésil, première épouse de Pierre Ier",
+   "g": "f",
+   "script": 99
+  },
+  "pb.miguel": {
+   "id": "c98dc477-27d4-5d0f-a044-3ad6cfe95e99",
+   "name": "Michel Ier",
+   "b": 1802,
+   "d": 1866,
+   "tree": "PT_BRA",
+   "title": "Roi du Portugal (1828-1834), usurpateur",
+   "g": "h",
+   "script": 99
+  },
+  "pb.adelaide": {
+   "id": "d5567005-df9d-5557-9cbc-6cdb75185189",
+   "name": "Adélaïde de Löwenstein-Wertheim-Rosenberg",
+   "b": 1831,
+   "d": 1909,
+   "tree": "PT_BRA",
+   "title": "Épouse de Michel Ier",
+   "g": "f",
+   "script": 99
+  },
+  "pb.maria2": {
+   "id": "0f077568-653f-5832-938d-3b81c7820f32",
+   "name": "Marie II",
+   "b": 1819,
+   "d": 1853,
+   "tree": "PT_BRA",
+   "title": "Reine du Portugal (1826-1853)",
+   "g": "f",
+   "script": 99
+  },
+  "pb.fernando2": {
+   "id": "0c74db53-c724-55d1-9fe2-6fa67ed032f2",
+   "name": "Ferdinand II de Saxe-Cobourg-Kohary",
+   "b": 1816,
+   "d": 1885,
+   "tree": "DE_WET",
+   "title": "Roi consort du Portugal",
+   "g": "h",
+   "script": 99
+  },
+  "pb.pedro2br": {
+   "id": "982ccd48-5762-5968-b1a2-35a1e0b2cbb7",
+   "name": "Pierre II du Brésil",
+   "b": 1825,
+   "d": 1891,
+   "tree": "PT_BRA",
+   "title": "Empereur du Brésil (1831-1889)",
+   "g": "h",
+   "script": 99
+  },
+  "pb.pedro5": {
+   "id": "4334a1a9-f20d-511b-90a0-c7f9c73c2cf3",
+   "name": "Pierre V",
+   "b": 1837,
+   "d": 1861,
+   "tree": "PT_BRA",
+   "title": "Roi du Portugal (1853-1861)",
+   "g": "h",
+   "script": 99
+  },
+  "pb.luis1": {
+   "id": "cfcd2a61-d40a-5c21-8790-bb9062c15100",
+   "name": "Louis Ier",
+   "b": 1838,
+   "d": 1889,
+   "tree": "PT_BRA",
+   "title": "Roi du Portugal (1861-1889)",
+   "g": "h",
+   "script": 99
+  },
+  "pb.carlos1": {
+   "id": "6a898dbe-49d1-5a5d-a53b-35c1a8c3028a",
+   "name": "Charles Ier",
+   "b": 1863,
+   "d": 1908,
+   "tree": "PT_BRA",
+   "title": "Roi du Portugal (1889-1908), assassiné",
+   "g": "h",
+   "script": 99
+  },
+  "pb.amelie": {
+   "id": "5fc016de-aa82-574e-b295-ad4711276e23",
+   "name": "Amélie d'Orléans",
+   "b": 1865,
+   "d": 1951,
+   "tree": "FR_BOU",
+   "title": "Dernière reine du Portugal",
+   "g": "f",
+   "script": 99
+  },
+  "pb.isabelle_o": {
+   "id": "74d31f8d-9ec8-5d34-b867-d874197d07ea",
+   "name": "Marie-Isabelle d'Orléans (comtesse de Paris)",
+   "b": 1848,
+   "d": 1919,
+   "tree": "FR_BOU",
+   "title": "Mère de la reine Amélie",
+   "g": "f",
+   "script": 99
+  },
+  "pb.luispf": {
+   "id": "fffae113-cfb5-577a-b5af-46e29c0ad590",
+   "name": "Louis-Philippe de Bragance (prince royal)",
+   "b": 1887,
+   "d": 1908,
+   "tree": "PT_BRA",
+   "title": "Prince royal, assassiné avec son père",
+   "g": "h",
+   "script": 99
+  },
+  "pb.manuel2": {
+   "id": "7a11377d-d57b-513b-96c8-3609a2a1faeb",
+   "name": "Manuel II",
+   "b": 1889,
+   "d": 1932,
+   "tree": "PT_BRA",
+   "title": "Dernier roi du Portugal (1908-1910)",
+   "g": "h",
+   "script": 99
+  },
+  "pb.wilhelm": {
+   "id": "eba74034-2f2d-5f79-8700-e5c67ff51069",
+   "name": "Guillaume de Hohenzollern-Sigmaringen",
+   "b": 1864,
+   "d": 1927,
+   "tree": "DE_HZ",
+   "title": "Prince de Hohenzollern, père de la reine Augusta-Victoria",
+   "g": "h",
+   "script": 99
+  },
+  "pb.augusta": {
+   "id": "11769bcf-a098-567e-a261-355af1b52a18",
+   "name": "Augusta-Victoria de Hohenzollern",
+   "b": 1890,
+   "d": 1966,
+   "tree": "DE_HZ",
+   "title": "Épouse de Manuel II",
+   "g": "f",
+   "script": 99
   }
  },
  "trees": {
@@ -26855,6 +27065,18 @@
    "entry": "149b6c25-cc24-4c3f-911f-5a1a845ef4df",
    "country": "ESP",
    "dynasty": "Castille-León",
+   "script": null
+  },
+  "PT_BRA": {
+   "entry": "14db1138-55b4-48b7-b4de-c79e51127284",
+   "country": "PRT",
+   "dynasty": "Maison de Bragance",
+   "script": null
+  },
+  "ES_BOU": {
+   "entry": "7195e6c8-7fed-4b9c-961b-0ac78e95b275",
+   "country": "ESP",
+   "dynasty": "Bourbon",
    "script": null
   }
  },
@@ -31254,6 +31476,13 @@
    "tree": "PT_BOU",
    "reason": "Maison Teles : sans arbre",
    "script": 98
+  },
+  {
+   "name": "Adélaïde de Löwenstein-Wertheim-Rosenberg",
+   "b": 1831,
+   "tree": "PT_BRA",
+   "reason": "Maison de Löwenstein : sans arbre",
+   "script": 99
   }
  ],
  "scripts": {
@@ -31732,6 +31961,12 @@
    "trees": [
     "Maison de Bourgogne (Portugal) (PRT)"
    ]
+  },
+  "99": {
+   "label": "Portugal — maison de Bragance, de Pierre III à Manuel II (et Brésil impérial)",
+   "members": 21,
+   "rels": 56,
+   "trees": []
   }
  },
  "relist": [
@@ -53204,6 +53439,286 @@
    "c61aa744-53e4-583a-b74d-4179c093ee6a",
    "2f5f1293-168c-46fa-b286-8ab8e4948f5f",
    "parent"
+  ],
+  [
+   "381c7d0d-22c2-45ab-bdc0-6dacf2593eff",
+   "2bfc323d-6df2-5bdd-b742-6d1671732606",
+   "spouse"
+  ],
+  [
+   "f8703b72-36cb-4d17-8259-54aab6efabc5",
+   "2bfc323d-6df2-5bdd-b742-6d1671732606",
+   "parent"
+  ],
+  [
+   "e5d50143-cd64-4254-985d-6d9c34f2da2b",
+   "2bfc323d-6df2-5bdd-b742-6d1671732606",
+   "parent"
+  ],
+  [
+   "8cae7bf6-e8ce-402c-b383-de0645b00142",
+   "51d981e8-c7fb-532a-a50e-4f1abbcbac28",
+   "parent"
+  ],
+  [
+   "db2f227e-a1c6-4ae6-bd58-0f5fd64199d3",
+   "51d981e8-c7fb-532a-a50e-4f1abbcbac28",
+   "parent"
+  ],
+  [
+   "8cae7bf6-e8ce-402c-b383-de0645b00142",
+   "db2f227e-a1c6-4ae6-bd58-0f5fd64199d3",
+   "spouse"
+  ],
+  [
+   "94ace5f9-5467-42b2-ac56-fe1f87fe9d30",
+   "6dafcc36-6e9a-5468-8315-01d072f66f56",
+   "spouse"
+  ],
+  [
+   "0890d048-341b-4d5f-80b7-f39cf1d94470",
+   "6dafcc36-6e9a-5468-8315-01d072f66f56",
+   "parent"
+  ],
+  [
+   "2df9c2fd-8fd9-4bb4-b23a-f064afb0e301",
+   "6dafcc36-6e9a-5468-8315-01d072f66f56",
+   "parent"
+  ],
+  [
+   "51d981e8-c7fb-532a-a50e-4f1abbcbac28",
+   "0d7fee76-ebb0-4756-bbe7-028a78a8a915",
+   "spouse"
+  ],
+  [
+   "51d981e8-c7fb-532a-a50e-4f1abbcbac28",
+   "a3b37039-6986-52fd-b961-0578dc076e77",
+   "parent"
+  ],
+  [
+   "0d7fee76-ebb0-4756-bbe7-028a78a8a915",
+   "a3b37039-6986-52fd-b961-0578dc076e77",
+   "parent"
+  ],
+  [
+   "a3b37039-6986-52fd-b961-0578dc076e77",
+   "53d94cac-4e9d-519e-a56e-bb9bdc81c992",
+   "spouse"
+  ],
+  [
+   "4717536a-96fb-4b60-9992-d9857ce32daf",
+   "53d94cac-4e9d-519e-a56e-bb9bdc81c992",
+   "parent"
+  ],
+  [
+   "a1d8a44a-24f5-4ced-839c-b9437b443e0c",
+   "53d94cac-4e9d-519e-a56e-bb9bdc81c992",
+   "parent"
+  ],
+  [
+   "a3b37039-6986-52fd-b961-0578dc076e77",
+   "264bc1c4-eceb-53c2-aca0-5fe41c065531",
+   "parent"
+  ],
+  [
+   "53d94cac-4e9d-519e-a56e-bb9bdc81c992",
+   "264bc1c4-eceb-53c2-aca0-5fe41c065531",
+   "parent"
+  ],
+  [
+   "a3b37039-6986-52fd-b961-0578dc076e77",
+   "c98dc477-27d4-5d0f-a044-3ad6cfe95e99",
+   "parent"
+  ],
+  [
+   "53d94cac-4e9d-519e-a56e-bb9bdc81c992",
+   "c98dc477-27d4-5d0f-a044-3ad6cfe95e99",
+   "parent"
+  ],
+  [
+   "264bc1c4-eceb-53c2-aca0-5fe41c065531",
+   "210ce06f-90f3-5645-95c7-0d7a5a355f2d",
+   "spouse"
+  ],
+  [
+   "02b3e287-5fb5-5cf6-bb78-dad300caeb84",
+   "210ce06f-90f3-5645-95c7-0d7a5a355f2d",
+   "parent"
+  ],
+  [
+   "264bc1c4-eceb-53c2-aca0-5fe41c065531",
+   "db85428a-e4c4-5b25-9493-642b23431fae",
+   "spouse"
+  ],
+  [
+   "264bc1c4-eceb-53c2-aca0-5fe41c065531",
+   "0f077568-653f-5832-938d-3b81c7820f32",
+   "parent"
+  ],
+  [
+   "210ce06f-90f3-5645-95c7-0d7a5a355f2d",
+   "0f077568-653f-5832-938d-3b81c7820f32",
+   "parent"
+  ],
+  [
+   "264bc1c4-eceb-53c2-aca0-5fe41c065531",
+   "982ccd48-5762-5968-b1a2-35a1e0b2cbb7",
+   "parent"
+  ],
+  [
+   "210ce06f-90f3-5645-95c7-0d7a5a355f2d",
+   "982ccd48-5762-5968-b1a2-35a1e0b2cbb7",
+   "parent"
+  ],
+  [
+   "c98dc477-27d4-5d0f-a044-3ad6cfe95e99",
+   "d5567005-df9d-5557-9cbc-6cdb75185189",
+   "spouse"
+  ],
+  [
+   "c98dc477-27d4-5d0f-a044-3ad6cfe95e99",
+   "cc35611b-92b2-59ad-84ec-af6f0b1c43dc",
+   "parent"
+  ],
+  [
+   "d5567005-df9d-5557-9cbc-6cdb75185189",
+   "cc35611b-92b2-59ad-84ec-af6f0b1c43dc",
+   "parent"
+  ],
+  [
+   "c98dc477-27d4-5d0f-a044-3ad6cfe95e99",
+   "3b4a908a-29f0-568c-ad69-94c7c556c2d2",
+   "parent"
+  ],
+  [
+   "d5567005-df9d-5557-9cbc-6cdb75185189",
+   "3b4a908a-29f0-568c-ad69-94c7c556c2d2",
+   "parent"
+  ],
+  [
+   "0f077568-653f-5832-938d-3b81c7820f32",
+   "0c74db53-c724-55d1-9fe2-6fa67ed032f2",
+   "spouse"
+  ],
+  [
+   "c7175bc4-24f1-504f-a999-eee188b642e8",
+   "0c74db53-c724-55d1-9fe2-6fa67ed032f2",
+   "parent"
+  ],
+  [
+   "0f077568-653f-5832-938d-3b81c7820f32",
+   "4334a1a9-f20d-511b-90a0-c7f9c73c2cf3",
+   "parent"
+  ],
+  [
+   "0c74db53-c724-55d1-9fe2-6fa67ed032f2",
+   "4334a1a9-f20d-511b-90a0-c7f9c73c2cf3",
+   "parent"
+  ],
+  [
+   "0f077568-653f-5832-938d-3b81c7820f32",
+   "cfcd2a61-d40a-5c21-8790-bb9062c15100",
+   "parent"
+  ],
+  [
+   "0c74db53-c724-55d1-9fe2-6fa67ed032f2",
+   "cfcd2a61-d40a-5c21-8790-bb9062c15100",
+   "parent"
+  ],
+  [
+   "0f077568-653f-5832-938d-3b81c7820f32",
+   "26f73795-8f9a-4e1a-a1e3-3ae30a3a6e1b",
+   "parent"
+  ],
+  [
+   "0c74db53-c724-55d1-9fe2-6fa67ed032f2",
+   "26f73795-8f9a-4e1a-a1e3-3ae30a3a6e1b",
+   "parent"
+  ],
+  [
+   "0f077568-653f-5832-938d-3b81c7820f32",
+   "7ad31217-24f3-59bc-ac26-03ee1137e825",
+   "parent"
+  ],
+  [
+   "0c74db53-c724-55d1-9fe2-6fa67ed032f2",
+   "7ad31217-24f3-59bc-ac26-03ee1137e825",
+   "parent"
+  ],
+  [
+   "cfcd2a61-d40a-5c21-8790-bb9062c15100",
+   "b5d7c420-9d03-5eea-b5d3-bab6715a77b8",
+   "spouse"
+  ],
+  [
+   "cfcd2a61-d40a-5c21-8790-bb9062c15100",
+   "6a898dbe-49d1-5a5d-a53b-35c1a8c3028a",
+   "parent"
+  ],
+  [
+   "b5d7c420-9d03-5eea-b5d3-bab6715a77b8",
+   "6a898dbe-49d1-5a5d-a53b-35c1a8c3028a",
+   "parent"
+  ],
+  [
+   "1fcbccbb-d3dc-5fac-971e-c597ae53cfd4",
+   "5fc016de-aa82-574e-b295-ad4711276e23",
+   "parent"
+  ],
+  [
+   "1fcbccbb-d3dc-5fac-971e-c597ae53cfd4",
+   "74d31f8d-9ec8-5d34-b867-d874197d07ea",
+   "spouse"
+  ],
+  [
+   "74d31f8d-9ec8-5d34-b867-d874197d07ea",
+   "5fc016de-aa82-574e-b295-ad4711276e23",
+   "parent"
+  ],
+  [
+   "6a898dbe-49d1-5a5d-a53b-35c1a8c3028a",
+   "5fc016de-aa82-574e-b295-ad4711276e23",
+   "spouse"
+  ],
+  [
+   "6a898dbe-49d1-5a5d-a53b-35c1a8c3028a",
+   "fffae113-cfb5-577a-b5af-46e29c0ad590",
+   "parent"
+  ],
+  [
+   "5fc016de-aa82-574e-b295-ad4711276e23",
+   "fffae113-cfb5-577a-b5af-46e29c0ad590",
+   "parent"
+  ],
+  [
+   "6a898dbe-49d1-5a5d-a53b-35c1a8c3028a",
+   "7a11377d-d57b-513b-96c8-3609a2a1faeb",
+   "parent"
+  ],
+  [
+   "5fc016de-aa82-574e-b295-ad4711276e23",
+   "7a11377d-d57b-513b-96c8-3609a2a1faeb",
+   "parent"
+  ],
+  [
+   "ccf2b88a-f16d-51ce-8223-1d05ec300c81",
+   "eba74034-2f2d-5f79-8700-e5c67ff51069",
+   "parent"
+  ],
+  [
+   "7ad31217-24f3-59bc-ac26-03ee1137e825",
+   "eba74034-2f2d-5f79-8700-e5c67ff51069",
+   "parent"
+  ],
+  [
+   "eba74034-2f2d-5f79-8700-e5c67ff51069",
+   "11769bcf-a098-567e-a261-355af1b52a18",
+   "parent"
+  ],
+  [
+   "7a11377d-d57b-513b-96c8-3609a2a1faeb",
+   "11769bcf-a098-567e-a261-355af1b52a18",
+   "spouse"
   ]
  ],
  "dateflags": [
@@ -61543,6 +62058,50 @@
   [
    "833ac28e-d26d-4627-8762-fa9191d55a9e",
    "PT_BOU"
+  ],
+  [
+   "2bfc323d-6df2-5bdd-b742-6d1671732606",
+   "GB_STU"
+  ],
+  [
+   "6dafcc36-6e9a-5468-8315-01d072f66f56",
+   "PT_BRA"
+  ],
+  [
+   "53d94cac-4e9d-519e-a56e-bb9bdc81c992",
+   "PT_BRA"
+  ],
+  [
+   "210ce06f-90f3-5645-95c7-0d7a5a355f2d",
+   "PT_BRA"
+  ],
+  [
+   "0c74db53-c724-55d1-9fe2-6fa67ed032f2",
+   "PT_BRA"
+  ],
+  [
+   "b5d7c420-9d03-5eea-b5d3-bab6715a77b8",
+   "PT_BRA"
+  ],
+  [
+   "5fc016de-aa82-574e-b295-ad4711276e23",
+   "PT_BRA"
+  ],
+  [
+   "74d31f8d-9ec8-5d34-b867-d874197d07ea",
+   "PT_BRA"
+  ],
+  [
+   "eba74034-2f2d-5f79-8700-e5c67ff51069",
+   "PT_BRA"
+  ],
+  [
+   "11769bcf-a098-567e-a261-355af1b52a18",
+   "PT_BRA"
+  ],
+  [
+   "db85428a-e4c4-5b25-9493-642b23431fae",
+   "PT_BRA"
   ]
  ],
  "xmoved": {

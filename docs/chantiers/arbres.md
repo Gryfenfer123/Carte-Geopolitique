@@ -2,6 +2,8 @@
 
 ## Dernières nouvelles (la plus récente en haut)
 
+- 2026-10-23 — v99 — Bragance : suite des rois (Pierre III à Manuel II), Pierre IV/Ier du Brésil, Pierre II du Brésil, Michel Ier ; épouses créées dans leurs maisons et affichées. Dates de connaissance générale.
+
 - 2026-10-23 — v98 — Portugal Bourgogne : 15 membres de la maison (Henri de Bourgogne à Ferdinand Ier), épouses créées dans leur maison (Savoie, Barcelone, Castille, León) et affichées ; Aviz complété (Pierre de Coimbra, Henri le Navigateur). Dates de connaissance générale, aucune page consultée.
 
 - 2026-10-23 — v97 — Goryeo : 34 rois de Taejo à Gongyang + 3 intermédiaires (Daejong, Anjong, prince Wang Kyun). Sources : pages Wikipédia des rois.
@@ -75,7 +77,7 @@
 
 Code : `src/genealogy.ts`, `genealogyLayers.ts`, `genealogyBus.ts`, `genealogyLod.ts/.css`, `genealogyLayersWorker.ts`,
 `genealogyLayout.ts`, `genealogyRouting.ts`. Outils de remplissage : [`scripts/arbres/`](../../scripts/arbres/README.md).
-Prochaine migration : **arbres_v99** (`supabase/arbres/arbres_v99.sql`) — générateur : `Gen(99, "…")`.  (v98 livrée, à exécuter par Martin si ce n'est pas déjà fait.)
+Prochaine migration : **arbres_v100** (`supabase/arbres/arbres_v100.sql`) — générateur : `Gen(100, "…")`.  (v99 livrée, à exécuter par Martin si ce n'est pas déjà fait.)
 
 ## Règles de contenu (décidées par Martin — ne pas rouvrir)
 - Un pays n'a que les dynasties qui ont **régné sur lui**. Dynastie étrangère : branche principale dans son pays
