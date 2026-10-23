@@ -64,7 +64,7 @@ périmé : des copies à la racine étaient ignorées par le build).
 | `links.ts` / `linkIndex.ts` | Liens entre pays/groupes tracés sur la carte ; index global de toutes les entités nommées | 916 / 194 |
 | `search.ts` | Barre de recherche (noms + contenu des dossiers) | 734 |
 | `encyclopedie.ts` | Encyclopédie (notions), semis initial | 95 |
-| `genealogy.ts` / `genealogyLayout.ts` | Arbres généalogiques interactifs ; mise en page par échelle de dates | 2 652 / 424 |
+| `genealogy.ts` / `genealogyLayers.ts` / `genealogyLod.ts` | Arbres généalogiques interactifs ; mise en page en couches par dates (bouton « Organiser par dates ») ; niveaux de détail selon le zoom. `genealogyLayout.ts` = ancienne mise en page (encore utilisée pour les dates `yearToY` et le sexe probable) | 2 700 / 380 / 20 |
 | `genealogyRouting.ts` | Tracé des liens : lignes brisées qui contournent les cartes (logique pure) | ~150 |
 | `frise.ts` / `friseModel.ts` | Frises chronologiques (interface) / logique pure (dates, périodes, largeurs) | 2 465 / 267 |
 | `historicalMap.ts` | Carte historique par époque (OpenHistoricalMap) | 310 |

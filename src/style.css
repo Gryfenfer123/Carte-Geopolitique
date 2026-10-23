@@ -45,6 +45,9 @@
      tirets). Trait pointillé pour le différencier des deux autres au
      premier coup d'œil même en noir et blanc. */
   --family-line: #5cb37e;
+  /* Traits Ascendant/Descendant des arbres : gris-bleu doux (le jaune --accent
+     était trop agressif — demande de Martin, 2026-10-23). */
+  --gen-parent-line: #9fb2c8;
 }
 
 * {
@@ -2112,6 +2115,7 @@ path.link-autre { stroke: var(--link-autre, #c9bfa9); }
 #genealogy-legend { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; font-size: 13px; color: var(--text-dim); width: 100%; margin-top: 2px; }
 .gen-legend-item { display: inline-flex; align-items: center; gap: 5px; }
 .gen-legend-line { display: inline-block; width: 26px; height: 0; border-top: 3px solid var(--accent); }
+.gen-legend-line.gen-legend-parent { border-top-color: var(--gen-parent-line); }
 .gen-legend-line.gen-legend-spouse { border-top: 2px dashed var(--cable-line); }
 /* Troisième type de lien "Famille" (demande de Martin, 2026-10-03) — voir
    RelationType dans genealogy.ts et --family-line (:root, début du

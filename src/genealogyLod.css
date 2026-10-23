@@ -1,0 +1,29 @@
+/* Niveaux de détail des arbres selon le zoom (genealogyLod.ts) : classes
+   .gen-lod-0/1/2 posées sur #genealogy-canvas-wrap, échelle courante dans
+   --gen-k (posée sur #genealogy-stage). */
+
+/* Niveau 1 : de loin, nom + dates seulement, en grand pour rester lisibles. */
+.gen-lod-1 .gen-card-photo,
+.gen-lod-1 .gen-card-title-field,
+.gen-lod-1 .gen-card-flag { display: none; }
+.gen-lod-1 .gen-card { display: flex; flex-direction: column; justify-content: center; overflow: hidden; }
+.gen-lod-1 .gen-card-name { font-size: min(64px, calc(9px / var(--gen-k, 0.2))); line-height: 1.15; }
+.gen-lod-1 .gen-card-dates { font-size: min(52px, calc(7.5px / var(--gen-k, 0.2))); margin-top: 6px; }
+
+/* Niveau 2 : de très loin, des blocs ; seuls les personnages cerclés gardent leur nom. */
+.gen-lod-2 .gen-card-photo,
+.gen-lod-2 .gen-card-title-field,
+.gen-lod-2 .gen-card-flag,
+.gen-lod-2 .gen-card-dates,
+.gen-lod-2 .gen-card-name { display: none; }
+.gen-lod-2 .gen-card { background: #46556f; box-shadow: none; }
+.gen-lod-2 .gen-card-ringed { background: #6c7fa0; }
+.gen-lod-2 .gen-card-ringed .gen-card-name {
+  display: block; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
+  white-space: nowrap; font-size: calc(11px / var(--gen-k, 0.08)); line-height: 1.2;
+  background: var(--surface); padding: 0.1em 0.4em; border-radius: 0.3em; z-index: 2;
+}
+
+/* Les traits gardent une épaisseur lisible à l'écran quel que soit le zoom. */
+.gen-lod-1 #genealogy-links-svg .gen-link,
+.gen-lod-2 #genealogy-links-svg .gen-link { vector-effect: non-scaling-stroke; stroke-width: 2px; }

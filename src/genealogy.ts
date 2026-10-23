@@ -42,7 +42,10 @@
 // jamais de framework.
 // ---------------------------------------------------------------------------
 
-import { computeLayout, guessFemale, yearToY } from "./genealogyLayout";
+import { guessFemale, yearToY } from "./genealogyLayout";
+import { computeLayersLayout } from "./genealogyLayers";
+import { GEN_MAX_ZOOM, GEN_MIN_ZOOM, lodForScale } from "./genealogyLod";
+import "./genealogyLod.css";
 import { routeAround, type Rect } from "./genealogyRouting";
 import type { SupabaseClient, Session } from "@supabase/supabase-js";
 import * as d3 from "d3";
@@ -213,12 +216,12 @@ const CARD_PHOTO_RATIO = CARD_W / CARD_PHOTO_H;
 // entièrement possible ensuite : seule la position DE DÉPART est corrigée.
 // Agrandi avec les cartes (230 → 300 → 400) pour garder un espacement
 // cohérent avec la nouvelle taille.
-const GENERATION_GAP = 460;
+const GENERATION_GAP = 550;
 // Pixels par année pour le placement automatique d'un NOUVEAU membre selon
 // son année de naissance par rapport aux membres existants de cet arbre
 // (voir suggestYFromBirthYear) — purement indicatif, pas une échelle
 // temporelle stricte (le glisser-déposer reste libre après coup).
-const PX_PER_YEAR = 18;
+const PX_PER_YEAR = 22;
 // Échelle de dates (demande de Martin, 2026-10-22) : un membre se place à
 // une hauteur liée à son année de naissance (yearToY, genealogyLayout.ts) ;
 // glisser-déposer reste libre dans une bande de ±BAND_YEARS ans autour de
@@ -530,7 +533,7 @@ export function initGenealogySystem(deps: {
 
   const zoomBehavior = d3
     .zoom<HTMLDivElement, unknown>()
-    .scaleExtent([0.25, 2.5])
+    .scaleExtent([GEN_MIN_ZOOM, GEN_MAX_ZOOM])
     .filter((event: Event) => {
       // Un mousedown/touchstart sur une carte démarre un GLISSER DE MEMBRE
       // (géré à part par attachCardInteractions ci-dessous), pas un pan du
@@ -545,8 +548,22 @@ export function initGenealogySystem(deps: {
     .on("zoom", (event: d3.D3ZoomEvent<HTMLDivElement, unknown>) => {
       zoomTransform = event.transform;
       stage.style.transform = "translate(" + zoomTransform.x + "px," + zoomTransform.y + "px) scale(" + zoomTransform.k + ")";
+      applyZoomDetail(zoomTransform.k);
     });
   d3.select(canvasWrap as unknown as HTMLDivElement).call(zoomBehavior);
+
+  // Niveau de détail selon le zoom (genealogyLod.ts) : classes CSS sur le canevas
+  // et échelle exposée à la feuille de style pour garder un texte lisible.
+  let lastLod = -1;
+  function applyZoomDetail(k: number) {
+    const lod = lodForScale(k);
+    stage.style.setProperty("--gen-k", String(k));
+    if (lod !== lastLod) {
+      canvasWrap.classList.remove("gen-lod-0", "gen-lod-1", "gen-lod-2");
+      canvasWrap.classList.add("gen-lod-" + lod);
+      lastLod = lod;
+    }
+  }
 
   function resetView() {
     zoomTransform = d3.zoomIdentity.translate(canvasWrap.clientWidth / 2 - 400, canvasWrap.clientHeight / 2 - 300);
@@ -899,21 +916,18 @@ export function initGenealogySystem(deps: {
     if (!members.length) return;
     if (
       !(await customConfirm(
-        "Organiser tout cet arbre selon les dates ?\n\nLes positions de tous les membres (y compris ceux d'autres arbres affichés ici) seront recalculées : couples sur une même ligne, enfants centrés sous leurs parents. Un bouton « Annuler l'organisation » permet de revenir en arrière juste après."
+        "Organiser tout cet arbre selon les dates ?\n\nLes positions de tous les membres (y compris ceux d'autres arbres affichés ici) seront recalculées : enfants sous leurs parents d'abord, couples côte à côte autant que possible, générations alignées par dates. Un bouton « Annuler l'organisation » permet de revenir en arrière juste après."
       ))
     )
       return;
     const known = allKnownMembers();
     const nodes = Array.from(known.values()).map((m) => ({ id: m.id, birth: m.birth_year, death: m.death_year, name: m.name, female: guessFemale(m.name, m.title) }));
     const rels = relations.filter((r) => known.has(r.member_a_id) && known.has(r.member_b_id)).map((r) => ({ a: r.member_a_id, b: r.member_b_id, type: r.relation_type }));
-    const pos = computeLayout(nodes, rels, {
-      cardW: CARD_W,
-      cardH: CARD_H,
-      ...LAYOUT_OPTS,
-      minGen: GENERATION_GAP,
-      stdGen: GENERATION_GAP,
-      localIds: new Set(members.map((m) => m.id)),
-    });
+    const { pos } = computeLayersLayout(
+      nodes.map((n) => ({ id: n.id, birth: n.birth, name: n.name })),
+      rels,
+      { cardW: CARD_W, cardH: CARD_H, ...LAYOUT_OPTS, rowYears: GENERATION_GAP / PX_PER_YEAR, gapX: 130, spouseGap: 150 }
+    );
     // Sauvegarde pour pouvoir annuler.
     const undoLocal = new Map<string, { x: number; y: number }>();
     members.forEach((m) => undoLocal.set(m.id, { x: m.pos_x, y: m.pos_y }));
@@ -1284,7 +1298,7 @@ export function initGenealogySystem(deps: {
   // types qui gardent leur couleur fixe.
   function linkColor(type: RelationType, legend?: LegendItem | null): string {
     if (type === "custom") return legend?.color || "var(--cable-line)";
-    if (type === "parent") return "var(--accent)";
+    if (type === "parent") return "var(--gen-parent-line)";
     if (type === "family") return "var(--family-line)";
     return "var(--cable-line)";
   }
