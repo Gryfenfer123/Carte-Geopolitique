@@ -22780,6 +22780,336 @@
    "title": "Prince, fils de Fumihito",
    "g": "h",
    "script": 87
+  },
+  "mi.yoritomo": {
+   "id": "244f1de9-791a-5857-915e-27ed5cb8e5ff",
+   "name": "Minamoto no Yoritomo",
+   "b": 1147,
+   "d": 1199,
+   "tree": "JP_MIN",
+   "title": "Premier shogun (shogunat de Kamakura)",
+   "g": "h",
+   "script": 88
+  },
+  "mi.yoriie": {
+   "id": "8535bcb4-b3f0-51ff-b42a-5eb7d5bbc5ab",
+   "name": "Minamoto no Yoriie",
+   "b": 1182,
+   "d": 1204,
+   "tree": "JP_MIN",
+   "title": "Deuxième shogun",
+   "g": "h",
+   "script": 88
+  },
+  "mi.sanetomo": {
+   "id": "dcde26ce-b87f-5cbf-a4aa-7ced4eb83ba2",
+   "name": "Minamoto no Sanetomo",
+   "b": 1192,
+   "d": 1219,
+   "tree": "JP_MIN",
+   "title": "Troisième shogun, dernier Minamoto",
+   "g": "h",
+   "script": 88
+  },
+  "mi.masako": {
+   "id": "48b2a0ec-a4b1-5813-95ac-9f2146ae152f",
+   "name": "Hōjō Masako",
+   "b": 1157,
+   "d": 1225,
+   "tree": "JP_MIN",
+   "title": "Épouse de Yoritomo, « nonne shogun »",
+   "g": "f",
+   "script": 88
+  },
+  "as.takauji": {
+   "id": "c3d667b7-672c-5caa-bcf5-ef81010248e1",
+   "name": "Ashikaga Takauji",
+   "b": 1305,
+   "d": 1358,
+   "tree": "JP_ASH",
+   "title": "Premier shogun Ashikaga",
+   "g": "h",
+   "script": 88
+  },
+  "as.yoshiakira": {
+   "id": "2d414260-1b2e-5d3a-bad2-12c6a9b88a43",
+   "name": "Ashikaga Yoshiakira",
+   "b": 1330,
+   "d": 1367,
+   "tree": "JP_ASH",
+   "title": "Deuxième shogun",
+   "g": "h",
+   "script": 88
+  },
+  "as.yoshimitsu": {
+   "id": "289cc1a9-13d6-5ff5-8f33-d87c61257ef3",
+   "name": "Ashikaga Yoshimitsu",
+   "b": 1358,
+   "d": 1408,
+   "tree": "JP_ASH",
+   "title": "Troisième shogun",
+   "g": "h",
+   "script": 88
+  },
+  "as.yoshimochi": {
+   "id": "09b7116e-547d-50da-89d0-4b9a7af8c157",
+   "name": "Ashikaga Yoshimochi",
+   "b": 1386,
+   "d": 1428,
+   "tree": "JP_ASH",
+   "title": "Quatrième shogun",
+   "g": "h",
+   "script": 88
+  },
+  "as.yoshinori": {
+   "id": "86866ec1-2e39-5326-a734-ef7597cdf85e",
+   "name": "Ashikaga Yoshinori",
+   "b": 1394,
+   "d": 1441,
+   "tree": "JP_ASH",
+   "title": "Sixième shogun",
+   "g": "h",
+   "script": 88
+  },
+  "as.yoshimasa": {
+   "id": "5041d7fd-f83c-5f2e-b67b-74397e462b55",
+   "name": "Ashikaga Yoshimasa",
+   "b": 1436,
+   "d": 1490,
+   "tree": "JP_ASH",
+   "title": "Huitième shogun (guerre d'Ōnin)",
+   "g": "h",
+   "script": 88
+  },
+  "as.yoshiharu": {
+   "id": "9dfbcd48-954d-5f81-ae2e-3606f0727396",
+   "name": "Ashikaga Yoshiharu",
+   "b": 1511,
+   "d": 1550,
+   "tree": "JP_ASH",
+   "title": "Douzième shogun",
+   "g": "h",
+   "script": 88
+  },
+  "as.yoshiteru": {
+   "id": "39b48183-2168-53db-bdbe-1219c7733915",
+   "name": "Ashikaga Yoshiteru",
+   "b": 1536,
+   "d": 1565,
+   "tree": "JP_ASH",
+   "title": "Treizième shogun",
+   "g": "h",
+   "script": 88
+  },
+  "as.yoshiaki": {
+   "id": "d54bf37a-0a54-551e-8e32-9a5134b50e83",
+   "name": "Ashikaga Yoshiaki",
+   "b": 1537,
+   "d": 1597,
+   "tree": "JP_ASH",
+   "title": "Quinzième et dernier shogun Ashikaga",
+   "g": "h",
+   "script": 88
+  },
+  "od.nobunaga": {
+   "id": "4d0898d1-8d9f-585f-bbaa-88d6fb63d67f",
+   "name": "Oda Nobunaga",
+   "b": 1534,
+   "d": 1582,
+   "tree": "JP_ODA",
+   "title": "Seigneur de la guerre, unificateur du Japon",
+   "g": "h",
+   "script": 88
+  },
+  "od.hideyoshi": {
+   "id": "5b8a9dd4-d22e-548e-9d8d-4bd73d53014f",
+   "name": "Toyotomi Hideyoshi",
+   "b": 1537,
+   "d": 1598,
+   "tree": "JP_ODA",
+   "title": "Régent (kanpaku), unificateur du Japon",
+   "g": "h",
+   "script": 88
+  },
+  "od.hideyori": {
+   "id": "322f5d64-f324-5ba4-8b78-840f5739e201",
+   "name": "Toyotomi Hideyori",
+   "b": 1593,
+   "d": 1615,
+   "tree": "JP_ODA",
+   "title": "Fils de Hideyoshi, vaincu à Osaka",
+   "g": "h",
+   "script": 88
+  },
+  "od.nobuhide": {
+   "id": "8eb035db-7afe-5d10-a84d-0db50edfde24",
+   "name": "Oda Nobuhide",
+   "b": 1510,
+   "d": 1551,
+   "tree": "JP_ODA",
+   "title": "Père de Nobunaga, seigneur de Owari",
+   "g": "h",
+   "script": 88
+  },
+  "od.nobutada": {
+   "id": "012c713c-c8c7-5ba5-a36b-eaac8cd2cfbc",
+   "name": "Oda Nobutada",
+   "b": 1557,
+   "d": 1582,
+   "tree": "JP_ODA",
+   "title": "Fils aîné de Nobunaga",
+   "g": "h",
+   "script": 88
+  },
+  "tk.ieyasu": {
+   "id": "23f1b329-c7cf-5f92-ab98-c73afb79be82",
+   "name": "Tokugawa Ieyasu",
+   "b": 1543,
+   "d": 1616,
+   "tree": "JP_TOK",
+   "title": "Premier shogun Tokugawa",
+   "g": "h",
+   "script": 88
+  },
+  "tk.hidetada": {
+   "id": "9c942ec9-7abe-5822-bdbf-8b9aa6f261a4",
+   "name": "Tokugawa Hidetada",
+   "b": 1579,
+   "d": 1632,
+   "tree": "JP_TOK",
+   "title": "Deuxième shogun",
+   "g": "h",
+   "script": 88
+  },
+  "tk.iemitsu": {
+   "id": "f3d2b86e-61ce-5072-9da0-e9c2dcac7a21",
+   "name": "Tokugawa Iemitsu",
+   "b": 1604,
+   "d": 1651,
+   "tree": "JP_TOK",
+   "title": "Troisième shogun",
+   "g": "h",
+   "script": 88
+  },
+  "tk.ietsuna": {
+   "id": "8f62e81b-e160-55bd-bea6-6e12c7fb7c3c",
+   "name": "Tokugawa Ietsuna",
+   "b": 1641,
+   "d": 1680,
+   "tree": "JP_TOK",
+   "title": "Quatrième shogun",
+   "g": "h",
+   "script": 88
+  },
+  "tk.tsunayoshi": {
+   "id": "9babcb73-2843-5655-80fc-1af83fb74c0e",
+   "name": "Tokugawa Tsunayoshi",
+   "b": 1646,
+   "d": 1709,
+   "tree": "JP_TOK",
+   "title": "Cinquième shogun",
+   "g": "h",
+   "script": 88
+  },
+  "tk.ienobu": {
+   "id": "d3d986a5-e988-51b9-bbc0-70403b26b7d5",
+   "name": "Tokugawa Ienobu",
+   "b": 1662,
+   "d": 1712,
+   "tree": "JP_TOK",
+   "title": "Sixième shogun",
+   "g": "h",
+   "script": 88
+  },
+  "tk.ietsugu": {
+   "id": "5d2ccdf4-aaa6-536f-8cb9-eb4c5c8d7e6d",
+   "name": "Tokugawa Ietsugu",
+   "b": 1709,
+   "d": 1716,
+   "tree": "JP_TOK",
+   "title": "Septième shogun",
+   "g": "h",
+   "script": 88
+  },
+  "tk.yoshimune": {
+   "id": "bc91776a-f741-5409-a0ad-b7f839fc0e64",
+   "name": "Tokugawa Yoshimune",
+   "b": 1684,
+   "d": 1751,
+   "tree": "JP_TOK",
+   "title": "Huitième shogun (réformes Kyōhō)",
+   "g": "h",
+   "script": 88
+  },
+  "tk.ieshige": {
+   "id": "129b991b-7100-56d0-90b9-cb7eaae97cf1",
+   "name": "Tokugawa Ieshige",
+   "b": 1712,
+   "d": 1761,
+   "tree": "JP_TOK",
+   "title": "Neuvième shogun",
+   "g": "h",
+   "script": 88
+  },
+  "tk.ieharu": {
+   "id": "898cc35c-3eb5-57bb-9432-1f55d08286c4",
+   "name": "Tokugawa Ieharu",
+   "b": 1737,
+   "d": 1786,
+   "tree": "JP_TOK",
+   "title": "Dixième shogun",
+   "g": "h",
+   "script": 88
+  },
+  "tk.ienari": {
+   "id": "f1c028a0-fdf8-598f-872c-3794c3a8cdd0",
+   "name": "Tokugawa Ienari",
+   "b": 1773,
+   "d": 1841,
+   "tree": "JP_TOK",
+   "title": "Onzième shogun",
+   "g": "h",
+   "script": 88
+  },
+  "tk.ieyoshi": {
+   "id": "3f7255cc-ae91-54f8-b1af-da66e284cfbf",
+   "name": "Tokugawa Ieyoshi",
+   "b": 1793,
+   "d": 1853,
+   "tree": "JP_TOK",
+   "title": "Douzième shogun",
+   "g": "h",
+   "script": 88
+  },
+  "tk.iesada": {
+   "id": "a3e4fce1-6931-5335-99b9-8938336a09a7",
+   "name": "Tokugawa Iesada",
+   "b": 1824,
+   "d": 1858,
+   "tree": "JP_TOK",
+   "title": "Treizième shogun (traité de Harris)",
+   "g": "h",
+   "script": 88
+  },
+  "tk.iemochi": {
+   "id": "2ae2eec9-9cee-59e2-b580-0c481e3fc3e4",
+   "name": "Tokugawa Iemochi",
+   "b": 1846,
+   "d": 1866,
+   "tree": "JP_TOK",
+   "title": "Quatorzième shogun",
+   "g": "h",
+   "script": 88
+  },
+  "tk.yoshinobu": {
+   "id": "4cb961c8-c35b-5f82-9614-7a6b7fbeeec6",
+   "name": "Tokugawa Yoshinobu",
+   "b": 1837,
+   "d": 1913,
+   "tree": "JP_TOK",
+   "title": "Quinzième et dernier shogun",
+   "g": "h",
+   "script": 88
   }
  },
  "trees": {
@@ -23394,6 +23724,30 @@
    "country": "JPN",
    "dynasty": "Empereurs légendaires",
    "script": null
+  },
+  "JP_MIN": {
+   "entry": "941a3d47-fce8-5a8f-9277-5fcc931e30d7",
+   "country": "JPN",
+   "dynasty": "Minamoto (Kamakura)",
+   "script": 88
+  },
+  "JP_ASH": {
+   "entry": "3d5d8648-4323-51e7-957b-44c41d121cdb",
+   "country": "JPN",
+   "dynasty": "Ashikaga",
+   "script": 88
+  },
+  "JP_ODA": {
+   "entry": "5f252697-3a0b-58e1-aab8-d83b4cf825af",
+   "country": "JPN",
+   "dynasty": "Oda et Toyotomi",
+   "script": 88
+  },
+  "JP_TOK": {
+   "entry": "e6751e92-8d39-59d3-81db-8eaeb534620c",
+   "country": "JPN",
+   "dynasty": "Tokugawa",
+   "script": 88
   }
  },
  "flags": [
@@ -27505,6 +27859,13 @@
    "tree": "JP_IMP",
    "reason": "Famille Owada : sans arbre",
    "script": 87
+  },
+  {
+   "name": "Hōjō Masako",
+   "b": 1157,
+   "tree": "JP_MIN",
+   "reason": "Famille Hōjō : sans arbre",
+   "script": 88
   }
  ],
  "scripts": {
@@ -27892,6 +28253,17 @@
    "rels": 134,
    "trees": [
     "Empereurs du Japon (JPN)"
+   ]
+  },
+  "88": {
+   "label": "Japon — shoguns : Minamoto, Ashikaga, Oda/Toyotomi et Tokugawa",
+   "members": 33,
+   "rels": 30,
+   "trees": [
+    "Minamoto (Kamakura) (JPN)",
+    "Ashikaga (JPN)",
+    "Oda et Toyotomi (JPN)",
+    "Tokugawa (JPN)"
    ]
   }
  },
@@ -47050,6 +47422,156 @@
    "06dcf55b-b407-5df5-9910-9d5660f0f8f9",
    "8edc5451-6342-5e30-8c91-319a9d7e2a2c",
    "parent"
+  ],
+  [
+   "244f1de9-791a-5857-915e-27ed5cb8e5ff",
+   "48b2a0ec-a4b1-5813-95ac-9f2146ae152f",
+   "spouse"
+  ],
+  [
+   "244f1de9-791a-5857-915e-27ed5cb8e5ff",
+   "8535bcb4-b3f0-51ff-b42a-5eb7d5bbc5ab",
+   "parent"
+  ],
+  [
+   "48b2a0ec-a4b1-5813-95ac-9f2146ae152f",
+   "8535bcb4-b3f0-51ff-b42a-5eb7d5bbc5ab",
+   "parent"
+  ],
+  [
+   "244f1de9-791a-5857-915e-27ed5cb8e5ff",
+   "dcde26ce-b87f-5cbf-a4aa-7ced4eb83ba2",
+   "parent"
+  ],
+  [
+   "48b2a0ec-a4b1-5813-95ac-9f2146ae152f",
+   "dcde26ce-b87f-5cbf-a4aa-7ced4eb83ba2",
+   "parent"
+  ],
+  [
+   "c3d667b7-672c-5caa-bcf5-ef81010248e1",
+   "2d414260-1b2e-5d3a-bad2-12c6a9b88a43",
+   "parent"
+  ],
+  [
+   "2d414260-1b2e-5d3a-bad2-12c6a9b88a43",
+   "289cc1a9-13d6-5ff5-8f33-d87c61257ef3",
+   "parent"
+  ],
+  [
+   "289cc1a9-13d6-5ff5-8f33-d87c61257ef3",
+   "09b7116e-547d-50da-89d0-4b9a7af8c157",
+   "parent"
+  ],
+  [
+   "289cc1a9-13d6-5ff5-8f33-d87c61257ef3",
+   "86866ec1-2e39-5326-a734-ef7597cdf85e",
+   "parent"
+  ],
+  [
+   "86866ec1-2e39-5326-a734-ef7597cdf85e",
+   "5041d7fd-f83c-5f2e-b67b-74397e462b55",
+   "parent"
+  ],
+  [
+   "9dfbcd48-954d-5f81-ae2e-3606f0727396",
+   "39b48183-2168-53db-bdbe-1219c7733915",
+   "parent"
+  ],
+  [
+   "9dfbcd48-954d-5f81-ae2e-3606f0727396",
+   "d54bf37a-0a54-551e-8e32-9a5134b50e83",
+   "parent"
+  ],
+  [
+   "5041d7fd-f83c-5f2e-b67b-74397e462b55",
+   "9dfbcd48-954d-5f81-ae2e-3606f0727396",
+   "family"
+  ],
+  [
+   "5b8a9dd4-d22e-548e-9d8d-4bd73d53014f",
+   "322f5d64-f324-5ba4-8b78-840f5739e201",
+   "parent"
+  ],
+  [
+   "8eb035db-7afe-5d10-a84d-0db50edfde24",
+   "4d0898d1-8d9f-585f-bbaa-88d6fb63d67f",
+   "parent"
+  ],
+  [
+   "4d0898d1-8d9f-585f-bbaa-88d6fb63d67f",
+   "012c713c-c8c7-5ba5-a36b-eaac8cd2cfbc",
+   "parent"
+  ],
+  [
+   "23f1b329-c7cf-5f92-ab98-c73afb79be82",
+   "9c942ec9-7abe-5822-bdbf-8b9aa6f261a4",
+   "parent"
+  ],
+  [
+   "9c942ec9-7abe-5822-bdbf-8b9aa6f261a4",
+   "f3d2b86e-61ce-5072-9da0-e9c2dcac7a21",
+   "parent"
+  ],
+  [
+   "f3d2b86e-61ce-5072-9da0-e9c2dcac7a21",
+   "8f62e81b-e160-55bd-bea6-6e12c7fb7c3c",
+   "parent"
+  ],
+  [
+   "f3d2b86e-61ce-5072-9da0-e9c2dcac7a21",
+   "9babcb73-2843-5655-80fc-1af83fb74c0e",
+   "parent"
+  ],
+  [
+   "d3d986a5-e988-51b9-bbc0-70403b26b7d5",
+   "5d2ccdf4-aaa6-536f-8cb9-eb4c5c8d7e6d",
+   "parent"
+  ],
+  [
+   "bc91776a-f741-5409-a0ad-b7f839fc0e64",
+   "129b991b-7100-56d0-90b9-cb7eaae97cf1",
+   "parent"
+  ],
+  [
+   "129b991b-7100-56d0-90b9-cb7eaae97cf1",
+   "898cc35c-3eb5-57bb-9432-1f55d08286c4",
+   "parent"
+  ],
+  [
+   "f1c028a0-fdf8-598f-872c-3794c3a8cdd0",
+   "3f7255cc-ae91-54f8-b1af-da66e284cfbf",
+   "parent"
+  ],
+  [
+   "3f7255cc-ae91-54f8-b1af-da66e284cfbf",
+   "a3e4fce1-6931-5335-99b9-8938336a09a7",
+   "parent"
+  ],
+  [
+   "f3d2b86e-61ce-5072-9da0-e9c2dcac7a21",
+   "d3d986a5-e988-51b9-bbc0-70403b26b7d5",
+   "family"
+  ],
+  [
+   "23f1b329-c7cf-5f92-ab98-c73afb79be82",
+   "bc91776a-f741-5409-a0ad-b7f839fc0e64",
+   "family"
+  ],
+  [
+   "898cc35c-3eb5-57bb-9432-1f55d08286c4",
+   "f1c028a0-fdf8-598f-872c-3794c3a8cdd0",
+   "family"
+  ],
+  [
+   "3f7255cc-ae91-54f8-b1af-da66e284cfbf",
+   "2ae2eec9-9cee-59e2-b580-0c481e3fc3e4",
+   "family"
+  ],
+  [
+   "f1c028a0-fdf8-598f-872c-3794c3a8cdd0",
+   "4cb961c8-c35b-5f82-9614-7a6b7fbeeec6",
+   "family"
   ]
  ],
  "dateflags": [
@@ -54290,6 +54812,13 @@
    "d": 1424,
    "note": "naissance vers 1347",
    "script": 87
+  },
+  {
+   "name": "Oda Nobuhide",
+   "b": 1510,
+   "d": 1551,
+   "note": "naissance vers 1510",
+   "script": 88
   }
  ],
  "pins": [

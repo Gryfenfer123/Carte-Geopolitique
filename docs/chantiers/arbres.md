@@ -2,6 +2,8 @@
 
 ## Dernières nouvelles (la plus récente en haut)
 
+- 2026-10-23 — v88 : Japon — shoguns Minamoto, Ashikaga, Oda/Toyotomi, Tokugawa (33 membres, 4 nouveaux arbres)
+
 - 2026-10-23 — v87 : Japon — famille impériale d'Ōjin (15e) à Naruhito (126e), Cour du Nord incluse (124 membres, nouvel arbre)
 
 - 2026-10-23 — v83–v86 : Chine — Song, Gengiskhanides/Yuan, Ming, Qing (81 membres, 4 nouveaux arbres)
@@ -53,7 +55,7 @@
 
 Code : `src/genealogy.ts`, `genealogyLayers.ts`, `genealogyBus.ts`, `genealogyLod.ts/.css`, `genealogyLayersWorker.ts`,
 `genealogyLayout.ts`, `genealogyRouting.ts`. Outils de remplissage : [`scripts/arbres/`](../../scripts/arbres/README.md).
-Prochaine migration : **arbres_v88** (`supabase/arbres/arbres_v88.sql`) — générateur : `Gen(88, "…")`.  (v87 livrée, à exécuter par Martin si ce n'est pas déjà fait.)
+Prochaine migration : **arbres_v89** (`supabase/arbres/arbres_v89.sql`) — générateur : `Gen(89, "…")`.  (v88 livrée, à exécuter par Martin si ce n'est pas déjà fait.)
 
 ## Règles de contenu (décidées par Martin — ne pas rouvrir)
 - Un pays n'a que les dynasties qui ont **régné sur lui**. Dynastie étrangère : branche principale dans son pays
