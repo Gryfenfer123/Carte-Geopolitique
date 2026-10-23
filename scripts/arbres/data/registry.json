@@ -20060,6 +20060,406 @@
    "title": "Dernier duc Sforza de Milan",
    "g": "h",
    "script": 80
+  },
+  "ot.osman1": {
+   "id": "fbfb55f4-1079-55a9-94f9-5c909e08a1c4",
+   "name": "Osman Ier",
+   "b": 1258,
+   "d": 1326,
+   "tree": "TR_OTT",
+   "title": "Fondateur de la dynastie, bey",
+   "g": "h",
+   "script": 81
+  },
+  "ot.orhan": {
+   "id": "44bd33d8-3121-5f86-89cb-1bab15495016",
+   "name": "Orhan Ier",
+   "b": 1281,
+   "d": 1362,
+   "tree": "TR_OTT",
+   "title": "Bey (sultan)",
+   "g": "h",
+   "script": 81
+  },
+  "ot.murad1": {
+   "id": "46db7c56-2723-5b5c-883a-44b6e4d58854",
+   "name": "Mourad Ier",
+   "b": 1326,
+   "d": 1389,
+   "tree": "TR_OTT",
+   "title": "Sultan",
+   "g": "h",
+   "script": 81
+  },
+  "ot.bayezid1": {
+   "id": "95cba0fc-45b6-516f-9155-88faff91d7ed",
+   "name": "Bayezid Ier",
+   "b": 1360,
+   "d": 1403,
+   "tree": "TR_OTT",
+   "title": "Sultan",
+   "g": "h",
+   "script": 81
+  },
+  "ot.mehmed1": {
+   "id": "cf3813ae-f1e9-5c37-9714-79f060229707",
+   "name": "Mehmed Ier",
+   "b": 1386,
+   "d": 1421,
+   "tree": "TR_OTT",
+   "title": "Sultan",
+   "g": "h",
+   "script": 81
+  },
+  "ot.murad2": {
+   "id": "4daa3092-1d1c-5105-aab4-a64a167b4015",
+   "name": "Mourad II",
+   "b": 1404,
+   "d": 1451,
+   "tree": "TR_OTT",
+   "title": "Sultan",
+   "g": "h",
+   "script": 81
+  },
+  "ot.mehmed2": {
+   "id": "eef84b46-131c-5387-9fb6-d728d607f06a",
+   "name": "Mehmed II le Conquérant",
+   "b": 1432,
+   "d": 1481,
+   "tree": "TR_OTT",
+   "title": "Sultan, conquérant de Constantinople",
+   "g": "h",
+   "script": 81
+  },
+  "ot.bayezid2": {
+   "id": "82e03574-ba2b-5466-8a9f-2b56a7076481",
+   "name": "Bayezid II",
+   "b": 1447,
+   "d": 1512,
+   "tree": "TR_OTT",
+   "title": "Sultan",
+   "g": "h",
+   "script": 81
+  },
+  "ot.selim1": {
+   "id": "8ce3b7ed-be3b-5bd2-9771-66b5361f85ff",
+   "name": "Selim Ier",
+   "b": 1470,
+   "d": 1520,
+   "tree": "TR_OTT",
+   "title": "Sultan",
+   "g": "h",
+   "script": 81
+  },
+  "ot.suleiman1": {
+   "id": "b94a1745-f1c4-5660-a2a8-db89181e56ac",
+   "name": "Soliman Ier le Magnifique",
+   "b": 1494,
+   "d": 1566,
+   "tree": "TR_OTT",
+   "title": "Sultan",
+   "g": "h",
+   "script": 81
+  },
+  "ot.selim2": {
+   "id": "51f9f838-8ff4-534c-b299-7961abcf055c",
+   "name": "Selim II",
+   "b": 1524,
+   "d": 1574,
+   "tree": "TR_OTT",
+   "title": "Sultan",
+   "g": "h",
+   "script": 81
+  },
+  "ot.murad3": {
+   "id": "7bc5f8ea-a297-5567-949a-d25296419d65",
+   "name": "Mourad III",
+   "b": 1546,
+   "d": 1595,
+   "tree": "TR_OTT",
+   "title": "Sultan",
+   "g": "h",
+   "script": 81
+  },
+  "ot.mehmed3": {
+   "id": "9b78c578-e53d-5452-a4cc-e93e42bb804f",
+   "name": "Mehmed III",
+   "b": 1566,
+   "d": 1603,
+   "tree": "TR_OTT",
+   "title": "Sultan",
+   "g": "h",
+   "script": 81
+  },
+  "ot.ahmed1": {
+   "id": "45d0c580-8d0a-5ca0-b0b8-a5696f3f14ca",
+   "name": "Ahmed Ier",
+   "b": 1590,
+   "d": 1617,
+   "tree": "TR_OTT",
+   "title": "Sultan",
+   "g": "h",
+   "script": 81
+  },
+  "ot.mustafa1": {
+   "id": "426071c6-b5b3-51e8-92c2-96866bc39a1a",
+   "name": "Mustafa Ier",
+   "b": 1591,
+   "d": 1639,
+   "tree": "TR_OTT",
+   "title": "Sultan",
+   "g": "h",
+   "script": 81
+  },
+  "ot.osman2": {
+   "id": "30d3053a-f31f-5d1e-96b2-a696a9e7eecc",
+   "name": "Osman II",
+   "b": 1604,
+   "d": 1622,
+   "tree": "TR_OTT",
+   "title": "Sultan",
+   "g": "h",
+   "script": 81
+  },
+  "ot.murad4": {
+   "id": "783cd8d4-9d28-5e5f-bf0f-37e77d22a570",
+   "name": "Mourad IV",
+   "b": 1612,
+   "d": 1640,
+   "tree": "TR_OTT",
+   "title": "Sultan",
+   "g": "h",
+   "script": 81
+  },
+  "ot.ibrahim": {
+   "id": "be64783e-0803-529d-a94f-e0cb4ebffdaa",
+   "name": "Ibrahim Ier",
+   "b": 1615,
+   "d": 1648,
+   "tree": "TR_OTT",
+   "title": "Sultan",
+   "g": "h",
+   "script": 81
+  },
+  "ot.mehmed4": {
+   "id": "30304cc6-b2c2-53ea-9473-9b02dbd0643c",
+   "name": "Mehmed IV",
+   "b": 1642,
+   "d": 1693,
+   "tree": "TR_OTT",
+   "title": "Sultan",
+   "g": "h",
+   "script": 81
+  },
+  "ot.suleiman2": {
+   "id": "672b0838-6b29-5bfd-8a45-455b373f10e1",
+   "name": "Soliman II",
+   "b": 1642,
+   "d": 1691,
+   "tree": "TR_OTT",
+   "title": "Sultan",
+   "g": "h",
+   "script": 81
+  },
+  "ot.ahmed2": {
+   "id": "2cb15bf5-ad59-5e5b-82cc-5e1343ea7c2f",
+   "name": "Ahmed II",
+   "b": 1643,
+   "d": 1695,
+   "tree": "TR_OTT",
+   "title": "Sultan",
+   "g": "h",
+   "script": 81
+  },
+  "ot.mustafa2": {
+   "id": "5dbefe08-d801-52c6-a346-30cb61d8b49a",
+   "name": "Mustafa II",
+   "b": 1664,
+   "d": 1703,
+   "tree": "TR_OTT",
+   "title": "Sultan",
+   "g": "h",
+   "script": 81
+  },
+  "ot.ahmed3": {
+   "id": "2f877346-b614-5bf9-be6a-68c265a8c4c2",
+   "name": "Ahmed III",
+   "b": 1673,
+   "d": 1736,
+   "tree": "TR_OTT",
+   "title": "Sultan",
+   "g": "h",
+   "script": 81
+  },
+  "ot.mahmud1": {
+   "id": "c9fe0838-1a81-59cb-8642-25fdc0fa0efb",
+   "name": "Mahmud Ier",
+   "b": 1696,
+   "d": 1754,
+   "tree": "TR_OTT",
+   "title": "Sultan",
+   "g": "h",
+   "script": 81
+  },
+  "ot.osman3": {
+   "id": "71056714-6537-5d67-9fbe-8a60548cc251",
+   "name": "Osman III",
+   "b": 1699,
+   "d": 1757,
+   "tree": "TR_OTT",
+   "title": "Sultan",
+   "g": "h",
+   "script": 81
+  },
+  "ot.mustafa3": {
+   "id": "d1fcf9e8-3f0b-5163-8dde-285a29653717",
+   "name": "Mustafa III",
+   "b": 1717,
+   "d": 1774,
+   "tree": "TR_OTT",
+   "title": "Sultan",
+   "g": "h",
+   "script": 81
+  },
+  "ot.abdulhamid1": {
+   "id": "1bfc8c10-b0f7-5394-937f-0e87a2728e24",
+   "name": "Abdülhamid Ier",
+   "b": 1725,
+   "d": 1789,
+   "tree": "TR_OTT",
+   "title": "Sultan",
+   "g": "h",
+   "script": 81
+  },
+  "ot.selim3": {
+   "id": "6b8f7878-bf65-5850-a572-3f6b3c923bcb",
+   "name": "Selim III",
+   "b": 1761,
+   "d": 1808,
+   "tree": "TR_OTT",
+   "title": "Sultan",
+   "g": "h",
+   "script": 81
+  },
+  "ot.mustafa4": {
+   "id": "cb563f38-92c1-589b-8e24-09e551c6337b",
+   "name": "Mustafa IV",
+   "b": 1779,
+   "d": 1808,
+   "tree": "TR_OTT",
+   "title": "Sultan",
+   "g": "h",
+   "script": 81
+  },
+  "ot.mahmud2": {
+   "id": "0af31369-48af-571e-a6e7-4e69920ffb73",
+   "name": "Mahmud II",
+   "b": 1785,
+   "d": 1839,
+   "tree": "TR_OTT",
+   "title": "Sultan",
+   "g": "h",
+   "script": 81
+  },
+  "ot.abdulmecid1": {
+   "id": "fd96c722-fe19-56ae-851b-971c5f385707",
+   "name": "Abdülmecid Ier",
+   "b": 1823,
+   "d": 1861,
+   "tree": "TR_OTT",
+   "title": "Sultan",
+   "g": "h",
+   "script": 81
+  },
+  "ot.abdulaziz": {
+   "id": "251cb877-3198-5553-8ab7-340fba17ad60",
+   "name": "Abdülaziz",
+   "b": 1830,
+   "d": 1876,
+   "tree": "TR_OTT",
+   "title": "Sultan",
+   "g": "h",
+   "script": 81
+  },
+  "ot.murad5": {
+   "id": "a8278c4a-dc5a-5e17-807b-dc02ab430de2",
+   "name": "Mourad V",
+   "b": 1840,
+   "d": 1904,
+   "tree": "TR_OTT",
+   "title": "Sultan",
+   "g": "h",
+   "script": 81
+  },
+  "ot.abdulhamid2": {
+   "id": "5b3b1ee2-97ca-5fb3-bb3d-59d6dacdb5fa",
+   "name": "Abdülhamid II",
+   "b": 1842,
+   "d": 1918,
+   "tree": "TR_OTT",
+   "title": "Sultan",
+   "g": "h",
+   "script": 81
+  },
+  "ot.mehmed5": {
+   "id": "5ed99ea6-520b-573e-9cfa-bbca8d24f12f",
+   "name": "Mehmed V Reşad",
+   "b": 1844,
+   "d": 1918,
+   "tree": "TR_OTT",
+   "title": "Sultan",
+   "g": "h",
+   "script": 81
+  },
+  "ot.mehmed6": {
+   "id": "b66e4589-34f9-5c79-9ffc-1d8c5cad73fb",
+   "name": "Mehmed VI Vahideddin",
+   "b": 1861,
+   "d": 1926,
+   "tree": "TR_OTT",
+   "title": "Dernier sultan",
+   "g": "h",
+   "script": 81
+  },
+  "ot.abdulmecid2": {
+   "id": "c5a69aab-f917-5296-9809-ba3a99cf1f9b",
+   "name": "Abdülmecid II",
+   "b": 1868,
+   "d": 1944,
+   "tree": "TR_OTT",
+   "title": "Dernier calife",
+   "g": "h",
+   "script": 81
+  },
+  "ot.hurrem": {
+   "id": "fce27cde-45c0-5d15-8fb9-6d8115b51b02",
+   "name": "Hürrem Sultan (Roxelane)",
+   "b": 1502,
+   "d": 1558,
+   "tree": "TR_OTT",
+   "title": "Épouse de Soliman Ier, mère de Selim II",
+   "g": "f",
+   "script": 81
+  },
+  "ot.nurbanu": {
+   "id": "d2909b59-68b1-5f00-90d9-a99f083b5ef3",
+   "name": "Nurbanu Sultan",
+   "b": 1525,
+   "d": 1583,
+   "tree": "TR_OTT",
+   "title": "Épouse de Selim II, mère de Mourad III",
+   "g": "f",
+   "script": 81
+  },
+  "ot.kosem": {
+   "id": "d3ec139f-6ac6-5c65-b45d-66bc46cb1c48",
+   "name": "Kösem Sultan",
+   "b": 1589,
+   "d": 1651,
+   "tree": "TR_OTT",
+   "title": "Épouse d'Ahmed Ier, mère de Mourad IV et d'Ibrahim, régente",
+   "g": "f",
+   "script": 81
   }
  },
  "trees": {
@@ -20620,6 +21020,12 @@
    "country": "ITA",
    "dynasty": "Sforza",
    "script": 80
+  },
+  "TR_OTT": {
+   "entry": "f4f752a8-3d2c-516d-bf05-4a116772abca",
+   "country": "TUR",
+   "dynasty": "Ottomans",
+   "script": 81
   }
  },
  "flags": [
@@ -24584,6 +24990,27 @@
    "tree": "IT_SFO",
    "reason": "Maison Este : sans arbre",
    "script": 80
+  },
+  {
+   "name": "Hürrem Sultan (Roxelane)",
+   "b": 1502,
+   "tree": "TR_OTT",
+   "reason": "Origine hors dynastie : sans arbre",
+   "script": 81
+  },
+  {
+   "name": "Nurbanu Sultan",
+   "b": 1525,
+   "tree": "TR_OTT",
+   "reason": "Origine hors dynastie : sans arbre",
+   "script": 81
+  },
+  {
+   "name": "Kösem Sultan",
+   "b": 1589,
+   "tree": "TR_OTT",
+   "reason": "Origine hors dynastie : sans arbre",
+   "script": 81
   }
  ],
  "scripts": {
@@ -24914,6 +25341,14 @@
    "trees": [
     "Visconti (ITA)",
     "Sforza (ITA)"
+   ]
+  },
+  "81": {
+   "label": "Turquie — dynastie ottomane : d'Osman Ier au dernier calife Abdülmecid II",
+   "members": 40,
+   "rels": 43,
+   "trees": [
+    "Ottomans (TUR)"
    ]
   }
  },
@@ -42587,6 +43022,221 @@
    "f388aa57-8aca-54ed-9b7d-1973561af12f",
    "fd6fd47d-4dd9-5ba1-9213-291ed67f0708",
    "parent"
+  ],
+  [
+   "fbfb55f4-1079-55a9-94f9-5c909e08a1c4",
+   "44bd33d8-3121-5f86-89cb-1bab15495016",
+   "parent"
+  ],
+  [
+   "44bd33d8-3121-5f86-89cb-1bab15495016",
+   "46db7c56-2723-5b5c-883a-44b6e4d58854",
+   "parent"
+  ],
+  [
+   "46db7c56-2723-5b5c-883a-44b6e4d58854",
+   "95cba0fc-45b6-516f-9155-88faff91d7ed",
+   "parent"
+  ],
+  [
+   "95cba0fc-45b6-516f-9155-88faff91d7ed",
+   "cf3813ae-f1e9-5c37-9714-79f060229707",
+   "parent"
+  ],
+  [
+   "cf3813ae-f1e9-5c37-9714-79f060229707",
+   "4daa3092-1d1c-5105-aab4-a64a167b4015",
+   "parent"
+  ],
+  [
+   "4daa3092-1d1c-5105-aab4-a64a167b4015",
+   "eef84b46-131c-5387-9fb6-d728d607f06a",
+   "parent"
+  ],
+  [
+   "eef84b46-131c-5387-9fb6-d728d607f06a",
+   "82e03574-ba2b-5466-8a9f-2b56a7076481",
+   "parent"
+  ],
+  [
+   "82e03574-ba2b-5466-8a9f-2b56a7076481",
+   "8ce3b7ed-be3b-5bd2-9771-66b5361f85ff",
+   "parent"
+  ],
+  [
+   "8ce3b7ed-be3b-5bd2-9771-66b5361f85ff",
+   "b94a1745-f1c4-5660-a2a8-db89181e56ac",
+   "parent"
+  ],
+  [
+   "b94a1745-f1c4-5660-a2a8-db89181e56ac",
+   "51f9f838-8ff4-534c-b299-7961abcf055c",
+   "parent"
+  ],
+  [
+   "51f9f838-8ff4-534c-b299-7961abcf055c",
+   "7bc5f8ea-a297-5567-949a-d25296419d65",
+   "parent"
+  ],
+  [
+   "7bc5f8ea-a297-5567-949a-d25296419d65",
+   "9b78c578-e53d-5452-a4cc-e93e42bb804f",
+   "parent"
+  ],
+  [
+   "9b78c578-e53d-5452-a4cc-e93e42bb804f",
+   "45d0c580-8d0a-5ca0-b0b8-a5696f3f14ca",
+   "parent"
+  ],
+  [
+   "9b78c578-e53d-5452-a4cc-e93e42bb804f",
+   "426071c6-b5b3-51e8-92c2-96866bc39a1a",
+   "parent"
+  ],
+  [
+   "45d0c580-8d0a-5ca0-b0b8-a5696f3f14ca",
+   "30d3053a-f31f-5d1e-96b2-a696a9e7eecc",
+   "parent"
+  ],
+  [
+   "45d0c580-8d0a-5ca0-b0b8-a5696f3f14ca",
+   "783cd8d4-9d28-5e5f-bf0f-37e77d22a570",
+   "parent"
+  ],
+  [
+   "45d0c580-8d0a-5ca0-b0b8-a5696f3f14ca",
+   "be64783e-0803-529d-a94f-e0cb4ebffdaa",
+   "parent"
+  ],
+  [
+   "be64783e-0803-529d-a94f-e0cb4ebffdaa",
+   "30304cc6-b2c2-53ea-9473-9b02dbd0643c",
+   "parent"
+  ],
+  [
+   "be64783e-0803-529d-a94f-e0cb4ebffdaa",
+   "672b0838-6b29-5bfd-8a45-455b373f10e1",
+   "parent"
+  ],
+  [
+   "be64783e-0803-529d-a94f-e0cb4ebffdaa",
+   "2cb15bf5-ad59-5e5b-82cc-5e1343ea7c2f",
+   "parent"
+  ],
+  [
+   "30304cc6-b2c2-53ea-9473-9b02dbd0643c",
+   "5dbefe08-d801-52c6-a346-30cb61d8b49a",
+   "parent"
+  ],
+  [
+   "30304cc6-b2c2-53ea-9473-9b02dbd0643c",
+   "2f877346-b614-5bf9-be6a-68c265a8c4c2",
+   "parent"
+  ],
+  [
+   "5dbefe08-d801-52c6-a346-30cb61d8b49a",
+   "c9fe0838-1a81-59cb-8642-25fdc0fa0efb",
+   "parent"
+  ],
+  [
+   "5dbefe08-d801-52c6-a346-30cb61d8b49a",
+   "71056714-6537-5d67-9fbe-8a60548cc251",
+   "parent"
+  ],
+  [
+   "2f877346-b614-5bf9-be6a-68c265a8c4c2",
+   "d1fcf9e8-3f0b-5163-8dde-285a29653717",
+   "parent"
+  ],
+  [
+   "2f877346-b614-5bf9-be6a-68c265a8c4c2",
+   "1bfc8c10-b0f7-5394-937f-0e87a2728e24",
+   "parent"
+  ],
+  [
+   "d1fcf9e8-3f0b-5163-8dde-285a29653717",
+   "6b8f7878-bf65-5850-a572-3f6b3c923bcb",
+   "parent"
+  ],
+  [
+   "1bfc8c10-b0f7-5394-937f-0e87a2728e24",
+   "cb563f38-92c1-589b-8e24-09e551c6337b",
+   "parent"
+  ],
+  [
+   "1bfc8c10-b0f7-5394-937f-0e87a2728e24",
+   "0af31369-48af-571e-a6e7-4e69920ffb73",
+   "parent"
+  ],
+  [
+   "0af31369-48af-571e-a6e7-4e69920ffb73",
+   "fd96c722-fe19-56ae-851b-971c5f385707",
+   "parent"
+  ],
+  [
+   "0af31369-48af-571e-a6e7-4e69920ffb73",
+   "251cb877-3198-5553-8ab7-340fba17ad60",
+   "parent"
+  ],
+  [
+   "fd96c722-fe19-56ae-851b-971c5f385707",
+   "a8278c4a-dc5a-5e17-807b-dc02ab430de2",
+   "parent"
+  ],
+  [
+   "fd96c722-fe19-56ae-851b-971c5f385707",
+   "5b3b1ee2-97ca-5fb3-bb3d-59d6dacdb5fa",
+   "parent"
+  ],
+  [
+   "fd96c722-fe19-56ae-851b-971c5f385707",
+   "5ed99ea6-520b-573e-9cfa-bbca8d24f12f",
+   "parent"
+  ],
+  [
+   "fd96c722-fe19-56ae-851b-971c5f385707",
+   "b66e4589-34f9-5c79-9ffc-1d8c5cad73fb",
+   "parent"
+  ],
+  [
+   "251cb877-3198-5553-8ab7-340fba17ad60",
+   "c5a69aab-f917-5296-9809-ba3a99cf1f9b",
+   "parent"
+  ],
+  [
+   "b94a1745-f1c4-5660-a2a8-db89181e56ac",
+   "fce27cde-45c0-5d15-8fb9-6d8115b51b02",
+   "spouse"
+  ],
+  [
+   "fce27cde-45c0-5d15-8fb9-6d8115b51b02",
+   "51f9f838-8ff4-534c-b299-7961abcf055c",
+   "parent"
+  ],
+  [
+   "51f9f838-8ff4-534c-b299-7961abcf055c",
+   "d2909b59-68b1-5f00-90d9-a99f083b5ef3",
+   "spouse"
+  ],
+  [
+   "d2909b59-68b1-5f00-90d9-a99f083b5ef3",
+   "7bc5f8ea-a297-5567-949a-d25296419d65",
+   "parent"
+  ],
+  [
+   "45d0c580-8d0a-5ca0-b0b8-a5696f3f14ca",
+   "d3ec139f-6ac6-5c65-b45d-66bc46cb1c48",
+   "spouse"
+  ],
+  [
+   "d3ec139f-6ac6-5c65-b45d-66bc46cb1c48",
+   "783cd8d4-9d28-5e5f-bf0f-37e77d22a570",
+   "parent"
+  ],
+  [
+   "d3ec139f-6ac6-5c65-b45d-66bc46cb1c48",
+   "be64783e-0803-529d-a94f-e0cb4ebffdaa",
+   "parent"
   ]
  ],
  "dateflags": [
@@ -49624,6 +50274,55 @@
    "d": 1468,
    "note": "fille naturelle de Philippe-Marie",
    "script": 80
+  },
+  {
+   "name": "Osman Ier",
+   "b": 1258,
+   "d": 1326,
+   "note": "vers 1258",
+   "script": 81
+  },
+  {
+   "name": "Orhan Ier",
+   "b": 1281,
+   "d": 1362,
+   "note": "naissance vers 1281",
+   "script": 81
+  },
+  {
+   "name": "Mourad Ier",
+   "b": 1326,
+   "d": 1389,
+   "note": "naissance vers 1326",
+   "script": 81
+  },
+  {
+   "name": "Selim Ier",
+   "b": 1470,
+   "d": 1520,
+   "note": "naissance 1465-1470",
+   "script": 81
+  },
+  {
+   "name": "Hürrem Sultan (Roxelane)",
+   "b": 1502,
+   "d": 1558,
+   "note": "naissance vers 1502",
+   "script": 81
+  },
+  {
+   "name": "Nurbanu Sultan",
+   "b": 1525,
+   "d": 1583,
+   "note": "naissance vers 1525",
+   "script": 81
+  },
+  {
+   "name": "Kösem Sultan",
+   "b": 1589,
+   "d": 1651,
+   "note": "naissance vers 1589",
+   "script": 81
   }
  ],
  "pins": [
