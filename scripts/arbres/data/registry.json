@@ -25480,6 +25480,376 @@
    "title": "Grand-duc de Lituanie",
    "g": "h",
    "script": 96
+  },
+  "kg.taejo": {
+   "id": "61cc1040-2c52-5e24-b01f-b5fd0e3b4555",
+   "name": "Taejo (Wang Geon)",
+   "b": 877,
+   "d": 943,
+   "tree": "KR_GOR",
+   "title": "Fondateur de Goryeo (918-943)",
+   "g": "h",
+   "script": 97
+  },
+  "kg.hyejong": {
+   "id": "0ec04876-4d75-57dd-8881-76e420eb5d3f",
+   "name": "Hyejong (Goryeo)",
+   "b": 912,
+   "d": 945,
+   "tree": "KR_GOR",
+   "title": "Roi (943-945)",
+   "g": "h",
+   "script": 97
+  },
+  "kg.jeongjong1": {
+   "id": "7dba9dc2-60b3-5577-910a-3e5552a5c084",
+   "name": "Jeongjong I (Goryeo)",
+   "b": 923,
+   "d": 949,
+   "tree": "KR_GOR",
+   "title": "Roi (945-949)",
+   "g": "h",
+   "script": 97
+  },
+  "kg.gwangjong": {
+   "id": "f06aad33-f574-57e5-9e8b-8408c6c0b49c",
+   "name": "Gwangjong (Goryeo)",
+   "b": 925,
+   "d": 975,
+   "tree": "KR_GOR",
+   "title": "Roi (949-975)",
+   "g": "h",
+   "script": 97
+  },
+  "kg.gyeongjong": {
+   "id": "bb891b55-2d3f-5d73-a2a5-f5b4f9e05862",
+   "name": "Gyeongjong (Goryeo)",
+   "b": 955,
+   "d": 981,
+   "tree": "KR_GOR",
+   "title": "Roi (975-981)",
+   "g": "h",
+   "script": 97
+  },
+  "kg.seongjong": {
+   "id": "c905c044-50b3-5c21-b4b5-07fbf74263a5",
+   "name": "Seongjong (Goryeo)",
+   "b": 961,
+   "d": 997,
+   "tree": "KR_GOR",
+   "title": "Roi (981-997)",
+   "g": "h",
+   "script": 97
+  },
+  "kg.mokjong": {
+   "id": "c994cfb5-a6e7-5284-b400-55b898ba31a2",
+   "name": "Mokjong (Goryeo)",
+   "b": 980,
+   "d": 1009,
+   "tree": "KR_GOR",
+   "title": "Roi (997-1009)",
+   "g": "h",
+   "script": 97
+  },
+  "kg.hyeonjong": {
+   "id": "1136f18e-f42f-5366-9358-061789dbbc46",
+   "name": "Hyeonjong (Goryeo)",
+   "b": 992,
+   "d": 1031,
+   "tree": "KR_GOR",
+   "title": "Roi (1009-1031)",
+   "g": "h",
+   "script": 97
+  },
+  "kg.deokjong": {
+   "id": "d2491634-b975-5355-b765-00139d188563",
+   "name": "Deokjong (Goryeo)",
+   "b": 1016,
+   "d": 1034,
+   "tree": "KR_GOR",
+   "title": "Roi (1031-1034)",
+   "g": "h",
+   "script": 97
+  },
+  "kg.jeongjong2": {
+   "id": "c2781eae-716f-57c6-a87a-8e052c09cfac",
+   "name": "Jeongjong II (Goryeo)",
+   "b": 1018,
+   "d": 1046,
+   "tree": "KR_GOR",
+   "title": "Roi (1034-1046)",
+   "g": "h",
+   "script": 97
+  },
+  "kg.munjong": {
+   "id": "22250824-7be4-5595-9c1c-723aa22c80b4",
+   "name": "Munjong (Goryeo)",
+   "b": 1019,
+   "d": 1083,
+   "tree": "KR_GOR",
+   "title": "Roi (1046-1083)",
+   "g": "h",
+   "script": 97
+  },
+  "kg.sunjong": {
+   "id": "c9a65d8d-db36-534e-80b5-63bba6c7217d",
+   "name": "Sunjong (Goryeo)",
+   "b": 1047,
+   "d": 1083,
+   "tree": "KR_GOR",
+   "title": "Roi (1083)",
+   "g": "h",
+   "script": 97
+  },
+  "kg.seonjong": {
+   "id": "cf19ef77-a118-56b4-a143-c48e6dc0c11b",
+   "name": "Seonjong (Goryeo)",
+   "b": 1049,
+   "d": 1094,
+   "tree": "KR_GOR",
+   "title": "Roi (1083-1094)",
+   "g": "h",
+   "script": 97
+  },
+  "kg.heonjong": {
+   "id": "e313f9af-938e-5fd0-8dbd-96a39a9d2e5a",
+   "name": "Heonjong (Goryeo)",
+   "b": 1084,
+   "d": 1097,
+   "tree": "KR_GOR",
+   "title": "Roi (1094-1095)",
+   "g": "h",
+   "script": 97
+  },
+  "kg.sukjong": {
+   "id": "0a2df13c-4462-5360-9134-a89e8b614923",
+   "name": "Sukjong (Goryeo)",
+   "b": 1054,
+   "d": 1105,
+   "tree": "KR_GOR",
+   "title": "Roi (1095-1105)",
+   "g": "h",
+   "script": 97
+  },
+  "kg.yejong": {
+   "id": "4e6fa8bc-c6ea-558b-8331-e384088c8c9f",
+   "name": "Yejong (Goryeo)",
+   "b": 1079,
+   "d": 1122,
+   "tree": "KR_GOR",
+   "title": "Roi (1105-1122)",
+   "g": "h",
+   "script": 97
+  },
+  "kg.injong": {
+   "id": "aea4d6bf-3742-5a68-9c8b-3aa976068567",
+   "name": "Injong (Goryeo)",
+   "b": 1109,
+   "d": 1146,
+   "tree": "KR_GOR",
+   "title": "Roi (1122-1146)",
+   "g": "h",
+   "script": 97
+  },
+  "kg.uijong": {
+   "id": "18dbd929-f32f-53d3-9fc6-bda67655a1ca",
+   "name": "Uijong (Goryeo)",
+   "b": 1127,
+   "d": 1173,
+   "tree": "KR_GOR",
+   "title": "Roi (1146-1170), détrôné",
+   "g": "h",
+   "script": 97
+  },
+  "kg.myeongjong": {
+   "id": "c0b1db24-0a14-5723-b8ee-3fce701c2aab",
+   "name": "Myeongjong (Goryeo)",
+   "b": 1131,
+   "d": 1202,
+   "tree": "KR_GOR",
+   "title": "Roi (1170-1197), mis sur le trône par les généraux",
+   "g": "h",
+   "script": 97
+  },
+  "kg.sinjong": {
+   "id": "b5e99dc0-25fd-5ee2-a76f-b7fea1c66754",
+   "name": "Sinjong (Goryeo)",
+   "b": 1144,
+   "d": 1204,
+   "tree": "KR_GOR",
+   "title": "Roi (1197-1204)",
+   "g": "h",
+   "script": 97
+  },
+  "kg.huijong": {
+   "id": "4ec631df-17bf-5e97-8bbe-d18eca4fe5f4",
+   "name": "Huijong (Goryeo)",
+   "b": 1181,
+   "d": 1237,
+   "tree": "KR_GOR",
+   "title": "Roi (1204-1211)",
+   "g": "h",
+   "script": 97
+  },
+  "kg.gangjong": {
+   "id": "bc06060b-fb2b-5d2b-aff5-91bf64fa71ec",
+   "name": "Gangjong (Goryeo)",
+   "b": 1152,
+   "d": 1213,
+   "tree": "KR_GOR",
+   "title": "Roi (1211-1213)",
+   "g": "h",
+   "script": 97
+  },
+  "kg.gojong": {
+   "id": "37e3248d-34ba-5e2d-a0b3-cba09b10f583",
+   "name": "Gojong (Goryeo)",
+   "b": 1192,
+   "d": 1259,
+   "tree": "KR_GOR",
+   "title": "Roi (1213-1259), invasions mongoles",
+   "g": "h",
+   "script": 97
+  },
+  "kg.wonjong": {
+   "id": "b9422680-fea0-594f-9352-d7f5ecc5624c",
+   "name": "Wonjong (Goryeo)",
+   "b": 1219,
+   "d": 1274,
+   "tree": "KR_GOR",
+   "title": "Roi (1259-1274), paix avec les Mongols",
+   "g": "h",
+   "script": 97
+  },
+  "kg.chungnyeol": {
+   "id": "35cf7abc-783b-5eca-a915-bfc8e7e7e2cf",
+   "name": "Chungnyeol (Goryeo)",
+   "b": 1236,
+   "d": 1308,
+   "tree": "KR_GOR",
+   "title": "Roi (1274-1308), gendre de Kubilai",
+   "g": "h",
+   "script": 97
+  },
+  "kg.chungseon": {
+   "id": "57933a30-12e8-5e83-8e70-fb4655b20b15",
+   "name": "Chungseon (Goryeo)",
+   "b": 1275,
+   "d": 1325,
+   "tree": "KR_GOR",
+   "title": "Roi (1298, 1308-1313)",
+   "g": "h",
+   "script": 97
+  },
+  "kg.chungsuk": {
+   "id": "ba381500-eed8-56c0-b5b6-70f53dd5e2e1",
+   "name": "Chungsuk (Goryeo)",
+   "b": 1294,
+   "d": 1339,
+   "tree": "KR_GOR",
+   "title": "Roi (1313-1330, 1332-1339)",
+   "g": "h",
+   "script": 97
+  },
+  "kg.chunghye": {
+   "id": "67455130-db28-526f-802b-5c619be30a1f",
+   "name": "Chunghye (Goryeo)",
+   "b": 1315,
+   "d": 1344,
+   "tree": "KR_GOR",
+   "title": "Roi (1330-1332, 1339-1344)",
+   "g": "h",
+   "script": 97
+  },
+  "kg.chungmok": {
+   "id": "819d9420-cfb7-52ac-8f82-aa2a4dd71208",
+   "name": "Chungmok (Goryeo)",
+   "b": 1337,
+   "d": 1348,
+   "tree": "KR_GOR",
+   "title": "Roi (1344-1348)",
+   "g": "h",
+   "script": 97
+  },
+  "kg.chungjeong": {
+   "id": "b7def91e-2e1f-5e89-b7b4-4f35764e1189",
+   "name": "Chungjeong (Goryeo)",
+   "b": 1338,
+   "d": 1352,
+   "tree": "KR_GOR",
+   "title": "Roi (1349-1351)",
+   "g": "h",
+   "script": 97
+  },
+  "kg.gongmin": {
+   "id": "e677f8b7-64e3-5b25-99d3-557b4ede7478",
+   "name": "Gongmin (Goryeo)",
+   "b": 1330,
+   "d": 1374,
+   "tree": "KR_GOR",
+   "title": "Roi (1351-1374), libère Goryeo des Yuan",
+   "g": "h",
+   "script": 97
+  },
+  "kg.u": {
+   "id": "9d981fb7-511d-54ef-96f2-129c2cfb92e5",
+   "name": "U (Goryeo)",
+   "b": 1365,
+   "d": 1389,
+   "tree": "KR_GOR",
+   "title": "Roi (1374-1388), détrôné",
+   "g": "h",
+   "script": 97
+  },
+  "kg.chang": {
+   "id": "d2ae0aa7-0c00-5d7e-a821-5e4b6206365c",
+   "name": "Chang (Goryeo)",
+   "b": 1380,
+   "d": 1389,
+   "tree": "KR_GOR",
+   "title": "Roi (1388-1389), détrôné",
+   "g": "h",
+   "script": 97
+  },
+  "kg.gongyang": {
+   "id": "4d0776e3-1c39-5113-b464-86b4d541ac2f",
+   "name": "Gongyang (Goryeo)",
+   "b": 1345,
+   "d": 1394,
+   "tree": "KR_GOR",
+   "title": "Dernier roi de Goryeo (1389-1392)",
+   "g": "h",
+   "script": 97
+  },
+  "kg.daejong": {
+   "id": "ceb5fa47-1a17-5156-9182-7dc9dd6e33d6",
+   "name": "Daejong (Wang Uk, fils de Taejo)",
+   "b": null,
+   "d": 969,
+   "tree": "KR_GOR",
+   "title": "Père de Seongjong, roi à titre posthume",
+   "g": "h",
+   "script": 97
+  },
+  "kg.anjong": {
+   "id": "75fd5df1-0223-5933-aa91-92a030171020",
+   "name": "Anjong (Wang Uk, fils de Taejo)",
+   "b": null,
+   "d": 996,
+   "tree": "KR_GOR",
+   "title": "Père de Hyeonjong, roi à titre posthume",
+   "g": "h",
+   "script": 97
+  },
+  "kg.kyun": {
+   "id": "b8f5b49d-6a58-5bfd-a686-e4991121a569",
+   "name": "Prince Wang Kyun (Jeongwon)",
+   "b": null,
+   "d": null,
+   "tree": "KR_GOR",
+   "title": "Père de Gongyang",
+   "g": "h",
+   "script": 97
   }
  },
  "trees": {
@@ -26232,6 +26602,12 @@
    "country": "LTU",
    "dynasty": "Gediminides",
    "script": 96
+  },
+  "KR_GOR": {
+   "entry": "ae22758c-d1de-50a1-a76d-8cc43db80246",
+   "country": "KOR",
+   "dynasty": "Goryeo",
+   "script": 97
   }
  },
  "flags": [
@@ -31056,6 +31432,14 @@
    "rels": 13,
    "trees": [
     "Gediminides (LTU)"
+   ]
+  },
+  "97": {
+   "label": "Corée — dynastie Goryeo (Wang) de Taejo à Gongyang",
+   "members": 37,
+   "rels": 35,
+   "trees": [
+    "Goryeo (KOR)"
    ]
   }
  },
@@ -52078,6 +52462,181 @@
   [
    "b59daa60-c927-5fb0-b5cd-c00701bba5ac",
    "ba967f1a-1d50-599c-a5e4-7101de90325a",
+   "parent"
+  ],
+  [
+   "61cc1040-2c52-5e24-b01f-b5fd0e3b4555",
+   "0ec04876-4d75-57dd-8881-76e420eb5d3f",
+   "parent"
+  ],
+  [
+   "61cc1040-2c52-5e24-b01f-b5fd0e3b4555",
+   "7dba9dc2-60b3-5577-910a-3e5552a5c084",
+   "parent"
+  ],
+  [
+   "61cc1040-2c52-5e24-b01f-b5fd0e3b4555",
+   "f06aad33-f574-57e5-9e8b-8408c6c0b49c",
+   "parent"
+  ],
+  [
+   "61cc1040-2c52-5e24-b01f-b5fd0e3b4555",
+   "ceb5fa47-1a17-5156-9182-7dc9dd6e33d6",
+   "parent"
+  ],
+  [
+   "61cc1040-2c52-5e24-b01f-b5fd0e3b4555",
+   "75fd5df1-0223-5933-aa91-92a030171020",
+   "parent"
+  ],
+  [
+   "f06aad33-f574-57e5-9e8b-8408c6c0b49c",
+   "bb891b55-2d3f-5d73-a2a5-f5b4f9e05862",
+   "parent"
+  ],
+  [
+   "ceb5fa47-1a17-5156-9182-7dc9dd6e33d6",
+   "c905c044-50b3-5c21-b4b5-07fbf74263a5",
+   "parent"
+  ],
+  [
+   "bb891b55-2d3f-5d73-a2a5-f5b4f9e05862",
+   "c994cfb5-a6e7-5284-b400-55b898ba31a2",
+   "parent"
+  ],
+  [
+   "75fd5df1-0223-5933-aa91-92a030171020",
+   "1136f18e-f42f-5366-9358-061789dbbc46",
+   "parent"
+  ],
+  [
+   "1136f18e-f42f-5366-9358-061789dbbc46",
+   "d2491634-b975-5355-b765-00139d188563",
+   "parent"
+  ],
+  [
+   "1136f18e-f42f-5366-9358-061789dbbc46",
+   "c2781eae-716f-57c6-a87a-8e052c09cfac",
+   "parent"
+  ],
+  [
+   "1136f18e-f42f-5366-9358-061789dbbc46",
+   "22250824-7be4-5595-9c1c-723aa22c80b4",
+   "parent"
+  ],
+  [
+   "22250824-7be4-5595-9c1c-723aa22c80b4",
+   "c9a65d8d-db36-534e-80b5-63bba6c7217d",
+   "parent"
+  ],
+  [
+   "22250824-7be4-5595-9c1c-723aa22c80b4",
+   "cf19ef77-a118-56b4-a143-c48e6dc0c11b",
+   "parent"
+  ],
+  [
+   "22250824-7be4-5595-9c1c-723aa22c80b4",
+   "0a2df13c-4462-5360-9134-a89e8b614923",
+   "parent"
+  ],
+  [
+   "cf19ef77-a118-56b4-a143-c48e6dc0c11b",
+   "e313f9af-938e-5fd0-8dbd-96a39a9d2e5a",
+   "parent"
+  ],
+  [
+   "0a2df13c-4462-5360-9134-a89e8b614923",
+   "4e6fa8bc-c6ea-558b-8331-e384088c8c9f",
+   "parent"
+  ],
+  [
+   "4e6fa8bc-c6ea-558b-8331-e384088c8c9f",
+   "aea4d6bf-3742-5a68-9c8b-3aa976068567",
+   "parent"
+  ],
+  [
+   "aea4d6bf-3742-5a68-9c8b-3aa976068567",
+   "18dbd929-f32f-53d3-9fc6-bda67655a1ca",
+   "parent"
+  ],
+  [
+   "aea4d6bf-3742-5a68-9c8b-3aa976068567",
+   "c0b1db24-0a14-5723-b8ee-3fce701c2aab",
+   "parent"
+  ],
+  [
+   "aea4d6bf-3742-5a68-9c8b-3aa976068567",
+   "b5e99dc0-25fd-5ee2-a76f-b7fea1c66754",
+   "parent"
+  ],
+  [
+   "b5e99dc0-25fd-5ee2-a76f-b7fea1c66754",
+   "4ec631df-17bf-5e97-8bbe-d18eca4fe5f4",
+   "parent"
+  ],
+  [
+   "c0b1db24-0a14-5723-b8ee-3fce701c2aab",
+   "bc06060b-fb2b-5d2b-aff5-91bf64fa71ec",
+   "parent"
+  ],
+  [
+   "bc06060b-fb2b-5d2b-aff5-91bf64fa71ec",
+   "37e3248d-34ba-5e2d-a0b3-cba09b10f583",
+   "parent"
+  ],
+  [
+   "37e3248d-34ba-5e2d-a0b3-cba09b10f583",
+   "b9422680-fea0-594f-9352-d7f5ecc5624c",
+   "parent"
+  ],
+  [
+   "b9422680-fea0-594f-9352-d7f5ecc5624c",
+   "35cf7abc-783b-5eca-a915-bfc8e7e7e2cf",
+   "parent"
+  ],
+  [
+   "35cf7abc-783b-5eca-a915-bfc8e7e7e2cf",
+   "57933a30-12e8-5e83-8e70-fb4655b20b15",
+   "parent"
+  ],
+  [
+   "57933a30-12e8-5e83-8e70-fb4655b20b15",
+   "ba381500-eed8-56c0-b5b6-70f53dd5e2e1",
+   "parent"
+  ],
+  [
+   "ba381500-eed8-56c0-b5b6-70f53dd5e2e1",
+   "67455130-db28-526f-802b-5c619be30a1f",
+   "parent"
+  ],
+  [
+   "ba381500-eed8-56c0-b5b6-70f53dd5e2e1",
+   "e677f8b7-64e3-5b25-99d3-557b4ede7478",
+   "parent"
+  ],
+  [
+   "67455130-db28-526f-802b-5c619be30a1f",
+   "819d9420-cfb7-52ac-8f82-aa2a4dd71208",
+   "parent"
+  ],
+  [
+   "67455130-db28-526f-802b-5c619be30a1f",
+   "b7def91e-2e1f-5e89-b7b4-4f35764e1189",
+   "parent"
+  ],
+  [
+   "e677f8b7-64e3-5b25-99d3-557b4ede7478",
+   "9d981fb7-511d-54ef-96f2-129c2cfb92e5",
+   "parent"
+  ],
+  [
+   "9d981fb7-511d-54ef-96f2-129c2cfb92e5",
+   "d2ae0aa7-0c00-5d7e-a821-5e4b6206365c",
+   "parent"
+  ],
+  [
+   "b8f5b49d-6a58-5bfd-a686-e4991121a569",
+   "4d0776e3-1c39-5113-b464-86b4d541ac2f",
    "parent"
   ]
  ],

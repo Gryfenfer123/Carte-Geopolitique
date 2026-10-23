@@ -2,6 +2,8 @@
 
 ## Dernières nouvelles (la plus récente en haut)
 
+- 2026-10-23 — v97 — Goryeo : 34 rois de Taejo à Gongyang + 3 intermédiaires (Daejong, Anjong, prince Wang Kyun). Sources : pages Wikipédia des rois.
+
 - 2026-10-23 — v96 : Lituanie — Gediminides de Gediminas à Vytautas et Švitrigaila (9 membres, nouvel arbre). Écart d'âge Algirdas/Švitrigaila (74 ans) à relire
 
 - 2026-10-23 — v95 : Italie — Este (Ferrare), Gonzague (Mantoue), Farnèse (Parme) (40 membres, 3 nouveaux arbres)
@@ -71,7 +73,7 @@
 
 Code : `src/genealogy.ts`, `genealogyLayers.ts`, `genealogyBus.ts`, `genealogyLod.ts/.css`, `genealogyLayersWorker.ts`,
 `genealogyLayout.ts`, `genealogyRouting.ts`. Outils de remplissage : [`scripts/arbres/`](../../scripts/arbres/README.md).
-Prochaine migration : **arbres_v97** (`supabase/arbres/arbres_v97.sql`) — générateur : `Gen(97, "…")`.  (v96 livrée, à exécuter par Martin si ce n'est pas déjà fait.)
+Prochaine migration : **arbres_v98** (`supabase/arbres/arbres_v98.sql`) — générateur : `Gen(98, "…")`.  (v97 livrée, à exécuter par Martin si ce n'est pas déjà fait.)
 
 ## Règles de contenu (décidées par Martin — ne pas rouvrir)
 - Un pays n'a que les dynasties qui ont **régné sur lui**. Dynastie étrangère : branche principale dans son pays

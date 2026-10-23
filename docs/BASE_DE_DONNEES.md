@@ -166,4 +166,5 @@ RLS**. Règles :
 | arbres_v94 | arbres_v94 : Hauteville (nouvel arbre, 23 membres) |
 | arbres_v95 | arbres_v95 : Este, Gonzague, Farnèse (3 nouveaux arbres, 40 membres) |
 | arbres_v96 | arbres_v96 : Gediminides, Lituanie (nouvel arbre, 9 membres) |
+| arbres_v97 | v97 : Corée, dynastie Goryeo (37 membres, nouvel arbre KR_GOR) |
 | `data_owid_load.sql` + `owid_chunks/` | Chargement des données d'indicateurs (rejouable, upserts) — à exécuter après v1 à v7 |
