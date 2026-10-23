@@ -1,19 +1,20 @@
 -- Audit des droits (LECTURE SEULE : ne modifie rien). À coller dans Supabase -> SQL Editor -> Run.
--- Chaque bloc donne un tableau : copie-colle les résultats (ou une capture d'écran) dans la conversation.
+-- Une seule requête, un seul résultat : copie la cellule « audit » et colle-la dans la conversation.
+-- (L'éditeur de Supabase n'affiche que le résultat de la DERNIÈRE requête : c'est pourquoi tout est regroupé ici.)
 
--- 1) Quelles tables ont la sécurité par lignes (RLS) activée ?
-select c.relname as table, c.relrowsecurity as rls_active
-from pg_class c join pg_namespace n on n.oid = c.relnamespace
-where n.nspname = 'public' and c.relkind = 'r'
-order by c.relname;
-
--- 2) Toutes les règles d'accès (qui peut lire / écrire quoi)
-select tablename as table, policyname as regle, cmd as action, roles, qual as condition_lecture, with_check as condition_ecriture
-from pg_policies where schemaname in ('public','storage')
-order by tablename, cmd, policyname;
-
--- 3) Les comptes existants et leur rôle (sans e-mail)
-select role, count(*) as nombre from public.profiles group by role order by role;
-
--- 4) La fonction qui décide qui est administrateur
-select pg_get_functiondef('public.is_admin()'::regprocedure);
+select json_build_object(
+  'tables_rls', (
+    select json_agg(json_build_object('table', c.relname, 'rls', c.relrowsecurity) order by c.relname)
+    from pg_class c join pg_namespace n on n.oid = c.relnamespace
+    where n.nspname = 'public' and c.relkind = 'r'
+  ),
+  'regles', (
+    select json_agg(json_build_object('table', tablename, 'regle', policyname, 'action', cmd, 'roles', roles,
+                                      'lecture', qual, 'ecriture', with_check) order by tablename, cmd, policyname)
+    from pg_policies where schemaname in ('public', 'storage')
+  ),
+  'comptes_par_role', (
+    select json_agg(json_build_object('role', role, 'nombre', n))
+    from (select role, count(*) as n from public.profiles group by role) t
+  )
+) as audit;
