@@ -2,6 +2,8 @@
 
 ## Dernières nouvelles (la plus récente en haut)
 
+- 2026-10-23 — v67 : Luxembourg + Carolingiens complétés (12 membres). Allemagne : reste les petites maisons royales (Conradiens, Supplinbourg, Nassau, Schwarzburg).
+
 - 2026-10-23 — v66 : Hohenstaufen/Ottoniens/Saliens complétés (13 membres). Reste : Luxembourg, Carolingiens, puis autres pays d'Europe.
 
 - 2026-10-23 — arbres_v65 livrée (Habsbourg : branche de Toscane, 2 isolées reliées, parents de Marie-Anne de Bavière et Jeanne-Sophie, dates d'Éléonore de Gonzague/d'Autriche ; Habsbourg et Habsbourg-Lorraine remis en ordre). Prochaine étape : Luxembourg, Hohenstaufen, Ottoniens, Saliens, Carolingiens.
@@ -17,7 +19,7 @@
 
 Code : `src/genealogy.ts`, `genealogyLayers.ts`, `genealogyBus.ts`, `genealogyLod.ts/.css`, `genealogyLayersWorker.ts`,
 `genealogyLayout.ts`, `genealogyRouting.ts`. Outils de remplissage : [`scripts/arbres/`](../../scripts/arbres/README.md).
-Prochaine migration : **arbres_v67** (`supabase/arbres/arbres_v67.sql`) — générateur : `Gen(67, "…")`.  (v66 livrée, à exécuter par Martin si ce n'est pas déjà fait.)
+Prochaine migration : **arbres_v68** (`supabase/arbres/arbres_v68.sql`) — générateur : `Gen(68, "…")`.  (v67 livrée, à exécuter par Martin si ce n'est pas déjà fait.)
 
 ## Règles de contenu (décidées par Martin — ne pas rouvrir)
 - Un pays n'a que les dynasties qui ont **régné sur lui**. Dynastie étrangère : branche principale dans son pays

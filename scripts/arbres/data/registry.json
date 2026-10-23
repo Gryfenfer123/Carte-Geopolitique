@@ -13510,6 +13510,126 @@
    "title": "Roi d'Italie",
    "g": "h",
    "script": 66
+  },
+  "lx.henri5": {
+   "id": "576f32f6-3584-5128-a9c3-d894ce79043b",
+   "name": "Henri V de Luxembourg",
+   "b": 1216,
+   "d": 1281,
+   "tree": "DE_LUX",
+   "title": "Comte de Luxembourg",
+   "g": "h",
+   "script": 67
+  },
+  "lx.marg_bar": {
+   "id": "fcb9f3c1-6f97-507c-b78b-cb487b11142b",
+   "name": "Marguerite de Bar",
+   "b": null,
+   "d": null,
+   "tree": "DE_LUX",
+   "title": "Comtesse de Luxembourg",
+   "g": "f",
+   "script": 67
+  },
+  "lx.marg_hu": {
+   "id": "008667ae-6892-51bc-bcf5-428d05a9655f",
+   "name": "Marguerite de Bohême (reine de Hongrie)",
+   "b": 1335,
+   "d": 1349,
+   "tree": "DE_LUX",
+   "title": "Reine de Hongrie",
+   "g": "f",
+   "script": 67
+  },
+  "lx.jean_gor": {
+   "id": "32ab620c-46df-5a1e-ae89-0c34cbd22ff5",
+   "name": "Jean de Görlitz",
+   "b": 1370,
+   "d": 1396,
+   "tree": "DE_LUX",
+   "title": "Duc de Görlitz",
+   "g": "h",
+   "script": 67
+  },
+  "lx.richarde": {
+   "id": "03bdb010-3b63-5f8a-9f7f-a594e1f31372",
+   "name": "Richarde de Mecklembourg",
+   "b": null,
+   "d": 1400,
+   "tree": "DE_LUX",
+   "title": "Duchesse de Görlitz",
+   "g": "f",
+   "script": 67
+  },
+  "lx.elis_gor": {
+   "id": "d9c323b1-57e3-52eb-ad40-e93b02feeab7",
+   "name": "Élisabeth de Görlitz",
+   "b": 1390,
+   "d": 1451,
+   "tree": "DE_LUX",
+   "title": "Duchesse de Luxembourg",
+   "g": "f",
+   "script": 67
+  },
+  "lx.marg_nur": {
+   "id": "18fc01e8-6058-5bdf-9651-a91e5a5f7971",
+   "name": "Marguerite de Bohême (burgravine de Nuremberg)",
+   "b": 1373,
+   "d": 1410,
+   "tree": "DE_LUX",
+   "title": "Burgravine de Nuremberg",
+   "g": "f",
+   "script": 67
+  },
+  "ca.hildegard": {
+   "id": "ee857847-ce76-54cc-8a06-a1a1ae85a7aa",
+   "name": "Hildegarde de Germanie",
+   "b": 828,
+   "d": 856,
+   "tree": "DE_CAR",
+   "title": "Abbesse du Fraumünster",
+   "g": "f",
+   "script": 67
+  },
+  "ca.bertha": {
+   "id": "06dcab2d-fa90-59df-ad62-23f94451464c",
+   "name": "Berthe de Germanie",
+   "b": null,
+   "d": 877,
+   "tree": "DE_CAR",
+   "title": "Abbesse du Fraumünster",
+   "g": "f",
+   "script": 67
+  },
+  "ca.irmgard": {
+   "id": "5c31d956-8481-5a6a-8141-196b058c41a0",
+   "name": "Irmengarde de Chiemsee",
+   "b": null,
+   "d": 866,
+   "tree": "DE_CAR",
+   "title": "Abbesse de Chiemsee",
+   "g": "f",
+   "script": 67
+  },
+  "ca.zwent": {
+   "id": "5213b631-b2dd-56e5-8662-d2c348e45e69",
+   "name": "Zwentibold",
+   "b": 870,
+   "d": 900,
+   "tree": "DE_CAR",
+   "title": "Roi de Lotharingie",
+   "g": "h",
+   "script": 67
+  },
+  "ca.oda_sax": {
+   "id": "5f527e41-831c-5fcb-beb1-49747f361adb",
+   "name": "Oda de Saxe",
+   "b": null,
+   "d": null,
+   "tree": "DE_OTT",
+   "title": "Reine de Lotharingie",
+   "g": "f",
+   "script": 67
   }
  },
  "trees": {
@@ -13961,6 +14081,12 @@
    "entry": "19aed0d5-8c4a-4125-b821-8fc6bc357dab",
    "country": "DEU",
    "dynasty": "Hohenstaufen",
+   "script": null
+  },
+  "DE_CAR": {
+   "entry": "fbb1f258-25db-4dd9-95a1-32a99045444f",
+   "country": "DEU",
+   "dynasty": "Carolingiens",
    "script": null
   }
  },
@@ -16918,6 +17044,20 @@
    "tree": "DE_OTT",
    "reason": "Maison de Wessex : sans arbre ici",
    "script": 66
+  },
+  {
+   "name": "Marguerite de Bar",
+   "b": null,
+   "tree": "DE_LUX",
+   "reason": "Maison de Bar : sans arbre",
+   "script": 67
+  },
+  {
+   "name": "Richarde de Mecklembourg",
+   "b": null,
+   "tree": "DE_LUX",
+   "reason": "Maison de Mecklembourg : sans arbre",
+   "script": 67
   }
  ],
  "scripts": {
@@ -17150,6 +17290,12 @@
    "label": "Allemagne — petites dynasties : Hohenstaufen (enfants de Barberousse, Conradin, Manfred), Ottoniens, Saliens",
    "members": 13,
    "rels": 23,
+   "trees": []
+  },
+  "67": {
+   "label": "Allemagne — Luxembourg (ascendance de Henri VI, enfants de Charles IV) et Carolingiens de Germanie (enfants de Louis le Germanique, Zwentibold)",
+   "members": 12,
+   "rels": 22,
    "trees": []
   }
  },
@@ -28513,6 +28659,116 @@
    "04dd1dfb-28c9-4504-8721-84290d799bf7",
    "dba4d024-cc5f-5a3c-b8f1-8a6ff17b0a0c",
    "parent"
+  ],
+  [
+   "576f32f6-3584-5128-a9c3-d894ce79043b",
+   "fcb9f3c1-6f97-507c-b78b-cb487b11142b",
+   "spouse"
+  ],
+  [
+   "576f32f6-3584-5128-a9c3-d894ce79043b",
+   "22e11696-0645-4e59-b0a8-89ea28e5decb",
+   "parent"
+  ],
+  [
+   "fcb9f3c1-6f97-507c-b78b-cb487b11142b",
+   "22e11696-0645-4e59-b0a8-89ea28e5decb",
+   "parent"
+  ],
+  [
+   "233cbc8c-5e62-4ebb-ad94-02c93558e4c2",
+   "008667ae-6892-51bc-bcf5-428d05a9655f",
+   "parent"
+  ],
+  [
+   "c4b5e199-023e-413d-b1aa-16c200dee630",
+   "008667ae-6892-51bc-bcf5-428d05a9655f",
+   "parent"
+  ],
+  [
+   "008667ae-6892-51bc-bcf5-428d05a9655f",
+   "135dac09-95b3-512d-9e2d-bce817e58469",
+   "spouse"
+  ],
+  [
+   "233cbc8c-5e62-4ebb-ad94-02c93558e4c2",
+   "32ab620c-46df-5a1e-ae89-0c34cbd22ff5",
+   "parent"
+  ],
+  [
+   "eaa833a2-8bc7-4bbc-a721-d3c3420fd0f3",
+   "32ab620c-46df-5a1e-ae89-0c34cbd22ff5",
+   "parent"
+  ],
+  [
+   "32ab620c-46df-5a1e-ae89-0c34cbd22ff5",
+   "03bdb010-3b63-5f8a-9f7f-a594e1f31372",
+   "spouse"
+  ],
+  [
+   "32ab620c-46df-5a1e-ae89-0c34cbd22ff5",
+   "d9c323b1-57e3-52eb-ad40-e93b02feeab7",
+   "parent"
+  ],
+  [
+   "03bdb010-3b63-5f8a-9f7f-a594e1f31372",
+   "d9c323b1-57e3-52eb-ad40-e93b02feeab7",
+   "parent"
+  ],
+  [
+   "233cbc8c-5e62-4ebb-ad94-02c93558e4c2",
+   "18fc01e8-6058-5bdf-9651-a91e5a5f7971",
+   "parent"
+  ],
+  [
+   "eaa833a2-8bc7-4bbc-a721-d3c3420fd0f3",
+   "18fc01e8-6058-5bdf-9651-a91e5a5f7971",
+   "parent"
+  ],
+  [
+   "914f0473-6ac9-4109-886d-9e2fbec54dd3",
+   "ee857847-ce76-54cc-8a06-a1a1ae85a7aa",
+   "parent"
+  ],
+  [
+   "06f4496e-ddf5-4da4-9dd1-521987182138",
+   "ee857847-ce76-54cc-8a06-a1a1ae85a7aa",
+   "parent"
+  ],
+  [
+   "914f0473-6ac9-4109-886d-9e2fbec54dd3",
+   "06dcab2d-fa90-59df-ad62-23f94451464c",
+   "parent"
+  ],
+  [
+   "06f4496e-ddf5-4da4-9dd1-521987182138",
+   "06dcab2d-fa90-59df-ad62-23f94451464c",
+   "parent"
+  ],
+  [
+   "914f0473-6ac9-4109-886d-9e2fbec54dd3",
+   "5c31d956-8481-5a6a-8141-196b058c41a0",
+   "parent"
+  ],
+  [
+   "06f4496e-ddf5-4da4-9dd1-521987182138",
+   "5c31d956-8481-5a6a-8141-196b058c41a0",
+   "parent"
+  ],
+  [
+   "f20ba802-bd64-487e-9e48-151536453f69",
+   "5213b631-b2dd-56e5-8662-d2c348e45e69",
+   "parent"
+  ],
+  [
+   "bf39b729-2c4d-45ea-979c-ce768022f803",
+   "5f527e41-831c-5fcb-beb1-49747f361adb",
+   "parent"
+  ],
+  [
+   "5213b631-b2dd-56e5-8662-d2c348e45e69",
+   "5f527e41-831c-5fcb-beb1-49747f361adb",
+   "spouse"
   ]
  ],
  "dateflags": [
@@ -34045,6 +34301,48 @@
    "d": null,
    "note": "page Henri IV ne donne pas les dates",
    "script": 66
+  },
+  {
+   "name": "Marguerite de Bar",
+   "b": null,
+   "d": null,
+   "note": "dates non données par la page de Henri V",
+   "script": 67
+  },
+  {
+   "name": "Richarde de Mecklembourg",
+   "b": null,
+   "d": 1400,
+   "note": "naissance non donnée",
+   "script": 67
+  },
+  {
+   "name": "Berthe de Germanie",
+   "b": null,
+   "d": 877,
+   "note": "naissance non donnée",
+   "script": 67
+  },
+  {
+   "name": "Irmengarde de Chiemsee",
+   "b": null,
+   "d": 866,
+   "note": "naissance non donnée",
+   "script": 67
+  },
+  {
+   "name": "Zwentibold",
+   "b": 870,
+   "d": 900,
+   "note": "naissance vers 870",
+   "script": 67
+  },
+  {
+   "name": "Oda de Saxe",
+   "b": null,
+   "d": null,
+   "note": "dates non données",
+   "script": 67
   }
  ],
  "pins": [
