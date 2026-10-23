@@ -101,6 +101,7 @@ class Gen:
         t = dict(key=key, country=country, dynasty=dynasty, entry=entry, new=entry is None,
                  section_title=section_title or dynasty)
         if entry is None:
+            print(f'>>> NOUVEL ARBRE créé : {key} ({dynasty}) — vérifier qu\'il n\'existe pas déjà (sinon passer entry=E(...))')
             t['entry'] = uid('tree:' + key)
             t['section'] = uid('section:' + key)
         else:
