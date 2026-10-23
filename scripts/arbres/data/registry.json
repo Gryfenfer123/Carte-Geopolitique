@@ -23680,6 +23680,486 @@
    "title": "6e épouse d'Henri VIII",
    "g": "f",
    "script": 90
+  },
+  "by.basil1": {
+   "id": "b0e457c7-62f1-51b4-b04a-3977ebf0de45",
+   "name": "Basile Ier",
+   "b": 811,
+   "d": 886,
+   "tree": "BY_EMP",
+   "title": "Empereur byzantin",
+   "g": "h",
+   "script": 91
+  },
+  "by.leo6": {
+   "id": "bf02116b-7ce5-5bfd-b61b-490fa22b3b37",
+   "name": "Léon VI",
+   "b": 866,
+   "d": 912,
+   "tree": "BY_EMP",
+   "title": "Empereur byzantin",
+   "g": "h",
+   "script": 91
+  },
+  "by.alexander": {
+   "id": "521b8ec7-ca53-5a39-bbfe-e176d608c68d",
+   "name": "Alexandre",
+   "b": 870,
+   "d": 913,
+   "tree": "BY_EMP",
+   "title": "Empereur byzantin",
+   "g": "h",
+   "script": 91
+  },
+  "by.const7": {
+   "id": "ad5778d8-6593-580a-ab5f-e14ff0e58e51",
+   "name": "Constantin VII Porphyrogénète",
+   "b": 905,
+   "d": 959,
+   "tree": "BY_EMP",
+   "title": "Empereur byzantin",
+   "g": "h",
+   "script": 91
+  },
+  "by.romanos1": {
+   "id": "6247fa62-f88f-5ce1-a548-32ff61245022",
+   "name": "Romain Ier Lécapène",
+   "b": null,
+   "d": 948,
+   "tree": "BY_EMP",
+   "title": "Empereur byzantin",
+   "g": "h",
+   "script": 91
+  },
+  "by.romanos2": {
+   "id": "3951bb06-7e64-55dd-86f9-e7c8cba03498",
+   "name": "Romain II",
+   "b": 938,
+   "d": 963,
+   "tree": "BY_EMP",
+   "title": "Empereur byzantin",
+   "g": "h",
+   "script": 91
+  },
+  "by.nikephoros2": {
+   "id": "a6d5f4da-e59d-520e-ae27-590f3288759c",
+   "name": "Nicéphore II Phocas",
+   "b": 912,
+   "d": 969,
+   "tree": "BY_EMP",
+   "title": "Empereur byzantin",
+   "g": "h",
+   "script": 91
+  },
+  "by.john1": {
+   "id": "96ffef2c-2a32-5ca0-bed1-0d69d4c00ed0",
+   "name": "Jean Ier Tzimiskès",
+   "b": 925,
+   "d": 976,
+   "tree": "BY_EMP",
+   "title": "Empereur byzantin",
+   "g": "h",
+   "script": 91
+  },
+  "by.basil2": {
+   "id": "f9fc3660-fdb2-5187-8543-54a9662cdc06",
+   "name": "Basile II",
+   "b": 958,
+   "d": 1025,
+   "tree": "BY_EMP",
+   "title": "Empereur byzantin",
+   "g": "h",
+   "script": 91
+  },
+  "by.const8": {
+   "id": "df0f37d8-35fc-5afa-8ec5-e2245d798950",
+   "name": "Constantin VIII",
+   "b": 960,
+   "d": 1028,
+   "tree": "BY_EMP",
+   "title": "Empereur byzantin",
+   "g": "h",
+   "script": 91
+  },
+  "by.romanos3": {
+   "id": "8bd16c09-2efa-5e75-a7b0-c90340f74af1",
+   "name": "Romain III Argyre",
+   "b": 968,
+   "d": 1034,
+   "tree": "BY_EMP",
+   "title": "Empereur byzantin",
+   "g": "h",
+   "script": 91
+  },
+  "by.michael4": {
+   "id": "5da4451b-ff41-5de0-af47-9cbc2b37d01b",
+   "name": "Michel IV le Paphlagonien",
+   "b": 1010,
+   "d": 1041,
+   "tree": "BY_EMP",
+   "title": "Empereur byzantin",
+   "g": "h",
+   "script": 91
+  },
+  "by.michael5": {
+   "id": "729c38c4-bffc-5fe7-b06f-43103979b5b0",
+   "name": "Michel V Calaphate",
+   "b": 1015,
+   "d": 1042,
+   "tree": "BY_EMP",
+   "title": "Empereur byzantin",
+   "g": "h",
+   "script": 91
+  },
+  "by.const9": {
+   "id": "6c5be58b-788e-5a91-ae4c-a6498c1f659f",
+   "name": "Constantin IX Monomaque",
+   "b": 1000,
+   "d": 1055,
+   "tree": "BY_EMP",
+   "title": "Empereur byzantin",
+   "g": "h",
+   "script": 91
+  },
+  "by.michael6": {
+   "id": "dfbf5c5a-cbba-5d9d-b6aa-3c33558cab91",
+   "name": "Michel VI Stratiotikos",
+   "b": null,
+   "d": null,
+   "tree": "BY_EMP",
+   "title": "Empereur byzantin",
+   "g": "h",
+   "script": 91
+  },
+  "by.isaac1": {
+   "id": "3d896278-26b6-5ce0-bf88-2c3da8370004",
+   "name": "Isaac Ier Comnène",
+   "b": 1005,
+   "d": 1061,
+   "tree": "BY_EMP",
+   "title": "Empereur byzantin",
+   "g": "h",
+   "script": 91
+  },
+  "by.const10": {
+   "id": "cfff8cbd-4f2e-58f7-b2ae-e3157a4507ee",
+   "name": "Constantin X Doukas",
+   "b": 1006,
+   "d": 1067,
+   "tree": "BY_EMP",
+   "title": "Empereur byzantin",
+   "g": "h",
+   "script": 91
+  },
+  "by.romanos4": {
+   "id": "56719fce-5494-5e17-90b6-1a0f94628ace",
+   "name": "Romain IV Diogène",
+   "b": 1032,
+   "d": 1072,
+   "tree": "BY_EMP",
+   "title": "Empereur byzantin",
+   "g": "h",
+   "script": 91
+  },
+  "by.michael7": {
+   "id": "4d8ea4ff-49ba-5c46-bd0b-8c11b8864001",
+   "name": "Michel VII Doukas",
+   "b": 1050,
+   "d": 1090,
+   "tree": "BY_EMP",
+   "title": "Empereur byzantin",
+   "g": "h",
+   "script": 91
+  },
+  "by.nikephoros3": {
+   "id": "2ce9af56-61e7-5ce8-9505-b9bb0f84b2d8",
+   "name": "Nicéphore III Botaniatès",
+   "b": 1001,
+   "d": 1081,
+   "tree": "BY_EMP",
+   "title": "Empereur byzantin",
+   "g": "h",
+   "script": 91
+  },
+  "by.alexios1": {
+   "id": "00d742cb-902e-51ee-835a-8610daf5d072",
+   "name": "Alexis Ier Comnène",
+   "b": 1056,
+   "d": 1118,
+   "tree": "BY_EMP",
+   "title": "Empereur byzantin",
+   "g": "h",
+   "script": 91
+  },
+  "by.john2": {
+   "id": "6f0e73ad-ed84-532d-bc04-22a37578e3e4",
+   "name": "Jean II Comnène",
+   "b": 1087,
+   "d": 1143,
+   "tree": "BY_EMP",
+   "title": "Empereur byzantin",
+   "g": "h",
+   "script": 91
+  },
+  "by.manuel1": {
+   "id": "f7db7760-75bf-5691-907d-7ef999604057",
+   "name": "Manuel Ier Comnène",
+   "b": 1118,
+   "d": 1180,
+   "tree": "BY_EMP",
+   "title": "Empereur byzantin",
+   "g": "h",
+   "script": 91
+  },
+  "by.alexios2": {
+   "id": "6d9dc4fb-a394-5905-b0cd-8c81623ee131",
+   "name": "Alexis II Comnène",
+   "b": 1169,
+   "d": 1183,
+   "tree": "BY_EMP",
+   "title": "Empereur byzantin",
+   "g": "h",
+   "script": 91
+  },
+  "by.andronikos1": {
+   "id": "7f04927c-98f4-555d-9535-7a8192954864",
+   "name": "Andronic Ier Comnène",
+   "b": 1118,
+   "d": 1185,
+   "tree": "BY_EMP",
+   "title": "Empereur byzantin",
+   "g": "h",
+   "script": 91
+  },
+  "by.isaac2": {
+   "id": "4f23604e-039b-58b3-9a3e-3efc5c32383f",
+   "name": "Isaac II Ange",
+   "b": 1156,
+   "d": 1204,
+   "tree": "BY_EMP",
+   "title": "Empereur byzantin",
+   "g": "h",
+   "script": 91
+  },
+  "by.alexios3": {
+   "id": "60c5b18e-1736-5971-bef3-594a1c6ed417",
+   "name": "Alexis III Ange",
+   "b": 1153,
+   "d": 1211,
+   "tree": "BY_EMP",
+   "title": "Empereur byzantin",
+   "g": "h",
+   "script": 91
+  },
+  "by.alexios4": {
+   "id": "0154c256-4162-5560-94af-a58cc5aa2497",
+   "name": "Alexis IV Ange",
+   "b": 1182,
+   "d": 1204,
+   "tree": "BY_EMP",
+   "title": "Empereur byzantin",
+   "g": "h",
+   "script": 91
+  },
+  "by.alexios5": {
+   "id": "aee27906-4e76-52de-99c2-f9c1365ec974",
+   "name": "Alexis V Doukas",
+   "b": 1140,
+   "d": 1204,
+   "tree": "BY_EMP",
+   "title": "Empereur byzantin",
+   "g": "h",
+   "script": 91
+  },
+  "by.theodore1": {
+   "id": "67e86759-af8a-5284-999c-12c4b6ddb483",
+   "name": "Théodore Ier Lascaris",
+   "b": 1174,
+   "d": 1221,
+   "tree": "BY_EMP",
+   "title": "Empereur byzantin",
+   "g": "h",
+   "script": 91
+  },
+  "by.john3": {
+   "id": "ac141afe-60db-5794-893c-5d5d9459dbf7",
+   "name": "Jean III Vatatzès",
+   "b": 1192,
+   "d": 1254,
+   "tree": "BY_EMP",
+   "title": "Empereur byzantin",
+   "g": "h",
+   "script": 91
+  },
+  "by.theodore2": {
+   "id": "7d9a38fd-0a33-5a8c-a42d-2b2028cd4d5d",
+   "name": "Théodore II Lascaris",
+   "b": 1221,
+   "d": 1258,
+   "tree": "BY_EMP",
+   "title": "Empereur byzantin",
+   "g": "h",
+   "script": 91
+  },
+  "by.john4": {
+   "id": "a5156f30-e68a-5039-a18d-89ff4fdd0014",
+   "name": "Jean IV Lascaris",
+   "b": 1250,
+   "d": 1305,
+   "tree": "BY_EMP",
+   "title": "Empereur byzantin",
+   "g": "h",
+   "script": 91
+  },
+  "by.michael8": {
+   "id": "5a494b4a-080d-52fa-85fa-a73176c8f719",
+   "name": "Michel VIII Paléologue",
+   "b": 1223,
+   "d": 1282,
+   "tree": "BY_EMP",
+   "title": "Empereur byzantin",
+   "g": "h",
+   "script": 91
+  },
+  "by.andronikos2": {
+   "id": "303f3172-d740-5b59-a8a7-dd4d1ba27d9d",
+   "name": "Andronic II Paléologue",
+   "b": 1259,
+   "d": 1332,
+   "tree": "BY_EMP",
+   "title": "Empereur byzantin",
+   "g": "h",
+   "script": 91
+  },
+  "by.michael9": {
+   "id": "c1acb5ac-f7e7-5c19-af96-fdf69eacf153",
+   "name": "Michel IX Paléologue",
+   "b": 1277,
+   "d": 1320,
+   "tree": "BY_EMP",
+   "title": "Empereur byzantin",
+   "g": "h",
+   "script": 91
+  },
+  "by.andronikos3": {
+   "id": "8513a0be-2e0d-51ca-ad25-dafde7c2f0a7",
+   "name": "Andronic III Paléologue",
+   "b": 1297,
+   "d": 1341,
+   "tree": "BY_EMP",
+   "title": "Empereur byzantin",
+   "g": "h",
+   "script": 91
+  },
+  "by.john5": {
+   "id": "72e522c8-5c09-584c-adc9-b677572b160c",
+   "name": "Jean V Paléologue",
+   "b": 1332,
+   "d": 1391,
+   "tree": "BY_EMP",
+   "title": "Empereur byzantin",
+   "g": "h",
+   "script": 91
+  },
+  "by.john6": {
+   "id": "7bbef145-6aa5-509e-b832-e68a71e0e91f",
+   "name": "Jean VI Cantacuzène",
+   "b": 1292,
+   "d": 1383,
+   "tree": "BY_EMP",
+   "title": "Empereur byzantin",
+   "g": "h",
+   "script": 91
+  },
+  "by.andronikos4": {
+   "id": "343ffe50-a68e-5078-91b5-d42db35680ca",
+   "name": "Andronic IV Paléologue",
+   "b": 1348,
+   "d": 1385,
+   "tree": "BY_EMP",
+   "title": "Empereur byzantin",
+   "g": "h",
+   "script": 91
+  },
+  "by.john7": {
+   "id": "4075d6d2-4bf1-59de-ae67-7275d5fb0256",
+   "name": "Jean VII Paléologue",
+   "b": 1370,
+   "d": 1408,
+   "tree": "BY_EMP",
+   "title": "Empereur byzantin",
+   "g": "h",
+   "script": 91
+  },
+  "by.manuel2": {
+   "id": "704db582-5e45-5c09-87ba-647a7cbe5382",
+   "name": "Manuel II Paléologue",
+   "b": 1350,
+   "d": 1425,
+   "tree": "BY_EMP",
+   "title": "Empereur byzantin",
+   "g": "h",
+   "script": 91
+  },
+  "by.john8": {
+   "id": "0fc88c3e-e8d4-5659-8047-6eb8b60fcdb8",
+   "name": "Jean VIII Paléologue",
+   "b": 1392,
+   "d": 1448,
+   "tree": "BY_EMP",
+   "title": "Empereur byzantin",
+   "g": "h",
+   "script": 91
+  },
+  "by.const11": {
+   "id": "961697f9-2e55-54fe-b777-a20da31ce0d0",
+   "name": "Constantin XI Paléologue",
+   "b": 1405,
+   "d": 1453,
+   "tree": "BY_EMP",
+   "title": "Empereur byzantin",
+   "g": "h",
+   "script": 91
+  },
+  "by.zoe": {
+   "id": "6725da33-25d5-5f02-8f09-53b36aceb19d",
+   "name": "Zoé Porphyrogénète",
+   "b": 978,
+   "d": 1050,
+   "tree": "BY_EMP",
+   "title": "Impératrice byzantine",
+   "g": "f",
+   "script": 91
+  },
+  "by.theodora": {
+   "id": "a501d1db-b999-524b-8eca-803689f66a20",
+   "name": "Théodora Porphyrogénète",
+   "b": 984,
+   "d": 1056,
+   "tree": "BY_EMP",
+   "title": "Impératrice byzantine",
+   "g": "f",
+   "script": 91
+  },
+  "by.eudokia": {
+   "id": "406e6488-f945-5af5-ae86-dce7d8dcad25",
+   "name": "Eudocie Macrembolitissa",
+   "b": 1021,
+   "d": 1096,
+   "tree": "BY_EMP",
+   "title": "Impératrice byzantine, régente",
+   "g": "f",
+   "script": 91
+  },
+  "by.irene_l": {
+   "id": "17a586e0-c869-5249-8cf5-d81b0e21d0b4",
+   "name": "Irène Lascaris",
+   "b": 1196,
+   "d": 1239,
+   "tree": "BY_EMP",
+   "title": "Impératrice de Nicée, épouse de Jean III",
+   "g": "f",
+   "script": 91
   }
  },
  "trees": {
@@ -24342,6 +24822,12 @@
    "country": "GBR",
    "dynasty": "Maison de Tudor",
    "script": null
+  },
+  "BY_EMP": {
+   "entry": "b3fbbb92-926c-5829-b55f-f9813604d018",
+   "country": "GRC",
+   "dynasty": "Empire byzantin",
+   "script": 91
   }
  },
  "flags": [
@@ -28943,6 +29429,14 @@
    "members": 23,
    "rels": 49,
    "trees": []
+  },
+  "91": {
+   "label": "Empire byzantin — dynasties macédonienne, Doukas, Comnène, Ange, Laskaris et Paléologue (867-1453)",
+   "members": 48,
+   "rels": 45,
+   "trees": [
+    "Empire byzantin (GRC)"
+   ]
   }
  },
  "relist": [
@@ -48670,6 +49164,231 @@
    "a53405b2-1ef6-4736-a08b-e11ab610058d",
    "8ee8a84e-7bd9-4754-9d1f-0abc9535aae4",
    "spouse"
+  ],
+  [
+   "b0e457c7-62f1-51b4-b04a-3977ebf0de45",
+   "bf02116b-7ce5-5bfd-b61b-490fa22b3b37",
+   "parent"
+  ],
+  [
+   "b0e457c7-62f1-51b4-b04a-3977ebf0de45",
+   "521b8ec7-ca53-5a39-bbfe-e176d608c68d",
+   "parent"
+  ],
+  [
+   "bf02116b-7ce5-5bfd-b61b-490fa22b3b37",
+   "ad5778d8-6593-580a-ab5f-e14ff0e58e51",
+   "parent"
+  ],
+  [
+   "ad5778d8-6593-580a-ab5f-e14ff0e58e51",
+   "3951bb06-7e64-55dd-86f9-e7c8cba03498",
+   "parent"
+  ],
+  [
+   "3951bb06-7e64-55dd-86f9-e7c8cba03498",
+   "f9fc3660-fdb2-5187-8543-54a9662cdc06",
+   "parent"
+  ],
+  [
+   "3951bb06-7e64-55dd-86f9-e7c8cba03498",
+   "df0f37d8-35fc-5afa-8ec5-e2245d798950",
+   "parent"
+  ],
+  [
+   "df0f37d8-35fc-5afa-8ec5-e2245d798950",
+   "6725da33-25d5-5f02-8f09-53b36aceb19d",
+   "parent"
+  ],
+  [
+   "df0f37d8-35fc-5afa-8ec5-e2245d798950",
+   "a501d1db-b999-524b-8eca-803689f66a20",
+   "parent"
+  ],
+  [
+   "cfff8cbd-4f2e-58f7-b2ae-e3157a4507ee",
+   "4d8ea4ff-49ba-5c46-bd0b-8c11b8864001",
+   "parent"
+  ],
+  [
+   "00d742cb-902e-51ee-835a-8610daf5d072",
+   "6f0e73ad-ed84-532d-bc04-22a37578e3e4",
+   "parent"
+  ],
+  [
+   "6f0e73ad-ed84-532d-bc04-22a37578e3e4",
+   "f7db7760-75bf-5691-907d-7ef999604057",
+   "parent"
+  ],
+  [
+   "f7db7760-75bf-5691-907d-7ef999604057",
+   "6d9dc4fb-a394-5905-b0cd-8c81623ee131",
+   "parent"
+  ],
+  [
+   "4f23604e-039b-58b3-9a3e-3efc5c32383f",
+   "0154c256-4162-5560-94af-a58cc5aa2497",
+   "parent"
+  ],
+  [
+   "67e86759-af8a-5284-999c-12c4b6ddb483",
+   "17a586e0-c869-5249-8cf5-d81b0e21d0b4",
+   "parent"
+  ],
+  [
+   "ac141afe-60db-5794-893c-5d5d9459dbf7",
+   "7d9a38fd-0a33-5a8c-a42d-2b2028cd4d5d",
+   "parent"
+  ],
+  [
+   "7d9a38fd-0a33-5a8c-a42d-2b2028cd4d5d",
+   "a5156f30-e68a-5039-a18d-89ff4fdd0014",
+   "parent"
+  ],
+  [
+   "5a494b4a-080d-52fa-85fa-a73176c8f719",
+   "303f3172-d740-5b59-a8a7-dd4d1ba27d9d",
+   "parent"
+  ],
+  [
+   "303f3172-d740-5b59-a8a7-dd4d1ba27d9d",
+   "c1acb5ac-f7e7-5c19-af96-fdf69eacf153",
+   "parent"
+  ],
+  [
+   "c1acb5ac-f7e7-5c19-af96-fdf69eacf153",
+   "8513a0be-2e0d-51ca-ad25-dafde7c2f0a7",
+   "parent"
+  ],
+  [
+   "8513a0be-2e0d-51ca-ad25-dafde7c2f0a7",
+   "72e522c8-5c09-584c-adc9-b677572b160c",
+   "parent"
+  ],
+  [
+   "72e522c8-5c09-584c-adc9-b677572b160c",
+   "343ffe50-a68e-5078-91b5-d42db35680ca",
+   "parent"
+  ],
+  [
+   "72e522c8-5c09-584c-adc9-b677572b160c",
+   "704db582-5e45-5c09-87ba-647a7cbe5382",
+   "parent"
+  ],
+  [
+   "343ffe50-a68e-5078-91b5-d42db35680ca",
+   "4075d6d2-4bf1-59de-ae67-7275d5fb0256",
+   "parent"
+  ],
+  [
+   "704db582-5e45-5c09-87ba-647a7cbe5382",
+   "0fc88c3e-e8d4-5659-8047-6eb8b60fcdb8",
+   "parent"
+  ],
+  [
+   "704db582-5e45-5c09-87ba-647a7cbe5382",
+   "961697f9-2e55-54fe-b777-a20da31ce0d0",
+   "parent"
+  ],
+  [
+   "6725da33-25d5-5f02-8f09-53b36aceb19d",
+   "8bd16c09-2efa-5e75-a7b0-c90340f74af1",
+   "spouse"
+  ],
+  [
+   "6725da33-25d5-5f02-8f09-53b36aceb19d",
+   "5da4451b-ff41-5de0-af47-9cbc2b37d01b",
+   "spouse"
+  ],
+  [
+   "6725da33-25d5-5f02-8f09-53b36aceb19d",
+   "6c5be58b-788e-5a91-ae4c-a6498c1f659f",
+   "spouse"
+  ],
+  [
+   "cfff8cbd-4f2e-58f7-b2ae-e3157a4507ee",
+   "406e6488-f945-5af5-ae86-dce7d8dcad25",
+   "spouse"
+  ],
+  [
+   "406e6488-f945-5af5-ae86-dce7d8dcad25",
+   "56719fce-5494-5e17-90b6-1a0f94628ace",
+   "spouse"
+  ],
+  [
+   "ac141afe-60db-5794-893c-5d5d9459dbf7",
+   "17a586e0-c869-5249-8cf5-d81b0e21d0b4",
+   "spouse"
+  ],
+  [
+   "a6d5f4da-e59d-520e-ae27-590f3288759c",
+   "96ffef2c-2a32-5ca0-bed1-0d69d4c00ed0",
+   "family"
+  ],
+  [
+   "5da4451b-ff41-5de0-af47-9cbc2b37d01b",
+   "729c38c4-bffc-5fe7-b06f-43103979b5b0",
+   "family"
+  ],
+  [
+   "3d896278-26b6-5ce0-bf88-2c3da8370004",
+   "00d742cb-902e-51ee-835a-8610daf5d072",
+   "family"
+  ],
+  [
+   "6f0e73ad-ed84-532d-bc04-22a37578e3e4",
+   "7f04927c-98f4-555d-9535-7a8192954864",
+   "family"
+  ],
+  [
+   "4f23604e-039b-58b3-9a3e-3efc5c32383f",
+   "60c5b18e-1736-5971-bef3-594a1c6ed417",
+   "family"
+  ],
+  [
+   "60c5b18e-1736-5971-bef3-594a1c6ed417",
+   "aee27906-4e76-52de-99c2-f9c1365ec974",
+   "family"
+  ],
+  [
+   "60c5b18e-1736-5971-bef3-594a1c6ed417",
+   "67e86759-af8a-5284-999c-12c4b6ddb483",
+   "family"
+  ],
+  [
+   "60c5b18e-1736-5971-bef3-594a1c6ed417",
+   "5a494b4a-080d-52fa-85fa-a73176c8f719",
+   "family"
+  ],
+  [
+   "a501d1db-b999-524b-8eca-803689f66a20",
+   "dfbf5c5a-cbba-5d9d-b6aa-3c33558cab91",
+   "family"
+  ],
+  [
+   "3d896278-26b6-5ce0-bf88-2c3da8370004",
+   "cfff8cbd-4f2e-58f7-b2ae-e3157a4507ee",
+   "family"
+  ],
+  [
+   "6247fa62-f88f-5ce1-a548-32ff61245022",
+   "ad5778d8-6593-580a-ab5f-e14ff0e58e51",
+   "family"
+  ],
+  [
+   "4d8ea4ff-49ba-5c46-bd0b-8c11b8864001",
+   "2ce9af56-61e7-5ce8-9505-b9bb0f84b2d8",
+   "family"
+  ],
+  [
+   "a6d5f4da-e59d-520e-ae27-590f3288759c",
+   "6725da33-25d5-5f02-8f09-53b36aceb19d",
+   "family"
+  ],
+  [
+   "72e522c8-5c09-584c-adc9-b677572b160c",
+   "7bbef145-6aa5-509e-b832-e68a71e0e91f",
+   "family"
   ]
  ],
  "dateflags": [
@@ -55938,6 +56657,111 @@
    "d": 1542,
    "note": "naissance vers 1523",
    "script": 90
+  },
+  {
+   "name": "Basile Ier",
+   "b": 811,
+   "d": 886,
+   "note": "naissance vers 811",
+   "script": 91
+  },
+  {
+   "name": "Romain Ier Lécapène",
+   "b": null,
+   "d": 948,
+   "note": "naissance non imprimée",
+   "script": 91
+  },
+  {
+   "name": "Nicéphore II Phocas",
+   "b": 912,
+   "d": 969,
+   "note": "naissance vers 912",
+   "script": 91
+  },
+  {
+   "name": "Jean Ier Tzimiskès",
+   "b": 925,
+   "d": 976,
+   "note": "naissance vers 925",
+   "script": 91
+  },
+  {
+   "name": "Constantin IX Monomaque",
+   "b": 1000,
+   "d": 1055,
+   "note": "naissance vers 1000",
+   "script": 91
+  },
+  {
+   "name": "Michel VI Stratiotikos",
+   "b": null,
+   "d": null,
+   "note": "dates non imprimées",
+   "script": 91
+  },
+  {
+   "name": "Isaac Ier Comnène",
+   "b": 1005,
+   "d": 1061,
+   "note": "naissance vers 1005",
+   "script": 91
+  },
+  {
+   "name": "Michel VII Doukas",
+   "b": 1050,
+   "d": 1090,
+   "note": "mort vers 1090",
+   "script": 91
+  },
+  {
+   "name": "Andronic Ier Comnène",
+   "b": 1118,
+   "d": 1185,
+   "note": "naissance vers 1118",
+   "script": 91
+  },
+  {
+   "name": "Théodore Ier Lascaris",
+   "b": 1174,
+   "d": 1221,
+   "note": "naissance vers 1174",
+   "script": 91
+  },
+  {
+   "name": "Jean III Vatatzès",
+   "b": 1192,
+   "d": 1254,
+   "note": "naissance vers 1192",
+   "script": 91
+  },
+  {
+   "name": "Constantin XI Paléologue",
+   "b": 1405,
+   "d": 1453,
+   "note": "dernier empereur byzantin",
+   "script": 91
+  },
+  {
+   "name": "Zoé Porphyrogénète",
+   "b": 978,
+   "d": 1050,
+   "note": "naissance vers 978",
+   "script": 91
+  },
+  {
+   "name": "Eudocie Macrembolitissa",
+   "b": 1021,
+   "d": 1096,
+   "note": "naissance vers 1021",
+   "script": 91
+  },
+  {
+   "name": "Irène Lascaris",
+   "b": 1196,
+   "d": 1239,
+   "note": "dates vers 1196-1239",
+   "script": 91
   }
  ],
  "pins": [
