@@ -159,4 +159,5 @@ RLS**. Règles :
 | arbres_v87 | arbres_v87 : Empereurs du Japon (nouvel arbre, 124 membres) |
 | arbres_v88 | arbres_v88 : shoguns Minamoto, Ashikaga, Oda/Toyotomi, Tokugawa (4 nouveaux arbres, 33 membres) |
 | arbres_v89 | arbres_v89 : Corée, dynastie Joseon (nouvel arbre, 34 membres) |
+| arbres_v90 | arbres_v90 : compléments Plantagenêts, Lancastre, York, Tudor (23 membres) |
 | `data_owid_load.sql` + `owid_chunks/` | Chargement des données d'indicateurs (rejouable, upserts) — à exécuter après v1 à v7 |

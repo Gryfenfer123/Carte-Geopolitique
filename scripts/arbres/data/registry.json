@@ -23450,6 +23450,236 @@
    "title": "Épouse de Gojong, assassinée",
    "g": "f",
    "script": 89
+  },
+  "uk.geoffrey_br": {
+   "id": "07363700-0d38-574e-8561-cbc2a5e40bfa",
+   "name": "Geoffroy Plantagenêt, duc de Bretagne",
+   "b": 1158,
+   "d": 1186,
+   "tree": "GB_PLA",
+   "title": "Fils de Henri II",
+   "g": "h",
+   "script": 90
+  },
+  "uk.constance_br": {
+   "id": "37b2cdf2-e958-50a8-95ac-32be47386051",
+   "name": "Constance de Bretagne",
+   "b": 1161,
+   "d": 1201,
+   "tree": "GB_PLA",
+   "title": "Duchesse de Bretagne",
+   "g": "f",
+   "script": 90
+  },
+  "uk.arthur": {
+   "id": "7df34bc2-0e83-5cab-826f-08d7f205179e",
+   "name": "Arthur Ier de Bretagne",
+   "b": 1187,
+   "d": 1203,
+   "tree": "GB_PLA",
+   "title": "Duc de Bretagne, rival de Jean sans Terre",
+   "g": "h",
+   "script": 90
+  },
+  "uk.berengaria": {
+   "id": "5b5ddf13-e634-5d1e-bab3-a8f86c823403",
+   "name": "Bérengère de Navarre",
+   "b": null,
+   "d": 1230,
+   "tree": "GB_PLA",
+   "title": "Reine d'Angleterre, épouse de Richard Cœur de Lion",
+   "g": "f",
+   "script": 90
+  },
+  "uk.edmund_c": {
+   "id": "3a60a447-98ee-5682-92f2-97317ea2129e",
+   "name": "Edmond Crouchback, comte de Lancastre",
+   "b": 1245,
+   "d": 1296,
+   "tree": "GB_PLA",
+   "title": "Fils de Henri III",
+   "g": "h",
+   "script": 90
+  },
+  "fr.marguerite_f": {
+   "id": "2d410458-96ee-535a-8f45-fa99d07d2625",
+   "name": "Marguerite de France",
+   "b": 1279,
+   "d": 1318,
+   "tree": "FR_CAP",
+   "title": "Reine d'Angleterre, 2e épouse d'Édouard Ier",
+   "g": "f",
+   "script": 90
+  },
+  "uk.thomas_w": {
+   "id": "c537d9b2-e286-554e-8c42-faeb0538385a",
+   "name": "Thomas de Woodstock, duc de Gloucester",
+   "b": 1355,
+   "d": 1397,
+   "tree": "GB_PLA",
+   "title": "Fils d'Édouard III",
+   "g": "h",
+   "script": 90
+  },
+  "fr.isabelle_ric": {
+   "id": "f540feab-7cbe-5e44-bf61-ef2670abc63d",
+   "name": "Isabelle de France",
+   "b": 1389,
+   "d": 1409,
+   "tree": "FR_VAL",
+   "title": "Reine d'Angleterre, 2e épouse de Richard II",
+   "g": "f",
+   "script": 90
+  },
+  "uk.margaret_anjou": {
+   "id": "6fb37332-44b6-5c53-ae83-b4fc01afc487",
+   "name": "Marguerite d'Anjou",
+   "b": 1430,
+   "d": 1482,
+   "tree": "GB_LAN",
+   "title": "Reine d'Angleterre, épouse de Henri VI",
+   "g": "f",
+   "script": 90
+  },
+  "uk.edward_wm": {
+   "id": "0cca05f0-72c5-54f4-833f-039e48a40a49",
+   "name": "Édouard de Westminster",
+   "b": 1453,
+   "d": 1471,
+   "tree": "GB_LAN",
+   "title": "Prince de Galles, fils de Henri VI",
+   "g": "h",
+   "script": 90
+  },
+  "uk.swynford": {
+   "id": "41acb651-bdbd-52b5-987a-073fd51c4ee8",
+   "name": "Catherine Swynford",
+   "b": 1350,
+   "d": 1403,
+   "tree": "GB_LAN",
+   "title": "Duchesse de Lancastre, 3e épouse de Jean de Gand",
+   "g": "f",
+   "script": 90
+  },
+  "uk.jbeaufort1": {
+   "id": "0845a87a-3cc0-5aec-9b30-e3b2efbfa365",
+   "name": "Jean Beaufort, comte de Somerset",
+   "b": 1373,
+   "d": 1410,
+   "tree": "GB_LAN",
+   "title": "Fils de Jean de Gand et Catherine Swynford",
+   "g": "h",
+   "script": 90
+  },
+  "uk.jbeaufort2": {
+   "id": "7ec545ef-96a1-5803-a4c0-06457e63d2f0",
+   "name": "Jean Beaufort, duc de Somerset",
+   "b": 1404,
+   "d": 1444,
+   "tree": "GB_LAN",
+   "title": "Père de Marguerite Beaufort",
+   "g": "h",
+   "script": 90
+  },
+  "uk.beauchamp": {
+   "id": "dc972240-bd0c-5572-bf1e-7b80136b47db",
+   "name": "Marguerite Beauchamp de Bletso",
+   "b": 1410,
+   "d": 1482,
+   "tree": "GB_LAN",
+   "title": "Mère de Marguerite Beaufort",
+   "g": "f",
+   "script": 90
+  },
+  "uk.clarence": {
+   "id": "a2a3a712-446d-5f96-9879-6f538cb4e808",
+   "name": "Georges, duc de Clarence",
+   "b": 1449,
+   "d": 1478,
+   "tree": "GB_YOR",
+   "title": "Frère d'Édouard IV",
+   "g": "h",
+   "script": 90
+  },
+  "uk.rutland": {
+   "id": "c549fe7f-2811-5c23-a34d-eac19119a77e",
+   "name": "Edmond, comte de Rutland",
+   "b": 1443,
+   "d": 1460,
+   "tree": "GB_YOR",
+   "title": "Frère d'Édouard IV",
+   "g": "h",
+   "script": 90
+  },
+  "uk.margaret_york": {
+   "id": "604e3419-1614-575d-90f5-91dbff8ba986",
+   "name": "Marguerite d'York",
+   "b": 1446,
+   "d": 1503,
+   "tree": "GB_YOR",
+   "title": "Duchesse de Bourgogne",
+   "g": "f",
+   "script": 90
+  },
+  "uk.anne_neville": {
+   "id": "a53f1b6f-68a3-5750-879a-dd1096483bd5",
+   "name": "Anne Neville",
+   "b": 1456,
+   "d": 1485,
+   "tree": "GB_YOR",
+   "title": "Reine d'Angleterre, épouse de Richard III",
+   "g": "f",
+   "script": 90
+  },
+  "uk.edward_mid": {
+   "id": "cf858166-54a6-5f4c-afd8-ab210698ef51",
+   "name": "Édouard de Middleham",
+   "b": 1473,
+   "d": 1484,
+   "tree": "GB_YOR",
+   "title": "Prince de Galles, fils de Richard III",
+   "g": "h",
+   "script": 90
+  },
+  "uk.richard_shrew": {
+   "id": "f16867f0-93c5-5d75-99cb-5e1de36d3351",
+   "name": "Richard de Shrewsbury",
+   "b": 1473,
+   "d": 1483,
+   "tree": "GB_YOR",
+   "title": "Prince de la Tour, fils d'Édouard IV",
+   "g": "h",
+   "script": 90
+  },
+  "uk.anne_cleves": {
+   "id": "fa05cecd-fde4-56af-966b-5f2a3254c734",
+   "name": "Anne de Clèves",
+   "b": 1515,
+   "d": 1557,
+   "tree": "GB_TUD",
+   "title": "4e épouse d'Henri VIII",
+   "g": "f",
+   "script": 90
+  },
+  "uk.cath_howard": {
+   "id": "95214df0-1cd7-5714-a82f-81d202a65afc",
+   "name": "Catherine Howard",
+   "b": 1523,
+   "d": 1542,
+   "tree": "GB_TUD",
+   "title": "5e épouse d'Henri VIII",
+   "g": "f",
+   "script": 90
+  },
+  "uk.cath_parr": {
+   "id": "7451ba19-9618-5643-ad24-df4c9bbc8342",
+   "name": "Catherine Parr",
+   "b": 1512,
+   "d": 1548,
+   "tree": "GB_TUD",
+   "title": "6e épouse d'Henri VIII",
+   "g": "f",
+   "script": 90
   }
  },
  "trees": {
@@ -23876,7 +24106,7 @@
   "GB_LAN": {
    "entry": "a393c0e9-c400-40f8-a6d4-79e7ad750486",
    "country": "GBR",
-   "dynasty": "Lancastre",
+   "dynasty": "Maison de Lancastre",
    "script": null
   },
   "DK_OLD": {
@@ -24094,6 +24324,24 @@
    "country": "KOR",
    "dynasty": "Joseon",
    "script": 89
+  },
+  "GB_PLA": {
+   "entry": "177fd0be-7236-4c6f-b8d6-08eab212742a",
+   "country": "GBR",
+   "dynasty": "Les Plantagenêts",
+   "script": null
+  },
+  "GB_YOR": {
+   "entry": "cafb6b0e-a646-4b51-b14a-6cc57a5297d8",
+   "country": "GBR",
+   "dynasty": "Maison de York",
+   "script": null
+  },
+  "GB_TUD": {
+   "entry": "cb705982-dd91-470c-af90-ec037cb5aaab",
+   "country": "GBR",
+   "dynasty": "Maison de Tudor",
+   "script": null
   }
  },
  "flags": [
@@ -28219,6 +28467,69 @@
    "tree": "KR_JOS",
    "reason": "Famille Min (Yeoheung) : sans arbre",
    "script": 89
+  },
+  {
+   "name": "Constance de Bretagne",
+   "b": 1161,
+   "tree": "GB_PLA",
+   "reason": "Maison Bretagne : sans arbre",
+   "script": 90
+  },
+  {
+   "name": "Bérengère de Navarre",
+   "b": null,
+   "tree": "GB_PLA",
+   "reason": "Maison Navarre : sans arbre",
+   "script": 90
+  },
+  {
+   "name": "Marguerite d'Anjou",
+   "b": 1430,
+   "tree": "GB_LAN",
+   "reason": "Maison Anjou : sans arbre",
+   "script": 90
+  },
+  {
+   "name": "Catherine Swynford",
+   "b": 1350,
+   "tree": "GB_LAN",
+   "reason": "Maison Swynford : sans arbre",
+   "script": 90
+  },
+  {
+   "name": "Marguerite Beauchamp de Bletso",
+   "b": 1410,
+   "tree": "GB_LAN",
+   "reason": "Maison Beauchamp : sans arbre",
+   "script": 90
+  },
+  {
+   "name": "Anne Neville",
+   "b": 1456,
+   "tree": "GB_YOR",
+   "reason": "Maison Neville : sans arbre",
+   "script": 90
+  },
+  {
+   "name": "Anne de Clèves",
+   "b": 1515,
+   "tree": "GB_TUD",
+   "reason": "Maison La Marck-Clèves : sans arbre",
+   "script": 90
+  },
+  {
+   "name": "Catherine Howard",
+   "b": 1523,
+   "tree": "GB_TUD",
+   "reason": "Maison Howard : sans arbre",
+   "script": 90
+  },
+  {
+   "name": "Catherine Parr",
+   "b": 1512,
+   "tree": "GB_TUD",
+   "reason": "Maison Parr : sans arbre",
+   "script": 90
   }
  ],
  "scripts": {
@@ -28626,6 +28937,12 @@
    "trees": [
     "Joseon (KOR)"
    ]
+  },
+  "90": {
+   "label": "Angleterre — compléments Plantagenêts, Lancastre, York, Tudor et Beaufort",
+   "members": 23,
+   "rels": 49,
+   "trees": []
   }
  },
  "relist": [
@@ -48108,6 +48425,251 @@
    "1015791d-fbe6-53a9-88d2-5eb30f191c96",
    "1e511180-9766-55d9-9350-d58ecc1838d7",
    "parent"
+  ],
+  [
+   "4433a65f-3db3-4d8a-bb05-64e228145658",
+   "07363700-0d38-574e-8561-cbc2a5e40bfa",
+   "parent"
+  ],
+  [
+   "ba3d69dd-6641-4814-b199-7efbc8d62cba",
+   "07363700-0d38-574e-8561-cbc2a5e40bfa",
+   "parent"
+  ],
+  [
+   "07363700-0d38-574e-8561-cbc2a5e40bfa",
+   "37b2cdf2-e958-50a8-95ac-32be47386051",
+   "spouse"
+  ],
+  [
+   "07363700-0d38-574e-8561-cbc2a5e40bfa",
+   "7df34bc2-0e83-5cab-826f-08d7f205179e",
+   "parent"
+  ],
+  [
+   "37b2cdf2-e958-50a8-95ac-32be47386051",
+   "7df34bc2-0e83-5cab-826f-08d7f205179e",
+   "parent"
+  ],
+  [
+   "2413e6b1-c86b-40aa-bacd-229cc042651b",
+   "5b5ddf13-e634-5d1e-bab3-a8f86c823403",
+   "spouse"
+  ],
+  [
+   "6594dce9-0b70-4f9a-af27-0c4339e7a80b",
+   "3a60a447-98ee-5682-92f2-97317ea2129e",
+   "parent"
+  ],
+  [
+   "14a47148-8939-4160-a1fc-f3de3513d77d",
+   "3a60a447-98ee-5682-92f2-97317ea2129e",
+   "parent"
+  ],
+  [
+   "d52e8bf8-4fa2-4ee0-b36e-2965767b22ef",
+   "2d410458-96ee-535a-8f45-fa99d07d2625",
+   "parent"
+  ],
+  [
+   "7ba4c964-5c4d-46d0-a560-fa5699821928",
+   "2d410458-96ee-535a-8f45-fa99d07d2625",
+   "spouse"
+  ],
+  [
+   "2ff35ebb-99ad-43af-b060-04cdb7f9bfc8",
+   "c537d9b2-e286-554e-8c42-faeb0538385a",
+   "parent"
+  ],
+  [
+   "5888696e-a50b-4159-b41f-c0366e358f2d",
+   "c537d9b2-e286-554e-8c42-faeb0538385a",
+   "parent"
+  ],
+  [
+   "2ff35ebb-99ad-43af-b060-04cdb7f9bfc8",
+   "1ba9e0b5-dd74-4c00-8324-08b8e450474e",
+   "parent"
+  ],
+  [
+   "5888696e-a50b-4159-b41f-c0366e358f2d",
+   "1ba9e0b5-dd74-4c00-8324-08b8e450474e",
+   "parent"
+  ],
+  [
+   "2ff35ebb-99ad-43af-b060-04cdb7f9bfc8",
+   "6c49d7a5-ae73-416d-93ac-4da83a860e7f",
+   "parent"
+  ],
+  [
+   "5888696e-a50b-4159-b41f-c0366e358f2d",
+   "6c49d7a5-ae73-416d-93ac-4da83a860e7f",
+   "parent"
+  ],
+  [
+   "2ff35ebb-99ad-43af-b060-04cdb7f9bfc8",
+   "1e714a2a-bfba-4077-847d-6891227385b3",
+   "parent"
+  ],
+  [
+   "5888696e-a50b-4159-b41f-c0366e358f2d",
+   "1e714a2a-bfba-4077-847d-6891227385b3",
+   "parent"
+  ],
+  [
+   "21731a19-4f10-49dc-9295-fb1944b6bca9",
+   "d6878cd3-53b9-46d0-a523-b8bd3aafd756",
+   "spouse"
+  ],
+  [
+   "7e00a532-8228-4064-a3dd-4aa1dea55a40",
+   "f540feab-7cbe-5e44-bf61-ef2670abc63d",
+   "parent"
+  ],
+  [
+   "d182cf95-e61c-468a-aec7-8111f0cd906c",
+   "f540feab-7cbe-5e44-bf61-ef2670abc63d",
+   "parent"
+  ],
+  [
+   "21731a19-4f10-49dc-9295-fb1944b6bca9",
+   "f540feab-7cbe-5e44-bf61-ef2670abc63d",
+   "spouse"
+  ],
+  [
+   "9a912814-487c-47b3-9106-d96b34b7711b",
+   "6fb37332-44b6-5c53-ae83-b4fc01afc487",
+   "spouse"
+  ],
+  [
+   "9a912814-487c-47b3-9106-d96b34b7711b",
+   "0cca05f0-72c5-54f4-833f-039e48a40a49",
+   "parent"
+  ],
+  [
+   "6fb37332-44b6-5c53-ae83-b4fc01afc487",
+   "0cca05f0-72c5-54f4-833f-039e48a40a49",
+   "parent"
+  ],
+  [
+   "1e714a2a-bfba-4077-847d-6891227385b3",
+   "41acb651-bdbd-52b5-987a-073fd51c4ee8",
+   "spouse"
+  ],
+  [
+   "1e714a2a-bfba-4077-847d-6891227385b3",
+   "0845a87a-3cc0-5aec-9b30-e3b2efbfa365",
+   "parent"
+  ],
+  [
+   "41acb651-bdbd-52b5-987a-073fd51c4ee8",
+   "0845a87a-3cc0-5aec-9b30-e3b2efbfa365",
+   "parent"
+  ],
+  [
+   "0845a87a-3cc0-5aec-9b30-e3b2efbfa365",
+   "7ec545ef-96a1-5803-a4c0-06457e63d2f0",
+   "parent"
+  ],
+  [
+   "0845a87a-3cc0-5aec-9b30-e3b2efbfa365",
+   "2f8a0105-a962-4fe7-957f-5b9ed7098f9e",
+   "parent"
+  ],
+  [
+   "7ec545ef-96a1-5803-a4c0-06457e63d2f0",
+   "dc972240-bd0c-5572-bf1e-7b80136b47db",
+   "spouse"
+  ],
+  [
+   "7ec545ef-96a1-5803-a4c0-06457e63d2f0",
+   "9ce36f9a-7680-45d8-8cc2-b977bc875c9b",
+   "parent"
+  ],
+  [
+   "dc972240-bd0c-5572-bf1e-7b80136b47db",
+   "9ce36f9a-7680-45d8-8cc2-b977bc875c9b",
+   "parent"
+  ],
+  [
+   "d36cc690-85d3-4acb-8cc9-8409e33899cc",
+   "a2a3a712-446d-5f96-9879-6f538cb4e808",
+   "parent"
+  ],
+  [
+   "979dc6cd-bd46-4fb1-b998-88935211b410",
+   "a2a3a712-446d-5f96-9879-6f538cb4e808",
+   "parent"
+  ],
+  [
+   "d36cc690-85d3-4acb-8cc9-8409e33899cc",
+   "c549fe7f-2811-5c23-a34d-eac19119a77e",
+   "parent"
+  ],
+  [
+   "979dc6cd-bd46-4fb1-b998-88935211b410",
+   "c549fe7f-2811-5c23-a34d-eac19119a77e",
+   "parent"
+  ],
+  [
+   "d36cc690-85d3-4acb-8cc9-8409e33899cc",
+   "604e3419-1614-575d-90f5-91dbff8ba986",
+   "parent"
+  ],
+  [
+   "979dc6cd-bd46-4fb1-b998-88935211b410",
+   "604e3419-1614-575d-90f5-91dbff8ba986",
+   "parent"
+  ],
+  [
+   "604e3419-1614-575d-90f5-91dbff8ba986",
+   "0f711845-1334-42c6-87f1-2d557a689a8b",
+   "spouse"
+  ],
+  [
+   "f0d30c28-17fa-4632-89a3-a1c6ff940f31",
+   "a53f1b6f-68a3-5750-879a-dd1096483bd5",
+   "spouse"
+  ],
+  [
+   "f0d30c28-17fa-4632-89a3-a1c6ff940f31",
+   "cf858166-54a6-5f4c-afd8-ab210698ef51",
+   "parent"
+  ],
+  [
+   "a53f1b6f-68a3-5750-879a-dd1096483bd5",
+   "cf858166-54a6-5f4c-afd8-ab210698ef51",
+   "parent"
+  ],
+  [
+   "2cdc2957-4589-45a2-a88b-01e0ba9a0f8a",
+   "f16867f0-93c5-5d75-99cb-5e1de36d3351",
+   "parent"
+  ],
+  [
+   "bb057c6a-a87d-4b83-b7a8-a2c442aa1802",
+   "f16867f0-93c5-5d75-99cb-5e1de36d3351",
+   "parent"
+  ],
+  [
+   "8a173251-069e-4289-9eb0-a9e835021361",
+   "fa05cecd-fde4-56af-966b-5f2a3254c734",
+   "spouse"
+  ],
+  [
+   "8a173251-069e-4289-9eb0-a9e835021361",
+   "95214df0-1cd7-5714-a82f-81d202a65afc",
+   "spouse"
+  ],
+  [
+   "8a173251-069e-4289-9eb0-a9e835021361",
+   "7451ba19-9618-5643-ad24-df4c9bbc8342",
+   "spouse"
+  ],
+  [
+   "a53405b2-1ef6-4736-a08b-e11ab610058d",
+   "8ee8a84e-7bd9-4754-9d1f-0abc9535aae4",
+   "spouse"
   ]
  ],
  "dateflags": [
@@ -55355,6 +55917,27 @@
    "d": 1551,
    "note": "naissance vers 1510",
    "script": 88
+  },
+  {
+   "name": "Bérengère de Navarre",
+   "b": null,
+   "d": 1230,
+   "note": "naissance vers 1165-1170",
+   "script": 90
+  },
+  {
+   "name": "Catherine Swynford",
+   "b": 1350,
+   "d": 1403,
+   "note": "naissance vers 1350",
+   "script": 90
+  },
+  {
+   "name": "Catherine Howard",
+   "b": 1523,
+   "d": 1542,
+   "note": "naissance vers 1523",
+   "script": 90
   }
  ],
  "pins": [
@@ -55661,6 +56244,50 @@
   [
    "8f2a81a6-7383-4964-ab26-722b4769f982",
    "JP_IMP"
+  ],
+  [
+   "14a47148-8939-4160-a1fc-f3de3513d77d",
+   "GB_PLA"
+  ],
+  [
+   "2d410458-96ee-535a-8f45-fa99d07d2625",
+   "GB_PLA"
+  ],
+  [
+   "1ba9e0b5-dd74-4c00-8324-08b8e450474e",
+   "GB_PLA"
+  ],
+  [
+   "6c49d7a5-ae73-416d-93ac-4da83a860e7f",
+   "GB_PLA"
+  ],
+  [
+   "1e714a2a-bfba-4077-847d-6891227385b3",
+   "GB_PLA"
+  ],
+  [
+   "d6878cd3-53b9-46d0-a523-b8bd3aafd756",
+   "GB_PLA"
+  ],
+  [
+   "f540feab-7cbe-5e44-bf61-ef2670abc63d",
+   "GB_PLA"
+  ],
+  [
+   "2f8a0105-a962-4fe7-957f-5b9ed7098f9e",
+   "GB_LAN"
+  ],
+  [
+   "9ce36f9a-7680-45d8-8cc2-b977bc875c9b",
+   "GB_LAN"
+  ],
+  [
+   "0f711845-1334-42c6-87f1-2d557a689a8b",
+   "GB_YOR"
+  ],
+  [
+   "8ee8a84e-7bd9-4754-9d1f-0abc9535aae4",
+   "GB_TUD"
   ]
  ],
  "xmoved": {
