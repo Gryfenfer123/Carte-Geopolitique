@@ -2,6 +2,8 @@
 
 ## Dernières nouvelles (la plus récente en haut)
 
+- 2026-10-23 — v96 : Lituanie — Gediminides de Gediminas à Vytautas et Švitrigaila (9 membres, nouvel arbre). Écart d'âge Algirdas/Švitrigaila (74 ans) à relire
+
 - 2026-10-23 — v95 : Italie — Este (Ferrare), Gonzague (Mantoue), Farnèse (Parme) (40 membres, 3 nouveaux arbres)
 
 - 2026-10-23 — v94 : Italie — Hauteville, Normands d'Italie, rois de Sicile et princes d'Antioche (23 membres, nouvel arbre)
@@ -69,7 +71,7 @@
 
 Code : `src/genealogy.ts`, `genealogyLayers.ts`, `genealogyBus.ts`, `genealogyLod.ts/.css`, `genealogyLayersWorker.ts`,
 `genealogyLayout.ts`, `genealogyRouting.ts`. Outils de remplissage : [`scripts/arbres/`](../../scripts/arbres/README.md).
-Prochaine migration : **arbres_v96** (`supabase/arbres/arbres_v96.sql`) — générateur : `Gen(96, "…")`.  (v95 livrée, à exécuter par Martin si ce n'est pas déjà fait.)
+Prochaine migration : **arbres_v97** (`supabase/arbres/arbres_v97.sql`) — générateur : `Gen(97, "…")`.  (v96 livrée, à exécuter par Martin si ce n'est pas déjà fait.)
 
 ## Règles de contenu (décidées par Martin — ne pas rouvrir)
 - Un pays n'a que les dynasties qui ont **régné sur lui**. Dynastie étrangère : branche principale dans son pays

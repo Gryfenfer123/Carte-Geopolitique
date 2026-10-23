@@ -25390,6 +25390,96 @@
    "title": "Duchesse de Parme",
    "g": "f",
    "script": 95
+  },
+  "lt.gediminas": {
+   "id": "afb72856-5e9e-56e4-bc8f-97b7f4a661f5",
+   "name": "Gediminas",
+   "b": 1275,
+   "d": 1341,
+   "tree": "LT_GED",
+   "title": "Grand-duc de Lituanie",
+   "g": "h",
+   "script": 96
+  },
+  "lt.algirdas": {
+   "id": "36883efb-79f8-53d1-845a-17ec2fb53f25",
+   "name": "Algirdas",
+   "b": 1296,
+   "d": 1377,
+   "tree": "LT_GED",
+   "title": "Grand-duc de Lituanie",
+   "g": "h",
+   "script": 96
+  },
+  "lt.kestutis": {
+   "id": "0361553a-00a5-5d41-9069-f84c6e1c2083",
+   "name": "Kęstutis",
+   "b": 1297,
+   "d": 1382,
+   "tree": "LT_GED",
+   "title": "Grand-duc de Lituanie",
+   "g": "h",
+   "script": 96
+  },
+  "lt.uliana": {
+   "id": "f0bcfad1-46a2-5aef-8047-6d412254a226",
+   "name": "Oulyana de Tver",
+   "b": 1325,
+   "d": 1392,
+   "tree": "LT_GED",
+   "title": "Seconde épouse d'Algirdas, mère de Jogaila",
+   "g": "f",
+   "script": 96
+  },
+  "lt.skirgaila": {
+   "id": "d50d4549-e96d-52ff-87cf-ca322bf2a29b",
+   "name": "Skirgaila",
+   "b": 1354,
+   "d": 1397,
+   "tree": "LT_GED",
+   "title": "Régent de Lituanie",
+   "g": "h",
+   "script": 96
+  },
+  "lt.svitrigaila": {
+   "id": "621634e9-0f1f-5267-94c3-5541d4eddcf3",
+   "name": "Švitrigaila",
+   "b": 1370,
+   "d": 1452,
+   "tree": "LT_GED",
+   "title": "Grand-duc de Lituanie",
+   "g": "h",
+   "script": 96
+  },
+  "lt.biruta": {
+   "id": "56de5db5-1806-54e5-adad-c6b22d7b8089",
+   "name": "Birutė",
+   "b": null,
+   "d": null,
+   "tree": "LT_GED",
+   "title": "Épouse de Kęstutis, mère de Vytautas",
+   "g": "f",
+   "script": 96
+  },
+  "lt.vytautas": {
+   "id": "b59daa60-c927-5fb0-b5cd-c00701bba5ac",
+   "name": "Vytautas le Grand",
+   "b": 1350,
+   "d": 1430,
+   "tree": "LT_GED",
+   "title": "Grand-duc de Lituanie",
+   "g": "h",
+   "script": 96
+  },
+  "lt.zygimantas": {
+   "id": "00d20cf3-9402-50d0-b23d-3ee99412802f",
+   "name": "Žygimantas Kęstutaitis",
+   "b": 1365,
+   "d": 1440,
+   "tree": "LT_GED",
+   "title": "Grand-duc de Lituanie",
+   "g": "h",
+   "script": 96
   }
  },
  "trees": {
@@ -26136,6 +26226,12 @@
    "country": "PRT",
    "dynasty": "Maison d'Aviz",
    "script": null
+  },
+  "LT_GED": {
+   "entry": "e719c0d9-be1d-53ad-b926-12531952ba9c",
+   "country": "LTU",
+   "dynasty": "Gediminides",
+   "script": 96
   }
  },
  "flags": [
@@ -30485,6 +30581,20 @@
    "tree": "IT_FAR",
    "reason": "Maison Aldobrandini : sans arbre",
    "script": 95
+  },
+  {
+   "name": "Oulyana de Tver",
+   "b": 1325,
+   "tree": "LT_GED",
+   "reason": "Maison Tver : sans arbre",
+   "script": 96
+  },
+  {
+   "name": "Birutė",
+   "b": null,
+   "tree": "LT_GED",
+   "reason": "Maison Palanga : sans arbre",
+   "script": 96
   }
  ],
  "scripts": {
@@ -30938,6 +31048,14 @@
     "Este (ITA)",
     "Gonzague (ITA)",
     "Farnèse (ITA)"
+   ]
+  },
+  "96": {
+   "label": "Lituanie — Gediminides : de Gediminas à Vytautas et Švitrigaila, jusqu'à Jogaila",
+   "members": 9,
+   "rels": 13,
+   "trees": [
+    "Gediminides (LTU)"
    ]
   }
  },
@@ -51896,6 +52014,71 @@
    "5539ea53-f47b-5952-883b-23c7429e5bb5",
    "2df9c2fd-8fd9-4bb4-b23a-f064afb0e301",
    "parent"
+  ],
+  [
+   "afb72856-5e9e-56e4-bc8f-97b7f4a661f5",
+   "36883efb-79f8-53d1-845a-17ec2fb53f25",
+   "parent"
+  ],
+  [
+   "afb72856-5e9e-56e4-bc8f-97b7f4a661f5",
+   "0361553a-00a5-5d41-9069-f84c6e1c2083",
+   "parent"
+  ],
+  [
+   "36883efb-79f8-53d1-845a-17ec2fb53f25",
+   "f0bcfad1-46a2-5aef-8047-6d412254a226",
+   "spouse"
+  ],
+  [
+   "36883efb-79f8-53d1-845a-17ec2fb53f25",
+   "f0684304-9584-55f5-bd0f-777479568e4a",
+   "parent"
+  ],
+  [
+   "f0bcfad1-46a2-5aef-8047-6d412254a226",
+   "f0684304-9584-55f5-bd0f-777479568e4a",
+   "parent"
+  ],
+  [
+   "36883efb-79f8-53d1-845a-17ec2fb53f25",
+   "d50d4549-e96d-52ff-87cf-ca322bf2a29b",
+   "parent"
+  ],
+  [
+   "36883efb-79f8-53d1-845a-17ec2fb53f25",
+   "621634e9-0f1f-5267-94c3-5541d4eddcf3",
+   "parent"
+  ],
+  [
+   "0361553a-00a5-5d41-9069-f84c6e1c2083",
+   "56de5db5-1806-54e5-adad-c6b22d7b8089",
+   "spouse"
+  ],
+  [
+   "0361553a-00a5-5d41-9069-f84c6e1c2083",
+   "b59daa60-c927-5fb0-b5cd-c00701bba5ac",
+   "parent"
+  ],
+  [
+   "56de5db5-1806-54e5-adad-c6b22d7b8089",
+   "b59daa60-c927-5fb0-b5cd-c00701bba5ac",
+   "parent"
+  ],
+  [
+   "0361553a-00a5-5d41-9069-f84c6e1c2083",
+   "00d20cf3-9402-50d0-b23d-3ee99412802f",
+   "parent"
+  ],
+  [
+   "56de5db5-1806-54e5-adad-c6b22d7b8089",
+   "00d20cf3-9402-50d0-b23d-3ee99412802f",
+   "parent"
+  ],
+  [
+   "b59daa60-c927-5fb0-b5cd-c00701bba5ac",
+   "ba967f1a-1d50-599c-a5e4-7101de90325a",
+   "parent"
   ]
  ],
  "dateflags": [
@@ -59626,6 +59809,69 @@
    "d": 1185,
    "note": "naissance vers 1130",
    "script": 94
+  },
+  {
+   "name": "Gediminas",
+   "b": 1275,
+   "d": 1341,
+   "note": "naissance vers 1275",
+   "script": 96
+  },
+  {
+   "name": "Algirdas",
+   "b": 1296,
+   "d": 1377,
+   "note": "naissance vers 1296",
+   "script": 96
+  },
+  {
+   "name": "Kęstutis",
+   "b": 1297,
+   "d": 1382,
+   "note": "naissance vers 1297",
+   "script": 96
+  },
+  {
+   "name": "Oulyana de Tver",
+   "b": 1325,
+   "d": 1392,
+   "note": "naissance vers 1325",
+   "script": 96
+  },
+  {
+   "name": "Skirgaila",
+   "b": 1354,
+   "d": 1397,
+   "note": "naissance vers 1354",
+   "script": 96
+  },
+  {
+   "name": "Švitrigaila",
+   "b": 1370,
+   "d": 1452,
+   "note": "naissance vers 1370 ; écart de 74 ans avec Algirdas (naissance vers 1296 contestée) : à relire",
+   "script": 96
+  },
+  {
+   "name": "Birutė",
+   "b": null,
+   "d": null,
+   "note": "dates non données",
+   "script": 96
+  },
+  {
+   "name": "Vytautas le Grand",
+   "b": 1350,
+   "d": 1430,
+   "note": "naissance vers 1350",
+   "script": 96
+  },
+  {
+   "name": "Žygimantas Kęstutaitis",
+   "b": 1365,
+   "d": 1440,
+   "note": "naissance vers 1365",
+   "script": 96
   }
  ],
  "pins": [
@@ -60072,6 +60318,18 @@
   [
    "2df9c2fd-8fd9-4bb4-b23a-f064afb0e301",
    "IT_FAR"
+  ],
+  [
+   "f0684304-9584-55f5-bd0f-777479568e4a",
+   "LT_GED"
+  ],
+  [
+   "ba967f1a-1d50-599c-a5e4-7101de90325a",
+   "LT_GED"
+  ],
+  [
+   "a32377f3-562b-5945-af4a-4ff060cf2ab9",
+   "LT_GED"
   ]
  ],
  "xmoved": {
