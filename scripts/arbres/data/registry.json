@@ -26420,6 +26420,346 @@
    "title": "Reine d'Espagne, troisième épouse de Ferdinand VII",
    "g": "f",
    "script": 100
+  },
+  "na.garcia3": {
+   "id": "4ffdd30f-0201-5e0c-91c6-1ca1362d0ee7",
+   "name": "García Sánchez III le Trembleur",
+   "b": 1012,
+   "d": 1054,
+   "tree": "NA_ROY",
+   "title": "Roi de Navarre (1035-1054)",
+   "g": "h",
+   "script": 101
+  },
+  "na.sancho4": {
+   "id": "30a6b45d-41ca-5350-883b-0595bee7062f",
+   "name": "Sanche IV de Peñalén",
+   "b": 1039,
+   "d": 1076,
+   "tree": "NA_ROY",
+   "title": "Roi de Navarre (1054-1076), assassiné",
+   "g": "h",
+   "script": 101
+  },
+  "na.ramiro_m": {
+   "id": "40a576f3-3a8c-5ca8-b9e7-20d9ea65ddee",
+   "name": "Ramire Sánchez de Monzón",
+   "b": null,
+   "d": 1116,
+   "tree": "NA_ROY",
+   "title": "Seigneur de Monzón, petit-fils de García III",
+   "g": "h",
+   "script": 101
+  },
+  "na.garcia4": {
+   "id": "167db292-180f-51b3-9d40-d6aa2bf04ac4",
+   "name": "García IV Ramírez le Restaurateur",
+   "b": null,
+   "d": 1150,
+   "tree": "NA_ROY",
+   "title": "Roi de Navarre (1134-1150)",
+   "g": "h",
+   "script": 101
+  },
+  "na.sancho6": {
+   "id": "0232cd78-5dc7-5f49-b0ac-6ba14cefff8f",
+   "name": "Sanche VI le Sage",
+   "b": 1132,
+   "d": 1194,
+   "tree": "NA_ROY",
+   "title": "Roi de Navarre (1150-1194)",
+   "g": "h",
+   "script": 101
+  },
+  "na.sancho7": {
+   "id": "e30eb3db-9e0c-5e8e-b979-d24d56bbdefd",
+   "name": "Sanche VII le Fort",
+   "b": 1157,
+   "d": 1234,
+   "tree": "NA_ROY",
+   "title": "Roi de Navarre (1194-1234), dernier Jiménez",
+   "g": "h",
+   "script": 101
+  },
+  "na.blanche_c": {
+   "id": "2fdd6595-3bc6-5a4a-9b70-c7c18ed40b65",
+   "name": "Blanche de Navarre (comtesse de Champagne)",
+   "b": 1177,
+   "d": 1229,
+   "tree": "NA_ROY",
+   "title": "Régente de Champagne, sœur de Sanche VII",
+   "g": "f",
+   "script": 101
+  },
+  "na.thibaut3": {
+   "id": "a5ab3f06-163f-52aa-9658-82a7e85eb798",
+   "name": "Thibaut III de Champagne",
+   "b": 1179,
+   "d": 1201,
+   "tree": "NA_ROY",
+   "title": "Comte de Champagne, père de Thibaut Ier de Navarre",
+   "g": "h",
+   "script": 101
+  },
+  "na.thibaut1": {
+   "id": "1b1c57b5-3f6d-52b5-98ea-59b0fa600640",
+   "name": "Thibaut Ier de Navarre (Thibaut IV de Champagne)",
+   "b": 1201,
+   "d": 1253,
+   "tree": "NA_ROY",
+   "title": "Roi de Navarre (1234-1253), trouvère",
+   "g": "h",
+   "script": 101
+  },
+  "na.thibaut2": {
+   "id": "301c4f2f-77e9-59fb-9805-a744ec2914b0",
+   "name": "Thibaut II de Navarre",
+   "b": 1238,
+   "d": 1270,
+   "tree": "NA_ROY",
+   "title": "Roi de Navarre (1253-1270)",
+   "g": "h",
+   "script": 101
+  },
+  "na.henri1": {
+   "id": "7b294ba5-3dbe-5171-aff2-f4cabc57d599",
+   "name": "Henri Ier le Gros",
+   "b": 1244,
+   "d": 1274,
+   "tree": "NA_ROY",
+   "title": "Roi de Navarre (1270-1274)",
+   "g": "h",
+   "script": 101
+  },
+  "na.isabelle_f": {
+   "id": "bd0bae4a-1243-5471-bc3d-8f367355773c",
+   "name": "Isabelle de France (reine de Navarre)",
+   "b": 1242,
+   "d": 1271,
+   "tree": "FR_CAP",
+   "title": "Reine de Navarre, épouse de Thibaut II",
+   "g": "f",
+   "script": 101
+  },
+  "na.blanche_a": {
+   "id": "78ca35e1-1487-5c31-aefb-f64809ce59da",
+   "name": "Blanche d'Artois",
+   "b": 1248,
+   "d": 1302,
+   "tree": "FR_CAP",
+   "title": "Reine de Navarre, épouse d'Henri Ier",
+   "g": "f",
+   "script": 101
+  },
+  "na.marguerite_b": {
+   "id": "b68fcf36-62b4-58c1-b00a-62d328e6e130",
+   "name": "Marguerite de Bourgogne (reine de France et de Navarre)",
+   "b": 1290,
+   "d": 1315,
+   "tree": "FR_CAP",
+   "title": "Première épouse de Louis X, morte en prison",
+   "g": "f",
+   "script": 101
+  },
+  "na.louis_e": {
+   "id": "cf59cae5-af1a-53ac-abf9-8c14c26b94d4",
+   "name": "Louis d'Évreux",
+   "b": 1276,
+   "d": 1319,
+   "tree": "NA_ROY",
+   "title": "Comte d'Évreux, père de Philippe III de Navarre",
+   "g": "h",
+   "script": 101
+  },
+  "na.philippe3": {
+   "id": "65dfcfea-9030-5f31-8332-31f0ee936705",
+   "name": "Philippe III d'Évreux",
+   "b": 1306,
+   "d": 1343,
+   "tree": "NA_ROY",
+   "title": "Roi de Navarre par mariage (1328-1343)",
+   "g": "h",
+   "script": 101
+  },
+  "na.jeanne2": {
+   "id": "bb9cb492-ebd3-5138-9217-5abf70d34e52",
+   "name": "Jeanne II de Navarre",
+   "b": 1312,
+   "d": 1349,
+   "tree": "NA_ROY",
+   "title": "Reine de Navarre (1328-1349)",
+   "g": "f",
+   "script": 101
+  },
+  "na.charles2": {
+   "id": "1ae279f0-3665-5f00-acbe-d6c10b0193fa",
+   "name": "Charles II le Mauvais",
+   "b": 1332,
+   "d": 1387,
+   "tree": "NA_ROY",
+   "title": "Roi de Navarre (1349-1387)",
+   "g": "h",
+   "script": 101
+  },
+  "na.jeanne_v": {
+   "id": "c4279528-0edc-59eb-824b-845d16868fa5",
+   "name": "Jeanne de France (reine de Navarre)",
+   "b": 1343,
+   "d": 1373,
+   "tree": "FR_VAL",
+   "title": "Reine de Navarre, épouse de Charles II",
+   "g": "f",
+   "script": 101
+  },
+  "na.charles3": {
+   "id": "8eda31ec-5b8d-5d1c-a37d-bdc129839624",
+   "name": "Charles III le Noble",
+   "b": 1361,
+   "d": 1425,
+   "tree": "NA_ROY",
+   "title": "Roi de Navarre (1387-1425)",
+   "g": "h",
+   "script": 101
+  },
+  "na.eleonore_c": {
+   "id": "f2467a25-edb2-5957-b3ce-e1592aab53d5",
+   "name": "Éléonore de Castille (reine de Navarre)",
+   "b": 1363,
+   "d": 1415,
+   "tree": "ES_CAS",
+   "title": "Reine de Navarre, épouse de Charles III",
+   "g": "f",
+   "script": 101
+  },
+  "na.blanche1": {
+   "id": "34017186-23f9-5a0b-92af-cfae71e4d7ac",
+   "name": "Blanche Ire de Navarre",
+   "b": 1385,
+   "d": 1441,
+   "tree": "NA_ROY",
+   "title": "Reine de Navarre (1425-1441)",
+   "g": "f",
+   "script": 101
+  },
+  "na.carlos_v": {
+   "id": "568969f8-1cb8-500c-a299-4188bec482d9",
+   "name": "Charles de Viane",
+   "b": 1421,
+   "d": 1461,
+   "tree": "NA_ROY",
+   "title": "Prince de Viane, héritier de Navarre",
+   "g": "h",
+   "script": 101
+  },
+  "na.blanche2": {
+   "id": "61960a71-381f-5494-8f7b-f70be8f7ebd6",
+   "name": "Blanche II de Navarre",
+   "b": 1424,
+   "d": 1464,
+   "tree": "NA_ROY",
+   "title": "Héritière de Navarre, répudiée par Henri IV de Castille",
+   "g": "f",
+   "script": 101
+  },
+  "na.leonor": {
+   "id": "9b47c76f-548c-5fd2-a181-26830cd5c23d",
+   "name": "Éléonore Ire de Navarre",
+   "b": 1426,
+   "d": 1479,
+   "tree": "NA_ROY",
+   "title": "Reine de Navarre (1479), comtesse de Foix",
+   "g": "f",
+   "script": 101
+  },
+  "na.gaston4": {
+   "id": "fa89a476-8583-59f8-8af2-05c6f016a493",
+   "name": "Gaston IV de Foix",
+   "b": 1422,
+   "d": 1472,
+   "tree": "NA_ROY",
+   "title": "Comte de Foix, époux d'Éléonore",
+   "g": "h",
+   "script": 101
+  },
+  "na.gaston_v": {
+   "id": "e8697ed5-63a3-5c25-8ff9-01e0b32b9252",
+   "name": "Gaston de Foix, prince de Viane",
+   "b": 1444,
+   "d": 1470,
+   "tree": "NA_ROY",
+   "title": "Père de François Fébus et de Catherine",
+   "g": "h",
+   "script": 101
+  },
+  "na.madeleine": {
+   "id": "4b6eefcb-4f82-560d-9ea3-ca99eab562da",
+   "name": "Madeleine de France (princesse de Viane)",
+   "b": 1443,
+   "d": 1495,
+   "tree": "FR_VAL",
+   "title": "Régente de Navarre, fille de Charles VII",
+   "g": "f",
+   "script": 101
+  },
+  "na.febus": {
+   "id": "8b827af1-62d9-5a26-82f5-3495be8becf2",
+   "name": "François Fébus",
+   "b": 1467,
+   "d": 1483,
+   "tree": "NA_ROY",
+   "title": "Roi de Navarre (1479-1483)",
+   "g": "h",
+   "script": 101
+  },
+  "na.catherine": {
+   "id": "2f8c274f-e405-5574-afdf-3fb3f70eeb56",
+   "name": "Catherine de Foix",
+   "b": 1468,
+   "d": 1517,
+   "tree": "NA_ROY",
+   "title": "Reine de Navarre (1483-1517)",
+   "g": "f",
+   "script": 101
+  },
+  "na.alain": {
+   "id": "9a644975-d26a-5515-95a7-be702460d24e",
+   "name": "Alain Ier d'Albret",
+   "b": 1440,
+   "d": 1522,
+   "tree": "NA_ROY",
+   "title": "Sire d'Albret, père de Jean III",
+   "g": "h",
+   "script": 101
+  },
+  "na.jean3": {
+   "id": "ca7c0a13-2157-5f1b-ae4b-d9a6d8c57594",
+   "name": "Jean III d'Albret",
+   "b": 1469,
+   "d": 1516,
+   "tree": "NA_ROY",
+   "title": "Roi de Navarre par mariage (1484-1516)",
+   "g": "h",
+   "script": 101
+  },
+  "na.henri2": {
+   "id": "24be18dd-185b-51c3-8bb2-51b18ba15ffa",
+   "name": "Henri II d'Albret",
+   "b": 1503,
+   "d": 1555,
+   "tree": "NA_ROY",
+   "title": "Roi de Navarre (1517-1555)",
+   "g": "h",
+   "script": 101
+  },
+  "na.marguerite_a": {
+   "id": "414d38be-a451-5e2e-a808-aa6897d355d0",
+   "name": "Marguerite d'Angoulême (reine de Navarre)",
+   "b": 1492,
+   "d": 1549,
+   "tree": "FR_VAL",
+   "title": "Reine de Navarre, sœur de François Ier, écrivaine",
+   "g": "f",
+   "script": 101
   }
  },
  "trees": {
@@ -27213,6 +27553,24 @@
    "entry": "e6300f83-dec0-4bab-ae4a-ea64ea621515",
    "country": "ESP",
    "dynasty": "Union de Castille et d'Aragon",
+   "script": null
+  },
+  "NA_ROY": {
+   "entry": "29423ab4-ed68-5a1f-8f40-8d14fa0b0819",
+   "country": "ESP",
+   "dynasty": "Royaume de Navarre",
+   "script": 101
+  },
+  "ES_AR": {
+   "entry": "58a47142-d591-45c4-8be8-8945a9b4443d",
+   "country": "ESP",
+   "dynasty": "Maison d'Aragon",
+   "script": null
+  },
+  "ES_TRA": {
+   "entry": "512e1a72-2193-4820-af1b-03fc1b75c1ee",
+   "country": "ESP",
+   "dynasty": "Maison de Trastamare",
    "script": null
   }
  },
@@ -31619,6 +31977,41 @@
    "tree": "PT_BRA",
    "reason": "Maison de Löwenstein : sans arbre",
    "script": 99
+  },
+  {
+   "name": "Blanche de Navarre (comtesse de Champagne)",
+   "b": 1177,
+   "tree": "NA_ROY",
+   "reason": "Maison de Champagne-Blois : sans arbre",
+   "script": 101
+  },
+  {
+   "name": "Thibaut III de Champagne",
+   "b": 1179,
+   "tree": "NA_ROY",
+   "reason": "Maison de Champagne-Blois : sans arbre",
+   "script": 101
+  },
+  {
+   "name": "Louis d'Évreux",
+   "b": 1276,
+   "tree": "NA_ROY",
+   "reason": "Maison d'Évreux : sans arbre avant la couronne",
+   "script": 101
+  },
+  {
+   "name": "Gaston IV de Foix",
+   "b": 1422,
+   "tree": "NA_ROY",
+   "reason": "Maison de Foix : sans arbre",
+   "script": 101
+  },
+  {
+   "name": "Alain Ier d'Albret",
+   "b": 1440,
+   "tree": "NA_ROY",
+   "reason": "Maison d'Albret : sans arbre",
+   "script": 101
   }
  ],
  "scripts": {
@@ -32109,6 +32502,14 @@
    "members": 13,
    "rels": 39,
    "trees": []
+  },
+  "101": {
+   "label": "Navarre — royaume de Navarre : Jiménez, Champagne, Capet, Évreux, Trastamare, Foix, Albret",
+   "members": 34,
+   "rels": 72,
+   "trees": [
+    "Royaume de Navarre (ESP)"
+   ]
   }
  },
  "relist": [
@@ -54056,6 +54457,366 @@
    "7d231c26-f50a-44cc-854d-9fd3dd9ef8fc",
    "9fd8b355-5bda-5311-90f3-2c46bb5bdae2",
    "parent"
+  ],
+  [
+   "6c7bbade-5c41-4303-b45d-f046dce9311e",
+   "4ffdd30f-0201-5e0c-91c6-1ca1362d0ee7",
+   "parent"
+  ],
+  [
+   "4ffdd30f-0201-5e0c-91c6-1ca1362d0ee7",
+   "30a6b45d-41ca-5350-883b-0595bee7062f",
+   "parent"
+  ],
+  [
+   "30a6b45d-41ca-5350-883b-0595bee7062f",
+   "40a576f3-3a8c-5ca8-b9e7-20d9ea65ddee",
+   "parent"
+  ],
+  [
+   "40a576f3-3a8c-5ca8-b9e7-20d9ea65ddee",
+   "167db292-180f-51b3-9d40-d6aa2bf04ac4",
+   "parent"
+  ],
+  [
+   "30a6b45d-41ca-5350-883b-0595bee7062f",
+   "7ab44e3e-6f2f-4701-8b12-49b8fb585eaa",
+   "family"
+  ],
+  [
+   "167db292-180f-51b3-9d40-d6aa2bf04ac4",
+   "0232cd78-5dc7-5f49-b0ac-6ba14cefff8f",
+   "parent"
+  ],
+  [
+   "0232cd78-5dc7-5f49-b0ac-6ba14cefff8f",
+   "e30eb3db-9e0c-5e8e-b979-d24d56bbdefd",
+   "parent"
+  ],
+  [
+   "0232cd78-5dc7-5f49-b0ac-6ba14cefff8f",
+   "2fdd6595-3bc6-5a4a-9b70-c7c18ed40b65",
+   "parent"
+  ],
+  [
+   "0232cd78-5dc7-5f49-b0ac-6ba14cefff8f",
+   "5b5ddf13-e634-5d1e-bab3-a8f86c823403",
+   "parent"
+  ],
+  [
+   "2fdd6595-3bc6-5a4a-9b70-c7c18ed40b65",
+   "a5ab3f06-163f-52aa-9658-82a7e85eb798",
+   "spouse"
+  ],
+  [
+   "2fdd6595-3bc6-5a4a-9b70-c7c18ed40b65",
+   "1b1c57b5-3f6d-52b5-98ea-59b0fa600640",
+   "parent"
+  ],
+  [
+   "a5ab3f06-163f-52aa-9658-82a7e85eb798",
+   "1b1c57b5-3f6d-52b5-98ea-59b0fa600640",
+   "parent"
+  ],
+  [
+   "1b1c57b5-3f6d-52b5-98ea-59b0fa600640",
+   "301c4f2f-77e9-59fb-9805-a744ec2914b0",
+   "parent"
+  ],
+  [
+   "1b1c57b5-3f6d-52b5-98ea-59b0fa600640",
+   "7b294ba5-3dbe-5171-aff2-f4cabc57d599",
+   "parent"
+  ],
+  [
+   "301c4f2f-77e9-59fb-9805-a744ec2914b0",
+   "bd0bae4a-1243-5471-bc3d-8f367355773c",
+   "spouse"
+  ],
+  [
+   "da46a1b7-640a-4afb-be70-afbf5f716fa5",
+   "bd0bae4a-1243-5471-bc3d-8f367355773c",
+   "parent"
+  ],
+  [
+   "6dbff916-ca5a-4206-a42b-e2b577aa4b46",
+   "bd0bae4a-1243-5471-bc3d-8f367355773c",
+   "parent"
+  ],
+  [
+   "7b294ba5-3dbe-5171-aff2-f4cabc57d599",
+   "78ca35e1-1487-5c31-aefb-f64809ce59da",
+   "spouse"
+  ],
+  [
+   "7b294ba5-3dbe-5171-aff2-f4cabc57d599",
+   "44a43b3a-58f2-406b-a9a6-50f6ad73b716",
+   "parent"
+  ],
+  [
+   "78ca35e1-1487-5c31-aefb-f64809ce59da",
+   "44a43b3a-58f2-406b-a9a6-50f6ad73b716",
+   "parent"
+  ],
+  [
+   "44a43b3a-58f2-406b-a9a6-50f6ad73b716",
+   "d60fe239-e250-4224-9605-49bc5b685853",
+   "spouse"
+  ],
+  [
+   "44a43b3a-58f2-406b-a9a6-50f6ad73b716",
+   "6e723508-4ac3-4e12-bbc8-084d3460a1c5",
+   "parent"
+  ],
+  [
+   "d60fe239-e250-4224-9605-49bc5b685853",
+   "6e723508-4ac3-4e12-bbc8-084d3460a1c5",
+   "parent"
+  ],
+  [
+   "44a43b3a-58f2-406b-a9a6-50f6ad73b716",
+   "aaf4eda5-3825-404e-95b2-342f31a9acd0",
+   "parent"
+  ],
+  [
+   "d60fe239-e250-4224-9605-49bc5b685853",
+   "aaf4eda5-3825-404e-95b2-342f31a9acd0",
+   "parent"
+  ],
+  [
+   "44a43b3a-58f2-406b-a9a6-50f6ad73b716",
+   "9269a040-a00f-482b-9ab0-0240dfd9ee48",
+   "parent"
+  ],
+  [
+   "d60fe239-e250-4224-9605-49bc5b685853",
+   "9269a040-a00f-482b-9ab0-0240dfd9ee48",
+   "parent"
+  ],
+  [
+   "6e723508-4ac3-4e12-bbc8-084d3460a1c5",
+   "b68fcf36-62b4-58c1-b00a-62d328e6e130",
+   "spouse"
+  ],
+  [
+   "6e723508-4ac3-4e12-bbc8-084d3460a1c5",
+   "bb9cb492-ebd3-5138-9217-5abf70d34e52",
+   "parent"
+  ],
+  [
+   "b68fcf36-62b4-58c1-b00a-62d328e6e130",
+   "bb9cb492-ebd3-5138-9217-5abf70d34e52",
+   "parent"
+  ],
+  [
+   "d52e8bf8-4fa2-4ee0-b36e-2965767b22ef",
+   "cf59cae5-af1a-53ac-abf9-8c14c26b94d4",
+   "parent"
+  ],
+  [
+   "74e6ef51-e06c-4fff-a032-67663a267317",
+   "cf59cae5-af1a-53ac-abf9-8c14c26b94d4",
+   "parent"
+  ],
+  [
+   "cf59cae5-af1a-53ac-abf9-8c14c26b94d4",
+   "65dfcfea-9030-5f31-8332-31f0ee936705",
+   "parent"
+  ],
+  [
+   "65dfcfea-9030-5f31-8332-31f0ee936705",
+   "bb9cb492-ebd3-5138-9217-5abf70d34e52",
+   "spouse"
+  ],
+  [
+   "65dfcfea-9030-5f31-8332-31f0ee936705",
+   "1ae279f0-3665-5f00-acbe-d6c10b0193fa",
+   "parent"
+  ],
+  [
+   "bb9cb492-ebd3-5138-9217-5abf70d34e52",
+   "1ae279f0-3665-5f00-acbe-d6c10b0193fa",
+   "parent"
+  ],
+  [
+   "1ae279f0-3665-5f00-acbe-d6c10b0193fa",
+   "c4279528-0edc-59eb-824b-845d16868fa5",
+   "spouse"
+  ],
+  [
+   "5c72ec7d-85f3-4b97-b6d5-ed54fad8e0c7",
+   "c4279528-0edc-59eb-824b-845d16868fa5",
+   "parent"
+  ],
+  [
+   "1ae279f0-3665-5f00-acbe-d6c10b0193fa",
+   "8eda31ec-5b8d-5d1c-a37d-bdc129839624",
+   "parent"
+  ],
+  [
+   "c4279528-0edc-59eb-824b-845d16868fa5",
+   "8eda31ec-5b8d-5d1c-a37d-bdc129839624",
+   "parent"
+  ],
+  [
+   "8eda31ec-5b8d-5d1c-a37d-bdc129839624",
+   "f2467a25-edb2-5957-b3ce-e1592aab53d5",
+   "spouse"
+  ],
+  [
+   "ce21005e-1d38-437f-9ecd-8affb07a1ddc",
+   "f2467a25-edb2-5957-b3ce-e1592aab53d5",
+   "parent"
+  ],
+  [
+   "2905cc98-f0a5-4282-a792-72cd27b69e1c",
+   "f2467a25-edb2-5957-b3ce-e1592aab53d5",
+   "parent"
+  ],
+  [
+   "8eda31ec-5b8d-5d1c-a37d-bdc129839624",
+   "34017186-23f9-5a0b-92af-cfae71e4d7ac",
+   "parent"
+  ],
+  [
+   "f2467a25-edb2-5957-b3ce-e1592aab53d5",
+   "34017186-23f9-5a0b-92af-cfae71e4d7ac",
+   "parent"
+  ],
+  [
+   "34017186-23f9-5a0b-92af-cfae71e4d7ac",
+   "ab28690e-c022-4321-841c-4b1819c2a86b",
+   "spouse"
+  ],
+  [
+   "34017186-23f9-5a0b-92af-cfae71e4d7ac",
+   "568969f8-1cb8-500c-a299-4188bec482d9",
+   "parent"
+  ],
+  [
+   "ab28690e-c022-4321-841c-4b1819c2a86b",
+   "568969f8-1cb8-500c-a299-4188bec482d9",
+   "parent"
+  ],
+  [
+   "34017186-23f9-5a0b-92af-cfae71e4d7ac",
+   "61960a71-381f-5494-8f7b-f70be8f7ebd6",
+   "parent"
+  ],
+  [
+   "ab28690e-c022-4321-841c-4b1819c2a86b",
+   "61960a71-381f-5494-8f7b-f70be8f7ebd6",
+   "parent"
+  ],
+  [
+   "34017186-23f9-5a0b-92af-cfae71e4d7ac",
+   "9b47c76f-548c-5fd2-a181-26830cd5c23d",
+   "parent"
+  ],
+  [
+   "ab28690e-c022-4321-841c-4b1819c2a86b",
+   "9b47c76f-548c-5fd2-a181-26830cd5c23d",
+   "parent"
+  ],
+  [
+   "9b47c76f-548c-5fd2-a181-26830cd5c23d",
+   "fa89a476-8583-59f8-8af2-05c6f016a493",
+   "spouse"
+  ],
+  [
+   "9b47c76f-548c-5fd2-a181-26830cd5c23d",
+   "e8697ed5-63a3-5c25-8ff9-01e0b32b9252",
+   "parent"
+  ],
+  [
+   "fa89a476-8583-59f8-8af2-05c6f016a493",
+   "e8697ed5-63a3-5c25-8ff9-01e0b32b9252",
+   "parent"
+  ],
+  [
+   "e8697ed5-63a3-5c25-8ff9-01e0b32b9252",
+   "4b6eefcb-4f82-560d-9ea3-ca99eab562da",
+   "spouse"
+  ],
+  [
+   "50d03330-9124-45c3-9e32-512d30975f07",
+   "4b6eefcb-4f82-560d-9ea3-ca99eab562da",
+   "parent"
+  ],
+  [
+   "e8697ed5-63a3-5c25-8ff9-01e0b32b9252",
+   "8b827af1-62d9-5a26-82f5-3495be8becf2",
+   "parent"
+  ],
+  [
+   "4b6eefcb-4f82-560d-9ea3-ca99eab562da",
+   "8b827af1-62d9-5a26-82f5-3495be8becf2",
+   "parent"
+  ],
+  [
+   "e8697ed5-63a3-5c25-8ff9-01e0b32b9252",
+   "2f8c274f-e405-5574-afdf-3fb3f70eeb56",
+   "parent"
+  ],
+  [
+   "4b6eefcb-4f82-560d-9ea3-ca99eab562da",
+   "2f8c274f-e405-5574-afdf-3fb3f70eeb56",
+   "parent"
+  ],
+  [
+   "9a644975-d26a-5515-95a7-be702460d24e",
+   "ca7c0a13-2157-5f1b-ae4b-d9a6d8c57594",
+   "parent"
+  ],
+  [
+   "2f8c274f-e405-5574-afdf-3fb3f70eeb56",
+   "ca7c0a13-2157-5f1b-ae4b-d9a6d8c57594",
+   "spouse"
+  ],
+  [
+   "2f8c274f-e405-5574-afdf-3fb3f70eeb56",
+   "24be18dd-185b-51c3-8bb2-51b18ba15ffa",
+   "parent"
+  ],
+  [
+   "ca7c0a13-2157-5f1b-ae4b-d9a6d8c57594",
+   "24be18dd-185b-51c3-8bb2-51b18ba15ffa",
+   "parent"
+  ],
+  [
+   "24be18dd-185b-51c3-8bb2-51b18ba15ffa",
+   "414d38be-a451-5e2e-a808-aa6897d355d0",
+   "spouse"
+  ],
+  [
+   "97ad334e-c901-4205-9b42-730b2cf80f8a",
+   "414d38be-a451-5e2e-a808-aa6897d355d0",
+   "parent"
+  ],
+  [
+   "24be18dd-185b-51c3-8bb2-51b18ba15ffa",
+   "800e8f67-bcc1-48a3-8e37-c3882d1a151f",
+   "parent"
+  ],
+  [
+   "414d38be-a451-5e2e-a808-aa6897d355d0",
+   "800e8f67-bcc1-48a3-8e37-c3882d1a151f",
+   "parent"
+  ],
+  [
+   "800e8f67-bcc1-48a3-8e37-c3882d1a151f",
+   "773c19a5-93d1-4171-8660-466c9f464ef3",
+   "spouse"
+  ],
+  [
+   "800e8f67-bcc1-48a3-8e37-c3882d1a151f",
+   "14b4e7b7-2c0c-44ed-91d1-b48e96b5a947",
+   "parent"
+  ],
+  [
+   "773c19a5-93d1-4171-8660-466c9f464ef3",
+   "14b4e7b7-2c0c-44ed-91d1-b48e96b5a947",
+   "parent"
   ]
  ],
  "dateflags": [
@@ -61877,6 +62638,34 @@
    "d": null,
    "note": "Mort après 1409 (date incertaine).",
    "script": 98
+  },
+  {
+   "name": "Ramire Sánchez de Monzón",
+   "b": null,
+   "d": 1116,
+   "note": "Naissance inconnue.",
+   "script": 101
+  },
+  {
+   "name": "García IV Ramírez le Restaurateur",
+   "b": null,
+   "d": 1150,
+   "note": "Naissance incertaine, laissée vide.",
+   "script": 101
+  },
+  {
+   "name": "Henri Ier le Gros",
+   "b": 1244,
+   "d": 1274,
+   "note": "Naissance vers 1244.",
+   "script": 101
+  },
+  {
+   "name": "Blanche II de Navarre",
+   "b": 1424,
+   "d": 1464,
+   "note": "Naissance vers 1424.",
+   "script": 101
   }
  ],
  "pins": [
@@ -62479,6 +63268,90 @@
   [
    "4c715634-91fd-54d9-948e-accc3795bfe8",
    "ES_BOU"
+  ],
+  [
+   "bd0bae4a-1243-5471-bc3d-8f367355773c",
+   "NA_ROY"
+  ],
+  [
+   "78ca35e1-1487-5c31-aefb-f64809ce59da",
+   "NA_ROY"
+  ],
+  [
+   "b68fcf36-62b4-58c1-b00a-62d328e6e130",
+   "NA_ROY"
+  ],
+  [
+   "c4279528-0edc-59eb-824b-845d16868fa5",
+   "NA_ROY"
+  ],
+  [
+   "f2467a25-edb2-5957-b3ce-e1592aab53d5",
+   "NA_ROY"
+  ],
+  [
+   "4b6eefcb-4f82-560d-9ea3-ca99eab562da",
+   "NA_ROY"
+  ],
+  [
+   "414d38be-a451-5e2e-a808-aa6897d355d0",
+   "NA_ROY"
+  ],
+  [
+   "7ab44e3e-6f2f-4701-8b12-49b8fb585eaa",
+   "NA_ROY"
+  ],
+  [
+   "4e9f6c9b-0659-4dbd-a900-5087e975fda9",
+   "NA_ROY"
+  ],
+  [
+   "d705a0ce-d481-42dd-90f9-e801431f0c65",
+   "NA_ROY"
+  ],
+  [
+   "5b5ddf13-e634-5d1e-bab3-a8f86c823403",
+   "NA_ROY"
+  ],
+  [
+   "44a43b3a-58f2-406b-a9a6-50f6ad73b716",
+   "NA_ROY"
+  ],
+  [
+   "d60fe239-e250-4224-9605-49bc5b685853",
+   "NA_ROY"
+  ],
+  [
+   "6e723508-4ac3-4e12-bbc8-084d3460a1c5",
+   "NA_ROY"
+  ],
+  [
+   "f3313dab-fd88-49ed-b776-88d05bcf87ae",
+   "NA_ROY"
+  ],
+  [
+   "aaf4eda5-3825-404e-95b2-342f31a9acd0",
+   "NA_ROY"
+  ],
+  [
+   "9269a040-a00f-482b-9ab0-0240dfd9ee48",
+   "NA_ROY"
+  ],
+  [
+   "ab28690e-c022-4321-841c-4b1819c2a86b",
+   "NA_ROY"
+  ],
+  [
+   "800e8f67-bcc1-48a3-8e37-c3882d1a151f",
+   "NA_ROY"
+  ],
+  [
+   "773c19a5-93d1-4171-8660-466c9f464ef3",
+   "NA_ROY"
+  ],
+  [
+   "14b4e7b7-2c0c-44ed-91d1-b48e96b5a947",
+   "NA_ROY"
   ]
  ],
  "xmoved": {
