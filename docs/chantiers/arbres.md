@@ -2,6 +2,8 @@
 
 ## Dernières nouvelles (la plus récente en haut)
 
+- 2026-10-23 — v93 : Danemark médiéval — Estridsen/Valdemar de Sven II à Valdemar IV (25 membres) ; correctif dates Huntingdon (v92) ; Sophie et Märta rattachées à leurs pères
+
 - 2026-10-23 — v92 : Écosse — Dunkeld de Malcolm II à Alexandre III, Balliol, ancêtres Bruce (35 membres, 2 nouveaux arbres)
 
 - 2026-10-23 — v91 : Empire byzantin de Basile Ier à Constantin XI (48 membres, nouvel arbre)
@@ -63,7 +65,7 @@
 
 Code : `src/genealogy.ts`, `genealogyLayers.ts`, `genealogyBus.ts`, `genealogyLod.ts/.css`, `genealogyLayersWorker.ts`,
 `genealogyLayout.ts`, `genealogyRouting.ts`. Outils de remplissage : [`scripts/arbres/`](../../scripts/arbres/README.md).
-Prochaine migration : **arbres_v93** (`supabase/arbres/arbres_v93.sql`) — générateur : `Gen(93, "…")`.  (v92 livrée, à exécuter par Martin si ce n'est pas déjà fait.)
+Prochaine migration : **arbres_v94** (`supabase/arbres/arbres_v94.sql`) — générateur : `Gen(94, "…")`.  (v93 livrée, à exécuter par Martin si ce n'est pas déjà fait.)
 
 ## Règles de contenu (décidées par Martin — ne pas rouvrir)
 - Un pays n'a que les dynasties qui ont **régné sur lui**. Dynastie étrangère : branche principale dans son pays

@@ -24414,7 +24414,7 @@
   "sc.maud_chester": {
    "id": "ebece6d0-60e5-5af0-86a6-e7e6292cd8ed",
    "name": "Maud de Chester",
-   "b": 1171,
+   "b": null,
    "d": 1233,
    "tree": "SC_DUN",
    "title": "Comtesse de Huntingdon, épouse de David",
@@ -24424,7 +24424,7 @@
   "sc.isabel_h": {
    "id": "72b20a0f-413e-56c0-9141-398789c2a554",
    "name": "Isabelle de Huntingdon",
-   "b": 1199,
+   "b": 1176,
    "d": 1251,
    "tree": "SC_DUN",
    "title": "Fille de David de Huntingdon",
@@ -24510,6 +24510,256 @@
    "title": "Roi d'Écosse (1332-1356)",
    "g": "h",
    "script": 92
+  },
+  "dk.estrid": {
+   "id": "d99f255b-c073-5411-870c-b454c38b5e72",
+   "name": "Estrid Svendsdatter",
+   "b": 990,
+   "d": 1057,
+   "tree": "DK_JEL",
+   "title": "Fille de Sven à la Barbe fourchue, mère de Sven II",
+   "g": "f",
+   "script": 93
+  },
+  "dk.ulf": {
+   "id": "f3414b87-8ef0-58f2-a882-dec9597b287e",
+   "name": "Ulf Thorgilsson",
+   "b": null,
+   "d": 1026,
+   "tree": "DK_EST",
+   "title": "Jarl, père de Sven II",
+   "g": "h",
+   "script": 93
+  },
+  "dk.sven2": {
+   "id": "312ad662-e724-5d37-9947-590c598722d1",
+   "name": "Sven II Estridsen",
+   "b": 1019,
+   "d": 1076,
+   "tree": "DK_EST",
+   "title": "Roi de Danemark",
+   "g": "h",
+   "script": 93
+  },
+  "dk.harald3": {
+   "id": "b762c0ba-e784-51a7-b23e-6d626e2ba5a5",
+   "name": "Harald III Hen",
+   "b": 1041,
+   "d": 1080,
+   "tree": "DK_EST",
+   "title": "Roi de Danemark",
+   "g": "h",
+   "script": 93
+  },
+  "dk.knud4": {
+   "id": "aaa520dd-2d8b-5f54-a65d-c5f6e73a601f",
+   "name": "Knud IV le Saint",
+   "b": 1042,
+   "d": 1086,
+   "tree": "DK_EST",
+   "title": "Roi de Danemark",
+   "g": "h",
+   "script": 93
+  },
+  "dk.olaf1": {
+   "id": "6bd780a2-425f-56ae-b9a3-ba68a41162af",
+   "name": "Olaf Ier la Famine",
+   "b": 1050,
+   "d": 1095,
+   "tree": "DK_EST",
+   "title": "Roi de Danemark",
+   "g": "h",
+   "script": 93
+  },
+  "dk.erik1": {
+   "id": "3e9aa62e-39eb-5b1a-bcff-3d006e82889e",
+   "name": "Éric Ier Ejegod",
+   "b": 1056,
+   "d": 1103,
+   "tree": "DK_EST",
+   "title": "Roi de Danemark",
+   "g": "h",
+   "script": 93
+  },
+  "dk.niels": {
+   "id": "2ecdedea-0265-5940-9a41-95ede8602a6d",
+   "name": "Niels",
+   "b": 1064,
+   "d": 1134,
+   "tree": "DK_EST",
+   "title": "Roi de Danemark",
+   "g": "h",
+   "script": 93
+  },
+  "dk.erik2": {
+   "id": "dfacc6cd-3f5c-5c8e-b3a4-93bdaa892074",
+   "name": "Éric II Emune",
+   "b": 1090,
+   "d": 1137,
+   "tree": "DK_EST",
+   "title": "Roi de Danemark",
+   "g": "h",
+   "script": 93
+  },
+  "dk.knud_lavard": {
+   "id": "0a4ea258-827f-5bae-92af-6321058e8496",
+   "name": "Knud Lavard",
+   "b": 1096,
+   "d": 1131,
+   "tree": "DK_EST",
+   "title": "Duc de Slesvig, père de Valdemar Ier",
+   "g": "h",
+   "script": 93
+  },
+  "dk.valdemar1": {
+   "id": "197964af-faef-528f-b382-263b86c59187",
+   "name": "Valdemar Ier le Grand",
+   "b": 1131,
+   "d": 1182,
+   "tree": "DK_EST",
+   "title": "Roi de Danemark",
+   "g": "h",
+   "script": 93
+  },
+  "dk.sophia": {
+   "id": "c4958146-b46a-507a-af29-6edf180143dd",
+   "name": "Sophie de Minsk",
+   "b": 1140,
+   "d": 1198,
+   "tree": "DK_EST",
+   "title": "Reine de Danemark",
+   "g": "f",
+   "script": 93
+  },
+  "dk.knud6": {
+   "id": "45ab789d-87f9-51f6-aa77-a54a5f6e3feb",
+   "name": "Knud VI",
+   "b": 1162,
+   "d": 1202,
+   "tree": "DK_EST",
+   "title": "Roi de Danemark",
+   "g": "h",
+   "script": 93
+  },
+  "dk.valdemar2": {
+   "id": "c2744b96-1f61-578f-9686-a763df6a6e05",
+   "name": "Valdemar II le Victorieux",
+   "b": 1170,
+   "d": 1241,
+   "tree": "DK_EST",
+   "title": "Roi de Danemark",
+   "g": "h",
+   "script": 93
+  },
+  "dk.dagmar": {
+   "id": "20d20795-81f2-5dc1-8ccc-19ebb21d6544",
+   "name": "Dagmar de Bohême (Marguerite)",
+   "b": 1186,
+   "d": 1212,
+   "tree": "CZ_PRE",
+   "title": "Reine de Danemark",
+   "g": "f",
+   "script": 93
+  },
+  "dk.berengaria": {
+   "id": "0373f6a9-8f72-5ebc-ac05-09d42a94de6e",
+   "name": "Bérengère de Portugal",
+   "b": 1194,
+   "d": 1221,
+   "tree": "DK_EST",
+   "title": "Reine de Danemark",
+   "g": "f",
+   "script": 93
+  },
+  "dk.valdemar_y": {
+   "id": "293e9fb9-ec8c-5493-9cf9-26cbab3e744d",
+   "name": "Valdemar le Jeune",
+   "b": 1209,
+   "d": 1231,
+   "tree": "DK_EST",
+   "title": "Co-roi, fils de Valdemar II",
+   "g": "h",
+   "script": 93
+  },
+  "dk.erik4": {
+   "id": "9d7f7c9d-9c6e-5075-b75b-b37de0c135f2",
+   "name": "Éric IV Plovpenning",
+   "b": 1216,
+   "d": 1250,
+   "tree": "DK_EST",
+   "title": "Roi de Danemark",
+   "g": "h",
+   "script": 93
+  },
+  "dk.abel": {
+   "id": "c1669bd6-a7e9-5cd3-bced-dcaf7f2c789f",
+   "name": "Abel",
+   "b": 1218,
+   "d": 1252,
+   "tree": "DK_EST",
+   "title": "Roi de Danemark",
+   "g": "h",
+   "script": 93
+  },
+  "dk.christopher1": {
+   "id": "d186a4cf-eef2-5451-b04f-a11fcfc32300",
+   "name": "Christophe Ier",
+   "b": 1219,
+   "d": 1259,
+   "tree": "DK_EST",
+   "title": "Roi de Danemark",
+   "g": "h",
+   "script": 93
+  },
+  "dk.erik5": {
+   "id": "2ce43858-816c-54b1-bce1-fd03ec722644",
+   "name": "Éric V Klipping",
+   "b": 1249,
+   "d": 1286,
+   "tree": "DK_EST",
+   "title": "Roi de Danemark",
+   "g": "h",
+   "script": 93
+  },
+  "dk.agnes_br": {
+   "id": "89ff365e-33b0-53cd-9291-04cf4d636630",
+   "name": "Agnès de Brandebourg",
+   "b": 1257,
+   "d": 1304,
+   "tree": "DK_EST",
+   "title": "Reine de Danemark, régente",
+   "g": "f",
+   "script": 93
+  },
+  "dk.erik6": {
+   "id": "a4571626-6c50-54fd-a445-4cb4ed97bfcd",
+   "name": "Éric VI Menved",
+   "b": 1274,
+   "d": 1319,
+   "tree": "DK_EST",
+   "title": "Roi de Danemark",
+   "g": "h",
+   "script": 93
+  },
+  "dk.christopher2": {
+   "id": "d9f614e1-82c2-522c-98f7-f810ecba6e69",
+   "name": "Christophe II",
+   "b": 1276,
+   "d": 1332,
+   "tree": "DK_EST",
+   "title": "Roi de Danemark",
+   "g": "h",
+   "script": 93
+  },
+  "dk.helvig": {
+   "id": "36ef9b40-cc72-5047-ab13-d75b4596cfe7",
+   "name": "Helvig de Slesvig",
+   "b": 1327,
+   "d": 1375,
+   "tree": "DK_EST",
+   "title": "Reine de Danemark",
+   "g": "f",
+   "script": 93
   }
  },
  "trees": {
@@ -25213,6 +25463,18 @@
    "entry": "b545151c-cabc-48f1-af74-4c77696b64ca",
    "country": "GBR",
    "dynasty": "Les Rollonides et Blois",
+   "script": null
+  },
+  "DK_JEL": {
+   "entry": "3a16424c-8305-4d32-9835-618eadd8bd12",
+   "country": "DNK",
+   "dynasty": "Maison de Jelling",
+   "script": null
+  },
+  "CZ_PRE": {
+   "entry": "b53dda9c-6240-43c2-8503-91cda7693dd1",
+   "country": "CZE",
+   "dynasty": "Přemyslides",
    "script": null
   }
  },
@@ -28914,24 +29176,10 @@
    "script": 76
   },
   {
-   "name": "Sophie de Danemark",
-   "b": null,
-   "tree": "SE_MED",
-   "reason": "Maison Estridsen : sans arbre",
-   "script": 76
-  },
-  {
    "name": "Helvig de Holstein",
    "b": null,
    "tree": "SE_MED",
    "reason": "Maison Holstein : sans arbre",
-   "script": 76
-  },
-  {
-   "name": "Märta de Danemark",
-   "b": null,
-   "tree": "SE_MED",
-   "reason": "Maison Estridsen : sans arbre",
    "script": 76
   },
   {
@@ -29458,6 +29706,41 @@
    "tree": "SC_BAL",
    "reason": "Maison Balliol : sans arbre",
    "script": 92
+  },
+  {
+   "name": "Ulf Thorgilsson",
+   "b": null,
+   "tree": "DK_EST",
+   "reason": "Maison Ulf : sans arbre",
+   "script": 93
+  },
+  {
+   "name": "Sophie de Minsk",
+   "b": 1140,
+   "tree": "DK_EST",
+   "reason": "Maison Minsk (Riourikides) : sans arbre",
+   "script": 93
+  },
+  {
+   "name": "Bérengère de Portugal",
+   "b": 1194,
+   "tree": "DK_EST",
+   "reason": "Maison Portugal (Bourgogne) : sans arbre",
+   "script": 93
+  },
+  {
+   "name": "Agnès de Brandebourg",
+   "b": 1257,
+   "tree": "DK_EST",
+   "reason": "Maison Brandebourg (Ascaniens) : sans arbre",
+   "script": 93
+  },
+  {
+   "name": "Helvig de Slesvig",
+   "b": 1327,
+   "tree": "DK_EST",
+   "reason": "Maison Slesvig : sans arbre",
+   "script": 93
   }
  ],
  "scripts": {
@@ -29888,6 +30171,12 @@
     "Dunkeld (GBR)",
     "Balliol (GBR)"
    ]
+  },
+  "93": {
+   "label": "Danemark médiéval — Estridsen et Valdemar : de Sven II à Valdemar IV ; correctif des dates de la maison de Huntingdon (v92)",
+   "members": 25,
+   "rels": 41,
+   "trees": []
   }
  },
  "relist": [
@@ -50140,6 +50429,211 @@
    "78bda1f9-a825-55cd-8dd4-60e571b18234",
    "107c907f-91e7-5a40-bfaf-7e26bded909a",
    "parent"
+  ],
+  [
+   "1e2890c2-9c3d-45a7-a97e-6ab65003a490",
+   "d99f255b-c073-5411-870c-b454c38b5e72",
+   "parent"
+  ],
+  [
+   "f3414b87-8ef0-58f2-a882-dec9597b287e",
+   "d99f255b-c073-5411-870c-b454c38b5e72",
+   "spouse"
+  ],
+  [
+   "f3414b87-8ef0-58f2-a882-dec9597b287e",
+   "312ad662-e724-5d37-9947-590c598722d1",
+   "parent"
+  ],
+  [
+   "d99f255b-c073-5411-870c-b454c38b5e72",
+   "312ad662-e724-5d37-9947-590c598722d1",
+   "parent"
+  ],
+  [
+   "312ad662-e724-5d37-9947-590c598722d1",
+   "b762c0ba-e784-51a7-b23e-6d626e2ba5a5",
+   "parent"
+  ],
+  [
+   "312ad662-e724-5d37-9947-590c598722d1",
+   "aaa520dd-2d8b-5f54-a65d-c5f6e73a601f",
+   "parent"
+  ],
+  [
+   "312ad662-e724-5d37-9947-590c598722d1",
+   "6bd780a2-425f-56ae-b9a3-ba68a41162af",
+   "parent"
+  ],
+  [
+   "312ad662-e724-5d37-9947-590c598722d1",
+   "3e9aa62e-39eb-5b1a-bcff-3d006e82889e",
+   "parent"
+  ],
+  [
+   "312ad662-e724-5d37-9947-590c598722d1",
+   "2ecdedea-0265-5940-9a41-95ede8602a6d",
+   "parent"
+  ],
+  [
+   "3e9aa62e-39eb-5b1a-bcff-3d006e82889e",
+   "dfacc6cd-3f5c-5c8e-b3a4-93bdaa892074",
+   "parent"
+  ],
+  [
+   "3e9aa62e-39eb-5b1a-bcff-3d006e82889e",
+   "0a4ea258-827f-5bae-92af-6321058e8496",
+   "parent"
+  ],
+  [
+   "0a4ea258-827f-5bae-92af-6321058e8496",
+   "197964af-faef-528f-b382-263b86c59187",
+   "parent"
+  ],
+  [
+   "197964af-faef-528f-b382-263b86c59187",
+   "c4958146-b46a-507a-af29-6edf180143dd",
+   "spouse"
+  ],
+  [
+   "197964af-faef-528f-b382-263b86c59187",
+   "45ab789d-87f9-51f6-aa77-a54a5f6e3feb",
+   "parent"
+  ],
+  [
+   "c4958146-b46a-507a-af29-6edf180143dd",
+   "45ab789d-87f9-51f6-aa77-a54a5f6e3feb",
+   "parent"
+  ],
+  [
+   "197964af-faef-528f-b382-263b86c59187",
+   "c2744b96-1f61-578f-9686-a763df6a6e05",
+   "parent"
+  ],
+  [
+   "c4958146-b46a-507a-af29-6edf180143dd",
+   "c2744b96-1f61-578f-9686-a763df6a6e05",
+   "parent"
+  ],
+  [
+   "197964af-faef-528f-b382-263b86c59187",
+   "328018bd-3280-458d-9981-43226a013bd6",
+   "parent"
+  ],
+  [
+   "c4958146-b46a-507a-af29-6edf180143dd",
+   "328018bd-3280-458d-9981-43226a013bd6",
+   "parent"
+  ],
+  [
+   "86690abf-cd2c-4d1c-bdf2-607e9bca2fbc",
+   "20d20795-81f2-5dc1-8ccc-19ebb21d6544",
+   "parent"
+  ],
+  [
+   "c2744b96-1f61-578f-9686-a763df6a6e05",
+   "20d20795-81f2-5dc1-8ccc-19ebb21d6544",
+   "spouse"
+  ],
+  [
+   "c2744b96-1f61-578f-9686-a763df6a6e05",
+   "0373f6a9-8f72-5ebc-ac05-09d42a94de6e",
+   "spouse"
+  ],
+  [
+   "c2744b96-1f61-578f-9686-a763df6a6e05",
+   "293e9fb9-ec8c-5493-9cf9-26cbab3e744d",
+   "parent"
+  ],
+  [
+   "20d20795-81f2-5dc1-8ccc-19ebb21d6544",
+   "293e9fb9-ec8c-5493-9cf9-26cbab3e744d",
+   "parent"
+  ],
+  [
+   "c2744b96-1f61-578f-9686-a763df6a6e05",
+   "9d7f7c9d-9c6e-5075-b75b-b37de0c135f2",
+   "parent"
+  ],
+  [
+   "0373f6a9-8f72-5ebc-ac05-09d42a94de6e",
+   "9d7f7c9d-9c6e-5075-b75b-b37de0c135f2",
+   "parent"
+  ],
+  [
+   "c2744b96-1f61-578f-9686-a763df6a6e05",
+   "c1669bd6-a7e9-5cd3-bced-dcaf7f2c789f",
+   "parent"
+  ],
+  [
+   "0373f6a9-8f72-5ebc-ac05-09d42a94de6e",
+   "c1669bd6-a7e9-5cd3-bced-dcaf7f2c789f",
+   "parent"
+  ],
+  [
+   "c2744b96-1f61-578f-9686-a763df6a6e05",
+   "d186a4cf-eef2-5451-b04f-a11fcfc32300",
+   "parent"
+  ],
+  [
+   "0373f6a9-8f72-5ebc-ac05-09d42a94de6e",
+   "d186a4cf-eef2-5451-b04f-a11fcfc32300",
+   "parent"
+  ],
+  [
+   "d186a4cf-eef2-5451-b04f-a11fcfc32300",
+   "2ce43858-816c-54b1-bce1-fd03ec722644",
+   "parent"
+  ],
+  [
+   "2ce43858-816c-54b1-bce1-fd03ec722644",
+   "89ff365e-33b0-53cd-9291-04cf4d636630",
+   "spouse"
+  ],
+  [
+   "2ce43858-816c-54b1-bce1-fd03ec722644",
+   "a4571626-6c50-54fd-a445-4cb4ed97bfcd",
+   "parent"
+  ],
+  [
+   "89ff365e-33b0-53cd-9291-04cf4d636630",
+   "a4571626-6c50-54fd-a445-4cb4ed97bfcd",
+   "parent"
+  ],
+  [
+   "2ce43858-816c-54b1-bce1-fd03ec722644",
+   "d9f614e1-82c2-522c-98f7-f810ecba6e69",
+   "parent"
+  ],
+  [
+   "89ff365e-33b0-53cd-9291-04cf4d636630",
+   "d9f614e1-82c2-522c-98f7-f810ecba6e69",
+   "parent"
+  ],
+  [
+   "d9f614e1-82c2-522c-98f7-f810ecba6e69",
+   "59229f89-6517-581a-b870-95cad1855c28",
+   "parent"
+  ],
+  [
+   "59229f89-6517-581a-b870-95cad1855c28",
+   "36ef9b40-cc72-5047-ab13-d75b4596cfe7",
+   "spouse"
+  ],
+  [
+   "36ef9b40-cc72-5047-ab13-d75b4596cfe7",
+   "ef4df279-a2d8-5578-b39f-4e3865aef537",
+   "parent"
+  ],
+  [
+   "9d7f7c9d-9c6e-5075-b75b-b37de0c135f2",
+   "859daf76-7cc9-57d6-8b32-ccf892a508b1",
+   "parent"
+  ],
+  [
+   "2ce43858-816c-54b1-bce1-fd03ec722644",
+   "345d74b4-9bc4-5875-90bb-09645b39ae57",
+   "parent"
   ]
  ],
  "dateflags": [
@@ -57667,6 +58161,90 @@
    "d": 1367,
    "note": "naissance vers 1283",
    "script": 92
+  },
+  {
+   "name": "Estrid Svendsdatter",
+   "b": 990,
+   "d": 1057,
+   "note": "naissance vers 990",
+   "script": 93
+  },
+  {
+   "name": "Ulf Thorgilsson",
+   "b": null,
+   "d": 1026,
+   "note": "naissance non donnée",
+   "script": 93
+  },
+  {
+   "name": "Sven II Estridsen",
+   "b": 1019,
+   "d": 1076,
+   "note": "naissance vers 1019",
+   "script": 93
+  },
+  {
+   "name": "Harald III Hen",
+   "b": 1041,
+   "d": 1080,
+   "note": "naissance vers 1041",
+   "script": 93
+  },
+  {
+   "name": "Knud IV le Saint",
+   "b": 1042,
+   "d": 1086,
+   "note": "naissance vers 1042",
+   "script": 93
+  },
+  {
+   "name": "Olaf Ier la Famine",
+   "b": 1050,
+   "d": 1095,
+   "note": "naissance vers 1050",
+   "script": 93
+  },
+  {
+   "name": "Éric Ier Ejegod",
+   "b": 1056,
+   "d": 1103,
+   "note": "naissance vers 1056",
+   "script": 93
+  },
+  {
+   "name": "Niels",
+   "b": 1064,
+   "d": 1134,
+   "note": "naissance vers 1064",
+   "script": 93
+  },
+  {
+   "name": "Éric II Emune",
+   "b": 1090,
+   "d": 1137,
+   "note": "naissance vers 1090",
+   "script": 93
+  },
+  {
+   "name": "Sophie de Minsk",
+   "b": 1140,
+   "d": 1198,
+   "note": "naissance vers 1140",
+   "script": 93
+  },
+  {
+   "name": "Dagmar de Bohême (Marguerite)",
+   "b": 1186,
+   "d": 1212,
+   "note": "naissance vers 1186",
+   "script": 93
+  },
+  {
+   "name": "Bérengère de Portugal",
+   "b": 1194,
+   "d": 1221,
+   "note": "naissance vers 1194",
+   "script": 93
   }
  ],
  "pins": [
@@ -58045,6 +58623,22 @@
   [
    "aa3f4985-7d1a-406f-ade2-a0884d2705d4",
    "SC_BRU"
+  ],
+  [
+   "d99f255b-c073-5411-870c-b454c38b5e72",
+   "DK_EST"
+  ],
+  [
+   "20d20795-81f2-5dc1-8ccc-19ebb21d6544",
+   "DK_EST"
+  ],
+  [
+   "859daf76-7cc9-57d6-8b32-ccf892a508b1",
+   "DK_EST"
+  ],
+  [
+   "345d74b4-9bc4-5875-90bb-09645b39ae57",
+   "DK_EST"
   ]
  ],
  "xmoved": {
