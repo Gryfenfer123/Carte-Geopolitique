@@ -19150,6 +19150,186 @@
    "title": "Petit-fils de Louis-Philippe",
    "g": "h",
    "script": 77
+  },
+  "bo.elisa": {
+   "id": "471645f5-55c5-50f8-8f99-c8f6146aa024",
+   "name": "Élisa Bonaparte",
+   "b": 1777,
+   "d": 1820,
+   "tree": "FR_BON",
+   "title": "Grande-duchesse de Toscane",
+   "g": "f",
+   "script": 78
+  },
+  "bo.pauline": {
+   "id": "ced37b4e-36c7-5360-8725-bc193062cce4",
+   "name": "Pauline Bonaparte",
+   "b": 1780,
+   "d": 1825,
+   "tree": "FR_BON",
+   "title": "Princesse Borghèse",
+   "g": "f",
+   "script": 78
+  },
+  "bo.caroline": {
+   "id": "d81ce1b0-fe5a-54cc-8bf6-3de11fe7edc7",
+   "name": "Caroline Bonaparte",
+   "b": 1782,
+   "d": 1839,
+   "tree": "FR_BON",
+   "title": "Reine de Naples",
+   "g": "f",
+   "script": 78
+  },
+  "bo.murat": {
+   "id": "1d521e24-22a0-5093-b62c-1cc3a229ce20",
+   "name": "Joachim Murat",
+   "b": 1767,
+   "d": 1815,
+   "tree": "FR_BON",
+   "title": "Roi de Naples",
+   "g": "h",
+   "script": 78
+  },
+  "bo.baciocchi": {
+   "id": "c27cff0f-ca74-5d17-87ec-dab39c3ee5c3",
+   "name": "Félix Baciocchi",
+   "b": 1762,
+   "d": 1841,
+   "tree": "FR_BON",
+   "title": "Prince de Lucques, époux d'Élisa",
+   "g": "h",
+   "script": 78
+  },
+  "bo.clary": {
+   "id": "58437982-e5ff-54ab-830b-40248f174a1c",
+   "name": "Julie Clary",
+   "b": 1771,
+   "d": 1845,
+   "tree": "FR_BON",
+   "title": "Reine de Naples puis d'Espagne, épouse de Joseph",
+   "g": "f",
+   "script": 78
+  },
+  "bo.alexandre_b": {
+   "id": "460c77b6-6e46-54c0-8f3a-4036260e7a92",
+   "name": "Alexandre de Beauharnais",
+   "b": 1760,
+   "d": 1794,
+   "tree": "FR_BON",
+   "title": "Premier mari de Joséphine",
+   "g": "h",
+   "script": 78
+  },
+  "bo.eugene": {
+   "id": "50ae0292-a3cd-5e5d-bdde-24774466cb0b",
+   "name": "Eugène de Beauharnais",
+   "b": 1781,
+   "d": 1824,
+   "tree": "FR_BON",
+   "title": "Vice-roi d'Italie, duc de Leuchtenberg",
+   "g": "h",
+   "script": 78
+  },
+  "wi.augusta_b": {
+   "id": "aead0438-df75-5c73-bb4c-19cc5e109237",
+   "name": "Augusta de Bavière",
+   "b": 1788,
+   "d": 1851,
+   "tree": "DE_WIT",
+   "title": "Duchesse de Leuchtenberg",
+   "g": "f",
+   "script": 78
+  },
+  "bo.auguste_l": {
+   "id": "2a06f1e7-2139-5451-9a7f-333871e94560",
+   "name": "Auguste de Beauharnais, duc de Leuchtenberg",
+   "b": 1810,
+   "d": 1835,
+   "tree": "FR_BON",
+   "title": "Prince consort du Portugal (époux de Marie II)",
+   "g": "h",
+   "script": 78
+  },
+  "bo.amelie_l": {
+   "id": "db85428a-e4c4-5b25-9493-642b23431fae",
+   "name": "Amélie de Leuchtenberg",
+   "b": 1812,
+   "d": 1873,
+   "tree": "FR_BON",
+   "title": "Impératrice du Brésil",
+   "g": "f",
+   "script": 78
+  },
+  "bo.theodolinde": {
+   "id": "b916cc90-8c48-5314-b9d0-3ea480765ca5",
+   "name": "Théodolinde de Leuchtenberg",
+   "b": 1814,
+   "d": 1857,
+   "tree": "FR_BON",
+   "title": "Comtesse de Wurtemberg",
+   "g": "f",
+   "script": 78
+  },
+  "bo.max_l": {
+   "id": "5c0cce7b-8fdc-55d6-8f53-77e5b5900c80",
+   "name": "Maximilien de Beauharnais, duc de Leuchtenberg",
+   "b": 1817,
+   "d": 1852,
+   "tree": "FR_BON",
+   "title": "Gendre de Nicolas Ier",
+   "g": "h",
+   "script": 78
+  },
+  "bo.napoleon_louis": {
+   "id": "1bccc7d5-2a63-5028-88d1-065f0d039276",
+   "name": "Napoléon-Louis Bonaparte",
+   "b": 1804,
+   "d": 1831,
+   "tree": "FR_BON",
+   "title": "Fils de Louis et Hortense",
+   "g": "h",
+   "script": 78
+  },
+  "bo.prince_imp": {
+   "id": "8a8fadf5-4de1-55f1-aa9c-b9aba93a71c3",
+   "name": "Napoléon Eugène, prince impérial",
+   "b": 1856,
+   "d": 1879,
+   "tree": "FR_BON",
+   "title": "Fils de Napoléon III",
+   "g": "h",
+   "script": 78
+  },
+  "bo.catherine_w": {
+   "id": "f58d5a0f-54c7-5f04-8682-5ff817880d18",
+   "name": "Catherine de Wurtemberg",
+   "b": 1783,
+   "d": 1835,
+   "tree": "FR_BON",
+   "title": "Reine de Westphalie",
+   "g": "f",
+   "script": 78
+  },
+  "bo.mathilde": {
+   "id": "29d032cf-bfa9-51b3-b5fa-63bcece05853",
+   "name": "Mathilde Bonaparte",
+   "b": 1820,
+   "d": 1904,
+   "tree": "FR_BON",
+   "title": "Princesse, salonnière",
+   "g": "f",
+   "script": 78
+  },
+  "bo.plonplon": {
+   "id": "7c66d88e-219b-51f1-81a0-8e4955ec26c8",
+   "name": "Napoléon-Jérôme Bonaparte (Plon-Plon)",
+   "b": 1822,
+   "d": 1891,
+   "tree": "FR_BON",
+   "title": "Prince Napoléon, héritier bonapartiste",
+   "g": "h",
+   "script": 78
   }
  },
  "trees": {
@@ -23509,6 +23689,41 @@
    "tree": "FR_BOU",
    "reason": "Maison Mecklembourg-Schwerin : sans arbre",
    "script": 77
+  },
+  {
+   "name": "Joachim Murat",
+   "b": 1767,
+   "tree": "FR_BON",
+   "reason": "Maison Murat : sans arbre",
+   "script": 78
+  },
+  {
+   "name": "Félix Baciocchi",
+   "b": 1762,
+   "tree": "FR_BON",
+   "reason": "Maison Baciocchi : sans arbre",
+   "script": 78
+  },
+  {
+   "name": "Julie Clary",
+   "b": 1771,
+   "tree": "FR_BON",
+   "reason": "Maison Clary : sans arbre",
+   "script": 78
+  },
+  {
+   "name": "Alexandre de Beauharnais",
+   "b": 1760,
+   "tree": "FR_BON",
+   "reason": "Maison Beauharnais : sans arbre",
+   "script": 78
+  },
+  {
+   "name": "Catherine de Wurtemberg",
+   "b": 1783,
+   "tree": "FR_BON",
+   "reason": "Maison Wurtemberg : sans arbre",
+   "script": 78
   }
  ],
  "scripts": {
@@ -23816,6 +24031,12 @@
    "label": "France — Bourbons : enfants d'Henri IV, de Louis XIV, de Louis XV, du Dauphin, de Louis XVI, de Charles X et de Louis-Philippe ; Orléans de la Régence à Louis-Philippe",
    "members": 51,
    "rels": 113,
+   "trees": []
+  },
+  "78": {
+   "label": "France — Bonaparte : fratrie de Napoléon Ier, Beauharnais, enfants de Louis et de Jérôme, Prince impérial",
+   "members": 18,
+   "rels": 38,
    "trees": []
   }
  },
@@ -40658,6 +40879,196 @@
   [
    "8ec8431d-16b0-5d00-ad5c-b4a2d297b4a5",
    "a3b5fd46-4d9f-5afc-ac4a-377ecd9a12a2",
+   "parent"
+  ],
+  [
+   "2cafb38a-4169-4a99-9684-788ecba27725",
+   "471645f5-55c5-50f8-8f99-c8f6146aa024",
+   "parent"
+  ],
+  [
+   "3fe14ec2-b6ea-4efe-a755-4a8dc49511cc",
+   "471645f5-55c5-50f8-8f99-c8f6146aa024",
+   "parent"
+  ],
+  [
+   "2cafb38a-4169-4a99-9684-788ecba27725",
+   "ced37b4e-36c7-5360-8725-bc193062cce4",
+   "parent"
+  ],
+  [
+   "3fe14ec2-b6ea-4efe-a755-4a8dc49511cc",
+   "ced37b4e-36c7-5360-8725-bc193062cce4",
+   "parent"
+  ],
+  [
+   "2cafb38a-4169-4a99-9684-788ecba27725",
+   "d81ce1b0-fe5a-54cc-8bf6-3de11fe7edc7",
+   "parent"
+  ],
+  [
+   "3fe14ec2-b6ea-4efe-a755-4a8dc49511cc",
+   "d81ce1b0-fe5a-54cc-8bf6-3de11fe7edc7",
+   "parent"
+  ],
+  [
+   "d81ce1b0-fe5a-54cc-8bf6-3de11fe7edc7",
+   "1d521e24-22a0-5093-b62c-1cc3a229ce20",
+   "spouse"
+  ],
+  [
+   "471645f5-55c5-50f8-8f99-c8f6146aa024",
+   "c27cff0f-ca74-5d17-87ec-dab39c3ee5c3",
+   "spouse"
+  ],
+  [
+   "969467e8-d81c-4c44-81c2-56dbbd00ad51",
+   "58437982-e5ff-54ab-830b-40248f174a1c",
+   "spouse"
+  ],
+  [
+   "460c77b6-6e46-54c0-8f3a-4036260e7a92",
+   "e96686c9-258e-4670-a8c9-e971d022aee6",
+   "spouse"
+  ],
+  [
+   "460c77b6-6e46-54c0-8f3a-4036260e7a92",
+   "50ae0292-a3cd-5e5d-bdde-24774466cb0b",
+   "parent"
+  ],
+  [
+   "e96686c9-258e-4670-a8c9-e971d022aee6",
+   "50ae0292-a3cd-5e5d-bdde-24774466cb0b",
+   "parent"
+  ],
+  [
+   "460c77b6-6e46-54c0-8f3a-4036260e7a92",
+   "39dd3223-8155-4300-ba98-14e9fe59f237",
+   "parent"
+  ],
+  [
+   "e96686c9-258e-4670-a8c9-e971d022aee6",
+   "39dd3223-8155-4300-ba98-14e9fe59f237",
+   "parent"
+  ],
+  [
+   "bb2ceff8-3a24-40cf-a9c0-6f307c99c610",
+   "aead0438-df75-5c73-bb4c-19cc5e109237",
+   "parent"
+  ],
+  [
+   "50ae0292-a3cd-5e5d-bdde-24774466cb0b",
+   "aead0438-df75-5c73-bb4c-19cc5e109237",
+   "spouse"
+  ],
+  [
+   "50ae0292-a3cd-5e5d-bdde-24774466cb0b",
+   "b47f1c54-e013-530c-94a0-60b20ce47c19",
+   "parent"
+  ],
+  [
+   "aead0438-df75-5c73-bb4c-19cc5e109237",
+   "b47f1c54-e013-530c-94a0-60b20ce47c19",
+   "parent"
+  ],
+  [
+   "50ae0292-a3cd-5e5d-bdde-24774466cb0b",
+   "2a06f1e7-2139-5451-9a7f-333871e94560",
+   "parent"
+  ],
+  [
+   "aead0438-df75-5c73-bb4c-19cc5e109237",
+   "2a06f1e7-2139-5451-9a7f-333871e94560",
+   "parent"
+  ],
+  [
+   "50ae0292-a3cd-5e5d-bdde-24774466cb0b",
+   "db85428a-e4c4-5b25-9493-642b23431fae",
+   "parent"
+  ],
+  [
+   "aead0438-df75-5c73-bb4c-19cc5e109237",
+   "db85428a-e4c4-5b25-9493-642b23431fae",
+   "parent"
+  ],
+  [
+   "50ae0292-a3cd-5e5d-bdde-24774466cb0b",
+   "b916cc90-8c48-5314-b9d0-3ea480765ca5",
+   "parent"
+  ],
+  [
+   "aead0438-df75-5c73-bb4c-19cc5e109237",
+   "b916cc90-8c48-5314-b9d0-3ea480765ca5",
+   "parent"
+  ],
+  [
+   "50ae0292-a3cd-5e5d-bdde-24774466cb0b",
+   "5c0cce7b-8fdc-55d6-8f53-77e5b5900c80",
+   "parent"
+  ],
+  [
+   "aead0438-df75-5c73-bb4c-19cc5e109237",
+   "5c0cce7b-8fdc-55d6-8f53-77e5b5900c80",
+   "parent"
+  ],
+  [
+   "580cda52-6706-49c2-aef9-a37eeca9fa40",
+   "1bccc7d5-2a63-5028-88d1-065f0d039276",
+   "parent"
+  ],
+  [
+   "39dd3223-8155-4300-ba98-14e9fe59f237",
+   "1bccc7d5-2a63-5028-88d1-065f0d039276",
+   "parent"
+  ],
+  [
+   "1488e049-c938-457c-b746-3e32fe4539c5",
+   "8a8fadf5-4de1-55f1-aa9c-b9aba93a71c3",
+   "parent"
+  ],
+  [
+   "23c92a87-0e99-45c9-b149-e5887bc511f6",
+   "8a8fadf5-4de1-55f1-aa9c-b9aba93a71c3",
+   "parent"
+  ],
+  [
+   "276d911e-e2b6-4170-9834-8b358c961430",
+   "f58d5a0f-54c7-5f04-8682-5ff817880d18",
+   "spouse"
+  ],
+  [
+   "276d911e-e2b6-4170-9834-8b358c961430",
+   "29d032cf-bfa9-51b3-b5fa-63bcece05853",
+   "parent"
+  ],
+  [
+   "f58d5a0f-54c7-5f04-8682-5ff817880d18",
+   "29d032cf-bfa9-51b3-b5fa-63bcece05853",
+   "parent"
+  ],
+  [
+   "276d911e-e2b6-4170-9834-8b358c961430",
+   "7c66d88e-219b-51f1-81a0-8e4955ec26c8",
+   "parent"
+  ],
+  [
+   "f58d5a0f-54c7-5f04-8682-5ff817880d18",
+   "7c66d88e-219b-51f1-81a0-8e4955ec26c8",
+   "parent"
+  ],
+  [
+   "7c66d88e-219b-51f1-81a0-8e4955ec26c8",
+   "e414da9b-4492-586c-b5cc-53ca54ab4bc7",
+   "spouse"
+  ],
+  [
+   "7c66d88e-219b-51f1-81a0-8e4955ec26c8",
+   "e74c9a1b-b487-5f11-8810-39f58b735c2d",
+   "parent"
+  ],
+  [
+   "e414da9b-4492-586c-b5cc-53ca54ab4bc7",
+   "e74c9a1b-b487-5f11-8810-39f58b735c2d",
    "parent"
   ]
  ],

@@ -2,6 +2,8 @@
 
 ## Dernières nouvelles (la plus récente en haut)
 
+- 2026-10-23 — v78 : France — Bonaparte : fratrie de Napoléon Ier, Beauharnais/Leuchtenberg, Prince impérial, Jérôme et ses enfants (18 membres)
+
 - 2026-10-23 — v77 : France — enfants d'Henri IV, Louis XIV (légitimés), Louis XV, Dauphin, Louis XVI, Charles X, Louis-Philippe ; Régence et Orléans (51 membres)
 
 - 2026-10-23 — v76 : Suède médiévale — Stenkil, Sverker, Erik, Folkung, Mecklembourg, Poméranie, Bonde (80 membres, nouvel arbre)
@@ -39,7 +41,7 @@
 
 Code : `src/genealogy.ts`, `genealogyLayers.ts`, `genealogyBus.ts`, `genealogyLod.ts/.css`, `genealogyLayersWorker.ts`,
 `genealogyLayout.ts`, `genealogyRouting.ts`. Outils de remplissage : [`scripts/arbres/`](../../scripts/arbres/README.md).
-Prochaine migration : **arbres_v78** (`supabase/arbres/arbres_v78.sql`) — générateur : `Gen(78, "…")`.  (v77 livrée, à exécuter par Martin si ce n'est pas déjà fait.)
+Prochaine migration : **arbres_v79** (`supabase/arbres/arbres_v79.sql`) — générateur : `Gen(79, "…")`.  (v78 livrée, à exécuter par Martin si ce n'est pas déjà fait.)
 
 ## Règles de contenu (décidées par Martin — ne pas rouvrir)
 - Un pays n'a que les dynasties qui ont **régné sur lui**. Dynastie étrangère : branche principale dans son pays
