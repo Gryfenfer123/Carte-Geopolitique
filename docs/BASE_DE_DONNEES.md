@@ -144,4 +144,5 @@ RLS**. Règles :
 | arbres_v69 | Bourbon-Siciles et Parme complétés : 48 membres (enfants de Ferdinand Ier, François Ier, Ferdinand II ; Parme de Louis d'Étrurie à Élie) |
 | arbres_v70 | Orange-Nassau complété : 69 membres (Guillaume le Taciturne → princesse Amalia) |
 | arbres_v71 | Couronne belge complétée : 25 membres (enfants de Léopold Ier, Léopold II, Philippe de Flandre, Léopold III, Albert II, Philippe) |
+| arbres_v72 | Vasa (Suède) : 27 membres (Gustave Ier, Éric XIV, Charles IX, Gustave II Adolphe, Christine, liens avec Charles X-XII) |
 | `data_owid_load.sql` + `owid_chunks/` | Chargement des données d'indicateurs (rejouable, upserts) — à exécuter après v1 à v7 |

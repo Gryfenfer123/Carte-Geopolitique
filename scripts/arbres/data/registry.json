@@ -15890,6 +15890,276 @@
    "title": "Princesse de Belgique",
    "g": "f",
    "script": 71
+  },
+  "se.erik_johansson": {
+   "id": "7d4388ff-49a7-55e0-8e6f-37d9b4e8103c",
+   "name": "Erik Johansson Vasa",
+   "b": null,
+   "d": 1520,
+   "tree": "PL_VASA",
+   "title": "Noble suédois, exécuté lors du bain de sang de Stockholm",
+   "g": "h",
+   "script": 72
+  },
+  "se.cecilia": {
+   "id": "6b076ad8-7ab3-5e1e-adb1-9d487fc5f203",
+   "name": "Cécile Månsdotter Eka",
+   "b": null,
+   "d": null,
+   "tree": "PL_VASA",
+   "title": "Noble suédoise",
+   "g": "f",
+   "script": 72
+  },
+  "se.gustav1": {
+   "id": "bf084a0f-5514-5b5b-bfb3-c254d2e20ba8",
+   "name": "Gustave Ier Vasa",
+   "b": 1496,
+   "d": 1560,
+   "tree": "PL_VASA",
+   "title": "Roi de Suède",
+   "g": "h",
+   "script": 72
+  },
+  "se.catherine_sl": {
+   "id": "35803429-98f9-5f83-8f5f-e0ae08b0c7fe",
+   "name": "Catherine de Saxe-Lauenbourg",
+   "b": 1513,
+   "d": 1535,
+   "tree": "PL_VASA",
+   "title": "Reine de Suède",
+   "g": "f",
+   "script": 72
+  },
+  "se.margareta": {
+   "id": "b87cf92a-a1a4-58ce-82e0-9a07e0fbc765",
+   "name": "Marguerite Leijonhufvud",
+   "b": 1514,
+   "d": 1551,
+   "tree": "PL_VASA",
+   "title": "Reine de Suède",
+   "g": "f",
+   "script": 72
+  },
+  "se.katarina_st": {
+   "id": "8cd6dfb7-3994-5f17-9931-a4fbe1f874d4",
+   "name": "Catherine Stenbock",
+   "b": 1535,
+   "d": 1621,
+   "tree": "PL_VASA",
+   "title": "Reine de Suède",
+   "g": "f",
+   "script": 72
+  },
+  "se.erik14": {
+   "id": "ed01951b-a5ac-5bf2-a9a9-052daf30fcc1",
+   "name": "Éric XIV",
+   "b": 1533,
+   "d": 1577,
+   "tree": "PL_VASA",
+   "title": "Roi de Suède",
+   "g": "h",
+   "script": 72
+  },
+  "se.magnus": {
+   "id": "dfd38bea-a542-5a69-95e1-b8c02bf8ff7c",
+   "name": "Magnus de Suède",
+   "b": 1542,
+   "d": 1595,
+   "tree": "PL_VASA",
+   "title": "Duc d'Östergötland",
+   "g": "h",
+   "script": 72
+  },
+  "se.charles9": {
+   "id": "fb7b5be8-098d-58f0-b78f-4067e8f34030",
+   "name": "Charles IX",
+   "b": 1550,
+   "d": 1611,
+   "tree": "PL_VASA",
+   "title": "Roi de Suède",
+   "g": "h",
+   "script": 72
+  },
+  "se.karin": {
+   "id": "54e4c8f7-6aa8-5dec-b19a-198c9178ee4c",
+   "name": "Karin Månsdotter",
+   "b": 1550,
+   "d": 1612,
+   "tree": "PL_VASA",
+   "title": "Reine de Suède",
+   "g": "f",
+   "script": 72
+  },
+  "se.gustav_e": {
+   "id": "f652b240-1bf9-5246-a5e1-e4750ccdad8b",
+   "name": "Gustave Eriksson",
+   "b": 1568,
+   "d": 1607,
+   "tree": "PL_VASA",
+   "title": "Fils d'Éric XIV",
+   "g": "h",
+   "script": 72
+  },
+  "se.gunilla": {
+   "id": "57b713c1-33be-5640-bc09-cb72c3d5437c",
+   "name": "Gunilla Bielke",
+   "b": 1568,
+   "d": 1597,
+   "tree": "PL_VASA",
+   "title": "Reine de Suède",
+   "g": "f",
+   "script": 72
+  },
+  "se.john_oster": {
+   "id": "6a232d78-53f6-5189-b3e3-a0f8fd994c7f",
+   "name": "Jean, duc d'Östergötland",
+   "b": 1589,
+   "d": 1618,
+   "tree": "PL_VASA",
+   "title": "Duc d'Östergötland",
+   "g": "h",
+   "script": 72
+  },
+  "se.anna_vasa": {
+   "id": "68dbdf3d-947e-594d-80dc-d86ce3eaf8c2",
+   "name": "Anne Vasa (1568)",
+   "b": 1568,
+   "d": null,
+   "tree": "PL_VASA",
+   "title": "Princesse de Suède",
+   "g": "f",
+   "script": 72
+  },
+  "se.marie_simmern": {
+   "id": "c788bf4a-ffe2-5451-bc88-2f8c82bfae2b",
+   "name": "Marie de Palatinat-Simmern",
+   "b": 1561,
+   "d": 1589,
+   "tree": "DE_WIT",
+   "title": "Duchesse de Södermanland",
+   "g": "f",
+   "script": 72
+  },
+  "se.adolf_gott": {
+   "id": "9ff1e551-9d76-5e15-bf32-1a2d6ba87659",
+   "name": "Adolphe de Holstein-Gottorp",
+   "b": 1526,
+   "d": 1586,
+   "tree": "DK_OLD",
+   "title": "Duc de Holstein-Gottorp",
+   "g": "h",
+   "script": 72
+  },
+  "se.christine_hesse": {
+   "id": "b42f9b16-5513-5bb8-95cb-b2ca0de379b0",
+   "name": "Christine de Hesse",
+   "b": 1543,
+   "d": 1604,
+   "tree": "DK_OLD",
+   "title": "Duchesse de Holstein-Gottorp",
+   "g": "f",
+   "script": 72
+  },
+  "se.christina_gott": {
+   "id": "b36cbc6a-25cf-55ca-af2c-8ea264ba5dfb",
+   "name": "Christine de Holstein-Gottorp (1573-1625)",
+   "b": 1573,
+   "d": 1625,
+   "tree": "DK_OLD",
+   "title": "Reine de Suède",
+   "g": "f",
+   "script": 72
+  },
+  "se.catherine_pal": {
+   "id": "dea8be65-86af-59ef-89df-980bd172af0d",
+   "name": "Catherine de Suède (1584-1638)",
+   "b": 1584,
+   "d": 1638,
+   "tree": "PL_VASA",
+   "title": "Comtesse palatine de Kleebourg",
+   "g": "f",
+   "script": 72
+  },
+  "se.gustav2": {
+   "id": "1e285909-040f-519b-ae87-cba221517e2c",
+   "name": "Gustave II Adolphe",
+   "b": 1594,
+   "d": 1632,
+   "tree": "PL_VASA",
+   "title": "Roi de Suède",
+   "g": "h",
+   "script": 72
+  },
+  "se.marie_elis": {
+   "id": "1176d1af-cb7b-5260-899b-3e940695a0b6",
+   "name": "Marie-Élisabeth de Suède",
+   "b": 1596,
+   "d": 1618,
+   "tree": "PL_VASA",
+   "title": "Duchesse d'Östergötland",
+   "g": "f",
+   "script": 72
+  },
+  "se.charles_philip": {
+   "id": "f5fd1f0c-d596-52bd-8b95-b3ddb79ccc42",
+   "name": "Charles-Philippe de Suède",
+   "b": 1601,
+   "d": 1622,
+   "tree": "PL_VASA",
+   "title": "Duc de Södermanland",
+   "g": "h",
+   "script": 72
+  },
+  "se.marie_eleonora": {
+   "id": "cff665d8-0cdb-5fa8-b4cd-c58528bb9616",
+   "name": "Marie-Éléonore de Brandebourg",
+   "b": 1599,
+   "d": 1655,
+   "tree": "DE_HOH",
+   "title": "Reine de Suède",
+   "g": "f",
+   "script": 72
+  },
+  "se.christina": {
+   "id": "7401af24-a7b4-5edf-992a-658c88eb2ced",
+   "name": "Christine de Suède",
+   "b": 1626,
+   "d": 1689,
+   "tree": "PL_VASA",
+   "title": "Reine de Suède",
+   "g": "f",
+   "script": 72
+  },
+  "se.hedwig_eleonora": {
+   "id": "a4c696f1-e60e-5877-bb52-4ec292fc0892",
+   "name": "Hedwige-Éléonore de Holstein-Gottorp",
+   "b": 1636,
+   "d": 1715,
+   "tree": "PL_VASA",
+   "title": "Reine de Suède",
+   "g": "f",
+   "script": 72
+  },
+  "se.ulrika_dk": {
+   "id": "e05b47aa-900b-5e54-a48a-db6645dde7a6",
+   "name": "Ulrique-Éléonore de Danemark",
+   "b": 1656,
+   "d": 1693,
+   "tree": "DK_OLD",
+   "title": "Reine de Suède",
+   "g": "f",
+   "script": 72
+  },
+  "se.hedvig_sophia": {
+   "id": "b2807021-8150-511e-a65e-7d423667e645",
+   "name": "Hedvige-Sophie de Suède",
+   "b": 1681,
+   "d": 1708,
+   "tree": "SE_PAL",
+   "title": "Duchesse de Holstein-Gottorp",
+   "g": "f",
+   "script": 72
   }
  },
  "trees": {
@@ -16372,6 +16642,12 @@
    "country": "FRA",
    "dynasty": "Bonaparte",
    "script": null
+  },
+  "SE_PAL": {
+   "entry": "a19ba0b6-9d7f-5121-837b-40cda646ea38",
+   "country": "SWE",
+   "dynasty": "Palatinat-Deux-Ponts (Suède)",
+   "script": 72
   }
  },
  "flags": [
@@ -19706,6 +19982,62 @@
    "tree": "BE_COB",
    "reason": "Famille Mora : sans arbre",
    "script": 71
+  },
+  {
+   "name": "Cécile Månsdotter Eka",
+   "b": null,
+   "tree": "PL_VASA",
+   "reason": "Maison Eka : sans arbre",
+   "script": 72
+  },
+  {
+   "name": "Catherine de Saxe-Lauenbourg",
+   "b": 1513,
+   "tree": "PL_VASA",
+   "reason": "Maison Saxe-Lauenbourg : sans arbre",
+   "script": 72
+  },
+  {
+   "name": "Marguerite Leijonhufvud",
+   "b": 1514,
+   "tree": "PL_VASA",
+   "reason": "Maison Leijonhufvud : sans arbre",
+   "script": 72
+  },
+  {
+   "name": "Catherine Stenbock",
+   "b": 1535,
+   "tree": "PL_VASA",
+   "reason": "Maison Stenbock : sans arbre",
+   "script": 72
+  },
+  {
+   "name": "Karin Månsdotter",
+   "b": 1550,
+   "tree": "PL_VASA",
+   "reason": "Maison Månsdotter : sans arbre",
+   "script": 72
+  },
+  {
+   "name": "Gunilla Bielke",
+   "b": 1568,
+   "tree": "PL_VASA",
+   "reason": "Maison Bielke : sans arbre",
+   "script": 72
+  },
+  {
+   "name": "Christine de Hesse",
+   "b": 1543,
+   "tree": "DK_OLD",
+   "reason": "Maison Hesse : sans arbre",
+   "script": 72
+  },
+  {
+   "name": "Hedwige-Éléonore de Holstein-Gottorp",
+   "b": 1636,
+   "tree": "PL_VASA",
+   "reason": "Maison Holstein-Gottorp : sans arbre",
+   "script": 72
   }
  ],
  "scripts": {
@@ -19971,6 +20303,14 @@
    "members": 25,
    "rels": 60,
    "trees": []
+  },
+  "72": {
+   "label": "Suède — Maison Vasa (Gustave Ier à Christine) et lien avec les Palatins de Deux-Ponts (Charles X à Charles XII, Ulrique-Éléonore)",
+   "members": 27,
+   "rels": 56,
+   "trees": [
+    "Palatinat-Deux-Ponts (Suède) (SWE)"
+   ]
   }
  },
  "relist": [
@@ -33893,6 +34233,286 @@
    "00f7295a-d7f6-4572-9881-87f2759cbe8c",
    "3e0e0d24-aaaf-58fb-92a5-278dfe1cf3b7",
    "parent"
+  ],
+  [
+   "7d4388ff-49a7-55e0-8e6f-37d9b4e8103c",
+   "6b076ad8-7ab3-5e1e-adb1-9d487fc5f203",
+   "spouse"
+  ],
+  [
+   "7d4388ff-49a7-55e0-8e6f-37d9b4e8103c",
+   "bf084a0f-5514-5b5b-bfb3-c254d2e20ba8",
+   "parent"
+  ],
+  [
+   "6b076ad8-7ab3-5e1e-adb1-9d487fc5f203",
+   "bf084a0f-5514-5b5b-bfb3-c254d2e20ba8",
+   "parent"
+  ],
+  [
+   "bf084a0f-5514-5b5b-bfb3-c254d2e20ba8",
+   "35803429-98f9-5f83-8f5f-e0ae08b0c7fe",
+   "spouse"
+  ],
+  [
+   "bf084a0f-5514-5b5b-bfb3-c254d2e20ba8",
+   "b87cf92a-a1a4-58ce-82e0-9a07e0fbc765",
+   "spouse"
+  ],
+  [
+   "bf084a0f-5514-5b5b-bfb3-c254d2e20ba8",
+   "8cd6dfb7-3994-5f17-9931-a4fbe1f874d4",
+   "spouse"
+  ],
+  [
+   "bf084a0f-5514-5b5b-bfb3-c254d2e20ba8",
+   "ed01951b-a5ac-5bf2-a9a9-052daf30fcc1",
+   "parent"
+  ],
+  [
+   "35803429-98f9-5f83-8f5f-e0ae08b0c7fe",
+   "ed01951b-a5ac-5bf2-a9a9-052daf30fcc1",
+   "parent"
+  ],
+  [
+   "bf084a0f-5514-5b5b-bfb3-c254d2e20ba8",
+   "3161e73d-9607-5cce-89e0-188b3a585e2c",
+   "parent"
+  ],
+  [
+   "b87cf92a-a1a4-58ce-82e0-9a07e0fbc765",
+   "3161e73d-9607-5cce-89e0-188b3a585e2c",
+   "parent"
+  ],
+  [
+   "bf084a0f-5514-5b5b-bfb3-c254d2e20ba8",
+   "dfd38bea-a542-5a69-95e1-b8c02bf8ff7c",
+   "parent"
+  ],
+  [
+   "b87cf92a-a1a4-58ce-82e0-9a07e0fbc765",
+   "dfd38bea-a542-5a69-95e1-b8c02bf8ff7c",
+   "parent"
+  ],
+  [
+   "bf084a0f-5514-5b5b-bfb3-c254d2e20ba8",
+   "fb7b5be8-098d-58f0-b78f-4067e8f34030",
+   "parent"
+  ],
+  [
+   "b87cf92a-a1a4-58ce-82e0-9a07e0fbc765",
+   "fb7b5be8-098d-58f0-b78f-4067e8f34030",
+   "parent"
+  ],
+  [
+   "ed01951b-a5ac-5bf2-a9a9-052daf30fcc1",
+   "54e4c8f7-6aa8-5dec-b19a-198c9178ee4c",
+   "spouse"
+  ],
+  [
+   "ed01951b-a5ac-5bf2-a9a9-052daf30fcc1",
+   "f652b240-1bf9-5246-a5e1-e4750ccdad8b",
+   "parent"
+  ],
+  [
+   "54e4c8f7-6aa8-5dec-b19a-198c9178ee4c",
+   "f652b240-1bf9-5246-a5e1-e4750ccdad8b",
+   "parent"
+  ],
+  [
+   "3161e73d-9607-5cce-89e0-188b3a585e2c",
+   "57b713c1-33be-5640-bc09-cb72c3d5437c",
+   "spouse"
+  ],
+  [
+   "3161e73d-9607-5cce-89e0-188b3a585e2c",
+   "6a232d78-53f6-5189-b3e3-a0f8fd994c7f",
+   "parent"
+  ],
+  [
+   "3161e73d-9607-5cce-89e0-188b3a585e2c",
+   "68dbdf3d-947e-594d-80dc-d86ce3eaf8c2",
+   "parent"
+  ],
+  [
+   "5fbd94f4-23bd-5a00-a935-db6709604ec0",
+   "68dbdf3d-947e-594d-80dc-d86ce3eaf8c2",
+   "parent"
+  ],
+  [
+   "62b68c62-88d6-55d8-80ff-c9c223152670",
+   "c788bf4a-ffe2-5451-bc88-2f8c82bfae2b",
+   "parent"
+  ],
+  [
+   "76ae7223-6fe2-5151-ad8e-ecb9b391cec3",
+   "c788bf4a-ffe2-5451-bc88-2f8c82bfae2b",
+   "parent"
+  ],
+  [
+   "fb7b5be8-098d-58f0-b78f-4067e8f34030",
+   "c788bf4a-ffe2-5451-bc88-2f8c82bfae2b",
+   "spouse"
+  ],
+  [
+   "7c5d6558-c46c-48e1-8b55-ac8b977417e9",
+   "9ff1e551-9d76-5e15-bf32-1a2d6ba87659",
+   "parent"
+  ],
+  [
+   "9ff1e551-9d76-5e15-bf32-1a2d6ba87659",
+   "b42f9b16-5513-5bb8-95cb-b2ca0de379b0",
+   "spouse"
+  ],
+  [
+   "9ff1e551-9d76-5e15-bf32-1a2d6ba87659",
+   "b36cbc6a-25cf-55ca-af2c-8ea264ba5dfb",
+   "parent"
+  ],
+  [
+   "b42f9b16-5513-5bb8-95cb-b2ca0de379b0",
+   "b36cbc6a-25cf-55ca-af2c-8ea264ba5dfb",
+   "parent"
+  ],
+  [
+   "fb7b5be8-098d-58f0-b78f-4067e8f34030",
+   "b36cbc6a-25cf-55ca-af2c-8ea264ba5dfb",
+   "spouse"
+  ],
+  [
+   "fb7b5be8-098d-58f0-b78f-4067e8f34030",
+   "dea8be65-86af-59ef-89df-980bd172af0d",
+   "parent"
+  ],
+  [
+   "c788bf4a-ffe2-5451-bc88-2f8c82bfae2b",
+   "dea8be65-86af-59ef-89df-980bd172af0d",
+   "parent"
+  ],
+  [
+   "dea8be65-86af-59ef-89df-980bd172af0d",
+   "5feee699-997e-428c-90ea-82e0c395c062",
+   "spouse"
+  ],
+  [
+   "5feee699-997e-428c-90ea-82e0c395c062",
+   "0ff1c7fc-619a-402c-94ce-dc6215a9dcd4",
+   "parent"
+  ],
+  [
+   "dea8be65-86af-59ef-89df-980bd172af0d",
+   "0ff1c7fc-619a-402c-94ce-dc6215a9dcd4",
+   "parent"
+  ],
+  [
+   "fb7b5be8-098d-58f0-b78f-4067e8f34030",
+   "1e285909-040f-519b-ae87-cba221517e2c",
+   "parent"
+  ],
+  [
+   "b36cbc6a-25cf-55ca-af2c-8ea264ba5dfb",
+   "1e285909-040f-519b-ae87-cba221517e2c",
+   "parent"
+  ],
+  [
+   "fb7b5be8-098d-58f0-b78f-4067e8f34030",
+   "1176d1af-cb7b-5260-899b-3e940695a0b6",
+   "parent"
+  ],
+  [
+   "b36cbc6a-25cf-55ca-af2c-8ea264ba5dfb",
+   "1176d1af-cb7b-5260-899b-3e940695a0b6",
+   "parent"
+  ],
+  [
+   "fb7b5be8-098d-58f0-b78f-4067e8f34030",
+   "f5fd1f0c-d596-52bd-8b95-b3ddb79ccc42",
+   "parent"
+  ],
+  [
+   "b36cbc6a-25cf-55ca-af2c-8ea264ba5dfb",
+   "f5fd1f0c-d596-52bd-8b95-b3ddb79ccc42",
+   "parent"
+  ],
+  [
+   "6a232d78-53f6-5189-b3e3-a0f8fd994c7f",
+   "1176d1af-cb7b-5260-899b-3e940695a0b6",
+   "spouse"
+  ],
+  [
+   "67571e4c-fc66-4ba0-8e84-66c06f88f8ae",
+   "cff665d8-0cdb-5fa8-b4cd-c58528bb9616",
+   "parent"
+  ],
+  [
+   "1e285909-040f-519b-ae87-cba221517e2c",
+   "cff665d8-0cdb-5fa8-b4cd-c58528bb9616",
+   "spouse"
+  ],
+  [
+   "1e285909-040f-519b-ae87-cba221517e2c",
+   "7401af24-a7b4-5edf-992a-658c88eb2ced",
+   "parent"
+  ],
+  [
+   "cff665d8-0cdb-5fa8-b4cd-c58528bb9616",
+   "7401af24-a7b4-5edf-992a-658c88eb2ced",
+   "parent"
+  ],
+  [
+   "0ff1c7fc-619a-402c-94ce-dc6215a9dcd4",
+   "a4c696f1-e60e-5877-bb52-4ec292fc0892",
+   "spouse"
+  ],
+  [
+   "0ff1c7fc-619a-402c-94ce-dc6215a9dcd4",
+   "a09fa1dd-c798-4f65-8f48-aaff29b4f813",
+   "parent"
+  ],
+  [
+   "a4c696f1-e60e-5877-bb52-4ec292fc0892",
+   "a09fa1dd-c798-4f65-8f48-aaff29b4f813",
+   "parent"
+  ],
+  [
+   "555a36dc-18c0-4abc-a411-901c1d7ac59c",
+   "e05b47aa-900b-5e54-a48a-db6645dde7a6",
+   "parent"
+  ],
+  [
+   "a09fa1dd-c798-4f65-8f48-aaff29b4f813",
+   "e05b47aa-900b-5e54-a48a-db6645dde7a6",
+   "spouse"
+  ],
+  [
+   "a09fa1dd-c798-4f65-8f48-aaff29b4f813",
+   "841eb365-6517-4b89-bd3e-ef6192c6d93f",
+   "parent"
+  ],
+  [
+   "e05b47aa-900b-5e54-a48a-db6645dde7a6",
+   "841eb365-6517-4b89-bd3e-ef6192c6d93f",
+   "parent"
+  ],
+  [
+   "a09fa1dd-c798-4f65-8f48-aaff29b4f813",
+   "36ca6e33-35e2-4b57-9fbb-15228aac5d4d",
+   "parent"
+  ],
+  [
+   "e05b47aa-900b-5e54-a48a-db6645dde7a6",
+   "36ca6e33-35e2-4b57-9fbb-15228aac5d4d",
+   "parent"
+  ],
+  [
+   "a09fa1dd-c798-4f65-8f48-aaff29b4f813",
+   "b2807021-8150-511e-a65e-7d423667e645",
+   "parent"
+  ],
+  [
+   "e05b47aa-900b-5e54-a48a-db6645dde7a6",
+   "b2807021-8150-511e-a65e-7d423667e645",
+   "parent"
   ]
  ],
  "dateflags": [
@@ -39901,6 +40521,69 @@
    "d": 2014,
    "note": "dates connues par ailleurs",
    "script": 71
+  },
+  {
+   "name": "Erik Johansson Vasa",
+   "b": null,
+   "d": 1520,
+   "note": "naissance non donnée",
+   "script": 72
+  },
+  {
+   "name": "Cécile Månsdotter Eka",
+   "b": null,
+   "d": null,
+   "note": "dates non données",
+   "script": 72
+  },
+  {
+   "name": "Gustave Ier Vasa",
+   "b": 1496,
+   "d": 1560,
+   "note": "dates connues par ailleurs, non données par la page",
+   "script": 72
+  },
+  {
+   "name": "Gunilla Bielke",
+   "b": 1568,
+   "d": 1597,
+   "note": "mort 1597 (un autre passage de la page donne 1592)",
+   "script": 72
+  },
+  {
+   "name": "Anne Vasa (1568)",
+   "b": 1568,
+   "d": null,
+   "note": "mort non donnée",
+   "script": 72
+  },
+  {
+   "name": "Adolphe de Holstein-Gottorp",
+   "b": 1526,
+   "d": 1586,
+   "note": "dates connues par ailleurs",
+   "script": 72
+  },
+  {
+   "name": "Christine de Hesse",
+   "b": 1543,
+   "d": 1604,
+   "note": "dates connues par ailleurs",
+   "script": 72
+  },
+  {
+   "name": "Marie-Éléonore de Brandebourg",
+   "b": 1599,
+   "d": 1655,
+   "note": "dates connues par ailleurs, non données par la page",
+   "script": 72
+  },
+  {
+   "name": "Hedwige-Éléonore de Holstein-Gottorp",
+   "b": 1636,
+   "d": 1715,
+   "note": "dates connues par ailleurs",
+   "script": 72
   }
  ],
  "pins": [
@@ -40047,6 +40730,26 @@
   [
    "2504d667-6a2e-5728-a2f2-2a88df94faf9",
    "BE_COB"
+  ],
+  [
+   "5feee699-997e-428c-90ea-82e0c395c062",
+   "PL_VASA"
+  ],
+  [
+   "0ff1c7fc-619a-402c-94ce-dc6215a9dcd4",
+   "PL_VASA"
+  ],
+  [
+   "a09fa1dd-c798-4f65-8f48-aaff29b4f813",
+   "PL_VASA"
+  ],
+  [
+   "841eb365-6517-4b89-bd3e-ef6192c6d93f",
+   "PL_VASA"
+  ],
+  [
+   "36ca6e33-35e2-4b57-9fbb-15228aac5d4d",
+   "PL_VASA"
   ]
  ],
  "xmoved": {
