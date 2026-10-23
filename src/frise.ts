@@ -622,9 +622,12 @@ export function initTimelineSystem(deps: {
         out.push({ p: it.p, x: it.x, x2: it.x2, len: it.p.stem, w });
         continue;
       }
+      // Une durée : l'étiquette est centrée sur la barre ; sinon elle part du point.
+      const left = it.p.end ? Math.min(it.x, (it.x + it.x2) / 2 - w / 2) : it.x;
+      const right = it.p.end ? Math.max(it.x2, (it.x + it.x2) / 2 + w / 2) : it.x + 6 + w;
       let level = 0;
-      while (level < lastRight.length && lastRight[level] > it.x - 2) level++;
-      lastRight[level] = Math.max(it.x2, it.x + 6 + w);
+      while (level < lastRight.length && lastRight[level] > left - 2) level++;
+      lastRight[level] = Math.max(it.x2, right);
       out.push({ p: it.p, x: it.x, x2: it.x2, len: base + level * STEM_STEP, w });
     }
     return out;
@@ -924,7 +927,7 @@ export function initTimelineSystem(deps: {
         lab.type = "button";
         lab.className = "tl-point" + (admin ? " movable" : "") + (pt.end ? " is-duration" : "") + (pt.subFriseId ? " has-sub" : "");
         lab.textContent = pointLabel(pt) + (pt.subFriseId ? "  ›" : "");
-        lab.style.left = it.x + 3 + "px";
+        lab.style.left = (pt.end ? (it.x + it.x2) / 2 : it.x + 3) + "px";
         lab.style.maxWidth = "300px";
         lab.style.borderColor = pt.color;
         layer.appendChild(lab);

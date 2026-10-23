@@ -3,6 +3,7 @@
 Spécification de référence : [`../specs/frises-chronologiques.md`](../specs/frises-chronologiques.md).
 
 ## Dernières nouvelles (la plus récente en haut)
+- 2026-10-23 (3) — le nom d'un point avec durée (ex. « Guerre ») est centré au milieu de la barre. Vérifié : `check:repo`, `build` ; non vérifié : rendu visuel dans le navigateur.
 - 2026-10-23 (2) — « Placer sur une frise » depuis une fiche + placement automatique des fiches créées dans une période (date facultative dans « + Texte »). Étape 4 de la spec terminée, aucune migration. Vérifié : `check:repo`, `build`, test navigateur sur fausse base ; non vérifié : vraie base Supabase, mobile, parcours complet du formulaire « + Texte » en réel.
 - 2026-10-23 — placements multiples (bouton « Frises » sur un point : voir / ajouter à une autre frise / retirer) + remontée sur la frise parente ; une fiche créée depuis « + Point » est rangée dans la période du point. Aucune migration. Vérifié : `check:repo`, `build`, test navigateur sur fausse base ; non vérifié : vraie base Supabase, mobile.
   Prochaine étape : « Placer sur une frise » depuis une fiche existante + placement automatique des fiches créées à la main.

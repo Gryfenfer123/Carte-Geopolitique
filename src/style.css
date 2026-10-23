@@ -2564,7 +2564,7 @@ body.read-only-mode #timeline-add-period, body.read-only-mode #timeline-add-poin
 .tl-hover-cat { display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--text-dim); }
 .tl-bar { position: absolute; height: 8px; border-radius: 4px; opacity: .85; cursor: pointer; }
 .tl-stem-end { opacity: .45; }
-.tl-point.is-duration { font-weight: 600; }
+.tl-point.is-duration { font-weight: 600; transform: translate(-50%, -50%); } /* centré au milieu de la durée */
 .tl-point.flash { animation: tl-flash 0.7s ease-in-out 3; }
 @keyframes tl-flash { 50% { box-shadow: 0 0 0 4px var(--accent); } }
 #tl-cat-overlay, #tl-fiches-overlay { display: none; position: fixed; inset: 0; z-index: 10600; background: rgba(0,0,0,0.45); align-items: center; justify-content: center; padding: 16px; }
