@@ -20460,6 +20460,276 @@
    "title": "Épouse d'Ahmed Ier, mère de Mourad IV et d'Ibrahim, régente",
    "g": "f",
    "script": 81
+  },
+  "su.wendi": {
+   "id": "7f0530d7-5ee1-52cc-939b-b6edd83cdeb8",
+   "name": "Sui Wendi (Yang Jian)",
+   "b": 541,
+   "d": 604,
+   "tree": "CN_SUI",
+   "title": "Empereur fondateur des Sui (581-604)",
+   "g": "h",
+   "script": 82
+  },
+  "su.dugu": {
+   "id": "acfe2e82-1bd2-5ee7-a259-ef1b86996109",
+   "name": "Impératrice Dugu Qieluo",
+   "b": 544,
+   "d": 602,
+   "tree": "CN_SUI",
+   "title": "Épouse de Sui Wendi",
+   "g": "f",
+   "script": 82
+  },
+  "su.yangdi": {
+   "id": "95bd52f4-3e71-5044-b1c1-4b8c7720a4e7",
+   "name": "Sui Yangdi (Yang Guang)",
+   "b": 569,
+   "d": 618,
+   "tree": "CN_SUI",
+   "title": "Empereur des Sui (604-618)",
+   "g": "h",
+   "script": 82
+  },
+  "su.gongdi": {
+   "id": "a5d4102f-a59b-5529-a977-b8c4e7f3a305",
+   "name": "Gongdi de Sui (Yang You)",
+   "b": 605,
+   "d": 619,
+   "tree": "CN_SUI",
+   "title": "Empereur des Sui (617-618), déposé",
+   "g": "h",
+   "script": 82
+  },
+  "tg.gaozu": {
+   "id": "50d8b36b-d5d5-5010-8274-04e8b4eaea6f",
+   "name": "Tang Gaozu (Li Yuan)",
+   "b": 566,
+   "d": 635,
+   "tree": "CN_TANG",
+   "title": "Fondateur des Tang (618-626)",
+   "g": "h",
+   "script": 82
+  },
+  "tg.taizong": {
+   "id": "3e812595-50b0-5ce7-bd06-c8654b0e63a4",
+   "name": "Tang Taizong (Li Shimin)",
+   "b": 598,
+   "d": 649,
+   "tree": "CN_TANG",
+   "title": "Empereur (626-649)",
+   "g": "h",
+   "script": 82
+  },
+  "tg.gaozong": {
+   "id": "6fa0c66b-5b02-5eb7-8fb1-4ff031543ea8",
+   "name": "Tang Gaozong (Li Zhi)",
+   "b": 628,
+   "d": 683,
+   "tree": "CN_TANG",
+   "title": "Empereur (649-683)",
+   "g": "h",
+   "script": 82
+  },
+  "tg.zhongzong": {
+   "id": "33b6649d-638e-5d01-8cd2-4af43361f148",
+   "name": "Tang Zhongzong (Li Xian)",
+   "b": 656,
+   "d": 710,
+   "tree": "CN_TANG",
+   "title": "Empereur (684 puis 705-710)",
+   "g": "h",
+   "script": 82
+  },
+  "tg.ruizong": {
+   "id": "0a1bcdba-7512-5f1b-9477-a20aef29ca8a",
+   "name": "Tang Ruizong (Li Dan)",
+   "b": 662,
+   "d": 716,
+   "tree": "CN_TANG",
+   "title": "Empereur (684-690 puis 710-712)",
+   "g": "h",
+   "script": 82
+  },
+  "tg.xuanzong": {
+   "id": "19fc908c-5734-5cf7-b080-8df5e0b2af8f",
+   "name": "Tang Xuanzong (Li Longji)",
+   "b": 685,
+   "d": 762,
+   "tree": "CN_TANG",
+   "title": "Empereur (712-756)",
+   "g": "h",
+   "script": 82
+  },
+  "tg.suzong": {
+   "id": "b94df8d2-7707-5ec1-9c58-bdba20379007",
+   "name": "Tang Suzong (Li Heng)",
+   "b": 711,
+   "d": 762,
+   "tree": "CN_TANG",
+   "title": "Empereur (756-762)",
+   "g": "h",
+   "script": 82
+  },
+  "tg.daizong": {
+   "id": "7cf5a589-6c4b-555e-91c6-dacc89984a2d",
+   "name": "Tang Daizong (Li Yu)",
+   "b": 726,
+   "d": 779,
+   "tree": "CN_TANG",
+   "title": "Empereur (762-779)",
+   "g": "h",
+   "script": 82
+  },
+  "tg.dezong": {
+   "id": "5ae27851-d68a-50f7-ab04-8590ba45e1b8",
+   "name": "Tang Dezong (Li Kuo)",
+   "b": 742,
+   "d": 805,
+   "tree": "CN_TANG",
+   "title": "Empereur (779-805)",
+   "g": "h",
+   "script": 82
+  },
+  "tg.shunzong": {
+   "id": "9c531355-e0fe-554c-b596-9f2cccaa16a7",
+   "name": "Tang Shunzong (Li Song)",
+   "b": 761,
+   "d": 806,
+   "tree": "CN_TANG",
+   "title": "Empereur (805)",
+   "g": "h",
+   "script": 82
+  },
+  "tg.xianzong": {
+   "id": "c7520c66-0e59-560b-a02b-30af462b0734",
+   "name": "Tang Xianzong (Li Chun)",
+   "b": 778,
+   "d": 820,
+   "tree": "CN_TANG",
+   "title": "Empereur (805-820)",
+   "g": "h",
+   "script": 82
+  },
+  "tg.muzong": {
+   "id": "bfc330b0-62b1-5288-99cd-0bd0d6c973c3",
+   "name": "Tang Muzong (Li Heng)",
+   "b": 795,
+   "d": 824,
+   "tree": "CN_TANG",
+   "title": "Empereur (820-824)",
+   "g": "h",
+   "script": 82
+  },
+  "tg.jingzong": {
+   "id": "d3e953ff-93c2-56d1-9d35-751b2177a95d",
+   "name": "Tang Jingzong (Li Zhan)",
+   "b": 809,
+   "d": 827,
+   "tree": "CN_TANG",
+   "title": "Empereur (824-827)",
+   "g": "h",
+   "script": 82
+  },
+  "tg.wenzong": {
+   "id": "8d873dce-6998-5a9b-abe3-f6d900cda70e",
+   "name": "Tang Wenzong (Li Ang)",
+   "b": 809,
+   "d": 840,
+   "tree": "CN_TANG",
+   "title": "Empereur (827-840)",
+   "g": "h",
+   "script": 82
+  },
+  "tg.wuzong": {
+   "id": "234fc026-03d3-5b86-9e21-a4b8a692510d",
+   "name": "Tang Wuzong (Li Yan)",
+   "b": 814,
+   "d": 846,
+   "tree": "CN_TANG",
+   "title": "Empereur (840-846)",
+   "g": "h",
+   "script": 82
+  },
+  "tg.xuanzong2": {
+   "id": "a30a73af-1de3-5837-9785-e5dbd5e3308b",
+   "name": "Tang Xuanzong II (Li Chen)",
+   "b": 810,
+   "d": 859,
+   "tree": "CN_TANG",
+   "title": "Empereur (846-859)",
+   "g": "h",
+   "script": 82
+  },
+  "tg.yizong": {
+   "id": "7f4197ce-449a-5f0e-9746-3727967153f5",
+   "name": "Tang Yizong (Li Cui)",
+   "b": 833,
+   "d": 873,
+   "tree": "CN_TANG",
+   "title": "Empereur (859-873)",
+   "g": "h",
+   "script": 82
+  },
+  "tg.xizong": {
+   "id": "43f3e712-33dc-525f-bd38-4562515b584c",
+   "name": "Tang Xizong (Li Xuan)",
+   "b": 862,
+   "d": 888,
+   "tree": "CN_TANG",
+   "title": "Empereur (873-888)",
+   "g": "h",
+   "script": 82
+  },
+  "tg.zhaozong": {
+   "id": "07f45c0e-d549-56a6-bbde-ae70b486f5d1",
+   "name": "Tang Zhaozong (Li Ye)",
+   "b": 867,
+   "d": 904,
+   "tree": "CN_TANG",
+   "title": "Empereur (888-904)",
+   "g": "h",
+   "script": 82
+  },
+  "tg.aidi": {
+   "id": "6ab444f2-6375-508d-b1ad-9c21a65b61ea",
+   "name": "Tang Aidi (Li Zhu)",
+   "b": 892,
+   "d": 908,
+   "tree": "CN_TANG",
+   "title": "Dernier empereur Tang (904-907)",
+   "g": "h",
+   "script": 82
+  },
+  "tg.wu": {
+   "id": "4456cda5-cd5b-5de2-96a1-2dee6d05ea50",
+   "name": "Wu Zetian (Wu Zhao)",
+   "b": 624,
+   "d": 705,
+   "tree": "CN_TANG",
+   "title": "Impératrice, seule femme empereur de Chine (Zhou, 690-705)",
+   "g": "f",
+   "script": 82
+  },
+  "tg.zhangsun": {
+   "id": "c9ef4216-06ec-55bb-b610-8f80e16105dc",
+   "name": "Impératrice Zhangsun",
+   "b": 601,
+   "d": 636,
+   "tree": "CN_TANG",
+   "title": "Épouse de Taizong",
+   "g": "f",
+   "script": 82
+  },
+  "tg.yang_guifei": {
+   "id": "bc852cba-1ff5-5d83-acb7-8c9410c85d19",
+   "name": "Yang Guifei",
+   "b": 719,
+   "d": 756,
+   "tree": "CN_TANG",
+   "title": "Concubine de Xuanzong",
+   "g": "f",
+   "script": 82
   }
  },
  "trees": {
@@ -21026,6 +21296,18 @@
    "country": "TUR",
    "dynasty": "Ottomans",
    "script": 81
+  },
+  "CN_SUI": {
+   "entry": "2a2fd59f-b83c-5ae9-9ca5-a5c90ffdf5f3",
+   "country": "CHN",
+   "dynasty": "Sui",
+   "script": 82
+  },
+  "CN_TANG": {
+   "entry": "9b4855cf-26f4-5917-8eaa-e9590e995f3f",
+   "country": "CHN",
+   "dynasty": "Tang",
+   "script": 82
   }
  },
  "flags": [
@@ -25011,6 +25293,34 @@
    "tree": "TR_OTT",
    "reason": "Origine hors dynastie : sans arbre",
    "script": 81
+  },
+  {
+   "name": "Impératrice Dugu Qieluo",
+   "b": 544,
+   "tree": "CN_SUI",
+   "reason": "Famille Dugu : sans arbre",
+   "script": 82
+  },
+  {
+   "name": "Wu Zetian (Wu Zhao)",
+   "b": 624,
+   "tree": "CN_TANG",
+   "reason": "Famille Wu : sans arbre",
+   "script": 82
+  },
+  {
+   "name": "Impératrice Zhangsun",
+   "b": 601,
+   "tree": "CN_TANG",
+   "reason": "Famille Zhangsun : sans arbre",
+   "script": 82
+  },
+  {
+   "name": "Yang Guifei",
+   "b": 719,
+   "tree": "CN_TANG",
+   "reason": "Famille Yang : sans arbre",
+   "script": 82
   }
  ],
  "scripts": {
@@ -25349,6 +25659,15 @@
    "rels": 43,
    "trees": [
     "Ottomans (TUR)"
+   ]
+  },
+  "82": {
+   "label": "Chine — Sui et Tang : de Yang Jian au dernier empereur Tang",
+   "members": 27,
+   "rels": 29,
+   "trees": [
+    "Sui (CHN)",
+    "Tang (CHN)"
    ]
   }
  },
@@ -43237,6 +43556,151 @@
    "d3ec139f-6ac6-5c65-b45d-66bc46cb1c48",
    "be64783e-0803-529d-a94f-e0cb4ebffdaa",
    "parent"
+  ],
+  [
+   "7f0530d7-5ee1-52cc-939b-b6edd83cdeb8",
+   "acfe2e82-1bd2-5ee7-a259-ef1b86996109",
+   "spouse"
+  ],
+  [
+   "7f0530d7-5ee1-52cc-939b-b6edd83cdeb8",
+   "95bd52f4-3e71-5044-b1c1-4b8c7720a4e7",
+   "parent"
+  ],
+  [
+   "acfe2e82-1bd2-5ee7-a259-ef1b86996109",
+   "95bd52f4-3e71-5044-b1c1-4b8c7720a4e7",
+   "parent"
+  ],
+  [
+   "95bd52f4-3e71-5044-b1c1-4b8c7720a4e7",
+   "a5d4102f-a59b-5529-a977-b8c4e7f3a305",
+   "family"
+  ],
+  [
+   "50d8b36b-d5d5-5010-8274-04e8b4eaea6f",
+   "3e812595-50b0-5ce7-bd06-c8654b0e63a4",
+   "parent"
+  ],
+  [
+   "3e812595-50b0-5ce7-bd06-c8654b0e63a4",
+   "6fa0c66b-5b02-5eb7-8fb1-4ff031543ea8",
+   "parent"
+  ],
+  [
+   "6fa0c66b-5b02-5eb7-8fb1-4ff031543ea8",
+   "33b6649d-638e-5d01-8cd2-4af43361f148",
+   "parent"
+  ],
+  [
+   "6fa0c66b-5b02-5eb7-8fb1-4ff031543ea8",
+   "0a1bcdba-7512-5f1b-9477-a20aef29ca8a",
+   "parent"
+  ],
+  [
+   "0a1bcdba-7512-5f1b-9477-a20aef29ca8a",
+   "19fc908c-5734-5cf7-b080-8df5e0b2af8f",
+   "parent"
+  ],
+  [
+   "19fc908c-5734-5cf7-b080-8df5e0b2af8f",
+   "b94df8d2-7707-5ec1-9c58-bdba20379007",
+   "parent"
+  ],
+  [
+   "b94df8d2-7707-5ec1-9c58-bdba20379007",
+   "7cf5a589-6c4b-555e-91c6-dacc89984a2d",
+   "parent"
+  ],
+  [
+   "7cf5a589-6c4b-555e-91c6-dacc89984a2d",
+   "5ae27851-d68a-50f7-ab04-8590ba45e1b8",
+   "parent"
+  ],
+  [
+   "5ae27851-d68a-50f7-ab04-8590ba45e1b8",
+   "9c531355-e0fe-554c-b596-9f2cccaa16a7",
+   "parent"
+  ],
+  [
+   "9c531355-e0fe-554c-b596-9f2cccaa16a7",
+   "c7520c66-0e59-560b-a02b-30af462b0734",
+   "parent"
+  ],
+  [
+   "c7520c66-0e59-560b-a02b-30af462b0734",
+   "bfc330b0-62b1-5288-99cd-0bd0d6c973c3",
+   "parent"
+  ],
+  [
+   "c7520c66-0e59-560b-a02b-30af462b0734",
+   "a30a73af-1de3-5837-9785-e5dbd5e3308b",
+   "parent"
+  ],
+  [
+   "bfc330b0-62b1-5288-99cd-0bd0d6c973c3",
+   "d3e953ff-93c2-56d1-9d35-751b2177a95d",
+   "parent"
+  ],
+  [
+   "bfc330b0-62b1-5288-99cd-0bd0d6c973c3",
+   "8d873dce-6998-5a9b-abe3-f6d900cda70e",
+   "parent"
+  ],
+  [
+   "bfc330b0-62b1-5288-99cd-0bd0d6c973c3",
+   "234fc026-03d3-5b86-9e21-a4b8a692510d",
+   "parent"
+  ],
+  [
+   "a30a73af-1de3-5837-9785-e5dbd5e3308b",
+   "7f4197ce-449a-5f0e-9746-3727967153f5",
+   "parent"
+  ],
+  [
+   "7f4197ce-449a-5f0e-9746-3727967153f5",
+   "43f3e712-33dc-525f-bd38-4562515b584c",
+   "parent"
+  ],
+  [
+   "7f4197ce-449a-5f0e-9746-3727967153f5",
+   "07f45c0e-d549-56a6-bbde-ae70b486f5d1",
+   "parent"
+  ],
+  [
+   "07f45c0e-d549-56a6-bbde-ae70b486f5d1",
+   "6ab444f2-6375-508d-b1ad-9c21a65b61ea",
+   "parent"
+  ],
+  [
+   "6fa0c66b-5b02-5eb7-8fb1-4ff031543ea8",
+   "4456cda5-cd5b-5de2-96a1-2dee6d05ea50",
+   "spouse"
+  ],
+  [
+   "4456cda5-cd5b-5de2-96a1-2dee6d05ea50",
+   "33b6649d-638e-5d01-8cd2-4af43361f148",
+   "parent"
+  ],
+  [
+   "4456cda5-cd5b-5de2-96a1-2dee6d05ea50",
+   "0a1bcdba-7512-5f1b-9477-a20aef29ca8a",
+   "parent"
+  ],
+  [
+   "3e812595-50b0-5ce7-bd06-c8654b0e63a4",
+   "c9ef4216-06ec-55bb-b610-8f80e16105dc",
+   "spouse"
+  ],
+  [
+   "c9ef4216-06ec-55bb-b610-8f80e16105dc",
+   "6fa0c66b-5b02-5eb7-8fb1-4ff031543ea8",
+   "parent"
+  ],
+  [
+   "19fc908c-5734-5cf7-b080-8df5e0b2af8f",
+   "bc852cba-1ff5-5d83-acb7-8c9410c85d19",
+   "spouse"
   ]
  ],
  "dateflags": [
