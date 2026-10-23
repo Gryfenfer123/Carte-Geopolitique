@@ -2,6 +2,8 @@
 
 ## Dernières nouvelles (la plus récente en haut)
 
+- 2026-10-23 — v74 : Danemark (48 membres). Prochain : Norvège, Suède médiévale, Italie (Hauteville, Médicis, Este, Visconti/Sforza), puis reste de l'Europe, Chine, Japon, Corée.
+
 - 2026-10-23 — v73 : Holstein-Gottorp + Bernadotte (60 membres). Corrige v72 (arbre « Palatinat-Deux-Ponts (Suède) » en double, vide : à supprimer par Martin). Prochain : Suède médiévale, Norvège, Danemark.
 
 - 2026-10-23 — v72 : Suède Vasa (27 membres). Prochain : Holstein-Gottorp + Bernadotte, Suède médiévale, Norvège, Danemark.
@@ -31,7 +33,7 @@
 
 Code : `src/genealogy.ts`, `genealogyLayers.ts`, `genealogyBus.ts`, `genealogyLod.ts/.css`, `genealogyLayersWorker.ts`,
 `genealogyLayout.ts`, `genealogyRouting.ts`. Outils de remplissage : [`scripts/arbres/`](../../scripts/arbres/README.md).
-Prochaine migration : **arbres_v74** (`supabase/arbres/arbres_v74.sql`) — générateur : `Gen(74, "…")`.  (v73 livrée, à exécuter par Martin si ce n'est pas déjà fait.)
+Prochaine migration : **arbres_v75** (`supabase/arbres/arbres_v75.sql`) — générateur : `Gen(75, "…")`.  (v74 livrée, à exécuter par Martin si ce n'est pas déjà fait.)
 
 ## Règles de contenu (décidées par Martin — ne pas rouvrir)
 - Un pays n'a que les dynasties qui ont **régné sur lui**. Dynastie étrangère : branche principale dans son pays

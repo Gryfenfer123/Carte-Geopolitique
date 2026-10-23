@@ -16760,6 +16760,486 @@
    "title": "Époux de la princesse Madeleine",
    "g": "f",
    "script": 73
+  },
+  "dn.charlotte_amelie": {
+   "id": "c284527a-c0f8-59a9-93ad-254c7b3a2be4",
+   "name": "Charlotte-Amélie de Hesse-Cassel",
+   "b": 1650,
+   "d": 1714,
+   "tree": "DK_OLD",
+   "title": "Reine de Danemark et de Norvège",
+   "g": "f",
+   "script": 74
+  },
+  "dn.fred4": {
+   "id": "de777cd0-0831-5569-8e80-7955199f31a1",
+   "name": "Frédéric IV",
+   "b": 1671,
+   "d": 1730,
+   "tree": "DK_OLD",
+   "title": "Roi de Danemark et de Norvège",
+   "g": "h",
+   "script": 74
+  },
+  "dn.louise_mg": {
+   "id": "b1c5b481-8135-5523-aa7c-56924a95393c",
+   "name": "Louise de Mecklembourg-Güstrow",
+   "b": null,
+   "d": 1721,
+   "tree": "DK_OLD",
+   "title": "Reine de Danemark",
+   "g": "f",
+   "script": 74
+  },
+  "dn.vieregg": {
+   "id": "d46a0c84-433b-5132-9f5a-6a566482a555",
+   "name": "Élisabeth-Hélène von Vieregg",
+   "b": null,
+   "d": 1704,
+   "tree": "DK_OLD",
+   "title": "Reine consort (mariage bigame)",
+   "g": "f",
+   "script": 74
+  },
+  "dn.reventlow": {
+   "id": "645b0578-7490-516f-b0cf-56d8a6b34c5a",
+   "name": "Anne-Sophie Reventlow",
+   "b": null,
+   "d": null,
+   "tree": "DK_OLD",
+   "title": "Reine de Danemark",
+   "g": "f",
+   "script": 74
+  },
+  "dn.christian6": {
+   "id": "c9f006ef-46a3-5b1b-8635-785143cf7f64",
+   "name": "Christian VI",
+   "b": 1699,
+   "d": 1746,
+   "tree": "DK_OLD",
+   "title": "Roi de Danemark et de Norvège",
+   "g": "h",
+   "script": 74
+  },
+  "dn.charlotte_am2": {
+   "id": "288d0d4d-f0b5-5e12-8759-47d69b05b673",
+   "name": "Charlotte-Amélie de Danemark (1706-1782)",
+   "b": 1706,
+   "d": 1782,
+   "tree": "DK_OLD",
+   "title": "Princesse de Danemark",
+   "g": "f",
+   "script": 74
+  },
+  "dn.sophie_mag_bk": {
+   "id": "3dd45216-1017-57dd-a543-070d5dd1d3dd",
+   "name": "Sophie-Madeleine de Brandebourg-Kulmbach",
+   "b": 1700,
+   "d": 1770,
+   "tree": "DE_HOH",
+   "title": "Reine de Danemark",
+   "g": "f",
+   "script": 74
+  },
+  "dn.fred5": {
+   "id": "2c0726f0-9888-5af0-8688-cd4a7eb24cf4",
+   "name": "Frédéric V",
+   "b": 1723,
+   "d": 1766,
+   "tree": "DK_OLD",
+   "title": "Roi de Danemark et de Norvège",
+   "g": "h",
+   "script": 74
+  },
+  "dn.louise_gb": {
+   "id": "c0772d29-ae7b-581c-b05d-88c83dfbd687",
+   "name": "Louise de Grande-Bretagne",
+   "b": 1724,
+   "d": 1751,
+   "tree": "GB_HAN",
+   "title": "Reine de Danemark",
+   "g": "f",
+   "script": 74
+  },
+  "dn.juliana_maria": {
+   "id": "b1a85658-db54-52e2-94e7-1bf41fda7a5e",
+   "name": "Julienne-Marie de Brunswick-Wolfenbüttel",
+   "b": 1729,
+   "d": 1796,
+   "tree": "DE_WEL",
+   "title": "Reine de Danemark",
+   "g": "f",
+   "script": 74
+  },
+  "dn.wilhelmina_c": {
+   "id": "a4ec7fe8-b89f-595a-803d-6b30c55853c2",
+   "name": "Wilhelmine-Caroline de Danemark",
+   "b": 1747,
+   "d": 1820,
+   "tree": "DK_OLD",
+   "title": "Électrice de Hesse",
+   "g": "f",
+   "script": 74
+  },
+  "dn.christian7": {
+   "id": "74b33e3c-b346-52a3-9f1a-cf5979e21d61",
+   "name": "Christian VII",
+   "b": 1749,
+   "d": 1808,
+   "tree": "DK_OLD",
+   "title": "Roi de Danemark et de Norvège",
+   "g": "h",
+   "script": 74
+  },
+  "dn.louise_dk": {
+   "id": "dbfa9ed3-f657-5d7c-a910-555abfca52e9",
+   "name": "Louise de Danemark (1750-1831)",
+   "b": 1750,
+   "d": 1831,
+   "tree": "DK_OLD",
+   "title": "Landgravine de Hesse-Cassel",
+   "g": "f",
+   "script": 74
+  },
+  "dn.fred_hered": {
+   "id": "aa29bdae-20ec-532a-a050-f4fad3b59d65",
+   "name": "Frédéric, prince héréditaire de Danemark",
+   "b": 1753,
+   "d": 1805,
+   "tree": "DK_OLD",
+   "title": "Prince héréditaire",
+   "g": "h",
+   "script": 74
+  },
+  "dn.caroline_mat": {
+   "id": "da8e81b3-b861-5bc9-ba81-a7884037ebb1",
+   "name": "Caroline-Mathilde de Grande-Bretagne",
+   "b": 1751,
+   "d": 1775,
+   "tree": "GB_HAN",
+   "title": "Reine de Danemark",
+   "g": "f",
+   "script": 74
+  },
+  "dn.fred6": {
+   "id": "6d680181-c978-5782-8f7d-1d00008b4d14",
+   "name": "Frédéric VI",
+   "b": 1768,
+   "d": 1839,
+   "tree": "DK_OLD",
+   "title": "Roi de Danemark et de Norvège",
+   "g": "h",
+   "script": 74
+  },
+  "dn.louise_aug": {
+   "id": "fc9979d7-a421-5311-a08b-66b620717557",
+   "name": "Louise-Augusta de Danemark",
+   "b": 1771,
+   "d": 1843,
+   "tree": "DK_OLD",
+   "title": "Duchesse de Schleswig-Holstein-Augustenbourg",
+   "g": "f",
+   "script": 74
+  },
+  "dn.sophie_mecl": {
+   "id": "f30a8bc1-e25d-55ce-a8b0-663fb86a1037",
+   "name": "Sophie-Frédérique de Mecklembourg-Schwerin",
+   "b": 1758,
+   "d": 1794,
+   "tree": "DK_OLD",
+   "title": "Princesse héréditaire de Danemark",
+   "g": "f",
+   "script": 74
+  },
+  "dn.christian8": {
+   "id": "bacd148b-230c-547d-b827-b547f42f5ae6",
+   "name": "Christian VIII",
+   "b": 1786,
+   "d": 1848,
+   "tree": "DK_OLD",
+   "title": "Roi de Danemark (et de Norvège en 1814)",
+   "g": "h",
+   "script": 74
+  },
+  "dn.marie_sophie_h": {
+   "id": "5bb6292b-32dd-5685-a3de-526fbd4c546b",
+   "name": "Marie-Sophie de Hesse-Cassel",
+   "b": 1767,
+   "d": 1852,
+   "tree": "DK_OLD",
+   "title": "Reine de Danemark",
+   "g": "f",
+   "script": 74
+  },
+  "dn.caroline_f6": {
+   "id": "690a0d60-16f3-5710-8c88-503b80cf422f",
+   "name": "Caroline de Danemark (1793-1881)",
+   "b": 1793,
+   "d": 1881,
+   "tree": "DK_OLD",
+   "title": "Princesse de Danemark",
+   "g": "f",
+   "script": 74
+  },
+  "dn.vilhelmine": {
+   "id": "95f38e31-9c02-5c95-92b3-f0296cf98557",
+   "name": "Vilhelmine-Marie de Danemark",
+   "b": 1808,
+   "d": 1891,
+   "tree": "DK_OLD",
+   "title": "Princesse de Danemark",
+   "g": "f",
+   "script": 74
+  },
+  "dn.charlotte_ms": {
+   "id": "d1e4227b-c71e-5712-a503-db0f67dec8a0",
+   "name": "Charlotte-Frédérique de Mecklembourg-Schwerin",
+   "b": 1784,
+   "d": 1840,
+   "tree": "DK_OLD",
+   "title": "Princesse de Danemark",
+   "g": "f",
+   "script": 74
+  },
+  "dn.caroline_amalie": {
+   "id": "df51266a-c464-57c1-bfbf-86401a7eec2f",
+   "name": "Caroline-Amélie d'Augustenbourg",
+   "b": 1796,
+   "d": 1881,
+   "tree": "DK_OLD",
+   "title": "Reine de Danemark",
+   "g": "f",
+   "script": 74
+  },
+  "dn.fred7": {
+   "id": "5b8a6caa-1406-57e2-b6e4-6ed06c9ac0a4",
+   "name": "Frédéric VII",
+   "b": 1808,
+   "d": 1863,
+   "tree": "DK_OLD",
+   "title": "Dernier roi de la ligne principale des Oldenbourg",
+   "g": "h",
+   "script": 74
+  },
+  "dn.fw_glu": {
+   "id": "b243f69a-6d0f-5ed1-ac12-da72c0f4c102",
+   "name": "Frédéric-Guillaume de Schleswig-Holstein-Sonderbourg-Glücksbourg",
+   "b": 1785,
+   "d": 1831,
+   "tree": "DK_GLU",
+   "title": "Duc de Glücksbourg",
+   "g": "h",
+   "script": 74
+  },
+  "dn.louise_caroline_h": {
+   "id": "90d9863c-f102-5730-b7b1-0822e2d2a38a",
+   "name": "Louise-Caroline de Hesse-Cassel",
+   "b": 1789,
+   "d": 1867,
+   "tree": "DK_GLU",
+   "title": "Duchesse de Glücksbourg",
+   "g": "f",
+   "script": 74
+  },
+  "dn.valdemar": {
+   "id": "2c0f2040-dda8-5bb2-87b2-e6496c106eac",
+   "name": "Valdemar de Danemark",
+   "b": 1858,
+   "d": 1939,
+   "tree": "DK_GLU",
+   "title": "Prince de Danemark",
+   "g": "h",
+   "script": 74
+  },
+  "dn.haakon7": {
+   "id": "cd8097f9-93f5-56d5-98f8-f8f8d1e42142",
+   "name": "Haakon VII de Norvège",
+   "b": 1872,
+   "d": 1957,
+   "tree": "DK_GLU",
+   "title": "Roi de Norvège",
+   "g": "h",
+   "script": 74
+  },
+  "dn.louise_f8": {
+   "id": "44b75e0d-fd9d-5094-b230-d73d16a24405",
+   "name": "Louise de Danemark (1875-1906)",
+   "b": 1875,
+   "d": 1906,
+   "tree": "DK_GLU",
+   "title": "Princesse de Schaumburg-Lippe",
+   "g": "f",
+   "script": 74
+  },
+  "dn.harald": {
+   "id": "7774af7a-5345-5274-ae64-eb521fba0c13",
+   "name": "Harald de Danemark",
+   "b": 1876,
+   "d": 1949,
+   "tree": "DK_GLU",
+   "title": "Prince de Danemark",
+   "g": "h",
+   "script": 74
+  },
+  "dn.thyra_f8": {
+   "id": "3fcb314c-028a-538d-9e03-db02dc680d37",
+   "name": "Thyra de Danemark (1880-1945)",
+   "b": 1880,
+   "d": 1945,
+   "tree": "DK_GLU",
+   "title": "Princesse de Danemark",
+   "g": "f",
+   "script": 74
+  },
+  "dn.gustav": {
+   "id": "9596bd24-7d48-529e-8614-96676e417b35",
+   "name": "Gustave de Danemark",
+   "b": 1887,
+   "d": 1944,
+   "tree": "DK_GLU",
+   "title": "Prince de Danemark",
+   "g": "h",
+   "script": 74
+  },
+  "dn.dagmar_f8": {
+   "id": "c8128982-7a55-5b1c-af42-6d34ba231992",
+   "name": "Dagmar de Danemark (1890-1961)",
+   "b": 1890,
+   "d": 1961,
+   "tree": "DK_GLU",
+   "title": "Princesse de Danemark",
+   "g": "f",
+   "script": 74
+  },
+  "dn.maud": {
+   "id": "60951bb4-a91b-5eec-9742-f5b8853ef03d",
+   "name": "Maud de Galles",
+   "b": 1869,
+   "d": 1938,
+   "tree": "GB_WIN",
+   "title": "Reine de Norvège",
+   "g": "f",
+   "script": 74
+  },
+  "dn.alexandrine": {
+   "id": "e11282b0-4b64-519c-9c1a-e95767feb41f",
+   "name": "Alexandrine de Mecklembourg-Schwerin",
+   "b": 1879,
+   "d": 1952,
+   "tree": "DK_GLU",
+   "title": "Reine de Danemark",
+   "g": "f",
+   "script": 74
+  },
+  "dn.knud": {
+   "id": "64d3eb25-d573-5ac0-bd14-e5dd83f4e9c0",
+   "name": "Knud de Danemark",
+   "b": 1900,
+   "d": 1976,
+   "tree": "DK_GLU",
+   "title": "Prince héréditaire",
+   "g": "h",
+   "script": 74
+  },
+  "dn.margrethe": {
+   "id": "dc760515-98f9-5f46-b40f-08036b173b29",
+   "name": "Marguerite II de Danemark",
+   "b": 1940,
+   "d": null,
+   "tree": "DK_GLU",
+   "title": "Reine de Danemark",
+   "g": "f",
+   "script": 74
+  },
+  "dn.benedikte": {
+   "id": "56c9dd56-8598-5abe-ba0c-28f0a90056a1",
+   "name": "Bénédicte de Danemark",
+   "b": 1944,
+   "d": null,
+   "tree": "DK_GLU",
+   "title": "Princesse de Danemark",
+   "g": "f",
+   "script": 74
+  },
+  "dn.henrik": {
+   "id": "e09c8bde-526e-5d41-9866-e879fdcf060c",
+   "name": "Henri de Laborde de Monpezat",
+   "b": 1934,
+   "d": 2018,
+   "tree": "DK_GLU",
+   "title": "Prince consort du Danemark",
+   "g": "f",
+   "script": 74
+  },
+  "dn.fred10": {
+   "id": "d801383a-9bf2-546c-b9dd-968f9d3713c8",
+   "name": "Frédéric X",
+   "b": 1968,
+   "d": null,
+   "tree": "DK_GLU",
+   "title": "Roi de Danemark",
+   "g": "h",
+   "script": 74
+  },
+  "dn.joachim": {
+   "id": "2c473c0c-e418-5a3e-96d1-423e4c9c4a05",
+   "name": "Joachim de Danemark",
+   "b": 1969,
+   "d": null,
+   "tree": "DK_GLU",
+   "title": "Prince de Danemark",
+   "g": "h",
+   "script": 74
+  },
+  "dn.mary": {
+   "id": "4e438b95-18a3-5c6a-a700-32232eaa1330",
+   "name": "Mary Donaldson",
+   "b": 1972,
+   "d": null,
+   "tree": "DK_GLU",
+   "title": "Reine de Danemark",
+   "g": "f",
+   "script": 74
+  },
+  "dn.christian_p": {
+   "id": "9459e08a-00c1-541d-8648-1ef44fb552b7",
+   "name": "Christian de Danemark",
+   "b": 2005,
+   "d": null,
+   "tree": "DK_GLU",
+   "title": "Prince / princesse de Danemark",
+   "g": "h",
+   "script": 74
+  },
+  "dn.isabella": {
+   "id": "cd977188-76a2-5adb-a147-80b50ba42774",
+   "name": "Isabella de Danemark",
+   "b": 2007,
+   "d": null,
+   "tree": "DK_GLU",
+   "title": "Prince / princesse de Danemark",
+   "g": "f",
+   "script": 74
+  },
+  "dn.vincent": {
+   "id": "1ed430bc-cae7-5199-8616-58d74e551ef4",
+   "name": "Vincent de Danemark",
+   "b": 2011,
+   "d": null,
+   "tree": "DK_GLU",
+   "title": "Prince / princesse de Danemark",
+   "g": "h",
+   "script": 74
+  },
+  "dn.josephine": {
+   "id": "03af998e-8227-5ca6-a7ab-3a3f996c89f4",
+   "name": "Joséphine de Danemark",
+   "b": 2011,
+   "d": null,
+   "tree": "DK_GLU",
+   "title": "Prince / princesse de Danemark",
+   "g": "f",
+   "script": 74
   }
  },
  "trees": {
@@ -20739,6 +21219,90 @@
    "tree": "SE_BER",
    "reason": "Maison O'Neill : sans arbre",
    "script": 73
+  },
+  {
+   "name": "Charlotte-Amélie de Hesse-Cassel",
+   "b": 1650,
+   "tree": "DK_OLD",
+   "reason": "Maison Hesse-Cassel : sans arbre",
+   "script": 74
+  },
+  {
+   "name": "Louise de Mecklembourg-Güstrow",
+   "b": null,
+   "tree": "DK_OLD",
+   "reason": "Maison Mecklembourg-Güstrow : sans arbre",
+   "script": 74
+  },
+  {
+   "name": "Élisabeth-Hélène von Vieregg",
+   "b": null,
+   "tree": "DK_OLD",
+   "reason": "Maison von Vieregg : sans arbre",
+   "script": 74
+  },
+  {
+   "name": "Anne-Sophie Reventlow",
+   "b": null,
+   "tree": "DK_OLD",
+   "reason": "Maison Reventlow : sans arbre",
+   "script": 74
+  },
+  {
+   "name": "Sophie-Frédérique de Mecklembourg-Schwerin",
+   "b": 1758,
+   "tree": "DK_OLD",
+   "reason": "Maison Mecklembourg-Schwerin : sans arbre",
+   "script": 74
+  },
+  {
+   "name": "Marie-Sophie de Hesse-Cassel",
+   "b": 1767,
+   "tree": "DK_OLD",
+   "reason": "Maison Hesse-Cassel : sans arbre",
+   "script": 74
+  },
+  {
+   "name": "Charlotte-Frédérique de Mecklembourg-Schwerin",
+   "b": 1784,
+   "tree": "DK_OLD",
+   "reason": "Maison Mecklembourg-Schwerin : sans arbre",
+   "script": 74
+  },
+  {
+   "name": "Caroline-Amélie d'Augustenbourg",
+   "b": 1796,
+   "tree": "DK_OLD",
+   "reason": "Maison Augustenbourg : sans arbre",
+   "script": 74
+  },
+  {
+   "name": "Louise-Caroline de Hesse-Cassel",
+   "b": 1789,
+   "tree": "DK_GLU",
+   "reason": "Maison Hesse-Cassel : sans arbre",
+   "script": 74
+  },
+  {
+   "name": "Alexandrine de Mecklembourg-Schwerin",
+   "b": 1879,
+   "tree": "DK_GLU",
+   "reason": "Maison Mecklembourg-Schwerin : sans arbre",
+   "script": 74
+  },
+  {
+   "name": "Henri de Laborde de Monpezat",
+   "b": 1934,
+   "tree": "DK_GLU",
+   "reason": "Maison Laborde de Monpezat : sans arbre",
+   "script": 74
+  },
+  {
+   "name": "Mary Donaldson",
+   "b": 1972,
+   "tree": "DK_GLU",
+   "reason": "Maison Donaldson : sans arbre",
+   "script": 74
   }
  ],
  "scripts": {
@@ -21021,6 +21585,12 @@
     "Holstein-Gottorp (Suède) (SWE)",
     "Bernadotte (SWE)"
    ]
+  },
+  "74": {
+   "label": "Danemark — Oldenbourg de Frédéric IV à Christian VIII, et Glücksbourg jusqu'à Frédéric X",
+   "members": 48,
+   "rels": 94,
+   "trees": []
   }
  },
  "relist": [
@@ -35758,6 +36328,476 @@
    "8705da32-aac7-5f29-b092-350e342dd6cd",
    "1d20c9ed-d47c-557b-adb7-53df33295368",
    "spouse"
+  ],
+  [
+   "9af9963d-8e3b-434f-96ff-0e946e1020ab",
+   "c284527a-c0f8-59a9-93ad-254c7b3a2be4",
+   "spouse"
+  ],
+  [
+   "9af9963d-8e3b-434f-96ff-0e946e1020ab",
+   "de777cd0-0831-5569-8e80-7955199f31a1",
+   "parent"
+  ],
+  [
+   "c284527a-c0f8-59a9-93ad-254c7b3a2be4",
+   "de777cd0-0831-5569-8e80-7955199f31a1",
+   "parent"
+  ],
+  [
+   "de777cd0-0831-5569-8e80-7955199f31a1",
+   "b1c5b481-8135-5523-aa7c-56924a95393c",
+   "spouse"
+  ],
+  [
+   "de777cd0-0831-5569-8e80-7955199f31a1",
+   "d46a0c84-433b-5132-9f5a-6a566482a555",
+   "spouse"
+  ],
+  [
+   "de777cd0-0831-5569-8e80-7955199f31a1",
+   "645b0578-7490-516f-b0cf-56d8a6b34c5a",
+   "spouse"
+  ],
+  [
+   "de777cd0-0831-5569-8e80-7955199f31a1",
+   "c9f006ef-46a3-5b1b-8635-785143cf7f64",
+   "parent"
+  ],
+  [
+   "b1c5b481-8135-5523-aa7c-56924a95393c",
+   "c9f006ef-46a3-5b1b-8635-785143cf7f64",
+   "parent"
+  ],
+  [
+   "de777cd0-0831-5569-8e80-7955199f31a1",
+   "288d0d4d-f0b5-5e12-8759-47d69b05b673",
+   "parent"
+  ],
+  [
+   "b1c5b481-8135-5523-aa7c-56924a95393c",
+   "288d0d4d-f0b5-5e12-8759-47d69b05b673",
+   "parent"
+  ],
+  [
+   "c9f006ef-46a3-5b1b-8635-785143cf7f64",
+   "3dd45216-1017-57dd-a543-070d5dd1d3dd",
+   "spouse"
+  ],
+  [
+   "c9f006ef-46a3-5b1b-8635-785143cf7f64",
+   "2c0726f0-9888-5af0-8688-cd4a7eb24cf4",
+   "parent"
+  ],
+  [
+   "3dd45216-1017-57dd-a543-070d5dd1d3dd",
+   "2c0726f0-9888-5af0-8688-cd4a7eb24cf4",
+   "parent"
+  ],
+  [
+   "5c634b84-4c08-489f-8e2c-70cdef87afbc",
+   "c0772d29-ae7b-581c-b05d-88c83dfbd687",
+   "parent"
+  ],
+  [
+   "25c2cc3f-3923-4d10-b82f-f50802193982",
+   "c0772d29-ae7b-581c-b05d-88c83dfbd687",
+   "parent"
+  ],
+  [
+   "2c0726f0-9888-5af0-8688-cd4a7eb24cf4",
+   "c0772d29-ae7b-581c-b05d-88c83dfbd687",
+   "spouse"
+  ],
+  [
+   "77d734e9-ba0f-5d3a-bcfb-c85e9d0789b5",
+   "b1a85658-db54-52e2-94e7-1bf41fda7a5e",
+   "parent"
+  ],
+  [
+   "5ddf7e11-1623-56a1-bbb5-46a547fc83d6",
+   "b1a85658-db54-52e2-94e7-1bf41fda7a5e",
+   "parent"
+  ],
+  [
+   "2c0726f0-9888-5af0-8688-cd4a7eb24cf4",
+   "b1a85658-db54-52e2-94e7-1bf41fda7a5e",
+   "spouse"
+  ],
+  [
+   "2c0726f0-9888-5af0-8688-cd4a7eb24cf4",
+   "a4ec7fe8-b89f-595a-803d-6b30c55853c2",
+   "parent"
+  ],
+  [
+   "c0772d29-ae7b-581c-b05d-88c83dfbd687",
+   "a4ec7fe8-b89f-595a-803d-6b30c55853c2",
+   "parent"
+  ],
+  [
+   "2c0726f0-9888-5af0-8688-cd4a7eb24cf4",
+   "74b33e3c-b346-52a3-9f1a-cf5979e21d61",
+   "parent"
+  ],
+  [
+   "c0772d29-ae7b-581c-b05d-88c83dfbd687",
+   "74b33e3c-b346-52a3-9f1a-cf5979e21d61",
+   "parent"
+  ],
+  [
+   "2c0726f0-9888-5af0-8688-cd4a7eb24cf4",
+   "dbfa9ed3-f657-5d7c-a910-555abfca52e9",
+   "parent"
+  ],
+  [
+   "c0772d29-ae7b-581c-b05d-88c83dfbd687",
+   "dbfa9ed3-f657-5d7c-a910-555abfca52e9",
+   "parent"
+  ],
+  [
+   "2c0726f0-9888-5af0-8688-cd4a7eb24cf4",
+   "59349703-ddae-56cd-a509-28f553bada5d",
+   "parent"
+  ],
+  [
+   "c0772d29-ae7b-581c-b05d-88c83dfbd687",
+   "59349703-ddae-56cd-a509-28f553bada5d",
+   "parent"
+  ],
+  [
+   "2c0726f0-9888-5af0-8688-cd4a7eb24cf4",
+   "aa29bdae-20ec-532a-a050-f4fad3b59d65",
+   "parent"
+  ],
+  [
+   "b1a85658-db54-52e2-94e7-1bf41fda7a5e",
+   "aa29bdae-20ec-532a-a050-f4fad3b59d65",
+   "parent"
+  ],
+  [
+   "4891ab20-866d-45bc-91d7-17e89f04ba98",
+   "da8e81b3-b861-5bc9-ba81-a7884037ebb1",
+   "parent"
+  ],
+  [
+   "9b566a15-dc4c-4af4-a461-4dbbf48eaba4",
+   "da8e81b3-b861-5bc9-ba81-a7884037ebb1",
+   "parent"
+  ],
+  [
+   "74b33e3c-b346-52a3-9f1a-cf5979e21d61",
+   "da8e81b3-b861-5bc9-ba81-a7884037ebb1",
+   "spouse"
+  ],
+  [
+   "74b33e3c-b346-52a3-9f1a-cf5979e21d61",
+   "6d680181-c978-5782-8f7d-1d00008b4d14",
+   "parent"
+  ],
+  [
+   "da8e81b3-b861-5bc9-ba81-a7884037ebb1",
+   "6d680181-c978-5782-8f7d-1d00008b4d14",
+   "parent"
+  ],
+  [
+   "74b33e3c-b346-52a3-9f1a-cf5979e21d61",
+   "fc9979d7-a421-5311-a08b-66b620717557",
+   "parent"
+  ],
+  [
+   "da8e81b3-b861-5bc9-ba81-a7884037ebb1",
+   "fc9979d7-a421-5311-a08b-66b620717557",
+   "parent"
+  ],
+  [
+   "aa29bdae-20ec-532a-a050-f4fad3b59d65",
+   "f30a8bc1-e25d-55ce-a8b0-663fb86a1037",
+   "spouse"
+  ],
+  [
+   "aa29bdae-20ec-532a-a050-f4fad3b59d65",
+   "bacd148b-230c-547d-b827-b547f42f5ae6",
+   "parent"
+  ],
+  [
+   "f30a8bc1-e25d-55ce-a8b0-663fb86a1037",
+   "bacd148b-230c-547d-b827-b547f42f5ae6",
+   "parent"
+  ],
+  [
+   "6d680181-c978-5782-8f7d-1d00008b4d14",
+   "5bb6292b-32dd-5685-a3de-526fbd4c546b",
+   "spouse"
+  ],
+  [
+   "6d680181-c978-5782-8f7d-1d00008b4d14",
+   "690a0d60-16f3-5710-8c88-503b80cf422f",
+   "parent"
+  ],
+  [
+   "5bb6292b-32dd-5685-a3de-526fbd4c546b",
+   "690a0d60-16f3-5710-8c88-503b80cf422f",
+   "parent"
+  ],
+  [
+   "6d680181-c978-5782-8f7d-1d00008b4d14",
+   "95f38e31-9c02-5c95-92b3-f0296cf98557",
+   "parent"
+  ],
+  [
+   "5bb6292b-32dd-5685-a3de-526fbd4c546b",
+   "95f38e31-9c02-5c95-92b3-f0296cf98557",
+   "parent"
+  ],
+  [
+   "bacd148b-230c-547d-b827-b547f42f5ae6",
+   "d1e4227b-c71e-5712-a503-db0f67dec8a0",
+   "spouse"
+  ],
+  [
+   "bacd148b-230c-547d-b827-b547f42f5ae6",
+   "df51266a-c464-57c1-bfbf-86401a7eec2f",
+   "spouse"
+  ],
+  [
+   "bacd148b-230c-547d-b827-b547f42f5ae6",
+   "5b8a6caa-1406-57e2-b6e4-6ed06c9ac0a4",
+   "parent"
+  ],
+  [
+   "d1e4227b-c71e-5712-a503-db0f67dec8a0",
+   "5b8a6caa-1406-57e2-b6e4-6ed06c9ac0a4",
+   "parent"
+  ],
+  [
+   "5b8a6caa-1406-57e2-b6e4-6ed06c9ac0a4",
+   "95f38e31-9c02-5c95-92b3-f0296cf98557",
+   "spouse"
+  ],
+  [
+   "b243f69a-6d0f-5ed1-ac12-da72c0f4c102",
+   "90d9863c-f102-5730-b7b1-0822e2d2a38a",
+   "spouse"
+  ],
+  [
+   "b243f69a-6d0f-5ed1-ac12-da72c0f4c102",
+   "fd479735-1bf3-4898-a8fd-8d4dfd71a4ca",
+   "parent"
+  ],
+  [
+   "90d9863c-f102-5730-b7b1-0822e2d2a38a",
+   "fd479735-1bf3-4898-a8fd-8d4dfd71a4ca",
+   "parent"
+  ],
+  [
+   "fd479735-1bf3-4898-a8fd-8d4dfd71a4ca",
+   "2c0f2040-dda8-5bb2-87b2-e6496c106eac",
+   "parent"
+  ],
+  [
+   "7d1a58e1-331a-4bf0-aaef-27b0f146b64a",
+   "2c0f2040-dda8-5bb2-87b2-e6496c106eac",
+   "parent"
+  ],
+  [
+   "8b34e776-b6e1-4eeb-a8e5-174a9c0b84c0",
+   "17e9a051-982c-5180-87f1-1d0de8aa5d86",
+   "spouse"
+  ],
+  [
+   "17e9a051-982c-5180-87f1-1d0de8aa5d86",
+   "37776074-21f9-5263-83bf-d9b47fb94383",
+   "parent"
+  ],
+  [
+   "8b34e776-b6e1-4eeb-a8e5-174a9c0b84c0",
+   "cd8097f9-93f5-56d5-98f8-f8f8d1e42142",
+   "parent"
+  ],
+  [
+   "17e9a051-982c-5180-87f1-1d0de8aa5d86",
+   "cd8097f9-93f5-56d5-98f8-f8f8d1e42142",
+   "parent"
+  ],
+  [
+   "8b34e776-b6e1-4eeb-a8e5-174a9c0b84c0",
+   "44b75e0d-fd9d-5094-b230-d73d16a24405",
+   "parent"
+  ],
+  [
+   "17e9a051-982c-5180-87f1-1d0de8aa5d86",
+   "44b75e0d-fd9d-5094-b230-d73d16a24405",
+   "parent"
+  ],
+  [
+   "8b34e776-b6e1-4eeb-a8e5-174a9c0b84c0",
+   "7774af7a-5345-5274-ae64-eb521fba0c13",
+   "parent"
+  ],
+  [
+   "17e9a051-982c-5180-87f1-1d0de8aa5d86",
+   "7774af7a-5345-5274-ae64-eb521fba0c13",
+   "parent"
+  ],
+  [
+   "8b34e776-b6e1-4eeb-a8e5-174a9c0b84c0",
+   "3fcb314c-028a-538d-9e03-db02dc680d37",
+   "parent"
+  ],
+  [
+   "17e9a051-982c-5180-87f1-1d0de8aa5d86",
+   "3fcb314c-028a-538d-9e03-db02dc680d37",
+   "parent"
+  ],
+  [
+   "8b34e776-b6e1-4eeb-a8e5-174a9c0b84c0",
+   "9596bd24-7d48-529e-8614-96676e417b35",
+   "parent"
+  ],
+  [
+   "17e9a051-982c-5180-87f1-1d0de8aa5d86",
+   "9596bd24-7d48-529e-8614-96676e417b35",
+   "parent"
+  ],
+  [
+   "8b34e776-b6e1-4eeb-a8e5-174a9c0b84c0",
+   "c8128982-7a55-5b1c-af42-6d34ba231992",
+   "parent"
+  ],
+  [
+   "17e9a051-982c-5180-87f1-1d0de8aa5d86",
+   "c8128982-7a55-5b1c-af42-6d34ba231992",
+   "parent"
+  ],
+  [
+   "49a669a2-29f8-4d50-a2a2-b7f495eddb4f",
+   "60951bb4-a91b-5eec-9742-f5b8853ef03d",
+   "parent"
+  ],
+  [
+   "a43d1cb9-86ea-4732-88de-f6a44348fe27",
+   "60951bb4-a91b-5eec-9742-f5b8853ef03d",
+   "parent"
+  ],
+  [
+   "cd8097f9-93f5-56d5-98f8-f8f8d1e42142",
+   "60951bb4-a91b-5eec-9742-f5b8853ef03d",
+   "spouse"
+  ],
+  [
+   "37776074-21f9-5263-83bf-d9b47fb94383",
+   "e11282b0-4b64-519c-9c1a-e95767feb41f",
+   "spouse"
+  ],
+  [
+   "37776074-21f9-5263-83bf-d9b47fb94383",
+   "86d4566b-18da-5ec7-8169-ff7af03596f7",
+   "parent"
+  ],
+  [
+   "e11282b0-4b64-519c-9c1a-e95767feb41f",
+   "86d4566b-18da-5ec7-8169-ff7af03596f7",
+   "parent"
+  ],
+  [
+   "37776074-21f9-5263-83bf-d9b47fb94383",
+   "64d3eb25-d573-5ac0-bd14-e5dd83f4e9c0",
+   "parent"
+  ],
+  [
+   "e11282b0-4b64-519c-9c1a-e95767feb41f",
+   "64d3eb25-d573-5ac0-bd14-e5dd83f4e9c0",
+   "parent"
+  ],
+  [
+   "86d4566b-18da-5ec7-8169-ff7af03596f7",
+   "dc760515-98f9-5f46-b40f-08036b173b29",
+   "parent"
+  ],
+  [
+   "a78782ce-e7b5-5890-8054-724f647b945a",
+   "dc760515-98f9-5f46-b40f-08036b173b29",
+   "parent"
+  ],
+  [
+   "86d4566b-18da-5ec7-8169-ff7af03596f7",
+   "56c9dd56-8598-5abe-ba0c-28f0a90056a1",
+   "parent"
+  ],
+  [
+   "a78782ce-e7b5-5890-8054-724f647b945a",
+   "56c9dd56-8598-5abe-ba0c-28f0a90056a1",
+   "parent"
+  ],
+  [
+   "dc760515-98f9-5f46-b40f-08036b173b29",
+   "e09c8bde-526e-5d41-9866-e879fdcf060c",
+   "spouse"
+  ],
+  [
+   "dc760515-98f9-5f46-b40f-08036b173b29",
+   "d801383a-9bf2-546c-b9dd-968f9d3713c8",
+   "parent"
+  ],
+  [
+   "e09c8bde-526e-5d41-9866-e879fdcf060c",
+   "d801383a-9bf2-546c-b9dd-968f9d3713c8",
+   "parent"
+  ],
+  [
+   "dc760515-98f9-5f46-b40f-08036b173b29",
+   "2c473c0c-e418-5a3e-96d1-423e4c9c4a05",
+   "parent"
+  ],
+  [
+   "e09c8bde-526e-5d41-9866-e879fdcf060c",
+   "2c473c0c-e418-5a3e-96d1-423e4c9c4a05",
+   "parent"
+  ],
+  [
+   "d801383a-9bf2-546c-b9dd-968f9d3713c8",
+   "4e438b95-18a3-5c6a-a700-32232eaa1330",
+   "spouse"
+  ],
+  [
+   "d801383a-9bf2-546c-b9dd-968f9d3713c8",
+   "9459e08a-00c1-541d-8648-1ef44fb552b7",
+   "parent"
+  ],
+  [
+   "4e438b95-18a3-5c6a-a700-32232eaa1330",
+   "9459e08a-00c1-541d-8648-1ef44fb552b7",
+   "parent"
+  ],
+  [
+   "d801383a-9bf2-546c-b9dd-968f9d3713c8",
+   "cd977188-76a2-5adb-a147-80b50ba42774",
+   "parent"
+  ],
+  [
+   "4e438b95-18a3-5c6a-a700-32232eaa1330",
+   "cd977188-76a2-5adb-a147-80b50ba42774",
+   "parent"
+  ],
+  [
+   "d801383a-9bf2-546c-b9dd-968f9d3713c8",
+   "1ed430bc-cae7-5199-8616-58d74e551ef4",
+   "parent"
+  ],
+  [
+   "4e438b95-18a3-5c6a-a700-32232eaa1330",
+   "1ed430bc-cae7-5199-8616-58d74e551ef4",
+   "parent"
+  ],
+  [
+   "d801383a-9bf2-546c-b9dd-968f9d3713c8",
+   "03af998e-8227-5ca6-a7ab-3a3f996c89f4",
+   "parent"
+  ],
+  [
+   "4e438b95-18a3-5c6a-a700-32232eaa1330",
+   "03af998e-8227-5ca6-a7ab-3a3f996c89f4",
+   "parent"
   ]
  ],
  "dateflags": [
@@ -41955,6 +42995,132 @@
    "d": null,
    "note": "naissance connue par ailleurs",
    "script": 73
+  },
+  {
+   "name": "Charlotte-Amélie de Hesse-Cassel",
+   "b": 1650,
+   "d": 1714,
+   "note": "dates connues par ailleurs",
+   "script": 74
+  },
+  {
+   "name": "Louise de Mecklembourg-Güstrow",
+   "b": null,
+   "d": 1721,
+   "note": "naissance non donnée",
+   "script": 74
+  },
+  {
+   "name": "Élisabeth-Hélène von Vieregg",
+   "b": null,
+   "d": 1704,
+   "note": "naissance non donnée",
+   "script": 74
+  },
+  {
+   "name": "Anne-Sophie Reventlow",
+   "b": null,
+   "d": null,
+   "note": "dates non données par la page",
+   "script": 74
+  },
+  {
+   "name": "Louise de Grande-Bretagne",
+   "b": 1724,
+   "d": 1751,
+   "note": "naissance connue par ailleurs, mort 1751 donnée par la page",
+   "script": 74
+  },
+  {
+   "name": "Caroline-Mathilde de Grande-Bretagne",
+   "b": 1751,
+   "d": 1775,
+   "note": "naissance 1751 déduite de « morte à 23 ans » ; connue par ailleurs",
+   "script": 74
+  },
+  {
+   "name": "Louise-Augusta de Danemark",
+   "b": 1771,
+   "d": 1843,
+   "note": "dates connues par ailleurs ; probablement fille de Struensee selon la page",
+   "script": 74
+  },
+  {
+   "name": "Sophie-Frédérique de Mecklembourg-Schwerin",
+   "b": 1758,
+   "d": 1794,
+   "note": "dates connues par ailleurs",
+   "script": 74
+  },
+  {
+   "name": "Marie-Sophie de Hesse-Cassel",
+   "b": 1767,
+   "d": 1852,
+   "note": "dates connues par ailleurs",
+   "script": 74
+  },
+  {
+   "name": "Charlotte-Frédérique de Mecklembourg-Schwerin",
+   "b": 1784,
+   "d": 1840,
+   "note": "dates connues par ailleurs",
+   "script": 74
+  },
+  {
+   "name": "Frédéric-Guillaume de Schleswig-Holstein-Sonderbourg-Glücksbourg",
+   "b": 1785,
+   "d": 1831,
+   "note": "dates connues par ailleurs, non données par la page de Christian IX",
+   "script": 74
+  },
+  {
+   "name": "Louise-Caroline de Hesse-Cassel",
+   "b": 1789,
+   "d": 1867,
+   "note": "dates connues par ailleurs",
+   "script": 74
+  },
+  {
+   "name": "Valdemar de Danemark",
+   "b": 1858,
+   "d": 1939,
+   "note": "mort connue par ailleurs",
+   "script": 74
+  },
+  {
+   "name": "Haakon VII de Norvège",
+   "b": 1872,
+   "d": 1957,
+   "note": "dates données par la page de Frédéric VIII (1872-1957)",
+   "script": 74
+  },
+  {
+   "name": "Maud de Galles",
+   "b": 1869,
+   "d": 1938,
+   "note": "dates connues par ailleurs",
+   "script": 74
+  },
+  {
+   "name": "Alexandrine de Mecklembourg-Schwerin",
+   "b": 1879,
+   "d": 1952,
+   "note": "dates connues par ailleurs",
+   "script": 74
+  },
+  {
+   "name": "Henri de Laborde de Monpezat",
+   "b": 1934,
+   "d": 2018,
+   "note": "dates connues par ailleurs (mort 2018 donnée par la page)",
+   "script": 74
+  },
+  {
+   "name": "Mary Donaldson",
+   "b": 1972,
+   "d": null,
+   "note": "naissance connue par ailleurs",
+   "script": 74
   }
  ],
  "pins": [
