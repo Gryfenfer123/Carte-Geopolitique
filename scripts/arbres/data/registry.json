@@ -11953,8 +11953,8 @@
   "wi.marie_prusse": {
    "id": "d1a02d9d-103a-5dbc-ac1b-ef55e85dd4cf",
    "name": "Marie de Prusse (reine de Bavière)",
-   "b": null,
-   "d": null,
+   "b": 1825,
+   "d": 1889,
    "tree": "DE_HOH",
    "title": "Reine de Bavière",
    "g": "f",
@@ -12549,6 +12549,206 @@
    "title": "Comtesse palatine de Deux-Ponts",
    "g": "f",
    "script": 62
+  },
+  "ho.casimir": {
+   "id": "f4a34cab-d246-584a-815b-d4c0b2d77fd3",
+   "name": "Casimir de Brandebourg-Kulmbach",
+   "b": 1481,
+   "d": 1527,
+   "tree": "DE_HOH",
+   "title": "Margrave de Brandebourg-Kulmbach",
+   "g": "h",
+   "script": 63
+  },
+  "ho.elisabeth_anhalt": {
+   "id": "d13e6a4e-d3a1-5998-9e82-6547a8363f72",
+   "name": "Élisabeth d'Anhalt-Zerbst",
+   "b": null,
+   "d": null,
+   "tree": "DE_HOH",
+   "title": "Électrice de Brandebourg (troisième épouse de Jean-Georges)",
+   "g": "f",
+   "script": 63
+  },
+  "ho.christian_bay": {
+   "id": "f67bd3a6-c2df-58c8-9883-94e85ecfbd7f",
+   "name": "Christian de Brandebourg-Bayreuth",
+   "b": 1581,
+   "d": 1655,
+   "tree": "DE_HOH",
+   "title": "Margrave de Brandebourg-Bayreuth",
+   "g": "h",
+   "script": 63
+  },
+  "ho.marie_prusse_bay": {
+   "id": "4faccd25-52ed-5681-a8de-3598dff500ba",
+   "name": "Marie de Prusse (margravine de Bayreuth)",
+   "b": 1579,
+   "d": 1649,
+   "tree": "DE_HOH",
+   "title": "Margravine de Brandebourg-Bayreuth",
+   "g": "f",
+   "script": 63
+  },
+  "ho.erdmann": {
+   "id": "12e311de-2cbf-588a-aba3-5bea5dc02a65",
+   "name": "Erdmann-Auguste de Brandebourg-Bayreuth",
+   "b": 1615,
+   "d": 1651,
+   "tree": "DE_HOH",
+   "title": "Prince héritier de Brandebourg-Bayreuth",
+   "g": "h",
+   "script": 63
+  },
+  "ho.sophie_ansbach": {
+   "id": "7417c42a-fa64-5a3c-91f2-a57cdf69ecca",
+   "name": "Sophie de Brandebourg-Ansbach",
+   "b": null,
+   "d": null,
+   "tree": "DE_HOH",
+   "title": "Princesse héritière de Brandebourg-Bayreuth",
+   "g": "f",
+   "script": 63
+  },
+  "ho.christian_ernst": {
+   "id": "d1559260-7ba1-5938-9118-e157f56eedf9",
+   "name": "Christian-Ernst de Brandebourg-Bayreuth",
+   "b": 1644,
+   "d": 1712,
+   "tree": "DE_HOH",
+   "title": "Margrave de Brandebourg-Bayreuth",
+   "g": "h",
+   "script": 63
+  },
+  "ho.erdmuthe": {
+   "id": "ebaf39fe-db4f-55ca-a50d-118dd064dd5c",
+   "name": "Erdmuthe-Sophie de Saxe",
+   "b": null,
+   "d": 1670,
+   "tree": "DE_WET",
+   "title": "Margravine de Brandebourg-Bayreuth, première épouse de Christian-Ernst",
+   "g": "f",
+   "script": 63
+  },
+  "ho.sophie_louise_wur": {
+   "id": "e67f4412-91d3-56e1-8dea-23fe14f0f6f7",
+   "name": "Sophie-Louise de Wurtemberg",
+   "b": null,
+   "d": 1702,
+   "tree": "DE_HOH",
+   "title": "Margravine de Brandebourg-Bayreuth, seconde épouse de Christian-Ernst",
+   "g": "f",
+   "script": 63
+  },
+  "ho.guillaume_prince": {
+   "id": "bb4edacc-8da2-5e07-9e4d-b49567ccf046",
+   "name": "Guillaume de Prusse (1783-1851)",
+   "b": 1783,
+   "d": 1851,
+   "tree": "DE_HOH",
+   "title": "Prince de Prusse, frère de Frédéric-Guillaume III",
+   "g": "h",
+   "script": 63
+  },
+  "ho.marie_anne_hh": {
+   "id": "0cf01ac6-83bd-51ee-a606-4882edeee5da",
+   "name": "Marie-Anne de Hesse-Hombourg",
+   "b": null,
+   "d": 1846,
+   "tree": "DE_HOH",
+   "title": "Princesse de Prusse",
+   "g": "f",
+   "script": 63
+  },
+  "ho.hermine": {
+   "id": "707a495f-8448-52e1-bddf-468430e60975",
+   "name": "Hermine Reuss de Greiz",
+   "b": 1887,
+   "d": 1947,
+   "tree": "DE_HOH",
+   "title": "Seconde épouse de Guillaume II",
+   "g": "f",
+   "script": 63
+  },
+  "ho.viktoria_luise": {
+   "id": "0965c6d6-5f0e-5a5f-8659-e650d01566fa",
+   "name": "Victoria-Louise de Prusse",
+   "b": 1892,
+   "d": 1980,
+   "tree": "DE_HOH",
+   "title": "Princesse de Prusse, duchesse de Brunswick",
+   "g": "f",
+   "script": 63
+  },
+  "ho.guillaume_kp2": {
+   "id": "de9aad13-3d24-56e6-965c-3a6c9519b201",
+   "name": "Guillaume de Prusse (1906-1940)",
+   "b": 1906,
+   "d": 1940,
+   "tree": "DE_HOH",
+   "title": "Fils aîné du Kronprinz",
+   "g": "h",
+   "script": 63
+  },
+  "ho.louis_ferdinand": {
+   "id": "75b262a4-3082-5df0-915d-c70c3fcbd93a",
+   "name": "Louis-Ferdinand de Prusse (1907-1994)",
+   "b": 1907,
+   "d": 1994,
+   "tree": "DE_HOH",
+   "title": "Chef de la maison de Hohenzollern",
+   "g": "h",
+   "script": 63
+  },
+  "ho.kira": {
+   "id": "26b78212-aa08-582d-9ee8-95ba4890371d",
+   "name": "Kira Kirillovna de Russie",
+   "b": 1909,
+   "d": 1967,
+   "tree": "RU_ROM",
+   "title": "Princesse de Prusse",
+   "g": "f",
+   "script": 63
+  },
+  "ho.louis_ferdinand2": {
+   "id": "b2981564-60b8-502b-9435-239374dfb10d",
+   "name": "Louis-Ferdinand de Prusse (1944-1977)",
+   "b": 1944,
+   "d": 1977,
+   "tree": "DE_HOH",
+   "title": "Prince de Prusse, père de Georges-Frédéric",
+   "g": "h",
+   "script": 63
+  },
+  "ho.donata": {
+   "id": "08a602ac-4994-5950-8e2c-5fd6666d2cba",
+   "name": "Donata de Castell-Rüdenhausen",
+   "b": 1950,
+   "d": 2015,
+   "tree": "DE_HOH",
+   "title": "Princesse de Prusse",
+   "g": "f",
+   "script": 63
+  },
+  "ho.georges_frederic": {
+   "id": "f7b8d776-ff26-5cf4-8625-d02af2aa043f",
+   "name": "Georges-Frédéric de Prusse",
+   "b": 1976,
+   "d": null,
+   "tree": "DE_HOH",
+   "title": "Chef actuel de la maison de Hohenzollern",
+   "g": "h",
+   "script": 63
+  },
+  "ho.sophie_isenburg": {
+   "id": "de579ea8-ac43-59db-bce5-51008ae7f595",
+   "name": "Sophie d'Isenbourg",
+   "b": null,
+   "d": null,
+   "tree": "DE_HOH",
+   "title": "Princesse de Prusse",
+   "g": "f",
+   "script": 63
   }
  },
  "trees": {
@@ -15762,6 +15962,55 @@
    "tree": "DE_WIT",
    "reason": "Maison de Rohan (France) : sans arbre",
    "script": 62
+  },
+  {
+   "name": "Élisabeth d'Anhalt-Zerbst",
+   "b": null,
+   "tree": "DE_HOH",
+   "reason": "Maison d'Anhalt : sans arbre",
+   "script": 63
+  },
+  {
+   "name": "Sophie-Louise de Wurtemberg",
+   "b": null,
+   "tree": "DE_HOH",
+   "reason": "Maison de Wurtemberg : sans arbre",
+   "script": 63
+  },
+  {
+   "name": "Marie-Anne de Hesse-Hombourg",
+   "b": null,
+   "tree": "DE_HOH",
+   "reason": "Maison de Hesse-Hombourg : sans arbre",
+   "script": 63
+  },
+  {
+   "name": "Hermine Reuss de Greiz",
+   "b": 1887,
+   "tree": "DE_HOH",
+   "reason": "Maison Reuss : sans arbre",
+   "script": 63
+  },
+  {
+   "name": "Kira Kirillovna de Russie",
+   "b": 1909,
+   "tree": "RU_ROM",
+   "reason": "Ses parents (Cyrille Vladimirovitch et Victoria-Mélita) sont à ajouter avec l'arbre de Russie",
+   "script": 63
+  },
+  {
+   "name": "Donata de Castell-Rüdenhausen",
+   "b": 1950,
+   "tree": "DE_HOH",
+   "reason": "Maison de Castell-Rüdenhausen : sans arbre",
+   "script": 63
+  },
+  {
+   "name": "Sophie d'Isenbourg",
+   "b": null,
+   "tree": "DE_HOH",
+   "reason": "Maison d'Isenbourg : sans arbre",
+   "script": 63
   }
  ],
  "scripts": {
@@ -15970,6 +16219,12 @@
    "label": "Allemagne — Wettin : Saxe-Weimar, Saxe-Gotha-Altenbourg, Saxe-Altenbourg, liens des rois de Saxe et de Saxe-Cobourg",
    "members": 44,
    "rels": 87,
+   "trees": []
+  },
+  "63": {
+   "label": "Allemagne — Hohenzollern : branches de Brandebourg-Kulmbach et Bayreuth, famille de Marie de Prusse, empereurs et chef actuel de la maison",
+   "members": 20,
+   "rels": 43,
    "trees": []
   }
  },
@@ -26248,6 +26503,221 @@
    "1e0cc118-623c-596a-b148-4a8daef9ae35",
    "6a426ce7-4621-5b1a-a7f5-6c6453957321",
    "parent"
+  ],
+  [
+   "d4f92dc5-c950-4a45-b3ac-1b0f013514a6",
+   "f4a34cab-d246-584a-815b-d4c0b2d77fd3",
+   "parent"
+  ],
+  [
+   "dcef0122-bd3d-4898-be3b-51c511b91def",
+   "f4a34cab-d246-584a-815b-d4c0b2d77fd3",
+   "parent"
+  ],
+  [
+   "f4a34cab-d246-584a-815b-d4c0b2d77fd3",
+   "aefb517c-8e6f-5b3d-afea-3e8857138c2c",
+   "spouse"
+  ],
+  [
+   "f4a34cab-d246-584a-815b-d4c0b2d77fd3",
+   "12f7dc89-95a6-575d-8879-e3a1b2251501",
+   "parent"
+  ],
+  [
+   "aefb517c-8e6f-5b3d-afea-3e8857138c2c",
+   "12f7dc89-95a6-575d-8879-e3a1b2251501",
+   "parent"
+  ],
+  [
+   "560e4332-402f-42fa-a519-2774064729b0",
+   "d13e6a4e-d3a1-5998-9e82-6547a8363f72",
+   "spouse"
+  ],
+  [
+   "560e4332-402f-42fa-a519-2774064729b0",
+   "f67bd3a6-c2df-58c8-9883-94e85ecfbd7f",
+   "parent"
+  ],
+  [
+   "d13e6a4e-d3a1-5998-9e82-6547a8363f72",
+   "f67bd3a6-c2df-58c8-9883-94e85ecfbd7f",
+   "parent"
+  ],
+  [
+   "4eb64b79-6d8c-48fb-844b-032e4fe6a11e",
+   "4faccd25-52ed-5681-a8de-3598dff500ba",
+   "parent"
+  ],
+  [
+   "d2ebd7c7-426f-4405-9546-21eb097b067f",
+   "4faccd25-52ed-5681-a8de-3598dff500ba",
+   "parent"
+  ],
+  [
+   "f67bd3a6-c2df-58c8-9883-94e85ecfbd7f",
+   "4faccd25-52ed-5681-a8de-3598dff500ba",
+   "spouse"
+  ],
+  [
+   "f67bd3a6-c2df-58c8-9883-94e85ecfbd7f",
+   "f632cf0c-6309-4778-af17-8561ec377685",
+   "parent"
+  ],
+  [
+   "4faccd25-52ed-5681-a8de-3598dff500ba",
+   "f632cf0c-6309-4778-af17-8561ec377685",
+   "parent"
+  ],
+  [
+   "f67bd3a6-c2df-58c8-9883-94e85ecfbd7f",
+   "12e311de-2cbf-588a-aba3-5bea5dc02a65",
+   "parent"
+  ],
+  [
+   "4faccd25-52ed-5681-a8de-3598dff500ba",
+   "12e311de-2cbf-588a-aba3-5bea5dc02a65",
+   "parent"
+  ],
+  [
+   "12e311de-2cbf-588a-aba3-5bea5dc02a65",
+   "7417c42a-fa64-5a3c-91f2-a57cdf69ecca",
+   "spouse"
+  ],
+  [
+   "12e311de-2cbf-588a-aba3-5bea5dc02a65",
+   "d1559260-7ba1-5938-9118-e157f56eedf9",
+   "parent"
+  ],
+  [
+   "7417c42a-fa64-5a3c-91f2-a57cdf69ecca",
+   "d1559260-7ba1-5938-9118-e157f56eedf9",
+   "parent"
+  ],
+  [
+   "987c8554-cc8a-4793-bd6a-116f5d103c46",
+   "ebaf39fe-db4f-55ca-a50d-118dd064dd5c",
+   "parent"
+  ],
+  [
+   "f632cf0c-6309-4778-af17-8561ec377685",
+   "ebaf39fe-db4f-55ca-a50d-118dd064dd5c",
+   "parent"
+  ],
+  [
+   "d1559260-7ba1-5938-9118-e157f56eedf9",
+   "ebaf39fe-db4f-55ca-a50d-118dd064dd5c",
+   "spouse"
+  ],
+  [
+   "d1559260-7ba1-5938-9118-e157f56eedf9",
+   "e67f4412-91d3-56e1-8dea-23fe14f0f6f7",
+   "spouse"
+  ],
+  [
+   "d1559260-7ba1-5938-9118-e157f56eedf9",
+   "59141713-6161-483a-83af-2720409190d9",
+   "parent"
+  ],
+  [
+   "e67f4412-91d3-56e1-8dea-23fe14f0f6f7",
+   "59141713-6161-483a-83af-2720409190d9",
+   "parent"
+  ],
+  [
+   "7d51ede2-4525-4960-bd88-56a09dc79fa1",
+   "bb4edacc-8da2-5e07-9e4d-b49567ccf046",
+   "parent"
+  ],
+  [
+   "f73ebc2b-ed75-4768-93bc-04af6ba949a2",
+   "bb4edacc-8da2-5e07-9e4d-b49567ccf046",
+   "parent"
+  ],
+  [
+   "bb4edacc-8da2-5e07-9e4d-b49567ccf046",
+   "0cf01ac6-83bd-51ee-a606-4882edeee5da",
+   "spouse"
+  ],
+  [
+   "bb4edacc-8da2-5e07-9e4d-b49567ccf046",
+   "d1a02d9d-103a-5dbc-ac1b-ef55e85dd4cf",
+   "parent"
+  ],
+  [
+   "0cf01ac6-83bd-51ee-a606-4882edeee5da",
+   "d1a02d9d-103a-5dbc-ac1b-ef55e85dd4cf",
+   "parent"
+  ],
+  [
+   "0f6290c2-9829-41d2-8c83-3aafcadc5534",
+   "707a495f-8448-52e1-bddf-468430e60975",
+   "spouse"
+  ],
+  [
+   "0f6290c2-9829-41d2-8c83-3aafcadc5534",
+   "0965c6d6-5f0e-5a5f-8659-e650d01566fa",
+   "parent"
+  ],
+  [
+   "a09965f0-c206-4ad9-b77f-d20516f7aa38",
+   "0965c6d6-5f0e-5a5f-8659-e650d01566fa",
+   "parent"
+  ],
+  [
+   "935858a5-cb96-4668-9b1b-3541aca20b1b",
+   "de9aad13-3d24-56e6-965c-3a6c9519b201",
+   "parent"
+  ],
+  [
+   "5bb14b43-01b8-4cc2-9e7b-6d2c2a85f30a",
+   "de9aad13-3d24-56e6-965c-3a6c9519b201",
+   "parent"
+  ],
+  [
+   "935858a5-cb96-4668-9b1b-3541aca20b1b",
+   "75b262a4-3082-5df0-915d-c70c3fcbd93a",
+   "parent"
+  ],
+  [
+   "5bb14b43-01b8-4cc2-9e7b-6d2c2a85f30a",
+   "75b262a4-3082-5df0-915d-c70c3fcbd93a",
+   "parent"
+  ],
+  [
+   "75b262a4-3082-5df0-915d-c70c3fcbd93a",
+   "26b78212-aa08-582d-9ee8-95ba4890371d",
+   "spouse"
+  ],
+  [
+   "75b262a4-3082-5df0-915d-c70c3fcbd93a",
+   "b2981564-60b8-502b-9435-239374dfb10d",
+   "parent"
+  ],
+  [
+   "26b78212-aa08-582d-9ee8-95ba4890371d",
+   "b2981564-60b8-502b-9435-239374dfb10d",
+   "parent"
+  ],
+  [
+   "b2981564-60b8-502b-9435-239374dfb10d",
+   "08a602ac-4994-5950-8e2c-5fd6666d2cba",
+   "spouse"
+  ],
+  [
+   "b2981564-60b8-502b-9435-239374dfb10d",
+   "f7b8d776-ff26-5cf4-8625-d02af2aa043f",
+   "parent"
+  ],
+  [
+   "08a602ac-4994-5950-8e2c-5fd6666d2cba",
+   "f7b8d776-ff26-5cf4-8625-d02af2aa043f",
+   "parent"
+  ],
+  [
+   "f7b8d776-ff26-5cf4-8625-d02af2aa043f",
+   "de579ea8-ac43-59db-bce5-51008ae7f595",
+   "spouse"
   ]
  ],
  "dateflags": [
@@ -31528,6 +31998,55 @@
    "d": 1607,
    "note": "naissance non donnée par la page de Jean II",
    "script": 62
+  },
+  {
+   "name": "Élisabeth d'Anhalt-Zerbst",
+   "b": null,
+   "d": null,
+   "note": "dates non données par la page de Christian de Bayreuth",
+   "script": 63
+  },
+  {
+   "name": "Sophie de Brandebourg-Ansbach",
+   "b": null,
+   "d": null,
+   "note": "dates non données par la page de Christian-Ernst",
+   "script": 63
+  },
+  {
+   "name": "Erdmuthe-Sophie de Saxe",
+   "b": null,
+   "d": 1670,
+   "note": "naissance non donnée par la page de Christian-Ernst",
+   "script": 63
+  },
+  {
+   "name": "Sophie-Louise de Wurtemberg",
+   "b": null,
+   "d": 1702,
+   "note": "naissance non donnée par la page de Christian-Ernst",
+   "script": 63
+  },
+  {
+   "name": "Marie-Anne de Hesse-Hombourg",
+   "b": null,
+   "d": 1846,
+   "note": "naissance non donnée par la page de Guillaume de Prusse",
+   "script": 63
+  },
+  {
+   "name": "Kira Kirillovna de Russie",
+   "b": 1909,
+   "d": 1967,
+   "note": "naissance 1909 : à revérifier (la page de Louis-Ferdinand ne donne que la mort, 1967)",
+   "script": 63
+  },
+  {
+   "name": "Sophie d'Isenbourg",
+   "b": null,
+   "d": null,
+   "note": "dates non données par la page de Georges-Frédéric",
+   "script": 63
   }
  ],
  "pins": [

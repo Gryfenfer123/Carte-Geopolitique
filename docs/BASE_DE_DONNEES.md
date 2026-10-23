@@ -135,4 +135,5 @@ RLS**. Règles :
 | v60 | Photos : 209 portraits Wikipédia/Wikimedia ajoutés aux membres sans photo (ne remplace jamais une photo existante) — à exécuter après v59 |
 | arbres_v61 | Wittelsbach : branches palatine, Simmern, Deux-Ponts, Neubourg, Sulzbach, Landshut, rois de Bavière (+102 membres, relie les 9 isolés) |
 | arbres_v62 | Wettin : Saxe-Weimar, Saxe-Gotha-Altenbourg, Saxe-Altenbourg, descendants de Frédéric-Auguste III, liens polonais/britanniques/belges rangés (+44 membres) ; corrige les parents de Madeleine-Catherine de Deux-Ponts |
+| arbres_v63 | Hohenzollern : Kulmbach, Bayreuth, famille de Marie de Prusse, descendants de Guillaume II jusqu'à Georges-Frédéric (+20 membres) |
 | `data_owid_load.sql` + `owid_chunks/` | Chargement des données d'indicateurs (rejouable, upserts) — à exécuter après v1 à v7 |
