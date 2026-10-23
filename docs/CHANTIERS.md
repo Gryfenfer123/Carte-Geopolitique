@@ -9,7 +9,8 @@ pas dessus, **chaque conversation a UN chantier** et ne touche qu'à ce qui lui 
 |---|---|---|---|---|
 | `arbres` | Arbres généalogiques : fonctionnalité + remplissage des dynasties + photos | `genealogy*.ts` | `supabase/arbres/arbres_vN.sql` (continue après v60 → **arbres_v61**) | [`chantiers/arbres.md`](chantiers/arbres.md) |
 | `frises` | Frises chronologiques | `frise.ts`, `friseModel.ts` | `supabase/frises/frises_vN.sql` (commence à **frises_v1**) | [`chantiers/frises.md`](chantiers/frises.md) |
-| `carte` | Carte, fonds, calques (ports, câbles…), carte historique, POI, exports, comparateur | `geobridge.ts`, `historicalMap.ts`, `poi.ts`, `compareExport.ts` | `supabase/carte/carte_vN.sql` (**carte_v1**) | à créer à la 1re session |
+| `carte` | Carte, fonds, calques (ports, câbles…), POI, exports, comparateur | `geobridge.ts`, `poi.ts`, `compareExport.ts` | `supabase/carte/carte_vN.sql` (**carte_v1**) | à créer à la 1re session |
+| `historique` | Carte historique (vue par époque, curseur, territoires historiques → fiches) | `historicalMap.ts` (+ nouveaux modules `historical*.ts`) | `supabase/historique/historique_vN.sql` (**historique_v1** ; la table v20 `schema_v20.sql` lui appartient) | [`chantiers/historique.md`](chantiers/historique.md) |
 | `groupes` | Groupes géopolitiques et liens entre pays | `groups.ts`, `links.ts`, `linkIndex.ts` | `supabase/groupes/groupes_vN.sql` (**groupes_v1**) | à créer |
 | `dossiers` | Fiches pays, catégories, entrées, recherche, encyclopédie | `dossier.ts`, `sanitize.ts`, `imageCrop.ts`, `search.ts`, `encyclopedie.ts`, `countryNames.ts` | `supabase/dossiers/dossiers_vN.sql` (**dossiers_v1**) | à créer |
 | `indicateurs` | Indicateurs chiffrés | `indicators.ts`, `public/data/raw/OWID_*.json` | `supabase/indicateurs/indicateurs_vN.sql` (**indicateurs_v1**) | à créer |
@@ -17,7 +18,7 @@ pas dessus, **chaque conversation a UN chantier** et ne touche qu'à ce qui lui 
 Fichiers **partagés** (tout le monde peut avoir à y brancher une ligne, jamais plus) : `main.ts`,
 `style.css`, `supabase.ts`, `index.html`. Pour une nouvelle fonctionnalité : un **nouveau fichier**
 dans `src/` + une ligne de branchement dans `main.ts` (voir `CONVENTIONS.md` §4).
-Nouveau chantier (ex. « historique ») : ajouter une ligne ici ET le nom dans `scripts/check-repo.mjs`.
+Nouveau chantier : ajouter une ligne ici ET le nom dans `scripts/check-repo.mjs`.
 
 ## Noms des migrations
 

@@ -92,7 +92,7 @@ for (const f of fichiers) {
 // 5. Numéros de migration uniques ---------------------------------------------
 // Anciennes migrations (v1 à v60) : supabase/schema_vN.sql, un seul compteur.
 // Nouvelles : supabase/<chantier>/<chantier>_vN.sql, un compteur PAR chantier.
-const chantiers = new Set(["arbres", "frises", "carte", "groupes", "dossiers", "indicateurs"]);
+const chantiers = new Set(["arbres", "frises", "carte", "historique", "groupes", "dossiers", "indicateurs"]);
 const parNumero = new Map();
 for (const f of fichiers) {
   let cle = null;
