@@ -171,4 +171,5 @@ RLS**. Règles :
 | arbres_v99 | v99 : Portugal, maison de Bragance de Pierre III à Manuel II + Brésil impérial (21 membres) |
 | arbres_v100 | v100 : Espagne, compléments Habsbourg et Bourbon d'Espagne (13 membres) |
 | arbres_v101 | v101 : Navarre, nouvel arbre du royaume (34 membres) |
+| arbres_v102 | v102 : Naples, Anjou-Naples et Aragon-Naples (27 membres, 2 nouveaux arbres) |
 | `data_owid_load.sql` + `owid_chunks/` | Chargement des données d'indicateurs (rejouable, upserts) — à exécuter après v1 à v7 |

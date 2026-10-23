@@ -26760,6 +26760,276 @@
    "title": "Reine de Navarre, sœur de François Ier, écrivaine",
    "g": "f",
    "script": 101
+  },
+  "nap.charles1": {
+   "id": "82828df6-bd22-5802-99a7-e1c1a90f74dd",
+   "name": "Charles Ier d'Anjou",
+   "b": 1226,
+   "d": 1285,
+   "tree": "IT_ANJ",
+   "title": "Roi de Sicile puis de Naples, comte de Provence",
+   "g": "h",
+   "script": 102
+  },
+  "nap.beatrice": {
+   "id": "7ff8e15d-1544-5907-b471-16e97e9454c6",
+   "name": "Béatrice de Provence",
+   "b": 1234,
+   "d": 1267,
+   "tree": "IT_ANJ",
+   "title": "Reine de Sicile, épouse de Charles Ier",
+   "g": "f",
+   "script": 102
+  },
+  "nap.robert": {
+   "id": "bc331b50-83ba-5b21-8c3c-34046d0aa5cb",
+   "name": "Robert le Sage",
+   "b": 1278,
+   "d": 1343,
+   "tree": "IT_ANJ",
+   "title": "Roi de Naples (1309-1343)",
+   "g": "h",
+   "script": 102
+  },
+  "nap.sancia": {
+   "id": "b93636e0-a1e5-5638-8b1e-0b8fbd0c53c9",
+   "name": "Sancie de Majorque",
+   "b": 1285,
+   "d": 1345,
+   "tree": "IT_ANJ",
+   "title": "Reine de Naples, épouse de Robert",
+   "g": "f",
+   "script": 102
+  },
+  "nap.philippe_t": {
+   "id": "14750ab9-7853-5b09-bc7c-be4e4fa87c4d",
+   "name": "Philippe Ier de Tarente",
+   "b": 1278,
+   "d": 1332,
+   "tree": "IT_ANJ",
+   "title": "Prince de Tarente, frère de Robert",
+   "g": "h",
+   "script": 102
+  },
+  "nap.louis_t": {
+   "id": "878dfa74-4994-53a0-bc4d-148c9058d867",
+   "name": "Louis de Tarente",
+   "b": 1320,
+   "d": 1362,
+   "tree": "IT_ANJ",
+   "title": "Prince de Tarente, roi de Naples par mariage (1352-1362)",
+   "g": "h",
+   "script": 102
+  },
+  "nap.jean_g": {
+   "id": "8f963624-fa0c-5a44-9e78-acce642f2e0c",
+   "name": "Jean de Durazzo (de Gravina)",
+   "b": 1294,
+   "d": 1336,
+   "tree": "IT_ANJ",
+   "title": "Duc de Durazzo, frère de Robert",
+   "g": "h",
+   "script": 102
+  },
+  "nap.charles_d": {
+   "id": "31466b8c-5b13-5646-b586-ba1f61440d06",
+   "name": "Charles de Durazzo",
+   "b": 1323,
+   "d": 1348,
+   "tree": "IT_ANJ",
+   "title": "Duc de Durazzo, exécuté par le roi de Hongrie",
+   "g": "h",
+   "script": 102
+  },
+  "nap.charles_c": {
+   "id": "ec89f014-0df9-584a-ac60-dc00d01ba8bf",
+   "name": "Charles de Calabre",
+   "b": 1298,
+   "d": 1328,
+   "tree": "IT_ANJ",
+   "title": "Duc de Calabre, fils de Robert",
+   "g": "h",
+   "script": 102
+  },
+  "nap.jeanne1": {
+   "id": "41f5b9f8-313b-5c1b-ba4c-af5156e8c893",
+   "name": "Jeanne Ire de Naples",
+   "b": 1325,
+   "d": 1382,
+   "tree": "IT_ANJ",
+   "title": "Reine de Naples (1343-1382), comtesse de Provence",
+   "g": "f",
+   "script": 102
+  },
+  "nap.charles3": {
+   "id": "13071073-cfec-5f85-9573-b9e4149ff203",
+   "name": "Charles III de Durazzo",
+   "b": 1345,
+   "d": 1386,
+   "tree": "IT_ANJ",
+   "title": "Roi de Naples (1382-1386), roi de Hongrie (1385-1386)",
+   "g": "h",
+   "script": 102
+  },
+  "nap.margherita": {
+   "id": "7de16ff1-ad86-57bc-ab0f-8a4e455b493e",
+   "name": "Marguerite de Durazzo",
+   "b": 1347,
+   "d": 1412,
+   "tree": "IT_ANJ",
+   "title": "Reine de Naples, épouse de Charles III, régente",
+   "g": "f",
+   "script": 102
+  },
+  "nap.ladislas": {
+   "id": "4263c204-96de-5c13-96a4-a61013a46432",
+   "name": "Ladislas Ier de Naples",
+   "b": 1377,
+   "d": 1414,
+   "tree": "IT_ANJ",
+   "title": "Roi de Naples (1386-1414)",
+   "g": "h",
+   "script": 102
+  },
+  "nap.jeanne2": {
+   "id": "0f7d67d7-eb27-5e10-8bab-9d994c6b8ede",
+   "name": "Jeanne II de Naples",
+   "b": 1373,
+   "d": 1435,
+   "tree": "IT_ANJ",
+   "title": "Reine de Naples (1414-1435)",
+   "g": "f",
+   "script": 102
+  },
+  "nap.louis1a": {
+   "id": "3b7347e4-ef63-5f63-89fb-ce7eb6efbcc5",
+   "name": "Louis Ier d'Anjou",
+   "b": 1339,
+   "d": 1384,
+   "tree": "IT_ANJ",
+   "title": "Duc d'Anjou, héritier désigné de Jeanne Ire",
+   "g": "h",
+   "script": 102
+  },
+  "nap.louis2a": {
+   "id": "f25d0bc1-65a5-5422-923c-fae71ec63d3a",
+   "name": "Louis II d'Anjou",
+   "b": 1377,
+   "d": 1417,
+   "tree": "IT_ANJ",
+   "title": "Duc d'Anjou, roi de Naples titulaire",
+   "g": "h",
+   "script": 102
+  },
+  "nap.louis3a": {
+   "id": "d3202a37-b170-596e-92e8-814e87bb1e52",
+   "name": "Louis III d'Anjou",
+   "b": 1403,
+   "d": 1434,
+   "tree": "IT_ANJ",
+   "title": "Duc d'Anjou, héritier de Jeanne II",
+   "g": "h",
+   "script": 102
+  },
+  "nap.rene": {
+   "id": "cdf9f687-0bd8-5616-a89c-647de844e54b",
+   "name": "René d'Anjou (le bon roi René)",
+   "b": 1409,
+   "d": 1480,
+   "tree": "IT_ANJ",
+   "title": "Roi de Naples (1435-1442), duc d'Anjou et de Lorraine",
+   "g": "h",
+   "script": 102
+  },
+  "nap.yolande": {
+   "id": "c4cdb47d-1f16-51be-8828-43708366bb41",
+   "name": "Yolande d'Aragon",
+   "b": 1384,
+   "d": 1442,
+   "tree": "ES_BAR",
+   "title": "Duchesse d'Anjou, belle-mère de Charles VII",
+   "g": "f",
+   "script": 102
+  },
+  "nap.ferrante": {
+   "id": "d6eb4cf6-c97d-59a9-97ca-1ed0bdc88918",
+   "name": "Ferrante Ier de Naples",
+   "b": 1431,
+   "d": 1494,
+   "tree": "IT_ARN",
+   "title": "Roi de Naples (1458-1494), fils naturel d'Alphonse V",
+   "g": "h",
+   "script": 102
+  },
+  "nap.isabelle_c": {
+   "id": "1e2ade20-fe56-577b-8f80-63b83bb537fd",
+   "name": "Isabelle de Clermont-Tarente",
+   "b": 1424,
+   "d": 1465,
+   "tree": "IT_ARN",
+   "title": "Reine de Naples, épouse de Ferrante Ier",
+   "g": "f",
+   "script": 102
+  },
+  "nap.juana": {
+   "id": "7eeb0730-3b4f-59e6-9261-76bb4f9ecef7",
+   "name": "Jeanne d'Aragon (reine de Naples)",
+   "b": 1454,
+   "d": 1517,
+   "tree": "IT_ARN",
+   "title": "Seconde épouse de Ferrante Ier",
+   "g": "f",
+   "script": 102
+  },
+  "nap.alfonso2": {
+   "id": "9f26dcc3-c84b-5a64-acb6-7b1f4d2bb60d",
+   "name": "Alphonse II de Naples",
+   "b": 1448,
+   "d": 1495,
+   "tree": "IT_ARN",
+   "title": "Roi de Naples (1494-1495)",
+   "g": "h",
+   "script": 102
+  },
+  "nap.ferrandino": {
+   "id": "f5938a98-385c-59f2-8e3c-b3f9de17dd1b",
+   "name": "Ferdinand II de Naples (Ferrandino)",
+   "b": 1469,
+   "d": 1496,
+   "tree": "IT_ARN",
+   "title": "Roi de Naples (1495-1496)",
+   "g": "h",
+   "script": 102
+  },
+  "nap.giovanna": {
+   "id": "0a69853a-5ca9-5adc-87b1-5c9d6c24147b",
+   "name": "Jeanne de Naples (reine, épouse de Ferrandino)",
+   "b": 1478,
+   "d": 1518,
+   "tree": "IT_ARN",
+   "title": "Reine de Naples",
+   "g": "f",
+   "script": 102
+  },
+  "nap.federico": {
+   "id": "25c04be1-4f08-5eb3-9296-0a639d0c1186",
+   "name": "Frédéric IV de Naples",
+   "b": 1451,
+   "d": 1504,
+   "tree": "IT_ARN",
+   "title": "Roi de Naples (1496-1501), dernier roi aragonais",
+   "g": "h",
+   "script": 102
+  },
+  "nap.ippolita": {
+   "id": "ec58da77-5e60-5c17-92b9-d4ce7d30b7ec",
+   "name": "Hippolyte Marie Sforza",
+   "b": 1446,
+   "d": 1484,
+   "tree": "IT_SFO",
+   "title": "Duchesse de Calabre, épouse d'Alphonse II",
+   "g": "f",
+   "script": 102
   }
  },
  "trees": {
@@ -27572,6 +27842,18 @@
    "country": "ESP",
    "dynasty": "Maison de Trastamare",
    "script": null
+  },
+  "IT_ANJ": {
+   "entry": "edd033cb-9503-535c-b756-b5d41fea2e9a",
+   "country": "ITA",
+   "dynasty": "Anjou-Naples",
+   "script": 102
+  },
+  "IT_ARN": {
+   "entry": "77a59bb6-8434-5515-a6e8-09434bcabb69",
+   "country": "ITA",
+   "dynasty": "Aragon-Naples",
+   "script": 102
   }
  },
  "flags": [
@@ -32012,6 +32294,27 @@
    "tree": "NA_ROY",
    "reason": "Maison d'Albret : sans arbre",
    "script": 101
+  },
+  {
+   "name": "Béatrice de Provence",
+   "b": 1234,
+   "tree": "IT_ANJ",
+   "reason": "Maison de Provence (Barcelone-Provence) : sans arbre",
+   "script": 102
+  },
+  {
+   "name": "Sancie de Majorque",
+   "b": 1285,
+   "tree": "IT_ANJ",
+   "reason": "Maison de Majorque : sans arbre",
+   "script": 102
+  },
+  {
+   "name": "Isabelle de Clermont-Tarente",
+   "b": 1424,
+   "tree": "IT_ARN",
+   "reason": "Maison de Clermont-Tarente : sans arbre",
+   "script": 102
   }
  ],
  "scripts": {
@@ -32509,6 +32812,15 @@
    "rels": 72,
    "trees": [
     "Royaume de Navarre (ESP)"
+   ]
+  },
+  "102": {
+   "label": "Italie du Sud — Anjou-Naples et Aragon-Naples",
+   "members": 27,
+   "rels": 68,
+   "trees": [
+    "Anjou-Naples (ITA)",
+    "Aragon-Naples (ITA)"
    ]
   }
  },
@@ -54817,6 +55129,346 @@
    "773c19a5-93d1-4171-8660-466c9f464ef3",
    "14b4e7b7-2c0c-44ed-91d1-b48e96b5a947",
    "parent"
+  ],
+  [
+   "579590ed-6dcb-4aeb-b902-9ac0494038a7",
+   "82828df6-bd22-5802-99a7-e1c1a90f74dd",
+   "parent"
+  ],
+  [
+   "82828df6-bd22-5802-99a7-e1c1a90f74dd",
+   "7ff8e15d-1544-5907-b471-16e97e9454c6",
+   "spouse"
+  ],
+  [
+   "82828df6-bd22-5802-99a7-e1c1a90f74dd",
+   "78d0b5aa-fd6c-53da-865e-7a5fbbaf2129",
+   "parent"
+  ],
+  [
+   "7ff8e15d-1544-5907-b471-16e97e9454c6",
+   "78d0b5aa-fd6c-53da-865e-7a5fbbaf2129",
+   "parent"
+  ],
+  [
+   "78d0b5aa-fd6c-53da-865e-7a5fbbaf2129",
+   "963424ff-9412-55a8-9548-457164b0703f",
+   "parent"
+  ],
+  [
+   "bac0a74b-8395-59bf-8f23-c63f1a81ead0",
+   "963424ff-9412-55a8-9548-457164b0703f",
+   "parent"
+  ],
+  [
+   "78d0b5aa-fd6c-53da-865e-7a5fbbaf2129",
+   "bc331b50-83ba-5b21-8c3c-34046d0aa5cb",
+   "parent"
+  ],
+  [
+   "bac0a74b-8395-59bf-8f23-c63f1a81ead0",
+   "bc331b50-83ba-5b21-8c3c-34046d0aa5cb",
+   "parent"
+  ],
+  [
+   "78d0b5aa-fd6c-53da-865e-7a5fbbaf2129",
+   "14750ab9-7853-5b09-bc7c-be4e4fa87c4d",
+   "parent"
+  ],
+  [
+   "bac0a74b-8395-59bf-8f23-c63f1a81ead0",
+   "14750ab9-7853-5b09-bc7c-be4e4fa87c4d",
+   "parent"
+  ],
+  [
+   "78d0b5aa-fd6c-53da-865e-7a5fbbaf2129",
+   "8f963624-fa0c-5a44-9e78-acce642f2e0c",
+   "parent"
+  ],
+  [
+   "bac0a74b-8395-59bf-8f23-c63f1a81ead0",
+   "8f963624-fa0c-5a44-9e78-acce642f2e0c",
+   "parent"
+  ],
+  [
+   "963424ff-9412-55a8-9548-457164b0703f",
+   "ace83db1-2da5-5163-8728-e23bba8a42d4",
+   "parent"
+  ],
+  [
+   "78d0b5aa-fd6c-53da-865e-7a5fbbaf2129",
+   "44a442af-0ed4-4893-a27a-e44fe6b4e997",
+   "parent"
+  ],
+  [
+   "78d0b5aa-fd6c-53da-865e-7a5fbbaf2129",
+   "07589e84-afa5-49d3-bb7f-68b7b748adb8",
+   "parent"
+  ],
+  [
+   "78d0b5aa-fd6c-53da-865e-7a5fbbaf2129",
+   "e268c95a-004f-4d64-9fe0-5b768ec0b9fa",
+   "parent"
+  ],
+  [
+   "bc331b50-83ba-5b21-8c3c-34046d0aa5cb",
+   "b93636e0-a1e5-5638-8b1e-0b8fbd0c53c9",
+   "spouse"
+  ],
+  [
+   "bc331b50-83ba-5b21-8c3c-34046d0aa5cb",
+   "ec89f014-0df9-584a-ac60-dc00d01ba8bf",
+   "parent"
+  ],
+  [
+   "ec89f014-0df9-584a-ac60-dc00d01ba8bf",
+   "41f5b9f8-313b-5c1b-ba4c-af5156e8c893",
+   "parent"
+  ],
+  [
+   "41f5b9f8-313b-5c1b-ba4c-af5156e8c893",
+   "716152f7-5bd7-5b17-905e-09c5faf7d5c2",
+   "spouse"
+  ],
+  [
+   "41f5b9f8-313b-5c1b-ba4c-af5156e8c893",
+   "878dfa74-4994-53a0-bc4d-148c9058d867",
+   "spouse"
+  ],
+  [
+   "14750ab9-7853-5b09-bc7c-be4e4fa87c4d",
+   "878dfa74-4994-53a0-bc4d-148c9058d867",
+   "parent"
+  ],
+  [
+   "8f963624-fa0c-5a44-9e78-acce642f2e0c",
+   "31466b8c-5b13-5646-b586-ba1f61440d06",
+   "parent"
+  ],
+  [
+   "31466b8c-5b13-5646-b586-ba1f61440d06",
+   "13071073-cfec-5f85-9573-b9e4149ff203",
+   "parent"
+  ],
+  [
+   "13071073-cfec-5f85-9573-b9e4149ff203",
+   "7de16ff1-ad86-57bc-ab0f-8a4e455b493e",
+   "spouse"
+  ],
+  [
+   "13071073-cfec-5f85-9573-b9e4149ff203",
+   "4263c204-96de-5c13-96a4-a61013a46432",
+   "parent"
+  ],
+  [
+   "7de16ff1-ad86-57bc-ab0f-8a4e455b493e",
+   "4263c204-96de-5c13-96a4-a61013a46432",
+   "parent"
+  ],
+  [
+   "13071073-cfec-5f85-9573-b9e4149ff203",
+   "0f7d67d7-eb27-5e10-8bab-9d994c6b8ede",
+   "parent"
+  ],
+  [
+   "7de16ff1-ad86-57bc-ab0f-8a4e455b493e",
+   "0f7d67d7-eb27-5e10-8bab-9d994c6b8ede",
+   "parent"
+  ],
+  [
+   "41f5b9f8-313b-5c1b-ba4c-af5156e8c893",
+   "13071073-cfec-5f85-9573-b9e4149ff203",
+   "family"
+  ],
+  [
+   "41f5b9f8-313b-5c1b-ba4c-af5156e8c893",
+   "3b7347e4-ef63-5f63-89fb-ce7eb6efbcc5",
+   "family"
+  ],
+  [
+   "0f7d67d7-eb27-5e10-8bab-9d994c6b8ede",
+   "d3202a37-b170-596e-92e8-814e87bb1e52",
+   "family"
+  ],
+  [
+   "0f7d67d7-eb27-5e10-8bab-9d994c6b8ede",
+   "cdf9f687-0bd8-5616-a89c-647de844e54b",
+   "family"
+  ],
+  [
+   "0f7d67d7-eb27-5e10-8bab-9d994c6b8ede",
+   "bbbe49d7-372e-4a9c-9d2f-4da3ecac6d9d",
+   "family"
+  ],
+  [
+   "5c72ec7d-85f3-4b97-b6d5-ed54fad8e0c7",
+   "3b7347e4-ef63-5f63-89fb-ce7eb6efbcc5",
+   "parent"
+  ],
+  [
+   "7010ac16-c56a-4733-9600-7078b764ac1e",
+   "3b7347e4-ef63-5f63-89fb-ce7eb6efbcc5",
+   "parent"
+  ],
+  [
+   "3b7347e4-ef63-5f63-89fb-ce7eb6efbcc5",
+   "f25d0bc1-65a5-5422-923c-fae71ec63d3a",
+   "parent"
+  ],
+  [
+   "f25d0bc1-65a5-5422-923c-fae71ec63d3a",
+   "c4cdb47d-1f16-51be-8828-43708366bb41",
+   "spouse"
+  ],
+  [
+   "69d0a891-c17b-4dc2-bd45-edd1eb05baed",
+   "c4cdb47d-1f16-51be-8828-43708366bb41",
+   "parent"
+  ],
+  [
+   "f25d0bc1-65a5-5422-923c-fae71ec63d3a",
+   "d3202a37-b170-596e-92e8-814e87bb1e52",
+   "parent"
+  ],
+  [
+   "c4cdb47d-1f16-51be-8828-43708366bb41",
+   "d3202a37-b170-596e-92e8-814e87bb1e52",
+   "parent"
+  ],
+  [
+   "f25d0bc1-65a5-5422-923c-fae71ec63d3a",
+   "cdf9f687-0bd8-5616-a89c-647de844e54b",
+   "parent"
+  ],
+  [
+   "c4cdb47d-1f16-51be-8828-43708366bb41",
+   "cdf9f687-0bd8-5616-a89c-647de844e54b",
+   "parent"
+  ],
+  [
+   "f25d0bc1-65a5-5422-923c-fae71ec63d3a",
+   "6df9addc-5cc8-41e3-9b0b-7647b501403a",
+   "parent"
+  ],
+  [
+   "c4cdb47d-1f16-51be-8828-43708366bb41",
+   "6df9addc-5cc8-41e3-9b0b-7647b501403a",
+   "parent"
+  ],
+  [
+   "cdf9f687-0bd8-5616-a89c-647de844e54b",
+   "6fb37332-44b6-5c53-ae83-b4fc01afc487",
+   "parent"
+  ],
+  [
+   "bbbe49d7-372e-4a9c-9d2f-4da3ecac6d9d",
+   "d6eb4cf6-c97d-59a9-97ca-1ed0bdc88918",
+   "parent"
+  ],
+  [
+   "d6eb4cf6-c97d-59a9-97ca-1ed0bdc88918",
+   "1e2ade20-fe56-577b-8f80-63b83bb537fd",
+   "spouse"
+  ],
+  [
+   "d6eb4cf6-c97d-59a9-97ca-1ed0bdc88918",
+   "7eeb0730-3b4f-59e6-9261-76bb4f9ecef7",
+   "spouse"
+  ],
+  [
+   "ab28690e-c022-4321-841c-4b1819c2a86b",
+   "7eeb0730-3b4f-59e6-9261-76bb4f9ecef7",
+   "parent"
+  ],
+  [
+   "d6eb4cf6-c97d-59a9-97ca-1ed0bdc88918",
+   "9f26dcc3-c84b-5a64-acb6-7b1f4d2bb60d",
+   "parent"
+  ],
+  [
+   "1e2ade20-fe56-577b-8f80-63b83bb537fd",
+   "9f26dcc3-c84b-5a64-acb6-7b1f4d2bb60d",
+   "parent"
+  ],
+  [
+   "d6eb4cf6-c97d-59a9-97ca-1ed0bdc88918",
+   "25c04be1-4f08-5eb3-9296-0a639d0c1186",
+   "parent"
+  ],
+  [
+   "1e2ade20-fe56-577b-8f80-63b83bb537fd",
+   "25c04be1-4f08-5eb3-9296-0a639d0c1186",
+   "parent"
+  ],
+  [
+   "d6eb4cf6-c97d-59a9-97ca-1ed0bdc88918",
+   "a810968f-0a99-50c7-8a00-63b1ec538b50",
+   "parent"
+  ],
+  [
+   "1e2ade20-fe56-577b-8f80-63b83bb537fd",
+   "a810968f-0a99-50c7-8a00-63b1ec538b50",
+   "parent"
+  ],
+  [
+   "d6eb4cf6-c97d-59a9-97ca-1ed0bdc88918",
+   "8c899e6e-45ef-5a05-8b16-41903b36526f",
+   "parent"
+  ],
+  [
+   "1e2ade20-fe56-577b-8f80-63b83bb537fd",
+   "8c899e6e-45ef-5a05-8b16-41903b36526f",
+   "parent"
+  ],
+  [
+   "9f26dcc3-c84b-5a64-acb6-7b1f4d2bb60d",
+   "ec58da77-5e60-5c17-92b9-d4ce7d30b7ec",
+   "spouse"
+  ],
+  [
+   "7b2839f1-b8c3-53ed-8c28-831ff2df2cdc",
+   "ec58da77-5e60-5c17-92b9-d4ce7d30b7ec",
+   "parent"
+  ],
+  [
+   "8fbc7d6a-1c1e-5655-a152-1285e26c5202",
+   "ec58da77-5e60-5c17-92b9-d4ce7d30b7ec",
+   "parent"
+  ],
+  [
+   "9f26dcc3-c84b-5a64-acb6-7b1f4d2bb60d",
+   "f5938a98-385c-59f2-8e3c-b3f9de17dd1b",
+   "parent"
+  ],
+  [
+   "ec58da77-5e60-5c17-92b9-d4ce7d30b7ec",
+   "f5938a98-385c-59f2-8e3c-b3f9de17dd1b",
+   "parent"
+  ],
+  [
+   "9f26dcc3-c84b-5a64-acb6-7b1f4d2bb60d",
+   "90cd1f76-514c-5cfa-9f46-edcc228f924c",
+   "parent"
+  ],
+  [
+   "ec58da77-5e60-5c17-92b9-d4ce7d30b7ec",
+   "90cd1f76-514c-5cfa-9f46-edcc228f924c",
+   "parent"
+  ],
+  [
+   "d6eb4cf6-c97d-59a9-97ca-1ed0bdc88918",
+   "0a69853a-5ca9-5adc-87b1-5c9d6c24147b",
+   "parent"
+  ],
+  [
+   "7eeb0730-3b4f-59e6-9261-76bb4f9ecef7",
+   "0a69853a-5ca9-5adc-87b1-5c9d6c24147b",
+   "parent"
+  ],
+  [
+   "f5938a98-385c-59f2-8e3c-b3f9de17dd1b",
+   "0a69853a-5ca9-5adc-87b1-5c9d6c24147b",
+   "spouse"
   ]
  ],
  "dateflags": [
@@ -63352,6 +64004,70 @@
   [
    "14b4e7b7-2c0c-44ed-91d1-b48e96b5a947",
    "NA_ROY"
+  ],
+  [
+   "c4cdb47d-1f16-51be-8828-43708366bb41",
+   "IT_ANJ"
+  ],
+  [
+   "78d0b5aa-fd6c-53da-865e-7a5fbbaf2129",
+   "IT_ANJ"
+  ],
+  [
+   "bac0a74b-8395-59bf-8f23-c63f1a81ead0",
+   "IT_ANJ"
+  ],
+  [
+   "963424ff-9412-55a8-9548-457164b0703f",
+   "IT_ANJ"
+  ],
+  [
+   "ace83db1-2da5-5163-8728-e23bba8a42d4",
+   "IT_ANJ"
+  ],
+  [
+   "716152f7-5bd7-5b17-905e-09c5faf7d5c2",
+   "IT_ANJ"
+  ],
+  [
+   "44a442af-0ed4-4893-a27a-e44fe6b4e997",
+   "IT_ANJ"
+  ],
+  [
+   "07589e84-afa5-49d3-bb7f-68b7b748adb8",
+   "IT_ANJ"
+  ],
+  [
+   "e268c95a-004f-4d64-9fe0-5b768ec0b9fa",
+   "IT_ANJ"
+  ],
+  [
+   "6df9addc-5cc8-41e3-9b0b-7647b501403a",
+   "IT_ANJ"
+  ],
+  [
+   "6fb37332-44b6-5c53-ae83-b4fc01afc487",
+   "IT_ANJ"
+  ],
+  [
+   "bbbe49d7-372e-4a9c-9d2f-4da3ecac6d9d",
+   "IT_ARN"
+  ],
+  [
+   "ec58da77-5e60-5c17-92b9-d4ce7d30b7ec",
+   "IT_ARN"
+  ],
+  [
+   "a810968f-0a99-50c7-8a00-63b1ec538b50",
+   "IT_ARN"
+  ],
+  [
+   "8c899e6e-45ef-5a05-8b16-41903b36526f",
+   "IT_ARN"
+  ],
+  [
+   "90cd1f76-514c-5cfa-9f46-edcc228f924c",
+   "IT_ARN"
   ]
  ],
  "xmoved": {

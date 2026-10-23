@@ -2,6 +2,8 @@
 
 ## Dernières nouvelles (la plus récente en haut)
 
+- 2026-10-23 — v102 — Naples : Charles Ier d'Anjou à René (Anjou, Durazzo, Tarente), Ferrante Ier à Frédéric IV (Aragon-Naples). Dates de connaissance générale.
+
 - 2026-10-23 — v101 — Navarre : Jiménez, Champagne, Évreux, Trastamare, Foix, Albret ; Capétiens, Aragon et Bourbons affichés. Sources : Wikipédia (dates des derniers rois) + connaissance générale.
 
 - 2026-10-23 — v100 — Espagne : Don Carlos, Don Juan d'Autriche, Marie-Manuelle, Charles II/Marie-Louise d'Orléans, Barbe de Bragance, Louise-Élisabeth, épouses de Ferdinand VII, frères de Ferdinand VII. Dates de connaissance générale. Doublon connu : Mariana Victoria v99 / Marie-Anne-Victoire v77.
@@ -81,7 +83,7 @@
 
 Code : `src/genealogy.ts`, `genealogyLayers.ts`, `genealogyBus.ts`, `genealogyLod.ts/.css`, `genealogyLayersWorker.ts`,
 `genealogyLayout.ts`, `genealogyRouting.ts`. Outils de remplissage : [`scripts/arbres/`](../../scripts/arbres/README.md).
-Prochaine migration : **arbres_v102** (`supabase/arbres/arbres_v102.sql`) — générateur : `Gen(102, "…")`.  (v101 livrée, à exécuter par Martin si ce n'est pas déjà fait.)
+Prochaine migration : **arbres_v103** (`supabase/arbres/arbres_v103.sql`) — générateur : `Gen(103, "…")`.  (v102 livrée, à exécuter par Martin si ce n'est pas déjà fait.)
 
 ## Règles de contenu (décidées par Martin — ne pas rouvrir)
 - Un pays n'a que les dynasties qui ont **régné sur lui**. Dynastie étrangère : branche principale dans son pays
