@@ -98,3 +98,4 @@ Plan :
 - Les brouillons ne sont pas placés sur la frise.
 - Le point créé automatiquement est placé côté « haut », sans catégorie ; sa couleur est celle de la période. Modifiable ensuite via « Modifier ».
 - Une erreur de placement ne bloque jamais la création de la fiche (message affiché, fiche conservée).
+- Sous-frise d'un événement avec durée : la frise couvre toujours toute la durée de l'événement. Les périodes créées dedans se posent sur cette durée ; les parties non couvertes sont des bandes virtuelles au nom de l'événement (non modifiables). (Correction du bug « la période remplace la durée ».)

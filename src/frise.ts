@@ -636,11 +636,28 @@ export function initTimelineSystem(deps: {
   // Période "virtuelle" : une sous-frise sans période propre affiche la période (ou la durée)
   // dont elle dépend comme bande unique, pour pouvoir y poser des points tout de suite.
   function effectivePeriods(): Period[] {
-    if (periods.length) return periods;
-    if (context && context.start && context.end) {
-      return [{ id: VIRTUAL_ID, name: context.periodName, start: context.start, end: context.end, color: null }];
+    if (!context || !context.start || !context.end) return periods;
+    // Sous-frise d'un événement avec durée (ex. « Guerre » 500 → 700) : la frise couvre
+    // toujours toute la durée. Les périodes créées dedans se posent sur la durée, et les
+    // parties non couvertes restent affichées au nom de l'événement (période virtuelle).
+    const from = context.start;
+    const to = context.end;
+    const toKey = dateSortKey(to);
+    const real = [...periods].sort((a, b) => dateSortKey(a.start) - dateSortKey(b.start));
+    const out: Period[] = [...periods];
+    let cursor = from;
+    let n = 0;
+    const filler = (a: FriseDate, b: FriseDate) =>
+      out.push({ id: VIRTUAL_ID + ":" + n++, name: context!.periodName, start: a, end: b, color: null });
+    for (const p of real) {
+      if (dateSortKey(p.start) > dateSortKey(cursor) && dateSortKey(p.start) <= toKey) filler(cursor, p.start);
+      const pEnd = p.end ?? p.start;
+      if (dateSortKey(pEnd) > dateSortKey(cursor)) cursor = pEnd;
     }
-    return [];
+    if (dateSortKey(cursor) < toKey) filler(cursor, to);
+    // Durée sans épaisseur (début = fin) et aucune période : une seule bande, comme avant.
+    if (!out.length) out.push({ id: VIRTUAL_ID, name: context.periodName, start: from, end: to, color: null });
+    return out;
   }
   const VIRTUAL_ID = "__virtual__";
 
@@ -759,7 +776,7 @@ export function initTimelineSystem(deps: {
     band.className = "tl-band";
     segments.forEach((seg, i) => {
       const cell = document.createElement("div");
-      const isVirtual = seg.kind === "period" && seg.period.id === VIRTUAL_ID;
+      const isVirtual = seg.kind === "period" && seg.period.id.startsWith(VIRTUAL_ID);
       cell.style.width = widths[i] + "px";
       cell.tabIndex = 0;
       cell.setAttribute("role", "button");
