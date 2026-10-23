@@ -15640,6 +15640,256 @@
    "title": "Comte/comtesse",
    "g": "f",
    "script": 70
+  },
+  "be.charlotte_gb": {
+   "id": "d21536bd-752b-503d-96b4-a903e38e2724",
+   "name": "Charlotte de Galles",
+   "b": 1796,
+   "d": 1817,
+   "tree": "GB_HAN",
+   "title": "Princesse héritière du Royaume-Uni",
+   "g": "f",
+   "script": 71
+  },
+  "be.louis_philippe": {
+   "id": "0e9ec63c-d759-5c8c-81b5-c5a4807e3a76",
+   "name": "Louis-Philippe de Belgique",
+   "b": 1833,
+   "d": 1834,
+   "tree": "BE_COB",
+   "title": "Prince héritier de Belgique",
+   "g": "h",
+   "script": 71
+  },
+  "be.charlotte_mex": {
+   "id": "c99768a7-1e1d-5839-91ce-dadef3920951",
+   "name": "Charlotte de Belgique",
+   "b": 1840,
+   "d": 1927,
+   "tree": "BE_COB",
+   "title": "Impératrice du Mexique",
+   "g": "f",
+   "script": 71
+  },
+  "be.maximilien": {
+   "id": "0bebd291-5bc8-563a-9a64-6a29eca3d4c6",
+   "name": "Maximilien Ier du Mexique",
+   "b": 1832,
+   "d": 1867,
+   "tree": "AT_HL",
+   "title": "Empereur du Mexique",
+   "g": "h",
+   "script": 71
+  },
+  "be.marie_henriette": {
+   "id": "3cd1502c-ec8f-5f35-82d7-d9ec3f4af591",
+   "name": "Marie-Henriette d'Autriche",
+   "b": 1836,
+   "d": 1902,
+   "tree": "AT_HL",
+   "title": "Reine des Belges",
+   "g": "f",
+   "script": 71
+  },
+  "be.louise_bel": {
+   "id": "c7ba4ff3-f1ba-55bd-b35f-99eb992e192a",
+   "name": "Louise de Belgique",
+   "b": 1858,
+   "d": 1924,
+   "tree": "BE_COB",
+   "title": "Princesse de Saxe-Cobourg et Gotha",
+   "g": "f",
+   "script": 71
+  },
+  "be.leopold_brabant": {
+   "id": "10a480b8-9cff-5427-ac7f-a65c9199edee",
+   "name": "Léopold de Belgique, duc de Brabant",
+   "b": 1859,
+   "d": 1869,
+   "tree": "BE_COB",
+   "title": "Prince héritier",
+   "g": "h",
+   "script": 71
+  },
+  "be.clementine": {
+   "id": "fd5a4906-a4ee-5a0d-827f-cfbcd1818951",
+   "name": "Clémentine de Belgique",
+   "b": 1872,
+   "d": 1955,
+   "tree": "BE_COB",
+   "title": "Princesse Napoléon",
+   "g": "f",
+   "script": 71
+  },
+  "be.victor_bonaparte": {
+   "id": "e74c9a1b-b487-5f11-8810-39f58b735c2d",
+   "name": "Napoléon-Victor Bonaparte",
+   "b": 1862,
+   "d": 1926,
+   "tree": "FR_BON",
+   "title": "Prince Napoléon",
+   "g": "h",
+   "script": 71
+  },
+  "be.marie_hz": {
+   "id": "ebf7ef06-fbd0-5c05-a812-88391b4d341c",
+   "name": "Marie de Hohenzollern-Sigmaringen",
+   "b": 1845,
+   "d": 1912,
+   "tree": "DE_HZ",
+   "title": "Comtesse de Flandre",
+   "g": "f",
+   "script": 71
+  },
+  "be.baudouin_fl": {
+   "id": "ee3d8009-bdac-5faf-8f2f-5634bfea6849",
+   "name": "Baudouin de Belgique, prince de Belgique",
+   "b": 1869,
+   "d": 1891,
+   "tree": "BE_COB",
+   "title": "Prince",
+   "g": "h",
+   "script": 71
+  },
+  "be.henriette": {
+   "id": "e06695a7-9ed9-5310-9f5b-04f07d623049",
+   "name": "Henriette de Belgique",
+   "b": 1870,
+   "d": 1948,
+   "tree": "BE_COB",
+   "title": "Duchesse de Vendôme",
+   "g": "f",
+   "script": 71
+  },
+  "be.josephine": {
+   "id": "7b66f575-3704-58f0-8fb9-68b613e4e1f0",
+   "name": "Joséphine de Belgique",
+   "b": 1872,
+   "d": 1958,
+   "tree": "BE_COB",
+   "title": "Princesse de Hohenzollern",
+   "g": "f",
+   "script": 71
+  },
+  "be.charles_fl": {
+   "id": "1ae01f88-45a1-52a8-9cb2-5d718c2a99ab",
+   "name": "Charles de Belgique, comte de Flandre",
+   "b": 1903,
+   "d": 1983,
+   "tree": "BE_COB",
+   "title": "Régent de Belgique",
+   "g": "h",
+   "script": 71
+  },
+  "be.lilian": {
+   "id": "f8a6c4f3-1732-5740-a51e-7e255b38c31f",
+   "name": "Lilian Baels",
+   "b": 1916,
+   "d": 2002,
+   "tree": "BE_COB",
+   "title": "Princesse de Réthy",
+   "g": "f",
+   "script": 71
+  },
+  "be.alexandre": {
+   "id": "b8bee371-ae3e-5c90-a103-374ce5fed616",
+   "name": "Alexandre de Belgique",
+   "b": 1942,
+   "d": 2009,
+   "tree": "BE_COB",
+   "title": "Prince de Belgique",
+   "g": "h",
+   "script": 71
+  },
+  "be.mchristine": {
+   "id": "a25ee315-6080-51fc-9768-2bfe129cc880",
+   "name": "Marie-Christine de Belgique",
+   "b": 1951,
+   "d": null,
+   "tree": "BE_COB",
+   "title": "Princesse de Belgique",
+   "g": "f",
+   "script": 71
+  },
+  "be.mesmeralda": {
+   "id": "e5ba9745-6ec9-55ac-a56c-84d16a220c4c",
+   "name": "Marie-Esméralda de Belgique",
+   "b": 1956,
+   "d": null,
+   "tree": "BE_COB",
+   "title": "Princesse de Belgique",
+   "g": "f",
+   "script": 71
+  },
+  "be.fabiola": {
+   "id": "312f9cce-71b0-5ae0-b065-c72151140e5d",
+   "name": "Fabiola de Mora y Aragón",
+   "b": 1928,
+   "d": 2014,
+   "tree": "BE_COB",
+   "title": "Reine des Belges",
+   "g": "f",
+   "script": 71
+  },
+  "be.astrid": {
+   "id": "d038956b-5c79-5f23-a02a-9fb61bb39e58",
+   "name": "Astrid de Belgique",
+   "b": 1962,
+   "d": null,
+   "tree": "BE_COB",
+   "title": "Archiduchesse d'Autriche-Este",
+   "g": "f",
+   "script": 71
+  },
+  "be.laurent": {
+   "id": "297c59b6-fac7-574c-af9f-829237853654",
+   "name": "Laurent de Belgique",
+   "b": 1963,
+   "d": null,
+   "tree": "BE_COB",
+   "title": "Prince de Belgique",
+   "g": "h",
+   "script": 71
+  },
+  "be.delphine": {
+   "id": "88753087-a77d-563d-ac53-4aaf91f232a0",
+   "name": "Delphine de Saxe-Cobourg",
+   "b": 1968,
+   "d": null,
+   "tree": "BE_COB",
+   "title": "Princesse de Belgique",
+   "g": "f",
+   "script": 71
+  },
+  "be.gabriel": {
+   "id": "468f5f6d-28cb-5a69-bfdc-89f888777f31",
+   "name": "Gabriel de Belgique",
+   "b": 2003,
+   "d": null,
+   "tree": "BE_COB",
+   "title": "Prince de Belgique",
+   "g": "h",
+   "script": 71
+  },
+  "be.emmanuel": {
+   "id": "574cbd79-13bf-5811-b715-68a61924d5bc",
+   "name": "Emmanuel de Belgique",
+   "b": 2005,
+   "d": null,
+   "tree": "BE_COB",
+   "title": "Prince de Belgique",
+   "g": "h",
+   "script": 71
+  },
+  "be.eleonore": {
+   "id": "3e0e0d24-aaaf-58fb-92a5-278dfe1cf3b7",
+   "name": "Éléonore de Belgique",
+   "b": 2008,
+   "d": null,
+   "tree": "BE_COB",
+   "title": "Princesse de Belgique",
+   "g": "f",
+   "script": 71
   }
  },
  "trees": {
@@ -15850,7 +16100,7 @@
   "DE_HZ": {
    "entry": "39895573-27f3-4112-905b-c9ba7e3c95a1",
    "country": "DEU",
-   "dynasty": "Hohenzollern",
+   "dynasty": "Hohenzollern-Sigmaringen",
    "script": null
   },
   "DK_GLU": {
@@ -16109,6 +16359,18 @@
    "entry": "a874f93b-cfe3-4fae-ae11-a8e7493b5cf1",
    "country": "GBR",
    "dynasty": "Maison Stuart et Maison de Hanovre",
+   "script": null
+  },
+  "BE_COB": {
+   "entry": "b4e42a0f-0f0c-415a-adf3-3218cc1744ab",
+   "country": "BEL",
+   "dynasty": "Couronne belge",
+   "script": null
+  },
+  "FR_BON": {
+   "entry": "ae0dd55b-e688-4bff-8917-4df1e9786a95",
+   "country": "FRA",
+   "dynasty": "Bonaparte",
    "script": null
   }
  },
@@ -19430,6 +19692,20 @@
    "tree": "NL_ORA",
    "reason": "Maison Brinkhorst : sans arbre",
    "script": 70
+  },
+  {
+   "name": "Lilian Baels",
+   "b": 1916,
+   "tree": "BE_COB",
+   "reason": "Famille Baels : sans arbre",
+   "script": 71
+  },
+  {
+   "name": "Fabiola de Mora y Aragón",
+   "b": 1928,
+   "tree": "BE_COB",
+   "reason": "Famille Mora : sans arbre",
+   "script": 71
   }
  ],
  "scripts": {
@@ -19688,6 +19964,12 @@
    "label": "Pays-Bas — Maison d'Orange-Nassau : de Guillaume le Taciturne à la princesse Amalia",
    "members": 69,
    "rels": 136,
+   "trees": []
+  },
+  "71": {
+   "label": "Belgique — Couronne belge : Léopold Ier et ses enfants, Philippe de Flandre, Albert Ier, Léopold III, Baudouin, Albert II, Philippe et ses enfants",
+   "members": 25,
+   "rels": 60,
    "trees": []
   }
  },
@@ -33311,6 +33593,306 @@
    "f9e09fed-e94c-523c-9db0-e89dbc31c7df",
    "59c223d1-d813-5b22-a1d1-56e739dd4659",
    "parent"
+  ],
+  [
+   "98453508-9a80-46ec-9a6d-48d23ba3e998",
+   "d21536bd-752b-503d-96b4-a903e38e2724",
+   "parent"
+  ],
+  [
+   "a1f6258c-ce59-4fcc-a638-2646fee35959",
+   "d21536bd-752b-503d-96b4-a903e38e2724",
+   "spouse"
+  ],
+  [
+   "a1f6258c-ce59-4fcc-a638-2646fee35959",
+   "0e9ec63c-d759-5c8c-81b5-c5a4807e3a76",
+   "parent"
+  ],
+  [
+   "e277dca4-1814-4f31-9091-4509e9693adc",
+   "0e9ec63c-d759-5c8c-81b5-c5a4807e3a76",
+   "parent"
+  ],
+  [
+   "a1f6258c-ce59-4fcc-a638-2646fee35959",
+   "c99768a7-1e1d-5839-91ce-dadef3920951",
+   "parent"
+  ],
+  [
+   "e277dca4-1814-4f31-9091-4509e9693adc",
+   "c99768a7-1e1d-5839-91ce-dadef3920951",
+   "parent"
+  ],
+  [
+   "9aa90ed2-5b6b-55ca-a6f6-3697cfec3ae9",
+   "0bebd291-5bc8-563a-9a64-6a29eca3d4c6",
+   "parent"
+  ],
+  [
+   "43f54261-e43b-59c2-ba51-85c537051afd",
+   "0bebd291-5bc8-563a-9a64-6a29eca3d4c6",
+   "parent"
+  ],
+  [
+   "0bebd291-5bc8-563a-9a64-6a29eca3d4c6",
+   "c99768a7-1e1d-5839-91ce-dadef3920951",
+   "spouse"
+  ],
+  [
+   "166bd086-f72d-4028-8ef4-b18278d77f1a",
+   "3cd1502c-ec8f-5f35-82d7-d9ec3f4af591",
+   "spouse"
+  ],
+  [
+   "166bd086-f72d-4028-8ef4-b18278d77f1a",
+   "c7ba4ff3-f1ba-55bd-b35f-99eb992e192a",
+   "parent"
+  ],
+  [
+   "3cd1502c-ec8f-5f35-82d7-d9ec3f4af591",
+   "c7ba4ff3-f1ba-55bd-b35f-99eb992e192a",
+   "parent"
+  ],
+  [
+   "166bd086-f72d-4028-8ef4-b18278d77f1a",
+   "10a480b8-9cff-5427-ac7f-a65c9199edee",
+   "parent"
+  ],
+  [
+   "3cd1502c-ec8f-5f35-82d7-d9ec3f4af591",
+   "10a480b8-9cff-5427-ac7f-a65c9199edee",
+   "parent"
+  ],
+  [
+   "166bd086-f72d-4028-8ef4-b18278d77f1a",
+   "33cdc1df-b5d0-56e8-a136-c9988a6825eb",
+   "parent"
+  ],
+  [
+   "3cd1502c-ec8f-5f35-82d7-d9ec3f4af591",
+   "33cdc1df-b5d0-56e8-a136-c9988a6825eb",
+   "parent"
+  ],
+  [
+   "166bd086-f72d-4028-8ef4-b18278d77f1a",
+   "fd5a4906-a4ee-5a0d-827f-cfbcd1818951",
+   "parent"
+  ],
+  [
+   "3cd1502c-ec8f-5f35-82d7-d9ec3f4af591",
+   "fd5a4906-a4ee-5a0d-827f-cfbcd1818951",
+   "parent"
+  ],
+  [
+   "33cdc1df-b5d0-56e8-a136-c9988a6825eb",
+   "527f3213-81cc-5b77-a7e0-cd53daf05d28",
+   "spouse"
+  ],
+  [
+   "fd5a4906-a4ee-5a0d-827f-cfbcd1818951",
+   "e74c9a1b-b487-5f11-8810-39f58b735c2d",
+   "spouse"
+  ],
+  [
+   "a229b45f-df5d-5a4f-a508-3c811765f21d",
+   "ebf7ef06-fbd0-5c05-a812-88391b4d341c",
+   "parent"
+  ],
+  [
+   "05120133-bcce-520c-b6c7-d9296259ed6a",
+   "ebf7ef06-fbd0-5c05-a812-88391b4d341c",
+   "parent"
+  ],
+  [
+   "e9030656-8436-4205-a287-63e504da85d1",
+   "ebf7ef06-fbd0-5c05-a812-88391b4d341c",
+   "spouse"
+  ],
+  [
+   "e9030656-8436-4205-a287-63e504da85d1",
+   "ee3d8009-bdac-5faf-8f2f-5634bfea6849",
+   "parent"
+  ],
+  [
+   "ebf7ef06-fbd0-5c05-a812-88391b4d341c",
+   "ee3d8009-bdac-5faf-8f2f-5634bfea6849",
+   "parent"
+  ],
+  [
+   "e9030656-8436-4205-a287-63e504da85d1",
+   "e06695a7-9ed9-5310-9f5b-04f07d623049",
+   "parent"
+  ],
+  [
+   "ebf7ef06-fbd0-5c05-a812-88391b4d341c",
+   "e06695a7-9ed9-5310-9f5b-04f07d623049",
+   "parent"
+  ],
+  [
+   "e9030656-8436-4205-a287-63e504da85d1",
+   "7b66f575-3704-58f0-8fb9-68b613e4e1f0",
+   "parent"
+  ],
+  [
+   "ebf7ef06-fbd0-5c05-a812-88391b4d341c",
+   "7b66f575-3704-58f0-8fb9-68b613e4e1f0",
+   "parent"
+  ],
+  [
+   "e9030656-8436-4205-a287-63e504da85d1",
+   "df7a3a33-14ce-4692-af54-4485b0251313",
+   "parent"
+  ],
+  [
+   "ebf7ef06-fbd0-5c05-a812-88391b4d341c",
+   "df7a3a33-14ce-4692-af54-4485b0251313",
+   "parent"
+  ],
+  [
+   "df7a3a33-14ce-4692-af54-4485b0251313",
+   "1ae01f88-45a1-52a8-9cb2-5d718c2a99ab",
+   "parent"
+  ],
+  [
+   "faf70fc6-d19e-4c57-934e-0ded47a0709d",
+   "1ae01f88-45a1-52a8-9cb2-5d718c2a99ab",
+   "parent"
+  ],
+  [
+   "df7a3a33-14ce-4692-af54-4485b0251313",
+   "2504d667-6a2e-5728-a2f2-2a88df94faf9",
+   "parent"
+  ],
+  [
+   "faf70fc6-d19e-4c57-934e-0ded47a0709d",
+   "2504d667-6a2e-5728-a2f2-2a88df94faf9",
+   "parent"
+  ],
+  [
+   "348b2f89-f6b3-45ee-9278-feedd73dae36",
+   "f8a6c4f3-1732-5740-a51e-7e255b38c31f",
+   "spouse"
+  ],
+  [
+   "348b2f89-f6b3-45ee-9278-feedd73dae36",
+   "b8bee371-ae3e-5c90-a103-374ce5fed616",
+   "parent"
+  ],
+  [
+   "f8a6c4f3-1732-5740-a51e-7e255b38c31f",
+   "b8bee371-ae3e-5c90-a103-374ce5fed616",
+   "parent"
+  ],
+  [
+   "348b2f89-f6b3-45ee-9278-feedd73dae36",
+   "a25ee315-6080-51fc-9768-2bfe129cc880",
+   "parent"
+  ],
+  [
+   "f8a6c4f3-1732-5740-a51e-7e255b38c31f",
+   "a25ee315-6080-51fc-9768-2bfe129cc880",
+   "parent"
+  ],
+  [
+   "348b2f89-f6b3-45ee-9278-feedd73dae36",
+   "e5ba9745-6ec9-55ac-a56c-84d16a220c4c",
+   "parent"
+  ],
+  [
+   "f8a6c4f3-1732-5740-a51e-7e255b38c31f",
+   "e5ba9745-6ec9-55ac-a56c-84d16a220c4c",
+   "parent"
+  ],
+  [
+   "aa41d937-5de0-462e-bdfc-9cfd6219f420",
+   "312f9cce-71b0-5ae0-b065-c72151140e5d",
+   "spouse"
+  ],
+  [
+   "cc43f756-2830-4d43-84cc-0aa45fe5ee76",
+   "31c3f188-6f15-43f7-8389-d8b39b8191c4",
+   "spouse"
+  ],
+  [
+   "cc43f756-2830-4d43-84cc-0aa45fe5ee76",
+   "d038956b-5c79-5f23-a02a-9fb61bb39e58",
+   "parent"
+  ],
+  [
+   "31c3f188-6f15-43f7-8389-d8b39b8191c4",
+   "d038956b-5c79-5f23-a02a-9fb61bb39e58",
+   "parent"
+  ],
+  [
+   "cc43f756-2830-4d43-84cc-0aa45fe5ee76",
+   "297c59b6-fac7-574c-af9f-829237853654",
+   "parent"
+  ],
+  [
+   "31c3f188-6f15-43f7-8389-d8b39b8191c4",
+   "297c59b6-fac7-574c-af9f-829237853654",
+   "parent"
+  ],
+  [
+   "cc43f756-2830-4d43-84cc-0aa45fe5ee76",
+   "8bda1831-accf-49c6-be43-17243c04f2c3",
+   "parent"
+  ],
+  [
+   "31c3f188-6f15-43f7-8389-d8b39b8191c4",
+   "8bda1831-accf-49c6-be43-17243c04f2c3",
+   "parent"
+  ],
+  [
+   "cc43f756-2830-4d43-84cc-0aa45fe5ee76",
+   "88753087-a77d-563d-ac53-4aaf91f232a0",
+   "parent"
+  ],
+  [
+   "8bda1831-accf-49c6-be43-17243c04f2c3",
+   "00f7295a-d7f6-4572-9881-87f2759cbe8c",
+   "spouse"
+  ],
+  [
+   "8bda1831-accf-49c6-be43-17243c04f2c3",
+   "fc2f6e10-1b45-4970-b91c-4c454eb0ecc6",
+   "parent"
+  ],
+  [
+   "00f7295a-d7f6-4572-9881-87f2759cbe8c",
+   "fc2f6e10-1b45-4970-b91c-4c454eb0ecc6",
+   "parent"
+  ],
+  [
+   "8bda1831-accf-49c6-be43-17243c04f2c3",
+   "468f5f6d-28cb-5a69-bfdc-89f888777f31",
+   "parent"
+  ],
+  [
+   "00f7295a-d7f6-4572-9881-87f2759cbe8c",
+   "468f5f6d-28cb-5a69-bfdc-89f888777f31",
+   "parent"
+  ],
+  [
+   "8bda1831-accf-49c6-be43-17243c04f2c3",
+   "574cbd79-13bf-5811-b715-68a61924d5bc",
+   "parent"
+  ],
+  [
+   "00f7295a-d7f6-4572-9881-87f2759cbe8c",
+   "574cbd79-13bf-5811-b715-68a61924d5bc",
+   "parent"
+  ],
+  [
+   "8bda1831-accf-49c6-be43-17243c04f2c3",
+   "3e0e0d24-aaaf-58fb-92a5-278dfe1cf3b7",
+   "parent"
+  ],
+  [
+   "00f7295a-d7f6-4572-9881-87f2759cbe8c",
+   "3e0e0d24-aaaf-58fb-92a5-278dfe1cf3b7",
+   "parent"
   ]
  ],
  "dateflags": [
@@ -39277,6 +39859,48 @@
    "d": null,
    "note": "naissance connue par ailleurs",
    "script": 70
+  },
+  {
+   "name": "Charlotte de Galles",
+   "b": 1796,
+   "d": 1817,
+   "note": "naissance connue par ailleurs, non donnée par la page de Léopold Ier",
+   "script": 71
+  },
+  {
+   "name": "Maximilien Ier du Mexique",
+   "b": 1832,
+   "d": 1867,
+   "note": "dates connues par ailleurs",
+   "script": 71
+  },
+  {
+   "name": "Napoléon-Victor Bonaparte",
+   "b": 1862,
+   "d": 1926,
+   "note": "dates connues par ailleurs",
+   "script": 71
+  },
+  {
+   "name": "Marie de Hohenzollern-Sigmaringen",
+   "b": 1845,
+   "d": 1912,
+   "note": "dates connues par ailleurs",
+   "script": 71
+  },
+  {
+   "name": "Lilian Baels",
+   "b": 1916,
+   "d": 2002,
+   "note": "dates connues par ailleurs",
+   "script": 71
+  },
+  {
+   "name": "Fabiola de Mora y Aragón",
+   "b": 1928,
+   "d": 2014,
+   "note": "dates connues par ailleurs",
+   "script": 71
   }
  ],
  "pins": [
@@ -39415,6 +40039,14 @@
   [
    "57d16fba-8237-56d7-ad59-e5572f77e8e0",
    "RU_ROM"
+  ],
+  [
+   "527f3213-81cc-5b77-a7e0-cd53daf05d28",
+   "BE_COB"
+  ],
+  [
+   "2504d667-6a2e-5728-a2f2-2a88df94faf9",
+   "BE_COB"
   ]
  ],
  "xmoved": {

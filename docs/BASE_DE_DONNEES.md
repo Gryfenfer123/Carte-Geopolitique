@@ -143,4 +143,5 @@ RLS**. Règles :
 | arbres_v68 | Maison de Savoie : arbre créé, 84 membres (comtes, ducs, rois de Sardaigne et d'Italie jusqu'à Emmanuel-Philibert) |
 | arbres_v69 | Bourbon-Siciles et Parme complétés : 48 membres (enfants de Ferdinand Ier, François Ier, Ferdinand II ; Parme de Louis d'Étrurie à Élie) |
 | arbres_v70 | Orange-Nassau complété : 69 membres (Guillaume le Taciturne → princesse Amalia) |
+| arbres_v71 | Couronne belge complétée : 25 membres (enfants de Léopold Ier, Léopold II, Philippe de Flandre, Léopold III, Albert II, Philippe) |
 | `data_owid_load.sql` + `owid_chunks/` | Chargement des données d'indicateurs (rejouable, upserts) — à exécuter après v1 à v7 |

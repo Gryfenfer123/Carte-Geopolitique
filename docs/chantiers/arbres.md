@@ -2,6 +2,8 @@
 
 ## Dernières nouvelles (la plus récente en haut)
 
+- 2026-10-23 — v71 : Belgique (25 membres). Prochain : Scandinavie (Bernadotte, Vasa, Holstein-Gottorp, Norvège, Danemark), puis reste de l'Italie.
+
 - 2026-10-23 — v70 : Orange-Nassau (69 membres). Écart d'âge Guillaume III / Emma de Waldeck (41 ans) = réel. Prochain : Belgique, Hauteville, Médicis/Este/Visconti/Sforza, Scandinavie…
 
 - 2026-10-23 — v69 : Bourbon-Siciles + Parme (48 membres). Prochain : Hauteville, Médicis, Este, Visconti/Sforza, Pays-Bas, Scandinavie…
@@ -25,7 +27,7 @@
 
 Code : `src/genealogy.ts`, `genealogyLayers.ts`, `genealogyBus.ts`, `genealogyLod.ts/.css`, `genealogyLayersWorker.ts`,
 `genealogyLayout.ts`, `genealogyRouting.ts`. Outils de remplissage : [`scripts/arbres/`](../../scripts/arbres/README.md).
-Prochaine migration : **arbres_v71** (`supabase/arbres/arbres_v71.sql`) — générateur : `Gen(71, "…")`.  (v70 livrée, à exécuter par Martin si ce n'est pas déjà fait.)
+Prochaine migration : **arbres_v72** (`supabase/arbres/arbres_v72.sql`) — générateur : `Gen(72, "…")`.  (v71 livrée, à exécuter par Martin si ce n'est pas déjà fait.)
 
 ## Règles de contenu (décidées par Martin — ne pas rouvrir)
 - Un pays n'a que les dynasties qui ont **régné sur lui**. Dynastie étrangère : branche principale dans son pays
