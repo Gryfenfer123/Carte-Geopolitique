@@ -1,5 +1,8 @@
 # Chantier « frises » — journal
 
+## Dernières nouvelles (la plus récente en haut)
+- 2026-10-23 — journal créé ; aucun travail récent sur ce chantier.
+
 Spécification de référence : [`../specs/frises-chronologiques.md`](../specs/frises-chronologiques.md).
 
 - **Fait** : modèle (périodes = sous-catégories, bornes partagées, trous de transition, sous-frises),

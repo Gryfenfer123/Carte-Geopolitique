@@ -38,5 +38,8 @@ Nouveau chantier (ex. « historique ») : ajouter une ligne ici ET le nom dans `
 3. Pour une migration : prendre le **numéro suivant dans son propre chantier**, le pousser tout de
    suite (même vide, avec l'en-tête) pour le réserver.
 4. `git pull --rebase` avant chaque `git push`. Jamais `push --force`. Un conflit = s'arrêter et le dire à Martin.
-5. À la fin : mettre à jour le **journal du chantier** (fait / en cours / prochaine étape) et `BASE_DE_DONNEES.md`
-   (une ligne par migration) **dans le même commit**.
+5. **À CHAQUE commit qui livre quelque chose** (pas seulement à la fin) : ajouter en haut du **journal du chantier**
+   une ligne datée « date — ce qui a été fait — prochaine étape » (3 lignes maximum), et mettre à jour
+   `BASE_DE_DONNEES.md` (une ligne par migration), **dans le même commit**. C'est ce qui permet à la conversation de
+   pilotage de savoir où en est chaque chantier. Ce n'est pas un « rapport » pour Martin : c'est un fichier du dépôt,
+   à tenir même si Martin a demandé de ne pas rédiger de résumés dans le chat.

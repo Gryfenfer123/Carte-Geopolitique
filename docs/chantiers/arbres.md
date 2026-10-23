@@ -1,5 +1,8 @@
 # Chantier « arbres » — journal
 
+## Dernières nouvelles (la plus récente en haut)
+- 2026-10-23 — journal créé ; arbres : v60 (photos) livrée, Chine arrêtée aux Jin ; prochaine étape : Dynasties du Sud et du Nord.
+
 Code : `src/genealogy.ts`, `genealogyLayers.ts`, `genealogyBus.ts`, `genealogyLod.ts/.css`, `genealogyLayersWorker.ts`,
 `genealogyLayout.ts`, `genealogyRouting.ts`. Outils de remplissage : [`scripts/arbres/`](../../scripts/arbres/README.md).
 Prochaine migration : **arbres_v61** (`supabase/arbres/arbres_v61.sql`) — générateur : `Gen(61, "…")`.
