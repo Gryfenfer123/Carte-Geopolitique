@@ -123,4 +123,5 @@ RLS**. Règles :
 | v49 | Données : Bosnie — arbre Kotromanić (créé) ; Élisabeth de Bosnie déplacée depuis Anjou-Hongrie ; Élisabeth de Serbie (Nemanjić), Dorothée de Bulgarie (Chichman), Hélène Branković (Branković), Élisabeth de Gniewkowo (Piast) créées — à exécuter après v48 |
 | v50 | Données : Albanie — arbres Kastrioti, Wied, Zogu (créés) ; Jerina Branković créée dans Branković — à exécuter après v49 |
 | v51 | Données : Chypre — arbre Lusignan (créé, de Guy de Lusignan à Jacques III) — à exécuter après v50 |
+| v52 | Données : Luxembourg — arbre Nassau-Weilburg (grands-ducs, Guillaume de Nassau → Guillaume V) ; Louise de Saxe-Hildburghausen (Wettin), Élisabeth Mikhaïlovna et Michel Pavlovitch (Romanov), Félix et Maria Antonia (Bourbon-Parme), Joséphine-Charlotte (Couronne belge) créées — à exécuter après v51 |
 | `data_owid_load.sql` + `owid_chunks/` | Chargement des données d'indicateurs (rejouable, upserts) — à exécuter après v1 à v7 |
