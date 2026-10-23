@@ -19780,6 +19780,286 @@
    "title": "Grande-duchesse de Toscane",
    "g": "f",
    "script": 79
+  },
+  "vi.matteo1": {
+   "id": "1e3110c1-6248-549b-8516-3e474bf9a84c",
+   "name": "Matteo Ier Visconti",
+   "b": 1250,
+   "d": 1322,
+   "tree": "IT_VIS",
+   "title": "Seigneur de Milan",
+   "g": "h",
+   "script": 80
+  },
+  "vi.galeazzo1": {
+   "id": "b5357088-ac50-5dc0-8e9f-51bb714e4a56",
+   "name": "Galéas Ier Visconti",
+   "b": 1277,
+   "d": 1328,
+   "tree": "IT_VIS",
+   "title": "Seigneur de Milan",
+   "g": "h",
+   "script": 80
+  },
+  "vi.stefano": {
+   "id": "9a6f97a1-3d9d-530a-86ef-9403afb8181a",
+   "name": "Étienne Visconti",
+   "b": 1287,
+   "d": 1327,
+   "tree": "IT_VIS",
+   "title": "Fils de Matteo Ier",
+   "g": "h",
+   "script": 80
+  },
+  "vi.luchino": {
+   "id": "958f4f9f-5c97-537f-94c8-4aac871c36f5",
+   "name": "Luchino Visconti",
+   "b": 1292,
+   "d": 1349,
+   "tree": "IT_VIS",
+   "title": "Seigneur de Milan",
+   "g": "h",
+   "script": 80
+  },
+  "vi.giovanni": {
+   "id": "74eecbe8-881d-5a2c-8804-27f1b8363bae",
+   "name": "Jean Visconti",
+   "b": 1290,
+   "d": 1354,
+   "tree": "IT_VIS",
+   "title": "Archevêque et seigneur de Milan",
+   "g": "h",
+   "script": 80
+  },
+  "vi.azzone": {
+   "id": "b681cbc3-8751-5263-afcf-521f26d23178",
+   "name": "Azzon Visconti",
+   "b": 1302,
+   "d": 1339,
+   "tree": "IT_VIS",
+   "title": "Seigneur de Milan",
+   "g": "h",
+   "script": 80
+  },
+  "vi.matteo2": {
+   "id": "f1d7894e-3bc9-58fa-b0d7-b713d23178f4",
+   "name": "Matteo II Visconti",
+   "b": 1319,
+   "d": 1355,
+   "tree": "IT_VIS",
+   "title": "Seigneur de Milan",
+   "g": "h",
+   "script": 80
+  },
+  "vi.galeazzo2": {
+   "id": "f31ab914-a0e6-54e4-ae49-4a61ca299052",
+   "name": "Galéas II Visconti",
+   "b": 1320,
+   "d": 1378,
+   "tree": "IT_VIS",
+   "title": "Seigneur de Milan",
+   "g": "h",
+   "script": 80
+  },
+  "vi.bernabo": {
+   "id": "71c94da7-2523-545b-953d-a3cbc93e6bf9",
+   "name": "Bernabò Visconti",
+   "b": 1323,
+   "d": 1385,
+   "tree": "IT_VIS",
+   "title": "Seigneur de Milan",
+   "g": "h",
+   "script": 80
+  },
+  "sv.bianca_sav": {
+   "id": "f8ca7d06-86a6-5d09-90e7-c0da8d975def",
+   "name": "Blanche de Savoie",
+   "b": 1336,
+   "d": 1387,
+   "tree": "IT_SAV",
+   "title": "Dame de Milan",
+   "g": "f",
+   "script": 80
+  },
+  "vi.gg": {
+   "id": "07ad9647-56ff-5247-8dfa-3d4cdb0c2c57",
+   "name": "Jean Galéas Visconti",
+   "b": 1351,
+   "d": 1402,
+   "tree": "IT_VIS",
+   "title": "Premier duc de Milan",
+   "g": "h",
+   "script": 80
+  },
+  "fv.isabelle_v": {
+   "id": "77045910-92f9-5f79-9ab0-b7668d921143",
+   "name": "Isabelle de Valois",
+   "b": 1348,
+   "d": 1372,
+   "tree": "FR_VAL",
+   "title": "Comtesse de Vertus",
+   "g": "f",
+   "script": 80
+  },
+  "vi.regina": {
+   "id": "1995be71-c9e4-51f2-abe0-a5c67a03fa9c",
+   "name": "Béatrice Regina della Scala",
+   "b": 1331,
+   "d": 1384,
+   "tree": "IT_VIS",
+   "title": "Dame de Milan",
+   "g": "f",
+   "script": 80
+  },
+  "vi.caterina_v": {
+   "id": "9f0603ed-a213-524c-b4ba-d19a13304587",
+   "name": "Catherine Visconti",
+   "b": 1360,
+   "d": 1404,
+   "tree": "IT_VIS",
+   "title": "Duchesse de Milan, régente",
+   "g": "f",
+   "script": 80
+  },
+  "vi.gm": {
+   "id": "11240ecd-55ef-53ec-859e-9e7c55a0c364",
+   "name": "Jean-Marie Visconti",
+   "b": 1388,
+   "d": 1412,
+   "tree": "IT_VIS",
+   "title": "Duc de Milan",
+   "g": "h",
+   "script": 80
+  },
+  "vi.fm": {
+   "id": "65268368-b6d4-57a6-92cb-d0e0330f058f",
+   "name": "Philippe-Marie Visconti",
+   "b": 1392,
+   "d": 1447,
+   "tree": "IT_VIS",
+   "title": "Dernier duc Visconti de Milan",
+   "g": "h",
+   "script": 80
+  },
+  "vi.bianca_maria": {
+   "id": "8fbc7d6a-1c1e-5655-a152-1285e26c5202",
+   "name": "Blanche-Marie Visconti",
+   "b": 1425,
+   "d": 1468,
+   "tree": "IT_VIS",
+   "title": "Duchesse de Milan, épouse de François Sforza",
+   "g": "f",
+   "script": 80
+  },
+  "sf.muzio": {
+   "id": "235ca4d3-323f-5ad8-be5f-d8bb1b63019c",
+   "name": "Muzio Attendolo Sforza",
+   "b": 1369,
+   "d": 1424,
+   "tree": "IT_SFO",
+   "title": "Condottiere, fondateur des Sforza",
+   "g": "h",
+   "script": 80
+  },
+  "sf.francesco": {
+   "id": "7b2839f1-b8c3-53ed-8c28-831ff2df2cdc",
+   "name": "François Ier Sforza",
+   "b": 1401,
+   "d": 1466,
+   "tree": "IT_SFO",
+   "title": "Duc de Milan",
+   "g": "h",
+   "script": 80
+  },
+  "sf.galeazzo_m": {
+   "id": "17b5c283-4ef7-514c-be16-29ad5b2e4cca",
+   "name": "Galéas-Marie Sforza",
+   "b": 1444,
+   "d": 1476,
+   "tree": "IT_SFO",
+   "title": "Duc de Milan",
+   "g": "h",
+   "script": 80
+  },
+  "sf.ludovico": {
+   "id": "5a506475-31de-5ceb-9557-0c05e51f0be0",
+   "name": "Ludovic le More",
+   "b": 1452,
+   "d": 1508,
+   "tree": "IT_SFO",
+   "title": "Duc de Milan",
+   "g": "h",
+   "script": 80
+  },
+  "sv.bona_sav": {
+   "id": "200e2ea5-cfaa-5e65-955d-621b9375b195",
+   "name": "Bonne de Savoie",
+   "b": 1449,
+   "d": 1503,
+   "tree": "IT_SAV",
+   "title": "Duchesse de Milan, régente",
+   "g": "f",
+   "script": 80
+  },
+  "sf.gian_g": {
+   "id": "a33ab24c-0e9f-50b1-a251-a9f698a0a3ac",
+   "name": "Jean-Galéas Sforza",
+   "b": 1469,
+   "d": 1494,
+   "tree": "IT_SFO",
+   "title": "Duc de Milan",
+   "g": "h",
+   "script": 80
+  },
+  "sf.bianca": {
+   "id": "925432de-d608-528b-8fbe-41cdbdb2e3e1",
+   "name": "Blanche-Marie Sforza",
+   "b": 1472,
+   "d": 1510,
+   "tree": "IT_SFO",
+   "title": "Impératrice, épouse de Maximilien Ier",
+   "g": "f",
+   "script": 80
+  },
+  "sf.isabella_a": {
+   "id": "90cd1f76-514c-5cfa-9f46-edcc228f924c",
+   "name": "Isabelle d'Aragon (Naples)",
+   "b": 1470,
+   "d": 1524,
+   "tree": "IT_SFO",
+   "title": "Duchesse de Milan",
+   "g": "f",
+   "script": 80
+  },
+  "sf.beatrice_e": {
+   "id": "f388aa57-8aca-54ed-9b7d-1973561af12f",
+   "name": "Béatrice d'Este",
+   "b": 1475,
+   "d": 1497,
+   "tree": "IT_SFO",
+   "title": "Duchesse de Milan",
+   "g": "f",
+   "script": 80
+  },
+  "sf.massimiliano": {
+   "id": "b8a95ccb-9673-5baa-b450-29f85d5423dd",
+   "name": "Maximilien Sforza",
+   "b": 1493,
+   "d": 1530,
+   "tree": "IT_SFO",
+   "title": "Duc de Milan",
+   "g": "h",
+   "script": 80
+  },
+  "sf.francesco2": {
+   "id": "fd6fd47d-4dd9-5ba1-9213-291ed67f0708",
+   "name": "François II Sforza",
+   "b": 1495,
+   "d": 1535,
+   "tree": "IT_SFO",
+   "title": "Dernier duc Sforza de Milan",
+   "g": "h",
+   "script": 80
   }
  },
  "trees": {
@@ -20328,6 +20608,18 @@
    "country": "ITA",
    "dynasty": "Médicis",
    "script": 79
+  },
+  "IT_VIS": {
+   "entry": "cf8cacb2-fcda-5ee7-9078-dd1d55cd8d79",
+   "country": "ITA",
+   "dynasty": "Visconti",
+   "script": 80
+  },
+  "IT_SFO": {
+   "entry": "ffaf76f0-867f-51c9-b934-f6509dfaf6ab",
+   "country": "ITA",
+   "dynasty": "Sforza",
+   "script": 80
   }
  },
  "flags": [
@@ -24224,13 +24516,6 @@
    "script": 79
   },
   {
-   "name": "Caterina Sforza",
-   "b": 1463,
-   "tree": "IT_MED",
-   "reason": "Maison Sforza : sans arbre",
-   "script": 79
-  },
-  {
    "name": "Maria Salviati",
    "b": 1499,
    "tree": "IT_MED",
@@ -24278,6 +24563,27 @@
    "tree": "IT_MED",
    "reason": "Maison Saxe-Lauenbourg : sans arbre",
    "script": 79
+  },
+  {
+   "name": "Béatrice Regina della Scala",
+   "b": 1331,
+   "tree": "IT_VIS",
+   "reason": "Maison Della Scala : sans arbre",
+   "script": 80
+  },
+  {
+   "name": "Isabelle d'Aragon (Naples)",
+   "b": 1470,
+   "tree": "IT_SFO",
+   "reason": "Maison Aragon-Naples : sans arbre",
+   "script": 80
+  },
+  {
+   "name": "Béatrice d'Este",
+   "b": 1475,
+   "tree": "IT_SFO",
+   "reason": "Maison Este : sans arbre",
+   "script": 80
   }
  ],
  "scripts": {
@@ -24599,6 +24905,15 @@
    "rels": 76,
    "trees": [
     "Médicis (ITA)"
+   ]
+  },
+  "80": {
+   "label": "Italie — Visconti et Sforza, seigneurs puis ducs de Milan",
+   "members": 28,
+   "rels": 52,
+   "trees": [
+    "Visconti (ITA)",
+    "Sforza (ITA)"
    ]
   }
  },
@@ -42012,6 +42327,266 @@
    "d8a54c67-b656-552c-9589-601a14cdccb9",
    "008ef7cc-1350-5c86-93c1-5ed1011345cf",
    "spouse"
+  ],
+  [
+   "1e3110c1-6248-549b-8516-3e474bf9a84c",
+   "b5357088-ac50-5dc0-8e9f-51bb714e4a56",
+   "parent"
+  ],
+  [
+   "1e3110c1-6248-549b-8516-3e474bf9a84c",
+   "9a6f97a1-3d9d-530a-86ef-9403afb8181a",
+   "parent"
+  ],
+  [
+   "1e3110c1-6248-549b-8516-3e474bf9a84c",
+   "958f4f9f-5c97-537f-94c8-4aac871c36f5",
+   "parent"
+  ],
+  [
+   "1e3110c1-6248-549b-8516-3e474bf9a84c",
+   "74eecbe8-881d-5a2c-8804-27f1b8363bae",
+   "parent"
+  ],
+  [
+   "b5357088-ac50-5dc0-8e9f-51bb714e4a56",
+   "b681cbc3-8751-5263-afcf-521f26d23178",
+   "parent"
+  ],
+  [
+   "9a6f97a1-3d9d-530a-86ef-9403afb8181a",
+   "f1d7894e-3bc9-58fa-b0d7-b713d23178f4",
+   "parent"
+  ],
+  [
+   "9a6f97a1-3d9d-530a-86ef-9403afb8181a",
+   "f31ab914-a0e6-54e4-ae49-4a61ca299052",
+   "parent"
+  ],
+  [
+   "9a6f97a1-3d9d-530a-86ef-9403afb8181a",
+   "71c94da7-2523-545b-953d-a3cbc93e6bf9",
+   "parent"
+  ],
+  [
+   "1fb2f965-3324-5c66-8570-6fc6af24089c",
+   "f8ca7d06-86a6-5d09-90e7-c0da8d975def",
+   "parent"
+  ],
+  [
+   "f31ab914-a0e6-54e4-ae49-4a61ca299052",
+   "f8ca7d06-86a6-5d09-90e7-c0da8d975def",
+   "spouse"
+  ],
+  [
+   "f31ab914-a0e6-54e4-ae49-4a61ca299052",
+   "07ad9647-56ff-5247-8dfa-3d4cdb0c2c57",
+   "parent"
+  ],
+  [
+   "f8ca7d06-86a6-5d09-90e7-c0da8d975def",
+   "07ad9647-56ff-5247-8dfa-3d4cdb0c2c57",
+   "parent"
+  ],
+  [
+   "5c72ec7d-85f3-4b97-b6d5-ed54fad8e0c7",
+   "77045910-92f9-5f79-9ab0-b7668d921143",
+   "parent"
+  ],
+  [
+   "07ad9647-56ff-5247-8dfa-3d4cdb0c2c57",
+   "77045910-92f9-5f79-9ab0-b7668d921143",
+   "spouse"
+  ],
+  [
+   "07ad9647-56ff-5247-8dfa-3d4cdb0c2c57",
+   "ab1ad91b-8d68-4559-85ea-1255abe2dae4",
+   "parent"
+  ],
+  [
+   "77045910-92f9-5f79-9ab0-b7668d921143",
+   "ab1ad91b-8d68-4559-85ea-1255abe2dae4",
+   "parent"
+  ],
+  [
+   "71c94da7-2523-545b-953d-a3cbc93e6bf9",
+   "1995be71-c9e4-51f2-abe0-a5c67a03fa9c",
+   "spouse"
+  ],
+  [
+   "71c94da7-2523-545b-953d-a3cbc93e6bf9",
+   "9f0603ed-a213-524c-b4ba-d19a13304587",
+   "parent"
+  ],
+  [
+   "1995be71-c9e4-51f2-abe0-a5c67a03fa9c",
+   "9f0603ed-a213-524c-b4ba-d19a13304587",
+   "parent"
+  ],
+  [
+   "71c94da7-2523-545b-953d-a3cbc93e6bf9",
+   "fc3f4f64-c061-4572-9fe5-57ed8e06e0cd",
+   "parent"
+  ],
+  [
+   "71c94da7-2523-545b-953d-a3cbc93e6bf9",
+   "f3c9aa1a-d40f-57d7-9703-9cf70c8b0da6",
+   "parent"
+  ],
+  [
+   "71c94da7-2523-545b-953d-a3cbc93e6bf9",
+   "bc2cc2ad-3620-4035-9bda-fc8fb320b0b0",
+   "parent"
+  ],
+  [
+   "07ad9647-56ff-5247-8dfa-3d4cdb0c2c57",
+   "9f0603ed-a213-524c-b4ba-d19a13304587",
+   "spouse"
+  ],
+  [
+   "07ad9647-56ff-5247-8dfa-3d4cdb0c2c57",
+   "11240ecd-55ef-53ec-859e-9e7c55a0c364",
+   "parent"
+  ],
+  [
+   "9f0603ed-a213-524c-b4ba-d19a13304587",
+   "11240ecd-55ef-53ec-859e-9e7c55a0c364",
+   "parent"
+  ],
+  [
+   "07ad9647-56ff-5247-8dfa-3d4cdb0c2c57",
+   "65268368-b6d4-57a6-92cb-d0e0330f058f",
+   "parent"
+  ],
+  [
+   "9f0603ed-a213-524c-b4ba-d19a13304587",
+   "65268368-b6d4-57a6-92cb-d0e0330f058f",
+   "parent"
+  ],
+  [
+   "65268368-b6d4-57a6-92cb-d0e0330f058f",
+   "1b01ac01-b432-5013-a2bb-29b5d56d662e",
+   "spouse"
+  ],
+  [
+   "65268368-b6d4-57a6-92cb-d0e0330f058f",
+   "8fbc7d6a-1c1e-5655-a152-1285e26c5202",
+   "parent"
+  ],
+  [
+   "235ca4d3-323f-5ad8-be5f-d8bb1b63019c",
+   "7b2839f1-b8c3-53ed-8c28-831ff2df2cdc",
+   "parent"
+  ],
+  [
+   "7b2839f1-b8c3-53ed-8c28-831ff2df2cdc",
+   "8fbc7d6a-1c1e-5655-a152-1285e26c5202",
+   "spouse"
+  ],
+  [
+   "7b2839f1-b8c3-53ed-8c28-831ff2df2cdc",
+   "17b5c283-4ef7-514c-be16-29ad5b2e4cca",
+   "parent"
+  ],
+  [
+   "8fbc7d6a-1c1e-5655-a152-1285e26c5202",
+   "17b5c283-4ef7-514c-be16-29ad5b2e4cca",
+   "parent"
+  ],
+  [
+   "7b2839f1-b8c3-53ed-8c28-831ff2df2cdc",
+   "5a506475-31de-5ceb-9557-0c05e51f0be0",
+   "parent"
+  ],
+  [
+   "8fbc7d6a-1c1e-5655-a152-1285e26c5202",
+   "5a506475-31de-5ceb-9557-0c05e51f0be0",
+   "parent"
+  ],
+  [
+   "2152e3ef-9993-5684-94ea-5143493bf5c7",
+   "200e2ea5-cfaa-5e65-955d-621b9375b195",
+   "parent"
+  ],
+  [
+   "6c0c2f65-aac8-5c2d-bd9f-7da73c070fe9",
+   "200e2ea5-cfaa-5e65-955d-621b9375b195",
+   "parent"
+  ],
+  [
+   "17b5c283-4ef7-514c-be16-29ad5b2e4cca",
+   "200e2ea5-cfaa-5e65-955d-621b9375b195",
+   "spouse"
+  ],
+  [
+   "17b5c283-4ef7-514c-be16-29ad5b2e4cca",
+   "a33ab24c-0e9f-50b1-a251-a9f698a0a3ac",
+   "parent"
+  ],
+  [
+   "200e2ea5-cfaa-5e65-955d-621b9375b195",
+   "a33ab24c-0e9f-50b1-a251-a9f698a0a3ac",
+   "parent"
+  ],
+  [
+   "17b5c283-4ef7-514c-be16-29ad5b2e4cca",
+   "925432de-d608-528b-8fbe-41cdbdb2e3e1",
+   "parent"
+  ],
+  [
+   "200e2ea5-cfaa-5e65-955d-621b9375b195",
+   "925432de-d608-528b-8fbe-41cdbdb2e3e1",
+   "parent"
+  ],
+  [
+   "22d205d8-1cef-4226-89e7-7cc7940763f0",
+   "925432de-d608-528b-8fbe-41cdbdb2e3e1",
+   "spouse"
+  ],
+  [
+   "17b5c283-4ef7-514c-be16-29ad5b2e4cca",
+   "387d26db-cc1c-5e89-91f4-d53946159d36",
+   "parent"
+  ],
+  [
+   "a33ab24c-0e9f-50b1-a251-a9f698a0a3ac",
+   "90cd1f76-514c-5cfa-9f46-edcc228f924c",
+   "spouse"
+  ],
+  [
+   "a33ab24c-0e9f-50b1-a251-a9f698a0a3ac",
+   "dd0ecce2-e687-52cd-82a2-fd7477051700",
+   "parent"
+  ],
+  [
+   "90cd1f76-514c-5cfa-9f46-edcc228f924c",
+   "dd0ecce2-e687-52cd-82a2-fd7477051700",
+   "parent"
+  ],
+  [
+   "5a506475-31de-5ceb-9557-0c05e51f0be0",
+   "f388aa57-8aca-54ed-9b7d-1973561af12f",
+   "spouse"
+  ],
+  [
+   "5a506475-31de-5ceb-9557-0c05e51f0be0",
+   "b8a95ccb-9673-5baa-b450-29f85d5423dd",
+   "parent"
+  ],
+  [
+   "f388aa57-8aca-54ed-9b7d-1973561af12f",
+   "b8a95ccb-9673-5baa-b450-29f85d5423dd",
+   "parent"
+  ],
+  [
+   "5a506475-31de-5ceb-9557-0c05e51f0be0",
+   "fd6fd47d-4dd9-5ba1-9213-291ed67f0708",
+   "parent"
+  ],
+  [
+   "f388aa57-8aca-54ed-9b7d-1973561af12f",
+   "fd6fd47d-4dd9-5ba1-9213-291ed67f0708",
+   "parent"
   ]
  ],
  "dateflags": [
@@ -49042,6 +49617,13 @@
    "d": 1537,
    "note": "fils de Laurent II ou de Clément VII (incertain)",
    "script": 79
+  },
+  {
+   "name": "Blanche-Marie Visconti",
+   "b": 1425,
+   "d": 1468,
+   "note": "fille naturelle de Philippe-Marie",
+   "script": 80
   }
  ],
  "pins": [
@@ -49292,6 +49874,54 @@
   [
    "32b5e90e-4358-5a9f-b97a-dda04286d882",
    "IT_MED"
+  ],
+  [
+   "f8ca7d06-86a6-5d09-90e7-c0da8d975def",
+   "IT_VIS"
+  ],
+  [
+   "77045910-92f9-5f79-9ab0-b7668d921143",
+   "IT_VIS"
+  ],
+  [
+   "ab1ad91b-8d68-4559-85ea-1255abe2dae4",
+   "IT_VIS"
+  ],
+  [
+   "fc3f4f64-c061-4572-9fe5-57ed8e06e0cd",
+   "IT_VIS"
+  ],
+  [
+   "f3c9aa1a-d40f-57d7-9703-9cf70c8b0da6",
+   "IT_VIS"
+  ],
+  [
+   "bc2cc2ad-3620-4035-9bda-fc8fb320b0b0",
+   "IT_VIS"
+  ],
+  [
+   "1b01ac01-b432-5013-a2bb-29b5d56d662e",
+   "IT_VIS"
+  ],
+  [
+   "8fbc7d6a-1c1e-5655-a152-1285e26c5202",
+   "IT_SFO"
+  ],
+  [
+   "200e2ea5-cfaa-5e65-955d-621b9375b195",
+   "IT_SFO"
+  ],
+  [
+   "22d205d8-1cef-4226-89e7-7cc7940763f0",
+   "IT_SFO"
+  ],
+  [
+   "387d26db-cc1c-5e89-91f4-d53946159d36",
+   "IT_SFO"
+  ],
+  [
+   "dd0ecce2-e687-52cd-82a2-fd7477051700",
+   "IT_SFO"
   ]
  ],
  "xmoved": {

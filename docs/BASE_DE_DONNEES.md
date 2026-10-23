@@ -152,4 +152,5 @@ RLS**. Règles :
 | arbres_v77 | arbres_v77 : Bourbons de France et Orléans (51 membres) |
 | arbres_v78 | arbres_v78 : Bonaparte (18 membres) |
 | arbres_v79 | arbres_v79 : Médicis (nouvel arbre, 45 membres) |
+| arbres_v80 | arbres_v80 : Visconti et Sforza (2 nouveaux arbres, 28 membres) |
 | `data_owid_load.sql` + `owid_chunks/` | Chargement des données d'indicateurs (rejouable, upserts) — à exécuter après v1 à v7 |

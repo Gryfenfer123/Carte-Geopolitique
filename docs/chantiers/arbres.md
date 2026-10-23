@@ -2,6 +2,8 @@
 
 ## Dernières nouvelles (la plus récente en haut)
 
+- 2026-10-23 — v80 : Italie — Visconti et Sforza, seigneurs puis ducs de Milan (28 membres, 2 nouveaux arbres)
+
 - 2026-10-23 — v79 : Italie — Médicis, de Giovanni di Bicci à Jean-Gaston, avec Catherine et Marie de Médicis (45 membres, nouvel arbre)
 
 - 2026-10-23 — v78 : France — Bonaparte : fratrie de Napoléon Ier, Beauharnais/Leuchtenberg, Prince impérial, Jérôme et ses enfants (18 membres)
@@ -43,7 +45,7 @@
 
 Code : `src/genealogy.ts`, `genealogyLayers.ts`, `genealogyBus.ts`, `genealogyLod.ts/.css`, `genealogyLayersWorker.ts`,
 `genealogyLayout.ts`, `genealogyRouting.ts`. Outils de remplissage : [`scripts/arbres/`](../../scripts/arbres/README.md).
-Prochaine migration : **arbres_v80** (`supabase/arbres/arbres_v80.sql`) — générateur : `Gen(80, "…")`.  (v79 livrée, à exécuter par Martin si ce n'est pas déjà fait.)
+Prochaine migration : **arbres_v81** (`supabase/arbres/arbres_v81.sql`) — générateur : `Gen(81, "…")`.  (v80 livrée, à exécuter par Martin si ce n'est pas déjà fait.)
 
 ## Règles de contenu (décidées par Martin — ne pas rouvrir)
 - Un pays n'a que les dynasties qui ont **régné sur lui**. Dynastie étrangère : branche principale dans son pays
