@@ -1,0 +1,216 @@
+-- schema_v48.sql — Monténégro — Petrović-Njegoš
+-- Ajouts uniquement : rien n'est supprimé ni modifié (sauf la position des cartes des arbres listés « repositionnés »).
+-- Crée sous Monténégro > Dynastie : Petrović-Njegoš (Mirko/Stanko -> Danilo Ier -> Nicolas Ier -> Danilo III, Mirko, Pierre ; prétendant Nicolas né en 1944).
+-- Non inclus : les princes-évêques (Pierre Ier, Pierre II) car ils étaient célibataires et la succession passait d'oncle à neveu — filiation avec Danilo Ier non vérifiée sur la source.
+-- Zorka (Ljubica) du Monténégro est déplacée de l'arbre Karađorđević (v47) vers cet arbre.
+-- Créés dans leur arbre d'origine : Nicolas Nikolaïevitch l'Ancien, Nicolas le Jeune, Pierre Nikolaïevitch, Alexandra d'Oldenbourg (Romanov). Victor-Emmanuel III, Georges de Leuchtenberg, François-Joseph de Battenberg et Jutta de Mecklembourg-Strelitz restent dans l'arbre monténégrin, signalés (pas d'arbre).
+-- Victor-Emmanuel III est relié à Jeanne de Savoie (arbre de Bulgarie).
+-- Prérequis : v47 exécuté.
+-- À lancer UNE fois dans Supabase -> SQL Editor -> Run. Le script s'arrête sans rien écrire si une vérification échoue.
+-- Ensuite, sur le site, ouvre chaque arbre créé et vérifie ; « Organiser par dates » remet l'ordre si tu déplaces des cartes.
+
+do $$
+declare
+  admin_id constant uuid := '96d2f891-6b9e-4967-89ed-18f83270ef28';
+  cat_id constant uuid := '428a2e75-c8e3-51a1-b12a-bfe7a4018659';
+  top uuid;
+  sec uuid;
+  k int;
+  ext uuid;
+begin
+  if exists (select 1 from public.genealogy_members where id = '6080420a-dce3-526d-9d80-5c27d3b61eee') then raise exception 'Script déjà exécuté : rien n''a été fait.'; end if;
+  select count(*) into k from public.genealogy_members where id in ('380d8975-427d-5709-9d4e-883a16a58679','59afdc4a-ae72-564a-b9dd-a36bc7a91690','d9c16e7f-c96a-5339-aa7b-f91a13b27ccd');
+  if k <> 3 then raise exception 'Membres préexistants manquants (% sur 3) : un script précédent n''a pas été exécuté ? Rien n''a été fait.', k; end if;
+  -- Arbre « Petrović-Njegoš » (MNE)
+  select id into top from public.dossier_sections where owner_type = 'country' and owner_id = 'MNE' and title = 'Dynastie' and parent_section_id is null and category_id = cat_id;
+  if top is null then raise exception 'Section Dynastie introuvable pour MNE : rien n''a été fait.'; end if;
+  select id into sec from public.dossier_sections where parent_section_id = top and title = 'Petrović-Njegoš';
+  if sec is null then
+    insert into public.dossier_sections (id, category_id, owner_type, owner_id, parent_section_id, title, position, created_by)
+    values ('b524a588-90ee-5318-a923-1a5d189f835c', cat_id, 'country', 'MNE', top, 'Petrović-Njegoš', (select coalesce(max(position), -1) + 1 from public.dossier_sections where parent_section_id = top), admin_id);
+    sec := 'b524a588-90ee-5318-a923-1a5d189f835c';
+  end if;
+  insert into public.dossier_entries (id, owner_type, owner_id, type, title, category_id, section_id, created_by)
+  values ('d2427e03-6955-5878-a370-aa985bf0af2b', 'country', 'MNE', 'genealogy', 'Petrović-Njegoš', cat_id, sec, admin_id);
+  select count(*) into k from public.dossier_entries where id = 'a0f9af2b-e8d8-5edb-af82-3cda4917ae55' and type = 'genealogy';
+  if k <> 1 then raise exception 'Arbre Romanov introuvable : rien n''a été fait.'; end if;
+  select count(*) into k from public.dossier_entries where id = '11ddda02-3266-577f-8f90-c291c0c06d61' and type = 'genealogy';
+  if k <> 1 then raise exception 'Arbre Karađorđević introuvable : rien n''a été fait.'; end if;
+  insert into public.genealogy_members (id, owner_type, owner_id, name, photo_url, birth_year, death_year, title, dynasty, pos_x, pos_y, created_by, is_leader) values ('6080420a-dce3-526d-9d80-5c27d3b61eee', 'entry', 'd2427e03-6955-5878-a370-aa985bf0af2b', 'Stanko Petrović-Njegoš', null, null, null, 'Père de Mirko et de Danilo Ier', 'Petrović-Njegoš', 949, 0, admin_id, false);
+  insert into public.genealogy_members (id, owner_type, owner_id, name, photo_url, birth_year, death_year, title, dynasty, pos_x, pos_y, created_by, is_leader) values ('2f0311ac-2ce6-59ce-93f5-cfa3404e2a06', 'entry', 'd2427e03-6955-5878-a370-aa985bf0af2b', 'Krstinja Vrbica', null, null, null, 'Mère de Mirko et de Danilo Ier', 'Vrbica (Monténégro)', 2097, 0, admin_id, false);
+  insert into public.genealogy_members (id, owner_type, owner_id, name, photo_url, birth_year, death_year, title, dynasty, pos_x, pos_y, created_by, is_leader) values ('96beabee-7c74-5f9f-b27a-9e0ab5a796e5', 'entry', 'd2427e03-6955-5878-a370-aa985bf0af2b', 'Mirko Petrović-Njegoš (grand voïvode)', null, 1820, 1867, 'Grand voïvode de Grahovo', 'Petrović-Njegoš', 2506, 594, admin_id, false);
+  insert into public.genealogy_members (id, owner_type, owner_id, name, photo_url, birth_year, death_year, title, dynasty, pos_x, pos_y, created_by, is_leader) values ('a3b46ed1-c158-5266-af3f-d12483c5bce2', 'entry', 'd2427e03-6955-5878-a370-aa985bf0af2b', 'Anastasija Martinović', null, 1824, 1895, 'Mère de Nicolas Ier', 'Martinović (Monténégro)', 3046, 594, admin_id, false);
+  insert into public.genealogy_members (id, owner_type, owner_id, name, photo_url, birth_year, death_year, title, dynasty, pos_x, pos_y, created_by, is_leader) values ('ea2c9081-71ab-5149-bf11-5f9679ad616e', 'entry', 'd2427e03-6955-5878-a370-aa985bf0af2b', 'Danilo Ier du Monténégro', null, 1826, 1860, 'Prince du Monténégro (1851-1860), premier prince laïc', 'Petrović-Njegoš', 540, 594, admin_id, true);
+  insert into public.genealogy_members (id, owner_type, owner_id, name, photo_url, birth_year, death_year, title, dynasty, pos_x, pos_y, created_by, is_leader) values ('ba85731a-90f0-5df1-ba58-64c029cccfef', 'entry', 'd2427e03-6955-5878-a370-aa985bf0af2b', 'Darinka Kvekić', null, 1838, 1892, 'Princesse du Monténégro', 'Kvekić (Trieste)', 0, 594, admin_id, false);
+  insert into public.genealogy_members (id, owner_type, owner_id, name, photo_url, birth_year, death_year, title, dynasty, pos_x, pos_y, created_by, is_leader) values ('1d1a30b5-a4ad-530f-a299-4e45ad6f0ce0', 'entry', 'd2427e03-6955-5878-a370-aa985bf0af2b', 'Olga du Monténégro', null, 1859, 1896, 'Princesse, fille de Danilo Ier', 'Petrović-Njegoš', 270, 1242, admin_id, false);
+  insert into public.genealogy_members (id, owner_type, owner_id, name, photo_url, birth_year, death_year, title, dynasty, pos_x, pos_y, created_by, is_leader) values ('c44e8481-2618-5d20-8792-d318e328a148', 'entry', 'd2427e03-6955-5878-a370-aa985bf0af2b', 'Nicolas Ier du Monténégro', null, 1841, 1921, 'Prince (1860) puis roi du Monténégro (1910-1918)', 'Petrović-Njegoš', 2776, 1054, admin_id, true);
+  insert into public.genealogy_members (id, owner_type, owner_id, name, photo_url, birth_year, death_year, title, dynasty, pos_x, pos_y, created_by, is_leader) values ('dcbdbcb3-da7f-5c75-91c9-f59a7df2d8ba', 'entry', 'd2427e03-6955-5878-a370-aa985bf0af2b', 'Milena Vukotić', null, 1847, 1923, 'Princesse puis reine du Monténégro', 'Vukotić (Monténégro)', 6609, 1054, admin_id, false);
+  insert into public.genealogy_members (id, owner_type, owner_id, name, photo_url, birth_year, death_year, title, dynasty, pos_x, pos_y, created_by, is_leader) values ('7f8d5183-4065-54aa-8de1-fe28609ca523', 'entry', 'd2427e03-6955-5878-a370-aa985bf0af2b', 'Milica du Monténégro', null, 1866, 1951, 'Grande-duchesse de Russie', 'Petrović-Njegoš', 4155, 1523, admin_id, false);
+  insert into public.genealogy_members (id, owner_type, owner_id, name, photo_url, birth_year, death_year, title, dynasty, pos_x, pos_y, created_by, is_leader) values ('d3782636-84af-5309-9628-4ed851090e72', 'entry', 'd2427e03-6955-5878-a370-aa985bf0af2b', 'Anastasia du Monténégro', null, 1868, 1935, 'Duchesse de Leuchtenberg puis grande-duchesse de Russie', 'Petrović-Njegoš', 2985, 1523, admin_id, false);
+  insert into public.genealogy_members (id, owner_type, owner_id, name, photo_url, birth_year, death_year, title, dynasty, pos_x, pos_y, created_by, is_leader) values ('31762edf-2b64-5beb-a95b-256a6cc57916', 'entry', 'd2427e03-6955-5878-a370-aa985bf0af2b', 'Marija du Monténégro', null, 1869, 1885, 'Princesse', 'Petrović-Njegoš', 4565, 1523, admin_id, false);
+  insert into public.genealogy_members (id, owner_type, owner_id, name, photo_url, birth_year, death_year, title, dynasty, pos_x, pos_y, created_by, is_leader) values ('930bcb4f-bbc4-5c95-8f92-6f6c385108cd', 'entry', 'd2427e03-6955-5878-a370-aa985bf0af2b', 'Danilo III du Monténégro', null, 1871, 1939, 'Prince héritier, roi titulaire (1921)', 'Petrović-Njegoš', 6585, 1523, admin_id, false);
+  insert into public.genealogy_members (id, owner_type, owner_id, name, photo_url, birth_year, death_year, title, dynasty, pos_x, pos_y, created_by, is_leader) values ('ff53b58b-f631-510a-bce7-e6050b6da972', 'entry', 'd2427e03-6955-5878-a370-aa985bf0af2b', 'Hélène du Monténégro', null, 1873, 1952, 'Reine d''Italie', 'Petrović-Njegoš', 8165, 1523, admin_id, false);
+  insert into public.genealogy_members (id, owner_type, owner_id, name, photo_url, birth_year, death_year, title, dynasty, pos_x, pos_y, created_by, is_leader) values ('95cb9699-d014-5b2a-984a-986f75505f26', 'entry', 'd2427e03-6955-5878-a370-aa985bf0af2b', 'Anne du Monténégro', null, 1874, 1971, 'Princesse de Battenberg', 'Petrović-Njegoš', 5385, 1523, admin_id, false);
+  insert into public.genealogy_members (id, owner_type, owner_id, name, photo_url, birth_year, death_year, title, dynasty, pos_x, pos_y, created_by, is_leader) values ('aaf1b3ff-2613-5837-92ca-a8b8848e6863', 'entry', 'd2427e03-6955-5878-a370-aa985bf0af2b', 'Mirko du Monténégro', null, 1879, 1918, 'Prince', 'Petrović-Njegoš', 1220, 1523, admin_id, false);
+  insert into public.genealogy_members (id, owner_type, owner_id, name, photo_url, birth_year, death_year, title, dynasty, pos_x, pos_y, created_by, is_leader) values ('4b10f056-5b82-5b37-9fa7-51a6ec94882c', 'entry', 'd2427e03-6955-5878-a370-aa985bf0af2b', 'Xénia du Monténégro', null, 1881, 1960, 'Princesse', 'Petrović-Njegoš', 4975, 1523, admin_id, false);
+  insert into public.genealogy_members (id, owner_type, owner_id, name, photo_url, birth_year, death_year, title, dynasty, pos_x, pos_y, created_by, is_leader) values ('dc650c90-3fbb-51c3-a912-6e5081675539', 'entry', 'd2427e03-6955-5878-a370-aa985bf0af2b', 'Vjera du Monténégro', null, 1887, 1927, 'Princesse', 'Petrović-Njegoš', 6175, 1523, admin_id, false);
+  insert into public.genealogy_members (id, owner_type, owner_id, name, photo_url, birth_year, death_year, title, dynasty, pos_x, pos_y, created_by, is_leader) values ('788c6a97-55a2-55e9-a624-91d67c627cfb', 'entry', 'd2427e03-6955-5878-a370-aa985bf0af2b', 'Pierre du Monténégro', null, 1889, 1932, 'Prince', 'Petrović-Njegoš', 7375, 1523, admin_id, false);
+  insert into public.genealogy_members (id, owner_type, owner_id, name, photo_url, birth_year, death_year, title, dynasty, pos_x, pos_y, created_by, is_leader) values ('a7b57d8c-f7af-56a5-a082-a6152846b32b', 'entry', 'a0f9af2b-e8d8-5edb-af82-3cda4917ae55', 'Nicolas Nikolaïevitch de Russie (l''Ancien)', null, 1831, 1891, 'Grand-duc, feld-maréchal', 'Romanov', 4845, 14856, admin_id, false);
+  insert into public.genealogy_members (id, owner_type, owner_id, name, photo_url, birth_year, death_year, title, dynasty, pos_x, pos_y, created_by, is_leader) values ('ac80866f-29c7-596b-b4bb-211607bafc4d', 'entry', 'a0f9af2b-e8d8-5edb-af82-3cda4917ae55', 'Alexandra d''Oldenbourg', null, 1838, 1900, 'Grande-duchesse de Russie', 'Oldenbourg', 5358, 14856, admin_id, false);
+  insert into public.genealogy_members (id, owner_type, owner_id, name, photo_url, birth_year, death_year, title, dynasty, pos_x, pos_y, created_by, is_leader) values ('12c79811-3b1a-5ef5-bcd2-39b1dbc43bed', 'entry', 'a0f9af2b-e8d8-5edb-af82-3cda4917ae55', 'Nicolas Nikolaïevitch de Russie (le Jeune)', null, 1856, 1929, 'Grand-duc, généralissime (1914-1915)', 'Romanov', 4897, 15480, admin_id, false);
+  insert into public.genealogy_members (id, owner_type, owner_id, name, photo_url, birth_year, death_year, title, dynasty, pos_x, pos_y, created_by, is_leader) values ('8f570904-01c9-5215-bdf7-9f295654330a', 'entry', 'a0f9af2b-e8d8-5edb-af82-3cda4917ae55', 'Pierre Nikolaïevitch de Russie', null, 1864, 1931, 'Grand-duc', 'Romanov', 5307, 15480, admin_id, false);
+  insert into public.genealogy_members (id, owner_type, owner_id, name, photo_url, birth_year, death_year, title, dynasty, pos_x, pos_y, created_by, is_leader) values ('ac0f6f8a-baf7-5d34-a887-8c2b04925e88', 'entry', 'd2427e03-6955-5878-a370-aa985bf0af2b', 'Georges de Leuchtenberg', null, 1872, 1929, 'Duc de Leuchtenberg', 'Leuchtenberg (Beauharnais)', 3365, 1523, admin_id, false);
+  insert into public.genealogy_members (id, owner_type, owner_id, name, photo_url, birth_year, death_year, title, dynasty, pos_x, pos_y, created_by, is_leader) values ('abbd2d97-cd02-50be-ac45-e134d27372f4', 'entry', 'd2427e03-6955-5878-a370-aa985bf0af2b', 'Jutta de Mecklembourg-Strelitz', null, 1880, 1946, 'Princesse héritière du Monténégro', 'Mecklembourg-Strelitz', 6965, 1523, admin_id, false);
+  insert into public.genealogy_members (id, owner_type, owner_id, name, photo_url, birth_year, death_year, title, dynasty, pos_x, pos_y, created_by, is_leader) values ('a09ddcb2-673b-556f-a68b-d855e22464e6', 'entry', 'd2427e03-6955-5878-a370-aa985bf0af2b', 'Victor-Emmanuel III d''Italie', null, 1869, 1947, 'Roi d''Italie (1900-1946)', 'Savoie', 8705, 1523, admin_id, false);
+  insert into public.genealogy_members (id, owner_type, owner_id, name, photo_url, birth_year, death_year, title, dynasty, pos_x, pos_y, created_by, is_leader) values ('27898321-ea2c-552a-903c-e82e02b1a1a8', 'entry', 'd2427e03-6955-5878-a370-aa985bf0af2b', 'François-Joseph de Battenberg', null, 1861, 1924, 'Prince de Battenberg', 'Battenberg', 5765, 1523, admin_id, false);
+  insert into public.genealogy_members (id, owner_type, owner_id, name, photo_url, birth_year, death_year, title, dynasty, pos_x, pos_y, created_by, is_leader) values ('f0b7c909-d639-57d0-b177-6056be8af2d3', 'entry', 'd2427e03-6955-5878-a370-aa985bf0af2b', 'Natalija Konstantinović', null, null, null, 'Princesse du Monténégro', 'Konstantinović (Serbie)', 680, 1523, admin_id, false);
+  insert into public.genealogy_members (id, owner_type, owner_id, name, photo_url, birth_year, death_year, title, dynasty, pos_x, pos_y, created_by, is_leader) values ('3e62e049-028a-515c-a3f6-a465bb4eea69', 'entry', 'd2427e03-6955-5878-a370-aa985bf0af2b', 'Violet Emily Wegner', null, null, null, 'Princesse du Monténégro', 'Wegner (Royaume-Uni)', 7755, 1523, admin_id, false);
+  insert into public.genealogy_members (id, owner_type, owner_id, name, photo_url, birth_year, death_year, title, dynasty, pos_x, pos_y, created_by, is_leader) values ('ba4afddc-9c6c-526f-a521-f9cbf8f9d47c', 'entry', 'd2427e03-6955-5878-a370-aa985bf0af2b', 'Michel du Monténégro', null, 1908, 1986, 'Prince, fils de Mirko', 'Petrović-Njegoš', 950, 2124, admin_id, false);
+  insert into public.genealogy_members (id, owner_type, owner_id, name, photo_url, birth_year, death_year, title, dynasty, pos_x, pos_y, created_by, is_leader) values ('2e8579a5-8824-5ef2-873c-de2ea8f644ab', 'entry', 'd2427e03-6955-5878-a370-aa985bf0af2b', 'Nicolas du Monténégro (né en 1944)', null, 1944, null, 'Prétendant au trône du Monténégro', 'Petrović-Njegoš', 950, 2772, admin_id, false);
+  perform set_config('app.admin', admin_id::text, true);
+  create function pg_temp.rel(a uuid, b uuid, t text) returns void language plpgsql as $f$
+  begin
+    if exists (select 1 from public.genealogy_relations where relation_type = t and ((member_a_id = a and member_b_id = b) or (t = 'spouse' and member_a_id = b and member_b_id = a))) then return; end if;
+    insert into public.genealogy_relations (member_a_id, member_b_id, relation_type, created_by) values (a, b, t, current_setting('app.admin', true)::uuid);
+  end $f$;
+  perform pg_temp.rel('6080420a-dce3-526d-9d80-5c27d3b61eee', '2f0311ac-2ce6-59ce-93f5-cfa3404e2a06', 'spouse');
+  perform pg_temp.rel('6080420a-dce3-526d-9d80-5c27d3b61eee', '96beabee-7c74-5f9f-b27a-9e0ab5a796e5', 'parent');
+  perform pg_temp.rel('2f0311ac-2ce6-59ce-93f5-cfa3404e2a06', '96beabee-7c74-5f9f-b27a-9e0ab5a796e5', 'parent');
+  perform pg_temp.rel('96beabee-7c74-5f9f-b27a-9e0ab5a796e5', 'a3b46ed1-c158-5266-af3f-d12483c5bce2', 'spouse');
+  perform pg_temp.rel('6080420a-dce3-526d-9d80-5c27d3b61eee', 'ea2c9081-71ab-5149-bf11-5f9679ad616e', 'parent');
+  perform pg_temp.rel('2f0311ac-2ce6-59ce-93f5-cfa3404e2a06', 'ea2c9081-71ab-5149-bf11-5f9679ad616e', 'parent');
+  perform pg_temp.rel('ea2c9081-71ab-5149-bf11-5f9679ad616e', 'ba85731a-90f0-5df1-ba58-64c029cccfef', 'spouse');
+  perform pg_temp.rel('ea2c9081-71ab-5149-bf11-5f9679ad616e', '1d1a30b5-a4ad-530f-a299-4e45ad6f0ce0', 'parent');
+  perform pg_temp.rel('ba85731a-90f0-5df1-ba58-64c029cccfef', '1d1a30b5-a4ad-530f-a299-4e45ad6f0ce0', 'parent');
+  perform pg_temp.rel('96beabee-7c74-5f9f-b27a-9e0ab5a796e5', 'c44e8481-2618-5d20-8792-d318e328a148', 'parent');
+  perform pg_temp.rel('a3b46ed1-c158-5266-af3f-d12483c5bce2', 'c44e8481-2618-5d20-8792-d318e328a148', 'parent');
+  perform pg_temp.rel('c44e8481-2618-5d20-8792-d318e328a148', 'dcbdbcb3-da7f-5c75-91c9-f59a7df2d8ba', 'spouse');
+  perform pg_temp.rel('c44e8481-2618-5d20-8792-d318e328a148', '59afdc4a-ae72-564a-b9dd-a36bc7a91690', 'parent');
+  perform pg_temp.rel('dcbdbcb3-da7f-5c75-91c9-f59a7df2d8ba', '59afdc4a-ae72-564a-b9dd-a36bc7a91690', 'parent');
+  perform pg_temp.rel('c44e8481-2618-5d20-8792-d318e328a148', '7f8d5183-4065-54aa-8de1-fe28609ca523', 'parent');
+  perform pg_temp.rel('dcbdbcb3-da7f-5c75-91c9-f59a7df2d8ba', '7f8d5183-4065-54aa-8de1-fe28609ca523', 'parent');
+  perform pg_temp.rel('c44e8481-2618-5d20-8792-d318e328a148', 'd3782636-84af-5309-9628-4ed851090e72', 'parent');
+  perform pg_temp.rel('dcbdbcb3-da7f-5c75-91c9-f59a7df2d8ba', 'd3782636-84af-5309-9628-4ed851090e72', 'parent');
+  perform pg_temp.rel('c44e8481-2618-5d20-8792-d318e328a148', '31762edf-2b64-5beb-a95b-256a6cc57916', 'parent');
+  perform pg_temp.rel('dcbdbcb3-da7f-5c75-91c9-f59a7df2d8ba', '31762edf-2b64-5beb-a95b-256a6cc57916', 'parent');
+  perform pg_temp.rel('c44e8481-2618-5d20-8792-d318e328a148', '930bcb4f-bbc4-5c95-8f92-6f6c385108cd', 'parent');
+  perform pg_temp.rel('dcbdbcb3-da7f-5c75-91c9-f59a7df2d8ba', '930bcb4f-bbc4-5c95-8f92-6f6c385108cd', 'parent');
+  perform pg_temp.rel('c44e8481-2618-5d20-8792-d318e328a148', 'ff53b58b-f631-510a-bce7-e6050b6da972', 'parent');
+  perform pg_temp.rel('dcbdbcb3-da7f-5c75-91c9-f59a7df2d8ba', 'ff53b58b-f631-510a-bce7-e6050b6da972', 'parent');
+  perform pg_temp.rel('c44e8481-2618-5d20-8792-d318e328a148', '95cb9699-d014-5b2a-984a-986f75505f26', 'parent');
+  perform pg_temp.rel('dcbdbcb3-da7f-5c75-91c9-f59a7df2d8ba', '95cb9699-d014-5b2a-984a-986f75505f26', 'parent');
+  perform pg_temp.rel('c44e8481-2618-5d20-8792-d318e328a148', 'aaf1b3ff-2613-5837-92ca-a8b8848e6863', 'parent');
+  perform pg_temp.rel('dcbdbcb3-da7f-5c75-91c9-f59a7df2d8ba', 'aaf1b3ff-2613-5837-92ca-a8b8848e6863', 'parent');
+  perform pg_temp.rel('c44e8481-2618-5d20-8792-d318e328a148', '4b10f056-5b82-5b37-9fa7-51a6ec94882c', 'parent');
+  perform pg_temp.rel('dcbdbcb3-da7f-5c75-91c9-f59a7df2d8ba', '4b10f056-5b82-5b37-9fa7-51a6ec94882c', 'parent');
+  perform pg_temp.rel('c44e8481-2618-5d20-8792-d318e328a148', 'dc650c90-3fbb-51c3-a912-6e5081675539', 'parent');
+  perform pg_temp.rel('dcbdbcb3-da7f-5c75-91c9-f59a7df2d8ba', 'dc650c90-3fbb-51c3-a912-6e5081675539', 'parent');
+  perform pg_temp.rel('c44e8481-2618-5d20-8792-d318e328a148', '788c6a97-55a2-55e9-a624-91d67c627cfb', 'parent');
+  perform pg_temp.rel('dcbdbcb3-da7f-5c75-91c9-f59a7df2d8ba', '788c6a97-55a2-55e9-a624-91d67c627cfb', 'parent');
+  perform pg_temp.rel('380d8975-427d-5709-9d4e-883a16a58679', 'a7b57d8c-f7af-56a5-a082-a6152846b32b', 'parent');
+  perform pg_temp.rel('a7b57d8c-f7af-56a5-a082-a6152846b32b', 'ac80866f-29c7-596b-b4bb-211607bafc4d', 'spouse');
+  perform pg_temp.rel('a7b57d8c-f7af-56a5-a082-a6152846b32b', '12c79811-3b1a-5ef5-bcd2-39b1dbc43bed', 'parent');
+  perform pg_temp.rel('ac80866f-29c7-596b-b4bb-211607bafc4d', '12c79811-3b1a-5ef5-bcd2-39b1dbc43bed', 'parent');
+  perform pg_temp.rel('a7b57d8c-f7af-56a5-a082-a6152846b32b', '8f570904-01c9-5215-bdf7-9f295654330a', 'parent');
+  perform pg_temp.rel('ac80866f-29c7-596b-b4bb-211607bafc4d', '8f570904-01c9-5215-bdf7-9f295654330a', 'parent');
+  perform pg_temp.rel('8f570904-01c9-5215-bdf7-9f295654330a', '7f8d5183-4065-54aa-8de1-fe28609ca523', 'spouse');
+  perform pg_temp.rel('12c79811-3b1a-5ef5-bcd2-39b1dbc43bed', 'd3782636-84af-5309-9628-4ed851090e72', 'spouse');
+  perform pg_temp.rel('ac0f6f8a-baf7-5d34-a887-8c2b04925e88', 'd3782636-84af-5309-9628-4ed851090e72', 'spouse');
+  perform pg_temp.rel('930bcb4f-bbc4-5c95-8f92-6f6c385108cd', 'abbd2d97-cd02-50be-ac45-e134d27372f4', 'spouse');
+  perform pg_temp.rel('a09ddcb2-673b-556f-a68b-d855e22464e6', 'ff53b58b-f631-510a-bce7-e6050b6da972', 'spouse');
+  perform pg_temp.rel('a09ddcb2-673b-556f-a68b-d855e22464e6', 'd9c16e7f-c96a-5339-aa7b-f91a13b27ccd', 'parent');
+  perform pg_temp.rel('ff53b58b-f631-510a-bce7-e6050b6da972', 'd9c16e7f-c96a-5339-aa7b-f91a13b27ccd', 'parent');
+  perform pg_temp.rel('27898321-ea2c-552a-903c-e82e02b1a1a8', '95cb9699-d014-5b2a-984a-986f75505f26', 'spouse');
+  perform pg_temp.rel('aaf1b3ff-2613-5837-92ca-a8b8848e6863', 'f0b7c909-d639-57d0-b177-6056be8af2d3', 'spouse');
+  perform pg_temp.rel('788c6a97-55a2-55e9-a624-91d67c627cfb', '3e62e049-028a-515c-a3f6-a465bb4eea69', 'spouse');
+  perform pg_temp.rel('aaf1b3ff-2613-5837-92ca-a8b8848e6863', 'ba4afddc-9c6c-526f-a521-f9cbf8f9d47c', 'parent');
+  perform pg_temp.rel('f0b7c909-d639-57d0-b177-6056be8af2d3', 'ba4afddc-9c6c-526f-a521-f9cbf8f9d47c', 'parent');
+  perform pg_temp.rel('ba4afddc-9c6c-526f-a521-f9cbf8f9d47c', '2e8579a5-8824-5ef2-873c-de2ea8f644ab', 'parent');
+  update public.genealogy_members set pos_x = 2587, pos_y = 0 where id = '5f86a171-0b2b-582c-a5eb-514ebecfc2f6';
+  update public.genealogy_members set pos_x = 2792, pos_y = 9468 where id = 'aeb73e2e-2159-5a85-9af8-2a12b8f3c514';
+  update public.genealogy_members set pos_x = 2382, pos_y = 9468 where id = '736d7bde-fe5b-55ab-89dd-c2c5f1c5aab2';
+  update public.genealogy_members set pos_x = 1927, pos_y = 10080 where id = '5e818510-6368-5ab0-8949-0b0f06f263f4';
+  update public.genealogy_members set pos_x = 2467, pos_y = 10080 where id = 'f3f378a8-5da8-58bd-b68d-1ea82342fc67';
+  update public.genealogy_members set pos_x = 2197, pos_y = 10728 where id = '81585eea-1f3f-5430-b85c-868d95cfc2fc';
+  update public.genealogy_members set pos_x = 2737, pos_y = 10728 where id = '3c4fc900-ce05-5d03-9e86-e4f61d1f3039';
+  update public.genealogy_members set pos_x = 2467, pos_y = 11322 where id = '7024001c-b80a-5fca-96ef-83a74197edb1';
+  update public.genealogy_members set pos_x = 948, pos_y = 11322 where id = '0a9222c3-6b8b-5df1-b002-f0f08f783d22';
+  update public.genealogy_members set pos_x = 3864, pos_y = 11322 where id = '7d5cdc28-2a76-5f08-b154-31e646633fe0';
+  update public.genealogy_members set pos_x = 2118, pos_y = 11952 where id = 'd1c3f032-9113-5a2f-b6e5-8e873f51f128';
+  update public.genealogy_members set pos_x = 1708, pos_y = 11952 where id = 'f32c0ec7-b59f-551b-8d55-f8cc9b5941a4';
+  update public.genealogy_members set pos_x = 1298, pos_y = 11952 where id = 'ef1f9e75-3cce-55bb-aaa8-33d5e225d645';
+  update public.genealogy_members set pos_x = 733, pos_y = 11952 where id = '94138e5b-8350-5628-aac0-c74f489d6089';
+  update public.genealogy_members set pos_x = 3165, pos_y = 11952 where id = 'd6793496-b9cb-55f7-a4d8-500c33598d0f';
+  update public.genealogy_members set pos_x = 2528, pos_y = 11952 where id = '8ac50b9b-84a1-5bd0-b6bc-e66aa5a6fbbc';
+  update public.genealogy_members set pos_x = 3758, pos_y = 11952 where id = 'c5e8471f-953c-53d7-81a0-8979bf6138f0';
+  update public.genealogy_members set pos_x = 2846, pos_y = 12642 where id = 'fdb3975d-0d26-5481-9728-6099aaae2e27';
+  update public.genealogy_members set pos_x = 2576, pos_y = 13102 where id = '4026ff1b-d3a7-5921-ad0d-f299c8b30c2c';
+  update public.genealogy_members set pos_x = 1220, pos_y = 12456 where id = '0db6100f-20b7-5ea7-a5a3-270f0726fbd0';
+  update public.genealogy_members set pos_x = 810, pos_y = 12456 where id = 'b2a3fdd3-b996-5224-bd96-5d935170198c';
+  update public.genealogy_members set pos_x = 270, pos_y = 12456 where id = '3fe460aa-1085-5510-86d0-58e9eb242d7f';
+  update public.genealogy_members set pos_x = 540, pos_y = 12924 where id = 'a4085a06-4a3b-5fc9-8a04-d3b2cc75ad58';
+  update public.genealogy_members set pos_x = 270, pos_y = 13384 where id = 'e4698345-fb75-5d18-97c5-9edaea3145f5';
+  update public.genealogy_members set pos_x = 3256, pos_y = 12642 where id = 'cc0ab643-8bd6-5ff1-a6cf-440d4bbc94ab';
+  update public.genealogy_members set pos_x = 3666, pos_y = 12642 where id = '6a3227ba-26b4-565e-bac9-bbc52fcc6f1d';
+  update public.genealogy_members set pos_x = 4206, pos_y = 12642 where id = '515a76c3-ee3e-5857-8056-baba39015d1d';
+  update public.genealogy_members set pos_x = 3936, pos_y = 13104 where id = '4e48f878-b1cf-585f-b804-90e407945ece';
+  update public.genealogy_members set pos_x = 4476, pos_y = 13104 where id = '20b5660a-92bc-5a8c-bf93-ef46cf585f9c';
+  update public.genealogy_members set pos_x = 4206, pos_y = 13572 where id = '57d16fba-8237-56d7-ad59-e5572f77e8e0';
+  update public.genealogy_members set pos_x = 4734, pos_y = 13572 where id = '02d2a8de-7e33-57c5-bfa5-1a17f6f6b41a';
+  update public.genealogy_members set pos_x = 4675, pos_y = 14157 where id = 'fff8c132-6a3b-5ece-93f3-6f2d98f2e77f';
+  update public.genealogy_members set pos_x = 5055, pos_y = 14157 where id = '80cdd307-6472-582e-8219-dfc1a9e29a8d';
+  update public.genealogy_members set pos_x = 4265, pos_y = 14157 where id = '380d8975-427d-5709-9d4e-883a16a58679';
+  update public.genealogy_members set pos_x = 2607, pos_y = 14856 where id = '41951938-61b4-568b-9b14-b3c456633c73';
+  update public.genealogy_members set pos_x = 2067, pos_y = 14856 where id = 'e846ee0c-53b0-5bd6-a958-4dcb159fcfe5';
+  update public.genealogy_members set pos_x = 2337, pos_y = 15316 where id = 'b460f60b-0f57-5bc1-886b-f9ab0e23c0c2';
+  update public.genealogy_members set pos_x = 2414, pos_y = 15776 where id = '443aa9f3-0b8e-57ae-b387-fd348d2d2532';
+  update public.genealogy_members set pos_x = 1874, pos_y = 15776 where id = 'ed83e643-c52e-54df-8013-5cbfd1713d5a';
+  update public.genealogy_members set pos_x = 2144, pos_y = 16272 where id = '1473e79c-7554-576c-943c-d17407e768d2';
+  update public.genealogy_members set pos_x = 2824, pos_y = 15776 where id = '27571788-e385-56b3-8481-7e31ccda743d';
+  update public.genealogy_members set pos_x = 4082, pos_y = 15318 where id = '987f8ebe-1329-5ceb-a45e-cd72e00fdffc';
+  update public.genealogy_members set pos_x = 4082, pos_y = 14856 where id = '6f329842-e55c-51d9-847a-ba81c0e1fb17';
+  update public.genealogy_members set pos_x = 501, pos_y = 0 where id = 'f9bfef0f-1658-54fc-94c0-f7725b308e4b';
+  update public.genealogy_members set pos_x = 1041, pos_y = 0 where id = '74748684-0fac-570a-9003-bdd00f9aa087';
+  update public.genealogy_members set pos_x = 771, pos_y = 684 where id = 'ee48efea-5734-5730-8788-1ae496925ecd';
+  update public.genealogy_members set pos_x = 1317, pos_y = 684 where id = '4183d8d8-c6b4-55fd-9253-acdf56629478';
+  update public.genealogy_members set pos_x = 688, pos_y = 1503 where id = 'a520f09e-0712-5885-afaa-ebb0695a5523';
+  update public.genealogy_members set pos_x = 230, pos_y = 2151 where id = 'eb3f4198-06f1-512e-bee9-505612f97321';
+  update public.genealogy_members set pos_x = 640, pos_y = 2151 where id = '5c95a47a-1c14-576b-87af-f17f8fa94e68';
+  update public.genealogy_members set pos_x = 540, pos_y = 2856 where id = '7cfb96e6-4d61-58ac-87f6-81685a2e2ac9';
+  update public.genealogy_members set pos_x = 950, pos_y = 2856 where id = '51283158-03be-5eea-ae48-873ef34cfbe8';
+  update public.genealogy_members set pos_x = 1360, pos_y = 2856 where id = '07b1b9ca-084c-581f-bcaa-b80a4b1c27af';
+  update public.genealogy_members set pos_x = 270, pos_y = 3316 where id = 'e9ddded6-39f1-5ffa-bc55-5942c279f5be';
+  update public.genealogy_members set pos_x = 1400, pos_y = 1503 where id = '7e921a3d-b51d-52e7-94ba-ebd39b9d73b5';
+  update public.genealogy_members set pos_x = 1940, pos_y = 1503 where id = '448bd456-3774-5ff6-ac31-3efc7324c0bb';
+  update public.genealogy_members set pos_x = 1670, pos_y = 2250 where id = 'a723c99c-b05c-59da-8bf8-498e4958cc57';
+  update public.genealogy_members set pos_x = 1024, pos_y = 3316 where id = 'fd60c1ae-5a9e-545f-abaa-e961c883ad99';
+  update public.genealogy_members set pos_x = 237, pos_y = 3840 where id = 'ea1060c9-e71b-5821-a2e1-50f031fcb23d';
+  update public.genealogy_members set pos_x = 1057, pos_y = 3840 where id = 'a08f1513-f08f-5460-b462-b2cbcf194148';
+  update public.genealogy_members set pos_x = 647, pos_y = 3840 where id = 'e441e27a-248a-58cc-a104-9443dde5c7e8';
+  update public.genealogy_members set birth_year = 1864, death_year = 1890 where id = '59afdc4a-ae72-564a-b9dd-a36bc7a91690';
+  update public.genealogy_members set owner_id = 'd2427e03-6955-5878-a370-aa985bf0af2b', pos_x = 2195, pos_y = 1523, dynasty = 'Petrović-Njegoš' where id = '59afdc4a-ae72-564a-b9dd-a36bc7a91690' and owner_type = 'entry';
+  delete from public.genealogy_foreign_states where member_id = '59afdc4a-ae72-564a-b9dd-a36bc7a91690' and owner_type = 'entry' and owner_id = 'd2427e03-6955-5878-a370-aa985bf0af2b';
+  insert into public.genealogy_foreign_states (member_id, owner_type, owner_id, pos_x, pos_y, is_leader, pinned) values ('8f570904-01c9-5215-bdf7-9f295654330a', 'entry', 'd2427e03-6955-5878-a370-aa985bf0af2b', 3775, 1523, false, true) on conflict (member_id, owner_type, owner_id) do update set pos_x = excluded.pos_x, pos_y = excluded.pos_y, pinned = true;
+  insert into public.genealogy_foreign_states (member_id, owner_type, owner_id, pos_x, pos_y, is_leader, pinned) values ('12c79811-3b1a-5ef5-bcd2-39b1dbc43bed', 'entry', 'd2427e03-6955-5878-a370-aa985bf0af2b', 2605, 1523, false, true) on conflict (member_id, owner_type, owner_id) do update set pos_x = excluded.pos_x, pos_y = excluded.pos_y, pinned = true;
+  insert into public.genealogy_foreign_states (member_id, owner_type, owner_id, pos_x, pos_y, is_leader, pinned) values ('d9c16e7f-c96a-5339-aa7b-f91a13b27ccd', 'entry', 'd2427e03-6955-5878-a370-aa985bf0af2b', 8435, 2106, false, true) on conflict (member_id, owner_type, owner_id) do update set pos_x = excluded.pos_x, pos_y = excluded.pos_y, pinned = true;
+  insert into public.genealogy_foreign_states (member_id, owner_type, owner_id, pos_x, pos_y, is_leader, pinned) values ('a520f09e-0712-5885-afaa-ebb0695a5523', 'entry', 'd2427e03-6955-5878-a370-aa985bf0af2b', 1630, 1523, false, true) on conflict (member_id, owner_type, owner_id) do update set pos_x = excluded.pos_x, pos_y = excluded.pos_y, pinned = true;
+  insert into public.genealogy_foreign_states (member_id, owner_type, owner_id, pos_x, pos_y, is_leader, pinned) values ('eb3f4198-06f1-512e-bee9-505612f97321', 'entry', 'd2427e03-6955-5878-a370-aa985bf0af2b', 1708, 1983, false, true) on conflict (member_id, owner_type, owner_id) do update set pos_x = excluded.pos_x, pos_y = excluded.pos_y, pinned = true;
+  insert into public.genealogy_foreign_states (member_id, owner_type, owner_id, pos_x, pos_y, is_leader, pinned) values ('5c95a47a-1c14-576b-87af-f17f8fa94e68', 'entry', 'd2427e03-6955-5878-a370-aa985bf0af2b', 2118, 1983, false, true) on conflict (member_id, owner_type, owner_id) do update set pos_x = excluded.pos_x, pos_y = excluded.pos_y, pinned = true;
+  insert into public.genealogy_foreign_states (member_id, owner_type, owner_id, pos_x, pos_y, is_leader, pinned) values ('7f8d5183-4065-54aa-8de1-fe28609ca523', 'entry', 'a0f9af2b-e8d8-5edb-af82-3cda4917ae55', 5687, 15480, false, true) on conflict (member_id, owner_type, owner_id) do update set pos_x = excluded.pos_x, pos_y = excluded.pos_y, pinned = true;
+  insert into public.genealogy_foreign_states (member_id, owner_type, owner_id, pos_x, pos_y, is_leader, pinned) values ('d3782636-84af-5309-9628-4ed851090e72', 'entry', 'a0f9af2b-e8d8-5edb-af82-3cda4917ae55', 4517, 15480, false, true) on conflict (member_id, owner_type, owner_id) do update set pos_x = excluded.pos_x, pos_y = excluded.pos_y, pinned = true;
+  insert into public.genealogy_foreign_states (member_id, owner_type, owner_id, pos_x, pos_y, is_leader, pinned) values ('1208e649-4289-5e61-920d-e6f7186786a8', 'entry', 'a0f9af2b-e8d8-5edb-af82-3cda4917ae55', 3332, 9468, false, true) on conflict (member_id, owner_type, owner_id) do update set pos_x = excluded.pos_x, pos_y = excluded.pos_y, pinned = true;
+  insert into public.genealogy_foreign_states (member_id, owner_type, owner_id, pos_x, pos_y, is_leader, pinned) values ('16c0ee72-955d-51b6-9118-0f08c75bf595', 'entry', 'a0f9af2b-e8d8-5edb-af82-3cda4917ae55', 3062, 10026, false, true) on conflict (member_id, owner_type, owner_id) do update set pos_x = excluded.pos_x, pos_y = excluded.pos_y, pinned = true;
+  insert into public.genealogy_foreign_states (member_id, owner_type, owner_id, pos_x, pos_y, is_leader, pinned) values ('2557b841-e6dd-5952-b801-d8b3c3f1959c', 'entry', 'a0f9af2b-e8d8-5edb-af82-3cda4917ae55', 2306, 12642, false, true) on conflict (member_id, owner_type, owner_id) do update set pos_x = excluded.pos_x, pos_y = excluded.pos_y, pinned = true;
+  insert into public.genealogy_foreign_states (member_id, owner_type, owner_id, pos_x, pos_y, is_leader, pinned) values ('7fb9d519-bfd3-5b00-a650-5692a49cb66f', 'entry', 'a0f9af2b-e8d8-5edb-af82-3cda4917ae55', 0, 12924, false, true) on conflict (member_id, owner_type, owner_id) do update set pos_x = excluded.pos_x, pos_y = excluded.pos_y, pinned = true;
+  insert into public.genealogy_foreign_states (member_id, owner_type, owner_id, pos_x, pos_y, is_leader, pinned) values ('8ccb484d-9c34-58aa-be64-d14a82c21c9b', 'entry', 'a0f9af2b-e8d8-5edb-af82-3cda4917ae55', 3186, 14157, false, true) on conflict (member_id, owner_type, owner_id) do update set pos_x = excluded.pos_x, pos_y = excluded.pos_y, pinned = true;
+  insert into public.genealogy_foreign_states (member_id, owner_type, owner_id, pos_x, pos_y, is_leader, pinned) values ('37d5e22a-65a3-5d62-bbb7-331c966b6883', 'entry', 'a0f9af2b-e8d8-5edb-af82-3cda4917ae55', 2902, 15316, false, true) on conflict (member_id, owner_type, owner_id) do update set pos_x = excluded.pos_x, pos_y = excluded.pos_y, pinned = true;
+  insert into public.genealogy_foreign_states (member_id, owner_type, owner_id, pos_x, pos_y, is_leader, pinned) values ('00b7cf89-f787-5874-a592-89a05b6aa579', 'entry', 'a0f9af2b-e8d8-5edb-af82-3cda4917ae55', 3312, 15318, false, true) on conflict (member_id, owner_type, owner_id) do update set pos_x = excluded.pos_x, pos_y = excluded.pos_y, pinned = true;
+  insert into public.genealogy_foreign_states (member_id, owner_type, owner_id, pos_x, pos_y, is_leader, pinned) values ('0c19d4b0-8806-5ad4-b03c-b73138cc4636', 'entry', 'a0f9af2b-e8d8-5edb-af82-3cda4917ae55', 3287, 15778, false, true) on conflict (member_id, owner_type, owner_id) do update set pos_x = excluded.pos_x, pos_y = excluded.pos_y, pinned = true;
+  insert into public.genealogy_foreign_states (member_id, owner_type, owner_id, pos_x, pos_y, is_leader, pinned) values ('929cc915-5d66-57a9-a2a0-c53282d3ca44', 'entry', 'a0f9af2b-e8d8-5edb-af82-3cda4917ae55', 4107, 15778, false, true) on conflict (member_id, owner_type, owner_id) do update set pos_x = excluded.pos_x, pos_y = excluded.pos_y, pinned = true;
+  insert into public.genealogy_foreign_states (member_id, owner_type, owner_id, pos_x, pos_y, is_leader, pinned) values ('4223ce4d-b6b2-5911-a51a-5c5f123ea64f', 'entry', 'a0f9af2b-e8d8-5edb-af82-3cda4917ae55', 3697, 15778, false, true) on conflict (member_id, owner_type, owner_id) do update set pos_x = excluded.pos_x, pos_y = excluded.pos_y, pinned = true;
+  insert into public.genealogy_foreign_states (member_id, owner_type, owner_id, pos_x, pos_y, is_leader, pinned) values ('59afdc4a-ae72-564a-b9dd-a36bc7a91690', 'entry', '11ddda02-3266-577f-8f90-c291c0c06d61', 182, 1503, false, true) on conflict (member_id, owner_type, owner_id) do update set pos_x = excluded.pos_x, pos_y = excluded.pos_y, pinned = true;
+  insert into public.genealogy_foreign_states (member_id, owner_type, owner_id, pos_x, pos_y, is_leader, pinned) values ('409659a4-633b-5ae1-ad17-c5e3b092e3b9', 'entry', '11ddda02-3266-577f-8f90-c291c0c06d61', 1260, 2151, false, true) on conflict (member_id, owner_type, owner_id) do update set pos_x = excluded.pos_x, pos_y = excluded.pos_y, pinned = true;
+  insert into public.genealogy_foreign_states (member_id, owner_type, owner_id, pos_x, pos_y, is_leader, pinned) values ('a5f32fe9-6523-5480-9763-0df9b11d62e8', 'entry', '11ddda02-3266-577f-8f90-c291c0c06d61', 0, 2856, false, true) on conflict (member_id, owner_type, owner_id) do update set pos_x = excluded.pos_x, pos_y = excluded.pos_y, pinned = true;
+  insert into public.genealogy_foreign_states (member_id, owner_type, owner_id, pos_x, pos_y, is_leader, pinned) values ('c86850e2-0ec4-5381-9419-225388e58b07', 'entry', '11ddda02-3266-577f-8f90-c291c0c06d61', 2050, 2250, false, true) on conflict (member_id, owner_type, owner_id) do update set pos_x = excluded.pos_x, pos_y = excluded.pos_y, pinned = true;
+  raise notice 'schema_v48 : % membres ajoutés.', 31;
+end $$;
