@@ -16156,10 +16156,610 @@
    "name": "Hedvige-Sophie de Suède",
    "b": 1681,
    "d": 1708,
-   "tree": "SE_PAL",
+   "tree": "SE_PAL2",
    "title": "Duchesse de Holstein-Gottorp",
    "g": "f",
    "script": 72
+  },
+  "hg.christian_aug": {
+   "id": "9d09fa55-8b2f-54db-ab4e-42306f767ff8",
+   "name": "Christian-Auguste de Holstein-Gottorp",
+   "b": 1673,
+   "d": 1726,
+   "tree": "SE_HG",
+   "title": "Prince-évêque de Lübeck",
+   "g": "h",
+   "script": 73
+  },
+  "hg.albertine": {
+   "id": "8c14109b-849b-5979-bbd0-eba75571bc8a",
+   "name": "Albertine-Frédérique de Bade-Durlach",
+   "b": 1682,
+   "d": 1755,
+   "tree": "SE_HG",
+   "title": "Princesse de Holstein-Gottorp",
+   "g": "f",
+   "script": 73
+  },
+  "hg.adolf_fred": {
+   "id": "8b351507-dc51-5a2f-9c74-b37885cd5b4b",
+   "name": "Adolphe-Frédéric",
+   "b": 1710,
+   "d": 1771,
+   "tree": "SE_HG",
+   "title": "Roi de Suède",
+   "g": "h",
+   "script": 73
+  },
+  "hg.louisa_ulrika": {
+   "id": "d98c9fc0-ef7a-5308-8a5a-001b2750a4be",
+   "name": "Louise-Ulrique de Prusse",
+   "b": 1720,
+   "d": 1782,
+   "tree": "DE_HOH",
+   "title": "Reine de Suède",
+   "g": "f",
+   "script": 73
+  },
+  "hg.gustav3": {
+   "id": "e91a01a8-0921-5a70-9be9-412e97c08f6d",
+   "name": "Gustave III",
+   "b": 1746,
+   "d": 1792,
+   "tree": "SE_HG",
+   "title": "Roi de Suède",
+   "g": "h",
+   "script": 73
+  },
+  "hg.charles13": {
+   "id": "6878b56a-064e-52b4-88a0-72353a647f41",
+   "name": "Charles XIII",
+   "b": 1748,
+   "d": 1818,
+   "tree": "SE_HG",
+   "title": "Roi de Suède et de Norvège",
+   "g": "h",
+   "script": 73
+  },
+  "hg.fred_adolf": {
+   "id": "30f095c6-1f09-5c06-84e8-519ade84e9a0",
+   "name": "Frédéric-Adolphe de Suède",
+   "b": 1750,
+   "d": 1803,
+   "tree": "SE_HG",
+   "title": "Duc d'Östergötland",
+   "g": "h",
+   "script": 73
+  },
+  "hg.sofia_alb": {
+   "id": "eb8871b0-3ff5-5d1f-ae2e-2de23f8dde87",
+   "name": "Sophie-Albertine de Suède",
+   "b": 1753,
+   "d": 1829,
+   "tree": "SE_HG",
+   "title": "Abbesse de Quedlinbourg",
+   "g": "f",
+   "script": 73
+  },
+  "hg.sophia_mag": {
+   "id": "59349703-ddae-56cd-a509-28f553bada5d",
+   "name": "Sophie-Madeleine de Danemark",
+   "b": 1746,
+   "d": 1813,
+   "tree": "DK_OLD",
+   "title": "Reine de Suède",
+   "g": "f",
+   "script": 73
+  },
+  "hg.gustav4": {
+   "id": "1d37478a-cc5e-521e-9e86-49583273558a",
+   "name": "Gustave IV Adolphe",
+   "b": 1778,
+   "d": 1837,
+   "tree": "SE_HG",
+   "title": "Roi de Suède",
+   "g": "h",
+   "script": 73
+  },
+  "hg.carl_gustav": {
+   "id": "87ac2cd5-c44f-5594-9b84-bffa4f28ecc0",
+   "name": "Charles-Gustave de Suède",
+   "b": 1782,
+   "d": 1783,
+   "tree": "SE_HG",
+   "title": "Duc de Småland",
+   "g": "h",
+   "script": 73
+  },
+  "hg.frederica": {
+   "id": "9a3a27f5-3f75-52eb-a9ce-60cf7ce208d7",
+   "name": "Frédérique de Bade",
+   "b": 1781,
+   "d": 1826,
+   "tree": "SE_HG",
+   "title": "Reine de Suède",
+   "g": "f",
+   "script": 73
+  },
+  "hg.gustav_vasa": {
+   "id": "d5e11d62-c49f-53d7-9b3b-9ad0c31aea02",
+   "name": "Gustave de Suède, prince de Vasa",
+   "b": 1799,
+   "d": 1877,
+   "tree": "SE_HG",
+   "title": "Prince héritier",
+   "g": "h",
+   "script": 73
+  },
+  "hg.sofia_w": {
+   "id": "0d03bf6a-0243-58a4-a880-eb0d2f111ea4",
+   "name": "Sophie de Suède (1801-1865)",
+   "b": 1801,
+   "d": 1865,
+   "tree": "SE_HG",
+   "title": "Grande-duchesse de Bade",
+   "g": "f",
+   "script": 73
+  },
+  "hg.carl_g2": {
+   "id": "40f3be2c-b0d2-59b3-a0ac-61cba935a1fe",
+   "name": "Charles-Gustave de Suède (1802-1805)",
+   "b": 1802,
+   "d": 1805,
+   "tree": "SE_HG",
+   "title": "Grand-duc de Finlande",
+   "g": "h",
+   "script": 73
+  },
+  "hg.amalia": {
+   "id": "a4fcdda3-2089-5e7e-8c0e-2334bf874423",
+   "name": "Amélie de Suède",
+   "b": 1805,
+   "d": 1853,
+   "tree": "SE_HG",
+   "title": "Princesse de Suède",
+   "g": "f",
+   "script": 73
+  },
+  "hg.cecilia": {
+   "id": "e4aa64c7-2d25-58b9-a90f-5c9688bf1991",
+   "name": "Cécile de Suède",
+   "b": 1807,
+   "d": 1844,
+   "tree": "SE_HG",
+   "title": "Grande-duchesse d'Oldenbourg",
+   "g": "f",
+   "script": 73
+  },
+  "hg.hedwig_elis": {
+   "id": "2ffbb9e9-365f-54ba-94e2-ddec3234893d",
+   "name": "Hedwige-Élisabeth-Charlotte de Holstein-Gottorp",
+   "b": 1759,
+   "d": 1818,
+   "tree": "SE_HG",
+   "title": "Reine de Suède",
+   "g": "f",
+   "script": 73
+  },
+  "bn.jean_henri": {
+   "id": "2de62e4d-a095-507a-92b5-bc214af94d28",
+   "name": "Jean-Henri Bernadotte",
+   "b": 1711,
+   "d": 1780,
+   "tree": "SE_BER",
+   "title": "Procureur à Pau",
+   "g": "h",
+   "script": 73
+  },
+  "bn.jeanne": {
+   "id": "98283ee5-1d5f-5c4d-b610-22bb3ccb73ed",
+   "name": "Jeanne de Saint-Jean",
+   "b": 1728,
+   "d": 1809,
+   "tree": "SE_BER",
+   "title": "Mère de Bernadotte",
+   "g": "f",
+   "script": 73
+  },
+  "bn.charles14": {
+   "id": "24a4ecb0-7135-5b4a-b6ee-79913915aee3",
+   "name": "Charles XIV Jean",
+   "b": 1763,
+   "d": 1844,
+   "tree": "SE_BER",
+   "title": "Roi de Suède et de Norvège, maréchal d'Empire",
+   "g": "h",
+   "script": 73
+  },
+  "bn.desiree": {
+   "id": "40288793-bd5b-5947-9228-a9f22548945b",
+   "name": "Désirée Clary",
+   "b": 1777,
+   "d": 1860,
+   "tree": "SE_BER",
+   "title": "Reine de Suède et de Norvège",
+   "g": "f",
+   "script": 73
+  },
+  "bn.oscar1": {
+   "id": "f5a40b37-e771-5088-a905-1f7142e06d50",
+   "name": "Oscar Ier",
+   "b": 1799,
+   "d": 1859,
+   "tree": "SE_BER",
+   "title": "Roi de Suède et de Norvège",
+   "g": "h",
+   "script": 73
+  },
+  "bn.josephine": {
+   "id": "b47f1c54-e013-530c-94a0-60b20ce47c19",
+   "name": "Joséphine de Leuchtenberg",
+   "b": 1807,
+   "d": 1876,
+   "tree": "SE_BER",
+   "title": "Reine de Suède et de Norvège",
+   "g": "f",
+   "script": 73
+  },
+  "bn.charles15": {
+   "id": "58884b9e-549e-52f3-a8a5-d798a7226b87",
+   "name": "Charles XV",
+   "b": 1826,
+   "d": 1872,
+   "tree": "SE_BER",
+   "title": "Roi de Suède et de Norvège",
+   "g": "h",
+   "script": 73
+  },
+  "bn.gustaf_up": {
+   "id": "5daea2d5-af2c-5a24-afdf-960e96b6de6c",
+   "name": "Gustave, duc d'Uppland",
+   "b": 1827,
+   "d": 1852,
+   "tree": "SE_BER",
+   "title": "Duc d'Uppland",
+   "g": "h",
+   "script": 73
+  },
+  "bn.oscar2": {
+   "id": "368b70cb-eb56-52a2-9362-455332e728b7",
+   "name": "Oscar II",
+   "b": 1829,
+   "d": 1907,
+   "tree": "SE_BER",
+   "title": "Roi de Suède et de Norvège",
+   "g": "h",
+   "script": 73
+  },
+  "bn.eugenie": {
+   "id": "8d001eb5-2d98-587c-ada5-b766c333101c",
+   "name": "Eugénie de Suède",
+   "b": 1830,
+   "d": 1889,
+   "tree": "SE_BER",
+   "title": "Princesse de Suède",
+   "g": "f",
+   "script": 73
+  },
+  "bn.august": {
+   "id": "a4f2b44a-994a-5cda-9cba-5f6067a6c763",
+   "name": "Auguste de Suède",
+   "b": 1831,
+   "d": 1873,
+   "tree": "SE_BER",
+   "title": "Duc de Dalécarlie",
+   "g": "h",
+   "script": 73
+  },
+  "bn.louise_nl": {
+   "id": "519bb18a-85df-5759-9c93-9c786d81bf41",
+   "name": "Louise des Pays-Bas",
+   "b": 1828,
+   "d": 1871,
+   "tree": "NL_ORA",
+   "title": "Reine de Suède et de Norvège",
+   "g": "f",
+   "script": 73
+  },
+  "bn.louise_pr": {
+   "id": "5a4ff871-6e99-56e5-9d2a-69cad4b38824",
+   "name": "Louise de Prusse (1808-1870)",
+   "b": 1808,
+   "d": 1870,
+   "tree": "DE_HOH",
+   "title": "Princesse des Pays-Bas",
+   "g": "f",
+   "script": 73
+  },
+  "bn.louise_se": {
+   "id": "17e9a051-982c-5180-87f1-1d0de8aa5d86",
+   "name": "Louise de Suède",
+   "b": 1851,
+   "d": 1926,
+   "tree": "SE_BER",
+   "title": "Reine de Danemark",
+   "g": "f",
+   "script": 73
+  },
+  "bn.sophia_nassau": {
+   "id": "2c9c4257-adc4-5d56-9c61-ddea9d2cc2be",
+   "name": "Sophie de Nassau",
+   "b": 1836,
+   "d": 1913,
+   "tree": "LU_NAS",
+   "title": "Reine de Suède et de Norvège",
+   "g": "f",
+   "script": 73
+  },
+  "bn.gustaf5": {
+   "id": "beed4dbf-7e4d-5cef-a955-e4398a8173de",
+   "name": "Gustave V",
+   "b": 1858,
+   "d": 1950,
+   "tree": "SE_BER",
+   "title": "Roi de Suède",
+   "g": "h",
+   "script": 73
+  },
+  "bn.oscar_b": {
+   "id": "e6d321cb-ecd8-51a5-9659-d72e52210708",
+   "name": "Oscar Bernadotte",
+   "b": 1859,
+   "d": 1953,
+   "tree": "SE_BER",
+   "title": "Prince Bernadotte",
+   "g": "h",
+   "script": 73
+  },
+  "bn.carl_vg": {
+   "id": "4b944882-1372-5e4f-be5a-e0e4edffd05e",
+   "name": "Charles de Suède, duc de Västergötland",
+   "b": 1861,
+   "d": 1951,
+   "tree": "SE_BER",
+   "title": "Duc de Västergötland",
+   "g": "h",
+   "script": 73
+  },
+  "bn.eugen": {
+   "id": "f7cf6b93-8456-50a7-b82a-0793b1837190",
+   "name": "Eugène de Suède",
+   "b": 1865,
+   "d": 1947,
+   "tree": "SE_BER",
+   "title": "Duc de Närke, peintre",
+   "g": "h",
+   "script": 73
+  },
+  "bn.ingeborg": {
+   "id": "3196cf28-1860-57d8-a395-998bc6a9fe7a",
+   "name": "Ingeborg de Danemark",
+   "b": 1878,
+   "d": 1958,
+   "tree": "DK_GLU",
+   "title": "Princesse de Suède",
+   "g": "f",
+   "script": 73
+  },
+  "bn.victoria_bade": {
+   "id": "2c236c8c-fed3-56d4-b545-b8df62f89cf3",
+   "name": "Victoria de Bade",
+   "b": 1862,
+   "d": 1930,
+   "tree": "SE_BER",
+   "title": "Reine de Suède",
+   "g": "f",
+   "script": 73
+  },
+  "bn.gustaf6": {
+   "id": "a24f2f98-8c0d-5be8-b636-fb11164acddd",
+   "name": "Gustave VI Adolphe",
+   "b": 1882,
+   "d": 1973,
+   "tree": "SE_BER",
+   "title": "Roi de Suède",
+   "g": "h",
+   "script": 73
+  },
+  "bn.wilhelm": {
+   "id": "8581790f-d963-5824-8949-44c9e5765290",
+   "name": "Guillaume de Suède, duc de Södermanland",
+   "b": 1884,
+   "d": 1965,
+   "tree": "SE_BER",
+   "title": "Duc de Södermanland",
+   "g": "h",
+   "script": 73
+  },
+  "bn.erik": {
+   "id": "43f8d0ff-1036-5a2e-ab3c-3a7176f5b342",
+   "name": "Érik de Suède, duc de Västmanland",
+   "b": 1889,
+   "d": 1918,
+   "tree": "SE_BER",
+   "title": "Duc de Västmanland",
+   "g": "h",
+   "script": 73
+  },
+  "bn.margaret_c": {
+   "id": "bc586678-07e9-5220-8225-ce673b6c4474",
+   "name": "Marguerite de Connaught",
+   "b": 1882,
+   "d": 1920,
+   "tree": "GB_WIN",
+   "title": "Princesse héritière de Suède",
+   "g": "f",
+   "script": 73
+  },
+  "bn.louise_mb": {
+   "id": "85e96dce-1a5f-5b9f-8954-e633d81ec5cd",
+   "name": "Louise Mountbatten",
+   "b": 1889,
+   "d": 1965,
+   "tree": "SE_BER",
+   "title": "Reine de Suède",
+   "g": "f",
+   "script": 73
+  },
+  "bn.maria_pavlovna": {
+   "id": "58830e15-09f2-5b42-8ce6-d73306a4c45c",
+   "name": "Marie Pavlovna de Russie (1890-1958)",
+   "b": 1890,
+   "d": 1958,
+   "tree": "RU_ROM",
+   "title": "Duchesse de Södermanland",
+   "g": "f",
+   "script": 73
+  },
+  "bn.gustaf_adolf": {
+   "id": "378b4575-7298-586b-a090-c98778535bff",
+   "name": "Gustave-Adolphe de Suède, duc de Västerbotten",
+   "b": 1906,
+   "d": 1947,
+   "tree": "SE_BER",
+   "title": "Duc de Västerbotten",
+   "g": "h",
+   "script": 73
+  },
+  "bn.sigvard": {
+   "id": "797ae1e5-c691-5de4-b21b-3591c2dae518",
+   "name": "Sigvard Bernadotte",
+   "b": 1907,
+   "d": 2002,
+   "tree": "SE_BER",
+   "title": "Prince puis comte Bernadotte",
+   "g": "h",
+   "script": 73
+  },
+  "bn.bertil": {
+   "id": "f03f703d-7033-5c20-b486-91c1764e0d8b",
+   "name": "Bertil de Suède, duc de Halland",
+   "b": 1912,
+   "d": 1997,
+   "tree": "SE_BER",
+   "title": "Duc de Halland",
+   "g": "h",
+   "script": 73
+  },
+  "bn.carl_johan": {
+   "id": "bfb98565-2bea-5ad9-a548-4e8c074cf2e5",
+   "name": "Carl Johan Bernadotte",
+   "b": 1916,
+   "d": 2012,
+   "tree": "SE_BER",
+   "title": "Comte Bernadotte",
+   "g": "h",
+   "script": 73
+  },
+  "bn.sibylla": {
+   "id": "879fd82b-aafe-5668-86b1-670743699bf8",
+   "name": "Sibylle de Saxe-Cobourg-Gotha",
+   "b": 1908,
+   "d": 1972,
+   "tree": "BG_SCG",
+   "title": "Princesse de Suède",
+   "g": "f",
+   "script": 73
+  },
+  "bn.carl16": {
+   "id": "50fd2e21-d52a-53f9-ab4e-7f3846ea9169",
+   "name": "Charles XVI Gustave",
+   "b": 1946,
+   "d": null,
+   "tree": "SE_BER",
+   "title": "Roi de Suède",
+   "g": "h",
+   "script": 73
+  },
+  "bn.silvia": {
+   "id": "e526cf96-a7f4-5342-961b-dde413c360db",
+   "name": "Silvia Sommerlath",
+   "b": 1943,
+   "d": null,
+   "tree": "SE_BER",
+   "title": "Reine de Suède",
+   "g": "f",
+   "script": 73
+  },
+  "bn.victoria": {
+   "id": "a4cce8a7-32b6-55ca-9338-4298e7bdb313",
+   "name": "Victoria de Suède",
+   "b": 1977,
+   "d": null,
+   "tree": "SE_BER",
+   "title": "Princesse héritière de Suède",
+   "g": "f",
+   "script": 73
+  },
+  "bn.carl_philip": {
+   "id": "73dd90ba-66d2-516a-a188-d9a1f9ff2f17",
+   "name": "Charles-Philippe de Suède",
+   "b": 1979,
+   "d": null,
+   "tree": "SE_BER",
+   "title": "Prince de Suède, duc de Värmland",
+   "g": "h",
+   "script": 73
+  },
+  "bn.madeleine": {
+   "id": "8705da32-aac7-5f29-b092-350e342dd6cd",
+   "name": "Madeleine de Suède",
+   "b": 1982,
+   "d": null,
+   "tree": "SE_BER",
+   "title": "Princesse de Suède, duchesse d'Hälsingland",
+   "g": "f",
+   "script": 73
+  },
+  "bn.daniel": {
+   "id": "7f715f21-53d4-5492-bab7-2a639b1c0e96",
+   "name": "Daniel Westling",
+   "b": 1973,
+   "d": null,
+   "tree": "SE_BER",
+   "title": "Prince Daniel, duc de Västergötland",
+   "g": "f",
+   "script": 73
+  },
+  "bn.estelle": {
+   "id": "1cd3783a-d41e-5687-9714-9de0c7b830bc",
+   "name": "Estelle de Suède",
+   "b": 2012,
+   "d": null,
+   "tree": "SE_BER",
+   "title": "Princesse, duchesse d'Östergötland",
+   "g": "f",
+   "script": 73
+  },
+  "bn.oscar_j": {
+   "id": "42a4cec3-af0a-507e-abed-4ad69c8ad0ff",
+   "name": "Oscar de Suède",
+   "b": 2016,
+   "d": null,
+   "tree": "SE_BER",
+   "title": "Prince, duc de Skåne",
+   "g": "h",
+   "script": 73
+  },
+  "bn.sofia": {
+   "id": "d260fa64-7e8a-582d-a498-102d18a1a4dc",
+   "name": "Sofia Hellqvist",
+   "b": 1984,
+   "d": null,
+   "tree": "SE_BER",
+   "title": "Princesse de Suède, duchesse de Värmland",
+   "g": "f",
+   "script": 73
+  },
+  "bn.chris": {
+   "id": "1d20c9ed-d47c-557b-adb7-53df33295368",
+   "name": "Christopher O'Neill",
+   "b": 1974,
+   "d": null,
+   "tree": "SE_BER",
+   "title": "Époux de la princesse Madeleine",
+   "g": "f",
+   "script": 73
   }
  },
  "trees": {
@@ -16648,6 +17248,30 @@
    "country": "SWE",
    "dynasty": "Palatinat-Deux-Ponts (Suède)",
    "script": 72
+  },
+  "SE_HG": {
+   "entry": "93efd3fa-874b-50ca-85ce-156b7742042b",
+   "country": "SWE",
+   "dynasty": "Holstein-Gottorp (Suède)",
+   "script": 73
+  },
+  "SE_BER": {
+   "entry": "4d5135d1-3e3e-5fd9-bc80-278d330e61d9",
+   "country": "SWE",
+   "dynasty": "Bernadotte",
+   "script": 73
+  },
+  "SE_PAL2": {
+   "entry": "b2152e80-00cc-4773-99cc-e4cd5c999dff",
+   "country": "SWE",
+   "dynasty": "Palatinat-Deux-Ponts (Suède)",
+   "script": null
+  },
+  "GB_WIN": {
+   "entry": "eb82350b-5e34-490e-bb73-9235d4baf763",
+   "country": "GBR",
+   "dynasty": "Maison de Saxe-Cobourg et Gotha et Maison Windsor",
+   "script": null
   }
  },
  "flags": [
@@ -20038,6 +20662,83 @@
    "tree": "PL_VASA",
    "reason": "Maison Holstein-Gottorp : sans arbre",
    "script": 72
+  },
+  {
+   "name": "Albertine-Frédérique de Bade-Durlach",
+   "b": 1682,
+   "tree": "SE_HG",
+   "reason": "Maison de Bade : sans arbre",
+   "script": 73
+  },
+  {
+   "name": "Frédérique de Bade",
+   "b": 1781,
+   "tree": "SE_HG",
+   "reason": "Maison Bade : sans arbre",
+   "script": 73
+  },
+  {
+   "name": "Jeanne de Saint-Jean",
+   "b": 1728,
+   "tree": "SE_BER",
+   "reason": "Maison Saint-Jean : sans arbre",
+   "script": 73
+  },
+  {
+   "name": "Désirée Clary",
+   "b": 1777,
+   "tree": "SE_BER",
+   "reason": "Maison Clary : sans arbre",
+   "script": 73
+  },
+  {
+   "name": "Joséphine de Leuchtenberg",
+   "b": 1807,
+   "tree": "SE_BER",
+   "reason": "Maison Leuchtenberg : sans arbre",
+   "script": 73
+  },
+  {
+   "name": "Victoria de Bade",
+   "b": 1862,
+   "tree": "SE_BER",
+   "reason": "Maison Bade : sans arbre",
+   "script": 73
+  },
+  {
+   "name": "Louise Mountbatten",
+   "b": 1889,
+   "tree": "SE_BER",
+   "reason": "Maison Mountbatten : sans arbre",
+   "script": 73
+  },
+  {
+   "name": "Silvia Sommerlath",
+   "b": 1943,
+   "tree": "SE_BER",
+   "reason": "Maison Sommerlath : sans arbre",
+   "script": 73
+  },
+  {
+   "name": "Daniel Westling",
+   "b": 1973,
+   "tree": "SE_BER",
+   "reason": "Maison Westling : sans arbre",
+   "script": 73
+  },
+  {
+   "name": "Sofia Hellqvist",
+   "b": 1984,
+   "tree": "SE_BER",
+   "reason": "Maison Hellqvist : sans arbre",
+   "script": 73
+  },
+  {
+   "name": "Christopher O'Neill",
+   "b": 1974,
+   "tree": "SE_BER",
+   "reason": "Maison O'Neill : sans arbre",
+   "script": 73
   }
  ],
  "scripts": {
@@ -20310,6 +21011,15 @@
    "rels": 56,
    "trees": [
     "Palatinat-Deux-Ponts (Suède) (SWE)"
+   ]
+  },
+  "73": {
+   "label": "Suède — Holstein-Gottorp (Adolphe-Frédéric à Gustave IV Adolphe, Charles XIII) et Bernadotte (Charles XIV Jean à la princesse Victoria) ; correction d'un arbre en double",
+   "members": 60,
+   "rels": 107,
+   "trees": [
+    "Holstein-Gottorp (Suède) (SWE)",
+    "Bernadotte (SWE)"
    ]
   }
  },
@@ -34513,6 +35223,541 @@
    "e05b47aa-900b-5e54-a48a-db6645dde7a6",
    "b2807021-8150-511e-a65e-7d423667e645",
    "parent"
+  ],
+  [
+   "9d09fa55-8b2f-54db-ab4e-42306f767ff8",
+   "8c14109b-849b-5979-bbd0-eba75571bc8a",
+   "spouse"
+  ],
+  [
+   "9d09fa55-8b2f-54db-ab4e-42306f767ff8",
+   "8b351507-dc51-5a2f-9c74-b37885cd5b4b",
+   "parent"
+  ],
+  [
+   "8c14109b-849b-5979-bbd0-eba75571bc8a",
+   "8b351507-dc51-5a2f-9c74-b37885cd5b4b",
+   "parent"
+  ],
+  [
+   "55b81f56-d3db-450f-b5d0-03483dbe59fd",
+   "d98c9fc0-ef7a-5308-8a5a-001b2750a4be",
+   "parent"
+  ],
+  [
+   "f8d7ed90-7a17-4dec-bd3c-a62b222078a8",
+   "d98c9fc0-ef7a-5308-8a5a-001b2750a4be",
+   "parent"
+  ],
+  [
+   "8b351507-dc51-5a2f-9c74-b37885cd5b4b",
+   "d98c9fc0-ef7a-5308-8a5a-001b2750a4be",
+   "spouse"
+  ],
+  [
+   "8b351507-dc51-5a2f-9c74-b37885cd5b4b",
+   "e91a01a8-0921-5a70-9be9-412e97c08f6d",
+   "parent"
+  ],
+  [
+   "d98c9fc0-ef7a-5308-8a5a-001b2750a4be",
+   "e91a01a8-0921-5a70-9be9-412e97c08f6d",
+   "parent"
+  ],
+  [
+   "8b351507-dc51-5a2f-9c74-b37885cd5b4b",
+   "6878b56a-064e-52b4-88a0-72353a647f41",
+   "parent"
+  ],
+  [
+   "d98c9fc0-ef7a-5308-8a5a-001b2750a4be",
+   "6878b56a-064e-52b4-88a0-72353a647f41",
+   "parent"
+  ],
+  [
+   "8b351507-dc51-5a2f-9c74-b37885cd5b4b",
+   "30f095c6-1f09-5c06-84e8-519ade84e9a0",
+   "parent"
+  ],
+  [
+   "d98c9fc0-ef7a-5308-8a5a-001b2750a4be",
+   "30f095c6-1f09-5c06-84e8-519ade84e9a0",
+   "parent"
+  ],
+  [
+   "8b351507-dc51-5a2f-9c74-b37885cd5b4b",
+   "eb8871b0-3ff5-5d1f-ae2e-2de23f8dde87",
+   "parent"
+  ],
+  [
+   "d98c9fc0-ef7a-5308-8a5a-001b2750a4be",
+   "eb8871b0-3ff5-5d1f-ae2e-2de23f8dde87",
+   "parent"
+  ],
+  [
+   "e91a01a8-0921-5a70-9be9-412e97c08f6d",
+   "59349703-ddae-56cd-a509-28f553bada5d",
+   "spouse"
+  ],
+  [
+   "e91a01a8-0921-5a70-9be9-412e97c08f6d",
+   "1d37478a-cc5e-521e-9e86-49583273558a",
+   "parent"
+  ],
+  [
+   "59349703-ddae-56cd-a509-28f553bada5d",
+   "1d37478a-cc5e-521e-9e86-49583273558a",
+   "parent"
+  ],
+  [
+   "e91a01a8-0921-5a70-9be9-412e97c08f6d",
+   "87ac2cd5-c44f-5594-9b84-bffa4f28ecc0",
+   "parent"
+  ],
+  [
+   "59349703-ddae-56cd-a509-28f553bada5d",
+   "87ac2cd5-c44f-5594-9b84-bffa4f28ecc0",
+   "parent"
+  ],
+  [
+   "1d37478a-cc5e-521e-9e86-49583273558a",
+   "9a3a27f5-3f75-52eb-a9ce-60cf7ce208d7",
+   "spouse"
+  ],
+  [
+   "1d37478a-cc5e-521e-9e86-49583273558a",
+   "d5e11d62-c49f-53d7-9b3b-9ad0c31aea02",
+   "parent"
+  ],
+  [
+   "9a3a27f5-3f75-52eb-a9ce-60cf7ce208d7",
+   "d5e11d62-c49f-53d7-9b3b-9ad0c31aea02",
+   "parent"
+  ],
+  [
+   "1d37478a-cc5e-521e-9e86-49583273558a",
+   "0d03bf6a-0243-58a4-a880-eb0d2f111ea4",
+   "parent"
+  ],
+  [
+   "9a3a27f5-3f75-52eb-a9ce-60cf7ce208d7",
+   "0d03bf6a-0243-58a4-a880-eb0d2f111ea4",
+   "parent"
+  ],
+  [
+   "1d37478a-cc5e-521e-9e86-49583273558a",
+   "40f3be2c-b0d2-59b3-a0ac-61cba935a1fe",
+   "parent"
+  ],
+  [
+   "9a3a27f5-3f75-52eb-a9ce-60cf7ce208d7",
+   "40f3be2c-b0d2-59b3-a0ac-61cba935a1fe",
+   "parent"
+  ],
+  [
+   "1d37478a-cc5e-521e-9e86-49583273558a",
+   "a4fcdda3-2089-5e7e-8c0e-2334bf874423",
+   "parent"
+  ],
+  [
+   "9a3a27f5-3f75-52eb-a9ce-60cf7ce208d7",
+   "a4fcdda3-2089-5e7e-8c0e-2334bf874423",
+   "parent"
+  ],
+  [
+   "1d37478a-cc5e-521e-9e86-49583273558a",
+   "e4aa64c7-2d25-58b9-a90f-5c9688bf1991",
+   "parent"
+  ],
+  [
+   "9a3a27f5-3f75-52eb-a9ce-60cf7ce208d7",
+   "e4aa64c7-2d25-58b9-a90f-5c9688bf1991",
+   "parent"
+  ],
+  [
+   "6878b56a-064e-52b4-88a0-72353a647f41",
+   "2ffbb9e9-365f-54ba-94e2-ddec3234893d",
+   "spouse"
+  ],
+  [
+   "2de62e4d-a095-507a-92b5-bc214af94d28",
+   "98283ee5-1d5f-5c4d-b610-22bb3ccb73ed",
+   "spouse"
+  ],
+  [
+   "2de62e4d-a095-507a-92b5-bc214af94d28",
+   "24a4ecb0-7135-5b4a-b6ee-79913915aee3",
+   "parent"
+  ],
+  [
+   "98283ee5-1d5f-5c4d-b610-22bb3ccb73ed",
+   "24a4ecb0-7135-5b4a-b6ee-79913915aee3",
+   "parent"
+  ],
+  [
+   "24a4ecb0-7135-5b4a-b6ee-79913915aee3",
+   "40288793-bd5b-5947-9228-a9f22548945b",
+   "spouse"
+  ],
+  [
+   "24a4ecb0-7135-5b4a-b6ee-79913915aee3",
+   "f5a40b37-e771-5088-a905-1f7142e06d50",
+   "parent"
+  ],
+  [
+   "40288793-bd5b-5947-9228-a9f22548945b",
+   "f5a40b37-e771-5088-a905-1f7142e06d50",
+   "parent"
+  ],
+  [
+   "f5a40b37-e771-5088-a905-1f7142e06d50",
+   "b47f1c54-e013-530c-94a0-60b20ce47c19",
+   "spouse"
+  ],
+  [
+   "f5a40b37-e771-5088-a905-1f7142e06d50",
+   "58884b9e-549e-52f3-a8a5-d798a7226b87",
+   "parent"
+  ],
+  [
+   "b47f1c54-e013-530c-94a0-60b20ce47c19",
+   "58884b9e-549e-52f3-a8a5-d798a7226b87",
+   "parent"
+  ],
+  [
+   "f5a40b37-e771-5088-a905-1f7142e06d50",
+   "5daea2d5-af2c-5a24-afdf-960e96b6de6c",
+   "parent"
+  ],
+  [
+   "b47f1c54-e013-530c-94a0-60b20ce47c19",
+   "5daea2d5-af2c-5a24-afdf-960e96b6de6c",
+   "parent"
+  ],
+  [
+   "f5a40b37-e771-5088-a905-1f7142e06d50",
+   "368b70cb-eb56-52a2-9362-455332e728b7",
+   "parent"
+  ],
+  [
+   "b47f1c54-e013-530c-94a0-60b20ce47c19",
+   "368b70cb-eb56-52a2-9362-455332e728b7",
+   "parent"
+  ],
+  [
+   "f5a40b37-e771-5088-a905-1f7142e06d50",
+   "8d001eb5-2d98-587c-ada5-b766c333101c",
+   "parent"
+  ],
+  [
+   "b47f1c54-e013-530c-94a0-60b20ce47c19",
+   "8d001eb5-2d98-587c-ada5-b766c333101c",
+   "parent"
+  ],
+  [
+   "f5a40b37-e771-5088-a905-1f7142e06d50",
+   "a4f2b44a-994a-5cda-9cba-5f6067a6c763",
+   "parent"
+  ],
+  [
+   "b47f1c54-e013-530c-94a0-60b20ce47c19",
+   "a4f2b44a-994a-5cda-9cba-5f6067a6c763",
+   "parent"
+  ],
+  [
+   "6f21be7b-2cfe-49b0-b322-9e2686aaeb28",
+   "5a4ff871-6e99-56e5-9d2a-69cad4b38824",
+   "parent"
+  ],
+  [
+   "d5cfc762-24ef-47d5-8d2d-7155686ea471",
+   "5a4ff871-6e99-56e5-9d2a-69cad4b38824",
+   "parent"
+  ],
+  [
+   "838fcf43-d366-568e-bb3f-c0fe980e1c44",
+   "5a4ff871-6e99-56e5-9d2a-69cad4b38824",
+   "spouse"
+  ],
+  [
+   "838fcf43-d366-568e-bb3f-c0fe980e1c44",
+   "519bb18a-85df-5759-9c93-9c786d81bf41",
+   "parent"
+  ],
+  [
+   "5a4ff871-6e99-56e5-9d2a-69cad4b38824",
+   "519bb18a-85df-5759-9c93-9c786d81bf41",
+   "parent"
+  ],
+  [
+   "58884b9e-549e-52f3-a8a5-d798a7226b87",
+   "519bb18a-85df-5759-9c93-9c786d81bf41",
+   "spouse"
+  ],
+  [
+   "58884b9e-549e-52f3-a8a5-d798a7226b87",
+   "17e9a051-982c-5180-87f1-1d0de8aa5d86",
+   "parent"
+  ],
+  [
+   "519bb18a-85df-5759-9c93-9c786d81bf41",
+   "17e9a051-982c-5180-87f1-1d0de8aa5d86",
+   "parent"
+  ],
+  [
+   "8b34e776-b6e1-4eeb-a8e5-174a9c0b84c0",
+   "17e9a051-982c-5180-87f1-1d0de8aa5d86",
+   "spouse"
+  ],
+  [
+   "47d9c703-1d1f-58d5-944d-4d6de1538bc8",
+   "2c9c4257-adc4-5d56-9c61-ddea9d2cc2be",
+   "parent"
+  ],
+  [
+   "368b70cb-eb56-52a2-9362-455332e728b7",
+   "2c9c4257-adc4-5d56-9c61-ddea9d2cc2be",
+   "spouse"
+  ],
+  [
+   "368b70cb-eb56-52a2-9362-455332e728b7",
+   "beed4dbf-7e4d-5cef-a955-e4398a8173de",
+   "parent"
+  ],
+  [
+   "2c9c4257-adc4-5d56-9c61-ddea9d2cc2be",
+   "beed4dbf-7e4d-5cef-a955-e4398a8173de",
+   "parent"
+  ],
+  [
+   "368b70cb-eb56-52a2-9362-455332e728b7",
+   "e6d321cb-ecd8-51a5-9659-d72e52210708",
+   "parent"
+  ],
+  [
+   "2c9c4257-adc4-5d56-9c61-ddea9d2cc2be",
+   "e6d321cb-ecd8-51a5-9659-d72e52210708",
+   "parent"
+  ],
+  [
+   "368b70cb-eb56-52a2-9362-455332e728b7",
+   "4b944882-1372-5e4f-be5a-e0e4edffd05e",
+   "parent"
+  ],
+  [
+   "2c9c4257-adc4-5d56-9c61-ddea9d2cc2be",
+   "4b944882-1372-5e4f-be5a-e0e4edffd05e",
+   "parent"
+  ],
+  [
+   "368b70cb-eb56-52a2-9362-455332e728b7",
+   "f7cf6b93-8456-50a7-b82a-0793b1837190",
+   "parent"
+  ],
+  [
+   "2c9c4257-adc4-5d56-9c61-ddea9d2cc2be",
+   "f7cf6b93-8456-50a7-b82a-0793b1837190",
+   "parent"
+  ],
+  [
+   "8b34e776-b6e1-4eeb-a8e5-174a9c0b84c0",
+   "3196cf28-1860-57d8-a395-998bc6a9fe7a",
+   "parent"
+  ],
+  [
+   "17e9a051-982c-5180-87f1-1d0de8aa5d86",
+   "3196cf28-1860-57d8-a395-998bc6a9fe7a",
+   "parent"
+  ],
+  [
+   "4b944882-1372-5e4f-be5a-e0e4edffd05e",
+   "3196cf28-1860-57d8-a395-998bc6a9fe7a",
+   "spouse"
+  ],
+  [
+   "beed4dbf-7e4d-5cef-a955-e4398a8173de",
+   "2c236c8c-fed3-56d4-b545-b8df62f89cf3",
+   "spouse"
+  ],
+  [
+   "beed4dbf-7e4d-5cef-a955-e4398a8173de",
+   "a24f2f98-8c0d-5be8-b636-fb11164acddd",
+   "parent"
+  ],
+  [
+   "2c236c8c-fed3-56d4-b545-b8df62f89cf3",
+   "a24f2f98-8c0d-5be8-b636-fb11164acddd",
+   "parent"
+  ],
+  [
+   "beed4dbf-7e4d-5cef-a955-e4398a8173de",
+   "8581790f-d963-5824-8949-44c9e5765290",
+   "parent"
+  ],
+  [
+   "2c236c8c-fed3-56d4-b545-b8df62f89cf3",
+   "8581790f-d963-5824-8949-44c9e5765290",
+   "parent"
+  ],
+  [
+   "beed4dbf-7e4d-5cef-a955-e4398a8173de",
+   "43f8d0ff-1036-5a2e-ab3c-3a7176f5b342",
+   "parent"
+  ],
+  [
+   "2c236c8c-fed3-56d4-b545-b8df62f89cf3",
+   "43f8d0ff-1036-5a2e-ab3c-3a7176f5b342",
+   "parent"
+  ],
+  [
+   "a24f2f98-8c0d-5be8-b636-fb11164acddd",
+   "bc586678-07e9-5220-8225-ce673b6c4474",
+   "spouse"
+  ],
+  [
+   "a24f2f98-8c0d-5be8-b636-fb11164acddd",
+   "85e96dce-1a5f-5b9f-8954-e633d81ec5cd",
+   "spouse"
+  ],
+  [
+   "8581790f-d963-5824-8949-44c9e5765290",
+   "58830e15-09f2-5b42-8ce6-d73306a4c45c",
+   "spouse"
+  ],
+  [
+   "a24f2f98-8c0d-5be8-b636-fb11164acddd",
+   "378b4575-7298-586b-a090-c98778535bff",
+   "parent"
+  ],
+  [
+   "bc586678-07e9-5220-8225-ce673b6c4474",
+   "378b4575-7298-586b-a090-c98778535bff",
+   "parent"
+  ],
+  [
+   "a24f2f98-8c0d-5be8-b636-fb11164acddd",
+   "797ae1e5-c691-5de4-b21b-3591c2dae518",
+   "parent"
+  ],
+  [
+   "bc586678-07e9-5220-8225-ce673b6c4474",
+   "797ae1e5-c691-5de4-b21b-3591c2dae518",
+   "parent"
+  ],
+  [
+   "a24f2f98-8c0d-5be8-b636-fb11164acddd",
+   "a78782ce-e7b5-5890-8054-724f647b945a",
+   "parent"
+  ],
+  [
+   "bc586678-07e9-5220-8225-ce673b6c4474",
+   "a78782ce-e7b5-5890-8054-724f647b945a",
+   "parent"
+  ],
+  [
+   "a24f2f98-8c0d-5be8-b636-fb11164acddd",
+   "f03f703d-7033-5c20-b486-91c1764e0d8b",
+   "parent"
+  ],
+  [
+   "bc586678-07e9-5220-8225-ce673b6c4474",
+   "f03f703d-7033-5c20-b486-91c1764e0d8b",
+   "parent"
+  ],
+  [
+   "a24f2f98-8c0d-5be8-b636-fb11164acddd",
+   "bfb98565-2bea-5ad9-a548-4e8c074cf2e5",
+   "parent"
+  ],
+  [
+   "bc586678-07e9-5220-8225-ce673b6c4474",
+   "bfb98565-2bea-5ad9-a548-4e8c074cf2e5",
+   "parent"
+  ],
+  [
+   "378b4575-7298-586b-a090-c98778535bff",
+   "879fd82b-aafe-5668-86b1-670743699bf8",
+   "spouse"
+  ],
+  [
+   "378b4575-7298-586b-a090-c98778535bff",
+   "50fd2e21-d52a-53f9-ab4e-7f3846ea9169",
+   "parent"
+  ],
+  [
+   "879fd82b-aafe-5668-86b1-670743699bf8",
+   "50fd2e21-d52a-53f9-ab4e-7f3846ea9169",
+   "parent"
+  ],
+  [
+   "50fd2e21-d52a-53f9-ab4e-7f3846ea9169",
+   "e526cf96-a7f4-5342-961b-dde413c360db",
+   "spouse"
+  ],
+  [
+   "50fd2e21-d52a-53f9-ab4e-7f3846ea9169",
+   "a4cce8a7-32b6-55ca-9338-4298e7bdb313",
+   "parent"
+  ],
+  [
+   "e526cf96-a7f4-5342-961b-dde413c360db",
+   "a4cce8a7-32b6-55ca-9338-4298e7bdb313",
+   "parent"
+  ],
+  [
+   "50fd2e21-d52a-53f9-ab4e-7f3846ea9169",
+   "73dd90ba-66d2-516a-a188-d9a1f9ff2f17",
+   "parent"
+  ],
+  [
+   "e526cf96-a7f4-5342-961b-dde413c360db",
+   "73dd90ba-66d2-516a-a188-d9a1f9ff2f17",
+   "parent"
+  ],
+  [
+   "50fd2e21-d52a-53f9-ab4e-7f3846ea9169",
+   "8705da32-aac7-5f29-b092-350e342dd6cd",
+   "parent"
+  ],
+  [
+   "e526cf96-a7f4-5342-961b-dde413c360db",
+   "8705da32-aac7-5f29-b092-350e342dd6cd",
+   "parent"
+  ],
+  [
+   "a4cce8a7-32b6-55ca-9338-4298e7bdb313",
+   "7f715f21-53d4-5492-bab7-2a639b1c0e96",
+   "spouse"
+  ],
+  [
+   "a4cce8a7-32b6-55ca-9338-4298e7bdb313",
+   "1cd3783a-d41e-5687-9714-9de0c7b830bc",
+   "parent"
+  ],
+  [
+   "7f715f21-53d4-5492-bab7-2a639b1c0e96",
+   "1cd3783a-d41e-5687-9714-9de0c7b830bc",
+   "parent"
+  ],
+  [
+   "a4cce8a7-32b6-55ca-9338-4298e7bdb313",
+   "42a4cec3-af0a-507e-abed-4ad69c8ad0ff",
+   "parent"
+  ],
+  [
+   "7f715f21-53d4-5492-bab7-2a639b1c0e96",
+   "42a4cec3-af0a-507e-abed-4ad69c8ad0ff",
+   "parent"
+  ],
+  [
+   "73dd90ba-66d2-516a-a188-d9a1f9ff2f17",
+   "d260fa64-7e8a-582d-a498-102d18a1a4dc",
+   "spouse"
+  ],
+  [
+   "8705da32-aac7-5f29-b092-350e342dd6cd",
+   "1d20c9ed-d47c-557b-adb7-53df33295368",
+   "spouse"
   ]
  ],
  "dateflags": [
@@ -40584,6 +41829,132 @@
    "d": 1715,
    "note": "dates connues par ailleurs",
    "script": 72
+  },
+  {
+   "name": "Louise-Ulrique de Prusse",
+   "b": 1720,
+   "d": 1782,
+   "note": "dates connues par ailleurs, non données par la page",
+   "script": 73
+  },
+  {
+   "name": "Sophie-Madeleine de Danemark",
+   "b": 1746,
+   "d": 1813,
+   "note": "dates connues par ailleurs, non données par la page (père : Frédéric V, pas encore en base)",
+   "script": 73
+  },
+  {
+   "name": "Frédérique de Bade",
+   "b": 1781,
+   "d": 1826,
+   "note": "dates connues par ailleurs",
+   "script": 73
+  },
+  {
+   "name": "Désirée Clary",
+   "b": 1777,
+   "d": 1860,
+   "note": "dates connues par ailleurs",
+   "script": 73
+  },
+  {
+   "name": "Joséphine de Leuchtenberg",
+   "b": 1807,
+   "d": 1876,
+   "note": "mort connue par ailleurs",
+   "script": 73
+  },
+  {
+   "name": "Louise des Pays-Bas",
+   "b": 1828,
+   "d": 1871,
+   "note": "naissance connue par ailleurs",
+   "script": 73
+  },
+  {
+   "name": "Louise de Prusse (1808-1870)",
+   "b": 1808,
+   "d": 1870,
+   "note": "dates connues par ailleurs, la page donne 1808-1870",
+   "script": 73
+  },
+  {
+   "name": "Sophie de Nassau",
+   "b": 1836,
+   "d": 1913,
+   "note": "dates connues par ailleurs",
+   "script": 73
+  },
+  {
+   "name": "Ingeborg de Danemark",
+   "b": 1878,
+   "d": 1958,
+   "note": "dates connues par ailleurs",
+   "script": 73
+  },
+  {
+   "name": "Victoria de Bade",
+   "b": 1862,
+   "d": 1930,
+   "note": "mort 1930 donnée par la page ; naissance connue par ailleurs",
+   "script": 73
+  },
+  {
+   "name": "Marguerite de Connaught",
+   "b": 1882,
+   "d": 1920,
+   "note": "dates données par la page de Gustave VI Adolphe",
+   "script": 73
+  },
+  {
+   "name": "Louise Mountbatten",
+   "b": 1889,
+   "d": 1965,
+   "note": "dates données par la page de Gustave VI Adolphe",
+   "script": 73
+  },
+  {
+   "name": "Marie Pavlovna de Russie (1890-1958)",
+   "b": 1890,
+   "d": 1958,
+   "note": "dates données par la page de Gustave V",
+   "script": 73
+  },
+  {
+   "name": "Sibylle de Saxe-Cobourg-Gotha",
+   "b": 1908,
+   "d": 1972,
+   "note": "dates connues par ailleurs, non données par la page de Charles XVI Gustave",
+   "script": 73
+  },
+  {
+   "name": "Silvia Sommerlath",
+   "b": 1943,
+   "d": null,
+   "note": "naissance connue par ailleurs",
+   "script": 73
+  },
+  {
+   "name": "Daniel Westling",
+   "b": 1973,
+   "d": null,
+   "note": "naissance connue par ailleurs",
+   "script": 73
+  },
+  {
+   "name": "Sofia Hellqvist",
+   "b": 1984,
+   "d": null,
+   "note": "naissance connue par ailleurs",
+   "script": 73
+  },
+  {
+   "name": "Christopher O'Neill",
+   "b": 1974,
+   "d": null,
+   "note": "naissance connue par ailleurs",
+   "script": 73
   }
  ],
  "pins": [
@@ -40750,6 +42121,18 @@
   [
    "36ca6e33-35e2-4b57-9fbb-15228aac5d4d",
    "PL_VASA"
+  ],
+  [
+   "838fcf43-d366-568e-bb3f-c0fe980e1c44",
+   "SE_BER"
+  ],
+  [
+   "8b34e776-b6e1-4eeb-a8e5-174a9c0b84c0",
+   "SE_BER"
+  ],
+  [
+   "a78782ce-e7b5-5890-8054-724f647b945a",
+   "SE_BER"
   ]
  ],
  "xmoved": {
