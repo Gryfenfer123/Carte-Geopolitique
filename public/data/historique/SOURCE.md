@@ -20,3 +20,9 @@
 
 **Avertissement des auteurs, à garder en tête** : ces cartes ne montrent qu'une version possible des territoires du
 passé ; les frontières, noms, dates et durées sont souvent débattus par les historiens.
+
+## Noms français (`noms_fr.json`, ajouté le 2026-10-23)
+Les noms français viennent (1) des libellés français de **Wikidata** (données CC0, https://www.wikidata.org), repris
+seulement si le libellé anglais de l'élément Wikidata correspond bien au nom de la source ; (2) à défaut, de
+**traductions proposées par Claude**, signalées comme telles (champ `traduits`) et à relire. Un nom sans équivalent
+reste en anglais. Outils et règles : `scripts/historique/construire_noms_fr.py`.

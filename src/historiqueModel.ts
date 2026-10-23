@@ -83,6 +83,30 @@ export function groupeDeLigne(index: HistoriqueIndex, ligne: Ligne): string {
   return ligne[4] >= 0 ? nomSansParentheses(index.noms[ligne[4]]) : nomDeLigne(index, ligne);
 }
 
+/** Noms français (voir scripts/historique/construire_noms_fr.py) : `fr` = nom anglais sans parenthèses → nom français ;
+ *  `traduits` = ceux qui sont des propositions de traduction (pas issus de Wikidata), à relire. */
+export type NomsFr = { version: number; fr: Record<string, string>; traduits: string[] };
+
+function majuscule(texte: string): string {
+  return texte.charAt(0).toLocaleUpperCase("fr-FR") + texte.slice(1);
+}
+
+/** Nom à afficher : français si on le connaît, sinon le nom d'origine (anglais). Gère « (Ensemble) » et « (A);(B) ». */
+export function nomAffiche(noms: NomsFr | null, nomSource: string): string {
+  return nomSource
+    .split(";")
+    .map((p) => {
+      const sans = nomSansParentheses(p.trim());
+      return majuscule(noms?.fr[sans] ?? sans);
+    })
+    .join(" / ");
+}
+
+/** Vrai si le nom français affiché est une proposition de traduction (et non un libellé Wikidata). */
+export function estTraduction(noms: NomsFr | null, nomSource: string): boolean {
+  return !!noms && nomSource.split(";").some((p) => noms.traduits.includes(nomSansParentheses(p.trim())));
+}
+
 /** Couleur stable d'un groupe : même nom → même couleur à toutes les époques. */
 export function couleurDuGroupe(groupe: string): { remplissage: string; contour: string } {
   let h = 2166136261; // FNV-1a

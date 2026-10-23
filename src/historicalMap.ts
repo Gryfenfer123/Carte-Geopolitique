@@ -28,22 +28,24 @@
 
 import L from "leaflet";
 import "./historique.css";
-import { assurerTraces, chargerIndex, traceChargee } from "./historiqueData";
+import { assurerTraces, chargerIndex, chargerNomsFr, traceChargee } from "./historiqueData";
 import {
   ANNEE_MAX,
   ANNEE_MIN,
   bornerAnnee,
   couleurDuGroupe,
   decoderTrace,
+  estTraduction,
   formatAnnee,
   formatPeriode,
   groupeDeLigne,
   lienWikidata,
   lienWikipedia,
   lignesALAnnee,
+  nomAffiche,
   nomDeLigne,
 } from "./historiqueModel";
-import type { HistoriqueIndex, Ligne, TraceDecodee } from "./historiqueModel";
+import type { HistoriqueIndex, Ligne, NomsFr, TraceDecodee } from "./historiqueModel";
 
 const ANNEE_DE_DEPART = 1500;
 const REGIONS: { nom: string; bornes: L.LatLngBoundsLiteral }[] = [
@@ -60,7 +62,7 @@ const STYLE_SURVOL = { weight: 2.2, fillOpacity: 0.78, opacity: 1 };
 const DELAI_CURSEUR_MS = 120; // on attend que le curseur se pose avant de charger des fichiers
 const MAX_TRACES_EN_MEMOIRE = 4000;
 
-type Visible = { ligne: Ligne; nom: string; groupe: string; decode: TraceDecodee; calque: L.Polygon };
+type Visible = { ligne: Ligne; nom: string; groupe: string; groupeAffiche: string; decode: TraceDecodee; calque: L.Polygon };
 
 export function initHistoricalMapSystem() {
   const $ = <T extends HTMLElement = HTMLElement>(id: string) => document.getElementById(id) as T;
@@ -96,7 +98,7 @@ export function initHistoricalMapSystem() {
       <div id="historical-map-container">
         <div id="historical-info" hidden></div>
       </div>
-      <p id="historical-slider-hint" class="muted">Données : <a href="https://github.com/Seshat-Global-History-Databank/cliopatria" target="_blank" rel="noopener">Cliopatria</a> v0.2.1 — Seshat Global History Databank (Bennett et al., <a href="https://doi.org/10.1038/s41597-025-04516-9" target="_blank" rel="noopener">Scientific Data, 2025</a>), licence <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a> ; contours simplifiés pour le web. Les frontières, noms et dates du passé sont débattus par les historiens : ces cartes montrent une version possible.</p>
+      <p id="historical-slider-hint" class="muted">Données : <a href="https://github.com/Seshat-Global-History-Databank/cliopatria" target="_blank" rel="noopener">Cliopatria</a> v0.2.1 — Seshat Global History Databank (Bennett et al., <a href="https://doi.org/10.1038/s41597-025-04516-9" target="_blank" rel="noopener">Scientific Data, 2025</a>), licence <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a> ; contours simplifiés pour le web. Noms français : <a href="https://www.wikidata.org" target="_blank" rel="noopener">Wikidata</a> (CC0) et traductions de l'équipe. Les frontières, noms et dates du passé sont débattus par les historiens : ces cartes montrent une version possible.</p>
     </div>
   `;
   document.body.appendChild(racine);
@@ -104,6 +106,7 @@ export function initHistoricalMapSystem() {
   let actif = false;
   let annee = ANNEE_DE_DEPART;
   let index: HistoriqueIndex | null = null;
+  let nomsFr: NomsFr | null = null;
   let carte: L.Map | null = null;
   let couchePolygones: L.FeatureGroup | null = null;
   let coucheEtiquettes: L.LayerGroup | null = null;
@@ -173,16 +176,18 @@ export function initHistoricalMapSystem() {
       const brut = traceChargee(idx, ligne[3]);
       if (!brut) continue;
       const decode = decoder(ligne[3], brut);
-      const nom = nomDeLigne(idx, ligne);
-      const groupe = groupeDeLigne(idx, ligne);
+      const nomSource = nomDeLigne(idx, ligne);
+      const nom = nomAffiche(nomsFr, nomSource);
+      const groupe = groupeDeLigne(idx, ligne); // nom d'origine : sert de clé de couleur et de surbrillance
+      const groupeAffiche = nomAffiche(nomsFr, ligne[4] >= 0 ? idx.noms[ligne[4]] : nomSource);
       // bubblingMouseEvents:false → un clic sur un territoire n'est pas pris pour un clic sur le fond (qui ferme la fiche)
       const calque = L.polygon(decode.latlngs, { ...styleDuGroupe(groupe, false), bubblingMouseEvents: false });
-      calque.bindTooltip(groupe !== nom ? `${nom} — ${groupe}` : nom, { sticky: true, className: "historical-tooltip" });
+      calque.bindTooltip(groupeAffiche !== nom ? `${nom} — ${groupeAffiche}` : nom, { sticky: true, className: "historical-tooltip" });
       calque.on("mouseover", () => surligner(groupe, true));
       calque.on("mouseout", () => surligner(groupe, false));
       calque.on("click", () => selectionner(idx, ligne, groupe));
       couchePolygones!.addLayer(calque);
-      visibles.push({ ligne, nom, groupe, decode, calque });
+      visibles.push({ ligne, nom, groupe, groupeAffiche, decode, calque });
     }
     placerEtiquettes();
   }
@@ -219,7 +224,9 @@ export function initHistoricalMapSystem() {
     if (ancien) surligner(ancien, false);
     surligner(groupe, false);
     const meta = idx.meta[ligne[0]];
-    const nom = nomDeLigne(idx, ligne);
+    const nomSource = nomDeLigne(idx, ligne);
+    const nom = nomAffiche(nomsFr, nomSource);
+    const groupeAffiche = nomAffiche(nomsFr, ligne[4] >= 0 ? idx.noms[ligne[4]] : nomSource);
     const wikipedia = lienWikipedia(meta);
     const wikidata = lienWikidata(meta);
     const fiche = $("historical-info");
@@ -232,7 +239,10 @@ export function initHistoricalMapSystem() {
       p.textContent = texte;
       fiche.append(p);
     };
-    if (groupe !== nom) ligneTexte(`Membre de : ${groupe}`);
+    if (groupeAffiche !== nom) ligneTexte(`Membre de : ${groupeAffiche}`);
+    if (nomSource !== nom) {
+      ligneTexte(`Nom d'origine (source, anglais) : ${nomSource}${estTraduction(nomsFr, nomSource) ? " — traduction française proposée, à confirmer" : ""}`);
+    }
     ligneTexte(`Ce tracé vaut pour : ${formatPeriode(ligne[1], ligne[2])}`);
     ligneTexte(`Superficie d'après le tracé : environ ${ligne[5].toLocaleString("fr-FR")} km²`);
     const liens = document.createElement("p");
@@ -279,6 +289,7 @@ export function initHistoricalMapSystem() {
     etiquetteAnnee.classList.add("loading");
     try {
       index ??= await chargerIndex();
+      nomsFr ??= await chargerNomsFr();
       const lignes = lignesALAnnee(index, an);
       await assurerTraces(index, lignes);
       if (mon !== jeton) return; // une sélection plus récente a pris le dessus

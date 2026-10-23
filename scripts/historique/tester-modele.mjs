@@ -94,6 +94,20 @@ verifier((M.lienWikidata(meta) ?? "").startsWith("https://www.wikidata.org/wiki/
 verifier((M.lienWikipedia(meta) ?? "").startsWith("https://en.wikipedia.org/wiki/"), "lien Wikipédia");
 verifier(M.lienWikidata(["x", "", "", ""]) === null && M.lienWikipedia(["x", "", "", ""]) === null, "liens absents → null");
 
+// Noms français
+const nomsFr = JSON.parse(readFileSync(path.join(racine, "noms_fr.json"), "utf8"));
+verifier(M.nomAffiche(nomsFr, "Ming Dynasty") === "Dynastie Ming", `Ming : ${M.nomAffiche(nomsFr, "Ming Dynasty")}`);
+verifier(M.nomAffiche(nomsFr, "(Holy Roman Empire)") === "Saint-Empire romain germanique", "ensemble entre parenthèses → français");
+verifier(M.nomAffiche(nomsFr, "(Kingdom of the Franks);(Merovingian Empire)") === "Royaume des Francs / Empire mérovingien", "ensemble double");
+verifier(M.nomAffiche(null, "Ming Dynasty") === "Ming Dynasty", "sans fichier français → nom d'origine");
+verifier(M.nomAffiche(nomsFr, "Nom inconnu xyz") === "Nom inconnu xyz", "nom inconnu → inchangé");
+verifier(M.nomAffiche({ version: 1, fr: { x: "élam" }, traduits: [] }, "x") === "Élam", "première lettre en majuscule");
+verifier(M.estTraduction(nomsFr, "Roman Empire") === true && M.estTraduction(nomsFr, "Ming Dynasty") === false, "drapeau traduction");
+const sansFr = new Set();
+for (const m of index.meta) if (!nomsFr.fr[M.nomSansParentheses(index.noms[m[0]])]) sansFr.add(index.noms[m[0]]);
+verifier(sansFr.size === 0, `${sansFr.size} entité(s) sans nom français : ${[...sansFr].slice(0, 5)}`);
+verifier(nomsFr.traduits.every((n) => n in nomsFr.fr), "chaque traduction listée existe");
+
 if (echecs > 0) {
   console.error(`\n✘ ${echecs} échec(s)`);
   process.exit(1);

@@ -9,7 +9,7 @@
 // ---------------------------------------------------------------------------
 
 import { morceauDeTrace, morceauxNecessaires } from "./historiqueModel";
-import type { HistoriqueIndex, Ligne, TraceCodee } from "./historiqueModel";
+import type { HistoriqueIndex, Ligne, NomsFr, TraceCodee } from "./historiqueModel";
 
 const BASE = import.meta.env.BASE_URL + "data/historique/";
 
@@ -30,6 +30,22 @@ export function chargerIndex(): Promise<HistoriqueIndex> {
       });
   }
   return promesseIndex;
+}
+
+let promesseNoms: Promise<NomsFr | null> | null = null;
+
+/** Noms français (noms_fr.json). Jamais bloquant : en cas d'échec on affiche les noms d'origine. */
+export function chargerNomsFr(): Promise<NomsFr | null> {
+  promesseNoms ??= fetch(BASE + "noms_fr.json")
+    .then((r) => {
+      if (!r.ok) throw new Error("HTTP " + r.status);
+      return r.json() as Promise<NomsFr>;
+    })
+    .catch((e) => {
+      console.warn("Vue historique : noms français indisponibles, noms d'origine affichés", e);
+      return null;
+    });
+  return promesseNoms;
 }
 
 function chargerMorceau(numero: number): Promise<void> {

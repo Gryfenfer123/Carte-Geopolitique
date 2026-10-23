@@ -1,6 +1,8 @@
 # Chantier « historique » (carte historique) — journal
 
 ## Dernières nouvelles (la plus récente en haut)
+- 2026-10-23 (soir) — **Noms français sur la carte historique** (infobulles, étiquettes, fiche, ensembles) : 1 554 noms, dont 1 210 libellés Wikidata filtrés et **344 traductions proposées par Claude à relire** (listées dans `scripts/historique/traductions_fr.json` ; la fiche l'indique). Vérifié : tests, `check:repo`, `build`, essai navigateur (étiquettes + fiche en français). Non vérifié : relecture historique des 344 traductions, site déployé. Aucune migration.
+  Prochaine étape : relecture des traductions par Martin, puis couche « suzeraineté » (Saint-Empire en un bloc).
 - 2026-10-23 — **Nouvelle carte historique livrée (Cliopatria, année par année, monde entier)** : remplace historical-basemaps. Données allégées dans `public/data/historique/` (13 Mo), outils dans `scripts/historique/`, crédit CC BY dans la page. Retour arrière possible : commit `a3776d7` (l'étiquette Git n'a pas pu être poussée).
   Prochaine étape : valider avec Martin l'aspect sur le site déployé (fonds de carte Esri), puis choisir entre : couche « suzeraineté » (lignes RELATION), noms français via Wikidata, ou lien territoires ↔ fiches / dirigeants des arbres (migration `historique_v1`).
 - 2026-10-23 — étude des sources de données pour la carte historique (voir « Sources étudiées » ci-dessous) ; aucun code touché.
