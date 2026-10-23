@@ -1,0 +1,125 @@
+import sys
+import os; sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), '..'))
+from lib import *
+
+def E(p):
+    return [k for k in ENT if k.startswith(p)][0]
+
+g = Gen(79, "Italie — Médicis : de Giovanni di Bicci aux derniers grands-ducs de Toscane, avec Catherine et Marie de Médicis")
+g.notes = [
+    "Nouvel arbre « Médicis » (aucun n'existait). Rien n'est supprimé.",
+    "Source de la structure : Wikipédia en anglais (House of Medici : tableau des souverains). Dates : connues par ailleurs, la page ne les donne pas toutes ; dates douteuses laissées vides.",
+    "Catherine de Médicis (arbre Valois) et Marie de Médicis (arbre Bourbon) sont affichées ici. Jeanne et Marguerite d'Autriche sont créées dans l'arbre Habsbourg ; Marguerite-Louise d'Orléans dans l'arbre Bourbon.",
+    "Épouses de familles sans arbre (Bardi, Tornabuoni, Orsini, Sforza, Salviati, Tolède, Lorraine, Della Rovere, Saxe-Lauenbourg…) : placées ici et signalées.",
+    "Non fait : branches latérales, enfants naturels (hors Alessandro et Ippolito), cardinaux Médicis, Léon XI.",
+]
+g.tree('IT_MED', 'ITA', 'Médicis', section_title='Médicis')
+g.tree('FR_BOU', 'FRA', 'de Bourbon et Bourbon-Orléans', entry=E('786a379d'))
+g.tree('DE_HAB', 'DEU', 'Habsbourg', entry=E('6b34bc03'))
+g.tree('FR_VAL', 'FRA', 'Valois', entry=E('a92b4627'))
+P, S = g.par, g.sp
+def kids(parents, children):
+    for c in children:
+        for p in parents:
+            P(p, c)
+T = 'IT_MED'
+def M(code, name, b, d, title, g_, tree=T, leader=False, approx=None, dyn='Médicis', flag=None):
+    return g.m(code, name, b, d, title, dyn, tree, g_, leader, approx=approx, flag=flag)
+def W(code, name, b, d, title, house, g_='f', tree=T, approx=None):
+    return M(code, name, b, d, title, g_, tree, dyn=house, approx=approx, flag='Maison %s : sans arbre' % house)
+
+M('md.giovanni_b', 'Giovanni di Bicci de\' Medici', 1360, 1429, 'Fondateur de la banque Médicis', 'h', approx='naissance vers 1360')
+W('md.piccarda', 'Piccarda Bueri', None, None, 'Épouse de Giovanni di Bicci', 'Bueri', approx='dates non données')
+S('md.giovanni_b', 'md.piccarda')
+M('md.cosimo_v', 'Cosimo l\'Ancien', 1389, 1464, 'Maître de Florence (1434-1464)', 'h', leader=True)
+M('md.lorenzo_v', 'Lorenzo l\'Ancien', 1395, 1440, 'Frère de Cosimo, souche de la branche cadette', 'h')
+kids(['md.giovanni_b', 'md.piccarda'], ['md.cosimo_v', 'md.lorenzo_v'])
+W('md.contessina', "Contessina de' Bardi", None, None, 'Épouse de Cosimo l\'Ancien', 'Bardi', approx='dates non données')
+S('md.cosimo_v', 'md.contessina')
+M('md.piero1', 'Piero Ier le Goutteux', 1416, 1469, 'Maître de Florence (1464-1469)', 'h', leader=True)
+M('md.giovanni_c', 'Giovanni di Cosimo', 1421, 1463, 'Fils de Cosimo l\'Ancien', 'h')
+kids(['md.cosimo_v', 'md.contessina'], ['md.piero1', 'md.giovanni_c'])
+W('md.lucrezia_t', 'Lucrezia Tornabuoni', 1425, 1482, 'Épouse de Piero le Goutteux', 'Tornabuoni')
+S('md.piero1', 'md.lucrezia_t')
+M('md.lorenzo', 'Laurent le Magnifique', 1449, 1492, 'Maître de Florence (1469-1492)', 'h', leader=True)
+M('md.giuliano', 'Julien de Médicis', 1453, 1478, 'Frère de Laurent, tué lors de la conjuration des Pazzi', 'h')
+kids(['md.piero1', 'md.lucrezia_t'], ['md.lorenzo', 'md.giuliano'])
+W('md.clarice', 'Clarice Orsini', 1453, 1488, 'Épouse de Laurent le Magnifique', 'Orsini')
+S('md.lorenzo', 'md.clarice')
+M('md.piero2', 'Pierre II l\'Infortuné', 1472, 1503, 'Maître de Florence (1492-1494)', 'h', leader=True)
+M('md.leo10', 'Léon X (Giovanni de Médicis)', 1475, 1521, 'Pape (1513-1521)', 'h', leader=True)
+M('md.giuliano_n', 'Julien de Médicis, duc de Nemours', 1479, 1516, 'Duc de Nemours', 'h', leader=True)
+kids(['md.lorenzo', 'md.clarice'], ['md.piero2', 'md.leo10', 'md.giuliano_n'])
+M('md.clement7', 'Clément VII (Giulio de Médicis)', 1478, 1534, 'Pape (1523-1534)', 'h', leader=True, approx='fils naturel de Julien (+1478)')
+P('md.giuliano', 'md.clement7')
+M('md.ippolito', 'Hippolyte de Médicis', 1511, 1535, 'Cardinal, maître de Florence (1523-1529)', 'h', leader=True, approx='fils naturel de Julien de Nemours')
+P('md.giuliano_n', 'md.ippolito')
+W('md.alfonsina', 'Alfonsina Orsini', 1472, 1520, 'Épouse de Pierre II', 'Orsini')
+S('md.piero2', 'md.alfonsina')
+M('md.lorenzo2', 'Laurent II, duc d\'Urbin', 1492, 1519, "Duc d'Urbin, maître de Florence", 'h', leader=True)
+kids(['md.piero2', 'md.alfonsina'], ['md.lorenzo2'])
+W('md.madeleine_tour', "Madeleine de La Tour d'Auvergne", 1500, 1519, "Duchesse d'Urbin, mère de Catherine", "La Tour d'Auvergne")
+S('md.lorenzo2', 'md.madeleine_tour')
+CATH = R('401b55d7')
+kids(['md.lorenzo2', 'md.madeleine_tour'], [CATH]); g.pin(CATH, T)
+M('md.alessandro', 'Alexandre de Médicis', 1510, 1537, 'Premier duc de Florence', 'h', leader=True, approx='fils de Laurent II ou de Clément VII (incertain)')
+P('md.lorenzo2', 'md.alessandro')
+M('md.margaret_a', 'Marguerite d\'Autriche (fille naturelle de Charles Quint)', 1522, 1586, 'Duchesse de Florence puis de Parme', 'f', 'DE_HAB', dyn='Habsbourg')
+P(R('13608e16'), 'md.margaret_a')
+S('md.alessandro', 'md.margaret_a'); g.pin('md.margaret_a', T)
+# branche cadette -> Cosimo Ier
+M('md.pierfrancesco', 'Pierfrancesco de Médicis', 1430, 1476, 'Fils de Lorenzo l\'Ancien', 'h')
+P('md.lorenzo_v', 'md.pierfrancesco')
+M('md.giovanni_pop', 'Jean le Popolain', 1467, 1498, 'Fils de Pierfrancesco', 'h')
+P('md.pierfrancesco', 'md.giovanni_pop')
+W('md.caterina_sf', 'Caterina Sforza', 1463, 1509, 'Comtesse de Forlì, épouse de Jean le Popolain', 'Sforza')
+S('md.giovanni_pop', 'md.caterina_sf')
+M('md.gbn', 'Jean des Bandes Noires', 1498, 1526, 'Condottiere, père de Cosimo Ier', 'h')
+kids(['md.giovanni_pop', 'md.caterina_sf'], ['md.gbn'])
+W('md.salviati', 'Maria Salviati', 1499, 1543, 'Épouse de Jean des Bandes Noires', 'Salviati')
+S('md.gbn', 'md.salviati')
+M('md.cosimo1', 'Cosme Ier', 1519, 1574, 'Duc de Florence, premier grand-duc de Toscane', 'h', leader=True)
+kids(['md.gbn', 'md.salviati'], ['md.cosimo1'])
+W('md.eleonora_t', 'Éléonore de Tolède', 1522, 1562, 'Duchesse de Florence', 'Tolède')
+S('md.cosimo1', 'md.eleonora_t')
+M('md.francesco1', 'François Ier', 1541, 1587, 'Grand-duc de Toscane', 'h', leader=True)
+M('md.ferdinando1', 'Ferdinand Ier', 1549, 1609, 'Grand-duc de Toscane', 'h', leader=True)
+M('md.isabella', 'Isabelle de Médicis', 1542, 1576, 'Duchesse de Bracciano', 'f')
+kids(['md.cosimo1', 'md.eleonora_t'], ['md.francesco1', 'md.ferdinando1', 'md.isabella'])
+JOAN = R('b5893e2e')
+S('md.francesco1', JOAN); g.pin(JOAN, T)
+W('md.bianca', 'Bianca Cappello', 1548, 1587, 'Seconde épouse de François Ier', 'Cappello')
+S('md.francesco1', 'md.bianca')
+MARIE = R('2b61583b')
+kids(['md.francesco1', JOAN], [MARIE]); g.pin(MARIE, T)
+M('md.eleonora_m', 'Éléonore de Médicis', 1567, 1611, 'Duchesse de Mantoue', 'f')
+kids(['md.francesco1', JOAN], ['md.eleonora_m'])
+W('md.christine_l', 'Christine de Lorraine', 1565, 1637, 'Grande-duchesse de Toscane', 'Lorraine')
+S('md.ferdinando1', 'md.christine_l')
+M('md.cosimo2', 'Cosme II', 1590, 1621, 'Grand-duc de Toscane', 'h', leader=True)
+kids(['md.ferdinando1', 'md.christine_l'], ['md.cosimo2'])
+M('md.mm_autriche', 'Marie-Madeleine d\'Autriche', 1589, 1631, 'Grande-duchesse de Toscane', 'f', 'DE_HAB', dyn='Habsbourg')
+P(R('323fddf6'), 'md.mm_autriche')
+S('md.cosimo2', 'md.mm_autriche'); g.pin('md.mm_autriche', T)
+M('md.ferdinando2', 'Ferdinand II', 1610, 1670, 'Grand-duc de Toscane', 'h', leader=True)
+kids(['md.cosimo2', 'md.mm_autriche'], ['md.ferdinando2'])
+W('md.vittoria', 'Victoire della Rovere', 1622, 1694, 'Grande-duchesse de Toscane', 'Della Rovere')
+S('md.ferdinando2', 'md.vittoria')
+M('md.cosimo3', 'Cosme III', 1642, 1723, 'Grand-duc de Toscane', 'h', leader=True)
+kids(['md.ferdinando2', 'md.vittoria'], ['md.cosimo3'])
+M('fr.marg_lorraine', 'Marguerite de Lorraine', 1615, 1672, "Duchesse d'Orléans, seconde épouse de Gaston", 'f', 'FR_BOU', dyn='Lorraine', flag='Maison Lorraine : sans arbre')
+M('md.margl', "Marguerite-Louise d'Orléans", 1645, 1721, 'Grande-duchesse de Toscane', 'f', 'FR_BOU', dyn='Orléans')
+kids(['fr.gaston', 'fr.marg_lorraine'], ['md.margl']); S('fr.gaston', 'fr.marg_lorraine')
+g.pin('md.margl', T)
+S('md.cosimo3', 'md.margl')
+M('md.ferdinando_g', 'Ferdinand de Médicis, grand-prince', 1663, 1713, 'Héritier non couronné de Toscane', 'h')
+M('md.aml', 'Anne-Marie-Louise de Médicis', 1667, 1743, 'Électrice palatine, dernière des Médicis', 'f')
+M('md.gian_gastone', 'Jean-Gaston', 1671, 1737, 'Dernier grand-duc de Toscane', 'h', leader=True)
+kids(['md.cosimo3', 'md.margl'], ['md.ferdinando_g', 'md.aml', 'md.gian_gastone'])
+JW = R('32b5e90e')
+S(JW, 'md.aml'); g.pin(JW, T)
+W('md.anna_sl', 'Anne-Marie-Françoise de Saxe-Lauenbourg', 1672, 1741, 'Grande-duchesse de Toscane', 'Saxe-Lauenbourg')
+S('md.gian_gastone', 'md.anna_sl')
+
+g.reposition = {'IT_MED'}
+g.write()

@@ -151,4 +151,5 @@ RLS**. Règles :
 | arbres_v76 | arbres_v76 : Suède médiévale (nouvel arbre, 80 membres) |
 | arbres_v77 | arbres_v77 : Bourbons de France et Orléans (51 membres) |
 | arbres_v78 | arbres_v78 : Bonaparte (18 membres) |
+| arbres_v79 | arbres_v79 : Médicis (nouvel arbre, 45 membres) |
 | `data_owid_load.sql` + `owid_chunks/` | Chargement des données d'indicateurs (rejouable, upserts) — à exécuter après v1 à v7 |

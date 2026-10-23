@@ -19330,6 +19330,456 @@
    "title": "Prince Napoléon, héritier bonapartiste",
    "g": "h",
    "script": 78
+  },
+  "md.giovanni_b": {
+   "id": "15974c82-b86f-5053-b6fe-2e377024f361",
+   "name": "Giovanni di Bicci de' Medici",
+   "b": 1360,
+   "d": 1429,
+   "tree": "IT_MED",
+   "title": "Fondateur de la banque Médicis",
+   "g": "h",
+   "script": 79
+  },
+  "md.piccarda": {
+   "id": "94fd6cfc-8880-58b4-9350-eabe6a188060",
+   "name": "Piccarda Bueri",
+   "b": null,
+   "d": null,
+   "tree": "IT_MED",
+   "title": "Épouse de Giovanni di Bicci",
+   "g": "f",
+   "script": 79
+  },
+  "md.cosimo_v": {
+   "id": "0daae3a4-4738-56e9-be9c-30d30c2ce5ff",
+   "name": "Cosimo l'Ancien",
+   "b": 1389,
+   "d": 1464,
+   "tree": "IT_MED",
+   "title": "Maître de Florence (1434-1464)",
+   "g": "h",
+   "script": 79
+  },
+  "md.lorenzo_v": {
+   "id": "92299032-2e3c-552e-83f2-ec10f8094385",
+   "name": "Lorenzo l'Ancien",
+   "b": 1395,
+   "d": 1440,
+   "tree": "IT_MED",
+   "title": "Frère de Cosimo, souche de la branche cadette",
+   "g": "h",
+   "script": 79
+  },
+  "md.contessina": {
+   "id": "2eeccb07-f268-50c3-a933-624ef80d1231",
+   "name": "Contessina de' Bardi",
+   "b": null,
+   "d": null,
+   "tree": "IT_MED",
+   "title": "Épouse de Cosimo l'Ancien",
+   "g": "f",
+   "script": 79
+  },
+  "md.piero1": {
+   "id": "f110cd83-3c6b-5876-a7c0-ca43f325840c",
+   "name": "Piero Ier le Goutteux",
+   "b": 1416,
+   "d": 1469,
+   "tree": "IT_MED",
+   "title": "Maître de Florence (1464-1469)",
+   "g": "h",
+   "script": 79
+  },
+  "md.giovanni_c": {
+   "id": "487ed0a7-70ee-5f7f-871e-67b92c3da18d",
+   "name": "Giovanni di Cosimo",
+   "b": 1421,
+   "d": 1463,
+   "tree": "IT_MED",
+   "title": "Fils de Cosimo l'Ancien",
+   "g": "h",
+   "script": 79
+  },
+  "md.lucrezia_t": {
+   "id": "1d12dc56-e857-5d2c-a2ab-d89c5c325d85",
+   "name": "Lucrezia Tornabuoni",
+   "b": 1425,
+   "d": 1482,
+   "tree": "IT_MED",
+   "title": "Épouse de Piero le Goutteux",
+   "g": "f",
+   "script": 79
+  },
+  "md.lorenzo": {
+   "id": "07d33fc7-3eb4-5479-b0df-a1edf2619da7",
+   "name": "Laurent le Magnifique",
+   "b": 1449,
+   "d": 1492,
+   "tree": "IT_MED",
+   "title": "Maître de Florence (1469-1492)",
+   "g": "h",
+   "script": 79
+  },
+  "md.giuliano": {
+   "id": "a82bed61-7d43-5ec4-a576-bbe12aa7fa93",
+   "name": "Julien de Médicis",
+   "b": 1453,
+   "d": 1478,
+   "tree": "IT_MED",
+   "title": "Frère de Laurent, tué lors de la conjuration des Pazzi",
+   "g": "h",
+   "script": 79
+  },
+  "md.clarice": {
+   "id": "473d1033-81e4-5174-9e01-12cfebc276e3",
+   "name": "Clarice Orsini",
+   "b": 1453,
+   "d": 1488,
+   "tree": "IT_MED",
+   "title": "Épouse de Laurent le Magnifique",
+   "g": "f",
+   "script": 79
+  },
+  "md.piero2": {
+   "id": "22f423cd-89ba-5255-9d98-37a1c8956efd",
+   "name": "Pierre II l'Infortuné",
+   "b": 1472,
+   "d": 1503,
+   "tree": "IT_MED",
+   "title": "Maître de Florence (1492-1494)",
+   "g": "h",
+   "script": 79
+  },
+  "md.leo10": {
+   "id": "5caa0f9c-5e16-5e32-a071-2526f2dec9fd",
+   "name": "Léon X (Giovanni de Médicis)",
+   "b": 1475,
+   "d": 1521,
+   "tree": "IT_MED",
+   "title": "Pape (1513-1521)",
+   "g": "h",
+   "script": 79
+  },
+  "md.giuliano_n": {
+   "id": "82197180-d29c-5b7f-9595-0c1b74f0aef6",
+   "name": "Julien de Médicis, duc de Nemours",
+   "b": 1479,
+   "d": 1516,
+   "tree": "IT_MED",
+   "title": "Duc de Nemours",
+   "g": "h",
+   "script": 79
+  },
+  "md.clement7": {
+   "id": "bbf70094-e263-5337-968f-a3fae7835bd4",
+   "name": "Clément VII (Giulio de Médicis)",
+   "b": 1478,
+   "d": 1534,
+   "tree": "IT_MED",
+   "title": "Pape (1523-1534)",
+   "g": "h",
+   "script": 79
+  },
+  "md.ippolito": {
+   "id": "35efa46f-84ba-54ee-bd24-916f7ad2ba55",
+   "name": "Hippolyte de Médicis",
+   "b": 1511,
+   "d": 1535,
+   "tree": "IT_MED",
+   "title": "Cardinal, maître de Florence (1523-1529)",
+   "g": "h",
+   "script": 79
+  },
+  "md.alfonsina": {
+   "id": "64ae5624-7b99-5426-a103-e2d1aac61d65",
+   "name": "Alfonsina Orsini",
+   "b": 1472,
+   "d": 1520,
+   "tree": "IT_MED",
+   "title": "Épouse de Pierre II",
+   "g": "f",
+   "script": 79
+  },
+  "md.lorenzo2": {
+   "id": "5f0e9877-fa0a-5ff6-b50c-19eab2fded6a",
+   "name": "Laurent II, duc d'Urbin",
+   "b": 1492,
+   "d": 1519,
+   "tree": "IT_MED",
+   "title": "Duc d'Urbin, maître de Florence",
+   "g": "h",
+   "script": 79
+  },
+  "md.madeleine_tour": {
+   "id": "ee400799-a106-5fc8-adad-0a556e0807d8",
+   "name": "Madeleine de La Tour d'Auvergne",
+   "b": 1500,
+   "d": 1519,
+   "tree": "IT_MED",
+   "title": "Duchesse d'Urbin, mère de Catherine",
+   "g": "f",
+   "script": 79
+  },
+  "md.alessandro": {
+   "id": "2f14d3ea-6f2f-52e1-a38f-44d63b72de76",
+   "name": "Alexandre de Médicis",
+   "b": 1510,
+   "d": 1537,
+   "tree": "IT_MED",
+   "title": "Premier duc de Florence",
+   "g": "h",
+   "script": 79
+  },
+  "md.margaret_a": {
+   "id": "60980970-8d53-5628-b0dd-7baadfa1e7e7",
+   "name": "Marguerite d'Autriche (fille naturelle de Charles Quint)",
+   "b": 1522,
+   "d": 1586,
+   "tree": "DE_HAB",
+   "title": "Duchesse de Florence puis de Parme",
+   "g": "f",
+   "script": 79
+  },
+  "md.pierfrancesco": {
+   "id": "84f2ab55-9f1e-59cf-9b68-1bb7ac20c27f",
+   "name": "Pierfrancesco de Médicis",
+   "b": 1430,
+   "d": 1476,
+   "tree": "IT_MED",
+   "title": "Fils de Lorenzo l'Ancien",
+   "g": "h",
+   "script": 79
+  },
+  "md.giovanni_pop": {
+   "id": "57f560f5-8ba8-5d1e-abd2-7ffcd3721259",
+   "name": "Jean le Popolain",
+   "b": 1467,
+   "d": 1498,
+   "tree": "IT_MED",
+   "title": "Fils de Pierfrancesco",
+   "g": "h",
+   "script": 79
+  },
+  "md.caterina_sf": {
+   "id": "387d26db-cc1c-5e89-91f4-d53946159d36",
+   "name": "Caterina Sforza",
+   "b": 1463,
+   "d": 1509,
+   "tree": "IT_MED",
+   "title": "Comtesse de Forlì, épouse de Jean le Popolain",
+   "g": "f",
+   "script": 79
+  },
+  "md.gbn": {
+   "id": "be0c6999-1699-5080-8530-c74129fc3684",
+   "name": "Jean des Bandes Noires",
+   "b": 1498,
+   "d": 1526,
+   "tree": "IT_MED",
+   "title": "Condottiere, père de Cosimo Ier",
+   "g": "h",
+   "script": 79
+  },
+  "md.salviati": {
+   "id": "3cbb56f4-c550-5ab8-acfe-3fd06489b0c5",
+   "name": "Maria Salviati",
+   "b": 1499,
+   "d": 1543,
+   "tree": "IT_MED",
+   "title": "Épouse de Jean des Bandes Noires",
+   "g": "f",
+   "script": 79
+  },
+  "md.cosimo1": {
+   "id": "38414dbd-38b9-56b3-a1e6-5a7f32927af4",
+   "name": "Cosme Ier",
+   "b": 1519,
+   "d": 1574,
+   "tree": "IT_MED",
+   "title": "Duc de Florence, premier grand-duc de Toscane",
+   "g": "h",
+   "script": 79
+  },
+  "md.eleonora_t": {
+   "id": "8974197c-5642-5687-9532-cd5838830e02",
+   "name": "Éléonore de Tolède",
+   "b": 1522,
+   "d": 1562,
+   "tree": "IT_MED",
+   "title": "Duchesse de Florence",
+   "g": "f",
+   "script": 79
+  },
+  "md.francesco1": {
+   "id": "98562bc3-d046-5922-b744-acd374c2056b",
+   "name": "François Ier",
+   "b": 1541,
+   "d": 1587,
+   "tree": "IT_MED",
+   "title": "Grand-duc de Toscane",
+   "g": "h",
+   "script": 79
+  },
+  "md.ferdinando1": {
+   "id": "061bcb61-8db7-5caf-be4c-cda052d67e1d",
+   "name": "Ferdinand Ier",
+   "b": 1549,
+   "d": 1609,
+   "tree": "IT_MED",
+   "title": "Grand-duc de Toscane",
+   "g": "h",
+   "script": 79
+  },
+  "md.isabella": {
+   "id": "3263323d-5323-56ec-8009-9252393b9031",
+   "name": "Isabelle de Médicis",
+   "b": 1542,
+   "d": 1576,
+   "tree": "IT_MED",
+   "title": "Duchesse de Bracciano",
+   "g": "f",
+   "script": 79
+  },
+  "md.bianca": {
+   "id": "8cfd9ecd-4064-5fe0-be57-f2b12094b2cd",
+   "name": "Bianca Cappello",
+   "b": 1548,
+   "d": 1587,
+   "tree": "IT_MED",
+   "title": "Seconde épouse de François Ier",
+   "g": "f",
+   "script": 79
+  },
+  "md.eleonora_m": {
+   "id": "376de58a-617f-5d5a-98cc-79695efc3ede",
+   "name": "Éléonore de Médicis",
+   "b": 1567,
+   "d": 1611,
+   "tree": "IT_MED",
+   "title": "Duchesse de Mantoue",
+   "g": "f",
+   "script": 79
+  },
+  "md.christine_l": {
+   "id": "b68e21d4-1f1f-54a6-816a-c0bc17451299",
+   "name": "Christine de Lorraine",
+   "b": 1565,
+   "d": 1637,
+   "tree": "IT_MED",
+   "title": "Grande-duchesse de Toscane",
+   "g": "f",
+   "script": 79
+  },
+  "md.cosimo2": {
+   "id": "507c3d51-bc0e-5fd3-98f4-d80f2a501503",
+   "name": "Cosme II",
+   "b": 1590,
+   "d": 1621,
+   "tree": "IT_MED",
+   "title": "Grand-duc de Toscane",
+   "g": "h",
+   "script": 79
+  },
+  "md.mm_autriche": {
+   "id": "9d06c682-eab3-5cac-81f3-0233c71b71e1",
+   "name": "Marie-Madeleine d'Autriche",
+   "b": 1589,
+   "d": 1631,
+   "tree": "DE_HAB",
+   "title": "Grande-duchesse de Toscane",
+   "g": "f",
+   "script": 79
+  },
+  "md.ferdinando2": {
+   "id": "02d920d4-bab9-5ae6-852e-cb65b82bde80",
+   "name": "Ferdinand II",
+   "b": 1610,
+   "d": 1670,
+   "tree": "IT_MED",
+   "title": "Grand-duc de Toscane",
+   "g": "h",
+   "script": 79
+  },
+  "md.vittoria": {
+   "id": "34cf979b-f42a-5f06-901b-ec4f7db09108",
+   "name": "Victoire della Rovere",
+   "b": 1622,
+   "d": 1694,
+   "tree": "IT_MED",
+   "title": "Grande-duchesse de Toscane",
+   "g": "f",
+   "script": 79
+  },
+  "md.cosimo3": {
+   "id": "29b7c014-3fb2-5182-bbda-39ad4a34de24",
+   "name": "Cosme III",
+   "b": 1642,
+   "d": 1723,
+   "tree": "IT_MED",
+   "title": "Grand-duc de Toscane",
+   "g": "h",
+   "script": 79
+  },
+  "fr.marg_lorraine": {
+   "id": "f2292393-d302-558a-80e5-bdee83f0df1f",
+   "name": "Marguerite de Lorraine",
+   "b": 1615,
+   "d": 1672,
+   "tree": "FR_BOU",
+   "title": "Duchesse d'Orléans, seconde épouse de Gaston",
+   "g": "f",
+   "script": 79
+  },
+  "md.margl": {
+   "id": "895a4460-54b6-53fe-a2ba-0d52fb3d63f2",
+   "name": "Marguerite-Louise d'Orléans",
+   "b": 1645,
+   "d": 1721,
+   "tree": "FR_BOU",
+   "title": "Grande-duchesse de Toscane",
+   "g": "f",
+   "script": 79
+  },
+  "md.ferdinando_g": {
+   "id": "78598cea-314f-520a-a1ad-ae3ded159e85",
+   "name": "Ferdinand de Médicis, grand-prince",
+   "b": 1663,
+   "d": 1713,
+   "tree": "IT_MED",
+   "title": "Héritier non couronné de Toscane",
+   "g": "h",
+   "script": 79
+  },
+  "md.aml": {
+   "id": "6fe70583-e9b4-5bcd-81d2-7fc22ad59c12",
+   "name": "Anne-Marie-Louise de Médicis",
+   "b": 1667,
+   "d": 1743,
+   "tree": "IT_MED",
+   "title": "Électrice palatine, dernière des Médicis",
+   "g": "f",
+   "script": 79
+  },
+  "md.gian_gastone": {
+   "id": "d8a54c67-b656-552c-9589-601a14cdccb9",
+   "name": "Jean-Gaston",
+   "b": 1671,
+   "d": 1737,
+   "tree": "IT_MED",
+   "title": "Dernier grand-duc de Toscane",
+   "g": "h",
+   "script": 79
+  },
+  "md.anna_sl": {
+   "id": "008ef7cc-1350-5c86-93c1-5ed1011345cf",
+   "name": "Anne-Marie-Françoise de Saxe-Lauenbourg",
+   "b": 1672,
+   "d": 1741,
+   "tree": "IT_MED",
+   "title": "Grande-duchesse de Toscane",
+   "g": "f",
+   "script": 79
   }
  },
  "trees": {
@@ -19872,6 +20322,12 @@
    "country": "FRA",
    "dynasty": "Valois",
    "script": null
+  },
+  "IT_MED": {
+   "entry": "31ab743f-533f-5c1b-b317-728a4e0067b5",
+   "country": "ITA",
+   "dynasty": "Médicis",
+   "script": 79
   }
  },
  "flags": [
@@ -23724,6 +24180,104 @@
    "tree": "FR_BON",
    "reason": "Maison Wurtemberg : sans arbre",
    "script": 78
+  },
+  {
+   "name": "Piccarda Bueri",
+   "b": null,
+   "tree": "IT_MED",
+   "reason": "Maison Bueri : sans arbre",
+   "script": 79
+  },
+  {
+   "name": "Contessina de' Bardi",
+   "b": null,
+   "tree": "IT_MED",
+   "reason": "Maison Bardi : sans arbre",
+   "script": 79
+  },
+  {
+   "name": "Lucrezia Tornabuoni",
+   "b": 1425,
+   "tree": "IT_MED",
+   "reason": "Maison Tornabuoni : sans arbre",
+   "script": 79
+  },
+  {
+   "name": "Clarice Orsini",
+   "b": 1453,
+   "tree": "IT_MED",
+   "reason": "Maison Orsini : sans arbre",
+   "script": 79
+  },
+  {
+   "name": "Alfonsina Orsini",
+   "b": 1472,
+   "tree": "IT_MED",
+   "reason": "Maison Orsini : sans arbre",
+   "script": 79
+  },
+  {
+   "name": "Madeleine de La Tour d'Auvergne",
+   "b": 1500,
+   "tree": "IT_MED",
+   "reason": "Maison La Tour d'Auvergne : sans arbre",
+   "script": 79
+  },
+  {
+   "name": "Caterina Sforza",
+   "b": 1463,
+   "tree": "IT_MED",
+   "reason": "Maison Sforza : sans arbre",
+   "script": 79
+  },
+  {
+   "name": "Maria Salviati",
+   "b": 1499,
+   "tree": "IT_MED",
+   "reason": "Maison Salviati : sans arbre",
+   "script": 79
+  },
+  {
+   "name": "Éléonore de Tolède",
+   "b": 1522,
+   "tree": "IT_MED",
+   "reason": "Maison Tolède : sans arbre",
+   "script": 79
+  },
+  {
+   "name": "Bianca Cappello",
+   "b": 1548,
+   "tree": "IT_MED",
+   "reason": "Maison Cappello : sans arbre",
+   "script": 79
+  },
+  {
+   "name": "Christine de Lorraine",
+   "b": 1565,
+   "tree": "IT_MED",
+   "reason": "Maison Lorraine : sans arbre",
+   "script": 79
+  },
+  {
+   "name": "Victoire della Rovere",
+   "b": 1622,
+   "tree": "IT_MED",
+   "reason": "Maison Della Rovere : sans arbre",
+   "script": 79
+  },
+  {
+   "name": "Marguerite de Lorraine",
+   "b": 1615,
+   "tree": "FR_BOU",
+   "reason": "Maison Lorraine : sans arbre",
+   "script": 79
+  },
+  {
+   "name": "Anne-Marie-Françoise de Saxe-Lauenbourg",
+   "b": 1672,
+   "tree": "IT_MED",
+   "reason": "Maison Saxe-Lauenbourg : sans arbre",
+   "script": 79
   }
  ],
  "scripts": {
@@ -24038,6 +24592,14 @@
    "members": 18,
    "rels": 38,
    "trees": []
+  },
+  "79": {
+   "label": "Italie — Médicis : de Giovanni di Bicci aux derniers grands-ducs de Toscane, avec Catherine et Marie de Médicis",
+   "members": 45,
+   "rels": 76,
+   "trees": [
+    "Médicis (ITA)"
+   ]
   }
  },
  "relist": [
@@ -41070,6 +41632,386 @@
    "e414da9b-4492-586c-b5cc-53ca54ab4bc7",
    "e74c9a1b-b487-5f11-8810-39f58b735c2d",
    "parent"
+  ],
+  [
+   "15974c82-b86f-5053-b6fe-2e377024f361",
+   "94fd6cfc-8880-58b4-9350-eabe6a188060",
+   "spouse"
+  ],
+  [
+   "15974c82-b86f-5053-b6fe-2e377024f361",
+   "0daae3a4-4738-56e9-be9c-30d30c2ce5ff",
+   "parent"
+  ],
+  [
+   "94fd6cfc-8880-58b4-9350-eabe6a188060",
+   "0daae3a4-4738-56e9-be9c-30d30c2ce5ff",
+   "parent"
+  ],
+  [
+   "15974c82-b86f-5053-b6fe-2e377024f361",
+   "92299032-2e3c-552e-83f2-ec10f8094385",
+   "parent"
+  ],
+  [
+   "94fd6cfc-8880-58b4-9350-eabe6a188060",
+   "92299032-2e3c-552e-83f2-ec10f8094385",
+   "parent"
+  ],
+  [
+   "0daae3a4-4738-56e9-be9c-30d30c2ce5ff",
+   "2eeccb07-f268-50c3-a933-624ef80d1231",
+   "spouse"
+  ],
+  [
+   "0daae3a4-4738-56e9-be9c-30d30c2ce5ff",
+   "f110cd83-3c6b-5876-a7c0-ca43f325840c",
+   "parent"
+  ],
+  [
+   "2eeccb07-f268-50c3-a933-624ef80d1231",
+   "f110cd83-3c6b-5876-a7c0-ca43f325840c",
+   "parent"
+  ],
+  [
+   "0daae3a4-4738-56e9-be9c-30d30c2ce5ff",
+   "487ed0a7-70ee-5f7f-871e-67b92c3da18d",
+   "parent"
+  ],
+  [
+   "2eeccb07-f268-50c3-a933-624ef80d1231",
+   "487ed0a7-70ee-5f7f-871e-67b92c3da18d",
+   "parent"
+  ],
+  [
+   "f110cd83-3c6b-5876-a7c0-ca43f325840c",
+   "1d12dc56-e857-5d2c-a2ab-d89c5c325d85",
+   "spouse"
+  ],
+  [
+   "f110cd83-3c6b-5876-a7c0-ca43f325840c",
+   "07d33fc7-3eb4-5479-b0df-a1edf2619da7",
+   "parent"
+  ],
+  [
+   "1d12dc56-e857-5d2c-a2ab-d89c5c325d85",
+   "07d33fc7-3eb4-5479-b0df-a1edf2619da7",
+   "parent"
+  ],
+  [
+   "f110cd83-3c6b-5876-a7c0-ca43f325840c",
+   "a82bed61-7d43-5ec4-a576-bbe12aa7fa93",
+   "parent"
+  ],
+  [
+   "1d12dc56-e857-5d2c-a2ab-d89c5c325d85",
+   "a82bed61-7d43-5ec4-a576-bbe12aa7fa93",
+   "parent"
+  ],
+  [
+   "07d33fc7-3eb4-5479-b0df-a1edf2619da7",
+   "473d1033-81e4-5174-9e01-12cfebc276e3",
+   "spouse"
+  ],
+  [
+   "07d33fc7-3eb4-5479-b0df-a1edf2619da7",
+   "22f423cd-89ba-5255-9d98-37a1c8956efd",
+   "parent"
+  ],
+  [
+   "473d1033-81e4-5174-9e01-12cfebc276e3",
+   "22f423cd-89ba-5255-9d98-37a1c8956efd",
+   "parent"
+  ],
+  [
+   "07d33fc7-3eb4-5479-b0df-a1edf2619da7",
+   "5caa0f9c-5e16-5e32-a071-2526f2dec9fd",
+   "parent"
+  ],
+  [
+   "473d1033-81e4-5174-9e01-12cfebc276e3",
+   "5caa0f9c-5e16-5e32-a071-2526f2dec9fd",
+   "parent"
+  ],
+  [
+   "07d33fc7-3eb4-5479-b0df-a1edf2619da7",
+   "82197180-d29c-5b7f-9595-0c1b74f0aef6",
+   "parent"
+  ],
+  [
+   "473d1033-81e4-5174-9e01-12cfebc276e3",
+   "82197180-d29c-5b7f-9595-0c1b74f0aef6",
+   "parent"
+  ],
+  [
+   "a82bed61-7d43-5ec4-a576-bbe12aa7fa93",
+   "bbf70094-e263-5337-968f-a3fae7835bd4",
+   "parent"
+  ],
+  [
+   "82197180-d29c-5b7f-9595-0c1b74f0aef6",
+   "35efa46f-84ba-54ee-bd24-916f7ad2ba55",
+   "parent"
+  ],
+  [
+   "22f423cd-89ba-5255-9d98-37a1c8956efd",
+   "64ae5624-7b99-5426-a103-e2d1aac61d65",
+   "spouse"
+  ],
+  [
+   "22f423cd-89ba-5255-9d98-37a1c8956efd",
+   "5f0e9877-fa0a-5ff6-b50c-19eab2fded6a",
+   "parent"
+  ],
+  [
+   "64ae5624-7b99-5426-a103-e2d1aac61d65",
+   "5f0e9877-fa0a-5ff6-b50c-19eab2fded6a",
+   "parent"
+  ],
+  [
+   "5f0e9877-fa0a-5ff6-b50c-19eab2fded6a",
+   "ee400799-a106-5fc8-adad-0a556e0807d8",
+   "spouse"
+  ],
+  [
+   "5f0e9877-fa0a-5ff6-b50c-19eab2fded6a",
+   "401b55d7-2a9c-44f3-991e-f677a497b2db",
+   "parent"
+  ],
+  [
+   "ee400799-a106-5fc8-adad-0a556e0807d8",
+   "401b55d7-2a9c-44f3-991e-f677a497b2db",
+   "parent"
+  ],
+  [
+   "5f0e9877-fa0a-5ff6-b50c-19eab2fded6a",
+   "2f14d3ea-6f2f-52e1-a38f-44d63b72de76",
+   "parent"
+  ],
+  [
+   "13608e16-4ad6-4106-acf6-010fb43d4555",
+   "60980970-8d53-5628-b0dd-7baadfa1e7e7",
+   "parent"
+  ],
+  [
+   "2f14d3ea-6f2f-52e1-a38f-44d63b72de76",
+   "60980970-8d53-5628-b0dd-7baadfa1e7e7",
+   "spouse"
+  ],
+  [
+   "92299032-2e3c-552e-83f2-ec10f8094385",
+   "84f2ab55-9f1e-59cf-9b68-1bb7ac20c27f",
+   "parent"
+  ],
+  [
+   "84f2ab55-9f1e-59cf-9b68-1bb7ac20c27f",
+   "57f560f5-8ba8-5d1e-abd2-7ffcd3721259",
+   "parent"
+  ],
+  [
+   "57f560f5-8ba8-5d1e-abd2-7ffcd3721259",
+   "387d26db-cc1c-5e89-91f4-d53946159d36",
+   "spouse"
+  ],
+  [
+   "57f560f5-8ba8-5d1e-abd2-7ffcd3721259",
+   "be0c6999-1699-5080-8530-c74129fc3684",
+   "parent"
+  ],
+  [
+   "387d26db-cc1c-5e89-91f4-d53946159d36",
+   "be0c6999-1699-5080-8530-c74129fc3684",
+   "parent"
+  ],
+  [
+   "be0c6999-1699-5080-8530-c74129fc3684",
+   "3cbb56f4-c550-5ab8-acfe-3fd06489b0c5",
+   "spouse"
+  ],
+  [
+   "be0c6999-1699-5080-8530-c74129fc3684",
+   "38414dbd-38b9-56b3-a1e6-5a7f32927af4",
+   "parent"
+  ],
+  [
+   "3cbb56f4-c550-5ab8-acfe-3fd06489b0c5",
+   "38414dbd-38b9-56b3-a1e6-5a7f32927af4",
+   "parent"
+  ],
+  [
+   "38414dbd-38b9-56b3-a1e6-5a7f32927af4",
+   "8974197c-5642-5687-9532-cd5838830e02",
+   "spouse"
+  ],
+  [
+   "38414dbd-38b9-56b3-a1e6-5a7f32927af4",
+   "98562bc3-d046-5922-b744-acd374c2056b",
+   "parent"
+  ],
+  [
+   "8974197c-5642-5687-9532-cd5838830e02",
+   "98562bc3-d046-5922-b744-acd374c2056b",
+   "parent"
+  ],
+  [
+   "38414dbd-38b9-56b3-a1e6-5a7f32927af4",
+   "061bcb61-8db7-5caf-be4c-cda052d67e1d",
+   "parent"
+  ],
+  [
+   "8974197c-5642-5687-9532-cd5838830e02",
+   "061bcb61-8db7-5caf-be4c-cda052d67e1d",
+   "parent"
+  ],
+  [
+   "38414dbd-38b9-56b3-a1e6-5a7f32927af4",
+   "3263323d-5323-56ec-8009-9252393b9031",
+   "parent"
+  ],
+  [
+   "8974197c-5642-5687-9532-cd5838830e02",
+   "3263323d-5323-56ec-8009-9252393b9031",
+   "parent"
+  ],
+  [
+   "98562bc3-d046-5922-b744-acd374c2056b",
+   "b5893e2e-7ed2-4ac8-a900-a22c0e50fdf6",
+   "spouse"
+  ],
+  [
+   "98562bc3-d046-5922-b744-acd374c2056b",
+   "8cfd9ecd-4064-5fe0-be57-f2b12094b2cd",
+   "spouse"
+  ],
+  [
+   "98562bc3-d046-5922-b744-acd374c2056b",
+   "2b61583b-5e1e-456a-90b9-0758f126db75",
+   "parent"
+  ],
+  [
+   "b5893e2e-7ed2-4ac8-a900-a22c0e50fdf6",
+   "2b61583b-5e1e-456a-90b9-0758f126db75",
+   "parent"
+  ],
+  [
+   "98562bc3-d046-5922-b744-acd374c2056b",
+   "376de58a-617f-5d5a-98cc-79695efc3ede",
+   "parent"
+  ],
+  [
+   "b5893e2e-7ed2-4ac8-a900-a22c0e50fdf6",
+   "376de58a-617f-5d5a-98cc-79695efc3ede",
+   "parent"
+  ],
+  [
+   "061bcb61-8db7-5caf-be4c-cda052d67e1d",
+   "b68e21d4-1f1f-54a6-816a-c0bc17451299",
+   "spouse"
+  ],
+  [
+   "061bcb61-8db7-5caf-be4c-cda052d67e1d",
+   "507c3d51-bc0e-5fd3-98f4-d80f2a501503",
+   "parent"
+  ],
+  [
+   "b68e21d4-1f1f-54a6-816a-c0bc17451299",
+   "507c3d51-bc0e-5fd3-98f4-d80f2a501503",
+   "parent"
+  ],
+  [
+   "323fddf6-5fa4-4338-9720-04c03f0e9f77",
+   "9d06c682-eab3-5cac-81f3-0233c71b71e1",
+   "parent"
+  ],
+  [
+   "507c3d51-bc0e-5fd3-98f4-d80f2a501503",
+   "9d06c682-eab3-5cac-81f3-0233c71b71e1",
+   "spouse"
+  ],
+  [
+   "507c3d51-bc0e-5fd3-98f4-d80f2a501503",
+   "02d920d4-bab9-5ae6-852e-cb65b82bde80",
+   "parent"
+  ],
+  [
+   "9d06c682-eab3-5cac-81f3-0233c71b71e1",
+   "02d920d4-bab9-5ae6-852e-cb65b82bde80",
+   "parent"
+  ],
+  [
+   "02d920d4-bab9-5ae6-852e-cb65b82bde80",
+   "34cf979b-f42a-5f06-901b-ec4f7db09108",
+   "spouse"
+  ],
+  [
+   "02d920d4-bab9-5ae6-852e-cb65b82bde80",
+   "29b7c014-3fb2-5182-bbda-39ad4a34de24",
+   "parent"
+  ],
+  [
+   "34cf979b-f42a-5f06-901b-ec4f7db09108",
+   "29b7c014-3fb2-5182-bbda-39ad4a34de24",
+   "parent"
+  ],
+  [
+   "52ed7330-a403-52ca-8a58-11695b9eee87",
+   "895a4460-54b6-53fe-a2ba-0d52fb3d63f2",
+   "parent"
+  ],
+  [
+   "f2292393-d302-558a-80e5-bdee83f0df1f",
+   "895a4460-54b6-53fe-a2ba-0d52fb3d63f2",
+   "parent"
+  ],
+  [
+   "52ed7330-a403-52ca-8a58-11695b9eee87",
+   "f2292393-d302-558a-80e5-bdee83f0df1f",
+   "spouse"
+  ],
+  [
+   "29b7c014-3fb2-5182-bbda-39ad4a34de24",
+   "895a4460-54b6-53fe-a2ba-0d52fb3d63f2",
+   "spouse"
+  ],
+  [
+   "29b7c014-3fb2-5182-bbda-39ad4a34de24",
+   "78598cea-314f-520a-a1ad-ae3ded159e85",
+   "parent"
+  ],
+  [
+   "895a4460-54b6-53fe-a2ba-0d52fb3d63f2",
+   "78598cea-314f-520a-a1ad-ae3ded159e85",
+   "parent"
+  ],
+  [
+   "29b7c014-3fb2-5182-bbda-39ad4a34de24",
+   "6fe70583-e9b4-5bcd-81d2-7fc22ad59c12",
+   "parent"
+  ],
+  [
+   "895a4460-54b6-53fe-a2ba-0d52fb3d63f2",
+   "6fe70583-e9b4-5bcd-81d2-7fc22ad59c12",
+   "parent"
+  ],
+  [
+   "29b7c014-3fb2-5182-bbda-39ad4a34de24",
+   "d8a54c67-b656-552c-9589-601a14cdccb9",
+   "parent"
+  ],
+  [
+   "895a4460-54b6-53fe-a2ba-0d52fb3d63f2",
+   "d8a54c67-b656-552c-9589-601a14cdccb9",
+   "parent"
+  ],
+  [
+   "32b5e90e-4358-5a9f-b97a-dda04286d882",
+   "6fe70583-e9b4-5bcd-81d2-7fc22ad59c12",
+   "spouse"
+  ],
+  [
+   "d8a54c67-b656-552c-9589-601a14cdccb9",
+   "008ef7cc-1350-5c86-93c1-5ed1011345cf",
+   "spouse"
   ]
  ],
  "dateflags": [
@@ -48058,6 +49000,48 @@
    "d": null,
    "note": "naissance non donnée",
    "script": 76
+  },
+  {
+   "name": "Giovanni di Bicci de' Medici",
+   "b": 1360,
+   "d": 1429,
+   "note": "naissance vers 1360",
+   "script": 79
+  },
+  {
+   "name": "Piccarda Bueri",
+   "b": null,
+   "d": null,
+   "note": "dates non données",
+   "script": 79
+  },
+  {
+   "name": "Contessina de' Bardi",
+   "b": null,
+   "d": null,
+   "note": "dates non données",
+   "script": 79
+  },
+  {
+   "name": "Clément VII (Giulio de Médicis)",
+   "b": 1478,
+   "d": 1534,
+   "note": "fils naturel de Julien (+1478)",
+   "script": 79
+  },
+  {
+   "name": "Hippolyte de Médicis",
+   "b": 1511,
+   "d": 1535,
+   "note": "fils naturel de Julien de Nemours",
+   "script": 79
+  },
+  {
+   "name": "Alexandre de Médicis",
+   "b": 1510,
+   "d": 1537,
+   "note": "fils de Laurent II ou de Clément VII (incertain)",
+   "script": 79
   }
  ],
  "pins": [
@@ -48280,6 +49264,34 @@
   [
    "44773957-9ddf-551e-bf83-e58075017080",
    "SE_MED"
+  ],
+  [
+   "401b55d7-2a9c-44f3-991e-f677a497b2db",
+   "IT_MED"
+  ],
+  [
+   "60980970-8d53-5628-b0dd-7baadfa1e7e7",
+   "IT_MED"
+  ],
+  [
+   "b5893e2e-7ed2-4ac8-a900-a22c0e50fdf6",
+   "IT_MED"
+  ],
+  [
+   "2b61583b-5e1e-456a-90b9-0758f126db75",
+   "IT_MED"
+  ],
+  [
+   "9d06c682-eab3-5cac-81f3-0233c71b71e1",
+   "IT_MED"
+  ],
+  [
+   "895a4460-54b6-53fe-a2ba-0d52fb3d63f2",
+   "IT_MED"
+  ],
+  [
+   "32b5e90e-4358-5a9f-b97a-dda04286d882",
+   "IT_MED"
   ]
  ],
  "xmoved": {
