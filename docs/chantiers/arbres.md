@@ -2,12 +2,14 @@
 
 ## Dernières nouvelles (la plus récente en haut)
 
+- 2026-10-23 — arbres_v62 livrée (Wettin : +44 membres, 1 seul bloc relié, 0 chevauchement ; Saxe-Weimar jusqu'à Guillaume-Ernest, Saxe-Gotha-Altenbourg, Saxe-Altenbourg ; corrige une erreur de v61 sur Madeleine-Catherine de Deux-Ponts). Prochaine étape : Hohenzollern, Welf, Habsbourg.
+
 - 2026-10-23 — arbres_v61 livrée (Wittelsbach : +102 membres, branches palatine, Simmern, Deux-Ponts, Neubourg, Sulzbach, Landshut, rois de Bavière jusqu'à aujourd'hui ; plus aucun membre isolé ; testée sur base locale, 0 chevauchement). À exécuter par Martin. Prochaine étape : Wettin, Welf, Hohenzollern, Habsbourg (membres non reliés), puis le reste de l'Europe.
 - 2026-10-23 — journal créé ; arbres : v60 (photos) livrée, Chine arrêtée aux Jin ; prochaine étape : Dynasties du Sud et du Nord.
 
 Code : `src/genealogy.ts`, `genealogyLayers.ts`, `genealogyBus.ts`, `genealogyLod.ts/.css`, `genealogyLayersWorker.ts`,
 `genealogyLayout.ts`, `genealogyRouting.ts`. Outils de remplissage : [`scripts/arbres/`](../../scripts/arbres/README.md).
-Prochaine migration : **arbres_v62** (`supabase/arbres/arbres_v62.sql`) — générateur : `Gen(62, "…")`.  (v61 = Wittelsbach, livrée, à exécuter par Martin.)
+Prochaine migration : **arbres_v63** (`supabase/arbres/arbres_v63.sql`) — générateur : `Gen(63, "…")`.  (v62 livrée, à exécuter par Martin si ce n'est pas déjà fait.)
 
 ## Règles de contenu (décidées par Martin — ne pas rouvrir)
 - Un pays n'a que les dynasties qui ont **régné sur lui**. Dynastie étrangère : branche principale dans son pays

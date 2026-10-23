@@ -12109,6 +12109,446 @@
    "title": "Duchesse en Bavière",
    "g": "f",
    "script": 61
+  },
+  "we.eleonore_anhalt": {
+   "id": "443aed46-eb39-5763-83f3-eb191f75b5ff",
+   "name": "Éléonore-Dorothée d'Anhalt-Dessau",
+   "b": null,
+   "d": null,
+   "tree": "DE_WET",
+   "title": "Duchesse de Saxe-Weimar",
+   "g": "f",
+   "script": 62
+  },
+  "we.jean_ernest2": {
+   "id": "556a56d0-8495-590c-9edf-88eec4bd1eee",
+   "name": "Jean-Ernest II de Saxe-Weimar",
+   "b": 1627,
+   "d": 1683,
+   "tree": "DE_WET",
+   "title": "Duc de Saxe-Weimar (1662-1683)",
+   "g": "h",
+   "script": 62
+  },
+  "we.christine_sb": {
+   "id": "5c81f376-ba4c-5b34-9bc9-de99b28892f6",
+   "name": "Christine-Élisabeth de Schleswig-Holstein-Sonderbourg",
+   "b": 1638,
+   "d": 1679,
+   "tree": "DE_WET",
+   "title": "Duchesse de Saxe-Weimar",
+   "g": "f",
+   "script": 62
+  },
+  "we.jean_ernest3": {
+   "id": "4a8134f6-f373-5533-806b-f0977808e427",
+   "name": "Jean-Ernest III de Saxe-Weimar",
+   "b": 1664,
+   "d": 1707,
+   "tree": "DE_WET",
+   "title": "Duc de Saxe-Weimar (1683-1707)",
+   "g": "h",
+   "script": 62
+  },
+  "we.sophie_auguste_anh": {
+   "id": "ad318328-811c-5b61-8b95-303ca195acdb",
+   "name": "Sophie-Auguste d'Anhalt-Zerbst",
+   "b": null,
+   "d": null,
+   "tree": "DE_WET",
+   "title": "Duchesse de Saxe-Weimar",
+   "g": "f",
+   "script": 62
+  },
+  "we.ernest_auguste1": {
+   "id": "db095f0d-1ef9-512c-a892-3d82ecd265c8",
+   "name": "Ernest-Auguste Ier de Saxe-Weimar-Eisenach",
+   "b": 1688,
+   "d": 1748,
+   "tree": "DE_WET",
+   "title": "Duc de Saxe-Weimar-Eisenach (1728-1748)",
+   "g": "h",
+   "script": 62
+  },
+  "we.sophie_charlotte_bay": {
+   "id": "1e3cec19-c8df-5896-ba65-9c3176b9ab2b",
+   "name": "Sophie-Charlotte de Brandebourg-Bayreuth",
+   "b": null,
+   "d": 1747,
+   "tree": "DE_HOH",
+   "title": "Duchesse de Saxe-Weimar-Eisenach",
+   "g": "f",
+   "script": 62
+  },
+  "we.ernest_auguste2": {
+   "id": "1484517a-8437-535b-9a16-e8fa13ae73d3",
+   "name": "Ernest-Auguste II Constantin de Saxe-Weimar-Eisenach",
+   "b": 1737,
+   "d": 1758,
+   "tree": "DE_WET",
+   "title": "Duc de Saxe-Weimar-Eisenach (1748-1758)",
+   "g": "h",
+   "script": 62
+  },
+  "we.anna_amalia": {
+   "id": "b0e4cc8c-95b9-5ffa-b366-91796dda0b0f",
+   "name": "Anne-Amélie de Brunswick-Wolfenbüttel",
+   "b": 1739,
+   "d": 1807,
+   "tree": "DE_WEL",
+   "title": "Duchesse de Saxe-Weimar-Eisenach, régente",
+   "g": "f",
+   "script": 62
+  },
+  "we.charles_auguste": {
+   "id": "79336c38-c23c-5140-99ef-5bb3b18a459c",
+   "name": "Charles-Auguste de Saxe-Weimar-Eisenach",
+   "b": 1757,
+   "d": 1828,
+   "tree": "DE_WET",
+   "title": "Duc puis grand-duc de Saxe-Weimar-Eisenach",
+   "g": "h",
+   "script": 62
+  },
+  "we.louise_hesse": {
+   "id": "0039fb31-fc02-5b84-9532-80642ccfbcb9",
+   "name": "Louise de Hesse-Darmstadt",
+   "b": 1757,
+   "d": 1830,
+   "tree": "DE_WET",
+   "title": "Grande-duchesse de Saxe-Weimar-Eisenach",
+   "g": "f",
+   "script": 62
+  },
+  "we.charles_frederic": {
+   "id": "b2c6ad62-78c6-52b0-82d8-2f98e9b13b5f",
+   "name": "Charles-Frédéric de Saxe-Weimar-Eisenach",
+   "b": 1783,
+   "d": 1853,
+   "tree": "DE_WET",
+   "title": "Grand-duc de Saxe-Weimar-Eisenach",
+   "g": "h",
+   "script": 62
+  },
+  "we.maria_pavlovna": {
+   "id": "55993917-e016-5376-ae52-67ccea85fd90",
+   "name": "Maria Pavlovna de Russie",
+   "b": 1786,
+   "d": 1859,
+   "tree": "RU_ROM",
+   "title": "Grande-duchesse de Saxe-Weimar-Eisenach",
+   "g": "f",
+   "script": 62
+  },
+  "we.charles_alexandre": {
+   "id": "616c61a4-8f32-525b-b6a5-8a45d26dfda7",
+   "name": "Charles-Alexandre de Saxe-Weimar-Eisenach",
+   "b": 1818,
+   "d": 1901,
+   "tree": "DE_WET",
+   "title": "Grand-duc de Saxe-Weimar-Eisenach",
+   "g": "h",
+   "script": 62
+  },
+  "we.sophie_nl": {
+   "id": "9e01c8b1-701d-52e4-a738-6464c6d3b023",
+   "name": "Sophie des Pays-Bas",
+   "b": 1824,
+   "d": 1897,
+   "tree": "NL_ORA",
+   "title": "Grande-duchesse de Saxe-Weimar-Eisenach",
+   "g": "f",
+   "script": 62
+  },
+  "we.charles_auguste_h": {
+   "id": "66165922-cbab-5728-97a5-8c90c7b0067e",
+   "name": "Charles-Auguste, grand-duc héritier de Saxe-Weimar-Eisenach",
+   "b": 1844,
+   "d": 1894,
+   "tree": "DE_WET",
+   "title": "Grand-duc héritier",
+   "g": "h",
+   "script": 62
+  },
+  "we.pauline": {
+   "id": "26e586b2-e1a3-524c-81ab-596e4d12c55a",
+   "name": "Pauline de Saxe-Weimar-Eisenach",
+   "b": null,
+   "d": null,
+   "tree": "DE_WET",
+   "title": "Grande-duchesse héritière",
+   "g": "f",
+   "script": 62
+  },
+  "we.guillaume_ernest": {
+   "id": "8fd87d79-15a8-52b4-bd8d-31eab3ba31d0",
+   "name": "Guillaume-Ernest de Saxe-Weimar-Eisenach",
+   "b": 1876,
+   "d": 1923,
+   "tree": "DE_WET",
+   "title": "Dernier grand-duc de Saxe-Weimar-Eisenach (1901-1918)",
+   "g": "h",
+   "script": 62
+  },
+  "we.caroline_reuss": {
+   "id": "5b9dc960-a992-5997-aa71-2f46f3dc7a5b",
+   "name": "Caroline Reuss de Greiz",
+   "b": null,
+   "d": 1905,
+   "tree": "DE_WET",
+   "title": "Grande-duchesse de Saxe-Weimar-Eisenach (1903-1905)",
+   "g": "f",
+   "script": 62
+  },
+  "we.feodora": {
+   "id": "654380a2-3644-5bdb-a34a-cc7fcb9dd91c",
+   "name": "Féodora de Saxe-Meiningen",
+   "b": null,
+   "d": null,
+   "tree": "DE_WET",
+   "title": "Grande-duchesse de Saxe-Weimar-Eisenach (1910-1918)",
+   "g": "f",
+   "script": 62
+  },
+  "we.ernest3_hild": {
+   "id": "f7f2a6fe-3bb1-5682-9f7f-e069d12a8be1",
+   "name": "Ernest-Frédéric III Charles de Saxe-Hildburghausen",
+   "b": null,
+   "d": null,
+   "tree": "DE_WET",
+   "title": "Duc de Saxe-Hildburghausen",
+   "g": "h",
+   "script": 62
+  },
+  "we.ernestine_aug": {
+   "id": "da3bb797-c074-5751-9365-2cd3bca8ea38",
+   "name": "Ernestine-Auguste-Sophie de Saxe-Weimar-Eisenach",
+   "b": 1740,
+   "d": 1786,
+   "tree": "DE_WET",
+   "title": "Duchesse de Saxe-Hildburghausen",
+   "g": "f",
+   "script": 62
+  },
+  "we.frederic_alt": {
+   "id": "505d0832-de74-59e4-bcf8-8d2470bbf1d0",
+   "name": "Frédéric de Saxe-Altenbourg",
+   "b": 1763,
+   "d": 1834,
+   "tree": "DE_WET",
+   "title": "Duc de Saxe-Hildburghausen puis de Saxe-Altenbourg",
+   "g": "h",
+   "script": 62
+  },
+  "we.charlotte_meck": {
+   "id": "8fcbb51a-4e6e-5597-903b-9fe8fdd14c03",
+   "name": "Charlotte-Georgine de Mecklembourg-Strelitz",
+   "b": null,
+   "d": 1818,
+   "tree": "DE_WET",
+   "title": "Duchesse de Saxe-Altenbourg",
+   "g": "f",
+   "script": 62
+  },
+  "we.joseph_alt": {
+   "id": "8c42b435-aa84-5831-b976-d56830e20a00",
+   "name": "Joseph de Saxe-Altenbourg",
+   "b": 1789,
+   "d": 1868,
+   "tree": "DE_WET",
+   "title": "Duc de Saxe-Altenbourg (1834-1848)",
+   "g": "h",
+   "script": 62
+  },
+  "we.georges_alt": {
+   "id": "72fdcf07-183a-5b2f-9ad5-53d0e98a1b51",
+   "name": "Georges de Saxe-Altenbourg",
+   "b": 1796,
+   "d": 1853,
+   "tree": "DE_WET",
+   "title": "Duc de Saxe-Altenbourg (1848-1853)",
+   "g": "h",
+   "script": 62
+  },
+  "go.frederic1": {
+   "id": "b458d701-5eea-57c7-b5bc-69da287a99d3",
+   "name": "Frédéric Ier de Saxe-Gotha-Altenbourg",
+   "b": 1646,
+   "d": 1691,
+   "tree": "DE_WET",
+   "title": "Duc de Saxe-Gotha-Altenbourg (1675-1691)",
+   "g": "h",
+   "script": 62
+  },
+  "go.magdalene_sw": {
+   "id": "84150245-a575-54d2-a1e9-c8de355f62f3",
+   "name": "Madeleine-Sibylle de Saxe-Weissenfels",
+   "b": null,
+   "d": 1681,
+   "tree": "DE_WET",
+   "title": "Duchesse de Saxe-Gotha-Altenbourg",
+   "g": "f",
+   "script": 62
+  },
+  "go.frederic2": {
+   "id": "023a121e-b2b7-5d60-8de7-d56d265e7c8e",
+   "name": "Frédéric II de Saxe-Gotha-Altenbourg",
+   "b": 1676,
+   "d": 1732,
+   "tree": "DE_WET",
+   "title": "Duc de Saxe-Gotha-Altenbourg (1691-1732)",
+   "g": "h",
+   "script": 62
+  },
+  "go.magdalene_az": {
+   "id": "93b3bb1c-d3ff-5ead-9b70-8da70873b49c",
+   "name": "Madeleine-Augusta d'Anhalt-Zerbst",
+   "b": null,
+   "d": null,
+   "tree": "DE_WET",
+   "title": "Duchesse de Saxe-Gotha-Altenbourg",
+   "g": "f",
+   "script": 62
+  },
+  "go.frederic3": {
+   "id": "36bb7202-dc08-537e-bd82-3eb914618c51",
+   "name": "Frédéric III de Saxe-Gotha-Altenbourg",
+   "b": 1699,
+   "d": 1772,
+   "tree": "DE_WET",
+   "title": "Duc de Saxe-Gotha-Altenbourg (1732-1772)",
+   "g": "h",
+   "script": 62
+  },
+  "go.luise_dorothea": {
+   "id": "5c307f48-0502-5892-afd9-3c88e8dab678",
+   "name": "Louise-Dorothée de Saxe-Meiningen",
+   "b": null,
+   "d": 1767,
+   "tree": "DE_WET",
+   "title": "Duchesse de Saxe-Gotha-Altenbourg",
+   "g": "f",
+   "script": 62
+  },
+  "go.ernest2": {
+   "id": "bcbd1b82-2255-578d-8047-d1d55080a450",
+   "name": "Ernest II de Saxe-Gotha-Altenbourg",
+   "b": 1745,
+   "d": 1804,
+   "tree": "DE_WET",
+   "title": "Duc de Saxe-Gotha-Altenbourg (1772-1804)",
+   "g": "h",
+   "script": 62
+  },
+  "go.charlotte_mein": {
+   "id": "7c421be3-cc14-54f5-b201-da9f89c64465",
+   "name": "Charlotte de Saxe-Meiningen",
+   "b": null,
+   "d": null,
+   "tree": "DE_WET",
+   "title": "Duchesse de Saxe-Gotha-Altenbourg",
+   "g": "f",
+   "script": 62
+  },
+  "go.auguste": {
+   "id": "508c58e4-569b-593b-93e4-b4af2320bf60",
+   "name": "Auguste de Saxe-Gotha-Altenbourg",
+   "b": 1772,
+   "d": 1822,
+   "tree": "DE_WET",
+   "title": "Duc de Saxe-Gotha-Altenbourg (1804-1822)",
+   "g": "h",
+   "script": 62
+  },
+  "go.frederic4": {
+   "id": "96b0c0ab-d325-53e9-a835-cee2b9c54d00",
+   "name": "Frédéric IV de Saxe-Gotha-Altenbourg",
+   "b": 1774,
+   "d": 1825,
+   "tree": "DE_WET",
+   "title": "Duc de Saxe-Gotha-Altenbourg (1822-1825), dernier de sa lignée",
+   "g": "h",
+   "script": 62
+  },
+  "go.louise_meck": {
+   "id": "1a38be45-0d91-53b3-b8c3-3f0eb7b82c2b",
+   "name": "Louise-Charlotte de Mecklembourg-Schwerin",
+   "b": null,
+   "d": 1801,
+   "tree": "DE_WET",
+   "title": "Duchesse de Saxe-Gotha-Altenbourg",
+   "g": "f",
+   "script": 62
+  },
+  "sa.georges_prince": {
+   "id": "7deb78d4-9492-5461-85fd-e8010e66c70d",
+   "name": "Georges de Saxe (1893-1943)",
+   "b": 1893,
+   "d": 1943,
+   "tree": "DE_WET",
+   "title": "Prince héritier de Saxe, jésuite",
+   "g": "h",
+   "script": 62
+  },
+  "sa.frederic_christian": {
+   "id": "4eaa8ef2-eb7d-52e7-b7cb-a6ec7afc61d0",
+   "name": "Frédéric-Christian, margrave de Misnie",
+   "b": 1893,
+   "d": 1968,
+   "tree": "DE_WET",
+   "title": "Chef de la maison de Wettin (albertine)",
+   "g": "h",
+   "script": 62
+  },
+  "sa.ernest_henri": {
+   "id": "a3d2591f-1821-5953-905d-2c7b06a3106b",
+   "name": "Ernest-Henri de Saxe",
+   "b": 1896,
+   "d": 1971,
+   "tree": "DE_WET",
+   "title": "Prince de Saxe",
+   "g": "h",
+   "script": 62
+  },
+  "sa.elisabeth_tt": {
+   "id": "3932f704-be83-5563-a9d4-ff40f26cab74",
+   "name": "Élisabeth-Hélène de Thurn et Taxis",
+   "b": 1903,
+   "d": 1976,
+   "tree": "DE_WET",
+   "title": "Margravine de Misnie",
+   "g": "f",
+   "script": 62
+  },
+  "sa.sophie_lux": {
+   "id": "2ed75e2b-83da-54a0-b991-ea18478474e8",
+   "name": "Sophie de Luxembourg",
+   "b": 1902,
+   "d": 1941,
+   "tree": "LU_NAS",
+   "title": "Princesse de Saxe, épouse d'Ernest-Henri",
+   "g": "f",
+   "script": 62
+  },
+  "wi.jean2_zw": {
+   "id": "5898b997-bf92-5d02-acef-b45b992acda2",
+   "name": "Jean II de Deux-Ponts",
+   "b": 1584,
+   "d": 1635,
+   "tree": "DE_WIT",
+   "title": "Comte palatin de Deux-Ponts",
+   "g": "h",
+   "script": 62
+  },
+  "wi.catherine_rohan": {
+   "id": "1e0cc118-623c-596a-b148-4a8daef9ae35",
+   "name": "Catherine de Rohan",
+   "b": null,
+   "d": 1607,
+   "tree": "DE_WIT",
+   "title": "Comtesse palatine de Deux-Ponts",
+   "g": "f",
+   "script": 62
   }
  },
  "trees": {
@@ -15245,6 +15685,83 @@
    "tree": "DE_WIT",
    "reason": "Famille Douglas (Suède) : sans arbre",
    "script": 61
+  },
+  {
+   "name": "Éléonore-Dorothée d'Anhalt-Dessau",
+   "b": null,
+   "tree": "DE_WET",
+   "reason": "Maison d'Anhalt : sans arbre",
+   "script": 62
+  },
+  {
+   "name": "Christine-Élisabeth de Schleswig-Holstein-Sonderbourg",
+   "b": 1638,
+   "tree": "DE_WET",
+   "reason": "Maison de Schleswig-Holstein-Sonderbourg : sans arbre",
+   "script": 62
+  },
+  {
+   "name": "Sophie-Auguste d'Anhalt-Zerbst",
+   "b": null,
+   "tree": "DE_WET",
+   "reason": "Maison d'Anhalt : sans arbre",
+   "script": 62
+  },
+  {
+   "name": "Louise de Hesse-Darmstadt",
+   "b": 1757,
+   "tree": "DE_WET",
+   "reason": "Maison de Hesse : sans arbre",
+   "script": 62
+  },
+  {
+   "name": "Sophie des Pays-Bas",
+   "b": 1824,
+   "tree": "NL_ORA",
+   "reason": "Ses parents (Guillaume II et Anna Pavlovna) sont à ajouter avec l'arbre des Pays-Bas",
+   "script": 62
+  },
+  {
+   "name": "Caroline Reuss de Greiz",
+   "b": null,
+   "tree": "DE_WET",
+   "reason": "Maison Reuss : sans arbre",
+   "script": 62
+  },
+  {
+   "name": "Charlotte-Georgine de Mecklembourg-Strelitz",
+   "b": null,
+   "tree": "DE_WET",
+   "reason": "Maison de Mecklembourg-Strelitz : sans arbre",
+   "script": 62
+  },
+  {
+   "name": "Madeleine-Augusta d'Anhalt-Zerbst",
+   "b": null,
+   "tree": "DE_WET",
+   "reason": "Maison d'Anhalt : sans arbre",
+   "script": 62
+  },
+  {
+   "name": "Louise-Charlotte de Mecklembourg-Schwerin",
+   "b": null,
+   "tree": "DE_WET",
+   "reason": "Maison de Mecklembourg-Schwerin : sans arbre",
+   "script": 62
+  },
+  {
+   "name": "Élisabeth-Hélène de Thurn et Taxis",
+   "b": 1903,
+   "tree": "DE_WET",
+   "reason": "Maison de Thurn et Taxis : sans arbre",
+   "script": 62
+  },
+  {
+   "name": "Catherine de Rohan",
+   "b": null,
+   "tree": "DE_WIT",
+   "reason": "Maison de Rohan (France) : sans arbre",
+   "script": 62
   }
  ],
  "scripts": {
@@ -15447,6 +15964,12 @@
    "label": "Allemagne — Wittelsbach : branches palatine, Deux-Ponts, Neubourg, Sulzbach, Landshut et rois de Bavière",
    "members": 102,
    "rels": 232,
+   "trees": []
+  },
+  "62": {
+   "label": "Allemagne — Wettin : Saxe-Weimar, Saxe-Gotha-Altenbourg, Saxe-Altenbourg, liens des rois de Saxe et de Saxe-Cobourg",
+   "members": 44,
+   "rels": 87,
    "trees": []
   }
  },
@@ -25290,6 +25813,441 @@
    "28ebec86-b26d-4062-b17c-ca5b60786cad",
    "a19b2ec7-3974-42ab-99a6-4964f22045da",
    "parent"
+  ],
+  [
+   "3aee8a65-34f2-486b-863d-2b4194aeba2f",
+   "443aed46-eb39-5763-83f3-eb191f75b5ff",
+   "spouse"
+  ],
+  [
+   "3aee8a65-34f2-486b-863d-2b4194aeba2f",
+   "556a56d0-8495-590c-9edf-88eec4bd1eee",
+   "parent"
+  ],
+  [
+   "443aed46-eb39-5763-83f3-eb191f75b5ff",
+   "556a56d0-8495-590c-9edf-88eec4bd1eee",
+   "parent"
+  ],
+  [
+   "556a56d0-8495-590c-9edf-88eec4bd1eee",
+   "5c81f376-ba4c-5b34-9bc9-de99b28892f6",
+   "spouse"
+  ],
+  [
+   "556a56d0-8495-590c-9edf-88eec4bd1eee",
+   "4a8134f6-f373-5533-806b-f0977808e427",
+   "parent"
+  ],
+  [
+   "5c81f376-ba4c-5b34-9bc9-de99b28892f6",
+   "4a8134f6-f373-5533-806b-f0977808e427",
+   "parent"
+  ],
+  [
+   "4a8134f6-f373-5533-806b-f0977808e427",
+   "ad318328-811c-5b61-8b95-303ca195acdb",
+   "spouse"
+  ],
+  [
+   "4a8134f6-f373-5533-806b-f0977808e427",
+   "db095f0d-1ef9-512c-a892-3d82ecd265c8",
+   "parent"
+  ],
+  [
+   "ad318328-811c-5b61-8b95-303ca195acdb",
+   "db095f0d-1ef9-512c-a892-3d82ecd265c8",
+   "parent"
+  ],
+  [
+   "db095f0d-1ef9-512c-a892-3d82ecd265c8",
+   "1e3cec19-c8df-5896-ba65-9c3176b9ab2b",
+   "spouse"
+  ],
+  [
+   "db095f0d-1ef9-512c-a892-3d82ecd265c8",
+   "1484517a-8437-535b-9a16-e8fa13ae73d3",
+   "parent"
+  ],
+  [
+   "1e3cec19-c8df-5896-ba65-9c3176b9ab2b",
+   "1484517a-8437-535b-9a16-e8fa13ae73d3",
+   "parent"
+  ],
+  [
+   "1484517a-8437-535b-9a16-e8fa13ae73d3",
+   "b0e4cc8c-95b9-5ffa-b366-91796dda0b0f",
+   "spouse"
+  ],
+  [
+   "1484517a-8437-535b-9a16-e8fa13ae73d3",
+   "79336c38-c23c-5140-99ef-5bb3b18a459c",
+   "parent"
+  ],
+  [
+   "b0e4cc8c-95b9-5ffa-b366-91796dda0b0f",
+   "79336c38-c23c-5140-99ef-5bb3b18a459c",
+   "parent"
+  ],
+  [
+   "79336c38-c23c-5140-99ef-5bb3b18a459c",
+   "0039fb31-fc02-5b84-9532-80642ccfbcb9",
+   "spouse"
+  ],
+  [
+   "79336c38-c23c-5140-99ef-5bb3b18a459c",
+   "b2c6ad62-78c6-52b0-82d8-2f98e9b13b5f",
+   "parent"
+  ],
+  [
+   "0039fb31-fc02-5b84-9532-80642ccfbcb9",
+   "b2c6ad62-78c6-52b0-82d8-2f98e9b13b5f",
+   "parent"
+  ],
+  [
+   "57d16fba-8237-56d7-ad59-e5572f77e8e0",
+   "55993917-e016-5376-ae52-67ccea85fd90",
+   "parent"
+  ],
+  [
+   "02d2a8de-7e33-57c5-bfa5-1a17f6f6b41a",
+   "55993917-e016-5376-ae52-67ccea85fd90",
+   "parent"
+  ],
+  [
+   "b2c6ad62-78c6-52b0-82d8-2f98e9b13b5f",
+   "55993917-e016-5376-ae52-67ccea85fd90",
+   "spouse"
+  ],
+  [
+   "b2c6ad62-78c6-52b0-82d8-2f98e9b13b5f",
+   "0128acdc-3636-4766-899c-11b6428eafe3",
+   "parent"
+  ],
+  [
+   "55993917-e016-5376-ae52-67ccea85fd90",
+   "0128acdc-3636-4766-899c-11b6428eafe3",
+   "parent"
+  ],
+  [
+   "b2c6ad62-78c6-52b0-82d8-2f98e9b13b5f",
+   "616c61a4-8f32-525b-b6a5-8a45d26dfda7",
+   "parent"
+  ],
+  [
+   "55993917-e016-5376-ae52-67ccea85fd90",
+   "616c61a4-8f32-525b-b6a5-8a45d26dfda7",
+   "parent"
+  ],
+  [
+   "616c61a4-8f32-525b-b6a5-8a45d26dfda7",
+   "9e01c8b1-701d-52e4-a738-6464c6d3b023",
+   "spouse"
+  ],
+  [
+   "616c61a4-8f32-525b-b6a5-8a45d26dfda7",
+   "66165922-cbab-5728-97a5-8c90c7b0067e",
+   "parent"
+  ],
+  [
+   "9e01c8b1-701d-52e4-a738-6464c6d3b023",
+   "66165922-cbab-5728-97a5-8c90c7b0067e",
+   "parent"
+  ],
+  [
+   "66165922-cbab-5728-97a5-8c90c7b0067e",
+   "26e586b2-e1a3-524c-81ab-596e4d12c55a",
+   "spouse"
+  ],
+  [
+   "66165922-cbab-5728-97a5-8c90c7b0067e",
+   "8fd87d79-15a8-52b4-bd8d-31eab3ba31d0",
+   "parent"
+  ],
+  [
+   "26e586b2-e1a3-524c-81ab-596e4d12c55a",
+   "8fd87d79-15a8-52b4-bd8d-31eab3ba31d0",
+   "parent"
+  ],
+  [
+   "8fd87d79-15a8-52b4-bd8d-31eab3ba31d0",
+   "5b9dc960-a992-5997-aa71-2f46f3dc7a5b",
+   "spouse"
+  ],
+  [
+   "8fd87d79-15a8-52b4-bd8d-31eab3ba31d0",
+   "654380a2-3644-5bdb-a34a-cc7fcb9dd91c",
+   "spouse"
+  ],
+  [
+   "db095f0d-1ef9-512c-a892-3d82ecd265c8",
+   "da3bb797-c074-5751-9365-2cd3bca8ea38",
+   "parent"
+  ],
+  [
+   "1e3cec19-c8df-5896-ba65-9c3176b9ab2b",
+   "da3bb797-c074-5751-9365-2cd3bca8ea38",
+   "parent"
+  ],
+  [
+   "f7f2a6fe-3bb1-5682-9f7f-e069d12a8be1",
+   "da3bb797-c074-5751-9365-2cd3bca8ea38",
+   "spouse"
+  ],
+  [
+   "f7f2a6fe-3bb1-5682-9f7f-e069d12a8be1",
+   "505d0832-de74-59e4-bcf8-8d2470bbf1d0",
+   "parent"
+  ],
+  [
+   "da3bb797-c074-5751-9365-2cd3bca8ea38",
+   "505d0832-de74-59e4-bcf8-8d2470bbf1d0",
+   "parent"
+  ],
+  [
+   "505d0832-de74-59e4-bcf8-8d2470bbf1d0",
+   "8fcbb51a-4e6e-5597-903b-9fe8fdd14c03",
+   "spouse"
+  ],
+  [
+   "505d0832-de74-59e4-bcf8-8d2470bbf1d0",
+   "fc032ff4-8705-52b8-908e-f18eb83e7d21",
+   "parent"
+  ],
+  [
+   "8fcbb51a-4e6e-5597-903b-9fe8fdd14c03",
+   "fc032ff4-8705-52b8-908e-f18eb83e7d21",
+   "parent"
+  ],
+  [
+   "505d0832-de74-59e4-bcf8-8d2470bbf1d0",
+   "5a6fd836-8bfb-51bf-a3c9-6b1e626262ce",
+   "parent"
+  ],
+  [
+   "8fcbb51a-4e6e-5597-903b-9fe8fdd14c03",
+   "5a6fd836-8bfb-51bf-a3c9-6b1e626262ce",
+   "parent"
+  ],
+  [
+   "505d0832-de74-59e4-bcf8-8d2470bbf1d0",
+   "8c42b435-aa84-5831-b976-d56830e20a00",
+   "parent"
+  ],
+  [
+   "8fcbb51a-4e6e-5597-903b-9fe8fdd14c03",
+   "8c42b435-aa84-5831-b976-d56830e20a00",
+   "parent"
+  ],
+  [
+   "505d0832-de74-59e4-bcf8-8d2470bbf1d0",
+   "72fdcf07-183a-5b2f-9ad5-53d0e98a1b51",
+   "parent"
+  ],
+  [
+   "8fcbb51a-4e6e-5597-903b-9fe8fdd14c03",
+   "72fdcf07-183a-5b2f-9ad5-53d0e98a1b51",
+   "parent"
+  ],
+  [
+   "b5dda550-dad0-4e25-9190-394ff021facd",
+   "b458d701-5eea-57c7-b5bc-69da287a99d3",
+   "parent"
+  ],
+  [
+   "edde5ddd-1b54-4efc-a90d-b8ae992e1295",
+   "b458d701-5eea-57c7-b5bc-69da287a99d3",
+   "parent"
+  ],
+  [
+   "b458d701-5eea-57c7-b5bc-69da287a99d3",
+   "84150245-a575-54d2-a1e9-c8de355f62f3",
+   "spouse"
+  ],
+  [
+   "b458d701-5eea-57c7-b5bc-69da287a99d3",
+   "023a121e-b2b7-5d60-8de7-d56d265e7c8e",
+   "parent"
+  ],
+  [
+   "84150245-a575-54d2-a1e9-c8de355f62f3",
+   "023a121e-b2b7-5d60-8de7-d56d265e7c8e",
+   "parent"
+  ],
+  [
+   "023a121e-b2b7-5d60-8de7-d56d265e7c8e",
+   "93b3bb1c-d3ff-5ead-9b70-8da70873b49c",
+   "spouse"
+  ],
+  [
+   "023a121e-b2b7-5d60-8de7-d56d265e7c8e",
+   "36bb7202-dc08-537e-bd82-3eb914618c51",
+   "parent"
+  ],
+  [
+   "93b3bb1c-d3ff-5ead-9b70-8da70873b49c",
+   "36bb7202-dc08-537e-bd82-3eb914618c51",
+   "parent"
+  ],
+  [
+   "023a121e-b2b7-5d60-8de7-d56d265e7c8e",
+   "9b566a15-dc4c-4af4-a461-4dbbf48eaba4",
+   "parent"
+  ],
+  [
+   "93b3bb1c-d3ff-5ead-9b70-8da70873b49c",
+   "9b566a15-dc4c-4af4-a461-4dbbf48eaba4",
+   "parent"
+  ],
+  [
+   "36bb7202-dc08-537e-bd82-3eb914618c51",
+   "5c307f48-0502-5892-afd9-3c88e8dab678",
+   "spouse"
+  ],
+  [
+   "36bb7202-dc08-537e-bd82-3eb914618c51",
+   "bcbd1b82-2255-578d-8047-d1d55080a450",
+   "parent"
+  ],
+  [
+   "5c307f48-0502-5892-afd9-3c88e8dab678",
+   "bcbd1b82-2255-578d-8047-d1d55080a450",
+   "parent"
+  ],
+  [
+   "bcbd1b82-2255-578d-8047-d1d55080a450",
+   "7c421be3-cc14-54f5-b201-da9f89c64465",
+   "spouse"
+  ],
+  [
+   "bcbd1b82-2255-578d-8047-d1d55080a450",
+   "508c58e4-569b-593b-93e4-b4af2320bf60",
+   "parent"
+  ],
+  [
+   "7c421be3-cc14-54f5-b201-da9f89c64465",
+   "508c58e4-569b-593b-93e4-b4af2320bf60",
+   "parent"
+  ],
+  [
+   "bcbd1b82-2255-578d-8047-d1d55080a450",
+   "96b0c0ab-d325-53e9-a835-cee2b9c54d00",
+   "parent"
+  ],
+  [
+   "7c421be3-cc14-54f5-b201-da9f89c64465",
+   "96b0c0ab-d325-53e9-a835-cee2b9c54d00",
+   "parent"
+  ],
+  [
+   "508c58e4-569b-593b-93e4-b4af2320bf60",
+   "1a38be45-0d91-53b3-b8c3-3f0eb7b82c2b",
+   "spouse"
+  ],
+  [
+   "508c58e4-569b-593b-93e4-b4af2320bf60",
+   "25688296-885e-4877-966c-8f947376846f",
+   "parent"
+  ],
+  [
+   "1a38be45-0d91-53b3-b8c3-3f0eb7b82c2b",
+   "25688296-885e-4877-966c-8f947376846f",
+   "parent"
+  ],
+  [
+   "23638438-3e3b-4087-993e-0b10d75a1f18",
+   "a1f6258c-ce59-4fcc-a638-2646fee35959",
+   "parent"
+  ],
+  [
+   "d0b49a1e-fe01-46fe-90cb-fe4b88782776",
+   "a1f6258c-ce59-4fcc-a638-2646fee35959",
+   "parent"
+  ],
+  [
+   "a136417e-993f-4a1d-a936-6fa72896a581",
+   "7deb78d4-9492-5461-85fd-e8010e66c70d",
+   "parent"
+  ],
+  [
+   "7215d753-0ad3-4aba-bc9f-6dfedef9762f",
+   "7deb78d4-9492-5461-85fd-e8010e66c70d",
+   "parent"
+  ],
+  [
+   "a136417e-993f-4a1d-a936-6fa72896a581",
+   "4eaa8ef2-eb7d-52e7-b7cb-a6ec7afc61d0",
+   "parent"
+  ],
+  [
+   "7215d753-0ad3-4aba-bc9f-6dfedef9762f",
+   "4eaa8ef2-eb7d-52e7-b7cb-a6ec7afc61d0",
+   "parent"
+  ],
+  [
+   "a136417e-993f-4a1d-a936-6fa72896a581",
+   "a3d2591f-1821-5953-905d-2c7b06a3106b",
+   "parent"
+  ],
+  [
+   "7215d753-0ad3-4aba-bc9f-6dfedef9762f",
+   "a3d2591f-1821-5953-905d-2c7b06a3106b",
+   "parent"
+  ],
+  [
+   "4eaa8ef2-eb7d-52e7-b7cb-a6ec7afc61d0",
+   "3932f704-be83-5563-a9d4-ff40f26cab74",
+   "spouse"
+  ],
+  [
+   "58a06e35-f0e9-5a48-8dae-883cce479dad",
+   "2ed75e2b-83da-54a0-b991-ea18478474e8",
+   "parent"
+  ],
+  [
+   "cc35611b-92b2-59ad-84ec-af6f0b1c43dc",
+   "2ed75e2b-83da-54a0-b991-ea18478474e8",
+   "parent"
+  ],
+  [
+   "a3d2591f-1821-5953-905d-2c7b06a3106b",
+   "2ed75e2b-83da-54a0-b991-ea18478474e8",
+   "spouse"
+  ],
+  [
+   "be79c705-8b79-5b67-b76f-12512a67edb4",
+   "3a29ff64-8092-5c41-9b88-0cf987957dfe",
+   "parent"
+  ],
+  [
+   "3557b1ce-f8e0-5a6a-9e2f-8a3143b6eeb7",
+   "3a29ff64-8092-5c41-9b88-0cf987957dfe",
+   "parent"
+  ],
+  [
+   "8bbb9afd-d8ab-5f1f-9aa0-20b4cddc404f",
+   "5898b997-bf92-5d02-acef-b45b992acda2",
+   "parent"
+  ],
+  [
+   "f616c94e-2d9c-53da-915a-b492465830bd",
+   "5898b997-bf92-5d02-acef-b45b992acda2",
+   "parent"
+  ],
+  [
+   "5898b997-bf92-5d02-acef-b45b992acda2",
+   "1e0cc118-623c-596a-b148-4a8daef9ae35",
+   "spouse"
+  ],
+  [
+   "5898b997-bf92-5d02-acef-b45b992acda2",
+   "6a426ce7-4621-5b1a-a7f5-6c6453957321",
+   "parent"
+  ],
+  [
+   "1e0cc118-623c-596a-b148-4a8daef9ae35",
+   "6a426ce7-4621-5b1a-a7f5-6c6453957321",
+   "parent"
   ]
  ],
  "dateflags": [
@@ -30465,6 +31423,111 @@
    "d": null,
    "note": "dates non données par la page de Max",
    "script": 61
+  },
+  {
+   "name": "Éléonore-Dorothée d'Anhalt-Dessau",
+   "b": null,
+   "d": null,
+   "note": "dates non données par la page de Jean-Ernest II",
+   "script": 62
+  },
+  {
+   "name": "Sophie-Auguste d'Anhalt-Zerbst",
+   "b": null,
+   "d": null,
+   "note": "dates non données par la page de Jean-Ernest III",
+   "script": 62
+  },
+  {
+   "name": "Sophie-Charlotte de Brandebourg-Bayreuth",
+   "b": null,
+   "d": 1747,
+   "note": "naissance non donnée par la page d'Ernest-Auguste Ier",
+   "script": 62
+  },
+  {
+   "name": "Louise de Hesse-Darmstadt",
+   "b": 1757,
+   "d": 1830,
+   "note": "dates 1757-1830 : titre du lien Wikipédia, à revérifier",
+   "script": 62
+  },
+  {
+   "name": "Pauline de Saxe-Weimar-Eisenach",
+   "b": null,
+   "d": null,
+   "note": "dates non données par les pages consultées",
+   "script": 62
+  },
+  {
+   "name": "Caroline Reuss de Greiz",
+   "b": null,
+   "d": 1905,
+   "note": "naissance non donnée par la page de Guillaume-Ernest",
+   "script": 62
+  },
+  {
+   "name": "Féodora de Saxe-Meiningen",
+   "b": null,
+   "d": null,
+   "note": "dates non données par la page de Guillaume-Ernest",
+   "script": 62
+  },
+  {
+   "name": "Ernest-Frédéric III Charles de Saxe-Hildburghausen",
+   "b": null,
+   "d": null,
+   "note": "dates non données (page introuvable)",
+   "script": 62
+  },
+  {
+   "name": "Charlotte-Georgine de Mecklembourg-Strelitz",
+   "b": null,
+   "d": 1818,
+   "note": "naissance non donnée par la page de Frédéric",
+   "script": 62
+  },
+  {
+   "name": "Madeleine-Sibylle de Saxe-Weissenfels",
+   "b": null,
+   "d": 1681,
+   "note": "naissance non donnée par la page de Frédéric Ier",
+   "script": 62
+  },
+  {
+   "name": "Madeleine-Augusta d'Anhalt-Zerbst",
+   "b": null,
+   "d": null,
+   "note": "dates non données par la page de Frédéric II",
+   "script": 62
+  },
+  {
+   "name": "Louise-Dorothée de Saxe-Meiningen",
+   "b": null,
+   "d": 1767,
+   "note": "naissance non donnée par la page de Frédéric III",
+   "script": 62
+  },
+  {
+   "name": "Charlotte de Saxe-Meiningen",
+   "b": null,
+   "d": null,
+   "note": "dates non données par la page d'Ernest II",
+   "script": 62
+  },
+  {
+   "name": "Louise-Charlotte de Mecklembourg-Schwerin",
+   "b": null,
+   "d": 1801,
+   "note": "naissance non donnée par la page d'Auguste",
+   "script": 62
+  },
+  {
+   "name": "Catherine de Rohan",
+   "b": null,
+   "d": 1607,
+   "note": "naissance non donnée par la page de Jean II",
+   "script": 62
   }
  ],
  "pins": [

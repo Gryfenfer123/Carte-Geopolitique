@@ -2,7 +2,7 @@ import subprocess,json,sys,collections
 def q(sql):
     r=subprocess.run(['psql','-h','/tmp/pg38','-p','5439','-U','postgres','-d','postgres','-At','-F','\t','-c',sql],capture_output=True,text=True)
     if r.returncode: print(r.stderr); sys.exit(1)
-    return [l.split('\t') for l in r.stdout.strip().split('\n') if l]
+    return [l.split('\t') for l in r.stdout.split('\n') if l]
 ADM='96d2f891-6b9e-4967-89ed-18f83270ef28'
 # membres créés par les scripts (created_by admin)
 # arbres touchés : entrées créées par admin + celles qui ont des membres créés
