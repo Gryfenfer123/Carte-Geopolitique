@@ -217,11 +217,15 @@ const CARD_PHOTO_RATIO = CARD_W / CARD_PHOTO_H;
 // Agrandi avec les cartes (230 → 300 → 400) pour garder un espacement
 // cohérent avec la nouvelle taille.
 const GENERATION_GAP = 550;
+// Une ligne de génération = 33 ans (une génération de dynastes) : les parents et
+// leurs enfants tombent presque toujours sur deux lignes voisines, donc peu de
+// traits traversent plusieurs lignes (genealogyLayers.ts).
+const ROW_YEARS = 33;
 // Pixels par année pour le placement automatique d'un NOUVEAU membre selon
 // son année de naissance par rapport aux membres existants de cet arbre
 // (voir suggestYFromBirthYear) — purement indicatif, pas une échelle
 // temporelle stricte (le glisser-déposer reste libre après coup).
-const PX_PER_YEAR = 22;
+const PX_PER_YEAR = GENERATION_GAP / ROW_YEARS;
 // Échelle de dates (demande de Martin, 2026-10-22) : un membre se place à
 // une hauteur liée à son année de naissance (yearToY, genealogyLayout.ts) ;
 // glisser-déposer reste libre dans une bande de ±BAND_YEARS ans autour de
@@ -920,13 +924,15 @@ export function initGenealogySystem(deps: {
       ))
     )
       return;
+    deps.showBanner?.("Calcul de la meilleure disposition… (quelques secondes)");
+    await new Promise((r) => setTimeout(r, 60));
     const known = allKnownMembers();
     const nodes = Array.from(known.values()).map((m) => ({ id: m.id, birth: m.birth_year, death: m.death_year, name: m.name, female: guessFemale(m.name, m.title) }));
     const rels = relations.filter((r) => known.has(r.member_a_id) && known.has(r.member_b_id)).map((r) => ({ a: r.member_a_id, b: r.member_b_id, type: r.relation_type }));
     const { pos } = computeLayersLayout(
       nodes.map((n) => ({ id: n.id, birth: n.birth, name: n.name })),
       rels,
-      { cardW: CARD_W, cardH: CARD_H, ...LAYOUT_OPTS, rowYears: GENERATION_GAP / PX_PER_YEAR, gapX: 130, spouseGap: 150 }
+      { cardW: CARD_W, cardH: CARD_H, ...LAYOUT_OPTS, rowYears: ROW_YEARS, gapX: 130, spouseGap: 150, budgetMs: 4000 }
     );
     // Sauvegarde pour pouvoir annuler.
     const undoLocal = new Map<string, { x: number; y: number }>();
@@ -1254,7 +1260,7 @@ export function initGenealogySystem(deps: {
       const isForeign = !(currentOwner && m.owner_type === currentOwner.type && m.owner_id === currentOwner.id);
       const ringColors = memberRingColors(m, isForeign);
       const card = document.createElement("div");
-      card.className = "gen-card" + (ringColors.length ? " gen-card-ringed" : "");
+      card.className = "gen-card" + (ringColors.length ? " gen-card-ringed" : "") + (effectiveIsLeader(m, isForeign) ? " gen-card-leader" : "");
       card.dataset.memberId = m.id;
       card.style.left = pos.x + "px";
       card.style.top = pos.y + "px";

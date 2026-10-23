@@ -28,7 +28,7 @@ export type LayersOptions = {
   spouseGap: number; // espace libre entre deux époux
   budgetMs?: number;
 };
-export type LayersStats = { crossings: number; longEdges: number; edges: number; totalLen: number; rows: number };
+export type LayersStats = { crossings: number; cardHits: number; longEdges: number; edges: number; totalLen: number; rows: number };
 export type LayersResult = { pos: Map<string, { x: number; y: number }>; stats: LayersStats; longEdgeIds: [string, string][] };
 
 type Unit = { id: number; members: string[]; order: string[]; row: number; year: number | null };
@@ -100,7 +100,7 @@ export function computeLayersLayout(nodes: LNode[], rels: LRel[], o: LayersOptio
     comps.push(list);
   }
 
-  type CompOut = { cx: Map<string, number>; row: Map<string, number>; cross: number; edges: number; len: number; longE: [string, string][] };
+  type CompOut = { cx: Map<string, number>; row: Map<string, number>; cross: number; hits: number; edges: number; len: number; longE: [string, string][] };
   const budget = o.budgetMs ?? 2500;
   const t00 = Date.now();
 
@@ -178,8 +178,23 @@ export function computeLayersLayout(nodes: LNode[], rels: LRel[], o: LayersOptio
       u.members.forEach((m) => kids(m).forEach((c) => { const cu = unitOf.get(c)!; if (cu !== u) s.add(cu); }));
       return Array.from(s);
     };
+    // Les frères et sœurs (mêmes parents) partagent la même ligne : on prend la
+    // date moyenne de la fratrie, pas la date de chacun (sinon une fratrie étalée
+    // sur 20 ans se répartit sur plusieurs lignes et ses traits se mélangent).
+    const sibMean = (id: string): number | null => {
+      const ps = par(id);
+      if (!ps.length) return birth(id);
+      const sibs = new Set<string>([id]);
+      ps.forEach((p) => kids(p).forEach((c) => { if (par(c).some((q) => ps.includes(q))) sibs.add(c); }));
+      const ys = Array.from(sibs).map(birth).filter((v): v is number => v != null);
+      return ys.length ? ys.reduce((a, b) => a + b, 0) / ys.length : null;
+    };
     const rowRaw = new Map<Unit, number | null>();
-    units.forEach((u) => rowRaw.set(u, u.year == null ? null : Math.round((u.year - o.originYear) / o.rowYears)));
+    units.forEach((u) => {
+      const blood = u.members.filter(isBlood).map(sibMean).filter((v): v is number => v != null);
+      const y = blood.length ? Math.max(...blood) : u.year;
+      rowRaw.set(u, y == null ? null : Math.round((y - o.originYear) / o.rowYears));
+    });
     const rowv = new Map<Unit, number | null>(rowRaw);
     const relax = () => {
       for (let g = 0; g < 120; g++) {
@@ -297,29 +312,80 @@ export function computeLayersLayout(nodes: LNode[], rels: LRel[], o: LayersOptio
     }
 
     // ---- évaluation
-    function evaluate(): { cost: number; cross: number; len: number; longE: [string, string][] } {
+    // Traits tels que l'appli les dessine (renderLinks) : un trait unique du milieu
+    // du mariage vers l'enfant quand ses deux parents sont mariés entre eux, sinon
+    // un trait par parent (bas de la carte -> haut de l'enfant). La note compte les
+    // croisements trait/trait, trait/lien de mariage et trait/carte (jamais voulu).
+    type Stroke = { x1: number; y1: number; x2: number; y2: number; sk: string; ek: string; skip: string[] };
+    const spouseEdges: [string, string][] = [];
+    ids.forEach((a) => spo(a).forEach((q) => { if (a < q) spouseEdges.push([a, q]); }));
+    const segX = (a: number[], b: number[]) => {
+      const d = (p: number[], q: number[], r: number[]) => (q[0] - p[0]) * (r[1] - p[1]) - (q[1] - p[1]) * (r[0] - p[0]);
+      const d1 = d(b.slice(0, 2), b.slice(2), a.slice(0, 2));
+      const d2 = d(b.slice(0, 2), b.slice(2), a.slice(2));
+      const d3 = d(a.slice(0, 2), a.slice(2), b.slice(0, 2));
+      const d4 = d(a.slice(0, 2), a.slice(2), b.slice(2));
+      const E = 1e-3;
+      return ((d1 > E && d2 < -E) || (d1 < -E && d2 > E)) && ((d3 > E && d4 < -E) || (d3 < -E && d4 > E));
+    };
+    function hitsCard(st: Stroke, rx: number, ry: number): boolean {
+      const x0 = rx + 6, x1 = rx + CW - 6, y0 = ry + 6, y1 = ry + o.cardH - 6;
+      if (Math.max(st.x1, st.x2) < x0 || Math.min(st.x1, st.x2) > x1 || Math.max(st.y1, st.y2) < y0 || Math.min(st.y1, st.y2) > y1) return false;
+      const dx = st.x2 - st.x1, dy = st.y2 - st.y1;
+      let t0 = 0, t1 = 1;
+      for (const [pp, qq] of [[-dx, st.x1 - x0], [dx, x1 - st.x1], [-dy, st.y1 - y0], [dy, y1 - st.y1]]) {
+        if (pp === 0) { if (qq < 0) return false; }
+        else {
+          const r = qq / pp;
+          if (pp < 0) { if (r > t1) return false; if (r > t0) t0 = r; }
+          else { if (r < t0) return false; if (r < t1) t1 = r; }
+        }
+      }
+      return t0 < t1;
+    }
+    function evaluate(): { cost: number; cross: number; len: number; longE: [string, string][]; hits: number } {
       let len = 0;
       const longE: [string, string][] = [];
-      const segs = new Map<number, [number, number][]>(); // ligne -> segments [x haut, x bas]
+      const strokes: Stroke[] = [];
+      const top = (id: string) => unitOf.get(id)!.row * rowH;
       for (const e of edges) {
-        const pts: number[] = [parentPoint(e), ...e.dummies.map((d) => d.x), cardX(e.child)];
-        for (let i = 0; i + 1 < pts.length; i++) {
-          const r = e.pRow + i;
-          const l = segs.get(r) || [];
-          l.push([pts[i], pts[i + 1]]);
-          segs.set(r, l);
+        const c = e.child;
+        const ex = cardX(c);
+        const ey = top(c);
+        const ps = e.parents;
+        const merged = ps.length === 2 && spo(ps[0]).includes(ps[1]);
+        if (merged) {
+          const mx = (cardX(ps[0]) + cardX(ps[1])) / 2;
+          strokes.push({ x1: mx, y1: top(ps[0]) + o.cardH / 2, x2: ex, y2: ey, sk: "M" + ps.slice().sort().join("|"), ek: c, skip: [ps[0], ps[1], c] });
+        } else {
+          ps.forEach((p) => strokes.push({ x1: cardX(p), y1: top(p) + o.cardH, x2: ex, y2: ey, sk: "P" + p, ek: c, skip: [p, c] }));
         }
-        const dx = Math.abs(pts[0] - pts[pts.length - 1]);
+        const dx = Math.abs(parentPoint(e) - ex);
         len += dx;
-        if (dx > 1500) { longE.push([e.parents[0], e.child]); len += (dx - 1500) * 3; }
+        if (dx > 1500) { longE.push([ps[0], c]); len += (dx - 1500) * 3; }
       }
       let cross = 0;
-      segs.forEach((l) => {
-        for (let i = 0; i < l.length; i++) for (let j = i + 1; j < l.length; j++) {
-          if ((l[i][0] - l[j][0]) * (l[i][1] - l[j][1]) < -1e-6) cross++;
+      for (let i = 0; i < strokes.length; i++) {
+        const a = strokes[i];
+        for (let j = i + 1; j < strokes.length; j++) {
+          const b = strokes[j];
+          if (a.sk === b.sk || a.ek === b.ek) continue;
+          if (segX([a.x1, a.y1, a.x2, a.y2], [b.x1, b.y1, b.x2, b.y2])) cross++;
         }
-      });
-      return { cost: len + cross * 1500, cross, len, longE };
+      }
+      for (const [a, b] of spouseEdges) {
+        const ya = top(a) + o.cardH / 2;
+        const yb = top(b) + o.cardH / 2;
+        const L = [cardX(a), ya, cardX(b), yb];
+        for (const st of strokes) {
+          if (st.skip.includes(a) && st.skip.includes(b)) continue;
+          if (segX(L, [st.x1, st.y1, st.x2, st.y2])) cross++;
+        }
+      }
+      let hits = 0;
+      const all = units.flatMap((u) => u.order.map((m) => ({ id: m, x: cardX(m) - CW / 2, y: u.row * rowH })));
+      for (const st of strokes) for (const q of all) if (!st.skip.includes(q.id) && hitsCard(st, q.x, q.y)) hits++;
+      return { cost: len + cross * 1500 + hits * 6000, cross, len, longE, hits };
     }
 
     function pack(l: Item[]) {
@@ -351,7 +417,7 @@ export function computeLayersLayout(nodes: LNode[], rels: LRel[], o: LayersOptio
     }
 
     // ---- état initial : tri par barycentre des parents, de haut en bas
-    type Snap = { orders: Item[][]; xs: Map<Item, number>; uo: Map<Unit, string[]>; cost: number; cross: number; len: number; longE: [string, string][] };
+    type Snap = { orders: Item[][]; xs: Map<Item, number>; uo: Map<Unit, string[]>; cost: number; cross: number; len: number; longE: [string, string][]; hits: number };
     const snap = (ev: ReturnType<typeof evaluate>): Snap => {
       const xs = new Map<Item, number>();
       rowsArr.forEach((l) => l.forEach((it) => xs.set(it, it.x)));
@@ -374,7 +440,7 @@ export function computeLayersLayout(nodes: LNode[], rels: LRel[], o: LayersOptio
       return base + (rnd() - 0.5) * noise;
     };
     const total = Math.max(1000, budgetMs);
-    for (let attempt = 0; attempt < 60; attempt++) {
+    for (let attempt = 0; attempt < 1; attempt++) {
       const noise = attempt === 0 ? 0 : 400 + (attempt % 12) * 120;
       // départ : lignes triées de haut en bas
       rowsArr.forEach((l, ri) => {
@@ -427,9 +493,118 @@ export function computeLayersLayout(nodes: LNode[], rels: LRel[], o: LayersOptio
         }
       }
       if (Date.now() - tStart > total * 0.3) break;
-      if (best && best.cross === 0 && best.longE.length === 0 && attempt >= 1) break;
+      if (best && best.cross === 0 && best.hits === 0 && best.longE.length === 0 && attempt >= 1) break;
     }
     if (best) restore(best);
+
+    // ---- recuit simulé sur l'ORDRE des éléments de chaque ligne.
+    // La note ne dépend que de l'ordre (donc très rapide à recalculer) : nombre de
+    // croisements entre traits de deux lignes voisines + un petit terme de longueur.
+    {
+      type End = { it: Item; mem: string[] };
+      type Seg = { top: End; bot: End };
+      const pairSegs: Seg[][] = rowsArr.map(() => []);
+      const endOf = (it: Item, mem: string[]): End => ({ it, mem });
+      for (const e of edges) {
+        const c = e.child;
+        const ps = e.parents.filter((p) => rowOfP(p) === e.pRow);
+        if (!ps.length) continue;
+        const startMem: string[] = ps.length === 2 && spo(ps[0]).includes(ps[1]) ? [ps[0], ps[1]] : ps;
+        const startItem = itemOfUnit.get(unitOf.get(ps[0])!)!;
+        const chain: End[] = [endOf(startItem, startMem), ...e.dummies.map((d) => endOf(d, [])), endOf(itemOfUnit.get(unitOf.get(c)!)!, [c])];
+        const r0 = rowIndexOfItem.get(startItem)!;
+        for (let i = 0; i + 1 < chain.length; i++) {
+          if (rowIndexOfItem.get(chain[i + 1].it) !== r0 + i + 1) break; // cas dégénéré (parenté circulaire)
+          pairSegs[r0 + i].push({ top: chain[i], bot: chain[i + 1] });
+        }
+        // parents mariés ailleurs / non mariés entre eux : un trait par parent supplémentaire
+        if (startMem.length === 1 && ps.length > 1) {
+          for (const p of ps.slice(1)) {
+            const pi = itemOfUnit.get(unitOf.get(p)!)!;
+            if (rowIndexOfItem.get(chain[1].it) === rowIndexOfItem.get(pi)! + 1) pairSegs[rowIndexOfItem.get(pi)!].push({ top: endOf(pi, [p]), bot: chain[1] });
+          }
+        }
+      }
+      const rowIdx = new Map<Item, number>();
+      const reindex = (ri: number) => rowsArr[ri].forEach((it, i) => rowIdx.set(it, i));
+      rowsArr.forEach((_l, ri) => reindex(ri));
+      const KEY = 2000;
+      const slotOf = (en: End) => {
+        if (!en.mem.length || en.it.kind !== "u") return 0;
+        const u = en.it.u!;
+        const n = u.order.length;
+        return en.mem.reduce((s0, m) => s0 + u.order.indexOf(m), 0) / en.mem.length - (n - 1) / 2;
+      };
+      const keyOf = (en: End, ri: number) => (rowIdx.get(en.it)! - (rowsArr[ri].length - 1) / 2) * KEY + slotOf(en) * (KEY * 0.22);
+      const pairCost = (ri: number): number => {
+        if (ri < 0 || ri >= pairSegs.length) return 0;
+        const ss = pairSegs[ri];
+        const m = ss.length;
+        if (!m) return 0;
+        const tk = new Array<number>(m);
+        const bk = new Array<number>(m);
+        let len = 0;
+        for (let i = 0; i < m; i++) {
+          tk[i] = keyOf(ss[i].top, ri);
+          bk[i] = keyOf(ss[i].bot, ri + 1);
+          len += Math.abs(tk[i] - bk[i]);
+        }
+        let x = 0;
+        for (let i = 0; i < m; i++) for (let j = i + 1; j < m; j++) {
+          if ((tk[i] - tk[j]) * (bk[i] - bk[j]) < 0) x++;
+        }
+        return x * 100 + len * 0.004;
+      };
+      const pc = rowsArr.map((_l, ri) => pairCost(ri));
+      let curC = pc.reduce((a, b) => a + b, 0);
+      const movable = rowsArr.map((_l, ri) => ri).filter((ri) => rowsArr[ri].length > 1 || rowsArr[ri].some((it) => it.kind === "u" && it.u!.order.length > 1));
+      const saEnd = Date.now() + total * 0.45;
+      let bestC = curC;
+      let bestSnap = snap(evaluate());
+      const T0 = 60;
+      let iter = 0;
+      const maxIter = 400000;
+      const t1 = Date.now();
+      while (movable.length && Date.now() < saEnd && iter < maxIter) {
+        iter++;
+        const frac = Math.min(1, (Date.now() - t1) / Math.max(1, saEnd - t1));
+        const T = T0 * Math.pow(1 - frac, 2) + 0.5;
+        const ri = movable[Math.floor(rnd() * movable.length)];
+        const l = rowsArr[ri];
+        const mv = rnd();
+        let undo: () => void;
+        if (mv < 0.12 && l.some((it) => it.kind === "u" && it.u!.order.length > 1)) {
+          const cands = l.filter((it) => it.kind === "u" && it.u!.order.length > 1);
+          const it = cands[Math.floor(rnd() * cands.length)];
+          it.u!.order.reverse();
+          undo = () => it.u!.order.reverse();
+        } else if (l.length > 1) {
+          const i = Math.floor(rnd() * l.length);
+          let j: number;
+          if (mv < 0.35) j = Math.min(l.length - 1, Math.max(0, i + (rnd() < 0.5 ? -1 : 1)));
+          else if (mv < 0.85) j = Math.min(l.length - 1, Math.max(0, i + Math.round((rnd() - 0.5) * 16)));
+          else j = Math.floor(rnd() * l.length);
+          if (j === i) continue;
+          const moved = l.splice(i, 1)[0];
+          l.splice(j, 0, moved);
+          reindex(ri);
+          undo = () => { const x2 = l.splice(j, 1)[0]; l.splice(i, 0, x2); reindex(ri); };
+        } else continue;
+        const a = pairCost(ri - 1);
+        const b = pairCost(ri);
+        const delta = a + b - (ri > 0 ? pc[ri - 1] : 0) - pc[ri];
+        if (delta <= 0 || rnd() < Math.exp(-delta / T)) {
+          if (ri > 0) pc[ri - 1] = a;
+          pc[ri] = b;
+          curC += delta;
+          if (curC < bestC - 1e-9) {
+            bestC = curC;
+            bestSnap = snap({ cost: 0, cross: 0, len: 0, longE: [], hits: 0 });
+          }
+        } else undo();
+      }
+      restore(bestSnap);
+    }
     const settle = (n: number) => {
       for (let k = 0; k < n; k++) {
         const down = k % 2 === 0;
@@ -454,16 +629,22 @@ export function computeLayersLayout(nodes: LNode[], rels: LRel[], o: LayersOptio
       let cur = snap(evaluate());
       const deadline = tStart + total;
       let improved = true;
-      for (let pass = 0; pass < 12 && improved && Date.now() < deadline; pass++) {
+      for (let pass = 0; pass < 30 && improved && Date.now() < deadline; pass++) {
         improved = false;
         for (let ri = 0; ri < rowsArr.length && Date.now() < deadline; ri++) {
           const l = rowsArr[ri];
-          for (let i = 0; i + 1 < l.length; i++) {
-            [l[i], l[i + 1]] = [l[i + 1], l[i]];
-            pack(l);
-            settle(6);
-            const ev2 = evaluate();
-            if (ev2.cost < cur.cost - 1) { cur = snap(ev2); improved = true; } else restore(cur);
+          for (let i = 0; i < l.length; i++) {
+            for (let d = -6; d <= 6; d++) {
+              const j = i + d;
+              if (d === 0 || j < 0 || j >= l.length) continue;
+              const it = l.splice(i, 1)[0];
+              l.splice(j, 0, it);
+              pack(l);
+              settle(4);
+              const ev2 = evaluate();
+              if (ev2.cost < cur.cost - 1) { cur = snap(ev2); improved = true; break; }
+              restore(cur);
+            }
           }
           for (const it of l) {
             if (it.kind !== "u" || it.u!.order.length < 2) continue;
@@ -481,7 +662,7 @@ export function computeLayersLayout(nodes: LNode[], rels: LRel[], o: LayersOptio
     const cx = new Map<string, number>();
     const row = new Map<string, number>();
     units.forEach((u) => u.order.forEach((m) => { cx.set(m, cardX(m)); row.set(m, u.row); }));
-    return { cx, row, cross: ev.cross, edges: edges.length, len: ev.len, longE: ev.longE };
+    return { cx, row, cross: ev.cross, hits: ev.hits, edges: edges.length, len: ev.len, longE: ev.longE };
   }
 
   // ---- calcul de chaque composante, puis alignement côte à côte
@@ -497,6 +678,7 @@ export function computeLayersLayout(nodes: LNode[], rels: LRel[], o: LayersOptio
   const pos = new Map<string, { x: number; y: number }>();
   let cursor = 0;
   let cross = 0;
+  let hitsN = 0;
   let edgesN = 0;
   let len = 0;
   const longAll: [string, string][] = [];
@@ -510,11 +692,12 @@ export function computeLayersLayout(nodes: LNode[], rels: LRel[], o: LayersOptio
     ids.forEach((id) => pos.set(id, { x: Math.round(out.cx.get(id)! + shift - CW / 2), y: Math.round((out.row.get(id)! - minRow) * rowH) }));
     cursor += hi - lo + 700;
     cross += out.cross;
+    hitsN += out.hits;
     edgesN += out.edges;
     len += out.len;
     longAll.push(...out.longE);
   });
   const rowSet = new Set<number>();
   outs.forEach(({ out }) => out.row.forEach((r) => rowSet.add(r)));
-  return { pos, stats: { crossings: cross, longEdges: longAll.length, edges: edgesN, totalLen: Math.round(len), rows: rowSet.size }, longEdgeIds: longAll };
+  return { pos, stats: { crossings: cross, cardHits: hitsN, longEdges: longAll.length, edges: edgesN, totalLen: Math.round(len), rows: rowSet.size }, longEdgeIds: longAll };
 }

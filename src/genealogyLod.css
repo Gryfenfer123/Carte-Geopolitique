@@ -10,15 +10,15 @@
 .gen-lod-1 .gen-card-name { font-size: min(64px, calc(9px / var(--gen-k, 0.2))); line-height: 1.15; }
 .gen-lod-1 .gen-card-dates { font-size: min(52px, calc(7.5px / var(--gen-k, 0.2))); margin-top: 6px; }
 
-/* Niveau 2 : de très loin, des blocs ; seuls les personnages cerclés gardent leur nom. */
+/* Niveau 2 : de très loin, des blocs ; seuls ceux qui ont dirigé le pays (anneau rouge) gardent leur nom. */
 .gen-lod-2 .gen-card-photo,
 .gen-lod-2 .gen-card-title-field,
 .gen-lod-2 .gen-card-flag,
 .gen-lod-2 .gen-card-dates,
 .gen-lod-2 .gen-card-name { display: none; }
 .gen-lod-2 .gen-card { background: #46556f; box-shadow: none; }
-.gen-lod-2 .gen-card-ringed { background: #6c7fa0; }
-.gen-lod-2 .gen-card-ringed .gen-card-name {
+.gen-lod-2 .gen-card-leader { background: #6c7fa0; }
+.gen-lod-2 .gen-card-leader .gen-card-name {
   display: block; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
   white-space: nowrap; font-size: calc(11px / var(--gen-k, 0.08)); line-height: 1.2;
   background: var(--surface); padding: 0.1em 0.4em; border-radius: 0.3em; z-index: 2;
