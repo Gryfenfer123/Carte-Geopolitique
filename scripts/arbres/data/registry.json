@@ -27030,6 +27030,186 @@
    "title": "Duchesse de Calabre, épouse d'Alphonse II",
    "g": "f",
    "script": 102
+  },
+  "bg2.malamir": {
+   "id": "74d91cf2-024c-5926-adde-2874af326b6c",
+   "name": "Malamir",
+   "b": null,
+   "d": 836,
+   "tree": "BG_KRU",
+   "title": "Khan de Bulgarie (831-836)",
+   "g": "h",
+   "script": 103
+  },
+  "bg2.zvinitsa": {
+   "id": "440181e1-4e87-5732-929a-77fcb5191c60",
+   "name": "Zvinitsa",
+   "b": null,
+   "d": null,
+   "tree": "BG_KRU",
+   "title": "Père de Presian Ier",
+   "g": "h",
+   "script": 103
+  },
+  "bg2.presian": {
+   "id": "ae40f5c1-34f6-56ad-b3be-f025b552d1a4",
+   "name": "Presian Ier",
+   "b": null,
+   "d": 852,
+   "tree": "BG_KRU",
+   "title": "Khan de Bulgarie (836-852)",
+   "g": "h",
+   "script": 103
+  },
+  "bg2.vladimir": {
+   "id": "8b2ab3fc-4c64-5dd7-b6c0-ce2c5dbf4181",
+   "name": "Vladimir",
+   "b": null,
+   "d": 893,
+   "tree": "BG_KRU",
+   "title": "Knèze de Bulgarie (889-893)",
+   "g": "h",
+   "script": 103
+  },
+  "bg2.boris2": {
+   "id": "190248c5-d194-57dd-b9ac-5444b4042147",
+   "name": "Boris II",
+   "b": null,
+   "d": null,
+   "tree": "BG_KRU",
+   "title": "Tsar de Bulgarie (969-977)",
+   "g": "h",
+   "script": 103
+  },
+  "bg2.roman": {
+   "id": "b79f29e6-c1c9-5dc2-bdb8-0ad9082031b5",
+   "name": "Roman",
+   "b": null,
+   "d": 997,
+   "tree": "BG_KRU",
+   "title": "Tsar de Bulgarie (977-997)",
+   "g": "h",
+   "script": 103
+  },
+  "bg2.ivan_asen1": {
+   "id": "57f11593-7b96-55dc-b52d-d97476b154e7",
+   "name": "Ivan Asen Ier",
+   "b": null,
+   "d": 1196,
+   "tree": "BG_ASE",
+   "title": "Tsar de Bulgarie (v. 1188-1196)",
+   "g": "h",
+   "script": 103
+  },
+  "bg2.peter2": {
+   "id": "e7e77612-778e-578a-a2a5-a731de8eb8d7",
+   "name": "Pierre II (Théodore-Pierre)",
+   "b": null,
+   "d": 1197,
+   "tree": "BG_ASE",
+   "title": "Tsar de Bulgarie (1185-1197)",
+   "g": "h",
+   "script": 103
+  },
+  "bg2.kaloyan": {
+   "id": "c2eba8a9-4c7e-5fb9-8d8b-cd84c702a422",
+   "name": "Kaloyan",
+   "b": null,
+   "d": 1207,
+   "tree": "BG_ASE",
+   "title": "Tsar de Bulgarie (1196-1207)",
+   "g": "h",
+   "script": 103
+  },
+  "bg2.boril": {
+   "id": "0a84240a-3453-59a7-98a2-417b5a70ca06",
+   "name": "Boril",
+   "b": null,
+   "d": null,
+   "tree": "BG_ASE",
+   "title": "Tsar de Bulgarie (1207-1218), neveu de Kaloyan",
+   "g": "h",
+   "script": 103
+  },
+  "bg2.michael_asen1": {
+   "id": "ef9c7b74-1d48-5a39-b8aa-66e26048893d",
+   "name": "Michel Asen Ier",
+   "b": null,
+   "d": 1256,
+   "tree": "BG_ASE",
+   "title": "Tsar de Bulgarie (1246-1256)",
+   "g": "h",
+   "script": 103
+  },
+  "bg2.constantine": {
+   "id": "e69e8f0a-003b-50d3-8326-e0d764ab0480",
+   "name": "Constantin Ier Tikh Asen",
+   "b": null,
+   "d": 1277,
+   "tree": "BG_ASE",
+   "title": "Tsar de Bulgarie (1257-1277)",
+   "g": "h",
+   "script": 103
+  },
+  "bg2.michael_asen2": {
+   "id": "24a47649-a60c-5967-8edd-92e0ea08bbd6",
+   "name": "Michel Asen II",
+   "b": null,
+   "d": 1279,
+   "tree": "BG_ASE",
+   "title": "Tsar de Bulgarie (1277-1279)",
+   "g": "h",
+   "script": 103
+  },
+  "bg2.george_t1": {
+   "id": "f4b44cc8-992b-55c0-aad7-559c52047eae",
+   "name": "Georges Ier Terter",
+   "b": null,
+   "d": 1308,
+   "tree": "BG_TER",
+   "title": "Tsar de Bulgarie (1280-1292)",
+   "g": "h",
+   "script": 103
+  },
+  "bg2.theodore_s": {
+   "id": "83920605-6684-575f-bbac-992cf080c9b2",
+   "name": "Théodore Svetoslav",
+   "b": null,
+   "d": 1322,
+   "tree": "BG_TER",
+   "title": "Tsar de Bulgarie (1300-1322)",
+   "g": "h",
+   "script": 103
+  },
+  "bg2.george_t2": {
+   "id": "3cc46fc8-25a2-521c-9098-cfc1e86f6a16",
+   "name": "Georges II Terter",
+   "b": null,
+   "d": 1323,
+   "tree": "BG_TER",
+   "title": "Tsar de Bulgarie (1322-1323)",
+   "g": "h",
+   "script": 103
+  },
+  "bg2.michael_s3": {
+   "id": "b4c2e461-552c-55c3-b5bb-a2aa573965c2",
+   "name": "Michel III Chichman",
+   "b": null,
+   "d": 1330,
+   "tree": "BG_CHI",
+   "title": "Tsar de Bulgarie (1323-1330), mort à Velbazhd",
+   "g": "h",
+   "script": 103
+  },
+  "bg2.ivan_stephen": {
+   "id": "954e6f16-bf9c-5582-8136-223c62b814c8",
+   "name": "Ivan Stéphane",
+   "b": null,
+   "d": 1373,
+   "tree": "BG_CHI",
+   "title": "Tsar de Bulgarie (1330-1331)",
+   "g": "h",
+   "script": 103
   }
  },
  "trees": {
@@ -27854,6 +28034,12 @@
    "country": "ITA",
    "dynasty": "Aragon-Naples",
    "script": 102
+  },
+  "BG_TER": {
+   "entry": "90949041-47fc-54f2-a8be-fb78a454b5ef",
+   "country": "BGR",
+   "dynasty": "Terter",
+   "script": 103
   }
  },
  "flags": [
@@ -32821,6 +33007,14 @@
    "trees": [
     "Anjou-Naples (ITA)",
     "Aragon-Naples (ITA)"
+   ]
+  },
+  "103": {
+   "label": "Bulgarie — suite des souverains (premier empire, Asen, Terter, Chichman)",
+   "members": 18,
+   "rels": 18,
+   "trees": [
+    "Terter (BGR)"
    ]
   }
  },
@@ -55469,6 +55663,96 @@
    "f5938a98-385c-59f2-8e3c-b3f9de17dd1b",
    "0a69853a-5ca9-5adc-87b1-5c9d6c24147b",
    "spouse"
+  ],
+  [
+   "f50fa150-8051-5a38-b9a2-acc79937578a",
+   "74d91cf2-024c-5926-adde-2874af326b6c",
+   "parent"
+  ],
+  [
+   "f50fa150-8051-5a38-b9a2-acc79937578a",
+   "440181e1-4e87-5732-929a-77fcb5191c60",
+   "parent"
+  ],
+  [
+   "440181e1-4e87-5732-929a-77fcb5191c60",
+   "ae40f5c1-34f6-56ad-b3be-f025b552d1a4",
+   "parent"
+  ],
+  [
+   "ae40f5c1-34f6-56ad-b3be-f025b552d1a4",
+   "d39ce982-b84f-50d1-91ea-5d6e68d174b7",
+   "parent"
+  ],
+  [
+   "d39ce982-b84f-50d1-91ea-5d6e68d174b7",
+   "8b2ab3fc-4c64-5dd7-b6c0-ce2c5dbf4181",
+   "parent"
+  ],
+  [
+   "aafcd9a8-3eef-56f2-9d9b-619b71d18abb",
+   "190248c5-d194-57dd-b9ac-5444b4042147",
+   "parent"
+  ],
+  [
+   "aafcd9a8-3eef-56f2-9d9b-619b71d18abb",
+   "b79f29e6-c1c9-5dc2-bdb8-0ad9082031b5",
+   "parent"
+  ],
+  [
+   "57f11593-7b96-55dc-b52d-d97476b154e7",
+   "37c8c29c-0573-5fac-9ed7-5a2d3c99d47e",
+   "parent"
+  ],
+  [
+   "57f11593-7b96-55dc-b52d-d97476b154e7",
+   "e7e77612-778e-578a-a2a5-a731de8eb8d7",
+   "family"
+  ],
+  [
+   "57f11593-7b96-55dc-b52d-d97476b154e7",
+   "c2eba8a9-4c7e-5fb9-8d8b-cd84c702a422",
+   "family"
+  ],
+  [
+   "c2eba8a9-4c7e-5fb9-8d8b-cd84c702a422",
+   "0a84240a-3453-59a7-98a2-417b5a70ca06",
+   "family"
+  ],
+  [
+   "37c8c29c-0573-5fac-9ed7-5a2d3c99d47e",
+   "ef9c7b74-1d48-5a39-b8aa-66e26048893d",
+   "parent"
+  ],
+  [
+   "e69e8f0a-003b-50d3-8326-e0d764ab0480",
+   "24a47649-a60c-5967-8edd-92e0ea08bbd6",
+   "parent"
+  ],
+  [
+   "37c8c29c-0573-5fac-9ed7-5a2d3c99d47e",
+   "e69e8f0a-003b-50d3-8326-e0d764ab0480",
+   "family"
+  ],
+  [
+   "f4b44cc8-992b-55c0-aad7-559c52047eae",
+   "83920605-6684-575f-bbac-992cf080c9b2",
+   "parent"
+  ],
+  [
+   "83920605-6684-575f-bbac-992cf080c9b2",
+   "3cc46fc8-25a2-521c-9098-cfc1e86f6a16",
+   "parent"
+  ],
+  [
+   "b4c2e461-552c-55c3-b5bb-a2aa573965c2",
+   "954e6f16-bf9c-5582-8136-223c62b814c8",
+   "parent"
+  ],
+  [
+   "b4c2e461-552c-55c3-b5bb-a2aa573965c2",
+   "da935432-8ffb-5434-959d-c2cb6e130d9e",
+   "family"
   ]
  ],
  "dateflags": [
@@ -63318,6 +63602,132 @@
    "d": 1464,
    "note": "Naissance vers 1424.",
    "script": 101
+  },
+  {
+   "name": "Malamir",
+   "b": null,
+   "d": 836,
+   "note": "Naissance inconnue.",
+   "script": 103
+  },
+  {
+   "name": "Zvinitsa",
+   "b": null,
+   "d": null,
+   "note": "Naissance inconnue.",
+   "script": 103
+  },
+  {
+   "name": "Presian Ier",
+   "b": null,
+   "d": 852,
+   "note": "Naissance inconnue.",
+   "script": 103
+  },
+  {
+   "name": "Vladimir",
+   "b": null,
+   "d": 893,
+   "note": "Naissance inconnue.",
+   "script": 103
+  },
+  {
+   "name": "Boris II",
+   "b": null,
+   "d": null,
+   "note": "Naissance et mort incertaines (après 977).",
+   "script": 103
+  },
+  {
+   "name": "Roman",
+   "b": null,
+   "d": 997,
+   "note": "Naissance inconnue.",
+   "script": 103
+  },
+  {
+   "name": "Ivan Asen Ier",
+   "b": null,
+   "d": 1196,
+   "note": "Naissance inconnue.",
+   "script": 103
+  },
+  {
+   "name": "Pierre II (Théodore-Pierre)",
+   "b": null,
+   "d": 1197,
+   "note": "Naissance inconnue.",
+   "script": 103
+  },
+  {
+   "name": "Kaloyan",
+   "b": null,
+   "d": 1207,
+   "note": "Naissance inconnue.",
+   "script": 103
+  },
+  {
+   "name": "Boril",
+   "b": null,
+   "d": null,
+   "note": "Naissance et mort inconnues (après 1218).",
+   "script": 103
+  },
+  {
+   "name": "Michel Asen Ier",
+   "b": null,
+   "d": 1256,
+   "note": "Naissance inconnue.",
+   "script": 103
+  },
+  {
+   "name": "Constantin Ier Tikh Asen",
+   "b": null,
+   "d": 1277,
+   "note": "Naissance inconnue.",
+   "script": 103
+  },
+  {
+   "name": "Michel Asen II",
+   "b": null,
+   "d": 1279,
+   "note": "Naissance inconnue.",
+   "script": 103
+  },
+  {
+   "name": "Georges Ier Terter",
+   "b": null,
+   "d": 1308,
+   "note": "Naissance inconnue.",
+   "script": 103
+  },
+  {
+   "name": "Théodore Svetoslav",
+   "b": null,
+   "d": 1322,
+   "note": "Naissance inconnue.",
+   "script": 103
+  },
+  {
+   "name": "Georges II Terter",
+   "b": null,
+   "d": 1323,
+   "note": "Naissance inconnue.",
+   "script": 103
+  },
+  {
+   "name": "Michel III Chichman",
+   "b": null,
+   "d": 1330,
+   "note": "Naissance inconnue.",
+   "script": 103
+  },
+  {
+   "name": "Ivan Stéphane",
+   "b": null,
+   "d": 1373,
+   "note": "Naissance inconnue.",
+   "script": 103
   }
  ],
  "pins": [
