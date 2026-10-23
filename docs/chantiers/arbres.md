@@ -2,6 +2,8 @@
 
 ## Dernières nouvelles (la plus récente en haut)
 
+- 2026-10-23 — v83–v86 : Chine — Song, Gengiskhanides/Yuan, Ming, Qing (81 membres, 4 nouveaux arbres)
+
 - 2026-10-23 — v82 : Chine — Sui et Tang, de Yang Jian à Tang Aidi, avec Wu Zetian (27 membres, 2 nouveaux arbres)
 
 - 2026-10-23 — v81 : Turquie — dynastie ottomane d'Osman Ier à Abdülmecid II (40 membres, nouvel arbre)
@@ -49,7 +51,7 @@
 
 Code : `src/genealogy.ts`, `genealogyLayers.ts`, `genealogyBus.ts`, `genealogyLod.ts/.css`, `genealogyLayersWorker.ts`,
 `genealogyLayout.ts`, `genealogyRouting.ts`. Outils de remplissage : [`scripts/arbres/`](../../scripts/arbres/README.md).
-Prochaine migration : **arbres_v83** (`supabase/arbres/arbres_v83.sql`) — générateur : `Gen(83, "…")`.  (v82 livrée, à exécuter par Martin si ce n'est pas déjà fait.)
+Prochaine migration : **arbres_v87** (`supabase/arbres/arbres_v87.sql`) — générateur : `Gen(87, "…")`.  (v86 livrée, à exécuter par Martin si ce n'est pas déjà fait.)
 
 ## Règles de contenu (décidées par Martin — ne pas rouvrir)
 - Un pays n'a que les dynasties qui ont **régné sur lui**. Dynastie étrangère : branche principale dans son pays

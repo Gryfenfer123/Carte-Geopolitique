@@ -20730,6 +20730,816 @@
    "title": "Concubine de Xuanzong",
    "g": "f",
    "script": 82
+  },
+  "sg.taizu": {
+   "id": "a4fe89c6-766e-54ce-8e30-4b5ba8d34008",
+   "name": "Song Taizu (Zhao Kuangyin)",
+   "b": 927,
+   "d": 976,
+   "tree": "CN_SONG",
+   "title": "Fondateur des Song (960-976)",
+   "g": "h",
+   "script": 83
+  },
+  "sg.taizong": {
+   "id": "965d1ef2-a7a4-5071-a392-e08167ee474f",
+   "name": "Song Taizong (Zhao Jiong)",
+   "b": 939,
+   "d": 997,
+   "tree": "CN_SONG",
+   "title": "Empereur (976-997)",
+   "g": "h",
+   "script": 83
+  },
+  "sg.zhenzong": {
+   "id": "a03eea47-2773-59cc-bd5c-7393419fb6b3",
+   "name": "Song Zhenzong (Zhao Heng)",
+   "b": 968,
+   "d": 1022,
+   "tree": "CN_SONG",
+   "title": "Empereur (997-1022)",
+   "g": "h",
+   "script": 83
+  },
+  "sg.renzong": {
+   "id": "aa07ae97-ea97-50b3-bea3-a83a5b435e52",
+   "name": "Song Renzong (Zhao Zhen)",
+   "b": 1010,
+   "d": 1063,
+   "tree": "CN_SONG",
+   "title": "Empereur (1022-1063)",
+   "g": "h",
+   "script": 83
+  },
+  "sg.yingzong": {
+   "id": "e3682896-7aa5-57e2-837c-fc0e5a82ed63",
+   "name": "Song Yingzong (Zhao Shu)",
+   "b": 1032,
+   "d": 1067,
+   "tree": "CN_SONG",
+   "title": "Empereur (1063-1067)",
+   "g": "h",
+   "script": 83
+  },
+  "sg.shenzong": {
+   "id": "70a58fd3-c13a-5018-9796-5eb3b0074ea9",
+   "name": "Song Shenzong (Zhao Xu)",
+   "b": 1048,
+   "d": 1085,
+   "tree": "CN_SONG",
+   "title": "Empereur (1067-1085)",
+   "g": "h",
+   "script": 83
+  },
+  "sg.zhezong": {
+   "id": "9e839739-3b1b-58cc-82f2-1997c48abaad",
+   "name": "Song Zhezong (Zhao Xu)",
+   "b": 1077,
+   "d": 1100,
+   "tree": "CN_SONG",
+   "title": "Empereur (1085-1100)",
+   "g": "h",
+   "script": 83
+  },
+  "sg.huizong": {
+   "id": "9b222ea5-1d90-5008-a7a5-871fc434a9c2",
+   "name": "Song Huizong (Zhao Ji)",
+   "b": 1082,
+   "d": 1135,
+   "tree": "CN_SONG",
+   "title": "Empereur (1100-1126), capturé par les Jin",
+   "g": "h",
+   "script": 83
+  },
+  "sg.qinzong": {
+   "id": "bf748d00-5486-54f6-bad5-b834cb00b09b",
+   "name": "Song Qinzong (Zhao Huan)",
+   "b": 1100,
+   "d": 1161,
+   "tree": "CN_SONG",
+   "title": "Empereur (1126-1127), capturé par les Jin",
+   "g": "h",
+   "script": 83
+  },
+  "sg.gaozong": {
+   "id": "5737f5e1-8b44-57f9-a3f1-61feb351724a",
+   "name": "Song Gaozong (Zhao Gou)",
+   "b": 1107,
+   "d": 1187,
+   "tree": "CN_SONG",
+   "title": "Premier empereur des Song du Sud (1127-1162)",
+   "g": "h",
+   "script": 83
+  },
+  "sg.xiaozong": {
+   "id": "0f8ade02-865e-568b-b3ce-f3cf512b171e",
+   "name": "Song Xiaozong (Zhao Shen)",
+   "b": 1127,
+   "d": 1194,
+   "tree": "CN_SONG",
+   "title": "Empereur (1162-1189)",
+   "g": "h",
+   "script": 83
+  },
+  "sg.guangzong": {
+   "id": "dd50b8c5-2401-5c0a-8a3f-df556aed28bf",
+   "name": "Song Guangzong (Zhao Dun)",
+   "b": 1147,
+   "d": 1200,
+   "tree": "CN_SONG",
+   "title": "Empereur (1189-1194)",
+   "g": "h",
+   "script": 83
+  },
+  "sg.ningzong": {
+   "id": "7979b5ef-4aa2-501e-977a-eb1e74eadf36",
+   "name": "Song Ningzong (Zhao Kuo)",
+   "b": 1168,
+   "d": 1224,
+   "tree": "CN_SONG",
+   "title": "Empereur (1194-1224)",
+   "g": "h",
+   "script": 83
+  },
+  "sg.lizong": {
+   "id": "51bb7300-bb23-5499-898b-fd39561029de",
+   "name": "Song Lizong (Zhao Yun)",
+   "b": 1205,
+   "d": 1264,
+   "tree": "CN_SONG",
+   "title": "Empereur (1224-1264)",
+   "g": "h",
+   "script": 83
+  },
+  "sg.duzong": {
+   "id": "a988b8da-235b-556c-aa21-d2d6cb432a31",
+   "name": "Song Duzong (Zhao Qi)",
+   "b": 1240,
+   "d": 1274,
+   "tree": "CN_SONG",
+   "title": "Empereur (1264-1274)",
+   "g": "h",
+   "script": 83
+  },
+  "sg.gongdi": {
+   "id": "bd69a896-e75e-5ca5-9d7a-c7537ddda9f0",
+   "name": "Song Gongdi (Zhao Xian)",
+   "b": 1271,
+   "d": 1323,
+   "tree": "CN_SONG",
+   "title": "Empereur (1274-1276), se rend aux Mongols",
+   "g": "h",
+   "script": 83
+  },
+  "sg.duanzong": {
+   "id": "041202f4-ceea-59f9-8ba3-b039e360dd46",
+   "name": "Song Duanzong (Zhao Shi)",
+   "b": 1270,
+   "d": 1278,
+   "tree": "CN_SONG",
+   "title": "Empereur (1276-1278)",
+   "g": "h",
+   "script": 83
+  },
+  "sg.bing": {
+   "id": "fae66c94-90da-57a6-a24b-f1132bd8920c",
+   "name": "Song Bing (Zhao Bing)",
+   "b": 1272,
+   "d": 1279,
+   "tree": "CN_SONG",
+   "title": "Dernier empereur Song (1278-1279)",
+   "g": "h",
+   "script": 83
+  },
+  "sg.liu": {
+   "id": "ecf39c10-42ad-566c-8686-dae8361f98de",
+   "name": "Impératrice douairière Liu",
+   "b": 968,
+   "d": 1033,
+   "tree": "CN_SONG",
+   "title": "Épouse de Zhenzong, régente de Renzong",
+   "g": "f",
+   "script": 83
+  },
+  "gn.genghis": {
+   "id": "4ee3faef-a159-514f-ae3d-0767de865d05",
+   "name": "Gengis Khan (Temüjin)",
+   "b": 1162,
+   "d": 1227,
+   "tree": "MN_GEN",
+   "title": "Fondateur de l'Empire mongol",
+   "g": "h",
+   "script": 84
+  },
+  "gn.jochi": {
+   "id": "67d76c43-cf2f-5f4d-aa5f-c6d87e479026",
+   "name": "Djötchi",
+   "b": 1182,
+   "d": 1227,
+   "tree": "MN_GEN",
+   "title": "Fils aîné de Gengis Khan",
+   "g": "h",
+   "script": 84
+  },
+  "gn.chagatai": {
+   "id": "2537c4ee-cd74-5d42-b49e-9107afb31a36",
+   "name": "Djaghataï",
+   "b": 1183,
+   "d": 1242,
+   "tree": "MN_GEN",
+   "title": "Fils de Gengis Khan, khan du Djaghataï",
+   "g": "h",
+   "script": 84
+  },
+  "gn.ogedei": {
+   "id": "7c1bdcb4-362f-5991-b204-cb2c886aff81",
+   "name": "Ögödei",
+   "b": 1186,
+   "d": 1241,
+   "tree": "MN_GEN",
+   "title": "Grand khan (1229-1241)",
+   "g": "h",
+   "script": 84
+  },
+  "gn.tolui": {
+   "id": "803faf60-4bed-5c59-b510-6acd886a017b",
+   "name": "Tolui",
+   "b": 1192,
+   "d": 1232,
+   "tree": "MN_GEN",
+   "title": "Fils cadet de Gengis Khan, régent",
+   "g": "h",
+   "script": 84
+  },
+  "gn.batu": {
+   "id": "f0ec3282-cc90-5a98-b035-775bbaa54b95",
+   "name": "Batu Khan",
+   "b": 1205,
+   "d": 1255,
+   "tree": "MN_GEN",
+   "title": "Fondateur de la Horde d'Or",
+   "g": "h",
+   "script": 84
+  },
+  "gn.guyuk": {
+   "id": "72e63220-0d03-5592-859b-aedc1408a956",
+   "name": "Güyük",
+   "b": 1206,
+   "d": 1248,
+   "tree": "MN_GEN",
+   "title": "Grand khan (1246-1248)",
+   "g": "h",
+   "script": 84
+  },
+  "gn.mongke": {
+   "id": "53907f89-a539-51a2-8db7-9a978985ad96",
+   "name": "Möngke",
+   "b": 1209,
+   "d": 1259,
+   "tree": "MN_GEN",
+   "title": "Grand khan (1251-1259)",
+   "g": "h",
+   "script": 84
+  },
+  "gn.kublai": {
+   "id": "7ca95b8a-c766-5c28-ba25-70feefec7528",
+   "name": "Kubilaï Khan (Yuan Shizu)",
+   "b": 1215,
+   "d": 1294,
+   "tree": "MN_GEN",
+   "title": "Grand khan, fondateur de la dynastie Yuan (1271-1294)",
+   "g": "h",
+   "script": 84
+  },
+  "gn.hulagu": {
+   "id": "b001eb0f-d510-50f5-a440-9076b9ad3b79",
+   "name": "Houlagou",
+   "b": 1218,
+   "d": 1265,
+   "tree": "MN_GEN",
+   "title": "Fondateur de l'Ilkhanat",
+   "g": "h",
+   "script": 84
+  },
+  "gn.ariq": {
+   "id": "c656cb7f-21bb-5426-8a6b-930b4e684ae0",
+   "name": "Ariq Böke",
+   "b": 1219,
+   "d": 1266,
+   "tree": "MN_GEN",
+   "title": "Prétendant au grand khanat",
+   "g": "h",
+   "script": 84
+  },
+  "gn.zhenjin": {
+   "id": "b0bae3f2-9777-576e-acd0-a5ae7453c465",
+   "name": "Zhenjin",
+   "b": 1243,
+   "d": 1286,
+   "tree": "MN_GEN",
+   "title": "Prince héritier, fils de Kubilaï",
+   "g": "h",
+   "script": 84
+  },
+  "gn.gammala": {
+   "id": "09649f66-7404-50c3-99e9-ca0799c85d8f",
+   "name": "Gammala",
+   "b": 1263,
+   "d": 1302,
+   "tree": "MN_GEN",
+   "title": "Petit-fils de Kubilaï",
+   "g": "h",
+   "script": 84
+  },
+  "gn.darmabala": {
+   "id": "01402455-ef11-5a78-a0cf-04f3a9ba2e40",
+   "name": "Darmabala",
+   "b": 1264,
+   "d": 1292,
+   "tree": "MN_GEN",
+   "title": "Petit-fils de Kubilaï",
+   "g": "h",
+   "script": 84
+  },
+  "gn.temur": {
+   "id": "15329cbc-8c8e-512a-9b1b-320d07c99827",
+   "name": "Temür Khan (Yuan Chengzong)",
+   "b": 1265,
+   "d": 1307,
+   "tree": "MN_GEN",
+   "title": "Empereur Yuan (1294-1307)",
+   "g": "h",
+   "script": 84
+  },
+  "gn.kulug": {
+   "id": "b0713b53-8994-5aad-943d-f9374f967121",
+   "name": "Külüg Khan (Yuan Wuzong)",
+   "b": 1281,
+   "d": 1311,
+   "tree": "MN_GEN",
+   "title": "Empereur Yuan (1307-1311)",
+   "g": "h",
+   "script": 84
+  },
+  "gn.ayur": {
+   "id": "87050386-3924-507f-b0d5-9fe04fce8f52",
+   "name": "Ayurbarwada (Yuan Renzong)",
+   "b": 1285,
+   "d": 1320,
+   "tree": "MN_GEN",
+   "title": "Empereur Yuan (1311-1320)",
+   "g": "h",
+   "script": 84
+  },
+  "gn.gegeen": {
+   "id": "e9d2bdea-41e5-53c2-ab0d-d2c0c8e9cd62",
+   "name": "Gegeen Khan (Yuan Yingzong)",
+   "b": 1303,
+   "d": 1323,
+   "tree": "MN_GEN",
+   "title": "Empereur Yuan (1320-1323)",
+   "g": "h",
+   "script": 84
+  },
+  "gn.yesun": {
+   "id": "2e534c96-3d23-5a8e-986a-06786f0d08f4",
+   "name": "Yesün Temür (Taiding)",
+   "b": 1293,
+   "d": 1328,
+   "tree": "MN_GEN",
+   "title": "Empereur Yuan (1323-1328)",
+   "g": "h",
+   "script": 84
+  },
+  "gn.kusala": {
+   "id": "83beb51f-1a34-569d-9ecd-03160cde2831",
+   "name": "Kusala (Yuan Mingzong)",
+   "b": 1300,
+   "d": 1329,
+   "tree": "MN_GEN",
+   "title": "Empereur Yuan (1329)",
+   "g": "h",
+   "script": 84
+  },
+  "gn.tugh": {
+   "id": "1461633a-e743-5696-afc5-030f759ca481",
+   "name": "Tugh Temür (Yuan Wenzong)",
+   "b": 1304,
+   "d": 1332,
+   "tree": "MN_GEN",
+   "title": "Empereur Yuan (1328-1332)",
+   "g": "h",
+   "script": 84
+  },
+  "gn.rinchin": {
+   "id": "1e09858f-09b0-501d-bed7-acfe5913929a",
+   "name": "Rinchinbal (Yuan Ningzong)",
+   "b": 1326,
+   "d": 1332,
+   "tree": "MN_GEN",
+   "title": "Empereur Yuan (1332)",
+   "g": "h",
+   "script": 84
+  },
+  "gn.toghon": {
+   "id": "315f0c13-0384-5a90-ac7e-2225be86acdd",
+   "name": "Toghon Temür (Yuan Huizong)",
+   "b": 1320,
+   "d": 1370,
+   "tree": "MN_GEN",
+   "title": "Dernier empereur Yuan (1333-1368)",
+   "g": "h",
+   "script": 84
+  },
+  "gn.borte": {
+   "id": "527bd60c-88f4-5557-9661-1b453458d4cb",
+   "name": "Börte",
+   "b": 1161,
+   "d": 1230,
+   "tree": "MN_GEN",
+   "title": "Première épouse de Gengis Khan",
+   "g": "f",
+   "script": 84
+  },
+  "gn.sorghaghtani": {
+   "id": "14b8e74c-506e-5956-b4c5-2f8de99d125f",
+   "name": "Sorghaghtani Beki",
+   "b": 1190,
+   "d": 1252,
+   "tree": "MN_GEN",
+   "title": "Épouse de Tolui, mère de quatre grands khans",
+   "g": "f",
+   "script": 84
+  },
+  "gn.chabi": {
+   "id": "5185a4a1-f9ff-552b-8146-b55d48f6e4cf",
+   "name": "Chabi",
+   "b": 1216,
+   "d": 1281,
+   "tree": "MN_GEN",
+   "title": "Impératrice, épouse de Kubilaï",
+   "g": "f",
+   "script": 84
+  },
+  "mg.hongwu": {
+   "id": "6c13ec39-aecc-5700-95d5-afda8821e715",
+   "name": "Ming Taizu (Zhu Yuanzhang, Hongwu)",
+   "b": 1328,
+   "d": 1398,
+   "tree": "CN_MING",
+   "title": "Fondateur des Ming (1368-1398)",
+   "g": "h",
+   "script": 85
+  },
+  "mg.biao": {
+   "id": "8bb53e04-b454-502c-b4eb-59b20ea939b0",
+   "name": "Zhu Biao",
+   "b": 1355,
+   "d": 1392,
+   "tree": "CN_MING",
+   "title": "Prince héritier, mort avant son père",
+   "g": "h",
+   "script": 85
+  },
+  "mg.jianwen": {
+   "id": "17954e50-090a-55cb-9386-a58b6d480316",
+   "name": "Jianwen (Zhu Yunwen)",
+   "b": 1377,
+   "d": 1402,
+   "tree": "CN_MING",
+   "title": "Empereur (1398-1402)",
+   "g": "h",
+   "script": 85
+  },
+  "mg.yongle": {
+   "id": "d0af171a-0a14-5428-9ae9-46423f2c8803",
+   "name": "Yongle (Zhu Di)",
+   "b": 1360,
+   "d": 1424,
+   "tree": "CN_MING",
+   "title": "Empereur (1402-1424)",
+   "g": "h",
+   "script": 85
+  },
+  "mg.hongxi": {
+   "id": "1bc53dbc-c51d-505e-af51-82a11f3d414f",
+   "name": "Hongxi (Zhu Gaochi)",
+   "b": 1378,
+   "d": 1425,
+   "tree": "CN_MING",
+   "title": "Empereur (1424-1425)",
+   "g": "h",
+   "script": 85
+  },
+  "mg.xuande": {
+   "id": "aab34ef2-955c-5343-8a01-0b784b1b3eff",
+   "name": "Xuande (Zhu Zhanji)",
+   "b": 1399,
+   "d": 1435,
+   "tree": "CN_MING",
+   "title": "Empereur (1425-1435)",
+   "g": "h",
+   "script": 85
+  },
+  "mg.zhengtong": {
+   "id": "56301ebf-501e-5472-aeed-64bbd734fd84",
+   "name": "Zhengtong / Tianshun (Zhu Qizhen)",
+   "b": 1427,
+   "d": 1464,
+   "tree": "CN_MING",
+   "title": "Empereur (1435-1449 et 1457-1464)",
+   "g": "h",
+   "script": 85
+  },
+  "mg.jingtai": {
+   "id": "dc2eaa1e-070e-58d4-8d97-26d51a43e4b1",
+   "name": "Jingtai (Zhu Qiyu)",
+   "b": 1428,
+   "d": 1457,
+   "tree": "CN_MING",
+   "title": "Empereur (1449-1457)",
+   "g": "h",
+   "script": 85
+  },
+  "mg.chenghua": {
+   "id": "c732b597-ff6e-5b17-8064-86717f1d4402",
+   "name": "Chenghua (Zhu Jianshen)",
+   "b": 1447,
+   "d": 1487,
+   "tree": "CN_MING",
+   "title": "Empereur (1464-1487)",
+   "g": "h",
+   "script": 85
+  },
+  "mg.hongzhi": {
+   "id": "40ffdeb3-449a-5917-a169-b352c85a3311",
+   "name": "Hongzhi (Zhu Youtang)",
+   "b": 1470,
+   "d": 1505,
+   "tree": "CN_MING",
+   "title": "Empereur (1487-1505)",
+   "g": "h",
+   "script": 85
+  },
+  "mg.zhengde": {
+   "id": "bc139f8a-fce5-526b-bf68-299f9edde932",
+   "name": "Zhengde (Zhu Houzhao)",
+   "b": 1491,
+   "d": 1521,
+   "tree": "CN_MING",
+   "title": "Empereur (1505-1521)",
+   "g": "h",
+   "script": 85
+  },
+  "mg.youyuan": {
+   "id": "6886691a-64d9-5480-bafd-7918f43e611c",
+   "name": "Zhu Youyuan, prince de Xing",
+   "b": 1476,
+   "d": 1519,
+   "tree": "CN_MING",
+   "title": "Père de Jiajing",
+   "g": "h",
+   "script": 85
+  },
+  "mg.jiajing": {
+   "id": "bf2d6481-8ff0-5db7-a228-60ee31761264",
+   "name": "Jiajing (Zhu Houcong)",
+   "b": 1507,
+   "d": 1567,
+   "tree": "CN_MING",
+   "title": "Empereur (1521-1567)",
+   "g": "h",
+   "script": 85
+  },
+  "mg.longqing": {
+   "id": "260a1810-72ae-5e8b-bb28-ac1b93683ef6",
+   "name": "Longqing (Zhu Zaiji)",
+   "b": 1537,
+   "d": 1572,
+   "tree": "CN_MING",
+   "title": "Empereur (1567-1572)",
+   "g": "h",
+   "script": 85
+  },
+  "mg.wanli": {
+   "id": "9ebfe12d-65d4-5c10-8202-b6e9f0da5d4d",
+   "name": "Wanli (Zhu Yijun)",
+   "b": 1563,
+   "d": 1620,
+   "tree": "CN_MING",
+   "title": "Empereur (1572-1620)",
+   "g": "h",
+   "script": 85
+  },
+  "mg.taichang": {
+   "id": "73377e87-63fc-5c62-af07-7fca88ba468b",
+   "name": "Taichang (Zhu Changluo)",
+   "b": 1582,
+   "d": 1620,
+   "tree": "CN_MING",
+   "title": "Empereur (1620)",
+   "g": "h",
+   "script": 85
+  },
+  "mg.tianqi": {
+   "id": "368154fa-d4bc-5df8-aff8-2fb7627bbbb1",
+   "name": "Tianqi (Zhu Youjiao)",
+   "b": 1605,
+   "d": 1627,
+   "tree": "CN_MING",
+   "title": "Empereur (1620-1627)",
+   "g": "h",
+   "script": 85
+  },
+  "mg.chongzhen": {
+   "id": "f33790e3-7599-51f9-871f-2c075c9f19eb",
+   "name": "Chongzhen (Zhu Youjian)",
+   "b": 1611,
+   "d": 1644,
+   "tree": "CN_MING",
+   "title": "Dernier empereur Ming (1627-1644)",
+   "g": "h",
+   "script": 85
+  },
+  "mg.ma": {
+   "id": "ef8a1e14-86f0-5772-9b82-14d6c8ff7aa7",
+   "name": "Impératrice Ma",
+   "b": 1332,
+   "d": 1382,
+   "tree": "CN_MING",
+   "title": "Épouse de Hongwu",
+   "g": "f",
+   "script": 85
+  },
+  "mg.xu": {
+   "id": "8c3e94db-c096-55fe-a1c0-416ba27cfa98",
+   "name": "Impératrice Xu",
+   "b": 1362,
+   "d": 1407,
+   "tree": "CN_MING",
+   "title": "Épouse de Yongle",
+   "g": "f",
+   "script": 85
+  },
+  "qg.nurhaci": {
+   "id": "c2581fba-d9bc-5a5f-a607-e0f7ecee1dfc",
+   "name": "Nurhaci (Qing Taizu)",
+   "b": 1559,
+   "d": 1626,
+   "tree": "CN_QING",
+   "title": "Fondateur de la dynastie (khan des Jin postérieurs)",
+   "g": "h",
+   "script": 86
+  },
+  "qg.hongtaiji": {
+   "id": "a00ea2f1-f6b1-505a-a89f-6bb0e11de83b",
+   "name": "Hong Taiji (Qing Taizong)",
+   "b": 1592,
+   "d": 1643,
+   "tree": "CN_QING",
+   "title": "Empereur (1626-1643), fonde officiellement les Qing",
+   "g": "h",
+   "script": 86
+  },
+  "qg.shunzhi": {
+   "id": "4f46fc6d-546d-5964-aa10-97a48b101b85",
+   "name": "Shunzhi (Fulin)",
+   "b": 1638,
+   "d": 1661,
+   "tree": "CN_QING",
+   "title": "Premier empereur Qing à Pékin (1644-1661)",
+   "g": "h",
+   "script": 86
+  },
+  "qg.kangxi": {
+   "id": "3c170065-f7db-5af9-ac72-2d4e84eb7aa2",
+   "name": "Kangxi (Xuanye)",
+   "b": 1654,
+   "d": 1722,
+   "tree": "CN_QING",
+   "title": "Empereur (1661-1722)",
+   "g": "h",
+   "script": 86
+  },
+  "qg.yongzheng": {
+   "id": "fefdcd5e-3552-5e69-8d48-145e5cf5d375",
+   "name": "Yongzheng (Yinzhen)",
+   "b": 1678,
+   "d": 1735,
+   "tree": "CN_QING",
+   "title": "Empereur (1722-1735)",
+   "g": "h",
+   "script": 86
+  },
+  "qg.qianlong": {
+   "id": "97f627e9-a99a-5c7b-a331-b02571c529a4",
+   "name": "Qianlong (Hongli)",
+   "b": 1711,
+   "d": 1799,
+   "tree": "CN_QING",
+   "title": "Empereur (1735-1796)",
+   "g": "h",
+   "script": 86
+  },
+  "qg.jiaqing": {
+   "id": "a5281e23-9fbd-5d16-9969-0b28d4dc7383",
+   "name": "Jiaqing (Yongyan)",
+   "b": 1760,
+   "d": 1820,
+   "tree": "CN_QING",
+   "title": "Empereur (1796-1820)",
+   "g": "h",
+   "script": 86
+  },
+  "qg.daoguang": {
+   "id": "cca82f84-2e79-54ac-9e7b-ea6ca644da28",
+   "name": "Daoguang (Minning)",
+   "b": 1782,
+   "d": 1850,
+   "tree": "CN_QING",
+   "title": "Empereur (1820-1850), guerre de l'opium",
+   "g": "h",
+   "script": 86
+  },
+  "qg.xianfeng": {
+   "id": "46899c09-eee7-5cef-92d8-24bf306ba167",
+   "name": "Xianfeng (Yizhu)",
+   "b": 1831,
+   "d": 1861,
+   "tree": "CN_QING",
+   "title": "Empereur (1850-1861)",
+   "g": "h",
+   "script": 86
+  },
+  "qg.tongzhi": {
+   "id": "4f094a07-6613-5790-91cd-026514e1a592",
+   "name": "Tongzhi (Zaichun)",
+   "b": 1856,
+   "d": 1875,
+   "tree": "CN_QING",
+   "title": "Empereur (1861-1875)",
+   "g": "h",
+   "script": 86
+  },
+  "qg.yixuan": {
+   "id": "be5fb27e-0586-577d-b50b-488d800672c2",
+   "name": "Yixuan, prince Chun",
+   "b": 1840,
+   "d": 1891,
+   "tree": "CN_QING",
+   "title": "Fils de Daoguang, père de Guangxu",
+   "g": "h",
+   "script": 86
+  },
+  "qg.guangxu": {
+   "id": "5ef532fa-e8b8-5395-b9dc-f70515aae8da",
+   "name": "Guangxu (Zaitian)",
+   "b": 1871,
+   "d": 1908,
+   "tree": "CN_QING",
+   "title": "Empereur (1875-1908)",
+   "g": "h",
+   "script": 86
+  },
+  "qg.zaifeng": {
+   "id": "e3565c7f-adac-5937-8520-687e953f6fbe",
+   "name": "Zaifeng, prince Chun",
+   "b": 1883,
+   "d": 1951,
+   "tree": "CN_QING",
+   "title": "Régent, père de Puyi",
+   "g": "h",
+   "script": 86
+  },
+  "qg.puyi": {
+   "id": "48e863ef-ec72-5149-8be3-fcd949b49088",
+   "name": "Puyi (Xuantong)",
+   "b": 1906,
+   "d": 1967,
+   "tree": "CN_QING",
+   "title": "Dernier empereur de Chine (1908-1912)",
+   "g": "h",
+   "script": 86
+  },
+  "qg.xiaozhuang": {
+   "id": "dc23c6dc-d7ea-56e8-a0a0-364867e028d4",
+   "name": "Impératrice Xiaozhuangwen",
+   "b": 1613,
+   "d": 1688,
+   "tree": "CN_QING",
+   "title": "Épouse de Hong Taiji, mère de Shunzhi",
+   "g": "f",
+   "script": 86
+  },
+  "qg.cixi": {
+   "id": "7b8735c6-1808-5d93-aa20-b5c820e92522",
+   "name": "Cixi",
+   "b": 1835,
+   "d": 1908,
+   "tree": "CN_QING",
+   "title": "Impératrice douairière, régente, mère de Tongzhi",
+   "g": "f",
+   "script": 86
   }
  },
  "trees": {
@@ -21308,6 +22118,30 @@
    "country": "CHN",
    "dynasty": "Tang",
    "script": 82
+  },
+  "CN_SONG": {
+   "entry": "7385b184-f10a-5d1a-b8a5-dcebfdf18709",
+   "country": "CHN",
+   "dynasty": "Song",
+   "script": 83
+  },
+  "MN_GEN": {
+   "entry": "613c089b-471c-533f-9653-930720d42543",
+   "country": "CHN",
+   "dynasty": "Gengiskhanides (Yuan)",
+   "script": 84
+  },
+  "CN_MING": {
+   "entry": "392caaa1-f90e-511f-823f-68d42a6b7386",
+   "country": "CHN",
+   "dynasty": "Ming",
+   "script": 85
+  },
+  "CN_QING": {
+   "entry": "becb86a3-258f-5a43-a34d-c098a502cb33",
+   "country": "CHN",
+   "dynasty": "Qing",
+   "script": 86
   }
  },
  "flags": [
@@ -25321,6 +26155,62 @@
    "tree": "CN_TANG",
    "reason": "Famille Yang : sans arbre",
    "script": 82
+  },
+  {
+   "name": "Impératrice douairière Liu",
+   "b": 968,
+   "tree": "CN_SONG",
+   "reason": "Famille Liu : sans arbre",
+   "script": 83
+  },
+  {
+   "name": "Börte",
+   "b": 1161,
+   "tree": "MN_GEN",
+   "reason": "Famille Khongirad : sans arbre",
+   "script": 84
+  },
+  {
+   "name": "Sorghaghtani Beki",
+   "b": 1190,
+   "tree": "MN_GEN",
+   "reason": "Famille Kerait : sans arbre",
+   "script": 84
+  },
+  {
+   "name": "Chabi",
+   "b": 1216,
+   "tree": "MN_GEN",
+   "reason": "Famille Khongirad : sans arbre",
+   "script": 84
+  },
+  {
+   "name": "Impératrice Ma",
+   "b": 1332,
+   "tree": "CN_MING",
+   "reason": "Famille Ma : sans arbre",
+   "script": 85
+  },
+  {
+   "name": "Impératrice Xu",
+   "b": 1362,
+   "tree": "CN_MING",
+   "reason": "Famille Xu : sans arbre",
+   "script": 85
+  },
+  {
+   "name": "Impératrice Xiaozhuangwen",
+   "b": 1613,
+   "tree": "CN_QING",
+   "reason": "Famille Borjigit : sans arbre",
+   "script": 86
+  },
+  {
+   "name": "Cixi",
+   "b": 1835,
+   "tree": "CN_QING",
+   "reason": "Famille Yehe Nara : sans arbre",
+   "script": 86
   }
  ],
  "scripts": {
@@ -25668,6 +26558,38 @@
    "trees": [
     "Sui (CHN)",
     "Tang (CHN)"
+   ]
+  },
+  "83": {
+   "label": "Chine — dynastie Song (Nord et Sud) de Taizu à l'empereur Bing",
+   "members": 19,
+   "rels": 19,
+   "trees": [
+    "Song (CHN)"
+   ]
+  },
+  "84": {
+   "label": "Chine — Gengiskhanides : Gengis Khan, ses fils, les grands khans et les empereurs Yuan",
+   "members": 26,
+   "rels": 34,
+   "trees": [
+    "Gengiskhanides (Yuan) (CHN)"
+   ]
+  },
+  "85": {
+   "label": "Chine — dynastie Ming de Hongwu à Chongzhen",
+   "members": 20,
+   "rels": 21,
+   "trees": [
+    "Ming (CHN)"
+   ]
+  },
+  "86": {
+   "label": "Chine — dynastie Qing de Nurhaci à Puyi",
+   "members": 16,
+   "rels": 17,
+   "trees": [
+    "Qing (CHN)"
    ]
   }
  },
@@ -43701,6 +44623,461 @@
    "19fc908c-5734-5cf7-b080-8df5e0b2af8f",
    "bc852cba-1ff5-5d83-acb7-8c9410c85d19",
    "spouse"
+  ],
+  [
+   "965d1ef2-a7a4-5071-a392-e08167ee474f",
+   "a03eea47-2773-59cc-bd5c-7393419fb6b3",
+   "parent"
+  ],
+  [
+   "a03eea47-2773-59cc-bd5c-7393419fb6b3",
+   "aa07ae97-ea97-50b3-bea3-a83a5b435e52",
+   "parent"
+  ],
+  [
+   "e3682896-7aa5-57e2-837c-fc0e5a82ed63",
+   "70a58fd3-c13a-5018-9796-5eb3b0074ea9",
+   "parent"
+  ],
+  [
+   "70a58fd3-c13a-5018-9796-5eb3b0074ea9",
+   "9e839739-3b1b-58cc-82f2-1997c48abaad",
+   "parent"
+  ],
+  [
+   "70a58fd3-c13a-5018-9796-5eb3b0074ea9",
+   "9b222ea5-1d90-5008-a7a5-871fc434a9c2",
+   "parent"
+  ],
+  [
+   "9b222ea5-1d90-5008-a7a5-871fc434a9c2",
+   "bf748d00-5486-54f6-bad5-b834cb00b09b",
+   "parent"
+  ],
+  [
+   "9b222ea5-1d90-5008-a7a5-871fc434a9c2",
+   "5737f5e1-8b44-57f9-a3f1-61feb351724a",
+   "parent"
+  ],
+  [
+   "0f8ade02-865e-568b-b3ce-f3cf512b171e",
+   "dd50b8c5-2401-5c0a-8a3f-df556aed28bf",
+   "parent"
+  ],
+  [
+   "dd50b8c5-2401-5c0a-8a3f-df556aed28bf",
+   "7979b5ef-4aa2-501e-977a-eb1e74eadf36",
+   "parent"
+  ],
+  [
+   "a988b8da-235b-556c-aa21-d2d6cb432a31",
+   "bd69a896-e75e-5ca5-9d7a-c7537ddda9f0",
+   "parent"
+  ],
+  [
+   "a988b8da-235b-556c-aa21-d2d6cb432a31",
+   "041202f4-ceea-59f9-8ba3-b039e360dd46",
+   "parent"
+  ],
+  [
+   "a988b8da-235b-556c-aa21-d2d6cb432a31",
+   "fae66c94-90da-57a6-a24b-f1132bd8920c",
+   "parent"
+  ],
+  [
+   "a4fe89c6-766e-54ce-8e30-4b5ba8d34008",
+   "965d1ef2-a7a4-5071-a392-e08167ee474f",
+   "family"
+  ],
+  [
+   "aa07ae97-ea97-50b3-bea3-a83a5b435e52",
+   "e3682896-7aa5-57e2-837c-fc0e5a82ed63",
+   "family"
+  ],
+  [
+   "5737f5e1-8b44-57f9-a3f1-61feb351724a",
+   "0f8ade02-865e-568b-b3ce-f3cf512b171e",
+   "family"
+  ],
+  [
+   "7979b5ef-4aa2-501e-977a-eb1e74eadf36",
+   "51bb7300-bb23-5499-898b-fd39561029de",
+   "family"
+  ],
+  [
+   "51bb7300-bb23-5499-898b-fd39561029de",
+   "a988b8da-235b-556c-aa21-d2d6cb432a31",
+   "family"
+  ],
+  [
+   "a03eea47-2773-59cc-bd5c-7393419fb6b3",
+   "ecf39c10-42ad-566c-8686-dae8361f98de",
+   "spouse"
+  ],
+  [
+   "ecf39c10-42ad-566c-8686-dae8361f98de",
+   "aa07ae97-ea97-50b3-bea3-a83a5b435e52",
+   "family"
+  ],
+  [
+   "4ee3faef-a159-514f-ae3d-0767de865d05",
+   "67d76c43-cf2f-5f4d-aa5f-c6d87e479026",
+   "parent"
+  ],
+  [
+   "527bd60c-88f4-5557-9661-1b453458d4cb",
+   "67d76c43-cf2f-5f4d-aa5f-c6d87e479026",
+   "parent"
+  ],
+  [
+   "4ee3faef-a159-514f-ae3d-0767de865d05",
+   "2537c4ee-cd74-5d42-b49e-9107afb31a36",
+   "parent"
+  ],
+  [
+   "527bd60c-88f4-5557-9661-1b453458d4cb",
+   "2537c4ee-cd74-5d42-b49e-9107afb31a36",
+   "parent"
+  ],
+  [
+   "4ee3faef-a159-514f-ae3d-0767de865d05",
+   "7c1bdcb4-362f-5991-b204-cb2c886aff81",
+   "parent"
+  ],
+  [
+   "527bd60c-88f4-5557-9661-1b453458d4cb",
+   "7c1bdcb4-362f-5991-b204-cb2c886aff81",
+   "parent"
+  ],
+  [
+   "4ee3faef-a159-514f-ae3d-0767de865d05",
+   "803faf60-4bed-5c59-b510-6acd886a017b",
+   "parent"
+  ],
+  [
+   "527bd60c-88f4-5557-9661-1b453458d4cb",
+   "803faf60-4bed-5c59-b510-6acd886a017b",
+   "parent"
+  ],
+  [
+   "4ee3faef-a159-514f-ae3d-0767de865d05",
+   "527bd60c-88f4-5557-9661-1b453458d4cb",
+   "spouse"
+  ],
+  [
+   "67d76c43-cf2f-5f4d-aa5f-c6d87e479026",
+   "f0ec3282-cc90-5a98-b035-775bbaa54b95",
+   "parent"
+  ],
+  [
+   "7c1bdcb4-362f-5991-b204-cb2c886aff81",
+   "72e63220-0d03-5592-859b-aedc1408a956",
+   "parent"
+  ],
+  [
+   "803faf60-4bed-5c59-b510-6acd886a017b",
+   "14b8e74c-506e-5956-b4c5-2f8de99d125f",
+   "spouse"
+  ],
+  [
+   "803faf60-4bed-5c59-b510-6acd886a017b",
+   "53907f89-a539-51a2-8db7-9a978985ad96",
+   "parent"
+  ],
+  [
+   "14b8e74c-506e-5956-b4c5-2f8de99d125f",
+   "53907f89-a539-51a2-8db7-9a978985ad96",
+   "parent"
+  ],
+  [
+   "803faf60-4bed-5c59-b510-6acd886a017b",
+   "7ca95b8a-c766-5c28-ba25-70feefec7528",
+   "parent"
+  ],
+  [
+   "14b8e74c-506e-5956-b4c5-2f8de99d125f",
+   "7ca95b8a-c766-5c28-ba25-70feefec7528",
+   "parent"
+  ],
+  [
+   "803faf60-4bed-5c59-b510-6acd886a017b",
+   "b001eb0f-d510-50f5-a440-9076b9ad3b79",
+   "parent"
+  ],
+  [
+   "14b8e74c-506e-5956-b4c5-2f8de99d125f",
+   "b001eb0f-d510-50f5-a440-9076b9ad3b79",
+   "parent"
+  ],
+  [
+   "803faf60-4bed-5c59-b510-6acd886a017b",
+   "c656cb7f-21bb-5426-8a6b-930b4e684ae0",
+   "parent"
+  ],
+  [
+   "14b8e74c-506e-5956-b4c5-2f8de99d125f",
+   "c656cb7f-21bb-5426-8a6b-930b4e684ae0",
+   "parent"
+  ],
+  [
+   "7ca95b8a-c766-5c28-ba25-70feefec7528",
+   "5185a4a1-f9ff-552b-8146-b55d48f6e4cf",
+   "spouse"
+  ],
+  [
+   "7ca95b8a-c766-5c28-ba25-70feefec7528",
+   "b0bae3f2-9777-576e-acd0-a5ae7453c465",
+   "parent"
+  ],
+  [
+   "5185a4a1-f9ff-552b-8146-b55d48f6e4cf",
+   "b0bae3f2-9777-576e-acd0-a5ae7453c465",
+   "parent"
+  ],
+  [
+   "b0bae3f2-9777-576e-acd0-a5ae7453c465",
+   "09649f66-7404-50c3-99e9-ca0799c85d8f",
+   "parent"
+  ],
+  [
+   "b0bae3f2-9777-576e-acd0-a5ae7453c465",
+   "01402455-ef11-5a78-a0cf-04f3a9ba2e40",
+   "parent"
+  ],
+  [
+   "b0bae3f2-9777-576e-acd0-a5ae7453c465",
+   "15329cbc-8c8e-512a-9b1b-320d07c99827",
+   "parent"
+  ],
+  [
+   "01402455-ef11-5a78-a0cf-04f3a9ba2e40",
+   "b0713b53-8994-5aad-943d-f9374f967121",
+   "parent"
+  ],
+  [
+   "01402455-ef11-5a78-a0cf-04f3a9ba2e40",
+   "87050386-3924-507f-b0d5-9fe04fce8f52",
+   "parent"
+  ],
+  [
+   "87050386-3924-507f-b0d5-9fe04fce8f52",
+   "e9d2bdea-41e5-53c2-ab0d-d2c0c8e9cd62",
+   "parent"
+  ],
+  [
+   "09649f66-7404-50c3-99e9-ca0799c85d8f",
+   "2e534c96-3d23-5a8e-986a-06786f0d08f4",
+   "parent"
+  ],
+  [
+   "b0713b53-8994-5aad-943d-f9374f967121",
+   "83beb51f-1a34-569d-9ecd-03160cde2831",
+   "parent"
+  ],
+  [
+   "b0713b53-8994-5aad-943d-f9374f967121",
+   "1461633a-e743-5696-afc5-030f759ca481",
+   "parent"
+  ],
+  [
+   "83beb51f-1a34-569d-9ecd-03160cde2831",
+   "315f0c13-0384-5a90-ac7e-2225be86acdd",
+   "parent"
+  ],
+  [
+   "83beb51f-1a34-569d-9ecd-03160cde2831",
+   "1e09858f-09b0-501d-bed7-acfe5913929a",
+   "parent"
+  ],
+  [
+   "6c13ec39-aecc-5700-95d5-afda8821e715",
+   "8bb53e04-b454-502c-b4eb-59b20ea939b0",
+   "parent"
+  ],
+  [
+   "8bb53e04-b454-502c-b4eb-59b20ea939b0",
+   "17954e50-090a-55cb-9386-a58b6d480316",
+   "parent"
+  ],
+  [
+   "6c13ec39-aecc-5700-95d5-afda8821e715",
+   "d0af171a-0a14-5428-9ae9-46423f2c8803",
+   "parent"
+  ],
+  [
+   "d0af171a-0a14-5428-9ae9-46423f2c8803",
+   "1bc53dbc-c51d-505e-af51-82a11f3d414f",
+   "parent"
+  ],
+  [
+   "1bc53dbc-c51d-505e-af51-82a11f3d414f",
+   "aab34ef2-955c-5343-8a01-0b784b1b3eff",
+   "parent"
+  ],
+  [
+   "aab34ef2-955c-5343-8a01-0b784b1b3eff",
+   "56301ebf-501e-5472-aeed-64bbd734fd84",
+   "parent"
+  ],
+  [
+   "aab34ef2-955c-5343-8a01-0b784b1b3eff",
+   "dc2eaa1e-070e-58d4-8d97-26d51a43e4b1",
+   "parent"
+  ],
+  [
+   "56301ebf-501e-5472-aeed-64bbd734fd84",
+   "c732b597-ff6e-5b17-8064-86717f1d4402",
+   "parent"
+  ],
+  [
+   "c732b597-ff6e-5b17-8064-86717f1d4402",
+   "40ffdeb3-449a-5917-a169-b352c85a3311",
+   "parent"
+  ],
+  [
+   "40ffdeb3-449a-5917-a169-b352c85a3311",
+   "bc139f8a-fce5-526b-bf68-299f9edde932",
+   "parent"
+  ],
+  [
+   "c732b597-ff6e-5b17-8064-86717f1d4402",
+   "6886691a-64d9-5480-bafd-7918f43e611c",
+   "parent"
+  ],
+  [
+   "6886691a-64d9-5480-bafd-7918f43e611c",
+   "bf2d6481-8ff0-5db7-a228-60ee31761264",
+   "parent"
+  ],
+  [
+   "bf2d6481-8ff0-5db7-a228-60ee31761264",
+   "260a1810-72ae-5e8b-bb28-ac1b93683ef6",
+   "parent"
+  ],
+  [
+   "260a1810-72ae-5e8b-bb28-ac1b93683ef6",
+   "9ebfe12d-65d4-5c10-8202-b6e9f0da5d4d",
+   "parent"
+  ],
+  [
+   "9ebfe12d-65d4-5c10-8202-b6e9f0da5d4d",
+   "73377e87-63fc-5c62-af07-7fca88ba468b",
+   "parent"
+  ],
+  [
+   "73377e87-63fc-5c62-af07-7fca88ba468b",
+   "368154fa-d4bc-5df8-aff8-2fb7627bbbb1",
+   "parent"
+  ],
+  [
+   "73377e87-63fc-5c62-af07-7fca88ba468b",
+   "f33790e3-7599-51f9-871f-2c075c9f19eb",
+   "parent"
+  ],
+  [
+   "6c13ec39-aecc-5700-95d5-afda8821e715",
+   "ef8a1e14-86f0-5772-9b82-14d6c8ff7aa7",
+   "spouse"
+  ],
+  [
+   "ef8a1e14-86f0-5772-9b82-14d6c8ff7aa7",
+   "8bb53e04-b454-502c-b4eb-59b20ea939b0",
+   "parent"
+  ],
+  [
+   "d0af171a-0a14-5428-9ae9-46423f2c8803",
+   "8c3e94db-c096-55fe-a1c0-416ba27cfa98",
+   "spouse"
+  ],
+  [
+   "8c3e94db-c096-55fe-a1c0-416ba27cfa98",
+   "1bc53dbc-c51d-505e-af51-82a11f3d414f",
+   "parent"
+  ],
+  [
+   "c2581fba-d9bc-5a5f-a607-e0f7ecee1dfc",
+   "a00ea2f1-f6b1-505a-a89f-6bb0e11de83b",
+   "parent"
+  ],
+  [
+   "a00ea2f1-f6b1-505a-a89f-6bb0e11de83b",
+   "4f46fc6d-546d-5964-aa10-97a48b101b85",
+   "parent"
+  ],
+  [
+   "4f46fc6d-546d-5964-aa10-97a48b101b85",
+   "3c170065-f7db-5af9-ac72-2d4e84eb7aa2",
+   "parent"
+  ],
+  [
+   "3c170065-f7db-5af9-ac72-2d4e84eb7aa2",
+   "fefdcd5e-3552-5e69-8d48-145e5cf5d375",
+   "parent"
+  ],
+  [
+   "fefdcd5e-3552-5e69-8d48-145e5cf5d375",
+   "97f627e9-a99a-5c7b-a331-b02571c529a4",
+   "parent"
+  ],
+  [
+   "97f627e9-a99a-5c7b-a331-b02571c529a4",
+   "a5281e23-9fbd-5d16-9969-0b28d4dc7383",
+   "parent"
+  ],
+  [
+   "a5281e23-9fbd-5d16-9969-0b28d4dc7383",
+   "cca82f84-2e79-54ac-9e7b-ea6ca644da28",
+   "parent"
+  ],
+  [
+   "cca82f84-2e79-54ac-9e7b-ea6ca644da28",
+   "46899c09-eee7-5cef-92d8-24bf306ba167",
+   "parent"
+  ],
+  [
+   "46899c09-eee7-5cef-92d8-24bf306ba167",
+   "4f094a07-6613-5790-91cd-026514e1a592",
+   "parent"
+  ],
+  [
+   "cca82f84-2e79-54ac-9e7b-ea6ca644da28",
+   "be5fb27e-0586-577d-b50b-488d800672c2",
+   "parent"
+  ],
+  [
+   "be5fb27e-0586-577d-b50b-488d800672c2",
+   "5ef532fa-e8b8-5395-b9dc-f70515aae8da",
+   "parent"
+  ],
+  [
+   "be5fb27e-0586-577d-b50b-488d800672c2",
+   "e3565c7f-adac-5937-8520-687e953f6fbe",
+   "parent"
+  ],
+  [
+   "e3565c7f-adac-5937-8520-687e953f6fbe",
+   "48e863ef-ec72-5149-8be3-fcd949b49088",
+   "parent"
+  ],
+  [
+   "a00ea2f1-f6b1-505a-a89f-6bb0e11de83b",
+   "dc23c6dc-d7ea-56e8-a0a0-364867e028d4",
+   "spouse"
+  ],
+  [
+   "dc23c6dc-d7ea-56e8-a0a0-364867e028d4",
+   "4f46fc6d-546d-5964-aa10-97a48b101b85",
+   "parent"
+  ],
+  [
+   "46899c09-eee7-5cef-92d8-24bf306ba167",
+   "7b8735c6-1808-5d93-aa20-b5c820e92522",
+   "spouse"
+  ],
+  [
+   "7b8735c6-1808-5d93-aa20-b5c820e92522",
+   "4f094a07-6613-5790-91cd-026514e1a592",
+   "parent"
   ]
  ],
  "dateflags": [
@@ -50787,6 +52164,20 @@
    "d": 1651,
    "note": "naissance vers 1589",
    "script": 81
+  },
+  {
+   "name": "Gengis Khan (Temüjin)",
+   "b": 1162,
+   "d": 1227,
+   "note": "naissance vers 1162 (discutée)",
+   "script": 84
+  },
+  {
+   "name": "Sorghaghtani Beki",
+   "b": 1190,
+   "d": 1252,
+   "note": "naissance vers 1190",
+   "script": 84
   }
  ],
  "pins": [

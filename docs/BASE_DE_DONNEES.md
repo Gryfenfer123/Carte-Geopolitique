@@ -155,4 +155,5 @@ RLS**. Règles :
 | arbres_v80 | arbres_v80 : Visconti et Sforza (2 nouveaux arbres, 28 membres) |
 | arbres_v81 | arbres_v81 : Ottomans (nouvel arbre, 40 membres) |
 | arbres_v82 | arbres_v82 : Sui et Tang (2 nouveaux arbres, 27 membres) |
+| arbres_v86 | arbres_v83 à v86 : Song (19), Gengiskhanides/Yuan (26), Ming (20), Qing (16) |
 | `data_owid_load.sql` + `owid_chunks/` | Chargement des données d'indicateurs (rejouable, upserts) — à exécuter après v1 à v7 |
