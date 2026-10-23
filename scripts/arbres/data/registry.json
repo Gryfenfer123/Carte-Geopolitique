@@ -24160,6 +24160,356 @@
    "title": "Impératrice de Nicée, épouse de Jean III",
    "g": "f",
    "script": 91
+  },
+  "sc.malcolm2": {
+   "id": "c153f240-a5f0-5fee-be33-afc2c6c1a97c",
+   "name": "Malcolm II",
+   "b": 954,
+   "d": 1034,
+   "tree": "SC_ALP",
+   "title": "Roi d'Écosse",
+   "g": "h",
+   "script": 92
+  },
+  "sc.bethoc": {
+   "id": "e2fc6144-aca4-5fea-b126-800f0c6806ce",
+   "name": "Bethoc",
+   "b": null,
+   "d": null,
+   "tree": "SC_DUN",
+   "title": "Fille de Malcolm II",
+   "g": "f",
+   "script": 92
+  },
+  "sc.crinan": {
+   "id": "fe411ba1-c3ac-50ef-a8ee-72f660a20f44",
+   "name": "Crínán de Dunkeld",
+   "b": null,
+   "d": 1045,
+   "tree": "SC_DUN",
+   "title": "Abbé laïc de Dunkeld",
+   "g": "h",
+   "script": 92
+  },
+  "sc.duncan1": {
+   "id": "5a1e4793-e13a-5752-a028-334e33f0057b",
+   "name": "Duncan Ier",
+   "b": 1001,
+   "d": 1040,
+   "tree": "SC_DUN",
+   "title": "Roi d'Écosse",
+   "g": "h",
+   "script": 92
+  },
+  "sc.macbeth": {
+   "id": "c307c9b0-690a-521b-80fe-2423e4b3d513",
+   "name": "Macbeth",
+   "b": 1005,
+   "d": 1057,
+   "tree": "SC_DUN",
+   "title": "Roi d'Écosse (1040-1057)",
+   "g": "h",
+   "script": 92
+  },
+  "sc.gruoch": {
+   "id": "585b909a-e605-550c-9bff-cc0bfc7ff610",
+   "name": "Gruoch",
+   "b": 1015,
+   "d": 1058,
+   "tree": "SC_DUN",
+   "title": "Reine d'Écosse, épouse de Macbeth",
+   "g": "f",
+   "script": 92
+  },
+  "sc.lulach": {
+   "id": "ae55af42-d888-5872-8267-63e9d9f4c1b3",
+   "name": "Lulach",
+   "b": 1032,
+   "d": 1058,
+   "tree": "SC_DUN",
+   "title": "Roi d'Écosse (1057-1058)",
+   "g": "h",
+   "script": 92
+  },
+  "sc.malcolm3": {
+   "id": "fbc60e2a-4749-5876-bfda-674bc6d0edba",
+   "name": "Malcolm III Canmore",
+   "b": 1031,
+   "d": 1093,
+   "tree": "SC_DUN",
+   "title": "Roi d'Écosse",
+   "g": "h",
+   "script": 92
+  },
+  "wx.margaret": {
+   "id": "157d9a44-c94d-5021-b386-1479b77bacdf",
+   "name": "Marguerite d'Écosse (sainte Marguerite)",
+   "b": 1045,
+   "d": 1093,
+   "tree": "GB_WSX",
+   "title": "Reine d'Écosse",
+   "g": "f",
+   "script": 92
+  },
+  "sc.duncan2": {
+   "id": "4cf8a604-da57-568e-a56b-254bb64c6535",
+   "name": "Duncan II",
+   "b": 1060,
+   "d": 1094,
+   "tree": "SC_DUN",
+   "title": "Roi d'Écosse",
+   "g": "h",
+   "script": 92
+  },
+  "sc.edgar": {
+   "id": "ef3e4940-aad3-53bd-a7ab-0cb5ef74c195",
+   "name": "Édgar d'Écosse",
+   "b": 1074,
+   "d": 1107,
+   "tree": "SC_DUN",
+   "title": "Roi d'Écosse",
+   "g": "h",
+   "script": 92
+  },
+  "sc.alexander1": {
+   "id": "92290c04-face-5993-9aed-0a5b32179c39",
+   "name": "Alexandre Ier",
+   "b": 1078,
+   "d": 1124,
+   "tree": "SC_DUN",
+   "title": "Roi d'Écosse",
+   "g": "h",
+   "script": 92
+  },
+  "sc.david1": {
+   "id": "f1844f54-1ae3-55e9-b074-2b0568decd00",
+   "name": "David Ier",
+   "b": 1084,
+   "d": 1153,
+   "tree": "SC_DUN",
+   "title": "Roi d'Écosse",
+   "g": "h",
+   "script": 92
+  },
+  "sc.henry": {
+   "id": "477cdb51-d8d4-53ba-bc4c-3b90ad63a97e",
+   "name": "Henri de Huntingdon, comte de Northumbrie",
+   "b": 1114,
+   "d": 1152,
+   "tree": "SC_DUN",
+   "title": "Prince héritier, fils de David Ier",
+   "g": "h",
+   "script": 92
+  },
+  "sc.ada": {
+   "id": "9b48a946-a6c2-53d4-b15c-baeaf9ffece7",
+   "name": "Ada de Warenne",
+   "b": 1120,
+   "d": 1178,
+   "tree": "SC_DUN",
+   "title": "Comtesse de Huntingdon, mère de Malcolm IV et de Guillaume",
+   "g": "f",
+   "script": 92
+  },
+  "sc.malcolm4": {
+   "id": "1f3572af-335b-58da-b373-0804d4554700",
+   "name": "Malcolm IV",
+   "b": 1141,
+   "d": 1165,
+   "tree": "SC_DUN",
+   "title": "Roi d'Écosse",
+   "g": "h",
+   "script": 92
+  },
+  "sc.william1": {
+   "id": "8fa4d85d-c4ba-5e51-963e-4588f2684493",
+   "name": "Guillaume le Lion",
+   "b": 1143,
+   "d": 1214,
+   "tree": "SC_DUN",
+   "title": "Roi d'Écosse",
+   "g": "h",
+   "script": 92
+  },
+  "sc.david_h": {
+   "id": "25bc46b9-516f-5352-ba8a-22b6b2f262f2",
+   "name": "David de Huntingdon",
+   "b": 1144,
+   "d": 1219,
+   "tree": "SC_DUN",
+   "title": "Comte de Huntingdon, frère de Guillaume le Lion",
+   "g": "h",
+   "script": 92
+  },
+  "sc.alexander2": {
+   "id": "0074ddea-21b2-566a-b3ba-fa731f233594",
+   "name": "Alexandre II",
+   "b": 1198,
+   "d": 1249,
+   "tree": "SC_DUN",
+   "title": "Roi d'Écosse",
+   "g": "h",
+   "script": 92
+  },
+  "pl.joan_john": {
+   "id": "fee3b75f-90bf-5bff-a87b-50b0f99e1559",
+   "name": "Jeanne d'Angleterre",
+   "b": 1210,
+   "d": 1238,
+   "tree": "GB_PLA",
+   "title": "Reine d'Écosse, épouse d'Alexandre II",
+   "g": "f",
+   "script": 92
+  },
+  "sc.marie_coucy": {
+   "id": "180e4769-f41f-548c-b7ec-307ca812a4d1",
+   "name": "Marie de Coucy",
+   "b": null,
+   "d": 1284,
+   "tree": "SC_DUN",
+   "title": "Reine d'Écosse, 2e épouse d'Alexandre II",
+   "g": "f",
+   "script": 92
+  },
+  "sc.alexander3": {
+   "id": "940d22f6-0b2f-5c01-817d-21d2bcdef2a1",
+   "name": "Alexandre III",
+   "b": 1241,
+   "d": 1286,
+   "tree": "SC_DUN",
+   "title": "Roi d'Écosse",
+   "g": "h",
+   "script": 92
+  },
+  "pl.margaret_eng": {
+   "id": "69c7a9b9-1c1a-567c-ad5a-2767886ea33e",
+   "name": "Marguerite d'Angleterre",
+   "b": 1240,
+   "d": 1275,
+   "tree": "GB_PLA",
+   "title": "Reine d'Écosse, épouse d'Alexandre III",
+   "g": "f",
+   "script": 92
+  },
+  "sc.margaret_maid": {
+   "id": "bf5aefec-4eba-5f3a-a1e8-78df20fade72",
+   "name": "Marguerite de Norvège (la Vierge de Norvège)",
+   "b": 1283,
+   "d": 1290,
+   "tree": "SC_DUN",
+   "title": "Reine d'Écosse, morte en route",
+   "g": "f",
+   "script": 92
+  },
+  "sc.margaret_sc": {
+   "id": "50fcc5a9-ac37-5371-a4a8-d2fb3ec026d3",
+   "name": "Marguerite d'Écosse, reine de Norvège",
+   "b": 1261,
+   "d": 1283,
+   "tree": "SC_DUN",
+   "title": "Reine de Norvège, fille d'Alexandre III",
+   "g": "f",
+   "script": 92
+  },
+  "sc.maud_chester": {
+   "id": "ebece6d0-60e5-5af0-86a6-e7e6292cd8ed",
+   "name": "Maud de Chester",
+   "b": 1171,
+   "d": 1233,
+   "tree": "SC_DUN",
+   "title": "Comtesse de Huntingdon, épouse de David",
+   "g": "f",
+   "script": 92
+  },
+  "sc.isabel_h": {
+   "id": "72b20a0f-413e-56c0-9141-398789c2a554",
+   "name": "Isabelle de Huntingdon",
+   "b": 1199,
+   "d": 1251,
+   "tree": "SC_DUN",
+   "title": "Fille de David de Huntingdon",
+   "g": "f",
+   "script": 92
+  },
+  "sc.margaret_h": {
+   "id": "5101a699-da30-5ae7-b697-2e792458c3e6",
+   "name": "Marguerite de Huntingdon",
+   "b": 1194,
+   "d": 1228,
+   "tree": "SC_DUN",
+   "title": "Fille de David de Huntingdon, mère de Devorguilla",
+   "g": "f",
+   "script": 92
+  },
+  "sc.bruce5": {
+   "id": "f6eafac5-55fa-5d7d-a99d-596274b89270",
+   "name": "Robert de Brus, 5e seigneur d'Annandale",
+   "b": 1210,
+   "d": 1295,
+   "tree": "SC_BRU",
+   "title": "Le Compétiteur, prétendant au trône",
+   "g": "h",
+   "script": 92
+  },
+  "sc.bruce6": {
+   "id": "884eea0b-f85b-5964-bfe5-9e1763eb370a",
+   "name": "Robert de Brus, 6e seigneur d'Annandale",
+   "b": 1243,
+   "d": 1304,
+   "tree": "SC_BRU",
+   "title": "Père de Robert Ier",
+   "g": "h",
+   "script": 92
+  },
+  "sc.marjorie_c": {
+   "id": "98c2f8ce-ad7f-54aa-8e40-4e6b4d0952c0",
+   "name": "Marjorie de Carrick",
+   "b": null,
+   "d": 1292,
+   "tree": "SC_BRU",
+   "title": "Comtesse de Carrick, mère de Robert Ier",
+   "g": "f",
+   "script": 92
+  },
+  "sc.devorguilla": {
+   "id": "5a61115e-666e-5c4d-9763-cd1357052406",
+   "name": "Devorguilla de Galloway",
+   "b": 1210,
+   "d": 1290,
+   "tree": "SC_BAL",
+   "title": "Dame de Galloway, mère de Jean Balliol",
+   "g": "f",
+   "script": 92
+  },
+  "sc.john_bal_sr": {
+   "id": "d862c102-c07d-58e2-9978-ac0f5a42d3db",
+   "name": "Jean de Balliol (père)",
+   "b": 1208,
+   "d": 1268,
+   "tree": "SC_BAL",
+   "title": "Fondateur du Balliol College, époux de Devorguilla",
+   "g": "h",
+   "script": 92
+  },
+  "sc.john_balliol": {
+   "id": "78bda1f9-a825-55cd-8dd4-60e571b18234",
+   "name": "Jean Balliol",
+   "b": 1249,
+   "d": 1314,
+   "tree": "SC_BAL",
+   "title": "Roi d'Écosse (1292-1296)",
+   "g": "h",
+   "script": 92
+  },
+  "sc.edward_balliol": {
+   "id": "107c907f-91e7-5a40-bfaf-7e26bded909a",
+   "name": "Édouard Balliol",
+   "b": 1283,
+   "d": 1367,
+   "tree": "SC_BAL",
+   "title": "Roi d'Écosse (1332-1356)",
+   "g": "h",
+   "script": 92
   }
  },
  "trees": {
@@ -24828,6 +25178,42 @@
    "country": "GRC",
    "dynasty": "Empire byzantin",
    "script": 91
+  },
+  "SC_DUN": {
+   "entry": "91210342-240f-5a40-827b-3e5021e27f96",
+   "country": "GBR",
+   "dynasty": "Dunkeld",
+   "script": 92
+  },
+  "SC_BAL": {
+   "entry": "eddd8454-601c-50c8-a9e4-9364f30c5a56",
+   "country": "GBR",
+   "dynasty": "Balliol",
+   "script": 92
+  },
+  "SC_ALP": {
+   "entry": "80f1cfdd-a933-4379-937b-1032aca5104c",
+   "country": "GBR",
+   "dynasty": "Maison d'Alpin",
+   "script": null
+  },
+  "SC_BRU": {
+   "entry": "20fcf3c0-b237-4baf-bd79-42b2e89b39c4",
+   "country": "GBR",
+   "dynasty": "Maison de Bruce",
+   "script": null
+  },
+  "GB_WSX": {
+   "entry": "324177bb-e58e-4a04-9718-bb9e9765bd49",
+   "country": "GBR",
+   "dynasty": "Maison de Wessex et de Godwin",
+   "script": null
+  },
+  "GB_NOR": {
+   "entry": "b545151c-cabc-48f1-af74-4c77696b64ca",
+   "country": "GBR",
+   "dynasty": "Les Rollonides et Blois",
+   "script": null
   }
  },
  "flags": [
@@ -29016,6 +29402,62 @@
    "tree": "GB_TUD",
    "reason": "Maison Parr : sans arbre",
    "script": 90
+  },
+  {
+   "name": "Crínán de Dunkeld",
+   "b": null,
+   "tree": "SC_DUN",
+   "reason": "Maison Crínán : sans arbre",
+   "script": 92
+  },
+  {
+   "name": "Gruoch",
+   "b": 1015,
+   "tree": "SC_DUN",
+   "reason": "Maison Moray : sans arbre",
+   "script": 92
+  },
+  {
+   "name": "Ada de Warenne",
+   "b": 1120,
+   "tree": "SC_DUN",
+   "reason": "Maison Warenne : sans arbre",
+   "script": 92
+  },
+  {
+   "name": "Marie de Coucy",
+   "b": null,
+   "tree": "SC_DUN",
+   "reason": "Maison Coucy : sans arbre",
+   "script": 92
+  },
+  {
+   "name": "Maud de Chester",
+   "b": 1171,
+   "tree": "SC_DUN",
+   "reason": "Maison Chester : sans arbre",
+   "script": 92
+  },
+  {
+   "name": "Marjorie de Carrick",
+   "b": null,
+   "tree": "SC_BRU",
+   "reason": "Maison Carrick : sans arbre",
+   "script": 92
+  },
+  {
+   "name": "Devorguilla de Galloway",
+   "b": 1210,
+   "tree": "SC_BAL",
+   "reason": "Maison Galloway : sans arbre",
+   "script": 92
+  },
+  {
+   "name": "Jean de Balliol (père)",
+   "b": 1208,
+   "tree": "SC_BAL",
+   "reason": "Maison Balliol : sans arbre",
+   "script": 92
   }
  ],
  "scripts": {
@@ -29436,6 +29878,15 @@
    "rels": 45,
    "trees": [
     "Empire byzantin (GRC)"
+   ]
+  },
+  "92": {
+   "label": "Écosse — maison de Dunkeld (de Malcolm II à Alexandre III), Balliol, et ancêtres Bruce",
+   "members": 35,
+   "rels": 60,
+   "trees": [
+    "Dunkeld (GBR)",
+    "Balliol (GBR)"
    ]
   }
  },
@@ -49389,6 +49840,306 @@
    "72e522c8-5c09-584c-adc9-b677572b160c",
    "7bbef145-6aa5-509e-b832-e68a71e0e91f",
    "family"
+  ],
+  [
+   "ad10272c-225f-4b1b-87d6-95ae5f79978f",
+   "c153f240-a5f0-5fee-be33-afc2c6c1a97c",
+   "parent"
+  ],
+  [
+   "c153f240-a5f0-5fee-be33-afc2c6c1a97c",
+   "e2fc6144-aca4-5fea-b126-800f0c6806ce",
+   "parent"
+  ],
+  [
+   "fe411ba1-c3ac-50ef-a8ee-72f660a20f44",
+   "e2fc6144-aca4-5fea-b126-800f0c6806ce",
+   "spouse"
+  ],
+  [
+   "fe411ba1-c3ac-50ef-a8ee-72f660a20f44",
+   "5a1e4793-e13a-5752-a028-334e33f0057b",
+   "parent"
+  ],
+  [
+   "e2fc6144-aca4-5fea-b126-800f0c6806ce",
+   "5a1e4793-e13a-5752-a028-334e33f0057b",
+   "parent"
+  ],
+  [
+   "c153f240-a5f0-5fee-be33-afc2c6c1a97c",
+   "c307c9b0-690a-521b-80fe-2423e4b3d513",
+   "family"
+  ],
+  [
+   "c307c9b0-690a-521b-80fe-2423e4b3d513",
+   "585b909a-e605-550c-9bff-cc0bfc7ff610",
+   "spouse"
+  ],
+  [
+   "585b909a-e605-550c-9bff-cc0bfc7ff610",
+   "ae55af42-d888-5872-8267-63e9d9f4c1b3",
+   "parent"
+  ],
+  [
+   "c307c9b0-690a-521b-80fe-2423e4b3d513",
+   "ae55af42-d888-5872-8267-63e9d9f4c1b3",
+   "family"
+  ],
+  [
+   "5a1e4793-e13a-5752-a028-334e33f0057b",
+   "fbc60e2a-4749-5876-bfda-674bc6d0edba",
+   "parent"
+  ],
+  [
+   "e4c68318-b75e-4bc3-8194-8d8babb28008",
+   "157d9a44-c94d-5021-b386-1479b77bacdf",
+   "parent"
+  ],
+  [
+   "2d42f36b-ac4a-4739-afd6-5cf3331fdabf",
+   "157d9a44-c94d-5021-b386-1479b77bacdf",
+   "parent"
+  ],
+  [
+   "fbc60e2a-4749-5876-bfda-674bc6d0edba",
+   "157d9a44-c94d-5021-b386-1479b77bacdf",
+   "spouse"
+  ],
+  [
+   "fbc60e2a-4749-5876-bfda-674bc6d0edba",
+   "4cf8a604-da57-568e-a56b-254bb64c6535",
+   "parent"
+  ],
+  [
+   "fbc60e2a-4749-5876-bfda-674bc6d0edba",
+   "ef3e4940-aad3-53bd-a7ab-0cb5ef74c195",
+   "parent"
+  ],
+  [
+   "157d9a44-c94d-5021-b386-1479b77bacdf",
+   "ef3e4940-aad3-53bd-a7ab-0cb5ef74c195",
+   "parent"
+  ],
+  [
+   "fbc60e2a-4749-5876-bfda-674bc6d0edba",
+   "92290c04-face-5993-9aed-0a5b32179c39",
+   "parent"
+  ],
+  [
+   "157d9a44-c94d-5021-b386-1479b77bacdf",
+   "92290c04-face-5993-9aed-0a5b32179c39",
+   "parent"
+  ],
+  [
+   "fbc60e2a-4749-5876-bfda-674bc6d0edba",
+   "f1844f54-1ae3-55e9-b074-2b0568decd00",
+   "parent"
+  ],
+  [
+   "157d9a44-c94d-5021-b386-1479b77bacdf",
+   "f1844f54-1ae3-55e9-b074-2b0568decd00",
+   "parent"
+  ],
+  [
+   "fbc60e2a-4749-5876-bfda-674bc6d0edba",
+   "7d6f1565-dfd5-430e-9a93-a7b9a71c5158",
+   "parent"
+  ],
+  [
+   "157d9a44-c94d-5021-b386-1479b77bacdf",
+   "7d6f1565-dfd5-430e-9a93-a7b9a71c5158",
+   "parent"
+  ],
+  [
+   "f1844f54-1ae3-55e9-b074-2b0568decd00",
+   "477cdb51-d8d4-53ba-bc4c-3b90ad63a97e",
+   "parent"
+  ],
+  [
+   "477cdb51-d8d4-53ba-bc4c-3b90ad63a97e",
+   "9b48a946-a6c2-53d4-b15c-baeaf9ffece7",
+   "spouse"
+  ],
+  [
+   "477cdb51-d8d4-53ba-bc4c-3b90ad63a97e",
+   "1f3572af-335b-58da-b373-0804d4554700",
+   "parent"
+  ],
+  [
+   "9b48a946-a6c2-53d4-b15c-baeaf9ffece7",
+   "1f3572af-335b-58da-b373-0804d4554700",
+   "parent"
+  ],
+  [
+   "477cdb51-d8d4-53ba-bc4c-3b90ad63a97e",
+   "8fa4d85d-c4ba-5e51-963e-4588f2684493",
+   "parent"
+  ],
+  [
+   "9b48a946-a6c2-53d4-b15c-baeaf9ffece7",
+   "8fa4d85d-c4ba-5e51-963e-4588f2684493",
+   "parent"
+  ],
+  [
+   "477cdb51-d8d4-53ba-bc4c-3b90ad63a97e",
+   "25bc46b9-516f-5352-ba8a-22b6b2f262f2",
+   "parent"
+  ],
+  [
+   "9b48a946-a6c2-53d4-b15c-baeaf9ffece7",
+   "25bc46b9-516f-5352-ba8a-22b6b2f262f2",
+   "parent"
+  ],
+  [
+   "8fa4d85d-c4ba-5e51-963e-4588f2684493",
+   "0074ddea-21b2-566a-b3ba-fa731f233594",
+   "parent"
+  ],
+  [
+   "db456e5e-385a-4597-87b0-1ec2248cba1a",
+   "fee3b75f-90bf-5bff-a87b-50b0f99e1559",
+   "parent"
+  ],
+  [
+   "0074ddea-21b2-566a-b3ba-fa731f233594",
+   "fee3b75f-90bf-5bff-a87b-50b0f99e1559",
+   "spouse"
+  ],
+  [
+   "0074ddea-21b2-566a-b3ba-fa731f233594",
+   "180e4769-f41f-548c-b7ec-307ca812a4d1",
+   "spouse"
+  ],
+  [
+   "0074ddea-21b2-566a-b3ba-fa731f233594",
+   "940d22f6-0b2f-5c01-817d-21d2bcdef2a1",
+   "parent"
+  ],
+  [
+   "180e4769-f41f-548c-b7ec-307ca812a4d1",
+   "940d22f6-0b2f-5c01-817d-21d2bcdef2a1",
+   "parent"
+  ],
+  [
+   "6594dce9-0b70-4f9a-af27-0c4339e7a80b",
+   "69c7a9b9-1c1a-567c-ad5a-2767886ea33e",
+   "parent"
+  ],
+  [
+   "14a47148-8939-4160-a1fc-f3de3513d77d",
+   "69c7a9b9-1c1a-567c-ad5a-2767886ea33e",
+   "parent"
+  ],
+  [
+   "940d22f6-0b2f-5c01-817d-21d2bcdef2a1",
+   "69c7a9b9-1c1a-567c-ad5a-2767886ea33e",
+   "spouse"
+  ],
+  [
+   "940d22f6-0b2f-5c01-817d-21d2bcdef2a1",
+   "bf5aefec-4eba-5f3a-a1e8-78df20fade72",
+   "parent"
+  ],
+  [
+   "940d22f6-0b2f-5c01-817d-21d2bcdef2a1",
+   "50fcc5a9-ac37-5371-a4a8-d2fb3ec026d3",
+   "parent"
+  ],
+  [
+   "69c7a9b9-1c1a-567c-ad5a-2767886ea33e",
+   "50fcc5a9-ac37-5371-a4a8-d2fb3ec026d3",
+   "parent"
+  ],
+  [
+   "50fcc5a9-ac37-5371-a4a8-d2fb3ec026d3",
+   "bf5aefec-4eba-5f3a-a1e8-78df20fade72",
+   "parent"
+  ],
+  [
+   "2bbe0128-ee74-5bb8-ba58-6a4e86259e82",
+   "bf5aefec-4eba-5f3a-a1e8-78df20fade72",
+   "parent"
+  ],
+  [
+   "2bbe0128-ee74-5bb8-ba58-6a4e86259e82",
+   "50fcc5a9-ac37-5371-a4a8-d2fb3ec026d3",
+   "spouse"
+  ],
+  [
+   "25bc46b9-516f-5352-ba8a-22b6b2f262f2",
+   "ebece6d0-60e5-5af0-86a6-e7e6292cd8ed",
+   "spouse"
+  ],
+  [
+   "25bc46b9-516f-5352-ba8a-22b6b2f262f2",
+   "72b20a0f-413e-56c0-9141-398789c2a554",
+   "parent"
+  ],
+  [
+   "ebece6d0-60e5-5af0-86a6-e7e6292cd8ed",
+   "72b20a0f-413e-56c0-9141-398789c2a554",
+   "parent"
+  ],
+  [
+   "25bc46b9-516f-5352-ba8a-22b6b2f262f2",
+   "5101a699-da30-5ae7-b697-2e792458c3e6",
+   "parent"
+  ],
+  [
+   "ebece6d0-60e5-5af0-86a6-e7e6292cd8ed",
+   "5101a699-da30-5ae7-b697-2e792458c3e6",
+   "parent"
+  ],
+  [
+   "72b20a0f-413e-56c0-9141-398789c2a554",
+   "f6eafac5-55fa-5d7d-a99d-596274b89270",
+   "parent"
+  ],
+  [
+   "f6eafac5-55fa-5d7d-a99d-596274b89270",
+   "884eea0b-f85b-5964-bfe5-9e1763eb370a",
+   "parent"
+  ],
+  [
+   "884eea0b-f85b-5964-bfe5-9e1763eb370a",
+   "98c2f8ce-ad7f-54aa-8e40-4e6b4d0952c0",
+   "spouse"
+  ],
+  [
+   "884eea0b-f85b-5964-bfe5-9e1763eb370a",
+   "aa3f4985-7d1a-406f-ade2-a0884d2705d4",
+   "parent"
+  ],
+  [
+   "98c2f8ce-ad7f-54aa-8e40-4e6b4d0952c0",
+   "aa3f4985-7d1a-406f-ade2-a0884d2705d4",
+   "parent"
+  ],
+  [
+   "5101a699-da30-5ae7-b697-2e792458c3e6",
+   "5a61115e-666e-5c4d-9763-cd1357052406",
+   "parent"
+  ],
+  [
+   "d862c102-c07d-58e2-9978-ac0f5a42d3db",
+   "5a61115e-666e-5c4d-9763-cd1357052406",
+   "spouse"
+  ],
+  [
+   "d862c102-c07d-58e2-9978-ac0f5a42d3db",
+   "78bda1f9-a825-55cd-8dd4-60e571b18234",
+   "parent"
+  ],
+  [
+   "5a61115e-666e-5c4d-9763-cd1357052406",
+   "78bda1f9-a825-55cd-8dd4-60e571b18234",
+   "parent"
+  ],
+  [
+   "78bda1f9-a825-55cd-8dd4-60e571b18234",
+   "107c907f-91e7-5a40-bfaf-7e26bded909a",
+   "parent"
   ]
  ],
  "dateflags": [
@@ -56762,6 +57513,160 @@
    "d": 1239,
    "note": "dates vers 1196-1239",
    "script": 91
+  },
+  {
+   "name": "Malcolm II",
+   "b": 954,
+   "d": 1034,
+   "note": "naissance vers 954",
+   "script": 92
+  },
+  {
+   "name": "Bethoc",
+   "b": null,
+   "d": null,
+   "note": "dates non données",
+   "script": 92
+  },
+  {
+   "name": "Crínán de Dunkeld",
+   "b": null,
+   "d": 1045,
+   "note": "naissance non donnée",
+   "script": 92
+  },
+  {
+   "name": "Duncan Ier",
+   "b": 1001,
+   "d": 1040,
+   "note": "naissance vers 1001",
+   "script": 92
+  },
+  {
+   "name": "Macbeth",
+   "b": 1005,
+   "d": 1057,
+   "note": "naissance vers 1005 ; petit-fils de Malcolm II par sa mère (incertain)",
+   "script": 92
+  },
+  {
+   "name": "Gruoch",
+   "b": 1015,
+   "d": 1058,
+   "note": "naissance vers 1015",
+   "script": 92
+  },
+  {
+   "name": "Lulach",
+   "b": 1032,
+   "d": 1058,
+   "note": "naissance vers 1032 ; beau-fils de Macbeth",
+   "script": 92
+  },
+  {
+   "name": "Malcolm III Canmore",
+   "b": 1031,
+   "d": 1093,
+   "note": "naissance vers 1031",
+   "script": 92
+  },
+  {
+   "name": "Duncan II",
+   "b": 1060,
+   "d": 1094,
+   "note": "naissance vers 1060",
+   "script": 92
+  },
+  {
+   "name": "Édgar d'Écosse",
+   "b": 1074,
+   "d": 1107,
+   "note": "naissance vers 1074",
+   "script": 92
+  },
+  {
+   "name": "Alexandre Ier",
+   "b": 1078,
+   "d": 1124,
+   "note": "naissance vers 1078",
+   "script": 92
+  },
+  {
+   "name": "David Ier",
+   "b": 1084,
+   "d": 1153,
+   "note": "naissance vers 1084",
+   "script": 92
+  },
+  {
+   "name": "Henri de Huntingdon, comte de Northumbrie",
+   "b": 1114,
+   "d": 1152,
+   "note": "naissance vers 1114",
+   "script": 92
+  },
+  {
+   "name": "Ada de Warenne",
+   "b": 1120,
+   "d": 1178,
+   "note": "naissance vers 1120",
+   "script": 92
+  },
+  {
+   "name": "Marie de Coucy",
+   "b": null,
+   "d": 1284,
+   "note": "naissance vers 1218",
+   "script": 92
+  },
+  {
+   "name": "Isabelle de Huntingdon",
+   "b": 1199,
+   "d": 1251,
+   "note": "naissance vers 1199",
+   "script": 92
+  },
+  {
+   "name": "Marguerite de Huntingdon",
+   "b": 1194,
+   "d": 1228,
+   "note": "naissance vers 1194",
+   "script": 92
+  },
+  {
+   "name": "Marjorie de Carrick",
+   "b": null,
+   "d": 1292,
+   "note": "naissance non donnée",
+   "script": 92
+  },
+  {
+   "name": "Devorguilla de Galloway",
+   "b": 1210,
+   "d": 1290,
+   "note": "naissance vers 1210",
+   "script": 92
+  },
+  {
+   "name": "Jean de Balliol (père)",
+   "b": 1208,
+   "d": 1268,
+   "note": "naissance vers 1208",
+   "script": 92
+  },
+  {
+   "name": "Jean Balliol",
+   "b": 1249,
+   "d": 1314,
+   "note": "naissance vers 1249",
+   "script": 92
+  },
+  {
+   "name": "Édouard Balliol",
+   "b": 1283,
+   "d": 1367,
+   "note": "naissance vers 1283",
+   "script": 92
   }
  ],
  "pins": [
@@ -57112,6 +58017,34 @@
   [
    "8ee8a84e-7bd9-4754-9d1f-0abc9535aae4",
    "GB_TUD"
+  ],
+  [
+   "c153f240-a5f0-5fee-be33-afc2c6c1a97c",
+   "SC_DUN"
+  ],
+  [
+   "157d9a44-c94d-5021-b386-1479b77bacdf",
+   "SC_DUN"
+  ],
+  [
+   "7d6f1565-dfd5-430e-9a93-a7b9a71c5158",
+   "SC_DUN"
+  ],
+  [
+   "fee3b75f-90bf-5bff-a87b-50b0f99e1559",
+   "SC_DUN"
+  ],
+  [
+   "69c7a9b9-1c1a-567c-ad5a-2767886ea33e",
+   "SC_DUN"
+  ],
+  [
+   "2bbe0128-ee74-5bb8-ba58-6a4e86259e82",
+   "SC_DUN"
+  ],
+  [
+   "aa3f4985-7d1a-406f-ade2-a0884d2705d4",
+   "SC_BRU"
   ]
  ],
  "xmoved": {
