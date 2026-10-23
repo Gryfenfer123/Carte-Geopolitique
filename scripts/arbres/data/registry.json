@@ -25850,6 +25850,236 @@
    "title": "Père de Gongyang",
    "g": "h",
    "script": 97
+  },
+  "pb.henri": {
+   "id": "add32f9d-b9bc-54a0-bc14-5d642f52d08d",
+   "name": "Henri de Bourgogne, comte de Portugal",
+   "b": 1066,
+   "d": 1112,
+   "tree": "PT_BOU",
+   "title": "Comte de Portugal (1096-1112)",
+   "g": "h",
+   "script": 98
+  },
+  "pb.teresa": {
+   "id": "c4bf45b3-0c4d-59e7-8f47-9da89ea65a18",
+   "name": "Thérèse de León, comtesse de Portugal",
+   "b": 1080,
+   "d": 1130,
+   "tree": "ES_LEO",
+   "title": "Comtesse puis régente de Portugal",
+   "g": "f",
+   "script": 98
+  },
+  "pb.afonso1": {
+   "id": "2dc22905-a173-5937-ad24-ede646eabe61",
+   "name": "Alphonse Ier Henriques",
+   "b": 1109,
+   "d": 1185,
+   "tree": "PT_BOU",
+   "title": "Premier roi du Portugal (1139-1185)",
+   "g": "h",
+   "script": 98
+  },
+  "pb.mafalda": {
+   "id": "c1ad72f5-314b-5df1-a787-0e2de3cdfbec",
+   "name": "Mafalda de Savoie (reine du Portugal)",
+   "b": 1125,
+   "d": 1157,
+   "tree": "IT_SAV",
+   "title": "Reine du Portugal, épouse d'Alphonse Ier",
+   "g": "f",
+   "script": 98
+  },
+  "pb.sancho1": {
+   "id": "4bdc7cf8-0dd0-5a02-9f81-5c6f33d3dd9b",
+   "name": "Sanche Ier le Colonisateur",
+   "b": 1154,
+   "d": 1211,
+   "tree": "PT_BOU",
+   "title": "Roi du Portugal (1185-1211)",
+   "g": "h",
+   "script": 98
+  },
+  "pb.dulce": {
+   "id": "9307f1ea-8d32-5cc4-88eb-3351454f2daf",
+   "name": "Douce de Barcelone",
+   "b": 1160,
+   "d": 1198,
+   "tree": "ES_BAR",
+   "title": "Reine du Portugal, épouse de Sanche Ier",
+   "g": "f",
+   "script": 98
+  },
+  "pb.afonso2": {
+   "id": "5c7a03b8-0774-55fd-a433-585947ac49e0",
+   "name": "Alphonse II le Gros",
+   "b": 1185,
+   "d": 1223,
+   "tree": "PT_BOU",
+   "title": "Roi du Portugal (1211-1223)",
+   "g": "h",
+   "script": 98
+  },
+  "pb.urraca": {
+   "id": "ac169a15-d049-536e-a8e0-0575143b6ead",
+   "name": "Urraque de Castille",
+   "b": 1187,
+   "d": 1220,
+   "tree": "ES_CAS",
+   "title": "Reine du Portugal, épouse d'Alphonse II",
+   "g": "f",
+   "script": 98
+  },
+  "pb.sancho2": {
+   "id": "2ac4e6bb-8712-500c-ae1f-bd316fc56706",
+   "name": "Sanche II le Capelo",
+   "b": 1209,
+   "d": 1248,
+   "tree": "PT_BOU",
+   "title": "Roi du Portugal (1223-1247), déposé",
+   "g": "h",
+   "script": 98
+  },
+  "pb.afonso3": {
+   "id": "726b04b6-92ab-5292-9eb6-85a236e94c61",
+   "name": "Alphonse III le Boulonnais",
+   "b": 1210,
+   "d": 1279,
+   "tree": "PT_BOU",
+   "title": "Roi du Portugal (1248-1279), conquiert l'Algarve",
+   "g": "h",
+   "script": 98
+  },
+  "pb.mathilde": {
+   "id": "f359e4fe-4629-5829-88f0-e477e5f1eb77",
+   "name": "Mathilde II de Boulogne",
+   "b": 1202,
+   "d": 1259,
+   "tree": "PT_BOU",
+   "title": "Reine du Portugal, première épouse d'Alphonse III",
+   "g": "f",
+   "script": 98
+  },
+  "pb.beatriz_c": {
+   "id": "f8591703-3845-5c31-826f-b1a662cc4d99",
+   "name": "Béatrice de Castille (reine du Portugal)",
+   "b": 1242,
+   "d": 1303,
+   "tree": "ES_CAS",
+   "title": "Reine du Portugal, épouse d'Alphonse III",
+   "g": "f",
+   "script": 98
+  },
+  "pb.dinis": {
+   "id": "ddbc82a2-8f48-5dfb-8dec-52df773f1ce9",
+   "name": "Denis le Laboureur",
+   "b": 1261,
+   "d": 1325,
+   "tree": "PT_BOU",
+   "title": "Roi du Portugal (1279-1325)",
+   "g": "h",
+   "script": 98
+  },
+  "pb.isabel": {
+   "id": "51b0fab8-a989-599c-90e7-0ea37a37fe49",
+   "name": "Isabelle d'Aragon (sainte Isabelle du Portugal)",
+   "b": 1271,
+   "d": 1336,
+   "tree": "ES_BAR",
+   "title": "Reine du Portugal, épouse de Denis",
+   "g": "f",
+   "script": 98
+  },
+  "pb.pedro1": {
+   "id": "a061896a-fdd8-51ab-9afe-28c3aef61e58",
+   "name": "Pierre Ier le Justicier",
+   "b": 1320,
+   "d": 1367,
+   "tree": "PT_BOU",
+   "title": "Roi du Portugal (1357-1367)",
+   "g": "h",
+   "script": 98
+  },
+  "pb.constanza": {
+   "id": "57dc85a8-ecaa-56f9-aab7-b75987fa9533",
+   "name": "Constance Manuel",
+   "b": 1316,
+   "d": 1345,
+   "tree": "PT_BOU",
+   "title": "Première épouse de Pierre Ier",
+   "g": "f",
+   "script": 98
+  },
+  "pb.ines": {
+   "id": "d4baa6f1-62cd-5c23-ab2a-e3bff5284754",
+   "name": "Inès de Castro",
+   "b": 1325,
+   "d": 1355,
+   "tree": "PT_BOU",
+   "title": "Maîtresse puis épouse posthume de Pierre Ier, assassinée",
+   "g": "f",
+   "script": 98
+  },
+  "pb.teresa_l": {
+   "id": "15907b86-2335-5636-bc5f-19c494d5bb25",
+   "name": "Thérèse Lourenço",
+   "b": null,
+   "d": null,
+   "tree": "PT_BOU",
+   "title": "Mère de Jean Ier d'Aviz",
+   "g": "f",
+   "script": 98
+  },
+  "pb.fernando": {
+   "id": "fc4e9f7b-d617-595e-b201-147d76165bc8",
+   "name": "Ferdinand Ier le Beau",
+   "b": 1345,
+   "d": 1383,
+   "tree": "PT_BOU",
+   "title": "Roi du Portugal (1367-1383), dernier de la maison",
+   "g": "h",
+   "script": 98
+  },
+  "pb.leonor": {
+   "id": "d11da0e4-0434-5ea6-a6fc-5efd406cc68e",
+   "name": "Léonor Teles",
+   "b": 1350,
+   "d": 1405,
+   "tree": "PT_BOU",
+   "title": "Reine du Portugal, épouse de Ferdinand Ier",
+   "g": "f",
+   "script": 98
+  },
+  "pb.beatriz": {
+   "id": "20bac5b0-a522-511b-964a-aad6b3c16c02",
+   "name": "Béatrice de Portugal (reine de Castille)",
+   "b": 1372,
+   "d": null,
+   "tree": "PT_BOU",
+   "title": "Héritière du Portugal, épouse de Jean Ier de Castille",
+   "g": "f",
+   "script": 98
+  },
+  "pb.pedro_c": {
+   "id": "c61aa744-53e4-583a-b74d-4179c093ee6a",
+   "name": "Pierre de Coimbra, duc de Coimbra",
+   "b": 1392,
+   "d": 1449,
+   "tree": "PT_AVI",
+   "title": "Infant, régent du Portugal (1439-1446)",
+   "g": "h",
+   "script": 98
+  },
+  "pb.henri_n": {
+   "id": "2c494030-3767-5d96-924e-b9eea503f354",
+   "name": "Henri le Navigateur",
+   "b": 1394,
+   "d": 1460,
+   "tree": "PT_AVI",
+   "title": "Infant, duc de Viseu, promoteur des Découvertes",
+   "g": "h",
+   "script": 98
   }
  },
  "trees": {
@@ -26608,6 +26838,24 @@
    "country": "KOR",
    "dynasty": "Goryeo",
    "script": 97
+  },
+  "PT_BOU": {
+   "entry": "3392e9a3-4e2f-5632-9446-c6dc8e06b68f",
+   "country": "PRT",
+   "dynasty": "Maison de Bourgogne (Portugal)",
+   "script": 98
+  },
+  "ES_CAS": {
+   "entry": "4b5cbfc8-fe56-4e78-8168-05445986c625",
+   "country": "ESP",
+   "dynasty": "Maison d'Ivrée",
+   "script": null
+  },
+  "ES_LEO": {
+   "entry": "149b6c25-cc24-4c3f-911f-5a1a845ef4df",
+   "country": "ESP",
+   "dynasty": "Castille-León",
+   "script": null
   }
  },
  "flags": [
@@ -30971,6 +31219,41 @@
    "tree": "LT_GED",
    "reason": "Maison Palanga : sans arbre",
    "script": 96
+  },
+  {
+   "name": "Mathilde II de Boulogne",
+   "b": 1202,
+   "tree": "PT_BOU",
+   "reason": "Maison de Boulogne : sans arbre",
+   "script": 98
+  },
+  {
+   "name": "Constance Manuel",
+   "b": 1316,
+   "tree": "PT_BOU",
+   "reason": "Maison Manuel : sans arbre",
+   "script": 98
+  },
+  {
+   "name": "Inès de Castro",
+   "b": 1325,
+   "tree": "PT_BOU",
+   "reason": "Maison de Castro : sans arbre",
+   "script": 98
+  },
+  {
+   "name": "Thérèse Lourenço",
+   "b": null,
+   "tree": "PT_BOU",
+   "reason": "Maison Lourenço : sans arbre",
+   "script": 98
+  },
+  {
+   "name": "Léonor Teles",
+   "b": 1350,
+   "tree": "PT_BOU",
+   "reason": "Maison Teles : sans arbre",
+   "script": 98
   }
  ],
  "scripts": {
@@ -31440,6 +31723,14 @@
    "rels": 35,
    "trees": [
     "Goryeo (KOR)"
+   ]
+  },
+  "98": {
+   "label": "Portugal — maison de Bourgogne (comtes puis rois, 1096-1383) et compléments Aviz",
+   "members": 23,
+   "rels": 55,
+   "trees": [
+    "Maison de Bourgogne (Portugal) (PRT)"
    ]
   }
  },
@@ -52638,6 +52929,281 @@
    "b8f5b49d-6a58-5bfd-a686-e4991121a569",
    "4d0776e3-1c39-5113-b464-86b4d541ac2f",
    "parent"
+  ],
+  [
+   "a18b9641-5fd2-4508-a20f-2bce88dbbd0c",
+   "c4bf45b3-0c4d-59e7-8f47-9da89ea65a18",
+   "parent"
+  ],
+  [
+   "add32f9d-b9bc-54a0-bc14-5d642f52d08d",
+   "c4bf45b3-0c4d-59e7-8f47-9da89ea65a18",
+   "spouse"
+  ],
+  [
+   "add32f9d-b9bc-54a0-bc14-5d642f52d08d",
+   "2dc22905-a173-5937-ad24-ede646eabe61",
+   "parent"
+  ],
+  [
+   "c4bf45b3-0c4d-59e7-8f47-9da89ea65a18",
+   "2dc22905-a173-5937-ad24-ede646eabe61",
+   "parent"
+  ],
+  [
+   "2dc22905-a173-5937-ad24-ede646eabe61",
+   "c1ad72f5-314b-5df1-a787-0e2de3cdfbec",
+   "spouse"
+  ],
+  [
+   "7579d46f-7ccc-52d9-aa73-d00547fb3c4e",
+   "c1ad72f5-314b-5df1-a787-0e2de3cdfbec",
+   "parent"
+  ],
+  [
+   "2dc22905-a173-5937-ad24-ede646eabe61",
+   "4bdc7cf8-0dd0-5a02-9f81-5c6f33d3dd9b",
+   "parent"
+  ],
+  [
+   "c1ad72f5-314b-5df1-a787-0e2de3cdfbec",
+   "4bdc7cf8-0dd0-5a02-9f81-5c6f33d3dd9b",
+   "parent"
+  ],
+  [
+   "2dc22905-a173-5937-ad24-ede646eabe61",
+   "9ea047aa-fdfd-4249-ac6e-5399588af85f",
+   "parent"
+  ],
+  [
+   "c1ad72f5-314b-5df1-a787-0e2de3cdfbec",
+   "9ea047aa-fdfd-4249-ac6e-5399588af85f",
+   "parent"
+  ],
+  [
+   "4bdc7cf8-0dd0-5a02-9f81-5c6f33d3dd9b",
+   "9307f1ea-8d32-5cc4-88eb-3351454f2daf",
+   "spouse"
+  ],
+  [
+   "09a0382a-c8df-49bd-8da9-b4985c2f025e",
+   "9307f1ea-8d32-5cc4-88eb-3351454f2daf",
+   "parent"
+  ],
+  [
+   "c9a47997-f356-45d1-b74e-3b3afcbabb1a",
+   "9307f1ea-8d32-5cc4-88eb-3351454f2daf",
+   "parent"
+  ],
+  [
+   "4bdc7cf8-0dd0-5a02-9f81-5c6f33d3dd9b",
+   "5c7a03b8-0774-55fd-a433-585947ac49e0",
+   "parent"
+  ],
+  [
+   "9307f1ea-8d32-5cc4-88eb-3351454f2daf",
+   "5c7a03b8-0774-55fd-a433-585947ac49e0",
+   "parent"
+  ],
+  [
+   "4bdc7cf8-0dd0-5a02-9f81-5c6f33d3dd9b",
+   "0373f6a9-8f72-5ebc-ac05-09d42a94de6e",
+   "parent"
+  ],
+  [
+   "9307f1ea-8d32-5cc4-88eb-3351454f2daf",
+   "0373f6a9-8f72-5ebc-ac05-09d42a94de6e",
+   "parent"
+  ],
+  [
+   "5c7a03b8-0774-55fd-a433-585947ac49e0",
+   "ac169a15-d049-536e-a8e0-0575143b6ead",
+   "spouse"
+  ],
+  [
+   "cf451b38-f618-474f-ad9e-93299b786664",
+   "ac169a15-d049-536e-a8e0-0575143b6ead",
+   "parent"
+  ],
+  [
+   "ccb29f99-70b2-47c7-9d61-8e8535f7b60e",
+   "ac169a15-d049-536e-a8e0-0575143b6ead",
+   "parent"
+  ],
+  [
+   "5c7a03b8-0774-55fd-a433-585947ac49e0",
+   "2ac4e6bb-8712-500c-ae1f-bd316fc56706",
+   "parent"
+  ],
+  [
+   "ac169a15-d049-536e-a8e0-0575143b6ead",
+   "2ac4e6bb-8712-500c-ae1f-bd316fc56706",
+   "parent"
+  ],
+  [
+   "5c7a03b8-0774-55fd-a433-585947ac49e0",
+   "726b04b6-92ab-5292-9eb6-85a236e94c61",
+   "parent"
+  ],
+  [
+   "ac169a15-d049-536e-a8e0-0575143b6ead",
+   "726b04b6-92ab-5292-9eb6-85a236e94c61",
+   "parent"
+  ],
+  [
+   "726b04b6-92ab-5292-9eb6-85a236e94c61",
+   "f359e4fe-4629-5829-88f0-e477e5f1eb77",
+   "spouse"
+  ],
+  [
+   "726b04b6-92ab-5292-9eb6-85a236e94c61",
+   "f8591703-3845-5c31-826f-b1a662cc4d99",
+   "spouse"
+  ],
+  [
+   "0ff20fb0-57cf-4181-b46f-a8be43fa8978",
+   "f8591703-3845-5c31-826f-b1a662cc4d99",
+   "parent"
+  ],
+  [
+   "726b04b6-92ab-5292-9eb6-85a236e94c61",
+   "ddbc82a2-8f48-5dfb-8dec-52df773f1ce9",
+   "parent"
+  ],
+  [
+   "f8591703-3845-5c31-826f-b1a662cc4d99",
+   "ddbc82a2-8f48-5dfb-8dec-52df773f1ce9",
+   "parent"
+  ],
+  [
+   "ddbc82a2-8f48-5dfb-8dec-52df773f1ce9",
+   "51b0fab8-a989-599c-90e7-0ea37a37fe49",
+   "spouse"
+  ],
+  [
+   "376b55ce-54f5-40e2-8080-88804679f82c",
+   "51b0fab8-a989-599c-90e7-0ea37a37fe49",
+   "parent"
+  ],
+  [
+   "763283d5-f1a1-4004-b808-612c6381e39a",
+   "51b0fab8-a989-599c-90e7-0ea37a37fe49",
+   "parent"
+  ],
+  [
+   "ddbc82a2-8f48-5dfb-8dec-52df773f1ce9",
+   "7845813e-f1ac-461a-8e0b-27e946323b2a",
+   "parent"
+  ],
+  [
+   "51b0fab8-a989-599c-90e7-0ea37a37fe49",
+   "7845813e-f1ac-461a-8e0b-27e946323b2a",
+   "parent"
+  ],
+  [
+   "ddbc82a2-8f48-5dfb-8dec-52df773f1ce9",
+   "270f94e1-f3fa-418c-941e-a9a1ff88efba",
+   "parent"
+  ],
+  [
+   "51b0fab8-a989-599c-90e7-0ea37a37fe49",
+   "270f94e1-f3fa-418c-941e-a9a1ff88efba",
+   "parent"
+  ],
+  [
+   "7845813e-f1ac-461a-8e0b-27e946323b2a",
+   "a061896a-fdd8-51ab-9afe-28c3aef61e58",
+   "parent"
+  ],
+  [
+   "c5b4dc13-5e28-4eb7-99ca-45bc85a7e0c9",
+   "a061896a-fdd8-51ab-9afe-28c3aef61e58",
+   "parent"
+  ],
+  [
+   "7845813e-f1ac-461a-8e0b-27e946323b2a",
+   "5895d45c-cfbb-4f43-931f-7436572d071d",
+   "parent"
+  ],
+  [
+   "c5b4dc13-5e28-4eb7-99ca-45bc85a7e0c9",
+   "5895d45c-cfbb-4f43-931f-7436572d071d",
+   "parent"
+  ],
+  [
+   "a061896a-fdd8-51ab-9afe-28c3aef61e58",
+   "57dc85a8-ecaa-56f9-aab7-b75987fa9533",
+   "spouse"
+  ],
+  [
+   "a061896a-fdd8-51ab-9afe-28c3aef61e58",
+   "d4baa6f1-62cd-5c23-ab2a-e3bff5284754",
+   "spouse"
+  ],
+  [
+   "a061896a-fdd8-51ab-9afe-28c3aef61e58",
+   "fc4e9f7b-d617-595e-b201-147d76165bc8",
+   "parent"
+  ],
+  [
+   "57dc85a8-ecaa-56f9-aab7-b75987fa9533",
+   "fc4e9f7b-d617-595e-b201-147d76165bc8",
+   "parent"
+  ],
+  [
+   "a061896a-fdd8-51ab-9afe-28c3aef61e58",
+   "7bb4dae9-eafa-4bf0-bca1-757ea8aa5515",
+   "parent"
+  ],
+  [
+   "15907b86-2335-5636-bc5f-19c494d5bb25",
+   "7bb4dae9-eafa-4bf0-bca1-757ea8aa5515",
+   "parent"
+  ],
+  [
+   "fc4e9f7b-d617-595e-b201-147d76165bc8",
+   "d11da0e4-0434-5ea6-a6fc-5efd406cc68e",
+   "spouse"
+  ],
+  [
+   "fc4e9f7b-d617-595e-b201-147d76165bc8",
+   "20bac5b0-a522-511b-964a-aad6b3c16c02",
+   "parent"
+  ],
+  [
+   "d11da0e4-0434-5ea6-a6fc-5efd406cc68e",
+   "20bac5b0-a522-511b-964a-aad6b3c16c02",
+   "parent"
+  ],
+  [
+   "20bac5b0-a522-511b-964a-aad6b3c16c02",
+   "833ac28e-d26d-4627-8762-fa9191d55a9e",
+   "spouse"
+  ],
+  [
+   "7bb4dae9-eafa-4bf0-bca1-757ea8aa5515",
+   "c61aa744-53e4-583a-b74d-4179c093ee6a",
+   "parent"
+  ],
+  [
+   "665e0fa9-b89f-40dd-9668-2644b376f1ec",
+   "c61aa744-53e4-583a-b74d-4179c093ee6a",
+   "parent"
+  ],
+  [
+   "7bb4dae9-eafa-4bf0-bca1-757ea8aa5515",
+   "2c494030-3767-5d96-924e-b9eea503f354",
+   "parent"
+  ],
+  [
+   "665e0fa9-b89f-40dd-9668-2644b376f1ec",
+   "2c494030-3767-5d96-924e-b9eea503f354",
+   "parent"
+  ],
+  [
+   "c61aa744-53e4-583a-b74d-4179c093ee6a",
+   "2f5f1293-168c-46fa-b286-8ab8e4948f5f",
+   "parent"
   ]
  ],
  "dateflags": [
@@ -60431,6 +60997,34 @@
    "d": 1440,
    "note": "naissance vers 1365",
    "script": 96
+  },
+  {
+   "name": "Inès de Castro",
+   "b": 1325,
+   "d": 1355,
+   "note": "Naissance vers 1325 (incertaine).",
+   "script": 98
+  },
+  {
+   "name": "Thérèse Lourenço",
+   "b": null,
+   "d": null,
+   "note": "Dates inconnues.",
+   "script": 98
+  },
+  {
+   "name": "Léonor Teles",
+   "b": 1350,
+   "d": 1405,
+   "note": "Naissance vers 1350 (incertaine).",
+   "script": 98
+  },
+  {
+   "name": "Béatrice de Portugal (reine de Castille)",
+   "b": 1372,
+   "d": null,
+   "note": "Mort après 1409 (date incertaine).",
+   "script": 98
   }
  ],
  "pins": [
@@ -60889,6 +61483,66 @@
   [
    "a32377f3-562b-5945-af4a-4ff060cf2ab9",
    "LT_GED"
+  ],
+  [
+   "c4bf45b3-0c4d-59e7-8f47-9da89ea65a18",
+   "PT_BOU"
+  ],
+  [
+   "c1ad72f5-314b-5df1-a787-0e2de3cdfbec",
+   "PT_BOU"
+  ],
+  [
+   "9307f1ea-8d32-5cc4-88eb-3351454f2daf",
+   "PT_BOU"
+  ],
+  [
+   "ac169a15-d049-536e-a8e0-0575143b6ead",
+   "PT_BOU"
+  ],
+  [
+   "f8591703-3845-5c31-826f-b1a662cc4d99",
+   "PT_BOU"
+  ],
+  [
+   "51b0fab8-a989-599c-90e7-0ea37a37fe49",
+   "PT_BOU"
+  ],
+  [
+   "7845813e-f1ac-461a-8e0b-27e946323b2a",
+   "PT_BOU"
+  ],
+  [
+   "c5b4dc13-5e28-4eb7-99ca-45bc85a7e0c9",
+   "PT_BOU"
+  ],
+  [
+   "270f94e1-f3fa-418c-941e-a9a1ff88efba",
+   "PT_BOU"
+  ],
+  [
+   "5895d45c-cfbb-4f43-931f-7436572d071d",
+   "PT_BOU"
+  ],
+  [
+   "9ea047aa-fdfd-4249-ac6e-5399588af85f",
+   "PT_BOU"
+  ],
+  [
+   "0373f6a9-8f72-5ebc-ac05-09d42a94de6e",
+   "PT_BOU"
+  ],
+  [
+   "7bb4dae9-eafa-4bf0-bca1-757ea8aa5515",
+   "PT_BOU"
+  ],
+  [
+   "665e0fa9-b89f-40dd-9668-2644b376f1ec",
+   "PT_BOU"
+  ],
+  [
+   "833ac28e-d26d-4627-8762-fa9191d55a9e",
+   "PT_BOU"
   ]
  ],
  "xmoved": {
