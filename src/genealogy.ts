@@ -43,9 +43,10 @@
 // ---------------------------------------------------------------------------
 
 import { guessFemale, yearToY } from "./genealogyLayout";
-import { computeLayersLayout } from "./genealogyLayers";
+import { computeLayersLayout, type LayersOptions, type LNode, type LRel } from "./genealogyLayers";
 import { GEN_MAX_ZOOM, GEN_MIN_ZOOM, lodForScale } from "./genealogyLod";
 import "./genealogyLod.css";
+import { planBuses, type BusEdge } from "./genealogyBus";
 import { routeAround, type Rect } from "./genealogyRouting";
 import type { SupabaseClient, Session } from "@supabase/supabase-js";
 import * as d3 from "d3";
@@ -221,6 +222,8 @@ const GENERATION_GAP = 550;
 // leurs enfants tombent presque toujours sur deux lignes voisines, donc peu de
 // traits traversent plusieurs lignes (genealogyLayers.ts).
 const ROW_YEARS = 33;
+// Durée du calcul de « Organiser par dates » : long exprès, la qualité prime sur la vitesse.
+const LAYOUT_BUDGET_MS = 25000;
 // Pixels par année pour le placement automatique d'un NOUVEAU membre selon
 // son année de naissance par rapport aux membres existants de cet arbre
 // (voir suggestYFromBirthYear) — purement indicatif, pas une échelle
@@ -915,6 +918,26 @@ export function initGenealogySystem(deps: {
     await Promise.all(jobs);
     await loadData(currentOwner);
   }
+  // Le calcul tourne dans un « worker » (thread séparé) ; à défaut, directement.
+  function computeLayoutAsync(nodes: LNode[], rels: LRel[], opts: LayersOptions): Promise<Map<string, { x: number; y: number }>> {
+    return new Promise((resolve) => {
+      const direct = () => resolve(computeLayersLayout(nodes, rels, { ...opts, budgetMs: 4000 }).pos);
+      try {
+        const w = new Worker(new URL("./genealogyLayersWorker.ts", import.meta.url), { type: "module" });
+        w.onmessage = (e: MessageEvent) => {
+          w.terminate();
+          resolve(new Map<string, { x: number; y: number }>(e.data.pos));
+        };
+        w.onerror = () => {
+          w.terminate();
+          direct();
+        };
+        w.postMessage({ nodes, rels, opts });
+      } catch {
+        direct();
+      }
+    });
+  }
   async function autoLayoutTree() {
     if (!currentOwner || !isAdmin()) return;
     if (!members.length) return;
@@ -924,16 +947,14 @@ export function initGenealogySystem(deps: {
       ))
     )
       return;
-    deps.showBanner?.("Calcul de la meilleure disposition… (quelques secondes)");
+    deps.showBanner?.("Calcul de la meilleure disposition… (environ 30 secondes, ne fermez pas la page)");
     await new Promise((r) => setTimeout(r, 60));
     const known = allKnownMembers();
     const nodes = Array.from(known.values()).map((m) => ({ id: m.id, birth: m.birth_year, death: m.death_year, name: m.name, female: guessFemale(m.name, m.title) }));
     const rels = relations.filter((r) => known.has(r.member_a_id) && known.has(r.member_b_id)).map((r) => ({ a: r.member_a_id, b: r.member_b_id, type: r.relation_type }));
-    const { pos } = computeLayersLayout(
-      nodes.map((n) => ({ id: n.id, birth: n.birth, name: n.name })),
-      rels,
-      { cardW: CARD_W, cardH: CARD_H, ...LAYOUT_OPTS, rowYears: ROW_YEARS, gapX: 130, spouseGap: 150, budgetMs: 4000 }
-    );
+    const layoutNodes = nodes.map((n) => ({ id: n.id, birth: n.birth, name: n.name }));
+    const layoutOpts = { cardW: CARD_W, cardH: CARD_H, ...LAYOUT_OPTS, rowYears: ROW_YEARS, gapX: 130, spouseGap: 150, budgetMs: LAYOUT_BUDGET_MS };
+    const pos = await computeLayoutAsync(layoutNodes, rels, layoutOpts);
     // Sauvegarde pour pouvoir annuler.
     const undoLocal = new Map<string, { x: number; y: number }>();
     members.forEach((m) => undoLocal.set(m.id, { x: m.pos_x, y: m.pos_y }));
@@ -1319,9 +1340,8 @@ export function initGenealogySystem(deps: {
   // (genealogyRouting.ts) pour ne jamais passer sur un portrait.
   let cardRects: Rect[] = [];
 
-  function drawLine(x1: number, y1: number, x2: number, y2: number, type: RelationType, extraClass?: string, legend?: LegendItem | null, descend = false) {
+  function drawPolyline(pts: { x: number; y: number }[], type: RelationType, extraClass?: string, legend?: LegendItem | null) {
     const NS = "http://www.w3.org/2000/svg";
-    const pts = routeAround({ x: x1, y: y1 }, { x: x2, y: y2 }, cardRects, 14, descend);
     const line = document.createElementNS(NS, "polyline");
     line.setAttribute("points", pts.map((q) => Math.round(q.x * 10) / 10 + "," + Math.round(q.y * 10) / 10).join(" "));
     line.setAttribute("fill", "none");
@@ -1334,6 +1354,10 @@ export function initGenealogySystem(deps: {
     line.setAttribute("class", "gen-link gen-link-" + type + (extraClass ? " " + extraClass : ""));
     if (legend) line.setAttribute("title", legend.label);
     svg.appendChild(line);
+  }
+
+  function drawLine(x1: number, y1: number, x2: number, y2: number, type: RelationType, extraClass?: string, legend?: LegendItem | null, descend = false) {
+    drawPolyline(routeAround({ x: x1, y: y1 }, { x: x2, y: y2 }, cardRects, 14, descend), type, extraClass, legend);
   }
 
   // Point demandé par Martin, 2026-10-03 : "faire en sorte que la ligne
@@ -1364,6 +1388,8 @@ export function initGenealogySystem(deps: {
       parentRelsByChild.set(r.member_b_id, list);
     });
     const mergedParentRelIds = new Set<string>();
+    // Liens de descendance tracés « en peigne » (genealogyBus.ts) une fois tous collectés.
+    const descents: { bus: BusEdge; type: RelationType; extra: string; legend: LegendItem | null | undefined }[] = [];
     parentRelsByChild.forEach((rels, childId) => {
       if (rels.length !== 2) return;
       const [p1, p2] = rels;
@@ -1383,7 +1409,9 @@ export function initGenealogySystem(deps: {
       // remonte jamais (demande de Martin, 2026-10-22).
       const childTop = c.y - CARD_H / 2;
       const goesDown = childTop > midY;
-      drawLine(midX, midY, c.x, goesDown ? childTop : c.y, "parent", "gen-link-from-marriage" + (mergedForeign ? " gen-link-foreign" : ""), undefined, goesDown);
+      const extraM = "gen-link-from-marriage" + (mergedForeign ? " gen-link-foreign" : "");
+      if (goesDown) descents.push({ bus: { id: "m" + childId, start: { x: midX, y: midY }, end: { x: c.x, y: childTop }, group: "M" + [p1.member_a_id, p2.member_a_id].sort().join("|") }, type: "parent", extra: extraM, legend: undefined });
+      else drawLine(midX, midY, c.x, c.y, "parent", extraM, undefined, false);
       mergedParentRelIds.add(p1.id);
       mergedParentRelIds.add(p2.id);
     });
@@ -1396,8 +1424,14 @@ export function initGenealogySystem(deps: {
       // Parent -> enfant : du bas de la carte du parent vers le haut de celle
       // de l'enfant (le trait descend toujours) quand l'enfant est plus bas.
       const down = r.relation_type === "parent" && b.y - CARD_H / 2 > a.y + CARD_H / 2;
-      if (down) drawLine(a.x, a.y + CARD_H / 2, b.x, b.y - CARD_H / 2, r.relation_type, foreignLink ? "gen-link-foreign" : undefined, legendItemById(r.legend_item_id), true);
+      if (down) descents.push({ bus: { id: "p" + r.id, start: { x: a.x, y: a.y + CARD_H / 2 }, end: { x: b.x, y: b.y - CARD_H / 2 }, group: "P" + r.member_a_id }, type: r.relation_type, extra: foreignLink ? "gen-link-foreign" : "", legend: legendItemById(r.legend_item_id) });
       else drawLine(a.x, a.y, b.x, b.y, r.relation_type, foreignLink ? "gen-link-foreign" : undefined, legendItemById(r.legend_item_id));
+    });
+    const buses = planBuses(descents.map((d) => d.bus), { cards: cardRects, above: 70, lane: 26, maxLanes: 6 });
+    descents.forEach((d) => {
+      const path = buses.get(d.bus.id);
+      if (path) drawPolyline(path, d.type, d.extra || undefined, d.legend);
+      else drawLine(d.bus.start.x, d.bus.start.y, d.bus.end.x, d.bus.end.y, d.type, d.extra || undefined, d.legend, true);
     });
   }
 

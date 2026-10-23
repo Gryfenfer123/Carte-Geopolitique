@@ -16,6 +16,8 @@
 //
 // Fonction pure (aucun accès réseau/DOM), testable seule.
 
+import { planBuses, type BusEdge } from "./genealogyBus";
+
 export type LNode = { id: string; birth: number | null; name?: string; female?: boolean };
 export type LRel = { a: string; b: string; type: string };
 export type LayersOptions = {
@@ -316,7 +318,6 @@ export function computeLayersLayout(nodes: LNode[], rels: LRel[], o: LayersOptio
     // du mariage vers l'enfant quand ses deux parents sont mariés entre eux, sinon
     // un trait par parent (bas de la carte -> haut de l'enfant). La note compte les
     // croisements trait/trait, trait/lien de mariage et trait/carte (jamais voulu).
-    type Stroke = { x1: number; y1: number; x2: number; y2: number; sk: string; ek: string; skip: string[] };
     const spouseEdges: [string, string][] = [];
     ids.forEach((a) => spo(a).forEach((q) => { if (a < q) spouseEdges.push([a, q]); }));
     const segX = (a: number[], b: number[]) => {
@@ -328,25 +329,13 @@ export function computeLayersLayout(nodes: LNode[], rels: LRel[], o: LayersOptio
       const E = 1e-3;
       return ((d1 > E && d2 < -E) || (d1 < -E && d2 > E)) && ((d3 > E && d4 < -E) || (d3 < -E && d4 > E));
     };
-    function hitsCard(st: Stroke, rx: number, ry: number): boolean {
-      const x0 = rx + 6, x1 = rx + CW - 6, y0 = ry + 6, y1 = ry + o.cardH - 6;
-      if (Math.max(st.x1, st.x2) < x0 || Math.min(st.x1, st.x2) > x1 || Math.max(st.y1, st.y2) < y0 || Math.min(st.y1, st.y2) > y1) return false;
-      const dx = st.x2 - st.x1, dy = st.y2 - st.y1;
-      let t0 = 0, t1 = 1;
-      for (const [pp, qq] of [[-dx, st.x1 - x0], [dx, x1 - st.x1], [-dy, st.y1 - y0], [dy, y1 - st.y1]]) {
-        if (pp === 0) { if (qq < 0) return false; }
-        else {
-          const r = qq / pp;
-          if (pp < 0) { if (r > t1) return false; if (r > t0) t0 = r; }
-          else { if (r < t0) return false; if (r < t1) t1 = r; }
-        }
-      }
-      return t0 < t1;
-    }
+    // La note reproduit le tracé réel de l'appli (genealogyBus.ts) : barre commune par
+    // famille, descentes verticales. Un trait qui ne peut pas être tracé « en peigne »
+    // sans traverser une carte est lourdement pénalisé (l'appli le contournerait).
     function evaluate(): { cost: number; cross: number; len: number; longE: [string, string][]; hits: number } {
       let len = 0;
       const longE: [string, string][] = [];
-      const strokes: Stroke[] = [];
+      const bus: BusEdge[] = [];
       const top = (id: string) => unitOf.get(id)!.row * rowH;
       for (const e of edges) {
         const c = e.child;
@@ -356,35 +345,42 @@ export function computeLayersLayout(nodes: LNode[], rels: LRel[], o: LayersOptio
         const merged = ps.length === 2 && spo(ps[0]).includes(ps[1]);
         if (merged) {
           const mx = (cardX(ps[0]) + cardX(ps[1])) / 2;
-          strokes.push({ x1: mx, y1: top(ps[0]) + o.cardH / 2, x2: ex, y2: ey, sk: "M" + ps.slice().sort().join("|"), ek: c, skip: [ps[0], ps[1], c] });
+          bus.push({ id: "M" + c, start: { x: mx, y: top(ps[0]) + o.cardH / 2 }, end: { x: ex, y: ey }, group: "M" + ps.slice().sort().join("|") });
         } else {
-          ps.forEach((p) => strokes.push({ x1: cardX(p), y1: top(p) + o.cardH, x2: ex, y2: ey, sk: "P" + p, ek: c, skip: [p, c] }));
+          ps.forEach((p) => bus.push({ id: "P" + p + ">" + c, start: { x: cardX(p), y: top(p) + o.cardH }, end: { x: ex, y: ey }, group: "P" + p }));
         }
         const dx = Math.abs(parentPoint(e) - ex);
         len += dx;
         if (dx > 1500) { longE.push([ps[0], c]); len += (dx - 1500) * 3; }
       }
+      const cards: { x: number; y: number; w: number; h: number }[] = [];
+      units.forEach((u) => u.order.forEach((m) => cards.push({ x: cardX(m) - CW / 2, y: u.row * rowH, w: CW, h: o.cardH })));
+      const paths = planBuses(bus, { cards, above: 70, lane: 26, maxLanes: 6 });
+      let hits = 0;
+      const polys: { pts: { x: number; y: number }[]; group: string; end: string }[] = [];
+      for (const b of bus) {
+        const pts = paths.get(b.id);
+        if (!pts) { hits++; polys.push({ pts: [b.start, b.end], group: b.group, end: b.id }); } else polys.push({ pts, group: b.group, end: b.id });
+      }
+      const segs: { x1: number; y1: number; x2: number; y2: number; g: number }[] = [];
+      polys.forEach((pl, gi) => { for (let i = 0; i + 1 < pl.pts.length; i++) segs.push({ x1: pl.pts[i].x, y1: pl.pts[i].y, x2: pl.pts[i + 1].x, y2: pl.pts[i + 1].y, g: gi }); });
       let cross = 0;
-      for (let i = 0; i < strokes.length; i++) {
-        const a = strokes[i];
-        for (let j = i + 1; j < strokes.length; j++) {
-          const b = strokes[j];
-          if (a.sk === b.sk || a.ek === b.ek) continue;
-          if (segX([a.x1, a.y1, a.x2, a.y2], [b.x1, b.y1, b.x2, b.y2])) cross++;
+      for (let i = 0; i < segs.length; i++) {
+        const A = segs[i];
+        for (let j = i + 1; j < segs.length; j++) {
+          const B = segs[j];
+          if (A.g === B.g || polys[A.g].group === polys[B.g].group) continue;
+          if (segX([A.x1, A.y1, A.x2, A.y2], [B.x1, B.y1, B.x2, B.y2])) cross++;
         }
       }
       for (const [a, b] of spouseEdges) {
-        const ya = top(a) + o.cardH / 2;
-        const yb = top(b) + o.cardH / 2;
-        const L = [cardX(a), ya, cardX(b), yb];
-        for (const st of strokes) {
-          if (st.skip.includes(a) && st.skip.includes(b)) continue;
-          if (segX(L, [st.x1, st.y1, st.x2, st.y2])) cross++;
+        const L = [cardX(a), top(a) + o.cardH / 2, cardX(b), top(b) + o.cardH / 2];
+        const ga = "M" + [a, b].sort().join("|");
+        for (const sg of segs) {
+          if (polys[sg.g].group === ga) continue;
+          if (segX(L, [sg.x1, sg.y1, sg.x2, sg.y2])) cross++;
         }
       }
-      let hits = 0;
-      const all = units.flatMap((u) => u.order.map((m) => ({ id: m, x: cardX(m) - CW / 2, y: u.row * rowH })));
-      for (const st of strokes) for (const q of all) if (!st.skip.includes(q.id) && hitsCard(st, q.x, q.y)) hits++;
       return { cost: len + cross * 1500 + hits * 6000, cross, len, longE, hits };
     }
 
@@ -558,50 +554,60 @@ export function computeLayersLayout(nodes: LNode[], rels: LRel[], o: LayersOptio
       const pc = rowsArr.map((_l, ri) => pairCost(ri));
       let curC = pc.reduce((a, b) => a + b, 0);
       const movable = rowsArr.map((_l, ri) => ri).filter((ri) => rowsArr[ri].length > 1 || rowsArr[ri].some((it) => it.kind === "u" && it.u!.order.length > 1));
-      const saEnd = Date.now() + total * 0.45;
       let bestC = curC;
       let bestSnap = snap(evaluate());
-      const T0 = 60;
-      let iter = 0;
-      const maxIter = 400000;
-      const t1 = Date.now();
-      while (movable.length && Date.now() < saEnd && iter < maxIter) {
-        iter++;
-        const frac = Math.min(1, (Date.now() - t1) / Math.max(1, saEnd - t1));
-        const T = T0 * Math.pow(1 - frac, 2) + 0.5;
-        const ri = movable[Math.floor(rnd() * movable.length)];
-        const l = rowsArr[ri];
-        const mv = rnd();
-        let undo: () => void;
-        if (mv < 0.12 && l.some((it) => it.kind === "u" && it.u!.order.length > 1)) {
-          const cands = l.filter((it) => it.kind === "u" && it.u!.order.length > 1);
-          const it = cands[Math.floor(rnd() * cands.length)];
-          it.u!.order.reverse();
-          undo = () => it.u!.order.reverse();
-        } else if (l.length > 1) {
-          const i = Math.floor(rnd() * l.length);
-          let j: number;
-          if (mv < 0.35) j = Math.min(l.length - 1, Math.max(0, i + (rnd() < 0.5 ? -1 : 1)));
-          else if (mv < 0.85) j = Math.min(l.length - 1, Math.max(0, i + Math.round((rnd() - 0.5) * 16)));
-          else j = Math.floor(rnd() * l.length);
-          if (j === i) continue;
-          const moved = l.splice(i, 1)[0];
-          l.splice(j, 0, moved);
-          reindex(ri);
-          undo = () => { const x2 = l.splice(j, 1)[0]; l.splice(i, 0, x2); reindex(ri); };
-        } else continue;
-        const a = pairCost(ri - 1);
-        const b = pairCost(ri);
-        const delta = a + b - (ri > 0 ? pc[ri - 1] : 0) - pc[ri];
-        if (delta <= 0 || rnd() < Math.exp(-delta / T)) {
-          if (ri > 0) pc[ri - 1] = a;
-          pc[ri] = b;
-          curC += delta;
-          if (curC < bestC - 1e-9) {
-            bestC = curC;
-            bestSnap = snap({ cost: 0, cross: 0, len: 0, longE: [], hits: 0 });
-          }
-        } else undo();
+      const CYCLES = 4;
+      const perCycle = (total * 0.55) / CYCLES;
+      for (let cycle = 0; cycle < CYCLES; cycle++) {
+        if (cycle > 0) {
+          restore(bestSnap);
+          rowsArr.forEach((_l, ri) => reindex(ri));
+          for (let ri = 0; ri < pc.length; ri++) pc[ri] = pairCost(ri);
+          curC = pc.reduce((a, b) => a + b, 0);
+        }
+        const saEnd = Date.now() + perCycle;
+        const T0 = cycle === 0 ? 60 : 25;
+        let iter = 0;
+        const maxIter = 600000;
+        const t1 = Date.now();
+        while (movable.length && Date.now() < saEnd && iter < maxIter) {
+          iter++;
+          const frac = Math.min(1, (Date.now() - t1) / Math.max(1, saEnd - t1));
+          const T = T0 * Math.pow(1 - frac, 2) + 0.5;
+          const ri = movable[Math.floor(rnd() * movable.length)];
+          const l = rowsArr[ri];
+          const mv = rnd();
+          let undo: () => void;
+          if (mv < 0.12 && l.some((it) => it.kind === "u" && it.u!.order.length > 1)) {
+            const cands = l.filter((it) => it.kind === "u" && it.u!.order.length > 1);
+            const it = cands[Math.floor(rnd() * cands.length)];
+            it.u!.order.reverse();
+            undo = () => it.u!.order.reverse();
+          } else if (l.length > 1) {
+            const i = Math.floor(rnd() * l.length);
+            let j: number;
+            if (mv < 0.35) j = Math.min(l.length - 1, Math.max(0, i + (rnd() < 0.5 ? -1 : 1)));
+            else if (mv < 0.85) j = Math.min(l.length - 1, Math.max(0, i + Math.round((rnd() - 0.5) * 16)));
+            else j = Math.floor(rnd() * l.length);
+            if (j === i) continue;
+            const moved = l.splice(i, 1)[0];
+            l.splice(j, 0, moved);
+            reindex(ri);
+            undo = () => { const x2 = l.splice(j, 1)[0]; l.splice(i, 0, x2); reindex(ri); };
+          } else continue;
+          const a = pairCost(ri - 1);
+          const b = pairCost(ri);
+          const delta = a + b - (ri > 0 ? pc[ri - 1] : 0) - pc[ri];
+          if (delta <= 0 || rnd() < Math.exp(-delta / T)) {
+            if (ri > 0) pc[ri - 1] = a;
+            pc[ri] = b;
+            curC += delta;
+            if (curC < bestC - 1e-9) {
+              bestC = curC;
+              bestSnap = snap({ cost: 0, cross: 0, len: 0, longE: [], hits: 0 });
+            }
+          } else undo();
+        }
       }
       restore(bestSnap);
     }
