@@ -26290,6 +26290,136 @@
    "title": "Épouse de Manuel II",
    "g": "f",
    "script": 99
+  },
+  "es.carlos": {
+   "id": "a68923dc-ad63-56c0-aec3-b4f1f754dedc",
+   "name": "Don Carlos d'Autriche (prince des Asturies)",
+   "b": 1545,
+   "d": 1568,
+   "tree": "ES_UNI",
+   "title": "Infant, fils de Philippe II, mort en captivité",
+   "g": "h",
+   "script": 100
+  },
+  "es.juan": {
+   "id": "ba614489-c606-5f26-9f95-4810a6cabed7",
+   "name": "Don Juan d'Autriche",
+   "b": 1547,
+   "d": 1578,
+   "tree": "ES_UNI",
+   "title": "Fils naturel de Charles Quint, vainqueur de Lépante",
+   "g": "h",
+   "script": 100
+  },
+  "es.manuela": {
+   "id": "6cd71fcb-8e9b-5db7-9aa2-1d8d0632dd20",
+   "name": "Marie-Manuelle de Portugal",
+   "b": 1527,
+   "d": 1545,
+   "tree": "PT_AVI",
+   "title": "Première épouse de Philippe II",
+   "g": "f",
+   "script": 100
+  },
+  "es.carlos2": {
+   "id": "cca0006e-c009-5a1a-b64c-18e15c854831",
+   "name": "Charles d'Autriche (infant)",
+   "b": 1607,
+   "d": 1632,
+   "tree": "ES_UNI",
+   "title": "Infant, fils de Philippe III",
+   "g": "h",
+   "script": 100
+  },
+  "es.fernando": {
+   "id": "db1864d1-5c9a-57eb-b05d-fd447b637ba2",
+   "name": "Ferdinand d'Autriche (cardinal-infant)",
+   "b": 1609,
+   "d": 1641,
+   "tree": "ES_UNI",
+   "title": "Gouverneur des Pays-Bas espagnols",
+   "g": "h",
+   "script": 100
+  },
+  "es.baltasar": {
+   "id": "9ff77bce-2f5f-5f8d-ae6e-9a15ff56d7f5",
+   "name": "Balthazar-Charles d'Autriche",
+   "b": 1629,
+   "d": 1646,
+   "tree": "ES_UNI",
+   "title": "Prince des Asturies, héritier de Philippe IV",
+   "g": "h",
+   "script": 100
+  },
+  "es.marialouise": {
+   "id": "261abc20-48d5-57d6-9efe-6ffd34ebedf6",
+   "name": "Marie-Louise d'Orléans",
+   "b": 1662,
+   "d": 1689,
+   "tree": "FR_BOU",
+   "title": "Reine d'Espagne, première épouse de Charles II",
+   "g": "f",
+   "script": 100
+  },
+  "es.carlos_is": {
+   "id": "d7803f0f-f385-5b0a-bc0b-75abd96edc30",
+   "name": "Charles-Marie-Isidore de Bourbon (infant Don Carlos)",
+   "b": 1788,
+   "d": 1855,
+   "tree": "ES_BOU",
+   "title": "Frère de Ferdinand VII, prétendant carliste",
+   "g": "h",
+   "script": 100
+  },
+  "es.francisco": {
+   "id": "c777cab5-61d1-5558-92ef-802af71ed48c",
+   "name": "François de Paule de Bourbon",
+   "b": 1794,
+   "d": 1865,
+   "tree": "ES_BOU",
+   "title": "Infant, frère de Ferdinand VII",
+   "g": "h",
+   "script": 100
+  },
+  "es.barbara": {
+   "id": "ed5cfad0-074e-5a4f-af57-2f06fbcb58b7",
+   "name": "Barbe de Bragance",
+   "b": 1711,
+   "d": 1758,
+   "tree": "PT_BRA",
+   "title": "Reine d'Espagne, épouse de Ferdinand VI",
+   "g": "f",
+   "script": 100
+  },
+  "es.louisa": {
+   "id": "fa750a4f-f247-5ee2-8ce9-906541b4462c",
+   "name": "Louise-Élisabeth d'Orléans",
+   "b": 1709,
+   "d": 1742,
+   "tree": "FR_BOU",
+   "title": "Reine d'Espagne, épouse de Louis Ier",
+   "g": "f",
+   "script": 100
+  },
+  "es.isabel_p": {
+   "id": "21053994-ac29-53d9-8b05-6aae95364025",
+   "name": "Marie-Isabelle de Portugal",
+   "b": 1797,
+   "d": 1818,
+   "tree": "PT_BRA",
+   "title": "Reine d'Espagne, deuxième épouse de Ferdinand VII",
+   "g": "f",
+   "script": 100
+  },
+  "es.josefa": {
+   "id": "9fd8b355-5bda-5311-90f3-2c46bb5bdae2",
+   "name": "Marie-Josèphe de Saxe (reine d'Espagne)",
+   "b": 1803,
+   "d": 1829,
+   "tree": "DE_WET",
+   "title": "Reine d'Espagne, troisième épouse de Ferdinand VII",
+   "g": "f",
+   "script": 100
   }
  },
  "trees": {
@@ -27077,6 +27207,12 @@
    "entry": "7195e6c8-7fed-4b9c-961b-0ac78e95b275",
    "country": "ESP",
    "dynasty": "Bourbon",
+   "script": null
+  },
+  "ES_UNI": {
+   "entry": "e6300f83-dec0-4bab-ae4a-ea64ea621515",
+   "country": "ESP",
+   "dynasty": "Union de Castille et d'Aragon",
    "script": null
   }
  },
@@ -31966,6 +32102,12 @@
    "label": "Portugal — maison de Bragance, de Pierre III à Manuel II (et Brésil impérial)",
    "members": 21,
    "rels": 56,
+   "trees": []
+  },
+  "100": {
+   "label": "Espagne — compléments Habsbourg et Bourbon d'Espagne",
+   "members": 13,
+   "rels": 39,
    "trees": []
   }
  },
@@ -53719,6 +53861,201 @@
    "7a11377d-d57b-513b-96c8-3609a2a1faeb",
    "11769bcf-a098-567e-a261-355af1b52a18",
    "spouse"
+  ],
+  [
+   "13608e16-4ad6-4106-acf6-010fb43d4555",
+   "ba614489-c606-5f26-9f95-4810a6cabed7",
+   "parent"
+  ],
+  [
+   "8ee8a84e-7bd9-4754-9d1f-0abc9535aae4",
+   "a68923dc-ad63-56c0-aec3-b4f1f754dedc",
+   "parent"
+  ],
+  [
+   "6cd71fcb-8e9b-5db7-9aa2-1d8d0632dd20",
+   "a68923dc-ad63-56c0-aec3-b4f1f754dedc",
+   "parent"
+  ],
+  [
+   "8ee8a84e-7bd9-4754-9d1f-0abc9535aae4",
+   "6cd71fcb-8e9b-5db7-9aa2-1d8d0632dd20",
+   "spouse"
+  ],
+  [
+   "f825ea7a-0d7a-414f-9fb0-e3effb18b88f",
+   "6cd71fcb-8e9b-5db7-9aa2-1d8d0632dd20",
+   "parent"
+  ],
+  [
+   "be9529fe-dfd6-409c-bfda-a35b32503c33",
+   "6cd71fcb-8e9b-5db7-9aa2-1d8d0632dd20",
+   "parent"
+  ],
+  [
+   "29ededbe-2a12-48a9-8ccd-2cda3ba04e16",
+   "cca0006e-c009-5a1a-b64c-18e15c854831",
+   "parent"
+  ],
+  [
+   "d5acf03d-9bb7-416f-ab4f-4dd8cd610779",
+   "cca0006e-c009-5a1a-b64c-18e15c854831",
+   "parent"
+  ],
+  [
+   "29ededbe-2a12-48a9-8ccd-2cda3ba04e16",
+   "db1864d1-5c9a-57eb-b05d-fd447b637ba2",
+   "parent"
+  ],
+  [
+   "d5acf03d-9bb7-416f-ab4f-4dd8cd610779",
+   "db1864d1-5c9a-57eb-b05d-fd447b637ba2",
+   "parent"
+  ],
+  [
+   "29ededbe-2a12-48a9-8ccd-2cda3ba04e16",
+   "d1bc8e7a-5528-48d4-b445-636eff4addfc",
+   "parent"
+  ],
+  [
+   "d5acf03d-9bb7-416f-ab4f-4dd8cd610779",
+   "d1bc8e7a-5528-48d4-b445-636eff4addfc",
+   "parent"
+  ],
+  [
+   "29ededbe-2a12-48a9-8ccd-2cda3ba04e16",
+   "fcfe903c-55f1-4445-8363-1e7ce63fb4a2",
+   "parent"
+  ],
+  [
+   "d5acf03d-9bb7-416f-ab4f-4dd8cd610779",
+   "fcfe903c-55f1-4445-8363-1e7ce63fb4a2",
+   "parent"
+  ],
+  [
+   "29ededbe-2a12-48a9-8ccd-2cda3ba04e16",
+   "bea8235e-5da1-4c2c-8dce-562ad71388f3",
+   "parent"
+  ],
+  [
+   "d5acf03d-9bb7-416f-ab4f-4dd8cd610779",
+   "bea8235e-5da1-4c2c-8dce-562ad71388f3",
+   "parent"
+  ],
+  [
+   "d1bc8e7a-5528-48d4-b445-636eff4addfc",
+   "9ff77bce-2f5f-5f8d-ae6e-9a15ff56d7f5",
+   "parent"
+  ],
+  [
+   "99767669-337f-59d8-b3f7-09117e50d6a2",
+   "9ff77bce-2f5f-5f8d-ae6e-9a15ff56d7f5",
+   "parent"
+  ],
+  [
+   "d1bc8e7a-5528-48d4-b445-636eff4addfc",
+   "83ead0a6-1ec2-42db-957e-f445205ce0eb",
+   "parent"
+  ],
+  [
+   "99767669-337f-59d8-b3f7-09117e50d6a2",
+   "83ead0a6-1ec2-42db-957e-f445205ce0eb",
+   "parent"
+  ],
+  [
+   "787d4e3c-430e-4f0c-8ea0-9385d4a6e4ff",
+   "261abc20-48d5-57d6-9efe-6ffd34ebedf6",
+   "spouse"
+  ],
+  [
+   "e3e60e7d-e05f-48a9-a727-71b3ed684a54",
+   "261abc20-48d5-57d6-9efe-6ffd34ebedf6",
+   "parent"
+  ],
+  [
+   "29ededbe-2a12-48a9-8ccd-2cda3ba04e16",
+   "d5acf03d-9bb7-416f-ab4f-4dd8cd610779",
+   "spouse"
+  ],
+  [
+   "b4394bc7-9578-4106-a0aa-355085620685",
+   "ed5cfad0-074e-5a4f-af57-2f06fbcb58b7",
+   "spouse"
+  ],
+  [
+   "8cae7bf6-e8ce-402c-b383-de0645b00142",
+   "ed5cfad0-074e-5a4f-af57-2f06fbcb58b7",
+   "parent"
+  ],
+  [
+   "db2f227e-a1c6-4ae6-bd58-0f5fd64199d3",
+   "ed5cfad0-074e-5a4f-af57-2f06fbcb58b7",
+   "parent"
+  ],
+  [
+   "22e076ee-34eb-42e3-bf6e-c7ea1ea7daa7",
+   "fa750a4f-f247-5ee2-8ce9-906541b4462c",
+   "spouse"
+  ],
+  [
+   "f11b51af-196c-5ac1-bdfc-77400e7c1d94",
+   "fa750a4f-f247-5ee2-8ce9-906541b4462c",
+   "parent"
+  ],
+  [
+   "b91a0834-cb10-5045-8cf8-531e57f9769d",
+   "fa750a4f-f247-5ee2-8ce9-906541b4462c",
+   "parent"
+  ],
+  [
+   "4717536a-96fb-4b60-9992-d9857ce32daf",
+   "d7803f0f-f385-5b0a-bc0b-75abd96edc30",
+   "parent"
+  ],
+  [
+   "a1d8a44a-24f5-4ced-839c-b9437b443e0c",
+   "d7803f0f-f385-5b0a-bc0b-75abd96edc30",
+   "parent"
+  ],
+  [
+   "4717536a-96fb-4b60-9992-d9857ce32daf",
+   "c777cab5-61d1-5558-92ef-802af71ed48c",
+   "parent"
+  ],
+  [
+   "a1d8a44a-24f5-4ced-839c-b9437b443e0c",
+   "c777cab5-61d1-5558-92ef-802af71ed48c",
+   "parent"
+  ],
+  [
+   "d51742f7-152d-444e-a851-3f601bffe27d",
+   "4c715634-91fd-54d9-948e-accc3795bfe8",
+   "spouse"
+  ],
+  [
+   "d51742f7-152d-444e-a851-3f601bffe27d",
+   "21053994-ac29-53d9-8b05-6aae95364025",
+   "spouse"
+  ],
+  [
+   "a3b37039-6986-52fd-b961-0578dc076e77",
+   "21053994-ac29-53d9-8b05-6aae95364025",
+   "parent"
+  ],
+  [
+   "53d94cac-4e9d-519e-a56e-bb9bdc81c992",
+   "21053994-ac29-53d9-8b05-6aae95364025",
+   "parent"
+  ],
+  [
+   "d51742f7-152d-444e-a851-3f601bffe27d",
+   "9fd8b355-5bda-5311-90f3-2c46bb5bdae2",
+   "spouse"
+  ],
+  [
+   "7d231c26-f50a-44cc-854d-9fd3dd9ef8fc",
+   "9fd8b355-5bda-5311-90f3-2c46bb5bdae2",
+   "parent"
   ]
  ],
  "dateflags": [
@@ -62102,6 +62439,46 @@
   [
    "db85428a-e4c4-5b25-9493-642b23431fae",
    "PT_BRA"
+  ],
+  [
+   "6cd71fcb-8e9b-5db7-9aa2-1d8d0632dd20",
+   "ES_UNI"
+  ],
+  [
+   "261abc20-48d5-57d6-9efe-6ffd34ebedf6",
+   "ES_UNI"
+  ],
+  [
+   "bea8235e-5da1-4c2c-8dce-562ad71388f3",
+   "ES_UNI"
+  ],
+  [
+   "83ead0a6-1ec2-42db-957e-f445205ce0eb",
+   "ES_UNI"
+  ],
+  [
+   "99767669-337f-59d8-b3f7-09117e50d6a2",
+   "ES_UNI"
+  ],
+  [
+   "ed5cfad0-074e-5a4f-af57-2f06fbcb58b7",
+   "ES_BOU"
+  ],
+  [
+   "fa750a4f-f247-5ee2-8ce9-906541b4462c",
+   "ES_BOU"
+  ],
+  [
+   "21053994-ac29-53d9-8b05-6aae95364025",
+   "ES_BOU"
+  ],
+  [
+   "9fd8b355-5bda-5311-90f3-2c46bb5bdae2",
+   "ES_BOU"
+  ],
+  [
+   "4c715634-91fd-54d9-948e-accc3795bfe8",
+   "ES_BOU"
   ]
  ],
  "xmoved": {
