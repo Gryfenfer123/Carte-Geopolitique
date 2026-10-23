@@ -130,4 +130,5 @@ RLS**. Règles :
 | v56 | Données : Chine (1/…) — arbres Zhou (roi Wen → roi Nan) et Qin (Huiwen → Ziying) ; années avant J.-C. en valeurs négatives — à exécuter après v55 |
 | v57 | Données : Chine (2/…) — arbres Han (Gaozu → Xian, avec impératrices) et Xin (Wang Mang) ; années avant J.-C. en négatif — à exécuter après v56 |
 | v58 | Données : Chine (3/…) — arbres Cao Wei, Shu Han et Wu oriental (Trois Royaumes) ; Cao Jie reliée à Xian (Han), dame Sun reliée à Liu Bei — à exécuter après v57 |
+| v59 | Données : Chine (4/…) — arbre Jin (Sima Yi → Gong de Jin, 57 membres) — à exécuter après v58 |
 | `data_owid_load.sql` + `owid_chunks/` | Chargement des données d'indicateurs (rejouable, upserts) — à exécuter après v1 à v7 |
