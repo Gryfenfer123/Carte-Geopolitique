@@ -5955,7 +5955,7 @@
    "name": "Victor-Emmanuel III d'Italie",
    "b": 1869,
    "d": 1947,
-   "tree": "ME_PET",
+   "tree": "IT_SAV",
    "title": "Roi d'Italie (1900-1946)",
    "g": "h",
    "script": 48
@@ -13630,6 +13630,846 @@
    "title": "Reine de Lotharingie",
    "g": "f",
    "script": 67
+  },
+  "sv.humbert1": {
+   "id": "22d74280-1d64-59ff-968c-f78afb43c1cf",
+   "name": "Humbert Ier aux Blanches Mains",
+   "b": 980,
+   "d": 1047,
+   "tree": "IT_SAV",
+   "title": "Comte de Savoie",
+   "g": "h",
+   "script": 68
+  },
+  "sv.otto": {
+   "id": "1e1cbf2e-b55d-5fd7-86a1-038d7ba1083f",
+   "name": "Othon de Savoie",
+   "b": null,
+   "d": 1057,
+   "tree": "IT_SAV",
+   "title": "Comte de Savoie",
+   "g": "h",
+   "script": 68
+  },
+  "sv.adelaide_suse": {
+   "id": "f8cf8661-3674-5a0b-be36-d414992340d1",
+   "name": "Adélaïde de Suse",
+   "b": null,
+   "d": null,
+   "tree": "IT_SAV",
+   "title": "Comtesse de Savoie, marquise de Turin",
+   "g": "f",
+   "script": 68
+  },
+  "sv.amadeus2": {
+   "id": "0ed74f85-d1ad-5f9e-9edb-179446756b78",
+   "name": "Amédée II de Savoie",
+   "b": null,
+   "d": 1080,
+   "tree": "IT_SAV",
+   "title": "Comte de Savoie",
+   "g": "h",
+   "script": 68
+  },
+  "sv.humbert2": {
+   "id": "d624029b-8caa-5430-86c8-2fdb0bdfc697",
+   "name": "Humbert II de Savoie",
+   "b": 1065,
+   "d": 1103,
+   "tree": "IT_SAV",
+   "title": "Comte de Savoie",
+   "g": "h",
+   "script": 68
+  },
+  "sv.gisela": {
+   "id": "2acdce61-c794-5a73-b538-3d864a4e24bb",
+   "name": "Gisèle de Bourgogne (comtesse de Savoie)",
+   "b": null,
+   "d": null,
+   "tree": "IT_SAV",
+   "title": "Comtesse de Savoie",
+   "g": "f",
+   "script": 68
+  },
+  "sv.amadeus3": {
+   "id": "7579d46f-7ccc-52d9-aa73-d00547fb3c4e",
+   "name": "Amédée III de Savoie",
+   "b": 1095,
+   "d": 1148,
+   "tree": "IT_SAV",
+   "title": "Comte de Savoie",
+   "g": "h",
+   "script": 68
+  },
+  "sv.mahaut_albon": {
+   "id": "3c9c5be3-da20-5c79-b5ee-34b9828a20a1",
+   "name": "Mahaut d'Albon",
+   "b": null,
+   "d": null,
+   "tree": "IT_SAV",
+   "title": "Comtesse de Savoie",
+   "g": "f",
+   "script": 68
+  },
+  "sv.humbert3": {
+   "id": "a4786cce-b884-5695-87a5-934b5770e850",
+   "name": "Humbert III de Savoie",
+   "b": 1136,
+   "d": 1188,
+   "tree": "IT_SAV",
+   "title": "Comte de Savoie",
+   "g": "h",
+   "script": 68
+  },
+  "sv.beatrice_vien": {
+   "id": "7407a467-7c51-538e-a75d-b77827d262d3",
+   "name": "Béatrice de Viennois",
+   "b": null,
+   "d": null,
+   "tree": "IT_SAV",
+   "title": "Comtesse de Savoie",
+   "g": "f",
+   "script": 68
+  },
+  "sv.thomas1": {
+   "id": "7f6ddf27-e6db-5a14-a749-6c917c37ed2e",
+   "name": "Thomas Ier de Savoie",
+   "b": 1178,
+   "d": 1233,
+   "tree": "IT_SAV",
+   "title": "Comte de Savoie",
+   "g": "h",
+   "script": 68
+  },
+  "sv.marg_geneve": {
+   "id": "b4feb0b9-f69d-5e28-ba19-22f440523aa7",
+   "name": "Marguerite de Genève",
+   "b": null,
+   "d": null,
+   "tree": "IT_SAV",
+   "title": "Comtesse de Savoie",
+   "g": "f",
+   "script": 68
+  },
+  "sv.amadeus4": {
+   "id": "1ec2d645-7f6b-52f1-9279-199369ed7d9e",
+   "name": "Amédée IV de Savoie",
+   "b": 1197,
+   "d": 1253,
+   "tree": "IT_SAV",
+   "title": "Comte de Savoie",
+   "g": "h",
+   "script": 68
+  },
+  "sv.thomas2": {
+   "id": "291e3ef5-2e1a-5b66-a914-d182a8447a8e",
+   "name": "Thomas II de Savoie",
+   "b": 1199,
+   "d": 1259,
+   "tree": "IT_SAV",
+   "title": "Comte de Flandre (par mariage), seigneur de Piémont",
+   "g": "h",
+   "script": 68
+  },
+  "sv.beatrice_fieschi": {
+   "id": "234bb352-1ef4-51cc-a6e7-1bad956fca74",
+   "name": "Béatrice Fieschi",
+   "b": null,
+   "d": null,
+   "tree": "IT_SAV",
+   "title": "Seconde épouse de Thomas II",
+   "g": "f",
+   "script": 68
+  },
+  "sv.amadeus5": {
+   "id": "ad248eec-299a-5467-bfca-64dcea859c20",
+   "name": "Amédée V le Grand",
+   "b": 1249,
+   "d": 1323,
+   "tree": "IT_SAV",
+   "title": "Comte de Savoie",
+   "g": "h",
+   "script": 68
+  },
+  "sv.sybille_bage": {
+   "id": "50455cff-ae14-5ffa-a4c5-c898ba759616",
+   "name": "Sybille de Bâgé",
+   "b": null,
+   "d": 1294,
+   "tree": "IT_SAV",
+   "title": "Comtesse de Savoie",
+   "g": "f",
+   "script": 68
+  },
+  "sv.marie_brabant": {
+   "id": "3166e4d4-3e89-55b7-8fed-268f655f4792",
+   "name": "Marie de Brabant (comtesse de Savoie)",
+   "b": null,
+   "d": null,
+   "tree": "IT_SAV",
+   "title": "Comtesse de Savoie",
+   "g": "f",
+   "script": 68
+  },
+  "sv.edward": {
+   "id": "0174ded9-8474-5a65-a4f8-be98c4f2ec71",
+   "name": "Édouard de Savoie",
+   "b": 1284,
+   "d": 1329,
+   "tree": "IT_SAV",
+   "title": "Comte de Savoie",
+   "g": "h",
+   "script": 68
+  },
+  "sv.aymon": {
+   "id": "1fb2f965-3324-5c66-8570-6fc6af24089c",
+   "name": "Aymon de Savoie",
+   "b": 1291,
+   "d": 1343,
+   "tree": "IT_SAV",
+   "title": "Comte de Savoie",
+   "g": "h",
+   "script": 68
+  },
+  "sv.anne_byz": {
+   "id": "ce4ae1ef-80e2-5198-9be0-270715156495",
+   "name": "Anne de Savoie (impératrice byzantine)",
+   "b": null,
+   "d": 1359,
+   "tree": "IT_SAV",
+   "title": "Impératrice byzantine, épouse d'Andronic III",
+   "g": "f",
+   "script": 68
+  },
+  "sv.yolande_mont": {
+   "id": "b192b919-f840-55ef-bb37-bba1f50e2fc5",
+   "name": "Yolande de Montferrat",
+   "b": null,
+   "d": null,
+   "tree": "IT_SAV",
+   "title": "Comtesse de Savoie",
+   "g": "f",
+   "script": 68
+  },
+  "sv.amadeus6": {
+   "id": "84b539e0-1ef9-5a5d-a48b-552fcc3fabb7",
+   "name": "Amédée VI le Comte Vert",
+   "b": 1334,
+   "d": 1383,
+   "tree": "IT_SAV",
+   "title": "Comte de Savoie",
+   "g": "h",
+   "script": 68
+  },
+  "sv.bonne_bourbon": {
+   "id": "6f62644b-b2ee-5e79-af9d-5247c7ea301e",
+   "name": "Bonne de Bourbon",
+   "b": 1341,
+   "d": 1402,
+   "tree": "IT_SAV",
+   "title": "Comtesse de Savoie",
+   "g": "f",
+   "script": 68
+  },
+  "sv.amadeus7": {
+   "id": "585eee3d-e7be-58e3-b83b-58056b6f1fe6",
+   "name": "Amédée VII le Comte Rouge",
+   "b": 1360,
+   "d": 1391,
+   "tree": "IT_SAV",
+   "title": "Comte de Savoie",
+   "g": "h",
+   "script": 68
+  },
+  "sv.bonne_berry": {
+   "id": "7cc0406c-b5a0-5864-aad6-df9a389c87ba",
+   "name": "Bonne de Berry",
+   "b": 1365,
+   "d": 1435,
+   "tree": "IT_SAV",
+   "title": "Comtesse de Savoie",
+   "g": "f",
+   "script": 68
+  },
+  "sv.amadeus8": {
+   "id": "9b67b8fd-50ba-5327-8fb2-ec84705c70d4",
+   "name": "Amédée VIII",
+   "b": 1383,
+   "d": 1451,
+   "tree": "IT_SAV",
+   "title": "Premier duc de Savoie, antipape Félix V",
+   "g": "h",
+   "script": 68
+  },
+  "sv.marie_bg": {
+   "id": "a94d698d-3f9c-58e8-aa00-19c5bdf993fc",
+   "name": "Marie de Bourgogne (duchesse de Savoie)",
+   "b": 1386,
+   "d": 1428,
+   "tree": "IT_SAV",
+   "title": "Duchesse de Savoie",
+   "g": "f",
+   "script": 68
+  },
+  "sv.marie_visc": {
+   "id": "1b01ac01-b432-5013-a2bb-29b5d56d662e",
+   "name": "Marie de Savoie (duchesse de Milan)",
+   "b": 1411,
+   "d": 1469,
+   "tree": "IT_SAV",
+   "title": "Duchesse de Milan",
+   "g": "f",
+   "script": 68
+  },
+  "sv.louis": {
+   "id": "2152e3ef-9993-5684-94ea-5143493bf5c7",
+   "name": "Louis Ier de Savoie",
+   "b": 1413,
+   "d": 1465,
+   "tree": "IT_SAV",
+   "title": "Duc de Savoie",
+   "g": "h",
+   "script": 68
+  },
+  "sv.anne_chypre": {
+   "id": "6c0c2f65-aac8-5c2d-bd9f-7da73c070fe9",
+   "name": "Anne de Chypre",
+   "b": 1418,
+   "d": 1462,
+   "tree": "IT_SAV",
+   "title": "Duchesse de Savoie",
+   "g": "f",
+   "script": 68
+  },
+  "sv.amadeus9": {
+   "id": "a64eb7d5-ccb9-5013-bae2-c4c12f57ca34",
+   "name": "Amédée IX le Bienheureux",
+   "b": 1435,
+   "d": 1472,
+   "tree": "IT_SAV",
+   "title": "Duc de Savoie",
+   "g": "h",
+   "script": 68
+  },
+  "sv.philip2": {
+   "id": "7b57eb60-8328-5f70-a138-10ad653ab282",
+   "name": "Philippe II le Sans-Terre",
+   "b": 1438,
+   "d": 1497,
+   "tree": "IT_SAV",
+   "title": "Duc de Savoie",
+   "g": "h",
+   "script": 68
+  },
+  "sv.yolande_fr": {
+   "id": "68ba7a14-d738-5a81-be5f-009ac41b2254",
+   "name": "Yolande de France (duchesse de Savoie)",
+   "b": 1434,
+   "d": 1478,
+   "tree": "IT_SAV",
+   "title": "Duchesse de Savoie",
+   "g": "f",
+   "script": 68
+  },
+  "sv.philibert1": {
+   "id": "59992324-a108-56ce-a8ff-528e51edbf93",
+   "name": "Philibert Ier le Chasseur",
+   "b": 1465,
+   "d": 1482,
+   "tree": "IT_SAV",
+   "title": "Duc de Savoie",
+   "g": "h",
+   "script": 68
+  },
+  "sv.charles1": {
+   "id": "349ad12d-1b3c-5606-b379-c4d40a6f7d79",
+   "name": "Charles Ier le Guerrier",
+   "b": 1468,
+   "d": 1490,
+   "tree": "IT_SAV",
+   "title": "Duc de Savoie",
+   "g": "h",
+   "script": 68
+  },
+  "sv.charles_ii": {
+   "id": "c626fba6-f3d6-5a9e-bed2-0ff63b0b30b9",
+   "name": "Charles II le Bon",
+   "b": 1489,
+   "d": 1496,
+   "tree": "IT_SAV",
+   "title": "Duc de Savoie",
+   "g": "h",
+   "script": 68
+  },
+  "sv.blanche_mont": {
+   "id": "7ccdb3af-fae7-5b41-935f-f7d82cdfeef4",
+   "name": "Blanche de Montferrat",
+   "b": 1472,
+   "d": 1519,
+   "tree": "IT_SAV",
+   "title": "Duchesse de Savoie",
+   "g": "f",
+   "script": 68
+  },
+  "sv.claudine": {
+   "id": "dc29bf70-9cbb-542b-9558-938e8b69b989",
+   "name": "Claudine de Brosse",
+   "b": null,
+   "d": 1513,
+   "tree": "IT_SAV",
+   "title": "Duchesse de Savoie",
+   "g": "f",
+   "script": 68
+  },
+  "sv.philibert2": {
+   "id": "fdd177aa-5bf5-5a39-b1d9-fa621a2345f1",
+   "name": "Philibert II le Beau",
+   "b": 1480,
+   "d": 1504,
+   "tree": "IT_SAV",
+   "title": "Duc de Savoie",
+   "g": "h",
+   "script": 68
+  },
+  "sv.charles3": {
+   "id": "e16fd3c8-a6b9-5a63-948a-4441037489b5",
+   "name": "Charles III le Bon",
+   "b": 1486,
+   "d": 1553,
+   "tree": "IT_SAV",
+   "title": "Duc de Savoie",
+   "g": "h",
+   "script": 68
+  },
+  "sv.marg_bourbon": {
+   "id": "f8c8bef2-e655-576d-a518-0d263e216f31",
+   "name": "Marguerite de Bourbon (duchesse de Savoie)",
+   "b": 1438,
+   "d": 1483,
+   "tree": "IT_SAV",
+   "title": "Duchesse de Savoie",
+   "g": "f",
+   "script": 68
+  },
+  "sv.beatrice_pt": {
+   "id": "3ef5ff0e-1ae6-59d8-95bf-efa593d68b54",
+   "name": "Béatrice de Portugal (duchesse de Savoie)",
+   "b": 1504,
+   "d": 1538,
+   "tree": "IT_SAV",
+   "title": "Duchesse de Savoie",
+   "g": "f",
+   "script": 68
+  },
+  "sv.emmanuel_ph": {
+   "id": "4b3784d2-55b2-5126-a223-74a97f89d8f9",
+   "name": "Emmanuel-Philibert",
+   "b": 1528,
+   "d": 1580,
+   "tree": "IT_SAV",
+   "title": "Duc de Savoie (Tête de Fer)",
+   "g": "h",
+   "script": 68
+  },
+  "sv.marguerite_fr": {
+   "id": "fd7357ce-6e93-5f4f-86a5-eba73d38af9b",
+   "name": "Marguerite de France (duchesse de Berry)",
+   "b": 1523,
+   "d": 1574,
+   "tree": "IT_SAV",
+   "title": "Duchesse de Savoie",
+   "g": "f",
+   "script": 68
+  },
+  "sv.ce1": {
+   "id": "7c713744-8bf9-5b39-aa93-2e5f9946546c",
+   "name": "Charles-Emmanuel Ier le Grand",
+   "b": 1562,
+   "d": 1630,
+   "tree": "IT_SAV",
+   "title": "Duc de Savoie",
+   "g": "h",
+   "script": 68
+  },
+  "sv.catherine_esp": {
+   "id": "d7dfca49-712c-5f16-bc4f-78609333ccb9",
+   "name": "Catherine-Michelle d'Espagne",
+   "b": 1567,
+   "d": 1597,
+   "tree": "IT_SAV",
+   "title": "Duchesse de Savoie",
+   "g": "f",
+   "script": 68
+  },
+  "sv.va1": {
+   "id": "074bdb6b-ad5f-54dc-be71-0f8010f21cf6",
+   "name": "Victor-Amédée Ier",
+   "b": 1587,
+   "d": 1637,
+   "tree": "IT_SAV",
+   "title": "Duc de Savoie",
+   "g": "h",
+   "script": 68
+  },
+  "sv.thomas_carig": {
+   "id": "5f70f8ed-cea5-5b59-895f-c5181419ad56",
+   "name": "Thomas-François de Savoie-Carignan",
+   "b": 1596,
+   "d": 1656,
+   "tree": "IT_SAV",
+   "title": "Prince de Carignan",
+   "g": "h",
+   "script": 68
+  },
+  "sv.christine_fr": {
+   "id": "20b55b44-59db-5c65-803b-965ca2ac0e70",
+   "name": "Christine de France",
+   "b": 1606,
+   "d": 1663,
+   "tree": "IT_SAV",
+   "title": "Duchesse de Savoie, régente",
+   "g": "f",
+   "script": 68
+  },
+  "sv.ce2": {
+   "id": "a0bc71ef-98da-5030-87b7-a90f8c056363",
+   "name": "Charles-Emmanuel II",
+   "b": 1634,
+   "d": 1675,
+   "tree": "IT_SAV",
+   "title": "Duc de Savoie",
+   "g": "h",
+   "script": 68
+  },
+  "sv.marie_jeanne": {
+   "id": "5d51d0fd-c503-5b0a-bb2a-54303dca8ef0",
+   "name": "Marie-Jeanne de Savoie-Nemours",
+   "b": 1644,
+   "d": 1724,
+   "tree": "IT_SAV",
+   "title": "Duchesse de Savoie, Madame Royale",
+   "g": "f",
+   "script": 68
+  },
+  "sv.va2": {
+   "id": "7d8df69f-706c-5476-ae1d-60c7f770434e",
+   "name": "Victor-Amédée II",
+   "b": 1666,
+   "d": 1732,
+   "tree": "IT_SAV",
+   "title": "Duc de Savoie, roi de Sicile puis de Sardaigne",
+   "g": "h",
+   "script": 68
+  },
+  "sv.anne_marie_orl": {
+   "id": "7b7fc981-8a96-5e2b-b346-66c35a0bcd7b",
+   "name": "Anne-Marie d'Orléans",
+   "b": 1669,
+   "d": 1728,
+   "tree": "IT_SAV",
+   "title": "Duchesse de Savoie, reine de Sicile",
+   "g": "f",
+   "script": 68
+  },
+  "sv.ce3": {
+   "id": "b1cb283f-d965-5998-a5ad-fa4835331b32",
+   "name": "Charles-Emmanuel III",
+   "b": 1701,
+   "d": 1773,
+   "tree": "IT_SAV",
+   "title": "Roi de Sardaigne",
+   "g": "h",
+   "script": 68
+  },
+  "sv.va3": {
+   "id": "10c905d8-2286-5284-ad85-3b388f2538c4",
+   "name": "Victor-Amédée III",
+   "b": 1726,
+   "d": 1796,
+   "tree": "IT_SAV",
+   "title": "Roi de Sardaigne",
+   "g": "h",
+   "script": 68
+  },
+  "sv.polyxena": {
+   "id": "de195fe7-9169-5415-b9e5-33abdd2e6e8a",
+   "name": "Polyxène de Hesse-Rheinfels-Rotenburg",
+   "b": 1706,
+   "d": 1735,
+   "tree": "IT_SAV",
+   "title": "Reine de Sardaigne",
+   "g": "f",
+   "script": 68
+  },
+  "sv.maria_antonia": {
+   "id": "865cb59f-a7b4-5ada-be18-1d6de23d9dac",
+   "name": "Marie-Antoinette d'Espagne",
+   "b": 1729,
+   "d": 1785,
+   "tree": "IT_SAV",
+   "title": "Reine de Sardaigne",
+   "g": "f",
+   "script": 68
+  },
+  "sv.ce4": {
+   "id": "c4222ad8-17a2-546d-84c9-e6a41ae1661b",
+   "name": "Charles-Emmanuel IV",
+   "b": 1751,
+   "d": 1819,
+   "tree": "IT_SAV",
+   "title": "Roi de Sardaigne",
+   "g": "h",
+   "script": 68
+  },
+  "sv.ve1": {
+   "id": "aef2eefa-1afd-5c55-9394-ca7634a98936",
+   "name": "Victor-Emmanuel Ier",
+   "b": 1759,
+   "d": 1824,
+   "tree": "IT_SAV",
+   "title": "Roi de Sardaigne",
+   "g": "h",
+   "script": 68
+  },
+  "sv.cf": {
+   "id": "fd3afe05-f336-530b-9ce6-336d9ebeab8d",
+   "name": "Charles-Félix",
+   "b": 1765,
+   "d": 1831,
+   "tree": "IT_SAV",
+   "title": "Roi de Sardaigne",
+   "g": "h",
+   "script": 68
+  },
+  "sv.maria_teresa_este": {
+   "id": "8fc5377c-8fef-56fb-982a-7e0061096e72",
+   "name": "Marie-Thérèse d'Autriche-Este",
+   "b": 1773,
+   "d": 1832,
+   "tree": "IT_SAV",
+   "title": "Reine de Sardaigne",
+   "g": "f",
+   "script": 68
+  },
+  "sv.ce_carig": {
+   "id": "c7885d9e-6e8f-53e7-baf2-8f93f3cb11f3",
+   "name": "Charles-Emmanuel de Savoie-Carignan",
+   "b": 1770,
+   "d": 1800,
+   "tree": "IT_SAV",
+   "title": "Prince de Carignan",
+   "g": "h",
+   "script": 68
+  },
+  "sv.mc_saxe": {
+   "id": "0a41e529-79bc-5fe6-b178-d3a887ed575c",
+   "name": "Marie-Christine de Saxe (princesse de Carignan)",
+   "b": 1770,
+   "d": 1851,
+   "tree": "IT_SAV",
+   "title": "Princesse de Carignan",
+   "g": "f",
+   "script": 68
+  },
+  "sv.ca": {
+   "id": "4bea1bb3-a685-56d6-99db-82befdbfb3d4",
+   "name": "Charles-Albert",
+   "b": 1798,
+   "d": 1849,
+   "tree": "IT_SAV",
+   "title": "Roi de Sardaigne",
+   "g": "h",
+   "script": 68
+  },
+  "sv.mt_tosc": {
+   "id": "4c7a4b31-4f72-5ee9-a81a-93eb40bfa3f6",
+   "name": "Marie-Thérèse de Toscane",
+   "b": 1801,
+   "d": 1855,
+   "tree": "IT_SAV",
+   "title": "Reine de Sardaigne",
+   "g": "f",
+   "script": 68
+  },
+  "sv.ve2": {
+   "id": "4552f6d0-ae87-5566-8932-88323544dd17",
+   "name": "Victor-Emmanuel II",
+   "b": 1820,
+   "d": 1878,
+   "tree": "IT_SAV",
+   "title": "Roi de Sardaigne puis premier roi d'Italie",
+   "g": "h",
+   "script": 68
+  },
+  "sv.ferd_genes": {
+   "id": "b81f7ff8-e981-57f3-aa16-e483a588cbdb",
+   "name": "Ferdinand de Savoie, duc de Gênes",
+   "b": 1822,
+   "d": 1855,
+   "tree": "IT_SAV",
+   "title": "Duc de Gênes",
+   "g": "h",
+   "script": 68
+  },
+  "sv.adelaide_aut": {
+   "id": "cf87d333-217e-5e0a-9e48-b9cfb27e1416",
+   "name": "Adélaïde d'Autriche",
+   "b": 1822,
+   "d": 1855,
+   "tree": "IT_SAV",
+   "title": "Reine de Sardaigne",
+   "g": "f",
+   "script": 68
+  },
+  "sv.umberto1": {
+   "id": "102135d9-bb20-51de-ba4e-84a9f4ecf899",
+   "name": "Humbert Ier d'Italie",
+   "b": 1844,
+   "d": 1900,
+   "tree": "IT_SAV",
+   "title": "Roi d'Italie",
+   "g": "h",
+   "script": 68
+  },
+  "sv.amadeo": {
+   "id": "987ad1f5-cefc-59db-b0c0-bba186a7c1ad",
+   "name": "Amédée Ier d'Espagne",
+   "b": 1845,
+   "d": 1890,
+   "tree": "IT_SAV",
+   "title": "Roi d'Espagne, duc d'Aoste",
+   "g": "h",
+   "script": 68
+  },
+  "sv.maria_clotilde": {
+   "id": "e414da9b-4492-586c-b5cc-53ca54ab4bc7",
+   "name": "Marie-Clotilde de Savoie",
+   "b": 1843,
+   "d": 1911,
+   "tree": "IT_SAV",
+   "title": "Princesse Napoléon",
+   "g": "f",
+   "script": 68
+  },
+  "sv.maria_pia": {
+   "id": "b5d7c420-9d03-5eea-b5d3-bab6715a77b8",
+   "name": "Marie-Pie de Savoie",
+   "b": 1847,
+   "d": 1911,
+   "tree": "IT_SAV",
+   "title": "Reine de Portugal",
+   "g": "f",
+   "script": 68
+  },
+  "sv.margherita": {
+   "id": "6db3ef3a-af43-598c-b036-e8cfdcc60b5b",
+   "name": "Marguerite de Savoie-Gênes",
+   "b": 1851,
+   "d": 1926,
+   "tree": "IT_SAV",
+   "title": "Reine d'Italie",
+   "g": "f",
+   "script": 68
+  },
+  "sv.elisabeth_saxe": {
+   "id": "4c112e03-79f4-57a0-9e60-08027366e286",
+   "name": "Élisabeth de Saxe (duchesse de Gênes)",
+   "b": null,
+   "d": null,
+   "tree": "IT_SAV",
+   "title": "Duchesse de Gênes",
+   "g": "f",
+   "script": 68
+  },
+  "sv.yolanda": {
+   "id": "df21afa2-00f7-5182-b46f-bdb2b21cf641",
+   "name": "Yolande de Savoie",
+   "b": 1901,
+   "d": 1986,
+   "tree": "IT_SAV",
+   "title": "Princesse",
+   "g": "f",
+   "script": 68
+  },
+  "sv.mafalda": {
+   "id": "9ae0cb4d-0548-55b0-acf6-6802098d955d",
+   "name": "Mafalda de Savoie",
+   "b": 1902,
+   "d": 1944,
+   "tree": "IT_SAV",
+   "title": "Princesse de Hesse",
+   "g": "f",
+   "script": 68
+  },
+  "sv.umberto2": {
+   "id": "8c272a87-9e52-5e60-9b13-e8ae374197d2",
+   "name": "Humbert II d'Italie",
+   "b": 1904,
+   "d": 1983,
+   "tree": "IT_SAV",
+   "title": "Dernier roi d'Italie",
+   "g": "h",
+   "script": 68
+  },
+  "sv.mariafr": {
+   "id": "f5af23ce-ef07-5cfc-9ee9-8cc10d9d4cf6",
+   "name": "Marie-Françoise de Savoie",
+   "b": 1914,
+   "d": 2001,
+   "tree": "IT_SAV",
+   "title": "Princesse de Bourbon-Parme",
+   "g": "f",
+   "script": 68
+  },
+  "sv.marie_jose": {
+   "id": "2504d667-6a2e-5728-a2f2-2a88df94faf9",
+   "name": "Marie-José de Belgique",
+   "b": 1906,
+   "d": 2001,
+   "tree": "IT_SAV",
+   "title": "Reine d'Italie",
+   "g": "f",
+   "script": 68
+  },
+  "sv.mariapia": {
+   "id": "804e1604-2316-5a08-acb1-61f791634e13",
+   "name": "Marie-Pie de Savoie (née 1934)",
+   "b": 1934,
+   "d": null,
+   "tree": "IT_SAV",
+   "title": "Princesse",
+   "g": "f",
+   "script": 68
+  },
+  "sv.vitt_em": {
+   "id": "8a1f2c2d-b4d3-5a85-a879-a9966d14aa15",
+   "name": "Victor-Emmanuel de Savoie",
+   "b": 1937,
+   "d": 2024,
+   "tree": "IT_SAV",
+   "title": "Prince de Naples",
+   "g": "h",
+   "script": 68
+  },
+  "sv.mariag": {
+   "id": "01ac5571-9c40-5e09-b412-ff64e9d348ff",
+   "name": "Marie-Gabrielle de Savoie",
+   "b": 1940,
+   "d": null,
+   "tree": "IT_SAV",
+   "title": "Princesse",
+   "g": "f",
+   "script": 68
+  },
+  "sv.mariab": {
+   "id": "df30df3a-9aa4-5f1f-b84b-11c75d2022ea",
+   "name": "Marie-Béatrice de Savoie",
+   "b": 1943,
+   "d": null,
+   "tree": "IT_SAV",
+   "title": "Princesse",
+   "g": "f",
+   "script": 68
   }
  },
  "trees": {
@@ -14088,6 +14928,12 @@
    "country": "DEU",
    "dynasty": "Carolingiens",
    "script": null
+  },
+  "IT_SAV": {
+   "entry": "6fbb7c6f-966d-5887-9c02-fb6bdf298800",
+   "country": "ITA",
+   "dynasty": "Maison de Savoie",
+   "script": 68
   }
  },
  "flags": [
@@ -17058,6 +17904,223 @@
    "tree": "DE_LUX",
    "reason": "Maison de Mecklembourg : sans arbre",
    "script": 67
+  },
+  {
+   "name": "Adélaïde de Suse",
+   "b": null,
+   "tree": "IT_SAV",
+   "reason": "Maison Suse : sans arbre",
+   "script": 68
+  },
+  {
+   "name": "Gisèle de Bourgogne (comtesse de Savoie)",
+   "b": null,
+   "tree": "IT_SAV",
+   "reason": "Maison Bourgogne : sans arbre",
+   "script": 68
+  },
+  {
+   "name": "Mahaut d'Albon",
+   "b": null,
+   "tree": "IT_SAV",
+   "reason": "Maison Albon : sans arbre",
+   "script": 68
+  },
+  {
+   "name": "Béatrice de Viennois",
+   "b": null,
+   "tree": "IT_SAV",
+   "reason": "Maison Viennois : sans arbre",
+   "script": 68
+  },
+  {
+   "name": "Marguerite de Genève",
+   "b": null,
+   "tree": "IT_SAV",
+   "reason": "Maison Genève : sans arbre",
+   "script": 68
+  },
+  {
+   "name": "Béatrice Fieschi",
+   "b": null,
+   "tree": "IT_SAV",
+   "reason": "Maison Fieschi : sans arbre",
+   "script": 68
+  },
+  {
+   "name": "Sybille de Bâgé",
+   "b": null,
+   "tree": "IT_SAV",
+   "reason": "Maison Bâgé : sans arbre",
+   "script": 68
+  },
+  {
+   "name": "Marie de Brabant (comtesse de Savoie)",
+   "b": null,
+   "tree": "IT_SAV",
+   "reason": "Maison Brabant : sans arbre",
+   "script": 68
+  },
+  {
+   "name": "Yolande de Montferrat",
+   "b": null,
+   "tree": "IT_SAV",
+   "reason": "Maison Montferrat : sans arbre",
+   "script": 68
+  },
+  {
+   "name": "Bonne de Bourbon",
+   "b": 1341,
+   "tree": "IT_SAV",
+   "reason": "Maison Bourbon : sans arbre",
+   "script": 68
+  },
+  {
+   "name": "Bonne de Berry",
+   "b": 1365,
+   "tree": "IT_SAV",
+   "reason": "Maison Valois-Berry : sans arbre",
+   "script": 68
+  },
+  {
+   "name": "Marie de Bourgogne (duchesse de Savoie)",
+   "b": 1386,
+   "tree": "IT_SAV",
+   "reason": "Maison Valois-Bourgogne : sans arbre",
+   "script": 68
+  },
+  {
+   "name": "Anne de Chypre",
+   "b": 1418,
+   "tree": "IT_SAV",
+   "reason": "Maison Lusignan : sans arbre",
+   "script": 68
+  },
+  {
+   "name": "Yolande de France (duchesse de Savoie)",
+   "b": 1434,
+   "tree": "IT_SAV",
+   "reason": "Maison Valois : sans arbre",
+   "script": 68
+  },
+  {
+   "name": "Blanche de Montferrat",
+   "b": 1472,
+   "tree": "IT_SAV",
+   "reason": "Maison Montferrat : sans arbre",
+   "script": 68
+  },
+  {
+   "name": "Claudine de Brosse",
+   "b": null,
+   "tree": "IT_SAV",
+   "reason": "Maison Brosse : sans arbre",
+   "script": 68
+  },
+  {
+   "name": "Marguerite de Bourbon (duchesse de Savoie)",
+   "b": 1438,
+   "tree": "IT_SAV",
+   "reason": "Maison Bourbon : sans arbre",
+   "script": 68
+  },
+  {
+   "name": "Béatrice de Portugal (duchesse de Savoie)",
+   "b": 1504,
+   "tree": "IT_SAV",
+   "reason": "Maison Aviz : sans arbre",
+   "script": 68
+  },
+  {
+   "name": "Marguerite de France (duchesse de Berry)",
+   "b": 1523,
+   "tree": "IT_SAV",
+   "reason": "Maison Valois : sans arbre",
+   "script": 68
+  },
+  {
+   "name": "Catherine-Michelle d'Espagne",
+   "b": 1567,
+   "tree": "IT_SAV",
+   "reason": "Maison Habsbourg d'Espagne : sans arbre",
+   "script": 68
+  },
+  {
+   "name": "Christine de France",
+   "b": 1606,
+   "tree": "IT_SAV",
+   "reason": "Maison Bourbon : sans arbre",
+   "script": 68
+  },
+  {
+   "name": "Marie-Jeanne de Savoie-Nemours",
+   "b": 1644,
+   "tree": "IT_SAV",
+   "reason": "Maison Savoie-Nemours : sans arbre",
+   "script": 68
+  },
+  {
+   "name": "Anne-Marie d'Orléans",
+   "b": 1669,
+   "tree": "IT_SAV",
+   "reason": "Maison Bourbon-Orléans : sans arbre",
+   "script": 68
+  },
+  {
+   "name": "Polyxène de Hesse-Rheinfels-Rotenburg",
+   "b": 1706,
+   "tree": "IT_SAV",
+   "reason": "Maison Hesse : sans arbre",
+   "script": 68
+  },
+  {
+   "name": "Marie-Antoinette d'Espagne",
+   "b": 1729,
+   "tree": "IT_SAV",
+   "reason": "Maison Bourbon d'Espagne : sans arbre",
+   "script": 68
+  },
+  {
+   "name": "Marie-Thérèse d'Autriche-Este",
+   "b": 1773,
+   "tree": "IT_SAV",
+   "reason": "Maison Habsbourg-Este : sans arbre",
+   "script": 68
+  },
+  {
+   "name": "Marie-Christine de Saxe (princesse de Carignan)",
+   "b": 1770,
+   "tree": "IT_SAV",
+   "reason": "Maison Wettin : sans arbre",
+   "script": 68
+  },
+  {
+   "name": "Marie-Thérèse de Toscane",
+   "b": 1801,
+   "tree": "IT_SAV",
+   "reason": "Maison Habsbourg-Toscane : sans arbre",
+   "script": 68
+  },
+  {
+   "name": "Adélaïde d'Autriche",
+   "b": 1822,
+   "tree": "IT_SAV",
+   "reason": "Maison Habsbourg-Lorraine : sans arbre",
+   "script": 68
+  },
+  {
+   "name": "Élisabeth de Saxe (duchesse de Gênes)",
+   "b": null,
+   "tree": "IT_SAV",
+   "reason": "Maison Wettin : sans arbre",
+   "script": 68
+  },
+  {
+   "name": "Marie-José de Belgique",
+   "b": 1906,
+   "tree": "IT_SAV",
+   "reason": "Maison Saxe-Cobourg : sans arbre",
+   "script": 68
   }
  ],
  "scripts": {
@@ -17297,6 +18360,14 @@
    "members": 12,
    "rels": 22,
    "trees": []
+  },
+  "68": {
+   "label": "Italie — Maison de Savoie : des comtes de Savoie aux rois d'Italie, jusqu'à Emmanuel-Philibert",
+   "members": 84,
+   "rels": 155,
+   "trees": [
+    "Maison de Savoie (ITA)"
+   ]
   }
  },
  "relist": [
@@ -28769,6 +29840,781 @@
    "5213b631-b2dd-56e5-8662-d2c348e45e69",
    "5f527e41-831c-5fcb-beb1-49747f361adb",
    "spouse"
+  ],
+  [
+   "22d74280-1d64-59ff-968c-f78afb43c1cf",
+   "1e1cbf2e-b55d-5fd7-86a1-038d7ba1083f",
+   "parent"
+  ],
+  [
+   "1e1cbf2e-b55d-5fd7-86a1-038d7ba1083f",
+   "f8cf8661-3674-5a0b-be36-d414992340d1",
+   "spouse"
+  ],
+  [
+   "1e1cbf2e-b55d-5fd7-86a1-038d7ba1083f",
+   "0ed74f85-d1ad-5f9e-9edb-179446756b78",
+   "parent"
+  ],
+  [
+   "f8cf8661-3674-5a0b-be36-d414992340d1",
+   "0ed74f85-d1ad-5f9e-9edb-179446756b78",
+   "parent"
+  ],
+  [
+   "1e1cbf2e-b55d-5fd7-86a1-038d7ba1083f",
+   "04dd1dfb-28c9-4504-8721-84290d799bf7",
+   "parent"
+  ],
+  [
+   "f8cf8661-3674-5a0b-be36-d414992340d1",
+   "04dd1dfb-28c9-4504-8721-84290d799bf7",
+   "parent"
+  ],
+  [
+   "0ed74f85-d1ad-5f9e-9edb-179446756b78",
+   "d624029b-8caa-5430-86c8-2fdb0bdfc697",
+   "parent"
+  ],
+  [
+   "d624029b-8caa-5430-86c8-2fdb0bdfc697",
+   "2acdce61-c794-5a73-b538-3d864a4e24bb",
+   "spouse"
+  ],
+  [
+   "d624029b-8caa-5430-86c8-2fdb0bdfc697",
+   "bbe163de-0cb5-4c8c-99a2-dfbd499e7c58",
+   "parent"
+  ],
+  [
+   "2acdce61-c794-5a73-b538-3d864a4e24bb",
+   "bbe163de-0cb5-4c8c-99a2-dfbd499e7c58",
+   "parent"
+  ],
+  [
+   "d624029b-8caa-5430-86c8-2fdb0bdfc697",
+   "7579d46f-7ccc-52d9-aa73-d00547fb3c4e",
+   "parent"
+  ],
+  [
+   "2acdce61-c794-5a73-b538-3d864a4e24bb",
+   "7579d46f-7ccc-52d9-aa73-d00547fb3c4e",
+   "parent"
+  ],
+  [
+   "7579d46f-7ccc-52d9-aa73-d00547fb3c4e",
+   "3c9c5be3-da20-5c79-b5ee-34b9828a20a1",
+   "spouse"
+  ],
+  [
+   "7579d46f-7ccc-52d9-aa73-d00547fb3c4e",
+   "a4786cce-b884-5695-87a5-934b5770e850",
+   "parent"
+  ],
+  [
+   "3c9c5be3-da20-5c79-b5ee-34b9828a20a1",
+   "a4786cce-b884-5695-87a5-934b5770e850",
+   "parent"
+  ],
+  [
+   "a4786cce-b884-5695-87a5-934b5770e850",
+   "7407a467-7c51-538e-a75d-b77827d262d3",
+   "spouse"
+  ],
+  [
+   "a4786cce-b884-5695-87a5-934b5770e850",
+   "7f6ddf27-e6db-5a14-a749-6c917c37ed2e",
+   "parent"
+  ],
+  [
+   "7407a467-7c51-538e-a75d-b77827d262d3",
+   "7f6ddf27-e6db-5a14-a749-6c917c37ed2e",
+   "parent"
+  ],
+  [
+   "7f6ddf27-e6db-5a14-a749-6c917c37ed2e",
+   "b4feb0b9-f69d-5e28-ba19-22f440523aa7",
+   "spouse"
+  ],
+  [
+   "7f6ddf27-e6db-5a14-a749-6c917c37ed2e",
+   "1ec2d645-7f6b-52f1-9279-199369ed7d9e",
+   "parent"
+  ],
+  [
+   "b4feb0b9-f69d-5e28-ba19-22f440523aa7",
+   "1ec2d645-7f6b-52f1-9279-199369ed7d9e",
+   "parent"
+  ],
+  [
+   "7f6ddf27-e6db-5a14-a749-6c917c37ed2e",
+   "291e3ef5-2e1a-5b66-a914-d182a8447a8e",
+   "parent"
+  ],
+  [
+   "b4feb0b9-f69d-5e28-ba19-22f440523aa7",
+   "291e3ef5-2e1a-5b66-a914-d182a8447a8e",
+   "parent"
+  ],
+  [
+   "7f6ddf27-e6db-5a14-a749-6c917c37ed2e",
+   "79d35d53-9549-494f-9431-6d7a0541371c",
+   "parent"
+  ],
+  [
+   "b4feb0b9-f69d-5e28-ba19-22f440523aa7",
+   "79d35d53-9549-494f-9431-6d7a0541371c",
+   "parent"
+  ],
+  [
+   "291e3ef5-2e1a-5b66-a914-d182a8447a8e",
+   "234bb352-1ef4-51cc-a6e7-1bad956fca74",
+   "spouse"
+  ],
+  [
+   "291e3ef5-2e1a-5b66-a914-d182a8447a8e",
+   "ad248eec-299a-5467-bfca-64dcea859c20",
+   "parent"
+  ],
+  [
+   "234bb352-1ef4-51cc-a6e7-1bad956fca74",
+   "ad248eec-299a-5467-bfca-64dcea859c20",
+   "parent"
+  ],
+  [
+   "ad248eec-299a-5467-bfca-64dcea859c20",
+   "50455cff-ae14-5ffa-a4c5-c898ba759616",
+   "spouse"
+  ],
+  [
+   "ad248eec-299a-5467-bfca-64dcea859c20",
+   "3166e4d4-3e89-55b7-8fed-268f655f4792",
+   "spouse"
+  ],
+  [
+   "ad248eec-299a-5467-bfca-64dcea859c20",
+   "0174ded9-8474-5a65-a4f8-be98c4f2ec71",
+   "parent"
+  ],
+  [
+   "50455cff-ae14-5ffa-a4c5-c898ba759616",
+   "0174ded9-8474-5a65-a4f8-be98c4f2ec71",
+   "parent"
+  ],
+  [
+   "ad248eec-299a-5467-bfca-64dcea859c20",
+   "1fb2f965-3324-5c66-8570-6fc6af24089c",
+   "parent"
+  ],
+  [
+   "50455cff-ae14-5ffa-a4c5-c898ba759616",
+   "1fb2f965-3324-5c66-8570-6fc6af24089c",
+   "parent"
+  ],
+  [
+   "ad248eec-299a-5467-bfca-64dcea859c20",
+   "a84d0292-e197-41e1-a9b4-8a93de2f77ca",
+   "parent"
+  ],
+  [
+   "3166e4d4-3e89-55b7-8fed-268f655f4792",
+   "a84d0292-e197-41e1-a9b4-8a93de2f77ca",
+   "parent"
+  ],
+  [
+   "ad248eec-299a-5467-bfca-64dcea859c20",
+   "ce4ae1ef-80e2-5198-9be0-270715156495",
+   "parent"
+  ],
+  [
+   "3166e4d4-3e89-55b7-8fed-268f655f4792",
+   "ce4ae1ef-80e2-5198-9be0-270715156495",
+   "parent"
+  ],
+  [
+   "1fb2f965-3324-5c66-8570-6fc6af24089c",
+   "b192b919-f840-55ef-bb37-bba1f50e2fc5",
+   "spouse"
+  ],
+  [
+   "1fb2f965-3324-5c66-8570-6fc6af24089c",
+   "84b539e0-1ef9-5a5d-a48b-552fcc3fabb7",
+   "parent"
+  ],
+  [
+   "b192b919-f840-55ef-bb37-bba1f50e2fc5",
+   "84b539e0-1ef9-5a5d-a48b-552fcc3fabb7",
+   "parent"
+  ],
+  [
+   "84b539e0-1ef9-5a5d-a48b-552fcc3fabb7",
+   "6f62644b-b2ee-5e79-af9d-5247c7ea301e",
+   "spouse"
+  ],
+  [
+   "84b539e0-1ef9-5a5d-a48b-552fcc3fabb7",
+   "585eee3d-e7be-58e3-b83b-58056b6f1fe6",
+   "parent"
+  ],
+  [
+   "6f62644b-b2ee-5e79-af9d-5247c7ea301e",
+   "585eee3d-e7be-58e3-b83b-58056b6f1fe6",
+   "parent"
+  ],
+  [
+   "585eee3d-e7be-58e3-b83b-58056b6f1fe6",
+   "7cc0406c-b5a0-5864-aad6-df9a389c87ba",
+   "spouse"
+  ],
+  [
+   "585eee3d-e7be-58e3-b83b-58056b6f1fe6",
+   "9b67b8fd-50ba-5327-8fb2-ec84705c70d4",
+   "parent"
+  ],
+  [
+   "7cc0406c-b5a0-5864-aad6-df9a389c87ba",
+   "9b67b8fd-50ba-5327-8fb2-ec84705c70d4",
+   "parent"
+  ],
+  [
+   "9b67b8fd-50ba-5327-8fb2-ec84705c70d4",
+   "a94d698d-3f9c-58e8-aa00-19c5bdf993fc",
+   "spouse"
+  ],
+  [
+   "9b67b8fd-50ba-5327-8fb2-ec84705c70d4",
+   "1b01ac01-b432-5013-a2bb-29b5d56d662e",
+   "parent"
+  ],
+  [
+   "a94d698d-3f9c-58e8-aa00-19c5bdf993fc",
+   "1b01ac01-b432-5013-a2bb-29b5d56d662e",
+   "parent"
+  ],
+  [
+   "9b67b8fd-50ba-5327-8fb2-ec84705c70d4",
+   "2152e3ef-9993-5684-94ea-5143493bf5c7",
+   "parent"
+  ],
+  [
+   "a94d698d-3f9c-58e8-aa00-19c5bdf993fc",
+   "2152e3ef-9993-5684-94ea-5143493bf5c7",
+   "parent"
+  ],
+  [
+   "9b67b8fd-50ba-5327-8fb2-ec84705c70d4",
+   "154ef098-7f44-5e1a-a6b8-8027160ca3c9",
+   "parent"
+  ],
+  [
+   "a94d698d-3f9c-58e8-aa00-19c5bdf993fc",
+   "154ef098-7f44-5e1a-a6b8-8027160ca3c9",
+   "parent"
+  ],
+  [
+   "2152e3ef-9993-5684-94ea-5143493bf5c7",
+   "6c0c2f65-aac8-5c2d-bd9f-7da73c070fe9",
+   "spouse"
+  ],
+  [
+   "2152e3ef-9993-5684-94ea-5143493bf5c7",
+   "a64eb7d5-ccb9-5013-bae2-c4c12f57ca34",
+   "parent"
+  ],
+  [
+   "6c0c2f65-aac8-5c2d-bd9f-7da73c070fe9",
+   "a64eb7d5-ccb9-5013-bae2-c4c12f57ca34",
+   "parent"
+  ],
+  [
+   "2152e3ef-9993-5684-94ea-5143493bf5c7",
+   "7b57eb60-8328-5f70-a138-10ad653ab282",
+   "parent"
+  ],
+  [
+   "6c0c2f65-aac8-5c2d-bd9f-7da73c070fe9",
+   "7b57eb60-8328-5f70-a138-10ad653ab282",
+   "parent"
+  ],
+  [
+   "2152e3ef-9993-5684-94ea-5143493bf5c7",
+   "5a3f6300-ae16-5aaf-8502-95dd1a88a4c6",
+   "parent"
+  ],
+  [
+   "6c0c2f65-aac8-5c2d-bd9f-7da73c070fe9",
+   "5a3f6300-ae16-5aaf-8502-95dd1a88a4c6",
+   "parent"
+  ],
+  [
+   "2152e3ef-9993-5684-94ea-5143493bf5c7",
+   "89355752-c75d-45f0-958b-855106160c1b",
+   "parent"
+  ],
+  [
+   "6c0c2f65-aac8-5c2d-bd9f-7da73c070fe9",
+   "89355752-c75d-45f0-958b-855106160c1b",
+   "parent"
+  ],
+  [
+   "a64eb7d5-ccb9-5013-bae2-c4c12f57ca34",
+   "68ba7a14-d738-5a81-be5f-009ac41b2254",
+   "spouse"
+  ],
+  [
+   "a64eb7d5-ccb9-5013-bae2-c4c12f57ca34",
+   "59992324-a108-56ce-a8ff-528e51edbf93",
+   "parent"
+  ],
+  [
+   "68ba7a14-d738-5a81-be5f-009ac41b2254",
+   "59992324-a108-56ce-a8ff-528e51edbf93",
+   "parent"
+  ],
+  [
+   "a64eb7d5-ccb9-5013-bae2-c4c12f57ca34",
+   "349ad12d-1b3c-5606-b379-c4d40a6f7d79",
+   "parent"
+  ],
+  [
+   "68ba7a14-d738-5a81-be5f-009ac41b2254",
+   "349ad12d-1b3c-5606-b379-c4d40a6f7d79",
+   "parent"
+  ],
+  [
+   "349ad12d-1b3c-5606-b379-c4d40a6f7d79",
+   "7ccdb3af-fae7-5b41-935f-f7d82cdfeef4",
+   "spouse"
+  ],
+  [
+   "349ad12d-1b3c-5606-b379-c4d40a6f7d79",
+   "c626fba6-f3d6-5a9e-bed2-0ff63b0b30b9",
+   "parent"
+  ],
+  [
+   "7ccdb3af-fae7-5b41-935f-f7d82cdfeef4",
+   "c626fba6-f3d6-5a9e-bed2-0ff63b0b30b9",
+   "parent"
+  ],
+  [
+   "7b57eb60-8328-5f70-a138-10ad653ab282",
+   "dc29bf70-9cbb-542b-9558-938e8b69b989",
+   "spouse"
+  ],
+  [
+   "7b57eb60-8328-5f70-a138-10ad653ab282",
+   "fdd177aa-5bf5-5a39-b1d9-fa621a2345f1",
+   "parent"
+  ],
+  [
+   "dc29bf70-9cbb-542b-9558-938e8b69b989",
+   "fdd177aa-5bf5-5a39-b1d9-fa621a2345f1",
+   "parent"
+  ],
+  [
+   "7b57eb60-8328-5f70-a138-10ad653ab282",
+   "e16fd3c8-a6b9-5a63-948a-4441037489b5",
+   "parent"
+  ],
+  [
+   "dc29bf70-9cbb-542b-9558-938e8b69b989",
+   "e16fd3c8-a6b9-5a63-948a-4441037489b5",
+   "parent"
+  ],
+  [
+   "7b57eb60-8328-5f70-a138-10ad653ab282",
+   "f8c8bef2-e655-576d-a518-0d263e216f31",
+   "spouse"
+  ],
+  [
+   "7b57eb60-8328-5f70-a138-10ad653ab282",
+   "97ad334e-c901-4205-9b42-730b2cf80f8a",
+   "parent"
+  ],
+  [
+   "f8c8bef2-e655-576d-a518-0d263e216f31",
+   "97ad334e-c901-4205-9b42-730b2cf80f8a",
+   "parent"
+  ],
+  [
+   "e16fd3c8-a6b9-5a63-948a-4441037489b5",
+   "3ef5ff0e-1ae6-59d8-95bf-efa593d68b54",
+   "spouse"
+  ],
+  [
+   "e16fd3c8-a6b9-5a63-948a-4441037489b5",
+   "4b3784d2-55b2-5126-a223-74a97f89d8f9",
+   "parent"
+  ],
+  [
+   "3ef5ff0e-1ae6-59d8-95bf-efa593d68b54",
+   "4b3784d2-55b2-5126-a223-74a97f89d8f9",
+   "parent"
+  ],
+  [
+   "4b3784d2-55b2-5126-a223-74a97f89d8f9",
+   "fd7357ce-6e93-5f4f-86a5-eba73d38af9b",
+   "spouse"
+  ],
+  [
+   "4b3784d2-55b2-5126-a223-74a97f89d8f9",
+   "7c713744-8bf9-5b39-aa93-2e5f9946546c",
+   "parent"
+  ],
+  [
+   "fd7357ce-6e93-5f4f-86a5-eba73d38af9b",
+   "7c713744-8bf9-5b39-aa93-2e5f9946546c",
+   "parent"
+  ],
+  [
+   "7c713744-8bf9-5b39-aa93-2e5f9946546c",
+   "d7dfca49-712c-5f16-bc4f-78609333ccb9",
+   "spouse"
+  ],
+  [
+   "7c713744-8bf9-5b39-aa93-2e5f9946546c",
+   "074bdb6b-ad5f-54dc-be71-0f8010f21cf6",
+   "parent"
+  ],
+  [
+   "d7dfca49-712c-5f16-bc4f-78609333ccb9",
+   "074bdb6b-ad5f-54dc-be71-0f8010f21cf6",
+   "parent"
+  ],
+  [
+   "7c713744-8bf9-5b39-aa93-2e5f9946546c",
+   "5f70f8ed-cea5-5b59-895f-c5181419ad56",
+   "parent"
+  ],
+  [
+   "d7dfca49-712c-5f16-bc4f-78609333ccb9",
+   "5f70f8ed-cea5-5b59-895f-c5181419ad56",
+   "parent"
+  ],
+  [
+   "074bdb6b-ad5f-54dc-be71-0f8010f21cf6",
+   "20b55b44-59db-5c65-803b-965ca2ac0e70",
+   "spouse"
+  ],
+  [
+   "074bdb6b-ad5f-54dc-be71-0f8010f21cf6",
+   "a0bc71ef-98da-5030-87b7-a90f8c056363",
+   "parent"
+  ],
+  [
+   "20b55b44-59db-5c65-803b-965ca2ac0e70",
+   "a0bc71ef-98da-5030-87b7-a90f8c056363",
+   "parent"
+  ],
+  [
+   "074bdb6b-ad5f-54dc-be71-0f8010f21cf6",
+   "574875aa-b0ed-4614-bfd7-e05cce7046d0",
+   "parent"
+  ],
+  [
+   "20b55b44-59db-5c65-803b-965ca2ac0e70",
+   "574875aa-b0ed-4614-bfd7-e05cce7046d0",
+   "parent"
+  ],
+  [
+   "a0bc71ef-98da-5030-87b7-a90f8c056363",
+   "5d51d0fd-c503-5b0a-bb2a-54303dca8ef0",
+   "spouse"
+  ],
+  [
+   "a0bc71ef-98da-5030-87b7-a90f8c056363",
+   "7d8df69f-706c-5476-ae1d-60c7f770434e",
+   "parent"
+  ],
+  [
+   "5d51d0fd-c503-5b0a-bb2a-54303dca8ef0",
+   "7d8df69f-706c-5476-ae1d-60c7f770434e",
+   "parent"
+  ],
+  [
+   "7d8df69f-706c-5476-ae1d-60c7f770434e",
+   "7b7fc981-8a96-5e2b-b346-66c35a0bcd7b",
+   "spouse"
+  ],
+  [
+   "7d8df69f-706c-5476-ae1d-60c7f770434e",
+   "b1cb283f-d965-5998-a5ad-fa4835331b32",
+   "parent"
+  ],
+  [
+   "7b7fc981-8a96-5e2b-b346-66c35a0bcd7b",
+   "b1cb283f-d965-5998-a5ad-fa4835331b32",
+   "parent"
+  ],
+  [
+   "7d8df69f-706c-5476-ae1d-60c7f770434e",
+   "1668d679-b752-4159-b863-75a62b2fbdab",
+   "parent"
+  ],
+  [
+   "7b7fc981-8a96-5e2b-b346-66c35a0bcd7b",
+   "1668d679-b752-4159-b863-75a62b2fbdab",
+   "parent"
+  ],
+  [
+   "7d8df69f-706c-5476-ae1d-60c7f770434e",
+   "7f96d025-12d9-4002-840d-253bc08022ad",
+   "parent"
+  ],
+  [
+   "7b7fc981-8a96-5e2b-b346-66c35a0bcd7b",
+   "7f96d025-12d9-4002-840d-253bc08022ad",
+   "parent"
+  ],
+  [
+   "b1cb283f-d965-5998-a5ad-fa4835331b32",
+   "de195fe7-9169-5415-b9e5-33abdd2e6e8a",
+   "spouse"
+  ],
+  [
+   "b1cb283f-d965-5998-a5ad-fa4835331b32",
+   "10c905d8-2286-5284-ad85-3b388f2538c4",
+   "parent"
+  ],
+  [
+   "de195fe7-9169-5415-b9e5-33abdd2e6e8a",
+   "10c905d8-2286-5284-ad85-3b388f2538c4",
+   "parent"
+  ],
+  [
+   "10c905d8-2286-5284-ad85-3b388f2538c4",
+   "865cb59f-a7b4-5ada-be18-1d6de23d9dac",
+   "spouse"
+  ],
+  [
+   "10c905d8-2286-5284-ad85-3b388f2538c4",
+   "c4222ad8-17a2-546d-84c9-e6a41ae1661b",
+   "parent"
+  ],
+  [
+   "865cb59f-a7b4-5ada-be18-1d6de23d9dac",
+   "c4222ad8-17a2-546d-84c9-e6a41ae1661b",
+   "parent"
+  ],
+  [
+   "10c905d8-2286-5284-ad85-3b388f2538c4",
+   "aef2eefa-1afd-5c55-9394-ca7634a98936",
+   "parent"
+  ],
+  [
+   "865cb59f-a7b4-5ada-be18-1d6de23d9dac",
+   "aef2eefa-1afd-5c55-9394-ca7634a98936",
+   "parent"
+  ],
+  [
+   "10c905d8-2286-5284-ad85-3b388f2538c4",
+   "fd3afe05-f336-530b-9ce6-336d9ebeab8d",
+   "parent"
+  ],
+  [
+   "865cb59f-a7b4-5ada-be18-1d6de23d9dac",
+   "fd3afe05-f336-530b-9ce6-336d9ebeab8d",
+   "parent"
+  ],
+  [
+   "aef2eefa-1afd-5c55-9394-ca7634a98936",
+   "8fc5377c-8fef-56fb-982a-7e0061096e72",
+   "spouse"
+  ],
+  [
+   "aef2eefa-1afd-5c55-9394-ca7634a98936",
+   "73d1ae8d-54cf-5cf0-bfbf-733404919e62",
+   "parent"
+  ],
+  [
+   "8fc5377c-8fef-56fb-982a-7e0061096e72",
+   "73d1ae8d-54cf-5cf0-bfbf-733404919e62",
+   "parent"
+  ],
+  [
+   "c7885d9e-6e8f-53e7-baf2-8f93f3cb11f3",
+   "0a41e529-79bc-5fe6-b178-d3a887ed575c",
+   "spouse"
+  ],
+  [
+   "c7885d9e-6e8f-53e7-baf2-8f93f3cb11f3",
+   "4bea1bb3-a685-56d6-99db-82befdbfb3d4",
+   "parent"
+  ],
+  [
+   "0a41e529-79bc-5fe6-b178-d3a887ed575c",
+   "4bea1bb3-a685-56d6-99db-82befdbfb3d4",
+   "parent"
+  ],
+  [
+   "4bea1bb3-a685-56d6-99db-82befdbfb3d4",
+   "4c7a4b31-4f72-5ee9-a81a-93eb40bfa3f6",
+   "spouse"
+  ],
+  [
+   "4bea1bb3-a685-56d6-99db-82befdbfb3d4",
+   "4552f6d0-ae87-5566-8932-88323544dd17",
+   "parent"
+  ],
+  [
+   "4c7a4b31-4f72-5ee9-a81a-93eb40bfa3f6",
+   "4552f6d0-ae87-5566-8932-88323544dd17",
+   "parent"
+  ],
+  [
+   "4bea1bb3-a685-56d6-99db-82befdbfb3d4",
+   "b81f7ff8-e981-57f3-aa16-e483a588cbdb",
+   "parent"
+  ],
+  [
+   "4c7a4b31-4f72-5ee9-a81a-93eb40bfa3f6",
+   "b81f7ff8-e981-57f3-aa16-e483a588cbdb",
+   "parent"
+  ],
+  [
+   "4552f6d0-ae87-5566-8932-88323544dd17",
+   "cf87d333-217e-5e0a-9e48-b9cfb27e1416",
+   "spouse"
+  ],
+  [
+   "4552f6d0-ae87-5566-8932-88323544dd17",
+   "102135d9-bb20-51de-ba4e-84a9f4ecf899",
+   "parent"
+  ],
+  [
+   "cf87d333-217e-5e0a-9e48-b9cfb27e1416",
+   "102135d9-bb20-51de-ba4e-84a9f4ecf899",
+   "parent"
+  ],
+  [
+   "4552f6d0-ae87-5566-8932-88323544dd17",
+   "987ad1f5-cefc-59db-b0c0-bba186a7c1ad",
+   "parent"
+  ],
+  [
+   "cf87d333-217e-5e0a-9e48-b9cfb27e1416",
+   "987ad1f5-cefc-59db-b0c0-bba186a7c1ad",
+   "parent"
+  ],
+  [
+   "4552f6d0-ae87-5566-8932-88323544dd17",
+   "e414da9b-4492-586c-b5cc-53ca54ab4bc7",
+   "parent"
+  ],
+  [
+   "cf87d333-217e-5e0a-9e48-b9cfb27e1416",
+   "e414da9b-4492-586c-b5cc-53ca54ab4bc7",
+   "parent"
+  ],
+  [
+   "4552f6d0-ae87-5566-8932-88323544dd17",
+   "b5d7c420-9d03-5eea-b5d3-bab6715a77b8",
+   "parent"
+  ],
+  [
+   "cf87d333-217e-5e0a-9e48-b9cfb27e1416",
+   "b5d7c420-9d03-5eea-b5d3-bab6715a77b8",
+   "parent"
+  ],
+  [
+   "b81f7ff8-e981-57f3-aa16-e483a588cbdb",
+   "4c112e03-79f4-57a0-9e60-08027366e286",
+   "spouse"
+  ],
+  [
+   "b81f7ff8-e981-57f3-aa16-e483a588cbdb",
+   "6db3ef3a-af43-598c-b036-e8cfdcc60b5b",
+   "parent"
+  ],
+  [
+   "4c112e03-79f4-57a0-9e60-08027366e286",
+   "6db3ef3a-af43-598c-b036-e8cfdcc60b5b",
+   "parent"
+  ],
+  [
+   "102135d9-bb20-51de-ba4e-84a9f4ecf899",
+   "6db3ef3a-af43-598c-b036-e8cfdcc60b5b",
+   "spouse"
+  ],
+  [
+   "102135d9-bb20-51de-ba4e-84a9f4ecf899",
+   "a09ddcb2-673b-556f-a68b-d855e22464e6",
+   "parent"
+  ],
+  [
+   "6db3ef3a-af43-598c-b036-e8cfdcc60b5b",
+   "a09ddcb2-673b-556f-a68b-d855e22464e6",
+   "parent"
+  ],
+  [
+   "a09ddcb2-673b-556f-a68b-d855e22464e6",
+   "df21afa2-00f7-5182-b46f-bdb2b21cf641",
+   "parent"
+  ],
+  [
+   "a09ddcb2-673b-556f-a68b-d855e22464e6",
+   "9ae0cb4d-0548-55b0-acf6-6802098d955d",
+   "parent"
+  ],
+  [
+   "a09ddcb2-673b-556f-a68b-d855e22464e6",
+   "8c272a87-9e52-5e60-9b13-e8ae374197d2",
+   "parent"
+  ],
+  [
+   "a09ddcb2-673b-556f-a68b-d855e22464e6",
+   "f5af23ce-ef07-5cfc-9ee9-8cc10d9d4cf6",
+   "parent"
+  ],
+  [
+   "a09ddcb2-673b-556f-a68b-d855e22464e6",
+   "d9c16e7f-c96a-5339-aa7b-f91a13b27ccd",
+   "parent"
+  ],
+  [
+   "8c272a87-9e52-5e60-9b13-e8ae374197d2",
+   "2504d667-6a2e-5728-a2f2-2a88df94faf9",
+   "spouse"
+  ],
+  [
+   "8c272a87-9e52-5e60-9b13-e8ae374197d2",
+   "804e1604-2316-5a08-acb1-61f791634e13",
+   "parent"
+  ],
+  [
+   "2504d667-6a2e-5728-a2f2-2a88df94faf9",
+   "804e1604-2316-5a08-acb1-61f791634e13",
+   "parent"
+  ],
+  [
+   "8c272a87-9e52-5e60-9b13-e8ae374197d2",
+   "8a1f2c2d-b4d3-5a85-a879-a9966d14aa15",
+   "parent"
+  ],
+  [
+   "2504d667-6a2e-5728-a2f2-2a88df94faf9",
+   "8a1f2c2d-b4d3-5a85-a879-a9966d14aa15",
+   "parent"
+  ],
+  [
+   "8c272a87-9e52-5e60-9b13-e8ae374197d2",
+   "01ac5571-9c40-5e09-b412-ff64e9d348ff",
+   "parent"
+  ],
+  [
+   "2504d667-6a2e-5728-a2f2-2a88df94faf9",
+   "01ac5571-9c40-5e09-b412-ff64e9d348ff",
+   "parent"
+  ],
+  [
+   "8c272a87-9e52-5e60-9b13-e8ae374197d2",
+   "df30df3a-9aa4-5f1f-b84b-11c75d2022ea",
+   "parent"
+  ],
+  [
+   "2504d667-6a2e-5728-a2f2-2a88df94faf9",
+   "df30df3a-9aa4-5f1f-b84b-11c75d2022ea",
+   "parent"
   ]
  ],
  "dateflags": [
@@ -34343,6 +36189,160 @@
    "d": null,
    "note": "dates non données",
    "script": 67
+  },
+  {
+   "name": "Humbert Ier aux Blanches Mains",
+   "b": 980,
+   "d": 1047,
+   "note": "naissance vers 980, mort 1047 ou 1048",
+   "script": 68
+  },
+  {
+   "name": "Othon de Savoie",
+   "b": null,
+   "d": 1057,
+   "note": "naissance non donnée, mort vers 1057",
+   "script": 68
+  },
+  {
+   "name": "Adélaïde de Suse",
+   "b": null,
+   "d": null,
+   "note": "dates non données",
+   "script": 68
+  },
+  {
+   "name": "Amédée II de Savoie",
+   "b": null,
+   "d": 1080,
+   "note": "naissance non donnée",
+   "script": 68
+  },
+  {
+   "name": "Gisèle de Bourgogne (comtesse de Savoie)",
+   "b": null,
+   "d": null,
+   "note": "dates non données",
+   "script": 68
+  },
+  {
+   "name": "Mahaut d'Albon",
+   "b": null,
+   "d": null,
+   "note": "dates non données",
+   "script": 68
+  },
+  {
+   "name": "Humbert III de Savoie",
+   "b": 1136,
+   "d": 1188,
+   "note": "mort 1188 (page Amédée III) ; 1189 selon d'autres sources",
+   "script": 68
+  },
+  {
+   "name": "Béatrice de Viennois",
+   "b": null,
+   "d": null,
+   "note": "dates non données",
+   "script": 68
+  },
+  {
+   "name": "Thomas Ier de Savoie",
+   "b": 1178,
+   "d": 1233,
+   "note": "naissance vers 1178",
+   "script": 68
+  },
+  {
+   "name": "Marguerite de Genève",
+   "b": null,
+   "d": null,
+   "note": "dates non données",
+   "script": 68
+  },
+  {
+   "name": "Amédée IV de Savoie",
+   "b": 1197,
+   "d": 1253,
+   "note": "dates non données par la page de Thomas Ier",
+   "script": 68
+  },
+  {
+   "name": "Thomas II de Savoie",
+   "b": 1199,
+   "d": 1259,
+   "note": "dates non données par la page de Thomas Ier",
+   "script": 68
+  },
+  {
+   "name": "Béatrice Fieschi",
+   "b": null,
+   "d": null,
+   "note": "dates non données",
+   "script": 68
+  },
+  {
+   "name": "Amédée V le Grand",
+   "b": 1249,
+   "d": 1323,
+   "note": "naissance 1249 (autres sources : 1252/1253)",
+   "script": 68
+  },
+  {
+   "name": "Sybille de Bâgé",
+   "b": null,
+   "d": 1294,
+   "note": "naissance non donnée",
+   "script": 68
+  },
+  {
+   "name": "Marie de Brabant (comtesse de Savoie)",
+   "b": null,
+   "d": null,
+   "note": "dates non données par la page d'Amédée V",
+   "script": 68
+  },
+  {
+   "name": "Anne de Savoie (impératrice byzantine)",
+   "b": null,
+   "d": 1359,
+   "note": "naissance non donnée",
+   "script": 68
+  },
+  {
+   "name": "Yolande de Montferrat",
+   "b": null,
+   "d": null,
+   "note": "dates non données",
+   "script": 68
+  },
+  {
+   "name": "Bonne de Bourbon",
+   "b": 1341,
+   "d": 1402,
+   "note": "dates non données par la page : 1341-1402 connues par ailleurs",
+   "script": 68
+  },
+  {
+   "name": "Claudine de Brosse",
+   "b": null,
+   "d": 1513,
+   "note": "naissance non donnée",
+   "script": 68
+  },
+  {
+   "name": "Charles-Emmanuel de Savoie-Carignan",
+   "b": 1770,
+   "d": 1800,
+   "note": "naissance non donnée par la page de Charles-Albert",
+   "script": 68
+  },
+  {
+   "name": "Élisabeth de Saxe (duchesse de Gênes)",
+   "b": null,
+   "d": null,
+   "note": "dates non données par la page de Charles-Albert",
+   "script": 68
   }
  ],
  "pins": [
@@ -34369,6 +36369,58 @@
   [
    "4891ab20-866d-45bc-91d7-17e89f04ba98",
    "DE_WEL"
+  ],
+  [
+   "04dd1dfb-28c9-4504-8721-84290d799bf7",
+   "IT_SAV"
+  ],
+  [
+   "bbe163de-0cb5-4c8c-99a2-dfbd499e7c58",
+   "IT_SAV"
+  ],
+  [
+   "79d35d53-9549-494f-9431-6d7a0541371c",
+   "IT_SAV"
+  ],
+  [
+   "a84d0292-e197-41e1-a9b4-8a93de2f77ca",
+   "IT_SAV"
+  ],
+  [
+   "154ef098-7f44-5e1a-a6b8-8027160ca3c9",
+   "IT_SAV"
+  ],
+  [
+   "5a3f6300-ae16-5aaf-8502-95dd1a88a4c6",
+   "IT_SAV"
+  ],
+  [
+   "89355752-c75d-45f0-958b-855106160c1b",
+   "IT_SAV"
+  ],
+  [
+   "97ad334e-c901-4205-9b42-730b2cf80f8a",
+   "IT_SAV"
+  ],
+  [
+   "574875aa-b0ed-4614-bfd7-e05cce7046d0",
+   "IT_SAV"
+  ],
+  [
+   "1668d679-b752-4159-b863-75a62b2fbdab",
+   "IT_SAV"
+  ],
+  [
+   "7f96d025-12d9-4002-840d-253bc08022ad",
+   "IT_SAV"
+  ],
+  [
+   "73d1ae8d-54cf-5cf0-bfbf-733404919e62",
+   "IT_SAV"
+  ],
+  [
+   "d9c16e7f-c96a-5339-aa7b-f91a13b27ccd",
+   "IT_SAV"
   ]
  ],
  "xmoved": {

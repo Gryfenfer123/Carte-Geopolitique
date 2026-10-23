@@ -140,4 +140,5 @@ RLS**. Règles :
 | arbres_v65 | Habsbourg : branche de Toscane (Ferdinand III, Léopold II, Ferdinand IV), liens Wittelsbach, dates manquantes (+9 membres, 2 membres isolés reliés) |
 | arbres_v66 | arbres_v66 | Petites dynasties allemandes : 13 membres (enfants de Barberousse, Conradin, Manfred, Liudolf, Conrad II d'Italie) |
 | arbres_v67 | Luxembourg et Carolingiens : 12 membres (Henri V, enfants de Charles IV, Zwentibold…) |
+| arbres_v68 | Maison de Savoie : arbre créé, 84 membres (comtes, ducs, rois de Sardaigne et d'Italie jusqu'à Emmanuel-Philibert) |
 | `data_owid_load.sql` + `owid_chunks/` | Chargement des données d'indicateurs (rejouable, upserts) — à exécuter après v1 à v7 |
