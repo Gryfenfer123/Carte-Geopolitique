@@ -1,0 +1,142 @@
+import sys
+import os; sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), '..'))
+from lib import *
+
+def E(p):
+    return [k for k in ENT if k.startswith(p)][0]
+
+g = Gen(75, "Norvège — rois de Harald à la Belle Chevelure à Olav IV, puis Haakon VII et ses descendants jusqu'à la princesse Ingrid Alexandra")
+g.notes = [
+    "Complète l'arbre « Rois de Norvège » (3 membres au départ ; rien n'est supprimé).",
+    "Sources : Wikipédia en anglais (Harald à la Belle Chevelure, Harald Hardrada, Magnus Barefoot, Harald Gille, Sverre, Haakon IV, Magnus VI, Haakon V, Magnus VII, Haakon VI, Olav V, Harald V, Haakon). Dates non données = vides ; dates connues ailleurs : notées. Les généalogies médiévales sont issues de sagas : filiations parfois contestées.",
+    "Marguerite Ire de Danemark et son père sont créés dans l'arbre Estridsen ; Élisabeth de Kiev dans Riourikides. Autres épouses (nobles norvégiennes, Suède, Rügen, Namur, Skule…) : placées ici et signalées.",
+    "Haakon VII reste dans l'arbre Glücksbourg (Danemark) et est affiché ici. Märtha de Suède est créée dans l'arbre Bernadotte.",
+    "Non fait : les nombreux fils de Harald à la Belle Chevelure autres que Éric et Haakon, les enfants naturels.",
+]
+g.tree('NO_KIN', 'NOR', 'Rois de Norvège', entry=E('e54ea4ad'))
+g.tree('DK_EST', 'DNK', "Maison d'Estridsen", entry=E('f2e02253'))
+g.tree('RU_RUR', 'RUS', 'Riourikides')
+g.tree('SE_BER', 'SWE', 'Bernadotte')
+g.tree('DK_GLU', 'DNK', 'Schleswig-Holstein-Glücksbourg')
+P, S = g.par, g.sp
+def kids(parents, children):
+    for c in children:
+        for p in parents:
+            P(p, c)
+T = 'NO_KIN'
+def M(code, name, b, d, title, g_, tree=T, leader=False, approx=None, dyn='Norvège', flag=None):
+    return g.m(code, name, b, d, title, dyn, tree, g_, leader, approx=approx, flag=flag)
+def W(code, name, b, d, title, house, tree=T, approx=None):
+    return M(code, name, b, d, title, 'f', tree, dyn=house, approx=approx, flag='Maison %s : sans arbre' % house)
+
+M('no.halfdan_black', 'Halfdan le Noir', None, None, 'Roi de Vestfold', 'h', approx='dates non données')
+M('no.harald1', 'Harald Ier à la Belle Chevelure', 850, 932, 'Premier roi de Norvège', 'h', leader=True, approx='naissance vers 850, mort vers 932 (certaines sources : 933)')
+P('no.halfdan_black', 'no.harald1')
+M('no.eric_bloodaxe', 'Éric à la Hache sanglante', None, 954, 'Roi de Norvège', 'h', leader=True, approx='naissance non donnée, mort connue par ailleurs')
+M('no.haakon1', 'Haakon Ier le Bon', 920, 961, 'Roi de Norvège', 'h', leader=True, approx='dates connues par ailleurs, non données par la page')
+kids(['no.harald1'], ['no.eric_bloodaxe', 'no.haakon1'])
+# Olaf II / Hardrada
+M('no.harald_grenske', 'Harald Grenske', None, None, 'Roi de Vestfold', 'h', approx='dates non données')
+W('no.asta', 'Åsta Gudbrandsdatter', None, None, "Mère d'Olaf II et de Harald Hardrada", 'Gudbrandsdal', approx='dates non données')
+M('no.sigurd_syr', 'Sigurd Syr', None, None, 'Petit roi de Ringerike', 'h', approx='dates non données')
+S('no.harald_grenske', 'no.asta'); S('no.asta', 'no.sigurd_syr')
+O2 = R('d80b71bc')
+kids(['no.harald_grenske', 'no.asta'], [O2])
+M('no.magnus1', 'Magnus Ier le Bon', 1024, 1047, 'Roi de Norvège et de Danemark', 'h', leader=True, approx='dates connues par ailleurs')
+P(O2, 'no.magnus1')
+M('no.hardrada', 'Harald III Hardrada', 1015, 1066, 'Roi de Norvège', 'h', leader=True, approx='naissance vers 1015 (peut-être 1016)')
+kids(['no.sigurd_syr', 'no.asta'], ['no.hardrada'])
+M('no.elisiv', 'Élisabeth de Kiev (Elisiv)', 1025, None, 'Reine de Norvège', 'f', 'RU_RUR', dyn='Riourikides', approx='naissance vers 1025, mort après 1066')
+P(R('a2006b61'), 'no.elisiv')
+S('no.hardrada', 'no.elisiv')
+W('no.tora_t', 'Tora Torbergsdatter', 1025, None, 'Reine de Norvège', 'Torberg', approx='naissance vers 1025, mort après 1066 ; mariage contesté')
+S('no.hardrada', 'no.tora_t')
+M('no.ingegerd', 'Ingegerd Haraldsdatter', 1050, 1120, 'Princesse de Norvège', 'f', approx='dates vers 1050 - vers 1120')
+M('no.maria', 'Marie Haraldsdatter', None, 1066, 'Princesse de Norvège', 'f')
+M('no.magnus2', 'Magnus II', 1048, 1069, 'Roi de Norvège', 'h', leader=True, approx='dates connues par ailleurs')
+M('no.olaf3', 'Olaf III Kyrre', 1050, 1093, 'Roi de Norvège', 'h', leader=True, approx='naissance vers 1050, dates connues par ailleurs')
+kids(['no.hardrada', 'no.elisiv'], ['no.ingegerd', 'no.maria'])
+kids(['no.hardrada', 'no.tora_t'], ['no.magnus2', 'no.olaf3'])
+M('no.magnus3', 'Magnus III Pieds-nus', 1073, 1103, 'Roi de Norvège, des Îles et de Dublin', 'h', leader=True, approx='naissance vers fin 1073')
+P('no.olaf3', 'no.magnus3')
+W('no.margaret_fred', 'Marguerite Fredkulla', None, None, 'Reine de Norvège (fille du roi suédois Inge)', 'Stenkil', approx='dates non données')
+S('no.magnus3', 'no.margaret_fred')
+M('no.eystein1', 'Eystein Ier', 1089, 1123, 'Roi de Norvège', 'h', leader=True)
+M('no.sigurd1', 'Sigurd Ier Jorsalfar', 1090, 1130, 'Roi de Norvège', 'h', leader=True)
+M('no.olaf_mag', 'Olaf Magnusson', 1099, 1115, 'Co-roi de Norvège', 'h')
+kids(['no.magnus3'], ['no.eystein1', 'no.sigurd1', 'no.olaf_mag'])
+M('no.harald4', 'Harald IV Gille', 1102, 1136, 'Roi de Norvège', 'h', leader=True, approx='naissance vers 1102 (ou 1103), filiation avec Magnus III non confirmée')
+P('no.magnus3', 'no.harald4')
+W('no.ingrid_r', 'Ingrid Ragnvaldsdatter', None, None, 'Reine de Norvège', 'Ragnvald', approx='dates non données')
+S('no.harald4', 'no.ingrid_r')
+M('no.inge1', 'Inge Ier', 1135, 1161, 'Roi de Norvège', 'h', leader=True, approx='dates connues par ailleurs')
+M('no.eystein2', 'Eystein II', 1125, 1157, 'Roi de Norvège', 'h', leader=True, approx='dates connues par ailleurs')
+M('no.sigurd2', 'Sigurd II Munn', 1133, 1155, 'Roi de Norvège', 'h', leader=True, approx='dates connues par ailleurs')
+kids(['no.harald4', 'no.ingrid_r'], ['no.inge1'])
+kids(['no.harald4'], ['no.eystein2', 'no.sigurd2'])
+# Sverre
+M('no.sverre', 'Sverre Sigurdsson', 1151, 1202, 'Roi de Norvège', 'h', leader=True, approx='naissance 1151 selon la saga (certaines sources : 1145)')
+W('no.margaret_swe', 'Marguerite de Suède', None, None, 'Reine de Norvège', 'Suède', approx='dates non données')
+S('no.sverre', 'no.margaret_swe')
+M('no.haakon3', 'Haakon III Sverresson', 1182, 1204, 'Roi de Norvège', 'h', leader=True, approx='dates connues par ailleurs')
+kids(['no.sverre', 'no.margaret_swe'], ['no.haakon3'])
+M('no.haakon4', 'Haakon IV Haakonsson', 1204, 1263, 'Roi de Norvège', 'h', leader=True, approx='naissance vers 1204')
+P('no.haakon3', 'no.haakon4')
+W('no.margrete_s', 'Margrete Skulesdatter', None, None, 'Reine de Norvège', 'Skule', approx='dates non données')
+S('no.haakon4', 'no.margrete_s')
+M('no.haakon_young', 'Haakon le Jeune', 1232, 1257, 'Co-roi de Norvège', 'h')
+M('no.christina', 'Christine de Norvège', 1234, 1262, 'Infante de Castille', 'f')
+M('no.magnus6', 'Magnus VI le Législateur', 1238, 1280, 'Roi de Norvège', 'h', leader=True)
+kids(['no.haakon4', 'no.margrete_s'], ['no.haakon_young', 'no.christina', 'no.magnus6'])
+W('no.ingeborg_dk', "Ingeborg de Danemark (fille d'Éric IV)", None, None, 'Reine de Norvège', 'Estridsen', approx='dates non données')
+S('no.magnus6', 'no.ingeborg_dk')
+M('no.eric2', 'Éric II', 1268, 1299, 'Roi de Norvège', 'h', leader=True, approx='dates connues par ailleurs')
+M('no.haakon5', 'Haakon V Magnusson', 1270, 1319, 'Roi de Norvège', 'h', leader=True)
+kids(['no.magnus6', 'no.ingeborg_dk'], ['no.eric2', 'no.haakon5'])
+W('no.euphemia', 'Euphémie de Rügen', None, None, 'Reine de Norvège', 'Rügen', approx='dates non données')
+S('no.haakon5', 'no.euphemia')
+M('no.ingeborg_h', 'Ingeborg Haakonsdatter', 1301, 1361, 'Duchesse de Suède', 'f', approx='mort connue par ailleurs')
+kids(['no.haakon5', 'no.euphemia'], ['no.ingeborg_h'])
+M('no.eric_magnusson', 'Éric Magnusson, duc de Suède', 1282, 1318, 'Duc de Södermanland', 'h', dyn='Folkung', approx='dates connues par ailleurs')
+S('no.eric_magnusson', 'no.ingeborg_h')
+M('no.magnus7', 'Magnus VII Eriksson', 1316, 1374, 'Roi de Norvège (1319-1355) et de Suède (1319-1364)', 'h', leader=True, dyn='Folkung')
+kids(['no.eric_magnusson', 'no.ingeborg_h'], ['no.magnus7'])
+W('no.blanche', 'Blanche de Namur', None, None, 'Reine de Norvège et de Suède', 'Namur', approx='dates non données')
+S('no.magnus7', 'no.blanche')
+M('no.haakon6', 'Haakon VI', 1340, 1380, 'Roi de Norvège (1343-1380), de Suède (1362-1364)', 'h', leader=True, dyn='Folkung', approx='naissance vers 1340')
+kids(['no.magnus7', 'no.blanche'], ['no.haakon6'])
+M('no.valdemar4', 'Valdemar IV Atterdag', 1320, 1375, 'Roi de Danemark', 'h', 'DK_EST', dyn='Estridsen', approx='dates connues par ailleurs, non données par la page')
+M('no.margaret1', 'Marguerite Ire de Danemark', 1353, 1412, 'Reine de Danemark, de Norvège et de Suède', 'f', 'DK_EST', True, dyn='Estridsen', approx='dates connues par ailleurs, non données par la page')
+P('no.valdemar4', 'no.margaret1')
+S('no.haakon6', 'no.margaret1')
+M('no.olav4', 'Olav IV', 1370, 1387, 'Roi de Norvège et de Danemark', 'h', leader=True, dyn='Folkung', approx='dates connues par ailleurs')
+kids(['no.haakon6', 'no.margaret1'], ['no.olav4'])
+# XXe siècle
+H7 = 'dn.haakon7'
+g.pin(H7, T); g.pin('dn.maud', T)
+M('no.olav5', 'Olav V', 1903, 1991, 'Roi de Norvège', 'h', leader=True, dyn='Glücksbourg')
+kids([H7, 'dn.maud'], ['no.olav5'])
+M('no.martha', 'Märtha de Suède', 1901, 1954, 'Princesse héritière de Norvège', 'f', 'SE_BER', dyn='Bernadotte', approx='dates connues par ailleurs, mort 1954 donnée par la page')
+kids(['bn.carl_vg', 'bn.ingeborg'], ['no.martha']); g.pin('bn.ingeborg', 'SE_BER')
+S('no.olav5', 'no.martha')
+M('no.ragnhild', 'Ragnhild de Norvège', 1931, 2012, 'Princesse de Norvège', 'f', dyn='Glücksbourg', approx='dates connues par ailleurs')
+M('no.astrid', 'Astrid de Norvège', 1932, None, 'Princesse de Norvège', 'f', dyn='Glücksbourg', approx='naissance connue par ailleurs')
+M('no.harald5', 'Harald V', 1937, None, 'Roi de Norvège', 'h', leader=True, dyn='Glücksbourg')
+kids(['no.olav5', 'no.martha'], ['no.ragnhild', 'no.astrid', 'no.harald5'])
+W('no.sonja', 'Sonja Haraldsen', 1937, None, 'Reine de Norvège', 'Haraldsen', approx='naissance connue par ailleurs')
+S('no.harald5', 'no.sonja')
+M('no.marthalouise', 'Märtha Louise de Norvège', 1971, None, 'Princesse de Norvège', 'f', dyn='Glücksbourg', approx='naissance connue par ailleurs')
+M('no.haakon_cp', 'Haakon de Norvège', 1973, None, 'Prince héritier de Norvège', 'h', dyn='Glücksbourg')
+kids(['no.harald5', 'no.sonja'], ['no.marthalouise', 'no.haakon_cp'])
+W('no.ari', 'Ari Behn', 1972, 2019, 'Ex-époux de la princesse Märtha Louise', 'Behn', approx='dates connues par ailleurs')
+S('no.marthalouise', 'no.ari')
+for c, n, b in [('no.maud_a', 'Maud Angelica Behn', 2003), ('no.leah', 'Leah Isadora Behn', 2005), ('no.emma', 'Emma Tallulah Behn', 2008)]:
+    M(c, n, b, None, 'Fille de la princesse Märtha Louise', 'f', dyn='Behn')
+kids(['no.marthalouise', 'no.ari'], ['no.maud_a', 'no.leah', 'no.emma'])
+W('no.mette', 'Mette-Marit Tjessem Høiby', 1973, None, 'Princesse héritière de Norvège', 'Høiby', approx='naissance connue par ailleurs')
+S('no.haakon_cp', 'no.mette')
+M('no.ingrid_a', 'Ingrid Alexandra de Norvège', 2004, None, 'Princesse héritière', 'f', dyn='Glücksbourg')
+M('no.sverre_m', 'Sverre Magnus de Norvège', 2005, None, 'Prince de Norvège', 'h', dyn='Glücksbourg')
+kids(['no.haakon_cp', 'no.mette'], ['no.ingrid_a', 'no.sverre_m'])
+g.reposition = {'NO_KIN'}
+g.write()

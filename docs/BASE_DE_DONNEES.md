@@ -147,4 +147,5 @@ RLS**. Règles :
 | arbres_v72 | Vasa (Suède) : 27 membres (Gustave Ier, Éric XIV, Charles IX, Gustave II Adolphe, Christine, liens avec Charles X-XII) |
 | arbres_v73 | Suède : Holstein-Gottorp (16) et Bernadotte (35) créés, 60 membres au total ; correction de l'arbre en double de v72 |
 | arbres_v74 | Danemark : 48 membres (Oldenbourg de Frédéric IV à Frédéric VII ; Glücksbourg de Christian IX à Frédéric X) |
+| arbres_v75 | Rois de Norvège : 60 membres (Harald à la Belle Chevelure → Ingrid Alexandra) |
 | `data_owid_load.sql` + `owid_chunks/` | Chargement des données d'indicateurs (rejouable, upserts) — à exécuter après v1 à v7 |

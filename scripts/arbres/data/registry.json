@@ -17240,6 +17240,606 @@
    "title": "Prince / princesse de Danemark",
    "g": "f",
    "script": 74
+  },
+  "no.halfdan_black": {
+   "id": "f64e0ae9-d78b-5d5d-83e5-f8df8f3a5746",
+   "name": "Halfdan le Noir",
+   "b": null,
+   "d": null,
+   "tree": "NO_KIN",
+   "title": "Roi de Vestfold",
+   "g": "h",
+   "script": 75
+  },
+  "no.harald1": {
+   "id": "9744febc-d9bf-56d6-affd-1aecc03b89f8",
+   "name": "Harald Ier à la Belle Chevelure",
+   "b": 850,
+   "d": 932,
+   "tree": "NO_KIN",
+   "title": "Premier roi de Norvège",
+   "g": "h",
+   "script": 75
+  },
+  "no.eric_bloodaxe": {
+   "id": "a4488982-1b99-503e-84a7-be48b1f9a0aa",
+   "name": "Éric à la Hache sanglante",
+   "b": null,
+   "d": 954,
+   "tree": "NO_KIN",
+   "title": "Roi de Norvège",
+   "g": "h",
+   "script": 75
+  },
+  "no.haakon1": {
+   "id": "ca1dfd26-c78c-57e2-acc4-97525c9181ce",
+   "name": "Haakon Ier le Bon",
+   "b": 920,
+   "d": 961,
+   "tree": "NO_KIN",
+   "title": "Roi de Norvège",
+   "g": "h",
+   "script": 75
+  },
+  "no.harald_grenske": {
+   "id": "38f667cf-3b59-5b23-922d-397444135158",
+   "name": "Harald Grenske",
+   "b": null,
+   "d": null,
+   "tree": "NO_KIN",
+   "title": "Roi de Vestfold",
+   "g": "h",
+   "script": 75
+  },
+  "no.asta": {
+   "id": "dbe4c750-9c06-5caa-918d-036b48e39d97",
+   "name": "Åsta Gudbrandsdatter",
+   "b": null,
+   "d": null,
+   "tree": "NO_KIN",
+   "title": "Mère d'Olaf II et de Harald Hardrada",
+   "g": "f",
+   "script": 75
+  },
+  "no.sigurd_syr": {
+   "id": "be813550-7923-5f1f-814c-38115e435ea8",
+   "name": "Sigurd Syr",
+   "b": null,
+   "d": null,
+   "tree": "NO_KIN",
+   "title": "Petit roi de Ringerike",
+   "g": "h",
+   "script": 75
+  },
+  "no.magnus1": {
+   "id": "5554c9a8-4d98-50f5-a01c-ddbdde365528",
+   "name": "Magnus Ier le Bon",
+   "b": 1024,
+   "d": 1047,
+   "tree": "NO_KIN",
+   "title": "Roi de Norvège et de Danemark",
+   "g": "h",
+   "script": 75
+  },
+  "no.hardrada": {
+   "id": "2fec23e3-aaac-553f-bae6-cfd0c7c42bf8",
+   "name": "Harald III Hardrada",
+   "b": 1015,
+   "d": 1066,
+   "tree": "NO_KIN",
+   "title": "Roi de Norvège",
+   "g": "h",
+   "script": 75
+  },
+  "no.elisiv": {
+   "id": "49071114-724a-5213-9bd0-09002340738a",
+   "name": "Élisabeth de Kiev (Elisiv)",
+   "b": 1025,
+   "d": null,
+   "tree": "RU_RUR",
+   "title": "Reine de Norvège",
+   "g": "f",
+   "script": 75
+  },
+  "no.tora_t": {
+   "id": "f2088c12-802e-55ff-a3ee-6a74db8f1bea",
+   "name": "Tora Torbergsdatter",
+   "b": 1025,
+   "d": null,
+   "tree": "NO_KIN",
+   "title": "Reine de Norvège",
+   "g": "f",
+   "script": 75
+  },
+  "no.ingegerd": {
+   "id": "7237e1d8-fe70-52da-877a-06918aee77d3",
+   "name": "Ingegerd Haraldsdatter",
+   "b": 1050,
+   "d": 1120,
+   "tree": "NO_KIN",
+   "title": "Princesse de Norvège",
+   "g": "f",
+   "script": 75
+  },
+  "no.maria": {
+   "id": "8b3ced95-5a86-5e92-8cc1-204fa11ce3b6",
+   "name": "Marie Haraldsdatter",
+   "b": null,
+   "d": 1066,
+   "tree": "NO_KIN",
+   "title": "Princesse de Norvège",
+   "g": "f",
+   "script": 75
+  },
+  "no.magnus2": {
+   "id": "3163c0ab-4bd5-5500-a79a-7cd83fac2649",
+   "name": "Magnus II",
+   "b": 1048,
+   "d": 1069,
+   "tree": "NO_KIN",
+   "title": "Roi de Norvège",
+   "g": "h",
+   "script": 75
+  },
+  "no.olaf3": {
+   "id": "e7413b8d-4a55-555a-a5db-8ed93304a00b",
+   "name": "Olaf III Kyrre",
+   "b": 1050,
+   "d": 1093,
+   "tree": "NO_KIN",
+   "title": "Roi de Norvège",
+   "g": "h",
+   "script": 75
+  },
+  "no.magnus3": {
+   "id": "e17b80ef-db31-500b-8470-4db99526002b",
+   "name": "Magnus III Pieds-nus",
+   "b": 1073,
+   "d": 1103,
+   "tree": "NO_KIN",
+   "title": "Roi de Norvège, des Îles et de Dublin",
+   "g": "h",
+   "script": 75
+  },
+  "no.margaret_fred": {
+   "id": "67b19a17-e585-562a-b378-61094bd5b2dc",
+   "name": "Marguerite Fredkulla",
+   "b": null,
+   "d": null,
+   "tree": "NO_KIN",
+   "title": "Reine de Norvège (fille du roi suédois Inge)",
+   "g": "f",
+   "script": 75
+  },
+  "no.eystein1": {
+   "id": "f14ab534-45b1-5bd6-a93c-bc57a0d66b4f",
+   "name": "Eystein Ier",
+   "b": 1089,
+   "d": 1123,
+   "tree": "NO_KIN",
+   "title": "Roi de Norvège",
+   "g": "h",
+   "script": 75
+  },
+  "no.sigurd1": {
+   "id": "d9dc312e-2922-5afa-aa9c-6410ed7ff5ef",
+   "name": "Sigurd Ier Jorsalfar",
+   "b": 1090,
+   "d": 1130,
+   "tree": "NO_KIN",
+   "title": "Roi de Norvège",
+   "g": "h",
+   "script": 75
+  },
+  "no.olaf_mag": {
+   "id": "3ccb3f4a-f52f-59c0-9905-d959d41a16f9",
+   "name": "Olaf Magnusson",
+   "b": 1099,
+   "d": 1115,
+   "tree": "NO_KIN",
+   "title": "Co-roi de Norvège",
+   "g": "h",
+   "script": 75
+  },
+  "no.harald4": {
+   "id": "3ce2d4c3-6f92-5a5a-a5ec-7c78b867e271",
+   "name": "Harald IV Gille",
+   "b": 1102,
+   "d": 1136,
+   "tree": "NO_KIN",
+   "title": "Roi de Norvège",
+   "g": "h",
+   "script": 75
+  },
+  "no.ingrid_r": {
+   "id": "b173c685-4a5f-5186-9ee5-735d0b1b8083",
+   "name": "Ingrid Ragnvaldsdatter",
+   "b": null,
+   "d": null,
+   "tree": "NO_KIN",
+   "title": "Reine de Norvège",
+   "g": "f",
+   "script": 75
+  },
+  "no.inge1": {
+   "id": "9bfdbc46-aa49-5185-83d8-0b0672113f6f",
+   "name": "Inge Ier",
+   "b": 1135,
+   "d": 1161,
+   "tree": "NO_KIN",
+   "title": "Roi de Norvège",
+   "g": "h",
+   "script": 75
+  },
+  "no.eystein2": {
+   "id": "c874ce63-f30c-5c1a-8c8c-263e9bf69472",
+   "name": "Eystein II",
+   "b": 1125,
+   "d": 1157,
+   "tree": "NO_KIN",
+   "title": "Roi de Norvège",
+   "g": "h",
+   "script": 75
+  },
+  "no.sigurd2": {
+   "id": "9517bc67-32bf-56fb-96cf-e8c6af4ec1d3",
+   "name": "Sigurd II Munn",
+   "b": 1133,
+   "d": 1155,
+   "tree": "NO_KIN",
+   "title": "Roi de Norvège",
+   "g": "h",
+   "script": 75
+  },
+  "no.sverre": {
+   "id": "2818c634-dd45-560a-a376-5b680fd1aace",
+   "name": "Sverre Sigurdsson",
+   "b": 1151,
+   "d": 1202,
+   "tree": "NO_KIN",
+   "title": "Roi de Norvège",
+   "g": "h",
+   "script": 75
+  },
+  "no.margaret_swe": {
+   "id": "27db1dc0-9959-5305-ba8d-e7a0ce364d22",
+   "name": "Marguerite de Suède",
+   "b": null,
+   "d": null,
+   "tree": "NO_KIN",
+   "title": "Reine de Norvège",
+   "g": "f",
+   "script": 75
+  },
+  "no.haakon3": {
+   "id": "e68635b5-3061-533c-8a46-4c626e5c5b92",
+   "name": "Haakon III Sverresson",
+   "b": 1182,
+   "d": 1204,
+   "tree": "NO_KIN",
+   "title": "Roi de Norvège",
+   "g": "h",
+   "script": 75
+  },
+  "no.haakon4": {
+   "id": "ca01447f-4db5-585b-b9bd-959e93db3cad",
+   "name": "Haakon IV Haakonsson",
+   "b": 1204,
+   "d": 1263,
+   "tree": "NO_KIN",
+   "title": "Roi de Norvège",
+   "g": "h",
+   "script": 75
+  },
+  "no.margrete_s": {
+   "id": "8f864222-02bc-50d7-b76e-623c401525fc",
+   "name": "Margrete Skulesdatter",
+   "b": null,
+   "d": null,
+   "tree": "NO_KIN",
+   "title": "Reine de Norvège",
+   "g": "f",
+   "script": 75
+  },
+  "no.haakon_young": {
+   "id": "9ae84d82-c6e0-5c00-b921-01dfd61d68d7",
+   "name": "Haakon le Jeune",
+   "b": 1232,
+   "d": 1257,
+   "tree": "NO_KIN",
+   "title": "Co-roi de Norvège",
+   "g": "h",
+   "script": 75
+  },
+  "no.christina": {
+   "id": "3c0c7e2d-758f-5989-ae97-dad1b884857b",
+   "name": "Christine de Norvège",
+   "b": 1234,
+   "d": 1262,
+   "tree": "NO_KIN",
+   "title": "Infante de Castille",
+   "g": "f",
+   "script": 75
+  },
+  "no.magnus6": {
+   "id": "e69e8657-31f8-51a3-bd1d-d1517fd85756",
+   "name": "Magnus VI le Législateur",
+   "b": 1238,
+   "d": 1280,
+   "tree": "NO_KIN",
+   "title": "Roi de Norvège",
+   "g": "h",
+   "script": 75
+  },
+  "no.ingeborg_dk": {
+   "id": "3c9c9a65-e7f7-568c-bd29-9bad5a026cc8",
+   "name": "Ingeborg de Danemark (fille d'Éric IV)",
+   "b": null,
+   "d": null,
+   "tree": "NO_KIN",
+   "title": "Reine de Norvège",
+   "g": "f",
+   "script": 75
+  },
+  "no.eric2": {
+   "id": "2bbe0128-ee74-5bb8-ba58-6a4e86259e82",
+   "name": "Éric II",
+   "b": 1268,
+   "d": 1299,
+   "tree": "NO_KIN",
+   "title": "Roi de Norvège",
+   "g": "h",
+   "script": 75
+  },
+  "no.haakon5": {
+   "id": "dced1082-a491-5b2a-bbed-bef29e886347",
+   "name": "Haakon V Magnusson",
+   "b": 1270,
+   "d": 1319,
+   "tree": "NO_KIN",
+   "title": "Roi de Norvège",
+   "g": "h",
+   "script": 75
+  },
+  "no.euphemia": {
+   "id": "5eb0d76f-2518-5178-b46b-095af3de07c7",
+   "name": "Euphémie de Rügen",
+   "b": null,
+   "d": null,
+   "tree": "NO_KIN",
+   "title": "Reine de Norvège",
+   "g": "f",
+   "script": 75
+  },
+  "no.ingeborg_h": {
+   "id": "27d900f9-bdbf-5297-ac04-f06631576719",
+   "name": "Ingeborg Haakonsdatter",
+   "b": 1301,
+   "d": 1361,
+   "tree": "NO_KIN",
+   "title": "Duchesse de Suède",
+   "g": "f",
+   "script": 75
+  },
+  "no.eric_magnusson": {
+   "id": "f9388ba3-056f-53fb-b740-852e745b0633",
+   "name": "Éric Magnusson, duc de Suède",
+   "b": 1282,
+   "d": 1318,
+   "tree": "NO_KIN",
+   "title": "Duc de Södermanland",
+   "g": "h",
+   "script": 75
+  },
+  "no.magnus7": {
+   "id": "30edeb9c-4fb0-56cb-94f4-575fa1fab717",
+   "name": "Magnus VII Eriksson",
+   "b": 1316,
+   "d": 1374,
+   "tree": "NO_KIN",
+   "title": "Roi de Norvège (1319-1355) et de Suède (1319-1364)",
+   "g": "h",
+   "script": 75
+  },
+  "no.blanche": {
+   "id": "1d8f0127-ce42-52db-8944-51390504fdd3",
+   "name": "Blanche de Namur",
+   "b": null,
+   "d": null,
+   "tree": "NO_KIN",
+   "title": "Reine de Norvège et de Suède",
+   "g": "f",
+   "script": 75
+  },
+  "no.haakon6": {
+   "id": "1a5046e9-6512-5de0-ba0f-79c2b3f5bc39",
+   "name": "Haakon VI",
+   "b": 1340,
+   "d": 1380,
+   "tree": "NO_KIN",
+   "title": "Roi de Norvège (1343-1380), de Suède (1362-1364)",
+   "g": "h",
+   "script": 75
+  },
+  "no.valdemar4": {
+   "id": "59229f89-6517-581a-b870-95cad1855c28",
+   "name": "Valdemar IV Atterdag",
+   "b": 1320,
+   "d": 1375,
+   "tree": "DK_EST",
+   "title": "Roi de Danemark",
+   "g": "h",
+   "script": 75
+  },
+  "no.margaret1": {
+   "id": "ef4df279-a2d8-5578-b39f-4e3865aef537",
+   "name": "Marguerite Ire de Danemark",
+   "b": 1353,
+   "d": 1412,
+   "tree": "DK_EST",
+   "title": "Reine de Danemark, de Norvège et de Suède",
+   "g": "f",
+   "script": 75
+  },
+  "no.olav4": {
+   "id": "cafe94f6-e78b-59af-922c-02285a6f56e5",
+   "name": "Olav IV",
+   "b": 1370,
+   "d": 1387,
+   "tree": "NO_KIN",
+   "title": "Roi de Norvège et de Danemark",
+   "g": "h",
+   "script": 75
+  },
+  "no.olav5": {
+   "id": "d3e60d35-bf27-59c5-9d2e-8d2e398d41ff",
+   "name": "Olav V",
+   "b": 1903,
+   "d": 1991,
+   "tree": "NO_KIN",
+   "title": "Roi de Norvège",
+   "g": "h",
+   "script": 75
+  },
+  "no.martha": {
+   "id": "6144ac5d-daf6-5334-a651-c6487b3d5aa0",
+   "name": "Märtha de Suède",
+   "b": 1901,
+   "d": 1954,
+   "tree": "SE_BER",
+   "title": "Princesse héritière de Norvège",
+   "g": "f",
+   "script": 75
+  },
+  "no.ragnhild": {
+   "id": "9e1203a6-924f-5300-a660-10960f907985",
+   "name": "Ragnhild de Norvège",
+   "b": 1931,
+   "d": 2012,
+   "tree": "NO_KIN",
+   "title": "Princesse de Norvège",
+   "g": "f",
+   "script": 75
+  },
+  "no.astrid": {
+   "id": "caeadcd8-a22c-5983-85d0-422ccc2e208f",
+   "name": "Astrid de Norvège",
+   "b": 1932,
+   "d": null,
+   "tree": "NO_KIN",
+   "title": "Princesse de Norvège",
+   "g": "f",
+   "script": 75
+  },
+  "no.harald5": {
+   "id": "27ba0799-f76c-5f47-81a6-e2368afb0a52",
+   "name": "Harald V",
+   "b": 1937,
+   "d": null,
+   "tree": "NO_KIN",
+   "title": "Roi de Norvège",
+   "g": "h",
+   "script": 75
+  },
+  "no.sonja": {
+   "id": "93633373-debd-55fc-9430-6a24d4d6bd8e",
+   "name": "Sonja Haraldsen",
+   "b": 1937,
+   "d": null,
+   "tree": "NO_KIN",
+   "title": "Reine de Norvège",
+   "g": "f",
+   "script": 75
+  },
+  "no.marthalouise": {
+   "id": "6ee2d348-3724-5e2f-b445-14471a467a94",
+   "name": "Märtha Louise de Norvège",
+   "b": 1971,
+   "d": null,
+   "tree": "NO_KIN",
+   "title": "Princesse de Norvège",
+   "g": "f",
+   "script": 75
+  },
+  "no.haakon_cp": {
+   "id": "a1d1a434-77c5-5a71-bbc1-10c2a4de5171",
+   "name": "Haakon de Norvège",
+   "b": 1973,
+   "d": null,
+   "tree": "NO_KIN",
+   "title": "Prince héritier de Norvège",
+   "g": "h",
+   "script": 75
+  },
+  "no.ari": {
+   "id": "f40d0d32-245e-5dd5-a954-58e3dbb53929",
+   "name": "Ari Behn",
+   "b": 1972,
+   "d": 2019,
+   "tree": "NO_KIN",
+   "title": "Ex-époux de la princesse Märtha Louise",
+   "g": "f",
+   "script": 75
+  },
+  "no.maud_a": {
+   "id": "fcdc4c31-ac76-50d2-9879-588b08417171",
+   "name": "Maud Angelica Behn",
+   "b": 2003,
+   "d": null,
+   "tree": "NO_KIN",
+   "title": "Fille de la princesse Märtha Louise",
+   "g": "f",
+   "script": 75
+  },
+  "no.leah": {
+   "id": "5ddb2f98-b988-589e-8656-8401d8f41501",
+   "name": "Leah Isadora Behn",
+   "b": 2005,
+   "d": null,
+   "tree": "NO_KIN",
+   "title": "Fille de la princesse Märtha Louise",
+   "g": "f",
+   "script": 75
+  },
+  "no.emma": {
+   "id": "8739663c-f44b-5a30-825d-818b43ca1eea",
+   "name": "Emma Tallulah Behn",
+   "b": 2008,
+   "d": null,
+   "tree": "NO_KIN",
+   "title": "Fille de la princesse Märtha Louise",
+   "g": "f",
+   "script": 75
+  },
+  "no.mette": {
+   "id": "891c90f0-f241-5f58-ad0e-eeb18cdb898a",
+   "name": "Mette-Marit Tjessem Høiby",
+   "b": 1973,
+   "d": null,
+   "tree": "NO_KIN",
+   "title": "Princesse héritière de Norvège",
+   "g": "f",
+   "script": 75
+  },
+  "no.ingrid_a": {
+   "id": "314f699d-0fdb-5f03-8478-913cb39f6ff7",
+   "name": "Ingrid Alexandra de Norvège",
+   "b": 2004,
+   "d": null,
+   "tree": "NO_KIN",
+   "title": "Princesse héritière",
+   "g": "f",
+   "script": 75
+  },
+  "no.sverre_m": {
+   "id": "e996a384-d8cd-5c21-ad9c-ee64438da32c",
+   "name": "Sverre Magnus de Norvège",
+   "b": 2005,
+   "d": null,
+   "tree": "NO_KIN",
+   "title": "Prince de Norvège",
+   "g": "h",
+   "script": 75
   }
  },
  "trees": {
@@ -17751,6 +18351,18 @@
    "entry": "eb82350b-5e34-490e-bb73-9235d4baf763",
    "country": "GBR",
    "dynasty": "Maison de Saxe-Cobourg et Gotha et Maison Windsor",
+   "script": null
+  },
+  "NO_KIN": {
+   "entry": "e54ea4ad-8213-490c-95cd-a7b538988b75",
+   "country": "NOR",
+   "dynasty": "Rois de Norvège",
+   "script": null
+  },
+  "DK_EST": {
+   "entry": "f2e02253-744a-428b-8fe9-c3d347998035",
+   "country": "DNK",
+   "dynasty": "Maison d'Estridsen",
    "script": null
   }
  },
@@ -21303,6 +21915,90 @@
    "tree": "DK_GLU",
    "reason": "Maison Donaldson : sans arbre",
    "script": 74
+  },
+  {
+   "name": "Åsta Gudbrandsdatter",
+   "b": null,
+   "tree": "NO_KIN",
+   "reason": "Maison Gudbrandsdal : sans arbre",
+   "script": 75
+  },
+  {
+   "name": "Tora Torbergsdatter",
+   "b": 1025,
+   "tree": "NO_KIN",
+   "reason": "Maison Torberg : sans arbre",
+   "script": 75
+  },
+  {
+   "name": "Marguerite Fredkulla",
+   "b": null,
+   "tree": "NO_KIN",
+   "reason": "Maison Stenkil : sans arbre",
+   "script": 75
+  },
+  {
+   "name": "Ingrid Ragnvaldsdatter",
+   "b": null,
+   "tree": "NO_KIN",
+   "reason": "Maison Ragnvald : sans arbre",
+   "script": 75
+  },
+  {
+   "name": "Marguerite de Suède",
+   "b": null,
+   "tree": "NO_KIN",
+   "reason": "Maison Suède : sans arbre",
+   "script": 75
+  },
+  {
+   "name": "Margrete Skulesdatter",
+   "b": null,
+   "tree": "NO_KIN",
+   "reason": "Maison Skule : sans arbre",
+   "script": 75
+  },
+  {
+   "name": "Ingeborg de Danemark (fille d'Éric IV)",
+   "b": null,
+   "tree": "NO_KIN",
+   "reason": "Maison Estridsen : sans arbre",
+   "script": 75
+  },
+  {
+   "name": "Euphémie de Rügen",
+   "b": null,
+   "tree": "NO_KIN",
+   "reason": "Maison Rügen : sans arbre",
+   "script": 75
+  },
+  {
+   "name": "Blanche de Namur",
+   "b": null,
+   "tree": "NO_KIN",
+   "reason": "Maison Namur : sans arbre",
+   "script": 75
+  },
+  {
+   "name": "Sonja Haraldsen",
+   "b": 1937,
+   "tree": "NO_KIN",
+   "reason": "Maison Haraldsen : sans arbre",
+   "script": 75
+  },
+  {
+   "name": "Ari Behn",
+   "b": 1972,
+   "tree": "NO_KIN",
+   "reason": "Maison Behn : sans arbre",
+   "script": 75
+  },
+  {
+   "name": "Mette-Marit Tjessem Høiby",
+   "b": 1973,
+   "tree": "NO_KIN",
+   "reason": "Maison Høiby : sans arbre",
+   "script": 75
   }
  ],
  "scripts": {
@@ -21590,6 +22286,12 @@
    "label": "Danemark — Oldenbourg de Frédéric IV à Christian VIII, et Glücksbourg jusqu'à Frédéric X",
    "members": 48,
    "rels": 94,
+   "trees": []
+  },
+  "75": {
+   "label": "Norvège — rois de Harald à la Belle Chevelure à Olav IV, puis Haakon VII et ses descendants jusqu'à la princesse Ingrid Alexandra",
+   "members": 60,
+   "rels": 89,
    "trees": []
   }
  },
@@ -36798,6 +37500,451 @@
    "4e438b95-18a3-5c6a-a700-32232eaa1330",
    "03af998e-8227-5ca6-a7ab-3a3f996c89f4",
    "parent"
+  ],
+  [
+   "f64e0ae9-d78b-5d5d-83e5-f8df8f3a5746",
+   "9744febc-d9bf-56d6-affd-1aecc03b89f8",
+   "parent"
+  ],
+  [
+   "9744febc-d9bf-56d6-affd-1aecc03b89f8",
+   "a4488982-1b99-503e-84a7-be48b1f9a0aa",
+   "parent"
+  ],
+  [
+   "9744febc-d9bf-56d6-affd-1aecc03b89f8",
+   "ca1dfd26-c78c-57e2-acc4-97525c9181ce",
+   "parent"
+  ],
+  [
+   "38f667cf-3b59-5b23-922d-397444135158",
+   "dbe4c750-9c06-5caa-918d-036b48e39d97",
+   "spouse"
+  ],
+  [
+   "dbe4c750-9c06-5caa-918d-036b48e39d97",
+   "be813550-7923-5f1f-814c-38115e435ea8",
+   "spouse"
+  ],
+  [
+   "38f667cf-3b59-5b23-922d-397444135158",
+   "d80b71bc-e0d6-436c-b4c3-595c1ed22667",
+   "parent"
+  ],
+  [
+   "dbe4c750-9c06-5caa-918d-036b48e39d97",
+   "d80b71bc-e0d6-436c-b4c3-595c1ed22667",
+   "parent"
+  ],
+  [
+   "d80b71bc-e0d6-436c-b4c3-595c1ed22667",
+   "5554c9a8-4d98-50f5-a01c-ddbdde365528",
+   "parent"
+  ],
+  [
+   "be813550-7923-5f1f-814c-38115e435ea8",
+   "2fec23e3-aaac-553f-bae6-cfd0c7c42bf8",
+   "parent"
+  ],
+  [
+   "dbe4c750-9c06-5caa-918d-036b48e39d97",
+   "2fec23e3-aaac-553f-bae6-cfd0c7c42bf8",
+   "parent"
+  ],
+  [
+   "a2006b61-d955-50cf-ac6b-c6ac0f46cfc1",
+   "49071114-724a-5213-9bd0-09002340738a",
+   "parent"
+  ],
+  [
+   "2fec23e3-aaac-553f-bae6-cfd0c7c42bf8",
+   "49071114-724a-5213-9bd0-09002340738a",
+   "spouse"
+  ],
+  [
+   "2fec23e3-aaac-553f-bae6-cfd0c7c42bf8",
+   "f2088c12-802e-55ff-a3ee-6a74db8f1bea",
+   "spouse"
+  ],
+  [
+   "2fec23e3-aaac-553f-bae6-cfd0c7c42bf8",
+   "7237e1d8-fe70-52da-877a-06918aee77d3",
+   "parent"
+  ],
+  [
+   "49071114-724a-5213-9bd0-09002340738a",
+   "7237e1d8-fe70-52da-877a-06918aee77d3",
+   "parent"
+  ],
+  [
+   "2fec23e3-aaac-553f-bae6-cfd0c7c42bf8",
+   "8b3ced95-5a86-5e92-8cc1-204fa11ce3b6",
+   "parent"
+  ],
+  [
+   "49071114-724a-5213-9bd0-09002340738a",
+   "8b3ced95-5a86-5e92-8cc1-204fa11ce3b6",
+   "parent"
+  ],
+  [
+   "2fec23e3-aaac-553f-bae6-cfd0c7c42bf8",
+   "3163c0ab-4bd5-5500-a79a-7cd83fac2649",
+   "parent"
+  ],
+  [
+   "f2088c12-802e-55ff-a3ee-6a74db8f1bea",
+   "3163c0ab-4bd5-5500-a79a-7cd83fac2649",
+   "parent"
+  ],
+  [
+   "2fec23e3-aaac-553f-bae6-cfd0c7c42bf8",
+   "e7413b8d-4a55-555a-a5db-8ed93304a00b",
+   "parent"
+  ],
+  [
+   "f2088c12-802e-55ff-a3ee-6a74db8f1bea",
+   "e7413b8d-4a55-555a-a5db-8ed93304a00b",
+   "parent"
+  ],
+  [
+   "e7413b8d-4a55-555a-a5db-8ed93304a00b",
+   "e17b80ef-db31-500b-8470-4db99526002b",
+   "parent"
+  ],
+  [
+   "e17b80ef-db31-500b-8470-4db99526002b",
+   "67b19a17-e585-562a-b378-61094bd5b2dc",
+   "spouse"
+  ],
+  [
+   "e17b80ef-db31-500b-8470-4db99526002b",
+   "f14ab534-45b1-5bd6-a93c-bc57a0d66b4f",
+   "parent"
+  ],
+  [
+   "e17b80ef-db31-500b-8470-4db99526002b",
+   "d9dc312e-2922-5afa-aa9c-6410ed7ff5ef",
+   "parent"
+  ],
+  [
+   "e17b80ef-db31-500b-8470-4db99526002b",
+   "3ccb3f4a-f52f-59c0-9905-d959d41a16f9",
+   "parent"
+  ],
+  [
+   "e17b80ef-db31-500b-8470-4db99526002b",
+   "3ce2d4c3-6f92-5a5a-a5ec-7c78b867e271",
+   "parent"
+  ],
+  [
+   "3ce2d4c3-6f92-5a5a-a5ec-7c78b867e271",
+   "b173c685-4a5f-5186-9ee5-735d0b1b8083",
+   "spouse"
+  ],
+  [
+   "3ce2d4c3-6f92-5a5a-a5ec-7c78b867e271",
+   "9bfdbc46-aa49-5185-83d8-0b0672113f6f",
+   "parent"
+  ],
+  [
+   "b173c685-4a5f-5186-9ee5-735d0b1b8083",
+   "9bfdbc46-aa49-5185-83d8-0b0672113f6f",
+   "parent"
+  ],
+  [
+   "3ce2d4c3-6f92-5a5a-a5ec-7c78b867e271",
+   "c874ce63-f30c-5c1a-8c8c-263e9bf69472",
+   "parent"
+  ],
+  [
+   "3ce2d4c3-6f92-5a5a-a5ec-7c78b867e271",
+   "9517bc67-32bf-56fb-96cf-e8c6af4ec1d3",
+   "parent"
+  ],
+  [
+   "2818c634-dd45-560a-a376-5b680fd1aace",
+   "27db1dc0-9959-5305-ba8d-e7a0ce364d22",
+   "spouse"
+  ],
+  [
+   "2818c634-dd45-560a-a376-5b680fd1aace",
+   "e68635b5-3061-533c-8a46-4c626e5c5b92",
+   "parent"
+  ],
+  [
+   "27db1dc0-9959-5305-ba8d-e7a0ce364d22",
+   "e68635b5-3061-533c-8a46-4c626e5c5b92",
+   "parent"
+  ],
+  [
+   "e68635b5-3061-533c-8a46-4c626e5c5b92",
+   "ca01447f-4db5-585b-b9bd-959e93db3cad",
+   "parent"
+  ],
+  [
+   "ca01447f-4db5-585b-b9bd-959e93db3cad",
+   "8f864222-02bc-50d7-b76e-623c401525fc",
+   "spouse"
+  ],
+  [
+   "ca01447f-4db5-585b-b9bd-959e93db3cad",
+   "9ae84d82-c6e0-5c00-b921-01dfd61d68d7",
+   "parent"
+  ],
+  [
+   "8f864222-02bc-50d7-b76e-623c401525fc",
+   "9ae84d82-c6e0-5c00-b921-01dfd61d68d7",
+   "parent"
+  ],
+  [
+   "ca01447f-4db5-585b-b9bd-959e93db3cad",
+   "3c0c7e2d-758f-5989-ae97-dad1b884857b",
+   "parent"
+  ],
+  [
+   "8f864222-02bc-50d7-b76e-623c401525fc",
+   "3c0c7e2d-758f-5989-ae97-dad1b884857b",
+   "parent"
+  ],
+  [
+   "ca01447f-4db5-585b-b9bd-959e93db3cad",
+   "e69e8657-31f8-51a3-bd1d-d1517fd85756",
+   "parent"
+  ],
+  [
+   "8f864222-02bc-50d7-b76e-623c401525fc",
+   "e69e8657-31f8-51a3-bd1d-d1517fd85756",
+   "parent"
+  ],
+  [
+   "e69e8657-31f8-51a3-bd1d-d1517fd85756",
+   "3c9c9a65-e7f7-568c-bd29-9bad5a026cc8",
+   "spouse"
+  ],
+  [
+   "e69e8657-31f8-51a3-bd1d-d1517fd85756",
+   "2bbe0128-ee74-5bb8-ba58-6a4e86259e82",
+   "parent"
+  ],
+  [
+   "3c9c9a65-e7f7-568c-bd29-9bad5a026cc8",
+   "2bbe0128-ee74-5bb8-ba58-6a4e86259e82",
+   "parent"
+  ],
+  [
+   "e69e8657-31f8-51a3-bd1d-d1517fd85756",
+   "dced1082-a491-5b2a-bbed-bef29e886347",
+   "parent"
+  ],
+  [
+   "3c9c9a65-e7f7-568c-bd29-9bad5a026cc8",
+   "dced1082-a491-5b2a-bbed-bef29e886347",
+   "parent"
+  ],
+  [
+   "dced1082-a491-5b2a-bbed-bef29e886347",
+   "5eb0d76f-2518-5178-b46b-095af3de07c7",
+   "spouse"
+  ],
+  [
+   "dced1082-a491-5b2a-bbed-bef29e886347",
+   "27d900f9-bdbf-5297-ac04-f06631576719",
+   "parent"
+  ],
+  [
+   "5eb0d76f-2518-5178-b46b-095af3de07c7",
+   "27d900f9-bdbf-5297-ac04-f06631576719",
+   "parent"
+  ],
+  [
+   "f9388ba3-056f-53fb-b740-852e745b0633",
+   "27d900f9-bdbf-5297-ac04-f06631576719",
+   "spouse"
+  ],
+  [
+   "f9388ba3-056f-53fb-b740-852e745b0633",
+   "30edeb9c-4fb0-56cb-94f4-575fa1fab717",
+   "parent"
+  ],
+  [
+   "27d900f9-bdbf-5297-ac04-f06631576719",
+   "30edeb9c-4fb0-56cb-94f4-575fa1fab717",
+   "parent"
+  ],
+  [
+   "30edeb9c-4fb0-56cb-94f4-575fa1fab717",
+   "1d8f0127-ce42-52db-8944-51390504fdd3",
+   "spouse"
+  ],
+  [
+   "30edeb9c-4fb0-56cb-94f4-575fa1fab717",
+   "1a5046e9-6512-5de0-ba0f-79c2b3f5bc39",
+   "parent"
+  ],
+  [
+   "1d8f0127-ce42-52db-8944-51390504fdd3",
+   "1a5046e9-6512-5de0-ba0f-79c2b3f5bc39",
+   "parent"
+  ],
+  [
+   "59229f89-6517-581a-b870-95cad1855c28",
+   "ef4df279-a2d8-5578-b39f-4e3865aef537",
+   "parent"
+  ],
+  [
+   "1a5046e9-6512-5de0-ba0f-79c2b3f5bc39",
+   "ef4df279-a2d8-5578-b39f-4e3865aef537",
+   "spouse"
+  ],
+  [
+   "1a5046e9-6512-5de0-ba0f-79c2b3f5bc39",
+   "cafe94f6-e78b-59af-922c-02285a6f56e5",
+   "parent"
+  ],
+  [
+   "ef4df279-a2d8-5578-b39f-4e3865aef537",
+   "cafe94f6-e78b-59af-922c-02285a6f56e5",
+   "parent"
+  ],
+  [
+   "cd8097f9-93f5-56d5-98f8-f8f8d1e42142",
+   "d3e60d35-bf27-59c5-9d2e-8d2e398d41ff",
+   "parent"
+  ],
+  [
+   "60951bb4-a91b-5eec-9742-f5b8853ef03d",
+   "d3e60d35-bf27-59c5-9d2e-8d2e398d41ff",
+   "parent"
+  ],
+  [
+   "4b944882-1372-5e4f-be5a-e0e4edffd05e",
+   "6144ac5d-daf6-5334-a651-c6487b3d5aa0",
+   "parent"
+  ],
+  [
+   "3196cf28-1860-57d8-a395-998bc6a9fe7a",
+   "6144ac5d-daf6-5334-a651-c6487b3d5aa0",
+   "parent"
+  ],
+  [
+   "d3e60d35-bf27-59c5-9d2e-8d2e398d41ff",
+   "6144ac5d-daf6-5334-a651-c6487b3d5aa0",
+   "spouse"
+  ],
+  [
+   "d3e60d35-bf27-59c5-9d2e-8d2e398d41ff",
+   "9e1203a6-924f-5300-a660-10960f907985",
+   "parent"
+  ],
+  [
+   "6144ac5d-daf6-5334-a651-c6487b3d5aa0",
+   "9e1203a6-924f-5300-a660-10960f907985",
+   "parent"
+  ],
+  [
+   "d3e60d35-bf27-59c5-9d2e-8d2e398d41ff",
+   "caeadcd8-a22c-5983-85d0-422ccc2e208f",
+   "parent"
+  ],
+  [
+   "6144ac5d-daf6-5334-a651-c6487b3d5aa0",
+   "caeadcd8-a22c-5983-85d0-422ccc2e208f",
+   "parent"
+  ],
+  [
+   "d3e60d35-bf27-59c5-9d2e-8d2e398d41ff",
+   "27ba0799-f76c-5f47-81a6-e2368afb0a52",
+   "parent"
+  ],
+  [
+   "6144ac5d-daf6-5334-a651-c6487b3d5aa0",
+   "27ba0799-f76c-5f47-81a6-e2368afb0a52",
+   "parent"
+  ],
+  [
+   "27ba0799-f76c-5f47-81a6-e2368afb0a52",
+   "93633373-debd-55fc-9430-6a24d4d6bd8e",
+   "spouse"
+  ],
+  [
+   "27ba0799-f76c-5f47-81a6-e2368afb0a52",
+   "6ee2d348-3724-5e2f-b445-14471a467a94",
+   "parent"
+  ],
+  [
+   "93633373-debd-55fc-9430-6a24d4d6bd8e",
+   "6ee2d348-3724-5e2f-b445-14471a467a94",
+   "parent"
+  ],
+  [
+   "27ba0799-f76c-5f47-81a6-e2368afb0a52",
+   "a1d1a434-77c5-5a71-bbc1-10c2a4de5171",
+   "parent"
+  ],
+  [
+   "93633373-debd-55fc-9430-6a24d4d6bd8e",
+   "a1d1a434-77c5-5a71-bbc1-10c2a4de5171",
+   "parent"
+  ],
+  [
+   "6ee2d348-3724-5e2f-b445-14471a467a94",
+   "f40d0d32-245e-5dd5-a954-58e3dbb53929",
+   "spouse"
+  ],
+  [
+   "6ee2d348-3724-5e2f-b445-14471a467a94",
+   "fcdc4c31-ac76-50d2-9879-588b08417171",
+   "parent"
+  ],
+  [
+   "f40d0d32-245e-5dd5-a954-58e3dbb53929",
+   "fcdc4c31-ac76-50d2-9879-588b08417171",
+   "parent"
+  ],
+  [
+   "6ee2d348-3724-5e2f-b445-14471a467a94",
+   "5ddb2f98-b988-589e-8656-8401d8f41501",
+   "parent"
+  ],
+  [
+   "f40d0d32-245e-5dd5-a954-58e3dbb53929",
+   "5ddb2f98-b988-589e-8656-8401d8f41501",
+   "parent"
+  ],
+  [
+   "6ee2d348-3724-5e2f-b445-14471a467a94",
+   "8739663c-f44b-5a30-825d-818b43ca1eea",
+   "parent"
+  ],
+  [
+   "f40d0d32-245e-5dd5-a954-58e3dbb53929",
+   "8739663c-f44b-5a30-825d-818b43ca1eea",
+   "parent"
+  ],
+  [
+   "a1d1a434-77c5-5a71-bbc1-10c2a4de5171",
+   "891c90f0-f241-5f58-ad0e-eeb18cdb898a",
+   "spouse"
+  ],
+  [
+   "a1d1a434-77c5-5a71-bbc1-10c2a4de5171",
+   "314f699d-0fdb-5f03-8478-913cb39f6ff7",
+   "parent"
+  ],
+  [
+   "891c90f0-f241-5f58-ad0e-eeb18cdb898a",
+   "314f699d-0fdb-5f03-8478-913cb39f6ff7",
+   "parent"
+  ],
+  [
+   "a1d1a434-77c5-5a71-bbc1-10c2a4de5171",
+   "e996a384-d8cd-5c21-ad9c-ee64438da32c",
+   "parent"
+  ],
+  [
+   "891c90f0-f241-5f58-ad0e-eeb18cdb898a",
+   "e996a384-d8cd-5c21-ad9c-ee64438da32c",
+   "parent"
   ]
  ],
  "dateflags": [
@@ -43121,6 +44268,307 @@
    "d": null,
    "note": "naissance connue par ailleurs",
    "script": 74
+  },
+  {
+   "name": "Halfdan le Noir",
+   "b": null,
+   "d": null,
+   "note": "dates non données",
+   "script": 75
+  },
+  {
+   "name": "Harald Ier à la Belle Chevelure",
+   "b": 850,
+   "d": 932,
+   "note": "naissance vers 850, mort vers 932 (certaines sources : 933)",
+   "script": 75
+  },
+  {
+   "name": "Éric à la Hache sanglante",
+   "b": null,
+   "d": 954,
+   "note": "naissance non donnée, mort connue par ailleurs",
+   "script": 75
+  },
+  {
+   "name": "Haakon Ier le Bon",
+   "b": 920,
+   "d": 961,
+   "note": "dates connues par ailleurs, non données par la page",
+   "script": 75
+  },
+  {
+   "name": "Harald Grenske",
+   "b": null,
+   "d": null,
+   "note": "dates non données",
+   "script": 75
+  },
+  {
+   "name": "Åsta Gudbrandsdatter",
+   "b": null,
+   "d": null,
+   "note": "dates non données",
+   "script": 75
+  },
+  {
+   "name": "Sigurd Syr",
+   "b": null,
+   "d": null,
+   "note": "dates non données",
+   "script": 75
+  },
+  {
+   "name": "Magnus Ier le Bon",
+   "b": 1024,
+   "d": 1047,
+   "note": "dates connues par ailleurs",
+   "script": 75
+  },
+  {
+   "name": "Harald III Hardrada",
+   "b": 1015,
+   "d": 1066,
+   "note": "naissance vers 1015 (peut-être 1016)",
+   "script": 75
+  },
+  {
+   "name": "Élisabeth de Kiev (Elisiv)",
+   "b": 1025,
+   "d": null,
+   "note": "naissance vers 1025, mort après 1066",
+   "script": 75
+  },
+  {
+   "name": "Tora Torbergsdatter",
+   "b": 1025,
+   "d": null,
+   "note": "naissance vers 1025, mort après 1066 ; mariage contesté",
+   "script": 75
+  },
+  {
+   "name": "Ingegerd Haraldsdatter",
+   "b": 1050,
+   "d": 1120,
+   "note": "dates vers 1050 - vers 1120",
+   "script": 75
+  },
+  {
+   "name": "Magnus II",
+   "b": 1048,
+   "d": 1069,
+   "note": "dates connues par ailleurs",
+   "script": 75
+  },
+  {
+   "name": "Olaf III Kyrre",
+   "b": 1050,
+   "d": 1093,
+   "note": "naissance vers 1050, dates connues par ailleurs",
+   "script": 75
+  },
+  {
+   "name": "Magnus III Pieds-nus",
+   "b": 1073,
+   "d": 1103,
+   "note": "naissance vers fin 1073",
+   "script": 75
+  },
+  {
+   "name": "Marguerite Fredkulla",
+   "b": null,
+   "d": null,
+   "note": "dates non données",
+   "script": 75
+  },
+  {
+   "name": "Harald IV Gille",
+   "b": 1102,
+   "d": 1136,
+   "note": "naissance vers 1102 (ou 1103), filiation avec Magnus III non confirmée",
+   "script": 75
+  },
+  {
+   "name": "Ingrid Ragnvaldsdatter",
+   "b": null,
+   "d": null,
+   "note": "dates non données",
+   "script": 75
+  },
+  {
+   "name": "Inge Ier",
+   "b": 1135,
+   "d": 1161,
+   "note": "dates connues par ailleurs",
+   "script": 75
+  },
+  {
+   "name": "Eystein II",
+   "b": 1125,
+   "d": 1157,
+   "note": "dates connues par ailleurs",
+   "script": 75
+  },
+  {
+   "name": "Sigurd II Munn",
+   "b": 1133,
+   "d": 1155,
+   "note": "dates connues par ailleurs",
+   "script": 75
+  },
+  {
+   "name": "Sverre Sigurdsson",
+   "b": 1151,
+   "d": 1202,
+   "note": "naissance 1151 selon la saga (certaines sources : 1145)",
+   "script": 75
+  },
+  {
+   "name": "Marguerite de Suède",
+   "b": null,
+   "d": null,
+   "note": "dates non données",
+   "script": 75
+  },
+  {
+   "name": "Haakon III Sverresson",
+   "b": 1182,
+   "d": 1204,
+   "note": "dates connues par ailleurs",
+   "script": 75
+  },
+  {
+   "name": "Haakon IV Haakonsson",
+   "b": 1204,
+   "d": 1263,
+   "note": "naissance vers 1204",
+   "script": 75
+  },
+  {
+   "name": "Margrete Skulesdatter",
+   "b": null,
+   "d": null,
+   "note": "dates non données",
+   "script": 75
+  },
+  {
+   "name": "Ingeborg de Danemark (fille d'Éric IV)",
+   "b": null,
+   "d": null,
+   "note": "dates non données",
+   "script": 75
+  },
+  {
+   "name": "Éric II",
+   "b": 1268,
+   "d": 1299,
+   "note": "dates connues par ailleurs",
+   "script": 75
+  },
+  {
+   "name": "Euphémie de Rügen",
+   "b": null,
+   "d": null,
+   "note": "dates non données",
+   "script": 75
+  },
+  {
+   "name": "Ingeborg Haakonsdatter",
+   "b": 1301,
+   "d": 1361,
+   "note": "mort connue par ailleurs",
+   "script": 75
+  },
+  {
+   "name": "Éric Magnusson, duc de Suède",
+   "b": 1282,
+   "d": 1318,
+   "note": "dates connues par ailleurs",
+   "script": 75
+  },
+  {
+   "name": "Blanche de Namur",
+   "b": null,
+   "d": null,
+   "note": "dates non données",
+   "script": 75
+  },
+  {
+   "name": "Haakon VI",
+   "b": 1340,
+   "d": 1380,
+   "note": "naissance vers 1340",
+   "script": 75
+  },
+  {
+   "name": "Valdemar IV Atterdag",
+   "b": 1320,
+   "d": 1375,
+   "note": "dates connues par ailleurs, non données par la page",
+   "script": 75
+  },
+  {
+   "name": "Marguerite Ire de Danemark",
+   "b": 1353,
+   "d": 1412,
+   "note": "dates connues par ailleurs, non données par la page",
+   "script": 75
+  },
+  {
+   "name": "Olav IV",
+   "b": 1370,
+   "d": 1387,
+   "note": "dates connues par ailleurs",
+   "script": 75
+  },
+  {
+   "name": "Märtha de Suède",
+   "b": 1901,
+   "d": 1954,
+   "note": "dates connues par ailleurs, mort 1954 donnée par la page",
+   "script": 75
+  },
+  {
+   "name": "Ragnhild de Norvège",
+   "b": 1931,
+   "d": 2012,
+   "note": "dates connues par ailleurs",
+   "script": 75
+  },
+  {
+   "name": "Astrid de Norvège",
+   "b": 1932,
+   "d": null,
+   "note": "naissance connue par ailleurs",
+   "script": 75
+  },
+  {
+   "name": "Sonja Haraldsen",
+   "b": 1937,
+   "d": null,
+   "note": "naissance connue par ailleurs",
+   "script": 75
+  },
+  {
+   "name": "Märtha Louise de Norvège",
+   "b": 1971,
+   "d": null,
+   "note": "naissance connue par ailleurs",
+   "script": 75
+  },
+  {
+   "name": "Ari Behn",
+   "b": 1972,
+   "d": 2019,
+   "note": "dates connues par ailleurs",
+   "script": 75
+  },
+  {
+   "name": "Mette-Marit Tjessem Høiby",
+   "b": 1973,
+   "d": null,
+   "note": "naissance connue par ailleurs",
+   "script": 75
   }
  ],
  "pins": [
@@ -43298,6 +44746,18 @@
   ],
   [
    "a78782ce-e7b5-5890-8054-724f647b945a",
+   "SE_BER"
+  ],
+  [
+   "cd8097f9-93f5-56d5-98f8-f8f8d1e42142",
+   "NO_KIN"
+  ],
+  [
+   "60951bb4-a91b-5eec-9742-f5b8853ef03d",
+   "NO_KIN"
+  ],
+  [
+   "3196cf28-1860-57d8-a395-998bc6a9fe7a",
    "SE_BER"
   ]
  ],
