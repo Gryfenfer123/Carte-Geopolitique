@@ -1,0 +1,20 @@
+/* Dialogue « Frises de ce point » (src/friseMulti.ts). Même aspect que les autres
+   boîtes de frise (#tl-fiches-box dans style.css) ; les classes .tl-field, .tl-note,
+   .tl-error, .tl-actions, .tl-result, .tl-fiche-row viennent de style.css. */
+#tl-multi-overlay {
+  display: none; position: fixed; inset: 0; z-index: 10600; background: rgba(0,0,0,0.45);
+  align-items: center; justify-content: center; padding: 16px;
+}
+#tl-multi-overlay.open { display: flex; }
+#tl-multi-box {
+  width: min(520px, 100%); max-height: 100%; overflow: auto; box-sizing: border-box;
+  background: var(--surface); color: var(--text); border: 1px solid var(--surface-border);
+  border-radius: 10px; padding: 18px 20px; font-family: "IBM Plex Sans", sans-serif;
+}
+#tl-multi-box h3 { margin: 0 0 6px; font-family: "Fraunces", serif; font-size: 19px; }
+#tl-multi-box .tl-results { display: flex; flex-direction: column; }
+#tl-multi-box .tl-field input[type="text"] {
+  font: inherit; font-size: 13.5px; padding: 6px 8px; box-sizing: border-box;
+  border: 1px solid var(--surface-border); border-radius: 6px; background: var(--surface); color: var(--text);
+}
+.tl-multi-tag { color: var(--text-dim); font-size: 12px; }

@@ -54,12 +54,13 @@ Pas de « fiche générale » obligatoire (décision de ne pas en créer pour l'
 - Navigation en fil d'Ariane : conservée pour l'instant (comme le reste de l'appli), à revoir plus tard si trop lourde.
 - Modification : **réservée aux administrateurs**, comme le reste de l'appli (`is_admin()` côté base ; en mode lecture l'édition est désactivée). schema_v27 avait mis « tout compte connecté » par erreur ; corrigé par schema_v28.
 
-## 7bis. Rendu visuel des événements (croquis de Martin, 2026-10-21) — pour l'étape 3
+## 7bis. Rendu visuel des événements (croquis de Martin, 2026-10-21)
 
 - Bande horizontale entre deux lignes, avec le nom de la période. Des dates de la bande part une **tige verticale** vers le bas (ou vers le haut, option par événement).
 - Plusieurs événements à la même date : ils partent en **branches empilées**, chacun avec sa couleur (les segments de tige prennent la couleur de la branche), le texte au bout de la branche.
 - Les événements partent toujours de la bande centrale de la frise.
-- À trancher avec Martin : la couleur a-t-elle un sens (type d'événement) ou est-elle libre ? ordre des événements à date identique ? que montre l'étiquette ?
+- **Mis en œuvre** (`frise.ts`, `schema_v29` à `schema_v31`) : tiges, côté haut/bas choisi par point, branches empilées automatiquement quand deux points se gênent, hauteur de tige réglable à la main (glisser le point), durée = barre entre deux tiges.
+- **Questions du croquis tranchées par défaut le 2026-10-23, À VALIDER par Martin** : la couleur est celle de la **catégorie** du point (table `timeline_categories`, modifiable par le bouton « Catégories »), pas une couleur libre ; à date identique les points sont rangés de gauche à droite par date puis empilés par niveaux ; l'étiquette montre le **titre** seul, les dates apparaissent au survol et dans la carte ouverte au clic.
 
 ## 8. Modèle technique et avancement
 
@@ -72,14 +73,23 @@ Pas de « fiche générale » obligatoire (décision de ne pas en créer pour l'
 Plan :
 1. Migration SQL v27 (exécutée par Martin) + v28 (droits admin seul, **à exécuter par Martin**).
 2. **FAIT (poussé le 2026-10-21)** : frises et périodes — création (nouvelle sous-catégorie ou sous-catégorie existante), modification, retrait, bornes partagées, trous de transition, sous-frises, fil d'Ariane, bornes de la période affichées en sous-frise. Code : `src/friseModel.ts` (logique pure, testée) + `src/frise.ts`.
-3. Événements : relier/créer une fiche, date, navigation dans les deux sens, accès aux fiches des autres pays ; rendu en tiges et branches colorées (voir 7bis).
-4. Placements multiples, remontée sur la frise parente, placement automatique des fiches créées à la main.
+3. **FAIT** — Événements : relier/créer une fiche, date, navigation dans les deux sens, accès aux fiches des autres pays ; rendu en tiges et branches colorées (voir 7bis).
+4. Placements multiples, remontée sur la frise parente, placement automatique des fiches créées à la main :
+   - **FAIT (2026-10-23)** : *placements multiples* — bouton « Frises » sur la carte d'un point : voir sur quelles frises il apparaît (et les ouvrir), l'ajouter à une autre frise (recherche par titre), le retirer d'une frise ; c'est toujours le même événement (référence). *Remontée sur la frise parente* — même dialogue : « Afficher aussi sur la frise parente » (un placement de plus sur la frise parente). Fiche ouverte depuis un point présent sur plusieurs frises : « Voir sur la frise » propose la liste. Code : `src/friseEvents.ts` (base), `src/friseMulti.ts` (dialogue), `src/friseDateFields.ts`.
+   - **Aussi 2026-10-23** : une fiche créée depuis « + Point » se range désormais dans la **sous-catégorie de la période qui contient la date du point** (§4) ; avant, elle allait dans le dossier où la frise est posée.
+   - À FAIRE : « placer sur une frise » depuis une fiche existante, placement automatique des fiches créées à la main.
 
-> Note de maintenance (2026-10-22) : les migrations v29 à v31 (couleurs des périodes,
-> transitions cliquables, hauteur de tige réglée à la main, catégories de points avec
-> durée et sous-frise) ont été ajoutées après la rédaction du plan ci-dessus : l'étape 3
-> est donc au moins partiellement entamée dans le code. L'état exact de chaque étape
-> reste à confirmer avec Martin avant de la déclarer terminée. Ne pas se fier à ce plan
-> comme tableau d'avancement.
-> Aucun test automatisé n'existe dans le dépôt à ce jour, malgré la mention « testée »
-> ci-dessus : voir `docs/ARCHITECTURE.md`, section « Points faibles connus ».
+> Note (2026-10-23) : l'avancement ci-dessus a été relu dans le code ; il est à jour à cette date.
+> Aucune migration n'a été nécessaire pour les placements multiples : `timeline_placements`
+> (clé primaire = frise + événement, droits administrateur seul depuis `schema_v28`/`v29`)
+> les permettait déjà.
+> Aucun test automatisé n'existe dans le dépôt à ce jour : voir `docs/ARCHITECTURE.md`,
+> section « Points faibles connus ».
+
+## 9. Choix faits en autonomie (2026-10-23), à valider par Martin
+
+- « Retirer » un point d'une frise est refusé s'il n'est que sur cette frise (il faut alors « Modifier » puis « Supprimer le point », qui supprime l'événement, jamais la fiche).
+- Ajouter un point à une autre frise est refusé si sa date (ou sa fin) tombe hors de cette frise ; les frises sans période propre (sous-frise d'un événement avec durée) ne peuvent pas être contrôlées : l'ajout passe, le point n'y est visible que si sa date est dans la frise.
+- Le point ajouté à une autre frise reprend le côté (haut/bas), la catégorie et la couleur qu'il a sur la frise d'où l'on vient.
+- La remontée proposée dans le dialogue concerne la frise **parente directe**. Pour une frise plus haut (grand-parent), utiliser la recherche « Chercher une frise par titre ».
+- Pas d'indicateur visuel, sur la frise parente, des points venus d'une sous-frise (non demandé).

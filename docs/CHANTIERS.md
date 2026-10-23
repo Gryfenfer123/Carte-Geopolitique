@@ -8,7 +8,7 @@ pas dessus, **chaque conversation a UN chantier** et ne touche qu'à ce qui lui 
 | Chantier | Contenu | Code (`src/`) | Migrations | Journal du chantier |
 |---|---|---|---|---|
 | `arbres` | Arbres généalogiques : fonctionnalité + remplissage des dynasties + photos | `genealogy*.ts` | `supabase/arbres/arbres_vN.sql` (continue après v60 → **arbres_v61**) | [`chantiers/arbres.md`](chantiers/arbres.md) |
-| `frises` | Frises chronologiques | `frise.ts`, `friseModel.ts` | `supabase/frises/frises_vN.sql` (commence à **frises_v1**) | [`chantiers/frises.md`](chantiers/frises.md) |
+| `frises` | Frises chronologiques | `frise*.ts`, `friseMulti.css` | `supabase/frises/frises_vN.sql` (commence à **frises_v1**) | [`chantiers/frises.md`](chantiers/frises.md) |
 | `carte` | Carte, fonds, calques (ports, câbles…), POI, exports, comparateur | `geobridge.ts`, `poi.ts`, `compareExport.ts` | `supabase/carte/carte_vN.sql` (**carte_v1**) | à créer à la 1re session |
 | `historique` | Carte historique (vue par époque, curseur, territoires historiques → fiches) | `historicalMap.ts` (+ nouveaux modules `historical*.ts`) | `supabase/historique/historique_vN.sql` (**historique_v1** ; la table v20 `schema_v20.sql` lui appartient) | [`chantiers/historique.md`](chantiers/historique.md) |
 | `acces` | Comptes, **rôles** (lecture seule / contributeur / éditeur / administrateur), panneau d'administration, règles d'accès en base (RLS) ; plus tard : sources, licences, ouverture au public | nouveaux modules `access*.ts` / `admin*.ts` (+ `isAdmin()` dans `dossier.ts`, à remplacer par un contrôle de rôle) | `supabase/acces/acces_vN.sql` (**acces_v1**) | [`chantiers/acces.md`](chantiers/acces.md) |

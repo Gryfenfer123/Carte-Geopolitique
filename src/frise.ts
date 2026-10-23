@@ -23,6 +23,8 @@
 
 import type { SupabaseClient, Session } from "@supabase/supabase-js";
 import { customConfirm } from "./dossier";
+import { fetchPlacements } from "./friseEvents";
+import { initFriseMulti } from "./friseMulti";
 import {
   computeLinearWidths,
   dateSortKey,
@@ -32,6 +34,8 @@ import {
   locateSegment,
   niceTicks,
   parseDateFields,
+  periodFromColumns,
+  segmentForDate,
   xForDecimal,
   type FriseDate,
   type Period,
@@ -91,6 +95,7 @@ type Point = {
   stem: number | null; // hauteur de la tige en px, réglée à la main (null = automatique)
   fiches: PointFiche[];
   subFriseId: string | null; // frise ouverte en cliquant sur un événement avec durée
+  friseCount: number; // nombre de frises où ce point apparaît (placements multiples)
   stemEl?: HTMLElement; // élément de tige affiché (rendu courant)
 };
 
@@ -106,17 +111,7 @@ function esc(s: string): string {
 }
 
 function rowToPeriod(r: SectionRow): Period {
-  const start: FriseDate = {
-    year: r.period_start_year ?? 0,
-    month: r.period_start_month,
-    day: r.period_start_day,
-    circa: !!r.period_start_circa,
-  };
-  const end: FriseDate | null =
-    r.period_end_year != null
-      ? { year: r.period_end_year, month: r.period_end_month, day: r.period_end_day, circa: !!r.period_end_circa }
-      : null;
-  return { id: r.id, name: r.title, start, end, color: r.period_color };
+  return periodFromColumns(r);
 }
 
 function dateColumns(prefix: "period_start" | "period_end", d: FriseDate | null): Record<string, unknown> {
@@ -316,7 +311,7 @@ export function initTimelineSystem(deps: {
           </div>
         </div>
         <div class="tl-field" id="tl-point-fiche-block">Fiche
-          <label class="tl-inline"><input type="radio" name="tl-fiche-mode" id="tl-fiche-new" checked> Cr&eacute;er une fiche vide dans le dossier de cette frise</label>
+          <label class="tl-inline"><input type="radio" name="tl-fiche-mode" id="tl-fiche-new" checked> Cr&eacute;er une fiche vide (rang&eacute;e dans la p&eacute;riode du point)</label>
           <label class="tl-inline"><input type="radio" name="tl-fiche-mode" id="tl-fiche-link"> Relier une fiche existante</label>
           <div id="tl-fiche-search-block" style="display:none;">
             <input type="text" id="tl-fiche-search" placeholder="Chercher une fiche par titre…" autocomplete="off">
@@ -472,6 +467,10 @@ export function initTimelineSystem(deps: {
         entryInfo.set(e.id, { id: e.id, title: e.title, ownerType: e.owner_type, ownerId: e.owner_id, categoryId: e.category_id, photo: e.photo_url });
       }
     }
+    // Nombre de frises où apparaît chaque point (un même événement peut être placé sur plusieurs frises).
+    const { data: allPl } = await supabase.from("timeline_placements").select("event_id").in("event_id", ids);
+    const friseCounts = new Map<string, number>();
+    for (const r of (allPl as { event_id: string }[] | null) ?? []) friseCounts.set(r.event_id, (friseCounts.get(r.event_id) ?? 0) + 1);
     const out: Point[] = [];
     for (const e of (ev as EventRow[] | null) ?? []) {
       const p = placements.find((x) => x.event_id === e.id);
@@ -490,6 +489,7 @@ export function initTimelineSystem(deps: {
         stem: p?.stem_length ?? null,
         fiches: links.filter((l) => l.event_id === e.id).map((l) => entryInfo.get(l.entry_id)).filter((x): x is PointFiche => !!x),
         subFriseId: e.sub_frise_entry_id,
+        friseCount: friseCounts.get(e.id) ?? 1,
       });
     }
     return out;
@@ -1792,8 +1792,15 @@ export function initTimelineSystem(deps: {
           if (other) return showPointError("Cette fiche est déjà reliée à un autre événement.");
           entryId = chosenFiche.id;
         } else {
-          // La fiche va dans le dossier où se trouve CETTE frise (pas dans celui d'une période) :
-          // une sous-frise est posée dans le dossier de sa période, ses fiches y sont donc rangées.
+          // Spec §4 : la fiche se range dans la sous-catégorie de la PÉRIODE qui contient la date
+          // du point. Sans période propre (sous-frise sans découpage), elle va dans le dossier où
+          // se trouve cette frise : une sous-frise est posée dans le dossier de sa période.
+          const seg = periods.length ? segmentForDate(periods, d.date) : null;
+          const periodRow = seg
+            ? seg.kind === "period"
+              ? periodRows.find((r) => r.id === seg.period.id)
+              : transitionRows.find((r) => r.transition_after_id === seg.afterPeriodId)
+            : undefined;
           const fiche = await supabase
             .from("dossier_entries")
             .insert({
@@ -1801,8 +1808,8 @@ export function initTimelineSystem(deps: {
               owner_id: frise.owner_id,
               type: "text",
               title,
-              category_id: frise.category_id,
-              section_id: frise.section_id,
+              category_id: periodRow ? periodRow.category_id : frise.category_id,
+              section_id: periodRow ? periodRow.id : frise.section_id,
               tags: [],
               sources: [],
               status: "published",
@@ -1981,6 +1988,23 @@ export function initTimelineSystem(deps: {
         void openFichesDialog(p);
       });
       row.appendChild(more);
+    }
+    if (p.friseCount > 1 || isAdmin()) {
+      // Placements multiples et remontée sur la frise parente (src/friseMulti.ts).
+      const frises = document.createElement("button");
+      frises.type = "button";
+      frises.className = "btn-small";
+      frises.textContent = p.friseCount > 1 ? "Frises (" + p.friseCount + ")" : "Frises";
+      frises.title = "Voir, ajouter ou retirer les frises où apparaît ce point";
+      frises.addEventListener("click", () => {
+        closePointCard();
+        void multi.openForEvent({
+          eventId: p.eventId,
+          currentFriseId: frise ? frise.id : null,
+          parentFriseId: ancestors.length ? ancestors[ancestors.length - 1].id : null,
+        });
+      });
+      row.appendChild(frises);
     }
     if (isAdmin() && p.stem != null) {
       const auto = document.createElement("button");
@@ -2451,14 +2475,40 @@ export function initTimelineSystem(deps: {
   async function openForFiche(entryId: string) {
     const target = await friseOfFiche(entryId);
     if (!target) return;
+    // Point placé sur plusieurs frises : on laisse choisir laquelle ouvrir.
+    if ((await fetchPlacements(supabase, target.eventId)).length > 1) {
+      await multi.openForEvent({ eventId: target.eventId });
+      return;
+    }
     await openFromDossier(target.friseId);
     const pt = points.find((p) => p.eventId === target.eventId);
     if (pt) setTimeout(() => focusPoint(pt), 80);
   }
 
+  // Ouvre une frise et met un point en évidence (depuis le dialogue des placements).
+  async function showFriseAt(friseId: string, eventId: string) {
+    if ($("timeline-view").classList.contains("open")) await goTo(friseId);
+    else await openFromDossier(friseId);
+    const pt = points.find((p) => p.eventId === eventId);
+    if (pt) setTimeout(() => focusPoint(pt), 80);
+  }
+  const multi = initFriseMulti({
+    supabase,
+    getSession: deps.getSession,
+    isAdmin,
+    getOwnerLabel: deps.getOwnerLabel,
+    showBanner: deps.showBanner,
+    openFrise: showFriseAt,
+    onChanged: async () => {
+      if (frise && $("timeline-view").classList.contains("open")) await reload();
+    },
+  });
+
   return {
     openForEntry: openFromDossier,
     openForFiche,
+    // « Placer sur une frise » depuis une fiche (dossier.ts) : placements multiples.
+    placeFiche: (entryId: string, title: string | null) => multi.openForFiche({ entryId, title }),
     isFicheOnFrise: async (entryId: string) => (await friseOfFiche(entryId)) !== null,
     closeView,
   };

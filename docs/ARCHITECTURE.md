@@ -66,7 +66,8 @@ périmé : des copies à la racine étaient ignorées par le build).
 | `encyclopedie.ts` | Encyclopédie (notions), semis initial | 95 |
 | `genealogy.ts` / `genealogyLayers.ts` / `genealogyLod.ts` | Arbres généalogiques interactifs ; mise en page en couches par dates (bouton « Organiser par dates ») ; niveaux de détail selon le zoom ; `genealogyBus.ts` = tracé des traits parent→enfant en peigne ; `genealogyLayersWorker.ts` = calcul en thread séparé. `genealogyLayout.ts` = ancienne mise en page (encore utilisée pour les dates `yearToY` et le sexe probable) | 2 700 / 380 / 20 |
 | `genealogyRouting.ts` | Tracé des liens : lignes brisées qui contournent les cartes (logique pure) | ~150 |
-| `frise.ts` / `friseModel.ts` | Frises chronologiques (interface) / logique pure (dates, périodes, largeurs) | 2 465 / 267 |
+| `frise.ts` / `friseModel.ts` | Frises chronologiques (interface) / logique pure (dates, périodes, largeurs) | 2 500 / 300 |
+| `friseEvents.ts` / `friseMulti.ts` / `friseDateFields.ts` | Frises : accès à la base pour les événements et leurs placements (sans DOM) / dialogue « Frises de ce point » (placements multiples, remontée sur la frise parente, placer une fiche existante sur une frise) / bloc de saisie d'une date | 230 / 280 / 70 |
 | `historicalMap.ts` | Carte historique par époque (OpenHistoricalMap) | 310 |
 | `poi.ts` | Points d'intérêt posés sur la carte | 459 |
 | `compareExport.ts` | Comparateur de pays, export PNG de la carte, export JSON complet | 466 |

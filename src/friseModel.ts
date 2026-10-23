@@ -31,6 +31,40 @@ export type Period = {
   color: string | null; // couleur d'affichage (#rrggbb) ou null
 };
 
+/**
+ * Colonnes d'une sous-catégorie (dossier_sections) qui décrivent une période.
+ * Une ligne de la base qui a ces colonnes (comme SectionRow dans frise.ts)
+ * peut être passée telle quelle à periodFromColumns.
+ */
+export type PeriodColumns = {
+  id: string;
+  title: string;
+  period_start_year: number | null;
+  period_start_month: number | null;
+  period_start_day: number | null;
+  period_start_circa: boolean | null;
+  period_end_year: number | null;
+  period_end_month: number | null;
+  period_end_day: number | null;
+  period_end_circa: boolean | null;
+  period_color: string | null;
+};
+
+/** Période décrite par une ligne de la base (début obligatoire, fin facultative). */
+export function periodFromColumns(r: PeriodColumns): Period {
+  const start: FriseDate = {
+    year: r.period_start_year ?? 0,
+    month: r.period_start_month,
+    day: r.period_start_day,
+    circa: !!r.period_start_circa,
+  };
+  const end: FriseDate | null =
+    r.period_end_year != null
+      ? { year: r.period_end_year, month: r.period_end_month, day: r.period_end_day, circa: !!r.period_end_circa }
+      : null;
+  return { id: r.id, name: r.title, start, end, color: r.period_color };
+}
+
 export type Segment =
   | {
       kind: "period";
@@ -181,6 +215,19 @@ export function locateSegment(dec: number, segments: Segment[]): number {
     if (dec >= segments[i].startDec && (dec < segments[i].endDec || (last && dec <= segments[i].endDec))) return i;
   }
   return -1;
+}
+
+/**
+ * Segment (période ou trou de transition) qui contient une date, ou null si la
+ * date est en dehors de la frise (ou si la frise n'a aucune période).
+ * Sert à ranger automatiquement une fiche dans la bonne période, et à refuser
+ * de poser un point hors des bornes d'une frise.
+ */
+export function segmentForDate(periods: Period[], date: FriseDate, openEndYear: number = currentYear()): Segment | null {
+  if (!periods.length) return null;
+  const { segments } = layoutPeriods(periods, openEndYear);
+  const i = locateSegment(dateToDecimal(date), segments);
+  return i >= 0 ? segments[i] : null;
 }
 
 /**
