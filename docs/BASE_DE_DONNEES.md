@@ -112,4 +112,5 @@ RLS**. Règles :
 | v38 | Données : branche ernestine des Wettin (29 membres, épouses créées dans Wittelsbach / Welf / Glücksbourg) — à exécuter une seule fois |
 | v39 | Données : Pologne — arbres Piast, Anjou-Hongrie, Báthory, Leszczyński, Poniatowski (créés) + Jagellon, Vasa, Wiśniowiecki, Sobieski (complétés) ; épouses créées dans Přemyslides / Habsbourg / Saliens / Wittelsbach / Stuart — à exécuter une seule fois, après v38 |
 | v40 | Données : Tchéquie — Přemyslides complétés (épouses, frères, fils), arbres « Jagellon » (Bohême-Hongrie) et « Poděbrady » créés — à exécuter après v39 |
+| v41 | Données : Hongrie — arbres Árpád, Anjou-Hongrie, Hunyadi, Zápolya (créés) ; épouses créées dans Ottoniens / Capétiens / Barcelone / Habsbourg / Luxembourg / Piast / Wittelsbach ; Adélaïde et Constance de Hongrie, sainte Kinga et Barbara Zápolya rattachées à leur vrai arbre — à exécuter après v40 |
 | `data_owid_load.sql` + `owid_chunks/` | Chargement des données d'indicateurs (rejouable, upserts) — à exécuter après v1 à v7 |
