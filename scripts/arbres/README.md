@@ -18,14 +18,21 @@ contenu : [`docs/chantiers/arbres.md`](../../docs/chantiers/arbres.md).
   déjà leurs codes (un second passage échoue sur « code en double », exprès).
 - `outils/` — `base_test.sh` (démarre une base PostgreSQL de test), `tester.sh N` (la reconstruit et applique v39→vN),
   `check.py` (contrôles de cohérence), `render*.py` + `shot.py` (images d'un arbre pour relecture), `livrer.sh`
-  (doc + contrôles + commit + push), `layout_run.mjs` (positions initiales, utilise `genealogyLayout.js`).
+  (doc + contrôles + commit + push), `layout_run.mjs` (positions : par défaut la mise en page « par dates » de l'appli,
+  `src/genealogyLayers.ts` compilé à la volée avec rolldown ; `LAYOUT=old` pour l'ancienne), `chercher.py` (retrouver un membre
+  déjà en base : `python3 scripts/arbres/outils/chercher.py "regex" ANNÉE TOL PAYS`), `doublons.py` (cherche les doublons possibles
+  pour tous les nouveaux membres d'un `gen_*.py`, sans rien écrire).
 - `mise-en-page-tests/` — bancs d'essai de la mise en page (voir plus bas).
 
 ## Faire un nouvel arbre (déroulé)
 1. `git pull` ; numéro suivant du chantier = plus grand `arbres_vN` + 1 (pousser un fichier d'en-tête pour le réserver).
 2. Copier un `pays/gen_*.py` proche, `g = Gen(N, "Pays — dynastie")`, décrire les membres (sources : pages Wikipédia, jamais
    de valeur inventée ; date inconnue = vide + `dateflags`).
-3. `python3 scripts/arbres/pays/gen_xx.py` → écrit la migration et met à jour le registre.
+3. `python3 scripts/arbres/outils/doublons.py scripts/arbres/pays/gen_xx.py` (aucun doublon ?), puis
+   `python3 scripts/arbres/pays/gen_xx.py` → écrit la migration et met à jour le registre (si on relance après une erreur :
+   `git checkout scripts/arbres/data/registry.json` d'abord). Outils utiles dans un script : `g.reposition = {'CLÉ'}` (remet tout l'arbre en
+   ordre), `g.pin(X(..), 'CLÉ')` (affiche un membre d'un autre arbre dans celui-ci), `g.movex(X(..), 'CLÉ')` (déplace un membre existant),
+   `g.xsetdates(X(..), naissance, mort)` (complète des dates vides, n'écrase jamais).
 4. `bash scripts/arbres/outils/base_test.sh && bash scripts/arbres/outils/tester.sh N` pour l'essayer sur une base de test ;
    `python3 scripts/arbres/outils/check.py` (une douzaine de problèmes connus sont acceptés).
 5. `bash scripts/arbres/outils/livrer.sh N "ligne de doc" "titre" "pourquoi"`.

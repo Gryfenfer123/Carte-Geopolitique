@@ -2,6 +2,8 @@
 
 ## Dernières nouvelles (la plus récente en haut)
 
+- 2026-10-23 — arbres_v65 livrée (Habsbourg : branche de Toscane, 2 isolées reliées, parents de Marie-Anne de Bavière et Jeanne-Sophie, dates d'Éléonore de Gonzague/d'Autriche ; Habsbourg et Habsbourg-Lorraine remis en ordre). Prochaine étape : Luxembourg, Hohenstaufen, Ottoniens, Saliens, Carolingiens.
+
 - 2026-10-23 — arbres_v64 livrée (Welf : +54 membres, 1 seul bloc relié ; de Brunswick-Lunebourg à la maison de Hanovre actuelle, Wolfenbüttel-Bevern). Prochaine étape : Habsbourg.
 
 - 2026-10-23 — arbres_v63 livrée (Hohenzollern : +20 membres ; parents de Marie de Brandebourg-Kulmbach, Madeleine-Sibylle, Christiane-Éberhardine, Marie de Prusse ; empereur Guillaume II jusqu'au chef actuel de la maison). Prochaine étape : Welf.
@@ -13,7 +15,7 @@
 
 Code : `src/genealogy.ts`, `genealogyLayers.ts`, `genealogyBus.ts`, `genealogyLod.ts/.css`, `genealogyLayersWorker.ts`,
 `genealogyLayout.ts`, `genealogyRouting.ts`. Outils de remplissage : [`scripts/arbres/`](../../scripts/arbres/README.md).
-Prochaine migration : **arbres_v65** (`supabase/arbres/arbres_v65.sql`) — générateur : `Gen(65, "…")`.  (v64 livrée, à exécuter par Martin si ce n'est pas déjà fait.)
+Prochaine migration : **arbres_v66** (`supabase/arbres/arbres_v66.sql`) — générateur : `Gen(66, "…")`.  (v65 livrée, à exécuter par Martin si ce n'est pas déjà fait.)
 
 ## Règles de contenu (décidées par Martin — ne pas rouvrir)
 - Un pays n'a que les dynasties qui ont **régné sur lui**. Dynastie étrangère : branche principale dans son pays

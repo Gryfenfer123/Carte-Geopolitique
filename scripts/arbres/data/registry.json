@@ -11965,10 +11965,11 @@
    "name": "Auguste-Ferdinande d'Autriche",
    "b": 1825,
    "d": 1864,
-   "tree": "DE_HAB",
+   "tree": "AT_HL",
    "title": "Princesse de Bavière",
    "g": "f",
-   "script": 61
+   "script": 61,
+   "dyn": "Habsbourg-Lorraine (Toscane)"
   },
   "wi.leopold_b": {
    "id": "f0a42602-4bbb-5531-8d44-dcb02bfea873",
@@ -13289,6 +13290,96 @@
    "title": "Chef actuel de la maison de Hanovre",
    "g": "h",
    "script": 64
+  },
+  "ha.ferdinand3": {
+   "id": "f8857329-4833-5e6f-992b-6c7e9e475ee3",
+   "name": "Ferdinand III de Toscane",
+   "b": 1769,
+   "d": 1824,
+   "tree": "AT_HL",
+   "title": "Grand-duc de Toscane",
+   "g": "h",
+   "script": 65
+  },
+  "ha.luisa_naples": {
+   "id": "05377808-48b5-567a-840e-c5dc2c3ad987",
+   "name": "Louise de Naples et de Sicile",
+   "b": 1773,
+   "d": 1802,
+   "tree": "IT_BS",
+   "title": "Grande-duchesse de Toscane",
+   "g": "f",
+   "script": 65
+  },
+  "ha.maria_ferdinanda": {
+   "id": "df4e7894-71f6-57a8-8615-7b3790d95837",
+   "name": "Marie-Ferdinande de Saxe",
+   "b": 1796,
+   "d": 1865,
+   "tree": "DE_WET",
+   "title": "Grande-duchesse de Toscane (seconde épouse de Ferdinand III)",
+   "g": "f",
+   "script": 65
+  },
+  "ha.leopold2_tos": {
+   "id": "8876b15b-5d3c-5198-8e41-c6045ba44fdd",
+   "name": "Léopold II de Toscane",
+   "b": 1797,
+   "d": 1870,
+   "tree": "AT_HL",
+   "title": "Grand-duc de Toscane",
+   "g": "h",
+   "script": 65
+  },
+  "ha.maria_anna_sax": {
+   "id": "0100d8b8-4909-583d-863a-b64d2eb075d9",
+   "name": "Marie-Anne de Saxe (grande-duchesse de Toscane)",
+   "b": null,
+   "d": 1832,
+   "tree": "DE_WET",
+   "title": "Grande-duchesse de Toscane",
+   "g": "f",
+   "script": 65
+  },
+  "ha.maria_antonia_ds": {
+   "id": "bc82232b-8f85-5d71-8d0f-1c209cc9af67",
+   "name": "Marie-Antonia des Deux-Siciles",
+   "b": null,
+   "d": null,
+   "tree": "IT_BS",
+   "title": "Grande-duchesse de Toscane (seconde épouse de Léopold II)",
+   "g": "f",
+   "script": 65
+  },
+  "ha.ferdinand4": {
+   "id": "2667e6ba-567e-5c4f-b5d4-a265c7325efd",
+   "name": "Ferdinand IV de Toscane",
+   "b": 1835,
+   "d": 1908,
+   "tree": "AT_HL",
+   "title": "Dernier grand-duc de Toscane",
+   "g": "h",
+   "script": 65
+  },
+  "ha.anne_saxe": {
+   "id": "07c0cfa1-e96b-51e9-8754-1fb4721f79e1",
+   "name": "Anne de Saxe (grande-duchesse de Toscane)",
+   "b": 1836,
+   "d": 1859,
+   "tree": "DE_WET",
+   "title": "Grande-duchesse de Toscane (première épouse de Ferdinand IV)",
+   "g": "f",
+   "script": 65
+  },
+  "ha.alice_parme": {
+   "id": "e16532e2-2991-55f6-a2ec-995da6554585",
+   "name": "Alice de Bourbon-Parme",
+   "b": 1849,
+   "d": 1935,
+   "tree": "IT_PAR",
+   "title": "Grande-duchesse de Toscane (seconde épouse de Ferdinand IV)",
+   "g": "f",
+   "script": 65
   }
  },
  "trees": {
@@ -16663,6 +16754,20 @@
    "tree": "DE_WEL",
    "reason": "Maison de Mecklembourg-Strelitz : sans arbre",
    "script": 64
+  },
+  {
+   "name": "Marie-Antonia des Deux-Siciles",
+   "b": null,
+   "tree": "IT_BS",
+   "reason": "Ses parents (François Ier des Deux-Siciles et Marie-Isabelle d'Espagne) sont à ajouter avec l'arbre des Deux-Siciles",
+   "script": 65
+  },
+  {
+   "name": "Alice de Bourbon-Parme",
+   "b": 1849,
+   "tree": "IT_PAR",
+   "reason": "Son père (Charles III de Parme) est à ajouter avec l'arbre de Parme",
+   "script": 65
   }
  ],
  "scripts": {
@@ -16883,6 +16988,12 @@
    "label": "Allemagne — Welf : de Brunswick-Lunebourg à Hanovre, Wolfenbüttel-Bevern, maison de Hanovre actuelle",
    "members": 54,
    "rels": 123,
+   "trees": []
+  },
+  "65": {
+   "label": "Allemagne — Habsbourg : branche de Toscane, liens avec les Wittelsbach, dates manquantes",
+   "members": 9,
+   "rels": 28,
    "trees": []
   }
  },
@@ -27991,6 +28102,146 @@
    "9ac9fd09-fbe9-51d7-be42-83965d0c16e9",
    "d187a81f-eea1-5173-9535-3b503da92d59",
    "spouse"
+  ],
+  [
+   "5c2c9042-b037-4661-aa34-ab686445e1a5",
+   "f8857329-4833-5e6f-992b-6c7e9e475ee3",
+   "parent"
+  ],
+  [
+   "2f5ade1a-62d5-4464-bde0-2a1139bb37ca",
+   "f8857329-4833-5e6f-992b-6c7e9e475ee3",
+   "parent"
+  ],
+  [
+   "8b9e281c-22bc-43a0-b649-acb0e1f08c46",
+   "05377808-48b5-567a-840e-c5dc2c3ad987",
+   "parent"
+  ],
+  [
+   "4ec820bc-326d-4bdb-8387-58ab1c819d07",
+   "05377808-48b5-567a-840e-c5dc2c3ad987",
+   "parent"
+  ],
+  [
+   "f8857329-4833-5e6f-992b-6c7e9e475ee3",
+   "05377808-48b5-567a-840e-c5dc2c3ad987",
+   "spouse"
+  ],
+  [
+   "7d231c26-f50a-44cc-854d-9fd3dd9ef8fc",
+   "df4e7894-71f6-57a8-8615-7b3790d95837",
+   "parent"
+  ],
+  [
+   "be02f650-8f01-4dae-895c-6d140c9f7249",
+   "df4e7894-71f6-57a8-8615-7b3790d95837",
+   "parent"
+  ],
+  [
+   "f8857329-4833-5e6f-992b-6c7e9e475ee3",
+   "df4e7894-71f6-57a8-8615-7b3790d95837",
+   "spouse"
+  ],
+  [
+   "f8857329-4833-5e6f-992b-6c7e9e475ee3",
+   "8876b15b-5d3c-5198-8e41-c6045ba44fdd",
+   "parent"
+  ],
+  [
+   "05377808-48b5-567a-840e-c5dc2c3ad987",
+   "8876b15b-5d3c-5198-8e41-c6045ba44fdd",
+   "parent"
+  ],
+  [
+   "7d231c26-f50a-44cc-854d-9fd3dd9ef8fc",
+   "0100d8b8-4909-583d-863a-b64d2eb075d9",
+   "parent"
+  ],
+  [
+   "be02f650-8f01-4dae-895c-6d140c9f7249",
+   "0100d8b8-4909-583d-863a-b64d2eb075d9",
+   "parent"
+  ],
+  [
+   "8876b15b-5d3c-5198-8e41-c6045ba44fdd",
+   "0100d8b8-4909-583d-863a-b64d2eb075d9",
+   "spouse"
+  ],
+  [
+   "8876b15b-5d3c-5198-8e41-c6045ba44fdd",
+   "bc82232b-8f85-5d71-8d0f-1c209cc9af67",
+   "spouse"
+  ],
+  [
+   "8876b15b-5d3c-5198-8e41-c6045ba44fdd",
+   "bce84c9a-7509-5c43-98cb-1e520fb30156",
+   "parent"
+  ],
+  [
+   "0100d8b8-4909-583d-863a-b64d2eb075d9",
+   "bce84c9a-7509-5c43-98cb-1e520fb30156",
+   "parent"
+  ],
+  [
+   "8876b15b-5d3c-5198-8e41-c6045ba44fdd",
+   "2667e6ba-567e-5c4f-b5d4-a265c7325efd",
+   "parent"
+  ],
+  [
+   "bc82232b-8f85-5d71-8d0f-1c209cc9af67",
+   "2667e6ba-567e-5c4f-b5d4-a265c7325efd",
+   "parent"
+  ],
+  [
+   "261ab7a8-14f8-43d6-a973-e945af81c9ce",
+   "07c0cfa1-e96b-51e9-8754-1fb4721f79e1",
+   "parent"
+  ],
+  [
+   "2b873f07-8120-4943-a7b3-c1b7c007eacd",
+   "07c0cfa1-e96b-51e9-8754-1fb4721f79e1",
+   "parent"
+  ],
+  [
+   "2667e6ba-567e-5c4f-b5d4-a265c7325efd",
+   "07c0cfa1-e96b-51e9-8754-1fb4721f79e1",
+   "spouse"
+  ],
+  [
+   "2667e6ba-567e-5c4f-b5d4-a265c7325efd",
+   "e16532e2-2991-55f6-a2ec-995da6554585",
+   "spouse"
+  ],
+  [
+   "2667e6ba-567e-5c4f-b5d4-a265c7325efd",
+   "7215d753-0ad3-4aba-bc9f-6dfedef9762f",
+   "parent"
+  ],
+  [
+   "e16532e2-2991-55f6-a2ec-995da6554585",
+   "7215d753-0ad3-4aba-bc9f-6dfedef9762f",
+   "parent"
+  ],
+  [
+   "e567aed2-b974-40bc-a0eb-3c2e63b5e2ec",
+   "ec4532dd-939a-4660-a9a8-9be1cbe70869",
+   "parent"
+  ],
+  [
+   "bd87f616-285b-48dd-b53b-6c12c3d1297c",
+   "ec4532dd-939a-4660-a9a8-9be1cbe70869",
+   "parent"
+  ],
+  [
+   "200c824a-5692-449f-877d-7d85bd541149",
+   "fa79eca1-6618-4a3d-88f8-2e56e685da29",
+   "parent"
+  ],
+  [
+   "142ffe90-ae9a-43e7-81f4-92b5d93b990a",
+   "fa79eca1-6618-4a3d-88f8-2e56e685da29",
+   "parent"
   ]
  ],
  "dateflags": [
@@ -33488,6 +33739,20 @@
    "d": null,
    "note": "dates non données par la page de Georges V",
    "script": 64
+  },
+  {
+   "name": "Marie-Anne de Saxe (grande-duchesse de Toscane)",
+   "b": null,
+   "d": 1832,
+   "note": "naissance non donnée par la page de Léopold II de Toscane",
+   "script": 65
+  },
+  {
+   "name": "Marie-Antonia des Deux-Siciles",
+   "b": null,
+   "d": null,
+   "note": "dates non données par la page de Léopold II de Toscane",
+   "script": 65
   }
  ],
  "pins": [
@@ -33518,6 +33783,7 @@
  ],
  "xmoved": {
   "8314f6aa-e814-4550-8acc-45371a26c6f7": "RU_RUR",
-  "5a2dc471-f11e-4d83-a861-7b5d21febeac": "AT_HL"
+  "5a2dc471-f11e-4d83-a861-7b5d21febeac": "AT_HL",
+  "7215d753-0ad3-4aba-bc9f-6dfedef9762f": "AT_HL"
  }
 }

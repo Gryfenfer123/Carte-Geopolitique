@@ -137,4 +137,5 @@ RLS**. Règles :
 | arbres_v62 | Wettin : Saxe-Weimar, Saxe-Gotha-Altenbourg, Saxe-Altenbourg, descendants de Frédéric-Auguste III, liens polonais/britanniques/belges rangés (+44 membres) ; corrige les parents de Madeleine-Catherine de Deux-Ponts |
 | arbres_v63 | Hohenzollern : Kulmbach, Bayreuth, famille de Marie de Prusse, descendants de Guillaume II jusqu'à Georges-Frédéric (+20 membres) |
 | arbres_v64 | Welf : chaîne continue d'Albert le Grand à Ernest-Auguste de Hanovre, Calenberg, Dannenberg, Wolfenbüttel-Bevern, maison de Hanovre jusqu'au chef actuel (+54 membres) |
+| arbres_v65 | Habsbourg : branche de Toscane (Ferdinand III, Léopold II, Ferdinand IV), liens Wittelsbach, dates manquantes (+9 membres, 2 membres isolés reliés) |
 | `data_owid_load.sql` + `owid_chunks/` | Chargement des données d'indicateurs (rejouable, upserts) — à exécuter après v1 à v7 |

@@ -81,6 +81,7 @@ class Gen:
         self.pins = []       # (code, tree) membres épinglés sans lien
         self.setd = []       # (code, naissance, mort) dates à corriger/compléter sur un membre déjà créé
         self.xmoves = []     # (id, tree, dynasty) membres de la base déplacés
+        self.xsetd = []      # (id, naissance, mort) dates à COMPLÉTER sur un membre déjà en base (jamais écraser une date existante)
         self.named = []      # liens vers un membre retrouvé par son nom (id non déterministe)
         self.moves = []      # (code, tree, dynasty) membres déjà créés qu'on rattache à leur vrai arbre
 
@@ -144,6 +145,13 @@ class Gen:
         assert i in MEM, xcode
         self.xmoves.append((i, tree, dyn))
         REG['xmoved'][i] = tree
+
+    def xsetdates(self, xcode, b, d):
+        """Complète la naissance / la mort d'un membre DÉJÀ en base (code X(...)) quand elles sont vides ; ne remplace jamais une date existante."""
+        i = xcode[2:]
+        assert i in MEM, xcode
+        self.xsetd.append((i, b, d))
+        Gen.FIXB[i] = b if b is not None else MEM[i][3]
 
     def setdates(self, code, b, d):
         assert code in REG['members'], code
@@ -386,6 +394,7 @@ class Gen:
         for key, t in self.trees.items():
             if not t['new'] and not self.is_append(key):
                 ids = [i for i in BYTREE.get(t['entry'], []) if REG['xmoved'].get(i, key) == key] + [v['id'] for v in REG['members'].values() if v['tree'] == key]
+                ids += [i for i, tk in REG['xmoved'].items() if tk == key and i not in ids]   # membres venus d'un autre arbre (movex d'un script précédent)
                 for i in ids:
                     if i in pos[key]:
                         x, y = pos[key][i]
@@ -399,6 +408,8 @@ class Gen:
             dsql = f", dynasty = {q(dyn)}" if dyn else ''
             o.append(f"  update public.genealogy_members set owner_id = '{e}', pos_x = {x}, pos_y = {y}{dsql} where id = '{i}' and owner_type = 'entry';")
             o.append(f"  delete from public.genealogy_foreign_states where member_id = '{i}' and owner_type = 'entry' and owner_id = '{e}';")
+        for i, b, d in self.xsetd:
+            o.append(f"  update public.genealogy_members set birth_year = coalesce(birth_year, {n(b)}), death_year = coalesce(death_year, {n(d)}) where id = '{i}';")
         for code, b, d in self.setd:
             o.append(f"  update public.genealogy_members set birth_year = {n(b)}, death_year = {n(d)} where id = '{REG['members'][code]['id']}';")
         for code, tk, dyn in self.moves:
