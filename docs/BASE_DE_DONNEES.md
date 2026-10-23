@@ -127,4 +127,5 @@ RLS**. Règles :
 | v53 | Données : Monaco — arbre Grimaldi (Honoré II → Albert II et ses enfants) — à exécuter après v52 |
 | v54 | Données : Liechtenstein — arbre Liechtenstein (Karl Ier → Hans-Adam II → Alois et ses enfants) ; Sophie en Bavière créée dans Wittelsbach, Margaretha de Luxembourg reliée — à exécuter après v53 |
 | v55 | Données : Ukraine — arbre Riourikides de Galicie-Volhynie (Mstislav II → Iouri II Boleslas) ; Agnès de Pologne, Euphémie, Siemovit, Trojden (Piast), Constance et Marie Laskarina (Árpád), André Iaroslavitch (Riourikides) créés — à exécuter après v54 |
+| v56 | Données : Chine (1/…) — arbres Zhou (roi Wen → roi Nan) et Qin (Huiwen → Ziying) ; années avant J.-C. en valeurs négatives — à exécuter après v55 |
 | `data_owid_load.sql` + `owid_chunks/` | Chargement des données d'indicateurs (rejouable, upserts) — à exécuter après v1 à v7 |
