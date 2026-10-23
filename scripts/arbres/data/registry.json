@@ -21540,6 +21540,1246 @@
    "title": "Impératrice douairière, régente, mère de Tongzhi",
    "g": "f",
    "script": 86
+  },
+  "jp.ojin": {
+   "id": "71483e16-2598-5b0c-a6d9-8db7b5e58c9b",
+   "name": "Ōjin",
+   "b": null,
+   "d": null,
+   "tree": "JP_IMP",
+   "title": "Empereur du Japon (n° 15)",
+   "g": "h",
+   "script": 87
+  },
+  "jp.nintoku": {
+   "id": "eba37784-a63d-5c0b-a901-23740c11cc1e",
+   "name": "Nintoku",
+   "b": null,
+   "d": null,
+   "tree": "JP_IMP",
+   "title": "Empereur du Japon (n° 16)",
+   "g": "h",
+   "script": 87
+  },
+  "jp.richu": {
+   "id": "0af4b732-c26e-52d4-ba9c-809daa1c1477",
+   "name": "Richū",
+   "b": null,
+   "d": null,
+   "tree": "JP_IMP",
+   "title": "Empereur du Japon (n° 17)",
+   "g": "h",
+   "script": 87
+  },
+  "jp.hanzei": {
+   "id": "d4fbac19-9c28-57cc-bf67-c7905f3fbe93",
+   "name": "Hanzei",
+   "b": null,
+   "d": null,
+   "tree": "JP_IMP",
+   "title": "Empereur du Japon (n° 18)",
+   "g": "h",
+   "script": 87
+  },
+  "jp.ingyo": {
+   "id": "9646ccee-5ca2-5887-963d-03228fa5e475",
+   "name": "Ingyō",
+   "b": null,
+   "d": null,
+   "tree": "JP_IMP",
+   "title": "Empereur du Japon (n° 19)",
+   "g": "h",
+   "script": 87
+  },
+  "jp.anko": {
+   "id": "aef0019f-e33b-56ab-8be8-f688a93fca1a",
+   "name": "Ankō",
+   "b": null,
+   "d": null,
+   "tree": "JP_IMP",
+   "title": "Empereur du Japon (n° 20)",
+   "g": "h",
+   "script": 87
+  },
+  "jp.yuryaku": {
+   "id": "8c755fd3-c287-51fa-b9b0-803c5ef40720",
+   "name": "Yūryaku",
+   "b": null,
+   "d": null,
+   "tree": "JP_IMP",
+   "title": "Empereur du Japon (n° 21)",
+   "g": "h",
+   "script": 87
+  },
+  "jp.seinei": {
+   "id": "658920f6-1701-5fd8-8786-28f32df85c82",
+   "name": "Seinei",
+   "b": null,
+   "d": null,
+   "tree": "JP_IMP",
+   "title": "Empereur du Japon (n° 22)",
+   "g": "h",
+   "script": 87
+  },
+  "jp.kenzo": {
+   "id": "04fb43b3-28a7-52b5-a791-63b657f8b755",
+   "name": "Kenzō",
+   "b": null,
+   "d": null,
+   "tree": "JP_IMP",
+   "title": "Empereur du Japon (n° 23)",
+   "g": "h",
+   "script": 87
+  },
+  "jp.ninken": {
+   "id": "fef58161-fbf5-5851-94eb-65a254743742",
+   "name": "Ninken",
+   "b": null,
+   "d": null,
+   "tree": "JP_IMP",
+   "title": "Empereur du Japon (n° 24)",
+   "g": "h",
+   "script": 87
+  },
+  "jp.buretsu": {
+   "id": "95d18171-bd3e-53f1-a84f-62286b7360e7",
+   "name": "Buretsu",
+   "b": null,
+   "d": null,
+   "tree": "JP_IMP",
+   "title": "Empereur du Japon (n° 25)",
+   "g": "h",
+   "script": 87
+  },
+  "jp.keitai": {
+   "id": "4c2d7495-6748-5529-a212-283d7215647d",
+   "name": "Keitai",
+   "b": 450,
+   "d": 531,
+   "tree": "JP_IMP",
+   "title": "Empereur du Japon (n° 26)",
+   "g": "h",
+   "script": 87
+  },
+  "jp.ankan": {
+   "id": "377985f9-52fd-51de-b226-9f78c1150a47",
+   "name": "Ankan",
+   "b": 466,
+   "d": 536,
+   "tree": "JP_IMP",
+   "title": "Empereur du Japon (n° 27)",
+   "g": "h",
+   "script": 87
+  },
+  "jp.senka": {
+   "id": "2c330219-8e84-5c36-99dd-5187c7b221b6",
+   "name": "Senka",
+   "b": 466,
+   "d": 539,
+   "tree": "JP_IMP",
+   "title": "Empereur du Japon (n° 28)",
+   "g": "h",
+   "script": 87
+  },
+  "jp.kinmei": {
+   "id": "8182b1a3-3370-5c2c-8b94-d541ba592b4f",
+   "name": "Kinmei",
+   "b": 509,
+   "d": 571,
+   "tree": "JP_IMP",
+   "title": "Empereur du Japon (n° 29)",
+   "g": "h",
+   "script": 87
+  },
+  "jp.bidatsu": {
+   "id": "8f859335-08b9-5798-b720-db33dcb1575d",
+   "name": "Bidatsu",
+   "b": 538,
+   "d": 585,
+   "tree": "JP_IMP",
+   "title": "Empereur du Japon (n° 30)",
+   "g": "h",
+   "script": 87
+  },
+  "jp.yomei": {
+   "id": "bda5aee9-453f-50ef-98a6-24d98c8e32f9",
+   "name": "Yōmei",
+   "b": null,
+   "d": 587,
+   "tree": "JP_IMP",
+   "title": "Empereur du Japon (n° 31)",
+   "g": "h",
+   "script": 87
+  },
+  "jp.sushun": {
+   "id": "55e23750-2004-5c11-90fc-79a4860b0418",
+   "name": "Sushun",
+   "b": null,
+   "d": 592,
+   "tree": "JP_IMP",
+   "title": "Empereur du Japon (n° 32)",
+   "g": "h",
+   "script": 87
+  },
+  "jp.suiko": {
+   "id": "f8db854b-1443-52a9-b784-73b8a41bc1ed",
+   "name": "Suiko",
+   "b": 554,
+   "d": 628,
+   "tree": "JP_IMP",
+   "title": "Impératrice régnante du Japon (n° 33)",
+   "g": "f",
+   "script": 87
+  },
+  "jp.jomei": {
+   "id": "6dfec382-f481-5d7f-95fd-eaf1b6e74d94",
+   "name": "Jomei",
+   "b": 593,
+   "d": 641,
+   "tree": "JP_IMP",
+   "title": "Empereur du Japon (n° 34)",
+   "g": "h",
+   "script": 87
+  },
+  "jp.kogyoku": {
+   "id": "09e18d0d-18d7-5641-824c-5db10effe687",
+   "name": "Kōgyoku / Saimei",
+   "b": 594,
+   "d": 661,
+   "tree": "JP_IMP",
+   "title": "Impératrice régnante du Japon (n° 35 et 37)",
+   "g": "f",
+   "script": 87
+  },
+  "jp.kotoku": {
+   "id": "145db2c1-a39d-5564-8d83-380282dfe9c8",
+   "name": "Kōtoku",
+   "b": 597,
+   "d": 654,
+   "tree": "JP_IMP",
+   "title": "Empereur du Japon (n° 36)",
+   "g": "h",
+   "script": 87
+  },
+  "jp.tenji": {
+   "id": "ad76d406-af57-5fba-8b3e-a47a2aa2acc0",
+   "name": "Tenji",
+   "b": 626,
+   "d": 672,
+   "tree": "JP_IMP",
+   "title": "Empereur du Japon (n° 38)",
+   "g": "h",
+   "script": 87
+  },
+  "jp.kobun": {
+   "id": "5ccaf7bf-f9cf-5fce-baf2-b515ae88116b",
+   "name": "Kōbun",
+   "b": 648,
+   "d": 672,
+   "tree": "JP_IMP",
+   "title": "Empereur du Japon (n° 39)",
+   "g": "h",
+   "script": 87
+  },
+  "jp.tenmu": {
+   "id": "70066139-80af-5d68-8ced-236c08e101c8",
+   "name": "Tenmu",
+   "b": 622,
+   "d": 686,
+   "tree": "JP_IMP",
+   "title": "Empereur du Japon (n° 40)",
+   "g": "h",
+   "script": 87
+  },
+  "jp.jito": {
+   "id": "766dcced-5d19-5651-8ec2-1259cc9e39c0",
+   "name": "Jitō",
+   "b": 646,
+   "d": 703,
+   "tree": "JP_IMP",
+   "title": "Impératrice régnante du Japon (n° 41)",
+   "g": "f",
+   "script": 87
+  },
+  "jp.monmu": {
+   "id": "3c93e701-8fb4-5a63-9e32-ee5a57eb07bf",
+   "name": "Monmu",
+   "b": 683,
+   "d": 707,
+   "tree": "JP_IMP",
+   "title": "Empereur du Japon (n° 42)",
+   "g": "h",
+   "script": 87
+  },
+  "jp.genmei": {
+   "id": "08258ca7-4928-5f8d-ba9a-6d22f6f919e7",
+   "name": "Genmei",
+   "b": 660,
+   "d": 721,
+   "tree": "JP_IMP",
+   "title": "Impératrice régnante du Japon (n° 43)",
+   "g": "f",
+   "script": 87
+  },
+  "jp.gensho": {
+   "id": "7e93e8ac-a1b0-53bd-97dc-a07970278c5d",
+   "name": "Genshō",
+   "b": 681,
+   "d": 748,
+   "tree": "JP_IMP",
+   "title": "Impératrice régnante du Japon (n° 44)",
+   "g": "f",
+   "script": 87
+  },
+  "jp.shomu": {
+   "id": "58e1a304-3b8e-525d-b11d-82dc611846fd",
+   "name": "Shōmu",
+   "b": 701,
+   "d": 756,
+   "tree": "JP_IMP",
+   "title": "Empereur du Japon (n° 45)",
+   "g": "h",
+   "script": 87
+  },
+  "jp.koken": {
+   "id": "1b67083f-31b6-5672-937b-4382d06196bc",
+   "name": "Kōken / Shōtoku",
+   "b": 718,
+   "d": 770,
+   "tree": "JP_IMP",
+   "title": "Impératrice régnante du Japon (n° 46 et 48)",
+   "g": "f",
+   "script": 87
+  },
+  "jp.junnin": {
+   "id": "c7d2dc8e-480a-5d2f-b849-72cad21ca2fd",
+   "name": "Junnin",
+   "b": 733,
+   "d": 765,
+   "tree": "JP_IMP",
+   "title": "Empereur du Japon (n° 47)",
+   "g": "h",
+   "script": 87
+  },
+  "jp.konin": {
+   "id": "dcaeed5f-252e-51c5-956f-8124aebabd76",
+   "name": "Kōnin",
+   "b": 708,
+   "d": 782,
+   "tree": "JP_IMP",
+   "title": "Empereur du Japon (n° 49)",
+   "g": "h",
+   "script": 87
+  },
+  "jp.kanmu": {
+   "id": "8802af10-f254-5ede-b6ee-49f11991c3f8",
+   "name": "Kanmu",
+   "b": 736,
+   "d": 806,
+   "tree": "JP_IMP",
+   "title": "Empereur du Japon (n° 50)",
+   "g": "h",
+   "script": 87
+  },
+  "jp.heizei": {
+   "id": "b025c431-16ac-5632-95b7-a83fcc4cc437",
+   "name": "Heizei",
+   "b": 773,
+   "d": 824,
+   "tree": "JP_IMP",
+   "title": "Empereur du Japon (n° 51)",
+   "g": "h",
+   "script": 87
+  },
+  "jp.saga": {
+   "id": "f44ba8c4-9060-58b5-b613-ccfc032075c7",
+   "name": "Saga",
+   "b": 785,
+   "d": 842,
+   "tree": "JP_IMP",
+   "title": "Empereur du Japon (n° 52)",
+   "g": "h",
+   "script": 87
+  },
+  "jp.junna": {
+   "id": "b563f3d4-3b42-56ab-b710-f12f4abd618a",
+   "name": "Junna",
+   "b": 786,
+   "d": 840,
+   "tree": "JP_IMP",
+   "title": "Empereur du Japon (n° 53)",
+   "g": "h",
+   "script": 87
+  },
+  "jp.ninmyo": {
+   "id": "2d883569-bd8b-57a3-95b6-3acef66d3af6",
+   "name": "Ninmyō",
+   "b": 808,
+   "d": 850,
+   "tree": "JP_IMP",
+   "title": "Empereur du Japon (n° 54)",
+   "g": "h",
+   "script": 87
+  },
+  "jp.montoku": {
+   "id": "cdc9443a-7cbf-5225-90a7-8214149783c7",
+   "name": "Montoku",
+   "b": 827,
+   "d": 858,
+   "tree": "JP_IMP",
+   "title": "Empereur du Japon (n° 55)",
+   "g": "h",
+   "script": 87
+  },
+  "jp.seiwa": {
+   "id": "40010940-8518-5a36-a49b-be12fb0eb246",
+   "name": "Seiwa",
+   "b": 850,
+   "d": 881,
+   "tree": "JP_IMP",
+   "title": "Empereur du Japon (n° 56)",
+   "g": "h",
+   "script": 87
+  },
+  "jp.yozei": {
+   "id": "364c78d5-16d8-515b-8365-377c62da906d",
+   "name": "Yōzei",
+   "b": 869,
+   "d": 949,
+   "tree": "JP_IMP",
+   "title": "Empereur du Japon (n° 57)",
+   "g": "h",
+   "script": 87
+  },
+  "jp.koko": {
+   "id": "a642f353-d244-5c82-80a4-4b268e061639",
+   "name": "Kōkō",
+   "b": 830,
+   "d": 887,
+   "tree": "JP_IMP",
+   "title": "Empereur du Japon (n° 58)",
+   "g": "h",
+   "script": 87
+  },
+  "jp.uda": {
+   "id": "e556b2c8-93b9-5216-b5c1-d63d490fd48f",
+   "name": "Uda",
+   "b": 866,
+   "d": 931,
+   "tree": "JP_IMP",
+   "title": "Empereur du Japon (n° 59)",
+   "g": "h",
+   "script": 87
+  },
+  "jp.daigo": {
+   "id": "ae053ea5-b48f-5be6-ad16-7246619f1dcb",
+   "name": "Daigo",
+   "b": 884,
+   "d": 930,
+   "tree": "JP_IMP",
+   "title": "Empereur du Japon (n° 60)",
+   "g": "h",
+   "script": 87
+  },
+  "jp.suzaku": {
+   "id": "69f8e934-b738-5fcb-81aa-ce283336e1df",
+   "name": "Suzaku",
+   "b": 921,
+   "d": 952,
+   "tree": "JP_IMP",
+   "title": "Empereur du Japon (n° 61)",
+   "g": "h",
+   "script": 87
+  },
+  "jp.murakami": {
+   "id": "fccfb9dc-a3db-52f2-a87d-a30ac8116564",
+   "name": "Murakami",
+   "b": 924,
+   "d": 967,
+   "tree": "JP_IMP",
+   "title": "Empereur du Japon (n° 62)",
+   "g": "h",
+   "script": 87
+  },
+  "jp.reizei": {
+   "id": "741386c7-3b1d-57fe-9616-ef48b76d9b81",
+   "name": "Reizei",
+   "b": 949,
+   "d": 1011,
+   "tree": "JP_IMP",
+   "title": "Empereur du Japon (n° 63)",
+   "g": "h",
+   "script": 87
+  },
+  "jp.enyu": {
+   "id": "205dc1f8-b6a4-57d3-a661-ab2051fb24c9",
+   "name": "En'yū",
+   "b": 958,
+   "d": 991,
+   "tree": "JP_IMP",
+   "title": "Empereur du Japon (n° 64)",
+   "g": "h",
+   "script": 87
+  },
+  "jp.kazan": {
+   "id": "abfd7cd2-b4a3-5891-b2c2-cdcbb8a4eb0a",
+   "name": "Kazan",
+   "b": 968,
+   "d": 1008,
+   "tree": "JP_IMP",
+   "title": "Empereur du Japon (n° 65)",
+   "g": "h",
+   "script": 87
+  },
+  "jp.ichijo": {
+   "id": "3c7e8993-b9bc-5fb9-bc6f-431b8be7a174",
+   "name": "Ichijō",
+   "b": 980,
+   "d": 1011,
+   "tree": "JP_IMP",
+   "title": "Empereur du Japon (n° 66)",
+   "g": "h",
+   "script": 87
+  },
+  "jp.sanjo": {
+   "id": "30fd81da-e7f3-53c4-b7ad-46082055ce64",
+   "name": "Sanjō",
+   "b": 975,
+   "d": 1017,
+   "tree": "JP_IMP",
+   "title": "Empereur du Japon (n° 67)",
+   "g": "h",
+   "script": 87
+  },
+  "jp.goichijo": {
+   "id": "bdcc2cb5-bd4e-5307-a86b-069403bf8e33",
+   "name": "Go-Ichijō",
+   "b": 1008,
+   "d": 1036,
+   "tree": "JP_IMP",
+   "title": "Empereur du Japon (n° 68)",
+   "g": "h",
+   "script": 87
+  },
+  "jp.gosuzaku": {
+   "id": "03bdb93d-7554-5ebf-9d03-0227864f3f54",
+   "name": "Go-Suzaku",
+   "b": 1009,
+   "d": 1045,
+   "tree": "JP_IMP",
+   "title": "Empereur du Japon (n° 69)",
+   "g": "h",
+   "script": 87
+  },
+  "jp.goreizei": {
+   "id": "ab906e94-fc30-5e97-8c69-6c6ad4681925",
+   "name": "Go-Reizei",
+   "b": 1025,
+   "d": 1068,
+   "tree": "JP_IMP",
+   "title": "Empereur du Japon (n° 70)",
+   "g": "h",
+   "script": 87
+  },
+  "jp.gosanjo": {
+   "id": "544ca60d-2317-504c-920e-797291f15335",
+   "name": "Go-Sanjō",
+   "b": 1032,
+   "d": 1073,
+   "tree": "JP_IMP",
+   "title": "Empereur du Japon (n° 71)",
+   "g": "h",
+   "script": 87
+  },
+  "jp.shirakawa": {
+   "id": "74584ec3-01de-5868-b40f-2d9ef81518a9",
+   "name": "Shirakawa",
+   "b": 1053,
+   "d": 1129,
+   "tree": "JP_IMP",
+   "title": "Empereur du Japon (n° 72)",
+   "g": "h",
+   "script": 87
+  },
+  "jp.horikawa": {
+   "id": "61d55950-cf01-5610-99af-d349431bc5e0",
+   "name": "Horikawa",
+   "b": 1079,
+   "d": 1107,
+   "tree": "JP_IMP",
+   "title": "Empereur du Japon (n° 73)",
+   "g": "h",
+   "script": 87
+  },
+  "jp.toba": {
+   "id": "39d77b97-a6ad-5425-b8ad-c5467fc02a7e",
+   "name": "Toba",
+   "b": 1103,
+   "d": 1156,
+   "tree": "JP_IMP",
+   "title": "Empereur du Japon (n° 74)",
+   "g": "h",
+   "script": 87
+  },
+  "jp.sutoku": {
+   "id": "caf5671a-32b4-5216-89a4-0cf74e44e598",
+   "name": "Sutoku",
+   "b": 1119,
+   "d": 1164,
+   "tree": "JP_IMP",
+   "title": "Empereur du Japon (n° 75)",
+   "g": "h",
+   "script": 87
+  },
+  "jp.konoe": {
+   "id": "17f66a35-558d-5b48-9e45-527581e2c8fd",
+   "name": "Konoe",
+   "b": 1139,
+   "d": 1155,
+   "tree": "JP_IMP",
+   "title": "Empereur du Japon (n° 76)",
+   "g": "h",
+   "script": 87
+  },
+  "jp.goshirakawa": {
+   "id": "201519b3-b846-5e04-9652-ca4e1cc559b2",
+   "name": "Go-Shirakawa",
+   "b": 1127,
+   "d": 1192,
+   "tree": "JP_IMP",
+   "title": "Empereur du Japon (n° 77)",
+   "g": "h",
+   "script": 87
+  },
+  "jp.nijo": {
+   "id": "6353580b-e642-52e0-8dad-d16b6e26b5b0",
+   "name": "Nijō",
+   "b": 1143,
+   "d": 1165,
+   "tree": "JP_IMP",
+   "title": "Empereur du Japon (n° 78)",
+   "g": "h",
+   "script": 87
+  },
+  "jp.rokujo": {
+   "id": "9ca78520-9d9a-552a-9db0-bd8e2ce08c2f",
+   "name": "Rokujō",
+   "b": 1164,
+   "d": 1176,
+   "tree": "JP_IMP",
+   "title": "Empereur du Japon (n° 79)",
+   "g": "h",
+   "script": 87
+  },
+  "jp.takakura": {
+   "id": "db9b16bd-1399-5673-be3b-9b13da2b4217",
+   "name": "Takakura",
+   "b": 1161,
+   "d": 1181,
+   "tree": "JP_IMP",
+   "title": "Empereur du Japon (n° 80)",
+   "g": "h",
+   "script": 87
+  },
+  "jp.antoku": {
+   "id": "2a21dd18-2aea-52c0-b1e2-3a38d1da0efc",
+   "name": "Antoku",
+   "b": 1178,
+   "d": 1185,
+   "tree": "JP_IMP",
+   "title": "Empereur du Japon (n° 81)",
+   "g": "h",
+   "script": 87
+  },
+  "jp.gotoba": {
+   "id": "bb38633a-a03c-50d3-8c90-c65fb6ea97d0",
+   "name": "Go-Toba",
+   "b": 1180,
+   "d": 1239,
+   "tree": "JP_IMP",
+   "title": "Empereur du Japon (n° 82)",
+   "g": "h",
+   "script": 87
+  },
+  "jp.tsuchimikado": {
+   "id": "a2fed3cf-a2dc-59f1-9deb-e07fde24c235",
+   "name": "Tsuchimikado",
+   "b": 1196,
+   "d": 1231,
+   "tree": "JP_IMP",
+   "title": "Empereur du Japon (n° 83)",
+   "g": "h",
+   "script": 87
+  },
+  "jp.juntoku": {
+   "id": "06f21378-ba72-5de0-945b-f774758f0c17",
+   "name": "Juntoku",
+   "b": 1197,
+   "d": 1242,
+   "tree": "JP_IMP",
+   "title": "Empereur du Japon (n° 84)",
+   "g": "h",
+   "script": 87
+  },
+  "jp.chukyo": {
+   "id": "7c238399-8500-5652-881e-c94741944cc2",
+   "name": "Chūkyō",
+   "b": 1218,
+   "d": 1234,
+   "tree": "JP_IMP",
+   "title": "Empereur du Japon (n° 85)",
+   "g": "h",
+   "script": 87
+  },
+  "jp.gohorikawa": {
+   "id": "77f93c2b-6dd2-5bf1-87eb-fffd28328a9b",
+   "name": "Go-Horikawa",
+   "b": 1212,
+   "d": 1234,
+   "tree": "JP_IMP",
+   "title": "Empereur du Japon (n° 86)",
+   "g": "h",
+   "script": 87
+  },
+  "jp.shijo": {
+   "id": "14727b3c-d3c5-55ca-a247-103915043572",
+   "name": "Shijō",
+   "b": 1231,
+   "d": 1242,
+   "tree": "JP_IMP",
+   "title": "Empereur du Japon (n° 87)",
+   "g": "h",
+   "script": 87
+  },
+  "jp.gosaga": {
+   "id": "b3774945-b95e-5aec-bf57-e3830f6a7722",
+   "name": "Go-Saga",
+   "b": 1220,
+   "d": 1272,
+   "tree": "JP_IMP",
+   "title": "Empereur du Japon (n° 88)",
+   "g": "h",
+   "script": 87
+  },
+  "jp.gofukakusa": {
+   "id": "139b80b6-d655-5c45-81a7-e07d217571e2",
+   "name": "Go-Fukakusa",
+   "b": 1243,
+   "d": 1304,
+   "tree": "JP_IMP",
+   "title": "Empereur du Japon (n° 89)",
+   "g": "h",
+   "script": 87
+  },
+  "jp.kameyama": {
+   "id": "cf51470d-d0d9-5202-a858-b21ef74dde0f",
+   "name": "Kameyama",
+   "b": 1249,
+   "d": 1305,
+   "tree": "JP_IMP",
+   "title": "Empereur du Japon (n° 90)",
+   "g": "h",
+   "script": 87
+  },
+  "jp.gouda": {
+   "id": "7c8df56c-ad9c-50d5-8f8c-e81d19603f12",
+   "name": "Go-Uda",
+   "b": 1267,
+   "d": 1324,
+   "tree": "JP_IMP",
+   "title": "Empereur du Japon (n° 91)",
+   "g": "h",
+   "script": 87
+  },
+  "jp.fushimi": {
+   "id": "5496f7a3-0be6-5a72-86f1-700ddc4c7e4d",
+   "name": "Fushimi",
+   "b": 1265,
+   "d": 1317,
+   "tree": "JP_IMP",
+   "title": "Empereur du Japon (n° 92)",
+   "g": "h",
+   "script": 87
+  },
+  "jp.gofushimi": {
+   "id": "b40040b1-79ad-5a88-aec0-36e9b4f9151a",
+   "name": "Go-Fushimi",
+   "b": 1288,
+   "d": 1336,
+   "tree": "JP_IMP",
+   "title": "Empereur du Japon (n° 93)",
+   "g": "h",
+   "script": 87
+  },
+  "jp.gonijo": {
+   "id": "7dad3b5b-e426-54ce-aab7-fb04882056dc",
+   "name": "Go-Nijō",
+   "b": 1285,
+   "d": 1308,
+   "tree": "JP_IMP",
+   "title": "Empereur du Japon (n° 94)",
+   "g": "h",
+   "script": 87
+  },
+  "jp.hanazono": {
+   "id": "7582324f-e7e7-5b09-a098-4afbd1be3cd0",
+   "name": "Hanazono",
+   "b": 1297,
+   "d": 1348,
+   "tree": "JP_IMP",
+   "title": "Empereur du Japon (n° 95)",
+   "g": "h",
+   "script": 87
+  },
+  "jp.godaigo": {
+   "id": "67ca5596-230e-5114-8447-0487f91617f0",
+   "name": "Go-Daigo",
+   "b": 1288,
+   "d": 1339,
+   "tree": "JP_IMP",
+   "title": "Empereur du Japon (n° 96)",
+   "g": "h",
+   "script": 87
+  },
+  "jp.gomurakami": {
+   "id": "66294a9c-d63f-56d5-852c-f3d213bc9bdb",
+   "name": "Go-Murakami",
+   "b": 1328,
+   "d": 1368,
+   "tree": "JP_IMP",
+   "title": "Empereur du Japon (n° 97)",
+   "g": "h",
+   "script": 87
+  },
+  "jp.chokei": {
+   "id": "43e1c71d-d558-5b7a-9a99-a8539ab84fed",
+   "name": "Chōkei",
+   "b": 1343,
+   "d": 1394,
+   "tree": "JP_IMP",
+   "title": "Empereur du Japon (n° 98)",
+   "g": "h",
+   "script": 87
+  },
+  "jp.gokameyama": {
+   "id": "eb23d395-f397-5641-829a-da0d1618ec88",
+   "name": "Go-Kameyama",
+   "b": 1347,
+   "d": 1424,
+   "tree": "JP_IMP",
+   "title": "Empereur du Japon (n° 99)",
+   "g": "h",
+   "script": 87
+  },
+  "jp.kogon": {
+   "id": "0cc1fbfa-9168-59e7-b9bd-070c89e4dfbe",
+   "name": "Kōgon (Cour du Nord)",
+   "b": 1313,
+   "d": 1364,
+   "tree": "JP_IMP",
+   "title": "Empereur du Japon de la Cour du Nord (Nord 1)",
+   "g": "h",
+   "script": 87
+  },
+  "jp.komyo": {
+   "id": "66a11f08-3955-5ba2-8602-177640d84af9",
+   "name": "Kōmyō (Cour du Nord)",
+   "b": 1322,
+   "d": 1380,
+   "tree": "JP_IMP",
+   "title": "Empereur du Japon de la Cour du Nord (Nord 2)",
+   "g": "h",
+   "script": 87
+  },
+  "jp.suko": {
+   "id": "ccd7d75a-357d-5051-b587-c6f1540331ef",
+   "name": "Sukō (Cour du Nord)",
+   "b": 1334,
+   "d": 1398,
+   "tree": "JP_IMP",
+   "title": "Empereur du Japon de la Cour du Nord (Nord 3)",
+   "g": "h",
+   "script": 87
+  },
+  "jp.gokogon": {
+   "id": "a95f84db-efdd-5d43-81bc-5a5494183dc8",
+   "name": "Go-Kōgon (Cour du Nord)",
+   "b": 1338,
+   "d": 1374,
+   "tree": "JP_IMP",
+   "title": "Empereur du Japon de la Cour du Nord (Nord 4)",
+   "g": "h",
+   "script": 87
+  },
+  "jp.goenyu": {
+   "id": "e86a8dd6-3f30-53a9-9c6a-20332e154989",
+   "name": "Go-En'yū (Cour du Nord)",
+   "b": 1359,
+   "d": 1393,
+   "tree": "JP_IMP",
+   "title": "Empereur du Japon de la Cour du Nord (Nord 5)",
+   "g": "h",
+   "script": 87
+  },
+  "jp.gokomatsu": {
+   "id": "5f50dc8c-ced2-5157-bcb8-b9c495bba59d",
+   "name": "Go-Komatsu",
+   "b": 1377,
+   "d": 1433,
+   "tree": "JP_IMP",
+   "title": "Empereur du Japon (n° 100 (Nord 6))",
+   "g": "h",
+   "script": 87
+  },
+  "jp.shoko": {
+   "id": "fe61d964-a285-5fe2-98d8-1525899d3304",
+   "name": "Shōkō",
+   "b": 1401,
+   "d": 1428,
+   "tree": "JP_IMP",
+   "title": "Empereur du Japon (n° 101)",
+   "g": "h",
+   "script": 87
+  },
+  "jp.gohanazono": {
+   "id": "7a87f8d6-082a-5f31-96da-fcd6b14ebae7",
+   "name": "Go-Hanazono",
+   "b": 1419,
+   "d": 1471,
+   "tree": "JP_IMP",
+   "title": "Empereur du Japon (n° 102)",
+   "g": "h",
+   "script": 87
+  },
+  "jp.gotsuchimikado": {
+   "id": "c8ba4321-f61f-5b13-be00-22e3d2b4edaa",
+   "name": "Go-Tsuchimikado",
+   "b": 1442,
+   "d": 1500,
+   "tree": "JP_IMP",
+   "title": "Empereur du Japon (n° 103)",
+   "g": "h",
+   "script": 87
+  },
+  "jp.gokashiwabara": {
+   "id": "49bbf742-6cbd-52cf-95c1-9b4ae22964b0",
+   "name": "Go-Kashiwabara",
+   "b": 1462,
+   "d": 1526,
+   "tree": "JP_IMP",
+   "title": "Empereur du Japon (n° 104)",
+   "g": "h",
+   "script": 87
+  },
+  "jp.gonara": {
+   "id": "8ea66eb9-b95a-5c17-9d47-62f9ca1ee4ce",
+   "name": "Go-Nara",
+   "b": 1495,
+   "d": 1557,
+   "tree": "JP_IMP",
+   "title": "Empereur du Japon (n° 105)",
+   "g": "h",
+   "script": 87
+  },
+  "jp.ogimachi": {
+   "id": "f7fa4628-ffd1-5750-8a69-accca7e50516",
+   "name": "Ōgimachi",
+   "b": 1517,
+   "d": 1593,
+   "tree": "JP_IMP",
+   "title": "Empereur du Japon (n° 106)",
+   "g": "h",
+   "script": 87
+  },
+  "jp.goyozei": {
+   "id": "794cb3a3-3ed8-5b0a-a120-f6e7bc2e311c",
+   "name": "Go-Yōzei",
+   "b": 1571,
+   "d": 1617,
+   "tree": "JP_IMP",
+   "title": "Empereur du Japon (n° 107)",
+   "g": "h",
+   "script": 87
+  },
+  "jp.gomizunoo": {
+   "id": "043338b0-ed08-585d-a830-2d1b6d66e938",
+   "name": "Go-Mizunoo",
+   "b": 1596,
+   "d": 1680,
+   "tree": "JP_IMP",
+   "title": "Empereur du Japon (n° 108)",
+   "g": "h",
+   "script": 87
+  },
+  "jp.meisho": {
+   "id": "89b70422-58c4-580a-8a0d-34018e49caf2",
+   "name": "Meishō",
+   "b": 1624,
+   "d": 1696,
+   "tree": "JP_IMP",
+   "title": "Impératrice régnante du Japon (n° 109)",
+   "g": "f",
+   "script": 87
+  },
+  "jp.gokomyo": {
+   "id": "53235178-adaf-5d10-8d90-094b2c156132",
+   "name": "Go-Kōmyō",
+   "b": 1633,
+   "d": 1654,
+   "tree": "JP_IMP",
+   "title": "Empereur du Japon (n° 110)",
+   "g": "h",
+   "script": 87
+  },
+  "jp.gosai": {
+   "id": "eff53390-f909-5b34-8464-ab51cbdd6525",
+   "name": "Go-Sai",
+   "b": 1638,
+   "d": 1685,
+   "tree": "JP_IMP",
+   "title": "Empereur du Japon (n° 111)",
+   "g": "h",
+   "script": 87
+  },
+  "jp.reigen": {
+   "id": "cc28cf9b-06b5-5d86-bc65-a714a7660328",
+   "name": "Reigen",
+   "b": 1654,
+   "d": 1732,
+   "tree": "JP_IMP",
+   "title": "Empereur du Japon (n° 112)",
+   "g": "h",
+   "script": 87
+  },
+  "jp.higashiyama": {
+   "id": "7ae4ece8-2d18-5d8d-af5d-ad9c136d3ec5",
+   "name": "Higashiyama",
+   "b": 1675,
+   "d": 1710,
+   "tree": "JP_IMP",
+   "title": "Empereur du Japon (n° 113)",
+   "g": "h",
+   "script": 87
+  },
+  "jp.nakamikado": {
+   "id": "41669d6d-e4f5-53cc-94b4-56978e01ea36",
+   "name": "Nakamikado",
+   "b": 1702,
+   "d": 1737,
+   "tree": "JP_IMP",
+   "title": "Empereur du Japon (n° 114)",
+   "g": "h",
+   "script": 87
+  },
+  "jp.sakuramachi": {
+   "id": "ceaf7ae9-86af-5ae0-9500-31fe8a58ef2f",
+   "name": "Sakuramachi",
+   "b": 1720,
+   "d": 1750,
+   "tree": "JP_IMP",
+   "title": "Empereur du Japon (n° 115)",
+   "g": "h",
+   "script": 87
+  },
+  "jp.momozono": {
+   "id": "7d680ec4-5906-59fb-a531-83a0a160459f",
+   "name": "Momozono",
+   "b": 1741,
+   "d": 1762,
+   "tree": "JP_IMP",
+   "title": "Empereur du Japon (n° 116)",
+   "g": "h",
+   "script": 87
+  },
+  "jp.gosakuramachi": {
+   "id": "418de991-8c08-5eb5-b8ef-ed9ada95ef44",
+   "name": "Go-Sakuramachi",
+   "b": 1740,
+   "d": 1813,
+   "tree": "JP_IMP",
+   "title": "Impératrice régnante du Japon (n° 117)",
+   "g": "f",
+   "script": 87
+  },
+  "jp.gomomozono": {
+   "id": "21ad34fe-68cd-531f-9d17-73136aebd462",
+   "name": "Go-Momozono",
+   "b": 1758,
+   "d": 1779,
+   "tree": "JP_IMP",
+   "title": "Empereur du Japon (n° 118)",
+   "g": "h",
+   "script": 87
+  },
+  "jp.kokaku": {
+   "id": "b4909796-98a6-530f-9bb8-d558cce3b771",
+   "name": "Kōkaku",
+   "b": 1771,
+   "d": 1840,
+   "tree": "JP_IMP",
+   "title": "Empereur du Japon (n° 119)",
+   "g": "h",
+   "script": 87
+  },
+  "jp.ninko": {
+   "id": "22c8f436-bbc3-5515-a37e-6115df4a843d",
+   "name": "Ninkō",
+   "b": 1800,
+   "d": 1846,
+   "tree": "JP_IMP",
+   "title": "Empereur du Japon (n° 120)",
+   "g": "h",
+   "script": 87
+  },
+  "jp.komei": {
+   "id": "86feabb6-8595-569d-9f2f-f75a14c2205c",
+   "name": "Kōmei",
+   "b": 1831,
+   "d": 1867,
+   "tree": "JP_IMP",
+   "title": "Empereur du Japon (n° 121)",
+   "g": "h",
+   "script": 87
+  },
+  "jp.meiji": {
+   "id": "28f7e9db-6717-54e5-866d-b968668ef823",
+   "name": "Meiji",
+   "b": 1852,
+   "d": 1912,
+   "tree": "JP_IMP",
+   "title": "Empereur du Japon (n° 122)",
+   "g": "h",
+   "script": 87
+  },
+  "jp.taisho": {
+   "id": "ea17d019-cbb4-5d1e-b219-44985e796053",
+   "name": "Taishō",
+   "b": 1879,
+   "d": 1926,
+   "tree": "JP_IMP",
+   "title": "Empereur du Japon (n° 123)",
+   "g": "h",
+   "script": 87
+  },
+  "jp.showa": {
+   "id": "b92d3713-d57b-5150-9842-2459f6a33d15",
+   "name": "Shōwa (Hirohito)",
+   "b": 1901,
+   "d": 1989,
+   "tree": "JP_IMP",
+   "title": "Empereur du Japon (n° 124)",
+   "g": "h",
+   "script": 87
+  },
+  "jp.akihito": {
+   "id": "f55dd44a-786e-53db-9873-796459a0a16e",
+   "name": "Akihito",
+   "b": 1933,
+   "d": null,
+   "tree": "JP_IMP",
+   "title": "Empereur du Japon (n° 125)",
+   "g": "h",
+   "script": 87
+  },
+  "jp.naruhito": {
+   "id": "39efbf72-cea4-5f26-815e-b680b2588acf",
+   "name": "Naruhito",
+   "b": 1960,
+   "d": null,
+   "tree": "JP_IMP",
+   "title": "Empereur du Japon (n° 126)",
+   "g": "h",
+   "script": 87
+  },
+  "jp.shoken": {
+   "id": "0ce588e8-a3e6-5df8-b305-65299764b610",
+   "name": "Impératrice Shōken (Ichijō Haruko)",
+   "b": 1849,
+   "d": 1914,
+   "tree": "JP_IMP",
+   "title": "Épouse de Meiji",
+   "g": "f",
+   "script": 87
+  },
+  "jp.naruko": {
+   "id": "25321fcd-ea65-53d4-b8ba-0d05fb351ae4",
+   "name": "Yanagiwara Naruko",
+   "b": 1855,
+   "d": 1943,
+   "tree": "JP_IMP",
+   "title": "Concubine de Meiji, mère de Taishō",
+   "g": "f",
+   "script": 87
+  },
+  "jp.sadako": {
+   "id": "3d928bf2-4315-51a3-8fae-eb44248be76e",
+   "name": "Impératrice Teimei (Kujō Sadako)",
+   "b": 1884,
+   "d": 1951,
+   "tree": "JP_IMP",
+   "title": "Épouse de Taishō",
+   "g": "f",
+   "script": 87
+  },
+  "jp.nagako": {
+   "id": "29be6b06-1a1d-5217-b6a7-62f82cd4789c",
+   "name": "Impératrice Kōjun (Nagako)",
+   "b": 1903,
+   "d": 2000,
+   "tree": "JP_IMP",
+   "title": "Épouse de Shōwa",
+   "g": "f",
+   "script": 87
+  },
+  "jp.michiko": {
+   "id": "15896f2d-f96a-54a7-b34f-c136842992d7",
+   "name": "Impératrice Michiko (Shōda)",
+   "b": 1934,
+   "d": null,
+   "tree": "JP_IMP",
+   "title": "Épouse d'Akihito",
+   "g": "f",
+   "script": 87
+  },
+  "jp.masako": {
+   "id": "f3ee7b65-8e8f-5647-b94f-48ad520b47f5",
+   "name": "Impératrice Masako (Owada)",
+   "b": 1963,
+   "d": null,
+   "tree": "JP_IMP",
+   "title": "Épouse de Naruhito",
+   "g": "f",
+   "script": 87
+  },
+  "jp.aiko": {
+   "id": "e34953ca-2d49-5dbb-8ad4-9fc8d48e1ceb",
+   "name": "Aiko, princesse Toshi",
+   "b": 2001,
+   "d": null,
+   "tree": "JP_IMP",
+   "title": "Princesse, fille de Naruhito",
+   "g": "f",
+   "script": 87
+  },
+  "jp.fumihito": {
+   "id": "06dcf55b-b407-5df5-9910-9d5660f0f8f9",
+   "name": "Fumihito, prince Akishino",
+   "b": 1965,
+   "d": null,
+   "tree": "JP_IMP",
+   "title": "Prince héritier présomptif",
+   "g": "h",
+   "script": 87
+  },
+  "jp.hisahito": {
+   "id": "8edc5451-6342-5e30-8c91-319a9d7e2a2c",
+   "name": "Hisahito",
+   "b": 2006,
+   "d": null,
+   "tree": "JP_IMP",
+   "title": "Prince, fils de Fumihito",
+   "g": "h",
+   "script": 87
   }
  },
  "trees": {
@@ -22142,6 +23382,18 @@
    "country": "CHN",
    "dynasty": "Qing",
    "script": 86
+  },
+  "JP_IMP": {
+   "entry": "0e765046-6a10-54e4-bb63-9416f9e42691",
+   "country": "JPN",
+   "dynasty": "Empereurs du Japon",
+   "script": 87
+  },
+  "JP_LEG": {
+   "entry": "325e416c-f4c1-4659-ad2d-b4ee28d19905",
+   "country": "JPN",
+   "dynasty": "Empereurs légendaires",
+   "script": null
   }
  },
  "flags": [
@@ -26211,6 +27463,48 @@
    "tree": "CN_QING",
    "reason": "Famille Yehe Nara : sans arbre",
    "script": 86
+  },
+  {
+   "name": "Impératrice Shōken (Ichijō Haruko)",
+   "b": 1849,
+   "tree": "JP_IMP",
+   "reason": "Famille Ichijō : sans arbre",
+   "script": 87
+  },
+  {
+   "name": "Yanagiwara Naruko",
+   "b": 1855,
+   "tree": "JP_IMP",
+   "reason": "Famille Yanagiwara : sans arbre",
+   "script": 87
+  },
+  {
+   "name": "Impératrice Teimei (Kujō Sadako)",
+   "b": 1884,
+   "tree": "JP_IMP",
+   "reason": "Famille Kujō : sans arbre",
+   "script": 87
+  },
+  {
+   "name": "Impératrice Kōjun (Nagako)",
+   "b": 1903,
+   "tree": "JP_IMP",
+   "reason": "Famille Kuni : sans arbre",
+   "script": 87
+  },
+  {
+   "name": "Impératrice Michiko (Shōda)",
+   "b": 1934,
+   "tree": "JP_IMP",
+   "reason": "Famille Shōda : sans arbre",
+   "script": 87
+  },
+  {
+   "name": "Impératrice Masako (Owada)",
+   "b": 1963,
+   "tree": "JP_IMP",
+   "reason": "Famille Owada : sans arbre",
+   "script": 87
   }
  ],
  "scripts": {
@@ -26590,6 +27884,14 @@
    "rels": 17,
    "trees": [
     "Qing (CHN)"
+   ]
+  },
+  "87": {
+   "label": "Japon — famille impériale historique : de l'empereur Ōjin (15e) à Naruhito (126e)",
+   "members": 124,
+   "rels": 134,
+   "trees": [
+    "Empereurs du Japon (JPN)"
    ]
   }
  },
@@ -45078,6 +46380,676 @@
    "7b8735c6-1808-5d93-aa20-b5c820e92522",
    "4f094a07-6613-5790-91cd-026514e1a592",
    "parent"
+  ],
+  [
+   "71483e16-2598-5b0c-a6d9-8db7b5e58c9b",
+   "eba37784-a63d-5c0b-a901-23740c11cc1e",
+   "parent"
+  ],
+  [
+   "eba37784-a63d-5c0b-a901-23740c11cc1e",
+   "0af4b732-c26e-52d4-ba9c-809daa1c1477",
+   "parent"
+  ],
+  [
+   "eba37784-a63d-5c0b-a901-23740c11cc1e",
+   "d4fbac19-9c28-57cc-bf67-c7905f3fbe93",
+   "parent"
+  ],
+  [
+   "eba37784-a63d-5c0b-a901-23740c11cc1e",
+   "9646ccee-5ca2-5887-963d-03228fa5e475",
+   "parent"
+  ],
+  [
+   "9646ccee-5ca2-5887-963d-03228fa5e475",
+   "aef0019f-e33b-56ab-8be8-f688a93fca1a",
+   "parent"
+  ],
+  [
+   "9646ccee-5ca2-5887-963d-03228fa5e475",
+   "8c755fd3-c287-51fa-b9b0-803c5ef40720",
+   "parent"
+  ],
+  [
+   "8c755fd3-c287-51fa-b9b0-803c5ef40720",
+   "658920f6-1701-5fd8-8786-28f32df85c82",
+   "parent"
+  ],
+  [
+   "fef58161-fbf5-5851-94eb-65a254743742",
+   "95d18171-bd3e-53f1-a84f-62286b7360e7",
+   "parent"
+  ],
+  [
+   "4c2d7495-6748-5529-a212-283d7215647d",
+   "377985f9-52fd-51de-b226-9f78c1150a47",
+   "parent"
+  ],
+  [
+   "4c2d7495-6748-5529-a212-283d7215647d",
+   "2c330219-8e84-5c36-99dd-5187c7b221b6",
+   "parent"
+  ],
+  [
+   "4c2d7495-6748-5529-a212-283d7215647d",
+   "8182b1a3-3370-5c2c-8b94-d541ba592b4f",
+   "parent"
+  ],
+  [
+   "8182b1a3-3370-5c2c-8b94-d541ba592b4f",
+   "8f859335-08b9-5798-b720-db33dcb1575d",
+   "parent"
+  ],
+  [
+   "8182b1a3-3370-5c2c-8b94-d541ba592b4f",
+   "bda5aee9-453f-50ef-98a6-24d98c8e32f9",
+   "parent"
+  ],
+  [
+   "8182b1a3-3370-5c2c-8b94-d541ba592b4f",
+   "55e23750-2004-5c11-90fc-79a4860b0418",
+   "parent"
+  ],
+  [
+   "8182b1a3-3370-5c2c-8b94-d541ba592b4f",
+   "f8db854b-1443-52a9-b784-73b8a41bc1ed",
+   "parent"
+  ],
+  [
+   "6dfec382-f481-5d7f-95fd-eaf1b6e74d94",
+   "ad76d406-af57-5fba-8b3e-a47a2aa2acc0",
+   "parent"
+  ],
+  [
+   "6dfec382-f481-5d7f-95fd-eaf1b6e74d94",
+   "70066139-80af-5d68-8ced-236c08e101c8",
+   "parent"
+  ],
+  [
+   "ad76d406-af57-5fba-8b3e-a47a2aa2acc0",
+   "5ccaf7bf-f9cf-5fce-baf2-b515ae88116b",
+   "parent"
+  ],
+  [
+   "ad76d406-af57-5fba-8b3e-a47a2aa2acc0",
+   "766dcced-5d19-5651-8ec2-1259cc9e39c0",
+   "parent"
+  ],
+  [
+   "ad76d406-af57-5fba-8b3e-a47a2aa2acc0",
+   "08258ca7-4928-5f8d-ba9a-6d22f6f919e7",
+   "parent"
+  ],
+  [
+   "08258ca7-4928-5f8d-ba9a-6d22f6f919e7",
+   "3c93e701-8fb4-5a63-9e32-ee5a57eb07bf",
+   "parent"
+  ],
+  [
+   "08258ca7-4928-5f8d-ba9a-6d22f6f919e7",
+   "7e93e8ac-a1b0-53bd-97dc-a07970278c5d",
+   "parent"
+  ],
+  [
+   "3c93e701-8fb4-5a63-9e32-ee5a57eb07bf",
+   "58e1a304-3b8e-525d-b11d-82dc611846fd",
+   "parent"
+  ],
+  [
+   "58e1a304-3b8e-525d-b11d-82dc611846fd",
+   "1b67083f-31b6-5672-937b-4382d06196bc",
+   "parent"
+  ],
+  [
+   "dcaeed5f-252e-51c5-956f-8124aebabd76",
+   "8802af10-f254-5ede-b6ee-49f11991c3f8",
+   "parent"
+  ],
+  [
+   "8802af10-f254-5ede-b6ee-49f11991c3f8",
+   "b025c431-16ac-5632-95b7-a83fcc4cc437",
+   "parent"
+  ],
+  [
+   "8802af10-f254-5ede-b6ee-49f11991c3f8",
+   "f44ba8c4-9060-58b5-b613-ccfc032075c7",
+   "parent"
+  ],
+  [
+   "8802af10-f254-5ede-b6ee-49f11991c3f8",
+   "b563f3d4-3b42-56ab-b710-f12f4abd618a",
+   "parent"
+  ],
+  [
+   "f44ba8c4-9060-58b5-b613-ccfc032075c7",
+   "2d883569-bd8b-57a3-95b6-3acef66d3af6",
+   "parent"
+  ],
+  [
+   "2d883569-bd8b-57a3-95b6-3acef66d3af6",
+   "cdc9443a-7cbf-5225-90a7-8214149783c7",
+   "parent"
+  ],
+  [
+   "cdc9443a-7cbf-5225-90a7-8214149783c7",
+   "40010940-8518-5a36-a49b-be12fb0eb246",
+   "parent"
+  ],
+  [
+   "40010940-8518-5a36-a49b-be12fb0eb246",
+   "364c78d5-16d8-515b-8365-377c62da906d",
+   "parent"
+  ],
+  [
+   "2d883569-bd8b-57a3-95b6-3acef66d3af6",
+   "a642f353-d244-5c82-80a4-4b268e061639",
+   "parent"
+  ],
+  [
+   "a642f353-d244-5c82-80a4-4b268e061639",
+   "e556b2c8-93b9-5216-b5c1-d63d490fd48f",
+   "parent"
+  ],
+  [
+   "e556b2c8-93b9-5216-b5c1-d63d490fd48f",
+   "ae053ea5-b48f-5be6-ad16-7246619f1dcb",
+   "parent"
+  ],
+  [
+   "ae053ea5-b48f-5be6-ad16-7246619f1dcb",
+   "69f8e934-b738-5fcb-81aa-ce283336e1df",
+   "parent"
+  ],
+  [
+   "ae053ea5-b48f-5be6-ad16-7246619f1dcb",
+   "fccfb9dc-a3db-52f2-a87d-a30ac8116564",
+   "parent"
+  ],
+  [
+   "fccfb9dc-a3db-52f2-a87d-a30ac8116564",
+   "741386c7-3b1d-57fe-9616-ef48b76d9b81",
+   "parent"
+  ],
+  [
+   "fccfb9dc-a3db-52f2-a87d-a30ac8116564",
+   "205dc1f8-b6a4-57d3-a661-ab2051fb24c9",
+   "parent"
+  ],
+  [
+   "741386c7-3b1d-57fe-9616-ef48b76d9b81",
+   "abfd7cd2-b4a3-5891-b2c2-cdcbb8a4eb0a",
+   "parent"
+  ],
+  [
+   "741386c7-3b1d-57fe-9616-ef48b76d9b81",
+   "30fd81da-e7f3-53c4-b7ad-46082055ce64",
+   "parent"
+  ],
+  [
+   "205dc1f8-b6a4-57d3-a661-ab2051fb24c9",
+   "3c7e8993-b9bc-5fb9-bc6f-431b8be7a174",
+   "parent"
+  ],
+  [
+   "3c7e8993-b9bc-5fb9-bc6f-431b8be7a174",
+   "bdcc2cb5-bd4e-5307-a86b-069403bf8e33",
+   "parent"
+  ],
+  [
+   "3c7e8993-b9bc-5fb9-bc6f-431b8be7a174",
+   "03bdb93d-7554-5ebf-9d03-0227864f3f54",
+   "parent"
+  ],
+  [
+   "03bdb93d-7554-5ebf-9d03-0227864f3f54",
+   "ab906e94-fc30-5e97-8c69-6c6ad4681925",
+   "parent"
+  ],
+  [
+   "03bdb93d-7554-5ebf-9d03-0227864f3f54",
+   "544ca60d-2317-504c-920e-797291f15335",
+   "parent"
+  ],
+  [
+   "544ca60d-2317-504c-920e-797291f15335",
+   "74584ec3-01de-5868-b40f-2d9ef81518a9",
+   "parent"
+  ],
+  [
+   "74584ec3-01de-5868-b40f-2d9ef81518a9",
+   "61d55950-cf01-5610-99af-d349431bc5e0",
+   "parent"
+  ],
+  [
+   "61d55950-cf01-5610-99af-d349431bc5e0",
+   "39d77b97-a6ad-5425-b8ad-c5467fc02a7e",
+   "parent"
+  ],
+  [
+   "39d77b97-a6ad-5425-b8ad-c5467fc02a7e",
+   "caf5671a-32b4-5216-89a4-0cf74e44e598",
+   "parent"
+  ],
+  [
+   "39d77b97-a6ad-5425-b8ad-c5467fc02a7e",
+   "17f66a35-558d-5b48-9e45-527581e2c8fd",
+   "parent"
+  ],
+  [
+   "39d77b97-a6ad-5425-b8ad-c5467fc02a7e",
+   "201519b3-b846-5e04-9652-ca4e1cc559b2",
+   "parent"
+  ],
+  [
+   "201519b3-b846-5e04-9652-ca4e1cc559b2",
+   "6353580b-e642-52e0-8dad-d16b6e26b5b0",
+   "parent"
+  ],
+  [
+   "6353580b-e642-52e0-8dad-d16b6e26b5b0",
+   "9ca78520-9d9a-552a-9db0-bd8e2ce08c2f",
+   "parent"
+  ],
+  [
+   "201519b3-b846-5e04-9652-ca4e1cc559b2",
+   "db9b16bd-1399-5673-be3b-9b13da2b4217",
+   "parent"
+  ],
+  [
+   "db9b16bd-1399-5673-be3b-9b13da2b4217",
+   "2a21dd18-2aea-52c0-b1e2-3a38d1da0efc",
+   "parent"
+  ],
+  [
+   "db9b16bd-1399-5673-be3b-9b13da2b4217",
+   "bb38633a-a03c-50d3-8c90-c65fb6ea97d0",
+   "parent"
+  ],
+  [
+   "bb38633a-a03c-50d3-8c90-c65fb6ea97d0",
+   "a2fed3cf-a2dc-59f1-9deb-e07fde24c235",
+   "parent"
+  ],
+  [
+   "bb38633a-a03c-50d3-8c90-c65fb6ea97d0",
+   "06f21378-ba72-5de0-945b-f774758f0c17",
+   "parent"
+  ],
+  [
+   "06f21378-ba72-5de0-945b-f774758f0c17",
+   "7c238399-8500-5652-881e-c94741944cc2",
+   "parent"
+  ],
+  [
+   "77f93c2b-6dd2-5bf1-87eb-fffd28328a9b",
+   "14727b3c-d3c5-55ca-a247-103915043572",
+   "parent"
+  ],
+  [
+   "a2fed3cf-a2dc-59f1-9deb-e07fde24c235",
+   "b3774945-b95e-5aec-bf57-e3830f6a7722",
+   "parent"
+  ],
+  [
+   "b3774945-b95e-5aec-bf57-e3830f6a7722",
+   "139b80b6-d655-5c45-81a7-e07d217571e2",
+   "parent"
+  ],
+  [
+   "b3774945-b95e-5aec-bf57-e3830f6a7722",
+   "cf51470d-d0d9-5202-a858-b21ef74dde0f",
+   "parent"
+  ],
+  [
+   "cf51470d-d0d9-5202-a858-b21ef74dde0f",
+   "7c8df56c-ad9c-50d5-8f8c-e81d19603f12",
+   "parent"
+  ],
+  [
+   "139b80b6-d655-5c45-81a7-e07d217571e2",
+   "5496f7a3-0be6-5a72-86f1-700ddc4c7e4d",
+   "parent"
+  ],
+  [
+   "5496f7a3-0be6-5a72-86f1-700ddc4c7e4d",
+   "b40040b1-79ad-5a88-aec0-36e9b4f9151a",
+   "parent"
+  ],
+  [
+   "7c8df56c-ad9c-50d5-8f8c-e81d19603f12",
+   "7dad3b5b-e426-54ce-aab7-fb04882056dc",
+   "parent"
+  ],
+  [
+   "5496f7a3-0be6-5a72-86f1-700ddc4c7e4d",
+   "7582324f-e7e7-5b09-a098-4afbd1be3cd0",
+   "parent"
+  ],
+  [
+   "7c8df56c-ad9c-50d5-8f8c-e81d19603f12",
+   "67ca5596-230e-5114-8447-0487f91617f0",
+   "parent"
+  ],
+  [
+   "67ca5596-230e-5114-8447-0487f91617f0",
+   "66294a9c-d63f-56d5-852c-f3d213bc9bdb",
+   "parent"
+  ],
+  [
+   "66294a9c-d63f-56d5-852c-f3d213bc9bdb",
+   "43e1c71d-d558-5b7a-9a99-a8539ab84fed",
+   "parent"
+  ],
+  [
+   "66294a9c-d63f-56d5-852c-f3d213bc9bdb",
+   "eb23d395-f397-5641-829a-da0d1618ec88",
+   "parent"
+  ],
+  [
+   "b40040b1-79ad-5a88-aec0-36e9b4f9151a",
+   "0cc1fbfa-9168-59e7-b9bd-070c89e4dfbe",
+   "parent"
+  ],
+  [
+   "b40040b1-79ad-5a88-aec0-36e9b4f9151a",
+   "66a11f08-3955-5ba2-8602-177640d84af9",
+   "parent"
+  ],
+  [
+   "0cc1fbfa-9168-59e7-b9bd-070c89e4dfbe",
+   "ccd7d75a-357d-5051-b587-c6f1540331ef",
+   "parent"
+  ],
+  [
+   "0cc1fbfa-9168-59e7-b9bd-070c89e4dfbe",
+   "a95f84db-efdd-5d43-81bc-5a5494183dc8",
+   "parent"
+  ],
+  [
+   "a95f84db-efdd-5d43-81bc-5a5494183dc8",
+   "e86a8dd6-3f30-53a9-9c6a-20332e154989",
+   "parent"
+  ],
+  [
+   "e86a8dd6-3f30-53a9-9c6a-20332e154989",
+   "5f50dc8c-ced2-5157-bcb8-b9c495bba59d",
+   "parent"
+  ],
+  [
+   "5f50dc8c-ced2-5157-bcb8-b9c495bba59d",
+   "fe61d964-a285-5fe2-98d8-1525899d3304",
+   "parent"
+  ],
+  [
+   "c8ba4321-f61f-5b13-be00-22e3d2b4edaa",
+   "49bbf742-6cbd-52cf-95c1-9b4ae22964b0",
+   "parent"
+  ],
+  [
+   "7a87f8d6-082a-5f31-96da-fcd6b14ebae7",
+   "c8ba4321-f61f-5b13-be00-22e3d2b4edaa",
+   "parent"
+  ],
+  [
+   "49bbf742-6cbd-52cf-95c1-9b4ae22964b0",
+   "8ea66eb9-b95a-5c17-9d47-62f9ca1ee4ce",
+   "parent"
+  ],
+  [
+   "8ea66eb9-b95a-5c17-9d47-62f9ca1ee4ce",
+   "f7fa4628-ffd1-5750-8a69-accca7e50516",
+   "parent"
+  ],
+  [
+   "794cb3a3-3ed8-5b0a-a120-f6e7bc2e311c",
+   "043338b0-ed08-585d-a830-2d1b6d66e938",
+   "parent"
+  ],
+  [
+   "043338b0-ed08-585d-a830-2d1b6d66e938",
+   "89b70422-58c4-580a-8a0d-34018e49caf2",
+   "parent"
+  ],
+  [
+   "043338b0-ed08-585d-a830-2d1b6d66e938",
+   "53235178-adaf-5d10-8d90-094b2c156132",
+   "parent"
+  ],
+  [
+   "043338b0-ed08-585d-a830-2d1b6d66e938",
+   "eff53390-f909-5b34-8464-ab51cbdd6525",
+   "parent"
+  ],
+  [
+   "043338b0-ed08-585d-a830-2d1b6d66e938",
+   "cc28cf9b-06b5-5d86-bc65-a714a7660328",
+   "parent"
+  ],
+  [
+   "cc28cf9b-06b5-5d86-bc65-a714a7660328",
+   "7ae4ece8-2d18-5d8d-af5d-ad9c136d3ec5",
+   "parent"
+  ],
+  [
+   "7ae4ece8-2d18-5d8d-af5d-ad9c136d3ec5",
+   "41669d6d-e4f5-53cc-94b4-56978e01ea36",
+   "parent"
+  ],
+  [
+   "41669d6d-e4f5-53cc-94b4-56978e01ea36",
+   "ceaf7ae9-86af-5ae0-9500-31fe8a58ef2f",
+   "parent"
+  ],
+  [
+   "ceaf7ae9-86af-5ae0-9500-31fe8a58ef2f",
+   "7d680ec4-5906-59fb-a531-83a0a160459f",
+   "parent"
+  ],
+  [
+   "ceaf7ae9-86af-5ae0-9500-31fe8a58ef2f",
+   "418de991-8c08-5eb5-b8ef-ed9ada95ef44",
+   "parent"
+  ],
+  [
+   "7d680ec4-5906-59fb-a531-83a0a160459f",
+   "21ad34fe-68cd-531f-9d17-73136aebd462",
+   "parent"
+  ],
+  [
+   "b4909796-98a6-530f-9bb8-d558cce3b771",
+   "22c8f436-bbc3-5515-a37e-6115df4a843d",
+   "parent"
+  ],
+  [
+   "22c8f436-bbc3-5515-a37e-6115df4a843d",
+   "86feabb6-8595-569d-9f2f-f75a14c2205c",
+   "parent"
+  ],
+  [
+   "86feabb6-8595-569d-9f2f-f75a14c2205c",
+   "28f7e9db-6717-54e5-866d-b968668ef823",
+   "parent"
+  ],
+  [
+   "28f7e9db-6717-54e5-866d-b968668ef823",
+   "ea17d019-cbb4-5d1e-b219-44985e796053",
+   "parent"
+  ],
+  [
+   "ea17d019-cbb4-5d1e-b219-44985e796053",
+   "b92d3713-d57b-5150-9842-2459f6a33d15",
+   "parent"
+  ],
+  [
+   "b92d3713-d57b-5150-9842-2459f6a33d15",
+   "f55dd44a-786e-53db-9873-796459a0a16e",
+   "parent"
+  ],
+  [
+   "f55dd44a-786e-53db-9873-796459a0a16e",
+   "39efbf72-cea4-5f26-815e-b680b2588acf",
+   "parent"
+  ],
+  [
+   "81d076e4-f3af-4ded-8c1e-3f61d715c0dc",
+   "71483e16-2598-5b0c-a6d9-8db7b5e58c9b",
+   "parent"
+  ],
+  [
+   "8f2a81a6-7383-4964-ab26-722b4769f982",
+   "71483e16-2598-5b0c-a6d9-8db7b5e58c9b",
+   "parent"
+  ],
+  [
+   "0af4b732-c26e-52d4-ba9c-809daa1c1477",
+   "04fb43b3-28a7-52b5-a791-63b657f8b755",
+   "family"
+  ],
+  [
+   "04fb43b3-28a7-52b5-a791-63b657f8b755",
+   "fef58161-fbf5-5851-94eb-65a254743742",
+   "family"
+  ],
+  [
+   "71483e16-2598-5b0c-a6d9-8db7b5e58c9b",
+   "4c2d7495-6748-5529-a212-283d7215647d",
+   "family"
+  ],
+  [
+   "8f859335-08b9-5798-b720-db33dcb1575d",
+   "6dfec382-f481-5d7f-95fd-eaf1b6e74d94",
+   "family"
+  ],
+  [
+   "09e18d0d-18d7-5641-824c-5db10effe687",
+   "145db2c1-a39d-5564-8d83-380282dfe9c8",
+   "family"
+  ],
+  [
+   "ad76d406-af57-5fba-8b3e-a47a2aa2acc0",
+   "dcaeed5f-252e-51c5-956f-8124aebabd76",
+   "family"
+  ],
+  [
+   "70066139-80af-5d68-8ced-236c08e101c8",
+   "c7d2dc8e-480a-5d2f-b849-72cad21ca2fd",
+   "family"
+  ],
+  [
+   "db9b16bd-1399-5673-be3b-9b13da2b4217",
+   "77f93c2b-6dd2-5bf1-87eb-fffd28328a9b",
+   "family"
+  ],
+  [
+   "ccd7d75a-357d-5051-b587-c6f1540331ef",
+   "7a87f8d6-082a-5f31-96da-fcd6b14ebae7",
+   "family"
+  ],
+  [
+   "f7fa4628-ffd1-5750-8a69-accca7e50516",
+   "794cb3a3-3ed8-5b0a-a120-f6e7bc2e311c",
+   "family"
+  ],
+  [
+   "7ae4ece8-2d18-5d8d-af5d-ad9c136d3ec5",
+   "b4909796-98a6-530f-9bb8-d558cce3b771",
+   "family"
+  ],
+  [
+   "09e18d0d-18d7-5641-824c-5db10effe687",
+   "ad76d406-af57-5fba-8b3e-a47a2aa2acc0",
+   "parent"
+  ],
+  [
+   "09e18d0d-18d7-5641-824c-5db10effe687",
+   "70066139-80af-5d68-8ced-236c08e101c8",
+   "parent"
+  ],
+  [
+   "6dfec382-f481-5d7f-95fd-eaf1b6e74d94",
+   "09e18d0d-18d7-5641-824c-5db10effe687",
+   "spouse"
+  ],
+  [
+   "70066139-80af-5d68-8ced-236c08e101c8",
+   "766dcced-5d19-5651-8ec2-1259cc9e39c0",
+   "spouse"
+  ],
+  [
+   "28f7e9db-6717-54e5-866d-b968668ef823",
+   "0ce588e8-a3e6-5df8-b305-65299764b610",
+   "spouse"
+  ],
+  [
+   "28f7e9db-6717-54e5-866d-b968668ef823",
+   "25321fcd-ea65-53d4-b8ba-0d05fb351ae4",
+   "spouse"
+  ],
+  [
+   "25321fcd-ea65-53d4-b8ba-0d05fb351ae4",
+   "ea17d019-cbb4-5d1e-b219-44985e796053",
+   "parent"
+  ],
+  [
+   "ea17d019-cbb4-5d1e-b219-44985e796053",
+   "3d928bf2-4315-51a3-8fae-eb44248be76e",
+   "spouse"
+  ],
+  [
+   "3d928bf2-4315-51a3-8fae-eb44248be76e",
+   "b92d3713-d57b-5150-9842-2459f6a33d15",
+   "parent"
+  ],
+  [
+   "b92d3713-d57b-5150-9842-2459f6a33d15",
+   "29be6b06-1a1d-5217-b6a7-62f82cd4789c",
+   "spouse"
+  ],
+  [
+   "29be6b06-1a1d-5217-b6a7-62f82cd4789c",
+   "f55dd44a-786e-53db-9873-796459a0a16e",
+   "parent"
+  ],
+  [
+   "f55dd44a-786e-53db-9873-796459a0a16e",
+   "15896f2d-f96a-54a7-b34f-c136842992d7",
+   "spouse"
+  ],
+  [
+   "15896f2d-f96a-54a7-b34f-c136842992d7",
+   "39efbf72-cea4-5f26-815e-b680b2588acf",
+   "parent"
+  ],
+  [
+   "39efbf72-cea4-5f26-815e-b680b2588acf",
+   "f3ee7b65-8e8f-5647-b94f-48ad520b47f5",
+   "spouse"
+  ],
+  [
+   "39efbf72-cea4-5f26-815e-b680b2588acf",
+   "e34953ca-2d49-5dbb-8ad4-9fc8d48e1ceb",
+   "parent"
+  ],
+  [
+   "f3ee7b65-8e8f-5647-b94f-48ad520b47f5",
+   "e34953ca-2d49-5dbb-8ad4-9fc8d48e1ceb",
+   "parent"
+  ],
+  [
+   "f55dd44a-786e-53db-9873-796459a0a16e",
+   "06dcf55b-b407-5df5-9910-9d5660f0f8f9",
+   "parent"
+  ],
+  [
+   "15896f2d-f96a-54a7-b34f-c136842992d7",
+   "06dcf55b-b407-5df5-9910-9d5660f0f8f9",
+   "parent"
+  ],
+  [
+   "06dcf55b-b407-5df5-9910-9d5660f0f8f9",
+   "8edc5451-6342-5e30-8c91-319a9d7e2a2c",
+   "parent"
   ]
  ],
  "dateflags": [
@@ -52178,6 +54150,146 @@
    "d": 1252,
    "note": "naissance vers 1190",
    "script": 84
+  },
+  {
+   "name": "Ōjin",
+   "b": null,
+   "d": null,
+   "note": "dates de la tradition non retenues",
+   "script": 87
+  },
+  {
+   "name": "Nintoku",
+   "b": null,
+   "d": null,
+   "note": "dates de la tradition non retenues",
+   "script": 87
+  },
+  {
+   "name": "Richū",
+   "b": null,
+   "d": null,
+   "note": "dates de la tradition non retenues",
+   "script": 87
+  },
+  {
+   "name": "Hanzei",
+   "b": null,
+   "d": null,
+   "note": "dates de la tradition non retenues",
+   "script": 87
+  },
+  {
+   "name": "Ingyō",
+   "b": null,
+   "d": null,
+   "note": "dates de la tradition non retenues",
+   "script": 87
+  },
+  {
+   "name": "Ankō",
+   "b": null,
+   "d": null,
+   "note": "dates de la tradition non retenues",
+   "script": 87
+  },
+  {
+   "name": "Yūryaku",
+   "b": null,
+   "d": null,
+   "note": "dates de la tradition non retenues",
+   "script": 87
+  },
+  {
+   "name": "Seinei",
+   "b": null,
+   "d": null,
+   "note": "dates de la tradition non retenues",
+   "script": 87
+  },
+  {
+   "name": "Kenzō",
+   "b": null,
+   "d": null,
+   "note": "dates de la tradition non retenues",
+   "script": 87
+  },
+  {
+   "name": "Ninken",
+   "b": null,
+   "d": null,
+   "note": "dates de la tradition non retenues",
+   "script": 87
+  },
+  {
+   "name": "Buretsu",
+   "b": null,
+   "d": null,
+   "note": "dates de la tradition non retenues",
+   "script": 87
+  },
+  {
+   "name": "Keitai",
+   "b": 450,
+   "d": 531,
+   "note": "dates traditionnelles",
+   "script": 87
+  },
+  {
+   "name": "Ankan",
+   "b": 466,
+   "d": 536,
+   "note": "dates traditionnelles",
+   "script": 87
+  },
+  {
+   "name": "Senka",
+   "b": 466,
+   "d": 539,
+   "note": "dates traditionnelles",
+   "script": 87
+  },
+  {
+   "name": "Kinmei",
+   "b": 509,
+   "d": 571,
+   "note": "dates traditionnelles",
+   "script": 87
+  },
+  {
+   "name": "Yōmei",
+   "b": null,
+   "d": 587,
+   "note": "naissance imprimée (517) incohérente avec celle de Kinmei, laissée vide",
+   "script": 87
+  },
+  {
+   "name": "Sushun",
+   "b": null,
+   "d": 592,
+   "note": "naissance imprimée (522) incohérente avec celle de Kinmei, laissée vide",
+   "script": 87
+  },
+  {
+   "name": "Kōgyoku / Saimei",
+   "b": 594,
+   "d": 661,
+   "note": "une seule personne, deux règnes",
+   "script": 87
+  },
+  {
+   "name": "Kōken / Shōtoku",
+   "b": 718,
+   "d": 770,
+   "note": "une seule personne, deux règnes",
+   "script": 87
+  },
+  {
+   "name": "Go-Kameyama",
+   "b": 1347,
+   "d": 1424,
+   "note": "naissance vers 1347",
+   "script": 87
   }
  ],
  "pins": [
@@ -52476,6 +54588,14 @@
   [
    "dd0ecce2-e687-52cd-82a2-fd7477051700",
    "IT_SFO"
+  ],
+  [
+   "81d076e4-f3af-4ded-8c1e-3f61d715c0dc",
+   "JP_IMP"
+  ],
+  [
+   "8f2a81a6-7383-4964-ab26-722b4769f982",
+   "JP_IMP"
   ]
  ],
  "xmoved": {
