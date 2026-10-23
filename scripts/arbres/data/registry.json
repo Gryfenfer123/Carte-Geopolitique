@@ -11089,6 +11089,1026 @@
    "title": "Impératrice de Chine",
    "g": "f",
    "script": 59
+  },
+  "wi.elis_nur": {
+   "id": "047287e0-8a25-5581-b39c-43ea848247a6",
+   "name": "Élisabeth de Hohenzollern-Nuremberg",
+   "b": 1358,
+   "d": 1411,
+   "tree": "DE_HOH",
+   "title": "Reine des Romains (épouse de Rupert)",
+   "g": "f",
+   "script": 61
+  },
+  "wi.louis3": {
+   "id": "c7c9aed1-1b44-5e80-bd40-0ccda06bd29b",
+   "name": "Louis III du Palatinat",
+   "b": 1378,
+   "d": 1436,
+   "tree": "DE_WIT",
+   "title": "Électeur palatin (1410-1436)",
+   "g": "h",
+   "script": 61
+  },
+  "wi.stephan": {
+   "id": "929d22f1-4a2e-5025-ace5-c3949d0d3bd3",
+   "name": "Étienne de Palatinat-Simmern-Deux-Ponts",
+   "b": 1385,
+   "d": 1459,
+   "tree": "DE_WIT",
+   "title": "Comte palatin de Simmern-Deux-Ponts",
+   "g": "h",
+   "script": 61
+  },
+  "wi.blanche": {
+   "id": "039d495b-70bb-569b-aa93-00cfc7544475",
+   "name": "Blanche de Lancastre",
+   "b": 1392,
+   "d": 1409,
+   "tree": "GB_LAN",
+   "title": "Électrice palatine, première épouse de Louis III",
+   "g": "f",
+   "script": 61
+  },
+  "wi.mathilde_sav": {
+   "id": "7a05e6b2-7aef-5b9f-a859-8d519219a396",
+   "name": "Mathilde de Savoie (électrice palatine)",
+   "b": null,
+   "d": null,
+   "tree": "DE_WIT",
+   "title": "Électrice palatine, seconde épouse de Louis III",
+   "g": "f",
+   "script": 61
+  },
+  "wi.louis4": {
+   "id": "26829c4f-f47e-5d7f-a210-1b8b769e9221",
+   "name": "Louis IV du Palatinat",
+   "b": 1424,
+   "d": 1449,
+   "tree": "DE_WIT",
+   "title": "Électeur palatin (1436-1449)",
+   "g": "h",
+   "script": 61
+  },
+  "wi.frederic1_pal": {
+   "id": "1c8eeb51-b6c9-511d-8c6d-99c5853522ca",
+   "name": "Frédéric Ier le Victorieux",
+   "b": 1425,
+   "d": 1476,
+   "tree": "DE_WIT",
+   "title": "Électeur palatin (1449-1476)",
+   "g": "h",
+   "script": 61
+  },
+  "wi.marg_sav": {
+   "id": "154ef098-7f44-5e1a-a6b8-8027160ca3c9",
+   "name": "Marguerite de Savoie (électrice palatine)",
+   "b": 1420,
+   "d": 1479,
+   "tree": "DE_WIT",
+   "title": "Électrice palatine",
+   "g": "f",
+   "script": 61
+  },
+  "wi.philippe": {
+   "id": "5394eaab-6509-564c-9304-83b086d48f37",
+   "name": "Philippe du Palatinat",
+   "b": 1448,
+   "d": 1508,
+   "tree": "DE_WIT",
+   "title": "Électeur palatin (1476-1508)",
+   "g": "h",
+   "script": 61
+  },
+  "wi.frederic_land": {
+   "id": "f6d19d81-19cd-5c12-af55-918064bb7d18",
+   "name": "Frédéric de Bavière-Landshut",
+   "b": 1339,
+   "d": 1393,
+   "tree": "DE_WIT",
+   "title": "Duc de Bavière (Landshut)",
+   "g": "h",
+   "script": 61
+  },
+  "wi.maddalena": {
+   "id": "f3c9aa1a-d40f-57d7-9703-9cf70c8b0da6",
+   "name": "Maddalena Visconti",
+   "b": null,
+   "d": null,
+   "tree": "DE_WIT",
+   "title": "Duchesse de Bavière-Landshut",
+   "g": "f",
+   "script": 61
+  },
+  "wi.henri16": {
+   "id": "ae8ac6a9-13df-5f56-88b7-e2ec592a0ce5",
+   "name": "Henri XVI le Riche",
+   "b": 1386,
+   "d": 1450,
+   "tree": "DE_WIT",
+   "title": "Duc de Bavière-Landshut",
+   "g": "h",
+   "script": 61
+  },
+  "wi.marg_aut1": {
+   "id": "770d3a38-0f2a-5dce-9440-a3ab6e052a13",
+   "name": "Marguerite d'Autriche (duchesse de Bavière-Landshut)",
+   "b": null,
+   "d": null,
+   "tree": "DE_HAB",
+   "title": "Duchesse de Bavière-Landshut",
+   "g": "f",
+   "script": 61
+  },
+  "wi.louis9": {
+   "id": "2f284701-a72c-5f2f-9ade-2f2777c7a80c",
+   "name": "Louis IX le Riche",
+   "b": 1417,
+   "d": 1479,
+   "tree": "DE_WIT",
+   "title": "Duc de Bavière-Landshut",
+   "g": "h",
+   "script": 61
+  },
+  "wi.amelie_sax": {
+   "id": "0a7a4c78-cae6-5de3-9d94-ef52ee176fe9",
+   "name": "Amélie de Saxe (duchesse de Bavière-Landshut)",
+   "b": null,
+   "d": null,
+   "tree": "DE_WET",
+   "title": "Duchesse de Bavière-Landshut",
+   "g": "f",
+   "script": 61
+  },
+  "wi.marg_land": {
+   "id": "ffc921e3-3c66-5a55-b806-e73e712a7afe",
+   "name": "Marguerite de Bavière-Landshut",
+   "b": 1456,
+   "d": 1501,
+   "tree": "DE_WIT",
+   "title": "Électrice palatine",
+   "g": "f",
+   "script": 61
+  },
+  "wi.elis_land": {
+   "id": "07ceb09f-36de-5507-a50c-461bca0f3dbe",
+   "name": "Élisabeth de Bavière-Landshut (1478-1504)",
+   "b": 1478,
+   "d": 1504,
+   "tree": "DE_WIT",
+   "title": "Duchesse héritière de Bavière-Landshut",
+   "g": "f",
+   "script": 61
+  },
+  "wi.louis5": {
+   "id": "edf2ae77-b438-57d4-81ee-a6ee48e8271d",
+   "name": "Louis V du Palatinat",
+   "b": 1478,
+   "d": 1544,
+   "tree": "DE_WIT",
+   "title": "Électeur palatin (1508-1544)",
+   "g": "h",
+   "script": 61
+  },
+  "wi.frederic2": {
+   "id": "c32f0376-6d2e-5a6a-97e0-73bf2a99d122",
+   "name": "Frédéric II du Palatinat",
+   "b": 1482,
+   "d": 1556,
+   "tree": "DE_WIT",
+   "title": "Électeur palatin (1544-1556)",
+   "g": "h",
+   "script": 61
+  },
+  "wi.rupert_pal": {
+   "id": "c212fba2-7b1d-5a8d-91fd-a1f2271803b8",
+   "name": "Rupert du Palatinat (1481-1504)",
+   "b": 1481,
+   "d": 1504,
+   "tree": "DE_WIT",
+   "title": "Comte palatin",
+   "g": "h",
+   "script": 61
+  },
+  "wi.sibylle": {
+   "id": "4de0b3a0-e784-5545-a768-0a3ca7fd4c75",
+   "name": "Sibylle de Bavière (électrice palatine)",
+   "b": 1489,
+   "d": 1519,
+   "tree": "DE_WIT",
+   "title": "Électrice palatine",
+   "g": "f",
+   "script": 61
+  },
+  "wi.dorothee_dk": {
+   "id": "a574e81c-327f-56cc-b537-3e5c53b1e159",
+   "name": "Dorothée de Danemark",
+   "b": 1520,
+   "d": 1580,
+   "tree": "DK_OLD",
+   "title": "Électrice palatine",
+   "g": "f",
+   "script": 61
+  },
+  "wi.ottheinrich": {
+   "id": "392d924d-20ff-5878-9148-8c5881523d87",
+   "name": "Othon-Henri du Palatinat (Ottheinrich)",
+   "b": 1502,
+   "d": 1559,
+   "tree": "DE_WIT",
+   "title": "Électeur palatin (1556-1559)",
+   "g": "h",
+   "script": 61
+  },
+  "wi.suzanne": {
+   "id": "aefb517c-8e6f-5b3d-afea-3e8857138c2c",
+   "name": "Suzanne de Bavière (1502-1543)",
+   "b": 1502,
+   "d": 1543,
+   "tree": "DE_WIT",
+   "title": "Électrice palatine, épouse d'Othon-Henri",
+   "g": "f",
+   "script": 61
+  },
+  "wi.anne_veld": {
+   "id": "7ca74331-6cb0-55d0-8d42-65dae1cca98d",
+   "name": "Anne de Veldenz",
+   "b": 1390,
+   "d": 1439,
+   "tree": "DE_WIT",
+   "title": "Comtesse palatine de Simmern-Deux-Ponts",
+   "g": "f",
+   "script": 61
+  },
+  "wi.fred1_sim": {
+   "id": "65e691eb-5a53-5c90-82e3-25ec8dc7b8e3",
+   "name": "Frédéric Ier de Palatinat-Simmern",
+   "b": 1417,
+   "d": 1480,
+   "tree": "DE_WIT",
+   "title": "Comte palatin de Simmern",
+   "g": "h",
+   "script": 61
+  },
+  "wi.louis1_zw": {
+   "id": "8313160f-23c3-5d5e-b3b6-62bd2c4d5d42",
+   "name": "Louis Ier de Deux-Ponts",
+   "b": 1424,
+   "d": 1489,
+   "tree": "DE_WIT",
+   "title": "Comte palatin de Deux-Ponts",
+   "g": "h",
+   "script": 61
+  },
+  "wi.marg_guel": {
+   "id": "685a8d8a-1cf9-5968-9f87-4005d853e348",
+   "name": "Marguerite de Gueldre",
+   "b": 1436,
+   "d": 1486,
+   "tree": "DE_WIT",
+   "title": "Comtesse palatine de Simmern",
+   "g": "f",
+   "script": 61
+  },
+  "wi.john1_sim": {
+   "id": "c0c08e96-f9d2-53c6-8fde-b67739d23428",
+   "name": "Jean Ier de Palatinat-Simmern",
+   "b": 1459,
+   "d": 1509,
+   "tree": "DE_WIT",
+   "title": "Comte palatin de Simmern",
+   "g": "h",
+   "script": 61
+  },
+  "wi.jeanne_ns": {
+   "id": "654e05f3-5c75-5291-8503-1bfa96e40f3a",
+   "name": "Jeanne de Nassau-Sarrebruck",
+   "b": 1464,
+   "d": 1521,
+   "tree": "DE_WIT",
+   "title": "Comtesse palatine de Simmern",
+   "g": "f",
+   "script": 61
+  },
+  "wi.john2_sim": {
+   "id": "89742c8f-8744-5b45-adb7-3e539772a10a",
+   "name": "Jean II de Palatinat-Simmern",
+   "b": 1492,
+   "d": 1557,
+   "tree": "DE_WIT",
+   "title": "Comte palatin de Simmern",
+   "g": "h",
+   "script": 61
+  },
+  "wi.beatrix_bade": {
+   "id": "cb6b92de-1c25-5f1d-a249-2581509a7a3a",
+   "name": "Béatrice de Bade",
+   "b": 1492,
+   "d": 1535,
+   "tree": "DE_WIT",
+   "title": "Comtesse palatine de Simmern",
+   "g": "f",
+   "script": 61
+  },
+  "wi.fred3": {
+   "id": "853fc3a5-c8d1-55d4-9871-239248aedef1",
+   "name": "Frédéric III le Pieux",
+   "b": 1515,
+   "d": 1576,
+   "tree": "DE_WIT",
+   "title": "Électeur palatin (1559-1576)",
+   "g": "h",
+   "script": 61
+  },
+  "wi.marie_bk": {
+   "id": "12f7dc89-95a6-575d-8879-e3a1b2251501",
+   "name": "Marie de Brandebourg-Kulmbach",
+   "b": 1519,
+   "d": 1567,
+   "tree": "DE_HOH",
+   "title": "Électrice palatine",
+   "g": "f",
+   "script": 61
+  },
+  "wi.louis6": {
+   "id": "62b68c62-88d6-55d8-80ff-c9c223152670",
+   "name": "Louis VI du Palatinat",
+   "b": 1539,
+   "d": 1583,
+   "tree": "DE_WIT",
+   "title": "Électeur palatin (1576-1583)",
+   "g": "h",
+   "script": 61
+  },
+  "wi.jean_casimir": {
+   "id": "7cee674d-4b96-5f23-83c4-3686e91eb30a",
+   "name": "Jean-Casimir du Palatinat",
+   "b": 1543,
+   "d": 1592,
+   "tree": "DE_WIT",
+   "title": "Régent du Palatinat, chef du parti calviniste",
+   "g": "h",
+   "script": 61
+  },
+  "wi.elis_hesse2": {
+   "id": "76ae7223-6fe2-5151-ad8e-ecb9b391cec3",
+   "name": "Élisabeth de Hesse (1539-1582)",
+   "b": 1539,
+   "d": 1582,
+   "tree": "DE_WIT",
+   "title": "Électrice palatine",
+   "g": "f",
+   "script": 61
+  },
+  "wi.fred4": {
+   "id": "151a30e1-0762-5bae-98ff-1c46fc3614c5",
+   "name": "Frédéric IV du Palatinat",
+   "b": 1574,
+   "d": 1610,
+   "tree": "DE_WIT",
+   "title": "Électeur palatin (1583-1610)",
+   "g": "h",
+   "script": 61
+  },
+  "wi.louise_juliana": {
+   "id": "976e2f0b-cbcf-5b6f-a551-97e13e013d0d",
+   "name": "Louise-Julienne d'Orange-Nassau",
+   "b": 1576,
+   "d": 1644,
+   "tree": "NL_ORA",
+   "title": "Électrice palatine",
+   "g": "f",
+   "script": 61
+  },
+  "wi.charles_louis": {
+   "id": "846237ef-0294-5773-8981-0c59bd21863e",
+   "name": "Charles Ier Louis du Palatinat",
+   "b": 1617,
+   "d": 1680,
+   "tree": "DE_WIT",
+   "title": "Électeur palatin (1648-1680)",
+   "g": "h",
+   "script": 61
+  },
+  "wi.charlotte_hk": {
+   "id": "4f7884a3-8afa-5504-9dd4-4ad876655094",
+   "name": "Charlotte de Hesse-Cassel",
+   "b": 1627,
+   "d": 1686,
+   "tree": "DE_WIT",
+   "title": "Électrice palatine",
+   "g": "f",
+   "script": 61
+  },
+  "wi.charles2_pal": {
+   "id": "e77ff5a1-0a0c-5bc9-b3b0-fc7fc35e3988",
+   "name": "Charles II du Palatinat",
+   "b": 1651,
+   "d": 1685,
+   "tree": "DE_WIT",
+   "title": "Électeur palatin (1680-1685), dernier de la lignée de Simmern",
+   "g": "h",
+   "script": 61
+  },
+  "wi.wilhelmine_dk": {
+   "id": "962d50b2-7759-544a-bdb9-0cc09d1e5893",
+   "name": "Wilhelmine-Ernestine de Danemark",
+   "b": 1650,
+   "d": 1706,
+   "tree": "DK_OLD",
+   "title": "Électrice palatine",
+   "g": "f",
+   "script": 61
+  },
+  "wi.jeanne_croy": {
+   "id": "8b27a39c-2d9a-50a3-a473-54382d286239",
+   "name": "Jeanne de Croÿ",
+   "b": null,
+   "d": null,
+   "tree": "DE_WIT",
+   "title": "Comtesse palatine de Deux-Ponts",
+   "g": "f",
+   "script": 61
+  },
+  "wi.alex_zw": {
+   "id": "e4cb298d-a5b9-54b3-8a46-f212281bf9fd",
+   "name": "Alexandre de Deux-Ponts",
+   "b": 1462,
+   "d": 1514,
+   "tree": "DE_WIT",
+   "title": "Comte palatin de Deux-Ponts",
+   "g": "h",
+   "script": 61
+  },
+  "wi.marg_hoh": {
+   "id": "1415ae9b-bc70-5a67-b354-0d8870067762",
+   "name": "Marguerite de Hohenlohe-Neuenstein",
+   "b": 1480,
+   "d": 1522,
+   "tree": "DE_WIT",
+   "title": "Comtesse palatine de Deux-Ponts",
+   "g": "f",
+   "script": 61
+  },
+  "wi.louis2_zw": {
+   "id": "268433ac-00a4-54db-9acb-a79d9c337631",
+   "name": "Louis II de Deux-Ponts",
+   "b": 1502,
+   "d": 1532,
+   "tree": "DE_WIT",
+   "title": "Comte palatin de Deux-Ponts",
+   "g": "h",
+   "script": 61
+  },
+  "wi.elis_hesse1": {
+   "id": "202c924f-7536-5f1a-b0a3-7752a5fa07dd",
+   "name": "Élisabeth de Hesse (1503-1563)",
+   "b": 1503,
+   "d": 1563,
+   "tree": "DE_WIT",
+   "title": "Comtesse palatine de Deux-Ponts",
+   "g": "f",
+   "script": 61
+  },
+  "wi.wolfgang_zw": {
+   "id": "84c84410-0219-5d47-922a-f0171fd99ad3",
+   "name": "Wolfgang de Deux-Ponts",
+   "b": 1526,
+   "d": 1569,
+   "tree": "DE_WIT",
+   "title": "Comte palatin de Deux-Ponts",
+   "g": "h",
+   "script": 61
+  },
+  "wi.anne_hesse": {
+   "id": "f6a15f99-59ee-5e70-acbb-55bfcbca182f",
+   "name": "Anne de Hesse (comtesse palatine de Deux-Ponts)",
+   "b": null,
+   "d": null,
+   "tree": "DE_WIT",
+   "title": "Comtesse palatine de Deux-Ponts",
+   "g": "f",
+   "script": 61
+  },
+  "wi.philippe_louis": {
+   "id": "c03b11ea-8495-5c59-a224-fdb8e04fe4c7",
+   "name": "Philippe-Louis de Neubourg",
+   "b": 1547,
+   "d": 1614,
+   "tree": "DE_WIT",
+   "title": "Comte palatin de Neubourg",
+   "g": "h",
+   "script": 61
+  },
+  "wi.john1_zw": {
+   "id": "8bbb9afd-d8ab-5f1f-9aa0-20b4cddc404f",
+   "name": "Jean Ier de Deux-Ponts",
+   "b": 1550,
+   "d": 1604,
+   "tree": "DE_WIT",
+   "title": "Comte palatin de Deux-Ponts",
+   "g": "h",
+   "script": 61
+  },
+  "wi.charles1_birk": {
+   "id": "ede81b4f-20bb-5aea-bb15-3f444a90929a",
+   "name": "Charles Ier de Deux-Ponts-Birkenfeld",
+   "b": 1560,
+   "d": 1600,
+   "tree": "DE_WIT",
+   "title": "Comte palatin de Deux-Ponts-Birkenfeld",
+   "g": "h",
+   "script": 61
+  },
+  "wi.anne_cleves": {
+   "id": "6e01b8d0-30b9-582f-b2fa-4d73abe2db74",
+   "name": "Anne de Clèves-Juliers",
+   "b": 1552,
+   "d": 1632,
+   "tree": "DE_WIT",
+   "title": "Comtesse palatine de Neubourg",
+   "g": "f",
+   "script": 61
+  },
+  "wi.mag_jcb": {
+   "id": "f616c94e-2d9c-53da-915a-b492465830bd",
+   "name": "Madeleine de Juliers-Clèves-Berg",
+   "b": null,
+   "d": null,
+   "tree": "DE_WIT",
+   "title": "Comtesse palatine de Deux-Ponts",
+   "g": "f",
+   "script": 61
+  },
+  "wi.dorothee_bl": {
+   "id": "04832037-17d9-54d4-9e9a-31a349e2f930",
+   "name": "Dorothée de Brunswick-Lunebourg (1570-1649)",
+   "b": 1570,
+   "d": 1649,
+   "tree": "DE_WEL",
+   "title": "Comtesse palatine de Deux-Ponts-Birkenfeld",
+   "g": "f",
+   "script": 61
+  },
+  "wi.christian1_birk": {
+   "id": "d73df912-5fbb-59a7-920b-8411c9bdd157",
+   "name": "Christian Ier de Birkenfeld-Bischwiller",
+   "b": 1598,
+   "d": 1654,
+   "tree": "DE_WIT",
+   "title": "Comte palatin de Birkenfeld-Bischwiller",
+   "g": "h",
+   "script": 61
+  },
+  "wi.mag_cath": {
+   "id": "6a426ce7-4621-5b1a-a7f5-6c6453957321",
+   "name": "Madeleine-Catherine de Deux-Ponts",
+   "b": 1607,
+   "d": 1648,
+   "tree": "DE_WIT",
+   "title": "Comtesse palatine de Birkenfeld-Bischwiller",
+   "g": "f",
+   "script": 61
+  },
+  "wi.christian2_birk": {
+   "id": "75268b27-739e-511e-8a20-6c3c155c2bd8",
+   "name": "Christian II de Birkenfeld-Bischwiller",
+   "b": 1637,
+   "d": 1717,
+   "tree": "DE_WIT",
+   "title": "Comte palatin de Birkenfeld-Bischwiller",
+   "g": "h",
+   "script": 61
+  },
+  "wi.kath_agathe": {
+   "id": "106e1419-e330-5446-aa88-cffc599cd022",
+   "name": "Catherine-Agathe de Ribeaupierre (Rappoltstein)",
+   "b": null,
+   "d": null,
+   "tree": "DE_WIT",
+   "title": "Comtesse palatine de Birkenfeld-Bischwiller",
+   "g": "f",
+   "script": 61
+  },
+  "wi.christian3": {
+   "id": "2efe7026-9ca5-586f-b8db-1f64be4c9e34",
+   "name": "Christian III de Deux-Ponts",
+   "b": 1674,
+   "d": 1735,
+   "tree": "DE_WIT",
+   "title": "Comte palatin de Deux-Ponts-Birkenfeld",
+   "g": "h",
+   "script": 61
+  },
+  "wi.caroline_ns": {
+   "id": "13f9959b-aa42-5a76-927b-2f14b0d9bf0f",
+   "name": "Caroline de Nassau-Sarrebruck",
+   "b": 1704,
+   "d": 1774,
+   "tree": "DE_WIT",
+   "title": "Comtesse palatine de Deux-Ponts",
+   "g": "f",
+   "script": 61
+  },
+  "wi.fred_michel": {
+   "id": "e3afe90b-2b57-5e2c-8589-08e5924e2ed2",
+   "name": "Frédéric-Michel de Deux-Ponts-Birkenfeld",
+   "b": 1724,
+   "d": 1767,
+   "tree": "DE_WIT",
+   "title": "Comte palatin de Deux-Ponts-Birkenfeld",
+   "g": "h",
+   "script": 61
+  },
+  "wi.auguste_sulz": {
+   "id": "06e36e43-4207-543a-9b29-51e7364933c5",
+   "name": "Auguste de Sulzbach",
+   "b": 1582,
+   "d": 1632,
+   "tree": "DE_WIT",
+   "title": "Comte palatin de Sulzbach",
+   "g": "h",
+   "script": 61
+  },
+  "wi.hedwige_gott": {
+   "id": "e2a0d9c5-7f6b-51e1-9194-fb9f0d4b7443",
+   "name": "Hedwige de Holstein-Gottorp",
+   "b": 1603,
+   "d": 1657,
+   "tree": "DE_WIT",
+   "title": "Comtesse palatine de Sulzbach",
+   "g": "f",
+   "script": 61
+  },
+  "wi.christian_auguste": {
+   "id": "7125a7c9-746d-5acc-8f07-566219545175",
+   "name": "Christian-Auguste de Sulzbach",
+   "b": 1622,
+   "d": 1708,
+   "tree": "DE_WIT",
+   "title": "Comte palatin de Sulzbach",
+   "g": "h",
+   "script": 61
+  },
+  "wi.amelie_ns": {
+   "id": "b0575dee-0eda-59c3-a17d-d06a9e65d145",
+   "name": "Amélie de Nassau-Siegen",
+   "b": null,
+   "d": null,
+   "tree": "DE_WIT",
+   "title": "Comtesse palatine de Sulzbach",
+   "g": "f",
+   "script": 61
+  },
+  "wi.theodore": {
+   "id": "9275fefe-7d1b-5ed7-8e1a-51055c479586",
+   "name": "Théodore-Eustache de Sulzbach",
+   "b": 1659,
+   "d": 1732,
+   "tree": "DE_WIT",
+   "title": "Comte palatin de Sulzbach",
+   "g": "h",
+   "script": 61
+  },
+  "wi.marie_eleonore_hr": {
+   "id": "bda4215f-b12c-570d-add2-b550342e7c33",
+   "name": "Marie-Éléonore de Hesse-Rotenbourg",
+   "b": 1675,
+   "d": 1720,
+   "tree": "DE_WIT",
+   "title": "Comtesse palatine de Sulzbach",
+   "g": "f",
+   "script": 61
+  },
+  "wi.joseph_charles": {
+   "id": "69100adc-846d-5a11-a578-5d303eb6a712",
+   "name": "Joseph-Charles de Sulzbach",
+   "b": 1694,
+   "d": 1729,
+   "tree": "DE_WIT",
+   "title": "Prince héritier de Sulzbach",
+   "g": "h",
+   "script": 61
+  },
+  "wi.jean_christian": {
+   "id": "f9f30ff5-dfab-5b6d-9b2e-d9af3695685b",
+   "name": "Jean-Christian de Sulzbach",
+   "b": 1700,
+   "d": 1733,
+   "tree": "DE_WIT",
+   "title": "Comte palatin de Sulzbach",
+   "g": "h",
+   "script": 61
+  },
+  "wi.jean_guillaume": {
+   "id": "32b5e90e-4358-5a9f-b97a-dda04286d882",
+   "name": "Jean-Guillaume de Neubourg",
+   "b": 1658,
+   "d": 1716,
+   "tree": "DE_WIT",
+   "title": "Électeur palatin (1690-1716)",
+   "g": "h",
+   "script": 61
+  },
+  "wi.charles3_philippe": {
+   "id": "bdf45188-7ec0-5b64-8a84-e798385e37d0",
+   "name": "Charles III Philippe du Palatinat",
+   "b": 1661,
+   "d": 1742,
+   "tree": "DE_WIT",
+   "title": "Électeur palatin (1716-1742)",
+   "g": "h",
+   "script": 61
+  },
+  "wi.marie_anne_neub": {
+   "id": "36c30d2a-e8a7-5112-bc6f-ff589ed35e83",
+   "name": "Marie-Anne de Neubourg",
+   "b": 1667,
+   "d": 1740,
+   "tree": "DE_WIT",
+   "title": "Reine d'Espagne (épouse de Charles II)",
+   "g": "f",
+   "script": 61
+  },
+  "wi.dorothee_sophie": {
+   "id": "5539ea53-f47b-5952-883b-23c7429e5bb5",
+   "name": "Dorothée-Sophie de Neubourg",
+   "b": 1670,
+   "d": 1748,
+   "tree": "DE_WIT",
+   "title": "Duchesse de Parme",
+   "g": "f",
+   "script": 61
+  },
+  "wi.louise_radziwill": {
+   "id": "caa4ed0b-8548-57eb-924e-323cfa21fa11",
+   "name": "Louise-Charlotte Radziwiłł",
+   "b": 1667,
+   "d": 1695,
+   "tree": "DE_WIT",
+   "title": "Électrice palatine",
+   "g": "f",
+   "script": 61
+  },
+  "wi.elis_aug_neub": {
+   "id": "78cd4f03-d15b-57ef-81fb-9c9fcf87d16a",
+   "name": "Élisabeth-Auguste-Sophie de Neubourg",
+   "b": 1693,
+   "d": 1728,
+   "tree": "DE_WIT",
+   "title": "Princesse héritière de Sulzbach",
+   "g": "f",
+   "script": 61
+  },
+  "wi.elis_aug_sulz": {
+   "id": "97f11595-b742-55d3-ac39-8bcd5fb73338",
+   "name": "Élisabeth-Auguste de Sulzbach",
+   "b": 1721,
+   "d": 1794,
+   "tree": "DE_WIT",
+   "title": "Électrice palatine et de Bavière",
+   "g": "f",
+   "script": 61
+  },
+  "wi.marie_francoise": {
+   "id": "99cfbdac-3237-5c32-b5b7-525027ef730a",
+   "name": "Marie-Françoise de Sulzbach",
+   "b": 1724,
+   "d": 1794,
+   "tree": "DE_WIT",
+   "title": "Comtesse palatine de Deux-Ponts-Birkenfeld",
+   "g": "f",
+   "script": 61
+  },
+  "wi.marie_henriette": {
+   "id": "077b4bf1-1e87-54e8-9aca-e8c568b199c5",
+   "name": "Marie-Henriette de La Tour d'Auvergne",
+   "b": null,
+   "d": null,
+   "tree": "DE_WIT",
+   "title": "Comtesse palatine de Sulzbach",
+   "g": "f",
+   "script": 61
+  },
+  "wi.charles_theodore": {
+   "id": "6a24edaf-7e21-58a8-9b7a-0dcae790ee6e",
+   "name": "Charles-Théodore de Bavière",
+   "b": 1724,
+   "d": 1799,
+   "tree": "DE_WIT",
+   "title": "Électeur palatin (1742-1799), électeur de Bavière (1777-1799)",
+   "g": "h",
+   "script": 61
+  },
+  "wi.charles_auguste_zw": {
+   "id": "38511164-04ab-5e78-8472-212518d443bd",
+   "name": "Charles II Auguste de Deux-Ponts",
+   "b": 1746,
+   "d": 1795,
+   "tree": "DE_WIT",
+   "title": "Duc de Deux-Ponts",
+   "g": "h",
+   "script": 61
+  },
+  "wi.augusta_wh": {
+   "id": "b3d0a535-7ed3-5ed8-b49e-d1205ec99bbd",
+   "name": "Auguste-Wilhelmine de Hesse-Darmstadt",
+   "b": null,
+   "d": 1796,
+   "tree": "DE_WIT",
+   "title": "Première épouse de Maximilien Ier Joseph de Bavière",
+   "g": "f",
+   "script": 61
+  },
+  "wi.karoline_bade": {
+   "id": "6dfa9c87-cfb3-5c52-add3-4c2663679b77",
+   "name": "Caroline de Bade (reine de Bavière)",
+   "b": null,
+   "d": null,
+   "tree": "DE_WIT",
+   "title": "Reine de Bavière, seconde épouse de Maximilien Ier Joseph",
+   "g": "f",
+   "script": 61
+  },
+  "wi.karl_theodor_max": {
+   "id": "6df94d5d-41cb-5f6b-bd5d-0dba983f8e8d",
+   "name": "Charles-Théodore de Bavière (1795-1875)",
+   "b": 1795,
+   "d": 1875,
+   "tree": "DE_WIT",
+   "title": "Prince de Bavière",
+   "g": "h",
+   "script": 61
+  },
+  "wi.marie_anne_saxe": {
+   "id": "69c5dfeb-152d-5dff-9702-717bf9757f58",
+   "name": "Marie-Anne de Bavière (reine de Saxe)",
+   "b": 1805,
+   "d": 1877,
+   "tree": "DE_WIT",
+   "title": "Reine de Saxe",
+   "g": "f",
+   "script": 61
+  },
+  "wi.marie_prusse": {
+   "id": "d1a02d9d-103a-5dbc-ac1b-ef55e85dd4cf",
+   "name": "Marie de Prusse (reine de Bavière)",
+   "b": null,
+   "d": null,
+   "tree": "DE_HOH",
+   "title": "Reine de Bavière",
+   "g": "f",
+   "script": 61
+  },
+  "wi.auguste_f": {
+   "id": "bce84c9a-7509-5c43-98cb-1e520fb30156",
+   "name": "Auguste-Ferdinande d'Autriche",
+   "b": 1825,
+   "d": 1864,
+   "tree": "DE_HAB",
+   "title": "Princesse de Bavière",
+   "g": "f",
+   "script": 61
+  },
+  "wi.leopold_b": {
+   "id": "f0a42602-4bbb-5531-8d44-dcb02bfea873",
+   "name": "Léopold de Bavière",
+   "b": 1846,
+   "d": 1930,
+   "tree": "DE_WIT",
+   "title": "Prince de Bavière, maréchal",
+   "g": "h",
+   "script": 61
+  },
+  "wi.therese_b": {
+   "id": "e22e32dd-f04a-5917-9af5-b62b9d4535aa",
+   "name": "Thérèse de Bavière",
+   "b": 1850,
+   "d": 1925,
+   "tree": "DE_WIT",
+   "title": "Princesse de Bavière, exploratrice et écrivaine",
+   "g": "f",
+   "script": 61
+  },
+  "wi.arnulf": {
+   "id": "5a7369b4-11f1-5681-b0e6-5825ab764715",
+   "name": "Arnulf de Bavière",
+   "b": 1852,
+   "d": 1907,
+   "tree": "DE_WIT",
+   "title": "Prince de Bavière",
+   "g": "h",
+   "script": 61
+  },
+  "wi.marie_therese_este": {
+   "id": "dc02a4dd-5107-56bc-96de-c8c061b6f2fc",
+   "name": "Marie-Thérèse d'Autriche-Este",
+   "b": 1849,
+   "d": 1919,
+   "tree": "DE_WIT",
+   "title": "Reine de Bavière",
+   "g": "f",
+   "script": 61
+  },
+  "wi.rupprecht": {
+   "id": "cf2a34b8-f185-54a9-9eb6-99126dce51e7",
+   "name": "Rupprecht de Bavière",
+   "b": 1869,
+   "d": 1955,
+   "tree": "DE_WIT",
+   "title": "Prince héritier de Bavière, maréchal",
+   "g": "h",
+   "script": 61
+  },
+  "wi.karl_theodor_b": {
+   "id": "2afe6f22-ae2d-5989-a9cb-71a76603fb05",
+   "name": "Charles-Théodore en Bavière",
+   "b": 1839,
+   "d": 1909,
+   "tree": "DE_WIT",
+   "title": "Duc en Bavière, ophtalmologue",
+   "g": "h",
+   "script": 61
+  },
+  "wi.maria_jose": {
+   "id": "63819331-5bf9-5ecb-ae6f-d678dfec9c64",
+   "name": "Marie-Josèphe de Portugal (duchesse en Bavière)",
+   "b": 1857,
+   "d": 1943,
+   "tree": "DE_WIT",
+   "title": "Duchesse en Bavière",
+   "g": "f",
+   "script": 61
+  },
+  "wi.marie_gabrielle": {
+   "id": "4bdcb94e-6782-52da-a401-57bfe6113fb6",
+   "name": "Marie-Gabrielle en Bavière",
+   "b": 1878,
+   "d": 1912,
+   "tree": "DE_WIT",
+   "title": "Princesse héritière de Bavière",
+   "g": "f",
+   "script": 61
+  },
+  "wi.antonia_lux": {
+   "id": "a9433967-0038-5fdd-bfa6-886775e318f7",
+   "name": "Antonia de Luxembourg",
+   "b": 1899,
+   "d": 1954,
+   "tree": "LU_NAS",
+   "title": "Princesse héritière de Bavière",
+   "g": "f",
+   "script": 61
+  },
+  "wi.albrecht": {
+   "id": "5170d532-2c09-5c18-a28f-d123cdd64e9c",
+   "name": "Albrecht de Bavière",
+   "b": 1905,
+   "d": 1996,
+   "tree": "DE_WIT",
+   "title": "Duc de Bavière, chef de la maison de Wittelsbach",
+   "g": "h",
+   "script": 61
+  },
+  "wi.draskovich": {
+   "id": "2e965584-4251-5b7a-8b70-018670113845",
+   "name": "Maria Draskovich de Trakostjan",
+   "b": 1903,
+   "d": 1969,
+   "tree": "DE_WIT",
+   "title": "Duchesse de Bavière",
+   "g": "f",
+   "script": 61
+  },
+  "wi.franz_b": {
+   "id": "27ec5173-b4e9-57c4-a3cf-1e3b68778254",
+   "name": "François de Bavière",
+   "b": 1933,
+   "d": null,
+   "tree": "DE_WIT",
+   "title": "Duc de Bavière, chef de la maison de Wittelsbach",
+   "g": "h",
+   "script": 61
+  },
+  "wi.max_b": {
+   "id": "941815b0-30ad-5c66-a1b7-09a0b94d7c5b",
+   "name": "Max, duc en Bavière",
+   "b": 1937,
+   "d": null,
+   "tree": "DE_WIT",
+   "title": "Duc en Bavière",
+   "g": "h",
+   "script": 61
+  },
+  "wi.douglas": {
+   "id": "eac6f5a9-8ea2-5317-84ad-77a2b9d73434",
+   "name": "Élisabeth Douglas",
+   "b": null,
+   "d": null,
+   "tree": "DE_WIT",
+   "title": "Duchesse en Bavière",
+   "g": "f",
+   "script": 61
   }
  },
  "trees": {
@@ -11189,9 +12209,9 @@
    "script": 40
   },
   "DE_HOH": {
-   "entry": "19aed0d5-8c4a-4125-b821-8fc6bc357dab",
+   "entry": "39895573-27f3-4112-905b-c9ba7e3c95a1",
    "country": "DEU",
-   "dynasty": "Hohenstaufen",
+   "dynasty": "Hohenzollern",
    "script": null
   },
   "HU_ARP": {
@@ -11511,6 +12531,30 @@
    "country": "CHN",
    "dynasty": "Jin (Sima)",
    "script": 59
+  },
+  "GB_LAN": {
+   "entry": "a393c0e9-c400-40f8-a6d4-79e7ad750486",
+   "country": "GBR",
+   "dynasty": "Maison de Lancastre",
+   "script": null
+  },
+  "DK_OLD": {
+   "entry": "7fc4995d-01af-4a5b-8344-817566b6f3c2",
+   "country": "DNK",
+   "dynasty": "Maison d'Oldenbourg",
+   "script": null
+  },
+  "NL_ORA": {
+   "entry": "7733ccfd-7fea-44af-9339-713120d3bbf2",
+   "country": "NLD",
+   "dynasty": "Maison d'Orange Nassau",
+   "script": null
+  },
+  "DE_WEL": {
+   "entry": "db5ef554-cbb9-448f-89fa-b656bf1d1147",
+   "country": "DEU",
+   "dynasty": "Welf",
+   "script": null
   }
  },
  "flags": [
@@ -14005,6 +15049,202 @@
    "tree": "CN_JIN",
    "reason": "Famille consort Chu (Chine) : sans arbre",
    "script": 59
+  },
+  {
+   "name": "Mathilde de Savoie (électrice palatine)",
+   "b": null,
+   "tree": "DE_WIT",
+   "reason": "Maison de Savoie (Italie) : arbre à créer avec l'Italie",
+   "script": 61
+  },
+  {
+   "name": "Marguerite de Savoie (électrice palatine)",
+   "b": 1420,
+   "tree": "DE_WIT",
+   "reason": "Maison de Savoie (Italie) : arbre à créer avec l'Italie",
+   "script": 61
+  },
+  {
+   "name": "Maddalena Visconti",
+   "b": null,
+   "tree": "DE_WIT",
+   "reason": "Maison Visconti (Italie) : sans arbre",
+   "script": 61
+  },
+  {
+   "name": "Anne de Veldenz",
+   "b": 1390,
+   "tree": "DE_WIT",
+   "reason": "Maison de Veldenz : sans arbre",
+   "script": 61
+  },
+  {
+   "name": "Marguerite de Gueldre",
+   "b": 1436,
+   "tree": "DE_WIT",
+   "reason": "Maison de Gueldre : sans arbre",
+   "script": 61
+  },
+  {
+   "name": "Jeanne de Nassau-Sarrebruck",
+   "b": 1464,
+   "tree": "DE_WIT",
+   "reason": "Maison de Nassau-Sarrebruck : sans arbre",
+   "script": 61
+  },
+  {
+   "name": "Béatrice de Bade",
+   "b": 1492,
+   "tree": "DE_WIT",
+   "reason": "Maison de Bade (Zähringen) : sans arbre",
+   "script": 61
+  },
+  {
+   "name": "Élisabeth de Hesse (1539-1582)",
+   "b": 1539,
+   "tree": "DE_WIT",
+   "reason": "Maison de Hesse : sans arbre",
+   "script": 61
+  },
+  {
+   "name": "Charlotte de Hesse-Cassel",
+   "b": 1627,
+   "tree": "DE_WIT",
+   "reason": "Maison de Hesse : sans arbre",
+   "script": 61
+  },
+  {
+   "name": "Jeanne de Croÿ",
+   "b": null,
+   "tree": "DE_WIT",
+   "reason": "Maison de Croÿ : sans arbre",
+   "script": 61
+  },
+  {
+   "name": "Marguerite de Hohenlohe-Neuenstein",
+   "b": 1480,
+   "tree": "DE_WIT",
+   "reason": "Maison de Hohenlohe : sans arbre",
+   "script": 61
+  },
+  {
+   "name": "Élisabeth de Hesse (1503-1563)",
+   "b": 1503,
+   "tree": "DE_WIT",
+   "reason": "Maison de Hesse : sans arbre",
+   "script": 61
+  },
+  {
+   "name": "Anne de Hesse (comtesse palatine de Deux-Ponts)",
+   "b": null,
+   "tree": "DE_WIT",
+   "reason": "Maison de Hesse : sans arbre",
+   "script": 61
+  },
+  {
+   "name": "Anne de Clèves-Juliers",
+   "b": 1552,
+   "tree": "DE_WIT",
+   "reason": "Maison de Clèves-Juliers : sans arbre",
+   "script": 61
+  },
+  {
+   "name": "Madeleine de Juliers-Clèves-Berg",
+   "b": null,
+   "tree": "DE_WIT",
+   "reason": "Maison de Clèves-Juliers : sans arbre",
+   "script": 61
+  },
+  {
+   "name": "Catherine-Agathe de Ribeaupierre (Rappoltstein)",
+   "b": null,
+   "tree": "DE_WIT",
+   "reason": "Maison de Ribeaupierre (Rappoltstein) : sans arbre",
+   "script": 61
+  },
+  {
+   "name": "Caroline de Nassau-Sarrebruck",
+   "b": 1704,
+   "tree": "DE_WIT",
+   "reason": "Maison de Nassau-Sarrebruck : sans arbre",
+   "script": 61
+  },
+  {
+   "name": "Hedwige de Holstein-Gottorp",
+   "b": 1603,
+   "tree": "DE_WIT",
+   "reason": "Maison de Holstein-Gottorp : sans arbre",
+   "script": 61
+  },
+  {
+   "name": "Amélie de Nassau-Siegen",
+   "b": null,
+   "tree": "DE_WIT",
+   "reason": "Maison de Nassau-Siegen : sans arbre",
+   "script": 61
+  },
+  {
+   "name": "Marie-Éléonore de Hesse-Rotenbourg",
+   "b": 1675,
+   "tree": "DE_WIT",
+   "reason": "Maison de Hesse : sans arbre",
+   "script": 61
+  },
+  {
+   "name": "Louise-Charlotte Radziwiłł",
+   "b": 1667,
+   "tree": "DE_WIT",
+   "reason": "Maison Radziwiłł (Pologne-Lituanie) : sans arbre",
+   "script": 61
+  },
+  {
+   "name": "Marie-Henriette de La Tour d'Auvergne",
+   "b": null,
+   "tree": "DE_WIT",
+   "reason": "Maison de La Tour d'Auvergne (France) : sans arbre",
+   "script": 61
+  },
+  {
+   "name": "Auguste-Wilhelmine de Hesse-Darmstadt",
+   "b": null,
+   "tree": "DE_WIT",
+   "reason": "Maison de Hesse : sans arbre",
+   "script": 61
+  },
+  {
+   "name": "Caroline de Bade (reine de Bavière)",
+   "b": null,
+   "tree": "DE_WIT",
+   "reason": "Maison de Bade (Zähringen) : sans arbre",
+   "script": 61
+  },
+  {
+   "name": "Marie-Thérèse d'Autriche-Este",
+   "b": 1849,
+   "tree": "DE_WIT",
+   "reason": "Maison d'Autriche-Este : sans arbre",
+   "script": 61
+  },
+  {
+   "name": "Marie-Josèphe de Portugal (duchesse en Bavière)",
+   "b": 1857,
+   "tree": "DE_WIT",
+   "reason": "Maison de Bragance (Portugal) : arbre à créer avec le Portugal",
+   "script": 61
+  },
+  {
+   "name": "Maria Draskovich de Trakostjan",
+   "b": 1903,
+   "tree": "DE_WIT",
+   "reason": "Maison Draskovich (Croatie) : sans arbre",
+   "script": 61
+  },
+  {
+   "name": "Élisabeth Douglas",
+   "b": null,
+   "tree": "DE_WIT",
+   "reason": "Famille Douglas (Suède) : sans arbre",
+   "script": 61
   }
  ],
  "scripts": {
@@ -14202,6 +15442,12 @@
    "trees": [
     "Jin (Sima) (CHN)"
    ]
+  },
+  "61": {
+   "label": "Allemagne — Wittelsbach : branches palatine, Deux-Ponts, Neubourg, Sulzbach, Landshut et rois de Bavière",
+   "members": 102,
+   "rels": 232,
+   "trees": []
   }
  },
  "relist": [
@@ -22884,6 +24130,1166 @@
    "3c1b6772-710a-51f5-a96e-40ea07fbd6d5",
    "2e109a15-8df2-5550-ad18-5ccb9ca7ecef",
    "spouse"
+  ],
+  [
+   "b5beebc9-4be4-4708-a0b9-b4ad18b1059f",
+   "047287e0-8a25-5581-b39c-43ea848247a6",
+   "parent"
+  ],
+  [
+   "0d501ebc-de7d-4a40-a865-31c97bfc0609",
+   "047287e0-8a25-5581-b39c-43ea848247a6",
+   "spouse"
+  ],
+  [
+   "0d501ebc-de7d-4a40-a865-31c97bfc0609",
+   "c7c9aed1-1b44-5e80-bd40-0ccda06bd29b",
+   "parent"
+  ],
+  [
+   "047287e0-8a25-5581-b39c-43ea848247a6",
+   "c7c9aed1-1b44-5e80-bd40-0ccda06bd29b",
+   "parent"
+  ],
+  [
+   "0d501ebc-de7d-4a40-a865-31c97bfc0609",
+   "929d22f1-4a2e-5025-ace5-c3949d0d3bd3",
+   "parent"
+  ],
+  [
+   "047287e0-8a25-5581-b39c-43ea848247a6",
+   "929d22f1-4a2e-5025-ace5-c3949d0d3bd3",
+   "parent"
+  ],
+  [
+   "5353d1e7-02a6-43b4-8319-de3c95497325",
+   "039d495b-70bb-569b-aa93-00cfc7544475",
+   "parent"
+  ],
+  [
+   "c7c9aed1-1b44-5e80-bd40-0ccda06bd29b",
+   "039d495b-70bb-569b-aa93-00cfc7544475",
+   "spouse"
+  ],
+  [
+   "c7c9aed1-1b44-5e80-bd40-0ccda06bd29b",
+   "7a05e6b2-7aef-5b9f-a859-8d519219a396",
+   "spouse"
+  ],
+  [
+   "c7c9aed1-1b44-5e80-bd40-0ccda06bd29b",
+   "26829c4f-f47e-5d7f-a210-1b8b769e9221",
+   "parent"
+  ],
+  [
+   "7a05e6b2-7aef-5b9f-a859-8d519219a396",
+   "26829c4f-f47e-5d7f-a210-1b8b769e9221",
+   "parent"
+  ],
+  [
+   "c7c9aed1-1b44-5e80-bd40-0ccda06bd29b",
+   "1c8eeb51-b6c9-511d-8c6d-99c5853522ca",
+   "parent"
+  ],
+  [
+   "7a05e6b2-7aef-5b9f-a859-8d519219a396",
+   "1c8eeb51-b6c9-511d-8c6d-99c5853522ca",
+   "parent"
+  ],
+  [
+   "26829c4f-f47e-5d7f-a210-1b8b769e9221",
+   "154ef098-7f44-5e1a-a6b8-8027160ca3c9",
+   "spouse"
+  ],
+  [
+   "26829c4f-f47e-5d7f-a210-1b8b769e9221",
+   "5394eaab-6509-564c-9304-83b086d48f37",
+   "parent"
+  ],
+  [
+   "154ef098-7f44-5e1a-a6b8-8027160ca3c9",
+   "5394eaab-6509-564c-9304-83b086d48f37",
+   "parent"
+  ],
+  [
+   "cdef06dd-bed4-4524-a27b-6ac2afcdb6c1",
+   "f6d19d81-19cd-5c12-af55-918064bb7d18",
+   "parent"
+  ],
+  [
+   "7cc1fb5a-a4f9-46c4-9f71-d12d482acb10",
+   "f6d19d81-19cd-5c12-af55-918064bb7d18",
+   "parent"
+  ],
+  [
+   "f6d19d81-19cd-5c12-af55-918064bb7d18",
+   "f3c9aa1a-d40f-57d7-9703-9cf70c8b0da6",
+   "spouse"
+  ],
+  [
+   "f6d19d81-19cd-5c12-af55-918064bb7d18",
+   "55bbdc66-ea56-4da2-9260-e5b449c6ddac",
+   "parent"
+  ],
+  [
+   "f3c9aa1a-d40f-57d7-9703-9cf70c8b0da6",
+   "55bbdc66-ea56-4da2-9260-e5b449c6ddac",
+   "parent"
+  ],
+  [
+   "f6d19d81-19cd-5c12-af55-918064bb7d18",
+   "ae8ac6a9-13df-5f56-88b7-e2ec592a0ce5",
+   "parent"
+  ],
+  [
+   "f3c9aa1a-d40f-57d7-9703-9cf70c8b0da6",
+   "ae8ac6a9-13df-5f56-88b7-e2ec592a0ce5",
+   "parent"
+  ],
+  [
+   "f51766e0-6f85-4881-a468-0817c956146c",
+   "770d3a38-0f2a-5dce-9440-a3ab6e052a13",
+   "parent"
+  ],
+  [
+   "ae8ac6a9-13df-5f56-88b7-e2ec592a0ce5",
+   "770d3a38-0f2a-5dce-9440-a3ab6e052a13",
+   "spouse"
+  ],
+  [
+   "ae8ac6a9-13df-5f56-88b7-e2ec592a0ce5",
+   "2f284701-a72c-5f2f-9ade-2f2777c7a80c",
+   "parent"
+  ],
+  [
+   "770d3a38-0f2a-5dce-9440-a3ab6e052a13",
+   "2f284701-a72c-5f2f-9ade-2f2777c7a80c",
+   "parent"
+  ],
+  [
+   "482240c2-2d38-489e-8607-d4146a33be48",
+   "0a7a4c78-cae6-5de3-9d94-ef52ee176fe9",
+   "parent"
+  ],
+  [
+   "4f4f63e3-92a5-4221-8a89-6e58f266a5b7",
+   "0a7a4c78-cae6-5de3-9d94-ef52ee176fe9",
+   "parent"
+  ],
+  [
+   "2f284701-a72c-5f2f-9ade-2f2777c7a80c",
+   "0a7a4c78-cae6-5de3-9d94-ef52ee176fe9",
+   "spouse"
+  ],
+  [
+   "2f284701-a72c-5f2f-9ade-2f2777c7a80c",
+   "c13da2b1-eb0f-5a75-83fc-62ef004482ce",
+   "parent"
+  ],
+  [
+   "0a7a4c78-cae6-5de3-9d94-ef52ee176fe9",
+   "c13da2b1-eb0f-5a75-83fc-62ef004482ce",
+   "parent"
+  ],
+  [
+   "2f284701-a72c-5f2f-9ade-2f2777c7a80c",
+   "ffc921e3-3c66-5a55-b806-e73e712a7afe",
+   "parent"
+  ],
+  [
+   "0a7a4c78-cae6-5de3-9d94-ef52ee176fe9",
+   "ffc921e3-3c66-5a55-b806-e73e712a7afe",
+   "parent"
+  ],
+  [
+   "5394eaab-6509-564c-9304-83b086d48f37",
+   "ffc921e3-3c66-5a55-b806-e73e712a7afe",
+   "spouse"
+  ],
+  [
+   "c13da2b1-eb0f-5a75-83fc-62ef004482ce",
+   "07ceb09f-36de-5507-a50c-461bca0f3dbe",
+   "parent"
+  ],
+  [
+   "908bfb27-d214-51d7-a07d-0396835c1143",
+   "07ceb09f-36de-5507-a50c-461bca0f3dbe",
+   "parent"
+  ],
+  [
+   "5394eaab-6509-564c-9304-83b086d48f37",
+   "edf2ae77-b438-57d4-81ee-a6ee48e8271d",
+   "parent"
+  ],
+  [
+   "ffc921e3-3c66-5a55-b806-e73e712a7afe",
+   "edf2ae77-b438-57d4-81ee-a6ee48e8271d",
+   "parent"
+  ],
+  [
+   "5394eaab-6509-564c-9304-83b086d48f37",
+   "c32f0376-6d2e-5a6a-97e0-73bf2a99d122",
+   "parent"
+  ],
+  [
+   "ffc921e3-3c66-5a55-b806-e73e712a7afe",
+   "c32f0376-6d2e-5a6a-97e0-73bf2a99d122",
+   "parent"
+  ],
+  [
+   "5394eaab-6509-564c-9304-83b086d48f37",
+   "c212fba2-7b1d-5a8d-91fd-a1f2271803b8",
+   "parent"
+  ],
+  [
+   "ffc921e3-3c66-5a55-b806-e73e712a7afe",
+   "c212fba2-7b1d-5a8d-91fd-a1f2271803b8",
+   "parent"
+  ],
+  [
+   "72917593-24e0-4493-8123-fc618f4431f2",
+   "4de0b3a0-e784-5545-a768-0a3ca7fd4c75",
+   "parent"
+  ],
+  [
+   "aba6b16a-303c-4044-88c5-75d9c49392b8",
+   "4de0b3a0-e784-5545-a768-0a3ca7fd4c75",
+   "parent"
+  ],
+  [
+   "edf2ae77-b438-57d4-81ee-a6ee48e8271d",
+   "4de0b3a0-e784-5545-a768-0a3ca7fd4c75",
+   "spouse"
+  ],
+  [
+   "c5804411-e3d4-4033-a046-b85739927d2d",
+   "a574e81c-327f-56cc-b537-3e5c53b1e159",
+   "parent"
+  ],
+  [
+   "c32f0376-6d2e-5a6a-97e0-73bf2a99d122",
+   "a574e81c-327f-56cc-b537-3e5c53b1e159",
+   "spouse"
+  ],
+  [
+   "c212fba2-7b1d-5a8d-91fd-a1f2271803b8",
+   "07ceb09f-36de-5507-a50c-461bca0f3dbe",
+   "spouse"
+  ],
+  [
+   "c212fba2-7b1d-5a8d-91fd-a1f2271803b8",
+   "392d924d-20ff-5878-9148-8c5881523d87",
+   "parent"
+  ],
+  [
+   "07ceb09f-36de-5507-a50c-461bca0f3dbe",
+   "392d924d-20ff-5878-9148-8c5881523d87",
+   "parent"
+  ],
+  [
+   "72917593-24e0-4493-8123-fc618f4431f2",
+   "aefb517c-8e6f-5b3d-afea-3e8857138c2c",
+   "parent"
+  ],
+  [
+   "aba6b16a-303c-4044-88c5-75d9c49392b8",
+   "aefb517c-8e6f-5b3d-afea-3e8857138c2c",
+   "parent"
+  ],
+  [
+   "392d924d-20ff-5878-9148-8c5881523d87",
+   "aefb517c-8e6f-5b3d-afea-3e8857138c2c",
+   "spouse"
+  ],
+  [
+   "929d22f1-4a2e-5025-ace5-c3949d0d3bd3",
+   "7ca74331-6cb0-55d0-8d42-65dae1cca98d",
+   "spouse"
+  ],
+  [
+   "929d22f1-4a2e-5025-ace5-c3949d0d3bd3",
+   "65e691eb-5a53-5c90-82e3-25ec8dc7b8e3",
+   "parent"
+  ],
+  [
+   "7ca74331-6cb0-55d0-8d42-65dae1cca98d",
+   "65e691eb-5a53-5c90-82e3-25ec8dc7b8e3",
+   "parent"
+  ],
+  [
+   "929d22f1-4a2e-5025-ace5-c3949d0d3bd3",
+   "8313160f-23c3-5d5e-b3b6-62bd2c4d5d42",
+   "parent"
+  ],
+  [
+   "7ca74331-6cb0-55d0-8d42-65dae1cca98d",
+   "8313160f-23c3-5d5e-b3b6-62bd2c4d5d42",
+   "parent"
+  ],
+  [
+   "65e691eb-5a53-5c90-82e3-25ec8dc7b8e3",
+   "685a8d8a-1cf9-5968-9f87-4005d853e348",
+   "spouse"
+  ],
+  [
+   "65e691eb-5a53-5c90-82e3-25ec8dc7b8e3",
+   "c0c08e96-f9d2-53c6-8fde-b67739d23428",
+   "parent"
+  ],
+  [
+   "685a8d8a-1cf9-5968-9f87-4005d853e348",
+   "c0c08e96-f9d2-53c6-8fde-b67739d23428",
+   "parent"
+  ],
+  [
+   "c0c08e96-f9d2-53c6-8fde-b67739d23428",
+   "654e05f3-5c75-5291-8503-1bfa96e40f3a",
+   "spouse"
+  ],
+  [
+   "c0c08e96-f9d2-53c6-8fde-b67739d23428",
+   "89742c8f-8744-5b45-adb7-3e539772a10a",
+   "parent"
+  ],
+  [
+   "654e05f3-5c75-5291-8503-1bfa96e40f3a",
+   "89742c8f-8744-5b45-adb7-3e539772a10a",
+   "parent"
+  ],
+  [
+   "89742c8f-8744-5b45-adb7-3e539772a10a",
+   "cb6b92de-1c25-5f1d-a249-2581509a7a3a",
+   "spouse"
+  ],
+  [
+   "89742c8f-8744-5b45-adb7-3e539772a10a",
+   "853fc3a5-c8d1-55d4-9871-239248aedef1",
+   "parent"
+  ],
+  [
+   "cb6b92de-1c25-5f1d-a249-2581509a7a3a",
+   "853fc3a5-c8d1-55d4-9871-239248aedef1",
+   "parent"
+  ],
+  [
+   "853fc3a5-c8d1-55d4-9871-239248aedef1",
+   "12f7dc89-95a6-575d-8879-e3a1b2251501",
+   "spouse"
+  ],
+  [
+   "853fc3a5-c8d1-55d4-9871-239248aedef1",
+   "62b68c62-88d6-55d8-80ff-c9c223152670",
+   "parent"
+  ],
+  [
+   "12f7dc89-95a6-575d-8879-e3a1b2251501",
+   "62b68c62-88d6-55d8-80ff-c9c223152670",
+   "parent"
+  ],
+  [
+   "853fc3a5-c8d1-55d4-9871-239248aedef1",
+   "7cee674d-4b96-5f23-83c4-3686e91eb30a",
+   "parent"
+  ],
+  [
+   "12f7dc89-95a6-575d-8879-e3a1b2251501",
+   "7cee674d-4b96-5f23-83c4-3686e91eb30a",
+   "parent"
+  ],
+  [
+   "853fc3a5-c8d1-55d4-9871-239248aedef1",
+   "09b72eab-c807-4de0-8f57-80f0ddaa0c20",
+   "parent"
+  ],
+  [
+   "12f7dc89-95a6-575d-8879-e3a1b2251501",
+   "09b72eab-c807-4de0-8f57-80f0ddaa0c20",
+   "parent"
+  ],
+  [
+   "62b68c62-88d6-55d8-80ff-c9c223152670",
+   "76ae7223-6fe2-5151-ad8e-ecb9b391cec3",
+   "spouse"
+  ],
+  [
+   "62b68c62-88d6-55d8-80ff-c9c223152670",
+   "151a30e1-0762-5bae-98ff-1c46fc3614c5",
+   "parent"
+  ],
+  [
+   "76ae7223-6fe2-5151-ad8e-ecb9b391cec3",
+   "151a30e1-0762-5bae-98ff-1c46fc3614c5",
+   "parent"
+  ],
+  [
+   "151a30e1-0762-5bae-98ff-1c46fc3614c5",
+   "976e2f0b-cbcf-5b6f-a551-97e13e013d0d",
+   "spouse"
+  ],
+  [
+   "151a30e1-0762-5bae-98ff-1c46fc3614c5",
+   "16a707f9-40ae-46d9-9726-75b0213f817c",
+   "parent"
+  ],
+  [
+   "976e2f0b-cbcf-5b6f-a551-97e13e013d0d",
+   "16a707f9-40ae-46d9-9726-75b0213f817c",
+   "parent"
+  ],
+  [
+   "151a30e1-0762-5bae-98ff-1c46fc3614c5",
+   "b9eb3551-f484-4fe4-80c5-33499d00217e",
+   "parent"
+  ],
+  [
+   "976e2f0b-cbcf-5b6f-a551-97e13e013d0d",
+   "b9eb3551-f484-4fe4-80c5-33499d00217e",
+   "parent"
+  ],
+  [
+   "16a707f9-40ae-46d9-9726-75b0213f817c",
+   "846237ef-0294-5773-8981-0c59bd21863e",
+   "parent"
+  ],
+  [
+   "db83421c-0959-42c9-9b75-8b964f747f71",
+   "846237ef-0294-5773-8981-0c59bd21863e",
+   "parent"
+  ],
+  [
+   "846237ef-0294-5773-8981-0c59bd21863e",
+   "4f7884a3-8afa-5504-9dd4-4ad876655094",
+   "spouse"
+  ],
+  [
+   "846237ef-0294-5773-8981-0c59bd21863e",
+   "e77ff5a1-0a0c-5bc9-b3b0-fc7fc35e3988",
+   "parent"
+  ],
+  [
+   "4f7884a3-8afa-5504-9dd4-4ad876655094",
+   "e77ff5a1-0a0c-5bc9-b3b0-fc7fc35e3988",
+   "parent"
+  ],
+  [
+   "846237ef-0294-5773-8981-0c59bd21863e",
+   "8ab9ac1e-83f3-4ff3-b2cb-3c0e7a7b3285",
+   "parent"
+  ],
+  [
+   "4f7884a3-8afa-5504-9dd4-4ad876655094",
+   "8ab9ac1e-83f3-4ff3-b2cb-3c0e7a7b3285",
+   "parent"
+  ],
+  [
+   "555a36dc-18c0-4abc-a411-901c1d7ac59c",
+   "962d50b2-7759-544a-bdb9-0cc09d1e5893",
+   "parent"
+  ],
+  [
+   "e77ff5a1-0a0c-5bc9-b3b0-fc7fc35e3988",
+   "962d50b2-7759-544a-bdb9-0cc09d1e5893",
+   "spouse"
+  ],
+  [
+   "8313160f-23c3-5d5e-b3b6-62bd2c4d5d42",
+   "8b27a39c-2d9a-50a3-a473-54382d286239",
+   "spouse"
+  ],
+  [
+   "8313160f-23c3-5d5e-b3b6-62bd2c4d5d42",
+   "e4cb298d-a5b9-54b3-8a46-f212281bf9fd",
+   "parent"
+  ],
+  [
+   "8b27a39c-2d9a-50a3-a473-54382d286239",
+   "e4cb298d-a5b9-54b3-8a46-f212281bf9fd",
+   "parent"
+  ],
+  [
+   "e4cb298d-a5b9-54b3-8a46-f212281bf9fd",
+   "1415ae9b-bc70-5a67-b354-0d8870067762",
+   "spouse"
+  ],
+  [
+   "e4cb298d-a5b9-54b3-8a46-f212281bf9fd",
+   "268433ac-00a4-54db-9acb-a79d9c337631",
+   "parent"
+  ],
+  [
+   "1415ae9b-bc70-5a67-b354-0d8870067762",
+   "268433ac-00a4-54db-9acb-a79d9c337631",
+   "parent"
+  ],
+  [
+   "268433ac-00a4-54db-9acb-a79d9c337631",
+   "202c924f-7536-5f1a-b0a3-7752a5fa07dd",
+   "spouse"
+  ],
+  [
+   "268433ac-00a4-54db-9acb-a79d9c337631",
+   "84c84410-0219-5d47-922a-f0171fd99ad3",
+   "parent"
+  ],
+  [
+   "202c924f-7536-5f1a-b0a3-7752a5fa07dd",
+   "84c84410-0219-5d47-922a-f0171fd99ad3",
+   "parent"
+  ],
+  [
+   "84c84410-0219-5d47-922a-f0171fd99ad3",
+   "f6a15f99-59ee-5e70-acbb-55bfcbca182f",
+   "spouse"
+  ],
+  [
+   "84c84410-0219-5d47-922a-f0171fd99ad3",
+   "c03b11ea-8495-5c59-a224-fdb8e04fe4c7",
+   "parent"
+  ],
+  [
+   "f6a15f99-59ee-5e70-acbb-55bfcbca182f",
+   "c03b11ea-8495-5c59-a224-fdb8e04fe4c7",
+   "parent"
+  ],
+  [
+   "84c84410-0219-5d47-922a-f0171fd99ad3",
+   "8bbb9afd-d8ab-5f1f-9aa0-20b4cddc404f",
+   "parent"
+  ],
+  [
+   "f6a15f99-59ee-5e70-acbb-55bfcbca182f",
+   "8bbb9afd-d8ab-5f1f-9aa0-20b4cddc404f",
+   "parent"
+  ],
+  [
+   "84c84410-0219-5d47-922a-f0171fd99ad3",
+   "ede81b4f-20bb-5aea-bb15-3f444a90929a",
+   "parent"
+  ],
+  [
+   "f6a15f99-59ee-5e70-acbb-55bfcbca182f",
+   "ede81b4f-20bb-5aea-bb15-3f444a90929a",
+   "parent"
+  ],
+  [
+   "c03b11ea-8495-5c59-a224-fdb8e04fe4c7",
+   "6e01b8d0-30b9-582f-b2fa-4d73abe2db74",
+   "spouse"
+  ],
+  [
+   "8bbb9afd-d8ab-5f1f-9aa0-20b4cddc404f",
+   "f616c94e-2d9c-53da-915a-b492465830bd",
+   "spouse"
+  ],
+  [
+   "8bbb9afd-d8ab-5f1f-9aa0-20b4cddc404f",
+   "5feee699-997e-428c-90ea-82e0c395c062",
+   "parent"
+  ],
+  [
+   "f616c94e-2d9c-53da-915a-b492465830bd",
+   "5feee699-997e-428c-90ea-82e0c395c062",
+   "parent"
+  ],
+  [
+   "ede81b4f-20bb-5aea-bb15-3f444a90929a",
+   "04832037-17d9-54d4-9e9a-31a349e2f930",
+   "spouse"
+  ],
+  [
+   "ede81b4f-20bb-5aea-bb15-3f444a90929a",
+   "d73df912-5fbb-59a7-920b-8411c9bdd157",
+   "parent"
+  ],
+  [
+   "04832037-17d9-54d4-9e9a-31a349e2f930",
+   "d73df912-5fbb-59a7-920b-8411c9bdd157",
+   "parent"
+  ],
+  [
+   "8bbb9afd-d8ab-5f1f-9aa0-20b4cddc404f",
+   "6a426ce7-4621-5b1a-a7f5-6c6453957321",
+   "parent"
+  ],
+  [
+   "f616c94e-2d9c-53da-915a-b492465830bd",
+   "6a426ce7-4621-5b1a-a7f5-6c6453957321",
+   "parent"
+  ],
+  [
+   "d73df912-5fbb-59a7-920b-8411c9bdd157",
+   "6a426ce7-4621-5b1a-a7f5-6c6453957321",
+   "spouse"
+  ],
+  [
+   "d73df912-5fbb-59a7-920b-8411c9bdd157",
+   "75268b27-739e-511e-8a20-6c3c155c2bd8",
+   "parent"
+  ],
+  [
+   "6a426ce7-4621-5b1a-a7f5-6c6453957321",
+   "75268b27-739e-511e-8a20-6c3c155c2bd8",
+   "parent"
+  ],
+  [
+   "75268b27-739e-511e-8a20-6c3c155c2bd8",
+   "106e1419-e330-5446-aa88-cffc599cd022",
+   "spouse"
+  ],
+  [
+   "75268b27-739e-511e-8a20-6c3c155c2bd8",
+   "2efe7026-9ca5-586f-b8db-1f64be4c9e34",
+   "parent"
+  ],
+  [
+   "106e1419-e330-5446-aa88-cffc599cd022",
+   "2efe7026-9ca5-586f-b8db-1f64be4c9e34",
+   "parent"
+  ],
+  [
+   "2efe7026-9ca5-586f-b8db-1f64be4c9e34",
+   "13f9959b-aa42-5a76-927b-2f14b0d9bf0f",
+   "spouse"
+  ],
+  [
+   "2efe7026-9ca5-586f-b8db-1f64be4c9e34",
+   "e3afe90b-2b57-5e2c-8589-08e5924e2ed2",
+   "parent"
+  ],
+  [
+   "13f9959b-aa42-5a76-927b-2f14b0d9bf0f",
+   "e3afe90b-2b57-5e2c-8589-08e5924e2ed2",
+   "parent"
+  ],
+  [
+   "c03b11ea-8495-5c59-a224-fdb8e04fe4c7",
+   "fe58a98a-cb40-4a63-8084-cfcc43470170",
+   "parent"
+  ],
+  [
+   "6e01b8d0-30b9-582f-b2fa-4d73abe2db74",
+   "fe58a98a-cb40-4a63-8084-cfcc43470170",
+   "parent"
+  ],
+  [
+   "c03b11ea-8495-5c59-a224-fdb8e04fe4c7",
+   "06e36e43-4207-543a-9b29-51e7364933c5",
+   "parent"
+  ],
+  [
+   "6e01b8d0-30b9-582f-b2fa-4d73abe2db74",
+   "06e36e43-4207-543a-9b29-51e7364933c5",
+   "parent"
+  ],
+  [
+   "06e36e43-4207-543a-9b29-51e7364933c5",
+   "e2a0d9c5-7f6b-51e1-9194-fb9f0d4b7443",
+   "spouse"
+  ],
+  [
+   "06e36e43-4207-543a-9b29-51e7364933c5",
+   "7125a7c9-746d-5acc-8f07-566219545175",
+   "parent"
+  ],
+  [
+   "e2a0d9c5-7f6b-51e1-9194-fb9f0d4b7443",
+   "7125a7c9-746d-5acc-8f07-566219545175",
+   "parent"
+  ],
+  [
+   "7125a7c9-746d-5acc-8f07-566219545175",
+   "b0575dee-0eda-59c3-a17d-d06a9e65d145",
+   "spouse"
+  ],
+  [
+   "7125a7c9-746d-5acc-8f07-566219545175",
+   "9275fefe-7d1b-5ed7-8e1a-51055c479586",
+   "parent"
+  ],
+  [
+   "b0575dee-0eda-59c3-a17d-d06a9e65d145",
+   "9275fefe-7d1b-5ed7-8e1a-51055c479586",
+   "parent"
+  ],
+  [
+   "9275fefe-7d1b-5ed7-8e1a-51055c479586",
+   "bda4215f-b12c-570d-add2-b550342e7c33",
+   "spouse"
+  ],
+  [
+   "9275fefe-7d1b-5ed7-8e1a-51055c479586",
+   "69100adc-846d-5a11-a578-5d303eb6a712",
+   "parent"
+  ],
+  [
+   "bda4215f-b12c-570d-add2-b550342e7c33",
+   "69100adc-846d-5a11-a578-5d303eb6a712",
+   "parent"
+  ],
+  [
+   "9275fefe-7d1b-5ed7-8e1a-51055c479586",
+   "f9f30ff5-dfab-5b6d-9b2e-d9af3695685b",
+   "parent"
+  ],
+  [
+   "bda4215f-b12c-570d-add2-b550342e7c33",
+   "f9f30ff5-dfab-5b6d-9b2e-d9af3695685b",
+   "parent"
+  ],
+  [
+   "1db34b87-4a21-4140-8bf4-db388d882447",
+   "32b5e90e-4358-5a9f-b97a-dda04286d882",
+   "parent"
+  ],
+  [
+   "9ff7e7e1-d3fa-4d1f-8865-5af9649fe94c",
+   "32b5e90e-4358-5a9f-b97a-dda04286d882",
+   "parent"
+  ],
+  [
+   "1db34b87-4a21-4140-8bf4-db388d882447",
+   "bdf45188-7ec0-5b64-8a84-e798385e37d0",
+   "parent"
+  ],
+  [
+   "9ff7e7e1-d3fa-4d1f-8865-5af9649fe94c",
+   "bdf45188-7ec0-5b64-8a84-e798385e37d0",
+   "parent"
+  ],
+  [
+   "1db34b87-4a21-4140-8bf4-db388d882447",
+   "36c30d2a-e8a7-5112-bc6f-ff589ed35e83",
+   "parent"
+  ],
+  [
+   "9ff7e7e1-d3fa-4d1f-8865-5af9649fe94c",
+   "36c30d2a-e8a7-5112-bc6f-ff589ed35e83",
+   "parent"
+  ],
+  [
+   "1db34b87-4a21-4140-8bf4-db388d882447",
+   "5539ea53-f47b-5952-883b-23c7429e5bb5",
+   "parent"
+  ],
+  [
+   "9ff7e7e1-d3fa-4d1f-8865-5af9649fe94c",
+   "5539ea53-f47b-5952-883b-23c7429e5bb5",
+   "parent"
+  ],
+  [
+   "36c30d2a-e8a7-5112-bc6f-ff589ed35e83",
+   "787d4e3c-430e-4f0c-8ea0-9385d4a6e4ff",
+   "spouse"
+  ],
+  [
+   "bdf45188-7ec0-5b64-8a84-e798385e37d0",
+   "caa4ed0b-8548-57eb-924e-323cfa21fa11",
+   "spouse"
+  ],
+  [
+   "bdf45188-7ec0-5b64-8a84-e798385e37d0",
+   "78cd4f03-d15b-57ef-81fb-9c9fcf87d16a",
+   "parent"
+  ],
+  [
+   "caa4ed0b-8548-57eb-924e-323cfa21fa11",
+   "78cd4f03-d15b-57ef-81fb-9c9fcf87d16a",
+   "parent"
+  ],
+  [
+   "69100adc-846d-5a11-a578-5d303eb6a712",
+   "78cd4f03-d15b-57ef-81fb-9c9fcf87d16a",
+   "spouse"
+  ],
+  [
+   "69100adc-846d-5a11-a578-5d303eb6a712",
+   "97f11595-b742-55d3-ac39-8bcd5fb73338",
+   "parent"
+  ],
+  [
+   "78cd4f03-d15b-57ef-81fb-9c9fcf87d16a",
+   "97f11595-b742-55d3-ac39-8bcd5fb73338",
+   "parent"
+  ],
+  [
+   "69100adc-846d-5a11-a578-5d303eb6a712",
+   "99cfbdac-3237-5c32-b5b7-525027ef730a",
+   "parent"
+  ],
+  [
+   "78cd4f03-d15b-57ef-81fb-9c9fcf87d16a",
+   "99cfbdac-3237-5c32-b5b7-525027ef730a",
+   "parent"
+  ],
+  [
+   "e3afe90b-2b57-5e2c-8589-08e5924e2ed2",
+   "99cfbdac-3237-5c32-b5b7-525027ef730a",
+   "spouse"
+  ],
+  [
+   "f9f30ff5-dfab-5b6d-9b2e-d9af3695685b",
+   "077b4bf1-1e87-54e8-9aca-e8c568b199c5",
+   "spouse"
+  ],
+  [
+   "f9f30ff5-dfab-5b6d-9b2e-d9af3695685b",
+   "6a24edaf-7e21-58a8-9b7a-0dcae790ee6e",
+   "parent"
+  ],
+  [
+   "077b4bf1-1e87-54e8-9aca-e8c568b199c5",
+   "6a24edaf-7e21-58a8-9b7a-0dcae790ee6e",
+   "parent"
+  ],
+  [
+   "6a24edaf-7e21-58a8-9b7a-0dcae790ee6e",
+   "97f11595-b742-55d3-ac39-8bcd5fb73338",
+   "spouse"
+  ],
+  [
+   "e3afe90b-2b57-5e2c-8589-08e5924e2ed2",
+   "bb2ceff8-3a24-40cf-a9c0-6f307c99c610",
+   "parent"
+  ],
+  [
+   "99cfbdac-3237-5c32-b5b7-525027ef730a",
+   "bb2ceff8-3a24-40cf-a9c0-6f307c99c610",
+   "parent"
+  ],
+  [
+   "e3afe90b-2b57-5e2c-8589-08e5924e2ed2",
+   "38511164-04ab-5e78-8472-212518d443bd",
+   "parent"
+  ],
+  [
+   "99cfbdac-3237-5c32-b5b7-525027ef730a",
+   "38511164-04ab-5e78-8472-212518d443bd",
+   "parent"
+  ],
+  [
+   "e3afe90b-2b57-5e2c-8589-08e5924e2ed2",
+   "7cfd74aa-fac8-481b-b808-ffa7eed513d3",
+   "parent"
+  ],
+  [
+   "99cfbdac-3237-5c32-b5b7-525027ef730a",
+   "7cfd74aa-fac8-481b-b808-ffa7eed513d3",
+   "parent"
+  ],
+  [
+   "bb2ceff8-3a24-40cf-a9c0-6f307c99c610",
+   "b3d0a535-7ed3-5ed8-b49e-d1205ec99bbd",
+   "spouse"
+  ],
+  [
+   "bb2ceff8-3a24-40cf-a9c0-6f307c99c610",
+   "6dfa9c87-cfb3-5c52-add3-4c2663679b77",
+   "spouse"
+  ],
+  [
+   "bb2ceff8-3a24-40cf-a9c0-6f307c99c610",
+   "e62118c0-d52b-4f4b-b8ff-ec66ecdcaa82",
+   "parent"
+  ],
+  [
+   "b3d0a535-7ed3-5ed8-b49e-d1205ec99bbd",
+   "e62118c0-d52b-4f4b-b8ff-ec66ecdcaa82",
+   "parent"
+  ],
+  [
+   "bb2ceff8-3a24-40cf-a9c0-6f307c99c610",
+   "9ee520b7-fea6-5c67-877f-29f3f7ca896f",
+   "parent"
+  ],
+  [
+   "b3d0a535-7ed3-5ed8-b49e-d1205ec99bbd",
+   "9ee520b7-fea6-5c67-877f-29f3f7ca896f",
+   "parent"
+  ],
+  [
+   "bb2ceff8-3a24-40cf-a9c0-6f307c99c610",
+   "6df94d5d-41cb-5f6b-bd5d-0dba983f8e8d",
+   "parent"
+  ],
+  [
+   "b3d0a535-7ed3-5ed8-b49e-d1205ec99bbd",
+   "6df94d5d-41cb-5f6b-bd5d-0dba983f8e8d",
+   "parent"
+  ],
+  [
+   "bb2ceff8-3a24-40cf-a9c0-6f307c99c610",
+   "60853d7d-42e5-4d7b-a2fb-9dce3fa1df15",
+   "parent"
+  ],
+  [
+   "6dfa9c87-cfb3-5c52-add3-4c2663679b77",
+   "60853d7d-42e5-4d7b-a2fb-9dce3fa1df15",
+   "parent"
+  ],
+  [
+   "bb2ceff8-3a24-40cf-a9c0-6f307c99c610",
+   "2b873f07-8120-4943-a7b3-c1b7c007eacd",
+   "parent"
+  ],
+  [
+   "6dfa9c87-cfb3-5c52-add3-4c2663679b77",
+   "2b873f07-8120-4943-a7b3-c1b7c007eacd",
+   "parent"
+  ],
+  [
+   "bb2ceff8-3a24-40cf-a9c0-6f307c99c610",
+   "43f54261-e43b-59c2-ba51-85c537051afd",
+   "parent"
+  ],
+  [
+   "6dfa9c87-cfb3-5c52-add3-4c2663679b77",
+   "43f54261-e43b-59c2-ba51-85c537051afd",
+   "parent"
+  ],
+  [
+   "bb2ceff8-3a24-40cf-a9c0-6f307c99c610",
+   "58271324-b2aa-5bc4-82c6-33c8cd8b2023",
+   "parent"
+  ],
+  [
+   "6dfa9c87-cfb3-5c52-add3-4c2663679b77",
+   "58271324-b2aa-5bc4-82c6-33c8cd8b2023",
+   "parent"
+  ],
+  [
+   "bb2ceff8-3a24-40cf-a9c0-6f307c99c610",
+   "69c5dfeb-152d-5dff-9702-717bf9757f58",
+   "parent"
+  ],
+  [
+   "6dfa9c87-cfb3-5c52-add3-4c2663679b77",
+   "69c5dfeb-152d-5dff-9702-717bf9757f58",
+   "parent"
+  ],
+  [
+   "69c5dfeb-152d-5dff-9702-717bf9757f58",
+   "0d0df76a-f4f3-4b15-97b2-5e497239b2bf",
+   "spouse"
+  ],
+  [
+   "e62118c0-d52b-4f4b-b8ff-ec66ecdcaa82",
+   "ba0ae37e-972c-5d08-8efe-644fbf9a3d63",
+   "parent"
+  ],
+  [
+   "fc032ff4-8705-52b8-908e-f18eb83e7d21",
+   "ba0ae37e-972c-5d08-8efe-644fbf9a3d63",
+   "parent"
+  ],
+  [
+   "fc032ff4-8705-52b8-908e-f18eb83e7d21",
+   "21becf43-a16f-4f75-9f88-044e04055fdd",
+   "parent"
+  ],
+  [
+   "fc032ff4-8705-52b8-908e-f18eb83e7d21",
+   "946deb2b-3e34-4609-9c58-6a94e043c150",
+   "parent"
+  ],
+  [
+   "21becf43-a16f-4f75-9f88-044e04055fdd",
+   "d1a02d9d-103a-5dbc-ac1b-ef55e85dd4cf",
+   "spouse"
+  ],
+  [
+   "21becf43-a16f-4f75-9f88-044e04055fdd",
+   "b37e10ce-1530-4c38-948b-f595ab0f3fb4",
+   "parent"
+  ],
+  [
+   "d1a02d9d-103a-5dbc-ac1b-ef55e85dd4cf",
+   "b37e10ce-1530-4c38-948b-f595ab0f3fb4",
+   "parent"
+  ],
+  [
+   "21becf43-a16f-4f75-9f88-044e04055fdd",
+   "7eacf259-fb28-41e7-903b-604cba295609",
+   "parent"
+  ],
+  [
+   "d1a02d9d-103a-5dbc-ac1b-ef55e85dd4cf",
+   "7eacf259-fb28-41e7-903b-604cba295609",
+   "parent"
+  ],
+  [
+   "946deb2b-3e34-4609-9c58-6a94e043c150",
+   "bce84c9a-7509-5c43-98cb-1e520fb30156",
+   "spouse"
+  ],
+  [
+   "946deb2b-3e34-4609-9c58-6a94e043c150",
+   "2ba63679-18b4-4597-9444-bccb0da700cb",
+   "parent"
+  ],
+  [
+   "bce84c9a-7509-5c43-98cb-1e520fb30156",
+   "2ba63679-18b4-4597-9444-bccb0da700cb",
+   "parent"
+  ],
+  [
+   "946deb2b-3e34-4609-9c58-6a94e043c150",
+   "f0a42602-4bbb-5531-8d44-dcb02bfea873",
+   "parent"
+  ],
+  [
+   "bce84c9a-7509-5c43-98cb-1e520fb30156",
+   "f0a42602-4bbb-5531-8d44-dcb02bfea873",
+   "parent"
+  ],
+  [
+   "946deb2b-3e34-4609-9c58-6a94e043c150",
+   "e22e32dd-f04a-5917-9af5-b62b9d4535aa",
+   "parent"
+  ],
+  [
+   "bce84c9a-7509-5c43-98cb-1e520fb30156",
+   "e22e32dd-f04a-5917-9af5-b62b9d4535aa",
+   "parent"
+  ],
+  [
+   "946deb2b-3e34-4609-9c58-6a94e043c150",
+   "5a7369b4-11f1-5681-b0e6-5825ab764715",
+   "parent"
+  ],
+  [
+   "bce84c9a-7509-5c43-98cb-1e520fb30156",
+   "5a7369b4-11f1-5681-b0e6-5825ab764715",
+   "parent"
+  ],
+  [
+   "2ba63679-18b4-4597-9444-bccb0da700cb",
+   "dc02a4dd-5107-56bc-96de-c8c061b6f2fc",
+   "spouse"
+  ],
+  [
+   "2ba63679-18b4-4597-9444-bccb0da700cb",
+   "cf2a34b8-f185-54a9-9eb6-99126dce51e7",
+   "parent"
+  ],
+  [
+   "dc02a4dd-5107-56bc-96de-c8c061b6f2fc",
+   "cf2a34b8-f185-54a9-9eb6-99126dce51e7",
+   "parent"
+  ],
+  [
+   "f4f8b4c2-5d64-55a3-a000-f61b13276a8f",
+   "2afe6f22-ae2d-5989-a9cb-71a76603fb05",
+   "parent"
+  ],
+  [
+   "58271324-b2aa-5bc4-82c6-33c8cd8b2023",
+   "2afe6f22-ae2d-5989-a9cb-71a76603fb05",
+   "parent"
+  ],
+  [
+   "2afe6f22-ae2d-5989-a9cb-71a76603fb05",
+   "63819331-5bf9-5ecb-ae6f-d678dfec9c64",
+   "spouse"
+  ],
+  [
+   "2afe6f22-ae2d-5989-a9cb-71a76603fb05",
+   "4bdcb94e-6782-52da-a401-57bfe6113fb6",
+   "parent"
+  ],
+  [
+   "63819331-5bf9-5ecb-ae6f-d678dfec9c64",
+   "4bdcb94e-6782-52da-a401-57bfe6113fb6",
+   "parent"
+  ],
+  [
+   "cf2a34b8-f185-54a9-9eb6-99126dce51e7",
+   "4bdcb94e-6782-52da-a401-57bfe6113fb6",
+   "spouse"
+  ],
+  [
+   "2afe6f22-ae2d-5989-a9cb-71a76603fb05",
+   "faf70fc6-d19e-4c57-934e-0ded47a0709d",
+   "parent"
+  ],
+  [
+   "63819331-5bf9-5ecb-ae6f-d678dfec9c64",
+   "faf70fc6-d19e-4c57-934e-0ded47a0709d",
+   "parent"
+  ],
+  [
+   "58a06e35-f0e9-5a48-8dae-883cce479dad",
+   "a9433967-0038-5fdd-bfa6-886775e318f7",
+   "parent"
+  ],
+  [
+   "cc35611b-92b2-59ad-84ec-af6f0b1c43dc",
+   "a9433967-0038-5fdd-bfa6-886775e318f7",
+   "parent"
+  ],
+  [
+   "cf2a34b8-f185-54a9-9eb6-99126dce51e7",
+   "a9433967-0038-5fdd-bfa6-886775e318f7",
+   "spouse"
+  ],
+  [
+   "cf2a34b8-f185-54a9-9eb6-99126dce51e7",
+   "5170d532-2c09-5c18-a28f-d123cdd64e9c",
+   "parent"
+  ],
+  [
+   "4bdcb94e-6782-52da-a401-57bfe6113fb6",
+   "5170d532-2c09-5c18-a28f-d123cdd64e9c",
+   "parent"
+  ],
+  [
+   "5170d532-2c09-5c18-a28f-d123cdd64e9c",
+   "2e965584-4251-5b7a-8b70-018670113845",
+   "spouse"
+  ],
+  [
+   "5170d532-2c09-5c18-a28f-d123cdd64e9c",
+   "27ec5173-b4e9-57c4-a3cf-1e3b68778254",
+   "parent"
+  ],
+  [
+   "2e965584-4251-5b7a-8b70-018670113845",
+   "27ec5173-b4e9-57c4-a3cf-1e3b68778254",
+   "parent"
+  ],
+  [
+   "5170d532-2c09-5c18-a28f-d123cdd64e9c",
+   "941815b0-30ad-5c66-a1b7-09a0b94d7c5b",
+   "parent"
+  ],
+  [
+   "2e965584-4251-5b7a-8b70-018670113845",
+   "941815b0-30ad-5c66-a1b7-09a0b94d7c5b",
+   "parent"
+  ],
+  [
+   "941815b0-30ad-5c66-a1b7-09a0b94d7c5b",
+   "eac6f5a9-8ea2-5317-84ad-77a2b9d73434",
+   "spouse"
+  ],
+  [
+   "941815b0-30ad-5c66-a1b7-09a0b94d7c5b",
+   "f293a639-40a6-5174-b7f4-8cc9b393269e",
+   "parent"
+  ],
+  [
+   "eac6f5a9-8ea2-5317-84ad-77a2b9d73434",
+   "f293a639-40a6-5174-b7f4-8cc9b393269e",
+   "parent"
+  ],
+  [
+   "c0c58f10-3c5b-4693-bd2b-d8ee92e75527",
+   "a19b2ec7-3974-42ab-99a6-4964f22045da",
+   "parent"
+  ],
+  [
+   "28ebec86-b26d-4062-b17c-ca5b60786cad",
+   "a19b2ec7-3974-42ab-99a6-4964f22045da",
+   "parent"
   ]
  ],
  "dateflags": [
@@ -27870,6 +30276,195 @@
    "d": 421,
    "note": "mort en octobre ou novembre 421 (étouffé)",
    "script": 59
+  },
+  {
+   "name": "Élisabeth de Hohenzollern-Nuremberg",
+   "b": 1358,
+   "d": 1411,
+   "note": "dates 1358-1411 : Stammliste der Wittelsbacher (la page de Rupert ne les donne pas)",
+   "script": 61
+  },
+  {
+   "name": "Mathilde de Savoie (électrice palatine)",
+   "b": null,
+   "d": null,
+   "note": "dates non données par la page de Louis III ni par la Stammliste",
+   "script": 61
+  },
+  {
+   "name": "Marguerite de Savoie (électrice palatine)",
+   "b": 1420,
+   "d": 1479,
+   "note": "dates 1420-1479 : Stammliste der Wittelsbacher (non données par la page de Louis IV)",
+   "script": 61
+  },
+  {
+   "name": "Maddalena Visconti",
+   "b": null,
+   "d": null,
+   "note": "dates non données par la page de Frédéric",
+   "script": 61
+  },
+  {
+   "name": "Marguerite d'Autriche (duchesse de Bavière-Landshut)",
+   "b": null,
+   "d": null,
+   "note": "dates non données par la page de Henri XVI",
+   "script": 61
+  },
+  {
+   "name": "Amélie de Saxe (duchesse de Bavière-Landshut)",
+   "b": null,
+   "d": null,
+   "note": "dates non données par les pages consultées",
+   "script": 61
+  },
+  {
+   "name": "Sibylle de Bavière (électrice palatine)",
+   "b": 1489,
+   "d": 1519,
+   "note": "naissance 1489 : Stammliste ; la page de Louis V donne seulement la mort (1519)",
+   "script": 61
+  },
+  {
+   "name": "Dorothée de Danemark",
+   "b": 1520,
+   "d": 1580,
+   "note": "dates 1520-1580 : Stammliste (non données par la page de Frédéric II)",
+   "script": 61
+  },
+  {
+   "name": "Anne de Veldenz",
+   "b": 1390,
+   "d": 1439,
+   "note": "naissance « vers 1390 » : Stammliste ; la page d'Étienne donne seulement la mort (1439)",
+   "script": 61
+  },
+  {
+   "name": "Béatrice de Bade",
+   "b": 1492,
+   "d": 1535,
+   "note": "naissance 1492 : Stammliste ; la page de Jean II donne seulement la mort (1535)",
+   "script": 61
+  },
+  {
+   "name": "Louise-Julienne d'Orange-Nassau",
+   "b": 1576,
+   "d": 1644,
+   "note": "dates 1576-1644 : Stammliste (la page de Frédéric IV ne les donne pas)",
+   "script": 61
+  },
+  {
+   "name": "Charlotte de Hesse-Cassel",
+   "b": 1627,
+   "d": 1686,
+   "note": "dates 1627-1686 : Stammliste",
+   "script": 61
+  },
+  {
+   "name": "Wilhelmine-Ernestine de Danemark",
+   "b": 1650,
+   "d": 1706,
+   "note": "dates 1650-1706 : Stammliste",
+   "script": 61
+  },
+  {
+   "name": "Jeanne de Croÿ",
+   "b": null,
+   "d": null,
+   "note": "dates non données par la page de Louis Ier",
+   "script": 61
+  },
+  {
+   "name": "Marguerite de Hohenlohe-Neuenstein",
+   "b": 1480,
+   "d": 1522,
+   "note": "dates 1480-1522 : page de Louis II",
+   "script": 61
+  },
+  {
+   "name": "Élisabeth de Hesse (1503-1563)",
+   "b": 1503,
+   "d": 1563,
+   "note": "dates 1503-1563 : déduites de l'adresse de la page de Louis II (le texte ne donne que le mariage de 1525)",
+   "script": 61
+  },
+  {
+   "name": "Anne de Hesse (comtesse palatine de Deux-Ponts)",
+   "b": null,
+   "d": null,
+   "note": "dates non données par la page de Wolfgang",
+   "script": 61
+  },
+  {
+   "name": "Madeleine de Juliers-Clèves-Berg",
+   "b": null,
+   "d": null,
+   "note": "dates non données par la page de Jean Ier",
+   "script": 61
+  },
+  {
+   "name": "Catherine-Agathe de Ribeaupierre (Rappoltstein)",
+   "b": null,
+   "d": null,
+   "note": "dates non données par la page de Christian III",
+   "script": 61
+  },
+  {
+   "name": "Amélie de Nassau-Siegen",
+   "b": null,
+   "d": null,
+   "note": "dates non données par la page de Christian-Auguste",
+   "script": 61
+  },
+  {
+   "name": "Louise-Charlotte Radziwiłł",
+   "b": 1667,
+   "d": 1695,
+   "note": "dates 1667-1695 : Stammliste ; la page de Charles III Philippe ne les donne pas",
+   "script": 61
+  },
+  {
+   "name": "Marie-Henriette de La Tour d'Auvergne",
+   "b": null,
+   "d": null,
+   "note": "dates non données par la page de Jean-Christian",
+   "script": 61
+  },
+  {
+   "name": "Auguste-Wilhelmine de Hesse-Darmstadt",
+   "b": null,
+   "d": 1796,
+   "note": "naissance non donnée par la page de Maximilien Ier Joseph (mort 1796)",
+   "script": 61
+  },
+  {
+   "name": "Caroline de Bade (reine de Bavière)",
+   "b": null,
+   "d": null,
+   "note": "dates non données par la page de Maximilien Ier Joseph",
+   "script": 61
+  },
+  {
+   "name": "Marie de Prusse (reine de Bavière)",
+   "b": null,
+   "d": null,
+   "note": "dates non données par la source consultée",
+   "script": 61
+  },
+  {
+   "name": "Marie-Josèphe de Portugal (duchesse en Bavière)",
+   "b": 1857,
+   "d": 1943,
+   "note": "dates 1857-1943 : page de Charles-Théodore en Bavière",
+   "script": 61
+  },
+  {
+   "name": "Élisabeth Douglas",
+   "b": null,
+   "d": null,
+   "note": "dates non données par la page de Max",
+   "script": 61
   }
  ],
  "pins": [
