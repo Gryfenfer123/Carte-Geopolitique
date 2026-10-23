@@ -17840,6 +17840,806 @@
    "title": "Prince de Norvège",
    "g": "h",
    "script": 75
+  },
+  "sm.stenkil": {
+   "id": "91f842db-dce7-53b1-aeb8-f845a0716175",
+   "name": "Stenkil",
+   "b": null,
+   "d": 1066,
+   "tree": "SE_MED",
+   "title": "Roi de Suède",
+   "g": "h",
+   "script": 76
+  },
+  "sm.ingamoder": {
+   "id": "bbee0ea9-0177-54ba-9785-cdeb5df15ea8",
+   "name": "Ingamoder",
+   "b": null,
+   "d": null,
+   "tree": "SE_MED",
+   "title": "Reine de Suède",
+   "g": "f",
+   "script": 76
+  },
+  "sm.inge1": {
+   "id": "7898c9b4-f2d9-5ac1-879c-06dafe3e9ed6",
+   "name": "Inge l'Ancien",
+   "b": 1040,
+   "d": 1105,
+   "tree": "SE_MED",
+   "title": "Roi de Suède",
+   "g": "h",
+   "script": 76
+  },
+  "sm.helena": {
+   "id": "eeb03b59-7d29-5a60-941f-c2df77a6bb67",
+   "name": "Hélène",
+   "b": null,
+   "d": null,
+   "tree": "SE_MED",
+   "title": "Reine de Suède, épouse d'Inge",
+   "g": "f",
+   "script": 76
+  },
+  "sm.christina_i": {
+   "id": "90de3dcf-e08a-5fb4-b133-7ed7e7273d9f",
+   "name": "Christine Ingesdotter",
+   "b": null,
+   "d": null,
+   "tree": "SE_MED",
+   "title": "Princesse de Suède, épouse de Mstislav Ier",
+   "g": "f",
+   "script": 76
+  },
+  "sm.ragnvald": {
+   "id": "50638dd5-839f-54f1-ba40-d985756d10ee",
+   "name": "Ragnvald Ingesson",
+   "b": null,
+   "d": null,
+   "tree": "SE_MED",
+   "title": "Fils d'Inge",
+   "g": "h",
+   "script": 76
+  },
+  "sm.margaret_i": {
+   "id": "75901500-6a79-5316-809c-4235d41835b5",
+   "name": "Marguerite Ingesdotter",
+   "b": null,
+   "d": null,
+   "tree": "SE_MED",
+   "title": "Princesse de Suède, épouse de Magnus III de Norvège",
+   "g": "f",
+   "script": 76
+  },
+  "sm.katarina_i": {
+   "id": "762007e5-f545-516c-bb85-464dddd69604",
+   "name": "Catherine Ingesdotter",
+   "b": null,
+   "d": null,
+   "tree": "SE_MED",
+   "title": "Princesse de Suède",
+   "g": "f",
+   "script": 76
+  },
+  "sm.sverker1": {
+   "id": "0963db0d-acf7-5c08-91a0-c60f6a6a7acd",
+   "name": "Sverker Ier",
+   "b": 1100,
+   "d": 1156,
+   "tree": "SE_MED",
+   "title": "Roi de Suède",
+   "g": "h",
+   "script": 76
+  },
+  "sm.ulvhild": {
+   "id": "c15902b9-41b6-53bb-bc7b-f818454cdc48",
+   "name": "Ulvhild Håkansdotter",
+   "b": null,
+   "d": null,
+   "tree": "SE_MED",
+   "title": "Reine de Suède",
+   "g": "f",
+   "script": 76
+  },
+  "sm.richeza": {
+   "id": "9cdec33b-6a2e-54e6-b539-47348bea8178",
+   "name": "Richeza",
+   "b": null,
+   "d": null,
+   "tree": "SE_MED",
+   "title": "Reine de Suède",
+   "g": "f",
+   "script": 76
+  },
+  "sm.karl7": {
+   "id": "aedc2bfa-1b6d-5f08-ad89-212f87d798cd",
+   "name": "Charles VII (Karl Sverkersson)",
+   "b": 1130,
+   "d": 1167,
+   "tree": "SE_MED",
+   "title": "Roi de Suède",
+   "g": "h",
+   "script": 76
+  },
+  "sm.johan_s": {
+   "id": "7af5ac6f-9bbd-5ca7-9559-cb62d892161f",
+   "name": "Johan Sverkersson",
+   "b": null,
+   "d": null,
+   "tree": "SE_MED",
+   "title": "Fils de Sverker Ier",
+   "g": "h",
+   "script": 76
+  },
+  "sm.ingegard": {
+   "id": "ef8ad0a4-8e6b-5fe1-9efd-6cdd3ea71cca",
+   "name": "Ingegärd Sverkersdotter",
+   "b": null,
+   "d": null,
+   "tree": "SE_MED",
+   "title": "Fille de Sverker Ier",
+   "g": "f",
+   "script": 76
+  },
+  "sm.helena_s": {
+   "id": "61bee87a-d852-5c33-8dc0-39d7e96abc2f",
+   "name": "Hélène Sverkersdotter",
+   "b": null,
+   "d": null,
+   "tree": "SE_MED",
+   "title": "Fille de Sverker Ier",
+   "g": "f",
+   "script": 76
+  },
+  "sm.boleslaw": {
+   "id": "fbf20ca2-c0a6-579e-99f9-1417a2f80cd8",
+   "name": "Boleslaw Sverkersson",
+   "b": null,
+   "d": null,
+   "tree": "SE_MED",
+   "title": "Fils de Sverker Ier",
+   "g": "h",
+   "script": 76
+  },
+  "sm.christina_h": {
+   "id": "4abf1fa9-85c0-5cec-be83-62c7cb0de60c",
+   "name": "Christine Hvide",
+   "b": null,
+   "d": null,
+   "tree": "SE_MED",
+   "title": "Reine de Suède",
+   "g": "f",
+   "script": 76
+  },
+  "sm.sverker2": {
+   "id": "276cf853-2ce5-5fb9-ae18-91f2d0098365",
+   "name": "Sverker II",
+   "b": null,
+   "d": null,
+   "tree": "SE_MED",
+   "title": "Roi de Suède (1195-1208)",
+   "g": "h",
+   "script": 76
+  },
+  "sm.erik9": {
+   "id": "7d5e35f8-e518-5543-b5d2-35c5741d1da4",
+   "name": "Éric IX le Saint",
+   "b": null,
+   "d": 1160,
+   "tree": "SE_MED",
+   "title": "Roi de Suède",
+   "g": "h",
+   "script": 76
+  },
+  "sm.christina_b": {
+   "id": "4a37a67f-b9b5-529f-91ee-640acb458b06",
+   "name": "Christine Björnsdotter",
+   "b": null,
+   "d": null,
+   "tree": "SE_MED",
+   "title": "Reine de Suède",
+   "g": "f",
+   "script": 76
+  },
+  "sm.knut1": {
+   "id": "1615e9c8-8a0d-599a-a0f0-718b5a0adf8f",
+   "name": "Knut Ier Eriksson",
+   "b": null,
+   "d": 1196,
+   "tree": "SE_MED",
+   "title": "Roi de Suède",
+   "g": "h",
+   "script": 76
+  },
+  "sm.filip_e": {
+   "id": "a9b4bafe-d668-5350-a026-abe759e2340c",
+   "name": "Filip Eriksson",
+   "b": null,
+   "d": null,
+   "tree": "SE_MED",
+   "title": "Fils d'Éric IX",
+   "g": "h",
+   "script": 76
+  },
+  "sm.katarina_e": {
+   "id": "3e520d0f-b0a3-54d1-9fd7-1391fb4462cd",
+   "name": "Catherine Eriksdotter",
+   "b": null,
+   "d": null,
+   "tree": "SE_MED",
+   "title": "Fille d'Éric IX",
+   "g": "f",
+   "script": 76
+  },
+  "sm.margaret_e": {
+   "id": "f46bd387-3992-5838-8457-553b183eac6b",
+   "name": "Marguerite Eriksdotter",
+   "b": null,
+   "d": null,
+   "tree": "SE_MED",
+   "title": "Fille d'Éric IX, épouse de Sverre",
+   "g": "f",
+   "script": 76
+  },
+  "sm.erik10": {
+   "id": "312d517a-4aa3-5cb4-8839-f6abd47d0115",
+   "name": "Éric X Knutsson",
+   "b": 1180,
+   "d": 1216,
+   "tree": "SE_MED",
+   "title": "Roi de Suède",
+   "g": "h",
+   "script": 76
+  },
+  "sm.erik11": {
+   "id": "1532911e-e099-5a84-a34b-02204ae1a64e",
+   "name": "Éric XI Eriksson",
+   "b": 1216,
+   "d": 1250,
+   "tree": "SE_MED",
+   "title": "Roi de Suède",
+   "g": "h",
+   "script": 76
+  },
+  "sm.ingeborg_e": {
+   "id": "d3afd589-0f63-52b9-94b3-d5eb4aeebac9",
+   "name": "Ingeborg Eriksdotter",
+   "b": null,
+   "d": 1254,
+   "tree": "SE_MED",
+   "title": "Épouse de Birger Jarl",
+   "g": "f",
+   "script": 76
+  },
+  "sm.catherine_s": {
+   "id": "feb67048-d040-53cc-9299-ba8b5a1545ea",
+   "name": "Catherine Sunesdotter",
+   "b": null,
+   "d": null,
+   "tree": "SE_MED",
+   "title": "Reine de Suède",
+   "g": "f",
+   "script": 76
+  },
+  "sm.magnus_m": {
+   "id": "4ff2c159-96d6-5302-ac15-1db12ddfdead",
+   "name": "Magnus Minniskiöld",
+   "b": null,
+   "d": null,
+   "tree": "SE_MED",
+   "title": "Noble de Bjälbo",
+   "g": "h",
+   "script": 76
+  },
+  "sm.ingrid_ylva": {
+   "id": "d2f512a5-d456-5817-868e-b06573401cfc",
+   "name": "Ingrid Ylva",
+   "b": null,
+   "d": null,
+   "tree": "SE_MED",
+   "title": "Mère de Birger Jarl",
+   "g": "f",
+   "script": 76
+  },
+  "sm.birger_jarl": {
+   "id": "0bf05ad7-d087-5431-b332-64cb9f6fbdf3",
+   "name": "Birger Jarl",
+   "b": 1210,
+   "d": 1266,
+   "tree": "SE_MED",
+   "title": "Jarl, régent de Suède",
+   "g": "h",
+   "script": 76
+  },
+  "sm.mechtilde": {
+   "id": "e441adc9-92a1-5e13-af13-11a08ce65182",
+   "name": "Mechtilde de Holstein",
+   "b": null,
+   "d": null,
+   "tree": "SE_MED",
+   "title": "Seconde épouse de Birger Jarl",
+   "g": "f",
+   "script": 76
+  },
+  "sm.rikissa_b": {
+   "id": "3117824b-117f-54bd-8cc9-4498743ad511",
+   "name": "Rikissa Birgersdotter",
+   "b": 1238,
+   "d": null,
+   "tree": "SE_MED",
+   "title": "Fille de Birger Jarl",
+   "g": "f",
+   "script": 76
+  },
+  "sm.valdemar": {
+   "id": "c5f0446b-87b4-5c1e-aa09-2a469852b2f6",
+   "name": "Valdemar Birgersson",
+   "b": 1239,
+   "d": 1302,
+   "tree": "SE_MED",
+   "title": "Roi de Suède",
+   "g": "h",
+   "script": 76
+  },
+  "sm.magnus_l": {
+   "id": "58207ae0-4721-52e5-9f0b-6d96eae00f6a",
+   "name": "Magnus Ladulås",
+   "b": 1240,
+   "d": 1290,
+   "tree": "SE_MED",
+   "title": "Roi de Suède",
+   "g": "h",
+   "script": 76
+  },
+  "sm.catharina_b": {
+   "id": "c2c9e945-1f5d-5205-b602-ef6feaad727e",
+   "name": "Catherine Birgersdotter",
+   "b": 1245,
+   "d": null,
+   "tree": "SE_MED",
+   "title": "Fille de Birger Jarl",
+   "g": "f",
+   "script": 76
+  },
+  "sm.erik_b": {
+   "id": "bd0ee1fc-473a-520f-88b9-a25e1a713139",
+   "name": "Éric Birgersson",
+   "b": 1250,
+   "d": null,
+   "tree": "SE_MED",
+   "title": "Fils de Birger Jarl",
+   "g": "h",
+   "script": 76
+  },
+  "sm.ingeborg_b": {
+   "id": "0b9e33a5-f2aa-5b1e-b461-0bc859c5244d",
+   "name": "Ingeborg Birgersdotter",
+   "b": 1254,
+   "d": 1302,
+   "tree": "SE_MED",
+   "title": "Fille de Birger Jarl",
+   "g": "f",
+   "script": 76
+  },
+  "sm.bengt_b": {
+   "id": "a34acdd1-2a1e-58bc-aa07-2455f436a08c",
+   "name": "Bengt Birgersson",
+   "b": 1254,
+   "d": null,
+   "tree": "SE_MED",
+   "title": "Fils de Birger Jarl",
+   "g": "h",
+   "script": 76
+  },
+  "sm.sophia_dk": {
+   "id": "859daf76-7cc9-57d6-8b32-ccf892a508b1",
+   "name": "Sophie de Danemark",
+   "b": null,
+   "d": null,
+   "tree": "SE_MED",
+   "title": "Reine de Suède, épouse de Valdemar",
+   "g": "f",
+   "script": 76
+  },
+  "sm.v_ing": {
+   "id": "cd273ee1-5abe-5471-943d-21f4ca472800",
+   "name": "Ingeborg Valdemarsdotter",
+   "b": 1263,
+   "d": 1292,
+   "tree": "SE_MED",
+   "title": "Enfant de Valdemar",
+   "g": "f",
+   "script": 76
+  },
+  "sm.v_erik": {
+   "id": "cfcf9845-451b-5565-b207-9991df05435f",
+   "name": "Éric Valdemarsson",
+   "b": 1272,
+   "d": 1330,
+   "tree": "SE_MED",
+   "title": "Enfant de Valdemar",
+   "g": "h",
+   "script": 76
+  },
+  "sm.v_marina": {
+   "id": "971e418e-749d-5fd3-a43e-ca33601e80cb",
+   "name": "Marina Valdemarsdotter",
+   "b": null,
+   "d": null,
+   "tree": "SE_MED",
+   "title": "Enfant de Valdemar",
+   "g": "f",
+   "script": 76
+  },
+  "sm.v_richeza": {
+   "id": "49d4ddb2-2d47-5674-8414-d60de9e2dd6c",
+   "name": "Richeza Valdemarsdotter",
+   "b": null,
+   "d": null,
+   "tree": "SE_MED",
+   "title": "Enfant de Valdemar",
+   "g": "f",
+   "script": 76
+  },
+  "sm.v_kat": {
+   "id": "9a04a20f-7ce2-5a58-87a7-7a35f8abe3d3",
+   "name": "Catherine Valdemarsdotter",
+   "b": null,
+   "d": null,
+   "tree": "SE_MED",
+   "title": "Enfant de Valdemar",
+   "g": "f",
+   "script": 76
+  },
+  "sm.v_mar": {
+   "id": "e9ce6c7e-2712-54e4-8a51-9db5c9976599",
+   "name": "Marguerite Valdemarsdotter",
+   "b": null,
+   "d": null,
+   "tree": "SE_MED",
+   "title": "Enfant de Valdemar",
+   "g": "f",
+   "script": 76
+  },
+  "sm.helvig": {
+   "id": "61f11011-299e-5f26-bf1a-01fcc3f706f0",
+   "name": "Helvig de Holstein",
+   "b": null,
+   "d": null,
+   "tree": "SE_MED",
+   "title": "Reine de Suède",
+   "g": "f",
+   "script": 76
+  },
+  "sm.ingeborg_m": {
+   "id": "9b163e34-22f2-5ce9-b60d-c9d946cbd726",
+   "name": "Ingeborg Magnusdotter",
+   "b": 1277,
+   "d": 1319,
+   "tree": "SE_MED",
+   "title": "Fille de Magnus Ladulås",
+   "g": "f",
+   "script": 76
+  },
+  "sm.birger": {
+   "id": "75c464e1-cfc7-5131-9f8e-2ad3702c1405",
+   "name": "Birger Magnusson",
+   "b": 1280,
+   "d": 1321,
+   "tree": "SE_MED",
+   "title": "Roi de Suède",
+   "g": "h",
+   "script": 76
+  },
+  "sm.valdemar_m": {
+   "id": "9131bd2e-7547-5c61-8110-7bb5f45fe3a5",
+   "name": "Valdemar Magnusson",
+   "b": 1282,
+   "d": 1318,
+   "tree": "SE_MED",
+   "title": "Duc de Finlande",
+   "g": "h",
+   "script": 76
+  },
+  "sm.rikissa_m": {
+   "id": "48692c36-f32e-579a-859d-a21b4207a6a8",
+   "name": "Rikissa Magnusdotter",
+   "b": 1285,
+   "d": 1347,
+   "tree": "SE_MED",
+   "title": "Fille de Magnus Ladulås",
+   "g": "f",
+   "script": 76
+  },
+  "sm.marta": {
+   "id": "345d74b4-9bc4-5875-90bb-09645b39ae57",
+   "name": "Märta de Danemark",
+   "b": null,
+   "d": null,
+   "tree": "SE_MED",
+   "title": "Reine de Suède, épouse de Birger",
+   "g": "f",
+   "script": 76
+  },
+  "sm.b_mag": {
+   "id": "07740dcc-5ec4-52a6-8950-52012bb91a5c",
+   "name": "Magnus Birgersson",
+   "b": 1300,
+   "d": 1320,
+   "tree": "SE_MED",
+   "title": "Enfant de Birger",
+   "g": "h",
+   "script": 76
+  },
+  "sm.b_erik": {
+   "id": "8172df7c-46a6-5e68-a367-588be7324e7c",
+   "name": "Éric, fils du roi Birger",
+   "b": null,
+   "d": 1319,
+   "tree": "SE_MED",
+   "title": "Enfant de Birger",
+   "g": "h",
+   "script": 76
+  },
+  "sm.b_agnes": {
+   "id": "c0f92cda-2b87-5821-9f12-ebcf481bd058",
+   "name": "Agnès Birgersdotter",
+   "b": null,
+   "d": null,
+   "tree": "SE_MED",
+   "title": "Enfant de Birger",
+   "g": "f",
+   "script": 76
+  },
+  "sm.b_kat": {
+   "id": "2efe2976-be97-566f-83be-e83e77aa3714",
+   "name": "Catherine, fille du roi Birger",
+   "b": null,
+   "d": null,
+   "tree": "SE_MED",
+   "title": "Enfant de Birger",
+   "g": "f",
+   "script": 76
+  },
+  "sm.euphemia": {
+   "id": "ca3e86c8-fe9b-5098-b599-f1418270948f",
+   "name": "Euphémie de Suède",
+   "b": null,
+   "d": null,
+   "tree": "SE_MED",
+   "title": "Duchesse de Mecklembourg",
+   "g": "f",
+   "script": 76
+  },
+  "sm.albert2m": {
+   "id": "93380164-4782-5f56-beaf-e60398febd9d",
+   "name": "Albert II de Mecklembourg",
+   "b": 1318,
+   "d": 1379,
+   "tree": "SE_MED",
+   "title": "Duc de Mecklembourg",
+   "g": "h",
+   "script": 76
+  },
+  "sm.albert_m": {
+   "id": "6ba14820-320c-58b1-a0ac-0b647382d408",
+   "name": "Albert de Mecklembourg",
+   "b": 1338,
+   "d": 1412,
+   "tree": "SE_MED",
+   "title": "Roi de Suède (1364-1389)",
+   "g": "h",
+   "script": 76
+  },
+  "sm.richardis": {
+   "id": "a0a743f0-757d-582c-a824-1d6a9e6f4808",
+   "name": "Richardis de Schwerin",
+   "b": null,
+   "d": 1377,
+   "tree": "SE_MED",
+   "title": "Reine de Suède",
+   "g": "f",
+   "script": 76
+  },
+  "sm.agnes_b": {
+   "id": "c461da12-933f-5977-a71e-746faa2608ba",
+   "name": "Agnès de Brunswick-Lunebourg",
+   "b": null,
+   "d": 1432,
+   "tree": "SE_MED",
+   "title": "Reine de Suède",
+   "g": "f",
+   "script": 76
+  },
+  "sm.erik_m": {
+   "id": "1ff060bd-ff08-53b8-bdf5-722cbe526f51",
+   "name": "Éric de Mecklembourg",
+   "b": null,
+   "d": 1397,
+   "tree": "SE_MED",
+   "title": "Prince de Suède",
+   "g": "h",
+   "script": 76
+  },
+  "sm.richardis_k": {
+   "id": "e1f62479-cfcb-5a0b-89a5-9532d57e5238",
+   "name": "Richardis Catherine de Mecklembourg",
+   "b": null,
+   "d": 1400,
+   "tree": "SE_MED",
+   "title": "Princesse",
+   "g": "f",
+   "script": 76
+  },
+  "sm.albert5": {
+   "id": "da8eda4f-22a6-55c8-aac3-6739acbb2006",
+   "name": "Albert V de Mecklembourg",
+   "b": null,
+   "d": 1423,
+   "tree": "SE_MED",
+   "title": "Duc de Mecklembourg",
+   "g": "h",
+   "script": 76
+  },
+  "sm.wartislaw7": {
+   "id": "174e763f-0cae-5928-aa6f-4bad62ebcb8f",
+   "name": "Wartislaw VII de Poméranie",
+   "b": null,
+   "d": null,
+   "tree": "SE_MED",
+   "title": "Duc de Poméranie",
+   "g": "h",
+   "script": 76
+  },
+  "sm.maria_m": {
+   "id": "41194e80-6fb0-53e7-8e0d-d7d255a1ad5f",
+   "name": "Marie de Mecklembourg-Schwerin",
+   "b": null,
+   "d": null,
+   "tree": "SE_MED",
+   "title": "Duchesse de Poméranie",
+   "g": "f",
+   "script": 76
+  },
+  "sm.erik_p": {
+   "id": "cc31b7ba-1115-589a-8d07-8815a9413f9d",
+   "name": "Éric de Poméranie",
+   "b": 1382,
+   "d": 1459,
+   "tree": "SE_MED",
+   "title": "Roi de Danemark, de Norvège et de Suède",
+   "g": "h",
+   "script": 76
+  },
+  "sm.philippa": {
+   "id": "44773957-9ddf-551e-bf83-e58075017080",
+   "name": "Philippe d'Angleterre",
+   "b": 1394,
+   "d": 1430,
+   "tree": "GB_LAN",
+   "title": "Reine de Danemark, de Norvège et de Suède",
+   "g": "f",
+   "script": 76
+  },
+  "sm.karl8": {
+   "id": "ac472375-958f-5cde-9142-477e1d40d75f",
+   "name": "Charles VIII Knutsson Bonde",
+   "b": 1408,
+   "d": 1470,
+   "tree": "SE_MED",
+   "title": "Roi de Suède et de Norvège",
+   "g": "h",
+   "script": 76
+  },
+  "sm.birg": {
+   "id": "e0b17504-0df9-55ea-b634-e163cbaef33f",
+   "name": "Birgitta Turesdotter",
+   "b": null,
+   "d": 1436,
+   "tree": "SE_MED",
+   "title": "Reine de Suède",
+   "g": "f",
+   "script": 76
+  },
+  "sm.cath": {
+   "id": "ec749efb-6f2f-5eee-9d44-e90c44d5a6dd",
+   "name": "Catherine Gumsehuvud",
+   "b": null,
+   "d": 1450,
+   "tree": "SE_MED",
+   "title": "Reine de Suède",
+   "g": "f",
+   "script": 76
+  },
+  "sm.chr": {
+   "id": "b08ee63e-7748-5507-997d-cb7f5eaf1e56",
+   "name": "Christine Abrahamsdotter",
+   "b": null,
+   "d": null,
+   "tree": "SE_MED",
+   "title": "Reine de Suède",
+   "g": "f",
+   "script": 76
+  },
+  "sm.k_ture": {
+   "id": "18519abd-c9f1-58f1-becc-1e6372158a54",
+   "name": "Ture Karlsson",
+   "b": null,
+   "d": null,
+   "tree": "SE_MED",
+   "title": "Enfant de Charles VIII",
+   "g": "h",
+   "script": 76
+  },
+  "sm.k_chr": {
+   "id": "86891117-e834-57fc-a0d4-135a695e6d05",
+   "name": "Christine Karlsdotter",
+   "b": null,
+   "d": null,
+   "tree": "SE_MED",
+   "title": "Enfant de Charles VIII",
+   "g": "f",
+   "script": 76
+  },
+  "sm.k_mar": {
+   "id": "9700f792-745c-5057-bcd8-cbee8c936edc",
+   "name": "Marguerite Karlsdotter",
+   "b": 1442,
+   "d": 1462,
+   "tree": "SE_MED",
+   "title": "Enfant de Charles VIII",
+   "g": "f",
+   "script": 76
+  },
+  "sm.k_mad": {
+   "id": "51f11348-856d-5a05-af2f-b3af5496125a",
+   "name": "Madeleine Karlsdotter",
+   "b": 1445,
+   "d": 1495,
+   "tree": "SE_MED",
+   "title": "Enfant de Charles VIII",
+   "g": "f",
+   "script": 76
+  },
+  "sm.k_ric": {
+   "id": "378b20b0-5006-54b8-a60b-b21bd2242e34",
+   "name": "Richeza Karlsdotter",
+   "b": null,
+   "d": null,
+   "tree": "SE_MED",
+   "title": "Enfant de Charles VIII",
+   "g": "f",
+   "script": 76
+  },
+  "sm.k_bri": {
+   "id": "4a656a0e-0d1b-51f1-aebb-c6c56311033c",
+   "name": "Brigitte Karlsdotter",
+   "b": null,
+   "d": null,
+   "tree": "SE_MED",
+   "title": "Enfant de Charles VIII",
+   "g": "f",
+   "script": 76
+  },
+  "sm.k_ann": {
+   "id": "4b3fe090-79ce-5757-91a7-476dc2edcd9c",
+   "name": "Anne Karlsdotter",
+   "b": null,
+   "d": null,
+   "tree": "SE_MED",
+   "title": "Enfant de Charles VIII",
+   "g": "f",
+   "script": 76
+  },
+  "sm.k_karl": {
+   "id": "a6143df4-32a4-5ce3-ac7d-955e40af6e4d",
+   "name": "Karl Karlsson",
+   "b": 1465,
+   "d": 1488,
+   "tree": "SE_MED",
+   "title": "Enfant de Charles VIII",
+   "g": "h",
+   "script": 76
   }
  },
  "trees": {
@@ -18266,7 +19066,7 @@
   "GB_LAN": {
    "entry": "a393c0e9-c400-40f8-a6d4-79e7ad750486",
    "country": "GBR",
-   "dynasty": "Maison de Lancastre",
+   "dynasty": "Lancastre",
    "script": null
   },
   "DK_OLD": {
@@ -18364,6 +19164,12 @@
    "country": "DNK",
    "dynasty": "Maison d'Estridsen",
    "script": null
+  },
+  "SE_MED": {
+   "entry": "6aa9b680-91a9-5d37-aab1-d231bbc91c45",
+   "country": "SWE",
+   "dynasty": "Rois de Suède (Moyen Âge)",
+   "script": 76
   }
  },
  "flags": [
@@ -21999,6 +22805,139 @@
    "tree": "NO_KIN",
    "reason": "Maison Høiby : sans arbre",
    "script": 75
+  },
+  {
+   "name": "Ingamoder",
+   "b": null,
+   "tree": "SE_MED",
+   "reason": "Maison Ingamoder : sans arbre",
+   "script": 76
+  },
+  {
+   "name": "Hélène",
+   "b": null,
+   "tree": "SE_MED",
+   "reason": "Maison Helena : sans arbre",
+   "script": 76
+  },
+  {
+   "name": "Ulvhild Håkansdotter",
+   "b": null,
+   "tree": "SE_MED",
+   "reason": "Maison Håkan : sans arbre",
+   "script": 76
+  },
+  {
+   "name": "Richeza",
+   "b": null,
+   "tree": "SE_MED",
+   "reason": "Maison Richeza : sans arbre",
+   "script": 76
+  },
+  {
+   "name": "Christine Hvide",
+   "b": null,
+   "tree": "SE_MED",
+   "reason": "Maison Hvide : sans arbre",
+   "script": 76
+  },
+  {
+   "name": "Christine Björnsdotter",
+   "b": null,
+   "tree": "SE_MED",
+   "reason": "Maison Björn : sans arbre",
+   "script": 76
+  },
+  {
+   "name": "Catherine Sunesdotter",
+   "b": null,
+   "tree": "SE_MED",
+   "reason": "Maison Sune : sans arbre",
+   "script": 76
+  },
+  {
+   "name": "Ingrid Ylva",
+   "b": null,
+   "tree": "SE_MED",
+   "reason": "Maison Ylva : sans arbre",
+   "script": 76
+  },
+  {
+   "name": "Mechtilde de Holstein",
+   "b": null,
+   "tree": "SE_MED",
+   "reason": "Maison Holstein : sans arbre",
+   "script": 76
+  },
+  {
+   "name": "Sophie de Danemark",
+   "b": null,
+   "tree": "SE_MED",
+   "reason": "Maison Estridsen : sans arbre",
+   "script": 76
+  },
+  {
+   "name": "Helvig de Holstein",
+   "b": null,
+   "tree": "SE_MED",
+   "reason": "Maison Holstein : sans arbre",
+   "script": 76
+  },
+  {
+   "name": "Märta de Danemark",
+   "b": null,
+   "tree": "SE_MED",
+   "reason": "Maison Estridsen : sans arbre",
+   "script": 76
+  },
+  {
+   "name": "Richardis de Schwerin",
+   "b": null,
+   "tree": "SE_MED",
+   "reason": "Maison Schwerin : sans arbre",
+   "script": 76
+  },
+  {
+   "name": "Agnès de Brunswick-Lunebourg",
+   "b": null,
+   "tree": "SE_MED",
+   "reason": "Maison Brunswick-Lunebourg : sans arbre",
+   "script": 76
+  },
+  {
+   "name": "Wartislaw VII de Poméranie",
+   "b": null,
+   "tree": "SE_MED",
+   "reason": "Maison de Poméranie : sans arbre",
+   "script": 76
+  },
+  {
+   "name": "Marie de Mecklembourg-Schwerin",
+   "b": null,
+   "tree": "SE_MED",
+   "reason": "Maison Mecklembourg-Schwerin : sans arbre",
+   "script": 76
+  },
+  {
+   "name": "Birgitta Turesdotter",
+   "b": null,
+   "tree": "SE_MED",
+   "reason": "Maison Tures : sans arbre",
+   "script": 76
+  },
+  {
+   "name": "Catherine Gumsehuvud",
+   "b": null,
+   "tree": "SE_MED",
+   "reason": "Maison Gumsehuvud : sans arbre",
+   "script": 76
+  },
+  {
+   "name": "Christine Abrahamsdotter",
+   "b": null,
+   "tree": "SE_MED",
+   "reason": "Maison Abrahams : sans arbre",
+   "script": 76
   }
  ],
  "scripts": {
@@ -22293,6 +23232,14 @@
    "members": 60,
    "rels": 89,
    "trees": []
+  },
+  "76": {
+   "label": "Suède médiévale — Stenkil, Sverker, Erik, Folkung (Bjälbo), Mecklembourg, Poméranie, Bonde",
+   "members": 80,
+   "rels": 125,
+   "trees": [
+    "Rois de Suède (Moyen Âge) (SWE)"
+   ]
   }
  },
  "relist": [
@@ -37945,6 +38892,631 @@
    "891c90f0-f241-5f58-ad0e-eeb18cdb898a",
    "e996a384-d8cd-5c21-ad9c-ee64438da32c",
    "parent"
+  ],
+  [
+   "91f842db-dce7-53b1-aeb8-f845a0716175",
+   "bbee0ea9-0177-54ba-9785-cdeb5df15ea8",
+   "spouse"
+  ],
+  [
+   "91f842db-dce7-53b1-aeb8-f845a0716175",
+   "7898c9b4-f2d9-5ac1-879c-06dafe3e9ed6",
+   "parent"
+  ],
+  [
+   "bbee0ea9-0177-54ba-9785-cdeb5df15ea8",
+   "7898c9b4-f2d9-5ac1-879c-06dafe3e9ed6",
+   "parent"
+  ],
+  [
+   "7898c9b4-f2d9-5ac1-879c-06dafe3e9ed6",
+   "eeb03b59-7d29-5a60-941f-c2df77a6bb67",
+   "spouse"
+  ],
+  [
+   "7898c9b4-f2d9-5ac1-879c-06dafe3e9ed6",
+   "90de3dcf-e08a-5fb4-b133-7ed7e7273d9f",
+   "parent"
+  ],
+  [
+   "eeb03b59-7d29-5a60-941f-c2df77a6bb67",
+   "90de3dcf-e08a-5fb4-b133-7ed7e7273d9f",
+   "parent"
+  ],
+  [
+   "7898c9b4-f2d9-5ac1-879c-06dafe3e9ed6",
+   "50638dd5-839f-54f1-ba40-d985756d10ee",
+   "parent"
+  ],
+  [
+   "eeb03b59-7d29-5a60-941f-c2df77a6bb67",
+   "50638dd5-839f-54f1-ba40-d985756d10ee",
+   "parent"
+  ],
+  [
+   "7898c9b4-f2d9-5ac1-879c-06dafe3e9ed6",
+   "75901500-6a79-5316-809c-4235d41835b5",
+   "parent"
+  ],
+  [
+   "eeb03b59-7d29-5a60-941f-c2df77a6bb67",
+   "75901500-6a79-5316-809c-4235d41835b5",
+   "parent"
+  ],
+  [
+   "7898c9b4-f2d9-5ac1-879c-06dafe3e9ed6",
+   "762007e5-f545-516c-bb85-464dddd69604",
+   "parent"
+  ],
+  [
+   "eeb03b59-7d29-5a60-941f-c2df77a6bb67",
+   "762007e5-f545-516c-bb85-464dddd69604",
+   "parent"
+  ],
+  [
+   "19820453-dfd2-566d-9ca9-9e0b96256931",
+   "90de3dcf-e08a-5fb4-b133-7ed7e7273d9f",
+   "spouse"
+  ],
+  [
+   "e17b80ef-db31-500b-8470-4db99526002b",
+   "75901500-6a79-5316-809c-4235d41835b5",
+   "spouse"
+  ],
+  [
+   "0963db0d-acf7-5c08-91a0-c60f6a6a7acd",
+   "c15902b9-41b6-53bb-bc7b-f818454cdc48",
+   "spouse"
+  ],
+  [
+   "0963db0d-acf7-5c08-91a0-c60f6a6a7acd",
+   "9cdec33b-6a2e-54e6-b539-47348bea8178",
+   "spouse"
+  ],
+  [
+   "0963db0d-acf7-5c08-91a0-c60f6a6a7acd",
+   "aedc2bfa-1b6d-5f08-ad89-212f87d798cd",
+   "parent"
+  ],
+  [
+   "c15902b9-41b6-53bb-bc7b-f818454cdc48",
+   "aedc2bfa-1b6d-5f08-ad89-212f87d798cd",
+   "parent"
+  ],
+  [
+   "0963db0d-acf7-5c08-91a0-c60f6a6a7acd",
+   "7af5ac6f-9bbd-5ca7-9559-cb62d892161f",
+   "parent"
+  ],
+  [
+   "c15902b9-41b6-53bb-bc7b-f818454cdc48",
+   "7af5ac6f-9bbd-5ca7-9559-cb62d892161f",
+   "parent"
+  ],
+  [
+   "0963db0d-acf7-5c08-91a0-c60f6a6a7acd",
+   "ef8ad0a4-8e6b-5fe1-9efd-6cdd3ea71cca",
+   "parent"
+  ],
+  [
+   "c15902b9-41b6-53bb-bc7b-f818454cdc48",
+   "ef8ad0a4-8e6b-5fe1-9efd-6cdd3ea71cca",
+   "parent"
+  ],
+  [
+   "0963db0d-acf7-5c08-91a0-c60f6a6a7acd",
+   "61bee87a-d852-5c33-8dc0-39d7e96abc2f",
+   "parent"
+  ],
+  [
+   "c15902b9-41b6-53bb-bc7b-f818454cdc48",
+   "61bee87a-d852-5c33-8dc0-39d7e96abc2f",
+   "parent"
+  ],
+  [
+   "0963db0d-acf7-5c08-91a0-c60f6a6a7acd",
+   "fbf20ca2-c0a6-579e-99f9-1417a2f80cd8",
+   "parent"
+  ],
+  [
+   "c15902b9-41b6-53bb-bc7b-f818454cdc48",
+   "fbf20ca2-c0a6-579e-99f9-1417a2f80cd8",
+   "parent"
+  ],
+  [
+   "aedc2bfa-1b6d-5f08-ad89-212f87d798cd",
+   "4abf1fa9-85c0-5cec-be83-62c7cb0de60c",
+   "spouse"
+  ],
+  [
+   "aedc2bfa-1b6d-5f08-ad89-212f87d798cd",
+   "276cf853-2ce5-5fb9-ae18-91f2d0098365",
+   "parent"
+  ],
+  [
+   "4abf1fa9-85c0-5cec-be83-62c7cb0de60c",
+   "276cf853-2ce5-5fb9-ae18-91f2d0098365",
+   "parent"
+  ],
+  [
+   "7d5e35f8-e518-5543-b5d2-35c5741d1da4",
+   "4a37a67f-b9b5-529f-91ee-640acb458b06",
+   "spouse"
+  ],
+  [
+   "7d5e35f8-e518-5543-b5d2-35c5741d1da4",
+   "1615e9c8-8a0d-599a-a0f0-718b5a0adf8f",
+   "parent"
+  ],
+  [
+   "4a37a67f-b9b5-529f-91ee-640acb458b06",
+   "1615e9c8-8a0d-599a-a0f0-718b5a0adf8f",
+   "parent"
+  ],
+  [
+   "7d5e35f8-e518-5543-b5d2-35c5741d1da4",
+   "a9b4bafe-d668-5350-a026-abe759e2340c",
+   "parent"
+  ],
+  [
+   "4a37a67f-b9b5-529f-91ee-640acb458b06",
+   "a9b4bafe-d668-5350-a026-abe759e2340c",
+   "parent"
+  ],
+  [
+   "7d5e35f8-e518-5543-b5d2-35c5741d1da4",
+   "3e520d0f-b0a3-54d1-9fd7-1391fb4462cd",
+   "parent"
+  ],
+  [
+   "4a37a67f-b9b5-529f-91ee-640acb458b06",
+   "3e520d0f-b0a3-54d1-9fd7-1391fb4462cd",
+   "parent"
+  ],
+  [
+   "7d5e35f8-e518-5543-b5d2-35c5741d1da4",
+   "f46bd387-3992-5838-8457-553b183eac6b",
+   "parent"
+  ],
+  [
+   "4a37a67f-b9b5-529f-91ee-640acb458b06",
+   "f46bd387-3992-5838-8457-553b183eac6b",
+   "parent"
+  ],
+  [
+   "2818c634-dd45-560a-a376-5b680fd1aace",
+   "f46bd387-3992-5838-8457-553b183eac6b",
+   "spouse"
+  ],
+  [
+   "1615e9c8-8a0d-599a-a0f0-718b5a0adf8f",
+   "312d517a-4aa3-5cb4-8839-f6abd47d0115",
+   "parent"
+  ],
+  [
+   "312d517a-4aa3-5cb4-8839-f6abd47d0115",
+   "1532911e-e099-5a84-a34b-02204ae1a64e",
+   "parent"
+  ],
+  [
+   "312d517a-4aa3-5cb4-8839-f6abd47d0115",
+   "d3afd589-0f63-52b9-94b3-d5eb4aeebac9",
+   "parent"
+  ],
+  [
+   "1532911e-e099-5a84-a34b-02204ae1a64e",
+   "feb67048-d040-53cc-9299-ba8b5a1545ea",
+   "spouse"
+  ],
+  [
+   "4ff2c159-96d6-5302-ac15-1db12ddfdead",
+   "d2f512a5-d456-5817-868e-b06573401cfc",
+   "spouse"
+  ],
+  [
+   "4ff2c159-96d6-5302-ac15-1db12ddfdead",
+   "0bf05ad7-d087-5431-b332-64cb9f6fbdf3",
+   "parent"
+  ],
+  [
+   "d2f512a5-d456-5817-868e-b06573401cfc",
+   "0bf05ad7-d087-5431-b332-64cb9f6fbdf3",
+   "parent"
+  ],
+  [
+   "0bf05ad7-d087-5431-b332-64cb9f6fbdf3",
+   "d3afd589-0f63-52b9-94b3-d5eb4aeebac9",
+   "spouse"
+  ],
+  [
+   "0bf05ad7-d087-5431-b332-64cb9f6fbdf3",
+   "e441adc9-92a1-5e13-af13-11a08ce65182",
+   "spouse"
+  ],
+  [
+   "0bf05ad7-d087-5431-b332-64cb9f6fbdf3",
+   "3117824b-117f-54bd-8cc9-4498743ad511",
+   "parent"
+  ],
+  [
+   "d3afd589-0f63-52b9-94b3-d5eb4aeebac9",
+   "3117824b-117f-54bd-8cc9-4498743ad511",
+   "parent"
+  ],
+  [
+   "0bf05ad7-d087-5431-b332-64cb9f6fbdf3",
+   "c5f0446b-87b4-5c1e-aa09-2a469852b2f6",
+   "parent"
+  ],
+  [
+   "d3afd589-0f63-52b9-94b3-d5eb4aeebac9",
+   "c5f0446b-87b4-5c1e-aa09-2a469852b2f6",
+   "parent"
+  ],
+  [
+   "0bf05ad7-d087-5431-b332-64cb9f6fbdf3",
+   "58207ae0-4721-52e5-9f0b-6d96eae00f6a",
+   "parent"
+  ],
+  [
+   "d3afd589-0f63-52b9-94b3-d5eb4aeebac9",
+   "58207ae0-4721-52e5-9f0b-6d96eae00f6a",
+   "parent"
+  ],
+  [
+   "0bf05ad7-d087-5431-b332-64cb9f6fbdf3",
+   "c2c9e945-1f5d-5205-b602-ef6feaad727e",
+   "parent"
+  ],
+  [
+   "d3afd589-0f63-52b9-94b3-d5eb4aeebac9",
+   "c2c9e945-1f5d-5205-b602-ef6feaad727e",
+   "parent"
+  ],
+  [
+   "0bf05ad7-d087-5431-b332-64cb9f6fbdf3",
+   "bd0ee1fc-473a-520f-88b9-a25e1a713139",
+   "parent"
+  ],
+  [
+   "d3afd589-0f63-52b9-94b3-d5eb4aeebac9",
+   "bd0ee1fc-473a-520f-88b9-a25e1a713139",
+   "parent"
+  ],
+  [
+   "0bf05ad7-d087-5431-b332-64cb9f6fbdf3",
+   "0b9e33a5-f2aa-5b1e-b461-0bc859c5244d",
+   "parent"
+  ],
+  [
+   "d3afd589-0f63-52b9-94b3-d5eb4aeebac9",
+   "0b9e33a5-f2aa-5b1e-b461-0bc859c5244d",
+   "parent"
+  ],
+  [
+   "0bf05ad7-d087-5431-b332-64cb9f6fbdf3",
+   "a34acdd1-2a1e-58bc-aa07-2455f436a08c",
+   "parent"
+  ],
+  [
+   "d3afd589-0f63-52b9-94b3-d5eb4aeebac9",
+   "a34acdd1-2a1e-58bc-aa07-2455f436a08c",
+   "parent"
+  ],
+  [
+   "c5f0446b-87b4-5c1e-aa09-2a469852b2f6",
+   "859daf76-7cc9-57d6-8b32-ccf892a508b1",
+   "spouse"
+  ],
+  [
+   "c5f0446b-87b4-5c1e-aa09-2a469852b2f6",
+   "cd273ee1-5abe-5471-943d-21f4ca472800",
+   "parent"
+  ],
+  [
+   "859daf76-7cc9-57d6-8b32-ccf892a508b1",
+   "cd273ee1-5abe-5471-943d-21f4ca472800",
+   "parent"
+  ],
+  [
+   "c5f0446b-87b4-5c1e-aa09-2a469852b2f6",
+   "cfcf9845-451b-5565-b207-9991df05435f",
+   "parent"
+  ],
+  [
+   "859daf76-7cc9-57d6-8b32-ccf892a508b1",
+   "cfcf9845-451b-5565-b207-9991df05435f",
+   "parent"
+  ],
+  [
+   "c5f0446b-87b4-5c1e-aa09-2a469852b2f6",
+   "971e418e-749d-5fd3-a43e-ca33601e80cb",
+   "parent"
+  ],
+  [
+   "859daf76-7cc9-57d6-8b32-ccf892a508b1",
+   "971e418e-749d-5fd3-a43e-ca33601e80cb",
+   "parent"
+  ],
+  [
+   "c5f0446b-87b4-5c1e-aa09-2a469852b2f6",
+   "49d4ddb2-2d47-5674-8414-d60de9e2dd6c",
+   "parent"
+  ],
+  [
+   "859daf76-7cc9-57d6-8b32-ccf892a508b1",
+   "49d4ddb2-2d47-5674-8414-d60de9e2dd6c",
+   "parent"
+  ],
+  [
+   "c5f0446b-87b4-5c1e-aa09-2a469852b2f6",
+   "9a04a20f-7ce2-5a58-87a7-7a35f8abe3d3",
+   "parent"
+  ],
+  [
+   "859daf76-7cc9-57d6-8b32-ccf892a508b1",
+   "9a04a20f-7ce2-5a58-87a7-7a35f8abe3d3",
+   "parent"
+  ],
+  [
+   "c5f0446b-87b4-5c1e-aa09-2a469852b2f6",
+   "e9ce6c7e-2712-54e4-8a51-9db5c9976599",
+   "parent"
+  ],
+  [
+   "859daf76-7cc9-57d6-8b32-ccf892a508b1",
+   "e9ce6c7e-2712-54e4-8a51-9db5c9976599",
+   "parent"
+  ],
+  [
+   "58207ae0-4721-52e5-9f0b-6d96eae00f6a",
+   "61f11011-299e-5f26-bf1a-01fcc3f706f0",
+   "spouse"
+  ],
+  [
+   "58207ae0-4721-52e5-9f0b-6d96eae00f6a",
+   "9b163e34-22f2-5ce9-b60d-c9d946cbd726",
+   "parent"
+  ],
+  [
+   "61f11011-299e-5f26-bf1a-01fcc3f706f0",
+   "9b163e34-22f2-5ce9-b60d-c9d946cbd726",
+   "parent"
+  ],
+  [
+   "58207ae0-4721-52e5-9f0b-6d96eae00f6a",
+   "75c464e1-cfc7-5131-9f8e-2ad3702c1405",
+   "parent"
+  ],
+  [
+   "61f11011-299e-5f26-bf1a-01fcc3f706f0",
+   "75c464e1-cfc7-5131-9f8e-2ad3702c1405",
+   "parent"
+  ],
+  [
+   "58207ae0-4721-52e5-9f0b-6d96eae00f6a",
+   "9131bd2e-7547-5c61-8110-7bb5f45fe3a5",
+   "parent"
+  ],
+  [
+   "61f11011-299e-5f26-bf1a-01fcc3f706f0",
+   "9131bd2e-7547-5c61-8110-7bb5f45fe3a5",
+   "parent"
+  ],
+  [
+   "58207ae0-4721-52e5-9f0b-6d96eae00f6a",
+   "48692c36-f32e-579a-859d-a21b4207a6a8",
+   "parent"
+  ],
+  [
+   "61f11011-299e-5f26-bf1a-01fcc3f706f0",
+   "48692c36-f32e-579a-859d-a21b4207a6a8",
+   "parent"
+  ],
+  [
+   "58207ae0-4721-52e5-9f0b-6d96eae00f6a",
+   "f9388ba3-056f-53fb-b740-852e745b0633",
+   "parent"
+  ],
+  [
+   "61f11011-299e-5f26-bf1a-01fcc3f706f0",
+   "f9388ba3-056f-53fb-b740-852e745b0633",
+   "parent"
+  ],
+  [
+   "75c464e1-cfc7-5131-9f8e-2ad3702c1405",
+   "345d74b4-9bc4-5875-90bb-09645b39ae57",
+   "spouse"
+  ],
+  [
+   "75c464e1-cfc7-5131-9f8e-2ad3702c1405",
+   "07740dcc-5ec4-52a6-8950-52012bb91a5c",
+   "parent"
+  ],
+  [
+   "345d74b4-9bc4-5875-90bb-09645b39ae57",
+   "07740dcc-5ec4-52a6-8950-52012bb91a5c",
+   "parent"
+  ],
+  [
+   "75c464e1-cfc7-5131-9f8e-2ad3702c1405",
+   "8172df7c-46a6-5e68-a367-588be7324e7c",
+   "parent"
+  ],
+  [
+   "345d74b4-9bc4-5875-90bb-09645b39ae57",
+   "8172df7c-46a6-5e68-a367-588be7324e7c",
+   "parent"
+  ],
+  [
+   "75c464e1-cfc7-5131-9f8e-2ad3702c1405",
+   "c0f92cda-2b87-5821-9f12-ebcf481bd058",
+   "parent"
+  ],
+  [
+   "345d74b4-9bc4-5875-90bb-09645b39ae57",
+   "c0f92cda-2b87-5821-9f12-ebcf481bd058",
+   "parent"
+  ],
+  [
+   "75c464e1-cfc7-5131-9f8e-2ad3702c1405",
+   "2efe2976-be97-566f-83be-e83e77aa3714",
+   "parent"
+  ],
+  [
+   "345d74b4-9bc4-5875-90bb-09645b39ae57",
+   "2efe2976-be97-566f-83be-e83e77aa3714",
+   "parent"
+  ],
+  [
+   "f9388ba3-056f-53fb-b740-852e745b0633",
+   "27d900f9-bdbf-5297-ac04-f06631576719",
+   "spouse"
+  ],
+  [
+   "f9388ba3-056f-53fb-b740-852e745b0633",
+   "ca3e86c8-fe9b-5098-b599-f1418270948f",
+   "parent"
+  ],
+  [
+   "27d900f9-bdbf-5297-ac04-f06631576719",
+   "ca3e86c8-fe9b-5098-b599-f1418270948f",
+   "parent"
+  ],
+  [
+   "93380164-4782-5f56-beaf-e60398febd9d",
+   "ca3e86c8-fe9b-5098-b599-f1418270948f",
+   "spouse"
+  ],
+  [
+   "93380164-4782-5f56-beaf-e60398febd9d",
+   "6ba14820-320c-58b1-a0ac-0b647382d408",
+   "parent"
+  ],
+  [
+   "ca3e86c8-fe9b-5098-b599-f1418270948f",
+   "6ba14820-320c-58b1-a0ac-0b647382d408",
+   "parent"
+  ],
+  [
+   "6ba14820-320c-58b1-a0ac-0b647382d408",
+   "a0a743f0-757d-582c-a824-1d6a9e6f4808",
+   "spouse"
+  ],
+  [
+   "6ba14820-320c-58b1-a0ac-0b647382d408",
+   "c461da12-933f-5977-a71e-746faa2608ba",
+   "spouse"
+  ],
+  [
+   "6ba14820-320c-58b1-a0ac-0b647382d408",
+   "1ff060bd-ff08-53b8-bdf5-722cbe526f51",
+   "parent"
+  ],
+  [
+   "6ba14820-320c-58b1-a0ac-0b647382d408",
+   "e1f62479-cfcb-5a0b-89a5-9532d57e5238",
+   "parent"
+  ],
+  [
+   "6ba14820-320c-58b1-a0ac-0b647382d408",
+   "da8eda4f-22a6-55c8-aac3-6739acbb2006",
+   "parent"
+  ],
+  [
+   "a0a743f0-757d-582c-a824-1d6a9e6f4808",
+   "1ff060bd-ff08-53b8-bdf5-722cbe526f51",
+   "parent"
+  ],
+  [
+   "174e763f-0cae-5928-aa6f-4bad62ebcb8f",
+   "41194e80-6fb0-53e7-8e0d-d7d255a1ad5f",
+   "spouse"
+  ],
+  [
+   "174e763f-0cae-5928-aa6f-4bad62ebcb8f",
+   "cc31b7ba-1115-589a-8d07-8815a9413f9d",
+   "parent"
+  ],
+  [
+   "41194e80-6fb0-53e7-8e0d-d7d255a1ad5f",
+   "cc31b7ba-1115-589a-8d07-8815a9413f9d",
+   "parent"
+  ],
+  [
+   "ef4df279-a2d8-5578-b39f-4e3865aef537",
+   "cc31b7ba-1115-589a-8d07-8815a9413f9d",
+   "family"
+  ],
+  [
+   "5353d1e7-02a6-43b4-8319-de3c95497325",
+   "44773957-9ddf-551e-bf83-e58075017080",
+   "parent"
+  ],
+  [
+   "36732847-24fc-456f-8a71-4ee4df3d2e5b",
+   "44773957-9ddf-551e-bf83-e58075017080",
+   "parent"
+  ],
+  [
+   "cc31b7ba-1115-589a-8d07-8815a9413f9d",
+   "44773957-9ddf-551e-bf83-e58075017080",
+   "spouse"
+  ],
+  [
+   "ac472375-958f-5cde-9142-477e1d40d75f",
+   "e0b17504-0df9-55ea-b634-e163cbaef33f",
+   "spouse"
+  ],
+  [
+   "ac472375-958f-5cde-9142-477e1d40d75f",
+   "ec749efb-6f2f-5eee-9d44-e90c44d5a6dd",
+   "spouse"
+  ],
+  [
+   "ac472375-958f-5cde-9142-477e1d40d75f",
+   "b08ee63e-7748-5507-997d-cb7f5eaf1e56",
+   "spouse"
+  ],
+  [
+   "ac472375-958f-5cde-9142-477e1d40d75f",
+   "18519abd-c9f1-58f1-becc-1e6372158a54",
+   "parent"
+  ],
+  [
+   "ac472375-958f-5cde-9142-477e1d40d75f",
+   "86891117-e834-57fc-a0d4-135a695e6d05",
+   "parent"
+  ],
+  [
+   "ac472375-958f-5cde-9142-477e1d40d75f",
+   "9700f792-745c-5057-bcd8-cbee8c936edc",
+   "parent"
+  ],
+  [
+   "ac472375-958f-5cde-9142-477e1d40d75f",
+   "51f11348-856d-5a05-af2f-b3af5496125a",
+   "parent"
+  ],
+  [
+   "ac472375-958f-5cde-9142-477e1d40d75f",
+   "378b20b0-5006-54b8-a60b-b21bd2242e34",
+   "parent"
+  ],
+  [
+   "ac472375-958f-5cde-9142-477e1d40d75f",
+   "4a656a0e-0d1b-51f1-aebb-c6c56311033c",
+   "parent"
+  ],
+  [
+   "ac472375-958f-5cde-9142-477e1d40d75f",
+   "4b3fe090-79ce-5757-91a7-476dc2edcd9c",
+   "parent"
+  ],
+  [
+   "ac472375-958f-5cde-9142-477e1d40d75f",
+   "a6143df4-32a4-5ce3-ac7d-955e40af6e4d",
+   "parent"
   ]
  ],
  "dateflags": [
@@ -44569,6 +46141,370 @@
    "d": null,
    "note": "naissance connue par ailleurs",
    "script": 75
+  },
+  {
+   "name": "Stenkil",
+   "b": null,
+   "d": 1066,
+   "note": "naissance non donnée, mort vers 1066",
+   "script": 76
+  },
+  {
+   "name": "Ingamoder",
+   "b": null,
+   "d": null,
+   "note": "dates non données",
+   "script": 76
+  },
+  {
+   "name": "Inge l'Ancien",
+   "b": 1040,
+   "d": 1105,
+   "note": "naissance vers 1040, mort entre 1105 et 1110",
+   "script": 76
+  },
+  {
+   "name": "Hélène",
+   "b": null,
+   "d": null,
+   "note": "dates non données",
+   "script": 76
+  },
+  {
+   "name": "Christine Ingesdotter",
+   "b": null,
+   "d": null,
+   "note": "dates non données",
+   "script": 76
+  },
+  {
+   "name": "Ragnvald Ingesson",
+   "b": null,
+   "d": null,
+   "note": "dates non données",
+   "script": 76
+  },
+  {
+   "name": "Marguerite Ingesdotter",
+   "b": null,
+   "d": null,
+   "note": "dates non données",
+   "script": 76
+  },
+  {
+   "name": "Catherine Ingesdotter",
+   "b": null,
+   "d": null,
+   "note": "dates non données",
+   "script": 76
+  },
+  {
+   "name": "Sverker Ier",
+   "b": 1100,
+   "d": 1156,
+   "note": "naissance vers 1100",
+   "script": 76
+  },
+  {
+   "name": "Ulvhild Håkansdotter",
+   "b": null,
+   "d": null,
+   "note": "dates non données",
+   "script": 76
+  },
+  {
+   "name": "Richeza",
+   "b": null,
+   "d": null,
+   "note": "dates non données, origine non précisée",
+   "script": 76
+  },
+  {
+   "name": "Charles VII (Karl Sverkersson)",
+   "b": 1130,
+   "d": 1167,
+   "note": "naissance vers 1130",
+   "script": 76
+  },
+  {
+   "name": "Johan Sverkersson",
+   "b": null,
+   "d": null,
+   "note": "dates non données",
+   "script": 76
+  },
+  {
+   "name": "Ingegärd Sverkersdotter",
+   "b": null,
+   "d": null,
+   "note": "dates non données",
+   "script": 76
+  },
+  {
+   "name": "Hélène Sverkersdotter",
+   "b": null,
+   "d": null,
+   "note": "dates non données",
+   "script": 76
+  },
+  {
+   "name": "Boleslaw Sverkersson",
+   "b": null,
+   "d": null,
+   "note": "dates non données",
+   "script": 76
+  },
+  {
+   "name": "Christine Hvide",
+   "b": null,
+   "d": null,
+   "note": "dates non données",
+   "script": 76
+  },
+  {
+   "name": "Sverker II",
+   "b": null,
+   "d": null,
+   "note": "règne 1195-1208 ; naissance et mort non données",
+   "script": 76
+  },
+  {
+   "name": "Éric IX le Saint",
+   "b": null,
+   "d": 1160,
+   "note": "naissance vers 1120-1125",
+   "script": 76
+  },
+  {
+   "name": "Christine Björnsdotter",
+   "b": null,
+   "d": null,
+   "note": "dates non données",
+   "script": 76
+  },
+  {
+   "name": "Knut Ier Eriksson",
+   "b": null,
+   "d": 1196,
+   "note": "règne dès 1167 ; naissance non donnée",
+   "script": 76
+  },
+  {
+   "name": "Filip Eriksson",
+   "b": null,
+   "d": null,
+   "note": "dates non données",
+   "script": 76
+  },
+  {
+   "name": "Catherine Eriksdotter",
+   "b": null,
+   "d": null,
+   "note": "dates non données",
+   "script": 76
+  },
+  {
+   "name": "Marguerite Eriksdotter",
+   "b": null,
+   "d": null,
+   "note": "dates non données",
+   "script": 76
+  },
+  {
+   "name": "Éric X Knutsson",
+   "b": 1180,
+   "d": 1216,
+   "note": "naissance vers 1180, dates connues par ailleurs",
+   "script": 76
+  },
+  {
+   "name": "Ingeborg Eriksdotter",
+   "b": null,
+   "d": 1254,
+   "note": "naissance non donnée",
+   "script": 76
+  },
+  {
+   "name": "Catherine Sunesdotter",
+   "b": null,
+   "d": null,
+   "note": "dates non données",
+   "script": 76
+  },
+  {
+   "name": "Magnus Minniskiöld",
+   "b": null,
+   "d": null,
+   "note": "dates non données",
+   "script": 76
+  },
+  {
+   "name": "Ingrid Ylva",
+   "b": null,
+   "d": null,
+   "note": "dates non données",
+   "script": 76
+  },
+  {
+   "name": "Birger Jarl",
+   "b": 1210,
+   "d": 1266,
+   "note": "naissance vers 1210",
+   "script": 76
+  },
+  {
+   "name": "Mechtilde de Holstein",
+   "b": null,
+   "d": null,
+   "note": "dates non données",
+   "script": 76
+  },
+  {
+   "name": "Valdemar Birgersson",
+   "b": 1239,
+   "d": 1302,
+   "note": "naissance vers 1238-1239",
+   "script": 76
+  },
+  {
+   "name": "Magnus Ladulås",
+   "b": 1240,
+   "d": 1290,
+   "note": "naissance vers 1240",
+   "script": 76
+  },
+  {
+   "name": "Ingeborg Birgersdotter",
+   "b": 1254,
+   "d": 1302,
+   "note": "naissance vers 1254",
+   "script": 76
+  },
+  {
+   "name": "Sophie de Danemark",
+   "b": null,
+   "d": null,
+   "note": "dates non données",
+   "script": 76
+  },
+  {
+   "name": "Helvig de Holstein",
+   "b": null,
+   "d": null,
+   "note": "dates non données",
+   "script": 76
+  },
+  {
+   "name": "Valdemar Magnusson",
+   "b": 1282,
+   "d": 1318,
+   "note": "naissance après 1282",
+   "script": 76
+  },
+  {
+   "name": "Rikissa Magnusdotter",
+   "b": 1285,
+   "d": 1347,
+   "note": "naissance vers 1285, mort après 1347",
+   "script": 76
+  },
+  {
+   "name": "Märta de Danemark",
+   "b": null,
+   "d": null,
+   "note": "mariage 1298 ; dates non données",
+   "script": 76
+  },
+  {
+   "name": "Euphémie de Suède",
+   "b": null,
+   "d": null,
+   "note": "dates non données",
+   "script": 76
+  },
+  {
+   "name": "Albert II de Mecklembourg",
+   "b": 1318,
+   "d": 1379,
+   "note": "dates connues par ailleurs",
+   "script": 76
+  },
+  {
+   "name": "Albert de Mecklembourg",
+   "b": 1338,
+   "d": 1412,
+   "note": "naissance vers 1338",
+   "script": 76
+  },
+  {
+   "name": "Richardis de Schwerin",
+   "b": null,
+   "d": 1377,
+   "note": "naissance non donnée",
+   "script": 76
+  },
+  {
+   "name": "Agnès de Brunswick-Lunebourg",
+   "b": null,
+   "d": 1432,
+   "note": "mort entre 1430 et 1434",
+   "script": 76
+  },
+  {
+   "name": "Wartislaw VII de Poméranie",
+   "b": null,
+   "d": null,
+   "note": "dates non données",
+   "script": 76
+  },
+  {
+   "name": "Marie de Mecklembourg-Schwerin",
+   "b": null,
+   "d": null,
+   "note": "dates non données",
+   "script": 76
+  },
+  {
+   "name": "Éric de Poméranie",
+   "b": 1382,
+   "d": 1459,
+   "note": "naissance 1381 ou 1382",
+   "script": 76
+  },
+  {
+   "name": "Philippe d'Angleterre",
+   "b": 1394,
+   "d": 1430,
+   "note": "naissance 1394 connue par ailleurs",
+   "script": 76
+  },
+  {
+   "name": "Charles VIII Knutsson Bonde",
+   "b": 1408,
+   "d": 1470,
+   "note": "naissance vers 1408",
+   "script": 76
+  },
+  {
+   "name": "Birgitta Turesdotter",
+   "b": null,
+   "d": 1436,
+   "note": "naissance non donnée",
+   "script": 76
+  },
+  {
+   "name": "Catherine Gumsehuvud",
+   "b": null,
+   "d": 1450,
+   "note": "naissance non donnée",
+   "script": 76
+  },
+  {
+   "name": "Christine Abrahamsdotter",
+   "b": null,
+   "d": null,
+   "note": "naissance non donnée",
+   "script": 76
   }
  ],
  "pins": [
@@ -44759,6 +46695,38 @@
   [
    "3196cf28-1860-57d8-a395-998bc6a9fe7a",
    "SE_BER"
+  ],
+  [
+   "19820453-dfd2-566d-9ca9-9e0b96256931",
+   "SE_MED"
+  ],
+  [
+   "e17b80ef-db31-500b-8470-4db99526002b",
+   "SE_MED"
+  ],
+  [
+   "2818c634-dd45-560a-a376-5b680fd1aace",
+   "SE_MED"
+  ],
+  [
+   "f9388ba3-056f-53fb-b740-852e745b0633",
+   "SE_MED"
+  ],
+  [
+   "27d900f9-bdbf-5297-ac04-f06631576719",
+   "SE_MED"
+  ],
+  [
+   "30edeb9c-4fb0-56cb-94f4-575fa1fab717",
+   "SE_MED"
+  ],
+  [
+   "ef4df279-a2d8-5578-b39f-4e3865aef537",
+   "SE_MED"
+  ],
+  [
+   "44773957-9ddf-551e-bf83-e58075017080",
+   "SE_MED"
   ]
  ],
  "xmoved": {

@@ -148,4 +148,5 @@ RLS**. Règles :
 | arbres_v73 | Suède : Holstein-Gottorp (16) et Bernadotte (35) créés, 60 membres au total ; correction de l'arbre en double de v72 |
 | arbres_v74 | Danemark : 48 membres (Oldenbourg de Frédéric IV à Frédéric VII ; Glücksbourg de Christian IX à Frédéric X) |
 | arbres_v75 | Rois de Norvège : 60 membres (Harald à la Belle Chevelure → Ingrid Alexandra) |
+| arbres_v76 | arbres_v76 : Suède médiévale (nouvel arbre, 80 membres) |
 | `data_owid_load.sql` + `owid_chunks/` | Chargement des données d'indicateurs (rejouable, upserts) — à exécuter après v1 à v7 |
