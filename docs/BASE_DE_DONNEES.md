@@ -121,4 +121,5 @@ RLS**. Règles :
 | v47 | Données : Serbie — arbres Nemanjić, Lazarević, Branković, Obrenović, Karađorđević (créés, Yougoslavie incluse) ; Dragana et Jelena Branković rattachées à leur arbre ; Catherine de Hongrie (Árpád), Hélène de Bulgarie (Chichman), Anne de Valachie (Basarab), Alexandra/Olga/Nicolas de Grèce (Glücksbourg) créées dans leur arbre ; Zorka du Monténégro provisoirement signalée — à exécuter après v46 |
 | v48 | Données : Monténégro — arbre Petrović-Njegoš (créé) ; Zorka déplacée depuis Karađorđević ; Nicolas Nikolaïevitch l'Ancien et ses fils créés dans Romanov ; Victor-Emmanuel III relié à Jeanne de Savoie — à exécuter après v47 |
 | v49 | Données : Bosnie — arbre Kotromanić (créé) ; Élisabeth de Bosnie déplacée depuis Anjou-Hongrie ; Élisabeth de Serbie (Nemanjić), Dorothée de Bulgarie (Chichman), Hélène Branković (Branković), Élisabeth de Gniewkowo (Piast) créées — à exécuter après v48 |
+| v50 | Données : Albanie — arbres Kastrioti, Wied, Zogu (créés) ; Jerina Branković créée dans Branković — à exécuter après v49 |
 | `data_owid_load.sql` + `owid_chunks/` | Chargement des données d'indicateurs (rejouable, upserts) — à exécuter après v1 à v7 |
