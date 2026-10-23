@@ -13380,6 +13380,136 @@
    "title": "Grande-duchesse de Toscane (seconde épouse de Ferdinand IV)",
    "g": "f",
    "script": 65
+  },
+  "hs.fred5": {
+   "id": "56508165-a9e2-57ec-9ec3-bf96c95cea96",
+   "name": "Frédéric V de Souabe",
+   "b": 1164,
+   "d": 1170,
+   "tree": "DE_HST",
+   "title": "Duc de Souabe",
+   "g": "h",
+   "script": 66
+  },
+  "hs.fred6": {
+   "id": "82cdc93d-203a-598c-a5e5-5b4f65889bcb",
+   "name": "Conrad (Frédéric VI) de Souabe",
+   "b": 1167,
+   "d": 1191,
+   "tree": "DE_HST",
+   "title": "Duc de Souabe",
+   "g": "h",
+   "script": 66
+  },
+  "hs.judith": {
+   "id": "a12867db-021f-500a-9451-0802e2853b2f",
+   "name": "Judith de Hohenstaufen",
+   "b": 1168,
+   "d": 1184,
+   "tree": "DE_HST",
+   "title": "",
+   "g": "f",
+   "script": 66
+  },
+  "hs.otto_bg": {
+   "id": "92ffb5db-49a2-51e2-8ee2-0098f78a491d",
+   "name": "Otton Ier de Bourgogne",
+   "b": 1170,
+   "d": 1200,
+   "tree": "DE_HST",
+   "title": "Comte de Bourgogne",
+   "g": "h",
+   "script": 66
+  },
+  "hs.conrad2": {
+   "id": "e502bf27-12bd-5809-a240-5ac1d4278ba4",
+   "name": "Conrad II de Souabe",
+   "b": 1172,
+   "d": 1196,
+   "tree": "DE_HST",
+   "title": "Duc de Souabe et de Rothenburg",
+   "g": "h",
+   "script": 66
+  },
+  "hs.agnes": {
+   "id": "891e9923-96a8-5061-8836-ebd86104c8c7",
+   "name": "Agnès de Hohenstaufen (1179-1184)",
+   "b": 1179,
+   "d": 1184,
+   "tree": "DE_HST",
+   "title": "",
+   "g": "f",
+   "script": 66
+  },
+  "hs.conradin": {
+   "id": "92dbade5-ae57-5354-b743-23e7d7e7b73b",
+   "name": "Conradin",
+   "b": 1252,
+   "d": 1268,
+   "tree": "DE_HST",
+   "title": "Duc de Souabe, roi de Jérusalem et de Sicile (dernier Hohenstaufen)",
+   "g": "h",
+   "script": 66
+  },
+  "hs.bianca": {
+   "id": "595a15cc-2f11-5b74-80ac-b3052a17712e",
+   "name": "Bianca Lancia",
+   "b": null,
+   "d": null,
+   "tree": "DE_HST",
+   "title": "Épouse de Frédéric II",
+   "g": "f",
+   "script": 66
+  },
+  "hs.manfred": {
+   "id": "905b3423-aedf-5c33-ad0f-021345da1066",
+   "name": "Manfred de Sicile",
+   "b": 1232,
+   "d": 1266,
+   "tree": "DE_HST",
+   "title": "Roi de Sicile",
+   "g": "h",
+   "script": 66
+  },
+  "ot.liudolf": {
+   "id": "0c9a2bf3-9eee-569e-b607-bf23cff1b0c4",
+   "name": "Liudolf de Souabe",
+   "b": 930,
+   "d": 957,
+   "tree": "DE_OTT",
+   "title": "Duc de Souabe",
+   "g": "h",
+   "script": 66
+  },
+  "ot.edith": {
+   "id": "0b83dc74-b25e-5efb-97b9-bfe9f4f8f4a0",
+   "name": "Édith d'Angleterre",
+   "b": 910,
+   "d": 946,
+   "tree": "DE_OTT",
+   "title": "Reine de Germanie",
+   "g": "f",
+   "script": 66
+  },
+  "ot.william": {
+   "id": "806b77a3-877c-5246-8553-d055285ff2df",
+   "name": "Guillaume de Mayence",
+   "b": 929,
+   "d": 968,
+   "tree": "DE_OTT",
+   "title": "Archevêque de Mayence",
+   "g": "h",
+   "script": 66
+  },
+  "sa.conrad_it": {
+   "id": "dba4d024-cc5f-5a3c-b8f1-8a6ff17b0a0c",
+   "name": "Conrad II d'Italie",
+   "b": null,
+   "d": null,
+   "tree": "DE_SAL",
+   "title": "Roi d'Italie",
+   "g": "h",
+   "script": 66
   }
  },
  "trees": {
@@ -13825,6 +13955,12 @@
    "entry": "db5ef554-cbb9-448f-89fa-b656bf1d1147",
    "country": "DEU",
    "dynasty": "Welf",
+   "script": null
+  },
+  "DE_HST": {
+   "entry": "19aed0d5-8c4a-4125-b821-8fc6bc357dab",
+   "country": "DEU",
+   "dynasty": "Hohenstaufen",
    "script": null
   }
  },
@@ -16768,6 +16904,20 @@
    "tree": "IT_PAR",
    "reason": "Son père (Charles III de Parme) est à ajouter avec l'arbre de Parme",
    "script": 65
+  },
+  {
+   "name": "Bianca Lancia",
+   "b": null,
+   "tree": "DE_HST",
+   "reason": "Famille Lancia : sans arbre",
+   "script": 66
+  },
+  {
+   "name": "Édith d'Angleterre",
+   "b": 910,
+   "tree": "DE_OTT",
+   "reason": "Maison de Wessex : sans arbre ici",
+   "script": 66
   }
  ],
  "scripts": {
@@ -16994,6 +17144,12 @@
    "label": "Allemagne — Habsbourg : branche de Toscane, liens avec les Wittelsbach, dates manquantes",
    "members": 9,
    "rels": 28,
+   "trees": []
+  },
+  "66": {
+   "label": "Allemagne — petites dynasties : Hohenstaufen (enfants de Barberousse, Conradin, Manfred), Ottoniens, Saliens",
+   "members": 13,
+   "rels": 23,
    "trees": []
   }
  },
@@ -28242,6 +28398,121 @@
    "142ffe90-ae9a-43e7-81f4-92b5d93b990a",
    "fa79eca1-6618-4a3d-88f8-2e56e685da29",
    "parent"
+  ],
+  [
+   "4409e210-6000-40a8-a333-836f1d346b00",
+   "56508165-a9e2-57ec-9ec3-bf96c95cea96",
+   "parent"
+  ],
+  [
+   "7d2f8eb8-d87e-4f1b-9af9-674855ad35b1",
+   "56508165-a9e2-57ec-9ec3-bf96c95cea96",
+   "parent"
+  ],
+  [
+   "4409e210-6000-40a8-a333-836f1d346b00",
+   "82cdc93d-203a-598c-a5e5-5b4f65889bcb",
+   "parent"
+  ],
+  [
+   "7d2f8eb8-d87e-4f1b-9af9-674855ad35b1",
+   "82cdc93d-203a-598c-a5e5-5b4f65889bcb",
+   "parent"
+  ],
+  [
+   "4409e210-6000-40a8-a333-836f1d346b00",
+   "a12867db-021f-500a-9451-0802e2853b2f",
+   "parent"
+  ],
+  [
+   "7d2f8eb8-d87e-4f1b-9af9-674855ad35b1",
+   "a12867db-021f-500a-9451-0802e2853b2f",
+   "parent"
+  ],
+  [
+   "4409e210-6000-40a8-a333-836f1d346b00",
+   "92ffb5db-49a2-51e2-8ee2-0098f78a491d",
+   "parent"
+  ],
+  [
+   "7d2f8eb8-d87e-4f1b-9af9-674855ad35b1",
+   "92ffb5db-49a2-51e2-8ee2-0098f78a491d",
+   "parent"
+  ],
+  [
+   "4409e210-6000-40a8-a333-836f1d346b00",
+   "e502bf27-12bd-5809-a240-5ac1d4278ba4",
+   "parent"
+  ],
+  [
+   "7d2f8eb8-d87e-4f1b-9af9-674855ad35b1",
+   "e502bf27-12bd-5809-a240-5ac1d4278ba4",
+   "parent"
+  ],
+  [
+   "4409e210-6000-40a8-a333-836f1d346b00",
+   "891e9923-96a8-5061-8836-ebd86104c8c7",
+   "parent"
+  ],
+  [
+   "7d2f8eb8-d87e-4f1b-9af9-674855ad35b1",
+   "891e9923-96a8-5061-8836-ebd86104c8c7",
+   "parent"
+  ],
+  [
+   "8bc0cda2-c013-465e-8688-f90df3a615be",
+   "92dbade5-ae57-5354-b743-23e7d7e7b73b",
+   "parent"
+  ],
+  [
+   "1f955b05-e95c-4644-b272-7bf5e991b50c",
+   "92dbade5-ae57-5354-b743-23e7d7e7b73b",
+   "parent"
+  ],
+  [
+   "df121566-2739-4375-86e8-938ef55c82ec",
+   "595a15cc-2f11-5b74-80ac-b3052a17712e",
+   "spouse"
+  ],
+  [
+   "df121566-2739-4375-86e8-938ef55c82ec",
+   "905b3423-aedf-5c33-ad0f-021345da1066",
+   "parent"
+  ],
+  [
+   "595a15cc-2f11-5b74-80ac-b3052a17712e",
+   "905b3423-aedf-5c33-ad0f-021345da1066",
+   "parent"
+  ],
+  [
+   "ff146d02-1752-405d-b4b6-45d3fcb44462",
+   "0b83dc74-b25e-5efb-97b9-bfe9f4f8f4a0",
+   "spouse"
+  ],
+  [
+   "ff146d02-1752-405d-b4b6-45d3fcb44462",
+   "0c9a2bf3-9eee-569e-b607-bf23cff1b0c4",
+   "parent"
+  ],
+  [
+   "0b83dc74-b25e-5efb-97b9-bfe9f4f8f4a0",
+   "0c9a2bf3-9eee-569e-b607-bf23cff1b0c4",
+   "parent"
+  ],
+  [
+   "ff146d02-1752-405d-b4b6-45d3fcb44462",
+   "806b77a3-877c-5246-8553-d055285ff2df",
+   "parent"
+  ],
+  [
+   "50dba002-d282-47eb-be96-aaa4fc7f2ac2",
+   "dba4d024-cc5f-5a3c-b8f1-8a6ff17b0a0c",
+   "parent"
+  ],
+  [
+   "04dd1dfb-28c9-4504-8721-84290d799bf7",
+   "dba4d024-cc5f-5a3c-b8f1-8a6ff17b0a0c",
+   "parent"
   ]
  ],
  "dateflags": [
@@ -33753,6 +34024,27 @@
    "d": null,
    "note": "dates non données par la page de Léopold II de Toscane",
    "script": 65
+  },
+  {
+   "name": "Bianca Lancia",
+   "b": null,
+   "d": null,
+   "note": "dates non données par la page de Conradin",
+   "script": 66
+  },
+  {
+   "name": "Édith d'Angleterre",
+   "b": 910,
+   "d": 946,
+   "note": "dates : mariage 930, mort 29 janvier 946 à 35 ans (page Otton Ier)",
+   "script": 66
+  },
+  {
+   "name": "Conrad II d'Italie",
+   "b": null,
+   "d": null,
+   "note": "page Henri IV ne donne pas les dates",
+   "script": 66
   }
  ],
  "pins": [
