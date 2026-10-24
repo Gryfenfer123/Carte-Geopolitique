@@ -179,4 +179,5 @@ RLS**. Règles :
 | arbres_v107 | v107 : Alaouites (Maroc), Senoussi (Libye), dynastie salomonide (Éthiopie), 29 membres |
 | arbres_v108 | v108 : Moghols, Chakri, Nguyen, Durrani/Barakzaï (50 membres) |
 | arbres_v109 | v109 : Bagrationi (Géorgie), Arménie, Hasmonéens et Hérodiens (Israël), 40 membres |
+| arbres_v110 | v110 : sources et corrections de dates (Égypte, Fawzia) ; champ Notes rempli |
 | `data_owid_load.sql` + `owid_chunks/` | Chargement des données d'indicateurs (rejouable, upserts) — à exécuter après v1 à v7 |

@@ -87,6 +87,7 @@ class Gen:
         self.notes = []      # lignes de commentaire pour l'en-tête
         self.dateflags = []  # dates approximatives / incertaines
         self.pins = []       # (code, tree) membres épinglés sans lien
+        self.setb = []       # (id, sources) à ajouter aux notes
         self.setd = []       # (code, naissance, mort) dates à corriger/compléter sur un membre déjà créé
         self.xmoves = []     # (id, tree, dynasty) membres de la base déplacés
         self.xsetd = []      # (id, naissance, mort) dates à COMPLÉTER sur un membre déjà en base (jamais écraser une date existante)
@@ -110,12 +111,12 @@ class Gen:
         return t
 
     # ---- membres
-    def m(self, code, name, b, d, title, dyn, tree, g=None, leader=False, photo=None, flag=None, approx=None):
-        """g = 'f' ou 'h' (sexe, pour la mise en page seulement). approx = commentaire sur une date incertaine."""
+    def m(self, code, name, b, d, title, dyn, tree, g=None, leader=False, photo=None, flag=None, approx=None, src=None):
+        """src = source(s) de la fiche (texte/URL), écrite dans le champ Notes / biographie. g = 'f' ou 'h' (sexe, pour la mise en page seulement). approx = commentaire sur une date incertaine."""
         assert code not in self.code2id and code not in REG['members'], f'code en double {code}'
         i = uid('member:' + code)
         self.code2id[code] = i
-        self.M.append(dict(code=code, id=i, name=name, b=b, d=d, title=title, dyn=dyn, tree=tree, g=g, leader=leader, photo=ph(photo)))
+        self.M.append(dict(code=code, id=i, name=name, b=b, d=d, title=title, dyn=dyn, tree=tree, g=g, leader=leader, photo=ph(photo), src=src))
         if flag:
             self.flags.append((name, b, tree, flag))
         if approx:
@@ -167,6 +168,11 @@ class Gen:
         self.setd.append((code, b, d))
         REG['members'][code]['b'] = b
         REG['members'][code]['d'] = d
+
+    def setbio(self, code, src, i=None):
+        """Ajoute « Sources : ... » aux notes d'un membre (code d'un script précédent, ou i = id complet) sans jamais effacer le texte existant ; sans effet si des sources y figurent déjà."""
+        i = i or REG['members'][code]['id']
+        self.setb.append((i, src))
 
     def pin(self, code, tree):
         self.pins.append((code, tree))
@@ -292,6 +298,8 @@ class Gen:
 
     def is_append(self, key):
         t = self.trees[key]
+        if getattr(self, 'sans_repositionnement', False):
+            return True   # lot « sources » : on ne touche jamais aux positions des cartes
         if t['new']:
             return False
         if key in getattr(self, 'reposition', set()):
@@ -385,7 +393,7 @@ class Gen:
         for mm in self.M:
             e = self.tree_entry(mm['tree'])
             x, y = pos[mm['tree']].get(mm['id'], (0, 0))
-            o.append(f"  insert into public.genealogy_members (id, owner_type, owner_id, name, photo_url, birth_year, death_year, title, dynasty, pos_x, pos_y, created_by, is_leader) values ('{mm['id']}', 'entry', '{e}', {q(mm['name'])}, {q(mm['photo'])}, {n(mm['b'])}, {n(mm['d'])}, {q(mm['title'])}, {q(mm['dyn'])}, {x}, {y}, admin_id, {'true' if mm['leader'] else 'false'});")
+            o.append(f"  insert into public.genealogy_members (id, owner_type, owner_id, name, photo_url, birth_year, death_year, title, dynasty, bio, pos_x, pos_y, created_by, is_leader) values ('{mm['id']}', 'entry', '{e}', {q(mm['name'])}, {q(mm['photo'])}, {n(mm['b'])}, {n(mm['d'])}, {q(mm['title'])}, {q(mm['dyn'])}, {q(('Sources : ' + mm['src']) if mm.get('src') else None)}, {x}, {y}, admin_id, {'true' if mm['leader'] else 'false'});")
         o.append("  perform set_config('app.admin', admin_id::text, true);")
         o.append("""  create function pg_temp.rel(a uuid, b uuid, t text) returns void language plpgsql as $f$
   begin
@@ -419,6 +427,9 @@ class Gen:
             o.append(f"  delete from public.genealogy_foreign_states where member_id = '{i}' and owner_type = 'entry' and owner_id = '{e}';")
         for i, b, d in self.xsetd:
             o.append(f"  update public.genealogy_members set birth_year = coalesce(birth_year, {n(b)}), death_year = coalesce(death_year, {n(d)}) where id = '{i}';")
+        for i, src in self.setb:
+            t = q('Sources : ' + src)
+            o.append(f"  update public.genealogy_members set bio = case when coalesce(bio, '') = '' then {t} when bio like '%Sources :%' then bio else bio || E'\\n\\n' || {t} end where id = '{i}';")
         for code, b, d in self.setd:
             o.append(f"  update public.genealogy_members set birth_year = {n(b)}, death_year = {n(d)} where id = '{REG['members'][code]['id']}';")
         for code, tk, dyn in self.moves:

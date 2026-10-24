@@ -27704,7 +27704,7 @@
   "eg.p1": {
    "id": "aff5643c-95cb-5da3-b04f-4df0d8f489ba",
    "name": "Ptolémée Ier Sôter",
-   "b": -367,
+   "b": -369,
    "d": -282,
    "tree": "EG_PTO",
    "title": "Fondateur de la dynastie lagide, roi d'Égypte (-305 à -283)",
@@ -27804,7 +27804,7 @@
   "eg.p8": {
    "id": "b6c0669e-8e3b-5dfe-b6f9-a6a6f51b4dd0",
    "name": "Ptolémée VIII Évergète II",
-   "b": -182,
+   "b": -184,
    "d": -116,
    "tree": "EG_PTO",
    "title": "Roi d'Égypte (-170 à -116)",
@@ -27824,7 +27824,7 @@
   "eg.cleo3": {
    "id": "60ef275f-70b7-5c28-bad9-6ac1e4bf09e1",
    "name": "Cléopâtre III",
-   "b": -161,
+   "b": -160,
    "d": -101,
    "tree": "EG_PTO",
    "title": "Reine, fille de Ptolémée VI, épouse de Ptolémée VIII",
@@ -27915,7 +27915,7 @@
    "id": "c114f332-7c10-5f19-9a86-ad1b176bbbce",
    "name": "Cléopâtre Séléné II",
    "b": -40,
-   "d": -6,
+   "d": -5,
    "tree": "EG_PTO",
    "title": "Fille de Cléopâtre VII et d'Antoine, reine de Maurétanie",
    "g": "f",
@@ -27954,7 +27954,7 @@
   "eg.abbas1": {
    "id": "a7ae581e-07fa-5b3d-8ca0-023cae61d7c4",
    "name": "Abbas Ier",
-   "b": 1813,
+   "b": 1812,
    "d": 1854,
    "tree": "EG_ALI",
    "title": "Wali d'Égypte (1848-1854)",
@@ -28054,7 +28054,7 @@
   "eg.narriman": {
    "id": "d8d12233-0a5e-51ea-a624-9cf522976ae0",
    "name": "Narriman Sadek",
-   "b": 1934,
+   "b": 1933,
    "d": 2005,
    "tree": "EG_ALI",
    "title": "Seconde épouse de Farouk Ier",
@@ -35712,6 +35712,12 @@
     "Dynasties d'Arménie (ARM)",
     "Hasmonéens et Hérodiens (ISR)"
    ]
+  },
+  "110": {
+   "label": "Sources et corrections de dates — Égypte (v105) et Fawzia (v104)",
+   "members": 0,
+   "rels": 1,
+   "trees": []
   }
  },
  "relist": [
@@ -59674,6 +59680,11 @@
    "65fdf014-2806-537e-ae6b-ae865371afd3",
    "baf684e4-2528-55a2-8ee0-6743c83a3f55",
    "spouse"
+  ],
+  [
+   "aff5643c-95cb-5da3-b04f-4df0d8f489ba",
+   "5b7aa8ec-616f-5a5b-a1e4-b3064e39249d",
+   "parent"
   ]
  ],
  "dateflags": [

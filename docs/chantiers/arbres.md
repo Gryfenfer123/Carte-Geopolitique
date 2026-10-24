@@ -2,6 +2,8 @@
 
 ## Dernières nouvelles (la plus récente en haut)
 
+- 2026-10-23 — v110 : sources Wikipédia sur les 37 fiches d'Égypte + Fawzia ; corrections : Ptolémée Ier -369, VIII -184, Cléopâtre III -160, Séléné -5, Abbas Ier 1812, Narriman 1933 ; lien Ptolémée Ier → Arsinoé II ; registre docs/sources/arbres.md
+
 - 2026-10-23 — v109 Caucase/Levant : GEO Bagrationi, ARM dynasties, ISR Hasmonéens-Hérodiens (40 membres)
 
 - 2026-10-23 — v108 Asie : IND Moghols, THA Chakri, VNM Nguyen, AFG Durrani (50 membres)
@@ -97,7 +99,7 @@
 
 Code : `src/genealogy.ts`, `genealogyLayers.ts`, `genealogyBus.ts`, `genealogyLod.ts/.css`, `genealogyLayersWorker.ts`,
 `genealogyLayout.ts`, `genealogyRouting.ts`. Outils de remplissage : [`scripts/arbres/`](../../scripts/arbres/README.md).
-Prochaine migration : **arbres_v110** (`supabase/arbres/arbres_v110.sql`) — générateur : `Gen(110, "…")`.  (v109 livrée, à exécuter par Martin si ce n'est pas déjà fait.)
+Prochaine migration : **arbres_v111** (`supabase/arbres/arbres_v111.sql`) — générateur : `Gen(111, "…")`.  (v110 livrée, à exécuter par Martin si ce n'est pas déjà fait.)
 
 ## Règles de contenu (décidées par Martin — ne pas rouvrir)
 - Un pays n'a que les dynasties qui ont **régné sur lui**. Dynastie étrangère : branche principale dans son pays
