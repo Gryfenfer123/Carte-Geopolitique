@@ -30860,6 +30860,236 @@
    "title": "Sultan d'Oman (depuis 2020)",
    "g": "h",
    "script": 124
+  },
+  "tn.husayn1": {
+   "id": "f567d487-3aeb-5b34-9cda-5ae0324584fe",
+   "name": "Husayn Ier ben Ali",
+   "b": 1669,
+   "d": 1740,
+   "tree": "TN_HUS",
+   "title": "Fondateur de la dynastie husseinite, bey de Tunis (1705-1735)",
+   "g": "h",
+   "script": 125
+  },
+  "tn.ali1": {
+   "id": "dfe53496-4f11-55ed-abef-a5e3342a0b3a",
+   "name": "Ali Ier",
+   "b": 1688,
+   "d": 1756,
+   "tree": "TN_HUS",
+   "title": "Bey de Tunis (1735-1756)",
+   "g": "h",
+   "script": 125
+  },
+  "tn.muhammad1": {
+   "id": "33ec4888-fe15-5b1e-9f63-6b8abb1e52ff",
+   "name": "Muhammad Ier ar-Rachid",
+   "b": 1710,
+   "d": 1759,
+   "tree": "TN_HUS",
+   "title": "Bey de Tunis (1756-1759)",
+   "g": "h",
+   "script": 125
+  },
+  "tn.ali2": {
+   "id": "863eec54-afbf-5c4c-8d9c-cfbbc0f53464",
+   "name": "Ali II",
+   "b": 1712,
+   "d": 1782,
+   "tree": "TN_HUS",
+   "title": "Bey de Tunis (1759-1782)",
+   "g": "h",
+   "script": 125
+  },
+  "tn.hammuda": {
+   "id": "661d7a30-a78c-5f9f-99d8-371d135ceb2f",
+   "name": "Hammouda ben Ali",
+   "b": 1759,
+   "d": 1814,
+   "tree": "TN_HUS",
+   "title": "Bey de Tunis (1782-1814)",
+   "g": "h",
+   "script": 125
+  },
+  "tn.uthman": {
+   "id": "f56cd046-6d92-5785-a992-26ea6fb32f96",
+   "name": "Uthman ben Ali",
+   "b": 1763,
+   "d": 1814,
+   "tree": "TN_HUS",
+   "title": "Bey de Tunis (sept.-déc. 1814)",
+   "g": "h",
+   "script": 125
+  },
+  "tn.mahmud": {
+   "id": "029f41ca-27fe-5036-b5f0-fdca474e138f",
+   "name": "Mahmoud ben Muhammad",
+   "b": 1757,
+   "d": 1824,
+   "tree": "TN_HUS",
+   "title": "Bey de Tunis (1814-1824)",
+   "g": "h",
+   "script": 125
+  },
+  "tn.husayn2": {
+   "id": "c892ae99-7b49-585e-8be6-486b7c4e3a12",
+   "name": "Husayn II",
+   "b": 1784,
+   "d": 1835,
+   "tree": "TN_HUS",
+   "title": "Bey de Tunis (1824-1835)",
+   "g": "h",
+   "script": 125
+  },
+  "tn.mustafa": {
+   "id": "744d8ad1-8bd0-5f29-a12b-aabf648bd99b",
+   "name": "Mustafa ben Mahmoud",
+   "b": 1786,
+   "d": 1837,
+   "tree": "TN_HUS",
+   "title": "Bey de Tunis (1835-1837)",
+   "g": "h",
+   "script": 125
+  },
+  "tn.ahmad1": {
+   "id": "2ec57b64-d145-5189-91f5-4ce9414b39d6",
+   "name": "Ahmad Ier",
+   "b": 1806,
+   "d": 1855,
+   "tree": "TN_HUS",
+   "title": "Bey de Tunis (1837-1855)",
+   "g": "h",
+   "script": 125
+  },
+  "tn.muhammad2": {
+   "id": "16db284f-6505-51b4-beb8-ce61d19f3f12",
+   "name": "Muhammad II",
+   "b": 1811,
+   "d": 1859,
+   "tree": "TN_HUS",
+   "title": "Bey de Tunis (1855-1859)",
+   "g": "h",
+   "script": 125
+  },
+  "tn.muhammad3": {
+   "id": "8b1cb4b5-acb2-5b74-90ff-5844fab76e53",
+   "name": "Muhammad III as-Sadiq",
+   "b": 1813,
+   "d": 1882,
+   "tree": "TN_HUS",
+   "title": "Bey de Tunis (1859-1882)",
+   "g": "h",
+   "script": 125
+  },
+  "tn.ali3": {
+   "id": "15d6072a-2300-5375-bf78-d14f5859e242",
+   "name": "Ali III",
+   "b": 1817,
+   "d": 1902,
+   "tree": "TN_HUS",
+   "title": "Bey de Tunis (1882-1902)",
+   "g": "h",
+   "script": 125
+  },
+  "tn.muhammad4": {
+   "id": "b890fb38-582a-508d-ade5-bb83e37388e2",
+   "name": "Muhammad IV al-Hadi",
+   "b": 1855,
+   "d": 1906,
+   "tree": "TN_HUS",
+   "title": "Bey de Tunis (1902-1906)",
+   "g": "h",
+   "script": 125
+  },
+  "tn.muhammad5": {
+   "id": "fee87e98-5231-5e25-885e-c89764dea2b1",
+   "name": "Muhammad V an-Nasir",
+   "b": 1855,
+   "d": 1922,
+   "tree": "TN_HUS",
+   "title": "Bey de Tunis (1906-1922)",
+   "g": "h",
+   "script": 125
+  },
+  "tn.muhammad6": {
+   "id": "8cb9d84a-03d1-5d02-9021-21788d144380",
+   "name": "Muhammad VI al-Habib",
+   "b": 1858,
+   "d": 1929,
+   "tree": "TN_HUS",
+   "title": "Bey de Tunis (1922-1929)",
+   "g": "h",
+   "script": 125
+  },
+  "tn.ahmad2": {
+   "id": "66e4d1f9-0e5c-5cf3-9942-aad9b3885047",
+   "name": "Ahmad II",
+   "b": 1862,
+   "d": 1942,
+   "tree": "TN_HUS",
+   "title": "Bey de Tunis (1929-1942)",
+   "g": "h",
+   "script": 125
+  },
+  "tn.muhammad7": {
+   "id": "78dc3230-0462-5278-97d9-6405cb94988d",
+   "name": "Muhammad VII al-Munsif",
+   "b": 1881,
+   "d": 1948,
+   "tree": "TN_HUS",
+   "title": "Bey de Tunis (1942-1943)",
+   "g": "h",
+   "script": 125
+  },
+  "tn.muhammad8": {
+   "id": "f77ec2ac-e61c-50cd-a25f-b855a91dbf10",
+   "name": "Muhammad VIII al-Amin",
+   "b": 1881,
+   "d": 1962,
+   "tree": "TN_HUS",
+   "title": "Dernier bey de Tunis (1943-1957)",
+   "g": "h",
+   "script": 125
+  },
+  "ye.muhammad": {
+   "id": "aafd12b5-f108-5707-84ca-7f490735b948",
+   "name": "Muhammad ben Yahya Hamid ad-Din (al-Mansour)",
+   "b": null,
+   "d": null,
+   "tree": "YE_HAM",
+   "title": "Imam zaydite, père de l'imam Yahya",
+   "g": "h",
+   "script": 126
+  },
+  "ye.yahya": {
+   "id": "0b41863a-36b1-570c-b731-5f5fc61259ce",
+   "name": "Yahya Muhammad Hamid ad-Din",
+   "b": 1869,
+   "d": 1948,
+   "tree": "YE_HAM",
+   "title": "Imam et roi du Yémen (1918-1948)",
+   "g": "h",
+   "script": 126
+  },
+  "ye.ahmad": {
+   "id": "01d87a50-3683-5aeb-a6fe-97781b2d31f3",
+   "name": "Ahmad ben Yahya",
+   "b": 1891,
+   "d": 1962,
+   "tree": "YE_HAM",
+   "title": "Imam et roi du Yémen (1948-1962)",
+   "g": "h",
+   "script": 126
+  },
+  "ye.badr": {
+   "id": "701fdaf3-8294-5608-a7e9-fb3b21653062",
+   "name": "Muhammad al-Badr",
+   "b": 1926,
+   "d": 1996,
+   "tree": "YE_HAM",
+   "title": "Dernier imam du Yémen (1962)",
+   "g": "h",
+   "script": 126
   }
  },
  "trees": {
@@ -31876,6 +32106,18 @@
    "country": "OMN",
    "dynasty": "Al Said",
    "script": 124
+  },
+  "TN_HUS": {
+   "entry": "7e49d884-5e98-5d9e-b324-2863c411f1fa",
+   "country": "TUN",
+   "dynasty": "Husseinites",
+   "script": 125
+  },
+  "YE_HAM": {
+   "entry": "7cd4a467-956a-577d-9a85-aecf026f4718",
+   "country": "YEM",
+   "dynasty": "Hamid ad-Din",
+   "script": 126
   }
  },
  "flags": [
@@ -37182,6 +37424,22 @@
    "rels": 14,
    "trees": [
     "Al Said (OMN)"
+   ]
+  },
+  "125": {
+   "label": "Tunisie (Husseinites)",
+   "members": 19,
+   "rels": 18,
+   "trees": [
+    "Husseinites (TUN)"
+   ]
+  },
+  "126": {
+   "label": "Yémen (imams Hamid ad-Din)",
+   "members": 4,
+   "rels": 3,
+   "trees": [
+    "Hamid ad-Din (YEM)"
    ]
   }
  },
@@ -61794,6 +62052,111 @@
   [
    "f893ae13-9416-53a3-a85b-5aeec56c325a",
    "245b1c91-ae88-58e3-af02-4d3eaab33f6a",
+   "parent"
+  ],
+  [
+   "f567d487-3aeb-5b34-9cda-5ae0324584fe",
+   "33ec4888-fe15-5b1e-9f63-6b8abb1e52ff",
+   "parent"
+  ],
+  [
+   "f567d487-3aeb-5b34-9cda-5ae0324584fe",
+   "863eec54-afbf-5c4c-8d9c-cfbbc0f53464",
+   "parent"
+  ],
+  [
+   "863eec54-afbf-5c4c-8d9c-cfbbc0f53464",
+   "661d7a30-a78c-5f9f-99d8-371d135ceb2f",
+   "parent"
+  ],
+  [
+   "863eec54-afbf-5c4c-8d9c-cfbbc0f53464",
+   "f56cd046-6d92-5785-a992-26ea6fb32f96",
+   "parent"
+  ],
+  [
+   "33ec4888-fe15-5b1e-9f63-6b8abb1e52ff",
+   "029f41ca-27fe-5036-b5f0-fdca474e138f",
+   "parent"
+  ],
+  [
+   "029f41ca-27fe-5036-b5f0-fdca474e138f",
+   "c892ae99-7b49-585e-8be6-486b7c4e3a12",
+   "parent"
+  ],
+  [
+   "029f41ca-27fe-5036-b5f0-fdca474e138f",
+   "744d8ad1-8bd0-5f29-a12b-aabf648bd99b",
+   "parent"
+  ],
+  [
+   "744d8ad1-8bd0-5f29-a12b-aabf648bd99b",
+   "2ec57b64-d145-5189-91f5-4ce9414b39d6",
+   "parent"
+  ],
+  [
+   "c892ae99-7b49-585e-8be6-486b7c4e3a12",
+   "16db284f-6505-51b4-beb8-ce61d19f3f12",
+   "parent"
+  ],
+  [
+   "c892ae99-7b49-585e-8be6-486b7c4e3a12",
+   "8b1cb4b5-acb2-5b74-90ff-5844fab76e53",
+   "parent"
+  ],
+  [
+   "c892ae99-7b49-585e-8be6-486b7c4e3a12",
+   "15d6072a-2300-5375-bf78-d14f5859e242",
+   "parent"
+  ],
+  [
+   "15d6072a-2300-5375-bf78-d14f5859e242",
+   "b890fb38-582a-508d-ade5-bb83e37388e2",
+   "parent"
+  ],
+  [
+   "16db284f-6505-51b4-beb8-ce61d19f3f12",
+   "fee87e98-5231-5e25-885e-c89764dea2b1",
+   "parent"
+  ],
+  [
+   "15d6072a-2300-5375-bf78-d14f5859e242",
+   "66e4d1f9-0e5c-5cf3-9942-aad9b3885047",
+   "parent"
+  ],
+  [
+   "fee87e98-5231-5e25-885e-c89764dea2b1",
+   "78dc3230-0462-5278-97d9-6405cb94988d",
+   "parent"
+  ],
+  [
+   "8cb9d84a-03d1-5d02-9021-21788d144380",
+   "f77ec2ac-e61c-50cd-a25f-b855a91dbf10",
+   "parent"
+  ],
+  [
+   "f567d487-3aeb-5b34-9cda-5ae0324584fe",
+   "dfe53496-4f11-55ed-abef-a5e3342a0b3a",
+   "family"
+  ],
+  [
+   "fee87e98-5231-5e25-885e-c89764dea2b1",
+   "8cb9d84a-03d1-5d02-9021-21788d144380",
+   "family"
+  ],
+  [
+   "aafd12b5-f108-5707-84ca-7f490735b948",
+   "0b41863a-36b1-570c-b731-5f5fc61259ce",
+   "parent"
+  ],
+  [
+   "0b41863a-36b1-570c-b731-5f5fc61259ce",
+   "01d87a50-3683-5aeb-a6fe-97781b2d31f3",
+   "parent"
+  ],
+  [
+   "01d87a50-3683-5aeb-a6fe-97781b2d31f3",
+   "701fdaf3-8294-5608-a7e9-fb3b21653062",
    "parent"
   ]
  ],

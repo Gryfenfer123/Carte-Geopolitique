@@ -194,4 +194,5 @@ RLS**. Règles :
 | arbres_v122 | v122 : arbre Bahreïn, fiches sourcées |
 | arbres_v123 | v123 : arbre Émirats, fiches sourcées |
 | arbres_v124 | v124 : arbre Oman, fiches sourcées |
+| arbres_v125 | v125 : arbre Tunisie, fiches sourcées |
 | `data_owid_load.sql` + `owid_chunks/` | Chargement des données d'indicateurs (rejouable, upserts) — à exécuter après v1 à v7 |
