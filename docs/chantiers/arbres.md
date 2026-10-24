@@ -2,6 +2,8 @@
 
 ## Dernières nouvelles (la plus récente en haut)
 
+- 2026-10-23 — v108 Asie : IND Moghols, THA Chakri, VNM Nguyen, AFG Durrani (50 membres)
+
 - 2026-10-23 — v107 Afrique : MAR Alaouites, LBY Senoussi, ETH salomonide (29 membres)
 
 - 2026-10-23 — v106 Moyen-Orient : Hachémites JOR/IRQ + Al Saoud SAU (31 membres)
@@ -93,7 +95,7 @@
 
 Code : `src/genealogy.ts`, `genealogyLayers.ts`, `genealogyBus.ts`, `genealogyLod.ts/.css`, `genealogyLayersWorker.ts`,
 `genealogyLayout.ts`, `genealogyRouting.ts`. Outils de remplissage : [`scripts/arbres/`](../../scripts/arbres/README.md).
-Prochaine migration : **arbres_v108** (`supabase/arbres/arbres_v108.sql`) — générateur : `Gen(108, "…")`.  (v107 livrée, à exécuter par Martin si ce n'est pas déjà fait.)
+Prochaine migration : **arbres_v109** (`supabase/arbres/arbres_v109.sql`) — générateur : `Gen(109, "…")`.  (v108 livrée, à exécuter par Martin si ce n'est pas déjà fait.)
 
 ## Règles de contenu (décidées par Martin — ne pas rouvrir)
 - Un pays n'a que les dynasties qui ont **régné sur lui**. Dynastie étrangère : branche principale dans son pays

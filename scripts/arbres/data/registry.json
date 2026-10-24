@@ -28670,6 +28670,506 @@
    "title": "Prétendant au trône d'Éthiopie",
    "g": "h",
    "script": 107
+  },
+  "as.babur": {
+   "id": "9a14b806-f11a-521b-a5f2-3e548aa9b4a3",
+   "name": "Babur",
+   "b": 1483,
+   "d": 1530,
+   "tree": "IN_MOG",
+   "title": "Fondateur de l'Empire moghol (1526-1530)",
+   "g": "h",
+   "script": 108
+  },
+  "as.humayun": {
+   "id": "a39cce9c-c74d-5f26-9d2e-06c7a9a0fc3b",
+   "name": "Humayun",
+   "b": 1508,
+   "d": 1556,
+   "tree": "IN_MOG",
+   "title": "Empereur moghol (1530-1556)",
+   "g": "h",
+   "script": 108
+  },
+  "as.akbar": {
+   "id": "c7b30f9a-73db-5523-91f6-0f334079dba0",
+   "name": "Akbar",
+   "b": 1542,
+   "d": 1605,
+   "tree": "IN_MOG",
+   "title": "Empereur moghol (1556-1605)",
+   "g": "h",
+   "script": 108
+  },
+  "as.jahangir": {
+   "id": "6d23560b-3fd0-589a-b400-d823318c9c53",
+   "name": "Jahangir",
+   "b": 1569,
+   "d": 1627,
+   "tree": "IN_MOG",
+   "title": "Empereur moghol (1605-1627)",
+   "g": "h",
+   "script": 108
+  },
+  "as.nurjahan": {
+   "id": "3f376ef2-7fd5-5376-a285-dbe3c39e5b2b",
+   "name": "Nur Jahan",
+   "b": 1577,
+   "d": 1645,
+   "tree": "IN_MOG",
+   "title": "Impératrice, épouse de Jahangir",
+   "g": "f",
+   "script": 108
+  },
+  "as.shahjahan": {
+   "id": "961c8ff8-f9a2-55a0-b8d7-77f21c80d297",
+   "name": "Shah Jahan",
+   "b": 1592,
+   "d": 1666,
+   "tree": "IN_MOG",
+   "title": "Empereur moghol (1628-1658), bâtisseur du Taj Mahal",
+   "g": "h",
+   "script": 108
+  },
+  "as.mumtaz": {
+   "id": "2d2dd727-3809-58d9-9fea-2c84ace65ddb",
+   "name": "Mumtaz Mahal",
+   "b": 1593,
+   "d": 1631,
+   "tree": "IN_MOG",
+   "title": "Impératrice, épouse de Shah Jahan",
+   "g": "f",
+   "script": 108
+  },
+  "as.dara": {
+   "id": "e89b179b-bf11-5799-8442-101091616a99",
+   "name": "Dara Shikoh",
+   "b": 1615,
+   "d": 1659,
+   "tree": "IN_MOG",
+   "title": "Prince héritier, fils aîné de Shah Jahan",
+   "g": "h",
+   "script": 108
+  },
+  "as.aurangzeb": {
+   "id": "5862ae4c-2a83-5cb4-9dfd-045e059168f6",
+   "name": "Aurangzeb",
+   "b": 1618,
+   "d": 1707,
+   "tree": "IN_MOG",
+   "title": "Empereur moghol (1658-1707)",
+   "g": "h",
+   "script": 108
+  },
+  "as.bahadur1": {
+   "id": "2d2f859a-5799-5b6c-ba87-467578cea2c0",
+   "name": "Bahadur Shah Ier",
+   "b": 1643,
+   "d": 1712,
+   "tree": "IN_MOG",
+   "title": "Empereur moghol (1707-1712)",
+   "g": "h",
+   "script": 108
+  },
+  "as.jahandar": {
+   "id": "80b91dbd-04a9-5958-8083-cb8f8ef5d7dd",
+   "name": "Jahandar Shah",
+   "b": 1661,
+   "d": 1713,
+   "tree": "IN_MOG",
+   "title": "Empereur moghol (1712-1713)",
+   "g": "h",
+   "script": 108
+  },
+  "as.alamgir2": {
+   "id": "230d647c-04df-5d2c-ac33-1699f321f04e",
+   "name": "Alamgir II",
+   "b": 1699,
+   "d": 1759,
+   "tree": "IN_MOG",
+   "title": "Empereur moghol (1754-1759)",
+   "g": "h",
+   "script": 108
+  },
+  "as.shahalam2": {
+   "id": "8172ce85-074b-5cd5-841b-546d9c3dd7f3",
+   "name": "Shah Alam II",
+   "b": 1728,
+   "d": 1806,
+   "tree": "IN_MOG",
+   "title": "Empereur moghol (1760-1806)",
+   "g": "h",
+   "script": 108
+  },
+  "as.akbar2": {
+   "id": "ec8d0db8-8d2f-54bd-8bf8-42087b146154",
+   "name": "Akbar II",
+   "b": 1760,
+   "d": 1837,
+   "tree": "IN_MOG",
+   "title": "Empereur moghol (1806-1837)",
+   "g": "h",
+   "script": 108
+  },
+  "as.bahadur2": {
+   "id": "ee26bbe3-5270-5be0-b6bc-1d4a81064a17",
+   "name": "Bahadur Shah II",
+   "b": 1775,
+   "d": 1862,
+   "tree": "IN_MOG",
+   "title": "Dernier empereur moghol (1837-1857)",
+   "g": "h",
+   "script": 108
+  },
+  "as.r1": {
+   "id": "4ea6660d-ab1e-5e96-b4a6-f1d4069e7817",
+   "name": "Rama Ier",
+   "b": 1737,
+   "d": 1809,
+   "tree": "TH_CHA",
+   "title": "Roi du Siam (1782-1809), fondateur de la dynastie Chakri",
+   "g": "h",
+   "script": 108
+  },
+  "as.r2": {
+   "id": "ade2efd9-d347-50a3-98c7-d5d5d4800ef4",
+   "name": "Rama II",
+   "b": 1767,
+   "d": 1824,
+   "tree": "TH_CHA",
+   "title": "Roi du Siam (1809-1824)",
+   "g": "h",
+   "script": 108
+  },
+  "as.r3": {
+   "id": "2e4c12bc-fa3c-50a8-9b5c-7e96ae26cf05",
+   "name": "Rama III",
+   "b": 1788,
+   "d": 1851,
+   "tree": "TH_CHA",
+   "title": "Roi du Siam (1824-1851)",
+   "g": "h",
+   "script": 108
+  },
+  "as.r4": {
+   "id": "aab70e1a-2444-5386-9934-6ac044fe82e7",
+   "name": "Rama IV (Mongkut)",
+   "b": 1804,
+   "d": 1868,
+   "tree": "TH_CHA",
+   "title": "Roi du Siam (1851-1868)",
+   "g": "h",
+   "script": 108
+  },
+  "as.r5": {
+   "id": "055337e2-f04e-50fb-a9c7-c331008a4792",
+   "name": "Rama V (Chulalongkorn)",
+   "b": 1853,
+   "d": 1910,
+   "tree": "TH_CHA",
+   "title": "Roi du Siam (1868-1910)",
+   "g": "h",
+   "script": 108
+  },
+  "as.r6": {
+   "id": "2786241f-db5b-5efc-a6cd-1666149ead62",
+   "name": "Rama VI (Vajiravudh)",
+   "b": 1881,
+   "d": 1925,
+   "tree": "TH_CHA",
+   "title": "Roi du Siam (1910-1925)",
+   "g": "h",
+   "script": 108
+  },
+  "as.r7": {
+   "id": "07cc93de-f742-5517-8859-1517fa8569b9",
+   "name": "Rama VII (Prajadhipok)",
+   "b": 1893,
+   "d": 1941,
+   "tree": "TH_CHA",
+   "title": "Roi du Siam (1925-1935)",
+   "g": "h",
+   "script": 108
+  },
+  "as.mahidol": {
+   "id": "d93bc38f-f6a6-5a6b-9c1f-0cc228e4369a",
+   "name": "Mahidol Adulyadej",
+   "b": 1892,
+   "d": 1929,
+   "tree": "TH_CHA",
+   "title": "Prince de Songkhla, père de Rama VIII et Rama IX",
+   "g": "h",
+   "script": 108
+  },
+  "as.srina": {
+   "id": "6f5e05a5-6641-5b5b-90af-b129c46cd3e0",
+   "name": "Srinagarindra",
+   "b": 1900,
+   "d": 1995,
+   "tree": "TH_CHA",
+   "title": "Princesse mère, épouse de Mahidol",
+   "g": "f",
+   "script": 108
+  },
+  "as.r8": {
+   "id": "9c6b12bf-cd01-5678-97db-d0a72c13e555",
+   "name": "Rama VIII (Ananda Mahidol)",
+   "b": 1925,
+   "d": 1946,
+   "tree": "TH_CHA",
+   "title": "Roi de Thaïlande (1935-1946)",
+   "g": "h",
+   "script": 108
+  },
+  "as.r9": {
+   "id": "9ece220f-fdbe-5897-ac84-8d1851536ddd",
+   "name": "Rama IX (Bhumibol Adulyadej)",
+   "b": 1927,
+   "d": 2016,
+   "tree": "TH_CHA",
+   "title": "Roi de Thaïlande (1946-2016)",
+   "g": "h",
+   "script": 108
+  },
+  "as.sirikit": {
+   "id": "6bbe00db-92a2-585a-b221-13f3d99c32b8",
+   "name": "Sirikit",
+   "b": 1932,
+   "d": null,
+   "tree": "TH_CHA",
+   "title": "Reine de Thaïlande, épouse de Rama IX",
+   "g": "f",
+   "script": 108
+  },
+  "as.r10": {
+   "id": "d48dde00-da8b-5956-a3e4-b52fd1c37cd2",
+   "name": "Rama X (Vajiralongkorn)",
+   "b": 1952,
+   "d": null,
+   "tree": "TH_CHA",
+   "title": "Roi de Thaïlande (depuis 2016)",
+   "g": "h",
+   "script": 108
+  },
+  "as.gialong": {
+   "id": "4a2e4d6b-1cee-54ff-a7ee-1b5d00df70c0",
+   "name": "Gia Long",
+   "b": 1762,
+   "d": 1820,
+   "tree": "VN_NGU",
+   "title": "Empereur du Viêt Nam (1802-1820), fondateur des Nguyen",
+   "g": "h",
+   "script": 108
+  },
+  "as.minhmang": {
+   "id": "4bdaecc2-27f1-52ca-9c73-e29dedfdfb33",
+   "name": "Minh Mang",
+   "b": 1791,
+   "d": 1841,
+   "tree": "VN_NGU",
+   "title": "Empereur du Viêt Nam (1820-1841)",
+   "g": "h",
+   "script": 108
+  },
+  "as.thieutri": {
+   "id": "2602e809-76dd-565a-8f95-bbd1db9f5875",
+   "name": "Thieu Tri",
+   "b": 1807,
+   "d": 1847,
+   "tree": "VN_NGU",
+   "title": "Empereur du Viêt Nam (1841-1847)",
+   "g": "h",
+   "script": 108
+  },
+  "as.tuduc": {
+   "id": "ea6c09ca-8eef-5916-ac0a-c7fe149c0b18",
+   "name": "Tu Duc",
+   "b": 1829,
+   "d": 1883,
+   "tree": "VN_NGU",
+   "title": "Empereur du Viêt Nam (1847-1883)",
+   "g": "h",
+   "script": 108
+  },
+  "as.ducduc": {
+   "id": "0e458220-fa1e-5eac-b254-8f7f6703777a",
+   "name": "Duc Duc",
+   "b": 1852,
+   "d": 1883,
+   "tree": "VN_NGU",
+   "title": "Empereur du Viêt Nam (1883, trois jours)",
+   "g": "h",
+   "script": 108
+  },
+  "as.dongkhanh": {
+   "id": "8071137b-4443-50c2-ad0e-730c9ec3d640",
+   "name": "Dong Khanh",
+   "b": 1864,
+   "d": 1889,
+   "tree": "VN_NGU",
+   "title": "Empereur du Viêt Nam (1885-1889)",
+   "g": "h",
+   "script": 108
+  },
+  "as.thanhthai": {
+   "id": "79cffa3c-fa80-5861-9cb0-27d0c1aa81ff",
+   "name": "Thanh Thai",
+   "b": 1879,
+   "d": 1954,
+   "tree": "VN_NGU",
+   "title": "Empereur du Viêt Nam (1889-1907), déposé",
+   "g": "h",
+   "script": 108
+  },
+  "as.duytan": {
+   "id": "0a17ee8e-1376-51ba-9d7e-63c95a816048",
+   "name": "Duy Tan",
+   "b": 1900,
+   "d": 1945,
+   "tree": "VN_NGU",
+   "title": "Empereur du Viêt Nam (1907-1916), déposé",
+   "g": "h",
+   "script": 108
+  },
+  "as.khaidinh": {
+   "id": "c3a5a62d-8c61-5f87-b707-7dee72ac8503",
+   "name": "Khai Dinh",
+   "b": 1885,
+   "d": 1925,
+   "tree": "VN_NGU",
+   "title": "Empereur du Viêt Nam (1916-1925)",
+   "g": "h",
+   "script": 108
+  },
+  "as.baodai": {
+   "id": "a32a312f-45cf-5a0b-85da-c6bf14a26dda",
+   "name": "Bao Dai",
+   "b": 1913,
+   "d": 1997,
+   "tree": "VN_NGU",
+   "title": "Dernier empereur du Viêt Nam (1926-1945)",
+   "g": "h",
+   "script": 108
+  },
+  "as.ahmad": {
+   "id": "193f77c3-1a66-55fb-bff5-3991a24edeba",
+   "name": "Ahmad Shah Durrani",
+   "b": 1722,
+   "d": 1772,
+   "tree": "AF_DUR",
+   "title": "Fondateur de l'Empire durrani (1747-1772)",
+   "g": "h",
+   "script": 108
+  },
+  "as.timur": {
+   "id": "0870a034-9ab9-5ca8-8186-99be64dc1a85",
+   "name": "Timur Shah Durrani",
+   "b": 1748,
+   "d": 1793,
+   "tree": "AF_DUR",
+   "title": "Émir de l'Empire durrani (1772-1793)",
+   "g": "h",
+   "script": 108
+  },
+  "as.zaman": {
+   "id": "812d20d7-564f-5510-a4df-4054163199b4",
+   "name": "Zaman Shah Durrani",
+   "b": 1770,
+   "d": 1844,
+   "tree": "AF_DUR",
+   "title": "Émir de l'Empire durrani (1793-1801)",
+   "g": "h",
+   "script": 108
+  },
+  "as.shuja": {
+   "id": "23077383-b76e-506f-85bf-9fd1d9ba94a3",
+   "name": "Shah Shuja Durrani",
+   "b": 1785,
+   "d": 1842,
+   "tree": "AF_DUR",
+   "title": "Émir de l'Empire durrani (1803-1809, 1839-1842)",
+   "g": "h",
+   "script": 108
+  },
+  "as.dost": {
+   "id": "27512845-e58b-58bf-a22b-96aa858da4be",
+   "name": "Dost Mohammad Khan",
+   "b": 1793,
+   "d": 1863,
+   "tree": "AF_DUR",
+   "title": "Émir d'Afghanistan (1826-1863), fondateur des Barakzaï",
+   "g": "h",
+   "script": 108
+  },
+  "as.afzal": {
+   "id": "abe219c2-8be4-50a0-a1b6-5e0ea89f49b7",
+   "name": "Mohammad Afzal Khan",
+   "b": null,
+   "d": 1867,
+   "tree": "AF_DUR",
+   "title": "Émir d'Afghanistan (1866-1867), fils de Dost Mohammad",
+   "g": "h",
+   "script": 108
+  },
+  "as.sher": {
+   "id": "a0d44d01-1f6a-5cfd-bbcf-09f09fe234a3",
+   "name": "Sher Ali Khan",
+   "b": 1825,
+   "d": 1879,
+   "tree": "AF_DUR",
+   "title": "Émir d'Afghanistan (1863-1879)",
+   "g": "h",
+   "script": 108
+  },
+  "as.abdur": {
+   "id": "33eaa7fd-cc39-500a-ac29-14a697276673",
+   "name": "Abdur Rahman Khan",
+   "b": 1844,
+   "d": 1901,
+   "tree": "AF_DUR",
+   "title": "Émir d'Afghanistan (1880-1901)",
+   "g": "h",
+   "script": 108
+  },
+  "as.habib": {
+   "id": "88ce1e7e-cc0e-520c-a3b1-7729cb301e27",
+   "name": "Habibullah Khan",
+   "b": 1872,
+   "d": 1919,
+   "tree": "AF_DUR",
+   "title": "Émir d'Afghanistan (1901-1919)",
+   "g": "h",
+   "script": 108
+  },
+  "as.aman": {
+   "id": "ff75b1de-86d3-5636-bbc7-48d4fbf9de99",
+   "name": "Amanullah Khan",
+   "b": 1892,
+   "d": 1960,
+   "tree": "AF_DUR",
+   "title": "Émir puis roi d'Afghanistan (1919-1929)",
+   "g": "h",
+   "script": 108
+  },
+  "as.nadir": {
+   "id": "0b7d480f-195d-5f36-8ca9-4b0557ca2d80",
+   "name": "Nadir Shah",
+   "b": 1883,
+   "d": 1933,
+   "tree": "AF_DUR",
+   "title": "Roi d'Afghanistan (1929-1933)",
+   "g": "h",
+   "script": 108
+  },
+  "as.zahir": {
+   "id": "27a865a9-17a0-5e52-9f5b-3c3b676e60c3",
+   "name": "Mohammad Zaher Shah",
+   "b": 1914,
+   "d": 2007,
+   "tree": "AF_DUR",
+   "title": "Roi d'Afghanistan (1933-1973)",
+   "g": "h",
+   "script": 108
   }
  },
  "trees": {
@@ -29578,6 +30078,30 @@
    "country": "ETH",
    "dynasty": "Dynastie salomonide",
    "script": 107
+  },
+  "IN_MOG": {
+   "entry": "f1bbec15-58a3-54c1-8a96-6f5d0810b9d2",
+   "country": "IND",
+   "dynasty": "Empire moghol",
+   "script": 108
+  },
+  "TH_CHA": {
+   "entry": "4bc592ad-eaaa-504a-a321-fd7c8dff7ac1",
+   "country": "THA",
+   "dynasty": "Dynastie Chakri",
+   "script": 108
+  },
+  "VN_NGU": {
+   "entry": "dd4c14ab-4c8c-59a4-b859-d8d3727567ca",
+   "country": "VNM",
+   "dynasty": "Dynastie des Nguyen",
+   "script": 108
+  },
+  "AF_DUR": {
+   "entry": "8fd6f053-70a5-583b-9d09-d0f5e0c8e9ce",
+   "country": "AFG",
+   "dynasty": "Durrani et Barakzaï",
+   "script": 108
   }
  },
  "flags": [
@@ -34137,6 +34661,41 @@
    "tree": "ET_SAL",
    "reason": "Lien avec Menelik II non saisi",
    "script": 107
+  },
+  {
+   "name": "Sirikit",
+   "b": 1932,
+   "tree": "TH_CHA",
+   "reason": "Date de décès non vérifiée ; famille sans arbre",
+   "script": 108
+  },
+  {
+   "name": "Duc Duc",
+   "b": 1852,
+   "tree": "VN_NGU",
+   "reason": "Fils adoptif de Tu Duc ; filiation biologique non saisie",
+   "script": 108
+  },
+  {
+   "name": "Dong Khanh",
+   "b": 1864,
+   "tree": "VN_NGU",
+   "reason": "Fils adoptif de Tu Duc ; filiation biologique non saisie",
+   "script": 108
+  },
+  {
+   "name": "Dost Mohammad Khan",
+   "b": 1793,
+   "tree": "AF_DUR",
+   "reason": "Lien avec les Durrani non saisi",
+   "script": 108
+  },
+  {
+   "name": "Nadir Shah",
+   "b": 1883,
+   "tree": "AF_DUR",
+   "reason": "Ascendance non saisie",
+   "script": 108
   }
  ],
  "scripts": {
@@ -34692,6 +35251,17 @@
     "Alaouites (MAR)",
     "Senoussi (LBY)",
     "Dynastie salomonide (ETH)"
+   ]
+  },
+  "108": {
+   "label": "Moghols (Inde), Chakri (Thaïlande), Nguyen (Vietnam), Durrani et Barakzaï (Afghanistan)",
+   "members": 50,
+   "rels": 47,
+   "trees": [
+    "Empire moghol (IND)",
+    "Dynastie Chakri (THA)",
+    "Dynastie des Nguyen (VNM)",
+    "Durrani et Barakzaï (AFG)"
    ]
   }
  },
@@ -58235,6 +58805,241 @@
    "71a54198-bb5e-5c3e-8c95-26f3a5c9fd6d",
    "6da7b938-bd24-5dd5-8310-bec29e006a13",
    "spouse"
+  ],
+  [
+   "9a14b806-f11a-521b-a5f2-3e548aa9b4a3",
+   "a39cce9c-c74d-5f26-9d2e-06c7a9a0fc3b",
+   "parent"
+  ],
+  [
+   "a39cce9c-c74d-5f26-9d2e-06c7a9a0fc3b",
+   "c7b30f9a-73db-5523-91f6-0f334079dba0",
+   "parent"
+  ],
+  [
+   "c7b30f9a-73db-5523-91f6-0f334079dba0",
+   "6d23560b-3fd0-589a-b400-d823318c9c53",
+   "parent"
+  ],
+  [
+   "6d23560b-3fd0-589a-b400-d823318c9c53",
+   "961c8ff8-f9a2-55a0-b8d7-77f21c80d297",
+   "parent"
+  ],
+  [
+   "961c8ff8-f9a2-55a0-b8d7-77f21c80d297",
+   "e89b179b-bf11-5799-8442-101091616a99",
+   "parent"
+  ],
+  [
+   "961c8ff8-f9a2-55a0-b8d7-77f21c80d297",
+   "5862ae4c-2a83-5cb4-9dfd-045e059168f6",
+   "parent"
+  ],
+  [
+   "2d2dd727-3809-58d9-9fea-2c84ace65ddb",
+   "e89b179b-bf11-5799-8442-101091616a99",
+   "parent"
+  ],
+  [
+   "2d2dd727-3809-58d9-9fea-2c84ace65ddb",
+   "5862ae4c-2a83-5cb4-9dfd-045e059168f6",
+   "parent"
+  ],
+  [
+   "5862ae4c-2a83-5cb4-9dfd-045e059168f6",
+   "2d2f859a-5799-5b6c-ba87-467578cea2c0",
+   "parent"
+  ],
+  [
+   "2d2f859a-5799-5b6c-ba87-467578cea2c0",
+   "80b91dbd-04a9-5958-8083-cb8f8ef5d7dd",
+   "parent"
+  ],
+  [
+   "80b91dbd-04a9-5958-8083-cb8f8ef5d7dd",
+   "230d647c-04df-5d2c-ac33-1699f321f04e",
+   "parent"
+  ],
+  [
+   "230d647c-04df-5d2c-ac33-1699f321f04e",
+   "8172ce85-074b-5cd5-841b-546d9c3dd7f3",
+   "parent"
+  ],
+  [
+   "8172ce85-074b-5cd5-841b-546d9c3dd7f3",
+   "ec8d0db8-8d2f-54bd-8bf8-42087b146154",
+   "parent"
+  ],
+  [
+   "ec8d0db8-8d2f-54bd-8bf8-42087b146154",
+   "ee26bbe3-5270-5be0-b6bc-1d4a81064a17",
+   "parent"
+  ],
+  [
+   "6d23560b-3fd0-589a-b400-d823318c9c53",
+   "3f376ef2-7fd5-5376-a285-dbe3c39e5b2b",
+   "spouse"
+  ],
+  [
+   "961c8ff8-f9a2-55a0-b8d7-77f21c80d297",
+   "2d2dd727-3809-58d9-9fea-2c84ace65ddb",
+   "spouse"
+  ],
+  [
+   "4ea6660d-ab1e-5e96-b4a6-f1d4069e7817",
+   "ade2efd9-d347-50a3-98c7-d5d5d4800ef4",
+   "parent"
+  ],
+  [
+   "ade2efd9-d347-50a3-98c7-d5d5d4800ef4",
+   "2e4c12bc-fa3c-50a8-9b5c-7e96ae26cf05",
+   "parent"
+  ],
+  [
+   "ade2efd9-d347-50a3-98c7-d5d5d4800ef4",
+   "aab70e1a-2444-5386-9934-6ac044fe82e7",
+   "parent"
+  ],
+  [
+   "aab70e1a-2444-5386-9934-6ac044fe82e7",
+   "055337e2-f04e-50fb-a9c7-c331008a4792",
+   "parent"
+  ],
+  [
+   "055337e2-f04e-50fb-a9c7-c331008a4792",
+   "2786241f-db5b-5efc-a6cd-1666149ead62",
+   "parent"
+  ],
+  [
+   "055337e2-f04e-50fb-a9c7-c331008a4792",
+   "07cc93de-f742-5517-8859-1517fa8569b9",
+   "parent"
+  ],
+  [
+   "055337e2-f04e-50fb-a9c7-c331008a4792",
+   "d93bc38f-f6a6-5a6b-9c1f-0cc228e4369a",
+   "parent"
+  ],
+  [
+   "d93bc38f-f6a6-5a6b-9c1f-0cc228e4369a",
+   "9c6b12bf-cd01-5678-97db-d0a72c13e555",
+   "parent"
+  ],
+  [
+   "d93bc38f-f6a6-5a6b-9c1f-0cc228e4369a",
+   "9ece220f-fdbe-5897-ac84-8d1851536ddd",
+   "parent"
+  ],
+  [
+   "6f5e05a5-6641-5b5b-90af-b129c46cd3e0",
+   "9c6b12bf-cd01-5678-97db-d0a72c13e555",
+   "parent"
+  ],
+  [
+   "6f5e05a5-6641-5b5b-90af-b129c46cd3e0",
+   "9ece220f-fdbe-5897-ac84-8d1851536ddd",
+   "parent"
+  ],
+  [
+   "9ece220f-fdbe-5897-ac84-8d1851536ddd",
+   "d48dde00-da8b-5956-a3e4-b52fd1c37cd2",
+   "parent"
+  ],
+  [
+   "6bbe00db-92a2-585a-b221-13f3d99c32b8",
+   "d48dde00-da8b-5956-a3e4-b52fd1c37cd2",
+   "parent"
+  ],
+  [
+   "d93bc38f-f6a6-5a6b-9c1f-0cc228e4369a",
+   "6f5e05a5-6641-5b5b-90af-b129c46cd3e0",
+   "spouse"
+  ],
+  [
+   "9ece220f-fdbe-5897-ac84-8d1851536ddd",
+   "6bbe00db-92a2-585a-b221-13f3d99c32b8",
+   "spouse"
+  ],
+  [
+   "4a2e4d6b-1cee-54ff-a7ee-1b5d00df70c0",
+   "4bdaecc2-27f1-52ca-9c73-e29dedfdfb33",
+   "parent"
+  ],
+  [
+   "4bdaecc2-27f1-52ca-9c73-e29dedfdfb33",
+   "2602e809-76dd-565a-8f95-bbd1db9f5875",
+   "parent"
+  ],
+  [
+   "2602e809-76dd-565a-8f95-bbd1db9f5875",
+   "ea6c09ca-8eef-5916-ac0a-c7fe149c0b18",
+   "parent"
+  ],
+  [
+   "0e458220-fa1e-5eac-b254-8f7f6703777a",
+   "79cffa3c-fa80-5861-9cb0-27d0c1aa81ff",
+   "parent"
+  ],
+  [
+   "79cffa3c-fa80-5861-9cb0-27d0c1aa81ff",
+   "0a17ee8e-1376-51ba-9d7e-63c95a816048",
+   "parent"
+  ],
+  [
+   "8071137b-4443-50c2-ad0e-730c9ec3d640",
+   "c3a5a62d-8c61-5f87-b707-7dee72ac8503",
+   "parent"
+  ],
+  [
+   "c3a5a62d-8c61-5f87-b707-7dee72ac8503",
+   "a32a312f-45cf-5a0b-85da-c6bf14a26dda",
+   "parent"
+  ],
+  [
+   "193f77c3-1a66-55fb-bff5-3991a24edeba",
+   "0870a034-9ab9-5ca8-8186-99be64dc1a85",
+   "parent"
+  ],
+  [
+   "0870a034-9ab9-5ca8-8186-99be64dc1a85",
+   "812d20d7-564f-5510-a4df-4054163199b4",
+   "parent"
+  ],
+  [
+   "0870a034-9ab9-5ca8-8186-99be64dc1a85",
+   "23077383-b76e-506f-85bf-9fd1d9ba94a3",
+   "parent"
+  ],
+  [
+   "27512845-e58b-58bf-a22b-96aa858da4be",
+   "abe219c2-8be4-50a0-a1b6-5e0ea89f49b7",
+   "parent"
+  ],
+  [
+   "27512845-e58b-58bf-a22b-96aa858da4be",
+   "a0d44d01-1f6a-5cfd-bbcf-09f09fe234a3",
+   "parent"
+  ],
+  [
+   "abe219c2-8be4-50a0-a1b6-5e0ea89f49b7",
+   "33eaa7fd-cc39-500a-ac29-14a697276673",
+   "parent"
+  ],
+  [
+   "33eaa7fd-cc39-500a-ac29-14a697276673",
+   "88ce1e7e-cc0e-520c-a3b1-7729cb301e27",
+   "parent"
+  ],
+  [
+   "88ce1e7e-cc0e-520c-a3b1-7729cb301e27",
+   "ff75b1de-86d3-5636-bbc7-48d4fbf9de99",
+   "parent"
+  ],
+  [
+   "0b7d480f-195d-5f36-8ca9-4b0557ca2d80",
+   "27a865a9-17a0-5e52-9f5b-3c3b676e60c3",
+   "parent"
   ]
  ],
  "dateflags": [
@@ -66385,6 +67190,13 @@
    "d": 1792,
    "note": "Naissance approximative.",
    "script": 107
+  },
+  {
+   "name": "Zaman Shah Durrani",
+   "b": 1770,
+   "d": 1844,
+   "note": "Naissance approximative.",
+   "script": 108
   }
  ],
  "pins": [

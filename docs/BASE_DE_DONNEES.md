@@ -177,4 +177,5 @@ RLS**. Règles :
 | arbres_v105 | v105 : Égypte — arbres Ptolémées (22) et Dynastie de Méhémet-Ali (15), Fawzia reliée à Fouad Ier |
 | arbres_v106 | v106 : Hachémites (Jordanie, Irak) et Al Saoud (31 membres) |
 | arbres_v107 | v107 : Alaouites (Maroc), Senoussi (Libye), dynastie salomonide (Éthiopie), 29 membres |
+| arbres_v108 | v108 : Moghols, Chakri, Nguyen, Durrani/Barakzaï (50 membres) |
 | `data_owid_load.sql` + `owid_chunks/` | Chargement des données d'indicateurs (rejouable, upserts) — à exécuter après v1 à v7 |
