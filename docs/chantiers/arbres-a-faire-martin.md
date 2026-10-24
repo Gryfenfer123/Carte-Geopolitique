@@ -29,3 +29,7 @@ Mis à jour le 2026-10-24. Cocher au fur et à mesure.
 - Supprimer le lien erroné « Rousoudan de Géorgie → David VII Oulou » (David VII est le fils de Georges IV Lacha ; le bon lien est ajouté en v114).
 - Mêmes consignes pour les liens « famille » (pas parent-enfant) de l'Iran : Cyrus → Darius Ier, Darius II → Darius III, Shapur II → Kavadh Ier, Khosro II → Yazdgard III. Ils ne sont pas faux (parenté lointaine) mais ne sont pas des filiations ; à garder ou supprimer selon ton choix.
 - Supprimer le lien erroné « Charles de Duras (1323-1348) → Charles III de Naples » (le père est Louis de Duras, ajouté en v117 avec les bons liens).
+
+## Koweït (v120)
+- À vérifier : Jaber Ier (né 1775) et son fils Sabah II (né c. 1784) → 9 ans d'écart, impossible. Les deux dates viennent de Wikipédia ; une des deux est fausse.
+- Manquants (pages non lues) : Muhammad Ier (émir 1892-1896), dates d'Abdullah Ier ; filiation Sabah Ier → Abdullah Ier non confirmée (lien « famille »).

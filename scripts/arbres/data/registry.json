@@ -30200,6 +30200,166 @@
    "title": "Calife abbasside (847-861)",
    "g": "h",
    "script": 119
+  },
+  "kw.sabah1": {
+   "id": "4f567e32-dcaa-5b80-b8b4-0172d438e648",
+   "name": "Sabah Ier ben Jaber",
+   "b": 1700,
+   "d": 1762,
+   "tree": "KW_SAB",
+   "title": "Premier cheikh du Koweït (1752-1762)",
+   "g": "h",
+   "script": 120
+  },
+  "kw.abdullah1": {
+   "id": "db1d66f0-14cf-5560-8ada-83284eb5c8c3",
+   "name": "Abdullah Ier ben Sabah",
+   "b": null,
+   "d": null,
+   "tree": "KW_SAB",
+   "title": "Cheikh du Koweït (1762-1814)",
+   "g": "h",
+   "script": 120
+  },
+  "kw.jaber1": {
+   "id": "323806f0-e381-571c-b8ca-ba02ff313d36",
+   "name": "Jaber Ier",
+   "b": 1775,
+   "d": 1859,
+   "tree": "KW_SAB",
+   "title": "Cheikh du Koweït (1814-1859)",
+   "g": "h",
+   "script": 120
+  },
+  "kw.sabah2": {
+   "id": "c1574d25-8b33-51da-831d-ae7e1c7fd8cf",
+   "name": "Sabah II",
+   "b": 1784,
+   "d": 1866,
+   "tree": "KW_SAB",
+   "title": "Cheikh du Koweït (1859-1866)",
+   "g": "h",
+   "script": 120
+  },
+  "kw.abdullah2": {
+   "id": "d27915dd-7e80-515d-a46e-48b9da3071d8",
+   "name": "Abdullah II",
+   "b": 1814,
+   "d": 1892,
+   "tree": "KW_SAB",
+   "title": "Cheikh du Koweït (1866-1892)",
+   "g": "h",
+   "script": 120
+  },
+  "kw.mubarak": {
+   "id": "52d898fa-8be1-5102-80dd-21a34671bce2",
+   "name": "Moubarak le Grand",
+   "b": 1837,
+   "d": 1915,
+   "tree": "KW_SAB",
+   "title": "Cheikh du Koweït (1896-1915)",
+   "g": "h",
+   "script": 120
+  },
+  "kw.jaber2": {
+   "id": "8d3dbfb9-b978-59f8-a349-84a217d50e58",
+   "name": "Jaber II",
+   "b": 1860,
+   "d": 1917,
+   "tree": "KW_SAB",
+   "title": "Cheikh du Koweït (1915-1917)",
+   "g": "h",
+   "script": 120
+  },
+  "kw.salim": {
+   "id": "de39d3a3-140c-537d-aeb7-0a8d75b3fa41",
+   "name": "Salim al-Moubarak",
+   "b": 1864,
+   "d": 1921,
+   "tree": "KW_SAB",
+   "title": "Cheikh du Koweït (1917-1921)",
+   "g": "h",
+   "script": 120
+  },
+  "kw.ahmad": {
+   "id": "9f1c8de5-002f-5a16-b982-44911965293e",
+   "name": "Ahmad al-Jaber",
+   "b": 1885,
+   "d": 1950,
+   "tree": "KW_SAB",
+   "title": "Cheikh du Koweït (1921-1950)",
+   "g": "h",
+   "script": 120
+  },
+  "kw.abdullah3": {
+   "id": "d37ca4df-5792-5387-b13a-b24b9da4d5c4",
+   "name": "Abdullah al-Salim",
+   "b": 1895,
+   "d": 1965,
+   "tree": "KW_SAB",
+   "title": "Premier émir du Koweït indépendant (1950-1965)",
+   "g": "h",
+   "script": 120
+  },
+  "kw.sabah3": {
+   "id": "ddfe0f9f-5cbd-5dee-830e-d4370b349b26",
+   "name": "Sabah al-Salim",
+   "b": 1913,
+   "d": 1977,
+   "tree": "KW_SAB",
+   "title": "Émir du Koweït (1965-1977)",
+   "g": "h",
+   "script": 120
+  },
+  "kw.jaber3": {
+   "id": "517c095b-d01c-5f67-914d-84cd7226c158",
+   "name": "Jaber al-Ahmad",
+   "b": 1926,
+   "d": 2006,
+   "tree": "KW_SAB",
+   "title": "Émir du Koweït (1977-2006)",
+   "g": "h",
+   "script": 120
+  },
+  "kw.saad": {
+   "id": "7c4298d8-291a-5fa8-a61a-ab98f1972dc9",
+   "name": "Saad al-Abdullah",
+   "b": 1930,
+   "d": 2008,
+   "tree": "KW_SAB",
+   "title": "Émir du Koweït (15-24 janvier 2006)",
+   "g": "h",
+   "script": 120
+  },
+  "kw.sabah4": {
+   "id": "9a555cfc-382f-5fca-9ace-0fa0e5145aef",
+   "name": "Sabah al-Ahmad",
+   "b": 1929,
+   "d": 2020,
+   "tree": "KW_SAB",
+   "title": "Émir du Koweït (2006-2020)",
+   "g": "h",
+   "script": 120
+  },
+  "kw.nawaf": {
+   "id": "c74a7b87-d6e4-5c82-bb78-c6f8c41ad8a1",
+   "name": "Nawaf al-Ahmad",
+   "b": 1937,
+   "d": 2023,
+   "tree": "KW_SAB",
+   "title": "Émir du Koweït (2020-2023)",
+   "g": "h",
+   "script": 120
+  },
+  "kw.mishal": {
+   "id": "c43170c3-d767-5f79-b347-4d889c593072",
+   "name": "Mishal al-Ahmad",
+   "b": 1940,
+   "d": null,
+   "tree": "KW_SAB",
+   "title": "Émir du Koweït (depuis 2023)",
+   "g": "h",
+   "script": 120
   }
  },
  "trees": {
@@ -31186,6 +31346,12 @@
    "country": "IRQ",
    "dynasty": "Abbassides",
    "script": 119
+  },
+  "KW_SAB": {
+   "entry": "cb8ca7e2-86d9-54da-b4bc-45a5708097d3",
+   "country": "KWT",
+   "dynasty": "Al Sabah",
+   "script": 120
   }
  },
  "flags": [
@@ -36452,6 +36618,14 @@
    "trees": [
     "Omeyyades (SYR)",
     "Abbassides (IRQ)"
+   ]
+  },
+  "120": {
+   "label": "Koweït (Al Sabah)",
+   "members": 16,
+   "rels": 15,
+   "trees": [
+    "Al Sabah (KWT)"
    ]
   }
  },
@@ -60765,6 +60939,81 @@
    "bf539724-fd32-5431-9c88-e7548e0e22a3",
    "db9e0dab-a4e3-5709-8c05-56aed72f89ef",
    "spouse"
+  ],
+  [
+   "db1d66f0-14cf-5560-8ada-83284eb5c8c3",
+   "323806f0-e381-571c-b8ca-ba02ff313d36",
+   "parent"
+  ],
+  [
+   "323806f0-e381-571c-b8ca-ba02ff313d36",
+   "c1574d25-8b33-51da-831d-ae7e1c7fd8cf",
+   "parent"
+  ],
+  [
+   "c1574d25-8b33-51da-831d-ae7e1c7fd8cf",
+   "d27915dd-7e80-515d-a46e-48b9da3071d8",
+   "parent"
+  ],
+  [
+   "c1574d25-8b33-51da-831d-ae7e1c7fd8cf",
+   "52d898fa-8be1-5102-80dd-21a34671bce2",
+   "parent"
+  ],
+  [
+   "52d898fa-8be1-5102-80dd-21a34671bce2",
+   "8d3dbfb9-b978-59f8-a349-84a217d50e58",
+   "parent"
+  ],
+  [
+   "52d898fa-8be1-5102-80dd-21a34671bce2",
+   "de39d3a3-140c-537d-aeb7-0a8d75b3fa41",
+   "parent"
+  ],
+  [
+   "8d3dbfb9-b978-59f8-a349-84a217d50e58",
+   "9f1c8de5-002f-5a16-b982-44911965293e",
+   "parent"
+  ],
+  [
+   "de39d3a3-140c-537d-aeb7-0a8d75b3fa41",
+   "d37ca4df-5792-5387-b13a-b24b9da4d5c4",
+   "parent"
+  ],
+  [
+   "de39d3a3-140c-537d-aeb7-0a8d75b3fa41",
+   "ddfe0f9f-5cbd-5dee-830e-d4370b349b26",
+   "parent"
+  ],
+  [
+   "d37ca4df-5792-5387-b13a-b24b9da4d5c4",
+   "7c4298d8-291a-5fa8-a61a-ab98f1972dc9",
+   "parent"
+  ],
+  [
+   "9f1c8de5-002f-5a16-b982-44911965293e",
+   "517c095b-d01c-5f67-914d-84cd7226c158",
+   "parent"
+  ],
+  [
+   "9f1c8de5-002f-5a16-b982-44911965293e",
+   "9a555cfc-382f-5fca-9ace-0fa0e5145aef",
+   "parent"
+  ],
+  [
+   "9f1c8de5-002f-5a16-b982-44911965293e",
+   "c74a7b87-d6e4-5c82-bb78-c6f8c41ad8a1",
+   "parent"
+  ],
+  [
+   "9f1c8de5-002f-5a16-b982-44911965293e",
+   "c43170c3-d767-5f79-b347-4d889c593072",
+   "parent"
+  ],
+  [
+   "4f567e32-dcaa-5b80-b8b4-0172d438e648",
+   "db1d66f0-14cf-5560-8ada-83284eb5c8c3",
+   "family"
   ]
  ],
  "dateflags": [
