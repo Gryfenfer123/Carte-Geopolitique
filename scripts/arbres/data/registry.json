@@ -30440,6 +30440,426 @@
    "title": "Émir du Qatar (depuis 2013)",
    "g": "h",
    "script": 121
+  },
+  "bh.ahmad": {
+   "id": "62d7794c-2b1e-52f8-b53d-dfe1cea82330",
+   "name": "Ahmad ben Muhammad (al-Fateh)",
+   "b": null,
+   "d": 1795,
+   "tree": "BH_KHA",
+   "title": "Premier hakim de Bahreïn (1783-1795)",
+   "g": "h",
+   "script": 122
+  },
+  "bh.salman1": {
+   "id": "033fcc13-df04-5e6f-93d9-edfc2a8a8cba",
+   "name": "Salman ben Ahmad",
+   "b": null,
+   "d": null,
+   "tree": "BH_KHA",
+   "title": "Co-régent de Bahreïn (1795-1825)",
+   "g": "h",
+   "script": 122
+  },
+  "bh.abdullah": {
+   "id": "41f4e967-685c-5075-8242-522d989c5334",
+   "name": "Abdullah ben Ahmad",
+   "b": null,
+   "d": null,
+   "tree": "BH_KHA",
+   "title": "Co-régent de Bahreïn (1795-1843)",
+   "g": "h",
+   "script": 122
+  },
+  "bh.khalifa": {
+   "id": "d4026e55-f03b-5768-8f99-8a169fa29501",
+   "name": "Khalifa ben Salman",
+   "b": null,
+   "d": null,
+   "tree": "BH_KHA",
+   "title": "Co-régent de Bahreïn (1825-1834)",
+   "g": "h",
+   "script": 122
+  },
+  "bh.muhammad": {
+   "id": "287543da-ee29-5587-8893-55a9ac932fc4",
+   "name": "Muhammad ben Khalifa",
+   "b": null,
+   "d": null,
+   "tree": "BH_KHA",
+   "title": "Hakim de Bahreïn (1834-1868)",
+   "g": "h",
+   "script": 122
+  },
+  "bh.ali": {
+   "id": "87f79390-2748-5be4-978f-a793874dbd11",
+   "name": "Ali ben Khalifa",
+   "b": null,
+   "d": null,
+   "tree": "BH_KHA",
+   "title": "Hakim de Bahreïn (1868-1869)",
+   "g": "h",
+   "script": 122
+  },
+  "bh.muhammadA": {
+   "id": "505bb7e4-577e-503d-bf9b-d6251a4dca47",
+   "name": "Muhammad ben Abdullah",
+   "b": null,
+   "d": 1877,
+   "tree": "BH_KHA",
+   "title": "Hakim de Bahreïn (sept.-déc. 1869)",
+   "g": "h",
+   "script": 122
+  },
+  "bh.isa1": {
+   "id": "ea70964c-2096-5c9c-9394-e3b29516fcfa",
+   "name": "Isa ben Ali",
+   "b": 1848,
+   "d": 1932,
+   "tree": "BH_KHA",
+   "title": "Hakim de Bahreïn (1869-1923)",
+   "g": "h",
+   "script": 122
+  },
+  "bh.hamad1": {
+   "id": "59182298-4fe1-5424-b7d5-bdf2fd260d90",
+   "name": "Hamad ben Isa",
+   "b": 1872,
+   "d": 1942,
+   "tree": "BH_KHA",
+   "title": "Hakim de Bahreïn (1923-1942)",
+   "g": "h",
+   "script": 122
+  },
+  "bh.salman2": {
+   "id": "bff5b905-acdf-5f47-b750-3a52f39af065",
+   "name": "Salman ben Hamad",
+   "b": 1894,
+   "d": 1961,
+   "tree": "BH_KHA",
+   "title": "Hakim de Bahreïn (1942-1961)",
+   "g": "h",
+   "script": 122
+  },
+  "bh.isa2": {
+   "id": "b92b2f93-047b-5b7d-9738-3c719fbc8378",
+   "name": "Isa ben Salman",
+   "b": 1933,
+   "d": 1999,
+   "tree": "BH_KHA",
+   "title": "Émir de Bahreïn (1961-1999)",
+   "g": "h",
+   "script": 122
+  },
+  "bh.hamad2": {
+   "id": "896d4809-7753-553b-a436-aa6677a5c47a",
+   "name": "Hamad ben Isa (roi)",
+   "b": 1950,
+   "d": null,
+   "tree": "BH_KHA",
+   "title": "Roi de Bahreïn (depuis 1999)",
+   "g": "h",
+   "script": 122
+  },
+  "ae.dhiyab": {
+   "id": "0387d6e4-32c6-5b7f-afc7-642c2669ae0e",
+   "name": "Dhiyab ben Isa",
+   "b": 1700,
+   "d": 1793,
+   "tree": "AE_NAH",
+   "title": "Cheikh d'Abou Dhabi (1761-1793)",
+   "g": "h",
+   "script": 123
+  },
+  "ae.shakhbutD": {
+   "id": "19672258-5c6b-5477-9aaa-bdb55351a84a",
+   "name": "Shakhbut ben Dhiyab",
+   "b": null,
+   "d": null,
+   "tree": "AE_NAH",
+   "title": "Cheikh d'Abou Dhabi (1793-1816)",
+   "g": "h",
+   "script": 123
+  },
+  "ae.muhammad": {
+   "id": "db3d5b1a-e001-5584-9b2e-eed7da460764",
+   "name": "Muhammad ben Shakhbut",
+   "b": null,
+   "d": null,
+   "tree": "AE_NAH",
+   "title": "Cheikh d'Abou Dhabi (1816-1818)",
+   "g": "h",
+   "script": 123
+  },
+  "ae.tahnun": {
+   "id": "cf0958fb-a5ff-509d-9724-a7dc4dfbc1a1",
+   "name": "Tahnun ben Shakhbut",
+   "b": null,
+   "d": 1833,
+   "tree": "AE_NAH",
+   "title": "Cheikh d'Abou Dhabi (1818-1833)",
+   "g": "h",
+   "script": 123
+  },
+  "ae.khalifaS": {
+   "id": "5e9c05e2-54d1-57aa-8ce3-ec7ebb6a8ca2",
+   "name": "Khalifa ben Shakhbut",
+   "b": null,
+   "d": 1845,
+   "tree": "AE_NAH",
+   "title": "Cheikh d'Abou Dhabi (1833-1845)",
+   "g": "h",
+   "script": 123
+  },
+  "ae.saeed": {
+   "id": "56c2ec65-ffe6-5a20-aa1b-85cd980d3982",
+   "name": "Saïd ben Tahnun",
+   "b": null,
+   "d": 1855,
+   "tree": "AE_NAH",
+   "title": "Cheikh d'Abou Dhabi (1845-1855)",
+   "g": "h",
+   "script": 123
+  },
+  "ae.zayed1": {
+   "id": "f1013b87-c265-51f3-8c83-f106e12f85e6",
+   "name": "Zayed ben Khalifa (Zayed le Grand)",
+   "b": 1835,
+   "d": 1909,
+   "tree": "AE_NAH",
+   "title": "Cheikh d'Abou Dhabi (1855-1909)",
+   "g": "h",
+   "script": 123
+  },
+  "ae.tahnoun": {
+   "id": "ef3660c4-f8d0-5eff-94ce-ddb72490ca3e",
+   "name": "Tahnoun ben Zayed",
+   "b": 1857,
+   "d": 1912,
+   "tree": "AE_NAH",
+   "title": "Cheikh d'Abou Dhabi (1909-1912)",
+   "g": "h",
+   "script": 123
+  },
+  "ae.hamdan": {
+   "id": "173bef4f-7238-5726-a9da-409b9be632be",
+   "name": "Hamdan ben Zayed",
+   "b": null,
+   "d": 1922,
+   "tree": "AE_NAH",
+   "title": "Cheikh d'Abou Dhabi (1912-1922)",
+   "g": "h",
+   "script": 123
+  },
+  "ae.sultan": {
+   "id": "a8cb693d-08eb-5b0e-9c8c-de1484684944",
+   "name": "Sultan ben Zayed",
+   "b": null,
+   "d": 1926,
+   "tree": "AE_NAH",
+   "title": "Cheikh d'Abou Dhabi (1922-1926)",
+   "g": "h",
+   "script": 123
+  },
+  "ae.saqr": {
+   "id": "fdfb024f-93b2-5578-902c-b82b05c8a252",
+   "name": "Saqr ben Zayed",
+   "b": null,
+   "d": 1928,
+   "tree": "AE_NAH",
+   "title": "Cheikh d'Abou Dhabi (1926-1928)",
+   "g": "h",
+   "script": 123
+  },
+  "ae.shakhbutS": {
+   "id": "06502976-f6f0-5494-b618-43fff6cf7442",
+   "name": "Shakhbut ben Sultan",
+   "b": 1905,
+   "d": 1989,
+   "tree": "AE_NAH",
+   "title": "Cheikh d'Abou Dhabi (1928-1966)",
+   "g": "h",
+   "script": 123
+  },
+  "ae.zayed2": {
+   "id": "a0b508f0-c912-5871-b641-955753a1508f",
+   "name": "Zayed ben Sultan",
+   "b": 1918,
+   "d": 2004,
+   "tree": "AE_NAH",
+   "title": "Premier président des Émirats arabes unis (1971-2004)",
+   "g": "h",
+   "script": 123
+  },
+  "ae.khalifa": {
+   "id": "1452df01-e137-5a0e-9249-601ed275e8f9",
+   "name": "Khalifa ben Zayed",
+   "b": 1948,
+   "d": 2022,
+   "tree": "AE_NAH",
+   "title": "Président des Émirats arabes unis (2004-2022)",
+   "g": "h",
+   "script": 123
+  },
+  "ae.mohamed": {
+   "id": "46c5c9b4-f049-5b95-bc96-609f4dc658ae",
+   "name": "Mohamed ben Zayed",
+   "b": 1961,
+   "d": null,
+   "tree": "AE_NAH",
+   "title": "Président des Émirats arabes unis (depuis 2022)",
+   "g": "h",
+   "script": 123
+  },
+  "om.ahmad": {
+   "id": "49a4c64f-7bfc-5bf5-9416-84c12c06782f",
+   "name": "Ahmad ben Said",
+   "b": 1694,
+   "d": 1783,
+   "tree": "OM_SAI",
+   "title": "Fondateur de la dynastie, imam puis sultan (1749-1783)",
+   "g": "h",
+   "script": 124
+  },
+  "om.saidA": {
+   "id": "c76a306f-5815-5093-89c9-fafc9c23af50",
+   "name": "Said ben Ahmad",
+   "b": 1741,
+   "d": 1811,
+   "tree": "OM_SAI",
+   "title": "Imam d'Oman (1783-1786)",
+   "g": "h",
+   "script": 124
+  },
+  "om.hamad": {
+   "id": "70b36867-91f9-53af-a9da-1ce1245df52b",
+   "name": "Hamad ben Said",
+   "b": null,
+   "d": 1792,
+   "tree": "OM_SAI",
+   "title": "Dirigeant d'Oman (1786-1792)",
+   "g": "h",
+   "script": 124
+  },
+  "om.sultanA": {
+   "id": "65628024-475d-5a9f-9a72-031d5ec0e1df",
+   "name": "Sultan ben Ahmad",
+   "b": 1755,
+   "d": 1804,
+   "tree": "OM_SAI",
+   "title": "Sultan d'Oman (1792-1804)",
+   "g": "h",
+   "script": 124
+  },
+  "om.salimS": {
+   "id": "c8ae0369-8ad2-5df6-973e-50aacf9b05a1",
+   "name": "Salim ben Sultan",
+   "b": 1790,
+   "d": 1821,
+   "tree": "OM_SAI",
+   "title": "Co-dirigeant d'Oman (1804-1806)",
+   "g": "h",
+   "script": 124
+  },
+  "om.saidS": {
+   "id": "1c859f86-a904-5bb3-b7aa-2765807e1d7c",
+   "name": "Saïd ben Sultan",
+   "b": 1791,
+   "d": 1856,
+   "tree": "OM_SAI",
+   "title": "Sultan d'Oman et de Zanzibar (1804-1856)",
+   "g": "h",
+   "script": 124
+  },
+  "om.thuwaini": {
+   "id": "0742ea74-970d-5026-a12b-74ecfd1fbde7",
+   "name": "Thuwaini ben Said",
+   "b": 1821,
+   "d": 1866,
+   "tree": "OM_SAI",
+   "title": "Sultan d'Oman (1856-1866)",
+   "g": "h",
+   "script": 124
+  },
+  "om.salimT": {
+   "id": "71004b5a-eb3a-5d4a-ad41-2371cfacc9c3",
+   "name": "Salim ben Thuwaini",
+   "b": 1839,
+   "d": 1876,
+   "tree": "OM_SAI",
+   "title": "Sultan d'Oman (1866-1868)",
+   "g": "h",
+   "script": 124
+  },
+  "om.turki": {
+   "id": "4401f34e-3cca-54ef-a186-d5d7be678153",
+   "name": "Turki ben Said",
+   "b": 1832,
+   "d": 1888,
+   "tree": "OM_SAI",
+   "title": "Sultan d'Oman (1871-1888)",
+   "g": "h",
+   "script": 124
+  },
+  "om.faisal": {
+   "id": "dc42d437-021a-5f8b-a26e-3ca69ec2a0fe",
+   "name": "Fayçal ben Turki",
+   "b": 1864,
+   "d": 1913,
+   "tree": "OM_SAI",
+   "title": "Sultan d'Oman (1888-1913)",
+   "g": "h",
+   "script": 124
+  },
+  "om.taimur": {
+   "id": "68bf9709-78c9-56ee-89a0-b6b8d799e478",
+   "name": "Taimur ben Fayçal",
+   "b": 1886,
+   "d": 1965,
+   "tree": "OM_SAI",
+   "title": "Sultan d'Oman (1913-1932)",
+   "g": "h",
+   "script": 124
+  },
+  "om.saidT": {
+   "id": "0009c086-b0c2-5cbc-8216-21b6ff5ca5df",
+   "name": "Saïd ben Taimur",
+   "b": 1910,
+   "d": 1972,
+   "tree": "OM_SAI",
+   "title": "Sultan d'Oman (1932-1970)",
+   "g": "h",
+   "script": 124
+  },
+  "om.tariq": {
+   "id": "f893ae13-9416-53a3-a85b-5aeec56c325a",
+   "name": "Tariq ben Taimur",
+   "b": 1921,
+   "d": 1980,
+   "tree": "OM_SAI",
+   "title": "Premier ministre d'Oman, père du sultan Haïtham",
+   "g": "h",
+   "script": 124
+  },
+  "om.qaboos": {
+   "id": "d35db6fc-c7d3-55a3-99ef-def83381d98e",
+   "name": "Qabous ben Saïd",
+   "b": 1940,
+   "d": 2020,
+   "tree": "OM_SAI",
+   "title": "Sultan d'Oman (1970-2020)",
+   "g": "h",
+   "script": 124
+  },
+  "om.haitham": {
+   "id": "245b1c91-ae88-58e3-af02-4d3eaab33f6a",
+   "name": "Haïtham ben Tariq",
+   "b": 1955,
+   "d": null,
+   "tree": "OM_SAI",
+   "title": "Sultan d'Oman (depuis 2020)",
+   "g": "h",
+   "script": 124
   }
  },
  "trees": {
@@ -31438,6 +31858,24 @@
    "country": "QAT",
    "dynasty": "Al Thani",
    "script": 121
+  },
+  "BH_KHA": {
+   "entry": "36e0e903-c871-5766-8d4a-83aa0d810574",
+   "country": "BHR",
+   "dynasty": "Al Khalifa",
+   "script": 122
+  },
+  "AE_NAH": {
+   "entry": "1d2cadee-e69d-50ab-b93b-1bcf36fcbb5a",
+   "country": "ARE",
+   "dynasty": "Al Nahyan",
+   "script": 123
+  },
+  "OM_SAI": {
+   "entry": "2cc403f0-02e1-5b0b-b78e-8e31f6adaa90",
+   "country": "OMN",
+   "dynasty": "Al Said",
+   "script": 124
   }
  },
  "flags": [
@@ -36720,6 +37158,30 @@
    "rels": 6,
    "trees": [
     "Al Thani (QAT)"
+   ]
+  },
+  "122": {
+   "label": "Bahreïn (Al Khalifa)",
+   "members": 12,
+   "rels": 11,
+   "trees": [
+    "Al Khalifa (BHR)"
+   ]
+  },
+  "123": {
+   "label": "Émirats arabes unis (Al Nahyan)",
+   "members": 15,
+   "rels": 14,
+   "trees": [
+    "Al Nahyan (ARE)"
+   ]
+  },
+  "124": {
+   "label": "Oman (Al Said)",
+   "members": 15,
+   "rels": 14,
+   "trees": [
+    "Al Said (OMN)"
    ]
   }
  },
@@ -61137,6 +61599,201 @@
   [
    "253d2580-1f0c-54e7-888e-734079121e6c",
    "6e8eadbe-e856-5f07-969e-fa64ae171327",
+   "parent"
+  ],
+  [
+   "62d7794c-2b1e-52f8-b53d-dfe1cea82330",
+   "033fcc13-df04-5e6f-93d9-edfc2a8a8cba",
+   "parent"
+  ],
+  [
+   "62d7794c-2b1e-52f8-b53d-dfe1cea82330",
+   "41f4e967-685c-5075-8242-522d989c5334",
+   "parent"
+  ],
+  [
+   "033fcc13-df04-5e6f-93d9-edfc2a8a8cba",
+   "d4026e55-f03b-5768-8f99-8a169fa29501",
+   "parent"
+  ],
+  [
+   "d4026e55-f03b-5768-8f99-8a169fa29501",
+   "287543da-ee29-5587-8893-55a9ac932fc4",
+   "parent"
+  ],
+  [
+   "d4026e55-f03b-5768-8f99-8a169fa29501",
+   "87f79390-2748-5be4-978f-a793874dbd11",
+   "parent"
+  ],
+  [
+   "41f4e967-685c-5075-8242-522d989c5334",
+   "505bb7e4-577e-503d-bf9b-d6251a4dca47",
+   "parent"
+  ],
+  [
+   "87f79390-2748-5be4-978f-a793874dbd11",
+   "ea70964c-2096-5c9c-9394-e3b29516fcfa",
+   "parent"
+  ],
+  [
+   "ea70964c-2096-5c9c-9394-e3b29516fcfa",
+   "59182298-4fe1-5424-b7d5-bdf2fd260d90",
+   "parent"
+  ],
+  [
+   "59182298-4fe1-5424-b7d5-bdf2fd260d90",
+   "bff5b905-acdf-5f47-b750-3a52f39af065",
+   "parent"
+  ],
+  [
+   "bff5b905-acdf-5f47-b750-3a52f39af065",
+   "b92b2f93-047b-5b7d-9738-3c719fbc8378",
+   "parent"
+  ],
+  [
+   "b92b2f93-047b-5b7d-9738-3c719fbc8378",
+   "896d4809-7753-553b-a436-aa6677a5c47a",
+   "parent"
+  ],
+  [
+   "0387d6e4-32c6-5b7f-afc7-642c2669ae0e",
+   "19672258-5c6b-5477-9aaa-bdb55351a84a",
+   "parent"
+  ],
+  [
+   "19672258-5c6b-5477-9aaa-bdb55351a84a",
+   "db3d5b1a-e001-5584-9b2e-eed7da460764",
+   "parent"
+  ],
+  [
+   "19672258-5c6b-5477-9aaa-bdb55351a84a",
+   "cf0958fb-a5ff-509d-9724-a7dc4dfbc1a1",
+   "parent"
+  ],
+  [
+   "19672258-5c6b-5477-9aaa-bdb55351a84a",
+   "5e9c05e2-54d1-57aa-8ce3-ec7ebb6a8ca2",
+   "parent"
+  ],
+  [
+   "cf0958fb-a5ff-509d-9724-a7dc4dfbc1a1",
+   "56c2ec65-ffe6-5a20-aa1b-85cd980d3982",
+   "parent"
+  ],
+  [
+   "5e9c05e2-54d1-57aa-8ce3-ec7ebb6a8ca2",
+   "f1013b87-c265-51f3-8c83-f106e12f85e6",
+   "parent"
+  ],
+  [
+   "f1013b87-c265-51f3-8c83-f106e12f85e6",
+   "ef3660c4-f8d0-5eff-94ce-ddb72490ca3e",
+   "parent"
+  ],
+  [
+   "f1013b87-c265-51f3-8c83-f106e12f85e6",
+   "173bef4f-7238-5726-a9da-409b9be632be",
+   "parent"
+  ],
+  [
+   "f1013b87-c265-51f3-8c83-f106e12f85e6",
+   "a8cb693d-08eb-5b0e-9c8c-de1484684944",
+   "parent"
+  ],
+  [
+   "f1013b87-c265-51f3-8c83-f106e12f85e6",
+   "fdfb024f-93b2-5578-902c-b82b05c8a252",
+   "parent"
+  ],
+  [
+   "a8cb693d-08eb-5b0e-9c8c-de1484684944",
+   "06502976-f6f0-5494-b618-43fff6cf7442",
+   "parent"
+  ],
+  [
+   "a8cb693d-08eb-5b0e-9c8c-de1484684944",
+   "a0b508f0-c912-5871-b641-955753a1508f",
+   "parent"
+  ],
+  [
+   "a0b508f0-c912-5871-b641-955753a1508f",
+   "1452df01-e137-5a0e-9249-601ed275e8f9",
+   "parent"
+  ],
+  [
+   "a0b508f0-c912-5871-b641-955753a1508f",
+   "46c5c9b4-f049-5b95-bc96-609f4dc658ae",
+   "parent"
+  ],
+  [
+   "49a4c64f-7bfc-5bf5-9416-84c12c06782f",
+   "c76a306f-5815-5093-89c9-fafc9c23af50",
+   "parent"
+  ],
+  [
+   "c76a306f-5815-5093-89c9-fafc9c23af50",
+   "70b36867-91f9-53af-a9da-1ce1245df52b",
+   "parent"
+  ],
+  [
+   "49a4c64f-7bfc-5bf5-9416-84c12c06782f",
+   "65628024-475d-5a9f-9a72-031d5ec0e1df",
+   "parent"
+  ],
+  [
+   "65628024-475d-5a9f-9a72-031d5ec0e1df",
+   "c8ae0369-8ad2-5df6-973e-50aacf9b05a1",
+   "parent"
+  ],
+  [
+   "65628024-475d-5a9f-9a72-031d5ec0e1df",
+   "1c859f86-a904-5bb3-b7aa-2765807e1d7c",
+   "parent"
+  ],
+  [
+   "1c859f86-a904-5bb3-b7aa-2765807e1d7c",
+   "0742ea74-970d-5026-a12b-74ecfd1fbde7",
+   "parent"
+  ],
+  [
+   "0742ea74-970d-5026-a12b-74ecfd1fbde7",
+   "71004b5a-eb3a-5d4a-ad41-2371cfacc9c3",
+   "parent"
+  ],
+  [
+   "1c859f86-a904-5bb3-b7aa-2765807e1d7c",
+   "4401f34e-3cca-54ef-a186-d5d7be678153",
+   "parent"
+  ],
+  [
+   "4401f34e-3cca-54ef-a186-d5d7be678153",
+   "dc42d437-021a-5f8b-a26e-3ca69ec2a0fe",
+   "parent"
+  ],
+  [
+   "dc42d437-021a-5f8b-a26e-3ca69ec2a0fe",
+   "68bf9709-78c9-56ee-89a0-b6b8d799e478",
+   "parent"
+  ],
+  [
+   "68bf9709-78c9-56ee-89a0-b6b8d799e478",
+   "0009c086-b0c2-5cbc-8216-21b6ff5ca5df",
+   "parent"
+  ],
+  [
+   "68bf9709-78c9-56ee-89a0-b6b8d799e478",
+   "f893ae13-9416-53a3-a85b-5aeec56c325a",
+   "parent"
+  ],
+  [
+   "0009c086-b0c2-5cbc-8216-21b6ff5ca5df",
+   "d35db6fc-c7d3-55a3-99ef-def83381d98e",
+   "parent"
+  ],
+  [
+   "f893ae13-9416-53a3-a85b-5aeec56c325a",
+   "245b1c91-ae88-58e3-af02-4d3eaab33f6a",
    "parent"
   ]
  ],
