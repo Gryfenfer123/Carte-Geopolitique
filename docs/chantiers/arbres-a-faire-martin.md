@@ -18,3 +18,9 @@ Mis à jour le 2026-10-24. Cocher au fur et à mesure.
 
 ## Déjà fait (pour mémoire)
 - v39 à v103 exécutées sur Supabase le 2026-10-24.
+
+## Ajouts (v105 à v109, Moyen-Orient, Afrique, Asie, Caucase)
+- Ouvrir les nouveaux arbres (Égypte : Ptolémées et Méhémet-Ali ; Hachémites Jordanie/Irak ; Al Saoud ; Alaouites ; Senoussi ; salomonide ; Moghols ; Chakri ; Nguyen ; Durrani ; Bagrationi ; Arménie ; Hasmonéens-Hérodiens) et cliquer « Organiser par dates » si les cartes sont mal placées.
+- Dates de ces lots : tirées de connaissances générales, aucune page consultée → à relire, surtout les dates antiques (Ptolémées, Hasmonéens, Arménie) et Sirikit (décès non vérifié).
+- Liens volontairement non saisis (signalés dans les arbres) : père de Césarion (Jules César), ascendance de Turki ben Abdallah, Abd al-Rahman du Maroc, Ras Makonnen/Menelik II, Gagik Ier d'Arménie, Bagrat III, filiation biologique de Duc Duc et Dong Khanh, Dost Mohammad/Durrani.
+- Pays restants sans arbre : Syrie, Liban, Émirats, Qatar, Koweït, Bahreïn, Oman, Yémen, Azerbaïdjan, Pakistan, Tunisie, Algérie, Irlande, Croatie.
