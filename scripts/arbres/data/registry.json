@@ -29170,6 +29170,406 @@
    "title": "Roi d'Afghanistan (1933-1973)",
    "g": "h",
    "script": 108
+  },
+  "cx.bagrat3": {
+   "id": "9953d825-1e02-5b93-8c56-38b392f1be7f",
+   "name": "Bagrat III de Géorgie",
+   "b": 960,
+   "d": 1014,
+   "tree": "GE_BAG",
+   "title": "Premier roi de la Géorgie unifiée (1008-1014)",
+   "g": "h",
+   "script": 109
+  },
+  "cx.george1": {
+   "id": "6954d8be-29ba-5e72-91fd-0dbdd9436015",
+   "name": "Georges Ier de Géorgie",
+   "b": 998,
+   "d": 1027,
+   "tree": "GE_BAG",
+   "title": "Roi de Géorgie (1014-1027)",
+   "g": "h",
+   "script": 109
+  },
+  "cx.bagrat4": {
+   "id": "19af8664-dd90-5bd2-8c92-fc8e721f08e4",
+   "name": "Bagrat IV de Géorgie",
+   "b": 1018,
+   "d": 1072,
+   "tree": "GE_BAG",
+   "title": "Roi de Géorgie (1027-1072)",
+   "g": "h",
+   "script": 109
+  },
+  "cx.george2": {
+   "id": "64a9fa36-7a53-506d-abdf-b70b82b02474",
+   "name": "Georges II de Géorgie",
+   "b": 1042,
+   "d": 1112,
+   "tree": "GE_BAG",
+   "title": "Roi de Géorgie (1072-1089)",
+   "g": "h",
+   "script": 109
+  },
+  "cx.david4": {
+   "id": "57c6d986-370a-542e-a63c-a623ad0c6754",
+   "name": "David IV le Bâtisseur",
+   "b": 1073,
+   "d": 1125,
+   "tree": "GE_BAG",
+   "title": "Roi de Géorgie (1089-1125)",
+   "g": "h",
+   "script": 109
+  },
+  "cx.demetre1": {
+   "id": "d5d4a021-d458-55cf-907e-f30198bb5f18",
+   "name": "Dimitri Ier de Géorgie",
+   "b": 1093,
+   "d": 1156,
+   "tree": "GE_BAG",
+   "title": "Roi de Géorgie (1125-1156)",
+   "g": "h",
+   "script": 109
+  },
+  "cx.george3": {
+   "id": "d706aab3-cb89-5ce7-a9ac-f6e521d90866",
+   "name": "Georges III de Géorgie",
+   "b": 1133,
+   "d": 1184,
+   "tree": "GE_BAG",
+   "title": "Roi de Géorgie (1156-1184)",
+   "g": "h",
+   "script": 109
+  },
+  "cx.tamar": {
+   "id": "a6588c4b-32a5-540e-8fad-a90474df5fdd",
+   "name": "Tamar de Géorgie",
+   "b": 1160,
+   "d": 1213,
+   "tree": "GE_BAG",
+   "title": "Reine de Géorgie (1184-1213), âge d'or",
+   "g": "f",
+   "script": 109
+  },
+  "cx.lasha": {
+   "id": "3bb8a88a-b177-5b08-b976-f620b6ee373b",
+   "name": "Georges IV Lacha",
+   "b": 1192,
+   "d": 1223,
+   "tree": "GE_BAG",
+   "title": "Roi de Géorgie (1213-1223)",
+   "g": "h",
+   "script": 109
+  },
+  "cx.rusudan": {
+   "id": "36e7b5f5-06b0-5b41-9175-86db1a8a360b",
+   "name": "Rousoudan de Géorgie",
+   "b": 1194,
+   "d": 1245,
+   "tree": "GE_BAG",
+   "title": "Reine de Géorgie (1223-1245)",
+   "g": "f",
+   "script": 109
+  },
+  "cx.david7": {
+   "id": "eb834158-0274-521d-b930-c34fe4131fa5",
+   "name": "David VII Oulou",
+   "b": 1215,
+   "d": 1270,
+   "tree": "GE_BAG",
+   "title": "Roi de Géorgie (1247-1270)",
+   "g": "h",
+   "script": 109
+  },
+  "cx.teimuraz2": {
+   "id": "e9bbf6db-f62a-5bbd-ae47-30a725b82dec",
+   "name": "Téïmouraz II de Kakhétie",
+   "b": 1700,
+   "d": 1762,
+   "tree": "GE_BAG",
+   "title": "Roi de Kakhétie puis de Kartli (1744-1762)",
+   "g": "h",
+   "script": 109
+  },
+  "cx.erekle2": {
+   "id": "fb443005-e61c-554f-b2fb-5f626d57c17a",
+   "name": "Héraclius II de Géorgie",
+   "b": 1720,
+   "d": 1798,
+   "tree": "GE_BAG",
+   "title": "Roi de Kartli-Kakhétie (1762-1798)",
+   "g": "h",
+   "script": 109
+  },
+  "cx.george12": {
+   "id": "9d04c41c-5b94-5396-9cb8-48450df3f4f0",
+   "name": "Georges XII de Géorgie",
+   "b": 1746,
+   "d": 1800,
+   "tree": "GE_BAG",
+   "title": "Dernier roi de Kartli-Kakhétie (1798-1800)",
+   "g": "h",
+   "script": 109
+  },
+  "cx.tigrane": {
+   "id": "f0557681-c3f6-5729-944b-77d7fda1d7fb",
+   "name": "Tigrane II le Grand",
+   "b": -140,
+   "d": -55,
+   "tree": "AM_DYN",
+   "title": "Roi d'Arménie (-95 à -55)",
+   "g": "h",
+   "script": 109
+  },
+  "cx.artavazde": {
+   "id": "d4a10536-db03-578e-8f2a-cb0d5164a8a5",
+   "name": "Artavazde II d'Arménie",
+   "b": null,
+   "d": -31,
+   "tree": "AM_DYN",
+   "title": "Roi d'Arménie (-55 à -34)",
+   "g": "h",
+   "script": 109
+  },
+  "cx.ashot1": {
+   "id": "8cd43672-8090-50dd-aee8-b9aaa63590ac",
+   "name": "Ashot Ier d'Arménie",
+   "b": null,
+   "d": 890,
+   "tree": "AM_DYN",
+   "title": "Premier roi bagratide d'Arménie (884-890)",
+   "g": "h",
+   "script": 109
+  },
+  "cx.smbat1": {
+   "id": "ad17990f-4cff-51bc-a482-49292f5a1824",
+   "name": "Smbat Ier d'Arménie",
+   "b": null,
+   "d": 914,
+   "tree": "AM_DYN",
+   "title": "Roi d'Arménie (890-914)",
+   "g": "h",
+   "script": 109
+  },
+  "cx.ashot2": {
+   "id": "07ed656c-2aa2-58eb-80e7-081d0cf49e06",
+   "name": "Ashot II d'Arménie",
+   "b": null,
+   "d": 929,
+   "tree": "AM_DYN",
+   "title": "Roi d'Arménie (914-928)",
+   "g": "h",
+   "script": 109
+  },
+  "cx.gagik1": {
+   "id": "42faf9a5-72c2-5bb8-a389-6b6e790c2e9e",
+   "name": "Gagik Ier d'Arménie",
+   "b": null,
+   "d": 1020,
+   "tree": "AM_DYN",
+   "title": "Roi d'Arménie (989-1020)",
+   "g": "h",
+   "script": 109
+  },
+  "cx.mattathias": {
+   "id": "d28a77f0-9109-546e-9cb7-4db677773ae2",
+   "name": "Mattathias",
+   "b": null,
+   "d": -166,
+   "tree": "IL_HAS",
+   "title": "Prêtre de Modiin, initiateur de la révolte des Maccabées",
+   "g": "h",
+   "script": 109
+  },
+  "cx.judas": {
+   "id": "8ecc2e2a-20d6-59f5-8b12-d120865c10c4",
+   "name": "Judas Maccabée",
+   "b": -190,
+   "d": -160,
+   "tree": "IL_HAS",
+   "title": "Chef de la révolte des Maccabées",
+   "g": "h",
+   "script": 109
+  },
+  "cx.simon": {
+   "id": "f796998a-1831-56f3-920f-fa9ae89f297d",
+   "name": "Simon Maccabée",
+   "b": null,
+   "d": -135,
+   "tree": "IL_HAS",
+   "title": "Grand prêtre et ethnarque (-142 à -135)",
+   "g": "h",
+   "script": 109
+  },
+  "cx.hyrcan1": {
+   "id": "b1d62dcf-11c1-5cb5-ae3e-455308d752d4",
+   "name": "Jean Hyrcan Ier",
+   "b": -164,
+   "d": -104,
+   "tree": "IL_HAS",
+   "title": "Grand prêtre et ethnarque de Judée (-134 à -104)",
+   "g": "h",
+   "script": 109
+  },
+  "cx.aristobule1": {
+   "id": "6929441f-a2be-5a53-80e5-48e17776a559",
+   "name": "Aristobule Ier",
+   "b": null,
+   "d": -103,
+   "tree": "IL_HAS",
+   "title": "Roi de Judée (-104 à -103)",
+   "g": "h",
+   "script": 109
+  },
+  "cx.jannee": {
+   "id": "d85696be-86dd-52b0-881a-258f8a3c5b52",
+   "name": "Alexandre Jannée",
+   "b": -126,
+   "d": -76,
+   "tree": "IL_HAS",
+   "title": "Roi de Judée (-103 à -76)",
+   "g": "h",
+   "script": 109
+  },
+  "cx.salome": {
+   "id": "436989cb-0296-566c-8136-8810509b5634",
+   "name": "Alexandra Salomé",
+   "b": -139,
+   "d": -67,
+   "tree": "IL_HAS",
+   "title": "Reine de Judée (-76 à -67)",
+   "g": "f",
+   "script": 109
+  },
+  "cx.hyrcan2": {
+   "id": "a0a4e6dc-e464-593a-ada4-3e522180f90d",
+   "name": "Hyrcan II",
+   "b": -110,
+   "d": -30,
+   "tree": "IL_HAS",
+   "title": "Grand prêtre et ethnarque de Judée",
+   "g": "h",
+   "script": 109
+  },
+  "cx.aristobule2": {
+   "id": "405eb31c-5364-5927-92de-12be524ed4ee",
+   "name": "Aristobule II",
+   "b": -100,
+   "d": -49,
+   "tree": "IL_HAS",
+   "title": "Roi de Judée (-66 à -63)",
+   "g": "h",
+   "script": 109
+  },
+  "cx.antigone": {
+   "id": "f66a8fd0-fa6b-5d7e-8642-f2bca321684a",
+   "name": "Antigone Mattathias",
+   "b": null,
+   "d": -37,
+   "tree": "IL_HAS",
+   "title": "Dernier roi hasmonéen (-40 à -37)",
+   "g": "h",
+   "script": 109
+  },
+  "cx.alexandra": {
+   "id": "349159e8-02ac-58e0-8ab1-57f4144938b4",
+   "name": "Alexandra la Jeune",
+   "b": null,
+   "d": null,
+   "tree": "IL_HAS",
+   "title": "Fille d'Hyrcan II, mère de Mariamne",
+   "g": "f",
+   "script": 109
+  },
+  "cx.mariamne": {
+   "id": "baf684e4-2528-55a2-8ee0-6743c83a3f55",
+   "name": "Mariamne l'Hasmonéenne",
+   "b": -54,
+   "d": -29,
+   "tree": "IL_HAS",
+   "title": "Épouse d'Hérode le Grand",
+   "g": "f",
+   "script": 109
+  },
+  "cx.herode": {
+   "id": "65fdf014-2806-537e-ae6b-ae865371afd3",
+   "name": "Hérode le Grand",
+   "b": -73,
+   "d": -4,
+   "tree": "IL_HAS",
+   "title": "Roi de Judée (-37 à -4)",
+   "g": "h",
+   "script": 109
+  },
+  "cx.aristobule4": {
+   "id": "2ce27639-e578-5574-a5c8-5d061988cb3b",
+   "name": "Aristobule IV",
+   "b": null,
+   "d": -6,
+   "tree": "IL_HAS",
+   "title": "Fils d'Hérode le Grand et de Mariamne",
+   "g": "h",
+   "script": 109
+  },
+  "cx.antipas": {
+   "id": "b7e662eb-352e-5599-9e00-4280f718712b",
+   "name": "Hérode Antipas",
+   "b": -20,
+   "d": 39,
+   "tree": "IL_HAS",
+   "title": "Tétrarque de Galilée et de Pérée",
+   "g": "h",
+   "script": 109
+  },
+  "cx.archelaus": {
+   "id": "450f329d-d7ae-57fb-bd1d-2b58cbf598a9",
+   "name": "Hérode Archélaüs",
+   "b": -23,
+   "d": 18,
+   "tree": "IL_HAS",
+   "title": "Ethnarque de Judée (-4 à 6)",
+   "g": "h",
+   "script": 109
+  },
+  "cx.philippe": {
+   "id": "338264bc-566e-5606-8041-42419dc6099c",
+   "name": "Hérode Philippe II",
+   "b": -26,
+   "d": 34,
+   "tree": "IL_HAS",
+   "title": "Tétrarque d'Iturée et de Trachonitide",
+   "g": "h",
+   "script": 109
+  },
+  "cx.agrippa1": {
+   "id": "b3b7f90c-ab69-505c-8e13-41e37c78a77d",
+   "name": "Hérode Agrippa Ier",
+   "b": -10,
+   "d": 44,
+   "tree": "IL_HAS",
+   "title": "Roi de Judée (41-44)",
+   "g": "h",
+   "script": 109
+  },
+  "cx.agrippa2": {
+   "id": "7c230fcf-84b3-5b25-aa69-6bd06d7c6b92",
+   "name": "Hérode Agrippa II",
+   "b": 27,
+   "d": 100,
+   "tree": "IL_HAS",
+   "title": "Roi de Chalcis puis de Batanée (50-92/100)",
+   "g": "h",
+   "script": 109
+  },
+  "cx.berenice": {
+   "id": "b0f51325-78c1-5f0e-91d9-b09cb5de1489",
+   "name": "Bérénice (princesse hérodienne)",
+   "b": 28,
+   "d": null,
+   "tree": "IL_HAS",
+   "title": "Fille d'Agrippa Ier, compagne de Titus",
+   "g": "f",
+   "script": 109
   }
  },
  "trees": {
@@ -30102,6 +30502,24 @@
    "country": "AFG",
    "dynasty": "Durrani et Barakzaï",
    "script": 108
+  },
+  "GE_BAG": {
+   "entry": "bb771463-2b67-55f0-b667-4e3c396b5f92",
+   "country": "GEO",
+   "dynasty": "Bagrationi",
+   "script": 109
+  },
+  "AM_DYN": {
+   "entry": "92b655bf-a8c5-5fff-b39e-1cd52e4e5b2b",
+   "country": "ARM",
+   "dynasty": "Dynasties d'Arménie",
+   "script": 109
+  },
+  "IL_HAS": {
+   "entry": "e87f2a65-4cfe-56f2-85b4-dbf67ee261e3",
+   "country": "ISR",
+   "dynasty": "Hasmonéens et Hérodiens",
+   "script": 109
   }
  },
  "flags": [
@@ -34696,6 +35114,27 @@
    "tree": "AF_DUR",
    "reason": "Ascendance non saisie",
    "script": 108
+  },
+  {
+   "name": "Bagrat III de Géorgie",
+   "b": 960,
+   "tree": "GE_BAG",
+   "reason": "Ascendance non saisie",
+   "script": 109
+  },
+  {
+   "name": "Gagik Ier d'Arménie",
+   "b": null,
+   "tree": "AM_DYN",
+   "reason": "Ascendance non saisie",
+   "script": 109
+  },
+  {
+   "name": "Alexandra la Jeune",
+   "b": null,
+   "tree": "IL_HAS",
+   "reason": "Naissance et décès inconnus",
+   "script": 109
   }
  ],
  "scripts": {
@@ -35262,6 +35701,16 @@
     "Dynastie Chakri (THA)",
     "Dynastie des Nguyen (VNM)",
     "Durrani et Barakzaï (AFG)"
+   ]
+  },
+  "109": {
+   "label": "Géorgie (Bagrationi), Arménie, Israël (Hasmonéens et Hérodiens)",
+   "members": 40,
+   "rels": 37,
+   "trees": [
+    "Bagrationi (GEO)",
+    "Dynasties d'Arménie (ARM)",
+    "Hasmonéens et Hérodiens (ISR)"
    ]
   }
  },
@@ -59040,6 +59489,191 @@
    "0b7d480f-195d-5f36-8ca9-4b0557ca2d80",
    "27a865a9-17a0-5e52-9f5b-3c3b676e60c3",
    "parent"
+  ],
+  [
+   "9953d825-1e02-5b93-8c56-38b392f1be7f",
+   "6954d8be-29ba-5e72-91fd-0dbdd9436015",
+   "parent"
+  ],
+  [
+   "6954d8be-29ba-5e72-91fd-0dbdd9436015",
+   "19af8664-dd90-5bd2-8c92-fc8e721f08e4",
+   "parent"
+  ],
+  [
+   "19af8664-dd90-5bd2-8c92-fc8e721f08e4",
+   "64a9fa36-7a53-506d-abdf-b70b82b02474",
+   "parent"
+  ],
+  [
+   "64a9fa36-7a53-506d-abdf-b70b82b02474",
+   "57c6d986-370a-542e-a63c-a623ad0c6754",
+   "parent"
+  ],
+  [
+   "57c6d986-370a-542e-a63c-a623ad0c6754",
+   "d5d4a021-d458-55cf-907e-f30198bb5f18",
+   "parent"
+  ],
+  [
+   "d5d4a021-d458-55cf-907e-f30198bb5f18",
+   "d706aab3-cb89-5ce7-a9ac-f6e521d90866",
+   "parent"
+  ],
+  [
+   "d706aab3-cb89-5ce7-a9ac-f6e521d90866",
+   "a6588c4b-32a5-540e-8fad-a90474df5fdd",
+   "parent"
+  ],
+  [
+   "a6588c4b-32a5-540e-8fad-a90474df5fdd",
+   "3bb8a88a-b177-5b08-b976-f620b6ee373b",
+   "parent"
+  ],
+  [
+   "a6588c4b-32a5-540e-8fad-a90474df5fdd",
+   "36e7b5f5-06b0-5b41-9175-86db1a8a360b",
+   "parent"
+  ],
+  [
+   "36e7b5f5-06b0-5b41-9175-86db1a8a360b",
+   "eb834158-0274-521d-b930-c34fe4131fa5",
+   "parent"
+  ],
+  [
+   "e9bbf6db-f62a-5bbd-ae47-30a725b82dec",
+   "fb443005-e61c-554f-b2fb-5f626d57c17a",
+   "parent"
+  ],
+  [
+   "fb443005-e61c-554f-b2fb-5f626d57c17a",
+   "9d04c41c-5b94-5396-9cb8-48450df3f4f0",
+   "parent"
+  ],
+  [
+   "f0557681-c3f6-5729-944b-77d7fda1d7fb",
+   "d4a10536-db03-578e-8f2a-cb0d5164a8a5",
+   "parent"
+  ],
+  [
+   "8cd43672-8090-50dd-aee8-b9aaa63590ac",
+   "ad17990f-4cff-51bc-a482-49292f5a1824",
+   "parent"
+  ],
+  [
+   "ad17990f-4cff-51bc-a482-49292f5a1824",
+   "07ed656c-2aa2-58eb-80e7-081d0cf49e06",
+   "parent"
+  ],
+  [
+   "d28a77f0-9109-546e-9cb7-4db677773ae2",
+   "8ecc2e2a-20d6-59f5-8b12-d120865c10c4",
+   "parent"
+  ],
+  [
+   "d28a77f0-9109-546e-9cb7-4db677773ae2",
+   "f796998a-1831-56f3-920f-fa9ae89f297d",
+   "parent"
+  ],
+  [
+   "f796998a-1831-56f3-920f-fa9ae89f297d",
+   "b1d62dcf-11c1-5cb5-ae3e-455308d752d4",
+   "parent"
+  ],
+  [
+   "b1d62dcf-11c1-5cb5-ae3e-455308d752d4",
+   "6929441f-a2be-5a53-80e5-48e17776a559",
+   "parent"
+  ],
+  [
+   "b1d62dcf-11c1-5cb5-ae3e-455308d752d4",
+   "d85696be-86dd-52b0-881a-258f8a3c5b52",
+   "parent"
+  ],
+  [
+   "d85696be-86dd-52b0-881a-258f8a3c5b52",
+   "a0a4e6dc-e464-593a-ada4-3e522180f90d",
+   "parent"
+  ],
+  [
+   "d85696be-86dd-52b0-881a-258f8a3c5b52",
+   "405eb31c-5364-5927-92de-12be524ed4ee",
+   "parent"
+  ],
+  [
+   "436989cb-0296-566c-8136-8810509b5634",
+   "a0a4e6dc-e464-593a-ada4-3e522180f90d",
+   "parent"
+  ],
+  [
+   "436989cb-0296-566c-8136-8810509b5634",
+   "405eb31c-5364-5927-92de-12be524ed4ee",
+   "parent"
+  ],
+  [
+   "405eb31c-5364-5927-92de-12be524ed4ee",
+   "f66a8fd0-fa6b-5d7e-8642-f2bca321684a",
+   "parent"
+  ],
+  [
+   "a0a4e6dc-e464-593a-ada4-3e522180f90d",
+   "349159e8-02ac-58e0-8ab1-57f4144938b4",
+   "parent"
+  ],
+  [
+   "349159e8-02ac-58e0-8ab1-57f4144938b4",
+   "baf684e4-2528-55a2-8ee0-6743c83a3f55",
+   "parent"
+  ],
+  [
+   "65fdf014-2806-537e-ae6b-ae865371afd3",
+   "2ce27639-e578-5574-a5c8-5d061988cb3b",
+   "parent"
+  ],
+  [
+   "baf684e4-2528-55a2-8ee0-6743c83a3f55",
+   "2ce27639-e578-5574-a5c8-5d061988cb3b",
+   "parent"
+  ],
+  [
+   "65fdf014-2806-537e-ae6b-ae865371afd3",
+   "b7e662eb-352e-5599-9e00-4280f718712b",
+   "parent"
+  ],
+  [
+   "65fdf014-2806-537e-ae6b-ae865371afd3",
+   "450f329d-d7ae-57fb-bd1d-2b58cbf598a9",
+   "parent"
+  ],
+  [
+   "65fdf014-2806-537e-ae6b-ae865371afd3",
+   "338264bc-566e-5606-8041-42419dc6099c",
+   "parent"
+  ],
+  [
+   "2ce27639-e578-5574-a5c8-5d061988cb3b",
+   "b3b7f90c-ab69-505c-8e13-41e37c78a77d",
+   "parent"
+  ],
+  [
+   "b3b7f90c-ab69-505c-8e13-41e37c78a77d",
+   "7c230fcf-84b3-5b25-aa69-6bd06d7c6b92",
+   "parent"
+  ],
+  [
+   "b3b7f90c-ab69-505c-8e13-41e37c78a77d",
+   "b0f51325-78c1-5f0e-91d9-b09cb5de1489",
+   "parent"
+  ],
+  [
+   "d85696be-86dd-52b0-881a-258f8a3c5b52",
+   "436989cb-0296-566c-8136-8810509b5634",
+   "spouse"
+  ],
+  [
+   "65fdf014-2806-537e-ae6b-ae865371afd3",
+   "baf684e4-2528-55a2-8ee0-6743c83a3f55",
+   "spouse"
   ]
  ],
  "dateflags": [
@@ -67197,6 +67831,69 @@
    "d": 1844,
    "note": "Naissance approximative.",
    "script": 108
+  },
+  {
+   "name": "Tigrane II le Grand",
+   "b": -140,
+   "d": -55,
+   "note": "Naissance approximative.",
+   "script": 109
+  },
+  {
+   "name": "Judas Maccabée",
+   "b": -190,
+   "d": -160,
+   "note": "Naissance approximative.",
+   "script": 109
+  },
+  {
+   "name": "Aristobule II",
+   "b": -100,
+   "d": -49,
+   "note": "Naissance approximative.",
+   "script": 109
+  },
+  {
+   "name": "Mariamne l'Hasmonéenne",
+   "b": -54,
+   "d": -29,
+   "note": "Naissance approximative.",
+   "script": 109
+  },
+  {
+   "name": "Hérode Antipas",
+   "b": -20,
+   "d": 39,
+   "note": "Naissance approximative.",
+   "script": 109
+  },
+  {
+   "name": "Hérode Archélaüs",
+   "b": -23,
+   "d": 18,
+   "note": "Naissance approximative.",
+   "script": 109
+  },
+  {
+   "name": "Hérode Philippe II",
+   "b": -26,
+   "d": 34,
+   "note": "Naissance approximative.",
+   "script": 109
+  },
+  {
+   "name": "Hérode Agrippa Ier",
+   "b": -10,
+   "d": 44,
+   "note": "Naissance approximative.",
+   "script": 109
+  },
+  {
+   "name": "Hérode Agrippa II",
+   "b": 27,
+   "d": 100,
+   "note": "Naissance approximative.",
+   "script": 109
   }
  ],
  "pins": [
