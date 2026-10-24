@@ -2,6 +2,8 @@
 
 ## Dernières nouvelles (la plus récente en haut)
 
+- 2026-10-23 — v121 : arbre Al Thani (Qatar), 8 fiches sourcées Wikipédia
+
 - 2026-10-23 — v120 : arbre Al Sabah (Koweït), 16 fiches sourcées Wikipédia
 
 - 2026-10-23 — v119 : deux arbres Omeyyades/Abbassides, 26 fiches sourcées Wikipédia
@@ -119,7 +121,7 @@
 
 Code : `src/genealogy.ts`, `genealogyLayers.ts`, `genealogyBus.ts`, `genealogyLod.ts/.css`, `genealogyLayersWorker.ts`,
 `genealogyLayout.ts`, `genealogyRouting.ts`. Outils de remplissage : [`scripts/arbres/`](../../scripts/arbres/README.md).
-Prochaine migration : **arbres_v121** (`supabase/arbres/arbres_v121.sql`) — générateur : `Gen(121, "…")`.  (v120 livrée, à exécuter par Martin si ce n'est pas déjà fait.)
+Prochaine migration : **arbres_v122** (`supabase/arbres/arbres_v122.sql`) — générateur : `Gen(122, "…")`.  (v121 livrée, à exécuter par Martin si ce n'est pas déjà fait.)
 
 ## Règles de contenu (décidées par Martin — ne pas rouvrir)
 - Un pays n'a que les dynasties qui ont **régné sur lui**. Dynastie étrangère : branche principale dans son pays

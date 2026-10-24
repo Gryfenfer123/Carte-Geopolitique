@@ -30360,6 +30360,86 @@
    "title": "Émir du Koweït (depuis 2023)",
    "g": "h",
    "script": 120
+  },
+  "qa.mohammed": {
+   "id": "006a975b-4724-5635-a9da-f28c20003115",
+   "name": "Mohammed ben Thani",
+   "b": 1788,
+   "d": 1878,
+   "tree": "QA_THA",
+   "title": "Cheikh de Doha, fondateur de la dynastie",
+   "g": "h",
+   "script": 121
+  },
+  "qa.jassim": {
+   "id": "cc2fab66-637b-5aad-b8d8-aa0f10ba4e91",
+   "name": "Jassim ben Mohammed",
+   "b": 1825,
+   "d": 1913,
+   "tree": "QA_THA",
+   "title": "Fondateur de l'État du Qatar (1878-1913)",
+   "g": "h",
+   "script": 121
+  },
+  "qa.abdullah": {
+   "id": "1d1ad90d-6d82-5074-97e3-7b7eed8dc932",
+   "name": "Abdullah ben Jassim",
+   "b": 1880,
+   "d": 1957,
+   "tree": "QA_THA",
+   "title": "Cheikh du Qatar (1913-1949)",
+   "g": "h",
+   "script": 121
+  },
+  "qa.ali": {
+   "id": "df58dfbc-7363-55ab-a63b-b79e6a8bc2ec",
+   "name": "Ali ben Abdullah",
+   "b": 1895,
+   "d": 1974,
+   "tree": "QA_THA",
+   "title": "Cheikh du Qatar (1949-1960)",
+   "g": "h",
+   "script": 121
+  },
+  "qa.ahmad": {
+   "id": "2bf0c4e3-125e-59fc-9f5a-df68b7cca516",
+   "name": "Ahmad ben Ali",
+   "b": 1922,
+   "d": 1977,
+   "tree": "QA_THA",
+   "title": "Émir du Qatar (1960-1972)",
+   "g": "h",
+   "script": 121
+  },
+  "qa.khalifa": {
+   "id": "fddaae8f-5434-5bac-9010-84496a81ff76",
+   "name": "Khalifa ben Hamad",
+   "b": 1932,
+   "d": 2016,
+   "tree": "QA_THA",
+   "title": "Émir du Qatar (1972-1995)",
+   "g": "h",
+   "script": 121
+  },
+  "qa.hamad": {
+   "id": "253d2580-1f0c-54e7-888e-734079121e6c",
+   "name": "Hamad ben Khalifa",
+   "b": 1952,
+   "d": 2026,
+   "tree": "QA_THA",
+   "title": "Émir du Qatar (1995-2013)",
+   "g": "h",
+   "script": 121
+  },
+  "qa.tamim": {
+   "id": "6e8eadbe-e856-5f07-969e-fa64ae171327",
+   "name": "Tamim ben Hamad",
+   "b": 1980,
+   "d": null,
+   "tree": "QA_THA",
+   "title": "Émir du Qatar (depuis 2013)",
+   "g": "h",
+   "script": 121
   }
  },
  "trees": {
@@ -31352,6 +31432,12 @@
    "country": "KWT",
    "dynasty": "Al Sabah",
    "script": 120
+  },
+  "QA_THA": {
+   "entry": "bcc62c61-8c4e-5ff4-a5de-32f1a2192e78",
+   "country": "QAT",
+   "dynasty": "Al Thani",
+   "script": 121
   }
  },
  "flags": [
@@ -36626,6 +36712,14 @@
    "rels": 15,
    "trees": [
     "Al Sabah (KWT)"
+   ]
+  },
+  "121": {
+   "label": "Qatar (Al Thani)",
+   "members": 8,
+   "rels": 7,
+   "trees": [
+    "Al Thani (QAT)"
    ]
   }
  },
@@ -61013,6 +61107,41 @@
   [
    "4f567e32-dcaa-5b80-b8b4-0172d438e648",
    "db1d66f0-14cf-5560-8ada-83284eb5c8c3",
+   "family"
+  ],
+  [
+   "006a975b-4724-5635-a9da-f28c20003115",
+   "cc2fab66-637b-5aad-b8d8-aa0f10ba4e91",
+   "parent"
+  ],
+  [
+   "cc2fab66-637b-5aad-b8d8-aa0f10ba4e91",
+   "1d1ad90d-6d82-5074-97e3-7b7eed8dc932",
+   "parent"
+  ],
+  [
+   "1d1ad90d-6d82-5074-97e3-7b7eed8dc932",
+   "df58dfbc-7363-55ab-a63b-b79e6a8bc2ec",
+   "parent"
+  ],
+  [
+   "df58dfbc-7363-55ab-a63b-b79e6a8bc2ec",
+   "2bf0c4e3-125e-59fc-9f5a-df68b7cca516",
+   "parent"
+  ],
+  [
+   "fddaae8f-5434-5bac-9010-84496a81ff76",
+   "253d2580-1f0c-54e7-888e-734079121e6c",
+   "parent"
+  ],
+  [
+   "253d2580-1f0c-54e7-888e-734079121e6c",
+   "6e8eadbe-e856-5f07-969e-fa64ae171327",
+   "parent"
+  ],
+  [
+   "2bf0c4e3-125e-59fc-9f5a-df68b7cca516",
+   "fddaae8f-5434-5bac-9010-84496a81ff76",
    "family"
   ]
  ],

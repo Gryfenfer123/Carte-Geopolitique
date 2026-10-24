@@ -18,6 +18,7 @@ Chaque fiche sourcée porte aussi l'adresse de sa page dans « Notes / biographi
 | 2026-10-24 | v118 — Égypte : XVIIIe dynastie (15), XIXe dynastie (6), Fatimides (8), Ayyoubides (5) | Wikipédia anglais, une page par personne (Ahmose I … As-Salih Ayyub ; liste dans le champ Notes) | https://en.wikipedia.org/wiki/<titre> | CC BY-SA 4.0 | tertiaire / à recouper ; chronologie pharaonique incertaine (règnes seuls quand la page ne donne pas de dates de vie)
 | 2026-10-24 | v119 — Syrie : Omeyyades (12) ; Irak : Abbassides (14) | Wikipédia anglais, une page par personne (Abu Sufyan … al-Mutawakkil) ; père des deux premiers abbassides (Muhammad ibn Ali) non lu, lien « famille » | https://en.wikipedia.org/wiki/<titre> | CC BY-SA 4.0 | tertiaire / à recouper ; naissances souvent approximatives (c.) |
 | 2026-10-24 | v120 — Koweït : Al Sabah (16 émirs, Sabah Ier à Mishal) | Wikipédia anglais, une page par émir (liste des émirs pour Sabah Ier et Abdullah Ier) | https://en.wikipedia.org/wiki/<titre> | CC BY-SA 4.0 | tertiaire / à recouper ; incohérence Jaber Ier / Sabah II signalée |
+| 2026-10-24 | v121 — Qatar : Al Thani (8 émirs, Mohammed ben Thani à Tamim) | Wikipédia anglais, une page par émir | https://en.wikipedia.org/wiki/<titre> | CC BY-SA 4.0 | tertiaire / à recouper ; ancêtres et père de Khalifa non saisis (pages non lues) |
 
 ## Lots NON sourcés (à reprendre) — SOURCE MANQUANTE
 Dates saisies de mémoire, sans page consultée ; en cours de reprise, une ligne ci-dessus remplace la ligne ici au fur et à mesure.
