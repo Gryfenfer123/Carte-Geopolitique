@@ -28,3 +28,4 @@ Mis à jour le 2026-10-24. Cocher au fur et à mesure.
 ## Ajouts (reprise avec sources, v110 à v114)
 - Supprimer le lien erroné « Rousoudan de Géorgie → David VII Oulou » (David VII est le fils de Georges IV Lacha ; le bon lien est ajouté en v114).
 - Mêmes consignes pour les liens « famille » (pas parent-enfant) de l'Iran : Cyrus → Darius Ier, Darius II → Darius III, Shapur II → Kavadh Ier, Khosro II → Yazdgard III. Ils ne sont pas faux (parenté lointaine) mais ne sont pas des filiations ; à garder ou supprimer selon ton choix.
+- Supprimer le lien erroné « Charles de Duras (1323-1348) → Charles III de Naples » (le père est Louis de Duras, ajouté en v117 avec les bons liens).

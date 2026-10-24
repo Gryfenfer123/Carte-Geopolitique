@@ -26444,8 +26444,8 @@
   "na.ramiro_m": {
    "id": "40a576f3-3a8c-5ca8-b9e7-20d9ea65ddee",
    "name": "Ramire Sánchez de Monzón",
-   "b": null,
-   "d": 1116,
+   "b": 1070,
+   "d": 1130,
    "tree": "NA_ROY",
    "title": "Seigneur de Monzón, petit-fils de García III",
    "g": "h",
@@ -26454,7 +26454,7 @@
   "na.garcia4": {
    "id": "167db292-180f-51b3-9d40-d6aa2bf04ac4",
    "name": "García IV Ramírez le Restaurateur",
-   "b": null,
+   "b": 1112,
    "d": 1150,
    "tree": "NA_ROY",
    "title": "Roi de Navarre (1134-1150)",
@@ -26514,7 +26514,7 @@
   "na.thibaut2": {
    "id": "301c4f2f-77e9-59fb-9805-a744ec2914b0",
    "name": "Thibaut II de Navarre",
-   "b": 1238,
+   "b": 1239,
    "d": 1270,
    "tree": "NA_ROY",
    "title": "Roi de Navarre (1253-1270)",
@@ -26534,7 +26534,7 @@
   "na.isabelle_f": {
    "id": "bd0bae4a-1243-5471-bc3d-8f367355773c",
    "name": "Isabelle de France (reine de Navarre)",
-   "b": 1242,
+   "b": 1241,
    "d": 1271,
    "tree": "FR_CAP",
    "title": "Reine de Navarre, épouse de Thibaut II",
@@ -26624,7 +26624,7 @@
   "na.eleonore_c": {
    "id": "f2467a25-edb2-5957-b3ce-e1592aab53d5",
    "name": "Éléonore de Castille (reine de Navarre)",
-   "b": 1363,
+   "b": null,
    "d": 1415,
    "tree": "ES_CAS",
    "title": "Reine de Navarre, épouse de Charles III",
@@ -26634,7 +26634,7 @@
   "na.blanche1": {
    "id": "34017186-23f9-5a0b-92af-cfae71e4d7ac",
    "name": "Blanche Ire de Navarre",
-   "b": 1385,
+   "b": 1387,
    "d": 1441,
    "tree": "NA_ROY",
    "title": "Reine de Navarre (1425-1441)",
@@ -26684,7 +26684,7 @@
   "na.gaston_v": {
    "id": "e8697ed5-63a3-5c25-8ff9-01e0b32b9252",
    "name": "Gaston de Foix, prince de Viane",
-   "b": 1444,
+   "b": 1445,
    "d": 1470,
    "tree": "NA_ROY",
    "title": "Père de François Fébus et de Catherine",
@@ -26774,7 +26774,7 @@
   "nap.beatrice": {
    "id": "7ff8e15d-1544-5907-b471-16e97e9454c6",
    "name": "Béatrice de Provence",
-   "b": 1234,
+   "b": 1229,
    "d": 1267,
    "tree": "IT_ANJ",
    "title": "Reine de Sicile, épouse de Charles Ier",
@@ -26784,7 +26784,7 @@
   "nap.robert": {
    "id": "bc331b50-83ba-5b21-8c3c-34046d0aa5cb",
    "name": "Robert le Sage",
-   "b": 1278,
+   "b": 1276,
    "d": 1343,
    "tree": "IT_ANJ",
    "title": "Roi de Naples (1309-1343)",
@@ -26794,7 +26794,7 @@
   "nap.sancia": {
    "id": "b93636e0-a1e5-5638-8b1e-0b8fbd0c53c9",
    "name": "Sancie de Majorque",
-   "b": 1285,
+   "b": 1281,
    "d": 1345,
    "tree": "IT_ANJ",
    "title": "Reine de Naples, épouse de Robert",
@@ -26805,7 +26805,7 @@
    "id": "14750ab9-7853-5b09-bc7c-be4e4fa87c4d",
    "name": "Philippe Ier de Tarente",
    "b": 1278,
-   "d": 1332,
+   "d": 1331,
    "tree": "IT_ANJ",
    "title": "Prince de Tarente, frère de Robert",
    "g": "h",
@@ -26894,7 +26894,7 @@
   "nap.jeanne2": {
    "id": "0f7d67d7-eb27-5e10-8bab-9d994c6b8ede",
    "name": "Jeanne II de Naples",
-   "b": 1373,
+   "b": 1371,
    "d": 1435,
    "tree": "IT_ANJ",
    "title": "Reine de Naples (1414-1435)",
@@ -26944,7 +26944,7 @@
   "nap.yolande": {
    "id": "c4cdb47d-1f16-51be-8828-43708366bb41",
    "name": "Yolande d'Aragon",
-   "b": 1384,
+   "b": 1381,
    "d": 1442,
    "tree": "ES_BAR",
    "title": "Duchesse d'Anjou, belle-mère de Charles VII",
@@ -26954,7 +26954,7 @@
   "nap.ferrante": {
    "id": "d6eb4cf6-c97d-59a9-97ca-1ed0bdc88918",
    "name": "Ferrante Ier de Naples",
-   "b": 1431,
+   "b": 1423,
    "d": 1494,
    "tree": "IT_ARN",
    "title": "Roi de Naples (1458-1494), fils naturel d'Alphonse V",
@@ -26974,7 +26974,7 @@
   "nap.juana": {
    "id": "7eeb0730-3b4f-59e6-9261-76bb4f9ecef7",
    "name": "Jeanne d'Aragon (reine de Naples)",
-   "b": 1454,
+   "b": 1455,
    "d": 1517,
    "tree": "IT_ARN",
    "title": "Seconde épouse de Ferrante Ier",
@@ -26994,7 +26994,7 @@
   "nap.ferrandino": {
    "id": "f5938a98-385c-59f2-8e3c-b3f9de17dd1b",
    "name": "Ferdinand II de Naples (Ferrandino)",
-   "b": 1469,
+   "b": 1467,
    "d": 1496,
    "tree": "IT_ARN",
    "title": "Roi de Naples (1495-1496)",
@@ -27014,7 +27014,7 @@
   "nap.federico": {
    "id": "25c04be1-4f08-5eb3-9296-0a639d0c1186",
    "name": "Frédéric IV de Naples",
-   "b": 1451,
+   "b": 1452,
    "d": 1504,
    "tree": "IT_ARN",
    "title": "Roi de Naples (1496-1501), dernier roi aragonais",
@@ -27024,8 +27024,8 @@
   "nap.ippolita": {
    "id": "ec58da77-5e60-5c17-92b9-d4ce7d30b7ec",
    "name": "Hippolyte Marie Sforza",
-   "b": 1446,
-   "d": 1484,
+   "b": 1445,
+   "d": 1488,
    "tree": "IT_SFO",
    "title": "Duchesse de Calabre, épouse d'Alphonse II",
    "g": "f",
@@ -27065,7 +27065,7 @@
    "id": "8b2ab3fc-4c64-5dd7-b6c0-ce2c5dbf4181",
    "name": "Vladimir",
    "b": null,
-   "d": 893,
+   "d": null,
    "tree": "BG_KRU",
    "title": "Knèze de Bulgarie (889-893)",
    "g": "h",
@@ -27074,8 +27074,8 @@
   "bg2.boris2": {
    "id": "190248c5-d194-57dd-b9ac-5444b4042147",
    "name": "Boris II",
-   "b": null,
-   "d": null,
+   "b": 931,
+   "d": 977,
    "tree": "BG_KRU",
    "title": "Tsar de Bulgarie (969-977)",
    "g": "h",
@@ -27084,7 +27084,7 @@
   "bg2.roman": {
    "id": "b79f29e6-c1c9-5dc2-bdb8-0ad9082031b5",
    "name": "Roman",
-   "b": null,
+   "b": 930,
    "d": 997,
    "tree": "BG_KRU",
    "title": "Tsar de Bulgarie (977-997)",
@@ -27114,7 +27114,7 @@
   "bg2.kaloyan": {
    "id": "c2eba8a9-4c7e-5fb9-8d8b-cd84c702a422",
    "name": "Kaloyan",
-   "b": null,
+   "b": 1170,
    "d": 1207,
    "tree": "BG_ASE",
    "title": "Tsar de Bulgarie (1196-1207)",
@@ -27134,7 +27134,7 @@
   "bg2.michael_asen1": {
    "id": "ef9c7b74-1d48-5a39-b8aa-66e26048893d",
    "name": "Michel Asen Ier",
-   "b": null,
+   "b": 1239,
    "d": 1256,
    "tree": "BG_ASE",
    "title": "Tsar de Bulgarie (1246-1256)",
@@ -27154,8 +27154,8 @@
   "bg2.michael_asen2": {
    "id": "24a47649-a60c-5967-8edd-92e0ea08bbd6",
    "name": "Michel Asen II",
-   "b": null,
-   "d": 1279,
+   "b": 1270,
+   "d": null,
    "tree": "BG_ASE",
    "title": "Tsar de Bulgarie (1277-1279)",
    "g": "h",
@@ -27205,7 +27205,7 @@
    "id": "954e6f16-bf9c-5582-8136-223c62b814c8",
    "name": "Ivan Stéphane",
    "b": null,
-   "d": 1373,
+   "d": null,
    "tree": "BG_CHI",
    "title": "Tsar de Bulgarie (1330-1331)",
    "g": "h",
@@ -29590,6 +29590,16 @@
    "title": "Fils de Mohammed III, père d'Abd al-Rahman",
    "g": "h",
    "script": 112
+  },
+  "nap.louis_d": {
+   "id": "b8b1f778-7c01-52fe-8783-76ea7efa3e63",
+   "name": "Louis de Duras (comte de Gravina)",
+   "b": 1324,
+   "d": 1362,
+   "tree": "IT_ANJ",
+   "title": "Comte de Gravina, père de Charles III de Naples",
+   "g": "h",
+   "script": 117
   }
  },
  "trees": {
@@ -30406,13 +30416,13 @@
   "IT_ANJ": {
    "entry": "edd033cb-9503-535c-b756-b5d41fea2e9a",
    "country": "ITA",
-   "dynasty": "Anjou-Naples",
+   "dynasty": "Maison d'Anjou-Naples",
    "script": 102
   },
   "IT_ARN": {
    "entry": "77a59bb6-8434-5515-a6e8-09434bcabb69",
    "country": "ITA",
-   "dynasty": "Aragon-Naples",
+   "dynasty": "Maison d'Aragon-Naples",
    "script": 102
   },
   "BG_TER": {
@@ -35773,6 +35783,12 @@
    "label": "Sources et corrections — Portugal (Bourgogne, Bragance), Brésil et ajouts Espagne (v98-v100)",
    "members": 0,
    "rels": 0,
+   "trees": []
+  },
+  "117": {
+   "label": "Sources et corrections — Navarre, Anjou-Naples, Aragon-Naples, Bulgarie (v101-v103)",
+   "members": 1,
+   "rels": 3,
    "trees": []
   }
  },
@@ -59770,6 +59786,21 @@
   [
    "3bb8a88a-b177-5b08-b976-f620b6ee373b",
    "eb834158-0274-521d-b930-c34fe4131fa5",
+   "parent"
+  ],
+  [
+   "8f963624-fa0c-5a44-9e78-acce642f2e0c",
+   "b8b1f778-7c01-52fe-8783-76ea7efa3e63",
+   "parent"
+  ],
+  [
+   "b8b1f778-7c01-52fe-8783-76ea7efa3e63",
+   "13071073-cfec-5f85-9573-b9e4149ff203",
+   "parent"
+  ],
+  [
+   "31466b8c-5b13-5646-b586-ba1f61440d06",
+   "7de16ff1-ad86-57bc-ab0f-8a4e455b493e",
    "parent"
   ]
  ],

@@ -14,11 +14,10 @@ Chaque fiche sourcée porte aussi l'adresse de sa page dans « Notes / biographi
 | 2026-10-24 | v114 — 40 fiches : Bagrationi, Arménie, Hasmonéens et Hérodiens (lien David VII corrigé) | Wikipédia anglais, une page par personne (liste dans le champ Notes) | https://en.wikipedia.org/wiki/<titre> | CC BY-SA 4.0 | tertiaire / à recouper ; dates antiques et médiévales approximatives
 | 2026-10-24 | v115 — Goryeo, 37 fiches (dates toutes confirmées) | Wikipédia anglais, une page par roi (« <Nom>_of_Goryeo ») | https://en.wikipedia.org/wiki/<titre> | CC BY-SA 4.0 | tertiaire / à recouper |
 | 2026-10-24 | v116 — 57 fiches : Portugal (Bourgogne, Bragance), Brésil, ajouts Espagne (v98-v100) | Wikipédia anglais, une page par personne (liste dans le champ Notes) | https://en.wikipedia.org/wiki/<titre> | CC BY-SA 4.0 | tertiaire / à recouper |
+| 2026-10-24 | v117 — 79 fiches : Navarre, Anjou-Naples, Aragon-Naples, Bulgarie (+ Louis de Duras ajouté, nombreuses dates corrigées) | Wikipédia anglais, une page par personne (liste dans le champ Notes) | https://en.wikipedia.org/wiki/<titre> | CC BY-SA 4.0 | tertiaire / à recouper ; numérotation des tsars bulgares variable selon les sources
 
 ## Lots NON sourcés (à reprendre) — SOURCE MANQUANTE
 Dates saisies de mémoire, sans page consultée ; en cours de reprise, une ligne ci-dessus remplace la ligne ici au fur et à mesure.
 | Migration | Arbres | État |
 |---|---|---|
-| v101-v102 | Navarre, Anjou-Naples, Aragon-Naples | SOURCE MANQUANTE |
-| v103 | Bulgarie (ajouts) | SOURCE MANQUANTE |
 | v39-v96 | Arbres antérieurs (autres sessions) | à auditer plus tard |
