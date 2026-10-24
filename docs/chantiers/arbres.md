@@ -2,6 +2,8 @@
 
 ## Dernières nouvelles (la plus récente en haut)
 
+- 2026-10-23 — v105 Égypte : Ptolémées + Méhémet-Ali (37 membres) ; outil de test : sections Dynastie de tous les pays
+
 - 2026-10-23 — v104 — Iran : 5 dynasties (Achéménides à Pahlavi). Dates de connaissance générale ; naissances inconnues laissées vides.
 
 - 2026-10-23 — v103 — Bulgarie : premier empire (Malamir à Roman), Asen (Ivan Asen Ier à Michel Asen II), Terter, Chichman (Michel III, Ivan Stéphane). Source : Wikipédia (filiations) ; naissances laissées vides.
@@ -87,7 +89,7 @@
 
 Code : `src/genealogy.ts`, `genealogyLayers.ts`, `genealogyBus.ts`, `genealogyLod.ts/.css`, `genealogyLayersWorker.ts`,
 `genealogyLayout.ts`, `genealogyRouting.ts`. Outils de remplissage : [`scripts/arbres/`](../../scripts/arbres/README.md).
-Prochaine migration : **arbres_v105** (`supabase/arbres/arbres_v105.sql`) — générateur : `Gen(105, "…")`.  (v104 livrée, à exécuter par Martin si ce n'est pas déjà fait.)
+Prochaine migration : **arbres_v106** (`supabase/arbres/arbres_v106.sql`) — générateur : `Gen(106, "…")`.  (v105 livrée, à exécuter par Martin si ce n'est pas déjà fait.)
 
 ## Règles de contenu (décidées par Martin — ne pas rouvrir)
 - Un pays n'a que les dynasties qui ont **régné sur lui**. Dynastie étrangère : branche principale dans son pays

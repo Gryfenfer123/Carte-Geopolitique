@@ -8,7 +8,7 @@ o=["drop schema if exists public cascade; create schema public;",
 "create table public.genealogy_relations(id uuid primary key default gen_random_uuid(),member_a_id uuid references public.genealogy_members(id),member_b_id uuid references public.genealogy_members(id),relation_type text,created_by uuid);",
 "create table public.genealogy_foreign_states(member_id uuid,owner_type text,owner_id uuid,pos_x float,pos_y float,is_leader boolean,pinned boolean default false,hidden boolean default false,primary key(member_id,owner_type,owner_id));"]
 cat='428a2e75-c8e3-51a1-b12a-bfe7a4018659'
-countries=set(e[1] for e in d['e'])|set('POL CZE UKR LTU LVA EST FIN SWE NOR GRC DNK HUN ROU BGR SRB HRV SVK SVN AUT CHE NLD BEL LUX IRL PRT RUS ALB MNE BLR MDA MKD BIH ISL MLT CYP LIE MCO AND SMR VAT DEU FRA ESP GBR ITA CHN'.split())
+countries=set(e[1] for e in d['e'])|set(x[1] for x in d['s'] if x[2] is None and str(x[3]).lower()=='dynastie')|set('POL CZE UKR LTU LVA EST FIN SWE NOR GRC DNK HUN ROU BGR SRB HRV SVK SVN AUT CHE NLD BEL LUX IRL PRT RUS ALB MNE BLR MDA MKD BIH ISL MLT CYP LIE MCO AND SMR VAT DEU FRA ESP GBR ITA CHN'.split())
 import uuid
 for c in sorted(countries):
     o.append(f"insert into public.dossier_sections(id,category_id,owner_type,owner_id,title,position) values ('{uuid.uuid5(uuid.NAMESPACE_DNS,'top'+c)}','{cat}','country',{q(c)},'Dynastie',2);")

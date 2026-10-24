@@ -27700,6 +27700,376 @@
    "title": "Prince héritier, prétendant au trône",
    "g": "h",
    "script": 104
+  },
+  "eg.p1": {
+   "id": "aff5643c-95cb-5da3-b04f-4df0d8f489ba",
+   "name": "Ptolémée Ier Sôter",
+   "b": -367,
+   "d": -282,
+   "tree": "EG_PTO",
+   "title": "Fondateur de la dynastie lagide, roi d'Égypte (-305 à -283)",
+   "g": "h",
+   "script": 105
+  },
+  "eg.p2": {
+   "id": "787f4c3c-f7c2-527b-b3c9-2fec8f89270f",
+   "name": "Ptolémée II Philadelphe",
+   "b": -309,
+   "d": -246,
+   "tree": "EG_PTO",
+   "title": "Roi d'Égypte (-283 à -246)",
+   "g": "h",
+   "script": 105
+  },
+  "eg.arsinoe2": {
+   "id": "5b7aa8ec-616f-5a5b-a1e4-b3064e39249d",
+   "name": "Arsinoé II",
+   "b": -316,
+   "d": -270,
+   "tree": "EG_PTO",
+   "title": "Reine, épouse de Ptolémée II",
+   "g": "f",
+   "script": 105
+  },
+  "eg.p3": {
+   "id": "379782c2-9751-5604-9e83-6eeb7e1329b2",
+   "name": "Ptolémée III Évergète",
+   "b": -280,
+   "d": -222,
+   "tree": "EG_PTO",
+   "title": "Roi d'Égypte (-246 à -222)",
+   "g": "h",
+   "script": 105
+  },
+  "eg.bereniceii": {
+   "id": "430b2a40-4045-5f6f-9f76-481d3c0be918",
+   "name": "Bérénice II",
+   "b": -267,
+   "d": -221,
+   "tree": "EG_PTO",
+   "title": "Reine, épouse de Ptolémée III",
+   "g": "f",
+   "script": 105
+  },
+  "eg.p4": {
+   "id": "ec3bbbf4-ab9f-580a-ac04-ba6e44b7f2dd",
+   "name": "Ptolémée IV Philopator",
+   "b": -244,
+   "d": -204,
+   "tree": "EG_PTO",
+   "title": "Roi d'Égypte (-221 à -204)",
+   "g": "h",
+   "script": 105
+  },
+  "eg.arsinoe3": {
+   "id": "1fae8295-dcb2-5ab8-91bd-43ec00fe7dc2",
+   "name": "Arsinoé III",
+   "b": -246,
+   "d": -204,
+   "tree": "EG_PTO",
+   "title": "Reine, épouse de Ptolémée IV",
+   "g": "f",
+   "script": 105
+  },
+  "eg.p5": {
+   "id": "38c18d87-c5a1-5340-abbd-fa4d678076bc",
+   "name": "Ptolémée V Épiphane",
+   "b": -210,
+   "d": -180,
+   "tree": "EG_PTO",
+   "title": "Roi d'Égypte (-204 à -180)",
+   "g": "h",
+   "script": 105
+  },
+  "eg.cleo1": {
+   "id": "1eebc7b4-9711-579d-9163-5ed56a928f58",
+   "name": "Cléopâtre Ire",
+   "b": -204,
+   "d": -176,
+   "tree": "EG_PTO",
+   "title": "Reine, régente (-180 à -176)",
+   "g": "f",
+   "script": 105
+  },
+  "eg.p6": {
+   "id": "3687ecaf-7227-5797-9c7e-0f026d5ccf9c",
+   "name": "Ptolémée VI Philométor",
+   "b": -186,
+   "d": -145,
+   "tree": "EG_PTO",
+   "title": "Roi d'Égypte (-180 à -145)",
+   "g": "h",
+   "script": 105
+  },
+  "eg.p8": {
+   "id": "b6c0669e-8e3b-5dfe-b6f9-a6a6f51b4dd0",
+   "name": "Ptolémée VIII Évergète II",
+   "b": -182,
+   "d": -116,
+   "tree": "EG_PTO",
+   "title": "Roi d'Égypte (-170 à -116)",
+   "g": "h",
+   "script": 105
+  },
+  "eg.cleo2": {
+   "id": "e0ab3c72-653a-5549-87e8-a2b72d9df82c",
+   "name": "Cléopâtre II",
+   "b": -185,
+   "d": -116,
+   "tree": "EG_PTO",
+   "title": "Reine, sœur et épouse de Ptolémée VI puis de Ptolémée VIII",
+   "g": "f",
+   "script": 105
+  },
+  "eg.cleo3": {
+   "id": "60ef275f-70b7-5c28-bad9-6ac1e4bf09e1",
+   "name": "Cléopâtre III",
+   "b": -161,
+   "d": -101,
+   "tree": "EG_PTO",
+   "title": "Reine, fille de Ptolémée VI, épouse de Ptolémée VIII",
+   "g": "f",
+   "script": 105
+  },
+  "eg.p9": {
+   "id": "991cc390-7fb7-5d27-b979-da4adbc0de0d",
+   "name": "Ptolémée IX Sôter II (Lathyros)",
+   "b": -143,
+   "d": -81,
+   "tree": "EG_PTO",
+   "title": "Roi d'Égypte (-116 à -107, -88 à -81)",
+   "g": "h",
+   "script": 105
+  },
+  "eg.p10": {
+   "id": "829430a0-d4f4-5662-b629-0170347bf788",
+   "name": "Ptolémée X Alexandre Ier",
+   "b": -140,
+   "d": -88,
+   "tree": "EG_PTO",
+   "title": "Roi d'Égypte (-107 à -88)",
+   "g": "h",
+   "script": 105
+  },
+  "eg.p12": {
+   "id": "05cb7344-a765-5878-96c3-e9ceba2ae9b1",
+   "name": "Ptolémée XII Aulète",
+   "b": -117,
+   "d": -51,
+   "tree": "EG_PTO",
+   "title": "Roi d'Égypte (-80 à -51), fils illégitime de Ptolémée IX",
+   "g": "h",
+   "script": 105
+  },
+  "eg.cleo7": {
+   "id": "c0fcc188-dfd3-5f24-ac85-178905d67ec5",
+   "name": "Cléopâtre VII",
+   "b": -69,
+   "d": -30,
+   "tree": "EG_PTO",
+   "title": "Dernière reine d'Égypte (-51 à -30)",
+   "g": "f",
+   "script": 105
+  },
+  "eg.p13": {
+   "id": "b4a97179-e012-5d98-b218-afa30a500239",
+   "name": "Ptolémée XIII",
+   "b": -62,
+   "d": -47,
+   "tree": "EG_PTO",
+   "title": "Roi d'Égypte (-51 à -47), frère et époux de Cléopâtre VII",
+   "g": "h",
+   "script": 105
+  },
+  "eg.arsinoe4": {
+   "id": "d7f3f108-6d41-5909-b326-d94c7a7920b1",
+   "name": "Arsinoé IV",
+   "b": -68,
+   "d": -41,
+   "tree": "EG_PTO",
+   "title": "Sœur de Cléopâtre VII, reine rivale (-48 à -47)",
+   "g": "f",
+   "script": 105
+  },
+  "eg.p14": {
+   "id": "0c62635b-2148-5996-940c-46c7fca4a584",
+   "name": "Ptolémée XIV",
+   "b": -59,
+   "d": -44,
+   "tree": "EG_PTO",
+   "title": "Roi d'Égypte (-47 à -44), frère et époux de Cléopâtre VII",
+   "g": "h",
+   "script": 105
+  },
+  "eg.caesarion": {
+   "id": "f872691a-458f-55ed-9253-b188bbd920ca",
+   "name": "Ptolémée XV Césarion",
+   "b": -47,
+   "d": -30,
+   "tree": "EG_PTO",
+   "title": "Co-roi d'Égypte (-44 à -30), fils de Jules César",
+   "g": "h",
+   "script": 105
+  },
+  "eg.selene": {
+   "id": "c114f332-7c10-5f19-9a86-ad1b176bbbce",
+   "name": "Cléopâtre Séléné II",
+   "b": -40,
+   "d": -6,
+   "tree": "EG_PTO",
+   "title": "Fille de Cléopâtre VII et d'Antoine, reine de Maurétanie",
+   "g": "f",
+   "script": 105
+  },
+  "eg.mehmet": {
+   "id": "ff4f107b-2bed-541a-9a31-d0075441cfca",
+   "name": "Méhémet-Ali",
+   "b": 1769,
+   "d": 1849,
+   "tree": "EG_ALI",
+   "title": "Wali d'Égypte (1805-1848), fondateur de la dynastie",
+   "g": "h",
+   "script": 105
+  },
+  "eg.tusun": {
+   "id": "4eb2d6bf-781c-5bfd-9335-ada42b2ca2f7",
+   "name": "Toussoun Pacha",
+   "b": 1794,
+   "d": 1816,
+   "tree": "EG_ALI",
+   "title": "Fils de Méhémet-Ali, père d'Abbas Ier",
+   "g": "h",
+   "script": 105
+  },
+  "eg.ibrahim": {
+   "id": "f28e5ef2-6486-55f6-9e11-ce96c92d0a96",
+   "name": "Ibrahim Pacha",
+   "b": 1789,
+   "d": 1848,
+   "tree": "EG_ALI",
+   "title": "Wali d'Égypte (1848), conquérant de la Syrie",
+   "g": "h",
+   "script": 105
+  },
+  "eg.abbas1": {
+   "id": "a7ae581e-07fa-5b3d-8ca0-023cae61d7c4",
+   "name": "Abbas Ier",
+   "b": 1813,
+   "d": 1854,
+   "tree": "EG_ALI",
+   "title": "Wali d'Égypte (1848-1854)",
+   "g": "h",
+   "script": 105
+  },
+  "eg.said": {
+   "id": "ecf0c167-5176-5699-ba6a-3fc535f6ad98",
+   "name": "Saïd Pacha",
+   "b": 1822,
+   "d": 1863,
+   "tree": "EG_ALI",
+   "title": "Wali d'Égypte (1854-1863), concède le canal de Suez",
+   "g": "h",
+   "script": 105
+  },
+  "eg.ismail": {
+   "id": "7f4e0d71-6f10-57ab-9f38-5d542af14541",
+   "name": "Ismaïl Pacha",
+   "b": 1830,
+   "d": 1895,
+   "tree": "EG_ALI",
+   "title": "Khédive d'Égypte (1863-1879)",
+   "g": "h",
+   "script": 105
+  },
+  "eg.tewfik": {
+   "id": "46ff9fe1-f3e1-557f-b0da-68cec8d84bdf",
+   "name": "Tewfik Pacha",
+   "b": 1852,
+   "d": 1892,
+   "tree": "EG_ALI",
+   "title": "Khédive d'Égypte (1879-1892)",
+   "g": "h",
+   "script": 105
+  },
+  "eg.abbas2": {
+   "id": "17a6fb3c-c7fe-5209-b8be-1030432e5d80",
+   "name": "Abbas II Hilmi",
+   "b": 1874,
+   "d": 1944,
+   "tree": "EG_ALI",
+   "title": "Dernier khédive d'Égypte (1892-1914)",
+   "g": "h",
+   "script": 105
+  },
+  "eg.hussein": {
+   "id": "de95ea4e-6e74-55ec-8da3-2aa73f2db151",
+   "name": "Hussein Kamel",
+   "b": 1853,
+   "d": 1917,
+   "tree": "EG_ALI",
+   "title": "Sultan d'Égypte (1914-1917)",
+   "g": "h",
+   "script": 105
+  },
+  "eg.fuad1": {
+   "id": "f37d770a-2174-5f78-9545-02346b07d8fe",
+   "name": "Fouad Ier",
+   "b": 1868,
+   "d": 1936,
+   "tree": "EG_ALI",
+   "title": "Sultan puis premier roi d'Égypte (1917-1936)",
+   "g": "h",
+   "script": 105
+  },
+  "eg.nazli": {
+   "id": "4a5d1226-bf5f-5644-9d75-9e9c457a75fe",
+   "name": "Nazli Sabri",
+   "b": 1894,
+   "d": 1978,
+   "tree": "EG_ALI",
+   "title": "Reine d'Égypte, épouse de Fouad Ier",
+   "g": "f",
+   "script": 105
+  },
+  "eg.farouk": {
+   "id": "706b8da7-3e0c-5a66-b62f-f261f70e6236",
+   "name": "Farouk Ier",
+   "b": 1920,
+   "d": 1965,
+   "tree": "EG_ALI",
+   "title": "Roi d'Égypte (1936-1952), déposé",
+   "g": "h",
+   "script": 105
+  },
+  "eg.farida": {
+   "id": "18667d75-1386-5953-bce7-53206b8473b1",
+   "name": "Farida Zulfikar",
+   "b": 1921,
+   "d": 1988,
+   "tree": "EG_ALI",
+   "title": "Première épouse de Farouk Ier",
+   "g": "f",
+   "script": 105
+  },
+  "eg.narriman": {
+   "id": "d8d12233-0a5e-51ea-a624-9cf522976ae0",
+   "name": "Narriman Sadek",
+   "b": 1934,
+   "d": 2005,
+   "tree": "EG_ALI",
+   "title": "Seconde épouse de Farouk Ier",
+   "g": "f",
+   "script": 105
+  },
+  "eg.fuad2": {
+   "id": "d83f372d-4fc7-5704-9fa8-75dbaa9e10e2",
+   "name": "Fouad II",
+   "b": 1952,
+   "d": null,
+   "tree": "EG_ALI",
+   "title": "Dernier roi d'Égypte (1952-1953)",
+   "g": "h",
+   "script": 105
   }
  },
  "trees": {
@@ -28560,6 +28930,18 @@
    "country": "IRN",
    "dynasty": "Pahlavi",
    "script": 104
+  },
+  "EG_PTO": {
+   "entry": "acd30242-6aa3-52d9-a439-3f7ec36fcbad",
+   "country": "EGY",
+   "dynasty": "Ptolémées",
+   "script": 105
+  },
+  "EG_ALI": {
+   "entry": "1a6d68b4-4ea2-5cae-95b6-9a5c70c9fc2e",
+   "country": "EGY",
+   "dynasty": "Dynastie de Méhémet-Ali",
+   "script": 105
   }
  },
  "flags": [
@@ -33037,11 +33419,32 @@
    "script": 104
   },
   {
-   "name": "Fawzia d'Égypte",
+   "name": "Ptolémée XV Césarion",
+   "b": -47,
+   "tree": "EG_PTO",
+   "reason": "Père : Jules César, arbre romain absent",
+   "script": 105
+  },
+  {
+   "name": "Nazli Sabri",
+   "b": 1894,
+   "tree": "EG_ALI",
+   "reason": "Famille Sabri : sans arbre",
+   "script": 105
+  },
+  {
+   "name": "Farida Zulfikar",
    "b": 1921,
-   "tree": "IR_PAH",
-   "reason": "Dynastie de Mehmet Ali (Égypte) : arbre à créer",
-   "script": 104
+   "tree": "EG_ALI",
+   "reason": "Famille Zulficar : sans arbre",
+   "script": 105
+  },
+  {
+   "name": "Narriman Sadek",
+   "b": 1934,
+   "tree": "EG_ALI",
+   "reason": "Famille Sadek : sans arbre",
+   "script": 105
   }
  ],
  "scripts": {
@@ -33568,6 +33971,15 @@
     "Safavides (IRN)",
     "Qajars (IRN)",
     "Pahlavi (IRN)"
+   ]
+  },
+  "105": {
+   "label": "Égypte — Ptolémées et dynastie de Méhémet-Ali",
+   "members": 37,
+   "rels": 54,
+   "trees": [
+    "Ptolémées (EGY)",
+    "Dynastie de Méhémet-Ali (EGY)"
    ]
   }
  },
@@ -56536,6 +56948,276 @@
    "370776ae-74d1-5a95-b3e8-c29455a2e5bb",
    "013627df-f3ce-563e-80ba-7689fe5ecc77",
    "parent"
+  ],
+  [
+   "aff5643c-95cb-5da3-b04f-4df0d8f489ba",
+   "787f4c3c-f7c2-527b-b3c9-2fec8f89270f",
+   "parent"
+  ],
+  [
+   "787f4c3c-f7c2-527b-b3c9-2fec8f89270f",
+   "379782c2-9751-5604-9e83-6eeb7e1329b2",
+   "parent"
+  ],
+  [
+   "379782c2-9751-5604-9e83-6eeb7e1329b2",
+   "ec3bbbf4-ab9f-580a-ac04-ba6e44b7f2dd",
+   "parent"
+  ],
+  [
+   "ec3bbbf4-ab9f-580a-ac04-ba6e44b7f2dd",
+   "38c18d87-c5a1-5340-abbd-fa4d678076bc",
+   "parent"
+  ],
+  [
+   "38c18d87-c5a1-5340-abbd-fa4d678076bc",
+   "3687ecaf-7227-5797-9c7e-0f026d5ccf9c",
+   "parent"
+  ],
+  [
+   "38c18d87-c5a1-5340-abbd-fa4d678076bc",
+   "b6c0669e-8e3b-5dfe-b6f9-a6a6f51b4dd0",
+   "parent"
+  ],
+  [
+   "38c18d87-c5a1-5340-abbd-fa4d678076bc",
+   "e0ab3c72-653a-5549-87e8-a2b72d9df82c",
+   "parent"
+  ],
+  [
+   "1eebc7b4-9711-579d-9163-5ed56a928f58",
+   "3687ecaf-7227-5797-9c7e-0f026d5ccf9c",
+   "parent"
+  ],
+  [
+   "1eebc7b4-9711-579d-9163-5ed56a928f58",
+   "b6c0669e-8e3b-5dfe-b6f9-a6a6f51b4dd0",
+   "parent"
+  ],
+  [
+   "1eebc7b4-9711-579d-9163-5ed56a928f58",
+   "e0ab3c72-653a-5549-87e8-a2b72d9df82c",
+   "parent"
+  ],
+  [
+   "379782c2-9751-5604-9e83-6eeb7e1329b2",
+   "1fae8295-dcb2-5ab8-91bd-43ec00fe7dc2",
+   "parent"
+  ],
+  [
+   "430b2a40-4045-5f6f-9f76-481d3c0be918",
+   "ec3bbbf4-ab9f-580a-ac04-ba6e44b7f2dd",
+   "parent"
+  ],
+  [
+   "430b2a40-4045-5f6f-9f76-481d3c0be918",
+   "1fae8295-dcb2-5ab8-91bd-43ec00fe7dc2",
+   "parent"
+  ],
+  [
+   "3687ecaf-7227-5797-9c7e-0f026d5ccf9c",
+   "60ef275f-70b7-5c28-bad9-6ac1e4bf09e1",
+   "parent"
+  ],
+  [
+   "e0ab3c72-653a-5549-87e8-a2b72d9df82c",
+   "60ef275f-70b7-5c28-bad9-6ac1e4bf09e1",
+   "parent"
+  ],
+  [
+   "b6c0669e-8e3b-5dfe-b6f9-a6a6f51b4dd0",
+   "991cc390-7fb7-5d27-b979-da4adbc0de0d",
+   "parent"
+  ],
+  [
+   "b6c0669e-8e3b-5dfe-b6f9-a6a6f51b4dd0",
+   "829430a0-d4f4-5662-b629-0170347bf788",
+   "parent"
+  ],
+  [
+   "60ef275f-70b7-5c28-bad9-6ac1e4bf09e1",
+   "991cc390-7fb7-5d27-b979-da4adbc0de0d",
+   "parent"
+  ],
+  [
+   "60ef275f-70b7-5c28-bad9-6ac1e4bf09e1",
+   "829430a0-d4f4-5662-b629-0170347bf788",
+   "parent"
+  ],
+  [
+   "991cc390-7fb7-5d27-b979-da4adbc0de0d",
+   "05cb7344-a765-5878-96c3-e9ceba2ae9b1",
+   "parent"
+  ],
+  [
+   "05cb7344-a765-5878-96c3-e9ceba2ae9b1",
+   "c0fcc188-dfd3-5f24-ac85-178905d67ec5",
+   "parent"
+  ],
+  [
+   "05cb7344-a765-5878-96c3-e9ceba2ae9b1",
+   "b4a97179-e012-5d98-b218-afa30a500239",
+   "parent"
+  ],
+  [
+   "05cb7344-a765-5878-96c3-e9ceba2ae9b1",
+   "d7f3f108-6d41-5909-b326-d94c7a7920b1",
+   "parent"
+  ],
+  [
+   "05cb7344-a765-5878-96c3-e9ceba2ae9b1",
+   "0c62635b-2148-5996-940c-46c7fca4a584",
+   "parent"
+  ],
+  [
+   "c0fcc188-dfd3-5f24-ac85-178905d67ec5",
+   "f872691a-458f-55ed-9253-b188bbd920ca",
+   "parent"
+  ],
+  [
+   "c0fcc188-dfd3-5f24-ac85-178905d67ec5",
+   "c114f332-7c10-5f19-9a86-ad1b176bbbce",
+   "parent"
+  ],
+  [
+   "787f4c3c-f7c2-527b-b3c9-2fec8f89270f",
+   "5b7aa8ec-616f-5a5b-a1e4-b3064e39249d",
+   "spouse"
+  ],
+  [
+   "379782c2-9751-5604-9e83-6eeb7e1329b2",
+   "430b2a40-4045-5f6f-9f76-481d3c0be918",
+   "spouse"
+  ],
+  [
+   "ec3bbbf4-ab9f-580a-ac04-ba6e44b7f2dd",
+   "1fae8295-dcb2-5ab8-91bd-43ec00fe7dc2",
+   "spouse"
+  ],
+  [
+   "38c18d87-c5a1-5340-abbd-fa4d678076bc",
+   "1eebc7b4-9711-579d-9163-5ed56a928f58",
+   "spouse"
+  ],
+  [
+   "3687ecaf-7227-5797-9c7e-0f026d5ccf9c",
+   "e0ab3c72-653a-5549-87e8-a2b72d9df82c",
+   "spouse"
+  ],
+  [
+   "b6c0669e-8e3b-5dfe-b6f9-a6a6f51b4dd0",
+   "e0ab3c72-653a-5549-87e8-a2b72d9df82c",
+   "spouse"
+  ],
+  [
+   "b6c0669e-8e3b-5dfe-b6f9-a6a6f51b4dd0",
+   "60ef275f-70b7-5c28-bad9-6ac1e4bf09e1",
+   "spouse"
+  ],
+  [
+   "991cc390-7fb7-5d27-b979-da4adbc0de0d",
+   "60ef275f-70b7-5c28-bad9-6ac1e4bf09e1",
+   "spouse"
+  ],
+  [
+   "c0fcc188-dfd3-5f24-ac85-178905d67ec5",
+   "b4a97179-e012-5d98-b218-afa30a500239",
+   "spouse"
+  ],
+  [
+   "c0fcc188-dfd3-5f24-ac85-178905d67ec5",
+   "0c62635b-2148-5996-940c-46c7fca4a584",
+   "spouse"
+  ],
+  [
+   "ff4f107b-2bed-541a-9a31-d0075441cfca",
+   "4eb2d6bf-781c-5bfd-9335-ada42b2ca2f7",
+   "parent"
+  ],
+  [
+   "ff4f107b-2bed-541a-9a31-d0075441cfca",
+   "f28e5ef2-6486-55f6-9e11-ce96c92d0a96",
+   "parent"
+  ],
+  [
+   "ff4f107b-2bed-541a-9a31-d0075441cfca",
+   "ecf0c167-5176-5699-ba6a-3fc535f6ad98",
+   "parent"
+  ],
+  [
+   "4eb2d6bf-781c-5bfd-9335-ada42b2ca2f7",
+   "a7ae581e-07fa-5b3d-8ca0-023cae61d7c4",
+   "parent"
+  ],
+  [
+   "f28e5ef2-6486-55f6-9e11-ce96c92d0a96",
+   "7f4e0d71-6f10-57ab-9f38-5d542af14541",
+   "parent"
+  ],
+  [
+   "7f4e0d71-6f10-57ab-9f38-5d542af14541",
+   "46ff9fe1-f3e1-557f-b0da-68cec8d84bdf",
+   "parent"
+  ],
+  [
+   "46ff9fe1-f3e1-557f-b0da-68cec8d84bdf",
+   "17a6fb3c-c7fe-5209-b8be-1030432e5d80",
+   "parent"
+  ],
+  [
+   "7f4e0d71-6f10-57ab-9f38-5d542af14541",
+   "de95ea4e-6e74-55ec-8da3-2aa73f2db151",
+   "parent"
+  ],
+  [
+   "7f4e0d71-6f10-57ab-9f38-5d542af14541",
+   "f37d770a-2174-5f78-9545-02346b07d8fe",
+   "parent"
+  ],
+  [
+   "f37d770a-2174-5f78-9545-02346b07d8fe",
+   "706b8da7-3e0c-5a66-b62f-f261f70e6236",
+   "parent"
+  ],
+  [
+   "4a5d1226-bf5f-5644-9d75-9e9c457a75fe",
+   "706b8da7-3e0c-5a66-b62f-f261f70e6236",
+   "parent"
+  ],
+  [
+   "706b8da7-3e0c-5a66-b62f-f261f70e6236",
+   "d83f372d-4fc7-5704-9fa8-75dbaa9e10e2",
+   "parent"
+  ],
+  [
+   "d8d12233-0a5e-51ea-a624-9cf522976ae0",
+   "d83f372d-4fc7-5704-9fa8-75dbaa9e10e2",
+   "parent"
+  ],
+  [
+   "f37d770a-2174-5f78-9545-02346b07d8fe",
+   "4a5d1226-bf5f-5644-9d75-9e9c457a75fe",
+   "spouse"
+  ],
+  [
+   "706b8da7-3e0c-5a66-b62f-f261f70e6236",
+   "18667d75-1386-5953-bce7-53206b8473b1",
+   "spouse"
+  ],
+  [
+   "706b8da7-3e0c-5a66-b62f-f261f70e6236",
+   "d8d12233-0a5e-51ea-a624-9cf522976ae0",
+   "spouse"
+  ],
+  [
+   "f37d770a-2174-5f78-9545-02346b07d8fe",
+   "155cbcc0-3627-5f1b-8223-7f5c271930ca",
+   "parent"
+  ],
+  [
+   "4a5d1226-bf5f-5644-9d75-9e9c457a75fe",
+   "155cbcc0-3627-5f1b-8223-7f5c271930ca",
+   "parent"
   ]
  ],
  "dateflags": [
@@ -64630,6 +65312,41 @@
    "d": 1777,
    "note": "Naissance vers 1722.",
    "script": 104
+  },
+  {
+   "name": "Cléopâtre III",
+   "b": -161,
+   "d": -101,
+   "note": "Naissance approximative.",
+   "script": 105
+  },
+  {
+   "name": "Ptolémée X Alexandre Ier",
+   "b": -140,
+   "d": -88,
+   "note": "Naissance approximative.",
+   "script": 105
+  },
+  {
+   "name": "Ptolémée XIII",
+   "b": -62,
+   "d": -47,
+   "note": "Naissance approximative.",
+   "script": 105
+  },
+  {
+   "name": "Arsinoé IV",
+   "b": -68,
+   "d": -41,
+   "note": "Naissance approximative.",
+   "script": 105
+  },
+  {
+   "name": "Ptolémée XIV",
+   "b": -59,
+   "d": -44,
+   "note": "Naissance approximative.",
+   "script": 105
   }
  ],
  "pins": [
@@ -65380,6 +66097,10 @@
   [
    "90cd1f76-514c-5cfa-9f46-edcc228f924c",
    "IT_ARN"
+  ],
+  [
+   "155cbcc0-3627-5f1b-8223-7f5c271930ca",
+   "EG_ALI"
   ]
  ],
  "xmoved": {

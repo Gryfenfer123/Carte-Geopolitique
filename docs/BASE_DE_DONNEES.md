@@ -174,4 +174,5 @@ RLS**. Règles :
 | arbres_v102 | v102 : Naples, Anjou-Naples et Aragon-Naples (27 membres, 2 nouveaux arbres) |
 | arbres_v103 | v103 : Bulgarie, suite des souverains (18 membres, nouvel arbre Terter) |
 | arbres_v104 | v104 : Iran, Achéménides, Sassanides, Safavides, Qajars, Pahlavi (49 membres, 5 nouveaux arbres) |
+| arbres_v105 | v105 : Égypte — arbres Ptolémées (22) et Dynastie de Méhémet-Ali (15), Fawzia reliée à Fouad Ier |
 | `data_owid_load.sql` + `owid_chunks/` | Chargement des données d'indicateurs (rejouable, upserts) — à exécuter après v1 à v7 |
