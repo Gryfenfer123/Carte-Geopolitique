@@ -27210,6 +27210,496 @@
    "title": "Tsar de Bulgarie (1330-1331)",
    "g": "h",
    "script": 103
+  },
+  "ir.cyrus": {
+   "id": "a743eefc-fe64-5e6d-b25c-5e3fa8246c69",
+   "name": "Cyrus II le Grand",
+   "b": null,
+   "d": -530,
+   "tree": "IR_ACH",
+   "title": "Fondateur de l'Empire achéménide (-559 à -530)",
+   "g": "h",
+   "script": 104
+  },
+  "ir.cambyse": {
+   "id": "6e87c29c-1b84-5b14-ae94-7494ea73fcc7",
+   "name": "Cambyse II",
+   "b": null,
+   "d": -522,
+   "tree": "IR_ACH",
+   "title": "Roi des rois (-530 à -522), conquiert l'Égypte",
+   "g": "h",
+   "script": 104
+  },
+  "ir.darius1": {
+   "id": "6ce6af20-e872-5b04-9ddc-d2c47c9cc7c4",
+   "name": "Darius Ier",
+   "b": -550,
+   "d": -486,
+   "tree": "IR_ACH",
+   "title": "Roi des rois (-522 à -486)",
+   "g": "h",
+   "script": 104
+  },
+  "ir.xerxes1": {
+   "id": "30326bb6-7c56-57d9-8d44-386f06b92a3e",
+   "name": "Xerxès Ier",
+   "b": -518,
+   "d": -465,
+   "tree": "IR_ACH",
+   "title": "Roi des rois (-486 à -465), guerres médiques",
+   "g": "h",
+   "script": 104
+  },
+  "ir.artax1": {
+   "id": "43e7550e-9641-5a77-88ce-f9527ee4fc0b",
+   "name": "Artaxerxès Ier",
+   "b": null,
+   "d": -424,
+   "tree": "IR_ACH",
+   "title": "Roi des rois (-465 à -424)",
+   "g": "h",
+   "script": 104
+  },
+  "ir.darius2": {
+   "id": "2911a01a-d337-57cb-b114-00b3f54a28d1",
+   "name": "Darius II",
+   "b": null,
+   "d": -404,
+   "tree": "IR_ACH",
+   "title": "Roi des rois (-423 à -404)",
+   "g": "h",
+   "script": 104
+  },
+  "ir.artax2": {
+   "id": "5eda482f-7fb4-59c1-b9f2-05f67127f813",
+   "name": "Artaxerxès II",
+   "b": -445,
+   "d": -358,
+   "tree": "IR_ACH",
+   "title": "Roi des rois (-404 à -358)",
+   "g": "h",
+   "script": 104
+  },
+  "ir.artax3": {
+   "id": "a6757017-b251-5e6e-919f-4511e206166f",
+   "name": "Artaxerxès III",
+   "b": -425,
+   "d": -338,
+   "tree": "IR_ACH",
+   "title": "Roi des rois (-358 à -338)",
+   "g": "h",
+   "script": 104
+  },
+  "ir.arses": {
+   "id": "c96ca2fe-8539-5546-8fbd-7080d5e9fef8",
+   "name": "Arsès (Artaxerxès IV)",
+   "b": null,
+   "d": -336,
+   "tree": "IR_ACH",
+   "title": "Roi des rois (-338 à -336)",
+   "g": "h",
+   "script": 104
+  },
+  "ir.darius3": {
+   "id": "35ca6a39-b543-5aa1-96ef-cf750818f84d",
+   "name": "Darius III",
+   "b": -380,
+   "d": -330,
+   "tree": "IR_ACH",
+   "title": "Dernier roi des rois (-336 à -330), vaincu par Alexandre",
+   "g": "h",
+   "script": 104
+  },
+  "ir.ardashir": {
+   "id": "cb95d341-e4e8-5b4e-a844-1097689d826d",
+   "name": "Ardachîr Ier",
+   "b": null,
+   "d": 242,
+   "tree": "IR_SAS",
+   "title": "Fondateur de l'Empire sassanide (224-242)",
+   "g": "h",
+   "script": 104
+  },
+  "ir.shapur1": {
+   "id": "6ec1cc2c-b426-5f33-972b-f27a64f7476d",
+   "name": "Shapur Ier",
+   "b": null,
+   "d": 270,
+   "tree": "IR_SAS",
+   "title": "Roi des rois (240-270), capture l'empereur Valérien",
+   "g": "h",
+   "script": 104
+  },
+  "ir.narseh": {
+   "id": "372a762b-c3d0-50a0-99f8-f57fba6656a1",
+   "name": "Narsès",
+   "b": null,
+   "d": 302,
+   "tree": "IR_SAS",
+   "title": "Roi des rois (293-302)",
+   "g": "h",
+   "script": 104
+  },
+  "ir.hormizd2": {
+   "id": "ff8be811-91cd-5fdb-8b6c-a02c7ea3b383",
+   "name": "Hormizd II",
+   "b": null,
+   "d": 309,
+   "tree": "IR_SAS",
+   "title": "Roi des rois (302-309)",
+   "g": "h",
+   "script": 104
+  },
+  "ir.shapur2": {
+   "id": "d0610f4f-4ab6-531c-906f-93a7a90b60dd",
+   "name": "Shapur II le Grand",
+   "b": 309,
+   "d": 379,
+   "tree": "IR_SAS",
+   "title": "Roi des rois (309-379), roi dès sa naissance",
+   "g": "h",
+   "script": 104
+  },
+  "ir.kavad1": {
+   "id": "e63af3da-5619-585f-99f0-23705eea6551",
+   "name": "Kavadh Ier",
+   "b": 473,
+   "d": 531,
+   "tree": "IR_SAS",
+   "title": "Roi des rois (488-531)",
+   "g": "h",
+   "script": 104
+  },
+  "ir.khosrow1": {
+   "id": "9b201f58-569e-5583-94d2-6483dbfc87c5",
+   "name": "Khosro Ier Anushirvan",
+   "b": 501,
+   "d": 579,
+   "tree": "IR_SAS",
+   "title": "Roi des rois (531-579)",
+   "g": "h",
+   "script": 104
+  },
+  "ir.hormizd4": {
+   "id": "a0a835c5-8385-558d-8aa3-987ae15e21cd",
+   "name": "Hormizd IV",
+   "b": null,
+   "d": 590,
+   "tree": "IR_SAS",
+   "title": "Roi des rois (579-590)",
+   "g": "h",
+   "script": 104
+  },
+  "ir.khosrow2": {
+   "id": "7b275930-0496-5a6d-a32e-d7017224aa8a",
+   "name": "Khosro II Parviz",
+   "b": 570,
+   "d": 628,
+   "tree": "IR_SAS",
+   "title": "Roi des rois (590-628), dernière grande guerre contre Byzance",
+   "g": "h",
+   "script": 104
+  },
+  "ir.kavad2": {
+   "id": "dd118635-9641-5ef0-bd4c-d277f42c3d25",
+   "name": "Kavadh II",
+   "b": null,
+   "d": 628,
+   "tree": "IR_SAS",
+   "title": "Roi des rois (628)",
+   "g": "h",
+   "script": 104
+  },
+  "ir.yazdegerd3": {
+   "id": "c953e913-891f-5b9e-b7d6-c697a9c956eb",
+   "name": "Yazdgard III",
+   "b": 624,
+   "d": 651,
+   "tree": "IR_SAS",
+   "title": "Dernier roi des rois (632-651), vaincu par les Arabes",
+   "g": "h",
+   "script": 104
+  },
+  "ir.haydar": {
+   "id": "0791ac01-f8fd-588e-a006-86dacd22af1b",
+   "name": "Cheikh Haydar",
+   "b": 1459,
+   "d": 1488,
+   "tree": "IR_SAF",
+   "title": "Chef de l'ordre safavide, père d'Ismaïl Ier",
+   "g": "h",
+   "script": 104
+  },
+  "ir.ismail1": {
+   "id": "8ea9c0c9-5214-55fd-ae57-271264b68ca1",
+   "name": "Ismaïl Ier",
+   "b": 1487,
+   "d": 1524,
+   "tree": "IR_SAF",
+   "title": "Fondateur de l'Empire safavide (1501-1524)",
+   "g": "h",
+   "script": 104
+  },
+  "ir.tahmasp1": {
+   "id": "9c4b7bb5-1e0a-502b-a055-7f7e40aee225",
+   "name": "Tahmasp Ier",
+   "b": 1514,
+   "d": 1576,
+   "tree": "IR_SAF",
+   "title": "Shah (1524-1576)",
+   "g": "h",
+   "script": 104
+  },
+  "ir.ismail2": {
+   "id": "041b1b67-2233-5048-b0a7-6cda65051074",
+   "name": "Ismaïl II",
+   "b": 1537,
+   "d": 1577,
+   "tree": "IR_SAF",
+   "title": "Shah (1576-1577)",
+   "g": "h",
+   "script": 104
+  },
+  "ir.khoda": {
+   "id": "58edca92-4bef-5f06-be81-6cf2b34db815",
+   "name": "Mohammad Khodabanda",
+   "b": 1531,
+   "d": 1595,
+   "tree": "IR_SAF",
+   "title": "Shah (1578-1587)",
+   "g": "h",
+   "script": 104
+  },
+  "ir.abbas1": {
+   "id": "b255f8c7-9132-57e9-bd6a-7863e1508efa",
+   "name": "Abbas Ier le Grand",
+   "b": 1571,
+   "d": 1629,
+   "tree": "IR_SAF",
+   "title": "Shah (1588-1629)",
+   "g": "h",
+   "script": 104
+  },
+  "ir.baqir": {
+   "id": "a5c7676f-06fa-53b2-9071-6d9e721cd888",
+   "name": "Mohammad Baqir Mirza",
+   "b": 1587,
+   "d": 1615,
+   "tree": "IR_SAF",
+   "title": "Prince héritier, père de Safi Ier",
+   "g": "h",
+   "script": 104
+  },
+  "ir.safi": {
+   "id": "1fd616dd-faa9-5b5b-8467-93daef6dfd8e",
+   "name": "Safi Ier",
+   "b": 1611,
+   "d": 1642,
+   "tree": "IR_SAF",
+   "title": "Shah (1629-1642)",
+   "g": "h",
+   "script": 104
+  },
+  "ir.abbas2": {
+   "id": "802b54af-321d-5961-abb8-f3565781df8b",
+   "name": "Abbas II",
+   "b": 1632,
+   "d": 1666,
+   "tree": "IR_SAF",
+   "title": "Shah (1642-1666)",
+   "g": "h",
+   "script": 104
+  },
+  "ir.suleiman": {
+   "id": "e88ab996-7af5-503e-940c-4fc33f690aa9",
+   "name": "Soleiman Ier",
+   "b": 1647,
+   "d": 1694,
+   "tree": "IR_SAF",
+   "title": "Shah (1666-1694)",
+   "g": "h",
+   "script": 104
+  },
+  "ir.husayn": {
+   "id": "d823ed07-4675-553e-95ef-6fc2866d5903",
+   "name": "Soltan Hosein",
+   "b": 1668,
+   "d": 1726,
+   "tree": "IR_SAF",
+   "title": "Shah (1694-1722), renversé par les Afghans",
+   "g": "h",
+   "script": 104
+  },
+  "ir.tahmasp2": {
+   "id": "49ffc8f3-a050-56ff-889c-2fada921b0cf",
+   "name": "Tahmasp II",
+   "b": 1704,
+   "d": 1740,
+   "tree": "IR_SAF",
+   "title": "Shah (1722-1732)",
+   "g": "h",
+   "script": 104
+  },
+  "ir.abbas3": {
+   "id": "304cc8a6-e084-50c4-9f32-77674cbe3430",
+   "name": "Abbas III",
+   "b": 1732,
+   "d": 1740,
+   "tree": "IR_SAF",
+   "title": "Shah (1732-1736), enfant déposé par Nader Shah",
+   "g": "h",
+   "script": 104
+  },
+  "ir.hosseinqoli": {
+   "id": "bbd673a6-bbb1-5391-a7f2-3024e5ec2b80",
+   "name": "Hosein Qoli Khan Qajar",
+   "b": 1722,
+   "d": 1777,
+   "tree": "IR_QAJ",
+   "title": "Chef qajar, père de Fath Ali Shah",
+   "g": "h",
+   "script": 104
+  },
+  "ir.agha": {
+   "id": "e23e5175-3cc5-52ef-b006-a93388ca8f2d",
+   "name": "Agha Mohammad Khan",
+   "b": 1742,
+   "d": 1797,
+   "tree": "IR_QAJ",
+   "title": "Fondateur de la dynastie qajare (1789-1797)",
+   "g": "h",
+   "script": 104
+  },
+  "ir.fathali": {
+   "id": "233f297d-a6cb-5cc5-b855-8bc754d5ec0c",
+   "name": "Fath Ali Shah",
+   "b": 1772,
+   "d": 1834,
+   "tree": "IR_QAJ",
+   "title": "Shah (1797-1834)",
+   "g": "h",
+   "script": 104
+  },
+  "ir.abbasm": {
+   "id": "463663fa-ddc0-593d-99f4-685ab2906044",
+   "name": "Abbas Mirza",
+   "b": 1789,
+   "d": 1833,
+   "tree": "IR_QAJ",
+   "title": "Prince héritier réformateur",
+   "g": "h",
+   "script": 104
+  },
+  "ir.mohammad": {
+   "id": "ada2492b-1d98-558e-8751-ae612e79d946",
+   "name": "Mohammad Shah",
+   "b": 1808,
+   "d": 1848,
+   "tree": "IR_QAJ",
+   "title": "Shah (1834-1848)",
+   "g": "h",
+   "script": 104
+  },
+  "ir.naser": {
+   "id": "90970ffc-98fc-5b0c-82f2-8041bbacafd3",
+   "name": "Nasser ed-Din Shah",
+   "b": 1831,
+   "d": 1896,
+   "tree": "IR_QAJ",
+   "title": "Shah (1848-1896), assassiné",
+   "g": "h",
+   "script": 104
+  },
+  "ir.mozaffar": {
+   "id": "e18ee7ea-ac9c-5d24-84d2-f3f5f89b4776",
+   "name": "Mozaffar ed-Din Shah",
+   "b": 1853,
+   "d": 1907,
+   "tree": "IR_QAJ",
+   "title": "Shah (1896-1907), accorde la Constitution",
+   "g": "h",
+   "script": 104
+  },
+  "ir.mohammadali": {
+   "id": "bb5df395-584e-5af5-af08-a40961a560a8",
+   "name": "Mohammad Ali Shah",
+   "b": 1872,
+   "d": 1925,
+   "tree": "IR_QAJ",
+   "title": "Shah (1907-1909), déposé",
+   "g": "h",
+   "script": 104
+  },
+  "ir.ahmad": {
+   "id": "7fdd69c3-d574-5ed7-8296-aea9ddd9fa0a",
+   "name": "Ahmad Shah",
+   "b": 1898,
+   "d": 1930,
+   "tree": "IR_QAJ",
+   "title": "Dernier shah qajar (1909-1925)",
+   "g": "h",
+   "script": 104
+  },
+  "ir.reza": {
+   "id": "ddfcbf96-3455-5a8d-8845-5af644f64a8e",
+   "name": "Reza Shah",
+   "b": 1878,
+   "d": 1944,
+   "tree": "IR_PAH",
+   "title": "Fondateur de la dynastie Pahlavi (1925-1941)",
+   "g": "h",
+   "script": 104
+  },
+  "ir.mreza": {
+   "id": "55884d5e-2bed-56ef-8326-fd5cea678bb3",
+   "name": "Mohammad Reza Pahlavi",
+   "b": 1919,
+   "d": 1980,
+   "tree": "IR_PAH",
+   "title": "Shah d'Iran (1941-1979), renversé par la révolution",
+   "g": "h",
+   "script": 104
+  },
+  "ir.soraya": {
+   "id": "759e55e7-fa63-51ba-b578-589e2f6e2dea",
+   "name": "Soraya Esfandiary-Bakhtiari",
+   "b": 1932,
+   "d": 2001,
+   "tree": "IR_PAH",
+   "title": "Deuxième épouse du shah, répudiée",
+   "g": "f",
+   "script": 104
+  },
+  "ir.farah": {
+   "id": "370776ae-74d1-5a95-b3e8-c29455a2e5bb",
+   "name": "Farah Diba",
+   "b": 1938,
+   "d": null,
+   "tree": "IR_PAH",
+   "title": "Impératrice d'Iran, troisième épouse du shah",
+   "g": "f",
+   "script": 104
+  },
+  "ir.fawzia": {
+   "id": "155cbcc0-3627-5f1b-8223-7f5c271930ca",
+   "name": "Fawzia d'Égypte",
+   "b": 1921,
+   "d": 2013,
+   "tree": "IR_PAH",
+   "title": "Première épouse du shah, princesse d'Égypte",
+   "g": "f",
+   "script": 104
+  },
+  "ir.reza2": {
+   "id": "013627df-f3ce-563e-80ba-7689fe5ecc77",
+   "name": "Reza Pahlavi",
+   "b": 1960,
+   "d": null,
+   "tree": "IR_PAH",
+   "title": "Prince héritier, prétendant au trône",
+   "g": "h",
+   "script": 104
   }
  },
  "trees": {
@@ -28040,6 +28530,36 @@
    "country": "BGR",
    "dynasty": "Terter",
    "script": 103
+  },
+  "IR_ACH": {
+   "entry": "d544e28f-74ff-5043-a131-1d335c3d6e38",
+   "country": "IRN",
+   "dynasty": "Achéménides",
+   "script": 104
+  },
+  "IR_SAS": {
+   "entry": "80db5993-f24d-587b-9a33-4f92bed1f516",
+   "country": "IRN",
+   "dynasty": "Sassanides",
+   "script": 104
+  },
+  "IR_SAF": {
+   "entry": "6c044b6f-f457-53ca-9440-62885219f4ee",
+   "country": "IRN",
+   "dynasty": "Safavides",
+   "script": 104
+  },
+  "IR_QAJ": {
+   "entry": "152d5bb2-1490-5228-978c-8e39c9223cd9",
+   "country": "IRN",
+   "dynasty": "Qajars",
+   "script": 104
+  },
+  "IR_PAH": {
+   "entry": "65c73c1c-5773-5e6f-b97d-d058f4e3a440",
+   "country": "IRN",
+   "dynasty": "Pahlavi",
+   "script": 104
   }
  },
  "flags": [
@@ -32501,6 +33021,27 @@
    "tree": "IT_ARN",
    "reason": "Maison de Clermont-Tarente : sans arbre",
    "script": 102
+  },
+  {
+   "name": "Soraya Esfandiary-Bakhtiari",
+   "b": 1932,
+   "tree": "IR_PAH",
+   "reason": "Famille Bakhtiari : sans arbre",
+   "script": 104
+  },
+  {
+   "name": "Farah Diba",
+   "b": 1938,
+   "tree": "IR_PAH",
+   "reason": "Famille Diba : sans arbre",
+   "script": 104
+  },
+  {
+   "name": "Fawzia d'Égypte",
+   "b": 1921,
+   "tree": "IR_PAH",
+   "reason": "Dynastie de Mehmet Ali (Égypte) : arbre à créer",
+   "script": 104
   }
  ],
  "scripts": {
@@ -33015,6 +33556,18 @@
    "rels": 18,
    "trees": [
     "Terter (BGR)"
+   ]
+  },
+  "104": {
+   "label": "Iran — Achéménides, Sassanides, Safavides, Qajars et Pahlavi",
+   "members": 49,
+   "rels": 46,
+   "trees": [
+    "Achéménides (IRN)",
+    "Sassanides (IRN)",
+    "Safavides (IRN)",
+    "Qajars (IRN)",
+    "Pahlavi (IRN)"
    ]
   }
  },
@@ -55753,6 +56306,236 @@
    "b4c2e461-552c-55c3-b5bb-a2aa573965c2",
    "da935432-8ffb-5434-959d-c2cb6e130d9e",
    "family"
+  ],
+  [
+   "a743eefc-fe64-5e6d-b25c-5e3fa8246c69",
+   "6e87c29c-1b84-5b14-ae94-7494ea73fcc7",
+   "parent"
+  ],
+  [
+   "a743eefc-fe64-5e6d-b25c-5e3fa8246c69",
+   "6ce6af20-e872-5b04-9ddc-d2c47c9cc7c4",
+   "family"
+  ],
+  [
+   "6ce6af20-e872-5b04-9ddc-d2c47c9cc7c4",
+   "30326bb6-7c56-57d9-8d44-386f06b92a3e",
+   "parent"
+  ],
+  [
+   "30326bb6-7c56-57d9-8d44-386f06b92a3e",
+   "43e7550e-9641-5a77-88ce-f9527ee4fc0b",
+   "parent"
+  ],
+  [
+   "43e7550e-9641-5a77-88ce-f9527ee4fc0b",
+   "2911a01a-d337-57cb-b114-00b3f54a28d1",
+   "parent"
+  ],
+  [
+   "2911a01a-d337-57cb-b114-00b3f54a28d1",
+   "5eda482f-7fb4-59c1-b9f2-05f67127f813",
+   "parent"
+  ],
+  [
+   "5eda482f-7fb4-59c1-b9f2-05f67127f813",
+   "a6757017-b251-5e6e-919f-4511e206166f",
+   "parent"
+  ],
+  [
+   "a6757017-b251-5e6e-919f-4511e206166f",
+   "c96ca2fe-8539-5546-8fbd-7080d5e9fef8",
+   "parent"
+  ],
+  [
+   "2911a01a-d337-57cb-b114-00b3f54a28d1",
+   "35ca6a39-b543-5aa1-96ef-cf750818f84d",
+   "family"
+  ],
+  [
+   "cb95d341-e4e8-5b4e-a844-1097689d826d",
+   "6ec1cc2c-b426-5f33-972b-f27a64f7476d",
+   "parent"
+  ],
+  [
+   "6ec1cc2c-b426-5f33-972b-f27a64f7476d",
+   "372a762b-c3d0-50a0-99f8-f57fba6656a1",
+   "parent"
+  ],
+  [
+   "372a762b-c3d0-50a0-99f8-f57fba6656a1",
+   "ff8be811-91cd-5fdb-8b6c-a02c7ea3b383",
+   "parent"
+  ],
+  [
+   "ff8be811-91cd-5fdb-8b6c-a02c7ea3b383",
+   "d0610f4f-4ab6-531c-906f-93a7a90b60dd",
+   "parent"
+  ],
+  [
+   "e63af3da-5619-585f-99f0-23705eea6551",
+   "9b201f58-569e-5583-94d2-6483dbfc87c5",
+   "parent"
+  ],
+  [
+   "9b201f58-569e-5583-94d2-6483dbfc87c5",
+   "a0a835c5-8385-558d-8aa3-987ae15e21cd",
+   "parent"
+  ],
+  [
+   "a0a835c5-8385-558d-8aa3-987ae15e21cd",
+   "7b275930-0496-5a6d-a32e-d7017224aa8a",
+   "parent"
+  ],
+  [
+   "7b275930-0496-5a6d-a32e-d7017224aa8a",
+   "dd118635-9641-5ef0-bd4c-d277f42c3d25",
+   "parent"
+  ],
+  [
+   "d0610f4f-4ab6-531c-906f-93a7a90b60dd",
+   "e63af3da-5619-585f-99f0-23705eea6551",
+   "family"
+  ],
+  [
+   "7b275930-0496-5a6d-a32e-d7017224aa8a",
+   "c953e913-891f-5b9e-b7d6-c697a9c956eb",
+   "family"
+  ],
+  [
+   "0791ac01-f8fd-588e-a006-86dacd22af1b",
+   "8ea9c0c9-5214-55fd-ae57-271264b68ca1",
+   "parent"
+  ],
+  [
+   "8ea9c0c9-5214-55fd-ae57-271264b68ca1",
+   "9c4b7bb5-1e0a-502b-a055-7f7e40aee225",
+   "parent"
+  ],
+  [
+   "9c4b7bb5-1e0a-502b-a055-7f7e40aee225",
+   "041b1b67-2233-5048-b0a7-6cda65051074",
+   "parent"
+  ],
+  [
+   "9c4b7bb5-1e0a-502b-a055-7f7e40aee225",
+   "58edca92-4bef-5f06-be81-6cf2b34db815",
+   "parent"
+  ],
+  [
+   "58edca92-4bef-5f06-be81-6cf2b34db815",
+   "b255f8c7-9132-57e9-bd6a-7863e1508efa",
+   "parent"
+  ],
+  [
+   "b255f8c7-9132-57e9-bd6a-7863e1508efa",
+   "a5c7676f-06fa-53b2-9071-6d9e721cd888",
+   "parent"
+  ],
+  [
+   "a5c7676f-06fa-53b2-9071-6d9e721cd888",
+   "1fd616dd-faa9-5b5b-8467-93daef6dfd8e",
+   "parent"
+  ],
+  [
+   "1fd616dd-faa9-5b5b-8467-93daef6dfd8e",
+   "802b54af-321d-5961-abb8-f3565781df8b",
+   "parent"
+  ],
+  [
+   "802b54af-321d-5961-abb8-f3565781df8b",
+   "e88ab996-7af5-503e-940c-4fc33f690aa9",
+   "parent"
+  ],
+  [
+   "e88ab996-7af5-503e-940c-4fc33f690aa9",
+   "d823ed07-4675-553e-95ef-6fc2866d5903",
+   "parent"
+  ],
+  [
+   "d823ed07-4675-553e-95ef-6fc2866d5903",
+   "49ffc8f3-a050-56ff-889c-2fada921b0cf",
+   "parent"
+  ],
+  [
+   "49ffc8f3-a050-56ff-889c-2fada921b0cf",
+   "304cc8a6-e084-50c4-9f32-77674cbe3430",
+   "parent"
+  ],
+  [
+   "bbd673a6-bbb1-5391-a7f2-3024e5ec2b80",
+   "233f297d-a6cb-5cc5-b855-8bc754d5ec0c",
+   "parent"
+  ],
+  [
+   "e23e5175-3cc5-52ef-b006-a93388ca8f2d",
+   "233f297d-a6cb-5cc5-b855-8bc754d5ec0c",
+   "family"
+  ],
+  [
+   "e23e5175-3cc5-52ef-b006-a93388ca8f2d",
+   "bbd673a6-bbb1-5391-a7f2-3024e5ec2b80",
+   "family"
+  ],
+  [
+   "233f297d-a6cb-5cc5-b855-8bc754d5ec0c",
+   "463663fa-ddc0-593d-99f4-685ab2906044",
+   "parent"
+  ],
+  [
+   "463663fa-ddc0-593d-99f4-685ab2906044",
+   "ada2492b-1d98-558e-8751-ae612e79d946",
+   "parent"
+  ],
+  [
+   "ada2492b-1d98-558e-8751-ae612e79d946",
+   "90970ffc-98fc-5b0c-82f2-8041bbacafd3",
+   "parent"
+  ],
+  [
+   "90970ffc-98fc-5b0c-82f2-8041bbacafd3",
+   "e18ee7ea-ac9c-5d24-84d2-f3f5f89b4776",
+   "parent"
+  ],
+  [
+   "e18ee7ea-ac9c-5d24-84d2-f3f5f89b4776",
+   "bb5df395-584e-5af5-af08-a40961a560a8",
+   "parent"
+  ],
+  [
+   "bb5df395-584e-5af5-af08-a40961a560a8",
+   "7fdd69c3-d574-5ed7-8296-aea9ddd9fa0a",
+   "parent"
+  ],
+  [
+   "ddfcbf96-3455-5a8d-8845-5af644f64a8e",
+   "55884d5e-2bed-56ef-8326-fd5cea678bb3",
+   "parent"
+  ],
+  [
+   "55884d5e-2bed-56ef-8326-fd5cea678bb3",
+   "155cbcc0-3627-5f1b-8223-7f5c271930ca",
+   "spouse"
+  ],
+  [
+   "55884d5e-2bed-56ef-8326-fd5cea678bb3",
+   "759e55e7-fa63-51ba-b578-589e2f6e2dea",
+   "spouse"
+  ],
+  [
+   "55884d5e-2bed-56ef-8326-fd5cea678bb3",
+   "370776ae-74d1-5a95-b3e8-c29455a2e5bb",
+   "spouse"
+  ],
+  [
+   "55884d5e-2bed-56ef-8326-fd5cea678bb3",
+   "013627df-f3ce-563e-80ba-7689fe5ecc77",
+   "parent"
+  ],
+  [
+   "370776ae-74d1-5a95-b3e8-c29455a2e5bb",
+   "013627df-f3ce-563e-80ba-7689fe5ecc77",
+   "parent"
   ]
  ],
  "dateflags": [
@@ -63728,6 +64511,125 @@
    "d": 1373,
    "note": "Naissance inconnue.",
    "script": 103
+  },
+  {
+   "name": "Cyrus II le Grand",
+   "b": null,
+   "d": -530,
+   "note": "Naissance inconnue.",
+   "script": 104
+  },
+  {
+   "name": "Cambyse II",
+   "b": null,
+   "d": -522,
+   "note": "Naissance inconnue.",
+   "script": 104
+  },
+  {
+   "name": "Artaxerxès Ier",
+   "b": null,
+   "d": -424,
+   "note": "Naissance inconnue.",
+   "script": 104
+  },
+  {
+   "name": "Darius II",
+   "b": null,
+   "d": -404,
+   "note": "Naissance inconnue.",
+   "script": 104
+  },
+  {
+   "name": "Artaxerxès II",
+   "b": -445,
+   "d": -358,
+   "note": "Naissance vers -445 (certaines sources donnent -436).",
+   "script": 104
+  },
+  {
+   "name": "Arsès (Artaxerxès IV)",
+   "b": null,
+   "d": -336,
+   "note": "Naissance inconnue.",
+   "script": 104
+  },
+  {
+   "name": "Ardachîr Ier",
+   "b": null,
+   "d": 242,
+   "note": "Naissance inconnue.",
+   "script": 104
+  },
+  {
+   "name": "Shapur Ier",
+   "b": null,
+   "d": 270,
+   "note": "Naissance inconnue.",
+   "script": 104
+  },
+  {
+   "name": "Narsès",
+   "b": null,
+   "d": 302,
+   "note": "Naissance inconnue.",
+   "script": 104
+  },
+  {
+   "name": "Hormizd II",
+   "b": null,
+   "d": 309,
+   "note": "Naissance inconnue.",
+   "script": 104
+  },
+  {
+   "name": "Khosro Ier Anushirvan",
+   "b": 501,
+   "d": 579,
+   "note": "Naissance vers 501.",
+   "script": 104
+  },
+  {
+   "name": "Hormizd IV",
+   "b": null,
+   "d": 590,
+   "note": "Naissance inconnue.",
+   "script": 104
+  },
+  {
+   "name": "Khosro II Parviz",
+   "b": 570,
+   "d": 628,
+   "note": "Naissance vers 570.",
+   "script": 104
+  },
+  {
+   "name": "Kavadh II",
+   "b": null,
+   "d": 628,
+   "note": "Naissance inconnue.",
+   "script": 104
+  },
+  {
+   "name": "Yazdgard III",
+   "b": 624,
+   "d": 651,
+   "note": "Naissance vers 624.",
+   "script": 104
+  },
+  {
+   "name": "Mohammad Baqir Mirza",
+   "b": 1587,
+   "d": 1615,
+   "note": "Naissance vers 1587, exécuté par son père.",
+   "script": 104
+  },
+  {
+   "name": "Hosein Qoli Khan Qajar",
+   "b": 1722,
+   "d": 1777,
+   "note": "Naissance vers 1722.",
+   "script": 104
   }
  ],
  "pins": [

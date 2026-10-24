@@ -2,6 +2,8 @@
 
 ## Dernières nouvelles (la plus récente en haut)
 
+- 2026-10-23 — v104 — Iran : 5 dynasties (Achéménides à Pahlavi). Dates de connaissance générale ; naissances inconnues laissées vides.
+
 - 2026-10-23 — v103 — Bulgarie : premier empire (Malamir à Roman), Asen (Ivan Asen Ier à Michel Asen II), Terter, Chichman (Michel III, Ivan Stéphane). Source : Wikipédia (filiations) ; naissances laissées vides.
 
 - 2026-10-23 — v102 — Naples : Charles Ier d'Anjou à René (Anjou, Durazzo, Tarente), Ferrante Ier à Frédéric IV (Aragon-Naples). Dates de connaissance générale.
@@ -85,7 +87,7 @@
 
 Code : `src/genealogy.ts`, `genealogyLayers.ts`, `genealogyBus.ts`, `genealogyLod.ts/.css`, `genealogyLayersWorker.ts`,
 `genealogyLayout.ts`, `genealogyRouting.ts`. Outils de remplissage : [`scripts/arbres/`](../../scripts/arbres/README.md).
-Prochaine migration : **arbres_v104** (`supabase/arbres/arbres_v104.sql`) — générateur : `Gen(104, "…")`.  (v103 livrée, à exécuter par Martin si ce n'est pas déjà fait.)
+Prochaine migration : **arbres_v105** (`supabase/arbres/arbres_v105.sql`) — générateur : `Gen(105, "…")`.  (v104 livrée, à exécuter par Martin si ce n'est pas déjà fait.)
 
 ## Règles de contenu (décidées par Martin — ne pas rouvrir)
 - Un pays n'a que les dynasties qui ont **régné sur lui**. Dynastie étrangère : branche principale dans son pays
