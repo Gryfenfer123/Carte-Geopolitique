@@ -12,7 +12,10 @@ SOURCE (à télécharger soi-même, elle n'est pas dans le dépôt) :
   https://github.com/Seshat-Global-History-Databank/cliopatria  → fichier cliopatria.geojson.zip (version 0.2.1)
   Décompresser, puis :
       pip install shapely
-      python3 scripts/historique/preparer_cliopatria.py chemin/vers/cliopatria_polities_only_v021.geojson
+      python3 scripts/historique/preparer_cliopatria.py chemin/vers/cliopatria_polities_only_v021.geojson \\
+              [dossier_sortie] [--terres chemin/vers/terres_10m.geojson] [--sans-dates]
+  (--terres : trait de côte réel, voir caler_cotes.py et extraire_terres.mjs ; --sans-dates : n'applique pas les
+   corrections de dates, voir corrections_dates.py)
 
 CE QUI EST GARDÉ / ÉCARTÉ
   - gardé : les lignes de type POLITY dont le nom ne commence pas par « ( » = les entités qu'on peint sur la
@@ -37,12 +40,17 @@ FORMAT PRODUIT (dans public/data/historique/)
 import hashlib
 import json
 import math
+import multiprocessing
 import os
 import sys
 
 import shapely
 from shapely.geometry import mapping, shape
 from shapely.validation import make_valid
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from caler_cotes import Cote  # noqa: E402  (calage sur la côte réelle)
+from corrections_dates import Corrections, lire_manuelles, lire_wikidata  # noqa: E402  (dates réelles)
 
 VERSION_SOURCE = "0.2.1"
 CENTIEMES = 100  # précision des coordonnées : 0,01° ≈ 1 km
@@ -107,6 +115,10 @@ def simplifier(geom):
     return shapely.union_all(sortie)  # fusionne d'éventuels recouvrements entre parties après simplification
 
 
+COTE = None  # trait de côte réel (objet Cote), fixé dans main() ; hérité par les processus enfants (fork)
+FACTEUR_COTE = 0.5  # tolérance de re-simplification après calage = FACTEUR_COTE × tolérance de la forme
+
+
 def preparer_trace(geometrie_geojson):
     geom = shape(geometrie_geojson)
     if not geom.is_valid:
@@ -114,20 +126,47 @@ def preparer_trace(geometrie_geojson):
     # set_precision cale les points sur la grille de 0,01° ET répare les croisements que l'arrondi
     # ferait apparaître : les polygones produits sont toujours valides (contrôlé par verifier_donnees.py).
     pas = 1 / CENTIEMES
-    simple = shapely.set_precision(simplifier(geom), pas)
+    lisse = simplifier(geom)
+    if COTE is not None:
+        # on ne fait que RETIRER ce qui est en pleine mer (voir caler_cotes.py)
+        cale, _ = COTE.caler(lisse, tol=max(0.004, FACTEUR_COTE * tolerance(geom)))
+        if not cale.is_empty:
+            lisse = cale
+    simple = shapely.set_precision(lisse, pas)
     codee = coder_geometrie(simple) if not simple.is_empty else None
     if codee is None:  # tout petit territoire écrasé par la grille : on garde le contour d'origine
         codee = coder_geometrie(shapely.set_precision(geom, pas))
     return codee
 
 
+ENTITES = []  # lignes à dessiner (partagé avec les processus enfants)
+
+
+def _texte_trace(i):
+    codee = preparer_trace(ENTITES[i]["geometry"])
+    if codee is None:
+        return None
+    return json.dumps(codee, separators=(",", ":"))
+
+
 def main():
-    if len(sys.argv) < 2:
+    global COTE
+    args = [a for a in sys.argv[1:] if not a.startswith("--")]
+    options = [a for a in sys.argv[1:] if a.startswith("--")]
+    terres = None
+    if "--terres" in sys.argv:  # le chemin suit l'option : on le retire des arguments positionnels
+        terres = sys.argv[sys.argv.index("--terres") + 1]
+        args = [a for a in args if a != terres]
+    if len(args) < 1:
         sys.exit(__doc__)
-    source = sys.argv[1]
-    dossier_sortie = sys.argv[2] if len(sys.argv) > 2 else os.path.join(
+    source = args[0]
+    dossier_sortie = args[1] if len(args) > 1 else os.path.join(
         os.path.dirname(os.path.abspath(__file__)), "..", "..", "public", "data", "historique"
     )
+    appliquer_dates = "--sans-dates" not in options
+    if terres:
+        print("Trait de côte réel :", terres)
+        COTE = Cote(terres)
     os.makedirs(dossier_sortie, exist_ok=True)
 
     print("Lecture de", source)
@@ -139,6 +178,7 @@ def main():
     ]
     entites.sort(key=lambda ft: (ft["properties"]["FromYear"], ft["properties"]["ToYear"], ft["properties"]["Name"]))
     print(len(entites), "lignes à dessiner sur", len(data["features"]))
+    ENTITES[:] = [ft for ft in entites]
 
     noms, idx_nom = [], {}
 
@@ -148,25 +188,48 @@ def main():
             noms.append(n)
         return idx_nom[n]
 
+    # Corrections de dates (voir corrections_dates.py) : seules les bornes (de, à) changent, jamais les formes.
+    dates = [{"nom": ft["properties"]["Name"], "de": ft["properties"]["FromYear"], "a": ft["properties"]["ToYear"],
+              "geometrie": ft["geometry"], "ft": ft} for ft in entites]
+    if appliquer_dates:
+        d = os.path.dirname(os.path.abspath(__file__))
+        corrections = lire_manuelles(os.path.join(d, "corrections_dates_manuelles.json")) + \
+            lire_wikidata(os.path.join(d, "corrections_dates_wikidata.txt"))
+        moteur = Corrections(dates)
+        rapport = moteur.appliquer(corrections)
+        with open(os.path.join(d, "corrections_dates_rapport.json"), "w", encoding="utf8") as f:
+            json.dump(rapport, f, ensure_ascii=False, indent=0)
+        nb = {}
+        for r in rapport:
+            nb[r["statut"]] = nb.get(r["statut"], 0) + 1
+        print("Corrections de dates :", nb)
+
+    # Les tracés sont calculés en parallèle (le calage sur la côte est coûteux).
+    print("Calcul des tracés…")
+    with multiprocessing.get_context("fork").Pool(2) as pool:
+        textes = pool.map(_texte_trace, range(len(entites)), chunksize=40)
+
     metas, idx_meta = [], {}
     traces, idx_trace = [], {}  # traces[id] = (codage JSON compact)
     lignes = []
-    for ft in entites:
+    for i, ft in enumerate(entites):
         p = ft["properties"]
         cle_meta = (p["Name"], p["Wikipedia"], p["Wikidata"], p["SeshatID"])
         if cle_meta not in idx_meta:
             idx_meta[cle_meta] = len(metas)
             metas.append([nom(p["Name"]), p["Wikipedia"], p["Wikidata"], p["SeshatID"]])
-        codee = preparer_trace(ft["geometry"])
-        if codee is None:
+        texte = textes[i]
+        if texte is None:
             sys.exit("Tracé vide pour " + p["Name"] + " " + str(p["FromYear"]))
-        texte = json.dumps(codee, separators=(",", ":"))
         h = hashlib.md5(texte.encode()).hexdigest()
         if h not in idx_trace:
             idx_trace[h] = len(traces)
             traces.append(texte)
         ensemble = nom(p["MemberOf"]) if p["MemberOf"] else -1
-        lignes.append([idx_meta[cle_meta], p["FromYear"], p["ToYear"], idx_trace[h], ensemble, round(p["Area"])])
+        d_ligne = dates[i]
+        if d_ligne["a"] < d_ligne["de"]:
+            continue  # ligne rendue vide par une correction de dates
+        lignes.append([idx_meta[cle_meta], d_ligne["de"], d_ligne["a"], idx_trace[h], ensemble, round(p["Area"])])
     print(len(traces), "tracés distincts (au lieu de", len(lignes), "lignes)")
 
     # Découpage des tracés en morceaux d'environ TAILLE_MORCEAU octets, dans l'ordre de première apparition

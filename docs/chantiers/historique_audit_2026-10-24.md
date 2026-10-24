@@ -15,7 +15,7 @@ Légende : **[Erreur]** quelque chose est faux ; **[Convention]** les sources di
 - Aucune date inversée, aucune entité absente d'une année entre -3400 et 2024 (chaque année a au moins une entité). *certain*
 - Aucune forme ne traverse le méridien ±180° d'un seul tenant (pas de bandes parasites sur la carte). *certain*
 - Superficie annoncée = superficie recalculée (écart < 10 % pour toutes les formes > 1 000 km²). *certain*
-- Les formes suivent bien la côte : sur 12 064 entités, **aucune** n'a plus de 30 % de sa surface en mer (marge de 15 km) ; seules les formes autour de la Baltique (Suède, Finlande, Novgorod) montent à 25-30 %, ce qui vient en bonne partie des golfes et lacs, pas d'un défaut net. *certain pour la mesure, probable pour l'explication*
+- Les formes suivent bien la côte : sur 12 064 entités, **aucune** n'a plus de 30 % de sa surface en mer (marge de 15 km) ; les formes autour de la Baltique (Suède, Finlande, Novgorod) sortaient à 25-30 % mais **c'était un défaut de mon fichier de côtes** (le tracé de l'Eurasie du paquet npm world-atlas est invalide et coupait le nord de la Scandinavie) ; ce chiffre est donc à ne pas retenir (corrigé le 2026-10-24 avec le fichier Natural Earth officiel). *la mesure initiale « moins de 30 % en mer » reste à refaire avec le bon fichier*
 - Les 13 formes invalides (géométrie) sont toutes des lignes « ensemble » entre parenthèses (ex. « (Kingdom of France) »), non dessinées par le site. *certain*
 
 ## 1. Graves (visibles sur la carte)
@@ -82,6 +82,7 @@ Exemples : Han (an 5 → 6 : 4,5 M km² → 143 km²), Mexique fédéral 1864-18
 
 ### 3.1 Frontières actuelles (2024) contre Natural Earth
 - 192 entités Cliopatria en 2024, 241 pays Natural Earth. 
+- **Réserve (ajoutée le 2026-10-24)** : ces frontières actuelles viennent aussi du paquet npm world-atlas, dont les tracés qui franchissent l'antiméridien (Russie, Fidji…) sont fragiles : les chiffres de la Russie (0,64) et de Fidji (0,09) ne sont pas fiables et sont à refaire avec un fichier Natural Earth officiel.
 - Recouvrement correct (> 0,85) pour la plupart des pays moyens et grands. En dessous : Russie 0,64, Syrie 0,63, Israël 0,66, Maroc 0,68 (le Sahara occidental est couvert à 5 % : choix politique), Arménie 0,66, Malawi 0,66 (lac), Somalie 0,71 (Somaliland vraisemblablement séparé), Grèce 0,79, Azerbaïdjan 0,77…
 - **Petits États et îles** (Fidji 0,09, Vanuatu, Seychelles, Cap-Vert, Sainte-Lucie, Malte, Bahreïn, Antigua…) : recouvrement très faible, **mais c'est en partie un artefact de ma mesure** (simplification de 3 km qui efface les petites îles). *à re-mesurer avant de conclure*
 - **Absences de l'année 2024** (pays Natural Earth sans entité Cliopatria correspondante ou couvert à moins de 70 %) : Samoa, Polynésie française, Kiribati, Tonga, Mariannes du Nord, Îles Caïmans, Saint-Christophe-et-Niévès, Niue, Îles Turques-et-Caïques (11 %), Sahara occidental (5 %), Fidji (30 %), Comores (56 %), Antarctique (0 %, normal).

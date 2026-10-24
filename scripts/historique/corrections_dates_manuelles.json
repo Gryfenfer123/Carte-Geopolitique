@@ -1,0 +1,178 @@
+[
+ {
+  "id": "verdun-843",
+  "evenement": "Traité de Verdun : partage de l'Empire carolingien entre Lothaire Ier, Louis le Germanique et Charles le Chauve",
+  "date": 843,
+  "ajustements": [
+   {
+    "nom": "Kingdom of the Franks",
+    "op": "fin",
+    "origine": 849,
+    "vers": 842
+   },
+   {
+    "nom": "West Franks",
+    "op": "debut",
+    "origine": 850,
+    "vers": 843
+   },
+   {
+    "nom": "East Franks",
+    "op": "debut",
+    "origine": 850,
+    "vers": 843
+   },
+   {
+    "nom": "Middle Franks",
+    "op": "debut",
+    "origine": 850,
+    "vers": 843
+   }
+  ],
+  "source": {
+   "type": "web",
+   "titre": "Treaty of Verdun (Wikipedia, consulté le 2026-10-24)",
+   "lien": "https://en.wikipedia.org/wiki/Treaty_of_Verdun",
+   "licence": "CC BY-SA 4.0",
+   "fiabilite": "tertiaire (Wikipédia), à recouper ; traité daté du 10 août 843"
+  }
+ },
+ {
+  "id": "hugues-capet-987",
+  "evenement": "Élection et sacre d'Hugues Capet : début de la monarchie capétienne (Francie occidentale → royaume de France)",
+  "date": 987,
+  "ajustements": [
+   {
+    "nom": "West Franks",
+    "op": "fin",
+    "origine": 989,
+    "vers": 986
+   },
+   {
+    "nom": "Kingdom of France",
+    "op": "debut",
+    "origine": 990,
+    "vers": 987
+   }
+  ],
+  "source": {
+   "type": "web",
+   "titre": "Hugh Capet (Wikipedia, consulté le 2026-10-24)",
+   "lien": "https://en.wikipedia.org/wiki/Hugh_Capet",
+   "licence": "CC BY-SA 4.0",
+   "fiabilite": "tertiaire (Wikipédia), à recouper ; élu et couronné en juin 987, re-sacré à Paris le 3 juillet 987"
+  }
+ },
+ {
+  "id": "bagdad-1258",
+  "evenement": "Prise de Bagdad par les Mongols : chute du califat abbasside de Bagdad",
+  "date": 1258,
+  "ajustements": [
+   {
+    "nom": "Abbasid Caliphate",
+    "op": "fin",
+    "origine": 1259,
+    "vers": 1257
+   }
+  ],
+  "source": {
+   "type": "web",
+   "titre": "Siege of Baghdad (1258) (Wikipedia, consulté le 2026-10-24)",
+   "lien": "https://en.wikipedia.org/wiki/Siege_of_Baghdad_(1258)",
+   "licence": "CC BY-SA 4.0",
+   "fiabilite": "tertiaire (Wikipédia), à recouper ; reddition le 10 février 1258 ; un califat abbasside continue au Caire (non représenté ici)"
+  }
+ },
+ {
+  "id": "song-du-sud-1127",
+  "evenement": "Chute de Kaifeng (incident de Jingkang) et fondation des Song du Sud",
+  "date": 1127,
+  "ajustements": [
+   {
+    "nom": "Northern Song",
+    "op": "fin",
+    "origine": 1138,
+    "vers": 1126
+   },
+   {
+    "nom": "Southern Song",
+    "op": "debut",
+    "origine": 1139,
+    "vers": 1127
+   }
+  ],
+  "source": {
+   "type": "web",
+   "titre": "Southern Song (Wikipedia, consulté le 2026-10-24)",
+   "lien": "https://en.wikipedia.org/wiki/Southern_Song",
+   "licence": "CC BY-SA 4.0",
+   "fiabilite": "tertiaire (Wikipédia), à recouper ; fondation et incident de Jingkang en 1127"
+  }
+ },
+ {
+  "id": "liang-posterieurs-907",
+  "evenement": "Zhu Wen met fin aux Tang et fonde les Liang postérieurs",
+  "date": 907,
+  "ajustements": [
+   {
+    "nom": "Tang Dynasty",
+    "op": "fin",
+    "origine": 910,
+    "vers": 906
+   },
+   {
+    "nom": "Later Liang Dynasty",
+    "op": "debut",
+    "origine": 911,
+    "vers": 907
+   }
+  ],
+  "source": {
+   "type": "web",
+   "titre": "Later Liang (Five Dynasties) (Wikipedia, consulté le 2026-10-24)",
+   "lien": "https://en.wikipedia.org/wiki/Later_Liang_(Five_Dynasties)",
+   "licence": "CC BY-SA 4.0",
+   "fiabilite": "tertiaire (Wikipédia), à recouper ; abdication du dernier empereur Tang en 907"
+  }
+ },
+ {
+  "id": "fin-yuan-1368",
+  "evenement": "Prise de Dadu par les Ming : fin de la dynastie Yuan en Chine (les Yuan du Nord se replient en Mongolie)",
+  "date": 1368,
+  "ajustements": [
+   {
+    "nom": "Yuan Dynasty",
+    "op": "fin",
+    "origine": 1374,
+    "vers": 1367
+   }
+  ],
+  "source": {
+   "type": "web",
+   "titre": "Yuan dynasty (Wikipedia, consulté le 2026-10-24)",
+   "lien": "https://en.wikipedia.org/wiki/Yuan_dynasty",
+   "licence": "CC BY-SA 4.0",
+   "fiabilite": "tertiaire (Wikipédia), à recouper ; Dadu prise le 14 septembre 1368"
+  }
+ },
+ {
+  "id": "osman-1299",
+  "evenement": "Fondation traditionnelle de l'État ottoman par Osman Ier",
+  "date": 1299,
+  "ajustements": [
+   {
+    "nom": "Ottoman Empire",
+    "op": "debut",
+    "origine": 1305,
+    "vers": 1299
+   }
+  ],
+  "source": {
+   "type": "web",
+   "titre": "History of the Ottoman Empire (Wikipedia, consulté le 2026-10-24)",
+   "lien": "https://en.wikipedia.org/wiki/History_of_the_Ottoman_Empire",
+   "licence": "CC BY-SA 4.0",
+   "fiabilite": "tertiaire (Wikipédia), à recouper ; date traditionnelle « vers 1299 » (approximative)"
+  }
+ }
+]

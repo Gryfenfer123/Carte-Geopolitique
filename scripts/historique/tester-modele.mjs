@@ -108,6 +108,19 @@ for (const m of index.meta) if (!nomsFr.fr[M.nomSansParentheses(index.noms[m[0]]
 verifier(sansFr.size === 0, `${sansFr.size} entité(s) sans nom français : ${[...sansFr].slice(0, 5)}`);
 verifier(nomsFr.traduits.every((n) => n in nomsFr.fr), "chaque traduction listée existe");
 
+// Dates exactes (corrections_dates.py) : traité de Verdun, août 843
+verifier(noms(842).has("Kingdom of the Franks") && !noms(842).has("West Franks"), "842 : encore un seul royaume des Francs");
+verifier(!noms(843).has("Kingdom of the Franks") && noms(843).has("West Franks") && noms(843).has("East Franks") && noms(843).has("Middle Franks"), "843 : partage de Verdun affiché");
+verifier(noms(987).has("Kingdom of France") && noms(986).has("West Franks"), "987 : royaume de France (Hugues Capet)");
+verifier(noms(1368).has("Ming Dynasty") && !noms(1367).has("Ming Dynasty"), "1368 : début des Ming");
+// aucune entité ne se chevauche elle-même dans le temps
+const parNom = new Map();
+for (const l of index.lignes) {
+  const cle = l[0] + "|" + l[3] + "|" + l[1];
+  parNom.set(cle, (parNom.get(cle) ?? 0) + 1);
+}
+verifier(index.lignes.every((l) => l[1] <= l[2]), "chaque ligne a un début ≤ fin");
+
 if (echecs > 0) {
   console.error(`\n✘ ${echecs} échec(s)`);
   process.exit(1);
