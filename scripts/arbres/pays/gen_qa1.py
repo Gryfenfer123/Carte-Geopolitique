@@ -5,7 +5,7 @@ from lib import *
 g = Gen(121, "Qatar (Al Thani)")
 g.notes = [
     "Nouvel arbre « Al Thani » (Qatar) : 8 émirs de Mohammed ben Thani à Tamim. Chaque fiche porte l'adresse de sa page Wikipédia (anglais) dans « Notes / biographie » ; sources aussi dans docs/sources/arbres.md.",
-    "Non saisis (aucune page lue) : Thani ben Mohammed (père de Mohammed ben Thani), Hamad ben Abdullah (père de Khalifa), Ahmad ben Mohammed. Khalifa est donc le premier de sa branche dans l'arbre.",
+    "Non saisis (aucune page lue) : Thani ben Mohammed (père de Mohammed ben Thani), Hamad ben Abdullah (père de Khalifa), Ahmad ben Mohammed. Khalifa (cousin d'Ahmad, mais non confirmé par une page lue) forme donc une branche séparée dans l'arbre.",
     "Dates en année chrétienne telles que la page les donne ; « c. » = approximatif. Hamad ben Khalifa : la page indique 1952–2026.",
 ]
 g.tree('QA_THA', 'QAT', 'Al Thani', section_title='Al Thani')
@@ -22,5 +22,4 @@ K('hamad', 'Hamad ben Khalifa', 1952, 2026, 'Émir du Qatar (1995-2013)', 'Hamad
 K('tamim', 'Tamim ben Hamad', 1980, None, 'Émir du Qatar (depuis 2013)', 'Tamim_bin_Hamad_Al_Thani')
 for a, b in [('mohammed','jassim'),('jassim','abdullah'),('abdullah','ali'),('ali','ahmad'),('khalifa','hamad'),('hamad','tamim')]:
     g.par('qa.' + a, 'qa.' + b)
-g.fam('qa.ahmad', 'qa.khalifa')
 g.write()
