@@ -2,6 +2,8 @@
 
 ## Dernières nouvelles (la plus récente en haut)
 
+- 2026-10-23 — v127 : arbre Croatie, fiches sourcées Wikipédia
+
 - 2026-10-23 — v126 : arbre Yémen, fiches sourcées Wikipédia
 
 - 2026-10-23 — v125 : arbre Tunisie, fiches sourcées Wikipédia
@@ -132,7 +134,7 @@
 
 Code : `src/genealogy.ts`, `genealogyLayers.ts`, `genealogyBus.ts`, `genealogyLod.ts/.css`, `genealogyLayersWorker.ts`,
 `genealogyLayout.ts`, `genealogyRouting.ts`. Outils de remplissage : [`scripts/arbres/`](../../scripts/arbres/README.md).
-Prochaine migration : **arbres_v127** (`supabase/arbres/arbres_v127.sql`) — générateur : `Gen(127, "…")`.  (v126 livrée, à exécuter par Martin si ce n'est pas déjà fait.)
+Prochaine migration : **arbres_v128** (`supabase/arbres/arbres_v128.sql`) — générateur : `Gen(128, "…")`.  (v127 livrée, à exécuter par Martin si ce n'est pas déjà fait.)
 
 ## Règles de contenu (décidées par Martin — ne pas rouvrir)
 - Un pays n'a que les dynasties qui ont **régné sur lui**. Dynastie étrangère : branche principale dans son pays

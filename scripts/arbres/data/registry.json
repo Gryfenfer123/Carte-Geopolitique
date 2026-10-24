@@ -31090,6 +31090,306 @@
    "title": "Dernier imam du Yémen (1962)",
    "g": "h",
    "script": 126
+  },
+  "hr.trpimir1": {
+   "id": "b059c6e2-c888-52ad-a7ee-e7b02f54dba1",
+   "name": "Trpimir Ier",
+   "b": null,
+   "d": null,
+   "tree": "HR_TRP",
+   "title": "Duc de Croatie, fondateur de la dynastie (c. 845-864)",
+   "g": "h",
+   "script": 127
+  },
+  "hr.zdeslav": {
+   "id": "b6272226-e13c-5750-bf92-3d3933e091b5",
+   "name": "Zdeslav",
+   "b": null,
+   "d": 879,
+   "tree": "HR_TRP",
+   "title": "Duc de Croatie (864 ; 878-879)",
+   "g": "h",
+   "script": 127
+  },
+  "hr.muncimir": {
+   "id": "3f6e82d1-f350-5841-9b84-044647bedb79",
+   "name": "Muncimir",
+   "b": null,
+   "d": null,
+   "tree": "HR_TRP",
+   "title": "Duc de Croatie (892-910)",
+   "g": "h",
+   "script": 127
+  },
+  "hr.tomislav": {
+   "id": "c0b0d36a-fb30-5f34-9977-a371c58ad2ef",
+   "name": "Tomislav",
+   "b": null,
+   "d": null,
+   "tree": "HR_TRP",
+   "title": "Premier roi de Croatie (925-928)",
+   "g": "h",
+   "script": 127
+  },
+  "hr.trpimir2": {
+   "id": "ca51aa82-2733-5d93-89c5-d96c50154402",
+   "name": "Trpimir II",
+   "b": null,
+   "d": null,
+   "tree": "HR_TRP",
+   "title": "Roi de Croatie (928-935)",
+   "g": "h",
+   "script": 127
+  },
+  "hr.kresimir1": {
+   "id": "8581d7d8-2ba7-5204-96ad-5749705cbca1",
+   "name": "Krešimir Ier",
+   "b": null,
+   "d": null,
+   "tree": "HR_TRP",
+   "title": "Roi de Croatie (935-945)",
+   "g": "h",
+   "script": 127
+  },
+  "hr.miroslav": {
+   "id": "f2da9349-8091-5e99-88a9-6a8a1524c480",
+   "name": "Miroslav",
+   "b": null,
+   "d": null,
+   "tree": "HR_TRP",
+   "title": "Roi de Croatie (945-949)",
+   "g": "h",
+   "script": 127
+  },
+  "hr.kresimir2": {
+   "id": "1f3eb346-e51f-579f-8d65-4c4669f2fd0e",
+   "name": "Michel Krešimir II",
+   "b": null,
+   "d": null,
+   "tree": "HR_TRP",
+   "title": "Roi de Croatie (949-969)",
+   "g": "h",
+   "script": 127
+  },
+  "hr.drzislav": {
+   "id": "173d7fbf-1620-509e-bf5b-6db6ccee3b83",
+   "name": "Étienne Držislav",
+   "b": null,
+   "d": null,
+   "tree": "HR_TRP",
+   "title": "Roi de Croatie (969-997)",
+   "g": "h",
+   "script": 127
+  },
+  "hr.svetoslav": {
+   "id": "4847c410-5c6e-5f3f-afff-c62d0e5634cb",
+   "name": "Svetoslav Suronja",
+   "b": null,
+   "d": null,
+   "tree": "HR_TRP",
+   "title": "Roi de Croatie (997-1000)",
+   "g": "h",
+   "script": 127
+  },
+  "hr.gojslav": {
+   "id": "5edae18a-a08c-5518-a854-355ef2244e77",
+   "name": "Gojslav",
+   "b": null,
+   "d": null,
+   "tree": "HR_TRP",
+   "title": "Roi de Croatie (1000-1020)",
+   "g": "h",
+   "script": 127
+  },
+  "hr.kresimir3": {
+   "id": "d4c21f52-6829-5de1-b868-17b9c6a4c946",
+   "name": "Krešimir III",
+   "b": null,
+   "d": null,
+   "tree": "HR_TRP",
+   "title": "Roi de Croatie (1000-1030)",
+   "g": "h",
+   "script": 127
+  },
+  "hr.stephen1": {
+   "id": "9df7815f-746d-5d47-bdbf-6de944213d97",
+   "name": "Étienne Ier",
+   "b": null,
+   "d": null,
+   "tree": "HR_TRP",
+   "title": "Roi de Croatie (1030-1058)",
+   "g": "h",
+   "script": 127
+  },
+  "hr.petar": {
+   "id": "5a43add2-6bd5-5935-a2a8-d934efd3b57d",
+   "name": "Pierre Krešimir IV",
+   "b": null,
+   "d": null,
+   "tree": "HR_TRP",
+   "title": "Roi de Croatie (1058-1074)",
+   "g": "h",
+   "script": 127
+  },
+  "hr.zvonimir": {
+   "id": "f29d0341-7dcc-56cd-b860-ee8c87b71803",
+   "name": "Demetrius Zvonimir",
+   "b": null,
+   "d": null,
+   "tree": "HR_TRP",
+   "title": "Roi de Croatie (1075-1089)",
+   "g": "h",
+   "script": 127
+  },
+  "hr.stephen2": {
+   "id": "ea8998c6-288d-5f92-84fb-3cf671660ec8",
+   "name": "Étienne II",
+   "b": null,
+   "d": 1091,
+   "tree": "HR_TRP",
+   "title": "Dernier roi de la dynastie (1089-1091)",
+   "g": "h",
+   "script": 127
+  },
+  "ie.cennetig": {
+   "id": "72f31a68-edb0-598a-abdc-34744ac70977",
+   "name": "Cennétig mac Lorcáin",
+   "b": null,
+   "d": null,
+   "tree": "IE_BRI",
+   "title": "Roi de Thomond, père de Brian Boru",
+   "g": "h",
+   "script": 128
+  },
+  "ie.brian": {
+   "id": "1615f779-7eb3-5416-b881-8e691a55c6cc",
+   "name": "Brian Boru",
+   "b": 941,
+   "d": 1014,
+   "tree": "IE_BRI",
+   "title": "Grand roi d'Irlande (1002-1014)",
+   "g": "h",
+   "script": 128
+  },
+  "ie.murchad": {
+   "id": "16a66904-dbed-5d56-90f6-8765db32d4a4",
+   "name": "Murchad mac Briain",
+   "b": null,
+   "d": null,
+   "tree": "IE_BRI",
+   "title": "Fils aîné de Brian Boru",
+   "g": "h",
+   "script": 128
+  },
+  "ie.donnchad": {
+   "id": "ce6db3fd-a30c-526a-bacf-b406836131c9",
+   "name": "Donnchad mac Briain",
+   "b": null,
+   "d": 1064,
+   "tree": "IE_BRI",
+   "title": "Roi de Munster, fils de Brian Boru",
+   "g": "h",
+   "script": 128
+  },
+  "ie.tadc": {
+   "id": "c7d9906a-8b06-5b9e-9d6f-e3806ad90b27",
+   "name": "Tadc mac Briain",
+   "b": null,
+   "d": null,
+   "tree": "IE_BRI",
+   "title": "Fils de Brian Boru, père de Toirdelbach",
+   "g": "h",
+   "script": 128
+  },
+  "ie.toirdelbach": {
+   "id": "26c0d1f7-0553-5134-af2b-a1c03b46914f",
+   "name": "Toirdelbach Ua Briain",
+   "b": 1009,
+   "d": 1086,
+   "tree": "IE_BRI",
+   "title": "Roi de Munster, grand roi avec opposition",
+   "g": "h",
+   "script": 128
+  },
+  "ie.muirchertach": {
+   "id": "1597a3e6-bf7a-53a4-9e02-3ac184d2a04a",
+   "name": "Muirchertach Ua Briain",
+   "b": 1050,
+   "d": 1119,
+   "tree": "IE_BRI",
+   "title": "Roi de Munster, grand roi avec opposition",
+   "g": "h",
+   "script": 128
+  },
+  "lb.haydar": {
+   "id": "202769b4-40df-533f-9885-53face91b857",
+   "name": "Haydar Chéhab",
+   "b": null,
+   "d": 1732,
+   "tree": "LB_CHE",
+   "title": "Émir du Mont-Liban (1711-1732)",
+   "g": "h",
+   "script": 129
+  },
+  "lb.mulhim": {
+   "id": "7277f9d0-60c3-5fc7-9cd6-3dc95ca36f32",
+   "name": "Mulhim Chéhab",
+   "b": null,
+   "d": 1759,
+   "tree": "LB_CHE",
+   "title": "Émir du Mont-Liban (1732-1753)",
+   "g": "h",
+   "script": 129
+  },
+  "lb.mansur": {
+   "id": "45fb0f3f-af3f-5a6c-acf5-6ff7868313f8",
+   "name": "Mansour Chéhab",
+   "b": null,
+   "d": null,
+   "tree": "LB_CHE",
+   "title": "Émir du Mont-Liban (démission en 1770)",
+   "g": "h",
+   "script": 129
+  },
+  "lb.ahmad": {
+   "id": "9651508a-af87-598c-85ee-bb6340fd34e1",
+   "name": "Ahmad Chéhab",
+   "b": null,
+   "d": null,
+   "tree": "LB_CHE",
+   "title": "Prétendant à l'émirat, fils de Haydar",
+   "g": "h",
+   "script": 129
+  },
+  "lb.qasim": {
+   "id": "250eff5a-8c0e-58bc-89fa-5791e245bc67",
+   "name": "Qasim Chéhab",
+   "b": null,
+   "d": null,
+   "tree": "LB_CHE",
+   "title": "Émir du Mont-Liban (1760)",
+   "g": "h",
+   "script": 129
+  },
+  "lb.yusuf": {
+   "id": "5eb64cdb-57bd-54fb-a264-abe0d9408aab",
+   "name": "Yusuf Chéhab",
+   "b": 1748,
+   "d": 1790,
+   "tree": "LB_CHE",
+   "title": "Émir du Mont-Liban (1770-1789)",
+   "g": "h",
+   "script": 129
+  },
+  "lb.bashir2": {
+   "id": "8829d484-a83f-53f4-a703-3627a31c0780",
+   "name": "Bachir II Chéhab",
+   "b": 1767,
+   "d": 1850,
+   "tree": "LB_CHE",
+   "title": "Émir du Mont-Liban (1789-1840)",
+   "g": "h",
+   "script": 129
   }
  },
  "trees": {
@@ -32118,6 +32418,24 @@
    "country": "YEM",
    "dynasty": "Hamid ad-Din",
    "script": 126
+  },
+  "HR_TRP": {
+   "entry": "4d86c40b-4a77-553d-9054-1d17f9f0a878",
+   "country": "HRV",
+   "dynasty": "Trpimirović",
+   "script": 127
+  },
+  "IE_BRI": {
+   "entry": "4341ad32-233a-5b9b-9df4-ed1c07f26900",
+   "country": "IRL",
+   "dynasty": "Dál gCais",
+   "script": 128
+  },
+  "LB_CHE": {
+   "entry": "4138100f-0297-5414-b3b8-ce5bd23b014e",
+   "country": "LBN",
+   "dynasty": "Chéhab",
+   "script": 129
   }
  },
  "flags": [
@@ -37440,6 +37758,30 @@
    "rels": 3,
    "trees": [
     "Hamid ad-Din (YEM)"
+   ]
+  },
+  "127": {
+   "label": "Croatie (Trpimirović)",
+   "members": 16,
+   "rels": 15,
+   "trees": [
+    "Trpimirović (HRV)"
+   ]
+  },
+  "128": {
+   "label": "Irlande (Dál gCais / Ua Briain)",
+   "members": 7,
+   "rels": 6,
+   "trees": [
+    "Dál gCais (IRL)"
+   ]
+  },
+  "129": {
+   "label": "Liban (Chéhab)",
+   "members": 7,
+   "rels": 6,
+   "trees": [
+    "Chéhab (LBN)"
    ]
   }
  },
@@ -62158,6 +62500,141 @@
    "01d87a50-3683-5aeb-a6fe-97781b2d31f3",
    "701fdaf3-8294-5608-a7e9-fb3b21653062",
    "parent"
+  ],
+  [
+   "b059c6e2-c888-52ad-a7ee-e7b02f54dba1",
+   "b6272226-e13c-5750-bf92-3d3933e091b5",
+   "parent"
+  ],
+  [
+   "b059c6e2-c888-52ad-a7ee-e7b02f54dba1",
+   "3f6e82d1-f350-5841-9b84-044647bedb79",
+   "parent"
+  ],
+  [
+   "8581d7d8-2ba7-5204-96ad-5749705cbca1",
+   "f2da9349-8091-5e99-88a9-6a8a1524c480",
+   "parent"
+  ],
+  [
+   "ca51aa82-2733-5d93-89c5-d96c50154402",
+   "8581d7d8-2ba7-5204-96ad-5749705cbca1",
+   "parent"
+  ],
+  [
+   "1f3eb346-e51f-579f-8d65-4c4669f2fd0e",
+   "173d7fbf-1620-509e-bf5b-6db6ccee3b83",
+   "parent"
+  ],
+  [
+   "173d7fbf-1620-509e-bf5b-6db6ccee3b83",
+   "4847c410-5c6e-5f3f-afff-c62d0e5634cb",
+   "parent"
+  ],
+  [
+   "173d7fbf-1620-509e-bf5b-6db6ccee3b83",
+   "5edae18a-a08c-5518-a854-355ef2244e77",
+   "parent"
+  ],
+  [
+   "173d7fbf-1620-509e-bf5b-6db6ccee3b83",
+   "d4c21f52-6829-5de1-b868-17b9c6a4c946",
+   "parent"
+  ],
+  [
+   "d4c21f52-6829-5de1-b868-17b9c6a4c946",
+   "9df7815f-746d-5d47-bdbf-6de944213d97",
+   "parent"
+  ],
+  [
+   "9df7815f-746d-5d47-bdbf-6de944213d97",
+   "5a43add2-6bd5-5935-a2a8-d934efd3b57d",
+   "parent"
+  ],
+  [
+   "f2da9349-8091-5e99-88a9-6a8a1524c480",
+   "1f3eb346-e51f-579f-8d65-4c4669f2fd0e",
+   "family"
+  ],
+  [
+   "3f6e82d1-f350-5841-9b84-044647bedb79",
+   "c0b0d36a-fb30-5f34-9977-a371c58ad2ef",
+   "family"
+  ],
+  [
+   "c0b0d36a-fb30-5f34-9977-a371c58ad2ef",
+   "ca51aa82-2733-5d93-89c5-d96c50154402",
+   "family"
+  ],
+  [
+   "5a43add2-6bd5-5935-a2a8-d934efd3b57d",
+   "f29d0341-7dcc-56cd-b860-ee8c87b71803",
+   "family"
+  ],
+  [
+   "5a43add2-6bd5-5935-a2a8-d934efd3b57d",
+   "ea8998c6-288d-5f92-84fb-3cf671660ec8",
+   "family"
+  ],
+  [
+   "72f31a68-edb0-598a-abdc-34744ac70977",
+   "1615f779-7eb3-5416-b881-8e691a55c6cc",
+   "parent"
+  ],
+  [
+   "1615f779-7eb3-5416-b881-8e691a55c6cc",
+   "16a66904-dbed-5d56-90f6-8765db32d4a4",
+   "parent"
+  ],
+  [
+   "1615f779-7eb3-5416-b881-8e691a55c6cc",
+   "ce6db3fd-a30c-526a-bacf-b406836131c9",
+   "parent"
+  ],
+  [
+   "1615f779-7eb3-5416-b881-8e691a55c6cc",
+   "c7d9906a-8b06-5b9e-9d6f-e3806ad90b27",
+   "parent"
+  ],
+  [
+   "c7d9906a-8b06-5b9e-9d6f-e3806ad90b27",
+   "26c0d1f7-0553-5134-af2b-a1c03b46914f",
+   "parent"
+  ],
+  [
+   "26c0d1f7-0553-5134-af2b-a1c03b46914f",
+   "1597a3e6-bf7a-53a4-9e02-3ac184d2a04a",
+   "parent"
+  ],
+  [
+   "202769b4-40df-533f-9885-53face91b857",
+   "7277f9d0-60c3-5fc7-9cd6-3dc95ca36f32",
+   "parent"
+  ],
+  [
+   "202769b4-40df-533f-9885-53face91b857",
+   "45fb0f3f-af3f-5a6c-acf5-6ff7868313f8",
+   "parent"
+  ],
+  [
+   "202769b4-40df-533f-9885-53face91b857",
+   "9651508a-af87-598c-85ee-bb6340fd34e1",
+   "parent"
+  ],
+  [
+   "7277f9d0-60c3-5fc7-9cd6-3dc95ca36f32",
+   "250eff5a-8c0e-58bc-89fa-5791e245bc67",
+   "parent"
+  ],
+  [
+   "7277f9d0-60c3-5fc7-9cd6-3dc95ca36f32",
+   "5eb64cdb-57bd-54fb-a264-abe0d9408aab",
+   "parent"
+  ],
+  [
+   "5eb64cdb-57bd-54fb-a264-abe0d9408aab",
+   "8829d484-a83f-53f4-a703-3627a31c0780",
+   "family"
   ]
  ],
  "dateflags": [
