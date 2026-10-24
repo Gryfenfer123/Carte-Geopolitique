@@ -28935,7 +28935,7 @@
    "id": "6bbe00db-92a2-585a-b221-13f3d99c32b8",
    "name": "Sirikit",
    "b": 1932,
-   "d": null,
+   "d": 2025,
    "tree": "TH_CHA",
    "title": "Reine de Thaïlande, épouse de Rama IX",
    "g": "f",
@@ -29064,7 +29064,7 @@
   "as.timur": {
    "id": "0870a034-9ab9-5ca8-8186-99be64dc1a85",
    "name": "Timur Shah Durrani",
-   "b": 1748,
+   "b": 1746,
    "d": 1793,
    "tree": "AF_DUR",
    "title": "Émir de l'Empire durrani (1772-1793)",
@@ -29074,8 +29074,8 @@
   "as.zaman": {
    "id": "812d20d7-564f-5510-a4df-4054163199b4",
    "name": "Zaman Shah Durrani",
-   "b": 1770,
-   "d": 1844,
+   "b": 1767,
+   "d": 1845,
    "tree": "AF_DUR",
    "title": "Émir de l'Empire durrani (1793-1801)",
    "g": "h",
@@ -29094,7 +29094,7 @@
   "as.dost": {
    "id": "27512845-e58b-58bf-a22b-96aa858da4be",
    "name": "Dost Mohammad Khan",
-   "b": 1793,
+   "b": 1792,
    "d": 1863,
    "tree": "AF_DUR",
    "title": "Émir d'Afghanistan (1826-1863), fondateur des Barakzaï",
@@ -29104,7 +29104,7 @@
   "as.afzal": {
    "id": "abe219c2-8be4-50a0-a1b6-5e0ea89f49b7",
    "name": "Mohammad Afzal Khan",
-   "b": null,
+   "b": 1815,
    "d": 1867,
    "tree": "AF_DUR",
    "title": "Émir d'Afghanistan (1866-1867), fils de Dost Mohammad",
@@ -35749,6 +35749,12 @@
    "label": "Sources et corrections — Hachémites, Al Saoud, Alaouites, Senoussi, dynastie salomonide (v106-v107)",
    "members": 1,
    "rels": 3,
+   "trees": []
+  },
+  "113": {
+   "label": "Sources et corrections — Moghols, Chakri, Nguyen, Durrani/Barakzaï (v108)",
+   "members": 0,
+   "rels": 0,
    "trees": []
   }
  },
