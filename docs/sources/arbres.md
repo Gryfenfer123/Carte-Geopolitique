@@ -15,6 +15,7 @@ Chaque fiche sourcée porte aussi l'adresse de sa page dans « Notes / biographi
 | 2026-10-24 | v115 — Goryeo, 37 fiches (dates toutes confirmées) | Wikipédia anglais, une page par roi (« <Nom>_of_Goryeo ») | https://en.wikipedia.org/wiki/<titre> | CC BY-SA 4.0 | tertiaire / à recouper |
 | 2026-10-24 | v116 — 57 fiches : Portugal (Bourgogne, Bragance), Brésil, ajouts Espagne (v98-v100) | Wikipédia anglais, une page par personne (liste dans le champ Notes) | https://en.wikipedia.org/wiki/<titre> | CC BY-SA 4.0 | tertiaire / à recouper |
 | 2026-10-24 | v117 — 79 fiches : Navarre, Anjou-Naples, Aragon-Naples, Bulgarie (+ Louis de Duras ajouté, nombreuses dates corrigées) | Wikipédia anglais, une page par personne (liste dans le champ Notes) | https://en.wikipedia.org/wiki/<titre> | CC BY-SA 4.0 | tertiaire / à recouper ; numérotation des tsars bulgares variable selon les sources
+| 2026-10-24 | v118 — Égypte : XVIIIe dynastie (15), XIXe dynastie (6), Fatimides (8), Ayyoubides (5) | Wikipédia anglais, une page par personne (Ahmose I … As-Salih Ayyub ; liste dans le champ Notes) | https://en.wikipedia.org/wiki/<titre> | CC BY-SA 4.0 | tertiaire / à recouper ; chronologie pharaonique incertaine (règnes seuls quand la page ne donne pas de dates de vie)
 
 ## Lots NON sourcés (à reprendre) — SOURCE MANQUANTE
 Dates saisies de mémoire, sans page consultée ; en cours de reprise, une ligne ci-dessus remplace la ligne ici au fur et à mesure.

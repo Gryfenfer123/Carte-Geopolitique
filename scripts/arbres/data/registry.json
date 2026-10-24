@@ -29600,6 +29600,346 @@
    "title": "Comte de Gravina, père de Charles III de Naples",
    "g": "h",
    "script": 117
+  },
+  "eg2.ahmose1": {
+   "id": "0cc944f8-b555-5718-be39-2f2437c5ffa2",
+   "name": "Ahmôsis Ier",
+   "b": null,
+   "d": null,
+   "tree": "EG_18",
+   "title": "Pharaon, fondateur de la XVIIIe dynastie (règne : 1570-1546 av. J.-C., chronologie « haute »)",
+   "g": "h",
+   "script": 118
+  },
+  "eg2.ahmosen": {
+   "id": "1afd008f-a2b3-5974-a3a1-6e82e064386b",
+   "name": "Ahmès-Néfertary",
+   "b": null,
+   "d": null,
+   "tree": "EG_18",
+   "title": "Grande épouse royale, épouse de son frère Ahmôsis Ier",
+   "g": "f",
+   "script": 118
+  },
+  "eg2.amenhotep1": {
+   "id": "38a89622-2d73-5344-a4e6-55e05068834c",
+   "name": "Amenhotep Ier",
+   "b": null,
+   "d": null,
+   "tree": "EG_18",
+   "title": "Pharaon (règne : c. 1526-1506 av. J.-C., chronologie « basse »)",
+   "g": "h",
+   "script": 118
+  },
+  "eg2.thutmose1": {
+   "id": "1647f7c3-2225-5acd-b47b-5dddc1edbf20",
+   "name": "Thoutmôsis Ier",
+   "b": null,
+   "d": -1493,
+   "tree": "EG_18",
+   "title": "Pharaon (règne : c. 1505-1493 av. J.-C.)",
+   "g": "h",
+   "script": 118
+  },
+  "eg2.thutmose2": {
+   "id": "6fcfb05d-a52e-534c-bc7b-26d188b09e84",
+   "name": "Thoutmôsis II",
+   "b": null,
+   "d": -1479,
+   "tree": "EG_18",
+   "title": "Pharaon (règne : 1493-1479 av. J.-C.)",
+   "g": "h",
+   "script": 118
+  },
+  "eg2.hatshepsut": {
+   "id": "44a1e863-62dc-5021-9724-560a568f9597",
+   "name": "Hatchepsout",
+   "b": -1505,
+   "d": -1458,
+   "tree": "EG_18",
+   "title": "Reine puis pharaon (règne c. 1479-1458 av. J.-C.)",
+   "g": "f",
+   "script": 118
+  },
+  "eg2.thutmose3": {
+   "id": "9073a14a-d8d5-5e9b-b2fa-17aec13e318b",
+   "name": "Thoutmôsis III",
+   "b": null,
+   "d": null,
+   "tree": "EG_18",
+   "title": "Pharaon (règne : 1479-1425 av. J.-C.)",
+   "g": "h",
+   "script": 118
+  },
+  "eg2.amenhotep2": {
+   "id": "92c3fcc0-789f-5c02-8dc4-8823a918061d",
+   "name": "Amenhotep II",
+   "b": -1443,
+   "d": -1401,
+   "tree": "EG_18",
+   "title": "Pharaon",
+   "g": "h",
+   "script": 118
+  },
+  "eg2.thutmose4": {
+   "id": "0c954b62-d4ea-5dda-b09b-9d4eb10dc7c5",
+   "name": "Thoutmôsis IV",
+   "b": null,
+   "d": -1391,
+   "tree": "EG_18",
+   "title": "Pharaon",
+   "g": "h",
+   "script": 118
+  },
+  "eg2.amenhotep3": {
+   "id": "41e65450-90e3-5b4a-9ccc-a858aa0db082",
+   "name": "Amenhotep III",
+   "b": -1401,
+   "d": -1353,
+   "tree": "EG_18",
+   "title": "Pharaon",
+   "g": "h",
+   "script": 118
+  },
+  "eg2.tiye": {
+   "id": "c433bfd4-0d27-5656-91b5-9a8f44b92987",
+   "name": "Tiyi",
+   "b": -1398,
+   "d": -1338,
+   "tree": "EG_18",
+   "title": "Grande épouse royale d'Amenhotep III",
+   "g": "f",
+   "script": 118
+  },
+  "eg2.akhenaten": {
+   "id": "f488cc99-6de6-5409-b89c-70f3db14c0a8",
+   "name": "Akhénaton",
+   "b": null,
+   "d": null,
+   "tree": "EG_18",
+   "title": "Pharaon (règne : c. 1353-1336 av. J.-C.)",
+   "g": "h",
+   "script": 118
+  },
+  "eg2.nefertiti": {
+   "id": "8d94a368-a8b8-5ee1-bf4a-157deb8af161",
+   "name": "Néfertiti",
+   "b": -1370,
+   "d": -1330,
+   "tree": "EG_18",
+   "title": "Grande épouse royale d'Akhénaton",
+   "g": "f",
+   "script": 118
+  },
+  "eg2.tut": {
+   "id": "9b4dc3f6-1ec2-5e21-b94a-dd8f71ca64ef",
+   "name": "Toutânkhamon",
+   "b": -1342,
+   "d": -1323,
+   "tree": "EG_18",
+   "title": "Pharaon",
+   "g": "h",
+   "script": 118
+  },
+  "eg2.ankh": {
+   "id": "c4e8c6dc-8865-59eb-8b7e-8b61577cc091",
+   "name": "Ânkhesenamon",
+   "b": -1348,
+   "d": null,
+   "tree": "EG_18",
+   "title": "Grande épouse royale de Toutânkhamon",
+   "g": "f",
+   "script": 118
+  },
+  "eg2.ramses1": {
+   "id": "0b3840f4-57f9-5001-b61e-2383b8c12e45",
+   "name": "Ramsès Ier",
+   "b": null,
+   "d": -1290,
+   "tree": "EG_19",
+   "title": "Pharaon, fondateur de la XIXe dynastie (règne : 1292-1290 ou 1295-1294 av. J.-C.)",
+   "g": "h",
+   "script": 118
+  },
+  "eg2.seti1": {
+   "id": "febefba8-2dd2-5c02-bb1e-290a309f4773",
+   "name": "Séthi Ier",
+   "b": null,
+   "d": null,
+   "tree": "EG_19",
+   "title": "Pharaon (règne : 1290-1279 av. J.-C.)",
+   "g": "h",
+   "script": 118
+  },
+  "eg2.tuya": {
+   "id": "9d8353ab-f930-52f0-bb1c-9ad56d62ffa8",
+   "name": "Touya",
+   "b": null,
+   "d": -1257,
+   "tree": "EG_19",
+   "title": "Grande épouse royale de Séthi Ier, mère de Ramsès II",
+   "g": "f",
+   "script": 118
+  },
+  "eg2.ramses2": {
+   "id": "d81941e9-d1e5-5d73-ac31-e02365afdb69",
+   "name": "Ramsès II",
+   "b": -1303,
+   "d": -1213,
+   "tree": "EG_19",
+   "title": "Pharaon (règne : 1279-1213 av. J.-C.)",
+   "g": "h",
+   "script": 118
+  },
+  "eg2.nefertari": {
+   "id": "25299975-3c41-54af-be2c-f17a40d10cb4",
+   "name": "Néfertari",
+   "b": null,
+   "d": -1255,
+   "tree": "EG_19",
+   "title": "Grande épouse royale de Ramsès II",
+   "g": "f",
+   "script": 118
+  },
+  "eg2.merneptah": {
+   "id": "c095fd4a-1c61-5abc-8bc1-0671eb585feb",
+   "name": "Mérenptah",
+   "b": -1263,
+   "d": -1203,
+   "tree": "EG_19",
+   "title": "Pharaon (règne : 1213-1203 av. J.-C.)",
+   "g": "h",
+   "script": 118
+  },
+  "eg2.mahdi": {
+   "id": "5cdcc8fd-c149-5322-a6e7-07e39e84ece7",
+   "name": "Al-Mahdi Billah",
+   "b": 874,
+   "d": 934,
+   "tree": "EG_FAT",
+   "title": "Premier calife fatimide (909-934)",
+   "g": "h",
+   "script": 118
+  },
+  "eg2.qaim": {
+   "id": "0775c10c-7130-5ed6-bff5-764431c1465b",
+   "name": "Al-Qaïm bi-Amr Allah",
+   "b": 893,
+   "d": 946,
+   "tree": "EG_FAT",
+   "title": "Calife fatimide (934-946)",
+   "g": "h",
+   "script": 118
+  },
+  "eg2.mansur": {
+   "id": "5ee44375-d9b9-57ad-a363-65202bd435f5",
+   "name": "Al-Mansur Billah",
+   "b": 914,
+   "d": 953,
+   "tree": "EG_FAT",
+   "title": "Calife fatimide (946-953)",
+   "g": "h",
+   "script": 118
+  },
+  "eg2.muizz": {
+   "id": "1f88adcf-7bcd-58ce-96ca-8a924dd45e47",
+   "name": "Al-Mouizz li-Din Allah",
+   "b": 931,
+   "d": 975,
+   "tree": "EG_FAT",
+   "title": "Calife fatimide (953-975), conquiert l'Égypte",
+   "g": "h",
+   "script": 118
+  },
+  "eg2.aziz": {
+   "id": "e0eea2d5-24d4-5868-9990-ee0bff04c3c2",
+   "name": "Al-Aziz Billah",
+   "b": 955,
+   "d": 996,
+   "tree": "EG_FAT",
+   "title": "Calife fatimide (975-996)",
+   "g": "h",
+   "script": 118
+  },
+  "eg2.hakim": {
+   "id": "b6364da9-0558-5f16-8822-9039505a45bc",
+   "name": "Al-Hakim bi-Amr Allah",
+   "b": 985,
+   "d": 1021,
+   "tree": "EG_FAT",
+   "title": "Calife fatimide (996-1021)",
+   "g": "h",
+   "script": 118
+  },
+  "eg2.zahir": {
+   "id": "9596fd33-72c9-5f22-9b18-ca670bcc2726",
+   "name": "Az-Zahir li-Izaz Din Allah",
+   "b": 1005,
+   "d": 1036,
+   "tree": "EG_FAT",
+   "title": "Calife fatimide (1021-1036)",
+   "g": "h",
+   "script": 118
+  },
+  "eg2.mustansir": {
+   "id": "84b6db81-ef50-5789-9498-f1f3246f26fb",
+   "name": "Al-Moustansir Billah",
+   "b": 1029,
+   "d": 1094,
+   "tree": "EG_FAT",
+   "title": "Calife fatimide (1036-1094)",
+   "g": "h",
+   "script": 118
+  },
+  "eg2.ayyub": {
+   "id": "989257cd-d37a-55b9-8128-662355032690",
+   "name": "Najm ad-Din Ayyub",
+   "b": null,
+   "d": 1173,
+   "tree": "EG_AYY",
+   "title": "Père de Saladin et d'al-Adil, gouverneur de Damas",
+   "g": "h",
+   "script": 118
+  },
+  "eg2.saladin": {
+   "id": "37821184-912e-5214-ae36-ddb918c7a3ee",
+   "name": "Saladin",
+   "b": 1137,
+   "d": 1193,
+   "tree": "EG_AYY",
+   "title": "Sultan d'Égypte et de Syrie, fondateur des Ayyoubides",
+   "g": "h",
+   "script": 118
+  },
+  "eg2.adil1": {
+   "id": "9b41e15d-cad1-53df-86cf-a76b756270d2",
+   "name": "Al-Adil Ier",
+   "b": 1145,
+   "d": 1218,
+   "tree": "EG_AYY",
+   "title": "Sultan d'Égypte (1200-1218), frère de Saladin",
+   "g": "h",
+   "script": 118
+  },
+  "eg2.kamil": {
+   "id": "dbe42d24-579b-5c8e-be83-a55176342e5e",
+   "name": "Al-Kamil",
+   "b": 1177,
+   "d": 1238,
+   "tree": "EG_AYY",
+   "title": "Sultan d'Égypte (1218-1238)",
+   "g": "h",
+   "script": 118
+  },
+  "eg2.salih": {
+   "id": "63871a15-ed1b-5a8a-9fe9-e01b509259f8",
+   "name": "As-Salih Ayyub",
+   "b": 1205,
+   "d": 1249,
+   "tree": "EG_AYY",
+   "title": "Sultan d'Égypte (1240-1249)",
+   "g": "h",
+   "script": 118
   }
  },
  "trees": {
@@ -30550,6 +30890,30 @@
    "country": "ISR",
    "dynasty": "Hasmonéens et Hérodiens",
    "script": 109
+  },
+  "EG_18": {
+   "entry": "002411c0-5eb2-5b1a-a490-001198a47805",
+   "country": "EGY",
+   "dynasty": "Dynastie XVIII",
+   "script": 118
+  },
+  "EG_19": {
+   "entry": "d00c4d99-4abc-5b96-a950-4f76b3a482cd",
+   "country": "EGY",
+   "dynasty": "Dynastie XIX",
+   "script": 118
+  },
+  "EG_FAT": {
+   "entry": "5150d9b4-4ad0-5845-8656-c5e9ce2af660",
+   "country": "EGY",
+   "dynasty": "Fatimides",
+   "script": 118
+  },
+  "EG_AYY": {
+   "entry": "3787af7c-523d-5f15-98fc-310002e93a15",
+   "country": "EGY",
+   "dynasty": "Ayyoubides",
+   "script": 118
   }
  },
  "flags": [
@@ -35165,6 +35529,13 @@
    "tree": "IL_HAS",
    "reason": "Naissance et décès inconnus",
    "script": 109
+  },
+  {
+   "name": "Thoutmôsis Ier",
+   "b": null,
+   "tree": "EG_18",
+   "reason": "Père inconnu (non saisi)",
+   "script": 118
   }
  ],
  "scripts": {
@@ -35790,6 +36161,17 @@
    "members": 1,
    "rels": 3,
    "trees": []
+  },
+  "118": {
+   "label": "Égypte — XVIIIe et XIXe dynasties, Fatimides, Ayyoubides",
+   "members": 34,
+   "rels": 35,
+   "trees": [
+    "Dynastie XVIII (EGY)",
+    "Dynastie XIX (EGY)",
+    "Fatimides (EGY)",
+    "Ayyoubides (EGY)"
+   ]
   }
  },
  "relist": [
@@ -59802,6 +60184,181 @@
    "31466b8c-5b13-5646-b586-ba1f61440d06",
    "7de16ff1-ad86-57bc-ab0f-8a4e455b493e",
    "parent"
+  ],
+  [
+   "0cc944f8-b555-5718-be39-2f2437c5ffa2",
+   "38a89622-2d73-5344-a4e6-55e05068834c",
+   "parent"
+  ],
+  [
+   "1afd008f-a2b3-5974-a3a1-6e82e064386b",
+   "38a89622-2d73-5344-a4e6-55e05068834c",
+   "parent"
+  ],
+  [
+   "1647f7c3-2225-5acd-b47b-5dddc1edbf20",
+   "6fcfb05d-a52e-534c-bc7b-26d188b09e84",
+   "parent"
+  ],
+  [
+   "1647f7c3-2225-5acd-b47b-5dddc1edbf20",
+   "44a1e863-62dc-5021-9724-560a568f9597",
+   "parent"
+  ],
+  [
+   "6fcfb05d-a52e-534c-bc7b-26d188b09e84",
+   "9073a14a-d8d5-5e9b-b2fa-17aec13e318b",
+   "parent"
+  ],
+  [
+   "9073a14a-d8d5-5e9b-b2fa-17aec13e318b",
+   "92c3fcc0-789f-5c02-8dc4-8823a918061d",
+   "parent"
+  ],
+  [
+   "92c3fcc0-789f-5c02-8dc4-8823a918061d",
+   "0c954b62-d4ea-5dda-b09b-9d4eb10dc7c5",
+   "parent"
+  ],
+  [
+   "0c954b62-d4ea-5dda-b09b-9d4eb10dc7c5",
+   "41e65450-90e3-5b4a-9ccc-a858aa0db082",
+   "parent"
+  ],
+  [
+   "41e65450-90e3-5b4a-9ccc-a858aa0db082",
+   "f488cc99-6de6-5409-b89c-70f3db14c0a8",
+   "parent"
+  ],
+  [
+   "c433bfd4-0d27-5656-91b5-9a8f44b92987",
+   "f488cc99-6de6-5409-b89c-70f3db14c0a8",
+   "parent"
+  ],
+  [
+   "f488cc99-6de6-5409-b89c-70f3db14c0a8",
+   "9b4dc3f6-1ec2-5e21-b94a-dd8f71ca64ef",
+   "parent"
+  ],
+  [
+   "f488cc99-6de6-5409-b89c-70f3db14c0a8",
+   "c4e8c6dc-8865-59eb-8b7e-8b61577cc091",
+   "parent"
+  ],
+  [
+   "8d94a368-a8b8-5ee1-bf4a-157deb8af161",
+   "c4e8c6dc-8865-59eb-8b7e-8b61577cc091",
+   "parent"
+  ],
+  [
+   "0cc944f8-b555-5718-be39-2f2437c5ffa2",
+   "1afd008f-a2b3-5974-a3a1-6e82e064386b",
+   "spouse"
+  ],
+  [
+   "6fcfb05d-a52e-534c-bc7b-26d188b09e84",
+   "44a1e863-62dc-5021-9724-560a568f9597",
+   "spouse"
+  ],
+  [
+   "41e65450-90e3-5b4a-9ccc-a858aa0db082",
+   "c433bfd4-0d27-5656-91b5-9a8f44b92987",
+   "spouse"
+  ],
+  [
+   "f488cc99-6de6-5409-b89c-70f3db14c0a8",
+   "8d94a368-a8b8-5ee1-bf4a-157deb8af161",
+   "spouse"
+  ],
+  [
+   "9b4dc3f6-1ec2-5e21-b94a-dd8f71ca64ef",
+   "c4e8c6dc-8865-59eb-8b7e-8b61577cc091",
+   "spouse"
+  ],
+  [
+   "0b3840f4-57f9-5001-b61e-2383b8c12e45",
+   "febefba8-2dd2-5c02-bb1e-290a309f4773",
+   "parent"
+  ],
+  [
+   "febefba8-2dd2-5c02-bb1e-290a309f4773",
+   "d81941e9-d1e5-5d73-ac31-e02365afdb69",
+   "parent"
+  ],
+  [
+   "9d8353ab-f930-52f0-bb1c-9ad56d62ffa8",
+   "d81941e9-d1e5-5d73-ac31-e02365afdb69",
+   "parent"
+  ],
+  [
+   "d81941e9-d1e5-5d73-ac31-e02365afdb69",
+   "c095fd4a-1c61-5abc-8bc1-0671eb585feb",
+   "parent"
+  ],
+  [
+   "febefba8-2dd2-5c02-bb1e-290a309f4773",
+   "9d8353ab-f930-52f0-bb1c-9ad56d62ffa8",
+   "spouse"
+  ],
+  [
+   "d81941e9-d1e5-5d73-ac31-e02365afdb69",
+   "25299975-3c41-54af-be2c-f17a40d10cb4",
+   "spouse"
+  ],
+  [
+   "5cdcc8fd-c149-5322-a6e7-07e39e84ece7",
+   "0775c10c-7130-5ed6-bff5-764431c1465b",
+   "parent"
+  ],
+  [
+   "0775c10c-7130-5ed6-bff5-764431c1465b",
+   "5ee44375-d9b9-57ad-a363-65202bd435f5",
+   "parent"
+  ],
+  [
+   "5ee44375-d9b9-57ad-a363-65202bd435f5",
+   "1f88adcf-7bcd-58ce-96ca-8a924dd45e47",
+   "parent"
+  ],
+  [
+   "1f88adcf-7bcd-58ce-96ca-8a924dd45e47",
+   "e0eea2d5-24d4-5868-9990-ee0bff04c3c2",
+   "parent"
+  ],
+  [
+   "e0eea2d5-24d4-5868-9990-ee0bff04c3c2",
+   "b6364da9-0558-5f16-8822-9039505a45bc",
+   "parent"
+  ],
+  [
+   "b6364da9-0558-5f16-8822-9039505a45bc",
+   "9596fd33-72c9-5f22-9b18-ca670bcc2726",
+   "parent"
+  ],
+  [
+   "9596fd33-72c9-5f22-9b18-ca670bcc2726",
+   "84b6db81-ef50-5789-9498-f1f3246f26fb",
+   "parent"
+  ],
+  [
+   "989257cd-d37a-55b9-8128-662355032690",
+   "37821184-912e-5214-ae36-ddb918c7a3ee",
+   "parent"
+  ],
+  [
+   "989257cd-d37a-55b9-8128-662355032690",
+   "9b41e15d-cad1-53df-86cf-a76b756270d2",
+   "parent"
+  ],
+  [
+   "9b41e15d-cad1-53df-86cf-a76b756270d2",
+   "dbe42d24-579b-5c8e-be83-a55176342e5e",
+   "parent"
+  ],
+  [
+   "dbe42d24-579b-5c8e-be83-a55176342e5e",
+   "63871a15-ed1b-5a8a-9fe9-e01b509259f8",
+   "parent"
   ]
  ],
  "dateflags": [
@@ -68022,6 +68579,104 @@
    "d": 100,
    "note": "Naissance approximative.",
    "script": 109
+  },
+  {
+   "name": "Thoutmôsis Ier",
+   "b": null,
+   "d": -1493,
+   "note": "Mort c. 1493 av. J.-C.",
+   "script": 118
+  },
+  {
+   "name": "Hatchepsout",
+   "b": -1505,
+   "d": -1458,
+   "note": "Naissance et mort c.",
+   "script": 118
+  },
+  {
+   "name": "Amenhotep II",
+   "b": -1443,
+   "d": -1401,
+   "note": "Dates c.",
+   "script": 118
+  },
+  {
+   "name": "Amenhotep III",
+   "b": -1401,
+   "d": -1353,
+   "note": "Dates c. ; mort 1353 ou 1351",
+   "script": 118
+  },
+  {
+   "name": "Tiyi",
+   "b": -1398,
+   "d": -1338,
+   "note": "Dates c.",
+   "script": 118
+  },
+  {
+   "name": "Néfertiti",
+   "b": -1370,
+   "d": -1330,
+   "note": "Dates c. ; parents non confirmés",
+   "script": 118
+  },
+  {
+   "name": "Toutânkhamon",
+   "b": -1342,
+   "d": -1323,
+   "note": "Dates c.",
+   "script": 118
+  },
+  {
+   "name": "Ânkhesenamon",
+   "b": -1348,
+   "d": null,
+   "note": "Naissance c. 1348 ou c. 1342 ; morte après 1322",
+   "script": 118
+  },
+  {
+   "name": "Touya",
+   "b": null,
+   "d": -1257,
+   "note": "Mort c. 1257",
+   "script": 118
+  },
+  {
+   "name": "Ramsès II",
+   "b": -1303,
+   "d": -1213,
+   "note": "Naissance c. 1303",
+   "script": 118
+  },
+  {
+   "name": "Néfertari",
+   "b": null,
+   "d": -1255,
+   "note": "Mort c. 1255 ; naissance et parents inconnus",
+   "script": 118
+  },
+  {
+   "name": "Mérenptah",
+   "b": -1263,
+   "d": -1203,
+   "note": "Dates c.",
+   "script": 118
+  },
+  {
+   "name": "Al-Qaïm bi-Amr Allah",
+   "b": 893,
+   "d": 946,
+   "note": "Naissance mars/avril 893",
+   "script": 118
+  },
+  {
+   "name": "Saladin",
+   "b": 1137,
+   "d": 1193,
+   "note": "Naissance c. 1137",
+   "script": 118
   }
  ],
  "pins": [
