@@ -1,0 +1,20 @@
+# Arbres généalogiques — ce que Martin doit faire (mis de côté, à faire plus tard)
+
+Mis à jour le 2026-10-24. Cocher au fur et à mesure.
+
+## Corrections de données (dans l'application, par Martin)
+- [ ] Supprimer le doublon « Mariana Victoria d'Espagne » `6dafcc36` (v99) = « Marie-Anne-Victoire d'Espagne (autre arbre???) » `9bdaedd3` (v77) : en garder un.
+- [ ] « Richard Plantagenêt » `d36cc690` (arbre York) : mort 1411 → 1460.
+- [ ] Supprimer l'arbre vide en double « Palatinat-Deux-Ponts (Suède) » `a19ba0b6`.
+- [ ] Lien erroné de la v61 `wi.john1_zw` → `wi.mag_cath` (Jean Ier de Deux-Ponts / Madeleine-Catherine) : à supprimer (accord de Martin demandé).
+- [ ] Victoire de Saxe-Cobourg : naissance 1768 ou 1786 ?
+- [ ] Entrées parasites : « tesq », « On est en direct ? », « Geoffroy Stammegna », doublon Nassau `8e0f6e5d`, doublon Luxembourg `cbce1152`, « MAISON DE HABSBOURG » `49c99143`, « Charles 1er de Habsbourg » `2b832845`.
+- [ ] Relire : Algirdas / Švitrigaila (écart de 74 ans), filiation d'Isabelle de Huntingdon, Liutgarde (Adelheid ou Edith), Sima Zhou → Sima Jin → Yuan de Jin.
+- [ ] Revoir les personnes signalées « Maison X : sans arbre » (≈ 400, voir `flags` du registre).
+
+## Dans l'application
+- [ ] Ouvrir les arbres nouveaux et vérifier l'affichage (Goryeo, Navarre, Anjou-Naples, Aragon-Naples, Bourgogne du Portugal, Bragance, et les arbres du Moyen-Orient ajoutés ensuite).
+- [ ] Cliquer sur « Organiser par dates » dans les arbres dont les cartes sont mal placées.
+
+## Déjà fait (pour mémoire)
+- v39 à v103 exécutées sur Supabase le 2026-10-24.
