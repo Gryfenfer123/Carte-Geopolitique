@@ -2,6 +2,8 @@
 
 ## Dernières nouvelles (la plus récente en haut)
 
+- 2026-10-23 — v119 : deux arbres Omeyyades/Abbassides, 26 fiches sourcées Wikipédia
+
 - 2026-10-23 — v118 : Égypte pharaonique (XVIII, XIX), Fatimides, Ayyoubides ; 34 membres, source Wikipédia dans chaque fiche
 
 - 2026-10-23 — v117 : sources Wikipédia sur 79 fiches ; ~25 dates corrigées ; filiation de Charles III de Naples corrigée ; dates non confirmées retirées (Ivan Stéphane...)
@@ -115,7 +117,7 @@
 
 Code : `src/genealogy.ts`, `genealogyLayers.ts`, `genealogyBus.ts`, `genealogyLod.ts/.css`, `genealogyLayersWorker.ts`,
 `genealogyLayout.ts`, `genealogyRouting.ts`. Outils de remplissage : [`scripts/arbres/`](../../scripts/arbres/README.md).
-Prochaine migration : **arbres_v119** (`supabase/arbres/arbres_v119.sql`) — générateur : `Gen(119, "…")`.  (v118 livrée, à exécuter par Martin si ce n'est pas déjà fait.)
+Prochaine migration : **arbres_v120** (`supabase/arbres/arbres_v120.sql`) — générateur : `Gen(120, "…")`.  (v119 livrée, à exécuter par Martin si ce n'est pas déjà fait.)
 
 ## Règles de contenu (décidées par Martin — ne pas rouvrir)
 - Un pays n'a que les dynasties qui ont **régné sur lui**. Dynastie étrangère : branche principale dans son pays

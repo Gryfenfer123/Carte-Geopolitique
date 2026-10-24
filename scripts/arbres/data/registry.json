@@ -29940,6 +29940,266 @@
    "title": "Sultan d'Égypte (1240-1249)",
    "g": "h",
    "script": 118
+  },
+  "sy.sufyan": {
+   "id": "a1431b8d-789d-5db2-9c19-9a4e75238e16",
+   "name": "Abou Soufyane ibn Harb",
+   "b": 560,
+   "d": 653,
+   "tree": "SY_OME",
+   "title": "Chef de La Mecque, père de Muawiya Ier",
+   "g": "h",
+   "script": 119
+  },
+  "sy.muawiya1": {
+   "id": "9f64afb1-c6ee-5708-87e6-795839bda732",
+   "name": "Muawiya Ier",
+   "b": 597,
+   "d": 680,
+   "tree": "SY_OME",
+   "title": "Premier calife omeyyade (661-680)",
+   "g": "h",
+   "script": 119
+  },
+  "sy.yazid1": {
+   "id": "7757ff58-e424-530e-8a7e-852e4d66fbf0",
+   "name": "Yazid Ier",
+   "b": 646,
+   "d": 683,
+   "tree": "SY_OME",
+   "title": "Calife omeyyade (680-683)",
+   "g": "h",
+   "script": 119
+  },
+  "sy.muawiya2": {
+   "id": "ef4b278d-ee9f-5003-9af1-b35793f794b0",
+   "name": "Muawiya II",
+   "b": 664,
+   "d": 684,
+   "tree": "SY_OME",
+   "title": "Calife omeyyade (683-684)",
+   "g": "h",
+   "script": 119
+  },
+  "sy.marwan1": {
+   "id": "cab0e6d4-14ad-5eae-9e10-68610b4082f3",
+   "name": "Marwan Ier",
+   "b": 623,
+   "d": 685,
+   "tree": "SY_OME",
+   "title": "Calife omeyyade (684-685), fondateur de la branche marwanide",
+   "g": "h",
+   "script": 119
+  },
+  "sy.abdmalik": {
+   "id": "b20237a8-4db1-55a2-992a-7ee2e29e5047",
+   "name": "Abd al-Malik",
+   "b": 644,
+   "d": 705,
+   "tree": "SY_OME",
+   "title": "Calife omeyyade (685-705)",
+   "g": "h",
+   "script": 119
+  },
+  "sy.walid1": {
+   "id": "042a56c9-2ed0-5549-9559-a7e6943044c3",
+   "name": "Al-Walid Ier",
+   "b": 674,
+   "d": 715,
+   "tree": "SY_OME",
+   "title": "Calife omeyyade (705-715)",
+   "g": "h",
+   "script": 119
+  },
+  "sy.sulayman": {
+   "id": "e3229409-67a3-52aa-a656-6e363f2101b1",
+   "name": "Sulayman ibn Abd al-Malik",
+   "b": 675,
+   "d": 717,
+   "tree": "SY_OME",
+   "title": "Calife omeyyade (715-717)",
+   "g": "h",
+   "script": 119
+  },
+  "sy.umar2": {
+   "id": "27ff14a3-4ec6-504f-a770-62f62e7955cb",
+   "name": "Omar II",
+   "b": 680,
+   "d": 720,
+   "tree": "SY_OME",
+   "title": "Calife omeyyade (717-720)",
+   "g": "h",
+   "script": 119
+  },
+  "sy.yazid2": {
+   "id": "38c6b355-0d10-503d-bdd4-0f0798c347cd",
+   "name": "Yazid II",
+   "b": 690,
+   "d": 724,
+   "tree": "SY_OME",
+   "title": "Calife omeyyade (720-724)",
+   "g": "h",
+   "script": 119
+  },
+  "sy.hisham": {
+   "id": "eb2de662-029d-5c9f-834d-de0a570275fe",
+   "name": "Hicham ibn Abd al-Malik",
+   "b": 691,
+   "d": 743,
+   "tree": "SY_OME",
+   "title": "Calife omeyyade (724-743)",
+   "g": "h",
+   "script": 119
+  },
+  "sy.marwan2": {
+   "id": "e3c62b63-83f7-5c3c-be2d-db32f10bc68c",
+   "name": "Marwan II",
+   "b": 691,
+   "d": 750,
+   "tree": "SY_OME",
+   "title": "Dernier calife omeyyade (744-750)",
+   "g": "h",
+   "script": 119
+  },
+  "sy.abbas": {
+   "id": "98325c62-4ad8-5586-b041-484389b13359",
+   "name": "Al-Abbas ibn Abd al-Muttalib",
+   "b": 566,
+   "d": 653,
+   "tree": "IQ_ABB",
+   "title": "Oncle du prophète Mahomet, ancêtre des Abbassides",
+   "g": "h",
+   "script": 119
+  },
+  "sy.abdullah": {
+   "id": "c7986fa9-0e8b-534d-bb7b-223310594586",
+   "name": "Abdallah ibn Abbas",
+   "b": 619,
+   "d": 687,
+   "tree": "IQ_ABB",
+   "title": "Compagnon du prophète, ancêtre des Abbassides",
+   "g": "h",
+   "script": 119
+  },
+  "sy.ali": {
+   "id": "9bf3b001-66fc-57b3-8598-593db742ac80",
+   "name": "Ali ibn Abdallah ibn Abbas",
+   "b": 661,
+   "d": 736,
+   "tree": "IQ_ABB",
+   "title": "Ancêtre des califes abbassides",
+   "g": "h",
+   "script": 119
+  },
+  "sy.saffah": {
+   "id": "c50e171f-b40a-5edf-948d-0762517d097e",
+   "name": "Al-Saffah",
+   "b": 721,
+   "d": 754,
+   "tree": "IQ_ABB",
+   "title": "Premier calife abbasside (750-754)",
+   "g": "h",
+   "script": 119
+  },
+  "sy.mansur": {
+   "id": "fc49cc3e-813a-5695-af60-7ec9377b991b",
+   "name": "Al-Mansour",
+   "b": 714,
+   "d": 775,
+   "tree": "IQ_ABB",
+   "title": "Calife abbasside (754-775), fondateur de Bagdad",
+   "g": "h",
+   "script": 119
+  },
+  "sy.mahdi": {
+   "id": "e87f26a1-0923-50c5-9696-a8b4c05fe74e",
+   "name": "Al-Mahdi",
+   "b": 744,
+   "d": 785,
+   "tree": "IQ_ABB",
+   "title": "Calife abbasside (775-785)",
+   "g": "h",
+   "script": 119
+  },
+  "sy.hadi": {
+   "id": "5dc94500-a0a8-5d1c-ba2a-f0d88f3a4afa",
+   "name": "Al-Hadi",
+   "b": 759,
+   "d": 786,
+   "tree": "IQ_ABB",
+   "title": "Calife abbasside (785-786)",
+   "g": "h",
+   "script": 119
+  },
+  "sy.harun": {
+   "id": "bf539724-fd32-5431-9c88-e7548e0e22a3",
+   "name": "Haroun al-Rachid",
+   "b": 763,
+   "d": 809,
+   "tree": "IQ_ABB",
+   "title": "Calife abbasside (786-809)",
+   "g": "h",
+   "script": 119
+  },
+  "sy.zubayda": {
+   "id": "db9e0dab-a4e3-5709-8c05-56aed72f89ef",
+   "name": "Zubayda bint Jafar",
+   "b": 765,
+   "d": 831,
+   "tree": "IQ_ABB",
+   "title": "Épouse de Haroun al-Rachid, mère d'al-Amin",
+   "g": "f",
+   "script": 119
+  },
+  "sy.amin": {
+   "id": "720218d6-43f2-5b91-9569-e3035623ebea",
+   "name": "Al-Amin",
+   "b": 787,
+   "d": 813,
+   "tree": "IQ_ABB",
+   "title": "Calife abbasside (809-813)",
+   "g": "h",
+   "script": 119
+  },
+  "sy.mamun": {
+   "id": "3fcb50fe-d85d-5ff1-9b27-564d49f6a8a7",
+   "name": "Al-Mamoun",
+   "b": 786,
+   "d": 833,
+   "tree": "IQ_ABB",
+   "title": "Calife abbasside (813-833)",
+   "g": "h",
+   "script": 119
+  },
+  "sy.mutasim": {
+   "id": "1fe94099-0bab-5a72-999c-b63c3e53ff78",
+   "name": "Al-Moutassim",
+   "b": 796,
+   "d": 842,
+   "tree": "IQ_ABB",
+   "title": "Calife abbasside (833-842)",
+   "g": "h",
+   "script": 119
+  },
+  "sy.wathiq": {
+   "id": "222a3cc7-047d-5374-8135-f162d72b2683",
+   "name": "Al-Wathiq",
+   "b": 812,
+   "d": 847,
+   "tree": "IQ_ABB",
+   "title": "Calife abbasside (842-847)",
+   "g": "h",
+   "script": 119
+  },
+  "sy.mutawakkil": {
+   "id": "6b88bac5-ad60-5dd7-b0c9-5e72e2eabaae",
+   "name": "Al-Moutawakkil",
+   "b": 822,
+   "d": 861,
+   "tree": "IQ_ABB",
+   "title": "Calife abbasside (847-861)",
+   "g": "h",
+   "script": 119
   }
  },
  "trees": {
@@ -30914,6 +31174,18 @@
    "country": "EGY",
    "dynasty": "Ayyoubides",
    "script": 118
+  },
+  "SY_OME": {
+   "entry": "d8825687-17d2-565f-b6c7-7a33994b2051",
+   "country": "SYR",
+   "dynasty": "Omeyyades",
+   "script": 119
+  },
+  "IQ_ABB": {
+   "entry": "ab642ed9-93a3-5c13-be50-46b08dddd8ef",
+   "country": "IRQ",
+   "dynasty": "Abbassides",
+   "script": 119
   }
  },
  "flags": [
@@ -36171,6 +36443,15 @@
     "Dynastie XIX (EGY)",
     "Fatimides (EGY)",
     "Ayyoubides (EGY)"
+   ]
+  },
+  "119": {
+   "label": "Syrie (Omeyyades) et Irak (Abbassides)",
+   "members": 26,
+   "rels": 25,
+   "trees": [
+    "Omeyyades (SYR)",
+    "Abbassides (IRQ)"
    ]
   }
  },
@@ -60359,6 +60640,131 @@
    "dbe42d24-579b-5c8e-be83-a55176342e5e",
    "63871a15-ed1b-5a8a-9fe9-e01b509259f8",
    "parent"
+  ],
+  [
+   "a1431b8d-789d-5db2-9c19-9a4e75238e16",
+   "9f64afb1-c6ee-5708-87e6-795839bda732",
+   "parent"
+  ],
+  [
+   "9f64afb1-c6ee-5708-87e6-795839bda732",
+   "7757ff58-e424-530e-8a7e-852e4d66fbf0",
+   "parent"
+  ],
+  [
+   "7757ff58-e424-530e-8a7e-852e4d66fbf0",
+   "ef4b278d-ee9f-5003-9af1-b35793f794b0",
+   "parent"
+  ],
+  [
+   "cab0e6d4-14ad-5eae-9e10-68610b4082f3",
+   "b20237a8-4db1-55a2-992a-7ee2e29e5047",
+   "parent"
+  ],
+  [
+   "b20237a8-4db1-55a2-992a-7ee2e29e5047",
+   "042a56c9-2ed0-5549-9559-a7e6943044c3",
+   "parent"
+  ],
+  [
+   "b20237a8-4db1-55a2-992a-7ee2e29e5047",
+   "e3229409-67a3-52aa-a656-6e363f2101b1",
+   "parent"
+  ],
+  [
+   "b20237a8-4db1-55a2-992a-7ee2e29e5047",
+   "38c6b355-0d10-503d-bdd4-0f0798c347cd",
+   "parent"
+  ],
+  [
+   "b20237a8-4db1-55a2-992a-7ee2e29e5047",
+   "eb2de662-029d-5c9f-834d-de0a570275fe",
+   "parent"
+  ],
+  [
+   "cab0e6d4-14ad-5eae-9e10-68610b4082f3",
+   "27ff14a3-4ec6-504f-a770-62f62e7955cb",
+   "family"
+  ],
+  [
+   "cab0e6d4-14ad-5eae-9e10-68610b4082f3",
+   "e3c62b63-83f7-5c3c-be2d-db32f10bc68c",
+   "family"
+  ],
+  [
+   "98325c62-4ad8-5586-b041-484389b13359",
+   "c7986fa9-0e8b-534d-bb7b-223310594586",
+   "parent"
+  ],
+  [
+   "c7986fa9-0e8b-534d-bb7b-223310594586",
+   "9bf3b001-66fc-57b3-8598-593db742ac80",
+   "parent"
+  ],
+  [
+   "fc49cc3e-813a-5695-af60-7ec9377b991b",
+   "e87f26a1-0923-50c5-9696-a8b4c05fe74e",
+   "parent"
+  ],
+  [
+   "e87f26a1-0923-50c5-9696-a8b4c05fe74e",
+   "5dc94500-a0a8-5d1c-ba2a-f0d88f3a4afa",
+   "parent"
+  ],
+  [
+   "e87f26a1-0923-50c5-9696-a8b4c05fe74e",
+   "bf539724-fd32-5431-9c88-e7548e0e22a3",
+   "parent"
+  ],
+  [
+   "bf539724-fd32-5431-9c88-e7548e0e22a3",
+   "720218d6-43f2-5b91-9569-e3035623ebea",
+   "parent"
+  ],
+  [
+   "db9e0dab-a4e3-5709-8c05-56aed72f89ef",
+   "720218d6-43f2-5b91-9569-e3035623ebea",
+   "parent"
+  ],
+  [
+   "bf539724-fd32-5431-9c88-e7548e0e22a3",
+   "3fcb50fe-d85d-5ff1-9b27-564d49f6a8a7",
+   "parent"
+  ],
+  [
+   "bf539724-fd32-5431-9c88-e7548e0e22a3",
+   "1fe94099-0bab-5a72-999c-b63c3e53ff78",
+   "parent"
+  ],
+  [
+   "1fe94099-0bab-5a72-999c-b63c3e53ff78",
+   "222a3cc7-047d-5374-8135-f162d72b2683",
+   "parent"
+  ],
+  [
+   "1fe94099-0bab-5a72-999c-b63c3e53ff78",
+   "6b88bac5-ad60-5dd7-b0c9-5e72e2eabaae",
+   "parent"
+  ],
+  [
+   "9bf3b001-66fc-57b3-8598-593db742ac80",
+   "c50e171f-b40a-5edf-948d-0762517d097e",
+   "family"
+  ],
+  [
+   "9bf3b001-66fc-57b3-8598-593db742ac80",
+   "fc49cc3e-813a-5695-af60-7ec9377b991b",
+   "family"
+  ],
+  [
+   "fc49cc3e-813a-5695-af60-7ec9377b991b",
+   "db9e0dab-a4e3-5709-8c05-56aed72f89ef",
+   "family"
+  ],
+  [
+   "bf539724-fd32-5431-9c88-e7548e0e22a3",
+   "db9e0dab-a4e3-5709-8c05-56aed72f89ef",
+   "spouse"
   ]
  ],
  "dateflags": [

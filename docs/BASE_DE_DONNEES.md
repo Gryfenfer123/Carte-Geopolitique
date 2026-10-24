@@ -188,4 +188,5 @@ RLS**. Règles :
 | arbres_v116 | v116 : sources et corrections (Portugal, Brésil, ajouts Espagne) |
 | arbres_v117 | v117 : sources et corrections (Navarre, Naples, Bulgarie) ; Louis de Duras ajouté |
 | arbres_v118 | v118 : Égypte — XVIIIe et XIXe dynasties, Fatimides, Ayyoubides (34 membres, sourcés) |
+| arbres_v119 | v119 : Omeyyades (Syrie) et Abbassides (Irak), 26 fiches sourcées |
 | `data_owid_load.sql` + `owid_chunks/` | Chargement des données d'indicateurs (rejouable, upserts) — à exécuter après v1 à v7 |
