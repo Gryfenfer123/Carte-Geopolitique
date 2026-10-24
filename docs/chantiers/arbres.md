@@ -2,6 +2,8 @@
 
 ## Dernières nouvelles (la plus récente en haut)
 
+- 2026-10-23 — v112 : sources Wikipédia sur 60 fiches ; corrections : Hussein ibn Ali 1853, Musbah bint Nasser (nom erroné corrigé), Moulay Chérif ben Ali (nom corrigé), Ibn Saoud 1876, Idris 1890, Youssef 1881, etc. ; ajout Moulay Hicham
+
 - 2026-10-23 — v111 : sources Wikipédia sur les 48 fiches d'Iran ; corrections : Cyrus -600, Artaxerxès II -436, Artaxerxès III vide, Ardachîr 180, Narsès mort 303, Khosro Ier 512, Hormizd IV 540, Khodabanda 1532, Soleiman 1648, Hosein mort 1727, Hossein Qoli 1751 ; ajout Mohammad Hasan Khan
 
 - 2026-10-23 — v110 : sources Wikipédia sur les 37 fiches d'Égypte + Fawzia ; corrections : Ptolémée Ier -369, VIII -184, Cléopâtre III -160, Séléné -5, Abbas Ier 1812, Narriman 1933 ; lien Ptolémée Ier → Arsinoé II ; registre docs/sources/arbres.md
@@ -101,7 +103,7 @@
 
 Code : `src/genealogy.ts`, `genealogyLayers.ts`, `genealogyBus.ts`, `genealogyLod.ts/.css`, `genealogyLayersWorker.ts`,
 `genealogyLayout.ts`, `genealogyRouting.ts`. Outils de remplissage : [`scripts/arbres/`](../../scripts/arbres/README.md).
-Prochaine migration : **arbres_v112** (`supabase/arbres/arbres_v112.sql`) — générateur : `Gen(112, "…")`.  (v111 livrée, à exécuter par Martin si ce n'est pas déjà fait.)
+Prochaine migration : **arbres_v113** (`supabase/arbres/arbres_v113.sql`) — générateur : `Gen(113, "…")`.  (v112 livrée, à exécuter par Martin si ce n'est pas déjà fait.)
 
 ## Règles de contenu (décidées par Martin — ne pas rouvrir)
 - Un pays n'a que les dynasties qui ont **régné sur lui**. Dynastie étrangère : branche principale dans son pays

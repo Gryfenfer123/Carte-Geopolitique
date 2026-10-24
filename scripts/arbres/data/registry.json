@@ -28074,7 +28074,7 @@
   "me.hus": {
    "id": "bd410388-1880-5661-b1eb-fb29a5106a97",
    "name": "Hussein ibn Ali",
-   "b": 1854,
+   "b": 1853,
    "d": 1931,
    "tree": "JO_HAS",
    "title": "Chérif de La Mecque, roi du Hedjaz (1916-1924), meneur de la Révolte arabe",
@@ -28103,9 +28103,9 @@
   },
   "me.misha": {
    "id": "3ada60d6-61c6-5d0e-91a5-43daf5fb37c6",
-   "name": "Misha'al bint Fahd",
-   "b": null,
-   "d": null,
+   "name": "Musbah bint Nasser",
+   "b": 1884,
+   "d": 1961,
    "tree": "JO_HAS",
    "title": "Épouse de Abdallah Ier",
    "g": "f",
@@ -28234,7 +28234,7 @@
   "me.mohammed": {
    "id": "cc802f41-d4b5-5d37-9d5a-7858c9636188",
    "name": "Mohammed ibn Saoud",
-   "b": null,
+   "b": 1687,
    "d": 1765,
    "tree": "SA_SAO",
    "title": "Émir de Diriyya, fondateur du premier État saoudien",
@@ -28264,7 +28264,7 @@
   "me.turki": {
    "id": "72b05d89-e5bb-5eb0-a58f-a309e2322770",
    "name": "Turki ibn Abdallah",
-   "b": null,
+   "b": 1755,
    "d": 1834,
    "tree": "SA_SAO",
    "title": "Fondateur du second État saoudien (1824-1834)",
@@ -28274,7 +28274,7 @@
   "me.faisal1": {
    "id": "cef19b63-2a97-598f-9f19-5515e86a99ee",
    "name": "Fayçal ibn Turki",
-   "b": null,
+   "b": 1785,
    "d": 1865,
    "tree": "SA_SAO",
    "title": "Émir du Nejd (1834-1865)",
@@ -28294,7 +28294,7 @@
   "me.abdulaziz": {
    "id": "0ec63e72-abfe-5488-bca8-3555291c1598",
    "name": "Abdulaziz ibn Saoud (Ibn Saoud)",
-   "b": 1875,
+   "b": 1876,
    "d": 1953,
    "tree": "SA_SAO",
    "title": "Fondateur et premier roi d'Arabie saoudite (1932-1953)",
@@ -28304,7 +28304,7 @@
   "me.hassa": {
    "id": "a575bb31-55db-5786-a06a-7b958864612b",
    "name": "Hassa bint Ahmad al-Soudaïri",
-   "b": null,
+   "b": 1900,
    "d": 1969,
    "tree": "SA_SAO",
    "title": "Épouse d'Ibn Saoud, mère des « Soudayri »",
@@ -28383,8 +28383,8 @@
   },
   "af.ali": {
    "id": "a9281f7a-61b9-5a02-b75e-53b158a498c3",
-   "name": "Moulay Ali Chérif",
-   "b": null,
+   "name": "Moulay Chérif ben Ali",
+   "b": 1589,
    "d": 1659,
    "tree": "MA_ALA",
    "title": "Ancêtre des Alaouites, prince du Tafilalet",
@@ -28504,7 +28504,7 @@
   "af.youssef": {
    "id": "1768c948-0b64-5471-9506-3dfaa0764366",
    "name": "Moulay Youssef",
-   "b": 1882,
+   "b": 1881,
    "d": 1927,
    "tree": "MA_ALA",
    "title": "Sultan du Maroc (1912-1927)",
@@ -28574,7 +28574,7 @@
   "af.idris": {
    "id": "039f860f-4e27-53f5-aeeb-cd7d1953225f",
    "name": "Idris Ier de Libye",
-   "b": 1889,
+   "b": 1890,
    "d": 1983,
    "tree": "LY_SEN",
    "title": "Roi de Libye (1951-1969)",
@@ -29580,6 +29580,16 @@
    "title": "Chef qajar, père d'Agha Mohammad Khan",
    "g": "h",
    "script": 111
+  },
+  "af.hisham": {
+   "id": "771a32bc-7771-561a-9a95-7e7c1aad7fb0",
+   "name": "Moulay Hicham ben Mohammed",
+   "b": 1748,
+   "d": 1798,
+   "tree": "MA_ALA",
+   "title": "Fils de Mohammed III, père d'Abd al-Rahman",
+   "g": "h",
+   "script": 112
   }
  },
  "trees": {
@@ -35733,6 +35743,12 @@
    "label": "Sources et corrections de dates — Iran (v104)",
    "members": 1,
    "rels": 2,
+   "trees": []
+  },
+  "112": {
+   "label": "Sources et corrections — Hachémites, Al Saoud, Alaouites, Senoussi, dynastie salomonide (v106-v107)",
+   "members": 1,
+   "rels": 3,
    "trees": []
   }
  },
@@ -59711,6 +59727,21 @@
    "ebb3f8e6-73d8-5289-9b19-584015f005e7",
    "bbd673a6-bbb1-5391-a7f2-3024e5ec2b80",
    "parent"
+  ],
+  [
+   "7ffc5af2-33e0-54d8-9b27-071327b5e787",
+   "771a32bc-7771-561a-9a95-7e7c1aad7fb0",
+   "parent"
+  ],
+  [
+   "771a32bc-7771-561a-9a95-7e7c1aad7fb0",
+   "838e7650-48f4-5407-be04-d56c96507a39",
+   "parent"
+  ],
+  [
+   "521fe6ae-5845-5c99-89b1-2d8740ec6aee",
+   "414a8326-9585-5dd7-a241-29a3e13d4d9a",
+   "family"
   ]
  ],
  "dateflags": [

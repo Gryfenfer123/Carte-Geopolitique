@@ -181,4 +181,5 @@ RLS**. Règles :
 | arbres_v109 | v109 : Bagrationi (Géorgie), Arménie, Hasmonéens et Hérodiens (Israël), 40 membres |
 | arbres_v110 | v110 : sources et corrections de dates (Égypte, Fawzia) ; champ Notes rempli |
 | arbres_v111 | v111 : sources et corrections de dates (Iran), Mohammad Hasan Khan Qajar ajouté |
+| arbres_v112 | v112 : sources et corrections (Hachémites, Al Saoud, Alaouites, Senoussi, salomonide) ; Moulay Hicham ajouté |
 | `data_owid_load.sql` + `owid_chunks/` | Chargement des données d'indicateurs (rejouable, upserts) — à exécuter après v1 à v7 |

@@ -87,6 +87,7 @@ class Gen:
         self.notes = []      # lignes de commentaire pour l'en-tête
         self.dateflags = []  # dates approximatives / incertaines
         self.pins = []       # (code, tree) membres épinglés sans lien
+        self.ren = []        # (code, nouveau nom, nouveau titre)
         self.setb = []       # (id, sources) à ajouter aux notes
         self.setd = []       # (code, naissance, mort) dates à corriger/compléter sur un membre déjà créé
         self.xmoves = []     # (id, tree, dynasty) membres de la base déplacés
@@ -173,6 +174,12 @@ class Gen:
         """Ajoute « Sources : ... » aux notes d'un membre (code d'un script précédent, ou i = id complet) sans jamais effacer le texte existant ; sans effet si des sources y figurent déjà."""
         i = i or REG['members'][code]['id']
         self.setb.append((i, src))
+
+    def rename(self, code, name, title=None):
+        """Corrige le nom (et éventuellement le titre) d'un membre créé par un script précédent (erreur reconnue) ; l'ancien nom reste dans les notes."""
+        assert code in REG['members'], code
+        self.ren.append((code, name, title))
+        REG['members'][code]['name'] = name
 
     def pin(self, code, tree):
         self.pins.append((code, tree))
@@ -427,6 +434,9 @@ class Gen:
             o.append(f"  delete from public.genealogy_foreign_states where member_id = '{i}' and owner_type = 'entry' and owner_id = '{e}';")
         for i, b, d in self.xsetd:
             o.append(f"  update public.genealogy_members set birth_year = coalesce(birth_year, {n(b)}), death_year = coalesce(death_year, {n(d)}) where id = '{i}';")
+        for code, nm, ti in self.ren:
+            tsql = f", title = {q(ti)}" if ti else ''
+            o.append(f"  update public.genealogy_members set name = {q(nm)}{tsql} where id = '{REG['members'][code]['id']}';")
         for i, src in self.setb:
             t = q('Sources : ' + src)
             o.append(f"  update public.genealogy_members set bio = case when coalesce(bio, '') = '' then {t} when bio like '%Sources :%' then bio else bio || E'\\n\\n' || {t} end where id = '{i}';")
