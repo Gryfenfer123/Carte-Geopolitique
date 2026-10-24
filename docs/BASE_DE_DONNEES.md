@@ -183,4 +183,5 @@ RLS**. Règles :
 | arbres_v111 | v111 : sources et corrections de dates (Iran), Mohammad Hasan Khan Qajar ajouté |
 | arbres_v112 | v112 : sources et corrections (Hachémites, Al Saoud, Alaouites, Senoussi, salomonide) ; Moulay Hicham ajouté |
 | arbres_v113 | v113 : sources et corrections (Moghols, Chakri, Nguyen, Durrani) |
+| arbres_v114 | v114 : sources et corrections (Bagrationi, Arménie, Hasmonéens-Hérodiens) |
 | `data_owid_load.sql` + `owid_chunks/` | Chargement des données d'indicateurs (rejouable, upserts) — à exécuter après v1 à v7 |

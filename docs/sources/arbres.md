@@ -11,6 +11,7 @@ Chaque fiche sourcée porte aussi l'adresse de sa page dans « Notes / biographi
 | 2026-10-24 | v111 — Iran, 48 fiches (Achéménides, Sassanides, Safavides, Qajars, Pahlavi) + Mohammad Hasan Khan Qajar ajouté : dates, parents | Wikipédia anglais, une page par personne (Cyrus the Great … Reza Pahlavi ; liste dans le champ Notes de chaque fiche) | https://en.wikipedia.org/wiki/<titre> | CC BY-SA 4.0 | tertiaire / à recouper ; dates achéménides et sassanides approximatives |
 | 2026-10-24 | v112 — 60 fiches : Hachémites (Jordanie, Irak), Al Saoud, Alaouites, Senoussi, dynastie salomonide (+ Moulay Hicham ajouté ; 2 erreurs de nom corrigées) | Wikipédia anglais (une page par personne, liste dans le champ Notes) et Wikipédia français (Moulay Rachid) | https://en.wikipedia.org/wiki/<titre> | CC BY-SA 4.0 | tertiaire / à recouper |
 | 2026-10-24 | v113 — 50 fiches : Moghols, Chakri, Nguyen, Durrani/Barakzaï | Wikipédia anglais, une page par personne (liste dans le champ Notes) | https://en.wikipedia.org/wiki/<titre> | CC BY-SA 4.0 | tertiaire / à recouper |
+| 2026-10-24 | v114 — 40 fiches : Bagrationi, Arménie, Hasmonéens et Hérodiens (lien David VII corrigé) | Wikipédia anglais, une page par personne (liste dans le champ Notes) | https://en.wikipedia.org/wiki/<titre> | CC BY-SA 4.0 | tertiaire / à recouper ; dates antiques et médiévales approximatives
 
 ## Lots NON sourcés (à reprendre) — SOURCE MANQUANTE
 Dates saisies de mémoire, sans page consultée ; en cours de reprise, une ligne ci-dessus remplace la ligne ici au fur et à mesure.
@@ -21,5 +22,4 @@ Dates saisies de mémoire, sans page consultée ; en cours de reprise, une ligne
 | v100 | Espagne (ajouts) | SOURCE MANQUANTE |
 | v101-v102 | Navarre, Anjou-Naples, Aragon-Naples | SOURCE MANQUANTE |
 | v103 | Bulgarie (ajouts) | SOURCE MANQUANTE |
-| v109 | Bagrationi, Arménie, Hasmonéens-Hérodiens | SOURCE MANQUANTE |
 | v39-v96 | Arbres antérieurs (autres sessions) | à auditer plus tard |

@@ -29204,7 +29204,7 @@
   "cx.george2": {
    "id": "64a9fa36-7a53-506d-abdf-b70b82b02474",
    "name": "Georges II de Géorgie",
-   "b": 1042,
+   "b": null,
    "d": 1112,
    "tree": "GE_BAG",
    "title": "Roi de Géorgie (1072-1089)",
@@ -29234,7 +29234,7 @@
   "cx.george3": {
    "id": "d706aab3-cb89-5ce7-a9ac-f6e521d90866",
    "name": "Georges III de Géorgie",
-   "b": 1133,
+   "b": null,
    "d": 1184,
    "tree": "GE_BAG",
    "title": "Roi de Géorgie (1156-1184)",
@@ -29284,7 +29284,7 @@
   "cx.teimuraz2": {
    "id": "e9bbf6db-f62a-5bbd-ae47-30a725b82dec",
    "name": "Téïmouraz II de Kakhétie",
-   "b": 1700,
+   "b": 1695,
    "d": 1762,
    "tree": "GE_BAG",
    "title": "Roi de Kakhétie puis de Kartli (1744-1762)",
@@ -29394,7 +29394,7 @@
   "cx.simon": {
    "id": "f796998a-1831-56f3-920f-fa9ae89f297d",
    "name": "Simon Maccabée",
-   "b": null,
+   "b": -184,
    "d": -135,
    "tree": "IL_HAS",
    "title": "Grand prêtre et ethnarque (-142 à -135)",
@@ -29424,7 +29424,7 @@
   "cx.jannee": {
    "id": "d85696be-86dd-52b0-881a-258f8a3c5b52",
    "name": "Alexandre Jannée",
-   "b": -126,
+   "b": -130,
    "d": -76,
    "tree": "IL_HAS",
    "title": "Roi de Judée (-103 à -76)",
@@ -29434,7 +29434,7 @@
   "cx.salome": {
    "id": "436989cb-0296-566c-8136-8810509b5634",
    "name": "Alexandra Salomé",
-   "b": -139,
+   "b": -141,
    "d": -67,
    "tree": "IL_HAS",
    "title": "Reine de Judée (-76 à -67)",
@@ -29454,7 +29454,7 @@
   "cx.aristobule2": {
    "id": "405eb31c-5364-5927-92de-12be524ed4ee",
    "name": "Aristobule II",
-   "b": -100,
+   "b": null,
    "d": -49,
    "tree": "IL_HAS",
    "title": "Roi de Judée (-66 à -63)",
@@ -29475,7 +29475,7 @@
    "id": "349159e8-02ac-58e0-8ab1-57f4144938b4",
    "name": "Alexandra la Jeune",
    "b": null,
-   "d": null,
+   "d": -28,
    "tree": "IL_HAS",
    "title": "Fille d'Hyrcan II, mère de Mariamne",
    "g": "f",
@@ -29484,7 +29484,7 @@
   "cx.mariamne": {
    "id": "baf684e4-2528-55a2-8ee0-6743c83a3f55",
    "name": "Mariamne l'Hasmonéenne",
-   "b": -54,
+   "b": null,
    "d": -29,
    "tree": "IL_HAS",
    "title": "Épouse d'Hérode le Grand",
@@ -29494,7 +29494,7 @@
   "cx.herode": {
    "id": "65fdf014-2806-537e-ae6b-ae865371afd3",
    "name": "Hérode le Grand",
-   "b": -73,
+   "b": -72,
    "d": -4,
    "tree": "IL_HAS",
    "title": "Roi de Judée (-37 à -4)",
@@ -29504,8 +29504,8 @@
   "cx.aristobule4": {
    "id": "2ce27639-e578-5574-a5c8-5d061988cb3b",
    "name": "Aristobule IV",
-   "b": null,
-   "d": -6,
+   "b": -31,
+   "d": -7,
    "tree": "IL_HAS",
    "title": "Fils d'Hérode le Grand et de Mariamne",
    "g": "h",
@@ -29544,7 +29544,7 @@
   "cx.agrippa1": {
    "id": "b3b7f90c-ab69-505c-8e13-41e37c78a77d",
    "name": "Hérode Agrippa Ier",
-   "b": -10,
+   "b": -11,
    "d": 44,
    "tree": "IL_HAS",
    "title": "Roi de Judée (41-44)",
@@ -35755,6 +35755,12 @@
    "label": "Sources et corrections — Moghols, Chakri, Nguyen, Durrani/Barakzaï (v108)",
    "members": 0,
    "rels": 0,
+   "trees": []
+  },
+  "114": {
+   "label": "Sources et corrections — Bagrationi, Arménie, Hasmonéens et Hérodiens (v109)",
+   "members": 0,
+   "rels": 1,
    "trees": []
   }
  },
@@ -59748,6 +59754,11 @@
    "521fe6ae-5845-5c99-89b1-2d8740ec6aee",
    "414a8326-9585-5dd7-a241-29a3e13d4d9a",
    "family"
+  ],
+  [
+   "3bb8a88a-b177-5b08-b976-f620b6ee373b",
+   "eb834158-0274-521d-b930-c34fe4131fa5",
+   "parent"
   ]
  ],
  "dateflags": [

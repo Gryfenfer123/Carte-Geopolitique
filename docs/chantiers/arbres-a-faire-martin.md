@@ -24,3 +24,7 @@ Mis à jour le 2026-10-24. Cocher au fur et à mesure.
 - Dates de ces lots : tirées de connaissances générales, aucune page consultée → à relire, surtout les dates antiques (Ptolémées, Hasmonéens, Arménie) et Sirikit (décès non vérifié).
 - Liens volontairement non saisis (signalés dans les arbres) : père de Césarion (Jules César), ascendance de Turki ben Abdallah, Abd al-Rahman du Maroc, Ras Makonnen/Menelik II, Gagik Ier d'Arménie, Bagrat III, filiation biologique de Duc Duc et Dong Khanh, Dost Mohammad/Durrani.
 - Pays restants sans arbre : Syrie, Liban, Émirats, Qatar, Koweït, Bahreïn, Oman, Yémen, Azerbaïdjan, Pakistan, Tunisie, Algérie, Irlande, Croatie.
+
+## Ajouts (reprise avec sources, v110 à v114)
+- Supprimer le lien erroné « Rousoudan de Géorgie → David VII Oulou » (David VII est le fils de Georges IV Lacha ; le bon lien est ajouté en v114).
+- Mêmes consignes pour les liens « famille » (pas parent-enfant) de l'Iran : Cyrus → Darius Ier, Darius II → Darius III, Shapur II → Kavadh Ier, Khosro II → Yazdgard III. Ils ne sont pas faux (parenté lointaine) mais ne sont pas des filiations ; à garder ou supprimer selon ton choix.
