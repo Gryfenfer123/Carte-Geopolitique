@@ -95,6 +95,10 @@ Tout est dans `docs/BASE_DE_DONNEES.md` ; l'essentiel :
 
 ## 7. Données et sources
 
+- **Règle impérative (Martin, 2026-10-24) : tout sourcer systématiquement, au fur et à mesure**, dans
+  `docs/sources/<chantier>.md` (voir `docs/sources/README.md`), dans le même commit que le travail.
+  Rien n'est pris s'il n'est pas sourcé. Ces fichiers serviront à écrire le grand document de sources.
+
 - Une donnée affichée vient d'une **source fiable identifiable** ; on la note (nom, année,
   couverture) à côté du fichier ou dans le commit. **On n'invente jamais de valeurs** pour
   combler un trou.

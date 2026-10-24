@@ -29,7 +29,7 @@ Martin **ne programme pas** : il décrit en français, tu fais, tu expliques sim
    `docs/CHANTIERS.md` ; jamais de doublon), idempotente, sans suppression de données, RLS incluse ;
    **c'est Martin qui l'exécute** — le lui dire. Les anciennes `schema_v1…v60` ne se renomment pas.
 7. **Aucun secret** (`service_role`) dans le dépôt. Texte riche = toujours via `sanitize.ts`.
-8. **Données** : source fiable notée, jamais de valeur inventée.
+8. **Données** : source fiable notée, jamais de valeur inventée. **Sourcer systématiquement, à chaque travail, dans `docs/sources/<chantier>.md`** (format dans `docs/sources/README.md`) ; **rien n'est pris s'il n'est pas sourcé**.
 9. **Docs dans le même commit** que le changement (`docs/`).
 10. **Irréversible = demander d'abord** (suppression de données, droits, migration).
 
