@@ -20,7 +20,7 @@ begin
   select count(*) into k from public.genealogy_members where id in ('4433a65f-3db3-4d8a-bb05-64e228145658','5bb15ac8-132c-4ca2-a227-0e0254422770','ba3d69dd-6641-4814-b199-7efbc8d62cba');
   if k <> 3 then raise exception 'Membres préexistants manquants (% sur 3) : un script précédent n''a pas été exécuté ? Rien n''a été fait.', k; end if;
   -- Arbre « Hauteville » (ITA)
-  select id into top from public.dossier_sections where owner_type = 'country' and owner_id = 'ITA' and title = 'Dynastie' and parent_section_id is null and category_id = cat_id;
+  select id into top from public.dossier_sections where owner_type = 'country' and owner_id = 'ITA' and lower(title) = 'dynastie' and parent_section_id is null and category_id = cat_id;
   if top is null then raise exception 'Section Dynastie introuvable pour ITA : rien n''a été fait.'; end if;
   select id into sec from public.dossier_sections where parent_section_id = top and title = 'Hauteville';
   if sec is null then

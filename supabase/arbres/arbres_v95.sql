@@ -20,7 +20,7 @@ begin
   select count(*) into k from public.genealogy_members where id in ('2df9c2fd-8fd9-4bb4-b23a-f064afb0e301','376de58a-617f-5d5a-98cc-79695efc3ede','507c3d51-bc0e-5fd3-98f4-d80f2a501503','5539ea53-f47b-5952-883b-23c7429e5bb5','60980970-8d53-5628-b0dd-7baadfa1e7e7','66e055eb-cc8d-4e44-89ba-2e0e78821d30','927ddf7d-6da1-4ccb-b1e3-493ca40de381','995c8249-ac49-4468-babb-61ce8ce60709','9d06c682-eab3-5cac-81f3-0233c71b71e1','d8bc083b-3136-4c78-b005-900b69ebbab1','e2b87c64-43e9-4446-9f59-84b65f42386d','f06f9b33-6613-4380-af93-2d6493ffb942','f388aa57-8aca-54ed-9b7d-1973561af12f');
   if k <> 13 then raise exception 'Membres préexistants manquants (% sur 13) : un script précédent n''a pas été exécuté ? Rien n''a été fait.', k; end if;
   -- Arbre « Este » (ITA)
-  select id into top from public.dossier_sections where owner_type = 'country' and owner_id = 'ITA' and title = 'Dynastie' and parent_section_id is null and category_id = cat_id;
+  select id into top from public.dossier_sections where owner_type = 'country' and owner_id = 'ITA' and lower(title) = 'dynastie' and parent_section_id is null and category_id = cat_id;
   if top is null then raise exception 'Section Dynastie introuvable pour ITA : rien n''a été fait.'; end if;
   select id into sec from public.dossier_sections where parent_section_id = top and title = 'Este';
   if sec is null then
@@ -31,7 +31,7 @@ begin
   insert into public.dossier_entries (id, owner_type, owner_id, type, title, category_id, section_id, created_by)
   values ('46971805-4ab8-5166-a475-2b53e19d6f12', 'country', 'ITA', 'genealogy', 'Este', cat_id, sec, admin_id);
   -- Arbre « Gonzague » (ITA)
-  select id into top from public.dossier_sections where owner_type = 'country' and owner_id = 'ITA' and title = 'Dynastie' and parent_section_id is null and category_id = cat_id;
+  select id into top from public.dossier_sections where owner_type = 'country' and owner_id = 'ITA' and lower(title) = 'dynastie' and parent_section_id is null and category_id = cat_id;
   if top is null then raise exception 'Section Dynastie introuvable pour ITA : rien n''a été fait.'; end if;
   select id into sec from public.dossier_sections where parent_section_id = top and title = 'Gonzague';
   if sec is null then
@@ -42,7 +42,7 @@ begin
   insert into public.dossier_entries (id, owner_type, owner_id, type, title, category_id, section_id, created_by)
   values ('2660365e-f536-5ec5-a3c3-fe4b028a1111', 'country', 'ITA', 'genealogy', 'Gonzague', cat_id, sec, admin_id);
   -- Arbre « Farnèse » (ITA)
-  select id into top from public.dossier_sections where owner_type = 'country' and owner_id = 'ITA' and title = 'Dynastie' and parent_section_id is null and category_id = cat_id;
+  select id into top from public.dossier_sections where owner_type = 'country' and owner_id = 'ITA' and lower(title) = 'dynastie' and parent_section_id is null and category_id = cat_id;
   if top is null then raise exception 'Section Dynastie introuvable pour ITA : rien n''a été fait.'; end if;
   select id into sec from public.dossier_sections where parent_section_id = top and title = 'Farnèse';
   if sec is null then

@@ -368,7 +368,7 @@ class Gen:
         for key, t in self.trees.items():
             if t['new']:
                 o.append(f"  -- Arbre « {t['dynasty']} » ({t['country']})")
-                o.append(f"  select id into top from public.dossier_sections where owner_type = 'country' and owner_id = {q(t['country'])} and title = 'Dynastie' and parent_section_id is null and category_id = cat_id;")
+                o.append(f"  select id into top from public.dossier_sections where owner_type = 'country' and owner_id = {q(t['country'])} and lower(title) = 'dynastie' and parent_section_id is null and category_id = cat_id;")
                 o.append(f"  if top is null then raise exception 'Section Dynastie introuvable pour {t['country']} : rien n''a été fait.'; end if;")
                 o.append(f"  select id into sec from public.dossier_sections where parent_section_id = top and title = {q(t['section_title'])};")
                 o.append(f"  if sec is null then")

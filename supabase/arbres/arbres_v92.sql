@@ -20,7 +20,7 @@ begin
   select count(*) into k from public.genealogy_members where id in ('14a47148-8939-4160-a1fc-f3de3513d77d','2bbe0128-ee74-5bb8-ba58-6a4e86259e82','2d42f36b-ac4a-4739-afd6-5cf3331fdabf','6594dce9-0b70-4f9a-af27-0c4339e7a80b','7d6f1565-dfd5-430e-9a93-a7b9a71c5158','aa3f4985-7d1a-406f-ade2-a0884d2705d4','ad10272c-225f-4b1b-87d6-95ae5f79978f','db456e5e-385a-4597-87b0-1ec2248cba1a','e4c68318-b75e-4bc3-8194-8d8babb28008');
   if k <> 9 then raise exception 'Membres préexistants manquants (% sur 9) : un script précédent n''a pas été exécuté ? Rien n''a été fait.', k; end if;
   -- Arbre « Dunkeld » (GBR)
-  select id into top from public.dossier_sections where owner_type = 'country' and owner_id = 'GBR' and title = 'Dynastie' and parent_section_id is null and category_id = cat_id;
+  select id into top from public.dossier_sections where owner_type = 'country' and owner_id = 'GBR' and lower(title) = 'dynastie' and parent_section_id is null and category_id = cat_id;
   if top is null then raise exception 'Section Dynastie introuvable pour GBR : rien n''a été fait.'; end if;
   select id into sec from public.dossier_sections where parent_section_id = top and title = 'Dunkeld';
   if sec is null then
@@ -31,7 +31,7 @@ begin
   insert into public.dossier_entries (id, owner_type, owner_id, type, title, category_id, section_id, created_by)
   values ('91210342-240f-5a40-827b-3e5021e27f96', 'country', 'GBR', 'genealogy', 'Dunkeld', cat_id, sec, admin_id);
   -- Arbre « Balliol » (GBR)
-  select id into top from public.dossier_sections where owner_type = 'country' and owner_id = 'GBR' and title = 'Dynastie' and parent_section_id is null and category_id = cat_id;
+  select id into top from public.dossier_sections where owner_type = 'country' and owner_id = 'GBR' and lower(title) = 'dynastie' and parent_section_id is null and category_id = cat_id;
   if top is null then raise exception 'Section Dynastie introuvable pour GBR : rien n''a été fait.'; end if;
   select id into sec from public.dossier_sections where parent_section_id = top and title = 'Balliol';
   if sec is null then

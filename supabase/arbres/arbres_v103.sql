@@ -25,7 +25,7 @@ begin
   select count(*) into k from public.dossier_entries where id = '34b77462-0e0c-59cc-a278-220823c60067' and type = 'genealogy';
   if k <> 1 then raise exception 'Arbre Chichman introuvable : rien n''a été fait.'; end if;
   -- Arbre « Terter » (BGR)
-  select id into top from public.dossier_sections where owner_type = 'country' and owner_id = 'BGR' and title = 'Dynastie' and parent_section_id is null and category_id = cat_id;
+  select id into top from public.dossier_sections where owner_type = 'country' and owner_id = 'BGR' and lower(title) = 'dynastie' and parent_section_id is null and category_id = cat_id;
   if top is null then raise exception 'Section Dynastie introuvable pour BGR : rien n''a été fait.'; end if;
   select id into sec from public.dossier_sections where parent_section_id = top and title = 'Terter';
   if sec is null then

@@ -21,7 +21,7 @@ begin
   select count(*) into k from public.genealogy_members where id in ('07589e84-afa5-49d3-bb7f-68b7b748adb8','44a442af-0ed4-4893-a27a-e44fe6b4e997','579590ed-6dcb-4aeb-b902-9ac0494038a7','5c72ec7d-85f3-4b97-b6d5-ed54fad8e0c7','69d0a891-c17b-4dc2-bd45-edd1eb05baed','6df9addc-5cc8-41e3-9b0b-7647b501403a','6fb37332-44b6-5c53-ae83-b4fc01afc487','7010ac16-c56a-4733-9600-7078b764ac1e','716152f7-5bd7-5b17-905e-09c5faf7d5c2','78d0b5aa-fd6c-53da-865e-7a5fbbaf2129','7b2839f1-b8c3-53ed-8c28-831ff2df2cdc','8c899e6e-45ef-5a05-8b16-41903b36526f','8fbc7d6a-1c1e-5655-a152-1285e26c5202','90cd1f76-514c-5cfa-9f46-edcc228f924c','963424ff-9412-55a8-9548-457164b0703f','a810968f-0a99-50c7-8a00-63b1ec538b50','ab28690e-c022-4321-841c-4b1819c2a86b','ace83db1-2da5-5163-8728-e23bba8a42d4','bac0a74b-8395-59bf-8f23-c63f1a81ead0','bbbe49d7-372e-4a9c-9d2f-4da3ecac6d9d','e268c95a-004f-4d64-9fe0-5b768ec0b9fa');
   if k <> 21 then raise exception 'Membres préexistants manquants (% sur 21) : un script précédent n''a pas été exécuté ? Rien n''a été fait.', k; end if;
   -- Arbre « Anjou-Naples » (ITA)
-  select id into top from public.dossier_sections where owner_type = 'country' and owner_id = 'ITA' and title = 'Dynastie' and parent_section_id is null and category_id = cat_id;
+  select id into top from public.dossier_sections where owner_type = 'country' and owner_id = 'ITA' and lower(title) = 'dynastie' and parent_section_id is null and category_id = cat_id;
   if top is null then raise exception 'Section Dynastie introuvable pour ITA : rien n''a été fait.'; end if;
   select id into sec from public.dossier_sections where parent_section_id = top and title = 'Anjou-Naples';
   if sec is null then
@@ -32,7 +32,7 @@ begin
   insert into public.dossier_entries (id, owner_type, owner_id, type, title, category_id, section_id, created_by)
   values ('edd033cb-9503-535c-b756-b5d41fea2e9a', 'country', 'ITA', 'genealogy', 'Anjou-Naples', cat_id, sec, admin_id);
   -- Arbre « Aragon-Naples » (ITA)
-  select id into top from public.dossier_sections where owner_type = 'country' and owner_id = 'ITA' and title = 'Dynastie' and parent_section_id is null and category_id = cat_id;
+  select id into top from public.dossier_sections where owner_type = 'country' and owner_id = 'ITA' and lower(title) = 'dynastie' and parent_section_id is null and category_id = cat_id;
   if top is null then raise exception 'Section Dynastie introuvable pour ITA : rien n''a été fait.'; end if;
   select id into sec from public.dossier_sections where parent_section_id = top and title = 'Aragon-Naples';
   if sec is null then

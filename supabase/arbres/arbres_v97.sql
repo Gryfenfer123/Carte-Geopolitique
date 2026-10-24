@@ -19,7 +19,7 @@ declare
 begin
   if exists (select 1 from public.genealogy_members where id = '61cc1040-2c52-5e24-b01f-b5fd0e3b4555') then raise exception 'Script déjà exécuté : rien n''a été fait.'; end if;
   -- Arbre « Goryeo » (KOR)
-  select id into top from public.dossier_sections where owner_type = 'country' and owner_id = 'KOR' and title = 'Dynastie' and parent_section_id is null and category_id = cat_id;
+  select id into top from public.dossier_sections where owner_type = 'country' and owner_id = 'KOR' and lower(title) = 'dynastie' and parent_section_id is null and category_id = cat_id;
   if top is null then raise exception 'Section Dynastie introuvable pour KOR : rien n''a été fait.'; end if;
   select id into sec from public.dossier_sections where parent_section_id = top and title = 'Goryeo';
   if sec is null then

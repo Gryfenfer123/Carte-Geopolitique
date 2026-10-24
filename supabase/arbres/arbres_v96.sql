@@ -20,7 +20,7 @@ begin
   select count(*) into k from public.genealogy_members where id in ('ba967f1a-1d50-599c-a5e4-7101de90325a','f0684304-9584-55f5-bd0f-777479568e4a');
   if k <> 2 then raise exception 'Membres préexistants manquants (% sur 2) : un script précédent n''a pas été exécuté ? Rien n''a été fait.', k; end if;
   -- Arbre « Gediminides » (LTU)
-  select id into top from public.dossier_sections where owner_type = 'country' and owner_id = 'LTU' and title = 'Dynastie' and parent_section_id is null and category_id = cat_id;
+  select id into top from public.dossier_sections where owner_type = 'country' and owner_id = 'LTU' and lower(title) = 'dynastie' and parent_section_id is null and category_id = cat_id;
   if top is null then raise exception 'Section Dynastie introuvable pour LTU : rien n''a été fait.'; end if;
   select id into sec from public.dossier_sections where parent_section_id = top and title = 'Gediminides';
   if sec is null then

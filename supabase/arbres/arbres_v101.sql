@@ -21,7 +21,7 @@ begin
   select count(*) into k from public.genealogy_members where id in ('14b4e7b7-2c0c-44ed-91d1-b48e96b5a947','2905cc98-f0a5-4282-a792-72cd27b69e1c','44a43b3a-58f2-406b-a9a6-50f6ad73b716','50d03330-9124-45c3-9e32-512d30975f07','5b5ddf13-e634-5d1e-bab3-a8f86c823403','5c72ec7d-85f3-4b97-b6d5-ed54fad8e0c7','6c7bbade-5c41-4303-b45d-f046dce9311e','6dbff916-ca5a-4206-a42b-e2b577aa4b46','6e723508-4ac3-4e12-bbc8-084d3460a1c5','74e6ef51-e06c-4fff-a032-67663a267317','773c19a5-93d1-4171-8660-466c9f464ef3','7ab44e3e-6f2f-4701-8b12-49b8fb585eaa','800e8f67-bcc1-48a3-8e37-c3882d1a151f','9269a040-a00f-482b-9ab0-0240dfd9ee48','97ad334e-c901-4205-9b42-730b2cf80f8a','aaf4eda5-3825-404e-95b2-342f31a9acd0','ab28690e-c022-4321-841c-4b1819c2a86b','ce21005e-1d38-437f-9ecd-8affb07a1ddc','d52e8bf8-4fa2-4ee0-b36e-2965767b22ef','d60fe239-e250-4224-9605-49bc5b685853','da46a1b7-640a-4afb-be70-afbf5f716fa5');
   if k <> 21 then raise exception 'Membres préexistants manquants (% sur 21) : un script précédent n''a pas été exécuté ? Rien n''a été fait.', k; end if;
   -- Arbre « Royaume de Navarre » (ESP)
-  select id into top from public.dossier_sections where owner_type = 'country' and owner_id = 'ESP' and title = 'Dynastie' and parent_section_id is null and category_id = cat_id;
+  select id into top from public.dossier_sections where owner_type = 'country' and owner_id = 'ESP' and lower(title) = 'dynastie' and parent_section_id is null and category_id = cat_id;
   if top is null then raise exception 'Section Dynastie introuvable pour ESP : rien n''a été fait.'; end if;
   select id into sec from public.dossier_sections where parent_section_id = top and title = 'Royaume de Navarre';
   if sec is null then

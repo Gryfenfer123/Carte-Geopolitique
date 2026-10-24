@@ -21,7 +21,7 @@ begin
   select count(*) into k from public.genealogy_members where id in ('0373f6a9-8f72-5ebc-ac05-09d42a94de6e','09a0382a-c8df-49bd-8da9-b4985c2f025e','0ff20fb0-57cf-4181-b46f-a8be43fa8978','270f94e1-f3fa-418c-941e-a9a1ff88efba','2f5f1293-168c-46fa-b286-8ab8e4948f5f','376b55ce-54f5-40e2-8080-88804679f82c','5895d45c-cfbb-4f43-931f-7436572d071d','665e0fa9-b89f-40dd-9668-2644b376f1ec','7579d46f-7ccc-52d9-aa73-d00547fb3c4e','763283d5-f1a1-4004-b808-612c6381e39a','7845813e-f1ac-461a-8e0b-27e946323b2a','7bb4dae9-eafa-4bf0-bca1-757ea8aa5515','833ac28e-d26d-4627-8762-fa9191d55a9e','9ea047aa-fdfd-4249-ac6e-5399588af85f','a18b9641-5fd2-4508-a20f-2bce88dbbd0c','c5b4dc13-5e28-4eb7-99ca-45bc85a7e0c9','c9a47997-f356-45d1-b74e-3b3afcbabb1a','ccb29f99-70b2-47c7-9d61-8e8535f7b60e','cf451b38-f618-474f-ad9e-93299b786664');
   if k <> 19 then raise exception 'Membres préexistants manquants (% sur 19) : un script précédent n''a pas été exécuté ? Rien n''a été fait.', k; end if;
   -- Arbre « Maison de Bourgogne (Portugal) » (PRT)
-  select id into top from public.dossier_sections where owner_type = 'country' and owner_id = 'PRT' and title = 'Dynastie' and parent_section_id is null and category_id = cat_id;
+  select id into top from public.dossier_sections where owner_type = 'country' and owner_id = 'PRT' and lower(title) = 'dynastie' and parent_section_id is null and category_id = cat_id;
   if top is null then raise exception 'Section Dynastie introuvable pour PRT : rien n''a été fait.'; end if;
   select id into sec from public.dossier_sections where parent_section_id = top and title = 'Maison de Bourgogne';
   if sec is null then
