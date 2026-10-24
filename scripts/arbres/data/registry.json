@@ -25934,7 +25934,7 @@
   "pb.sancho2": {
    "id": "2ac4e6bb-8712-500c-ae1f-bd316fc56706",
    "name": "Sanche II le Capelo",
-   "b": 1209,
+   "b": 1207,
    "d": 1248,
    "tree": "PT_BOU",
    "title": "Roi du Portugal (1223-1247), déposé",
@@ -26004,8 +26004,8 @@
   "pb.constanza": {
    "id": "57dc85a8-ecaa-56f9-aab7-b75987fa9533",
    "name": "Constance Manuel",
-   "b": 1316,
-   "d": 1345,
+   "b": 1318,
+   "d": 1349,
    "tree": "PT_BOU",
    "title": "Première épouse de Pierre Ier",
    "g": "f",
@@ -26024,7 +26024,7 @@
   "pb.teresa_l": {
    "id": "15907b86-2335-5636-bc5f-19c494d5bb25",
    "name": "Thérèse Lourenço",
-   "b": null,
+   "b": 1330,
    "d": null,
    "tree": "PT_BOU",
    "title": "Mère de Jean Ier d'Aviz",
@@ -26054,8 +26054,8 @@
   "pb.beatriz": {
    "id": "20bac5b0-a522-511b-964a-aad6b3c16c02",
    "name": "Béatrice de Portugal (reine de Castille)",
-   "b": 1372,
-   "d": null,
+   "b": 1373,
+   "d": 1420,
    "tree": "PT_BOU",
    "title": "Héritière du Portugal, épouse de Jean Ier de Castille",
    "g": "f",
@@ -35765,6 +35765,12 @@
   },
   "115": {
    "label": "Sources — Goryeo (v97)",
+   "members": 0,
+   "rels": 0,
+   "trees": []
+  },
+  "116": {
+   "label": "Sources et corrections — Portugal (Bourgogne, Bragance), Brésil et ajouts Espagne (v98-v100)",
    "members": 0,
    "rels": 0,
    "trees": []

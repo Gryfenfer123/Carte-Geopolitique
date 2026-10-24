@@ -185,4 +185,5 @@ RLS**. Règles :
 | arbres_v113 | v113 : sources et corrections (Moghols, Chakri, Nguyen, Durrani) |
 | arbres_v114 | v114 : sources et corrections (Bagrationi, Arménie, Hasmonéens-Hérodiens) |
 | arbres_v115 | v115 : sources du Goryeo (37 fiches) |
+| arbres_v116 | v116 : sources et corrections (Portugal, Brésil, ajouts Espagne) |
 | `data_owid_load.sql` + `owid_chunks/` | Chargement des données d'indicateurs (rejouable, upserts) — à exécuter après v1 à v7 |

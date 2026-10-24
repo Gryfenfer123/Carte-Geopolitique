@@ -2,6 +2,8 @@
 
 ## Dernières nouvelles (la plus récente en haut)
 
+- 2026-10-23 — v116 : sources Wikipédia sur 57 fiches ; corrections : Sanche II 1207, Constance Manuel 1318-1349, Béatrice de Portugal 1373-1420, Thérèse Lourenço 1330
+
 - 2026-10-23 — v115 : sources Wikipédia sur les 37 fiches du Goryeo, dates toutes confirmées
 
 - 2026-10-23 — v114 : sources Wikipédia sur 40 fiches ; lien David VII corrigé ; 4 naissances inventées retirées ; Teimuraz II 1695, Simon -184, Jannée -130, Salomé -141, Hérode -72, Agrippa Ier -11
@@ -109,7 +111,7 @@
 
 Code : `src/genealogy.ts`, `genealogyLayers.ts`, `genealogyBus.ts`, `genealogyLod.ts/.css`, `genealogyLayersWorker.ts`,
 `genealogyLayout.ts`, `genealogyRouting.ts`. Outils de remplissage : [`scripts/arbres/`](../../scripts/arbres/README.md).
-Prochaine migration : **arbres_v116** (`supabase/arbres/arbres_v116.sql`) — générateur : `Gen(116, "…")`.  (v115 livrée, à exécuter par Martin si ce n'est pas déjà fait.)
+Prochaine migration : **arbres_v117** (`supabase/arbres/arbres_v117.sql`) — générateur : `Gen(117, "…")`.  (v116 livrée, à exécuter par Martin si ce n'est pas déjà fait.)
 
 ## Règles de contenu (décidées par Martin — ne pas rouvrir)
 - Un pays n'a que les dynasties qui ont **régné sur lui**. Dynastie étrangère : branche principale dans son pays
