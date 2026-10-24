@@ -28380,6 +28380,296 @@
    "title": "Prince héritier, Premier ministre (depuis 2022)",
    "g": "h",
    "script": 106
+  },
+  "af.ali": {
+   "id": "a9281f7a-61b9-5a02-b75e-53b158a498c3",
+   "name": "Moulay Ali Chérif",
+   "b": null,
+   "d": 1659,
+   "tree": "MA_ALA",
+   "title": "Ancêtre des Alaouites, prince du Tafilalet",
+   "g": "h",
+   "script": 107
+  },
+  "af.rachid": {
+   "id": "b8fc96cd-dcc4-5e58-872c-b4fd53db8c75",
+   "name": "Moulay Rachid",
+   "b": 1631,
+   "d": 1672,
+   "tree": "MA_ALA",
+   "title": "Sultan du Maroc (1666-1672), fondateur de la dynastie alaouite",
+   "g": "h",
+   "script": 107
+  },
+  "af.ismail": {
+   "id": "e39385b1-b3e0-5641-a6dc-d6513271b0fa",
+   "name": "Moulay Ismaïl",
+   "b": 1645,
+   "d": 1727,
+   "tree": "MA_ALA",
+   "title": "Sultan du Maroc (1672-1727)",
+   "g": "h",
+   "script": 107
+  },
+  "af.abdallah": {
+   "id": "b23cf403-8c9c-5755-91bd-44fabcf7ba30",
+   "name": "Moulay Abdallah",
+   "b": 1694,
+   "d": 1757,
+   "tree": "MA_ALA",
+   "title": "Sultan du Maroc (plusieurs règnes)",
+   "g": "h",
+   "script": 107
+  },
+  "af.mohammed3": {
+   "id": "7ffc5af2-33e0-54d8-9b27-071327b5e787",
+   "name": "Mohammed III ben Abdallah",
+   "b": 1710,
+   "d": 1790,
+   "tree": "MA_ALA",
+   "title": "Sultan du Maroc (1757-1790)",
+   "g": "h",
+   "script": 107
+  },
+  "af.yazid": {
+   "id": "99db75ed-f475-5a2e-91da-49c81ee0b82a",
+   "name": "Moulay Yazid",
+   "b": 1750,
+   "d": 1792,
+   "tree": "MA_ALA",
+   "title": "Sultan du Maroc (1790-1792)",
+   "g": "h",
+   "script": 107
+  },
+  "af.slimane": {
+   "id": "6dccf8a4-7a2a-59f8-b084-1183d27cfbd4",
+   "name": "Moulay Slimane",
+   "b": 1766,
+   "d": 1822,
+   "tree": "MA_ALA",
+   "title": "Sultan du Maroc (1792-1822)",
+   "g": "h",
+   "script": 107
+  },
+  "af.abderrahmane": {
+   "id": "838e7650-48f4-5407-be04-d56c96507a39",
+   "name": "Abd al-Rahman du Maroc",
+   "b": 1778,
+   "d": 1859,
+   "tree": "MA_ALA",
+   "title": "Sultan du Maroc (1822-1859)",
+   "g": "h",
+   "script": 107
+  },
+  "af.mohammed4": {
+   "id": "176fa183-1424-517a-82a9-8d912095cf62",
+   "name": "Mohammed IV du Maroc",
+   "b": 1803,
+   "d": 1873,
+   "tree": "MA_ALA",
+   "title": "Sultan du Maroc (1859-1873)",
+   "g": "h",
+   "script": 107
+  },
+  "af.hassan1": {
+   "id": "44d8e6d3-d2ad-5909-8ff4-ed516de49b7c",
+   "name": "Hassan Ier du Maroc",
+   "b": 1836,
+   "d": 1894,
+   "tree": "MA_ALA",
+   "title": "Sultan du Maroc (1873-1894)",
+   "g": "h",
+   "script": 107
+  },
+  "af.aziz": {
+   "id": "bd805555-b321-5eb5-b475-026eed052562",
+   "name": "Abd al-Aziz du Maroc",
+   "b": 1878,
+   "d": 1943,
+   "tree": "MA_ALA",
+   "title": "Sultan du Maroc (1894-1908)",
+   "g": "h",
+   "script": 107
+  },
+  "af.hafid": {
+   "id": "0cd8bb5a-695d-515a-a4fe-f188775fa276",
+   "name": "Abd al-Hafid du Maroc",
+   "b": 1875,
+   "d": 1937,
+   "tree": "MA_ALA",
+   "title": "Sultan du Maroc (1908-1912)",
+   "g": "h",
+   "script": 107
+  },
+  "af.youssef": {
+   "id": "1768c948-0b64-5471-9506-3dfaa0764366",
+   "name": "Moulay Youssef",
+   "b": 1882,
+   "d": 1927,
+   "tree": "MA_ALA",
+   "title": "Sultan du Maroc (1912-1927)",
+   "g": "h",
+   "script": 107
+  },
+  "af.mohammed5": {
+   "id": "f6172e39-292d-584c-9504-25a627416f6e",
+   "name": "Mohammed V du Maroc",
+   "b": 1909,
+   "d": 1961,
+   "tree": "MA_ALA",
+   "title": "Sultan puis roi du Maroc (1927-1961)",
+   "g": "h",
+   "script": 107
+  },
+  "af.hassan2": {
+   "id": "f14344a9-d74b-5d74-a845-b5eded39af36",
+   "name": "Hassan II du Maroc",
+   "b": 1929,
+   "d": 1999,
+   "tree": "MA_ALA",
+   "title": "Roi du Maroc (1961-1999)",
+   "g": "h",
+   "script": 107
+  },
+  "af.mohammed6": {
+   "id": "b161abd7-cc06-5c8a-8fe1-e659cf904c4a",
+   "name": "Mohammed VI du Maroc",
+   "b": 1963,
+   "d": null,
+   "tree": "MA_ALA",
+   "title": "Roi du Maroc (depuis 1999)",
+   "g": "h",
+   "script": 107
+  },
+  "af.hassanh": {
+   "id": "20fcdb6d-73c3-5345-bf56-157501e90461",
+   "name": "Moulay Hassan (prince héritier)",
+   "b": 2003,
+   "d": null,
+   "tree": "MA_ALA",
+   "title": "Prince héritier du Maroc",
+   "g": "h",
+   "script": 107
+  },
+  "af.mohammed": {
+   "id": "13fb03af-e8a9-5c92-89ec-d3e2b6644cb4",
+   "name": "Mohammed ibn Ali as-Senoussi",
+   "b": 1787,
+   "d": 1859,
+   "tree": "LY_SEN",
+   "title": "Fondateur de la confrérie senoussie",
+   "g": "h",
+   "script": 107
+  },
+  "af.mahdi": {
+   "id": "58359db6-75d2-5883-ac6d-6a4f2bd602a5",
+   "name": "Mohammed al-Mahdi as-Senoussi",
+   "b": 1844,
+   "d": 1902,
+   "tree": "LY_SEN",
+   "title": "Chef de la confrérie senoussie",
+   "g": "h",
+   "script": 107
+  },
+  "af.idris": {
+   "id": "039f860f-4e27-53f5-aeeb-cd7d1953225f",
+   "name": "Idris Ier de Libye",
+   "b": 1889,
+   "d": 1983,
+   "tree": "LY_SEN",
+   "title": "Roi de Libye (1951-1969)",
+   "g": "h",
+   "script": 107
+  },
+  "af.sahle": {
+   "id": "521fe6ae-5845-5c99-89b1-2d8740ec6aee",
+   "name": "Sahle Selassie",
+   "b": 1795,
+   "d": 1847,
+   "tree": "ET_SAL",
+   "title": "Négus du Choa (1813-1847)",
+   "g": "h",
+   "script": 107
+  },
+  "af.melekot": {
+   "id": "3bd31d40-9f44-51b5-b28f-ddffee2e33e3",
+   "name": "Haile Melekot",
+   "b": 1824,
+   "d": 1855,
+   "tree": "ET_SAL",
+   "title": "Roi du Choa (1847-1855)",
+   "g": "h",
+   "script": 107
+  },
+  "af.menelik": {
+   "id": "0321b92e-b9d0-5929-9278-d70a18f8079d",
+   "name": "Menelik II",
+   "b": 1844,
+   "d": 1913,
+   "tree": "ET_SAL",
+   "title": "Empereur d'Éthiopie (1889-1913)",
+   "g": "h",
+   "script": 107
+  },
+  "af.zewditu": {
+   "id": "ac3a2097-fcc4-564a-ad71-2fd19e69ad72",
+   "name": "Zewditu Ire",
+   "b": 1876,
+   "d": 1930,
+   "tree": "ET_SAL",
+   "title": "Impératrice d'Éthiopie (1916-1930)",
+   "g": "f",
+   "script": 107
+  },
+  "af.makonnen": {
+   "id": "414a8326-9585-5dd7-a241-29a3e13d4d9a",
+   "name": "Ras Makonnen",
+   "b": 1852,
+   "d": 1906,
+   "tree": "ET_SAL",
+   "title": "Gouverneur du Harar, père de Haile Selassie",
+   "g": "h",
+   "script": 107
+  },
+  "af.hailes": {
+   "id": "71a54198-bb5e-5c3e-8c95-26f3a5c9fd6d",
+   "name": "Haile Selassie Ier",
+   "b": 1892,
+   "d": 1975,
+   "tree": "ET_SAL",
+   "title": "Empereur d'Éthiopie (1930-1974)",
+   "g": "h",
+   "script": 107
+  },
+  "af.menen": {
+   "id": "6da7b938-bd24-5dd5-8310-bec29e006a13",
+   "name": "Menen Asfaw",
+   "b": 1889,
+   "d": 1962,
+   "tree": "ET_SAL",
+   "title": "Impératrice d'Éthiopie, épouse de Haile Selassie",
+   "g": "f",
+   "script": 107
+  },
+  "af.amha": {
+   "id": "a339a78e-8ef9-5b19-a687-f6373cf0b932",
+   "name": "Amha Selassie Ier",
+   "b": 1916,
+   "d": 1997,
+   "tree": "ET_SAL",
+   "title": "Dernier empereur d'Éthiopie (1974, en exil)",
+   "g": "h",
+   "script": 107
+  },
+  "af.zera": {
+   "id": "7684d791-0fb8-526e-9314-5371e6ceafff",
+   "name": "Zera Yacob Amha Selassie",
+   "b": 1953,
+   "d": null,
+   "tree": "ET_SAL",
+   "title": "Prétendant au trône d'Éthiopie",
+   "g": "h",
+   "script": 107
   }
  },
  "trees": {
@@ -29270,6 +29560,24 @@
    "country": "SAU",
    "dynasty": "Al Saoud",
    "script": 106
+  },
+  "MA_ALA": {
+   "entry": "61c54147-4a6a-5ff4-981f-54da52cd4700",
+   "country": "MAR",
+   "dynasty": "Alaouites",
+   "script": 107
+  },
+  "LY_SEN": {
+   "entry": "625e4726-c237-59eb-81d1-3c4461053e32",
+   "country": "LBY",
+   "dynasty": "Senoussi",
+   "script": 107
+  },
+  "ET_SAL": {
+   "entry": "1e0f1f91-8753-5976-ac45-2cb1c376028a",
+   "country": "ETH",
+   "dynasty": "Dynastie salomonide",
+   "script": 107
   }
  },
  "flags": [
@@ -33815,6 +34123,20 @@
    "tree": "SA_SAO",
    "reason": "Famille Soudayri : sans arbre",
    "script": 106
+  },
+  {
+   "name": "Abd al-Rahman du Maroc",
+   "b": 1778,
+   "tree": "MA_ALA",
+   "reason": "Ascendance non saisie",
+   "script": 107
+  },
+  {
+   "name": "Ras Makonnen",
+   "b": 1852,
+   "tree": "ET_SAL",
+   "reason": "Lien avec Menelik II non saisi",
+   "script": 107
   }
  ],
  "scripts": {
@@ -34360,6 +34682,16 @@
     "Hachémites (JOR)",
     "Hachémites (Irak) (IRQ)",
     "Al Saoud (SAU)"
+   ]
+  },
+  "107": {
+   "label": "Maroc (Alaouites), Libye (Senoussi), Éthiopie (dynastie salomonide)",
+   "members": 29,
+   "rels": 25,
+   "trees": [
+    "Alaouites (MAR)",
+    "Senoussi (LBY)",
+    "Dynastie salomonide (ETH)"
    ]
   }
  },
@@ -57778,6 +58110,131 @@
    "0ec63e72-abfe-5488-bca8-3555291c1598",
    "a575bb31-55db-5786-a06a-7b958864612b",
    "spouse"
+  ],
+  [
+   "a9281f7a-61b9-5a02-b75e-53b158a498c3",
+   "b8fc96cd-dcc4-5e58-872c-b4fd53db8c75",
+   "parent"
+  ],
+  [
+   "a9281f7a-61b9-5a02-b75e-53b158a498c3",
+   "e39385b1-b3e0-5641-a6dc-d6513271b0fa",
+   "parent"
+  ],
+  [
+   "e39385b1-b3e0-5641-a6dc-d6513271b0fa",
+   "b23cf403-8c9c-5755-91bd-44fabcf7ba30",
+   "parent"
+  ],
+  [
+   "b23cf403-8c9c-5755-91bd-44fabcf7ba30",
+   "7ffc5af2-33e0-54d8-9b27-071327b5e787",
+   "parent"
+  ],
+  [
+   "7ffc5af2-33e0-54d8-9b27-071327b5e787",
+   "99db75ed-f475-5a2e-91da-49c81ee0b82a",
+   "parent"
+  ],
+  [
+   "7ffc5af2-33e0-54d8-9b27-071327b5e787",
+   "6dccf8a4-7a2a-59f8-b084-1183d27cfbd4",
+   "parent"
+  ],
+  [
+   "838e7650-48f4-5407-be04-d56c96507a39",
+   "176fa183-1424-517a-82a9-8d912095cf62",
+   "parent"
+  ],
+  [
+   "176fa183-1424-517a-82a9-8d912095cf62",
+   "44d8e6d3-d2ad-5909-8ff4-ed516de49b7c",
+   "parent"
+  ],
+  [
+   "44d8e6d3-d2ad-5909-8ff4-ed516de49b7c",
+   "bd805555-b321-5eb5-b475-026eed052562",
+   "parent"
+  ],
+  [
+   "44d8e6d3-d2ad-5909-8ff4-ed516de49b7c",
+   "0cd8bb5a-695d-515a-a4fe-f188775fa276",
+   "parent"
+  ],
+  [
+   "44d8e6d3-d2ad-5909-8ff4-ed516de49b7c",
+   "1768c948-0b64-5471-9506-3dfaa0764366",
+   "parent"
+  ],
+  [
+   "1768c948-0b64-5471-9506-3dfaa0764366",
+   "f6172e39-292d-584c-9504-25a627416f6e",
+   "parent"
+  ],
+  [
+   "f6172e39-292d-584c-9504-25a627416f6e",
+   "f14344a9-d74b-5d74-a845-b5eded39af36",
+   "parent"
+  ],
+  [
+   "f14344a9-d74b-5d74-a845-b5eded39af36",
+   "b161abd7-cc06-5c8a-8fe1-e659cf904c4a",
+   "parent"
+  ],
+  [
+   "b161abd7-cc06-5c8a-8fe1-e659cf904c4a",
+   "20fcdb6d-73c3-5345-bf56-157501e90461",
+   "parent"
+  ],
+  [
+   "13fb03af-e8a9-5c92-89ec-d3e2b6644cb4",
+   "58359db6-75d2-5883-ac6d-6a4f2bd602a5",
+   "parent"
+  ],
+  [
+   "58359db6-75d2-5883-ac6d-6a4f2bd602a5",
+   "039f860f-4e27-53f5-aeeb-cd7d1953225f",
+   "parent"
+  ],
+  [
+   "521fe6ae-5845-5c99-89b1-2d8740ec6aee",
+   "3bd31d40-9f44-51b5-b28f-ddffee2e33e3",
+   "parent"
+  ],
+  [
+   "3bd31d40-9f44-51b5-b28f-ddffee2e33e3",
+   "0321b92e-b9d0-5929-9278-d70a18f8079d",
+   "parent"
+  ],
+  [
+   "0321b92e-b9d0-5929-9278-d70a18f8079d",
+   "ac3a2097-fcc4-564a-ad71-2fd19e69ad72",
+   "parent"
+  ],
+  [
+   "414a8326-9585-5dd7-a241-29a3e13d4d9a",
+   "71a54198-bb5e-5c3e-8c95-26f3a5c9fd6d",
+   "parent"
+  ],
+  [
+   "71a54198-bb5e-5c3e-8c95-26f3a5c9fd6d",
+   "a339a78e-8ef9-5b19-a687-f6373cf0b932",
+   "parent"
+  ],
+  [
+   "6da7b938-bd24-5dd5-8310-bec29e006a13",
+   "a339a78e-8ef9-5b19-a687-f6373cf0b932",
+   "parent"
+  ],
+  [
+   "a339a78e-8ef9-5b19-a687-f6373cf0b932",
+   "7684d791-0fb8-526e-9314-5371e6ceafff",
+   "parent"
+  ],
+  [
+   "71a54198-bb5e-5c3e-8c95-26f3a5c9fd6d",
+   "6da7b938-bd24-5dd5-8310-bec29e006a13",
+   "spouse"
   ]
  ],
  "dateflags": [
@@ -65921,6 +66378,13 @@
    "d": 1814,
    "note": "Naissance approximative.",
    "script": 106
+  },
+  {
+   "name": "Moulay Yazid",
+   "b": 1750,
+   "d": 1792,
+   "note": "Naissance approximative.",
+   "script": 107
   }
  ],
  "pins": [
