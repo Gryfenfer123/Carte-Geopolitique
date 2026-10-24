@@ -27214,7 +27214,7 @@
   "ir.cyrus": {
    "id": "a743eefc-fe64-5e6d-b25c-5e3fa8246c69",
    "name": "Cyrus II le Grand",
-   "b": null,
+   "b": -600,
    "d": -530,
    "tree": "IR_ACH",
    "title": "Fondateur de l'Empire achéménide (-559 à -530)",
@@ -27274,7 +27274,7 @@
   "ir.artax2": {
    "id": "5eda482f-7fb4-59c1-b9f2-05f67127f813",
    "name": "Artaxerxès II",
-   "b": -445,
+   "b": -436,
    "d": -358,
    "tree": "IR_ACH",
    "title": "Roi des rois (-404 à -358)",
@@ -27284,7 +27284,7 @@
   "ir.artax3": {
    "id": "a6757017-b251-5e6e-919f-4511e206166f",
    "name": "Artaxerxès III",
-   "b": -425,
+   "b": null,
    "d": -338,
    "tree": "IR_ACH",
    "title": "Roi des rois (-358 à -338)",
@@ -27314,7 +27314,7 @@
   "ir.ardashir": {
    "id": "cb95d341-e4e8-5b4e-a844-1097689d826d",
    "name": "Ardachîr Ier",
-   "b": null,
+   "b": 180,
    "d": 242,
    "tree": "IR_SAS",
    "title": "Fondateur de l'Empire sassanide (224-242)",
@@ -27335,7 +27335,7 @@
    "id": "372a762b-c3d0-50a0-99f8-f57fba6656a1",
    "name": "Narsès",
    "b": null,
-   "d": 302,
+   "d": 303,
    "tree": "IR_SAS",
    "title": "Roi des rois (293-302)",
    "g": "h",
@@ -27374,7 +27374,7 @@
   "ir.khosrow1": {
    "id": "9b201f58-569e-5583-94d2-6483dbfc87c5",
    "name": "Khosro Ier Anushirvan",
-   "b": 501,
+   "b": 512,
    "d": 579,
    "tree": "IR_SAS",
    "title": "Roi des rois (531-579)",
@@ -27384,7 +27384,7 @@
   "ir.hormizd4": {
    "id": "a0a835c5-8385-558d-8aa3-987ae15e21cd",
    "name": "Hormizd IV",
-   "b": null,
+   "b": 540,
    "d": 590,
    "tree": "IR_SAS",
    "title": "Roi des rois (579-590)",
@@ -27464,7 +27464,7 @@
   "ir.khoda": {
    "id": "58edca92-4bef-5f06-be81-6cf2b34db815",
    "name": "Mohammad Khodabanda",
-   "b": 1531,
+   "b": 1532,
    "d": 1595,
    "tree": "IR_SAF",
    "title": "Shah (1578-1587)",
@@ -27514,7 +27514,7 @@
   "ir.suleiman": {
    "id": "e88ab996-7af5-503e-940c-4fc33f690aa9",
    "name": "Soleiman Ier",
-   "b": 1647,
+   "b": 1648,
    "d": 1694,
    "tree": "IR_SAF",
    "title": "Shah (1666-1694)",
@@ -27525,7 +27525,7 @@
    "id": "d823ed07-4675-553e-95ef-6fc2866d5903",
    "name": "Soltan Hosein",
    "b": 1668,
-   "d": 1726,
+   "d": 1727,
    "tree": "IR_SAF",
    "title": "Shah (1694-1722), renversé par les Afghans",
    "g": "h",
@@ -27554,7 +27554,7 @@
   "ir.hosseinqoli": {
    "id": "bbd673a6-bbb1-5391-a7f2-3024e5ec2b80",
    "name": "Hosein Qoli Khan Qajar",
-   "b": 1722,
+   "b": 1751,
    "d": 1777,
    "tree": "IR_QAJ",
    "title": "Chef qajar, père de Fath Ali Shah",
@@ -29570,6 +29570,16 @@
    "title": "Fille d'Agrippa Ier, compagne de Titus",
    "g": "f",
    "script": 109
+  },
+  "ir.mhasan": {
+   "id": "ebb3f8e6-73d8-5289-9b19-584015f005e7",
+   "name": "Mohammad Hasan Khan Qajar",
+   "b": 1715,
+   "d": 1759,
+   "tree": "IR_QAJ",
+   "title": "Chef qajar, père d'Agha Mohammad Khan",
+   "g": "h",
+   "script": 111
   }
  },
  "trees": {
@@ -35717,6 +35727,12 @@
    "label": "Sources et corrections de dates — Égypte (v105) et Fawzia (v104)",
    "members": 0,
    "rels": 1,
+   "trees": []
+  },
+  "111": {
+   "label": "Sources et corrections de dates — Iran (v104)",
+   "members": 1,
+   "rels": 2,
    "trees": []
   }
  },
@@ -59684,6 +59700,16 @@
   [
    "aff5643c-95cb-5da3-b04f-4df0d8f489ba",
    "5b7aa8ec-616f-5a5b-a1e4-b3064e39249d",
+   "parent"
+  ],
+  [
+   "ebb3f8e6-73d8-5289-9b19-584015f005e7",
+   "e23e5175-3cc5-52ef-b006-a93388ca8f2d",
+   "parent"
+  ],
+  [
+   "ebb3f8e6-73d8-5289-9b19-584015f005e7",
+   "bbd673a6-bbb1-5391-a7f2-3024e5ec2b80",
    "parent"
   ]
  ],
