@@ -132,3 +132,5 @@ Sima Zhou → Sima Jin → Yuan de Jin non confirmée ; fautes de saisie de la b
 920, Victoire 1768/1786, Hedwige de Żagań) ; entrées parasites à nettoyer par Martin (« tesq », « On est en direct ? »,
 « Geoffroy Stammegna », doublon Nassau `8e0f6e5d`, doublon Luxembourg `cbce1152`, « MAISON DE HABSBOURG » `49c99143`,
 « Charles 1er de Habsbourg » `2b832845`) ; « Richard Plantagenêt » `d36cc690` (arbre York) : mort noté 1411 au lieu de 1460 (3 alertes `check.py` en découlent) ; doublon à supprimer par Martin : « Mariana Victoria d'Espagne » `6dafcc36` (v99, arbre Bourbon d'Espagne) = « Marie-Anne-Victoire d'Espagne (autre arbre???) » `9bdaedd3` (v77, arbre Bourbon) — garder l'un des deux.
+
+- 2026-10-24 — v64 et v77 (jamais exécutées) rendues tolérantes : l'affichage « étranger » de Marie-Anne d'Autriche (1718-1744) et de Charles-Alexandre de Lorraine n'est inséré que si ces deux membres existent dans la base réelle (ils n'y sont pas, contrairement à la copie de travail). Aucune autre modification.
