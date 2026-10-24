@@ -4,7 +4,6 @@
 
 - 2026-10-23 — v121 : arbre Al Thani (Qatar), 8 fiches sourcées Wikipédia (branche Khalifa séparée)
 
-- 2026-10-23 — v121 : arbre Al Thani (Qatar), 8 fiches sourcées Wikipédia
 
 - 2026-10-23 — v120 : arbre Al Sabah (Koweït), 16 fiches sourcées Wikipédia
 
