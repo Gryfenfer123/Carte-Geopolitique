@@ -2,6 +2,8 @@
 
 ## Dernières nouvelles (la plus récente en haut)
 
+- 2026-10-23 — v115 : sources Wikipédia sur les 37 fiches du Goryeo, dates toutes confirmées
+
 - 2026-10-23 — v114 : sources Wikipédia sur 40 fiches ; lien David VII corrigé ; 4 naissances inventées retirées ; Teimuraz II 1695, Simon -184, Jannée -130, Salomé -141, Hérode -72, Agrippa Ier -11
 
 - 2026-10-23 — v113 : sources Wikipédia sur 50 fiches ; corrections : Timur Shah 1746, Zaman Shah 1767-1845, Dost Mohammad 1792, Afzal 1815, Sirikit morte en 2025
@@ -107,7 +109,7 @@
 
 Code : `src/genealogy.ts`, `genealogyLayers.ts`, `genealogyBus.ts`, `genealogyLod.ts/.css`, `genealogyLayersWorker.ts`,
 `genealogyLayout.ts`, `genealogyRouting.ts`. Outils de remplissage : [`scripts/arbres/`](../../scripts/arbres/README.md).
-Prochaine migration : **arbres_v115** (`supabase/arbres/arbres_v115.sql`) — générateur : `Gen(115, "…")`.  (v114 livrée, à exécuter par Martin si ce n'est pas déjà fait.)
+Prochaine migration : **arbres_v116** (`supabase/arbres/arbres_v116.sql`) — générateur : `Gen(116, "…")`.  (v115 livrée, à exécuter par Martin si ce n'est pas déjà fait.)
 
 ## Règles de contenu (décidées par Martin — ne pas rouvrir)
 - Un pays n'a que les dynasties qui ont **régné sur lui**. Dynastie étrangère : branche principale dans son pays

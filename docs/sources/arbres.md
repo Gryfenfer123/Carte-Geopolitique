@@ -12,12 +12,12 @@ Chaque fiche sourcée porte aussi l'adresse de sa page dans « Notes / biographi
 | 2026-10-24 | v112 — 60 fiches : Hachémites (Jordanie, Irak), Al Saoud, Alaouites, Senoussi, dynastie salomonide (+ Moulay Hicham ajouté ; 2 erreurs de nom corrigées) | Wikipédia anglais (une page par personne, liste dans le champ Notes) et Wikipédia français (Moulay Rachid) | https://en.wikipedia.org/wiki/<titre> | CC BY-SA 4.0 | tertiaire / à recouper |
 | 2026-10-24 | v113 — 50 fiches : Moghols, Chakri, Nguyen, Durrani/Barakzaï | Wikipédia anglais, une page par personne (liste dans le champ Notes) | https://en.wikipedia.org/wiki/<titre> | CC BY-SA 4.0 | tertiaire / à recouper |
 | 2026-10-24 | v114 — 40 fiches : Bagrationi, Arménie, Hasmonéens et Hérodiens (lien David VII corrigé) | Wikipédia anglais, une page par personne (liste dans le champ Notes) | https://en.wikipedia.org/wiki/<titre> | CC BY-SA 4.0 | tertiaire / à recouper ; dates antiques et médiévales approximatives
+| 2026-10-24 | v115 — Goryeo, 37 fiches (dates toutes confirmées) | Wikipédia anglais, une page par roi (« <Nom>_of_Goryeo ») | https://en.wikipedia.org/wiki/<titre> | CC BY-SA 4.0 | tertiaire / à recouper |
 
 ## Lots NON sourcés (à reprendre) — SOURCE MANQUANTE
 Dates saisies de mémoire, sans page consultée ; en cours de reprise, une ligne ci-dessus remplace la ligne ici au fur et à mesure.
 | Migration | Arbres | État |
 |---|---|---|
-| v97 | Goryeo (Corée) | SOURCE MANQUANTE |
 | v98-v99 | Bourgogne et Bragance (Portugal, Brésil) | SOURCE MANQUANTE |
 | v100 | Espagne (ajouts) | SOURCE MANQUANTE |
 | v101-v102 | Navarre, Anjou-Naples, Aragon-Naples | SOURCE MANQUANTE |

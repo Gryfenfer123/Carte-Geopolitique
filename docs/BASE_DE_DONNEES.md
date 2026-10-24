@@ -184,4 +184,5 @@ RLS**. Règles :
 | arbres_v112 | v112 : sources et corrections (Hachémites, Al Saoud, Alaouites, Senoussi, salomonide) ; Moulay Hicham ajouté |
 | arbres_v113 | v113 : sources et corrections (Moghols, Chakri, Nguyen, Durrani) |
 | arbres_v114 | v114 : sources et corrections (Bagrationi, Arménie, Hasmonéens-Hérodiens) |
+| arbres_v115 | v115 : sources du Goryeo (37 fiches) |
 | `data_owid_load.sql` + `owid_chunks/` | Chargement des données d'indicateurs (rejouable, upserts) — à exécuter après v1 à v7 |
