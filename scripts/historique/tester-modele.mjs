@@ -31,6 +31,8 @@ verifier(M.formatAnnee(0) === "0", "formatAnnee(0)");
 verifier(M.formatPeriode(1547, 1551) === "1547 – 1551", "formatPeriode ap. J.-C.");
 verifier(M.formatPeriode(-320, -301) === "320–301 av. J.-C.", "formatPeriode av. J.-C.");
 verifier(M.formatPeriode(1550, 1550) === "1550", "formatPeriode une seule année");
+verifier(M.formatExistence(1963, 2024).startsWith("depuis 1963"), "formatExistence entité encore présente");
+verifier(M.formatExistence(1830, 1847) === "1830 – 1847", "formatExistence entité disparue");
 verifier(M.bornerAnnee(99999) === M.ANNEE_MAX && M.bornerAnnee(-99999) === M.ANNEE_MIN, "bornerAnnee");
 verifier(M.bornerAnnee(NaN) === M.ANNEE_MIN, "bornerAnnee(NaN)");
 verifier(M.nomSansParentheses("(Holy Roman Empire)") === "Holy Roman Empire" && M.nomSansParentheses("France") === "France", "nomSansParentheses");

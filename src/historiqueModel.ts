@@ -56,6 +56,23 @@ export function formatPeriode(debut: number, fin: number): string {
   return debut < 0 && fin < 0 ? `${-debut}–${-fin} av. J.-C.` : `${formatAnnee(debut)} – ${formatAnnee(fin)}`;
 }
 
+/** Période pendant laquelle l'entité existe sur la carte (toutes ses lignes) : première année et dernière année affichées. */
+export function periodeEntite(index: HistoriqueIndex, ligne: Ligne): { debut: number; fin: number } {
+  let debut = ligne[1];
+  let fin = ligne[2];
+  for (const l of index.lignes) {
+    if (l[0] !== ligne[0]) continue;
+    if (l[1] < debut) debut = l[1];
+    if (l[2] > fin) fin = l[2];
+  }
+  return { debut, fin };
+}
+
+/** « Existe sur la carte depuis 1963 (jusqu'à aujourd'hui) » ou « de 1830 à 1847 ». */
+export function formatExistence(debut: number, fin: number): string {
+  return fin >= ANNEE_MAX ? `depuis ${formatAnnee(debut)} (jusqu'à la fin des données, ${ANNEE_MAX})` : formatPeriode(debut, fin);
+}
+
 /** Ramène une année saisie ou calculée dans les bornes de la source. */
 export function bornerAnnee(annee: number): number {
   if (!Number.isFinite(annee)) return ANNEE_MIN;

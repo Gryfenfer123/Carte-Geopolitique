@@ -38,6 +38,8 @@ import {
   estTraduction,
   formatAnnee,
   formatPeriode,
+  formatExistence,
+  periodeEntite,
   groupeDeLigne,
   lienWikidata,
   lienWikipedia,
@@ -243,7 +245,9 @@ export function initHistoricalMapSystem() {
     if (nomSource !== nom) {
       ligneTexte(`Nom d'origine (source, anglais) : ${nomSource}${estTraduction(nomsFr, nomSource) ? " — traduction française proposée, à confirmer" : ""}`);
     }
-    ligneTexte(`Ce tracé vaut pour : ${formatPeriode(ligne[1], ligne[2])}`);
+    const existence = periodeEntite(idx, ligne);
+    ligneTexte(`Existe sur la carte : ${formatExistence(existence.debut, existence.fin)}`);
+    ligneTexte(`Ce contour (cette forme) vaut pour : ${formatPeriode(ligne[1], ligne[2])}`);
     ligneTexte(`Superficie d'après le tracé : environ ${ligne[5].toLocaleString("fr-FR")} km²`);
     const liens = document.createElement("p");
     for (const [libelle, url] of [["Wikipédia (anglais)", wikipedia], ["Wikidata", wikidata]] as const) {

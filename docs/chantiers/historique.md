@@ -88,3 +88,4 @@ clavier, bornes (999999 → 2024, -99999 → -3400, champ vide ignoré), lecture
 - Fenêtre de dates assouplie (`SOUPLESSE = 2` dans `corrections_dates.py`), règle des identifiants Wikidata partagés, Wikipédia (infobox) en secours : environ 600 dates de naissance/disparition appliquées (503 la veille).
 - Données de la carte pas encore régénérées dans ce commit (calcul en cours).
 - Reste : environ 940 divergences (autre entité probable), environ 900 territoires sans date sourcée, changements de forme internes.
+- Fiche d'une zone : nouvelle ligne « Existe sur la carte : depuis 1963 (…) » (période de l'entité entière, `periodeEntite` / `formatExistence`) ; l'ancienne ligne devient « Ce contour (cette forme) vaut pour : … » pour ne plus être lue comme une date d'indépendance (cas de l'Algérie, « 2024 » = dernier relevé de forme).
