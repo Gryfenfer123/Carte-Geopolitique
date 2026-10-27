@@ -51,6 +51,10 @@ Chaque fiche sourcée porte aussi l'adresse de sa page dans « Notes / biographi
 | 2026-10-28 | v151 — Iran : Bouyides (6) | Wikipédia anglais : Buyid_dynasty | https://en.wikipedia.org/wiki/Buyid_dynasty | CC BY-SA 4.0 | tertiaire / à recouper ; aucune date ; Adud al-Dawla non ajouté (père non indiqué) |
 | 2026-10-28 | v152 — Rwanda : bami (5) | Wikipédia anglais : Kigeli_IV_Rwabugiri, Mibambwe_IV_Rutarindwa, Yuhi_Musinga, Mutara_III_Rudahigwa, Mutara_II_of_Rwanda | https://en.wikipedia.org/wiki/Kigeli_IV_Rwabugiri | CC BY-SA 4.0 | tertiaire / à recouper ; Rutarindwa adopté ou fils selon la page |
 | 2026-10-28 | v153 — Nigeria : Oba du Bénin (3) | Wikipédia anglais : Eweka_dynasty | https://en.wikipedia.org/wiki/Eweka_dynasty | CC BY-SA 4.0 | tertiaire / à recouper ; chronologie d'Egharevba contestée |
+| 2026-10-28 | v154 — Ouzbékistan : Samanides (18) | Wikipédia anglais : Samanid_Empire | https://en.wikipedia.org/wiki/Samanid_Empire | CC BY-SA 4.0 | tertiaire / à recouper ; aucune naissance |
+| 2026-10-28 | v155 — Syrie : Zengides (20) | Wikipédia anglais : Zengid_dynasty | https://en.wikipedia.org/wiki/Zengid_dynasty | CC BY-SA 4.0 | tertiaire / à recouper ; aucune naissance ; dates de règne divergentes sur la page |
+| 2026-10-28 | v156 — Azerbaïdjan : Aq Qoyunlu (7) | Wikipédia anglais : Aq_Qoyunlu | https://en.wikipedia.org/wiki/Aq_Qoyunlu | CC BY-SA 4.0 | tertiaire / à recouper ; Rustam : père divergent selon le passage |
+| 2026-10-28 | v157 — Yémen : Rasoulides (4) | Wikipédia anglais : Rasulid_dynasty | https://en.wikipedia.org/wiki/Rasulid_dynasty | CC BY-SA 4.0 | tertiaire / à recouper ; seulement deux couples père-fils |
 
 ## Lots NON sourcés (à reprendre) — SOURCE MANQUANTE
 Dates saisies de mémoire, sans page consultée ; en cours de reprise, une ligne ci-dessus remplace la ligne ici au fur et à mesure.
