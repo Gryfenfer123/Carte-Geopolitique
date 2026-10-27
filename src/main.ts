@@ -1,5 +1,6 @@
 import "./style.css";
 import L from "leaflet";
+import { installTileSeamFix } from "./tileSeamFix";
 import * as d3 from "d3";
 import * as topojson from "topojson-client";
 import { supabase } from "./supabase";
@@ -463,6 +464,7 @@ applyReadOnlyState();
 // Map init
 // ---------------------------------------------------------------------------
 
+installTileSeamFix(); // joints entre tuiles (voir tileSeamFix.ts) — doit précéder la création des couches
 const map = L.map("map", {
   center: [20, 10],
   zoom: 3,
