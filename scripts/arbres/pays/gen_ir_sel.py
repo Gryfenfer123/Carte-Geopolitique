@@ -8,7 +8,7 @@ g.tree('IR_SEL', 'IRN', 'Seldjoukides', section_title='Seldjoukides')
 W = 'https://en.wikipedia.org/wiki/'
 def K(code, name, b, d, title, page, note=None, gnd='h'):
     return g.m('ir.' + code, name, b, d, title, 'Seldjoukides', 'IR_SEL', gnd, True, src=W + page + (' - ' + note if note else ''))
-K('mikail', 'Mikail', None, None, 'Père de Tughril et de Chaghri Beg', 'Chaghri_Beg', 'père de Chaghri Beg selon la page de Chaghri Beg', 'h')
+K('mikail', 'Mikail', None, None, 'Père de Chaghri Beg', 'Chaghri_Beg', 'père de Chaghri Beg selon la page de Chaghri Beg', 'h')
 K('tughril', 'Tughril', 990, 1063, 'Premier sultan seldjoukide (1037-1063)', 'Seljuk_Empire', 'frère de Chaghri Beg', 'h')
 K('chaghri', 'Chaghri Beg', 989, 1060, 'Co-fondateur de la dynastie seldjoukide', 'Chaghri_Beg', None, 'h')
 K('alp', 'Alp Arslan', 1029, 1072, 'Sultan seldjoukide (1063-1072)', 'Alp_Arslan', 'fils de Chaghri Beg', 'h')
