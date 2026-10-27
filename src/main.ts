@@ -467,11 +467,11 @@ const map = L.map("map", {
   center: [20, 10],
   zoom: 3,
   minZoom: 2,
-  // Demande de Martin (2026-10-27) : plus de niveaux de zoom. Plafond relevé de 12 à 16
-  // (= le dernier niveau du fond vectoriel Esri) et pas de 0,5 pour la molette / le
-  // pincement (zoom plus fin) ; les boutons +/- avancent toujours d'un niveau entier.
+  // Demande de Martin (2026-10-27) : plus de niveaux de zoom -> plafond relevé de 12 à 16
+  // (= dernier niveau du fond vectoriel Esri). Zoom en niveaux ENTIERS (zoomSnap 1) : un
+  // essai à 0,5 laissait voir les joints entre tuiles (retour de Martin, 2026-10-27).
   maxZoom: 16,
-  zoomSnap: 0.5,
+  zoomSnap: 1,
   zoomDelta: 1,
   worldCopyJump: true,
   // Bornes verticales du pan (retour de Martin, 2026-10-06 : "bordures de
