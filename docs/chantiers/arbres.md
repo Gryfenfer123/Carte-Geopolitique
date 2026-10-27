@@ -2,6 +2,8 @@
 
 ## Dernières nouvelles (la plus récente en haut)
 
+- 2026-10-23 — v135 : Zoulous, fiches sourcées Wikipédia
+
 - 2026-10-23 — v134 : Mongolie-Gengiskhanides, fiches sourcées Wikipédia
 
 - 2026-10-23 — v133 : arbre Birmanie, fiches sourcées Wikipédia
@@ -148,7 +150,7 @@
 
 Code : `src/genealogy.ts`, `genealogyLayers.ts`, `genealogyBus.ts`, `genealogyLod.ts/.css`, `genealogyLayersWorker.ts`,
 `genealogyLayout.ts`, `genealogyRouting.ts`. Outils de remplissage : [`scripts/arbres/`](../../scripts/arbres/README.md).
-Prochaine migration : **arbres_v135** (`supabase/arbres/arbres_v135.sql`) — générateur : `Gen(135, "…")`.  (v134 livrée, à exécuter par Martin si ce n'est pas déjà fait.)
+Prochaine migration : **arbres_v136** (`supabase/arbres/arbres_v136.sql`) — générateur : `Gen(136, "…")`.  (v135 livrée, à exécuter par Martin si ce n'est pas déjà fait.)
 
 ## Règles de contenu (décidées par Martin — ne pas rouvrir)
 - Un pays n'a que les dynasties qui ont **régné sur lui**. Dynastie étrangère : branche principale dans son pays

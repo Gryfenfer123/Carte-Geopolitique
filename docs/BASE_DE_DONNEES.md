@@ -204,4 +204,5 @@ RLS**. Règles :
 | arbres_v132 | v132 : arbre Cambodge, fiches sourcées |
 | arbres_v133 | v133 : arbre Birmanie, fiches sourcées |
 | arbres_v134 | v134 : Mongolie-Gengiskhanides, sourcé |
+| arbres_v135 | v135 : Zoulous, sourcé |
 | `data_owid_load.sql` + `owid_chunks/` | Chargement des données d'indicateurs (rejouable, upserts) — à exécuter après v1 à v7 |
