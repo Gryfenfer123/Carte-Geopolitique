@@ -81,5 +81,5 @@ clavier, bornes (999999 → 2024, -99999 → -3400, champ vide ignoré), lecture
 
 ## Journal — 2026-10-27 : registre des dates
 - Dates Wikidata brutes versionnées, générateur de registre ajouté, `corrections_dates_wikidata.txt` régénéré (599 lignes retenues, dont environ 500 appliquées après garde-fous).
-- Données de la carte (`public/data/historique/`) PAS ENCORE régénérées dans ce commit : régénération en cours, livraison au commit suivant.
+- Données de la carte régénérées (livrées au commit suivant) : 503 corrections de dates appliquées, 109 refusées par les garde-fous ; 12 064 lignes, 22,5 Mo. Tests du modèle OK.
 - Reste : 1 179 divergences à arbitrer, changements de forme internes à sourcer un par un.

@@ -23,3 +23,6 @@ python3 scripts/historique/verifier_donnees.py   /tmp/cliopatria-data/<fichier>.
 node scripts/historique/tester-modele.mjs
 ```
 Puis mettre à jour la version dans `SOURCE.md`, dans l'en-tête de `src/historicalMap.ts` (texte de crédit) et dans le journal.
+
+## Registre des dates
+`python3 -I scripts/historique/generer_registre_dates.py <cliopatria.geojson> [dossier]` (hors ligne) relit `wikidata_dates_brut.json` et `corrections_dates_manuelles.json`, régénère `corrections_dates_wikidata.txt`, `corrections_dates_rapport.json` et `docs/sources/historique_dates_registre.csv`. Puis relancer `preparer_cliopatria.py` pour reconstruire les données.
