@@ -2,6 +2,8 @@
 
 ## Dernières nouvelles (la plus récente en haut)
 
+- 2026-10-23 — v137 : arbre Maison de Bolkiah (Brunéi), 7 personnes sourcées (Wikipédia), à exécuter.
+
 - 2026-10-23 — v136 : Laos, fiches sourcées Wikipédia
 
 - 2026-10-23 — v135 : Zoulous, fiches sourcées Wikipédia
@@ -152,7 +154,7 @@
 
 Code : `src/genealogy.ts`, `genealogyLayers.ts`, `genealogyBus.ts`, `genealogyLod.ts/.css`, `genealogyLayersWorker.ts`,
 `genealogyLayout.ts`, `genealogyRouting.ts`. Outils de remplissage : [`scripts/arbres/`](../../scripts/arbres/README.md).
-Prochaine migration : **arbres_v137** (`supabase/arbres/arbres_v137.sql`) — générateur : `Gen(137, "…")`.  (v136 livrée, à exécuter par Martin si ce n'est pas déjà fait.)
+Prochaine migration : **arbres_v138** (`supabase/arbres/arbres_v138.sql`) — générateur : `Gen(138, "…")`.  (v137 livrée, à exécuter par Martin si ce n'est pas déjà fait.)
 
 ## Règles de contenu (décidées par Martin — ne pas rouvrir)
 - Un pays n'a que les dynasties qui ont **régné sur lui**. Dynastie étrangère : branche principale dans son pays

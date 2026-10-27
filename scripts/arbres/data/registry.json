@@ -31930,6 +31930,76 @@
    "title": "Prince de Champassak, renonce à ses droits en 1946",
    "g": "h",
    "script": 136
+  },
+  "bn.oas2": {
+   "id": "4395604b-d24d-53e5-9b0b-34c700daefae",
+   "name": "Omar Ali Saifuddin II",
+   "b": null,
+   "d": 1852,
+   "tree": "BN_BOL",
+   "title": "Sultan de Brunéi (1828-1852)",
+   "g": "h",
+   "script": 137
+  },
+  "bn.hashim": {
+   "id": "7dae8226-6687-5cb8-b62c-179d7175ab6c",
+   "name": "Hashim Jalilul Alam Aqamaddin",
+   "b": 1825,
+   "d": 1906,
+   "tree": "BN_BOL",
+   "title": "Sultan de Brunéi (1885-1906)",
+   "g": "h",
+   "script": 137
+  },
+  "bn.mja2": {
+   "id": "27b61b15-1ff0-55ba-88c7-77eb9c59bc27",
+   "name": "Muhammad Jamalul Alam II",
+   "b": 1889,
+   "d": 1924,
+   "tree": "BN_BOL",
+   "title": "Sultan de Brunéi (1906-1924)",
+   "g": "h",
+   "script": 137
+  },
+  "bn.tajuddin": {
+   "id": "82129dfa-3e5c-5ef2-af32-242bcca3c551",
+   "name": "Ahmad Tajuddin",
+   "b": 1912,
+   "d": 1950,
+   "tree": "BN_BOL",
+   "title": "Sultan de Brunéi (1924-1950)",
+   "g": "h",
+   "script": 137
+  },
+  "bn.oas3": {
+   "id": "71ae5ec1-00d0-5cac-a626-ae0f256502c7",
+   "name": "Omar Ali Saifuddien III",
+   "b": 1914,
+   "d": 1986,
+   "tree": "BN_BOL",
+   "title": "Sultan de Brunéi (1950-1967)",
+   "g": "h",
+   "script": 137
+  },
+  "bn.hassanal": {
+   "id": "cad96bb4-8ab7-5acf-8769-892db46013e7",
+   "name": "Hassanal Bolkiah",
+   "b": 1946,
+   "d": null,
+   "tree": "BN_BOL",
+   "title": "Sultan de Brunéi (depuis 1967)",
+   "g": "h",
+   "script": 137
+  },
+  "bn.muhtadee": {
+   "id": "26921d84-67c4-5c10-a396-500b47ad9842",
+   "name": "Al-Muhtadee Billah",
+   "b": 1974,
+   "d": null,
+   "tree": "BN_BOL",
+   "title": "Prince héritier de Brunéi",
+   "g": "h",
+   "script": 137
   }
  },
  "trees": {
@@ -33012,6 +33082,12 @@
    "country": "LAO",
    "dynasty": "Maisons royales du Laos",
    "script": 136
+  },
+  "BN_BOL": {
+   "entry": "d8aff1d6-ed01-57bf-bbe6-bcf1d89d14c7",
+   "country": "BRN",
+   "dynasty": "Maison de Bolkiah",
+   "script": 137
   }
  },
  "flags": [
@@ -38412,6 +38488,14 @@
    "rels": 4,
    "trees": [
     "Maisons royales du Laos (LAO)"
+   ]
+  },
+  "137": {
+   "label": "Brunéi (Maison de Bolkiah)",
+   "members": 7,
+   "rels": 6,
+   "trees": [
+    "Maison de Bolkiah (BRN)"
    ]
   }
  },
@@ -63504,6 +63588,36 @@
   [
    "edd9f0ae-cc0f-5c58-a42b-83184dcda64f",
    "d489c975-5089-5162-8562-9ddace6feac9",
+   "parent"
+  ],
+  [
+   "4395604b-d24d-53e5-9b0b-34c700daefae",
+   "7dae8226-6687-5cb8-b62c-179d7175ab6c",
+   "parent"
+  ],
+  [
+   "7dae8226-6687-5cb8-b62c-179d7175ab6c",
+   "27b61b15-1ff0-55ba-88c7-77eb9c59bc27",
+   "parent"
+  ],
+  [
+   "27b61b15-1ff0-55ba-88c7-77eb9c59bc27",
+   "82129dfa-3e5c-5ef2-af32-242bcca3c551",
+   "parent"
+  ],
+  [
+   "27b61b15-1ff0-55ba-88c7-77eb9c59bc27",
+   "71ae5ec1-00d0-5cac-a626-ae0f256502c7",
+   "parent"
+  ],
+  [
+   "71ae5ec1-00d0-5cac-a626-ae0f256502c7",
+   "cad96bb4-8ab7-5acf-8769-892db46013e7",
+   "parent"
+  ],
+  [
+   "cad96bb4-8ab7-5acf-8769-892db46013e7",
+   "26921d84-67c4-5c10-a396-500b47ad9842",
    "parent"
   ]
  ],
