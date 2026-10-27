@@ -99,3 +99,4 @@ Plan :
 - Le point créé automatiquement est placé côté « haut », sans catégorie ; sa couleur est celle de la période. Modifiable ensuite via « Modifier ».
 - Une erreur de placement ne bloque jamais la création de la fiche (message affiché, fiche conservée).
 - Sous-frise d'un événement avec durée : la frise couvre toujours toute la durée de l'événement. Les périodes créées dedans se posent sur cette durée ; les parties non couvertes sont des bandes virtuelles au nom de l'événement (non modifiables). (Correction du bug « la période remplace la durée ».)
+- Aperçu au survol : une période ou un point avec durée qui a une sous-frise affiche, dans le volet de survol, ses périodes (6 max) et ses points (6 max, par date). Module `src/friseSubPreview.ts` (données gardées 60 s). Le texte de survol natif « Ouvrir la sous-frise » est retiré pour ne pas faire doublon.

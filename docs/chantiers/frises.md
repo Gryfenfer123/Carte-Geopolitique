@@ -3,6 +3,7 @@
 Spécification de référence : [`../specs/frises-chronologiques.md`](../specs/frises-chronologiques.md).
 
 ## Dernières nouvelles (la plus récente en haut)
+- 2026-10-27 — aperçu de la sous-frise au survol (période ou point avec durée) : périodes + premiers points, sans ouvrir. Aucune migration. Vérifié : `check:repo`, `build`, lecture des données ; non vérifié : rendu à l'écran.
 - 2026-10-23 (4) — correction : créer une période dans la frise d'un point avec durée (ex. « Guerre » 500→700) ne fait plus disparaître la durée ; les parties non couvertes restent affichées au nom du point. Vérifié : `check:repo`, `build`, calcul du découpage ; non vérifié : écran réel.
 - 2026-10-23 (3) — le nom d'un point avec durée (ex. « Guerre ») est centré au milieu de la barre. Vérifié : `check:repo`, `build` ; non vérifié : rendu visuel dans le navigateur.
 - 2026-10-23 (2) — « Placer sur une frise » depuis une fiche + placement automatique des fiches créées dans une période (date facultative dans « + Texte »). Étape 4 de la spec terminée, aucune migration. Vérifié : `check:repo`, `build`, test navigateur sur fausse base ; non vérifié : vraie base Supabase, mobile, parcours complet du formulaire « + Texte » en réel.

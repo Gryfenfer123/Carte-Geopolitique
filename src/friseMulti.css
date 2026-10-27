@@ -18,3 +18,8 @@
   border: 1px solid var(--surface-border); border-radius: 6px; background: var(--surface); color: var(--text);
 }
 .tl-multi-tag { color: var(--text-dim); font-size: 12px; }
+
+/* Aperçu d'une sous-frise au survol (src/friseSubPreview.ts), dans #tl-hover-card. */
+.tl-sub-preview { border-top: 1px solid var(--surface-border); margin-top: 6px; padding-top: 6px; font-size: 12px; }
+.tl-sub-head { font-weight: 600; margin-top: 4px; }
+.tl-sub-line { color: var(--text-dim); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }

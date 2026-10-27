@@ -25,6 +25,7 @@ import type { SupabaseClient, Session } from "@supabase/supabase-js";
 import { customConfirm } from "./dossier";
 import { fetchPlacements } from "./friseEvents";
 import { initFriseMulti } from "./friseMulti";
+import { buildSubPreview, loadSubPreview } from "./friseSubPreview";
 import {
   computeLinearWidths,
   dateSortKey,
@@ -804,7 +805,7 @@ export function initTimelineSystem(deps: {
       }
       const subFrise = sectionRow ? subFrises.get(sectionRow.id) : undefined;
       cell.title = subFrise
-        ? "Ouvrir la sous-frise « " + (subFrise.title || name) + " »"
+        ? ""
         : admin
           ? "Cliquer pour créer la sous-frise"
           : name;
@@ -856,6 +857,10 @@ export function initTimelineSystem(deps: {
         tools.appendChild(edit);
       }
       cell.appendChild(tools);
+      if (subFrise) {
+        cell.addEventListener("mouseenter", () => showCellHover(cell, name, subFrise.id));
+        cell.addEventListener("mouseleave", hideHover);
+      }
       const go = () => {
         if (!isVirtual) void onCellActivate(seg);
       };
@@ -1597,6 +1602,49 @@ export function initTimelineSystem(deps: {
   function dateRangeText(p: Point): string {
     return formatFriseDate(p.date) + (p.end ? " → " + formatFriseDate(p.end) : "");
   }
+  function positionHoverCard(card: HTMLElement, anchor: HTMLElement) {
+    const r = anchor.getBoundingClientRect();
+    const cw = card.offsetWidth;
+    const ch = card.offsetHeight;
+    card.style.left = Math.max(8, Math.min(window.innerWidth - cw - 8, r.left)) + "px";
+    const below = r.bottom + 8;
+    card.style.top = (below + ch > window.innerHeight ? Math.max(8, r.top - ch - 8) : below) + "px";
+  }
+  // Ajoute l'aperçu de la sous-frise sous le contenu du volet (chargé à la demande).
+  async function appendSubPreview(card: HTMLElement, subId: string, anchor: HTMLElement) {
+    const wait = document.createElement("div");
+    wait.className = "tl-sub-preview tl-sub-line";
+    wait.textContent = "Aperçu de la sous-frise…";
+    card.appendChild(wait);
+    positionHoverCard(card, anchor);
+    try {
+      const data = await loadSubPreview(supabase, subId);
+      if (!wait.isConnected) return;
+      wait.replaceWith(buildSubPreview(data));
+    } catch {
+      wait.remove();
+    }
+    positionHoverCard(card, anchor);
+  }
+  // Survol d'une période qui a une sous-frise : titre + aperçu.
+  function showCellHover(anchor: HTMLElement, name: string, subId: string) {
+    if (hoverTimer) window.clearTimeout(hoverTimer);
+    hoverTimer = window.setTimeout(() => {
+      if (!anchor.isConnected || !anchor.matches(":hover")) return;
+      const card = $("tl-hover-card");
+      if ($("tl-point-card").style.display !== "none") return;
+      card.innerHTML = "";
+      const body = document.createElement("div");
+      body.className = "tl-hover-body";
+      const t = document.createElement("strong");
+      t.textContent = name;
+      body.appendChild(t);
+      card.appendChild(body);
+      card.style.display = "block";
+      positionHoverCard(card, anchor);
+      void appendSubPreview(card, subId, anchor);
+    }, 220);
+  }
   function showHover(p: Point, anchor: HTMLElement) {
     if (drag && drag.moved) return;
     if (hoverTimer) window.clearTimeout(hoverTimer);
@@ -1635,12 +1683,8 @@ export function initTimelineSystem(deps: {
       }
       card.appendChild(body);
       card.style.display = "block";
-      const r = anchor.getBoundingClientRect();
-      const cw = card.offsetWidth;
-      const ch = card.offsetHeight;
-      card.style.left = Math.max(8, Math.min(window.innerWidth - cw - 8, r.left)) + "px";
-      const below = r.bottom + 8;
-      card.style.top = (below + ch > window.innerHeight ? Math.max(8, r.top - ch - 8) : below) + "px";
+      positionHoverCard(card, anchor);
+      if (p.subFriseId) void appendSubPreview(card, p.subFriseId, anchor);
     }, 220);
   }
 
