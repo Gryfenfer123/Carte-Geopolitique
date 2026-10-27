@@ -40,6 +40,10 @@ Chaque fiche sourcée porte aussi l'adresse de sa page dans « Notes / biographi
 | 2026-10-28 | v140 — Eswatini : rois (4) | Wikipédia anglais : Ngwane_V, List_of_monarchs_of_Eswatini | https://en.wikipedia.org/wiki/List_of_monarchs_of_Eswatini | CC BY-SA 4.0 | tertiaire / à recouper ; rois antérieurs à Mbandzeni non reliés (pas de pères sur la page) |
 | 2026-10-28 | v141 — Tonga : maison Tupou (5) | Wikipédia anglais : List_of_monarchs_of_Tonga | https://en.wikipedia.org/wiki/List_of_monarchs_of_Tonga | CC BY-SA 4.0 | tertiaire / à recouper ; Tupou I non lié à Tupou II (page muette) |
 | 2026-10-28 | v142 — Lesotho : rois (5) | Wikipédia anglais : Moshoeshoe_I, Monarchy_of_Lesotho | https://en.wikipedia.org/wiki/Monarchy_of_Lesotho | CC BY-SA 4.0 | tertiaire / à recouper ; deux branches non reliées, dates de Letsie I et Seeiso inconnues |
+| 2026-10-28 | v143 — Pérou : Sapa Inca (19) | Wikipédia anglais : Sapa_Inca (liste, pères, morts) | https://en.wikipedia.org/wiki/Sapa_Inca | CC BY-SA 4.0 | tertiaire / à recouper ; les premiers souverains sont légendaires, dates approximatives |
+| 2026-10-28 | v144 — Madagascar : monarchie merina (7) | Wikipédia anglais : List_of_Imerina_monarchs | https://en.wikipedia.org/wiki/List_of_Imerina_monarchs | CC BY-SA 4.0 | tertiaire / à recouper ; parenté de Radama II ambiguë sur la page |
+| 2026-10-28 | v145 — Ghana : Asantehene (3) | Wikipédia anglais : List_of_rulers_of_Asante | https://en.wikipedia.org/wiki/List_of_rulers_of_Asante | CC BY-SA 4.0 | tertiaire / à recouper ; seuls 2 liens de parenté donnés par la page |
+| 2026-10-28 | v146 — Mexique : tlatoani de Tenochtitlan (7) | Wikipédia anglais : Aztec_Empire | https://en.wikipedia.org/wiki/Aztec_Empire | CC BY-SA 4.0 | tertiaire / à recouper ; liens oncle/neveu/frère en « famille », aucune date de naissance ou de mort |
 
 ## Lots NON sourcés (à reprendre) — SOURCE MANQUANTE
 Dates saisies de mémoire, sans page consultée ; en cours de reprise, une ligne ci-dessus remplace la ligne ici au fur et à mesure.

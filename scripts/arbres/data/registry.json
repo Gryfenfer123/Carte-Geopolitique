@@ -32300,6 +32300,366 @@
    "title": "Roi du Lesotho (1990-1995 ; depuis 1996)",
    "g": "h",
    "script": 142
+  },
+  "pe.manco": {
+   "id": "9840831f-39af-5bac-ac9a-50c7c158dcce",
+   "name": "Manco Cápac",
+   "b": null,
+   "d": 1230,
+   "tree": "PE_INC",
+   "title": "Fondateur légendaire de la dynastie inca (c. 1200-1230)",
+   "g": "h",
+   "script": 143
+  },
+  "pe.sinchi": {
+   "id": "6341738b-8839-51a2-bfcd-d55e72a2fd00",
+   "name": "Sinchi Roca",
+   "b": null,
+   "d": 1260,
+   "tree": "PE_INC",
+   "title": "Sapa Inca (c. 1230-1260)",
+   "g": "h",
+   "script": 143
+  },
+  "pe.lloque": {
+   "id": "498de58d-e0e6-55f0-8da0-5bb31b62a663",
+   "name": "Lloque Yupanqui",
+   "b": null,
+   "d": 1290,
+   "tree": "PE_INC",
+   "title": "Sapa Inca (c. 1260-1290)",
+   "g": "h",
+   "script": 143
+  },
+  "pe.mayta": {
+   "id": "31e934e0-9df3-54af-9f32-7f887b4a57f8",
+   "name": "Mayta Cápac",
+   "b": null,
+   "d": 1320,
+   "tree": "PE_INC",
+   "title": "Sapa Inca (c. 1290-1320)",
+   "g": "h",
+   "script": 143
+  },
+  "pe.capacy": {
+   "id": "242d9fc6-0fac-5f72-9cf4-46ec02ac78a9",
+   "name": "Cápac Yupanqui",
+   "b": null,
+   "d": 1350,
+   "tree": "PE_INC",
+   "title": "Sapa Inca (c. 1320-1350)",
+   "g": "h",
+   "script": 143
+  },
+  "pe.incaroca": {
+   "id": "98d9baf9-b058-5136-a2d1-d0a119442822",
+   "name": "Inca Roca",
+   "b": null,
+   "d": 1380,
+   "tree": "PE_INC",
+   "title": "Sapa Inca (c. 1350-1380)",
+   "g": "h",
+   "script": 143
+  },
+  "pe.yahuar": {
+   "id": "45bd4835-e4c2-5713-a91b-4c2d5e4ee969",
+   "name": "Yahuar Huácac",
+   "b": null,
+   "d": 1410,
+   "tree": "PE_INC",
+   "title": "Sapa Inca (c. 1380-1410)",
+   "g": "h",
+   "script": 143
+  },
+  "pe.viracocha": {
+   "id": "4220ec94-bfb9-56b7-9d6b-f367be6b2eac",
+   "name": "Viracocha",
+   "b": null,
+   "d": 1438,
+   "tree": "PE_INC",
+   "title": "Sapa Inca (c. 1410-1438)",
+   "g": "h",
+   "script": 143
+  },
+  "pe.pachacuti": {
+   "id": "d0e2d061-511b-59fd-8e10-09de807e1370",
+   "name": "Pachacútec (Pachacuti)",
+   "b": null,
+   "d": 1471,
+   "tree": "PE_INC",
+   "title": "Sapa Inca (1438-1471)",
+   "g": "h",
+   "script": 143
+  },
+  "pe.topa": {
+   "id": "bc166481-a8a5-5628-8412-ecae15d95e91",
+   "name": "Túpac Inca Yupanqui",
+   "b": null,
+   "d": 1493,
+   "tree": "PE_INC",
+   "title": "Sapa Inca (1471-1493)",
+   "g": "h",
+   "script": 143
+  },
+  "pe.huayna": {
+   "id": "72adf4c4-647a-56a3-894b-e155217586b1",
+   "name": "Huayna Cápac",
+   "b": null,
+   "d": 1527,
+   "tree": "PE_INC",
+   "title": "Sapa Inca (1493-1527)",
+   "g": "h",
+   "script": 143
+  },
+  "pe.huascar": {
+   "id": "6f0f7abf-f7ee-53b7-ba1e-36b46fd878f2",
+   "name": "Huáscar",
+   "b": null,
+   "d": 1533,
+   "tree": "PE_INC",
+   "title": "Sapa Inca (1527-1532)",
+   "g": "h",
+   "script": 143
+  },
+  "pe.atahualpa": {
+   "id": "ff53da74-f5bb-53bf-9324-db137fe5481d",
+   "name": "Atahualpa",
+   "b": null,
+   "d": 1533,
+   "tree": "PE_INC",
+   "title": "Sapa Inca (1532-1533)",
+   "g": "h",
+   "script": 143
+  },
+  "pe.huallpa": {
+   "id": "183a7ccd-36f6-5135-bd8f-d401f7c360b1",
+   "name": "Túpac Huallpa",
+   "b": null,
+   "d": 1533,
+   "tree": "PE_INC",
+   "title": "Sapa Inca (1533)",
+   "g": "h",
+   "script": 143
+  },
+  "pe.manco2": {
+   "id": "d59e0d78-aec7-5d5b-afb3-ea04a8702824",
+   "name": "Manco Inca Yupanqui",
+   "b": null,
+   "d": 1544,
+   "tree": "PE_INC",
+   "title": "Sapa Inca (1533-1544)",
+   "g": "h",
+   "script": 143
+  },
+  "pe.paullu": {
+   "id": "199cee29-49c0-5833-abb9-dc897d01f8d5",
+   "name": "Paullu Inca",
+   "b": null,
+   "d": 1549,
+   "tree": "PE_INC",
+   "title": "Sapa Inca (1536-1549)",
+   "g": "h",
+   "script": 143
+  },
+  "pe.sayri": {
+   "id": "98de2f2e-4c77-5246-8aed-695bae73af6c",
+   "name": "Sayri Túpac",
+   "b": null,
+   "d": 1560,
+   "tree": "PE_INC",
+   "title": "Sapa Inca (1544-1560)",
+   "g": "h",
+   "script": 143
+  },
+  "pe.titu": {
+   "id": "89382f76-db3b-5163-b7d3-1cb26af4801b",
+   "name": "Titu Cusi",
+   "b": null,
+   "d": 1571,
+   "tree": "PE_INC",
+   "title": "Sapa Inca (1563-1571)",
+   "g": "h",
+   "script": 143
+  },
+  "pe.amaru": {
+   "id": "4dce230a-424f-5460-94f3-6cf127076d1c",
+   "name": "Túpac Amaru",
+   "b": null,
+   "d": 1572,
+   "tree": "PE_INC",
+   "title": "Dernier Sapa Inca (1571-1572)",
+   "g": "h",
+   "script": 143
+  },
+  "mg.andr": {
+   "id": "d06d65a0-d80f-5920-9fc4-ecfc24c80a18",
+   "name": "Andrianampoinimerina",
+   "b": 1745,
+   "d": null,
+   "tree": "MG_MER",
+   "title": "Roi d'Imerina (1787-1810)",
+   "g": "h",
+   "script": 144
+  },
+  "mg.radama1": {
+   "id": "e4dfaa9e-4a35-5920-a950-617ce22324e8",
+   "name": "Radama I",
+   "b": 1793,
+   "d": 1828,
+   "tree": "MG_MER",
+   "title": "Roi de Madagascar (1810-1828)",
+   "g": "h",
+   "script": 144
+  },
+  "mg.rana1": {
+   "id": "517edffc-4b36-5385-bf13-9a39b6e1507b",
+   "name": "Ranavalona I",
+   "b": 1778,
+   "d": 1861,
+   "tree": "MG_MER",
+   "title": "Reine de Madagascar (1828-1861)",
+   "g": "f",
+   "script": 144
+  },
+  "mg.radama2": {
+   "id": "bcff88d0-d9f6-564d-8a82-1b82ce83c53c",
+   "name": "Radama II",
+   "b": 1829,
+   "d": 1863,
+   "tree": "MG_MER",
+   "title": "Roi de Madagascar (1861-1863)",
+   "g": "h",
+   "script": 144
+  },
+  "mg.raso": {
+   "id": "1223b0dc-f319-55a6-b815-bdb3e7395af1",
+   "name": "Rasoherina",
+   "b": 1814,
+   "d": 1868,
+   "tree": "MG_MER",
+   "title": "Reine de Madagascar (1863-1868)",
+   "g": "f",
+   "script": 144
+  },
+  "mg.rana2": {
+   "id": "8fd856d8-1f82-5624-a379-12c01b6b93c7",
+   "name": "Ranavalona II",
+   "b": 1829,
+   "d": 1883,
+   "tree": "MG_MER",
+   "title": "Reine de Madagascar (1868-1883)",
+   "g": "f",
+   "script": 144
+  },
+  "mg.rana3": {
+   "id": "c8e1d271-50a7-5e09-955d-1e2005d01f71",
+   "name": "Ranavalona III",
+   "b": 1861,
+   "d": 1917,
+   "tree": "MG_MER",
+   "title": "Dernière reine de Madagascar (1883-1897)",
+   "g": "f",
+   "script": 144
+  },
+  "gh.osei": {
+   "id": "fbaedbfe-73cf-590c-b7e1-0621bc007468",
+   "name": "Osei Tutu I",
+   "b": null,
+   "d": null,
+   "tree": "GH_ASA",
+   "title": "Asantehene (1701-vers 1717)",
+   "g": "h",
+   "script": 145
+  },
+  "gh.opoku": {
+   "id": "b987a523-d74a-56fb-97df-794521d545dc",
+   "name": "Opoku Ware I",
+   "b": null,
+   "d": null,
+   "tree": "GH_ASA",
+   "title": "Asantehene (1720-1750)",
+   "g": "h",
+   "script": 145
+  },
+  "gh.kusi": {
+   "id": "bbea3b88-1bdb-5aa1-b843-bb3255ed0213",
+   "name": "Kusi Oboadum",
+   "b": null,
+   "d": null,
+   "tree": "GH_ASA",
+   "title": "Asantehene (1750-1764)",
+   "g": "h",
+   "script": 145
+  },
+  "mx.itz": {
+   "id": "237f60e7-2443-55a0-b274-091a1293e497",
+   "name": "Itzcoatl",
+   "b": null,
+   "d": null,
+   "tree": "MX_TEN",
+   "title": "Tlatoani de Tenochtitlan (1427-1440)",
+   "g": "h",
+   "script": 146
+  },
+  "mx.moc1": {
+   "id": "b2759182-86e9-5bab-913c-e3469654d223",
+   "name": "Moctezuma I",
+   "b": null,
+   "d": null,
+   "tree": "MX_TEN",
+   "title": "Tlatoani de Tenochtitlan (1440-1468)",
+   "g": "h",
+   "script": 146
+  },
+  "mx.axa": {
+   "id": "1a7199f4-1c7b-5fd0-9915-4ffde8c2562b",
+   "name": "Axayacatl",
+   "b": null,
+   "d": null,
+   "tree": "MX_TEN",
+   "title": "Tlatoani de Tenochtitlan (1469-1481)",
+   "g": "h",
+   "script": 146
+  },
+  "mx.tizoc": {
+   "id": "3637516f-90e6-5f51-ad4c-08137601da63",
+   "name": "Tizoc",
+   "b": null,
+   "d": null,
+   "tree": "MX_TEN",
+   "title": "Tlatoani de Tenochtitlan (1481-1486)",
+   "g": "h",
+   "script": 146
+  },
+  "mx.ahu": {
+   "id": "d66fbdfb-5fe0-51cf-b60a-e6b435a37f5e",
+   "name": "Ahuitzotl",
+   "b": null,
+   "d": null,
+   "tree": "MX_TEN",
+   "title": "Tlatoani de Tenochtitlan (1486-1502)",
+   "g": "h",
+   "script": 146
+  },
+  "mx.moc2": {
+   "id": "27608745-0488-5269-9333-7b78eeb9948d",
+   "name": "Moctezuma II",
+   "b": null,
+   "d": null,
+   "tree": "MX_TEN",
+   "title": "Tlatoani de Tenochtitlan (1502-1520)",
+   "g": "h",
+   "script": 146
+  },
+  "mx.cui": {
+   "id": "84018d73-10a4-5ef5-a163-5d7403ce1794",
+   "name": "Cuitlahuac",
+   "b": null,
+   "d": null,
+   "tree": "MX_TEN",
+   "title": "Tlatoani de Tenochtitlan (1520)",
+   "g": "h",
+   "script": 146
   }
  },
  "trees": {
@@ -33418,6 +33778,30 @@
    "country": "LSO",
    "dynasty": "Rois du Lesotho",
    "script": 142
+  },
+  "PE_INC": {
+   "entry": "e4c0fb7d-b8eb-510c-ad53-a80c24cef3f9",
+   "country": "PER",
+   "dynasty": "Sapa Inca",
+   "script": 143
+  },
+  "MG_MER": {
+   "entry": "54533537-ed07-5e74-8bbd-63e5dea6c825",
+   "country": "MDG",
+   "dynasty": "Monarchie merina",
+   "script": 144
+  },
+  "GH_ASA": {
+   "entry": "dcf7bad2-aee3-5932-9b8d-6acfc0a8e832",
+   "country": "GHA",
+   "dynasty": "Asantehene",
+   "script": 145
+  },
+  "MX_TEN": {
+   "entry": "03f84812-b043-5ddf-81cb-e3b123d6ceed",
+   "country": "MEX",
+   "dynasty": "Tlatoani de Tenochtitlan",
+   "script": 146
   }
  },
  "flags": [
@@ -38866,6 +39250,38 @@
    "rels": 3,
    "trees": [
     "Rois du Lesotho (LSO)"
+   ]
+  },
+  "143": {
+   "label": "Pérou (Incas)",
+   "members": 19,
+   "rels": 18,
+   "trees": [
+    "Sapa Inca (PER)"
+   ]
+  },
+  "144": {
+   "label": "Madagascar (Merina)",
+   "members": 7,
+   "rels": 7,
+   "trees": [
+    "Monarchie merina (MDG)"
+   ]
+  },
+  "145": {
+   "label": "Ghana (Asante)",
+   "members": 3,
+   "rels": 2,
+   "trees": [
+    "Asantehene (GHA)"
+   ]
+  },
+  "146": {
+   "label": "Mexique (tlatoani de Tenochtitlan)",
+   "members": 7,
+   "rels": 6,
+   "trees": [
+    "Tlatoani de Tenochtitlan (MEX)"
    ]
   }
  },
@@ -64109,6 +64525,171 @@
    "ac06de1e-6a6c-52b1-bfa1-a0c2ef4f5db2",
    "b314422e-c955-5595-92d1-8d111f5d0ef7",
    "parent"
+  ],
+  [
+   "9840831f-39af-5bac-ac9a-50c7c158dcce",
+   "6341738b-8839-51a2-bfcd-d55e72a2fd00",
+   "parent"
+  ],
+  [
+   "6341738b-8839-51a2-bfcd-d55e72a2fd00",
+   "498de58d-e0e6-55f0-8da0-5bb31b62a663",
+   "parent"
+  ],
+  [
+   "498de58d-e0e6-55f0-8da0-5bb31b62a663",
+   "31e934e0-9df3-54af-9f32-7f887b4a57f8",
+   "parent"
+  ],
+  [
+   "31e934e0-9df3-54af-9f32-7f887b4a57f8",
+   "242d9fc6-0fac-5f72-9cf4-46ec02ac78a9",
+   "parent"
+  ],
+  [
+   "242d9fc6-0fac-5f72-9cf4-46ec02ac78a9",
+   "98d9baf9-b058-5136-a2d1-d0a119442822",
+   "parent"
+  ],
+  [
+   "98d9baf9-b058-5136-a2d1-d0a119442822",
+   "45bd4835-e4c2-5713-a91b-4c2d5e4ee969",
+   "parent"
+  ],
+  [
+   "45bd4835-e4c2-5713-a91b-4c2d5e4ee969",
+   "4220ec94-bfb9-56b7-9d6b-f367be6b2eac",
+   "parent"
+  ],
+  [
+   "4220ec94-bfb9-56b7-9d6b-f367be6b2eac",
+   "d0e2d061-511b-59fd-8e10-09de807e1370",
+   "parent"
+  ],
+  [
+   "d0e2d061-511b-59fd-8e10-09de807e1370",
+   "bc166481-a8a5-5628-8412-ecae15d95e91",
+   "parent"
+  ],
+  [
+   "bc166481-a8a5-5628-8412-ecae15d95e91",
+   "72adf4c4-647a-56a3-894b-e155217586b1",
+   "parent"
+  ],
+  [
+   "72adf4c4-647a-56a3-894b-e155217586b1",
+   "6f0f7abf-f7ee-53b7-ba1e-36b46fd878f2",
+   "parent"
+  ],
+  [
+   "72adf4c4-647a-56a3-894b-e155217586b1",
+   "ff53da74-f5bb-53bf-9324-db137fe5481d",
+   "parent"
+  ],
+  [
+   "72adf4c4-647a-56a3-894b-e155217586b1",
+   "183a7ccd-36f6-5135-bd8f-d401f7c360b1",
+   "parent"
+  ],
+  [
+   "72adf4c4-647a-56a3-894b-e155217586b1",
+   "d59e0d78-aec7-5d5b-afb3-ea04a8702824",
+   "parent"
+  ],
+  [
+   "72adf4c4-647a-56a3-894b-e155217586b1",
+   "199cee29-49c0-5833-abb9-dc897d01f8d5",
+   "parent"
+  ],
+  [
+   "d59e0d78-aec7-5d5b-afb3-ea04a8702824",
+   "98de2f2e-4c77-5246-8aed-695bae73af6c",
+   "parent"
+  ],
+  [
+   "d59e0d78-aec7-5d5b-afb3-ea04a8702824",
+   "89382f76-db3b-5163-b7d3-1cb26af4801b",
+   "parent"
+  ],
+  [
+   "d59e0d78-aec7-5d5b-afb3-ea04a8702824",
+   "4dce230a-424f-5460-94f3-6cf127076d1c",
+   "parent"
+  ],
+  [
+   "d06d65a0-d80f-5920-9fc4-ecfc24c80a18",
+   "e4dfaa9e-4a35-5920-a950-617ce22324e8",
+   "parent"
+  ],
+  [
+   "517edffc-4b36-5385-bf13-9a39b6e1507b",
+   "bcff88d0-d9f6-564d-8a82-1b82ce83c53c",
+   "parent"
+  ],
+  [
+   "8fd856d8-1f82-5624-a379-12c01b6b93c7",
+   "c8e1d271-50a7-5e09-955d-1e2005d01f71",
+   "family"
+  ],
+  [
+   "e4dfaa9e-4a35-5920-a950-617ce22324e8",
+   "c8e1d271-50a7-5e09-955d-1e2005d01f71",
+   "family"
+  ],
+  [
+   "e4dfaa9e-4a35-5920-a950-617ce22324e8",
+   "517edffc-4b36-5385-bf13-9a39b6e1507b",
+   "spouse"
+  ],
+  [
+   "bcff88d0-d9f6-564d-8a82-1b82ce83c53c",
+   "1223b0dc-f319-55a6-b815-bdb3e7395af1",
+   "spouse"
+  ],
+  [
+   "bcff88d0-d9f6-564d-8a82-1b82ce83c53c",
+   "8fd856d8-1f82-5624-a379-12c01b6b93c7",
+   "spouse"
+  ],
+  [
+   "fbaedbfe-73cf-590c-b7e1-0621bc007468",
+   "b987a523-d74a-56fb-97df-794521d545dc",
+   "family"
+  ],
+  [
+   "b987a523-d74a-56fb-97df-794521d545dc",
+   "bbea3b88-1bdb-5aa1-b843-bb3255ed0213",
+   "family"
+  ],
+  [
+   "b2759182-86e9-5bab-913c-e3469654d223",
+   "1a7199f4-1c7b-5fd0-9915-4ffde8c2562b",
+   "parent"
+  ],
+  [
+   "237f60e7-2443-55a0-b274-091a1293e497",
+   "b2759182-86e9-5bab-913c-e3469654d223",
+   "family"
+  ],
+  [
+   "1a7199f4-1c7b-5fd0-9915-4ffde8c2562b",
+   "3637516f-90e6-5f51-ad4c-08137601da63",
+   "family"
+  ],
+  [
+   "3637516f-90e6-5f51-ad4c-08137601da63",
+   "d66fbdfb-5fe0-51cf-b60a-e6b435a37f5e",
+   "family"
+  ],
+  [
+   "d66fbdfb-5fe0-51cf-b60a-e6b435a37f5e",
+   "27608745-0488-5269-9333-7b78eeb9948d",
+   "family"
+  ],
+  [
+   "27608745-0488-5269-9333-7b78eeb9948d",
+   "84018d73-10a4-5ef5-a163-5d7403ce1794",
+   "family"
   ]
  ],
  "dateflags": [
