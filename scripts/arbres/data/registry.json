@@ -32660,6 +32660,246 @@
    "title": "Tlatoani de Tenochtitlan (1520)",
    "g": "h",
    "script": 146
+  },
+  "uz.timur": {
+   "id": "24c676c6-a878-5699-ac55-abf048c12546",
+   "name": "Timur (Tamerlan)",
+   "b": null,
+   "d": 1405,
+   "tree": "UZ_TIM",
+   "title": "Fondateur de l'empire timouride (1370-1405)",
+   "g": "h",
+   "script": 147
+  },
+  "uz.shahrukh": {
+   "id": "4d484653-8a01-530f-820f-37888cd98e84",
+   "name": "Shahrukh Mirza",
+   "b": 1377,
+   "d": 1447,
+   "tree": "UZ_TIM",
+   "title": "Souverain timouride (1405-1447)",
+   "g": "h",
+   "script": 147
+  },
+  "uz.ulugh": {
+   "id": "cd8f4fe1-db32-5c3b-b564-285ce54030d8",
+   "name": "Ulugh Beg Mirza",
+   "b": 1394,
+   "d": 1449,
+   "tree": "UZ_TIM",
+   "title": "Souverain timouride (1447-1449)",
+   "g": "h",
+   "script": 147
+  },
+  "uz.latif": {
+   "id": "cd1aa93a-2f75-574c-9a11-39779624338f",
+   "name": "Abd al-Latif Mirza",
+   "b": null,
+   "d": null,
+   "tree": "UZ_TIM",
+   "title": "Souverain timouride (1449-1450)",
+   "g": "h",
+   "script": 147
+  },
+  "uz.pir": {
+   "id": "e700712f-b085-559b-a770-78aceed1bca2",
+   "name": "Pir Muhammad",
+   "b": 1376,
+   "d": 1407,
+   "tree": "UZ_TIM",
+   "title": "Souverain timouride (1405-1407)",
+   "g": "h",
+   "script": 147
+  },
+  "uz.khalil": {
+   "id": "f94210d9-246c-5759-ac3f-fe5da8c8a145",
+   "name": "Khalil Sultan",
+   "b": 1384,
+   "d": 1411,
+   "tree": "UZ_TIM",
+   "title": "Souverain timouride (1405-1409)",
+   "g": "h",
+   "script": 147
+  },
+  "uz.abusaid": {
+   "id": "b9f8fe30-d682-5d16-919f-01b3e0681355",
+   "name": "Abu Sa'id Mirza",
+   "b": null,
+   "d": null,
+   "tree": "UZ_TIM",
+   "title": "Souverain timouride (1459-1469)",
+   "g": "h",
+   "script": 147
+  },
+  "uz.ahmad": {
+   "id": "e7590f81-510c-540f-bad2-af72d27edaa5",
+   "name": "Ahmad Mirza",
+   "b": null,
+   "d": null,
+   "tree": "UZ_TIM",
+   "title": "Souverain de Samarcande (1469-1494)",
+   "g": "h",
+   "script": 147
+  },
+  "uz.mahmud": {
+   "id": "2d3a1b4c-aa34-55a7-974e-10277dd39f2b",
+   "name": "Mahmud Mirza",
+   "b": null,
+   "d": null,
+   "tree": "UZ_TIM",
+   "title": "Souverain timouride (1469-1495)",
+   "g": "h",
+   "script": 147
+  },
+  "uz.umarshaikh": {
+   "id": "f77df0f3-1ff3-5a6c-890a-dc294ee36c26",
+   "name": "Umar Shaikh Mirza II",
+   "b": null,
+   "d": null,
+   "tree": "UZ_TIM",
+   "title": "Souverain de Fergana (1469-1494)",
+   "g": "h",
+   "script": 147
+  },
+  "uz.ulughmirza": {
+   "id": "fb048239-eb93-5a61-ac61-09f1f62cc172",
+   "name": "Ulugh Mirza",
+   "b": null,
+   "d": null,
+   "tree": "UZ_TIM",
+   "title": "Souverain de Kaboul (1469-1502)",
+   "g": "h",
+   "script": 147
+  },
+  "uz.baysonqor": {
+   "id": "d8e76a19-b7fa-58fd-b987-c0650c3a8dc3",
+   "name": "Baysonqor Mirza",
+   "b": null,
+   "d": null,
+   "tree": "UZ_TIM",
+   "title": "Souverain de Samarcande (1495-1497)",
+   "g": "h",
+   "script": 147
+  },
+  "uz.ali": {
+   "id": "8aa2ed90-14f8-556a-8a85-e81611ac8496",
+   "name": "Ali Mirza",
+   "b": null,
+   "d": null,
+   "tree": "UZ_TIM",
+   "title": "Souverain de Boukhara (1495-1500)",
+   "g": "h",
+   "script": 147
+  },
+  "uz.masud": {
+   "id": "1a5f538d-9c52-5e30-947c-ddb96387f415",
+   "name": "Masud Mirza",
+   "b": null,
+   "d": null,
+   "tree": "UZ_TIM",
+   "title": "Souverain de Hissar (1495-1500)",
+   "g": "h",
+   "script": 147
+  },
+  "uz.abdrazzaq": {
+   "id": "c35cc3ec-aba6-5384-ae55-e1c102e13284",
+   "name": "Abd al-Razzaq",
+   "b": null,
+   "d": null,
+   "tree": "UZ_TIM",
+   "title": "Souverain de Kaboul (1502)",
+   "g": "h",
+   "script": 147
+  },
+  "ir.mikail": {
+   "id": "bd25c5f4-7d5d-5806-806f-60a6b8fdfdfc",
+   "name": "Mikail",
+   "b": null,
+   "d": null,
+   "tree": "IR_SEL",
+   "title": "Père de Tughril et de Chaghri Beg",
+   "g": "h",
+   "script": 148
+  },
+  "ir.tughril": {
+   "id": "a79b748a-cfa7-5624-8afa-463c2a492e24",
+   "name": "Tughril",
+   "b": 990,
+   "d": 1063,
+   "tree": "IR_SEL",
+   "title": "Premier sultan seldjoukide (1037-1063)",
+   "g": "h",
+   "script": 148
+  },
+  "ir.chaghri": {
+   "id": "ecf2c72b-be3f-564a-8de5-5d3331d725ad",
+   "name": "Chaghri Beg",
+   "b": 989,
+   "d": 1060,
+   "tree": "IR_SEL",
+   "title": "Co-fondateur de la dynastie seldjoukide",
+   "g": "h",
+   "script": 148
+  },
+  "ir.alp": {
+   "id": "698c9173-44cb-5e77-a07e-87ddece12fc5",
+   "name": "Alp Arslan",
+   "b": 1029,
+   "d": 1072,
+   "tree": "IR_SEL",
+   "title": "Sultan seldjoukide (1063-1072)",
+   "g": "h",
+   "script": 148
+  },
+  "ir.malik": {
+   "id": "6a630045-297a-5a7f-b6d7-06b72dab5e95",
+   "name": "Malik-Shah I",
+   "b": 1055,
+   "d": 1092,
+   "tree": "IR_SEL",
+   "title": "Sultan seldjoukide (1072-1092)",
+   "g": "h",
+   "script": 148
+  },
+  "ir.berk": {
+   "id": "9f102e32-0f1a-5a4e-ae28-33540bf6896c",
+   "name": "Berkyaruq",
+   "b": null,
+   "d": null,
+   "tree": "IR_SEL",
+   "title": "Sultan seldjoukide",
+   "g": "h",
+   "script": 148
+  },
+  "ir.mahmud": {
+   "id": "6c659f05-f7f2-5081-8d74-4214b9a57d57",
+   "name": "Mahmud I",
+   "b": null,
+   "d": null,
+   "tree": "IR_SEL",
+   "title": "Sultan seldjoukide, proclamé après 1092",
+   "g": "h",
+   "script": 148
+  },
+  "ir.tapar": {
+   "id": "41ebb18b-7fad-5cdd-9a9d-b6b83138b9be",
+   "name": "Muhammad I Tapar",
+   "b": null,
+   "d": null,
+   "tree": "IR_SEL",
+   "title": "Sultan seldjoukide (jusqu'en 1118)",
+   "g": "h",
+   "script": 148
+  },
+  "ir.sanjar": {
+   "id": "6399fb9d-b0cb-5433-8654-2d7552729693",
+   "name": "Ahmad Sanjar",
+   "b": null,
+   "d": 1157,
+   "tree": "IR_SEL",
+   "title": "Sultan seldjoukide (1118-1157)",
+   "g": "h",
+   "script": 148
   }
  },
  "trees": {
@@ -33802,6 +34042,18 @@
    "country": "MEX",
    "dynasty": "Tlatoani de Tenochtitlan",
    "script": 146
+  },
+  "UZ_TIM": {
+   "entry": "9ded9ff6-e85c-52e3-8358-a06be14d95e5",
+   "country": "UZB",
+   "dynasty": "Timourides",
+   "script": 147
+  },
+  "IR_SEL": {
+   "entry": "a11ba850-8848-5830-acca-dbf73f06499c",
+   "country": "IRN",
+   "dynasty": "Seldjoukides",
+   "script": 148
   }
  },
  "flags": [
@@ -39282,6 +39534,22 @@
    "rels": 6,
    "trees": [
     "Tlatoani de Tenochtitlan (MEX)"
+   ]
+  },
+  "147": {
+   "label": "Ouzbékistan (Timourides)",
+   "members": 15,
+   "rels": 14,
+   "trees": [
+    "Timourides (UZB)"
+   ]
+  },
+  "148": {
+   "label": "Iran (Seldjoukides)",
+   "members": 9,
+   "rels": 8,
+   "trees": [
+    "Seldjoukides (IRN)"
    ]
   }
  },
@@ -64689,6 +64957,116 @@
   [
    "27608745-0488-5269-9333-7b78eeb9948d",
    "84018d73-10a4-5ef5-a163-5d7403ce1794",
+   "family"
+  ],
+  [
+   "4d484653-8a01-530f-820f-37888cd98e84",
+   "cd8f4fe1-db32-5c3b-b564-285ce54030d8",
+   "parent"
+  ],
+  [
+   "cd8f4fe1-db32-5c3b-b564-285ce54030d8",
+   "cd1aa93a-2f75-574c-9a11-39779624338f",
+   "parent"
+  ],
+  [
+   "b9f8fe30-d682-5d16-919f-01b3e0681355",
+   "e7590f81-510c-540f-bad2-af72d27edaa5",
+   "parent"
+  ],
+  [
+   "b9f8fe30-d682-5d16-919f-01b3e0681355",
+   "2d3a1b4c-aa34-55a7-974e-10277dd39f2b",
+   "parent"
+  ],
+  [
+   "b9f8fe30-d682-5d16-919f-01b3e0681355",
+   "f77df0f3-1ff3-5a6c-890a-dc294ee36c26",
+   "parent"
+  ],
+  [
+   "b9f8fe30-d682-5d16-919f-01b3e0681355",
+   "fb048239-eb93-5a61-ac61-09f1f62cc172",
+   "parent"
+  ],
+  [
+   "2d3a1b4c-aa34-55a7-974e-10277dd39f2b",
+   "d8e76a19-b7fa-58fd-b987-c0650c3a8dc3",
+   "parent"
+  ],
+  [
+   "2d3a1b4c-aa34-55a7-974e-10277dd39f2b",
+   "8aa2ed90-14f8-556a-8a85-e81611ac8496",
+   "parent"
+  ],
+  [
+   "2d3a1b4c-aa34-55a7-974e-10277dd39f2b",
+   "1a5f538d-9c52-5e30-947c-ddb96387f415",
+   "parent"
+  ],
+  [
+   "fb048239-eb93-5a61-ac61-09f1f62cc172",
+   "c35cc3ec-aba6-5384-ae55-e1c102e13284",
+   "parent"
+  ],
+  [
+   "24c676c6-a878-5699-ac55-abf048c12546",
+   "4d484653-8a01-530f-820f-37888cd98e84",
+   "parent"
+  ],
+  [
+   "24c676c6-a878-5699-ac55-abf048c12546",
+   "e700712f-b085-559b-a770-78aceed1bca2",
+   "family"
+  ],
+  [
+   "24c676c6-a878-5699-ac55-abf048c12546",
+   "f94210d9-246c-5759-ac3f-fe5da8c8a145",
+   "family"
+  ],
+  [
+   "24c676c6-a878-5699-ac55-abf048c12546",
+   "b9f8fe30-d682-5d16-919f-01b3e0681355",
+   "family"
+  ],
+  [
+   "bd25c5f4-7d5d-5806-806f-60a6b8fdfdfc",
+   "ecf2c72b-be3f-564a-8de5-5d3331d725ad",
+   "parent"
+  ],
+  [
+   "ecf2c72b-be3f-564a-8de5-5d3331d725ad",
+   "698c9173-44cb-5e77-a07e-87ddece12fc5",
+   "parent"
+  ],
+  [
+   "698c9173-44cb-5e77-a07e-87ddece12fc5",
+   "6a630045-297a-5a7f-b6d7-06b72dab5e95",
+   "parent"
+  ],
+  [
+   "6a630045-297a-5a7f-b6d7-06b72dab5e95",
+   "9f102e32-0f1a-5a4e-ae28-33540bf6896c",
+   "parent"
+  ],
+  [
+   "6a630045-297a-5a7f-b6d7-06b72dab5e95",
+   "6c659f05-f7f2-5081-8d74-4214b9a57d57",
+   "parent"
+  ],
+  [
+   "6a630045-297a-5a7f-b6d7-06b72dab5e95",
+   "41ebb18b-7fad-5cdd-9a9d-b6b83138b9be",
+   "parent"
+  ],
+  [
+   "6a630045-297a-5a7f-b6d7-06b72dab5e95",
+   "6399fb9d-b0cb-5433-8654-2d7552729693",
+   "parent"
+  ],
+  [
+   "ecf2c72b-be3f-564a-8de5-5d3331d725ad",
+   "a79b748a-cfa7-5624-8afa-463c2a492e24",
    "family"
   ]
  ],

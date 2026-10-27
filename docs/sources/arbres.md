@@ -44,6 +44,8 @@ Chaque fiche sourcée porte aussi l'adresse de sa page dans « Notes / biographi
 | 2026-10-28 | v144 — Madagascar : monarchie merina (7) | Wikipédia anglais : List_of_Imerina_monarchs | https://en.wikipedia.org/wiki/List_of_Imerina_monarchs | CC BY-SA 4.0 | tertiaire / à recouper ; parenté de Radama II ambiguë sur la page |
 | 2026-10-28 | v145 — Ghana : Asantehene (3) | Wikipédia anglais : List_of_rulers_of_Asante | https://en.wikipedia.org/wiki/List_of_rulers_of_Asante | CC BY-SA 4.0 | tertiaire / à recouper ; seuls 2 liens de parenté donnés par la page |
 | 2026-10-28 | v146 — Mexique : tlatoani de Tenochtitlan (7) | Wikipédia anglais : Aztec_Empire | https://en.wikipedia.org/wiki/Aztec_Empire | CC BY-SA 4.0 | tertiaire / à recouper ; liens oncle/neveu/frère en « famille », aucune date de naissance ou de mort |
+| 2026-10-28 | v147 — Ouzbékistan : Timourides (15) | Wikipédia anglais : Timurid_dynasty | https://en.wikipedia.org/wiki/Timurid_dynasty | CC BY-SA 4.0 | tertiaire / à recouper ; dates absentes pour la plupart ; 3 liens « famille » |
+| 2026-10-28 | v148 — Iran : Seldjoukides (9) | Wikipédia anglais : Seljuk_Empire, Chaghri_Beg, Alp_Arslan, Malik-Shah_I | https://en.wikipedia.org/wiki/Seljuk_Empire | CC BY-SA 4.0 | tertiaire / à recouper ; Tughril lié en « famille » (frère de Chaghri) |
 
 ## Lots NON sourcés (à reprendre) — SOURCE MANQUANTE
 Dates saisies de mémoire, sans page consultée ; en cours de reprise, une ligne ci-dessus remplace la ligne ici au fur et à mesure.
