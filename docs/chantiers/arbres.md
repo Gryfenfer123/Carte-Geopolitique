@@ -2,6 +2,8 @@
 
 ## Dernières nouvelles (la plus récente en haut)
 
+- 2026-10-23 — v141 : arbre Maison Tupou (Tonga), 5 personnes sourcées (Wikipédia), à exécuter.
+
 - 2026-10-23 — v140 : arbre Rois d'Eswatini, 4 personnes sourcées (Wikipédia), à exécuter.
 
 - 2026-10-23 — v139 : arbre Sultans de Yogyakarta (Indonésie), 10 personnes sourcées (Wikipédia), à exécuter.
@@ -160,7 +162,7 @@
 
 Code : `src/genealogy.ts`, `genealogyLayers.ts`, `genealogyBus.ts`, `genealogyLod.ts/.css`, `genealogyLayersWorker.ts`,
 `genealogyLayout.ts`, `genealogyRouting.ts`. Outils de remplissage : [`scripts/arbres/`](../../scripts/arbres/README.md).
-Prochaine migration : **arbres_v141** (`supabase/arbres/arbres_v141.sql`) — générateur : `Gen(141, "…")`.  (v140 livrée, à exécuter par Martin si ce n'est pas déjà fait.)
+Prochaine migration : **arbres_v142** (`supabase/arbres/arbres_v142.sql`) — générateur : `Gen(142, "…")`.  (v141 livrée, à exécuter par Martin si ce n'est pas déjà fait.)
 
 ## Règles de contenu (décidées par Martin — ne pas rouvrir)
 - Un pays n'a que les dynasties qui ont **régné sur lui**. Dynastie étrangère : branche principale dans son pays

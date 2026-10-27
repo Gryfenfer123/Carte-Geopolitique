@@ -210,4 +210,5 @@ RLS**. Règles :
 | arbres_v138 | Malaisie : sultans de Johor (6 personnes) |
 | arbres_v139 | Indonésie : sultans de Yogyakarta (10 personnes) |
 | arbres_v140 | Eswatini : rois (4 personnes) |
+| arbres_v141 | Tonga : maison Tupou (5 personnes) |
 | `data_owid_load.sql` + `owid_chunks/` | Chargement des données d'indicateurs (rejouable, upserts) — à exécuter après v1 à v7 |
