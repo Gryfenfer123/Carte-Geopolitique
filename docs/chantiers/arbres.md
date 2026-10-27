@@ -2,6 +2,8 @@
 
 ## Dernières nouvelles (la plus récente en haut)
 
+- 2026-10-23 — v155 : arbre Zengides (Syrie), 20 personnes sourcées.
+
 - 2026-10-23 — v154 : arbre Samanides, 18 personnes sourcées.
 
 - 2026-10-23 — v153 : arbre Oba du Bénin (Nigeria), 3 personnes sourcées.
@@ -188,7 +190,7 @@
 
 Code : `src/genealogy.ts`, `genealogyLayers.ts`, `genealogyBus.ts`, `genealogyLod.ts/.css`, `genealogyLayersWorker.ts`,
 `genealogyLayout.ts`, `genealogyRouting.ts`. Outils de remplissage : [`scripts/arbres/`](../../scripts/arbres/README.md).
-Prochaine migration : **arbres_v155** (`supabase/arbres/arbres_v155.sql`) — générateur : `Gen(155, "…")`.  (v154 livrée, à exécuter par Martin si ce n'est pas déjà fait.)
+Prochaine migration : **arbres_v156** (`supabase/arbres/arbres_v156.sql`) — générateur : `Gen(156, "…")`.  (v155 livrée, à exécuter par Martin si ce n'est pas déjà fait.)
 
 ## Règles de contenu (décidées par Martin — ne pas rouvrir)
 - Un pays n'a que les dynasties qui ont **régné sur lui**. Dynastie étrangère : branche principale dans son pays

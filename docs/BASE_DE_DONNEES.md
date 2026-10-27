@@ -224,4 +224,5 @@ RLS**. Règles :
 | arbres_v152 | Rwanda : bami (5 personnes) |
 | arbres_v153 | Nigeria : Oba du Bénin (3 personnes) |
 | arbres_v154 | Ouzbékistan : Samanides (18 personnes) |
+| arbres_v155 | Syrie : Zengides (20 personnes) |
 | `data_owid_load.sql` + `owid_chunks/` | Chargement des données d'indicateurs (rejouable, upserts) — à exécuter après v1 à v7 |
