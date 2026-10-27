@@ -8,7 +8,7 @@ g.tree('NG_EWE', 'NGA', 'Oba du Bénin', section_title='Oba du Bénin')
 W = 'https://en.wikipedia.org/wiki/'
 def K(code, name, b, d, title, page, note=None, gnd='h'):
     return g.m('ng.' + code, name, b, d, title, 'Oba du Bénin', 'NG_EWE', gnd, True, src=W + page + (' - ' + note if note else ''))
-K('eweka', 'Eweka I', 1171, None, "Premier Oba de la dynastie d'Edo (couronné vers 1200)", 'Eweka_dynasty', "naissance vers 1171 selon la chronologie d'Egharevba ; père traditionnel : Oranmiyan", 'h')
+K('eweka', 'Eweka I', None, None, "Premier Oba de la dynastie d'Edo (couronné vers 1200)", 'Eweka_dynasty', "naissance vers 1171 selon la chronologie d'Egharevba ; père traditionnel : Oranmiyan", 'h')
 K('uwa', 'Uwakhuahen', None, None, 'Oba du Bénin (vers 1230)', 'Eweka_dynasty', "fils aîné d'Eweka I", 'h')
 K('ehen', 'Ehenmihen', None, None, 'Oba du Bénin', 'Eweka_dynasty', "autre fils d'Eweka I ; succède à Uwakhuahen", 'h')
 g.par('ng.eweka', 'ng.uwa')
