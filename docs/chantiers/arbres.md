@@ -2,6 +2,8 @@
 
 ## Dernières nouvelles (la plus récente en haut)
 
+- 2026-10-23 — v162 : Julio-Claudiens (24).
+
 - 2026-10-23 — v161 : arbre Bamoun (Cameroun, 4).
 
 - 2026-10-23 — v160 : arbre Khanat kazakh (7).
@@ -202,7 +204,7 @@
 
 Code : `src/genealogy.ts`, `genealogyLayers.ts`, `genealogyBus.ts`, `genealogyLod.ts/.css`, `genealogyLayersWorker.ts`,
 `genealogyLayout.ts`, `genealogyRouting.ts`. Outils de remplissage : [`scripts/arbres/`](../../scripts/arbres/README.md).
-Prochaine migration : **arbres_v162** (`supabase/arbres/arbres_v162.sql`) — générateur : `Gen(162, "…")`.  (v161 livrée, à exécuter par Martin si ce n'est pas déjà fait.)
+Prochaine migration : **arbres_v163** (`supabase/arbres/arbres_v163.sql`) — générateur : `Gen(163, "…")`.  (v162 livrée, à exécuter par Martin si ce n'est pas déjà fait.)
 
 ## Règles de contenu (décidées par Martin — ne pas rouvrir)
 - Un pays n'a que les dynasties qui ont **régné sur lui**. Dynastie étrangère : branche principale dans son pays

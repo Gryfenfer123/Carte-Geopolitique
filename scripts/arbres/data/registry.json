@@ -34120,6 +34120,846 @@
    "title": "Mfon des Bamoun (1992-2021)",
    "g": "h",
    "script": 161
+  },
+  "jc.jc": {
+   "id": "bc39726d-1899-56a0-9004-ccbe146623fc",
+   "name": "Jules César",
+   "b": null,
+   "d": null,
+   "tree": "IT_JCL",
+   "title": "Père adoptif d'Auguste",
+   "g": "h",
+   "script": 162
+  },
+  "jc.ati": {
+   "id": "36710fe6-3344-5cfe-a213-6e56f92a3e94",
+   "name": "Atia",
+   "b": null,
+   "d": null,
+   "tree": "IT_JCL",
+   "title": "Mère d'Auguste",
+   "g": "f",
+   "script": 162
+  },
+  "jc.aug": {
+   "id": "69de4325-3c64-5df5-8b20-f9e7fc65f1e8",
+   "name": "Auguste",
+   "b": null,
+   "d": 14,
+   "tree": "IT_JCL",
+   "title": "Premier empereur romain (27 av. J.-C. - 14)",
+   "g": "h",
+   "script": 162
+  },
+  "jc.liv": {
+   "id": "a0123866-ea7e-55b9-a519-6419e655bef9",
+   "name": "Livie",
+   "b": null,
+   "d": null,
+   "tree": "IT_JCL",
+   "title": "Mère de Tibère et de Drusus",
+   "g": "f",
+   "script": 162
+  },
+  "jc.tcn": {
+   "id": "2ffff5e4-a8f2-5c4d-9dec-f0fba3c0b104",
+   "name": "Tiberius Claudius Nero (préteur)",
+   "b": null,
+   "d": null,
+   "tree": "IT_JCL",
+   "title": "Père de Tibère et de Drusus",
+   "g": "h",
+   "script": 162
+  },
+  "jc.tib": {
+   "id": "be8d604d-77b8-5c7c-9502-631d65b13d78",
+   "name": "Tibère",
+   "b": null,
+   "d": 37,
+   "tree": "IT_JCL",
+   "title": "Empereur romain (14-37)",
+   "g": "h",
+   "script": 162
+  },
+  "jc.dru": {
+   "id": "ceefa1b3-9e20-5b8f-a00c-43dc78dede32",
+   "name": "Drusus (Nero Claudius Drusus)",
+   "b": null,
+   "d": -9,
+   "tree": "IT_JCL",
+   "title": "Fils de Livie, père de Germanicus et de Claude",
+   "g": "h",
+   "script": 162
+  },
+  "jc.ant": {
+   "id": "b9bba75c-72c7-58dc-a374-39b0297993c6",
+   "name": "Antonia la Jeune",
+   "b": null,
+   "d": null,
+   "tree": "IT_JCL",
+   "title": "Mère de Germanicus et de Claude",
+   "g": "f",
+   "script": 162
+  },
+  "jc.ger": {
+   "id": "d50c479f-c18a-506c-b1c7-cacde927ba9b",
+   "name": "Germanicus",
+   "b": null,
+   "d": 19,
+   "tree": "IT_JCL",
+   "title": "Père de Caligula",
+   "g": "h",
+   "script": 162
+  },
+  "jc.agr": {
+   "id": "7db3910d-166d-514c-8fc6-ab656b6407ff",
+   "name": "Marcus Vipsanius Agrippa",
+   "b": null,
+   "d": -12,
+   "tree": "IT_JCL",
+   "title": "Général, père de Gaius, Lucius, Julia la Jeune, Agrippine l'Aînée",
+   "g": "h",
+   "script": 162
+  },
+  "jc.jue": {
+   "id": "2977dead-9a10-5030-ad09-fcfcf4d3a14e",
+   "name": "Julia l'Aînée",
+   "b": null,
+   "d": null,
+   "tree": "IT_JCL",
+   "title": "Fille d'Auguste",
+   "g": "f",
+   "script": 162
+  },
+  "jc.gai": {
+   "id": "17e37e8d-bd8d-566c-9a0b-97e7967484d4",
+   "name": "Gaius Caesar",
+   "b": null,
+   "d": 4,
+   "tree": "IT_JCL",
+   "title": "Fils d'Agrippa et de Julia l'Aînée",
+   "g": "h",
+   "script": 162
+  },
+  "jc.luc": {
+   "id": "b60b57e2-7b14-5cf1-8a66-d0c798e92816",
+   "name": "Lucius Caesar",
+   "b": null,
+   "d": 2,
+   "tree": "IT_JCL",
+   "title": "Fils d'Agrippa et de Julia l'Aînée",
+   "g": "h",
+   "script": 162
+  },
+  "jc.juy": {
+   "id": "24adb1b3-dd01-5b00-a029-920730e34074",
+   "name": "Julia la Jeune",
+   "b": null,
+   "d": null,
+   "tree": "IT_JCL",
+   "title": "Fille d'Agrippa et de Julia l'Aînée",
+   "g": "f",
+   "script": 162
+  },
+  "jc.apo": {
+   "id": "062d2ec2-2201-585c-af3d-045a9956805a",
+   "name": "Agrippa Postumus",
+   "b": null,
+   "d": null,
+   "tree": "IT_JCL",
+   "title": "Fils d'Agrippa et de Julia l'Aînée",
+   "g": "h",
+   "script": 162
+  },
+  "jc.ape": {
+   "id": "de62011a-153b-5845-9930-a515fb085eb2",
+   "name": "Agrippine l'Aînée",
+   "b": null,
+   "d": null,
+   "tree": "IT_JCL",
+   "title": "Fille d'Agrippa et de Julia l'Aînée, mère de Caligula",
+   "g": "f",
+   "script": 162
+  },
+  "jc.cal": {
+   "id": "47ba6475-8eb9-5ba5-b1cf-8b346a0230a0",
+   "name": "Caligula",
+   "b": null,
+   "d": 41,
+   "tree": "IT_JCL",
+   "title": "Empereur romain (37-41)",
+   "g": "h",
+   "script": 162
+  },
+  "jc.cla": {
+   "id": "5bb58af1-0620-5808-ab9f-5c6b6d7ffeec",
+   "name": "Claude",
+   "b": null,
+   "d": 54,
+   "tree": "IT_JCL",
+   "title": "Empereur romain (41-54)",
+   "g": "h",
+   "script": 162
+  },
+  "jc.mes": {
+   "id": "f48360b3-e62f-597f-ac78-3169d17e883f",
+   "name": "Messaline",
+   "b": null,
+   "d": null,
+   "tree": "IT_JCL",
+   "title": "Épouse de Claude",
+   "g": "f",
+   "script": 162
+  },
+  "jc.bri": {
+   "id": "b24c6da6-b52e-5383-addc-b11f620bad2e",
+   "name": "Britannicus",
+   "b": null,
+   "d": null,
+   "tree": "IT_JCL",
+   "title": "Fils de Claude",
+   "g": "h",
+   "script": 162
+  },
+  "jc.oct": {
+   "id": "2289130f-ef68-5043-a195-e35eb316ec0f",
+   "name": "Octavie (Claudia Octavia)",
+   "b": null,
+   "d": null,
+   "tree": "IT_JCL",
+   "title": "Fille de Claude et de Messaline",
+   "g": "f",
+   "script": 162
+  },
+  "jc.apy": {
+   "id": "3d20e6eb-8764-51ad-9793-9c236ab19b5e",
+   "name": "Agrippine la Jeune",
+   "b": null,
+   "d": null,
+   "tree": "IT_JCL",
+   "title": "Fille de Germanicus, mère de Néron",
+   "g": "f",
+   "script": 162
+  },
+  "jc.gda": {
+   "id": "5fe7da82-6b61-5f72-aeeb-92e928c9a57e",
+   "name": "Gnaeus Domitius Ahenobarbus (consul 32)",
+   "b": null,
+   "d": null,
+   "tree": "IT_JCL",
+   "title": "Père de Néron",
+   "g": "h",
+   "script": 162
+  },
+  "jc.ner": {
+   "id": "d2bfe8b7-d5c0-575e-9f72-6626226f73b0",
+   "name": "Néron",
+   "b": null,
+   "d": 68,
+   "tree": "IT_JCL",
+   "title": "Empereur romain (54-68)",
+   "g": "h",
+   "script": 162
+  },
+  "na.ner": {
+   "id": "f1713bbb-542e-54c5-8741-043d0bf1cc3a",
+   "name": "Nerva",
+   "b": null,
+   "d": null,
+   "tree": "IT_NAN",
+   "title": "Empereur romain (96-98)",
+   "g": "h",
+   "script": 163
+  },
+  "na.tra": {
+   "id": "798d544b-61a0-504f-ba89-36661d5ab22b",
+   "name": "Trajan",
+   "b": null,
+   "d": null,
+   "tree": "IT_NAN",
+   "title": "Empereur romain (98-117)",
+   "g": "h",
+   "script": 163
+  },
+  "na.had": {
+   "id": "a2c8f0ee-5c87-55e4-9a2b-d582dd29fe90",
+   "name": "Hadrien",
+   "b": null,
+   "d": 138,
+   "tree": "IT_NAN",
+   "title": "Empereur romain (117-138)",
+   "g": "h",
+   "script": 163
+  },
+  "na.ant": {
+   "id": "24f135d0-6276-5b75-aca7-053739955206",
+   "name": "Antonin le Pieux",
+   "b": null,
+   "d": null,
+   "tree": "IT_NAN",
+   "title": "Empereur romain (138-161)",
+   "g": "h",
+   "script": 163
+  },
+  "na.mar": {
+   "id": "ae059a85-0694-57e7-96f3-a1ae6a11d7ce",
+   "name": "Marc Aurèle",
+   "b": null,
+   "d": 180,
+   "tree": "IT_NAN",
+   "title": "Empereur romain (161-180)",
+   "g": "h",
+   "script": 163
+  },
+  "na.ver": {
+   "id": "eb5bfeed-edfd-52d4-ae0f-cce62c1df817",
+   "name": "Lucius Verus",
+   "b": null,
+   "d": 169,
+   "tree": "IT_NAN",
+   "title": "Empereur romain (161-169)",
+   "g": "h",
+   "script": 163
+  },
+  "na.com": {
+   "id": "f3237645-3d63-5b86-b686-ee253ff7bfe2",
+   "name": "Commode",
+   "b": null,
+   "d": 192,
+   "tree": "IT_NAN",
+   "title": "Empereur romain (177-192)",
+   "g": "h",
+   "script": 163
+  },
+  "fl.pet": {
+   "id": "98963d13-d8c9-578d-b008-d15e1274ac92",
+   "name": "Titus Flavius Petro",
+   "b": null,
+   "d": null,
+   "tree": "IT_FLA",
+   "title": "Père de Titus Flavius Sabinus Ier",
+   "g": "h",
+   "script": 164
+  },
+  "fl.sa1": {
+   "id": "0bd79307-7eac-5a40-b92f-f7c764d60ad3",
+   "name": "Titus Flavius Sabinus Ier",
+   "b": null,
+   "d": null,
+   "tree": "IT_FLA",
+   "title": "Père de Vespasien et de Sabinus II",
+   "g": "h",
+   "script": 164
+  },
+  "fl.sa2": {
+   "id": "b57ad69f-b3ee-5ad7-80bd-89c24142f81d",
+   "name": "Titus Flavius Sabinus II",
+   "b": null,
+   "d": 69,
+   "tree": "IT_FLA",
+   "title": "Exécuté le 19 décembre 69",
+   "g": "h",
+   "script": 164
+  },
+  "fl.ves": {
+   "id": "d210c812-8727-5dcf-8689-166368afb8f4",
+   "name": "Vespasien",
+   "b": null,
+   "d": 79,
+   "tree": "IT_FLA",
+   "title": "Empereur romain (69-79)",
+   "g": "h",
+   "script": 164
+  },
+  "fl.tit": {
+   "id": "3bafdc8a-e92b-5f78-b65b-1008262a9bb4",
+   "name": "Titus",
+   "b": 39,
+   "d": 81,
+   "tree": "IT_FLA",
+   "title": "Empereur romain (79-81)",
+   "g": "h",
+   "script": 164
+  },
+  "fl.dom": {
+   "id": "3537d5e4-d17d-5f7e-afbe-3460de8f6184",
+   "name": "Domitien",
+   "b": 51,
+   "d": 96,
+   "tree": "IT_FLA",
+   "title": "Empereur romain (81-96)",
+   "g": "h",
+   "script": 164
+  },
+  "fl.dmy": {
+   "id": "4e7094fc-14af-5e35-9b31-a814665a4010",
+   "name": "Domitille la Jeune",
+   "b": 45,
+   "d": null,
+   "tree": "IT_FLA",
+   "title": "Fille de Vespasien",
+   "g": "f",
+   "script": 164
+  },
+  "fl.juf": {
+   "id": "1780f750-b227-5b08-93e7-0d87759fa31b",
+   "name": "Julia Flavia",
+   "b": null,
+   "d": null,
+   "tree": "IT_FLA",
+   "title": "Fille de Titus (peut-être)",
+   "g": "f",
+   "script": 164
+  },
+  "sv.sep": {
+   "id": "acabe6e7-52dd-5456-b61e-71b9e5b471ab",
+   "name": "Septime Sévère",
+   "b": 145,
+   "d": 211,
+   "tree": "IT_SEV",
+   "title": "Empereur romain (193-211)",
+   "g": "h",
+   "script": 165
+  },
+  "sv.jdo": {
+   "id": "b72b1a81-45d7-55b3-8470-252b4003cf04",
+   "name": "Julia Domna",
+   "b": null,
+   "d": null,
+   "tree": "IT_SEV",
+   "title": "Épouse de Septime Sévère",
+   "g": "f",
+   "script": 165
+  },
+  "sv.car": {
+   "id": "e7757299-c499-5f7c-938f-4e4388044bdf",
+   "name": "Caracalla",
+   "b": 188,
+   "d": 217,
+   "tree": "IT_SEV",
+   "title": "Empereur romain (règne 192-217 selon la page)",
+   "g": "h",
+   "script": 165
+  },
+  "sv.get": {
+   "id": "28e75978-7528-57b2-bd25-dc4b8760173a",
+   "name": "Geta",
+   "b": 189,
+   "d": 211,
+   "tree": "IT_SEV",
+   "title": "Empereur romain (211)",
+   "g": "h",
+   "script": 165
+  },
+  "sv.jma": {
+   "id": "ebe11dea-6eb6-581a-bbb3-372055b2a483",
+   "name": "Julia Maesa",
+   "b": null,
+   "d": null,
+   "tree": "IT_SEV",
+   "title": "Sœur de Julia Domna",
+   "g": "f",
+   "script": 165
+  },
+  "sv.jso": {
+   "id": "c091ec22-f5e8-54fc-9cf5-de6931f85361",
+   "name": "Julia Soaemias",
+   "b": null,
+   "d": null,
+   "tree": "IT_SEV",
+   "title": "Fille de Maesa, mère d'Élagabal",
+   "g": "f",
+   "script": 165
+  },
+  "sv.jmm": {
+   "id": "73f19b1f-b485-5483-a2b7-6c61421589db",
+   "name": "Julia Mamaea",
+   "b": null,
+   "d": null,
+   "tree": "IT_SEV",
+   "title": "Fille de Maesa, mère de Sévère Alexandre",
+   "g": "f",
+   "script": 165
+  },
+  "sv.ela": {
+   "id": "c5aef3a6-359e-5c7b-96e6-d66b9d94ffd4",
+   "name": "Élagabal",
+   "b": 203,
+   "d": 222,
+   "tree": "IT_SEV",
+   "title": "Empereur romain (218-222)",
+   "g": "h",
+   "script": 165
+  },
+  "sv.sal": {
+   "id": "86c8074e-7a57-5cbb-baf2-eff00bfe95b3",
+   "name": "Sévère Alexandre",
+   "b": 209,
+   "d": 235,
+   "tree": "IT_SEV",
+   "title": "Empereur romain (222-235)",
+   "g": "h",
+   "script": 165
+  },
+  "ag.pe1": {
+   "id": "2149a41e-c337-53f1-81da-b0fd66867036",
+   "name": "Perdiccas Ier",
+   "b": null,
+   "d": null,
+   "tree": "GR_ARG",
+   "title": "Roi de Macédoine (v. 650 av. J.-C.)",
+   "g": "h",
+   "script": 166
+  },
+  "ag.ar1": {
+   "id": "25161074-2230-5d06-ae65-2cec6045bbe8",
+   "name": "Argaios Ier",
+   "b": null,
+   "d": null,
+   "tree": "GR_ARG",
+   "title": "Roi de Macédoine (v. 623 av. J.-C.)",
+   "g": "h",
+   "script": 166
+  },
+  "ag.ph1": {
+   "id": "288f37b4-1417-50b8-97a1-6a8d70a5b9fa",
+   "name": "Philippe Ier",
+   "b": null,
+   "d": null,
+   "tree": "GR_ARG",
+   "title": "Roi de Macédoine (v. 593 av. J.-C.)",
+   "g": "h",
+   "script": 166
+  },
+  "ag.ae1": {
+   "id": "d11c882a-2e76-594b-a16e-354caacfc738",
+   "name": "Aéropos Ier",
+   "b": null,
+   "d": null,
+   "tree": "GR_ARG",
+   "title": "Roi de Macédoine (v. 563 av. J.-C.)",
+   "g": "h",
+   "script": 166
+  },
+  "ag.alc": {
+   "id": "9bfa5fc4-b1e6-5f45-b3b5-e9c594b86954",
+   "name": "Alcétas",
+   "b": null,
+   "d": null,
+   "tree": "GR_ARG",
+   "title": "Roi de Macédoine (v. 533 av. J.-C.)",
+   "g": "h",
+   "script": 166
+  },
+  "ag.am1": {
+   "id": "1089a451-f719-59e0-af9e-93c386d705b4",
+   "name": "Amyntas Ier",
+   "b": null,
+   "d": null,
+   "tree": "GR_ARG",
+   "title": "Roi de Macédoine (v. 512-498/7 av. J.-C.)",
+   "g": "h",
+   "script": 166
+  },
+  "ag.al1": {
+   "id": "56d67a1d-4e90-5c7d-beab-c6a419118b15",
+   "name": "Alexandre Ier le Philhellène",
+   "b": null,
+   "d": null,
+   "tree": "GR_ARG",
+   "title": "Roi de Macédoine (498/7-454 av. J.-C.)",
+   "g": "h",
+   "script": 166
+  },
+  "ag.pe2": {
+   "id": "f0180d2b-7dfa-5e3c-b09d-78d64a4b0268",
+   "name": "Perdiccas II",
+   "b": null,
+   "d": null,
+   "tree": "GR_ARG",
+   "title": "Roi de Macédoine (454-413 av. J.-C.)",
+   "g": "h",
+   "script": 166
+  },
+  "ag.arc": {
+   "id": "e767bcf8-dcf3-5ad2-8d56-ad33814408f6",
+   "name": "Archélaos",
+   "b": null,
+   "d": -399,
+   "tree": "GR_ARG",
+   "title": "Roi de Macédoine (413-399 av. J.-C.)",
+   "g": "h",
+   "script": 166
+  },
+  "ag.ore": {
+   "id": "780d8e08-3159-5f23-88d4-c2062c2f3c0b",
+   "name": "Oreste",
+   "b": null,
+   "d": null,
+   "tree": "GR_ARG",
+   "title": "Roi de Macédoine (399-398/7 av. J.-C.)",
+   "g": "h",
+   "script": 166
+  },
+  "ag.ae2": {
+   "id": "c4e5f951-4a3c-5fb6-8d64-2deced0b8961",
+   "name": "Aéropos II",
+   "b": null,
+   "d": null,
+   "tree": "GR_ARG",
+   "title": "Roi de Macédoine (398/7-395/4 av. J.-C.)",
+   "g": "h",
+   "script": 166
+  },
+  "ag.pau": {
+   "id": "7285afdb-2a9d-505f-ad87-cd00f65c31b6",
+   "name": "Pausanias",
+   "b": null,
+   "d": null,
+   "tree": "GR_ARG",
+   "title": "Roi de Macédoine (394/3 av. J.-C.)",
+   "g": "h",
+   "script": 166
+  },
+  "ag.am2": {
+   "id": "64e90236-4bbd-52c8-a44f-8eb733e15db3",
+   "name": "Amyntas II le Petit",
+   "b": null,
+   "d": null,
+   "tree": "GR_ARG",
+   "title": "Roi de Macédoine (394/3 av. J.-C.)",
+   "g": "h",
+   "script": 166
+  },
+  "ag.am3": {
+   "id": "383f5881-032b-54dd-8395-4d08850e3e8b",
+   "name": "Amyntas III",
+   "b": null,
+   "d": -369,
+   "tree": "GR_ARG",
+   "title": "Roi de Macédoine (393 puis 393-369 av. J.-C.)",
+   "g": "h",
+   "script": 166
+  },
+  "ag.al2": {
+   "id": "d462fef3-063a-56ed-aa23-cd7797f76ae3",
+   "name": "Alexandre II",
+   "b": null,
+   "d": -368,
+   "tree": "GR_ARG",
+   "title": "Roi de Macédoine (369-368 av. J.-C.)",
+   "g": "h",
+   "script": 166
+  },
+  "ag.pe3": {
+   "id": "5b8d91d9-0f8c-5fa2-9e33-19792b3a6173",
+   "name": "Perdiccas III",
+   "b": null,
+   "d": null,
+   "tree": "GR_ARG",
+   "title": "Roi de Macédoine (365-360/59 av. J.-C.)",
+   "g": "h",
+   "script": 166
+  },
+  "ag.am4": {
+   "id": "37943dbd-d29a-5949-a1a5-64b43c3accd2",
+   "name": "Amyntas IV",
+   "b": null,
+   "d": null,
+   "tree": "GR_ARG",
+   "title": "Roi de Macédoine (360/59 av. J.-C., contesté)",
+   "g": "h",
+   "script": 166
+  },
+  "ag.ph2": {
+   "id": "0c175805-190d-5ce6-a155-9b22c9511c94",
+   "name": "Philippe II",
+   "b": null,
+   "d": -336,
+   "tree": "GR_ARG",
+   "title": "Roi de Macédoine (360/59-336 av. J.-C.)",
+   "g": "h",
+   "script": 166
+  },
+  "ag.al3": {
+   "id": "1b70b86a-f073-5fe6-8921-47e09b5c2b59",
+   "name": "Alexandre III le Grand",
+   "b": null,
+   "d": -323,
+   "tree": "GR_ARG",
+   "title": "Roi de Macédoine (336-323 av. J.-C.)",
+   "g": "h",
+   "script": 166
+  },
+  "ag.ph3": {
+   "id": "0fabf5f9-e636-54a3-948f-7c8f06c6202b",
+   "name": "Philippe III Arrhidée",
+   "b": null,
+   "d": -317,
+   "tree": "GR_ARG",
+   "title": "Roi de Macédoine (323-317 av. J.-C.)",
+   "g": "h",
+   "script": 166
+  },
+  "ag.al4": {
+   "id": "eb5c3906-acb6-5189-af82-2940f59205f8",
+   "name": "Alexandre IV",
+   "b": null,
+   "d": -310,
+   "tree": "GR_ARG",
+   "title": "Roi de Macédoine (323-310 av. J.-C.)",
+   "g": "h",
+   "script": 166
+  },
+  "sl.se1": {
+   "id": "0515333d-6aba-556a-9e44-c1fb75065c3d",
+   "name": "Séleucos Ier Nicator",
+   "b": null,
+   "d": null,
+   "tree": "SY_SEL",
+   "title": "Roi séleucide (305-281 av. J.-C.)",
+   "g": "h",
+   "script": 167
+  },
+  "sl.an1": {
+   "id": "84a2e297-5671-5197-a5f4-adc93e036df1",
+   "name": "Antiochos Ier Sôter",
+   "b": null,
+   "d": null,
+   "tree": "SY_SEL",
+   "title": "Roi séleucide (281-261 av. J.-C.)",
+   "g": "h",
+   "script": 167
+  },
+  "sl.an2": {
+   "id": "613758c4-8eba-5b85-a967-2ae340df9fb2",
+   "name": "Antiochos II Théos",
+   "b": null,
+   "d": null,
+   "tree": "SY_SEL",
+   "title": "Roi séleucide (261-246 av. J.-C.)",
+   "g": "h",
+   "script": 167
+  },
+  "sl.se2": {
+   "id": "0c4fd7ca-898b-5bb8-a959-e3a926a01c6f",
+   "name": "Séleucos II Callinicos",
+   "b": null,
+   "d": null,
+   "tree": "SY_SEL",
+   "title": "Roi séleucide (246-225 av. J.-C.)",
+   "g": "h",
+   "script": 167
+  },
+  "sl.an3": {
+   "id": "369a55ef-ed42-5245-ba74-96893f846c34",
+   "name": "Antiochos III le Grand",
+   "b": null,
+   "d": null,
+   "tree": "SY_SEL",
+   "title": "Roi séleucide (223-187 av. J.-C.)",
+   "g": "h",
+   "script": 167
+  },
+  "sl.ans": {
+   "id": "1aa8a347-b0ae-5805-86ff-6223577c6774",
+   "name": "Antiochos (fils d'Antiochos III)",
+   "b": null,
+   "d": null,
+   "tree": "SY_SEL",
+   "title": "Co-roi (210-193 av. J.-C.)",
+   "g": "h",
+   "script": 167
+  },
+  "sl.se4": {
+   "id": "374fa7a1-f764-5e06-bebf-f0d7fdc05b2e",
+   "name": "Séleucos IV Philopator",
+   "b": null,
+   "d": null,
+   "tree": "SY_SEL",
+   "title": "Roi séleucide (187-175 av. J.-C.)",
+   "g": "h",
+   "script": 167
+  },
+  "sl.an4": {
+   "id": "25e261a7-f440-59a2-9bd4-424cf041e8d4",
+   "name": "Antiochos IV Épiphane",
+   "b": null,
+   "d": null,
+   "tree": "SY_SEL",
+   "title": "Roi séleucide (175-164 av. J.-C.)",
+   "g": "h",
+   "script": 167
+  },
+  "sl.ansl": {
+   "id": "f32a57e8-1a14-5ef1-8a07-506353a51be4",
+   "name": "Antiochos (fils de Séleucos IV)",
+   "b": null,
+   "d": null,
+   "tree": "SY_SEL",
+   "title": "Co-roi (175-170 av. J.-C.)",
+   "g": "h",
+   "script": 167
+  },
+  "sl.an5": {
+   "id": "3e3d18e8-a16b-59bf-8f32-023e76b08989",
+   "name": "Antiochos V Eupator",
+   "b": null,
+   "d": null,
+   "tree": "SY_SEL",
+   "title": "Roi séleucide (164-162 av. J.-C.)",
+   "g": "h",
+   "script": 167
+  },
+  "sl.de1": {
+   "id": "b920e777-f7ad-5693-9904-f0d8ed13791f",
+   "name": "Démétrios Ier Sôter",
+   "b": null,
+   "d": null,
+   "tree": "SY_SEL",
+   "title": "Roi séleucide (162-150 av. J.-C.)",
+   "g": "h",
+   "script": 167
+  },
+  "sl.bal": {
+   "id": "4fb4c33e-6295-57d5-861b-469ab98b5f30",
+   "name": "Alexandre Ier Balas",
+   "b": null,
+   "d": null,
+   "tree": "SY_SEL",
+   "title": "Roi séleucide (150-145 av. J.-C.)",
+   "g": "h",
+   "script": 167
+  },
+  "sl.de2": {
+   "id": "84d8fe06-4485-50a1-b2e6-9b807c450ea3",
+   "name": "Démétrios II Nicator",
+   "b": null,
+   "d": null,
+   "tree": "SY_SEL",
+   "title": "Roi séleucide (145-138 puis 129-125 av. J.-C.)",
+   "g": "h",
+   "script": 167
+  },
+  "sl.an6": {
+   "id": "99d00425-b873-597a-80aa-e1858394a900",
+   "name": "Antiochos VI Dionysos",
+   "b": null,
+   "d": null,
+   "tree": "SY_SEL",
+   "title": "Roi séleucide (145/144-142/141 av. J.-C.)",
+   "g": "h",
+   "script": 167
+  },
+  "sl.an7": {
+   "id": "ec2e1d02-c204-5b7a-bec0-af8124e48b01",
+   "name": "Antiochos VII Sidétès",
+   "b": null,
+   "d": null,
+   "tree": "SY_SEL",
+   "title": "Roi séleucide (138-129 av. J.-C.)",
+   "g": "h",
+   "script": 167
   }
  },
  "trees": {
@@ -35352,6 +36192,42 @@
    "country": "CMR",
    "dynasty": "Bamoun",
    "script": 161
+  },
+  "IT_JCL": {
+   "entry": "871e20e8-7145-5c37-9198-20bfd433bef7",
+   "country": "ITA",
+   "dynasty": "Julio-Claudiens",
+   "script": 162
+  },
+  "IT_NAN": {
+   "entry": "88ff110e-a8ba-57aa-97d4-1a865d4cd8d4",
+   "country": "ITA",
+   "dynasty": "Nerva-Antonins",
+   "script": 163
+  },
+  "IT_FLA": {
+   "entry": "fc2c7ffb-2d48-52a6-9543-208c4838fea2",
+   "country": "ITA",
+   "dynasty": "Flaviens",
+   "script": 164
+  },
+  "IT_SEV": {
+   "entry": "2c2c359e-9cba-5cba-bc2a-0ccd89b1933a",
+   "country": "ITA",
+   "dynasty": "Sévères",
+   "script": 165
+  },
+  "GR_ARG": {
+   "entry": "0b758226-74fb-58b2-a756-784e2cd730ab",
+   "country": "GRC",
+   "dynasty": "Argéades",
+   "script": 166
+  },
+  "SY_SEL": {
+   "entry": "09049776-cbd2-5b03-83ea-fc6469e62759",
+   "country": "SYR",
+   "dynasty": "Séleucides",
+   "script": 167
   }
  },
  "flags": [
@@ -40952,6 +41828,54 @@
    "rels": 3,
    "trees": [
     "Bamoun (CMR)"
+   ]
+  },
+  "162": {
+   "label": "Italie (Julio-Claudiens)",
+   "members": 24,
+   "rels": 30,
+   "trees": [
+    "Julio-Claudiens (ITA)"
+   ]
+  },
+  "163": {
+   "label": "Italie (Nerva-Antonins)",
+   "members": 7,
+   "rels": 6,
+   "trees": [
+    "Nerva-Antonins (ITA)"
+   ]
+  },
+  "164": {
+   "label": "Italie (Flaviens)",
+   "members": 8,
+   "rels": 7,
+   "trees": [
+    "Flaviens (ITA)"
+   ]
+  },
+  "165": {
+   "label": "Italie (Sévères)",
+   "members": 9,
+   "rels": 10,
+   "trees": [
+    "Sévères (ITA)"
+   ]
+  },
+  "166": {
+   "label": "Grèce (Argéades)",
+   "members": 21,
+   "rels": 20,
+   "trees": [
+    "Argéades (GRC)"
+   ]
+  },
+  "167": {
+   "label": "Syrie (Séleucides)",
+   "members": 15,
+   "rels": 14,
+   "trees": [
+    "Séleucides (SYR)"
    ]
   }
  },
@@ -66994,6 +67918,441 @@
   [
    "6d9c1612-06d3-54d5-8184-34c1ce0987c6",
    "de081e73-1497-5b9d-a948-3d0666027332",
+   "family"
+  ],
+  [
+   "36710fe6-3344-5cfe-a213-6e56f92a3e94",
+   "69de4325-3c64-5df5-8b20-f9e7fc65f1e8",
+   "parent"
+  ],
+  [
+   "2ffff5e4-a8f2-5c4d-9dec-f0fba3c0b104",
+   "be8d604d-77b8-5c7c-9502-631d65b13d78",
+   "parent"
+  ],
+  [
+   "a0123866-ea7e-55b9-a519-6419e655bef9",
+   "be8d604d-77b8-5c7c-9502-631d65b13d78",
+   "parent"
+  ],
+  [
+   "2ffff5e4-a8f2-5c4d-9dec-f0fba3c0b104",
+   "ceefa1b3-9e20-5b8f-a00c-43dc78dede32",
+   "parent"
+  ],
+  [
+   "a0123866-ea7e-55b9-a519-6419e655bef9",
+   "ceefa1b3-9e20-5b8f-a00c-43dc78dede32",
+   "parent"
+  ],
+  [
+   "ceefa1b3-9e20-5b8f-a00c-43dc78dede32",
+   "d50c479f-c18a-506c-b1c7-cacde927ba9b",
+   "parent"
+  ],
+  [
+   "b9bba75c-72c7-58dc-a374-39b0297993c6",
+   "d50c479f-c18a-506c-b1c7-cacde927ba9b",
+   "parent"
+  ],
+  [
+   "ceefa1b3-9e20-5b8f-a00c-43dc78dede32",
+   "5bb58af1-0620-5808-ab9f-5c6b6d7ffeec",
+   "parent"
+  ],
+  [
+   "b9bba75c-72c7-58dc-a374-39b0297993c6",
+   "5bb58af1-0620-5808-ab9f-5c6b6d7ffeec",
+   "parent"
+  ],
+  [
+   "69de4325-3c64-5df5-8b20-f9e7fc65f1e8",
+   "2977dead-9a10-5030-ad09-fcfcf4d3a14e",
+   "parent"
+  ],
+  [
+   "7db3910d-166d-514c-8fc6-ab656b6407ff",
+   "17e37e8d-bd8d-566c-9a0b-97e7967484d4",
+   "parent"
+  ],
+  [
+   "2977dead-9a10-5030-ad09-fcfcf4d3a14e",
+   "17e37e8d-bd8d-566c-9a0b-97e7967484d4",
+   "parent"
+  ],
+  [
+   "7db3910d-166d-514c-8fc6-ab656b6407ff",
+   "b60b57e2-7b14-5cf1-8a66-d0c798e92816",
+   "parent"
+  ],
+  [
+   "2977dead-9a10-5030-ad09-fcfcf4d3a14e",
+   "b60b57e2-7b14-5cf1-8a66-d0c798e92816",
+   "parent"
+  ],
+  [
+   "7db3910d-166d-514c-8fc6-ab656b6407ff",
+   "24adb1b3-dd01-5b00-a029-920730e34074",
+   "parent"
+  ],
+  [
+   "2977dead-9a10-5030-ad09-fcfcf4d3a14e",
+   "24adb1b3-dd01-5b00-a029-920730e34074",
+   "parent"
+  ],
+  [
+   "7db3910d-166d-514c-8fc6-ab656b6407ff",
+   "062d2ec2-2201-585c-af3d-045a9956805a",
+   "parent"
+  ],
+  [
+   "2977dead-9a10-5030-ad09-fcfcf4d3a14e",
+   "062d2ec2-2201-585c-af3d-045a9956805a",
+   "parent"
+  ],
+  [
+   "7db3910d-166d-514c-8fc6-ab656b6407ff",
+   "de62011a-153b-5845-9930-a515fb085eb2",
+   "parent"
+  ],
+  [
+   "2977dead-9a10-5030-ad09-fcfcf4d3a14e",
+   "de62011a-153b-5845-9930-a515fb085eb2",
+   "parent"
+  ],
+  [
+   "d50c479f-c18a-506c-b1c7-cacde927ba9b",
+   "47ba6475-8eb9-5ba5-b1cf-8b346a0230a0",
+   "parent"
+  ],
+  [
+   "de62011a-153b-5845-9930-a515fb085eb2",
+   "47ba6475-8eb9-5ba5-b1cf-8b346a0230a0",
+   "parent"
+  ],
+  [
+   "d50c479f-c18a-506c-b1c7-cacde927ba9b",
+   "3d20e6eb-8764-51ad-9793-9c236ab19b5e",
+   "parent"
+  ],
+  [
+   "de62011a-153b-5845-9930-a515fb085eb2",
+   "3d20e6eb-8764-51ad-9793-9c236ab19b5e",
+   "parent"
+  ],
+  [
+   "5bb58af1-0620-5808-ab9f-5c6b6d7ffeec",
+   "b24c6da6-b52e-5383-addc-b11f620bad2e",
+   "parent"
+  ],
+  [
+   "5bb58af1-0620-5808-ab9f-5c6b6d7ffeec",
+   "2289130f-ef68-5043-a195-e35eb316ec0f",
+   "parent"
+  ],
+  [
+   "f48360b3-e62f-597f-ac78-3169d17e883f",
+   "2289130f-ef68-5043-a195-e35eb316ec0f",
+   "parent"
+  ],
+  [
+   "5fe7da82-6b61-5f72-aeeb-92e928c9a57e",
+   "d2bfe8b7-d5c0-575e-9f72-6626226f73b0",
+   "parent"
+  ],
+  [
+   "3d20e6eb-8764-51ad-9793-9c236ab19b5e",
+   "d2bfe8b7-d5c0-575e-9f72-6626226f73b0",
+   "parent"
+  ],
+  [
+   "bc39726d-1899-56a0-9004-ccbe146623fc",
+   "69de4325-3c64-5df5-8b20-f9e7fc65f1e8",
+   "family"
+  ],
+  [
+   "ae059a85-0694-57e7-96f3-a1ae6a11d7ce",
+   "f3237645-3d63-5b86-b686-ee253ff7bfe2",
+   "parent"
+  ],
+  [
+   "f1713bbb-542e-54c5-8741-043d0bf1cc3a",
+   "798d544b-61a0-504f-ba89-36661d5ab22b",
+   "family"
+  ],
+  [
+   "798d544b-61a0-504f-ba89-36661d5ab22b",
+   "a2c8f0ee-5c87-55e4-9a2b-d582dd29fe90",
+   "family"
+  ],
+  [
+   "a2c8f0ee-5c87-55e4-9a2b-d582dd29fe90",
+   "24f135d0-6276-5b75-aca7-053739955206",
+   "family"
+  ],
+  [
+   "24f135d0-6276-5b75-aca7-053739955206",
+   "ae059a85-0694-57e7-96f3-a1ae6a11d7ce",
+   "family"
+  ],
+  [
+   "24f135d0-6276-5b75-aca7-053739955206",
+   "eb5bfeed-edfd-52d4-ae0f-cce62c1df817",
+   "family"
+  ],
+  [
+   "98963d13-d8c9-578d-b008-d15e1274ac92",
+   "0bd79307-7eac-5a40-b92f-f7c764d60ad3",
+   "parent"
+  ],
+  [
+   "0bd79307-7eac-5a40-b92f-f7c764d60ad3",
+   "b57ad69f-b3ee-5ad7-80bd-89c24142f81d",
+   "parent"
+  ],
+  [
+   "0bd79307-7eac-5a40-b92f-f7c764d60ad3",
+   "d210c812-8727-5dcf-8689-166368afb8f4",
+   "parent"
+  ],
+  [
+   "d210c812-8727-5dcf-8689-166368afb8f4",
+   "3bafdc8a-e92b-5f78-b65b-1008262a9bb4",
+   "parent"
+  ],
+  [
+   "d210c812-8727-5dcf-8689-166368afb8f4",
+   "3537d5e4-d17d-5f7e-afbe-3460de8f6184",
+   "parent"
+  ],
+  [
+   "d210c812-8727-5dcf-8689-166368afb8f4",
+   "4e7094fc-14af-5e35-9b31-a814665a4010",
+   "parent"
+  ],
+  [
+   "3bafdc8a-e92b-5f78-b65b-1008262a9bb4",
+   "1780f750-b227-5b08-93e7-0d87759fa31b",
+   "family"
+  ],
+  [
+   "acabe6e7-52dd-5456-b61e-71b9e5b471ab",
+   "e7757299-c499-5f7c-938f-4e4388044bdf",
+   "parent"
+  ],
+  [
+   "acabe6e7-52dd-5456-b61e-71b9e5b471ab",
+   "28e75978-7528-57b2-bd25-dc4b8760173a",
+   "parent"
+  ],
+  [
+   "b72b1a81-45d7-55b3-8470-252b4003cf04",
+   "e7757299-c499-5f7c-938f-4e4388044bdf",
+   "parent"
+  ],
+  [
+   "b72b1a81-45d7-55b3-8470-252b4003cf04",
+   "28e75978-7528-57b2-bd25-dc4b8760173a",
+   "parent"
+  ],
+  [
+   "ebe11dea-6eb6-581a-bbb3-372055b2a483",
+   "c091ec22-f5e8-54fc-9cf5-de6931f85361",
+   "parent"
+  ],
+  [
+   "ebe11dea-6eb6-581a-bbb3-372055b2a483",
+   "73f19b1f-b485-5483-a2b7-6c61421589db",
+   "parent"
+  ],
+  [
+   "c091ec22-f5e8-54fc-9cf5-de6931f85361",
+   "c5aef3a6-359e-5c7b-96e6-d66b9d94ffd4",
+   "parent"
+  ],
+  [
+   "73f19b1f-b485-5483-a2b7-6c61421589db",
+   "86c8074e-7a57-5cbb-baf2-eff00bfe95b3",
+   "parent"
+  ],
+  [
+   "b72b1a81-45d7-55b3-8470-252b4003cf04",
+   "ebe11dea-6eb6-581a-bbb3-372055b2a483",
+   "family"
+  ],
+  [
+   "acabe6e7-52dd-5456-b61e-71b9e5b471ab",
+   "b72b1a81-45d7-55b3-8470-252b4003cf04",
+   "spouse"
+  ],
+  [
+   "2149a41e-c337-53f1-81da-b0fd66867036",
+   "25161074-2230-5d06-ae65-2cec6045bbe8",
+   "parent"
+  ],
+  [
+   "25161074-2230-5d06-ae65-2cec6045bbe8",
+   "288f37b4-1417-50b8-97a1-6a8d70a5b9fa",
+   "parent"
+  ],
+  [
+   "288f37b4-1417-50b8-97a1-6a8d70a5b9fa",
+   "d11c882a-2e76-594b-a16e-354caacfc738",
+   "parent"
+  ],
+  [
+   "d11c882a-2e76-594b-a16e-354caacfc738",
+   "9bfa5fc4-b1e6-5f45-b3b5-e9c594b86954",
+   "parent"
+  ],
+  [
+   "9bfa5fc4-b1e6-5f45-b3b5-e9c594b86954",
+   "1089a451-f719-59e0-af9e-93c386d705b4",
+   "parent"
+  ],
+  [
+   "1089a451-f719-59e0-af9e-93c386d705b4",
+   "56d67a1d-4e90-5c7d-beab-c6a419118b15",
+   "parent"
+  ],
+  [
+   "56d67a1d-4e90-5c7d-beab-c6a419118b15",
+   "f0180d2b-7dfa-5e3c-b09d-78d64a4b0268",
+   "parent"
+  ],
+  [
+   "f0180d2b-7dfa-5e3c-b09d-78d64a4b0268",
+   "e767bcf8-dcf3-5ad2-8d56-ad33814408f6",
+   "parent"
+  ],
+  [
+   "e767bcf8-dcf3-5ad2-8d56-ad33814408f6",
+   "780d8e08-3159-5f23-88d4-c2062c2f3c0b",
+   "parent"
+  ],
+  [
+   "f0180d2b-7dfa-5e3c-b09d-78d64a4b0268",
+   "c4e5f951-4a3c-5fb6-8d64-2deced0b8961",
+   "parent"
+  ],
+  [
+   "c4e5f951-4a3c-5fb6-8d64-2deced0b8961",
+   "7285afdb-2a9d-505f-ad87-cd00f65c31b6",
+   "parent"
+  ],
+  [
+   "383f5881-032b-54dd-8395-4d08850e3e8b",
+   "d462fef3-063a-56ed-aa23-cd7797f76ae3",
+   "parent"
+  ],
+  [
+   "383f5881-032b-54dd-8395-4d08850e3e8b",
+   "5b8d91d9-0f8c-5fa2-9e33-19792b3a6173",
+   "parent"
+  ],
+  [
+   "5b8d91d9-0f8c-5fa2-9e33-19792b3a6173",
+   "37943dbd-d29a-5949-a1a5-64b43c3accd2",
+   "parent"
+  ],
+  [
+   "383f5881-032b-54dd-8395-4d08850e3e8b",
+   "0c175805-190d-5ce6-a155-9b22c9511c94",
+   "parent"
+  ],
+  [
+   "0c175805-190d-5ce6-a155-9b22c9511c94",
+   "1b70b86a-f073-5fe6-8921-47e09b5c2b59",
+   "parent"
+  ],
+  [
+   "0c175805-190d-5ce6-a155-9b22c9511c94",
+   "0fabf5f9-e636-54a3-948f-7c8f06c6202b",
+   "parent"
+  ],
+  [
+   "1b70b86a-f073-5fe6-8921-47e09b5c2b59",
+   "eb5c3906-acb6-5189-af82-2940f59205f8",
+   "parent"
+  ],
+  [
+   "56d67a1d-4e90-5c7d-beab-c6a419118b15",
+   "64e90236-4bbd-52c8-a44f-8eb733e15db3",
+   "family"
+  ],
+  [
+   "56d67a1d-4e90-5c7d-beab-c6a419118b15",
+   "383f5881-032b-54dd-8395-4d08850e3e8b",
+   "family"
+  ],
+  [
+   "0515333d-6aba-556a-9e44-c1fb75065c3d",
+   "84a2e297-5671-5197-a5f4-adc93e036df1",
+   "parent"
+  ],
+  [
+   "84a2e297-5671-5197-a5f4-adc93e036df1",
+   "613758c4-8eba-5b85-a967-2ae340df9fb2",
+   "parent"
+  ],
+  [
+   "613758c4-8eba-5b85-a967-2ae340df9fb2",
+   "0c4fd7ca-898b-5bb8-a959-e3a926a01c6f",
+   "parent"
+  ],
+  [
+   "0c4fd7ca-898b-5bb8-a959-e3a926a01c6f",
+   "369a55ef-ed42-5245-ba74-96893f846c34",
+   "parent"
+  ],
+  [
+   "369a55ef-ed42-5245-ba74-96893f846c34",
+   "1aa8a347-b0ae-5805-86ff-6223577c6774",
+   "parent"
+  ],
+  [
+   "369a55ef-ed42-5245-ba74-96893f846c34",
+   "374fa7a1-f764-5e06-bebf-f0d7fdc05b2e",
+   "parent"
+  ],
+  [
+   "374fa7a1-f764-5e06-bebf-f0d7fdc05b2e",
+   "f32a57e8-1a14-5ef1-8a07-506353a51be4",
+   "parent"
+  ],
+  [
+   "25e261a7-f440-59a2-9bd4-424cf041e8d4",
+   "3e3d18e8-a16b-59bf-8f32-023e76b08989",
+   "parent"
+  ],
+  [
+   "374fa7a1-f764-5e06-bebf-f0d7fdc05b2e",
+   "b920e777-f7ad-5693-9904-f0d8ed13791f",
+   "parent"
+  ],
+  [
+   "b920e777-f7ad-5693-9904-f0d8ed13791f",
+   "84d8fe06-4485-50a1-b2e6-9b807c450ea3",
+   "parent"
+  ],
+  [
+   "4fb4c33e-6295-57d5-861b-469ab98b5f30",
+   "99d00425-b873-597a-80aa-e1858394a900",
+   "parent"
+  ],
+  [
+   "b920e777-f7ad-5693-9904-f0d8ed13791f",
+   "ec2e1d02-c204-5b7a-bec0-af8124e48b01",
+   "parent"
+  ],
+  [
+   "374fa7a1-f764-5e06-bebf-f0d7fdc05b2e",
+   "25e261a7-f440-59a2-9bd4-424cf041e8d4",
+   "family"
+  ],
+  [
+   "25e261a7-f440-59a2-9bd4-424cf041e8d4",
+   "4fb4c33e-6295-57d5-861b-469ab98b5f30",
    "family"
   ]
  ],
