@@ -33850,6 +33850,276 @@
    "title": "Sultan rasoulide (1377-1400)",
    "g": "h",
    "script": 157
+  },
+  "gu.gup": {
+   "id": "8fbdfc87-46fa-570e-8afd-f850b9f41209",
+   "name": "Sri Gupta",
+   "b": null,
+   "d": null,
+   "tree": "IN_GUP",
+   "title": "Fondateur de la dynastie (fin IIIe s.)",
+   "g": "h",
+   "script": 158
+  },
+  "gu.gha": {
+   "id": "fac4d891-2507-50a7-83c2-56db251e04d0",
+   "name": "Ghatotkacha",
+   "b": null,
+   "d": null,
+   "tree": "IN_GUP",
+   "title": "Roi gupta (v. 280/290-319)",
+   "g": "h",
+   "script": 158
+  },
+  "gu.ch1": {
+   "id": "dee68bad-eae5-5776-b828-3fc6ce5b4253",
+   "name": "Chandragupta Ier",
+   "b": null,
+   "d": null,
+   "tree": "IN_GUP",
+   "title": "Empereur gupta (319-335)",
+   "g": "h",
+   "script": 158
+  },
+  "gu.sam": {
+   "id": "856539c2-8643-5d0a-b2fd-d77b11589576",
+   "name": "Samudragupta",
+   "b": null,
+   "d": null,
+   "tree": "IN_GUP",
+   "title": "Empereur gupta (335-375)",
+   "g": "h",
+   "script": 158
+  },
+  "gu.ch2": {
+   "id": "43643782-500a-5517-b985-44c575f01876",
+   "name": "Chandragupta II",
+   "b": null,
+   "d": null,
+   "tree": "IN_GUP",
+   "title": "Empereur gupta (375-415)",
+   "g": "h",
+   "script": 158
+  },
+  "gu.ku1": {
+   "id": "aca8c433-9205-57c5-8503-087215bc6a51",
+   "name": "Kumaragupta Ier",
+   "b": null,
+   "d": null,
+   "tree": "IN_GUP",
+   "title": "Empereur gupta (415-455)",
+   "g": "h",
+   "script": 158
+  },
+  "gu.ska": {
+   "id": "cf1465c8-1760-5105-a702-e91784317fa1",
+   "name": "Skandagupta",
+   "b": null,
+   "d": null,
+   "tree": "IN_GUP",
+   "title": "Empereur gupta (455-467)",
+   "g": "h",
+   "script": 158
+  },
+  "gu.pur": {
+   "id": "7610e77a-13e0-50bf-97e4-18f9c6887bb7",
+   "name": "Purugupta",
+   "b": null,
+   "d": null,
+   "tree": "IN_GUP",
+   "title": "Empereur gupta (467-473)",
+   "g": "h",
+   "script": 158
+  },
+  "gu.bud": {
+   "id": "b70ae846-c3ab-593b-a27b-9d9c5a44b5b7",
+   "name": "Budhagupta",
+   "b": null,
+   "d": null,
+   "tree": "IN_GUP",
+   "title": "Empereur gupta (476-495)",
+   "g": "h",
+   "script": 158
+  },
+  "gu.nar": {
+   "id": "56c6ef80-7584-5121-89bd-3dd522057a7f",
+   "name": "Narasimhagupta Baladitya",
+   "b": null,
+   "d": null,
+   "tree": "IN_GUP",
+   "title": "Empereur gupta (495-530)",
+   "g": "h",
+   "script": 158
+  },
+  "gu.vaj": {
+   "id": "1e2dc86e-cb05-5e9c-9ac6-a683b449ad66",
+   "name": "Vajra",
+   "b": null,
+   "d": null,
+   "tree": "IN_GUP",
+   "title": "Fils de Narasimhagupta",
+   "g": "h",
+   "script": 158
+  },
+  "mu.chm": {
+   "id": "4437c522-3999-50ae-a973-2dc94bb611b5",
+   "name": "Chandragupta Maurya",
+   "b": null,
+   "d": null,
+   "tree": "IN_MAU",
+   "title": "Fondateur de l'empire maurya (v. 321-298 av. J.-C.)",
+   "g": "h",
+   "script": 159
+  },
+  "mu.bin": {
+   "id": "a3309e34-f11f-52f7-a744-956912be5c96",
+   "name": "Bindusara",
+   "b": null,
+   "d": null,
+   "tree": "IN_MAU",
+   "title": "Empereur maurya (v. 298-272 av. J.-C.)",
+   "g": "h",
+   "script": 159
+  },
+  "mu.ash": {
+   "id": "50d1446c-12ae-5c09-be29-4c9febc8a5cb",
+   "name": "Ashoka",
+   "b": null,
+   "d": null,
+   "tree": "IN_MAU",
+   "title": "Empereur maurya (268-232 av. J.-C.)",
+   "g": "h",
+   "script": 159
+  },
+  "mu.das": {
+   "id": "42de244f-8114-5a54-9c67-200e875f0db9",
+   "name": "Dasharatha Maurya",
+   "b": null,
+   "d": null,
+   "tree": "IN_MAU",
+   "title": "Empereur maurya (232-224 av. J.-C.)",
+   "g": "h",
+   "script": 159
+  },
+  "mu.sap": {
+   "id": "243e12da-3c2e-5f57-9d76-9b922133ecb2",
+   "name": "Samprati",
+   "b": null,
+   "d": null,
+   "tree": "IN_MAU",
+   "title": "Empereur maurya (224-215 av. J.-C.)",
+   "g": "h",
+   "script": 159
+  },
+  "kz.ker": {
+   "id": "b56b09a9-7304-5e20-bcf0-ef2f4f9123c6",
+   "name": "Kerei Khan",
+   "b": null,
+   "d": null,
+   "tree": "KZ_KHA",
+   "title": "Khan kazakh (1456-1473)",
+   "g": "h",
+   "script": 160
+  },
+  "kz.jan": {
+   "id": "2266c751-5093-5c10-92b7-1d9516171ad1",
+   "name": "Janibek Khan",
+   "b": null,
+   "d": null,
+   "tree": "KZ_KHA",
+   "title": "Khan kazakh (1473-1480)",
+   "g": "h",
+   "script": 160
+  },
+  "kz.kas": {
+   "id": "42e65548-3f74-5851-a6b9-499b6d3f835e",
+   "name": "Kasym Khan",
+   "b": null,
+   "d": null,
+   "tree": "KZ_KHA",
+   "title": "Khan kazakh (1511-1518)",
+   "g": "h",
+   "script": 160
+  },
+  "kz.haq": {
+   "id": "5ee9c639-7bd8-50f4-b72b-6b898cce4632",
+   "name": "Haqnazar Khan",
+   "b": null,
+   "d": null,
+   "tree": "KZ_KHA",
+   "title": "Khan kazakh (1538-1580)",
+   "g": "h",
+   "script": 160
+  },
+  "kz.shy": {
+   "id": "4609fe4a-f3de-50da-8a85-479cf9636a8c",
+   "name": "Shygai Khan",
+   "b": null,
+   "d": null,
+   "tree": "KZ_KHA",
+   "title": "Khan kazakh (1580-1582)",
+   "g": "h",
+   "script": 160
+  },
+  "kz.tau": {
+   "id": "db7745b8-936c-575e-8500-d4647fb4659c",
+   "name": "Tauekel Khan",
+   "b": null,
+   "d": null,
+   "tree": "KZ_KHA",
+   "title": "Khan kazakh (1582-1598)",
+   "g": "h",
+   "script": 160
+  },
+  "kz.esi": {
+   "id": "d50d5a92-9104-5bb6-9bee-66a425dae463",
+   "name": "Esim Khan",
+   "b": null,
+   "d": null,
+   "tree": "KZ_KHA",
+   "title": "Khan kazakh (1598-1628)",
+   "g": "h",
+   "script": 160
+  },
+  "bam.nsa": {
+   "id": "58d4a286-87e7-5b40-96b3-f3c3e6f01521",
+   "name": "Nsangou",
+   "b": null,
+   "d": null,
+   "tree": "CM_BAM",
+   "title": "Mfon des Bamoun (1865-1884)",
+   "g": "h",
+   "script": 161
+  },
+  "bam.njo": {
+   "id": "6d9c1612-06d3-54d5-8184-34c1ce0987c6",
+   "name": "Ibrahim Njoya",
+   "b": 1860,
+   "d": 1933,
+   "tree": "CM_BAM",
+   "title": "Mfon des Bamoun (1889-1931/33)",
+   "g": "h",
+   "script": 161
+  },
+  "bam.sei": {
+   "id": "2fe75e77-1a32-5e65-9f00-cd1fdb315733",
+   "name": "Seidou Njimoluh Njoya",
+   "b": null,
+   "d": null,
+   "tree": "CM_BAM",
+   "title": "Mfon des Bamoun (1933-1992)",
+   "g": "h",
+   "script": 161
+  },
+  "bam.mbo": {
+   "id": "de081e73-1497-5b9d-a948-3d0666027332",
+   "name": "Ibrahim Mbombo Njoya",
+   "b": null,
+   "d": 2021,
+   "tree": "CM_BAM",
+   "title": "Mfon des Bamoun (1992-2021)",
+   "g": "h",
+   "script": 161
   }
  },
  "trees": {
@@ -35058,6 +35328,30 @@
    "country": "YEM",
    "dynasty": "Rasoulides",
    "script": 157
+  },
+  "IN_GUP": {
+   "entry": "eeb991dc-daab-53f5-a1b1-70dfd1886c59",
+   "country": "IND",
+   "dynasty": "Gupta",
+   "script": 158
+  },
+  "IN_MAU": {
+   "entry": "86dba272-7600-5228-98ea-4b4bb143ddda",
+   "country": "IND",
+   "dynasty": "Maurya",
+   "script": 159
+  },
+  "KZ_KHA": {
+   "entry": "c4ff0d51-3a65-5d46-9f9a-6e38fab15bd0",
+   "country": "KAZ",
+   "dynasty": "Khanat kazakh",
+   "script": 160
+  },
+  "CM_BAM": {
+   "entry": "c6825f0e-bdc2-5aa9-b397-8cf570c68dcb",
+   "country": "CMR",
+   "dynasty": "Bamoun",
+   "script": 161
   }
  },
  "flags": [
@@ -40626,6 +40920,38 @@
    "rels": 2,
    "trees": [
     "Rasoulides (YEM)"
+   ]
+  },
+  "158": {
+   "label": "Inde (Gupta)",
+   "members": 11,
+   "rels": 8,
+   "trees": [
+    "Gupta (IND)"
+   ]
+  },
+  "159": {
+   "label": "Inde (Maurya)",
+   "members": 5,
+   "rels": 4,
+   "trees": [
+    "Maurya (IND)"
+   ]
+  },
+  "160": {
+   "label": "Kazakhstan (Khanat kazakh)",
+   "members": 7,
+   "rels": 5,
+   "trees": [
+    "Khanat kazakh (KAZ)"
+   ]
+  },
+  "161": {
+   "label": "Cameroun (Bamoun)",
+   "members": 4,
+   "rels": 3,
+   "trees": [
+    "Bamoun (CMR)"
    ]
   }
  },
@@ -66569,6 +66895,106 @@
    "741aee16-59bd-5648-82ed-aaf7122a4b43",
    "401acfdd-d100-5f27-aed5-c3ed17f25462",
    "parent"
+  ],
+  [
+   "8fbdfc87-46fa-570e-8afd-f850b9f41209",
+   "fac4d891-2507-50a7-83c2-56db251e04d0",
+   "parent"
+  ],
+  [
+   "fac4d891-2507-50a7-83c2-56db251e04d0",
+   "dee68bad-eae5-5776-b828-3fc6ce5b4253",
+   "parent"
+  ],
+  [
+   "dee68bad-eae5-5776-b828-3fc6ce5b4253",
+   "856539c2-8643-5d0a-b2fd-d77b11589576",
+   "parent"
+  ],
+  [
+   "856539c2-8643-5d0a-b2fd-d77b11589576",
+   "43643782-500a-5517-b985-44c575f01876",
+   "parent"
+  ],
+  [
+   "43643782-500a-5517-b985-44c575f01876",
+   "aca8c433-9205-57c5-8503-087215bc6a51",
+   "parent"
+  ],
+  [
+   "aca8c433-9205-57c5-8503-087215bc6a51",
+   "cf1465c8-1760-5105-a702-e91784317fa1",
+   "parent"
+  ],
+  [
+   "56c6ef80-7584-5121-89bd-3dd522057a7f",
+   "1e2dc86e-cb05-5e9c-9ac6-a683b449ad66",
+   "parent"
+  ],
+  [
+   "cf1465c8-1760-5105-a702-e91784317fa1",
+   "7610e77a-13e0-50bf-97e4-18f9c6887bb7",
+   "family"
+  ],
+  [
+   "4437c522-3999-50ae-a973-2dc94bb611b5",
+   "a3309e34-f11f-52f7-a744-956912be5c96",
+   "parent"
+  ],
+  [
+   "a3309e34-f11f-52f7-a744-956912be5c96",
+   "50d1446c-12ae-5c09-be29-4c9febc8a5cb",
+   "parent"
+  ],
+  [
+   "50d1446c-12ae-5c09-be29-4c9febc8a5cb",
+   "42de244f-8114-5a54-9c67-200e875f0db9",
+   "family"
+  ],
+  [
+   "50d1446c-12ae-5c09-be29-4c9febc8a5cb",
+   "243e12da-3c2e-5f57-9d76-9b922133ecb2",
+   "family"
+  ],
+  [
+   "2266c751-5093-5c10-92b7-1d9516171ad1",
+   "42e65548-3f74-5851-a6b9-499b6d3f835e",
+   "parent"
+  ],
+  [
+   "42e65548-3f74-5851-a6b9-499b6d3f835e",
+   "5ee9c639-7bd8-50f4-b72b-6b898cce4632",
+   "parent"
+  ],
+  [
+   "4609fe4a-f3de-50da-8a85-479cf9636a8c",
+   "db7745b8-936c-575e-8500-d4647fb4659c",
+   "parent"
+  ],
+  [
+   "4609fe4a-f3de-50da-8a85-479cf9636a8c",
+   "d50d5a92-9104-5bb6-9bee-66a425dae463",
+   "parent"
+  ],
+  [
+   "2266c751-5093-5c10-92b7-1d9516171ad1",
+   "4609fe4a-f3de-50da-8a85-479cf9636a8c",
+   "family"
+  ],
+  [
+   "58d4a286-87e7-5b40-96b3-f3c3e6f01521",
+   "6d9c1612-06d3-54d5-8184-34c1ce0987c6",
+   "parent"
+  ],
+  [
+   "6d9c1612-06d3-54d5-8184-34c1ce0987c6",
+   "2fe75e77-1a32-5e65-9f00-cd1fdb315733",
+   "parent"
+  ],
+  [
+   "6d9c1612-06d3-54d5-8184-34c1ce0987c6",
+   "de081e73-1497-5b9d-a948-3d0666027332",
+   "family"
   ]
  ],
  "dateflags": [

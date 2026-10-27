@@ -2,6 +2,8 @@
 
 ## Dernières nouvelles (la plus récente en haut)
 
+- 2026-10-23 — v158 : arbre Gupta (Inde, 11).
+
 - 2026-10-23 — v157 : arbre Rasoulides (Yémen), 4 personnes sourcées.
 
 - 2026-10-23 — v156 : arbre Aq Qoyunlu (Azerbaïdjan), 7 personnes sourcées.
@@ -194,7 +196,7 @@
 
 Code : `src/genealogy.ts`, `genealogyLayers.ts`, `genealogyBus.ts`, `genealogyLod.ts/.css`, `genealogyLayersWorker.ts`,
 `genealogyLayout.ts`, `genealogyRouting.ts`. Outils de remplissage : [`scripts/arbres/`](../../scripts/arbres/README.md).
-Prochaine migration : **arbres_v158** (`supabase/arbres/arbres_v158.sql`) — générateur : `Gen(158, "…")`.  (v157 livrée, à exécuter par Martin si ce n'est pas déjà fait.)
+Prochaine migration : **arbres_v159** (`supabase/arbres/arbres_v159.sql`) — générateur : `Gen(159, "…")`.  (v158 livrée, à exécuter par Martin si ce n'est pas déjà fait.)
 
 ## Règles de contenu (décidées par Martin — ne pas rouvrir)
 - Un pays n'a que les dynasties qui ont **régné sur lui**. Dynastie étrangère : branche principale dans son pays
