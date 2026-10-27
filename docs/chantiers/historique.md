@@ -78,3 +78,8 @@ clavier, bornes (999999 → 2024, -99999 → -3400, champ vide ignoré), lecture
 3. **Couche suzeraineté** (lignes RELATION : vassalités, alliances, unions personnelles) pour montrer les empires qui dépassent leurs membres directs.
 4. **Noms français** via Wikidata (identifiants déjà dans les données).
 5. Fond de carte et habillage à revoir avec le fond Esri réel.
+
+## Journal — 2026-10-27 : registre des dates
+- Dates Wikidata brutes versionnées, générateur de registre ajouté, `corrections_dates_wikidata.txt` régénéré (599 lignes retenues, dont environ 500 appliquées après garde-fous).
+- Données de la carte (`public/data/historique/`) PAS ENCORE régénérées dans ce commit : régénération en cours, livraison au commit suivant.
+- Reste : 1 179 divergences à arbitrer, changements de forme internes à sourcer un par un.

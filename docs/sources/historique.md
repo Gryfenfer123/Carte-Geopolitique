@@ -26,3 +26,9 @@ Format : voir `README.md`. Consultation : 2026-10-23 et 2026-10-24.
   s'arrête la veille (même date, source de la naissance). Idem pour une reprise avancée (une seule entité reprend l'essentiel).
   Ces cas sont marqués « déduit » dans `scripts/historique/corrections_dates_rapport.json`.
 - Les dates antérieures à l'an 1 ne sont pas utilisées (la convention d'écriture des années avant J.-C. de Wikidata n'a pas été vérifiée).
+
+### Registre complet des dates (2026-10-27)
+- `scripts/historique/wikidata_dates_brut.json` : dates brutes Wikidata (P571, P576, P580, P582, P1365, P1366) de 1 212 entités, consultées le 2026-10-27, licence CC0, fiabilité moyenne (définitions parfois différentes de Cliopatria).
+- `docs/sources/historique_dates_registre.csv` : une ligne par naissance, disparition ou changement de forme, avec date d'origine, date Wikidata, date finale, statut et lien précis (`wikidata.org/wiki/<Q>#<propriété>`).
+- Statuts : appliquée, identique, refusée (garde-fou), divergence (date hors fenêtre, probablement autre entité : non appliquée), imprécis, ambigu, source manquante, avancé (déduit). Les changements de forme internes sont « source manquante » : non sourcés, donc non modifiés.
+- Généré hors ligne par `scripts/historique/generer_registre_dates.py`.
