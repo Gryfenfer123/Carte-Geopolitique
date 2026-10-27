@@ -213,4 +213,5 @@ RLS**. Règles :
 | arbres_v141 | Tonga : maison Tupou (5 personnes) |
 | arbres_v142 | Lesotho : rois (5 personnes, 2 branches) |
 | arbres_v143 | Pérou : Sapa Inca (19 personnes) |
+| arbres_v144 | Madagascar : monarchie merina (7 personnes) |
 | `data_owid_load.sql` + `owid_chunks/` | Chargement des données d'indicateurs (rejouable, upserts) — à exécuter après v1 à v7 |
