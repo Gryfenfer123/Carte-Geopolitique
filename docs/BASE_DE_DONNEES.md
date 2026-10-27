@@ -230,4 +230,5 @@ RLS**. Règles :
 | arbres_v158 | Inde : Gupta (11 personnes) |
 | arbres_v159 | Inde : Maurya (5 personnes) |
 | arbres_v160 | Kazakhstan : Khanat kazakh (7 personnes) |
+| arbres_v161 | Cameroun : Bamoun (4 personnes) |
 | `data_owid_load.sql` + `owid_chunks/` | Chargement des données d'indicateurs (rejouable, upserts) — à exécuter après v1 à v7 |
