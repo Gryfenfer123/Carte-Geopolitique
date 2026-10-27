@@ -200,4 +200,5 @@ RLS**. Règles :
 | arbres_v128 | v128 : arbre Irlande, fiches sourcées |
 | arbres_v129 | v129 : arbre Liban, fiches sourcées |
 | arbres_v130 | v130 : arbre Népal, fiches sourcées |
+| arbres_v131 | v131 : arbre Bhoutan, fiches sourcées |
 | `data_owid_load.sql` + `owid_chunks/` | Chargement des données d'indicateurs (rejouable, upserts) — à exécuter après v1 à v7 |

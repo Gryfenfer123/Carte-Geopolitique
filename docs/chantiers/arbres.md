@@ -2,6 +2,8 @@
 
 ## Dernières nouvelles (la plus récente en haut)
 
+- 2026-10-23 — v131 : arbre Bhoutan, fiches sourcées Wikipédia
+
 - 2026-10-23 — v130 : arbre Népal, fiches sourcées Wikipédia
 
 - 2026-10-23 — v129 : arbre Liban, fiches sourcées Wikipédia
@@ -140,7 +142,7 @@
 
 Code : `src/genealogy.ts`, `genealogyLayers.ts`, `genealogyBus.ts`, `genealogyLod.ts/.css`, `genealogyLayersWorker.ts`,
 `genealogyLayout.ts`, `genealogyRouting.ts`. Outils de remplissage : [`scripts/arbres/`](../../scripts/arbres/README.md).
-Prochaine migration : **arbres_v131** (`supabase/arbres/arbres_v131.sql`) — générateur : `Gen(131, "…")`.  (v130 livrée, à exécuter par Martin si ce n'est pas déjà fait.)
+Prochaine migration : **arbres_v132** (`supabase/arbres/arbres_v132.sql`) — générateur : `Gen(132, "…")`.  (v131 livrée, à exécuter par Martin si ce n'est pas déjà fait.)
 
 ## Règles de contenu (décidées par Martin — ne pas rouvrir)
 - Un pays n'a que les dynasties qui ont **régné sur lui**. Dynastie étrangère : branche principale dans son pays
