@@ -32060,6 +32060,106 @@
    "title": "Sultan de Johor (depuis 2010)",
    "g": "h",
    "script": 138
+  },
+  "id.hb1": {
+   "id": "c5dede1d-c7a9-52a7-a9c5-37fa10489cef",
+   "name": "Hamengkubuwono I",
+   "b": 1717,
+   "d": 1792,
+   "tree": "ID_YOG",
+   "title": "Premier sultan de Yogyakarta (1755-1792)",
+   "g": "h",
+   "script": 139
+  },
+  "id.hb2": {
+   "id": "2b8327a6-d1e8-55c7-b728-2df90aa034b9",
+   "name": "Hamengkubuwono II",
+   "b": 1750,
+   "d": 1828,
+   "tree": "ID_YOG",
+   "title": "Sultan de Yogyakarta (1792-1810 ; 1811-1812 ; 1826-1828)",
+   "g": "h",
+   "script": 139
+  },
+  "id.hb3": {
+   "id": "2aed3657-1bc2-5b3a-9643-811bb7a9ab5a",
+   "name": "Hamengkubuwono III",
+   "b": 1769,
+   "d": 1814,
+   "tree": "ID_YOG",
+   "title": "Sultan de Yogyakarta (1810-1811 ; 1812-1814)",
+   "g": "h",
+   "script": 139
+  },
+  "id.hb4": {
+   "id": "cd42b052-c717-5f89-be2f-9a35aa926a9f",
+   "name": "Hamengkubuwono IV",
+   "b": 1804,
+   "d": 1823,
+   "tree": "ID_YOG",
+   "title": "Sultan de Yogyakarta (1814-1823)",
+   "g": "h",
+   "script": 139
+  },
+  "id.hb5": {
+   "id": "35bb553a-f2f5-5812-920a-c5f1dafb2fd4",
+   "name": "Hamengkubuwono V",
+   "b": 1820,
+   "d": 1855,
+   "tree": "ID_YOG",
+   "title": "Sultan de Yogyakarta (1823-1826 ; 1828-1855)",
+   "g": "h",
+   "script": 139
+  },
+  "id.hb6": {
+   "id": "410873ac-3198-5368-a192-31a6834eecf6",
+   "name": "Hamengkubuwono VI",
+   "b": 1821,
+   "d": 1877,
+   "tree": "ID_YOG",
+   "title": "Sultan de Yogyakarta (1855-1877)",
+   "g": "h",
+   "script": 139
+  },
+  "id.hb7": {
+   "id": "c8f009e7-968e-5f5c-814a-8c98feff4bb9",
+   "name": "Hamengkubuwono VII",
+   "b": 1839,
+   "d": 1921,
+   "tree": "ID_YOG",
+   "title": "Sultan de Yogyakarta (1877-1921)",
+   "g": "h",
+   "script": 139
+  },
+  "id.hb8": {
+   "id": "5acef504-47f4-5a93-8714-865da51011d4",
+   "name": "Hamengkubuwono VIII",
+   "b": 1880,
+   "d": 1939,
+   "tree": "ID_YOG",
+   "title": "Sultan de Yogyakarta (1921-1939)",
+   "g": "h",
+   "script": 139
+  },
+  "id.hb9": {
+   "id": "a0463eb2-f02e-54dd-b1fe-65e369f2943f",
+   "name": "Hamengkubuwono IX",
+   "b": 1912,
+   "d": 1988,
+   "tree": "ID_YOG",
+   "title": "Sultan de Yogyakarta (1940-1988)",
+   "g": "h",
+   "script": 139
+  },
+  "id.hb10": {
+   "id": "2c9fee96-a107-55c0-adf8-d7dc5ac67a0c",
+   "name": "Hamengkubuwono X",
+   "b": 1946,
+   "d": null,
+   "tree": "ID_YOG",
+   "title": "Sultan de Yogyakarta (depuis 1989)",
+   "g": "h",
+   "script": 139
   }
  },
  "trees": {
@@ -33154,6 +33254,12 @@
    "country": "MYS",
    "dynasty": "Sultans de Johor",
    "script": 138
+  },
+  "ID_YOG": {
+   "entry": "a568d81f-0f27-575b-8c5c-a7e3b5543120",
+   "country": "IDN",
+   "dynasty": "Sultans de Yogyakarta",
+   "script": 139
   }
  },
  "flags": [
@@ -38570,6 +38676,14 @@
    "rels": 5,
    "trees": [
     "Sultans de Johor (MYS)"
+   ]
+  },
+  "139": {
+   "label": "Indonésie (sultans de Yogyakarta)",
+   "members": 10,
+   "rels": 9,
+   "trees": [
+    "Sultans de Yogyakarta (IDN)"
    ]
   }
  },
@@ -63718,6 +63832,51 @@
    "3a253d3f-7827-5345-94a6-ebf90ee2a83d",
    "aa654db8-ce0d-55f5-a041-6bc7074afa89",
    "parent"
+  ],
+  [
+   "c5dede1d-c7a9-52a7-a9c5-37fa10489cef",
+   "2b8327a6-d1e8-55c7-b728-2df90aa034b9",
+   "parent"
+  ],
+  [
+   "2b8327a6-d1e8-55c7-b728-2df90aa034b9",
+   "2aed3657-1bc2-5b3a-9643-811bb7a9ab5a",
+   "parent"
+  ],
+  [
+   "2aed3657-1bc2-5b3a-9643-811bb7a9ab5a",
+   "cd42b052-c717-5f89-be2f-9a35aa926a9f",
+   "parent"
+  ],
+  [
+   "cd42b052-c717-5f89-be2f-9a35aa926a9f",
+   "35bb553a-f2f5-5812-920a-c5f1dafb2fd4",
+   "parent"
+  ],
+  [
+   "410873ac-3198-5368-a192-31a6834eecf6",
+   "c8f009e7-968e-5f5c-814a-8c98feff4bb9",
+   "parent"
+  ],
+  [
+   "c8f009e7-968e-5f5c-814a-8c98feff4bb9",
+   "5acef504-47f4-5a93-8714-865da51011d4",
+   "parent"
+  ],
+  [
+   "5acef504-47f4-5a93-8714-865da51011d4",
+   "a0463eb2-f02e-54dd-b1fe-65e369f2943f",
+   "parent"
+  ],
+  [
+   "a0463eb2-f02e-54dd-b1fe-65e369f2943f",
+   "2c9fee96-a107-55c0-adf8-d7dc5ac67a0c",
+   "parent"
+  ],
+  [
+   "35bb553a-f2f5-5812-920a-c5f1dafb2fd4",
+   "410873ac-3198-5368-a192-31a6834eecf6",
+   "family"
   ]
  ],
  "dateflags": [
