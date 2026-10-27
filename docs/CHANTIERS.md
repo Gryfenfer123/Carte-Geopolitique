@@ -15,6 +15,7 @@ pas dessus, **chaque conversation a UN chantier** et ne touche qu'à ce qui lui 
 | `groupes` | Groupes géopolitiques et liens entre pays | `groups.ts`, `links.ts`, `linkIndex.ts` | `supabase/groupes/groupes_vN.sql` (**groupes_v1**) | à créer |
 | `dossiers` | Fiches pays, catégories, entrées, recherche, encyclopédie | `dossier.ts`, `sanitize.ts`, `imageCrop.ts`, `search.ts`, `encyclopedie.ts`, `countryNames.ts` | `supabase/dossiers/dossiers_vN.sql` (**dossiers_v1**) | à créer |
 | `indicateurs` | Indicateurs chiffrés | `indicators.ts`, `public/data/raw/OWID_*.json` | `supabase/indicateurs/indicateurs_vN.sql` (**indicateurs_v1**) | à créer |
+| `croquis` | Outil de croquis « à la Illustrator » dessiné directement sur la carte (dessiner, éditer, afficher des croquis ; export) | nouveaux modules `sketch*.ts` (+ `sketch*.css`) | `supabase/croquis/croquis_vN.sql` (**croquis_v1**) | [`chantiers/croquis.md`](chantiers/croquis.md) — spec : [`specs/croquis.md`](specs/croquis.md) |
 
 Fichiers **partagés** (tout le monde peut avoir à y brancher une ligne, jamais plus) : `main.ts`,
 `style.css`, `supabase.ts`, `index.html`. Pour une nouvelle fonctionnalité : un **nouveau fichier**

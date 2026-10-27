@@ -10,7 +10,7 @@ chaque ligne soit utilisable seule, des mois plus tard.
 
 ## Où noter
 Un fichier **par chantier** (pas de collision entre conversations) : `docs/sources/<chantier>.md`
-(arbres, frises, historique, carte, groupes, dossiers, indicateurs, acces). Une ligne par source
+(arbres, frises, historique, carte, groupes, dossiers, indicateurs, acces, croquis). Une ligne par source
 utilisée, ajoutée **dans le même commit** que le travail.
 
 ## Format d'une ligne (tableau Markdown)
