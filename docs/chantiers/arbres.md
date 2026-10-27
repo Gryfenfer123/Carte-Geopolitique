@@ -2,6 +2,8 @@
 
 ## Dernières nouvelles (la plus récente en haut)
 
+- 2026-10-23 — v159 : arbre Maurya (Inde, 5).
+
 - 2026-10-23 — v158 : arbre Gupta (Inde, 11).
 
 - 2026-10-23 — v157 : arbre Rasoulides (Yémen), 4 personnes sourcées.
@@ -196,7 +198,7 @@
 
 Code : `src/genealogy.ts`, `genealogyLayers.ts`, `genealogyBus.ts`, `genealogyLod.ts/.css`, `genealogyLayersWorker.ts`,
 `genealogyLayout.ts`, `genealogyRouting.ts`. Outils de remplissage : [`scripts/arbres/`](../../scripts/arbres/README.md).
-Prochaine migration : **arbres_v159** (`supabase/arbres/arbres_v159.sql`) — générateur : `Gen(159, "…")`.  (v158 livrée, à exécuter par Martin si ce n'est pas déjà fait.)
+Prochaine migration : **arbres_v160** (`supabase/arbres/arbres_v160.sql`) — générateur : `Gen(160, "…")`.  (v159 livrée, à exécuter par Martin si ce n'est pas déjà fait.)
 
 ## Règles de contenu (décidées par Martin — ne pas rouvrir)
 - Un pays n'a que les dynasties qui ont **régné sur lui**. Dynastie étrangère : branche principale dans son pays

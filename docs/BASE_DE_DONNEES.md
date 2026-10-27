@@ -228,4 +228,5 @@ RLS**. Règles :
 | arbres_v156 | Azerbaïdjan : Aq Qoyunlu (7 personnes) |
 | arbres_v157 | Yémen : Rasoulides (4 personnes) |
 | arbres_v158 | Inde : Gupta (11 personnes) |
+| arbres_v159 | Inde : Maurya (5 personnes) |
 | `data_owid_load.sql` + `owid_chunks/` | Chargement des données d'indicateurs (rejouable, upserts) — à exécuter après v1 à v7 |
