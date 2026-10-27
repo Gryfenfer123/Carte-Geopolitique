@@ -19,6 +19,7 @@ import { initGenealogySystem } from "./genealogy";
 import { initTimelineSystem } from "./frise";
 import { initFriseAutoPlace } from "./friseAutoPlace";
 import { initHistoricalMapSystem } from "./historicalMap";
+import { initSketchSystem } from "./sketch";
 
 // ---------------------------------------------------------------------------
 // App shell
@@ -1334,6 +1335,8 @@ poiRedraw = poiSystem.redraw;
 // suivante : pour l'instant seul le bouton "Vue historique" + le curseur
 // sont en place.
 const historicalMapSystem = initHistoricalMapSystem();
+// Outil de croquis (src/sketch.ts) : dessin sur la carte, demande de Martin du 2026-10-27.
+initSketchSystem({ map, isEditor: () => !document.body.classList.contains("read-only-mode"), onReadOnlyModeChanged, showBanner: (msg) => showTransientBanner(msg) });
 void historicalMapSystem;
 
 map.on("click", (e) => {

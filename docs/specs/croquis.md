@@ -1,6 +1,6 @@
 # Outil de croquis — spécification
 
-**État : BROUILLON du 2026-10-27, à valider par Martin.** Rien n'est encore codé. Les choix marqués
+**État : BROUILLON du 2026-10-27, à valider par Martin.** **Première version codée le 2026-10-27** (palier 1 et une grande partie des paliers 2-3, voir `docs/chantiers/croquis.md`) ; stockage PROVISOIRE dans le navigateur, dossier/base à faire. Les choix marqués
 « proposé » ont été pris en autonomie et sont à confirmer ; on ne les rouvre pas sans Martin une fois validés.
 
 ## 1. Le but (demande de Martin, 2026-10-27)
