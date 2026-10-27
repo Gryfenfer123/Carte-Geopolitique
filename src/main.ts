@@ -467,7 +467,12 @@ const map = L.map("map", {
   center: [20, 10],
   zoom: 3,
   minZoom: 2,
-  maxZoom: 12,
+  // Demande de Martin (2026-10-27) : plus de niveaux de zoom. Plafond relevé de 12 à 16
+  // (= le dernier niveau du fond vectoriel Esri) et pas de 0,5 pour la molette / le
+  // pincement (zoom plus fin) ; les boutons +/- avancent toujours d'un niveau entier.
+  maxZoom: 16,
+  zoomSnap: 0.5,
+  zoomDelta: 1,
   worldCopyJump: true,
   // Bornes verticales du pan (retour de Martin, 2026-10-06 : "bordures de
   // carte à limiter, éviter qu'on puisse aller à l'infini en haut et en
@@ -476,7 +481,11 @@ const map = L.map("map", {
   // vertical aux pôles — au-delà il n'y a plus de données à montrer. Marge
   // de part et d'autre de ±180° en longitude (plutôt que pile ±180) pour
   // ne pas gêner worldCopyJump près de la ligne de changement de date.
-  maxBounds: L.latLngBounds(L.latLng(-85, -200), L.latLng(85, 200)),
+  // Longitude : bornes très larges (±540°). Avec ±200° le bord de l'écran ne pouvait pas
+  // dépasser 200°E, donc quand une fiche (jusqu'à 420 px à droite) était ouverte, le Japon
+  // et tout l'Extrême-Orient restaient cachés derrière elle (demande de Martin, 2026-10-27).
+  // `worldCopyJump` ramène de toute façon le centre dans [-180 ; 180], donc on ne se perd pas.
+  maxBounds: L.latLngBounds(L.latLng(-85, -540), L.latLng(85, 540)),
   maxBoundsViscosity: 0.8,
   // Pas de contrôle Leaflet natif : les boutons +/-/réinitialiser et le
   // sélecteur de fond de carte sont les nôtres (#controls, #style-switch),
