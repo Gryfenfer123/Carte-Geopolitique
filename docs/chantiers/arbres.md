@@ -2,6 +2,8 @@
 
 ## Dernières nouvelles (la plus récente en haut)
 
+- 2026-10-23 — v145 : arbre Asantehene (Ghana), 3 personnes sourcées.
+
 - 2026-10-23 — v144 : arbre Monarchie merina (Madagascar), 7 personnes sourcées.
 
 - 2026-10-23 — v143 : arbre Sapa Inca (Pérou), 19 personnes sourcées (Wikipédia), à exécuter.
@@ -168,7 +170,7 @@
 
 Code : `src/genealogy.ts`, `genealogyLayers.ts`, `genealogyBus.ts`, `genealogyLod.ts/.css`, `genealogyLayersWorker.ts`,
 `genealogyLayout.ts`, `genealogyRouting.ts`. Outils de remplissage : [`scripts/arbres/`](../../scripts/arbres/README.md).
-Prochaine migration : **arbres_v145** (`supabase/arbres/arbres_v145.sql`) — générateur : `Gen(145, "…")`.  (v144 livrée, à exécuter par Martin si ce n'est pas déjà fait.)
+Prochaine migration : **arbres_v146** (`supabase/arbres/arbres_v146.sql`) — générateur : `Gen(146, "…")`.  (v145 livrée, à exécuter par Martin si ce n'est pas déjà fait.)
 
 ## Règles de contenu (décidées par Martin — ne pas rouvrir)
 - Un pays n'a que les dynasties qui ont **régné sur lui**. Dynastie étrangère : branche principale dans son pays
