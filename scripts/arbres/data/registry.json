@@ -31390,6 +31390,376 @@
    "title": "Émir du Mont-Liban (1789-1840)",
    "g": "h",
    "script": 129
+  },
+  "np.narabhupal": {
+   "id": "c2aa78ba-52e4-555b-8c97-57b67f88165f",
+   "name": "Nara Bhupal Shah",
+   "b": null,
+   "d": null,
+   "tree": "NP_SHA",
+   "title": "Roi de Gorkha, père de Prithvi Narayan Shah",
+   "g": "h",
+   "script": 130
+  },
+  "np.prithvi": {
+   "id": "e7206a92-e707-5033-8892-b3ad018fbb29",
+   "name": "Prithvi Narayan Shah",
+   "b": 1723,
+   "d": 1775,
+   "tree": "NP_SHA",
+   "title": "Roi du Népal (1743-1775), unificateur du pays",
+   "g": "h",
+   "script": 130
+  },
+  "np.pratap": {
+   "id": "d419c740-4833-5d9c-8c0c-7e6b6755c258",
+   "name": "Pratap Singh Shah",
+   "b": 1751,
+   "d": 1777,
+   "tree": "NP_SHA",
+   "title": "Roi du Népal (1775-1777)",
+   "g": "h",
+   "script": 130
+  },
+  "np.rana": {
+   "id": "05c8cf67-89bd-5294-b907-dd298bb15127",
+   "name": "Rana Bahadur Shah",
+   "b": 1775,
+   "d": 1806,
+   "tree": "NP_SHA",
+   "title": "Roi du Népal (1777-1799)",
+   "g": "h",
+   "script": 130
+  },
+  "np.girvan": {
+   "id": "0d964817-ea2f-5e35-bdb3-471d612e1de3",
+   "name": "Girvan Yuddha Bikram Shah",
+   "b": 1797,
+   "d": 1816,
+   "tree": "NP_SHA",
+   "title": "Roi du Népal (1799-1816)",
+   "g": "h",
+   "script": 130
+  },
+  "np.rajendra": {
+   "id": "18daaf49-232f-59a6-96d7-cac76a0a274e",
+   "name": "Rajendra Bikram Shah",
+   "b": 1813,
+   "d": 1881,
+   "tree": "NP_SHA",
+   "title": "Roi du Népal (1816-1847)",
+   "g": "h",
+   "script": 130
+  },
+  "np.surendra": {
+   "id": "9487b763-566e-5ee6-b949-01c45c92057c",
+   "name": "Surendra Bikram Shah",
+   "b": 1829,
+   "d": 1881,
+   "tree": "NP_SHA",
+   "title": "Roi du Népal (1847-1881)",
+   "g": "h",
+   "script": 130
+  },
+  "np.prithvibir": {
+   "id": "4f71be9f-2a7f-5f46-b9c9-8eb1273e717b",
+   "name": "Prithvi Bir Bikram Shah",
+   "b": 1875,
+   "d": 1911,
+   "tree": "NP_SHA",
+   "title": "Roi du Népal (1881-1911)",
+   "g": "h",
+   "script": 130
+  },
+  "np.tribhuvan": {
+   "id": "bc915970-8efe-596e-b809-c14411fda177",
+   "name": "Tribhuvan Bir Bikram Shah",
+   "b": 1906,
+   "d": 1955,
+   "tree": "NP_SHA",
+   "title": "Roi du Népal (1911-1950 ; 1951-1955)",
+   "g": "h",
+   "script": 130
+  },
+  "np.mahendra": {
+   "id": "434f9b6d-3fb7-5fef-98bb-161b090adf60",
+   "name": "Mahendra Bir Bikram Shah",
+   "b": 1920,
+   "d": 1972,
+   "tree": "NP_SHA",
+   "title": "Roi du Népal (1955-1972)",
+   "g": "h",
+   "script": 130
+  },
+  "np.birendra": {
+   "id": "cc8e5725-5920-5a8f-93e1-961f60c998c3",
+   "name": "Birendra Bir Bikram Shah",
+   "b": 1945,
+   "d": 2001,
+   "tree": "NP_SHA",
+   "title": "Roi du Népal (1972-2001), assassiné",
+   "g": "h",
+   "script": 130
+  },
+  "np.dipendra": {
+   "id": "038ead80-fc9a-59ed-9f68-a6df2d3b5b62",
+   "name": "Dipendra Bir Bikram Shah",
+   "b": 1971,
+   "d": 2001,
+   "tree": "NP_SHA",
+   "title": "Roi du Népal (1er-4 juin 2001)",
+   "g": "h",
+   "script": 130
+  },
+  "np.gyanendra": {
+   "id": "ae3ab72b-2b6f-54c0-80f4-e8feafd347d8",
+   "name": "Gyanendra Bir Bikram Shah",
+   "b": 1947,
+   "d": null,
+   "tree": "NP_SHA",
+   "title": "Roi du Népal (1950-1951 ; 2001-2008)",
+   "g": "h",
+   "script": 130
+  },
+  "bt.namgyal": {
+   "id": "4db1d4f7-eb5b-5902-9c46-0aa22d17b84f",
+   "name": "Jigme Namgyal",
+   "b": 1825,
+   "d": 1881,
+   "tree": "BT_WAN",
+   "title": "Dru Desi, père du premier roi",
+   "g": "h",
+   "script": 131
+  },
+  "bt.ugyen": {
+   "id": "1a503a0f-11c7-5ae7-a05b-6cfb07871ad9",
+   "name": "Ugyen Wangchuck",
+   "b": 1862,
+   "d": 1926,
+   "tree": "BT_WAN",
+   "title": "Premier roi du Bhoutan (1907-1926)",
+   "g": "h",
+   "script": 131
+  },
+  "bt.jigme2": {
+   "id": "0239e9f8-2eb3-5842-95ea-e2cd3ffba842",
+   "name": "Jigme Wangchuck",
+   "b": 1905,
+   "d": 1952,
+   "tree": "BT_WAN",
+   "title": "Deuxième roi du Bhoutan (1926-1952)",
+   "g": "h",
+   "script": 131
+  },
+  "bt.dorji": {
+   "id": "59687d96-4610-5099-88c5-fee5a5dd4e9d",
+   "name": "Jigme Dorji Wangchuck",
+   "b": 1929,
+   "d": 1972,
+   "tree": "BT_WAN",
+   "title": "Troisième roi du Bhoutan (1952-1972)",
+   "g": "h",
+   "script": 131
+  },
+  "bt.singye": {
+   "id": "a0acf6f2-50da-5d89-8388-30956f6d6d0a",
+   "name": "Jigme Singye Wangchuck",
+   "b": 1955,
+   "d": null,
+   "tree": "BT_WAN",
+   "title": "Quatrième roi du Bhoutan (1972-2006)",
+   "g": "h",
+   "script": 131
+  },
+  "bt.khesar": {
+   "id": "e770a78d-6c95-5341-91bf-134670482e63",
+   "name": "Jigme Khesar Namgyel Wangchuck",
+   "b": 1980,
+   "d": null,
+   "tree": "BT_WAN",
+   "title": "Cinquième roi du Bhoutan (depuis 2006)",
+   "g": "h",
+   "script": 131
+  },
+  "kh.angduong": {
+   "id": "d692baab-587f-590a-85ce-0bb76083e34b",
+   "name": "Ang Duong",
+   "b": null,
+   "d": null,
+   "tree": "KH_NOR",
+   "title": "Roi du Cambodge, père de Norodom",
+   "g": "h",
+   "script": 132
+  },
+  "kh.norodom": {
+   "id": "fdcce0a4-2a1d-5ac7-8910-6972303695ff",
+   "name": "Norodom",
+   "b": 1834,
+   "d": 1904,
+   "tree": "KH_NOR",
+   "title": "Roi du Cambodge (1860-1904)",
+   "g": "h",
+   "script": 132
+  },
+  "kh.sisowath": {
+   "id": "4fb7104d-e582-5cc1-ba3b-672efcdd4f3d",
+   "name": "Sisowath",
+   "b": 1840,
+   "d": 1927,
+   "tree": "KH_NOR",
+   "title": "Roi du Cambodge (1904-1927)",
+   "g": "h",
+   "script": 132
+  },
+  "kh.monivong": {
+   "id": "aec044ca-beb3-5117-a70d-45a6a474a4b3",
+   "name": "Sisowath Monivong",
+   "b": 1875,
+   "d": 1941,
+   "tree": "KH_NOR",
+   "title": "Roi du Cambodge (1927-1941)",
+   "g": "h",
+   "script": 132
+  },
+  "kh.suramarit": {
+   "id": "58f96a61-0f5b-5ce4-a418-a873c940d760",
+   "name": "Norodom Suramarit",
+   "b": 1896,
+   "d": 1960,
+   "tree": "KH_NOR",
+   "title": "Roi du Cambodge (1955-1960)",
+   "g": "h",
+   "script": 132
+  },
+  "kh.kossamak": {
+   "id": "0683e5d9-ff44-5d70-8527-7bf0623ceee2",
+   "name": "Sisowath Kossamak",
+   "b": 1904,
+   "d": 1975,
+   "tree": "KH_NOR",
+   "title": "Reine, mère de Norodom Sihanouk",
+   "g": "h",
+   "script": 132
+  },
+  "kh.sihanouk": {
+   "id": "85d21e15-7e75-5ec7-9de0-7fffe2d27104",
+   "name": "Norodom Sihanouk",
+   "b": 1922,
+   "d": 2012,
+   "tree": "KH_NOR",
+   "title": "Roi (1941-1955 ; 1993-2004), chef de l'État",
+   "g": "h",
+   "script": 132
+  },
+  "kh.sihamoni": {
+   "id": "307326d5-2135-520f-b3d9-e25396d1f3fc",
+   "name": "Norodom Sihamoni",
+   "b": 1953,
+   "d": null,
+   "tree": "KH_NOR",
+   "title": "Roi du Cambodge (depuis 2004)",
+   "g": "h",
+   "script": 132
+  },
+  "mm.alaungpaya": {
+   "id": "749672eb-b958-5e2c-9142-54d2b893c04c",
+   "name": "Alaungpaya",
+   "b": 1714,
+   "d": 1760,
+   "tree": "MM_KON",
+   "title": "Fondateur de la dynastie Konbaung (1752-1760)",
+   "g": "h",
+   "script": 133
+  },
+  "mm.naungdawgyi": {
+   "id": "65892269-4497-51fa-bcd8-3095b42657bc",
+   "name": "Naungdawgyi",
+   "b": 1734,
+   "d": 1763,
+   "tree": "MM_KON",
+   "title": "Roi de Birmanie (1760-1763)",
+   "g": "h",
+   "script": 133
+  },
+  "mm.hsinbyushin": {
+   "id": "5157210f-260c-56b7-b247-970238bc7a9a",
+   "name": "Hsinbyushin",
+   "b": 1736,
+   "d": 1776,
+   "tree": "MM_KON",
+   "title": "Roi de Birmanie (1763-1776)",
+   "g": "h",
+   "script": 133
+  },
+  "mm.bodawpaya": {
+   "id": "9c341373-36a1-5233-a238-fa6929a3aaea",
+   "name": "Bodawpaya",
+   "b": 1745,
+   "d": 1819,
+   "tree": "MM_KON",
+   "title": "Roi de Birmanie (1782-1819)",
+   "g": "h",
+   "script": 133
+  },
+  "mm.thado": {
+   "id": "6df6a56f-8146-5b62-beab-9e30bfbcf398",
+   "name": "Thado Minsaw",
+   "b": null,
+   "d": null,
+   "tree": "MM_KON",
+   "title": "Prince, fils de Bodawpaya",
+   "g": "h",
+   "script": 133
+  },
+  "mm.bagyidaw": {
+   "id": "a993c349-bc1c-5a7f-bf37-9a2c053f383b",
+   "name": "Bagyidaw",
+   "b": 1784,
+   "d": 1846,
+   "tree": "MM_KON",
+   "title": "Roi de Birmanie (1819-1837)",
+   "g": "h",
+   "script": 133
+  },
+  "mm.tharrawaddy": {
+   "id": "c81fd4be-9cf5-5e3c-8e42-c6d7445cef7d",
+   "name": "Tharrawaddy",
+   "b": 1787,
+   "d": 1846,
+   "tree": "MM_KON",
+   "title": "Roi de Birmanie (1837-1846)",
+   "g": "h",
+   "script": 133
+  },
+  "mm.pagan": {
+   "id": "24157bbb-03ee-532b-a718-c00fe8ff4408",
+   "name": "Pagan Min",
+   "b": 1811,
+   "d": 1880,
+   "tree": "MM_KON",
+   "title": "Roi de Birmanie (1846-1853)",
+   "g": "h",
+   "script": 133
+  },
+  "mm.mindon": {
+   "id": "a96062ef-2fc8-591f-bc27-2d25a63d8bb6",
+   "name": "Mindon",
+   "b": 1808,
+   "d": 1878,
+   "tree": "MM_KON",
+   "title": "Roi de Birmanie (1853-1878)",
+   "g": "h",
+   "script": 133
+  },
+  "mm.thibaw": {
+   "id": "412cbb5f-3c83-557c-a0f7-d79d36e16eeb",
+   "name": "Thibaw",
+   "b": 1859,
+   "d": 1916,
+   "tree": "MM_KON",
+   "title": "Dernier roi de Birmanie (1878-1885)",
+   "g": "h",
+   "script": 133
   }
  },
  "trees": {
@@ -32436,6 +32806,30 @@
    "country": "LBN",
    "dynasty": "Chéhab",
    "script": 129
+  },
+  "NP_SHA": {
+   "entry": "26480cb8-f603-53f8-9c49-16cf72b2e7c9",
+   "country": "NPL",
+   "dynasty": "Shah",
+   "script": 130
+  },
+  "BT_WAN": {
+   "entry": "d749c399-bd4c-5f0d-ad47-d03a4e97dd77",
+   "country": "BTN",
+   "dynasty": "Wangchuck",
+   "script": 131
+  },
+  "KH_NOR": {
+   "entry": "40f4689f-c840-5b1f-a3b7-13bb6c95752b",
+   "country": "KHM",
+   "dynasty": "Norodom / Sisowath",
+   "script": 132
+  },
+  "MM_KON": {
+   "entry": "a735ac20-7db4-5b97-ab02-a2a93973d919",
+   "country": "MMR",
+   "dynasty": "Konbaung",
+   "script": 133
   }
  },
  "flags": [
@@ -37782,6 +38176,38 @@
    "rels": 6,
    "trees": [
     "Chéhab (LBN)"
+   ]
+  },
+  "130": {
+   "label": "Népal (Shah)",
+   "members": 13,
+   "rels": 12,
+   "trees": [
+    "Shah (NPL)"
+   ]
+  },
+  "131": {
+   "label": "Bhoutan (Wangchuck)",
+   "members": 6,
+   "rels": 5,
+   "trees": [
+    "Wangchuck (BTN)"
+   ]
+  },
+  "132": {
+   "label": "Cambodge (Norodom / Sisowath)",
+   "members": 8,
+   "rels": 8,
+   "trees": [
+    "Norodom / Sisowath (KHM)"
+   ]
+  },
+  "133": {
+   "label": "Birmanie (Konbaung)",
+   "members": 10,
+   "rels": 9,
+   "trees": [
+    "Konbaung (MMR)"
    ]
   }
  },
@@ -62635,6 +63061,176 @@
    "5eb64cdb-57bd-54fb-a264-abe0d9408aab",
    "8829d484-a83f-53f4-a703-3627a31c0780",
    "family"
+  ],
+  [
+   "c2aa78ba-52e4-555b-8c97-57b67f88165f",
+   "e7206a92-e707-5033-8892-b3ad018fbb29",
+   "parent"
+  ],
+  [
+   "e7206a92-e707-5033-8892-b3ad018fbb29",
+   "d419c740-4833-5d9c-8c0c-7e6b6755c258",
+   "parent"
+  ],
+  [
+   "d419c740-4833-5d9c-8c0c-7e6b6755c258",
+   "05c8cf67-89bd-5294-b907-dd298bb15127",
+   "parent"
+  ],
+  [
+   "05c8cf67-89bd-5294-b907-dd298bb15127",
+   "0d964817-ea2f-5e35-bdb3-471d612e1de3",
+   "parent"
+  ],
+  [
+   "0d964817-ea2f-5e35-bdb3-471d612e1de3",
+   "18daaf49-232f-59a6-96d7-cac76a0a274e",
+   "parent"
+  ],
+  [
+   "18daaf49-232f-59a6-96d7-cac76a0a274e",
+   "9487b763-566e-5ee6-b949-01c45c92057c",
+   "parent"
+  ],
+  [
+   "4f71be9f-2a7f-5f46-b9c9-8eb1273e717b",
+   "bc915970-8efe-596e-b809-c14411fda177",
+   "parent"
+  ],
+  [
+   "bc915970-8efe-596e-b809-c14411fda177",
+   "434f9b6d-3fb7-5fef-98bb-161b090adf60",
+   "parent"
+  ],
+  [
+   "434f9b6d-3fb7-5fef-98bb-161b090adf60",
+   "cc8e5725-5920-5a8f-93e1-961f60c998c3",
+   "parent"
+  ],
+  [
+   "cc8e5725-5920-5a8f-93e1-961f60c998c3",
+   "038ead80-fc9a-59ed-9f68-a6df2d3b5b62",
+   "parent"
+  ],
+  [
+   "434f9b6d-3fb7-5fef-98bb-161b090adf60",
+   "ae3ab72b-2b6f-54c0-80f4-e8feafd347d8",
+   "parent"
+  ],
+  [
+   "9487b763-566e-5ee6-b949-01c45c92057c",
+   "4f71be9f-2a7f-5f46-b9c9-8eb1273e717b",
+   "family"
+  ],
+  [
+   "4db1d4f7-eb5b-5902-9c46-0aa22d17b84f",
+   "1a503a0f-11c7-5ae7-a05b-6cfb07871ad9",
+   "parent"
+  ],
+  [
+   "1a503a0f-11c7-5ae7-a05b-6cfb07871ad9",
+   "0239e9f8-2eb3-5842-95ea-e2cd3ffba842",
+   "parent"
+  ],
+  [
+   "0239e9f8-2eb3-5842-95ea-e2cd3ffba842",
+   "59687d96-4610-5099-88c5-fee5a5dd4e9d",
+   "parent"
+  ],
+  [
+   "59687d96-4610-5099-88c5-fee5a5dd4e9d",
+   "a0acf6f2-50da-5d89-8388-30956f6d6d0a",
+   "parent"
+  ],
+  [
+   "a0acf6f2-50da-5d89-8388-30956f6d6d0a",
+   "e770a78d-6c95-5341-91bf-134670482e63",
+   "parent"
+  ],
+  [
+   "d692baab-587f-590a-85ce-0bb76083e34b",
+   "fdcce0a4-2a1d-5ac7-8910-6972303695ff",
+   "parent"
+  ],
+  [
+   "4fb7104d-e582-5cc1-ba3b-672efcdd4f3d",
+   "aec044ca-beb3-5117-a70d-45a6a474a4b3",
+   "parent"
+  ],
+  [
+   "aec044ca-beb3-5117-a70d-45a6a474a4b3",
+   "0683e5d9-ff44-5d70-8527-7bf0623ceee2",
+   "parent"
+  ],
+  [
+   "58f96a61-0f5b-5ce4-a418-a873c940d760",
+   "85d21e15-7e75-5ec7-9de0-7fffe2d27104",
+   "parent"
+  ],
+  [
+   "0683e5d9-ff44-5d70-8527-7bf0623ceee2",
+   "85d21e15-7e75-5ec7-9de0-7fffe2d27104",
+   "parent"
+  ],
+  [
+   "85d21e15-7e75-5ec7-9de0-7fffe2d27104",
+   "307326d5-2135-520f-b3d9-e25396d1f3fc",
+   "parent"
+  ],
+  [
+   "fdcce0a4-2a1d-5ac7-8910-6972303695ff",
+   "4fb7104d-e582-5cc1-ba3b-672efcdd4f3d",
+   "family"
+  ],
+  [
+   "58f96a61-0f5b-5ce4-a418-a873c940d760",
+   "0683e5d9-ff44-5d70-8527-7bf0623ceee2",
+   "spouse"
+  ],
+  [
+   "749672eb-b958-5e2c-9142-54d2b893c04c",
+   "65892269-4497-51fa-bcd8-3095b42657bc",
+   "parent"
+  ],
+  [
+   "749672eb-b958-5e2c-9142-54d2b893c04c",
+   "5157210f-260c-56b7-b247-970238bc7a9a",
+   "parent"
+  ],
+  [
+   "749672eb-b958-5e2c-9142-54d2b893c04c",
+   "9c341373-36a1-5233-a238-fa6929a3aaea",
+   "parent"
+  ],
+  [
+   "9c341373-36a1-5233-a238-fa6929a3aaea",
+   "6df6a56f-8146-5b62-beab-9e30bfbcf398",
+   "parent"
+  ],
+  [
+   "6df6a56f-8146-5b62-beab-9e30bfbcf398",
+   "a993c349-bc1c-5a7f-bf37-9a2c053f383b",
+   "parent"
+  ],
+  [
+   "6df6a56f-8146-5b62-beab-9e30bfbcf398",
+   "c81fd4be-9cf5-5e3c-8e42-c6d7445cef7d",
+   "parent"
+  ],
+  [
+   "c81fd4be-9cf5-5e3c-8e42-c6d7445cef7d",
+   "24157bbb-03ee-532b-a718-c00fe8ff4408",
+   "parent"
+  ],
+  [
+   "c81fd4be-9cf5-5e3c-8e42-c6d7445cef7d",
+   "a96062ef-2fc8-591f-bc27-2d25a63d8bb6",
+   "parent"
+  ],
+  [
+   "a96062ef-2fc8-591f-bc27-2d25a63d8bb6",
+   "412cbb5f-3c83-557c-a0f7-d79d36e16eeb",
+   "parent"
   ]
  ],
  "dateflags": [
