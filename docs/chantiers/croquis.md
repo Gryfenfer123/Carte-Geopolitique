@@ -1,6 +1,8 @@
 # Chantier « croquis » (outil de dessin sur la carte) — journal
 
 ## Dernières nouvelles (la plus récente en haut)
+- 2026-10-27 (soir) — **Réponses de Martin intégrées à la spec (§7)** : dessin par les comptes administrateurs ; croquis rangés dans les dossiers pays/groupes (nouveau type d'entrée `croquis`, à vérifier côté base). Ordre des paliers et export SVG non tranchés (défauts annoncés). Aucun code, aucune migration.
+  Prochaine étape : Martin confirme l'ordre ; étape 1 (essai technique du calque de dessin sur la carte).
 - 2026-10-27 — **Chantier créé**, spécification en brouillon (`docs/specs/croquis.md`), registre de sources ouvert (`docs/sources/croquis.md`), nom du chantier ajouté à `docs/CHANTIERS.md` et à `scripts/check-repo.mjs`. Décision proposée : moteur de dessin écrit pour le projet (pas de reprise de VectorCraft ni de Leaflet-Geoman). Aucun code, aucune migration.
   Prochaine étape : Martin valide les paliers et répond aux questions du §7 de la spec ; puis étape 1 = essai technique d'un calque de dessin accroché à la carte (ligne, Bézier, déplacement, annuler/refaire) et choix des briques.
 

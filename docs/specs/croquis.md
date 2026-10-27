@@ -118,10 +118,21 @@ Chaque palier est **utilisable seul** et livré séparément. L'ordre est propos
 - Précision géographique : les formes dessinées en projection Mercator sont déformées près des pôles (comme la
   carte) ; sans importance pour un croquis, à signaler si on mesure des surfaces.
 
-## 7. Questions ouvertes pour Martin
+## 7. Réponses de Martin (2026-10-27) et questions encore ouvertes
 
-1. Les **paliers** et leur ordre te conviennent-ils ? Quelles fonctions sont indispensables dès le début ?
-2. Qui peut dessiner : seulement toi (administrateur), comme le reste de l'appli, ou plus tard d'autres personnes ?
-3. Où vivent les croquis : un **panneau « Croquis »** séparé (liste, ouvrir/fermer), et/ou rangés dans les
-   **dossiers** des pays et groupes ?
-4. Faut-il pouvoir **exporter vers Illustrator** (SVG) dès le premier palier d'export, ou le PDF/PNG suffit-il d'abord ?
+**Décidé par Martin**
+- **Qui dessine** : les **comptes administrateurs** (pas seulement un seul compte) ; lecture publique. Les droits plus fins
+  (contributeurs, éditeurs) relèvent du chantier `acces`.
+- **Où vivent les croquis** : **dans les dossiers des pays et des groupes**, comme une entrée de dossier (à la manière des
+  frises et des arbres), donc posables à n'importe quelle profondeur. Conséquences : un nouveau type d'entrée `croquis`
+  (branchement dans `dossier.ts`, une ligne au plus ; chantier `dossiers` prévenu) et, **à vérifier dans la base**, une
+  migration si la liste des types d'entrées autorisés est contrôlée par une contrainte (`schema_v1` limitait à
+  text/photo/link/hemicycle ; les migrations qui ont ajouté genealogy et frise ne sont pas toutes dans le dépôt).
+  Le panneau « Croquis » séparé n'est pas retenu pour l'instant ; l'affichage d'un croquis sur la carte se fait depuis
+  son entrée de dossier.
+
+**Pas tranché par Martin, choix par défaut annoncé (à contester)**
+- **Ordre des paliers** : la question n'a pas été comprise ; elle est reformulée à Martin. Par défaut : l'ordre du §3.
+  Le palier 1 est le même quel que soit l'ordre.
+- **Export SVG** : Martin ne sait pas. Par défaut : **SVG dès le premier palier d'export** (le dessin est déjà du
+  vectoriel : l'export est peu coûteux et permet de finir un croquis dans Illustrator, Inkscape ou VectorCraft).
