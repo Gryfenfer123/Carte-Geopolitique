@@ -2,6 +2,8 @@
 
 ## Dernières nouvelles (la plus récente en haut)
 
+- 2026-10-23 — v152 : arbre Bami du Rwanda, 5 personnes sourcées.
+
 - 2026-10-23 — v151 : arbre Bouyides (Iran), 6 personnes sourcées.
 
 - 2026-10-23 — v150 : arbre Qalawunides (Égypte), 15 personnes sourcées.
@@ -182,7 +184,7 @@
 
 Code : `src/genealogy.ts`, `genealogyLayers.ts`, `genealogyBus.ts`, `genealogyLod.ts/.css`, `genealogyLayersWorker.ts`,
 `genealogyLayout.ts`, `genealogyRouting.ts`. Outils de remplissage : [`scripts/arbres/`](../../scripts/arbres/README.md).
-Prochaine migration : **arbres_v152** (`supabase/arbres/arbres_v152.sql`) — générateur : `Gen(152, "…")`.  (v151 livrée, à exécuter par Martin si ce n'est pas déjà fait.)
+Prochaine migration : **arbres_v153** (`supabase/arbres/arbres_v153.sql`) — générateur : `Gen(153, "…")`.  (v152 livrée, à exécuter par Martin si ce n'est pas déjà fait.)
 
 ## Règles de contenu (décidées par Martin — ne pas rouvrir)
 - Un pays n'a que les dynasties qui ont **régné sur lui**. Dynastie étrangère : branche principale dans son pays

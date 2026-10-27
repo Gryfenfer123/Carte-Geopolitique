@@ -221,4 +221,5 @@ RLS**. Règles :
 | arbres_v149 | Afghanistan : Ghaznévides (17 personnes) |
 | arbres_v150 | Égypte : Qalawunides (15 personnes) |
 | arbres_v151 | Iran : Bouyides (6 personnes) |
+| arbres_v152 | Rwanda : bami (5 personnes) |
 | `data_owid_load.sql` + `owid_chunks/` | Chargement des données d'indicateurs (rejouable, upserts) — à exécuter après v1 à v7 |
