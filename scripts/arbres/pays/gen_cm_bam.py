@@ -11,7 +11,7 @@ def K(code, name, b, d, title, page, note=None, gnd='h'):
 K('nsa', 'Nsangou', None, None, 'Mfon des Bamoun (1865-1884)', 'List_of_rulers_of_the_Bamum', 'père de Njoya ; liste : règne 1865-1884 (date de mort non indiquée)', 'h')
 K('njo', 'Ibrahim Njoya', 1860, 1933, 'Mfon des Bamoun (1889-1931/33)', 'Ibrahim_Njoya', 'naissance et mort « c. »', 'h')
 K('sei', 'Seidou Njimoluh Njoya', None, None, 'Mfon des Bamoun (1933-1992)', 'Seidou_Njimoluh_Njoya', 'fils de Njoya', 'h')
-K('mbo', 'Ibrahim Mbombo Njoya', None, 2021, 'Mfon des Bamoun (1992-2021)', 'Ibrahim_Mbombo_Njoya', 'petit-fils de Njoya', 'h')
+K('mbo', 'Ibrahim Mbombo Njoya', None, None, 'Mfon des Bamoun (1992-2021)', 'Ibrahim_Mbombo_Njoya', 'petit-fils de Njoya', 'h')
 g.par('bam.nsa', 'bam.njo')
 g.par('bam.njo', 'bam.sei')
 g.fam('bam.njo', 'bam.mbo')
