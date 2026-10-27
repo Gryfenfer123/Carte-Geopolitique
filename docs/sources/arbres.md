@@ -35,6 +35,7 @@ Chaque fiche sourcée porte aussi l'adresse de sa page dans « Notes / biographi
 | 2026-10-27 | v135 — Afrique du Sud : rois zoulous (10) | Wikipédia anglais : List of Zulu kings, Zulu royal family | https://en.wikipedia.org/wiki/List_of_Zulu_kings | CC BY-SA 4.0 | tertiaire / à recouper ; deux pages divergent (Solomon / Phumuzuzulu, règnes) |
 | 2026-10-27 | v136 — Laos : Luang Prabang et Champassak (6) | Wikipédia anglais : List of monarchs of Laos | https://en.wikipedia.org/wiki/List_of_monarchs_of_Laos | CC BY-SA 4.0 | tertiaire / à recouper ; deux Kham Souk distincts, branches non reliées |
 | 2026-10-27 | v137 — Brunéi : Maison de Bolkiah (7) | Wikipédia anglais : Hashim_Jalilul_Alam_Aqamaddin, Muhammad_Jamalul_Alam_II, Ahmad_Tajuddin, Omar_Ali_Saifuddien_III, Hassanal_Bolkiah, Al-Muhtadee_Billah, Omar_Ali_Saifuddin_II | https://en.wikipedia.org/wiki/Hassanal_Bolkiah | CC BY-SA 4.0 | tertiaire / à recouper ; lignée directe seulement ; naissance d Omar Ali Saifuddin II inconnue |
+| 2026-10-27 | v138 — Malaisie : sultans de Johor (6) | Wikipédia anglais : Sultan_of_Johor (liste, dates et pères), Temenggong_Daeng_Ibrahim | https://en.wikipedia.org/wiki/Sultan_of_Johor | CC BY-SA 4.0 | tertiaire / à recouper ; un seul État royal de Malaisie |
 
 ## Lots NON sourcés (à reprendre) — SOURCE MANQUANTE
 Dates saisies de mémoire, sans page consultée ; en cours de reprise, une ligne ci-dessus remplace la ligne ici au fur et à mesure.

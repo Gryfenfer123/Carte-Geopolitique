@@ -32000,6 +32000,66 @@
    "title": "Prince héritier de Brunéi",
    "g": "h",
    "script": 137
+  },
+  "my.daeng": {
+   "id": "4d3358f5-7819-53d1-8056-7c2540f21beb",
+   "name": "Daeng Ibrahim",
+   "b": 1810,
+   "d": 1862,
+   "tree": "MY_JOH",
+   "title": "Temenggong de Johor (1841-1862)",
+   "g": "h",
+   "script": 138
+  },
+  "my.abubakar": {
+   "id": "1156c637-d67d-50cd-b647-024fe9f5d75a",
+   "name": "Abu Bakar de Johor",
+   "b": 1833,
+   "d": 1895,
+   "tree": "MY_JOH",
+   "title": "Maharaja puis sultan de Johor (sultan 1886-1895)",
+   "g": "h",
+   "script": 138
+  },
+  "my.ibrahim": {
+   "id": "3ccb13bd-3491-557c-a310-56f63f4bcad2",
+   "name": "Ibrahim de Johor",
+   "b": 1873,
+   "d": 1959,
+   "tree": "MY_JOH",
+   "title": "Sultan de Johor (1895-1959)",
+   "g": "h",
+   "script": 138
+  },
+  "my.ismail": {
+   "id": "5502aa70-f5aa-5b00-8515-bdbdf84c2d02",
+   "name": "Ismail de Johor",
+   "b": 1894,
+   "d": 1981,
+   "tree": "MY_JOH",
+   "title": "Sultan de Johor (1959-1981)",
+   "g": "h",
+   "script": 138
+  },
+  "my.iskandar": {
+   "id": "3a253d3f-7827-5345-94a6-ebf90ee2a83d",
+   "name": "Iskandar de Johor",
+   "b": 1932,
+   "d": 2010,
+   "tree": "MY_JOH",
+   "title": "Sultan de Johor (1981-2010)",
+   "g": "h",
+   "script": 138
+  },
+  "my.ibrahim2": {
+   "id": "aa654db8-ce0d-55f5-a041-6bc7074afa89",
+   "name": "Ibrahim Ismail de Johor",
+   "b": 1958,
+   "d": null,
+   "tree": "MY_JOH",
+   "title": "Sultan de Johor (depuis 2010)",
+   "g": "h",
+   "script": 138
   }
  },
  "trees": {
@@ -33088,6 +33148,12 @@
    "country": "BRN",
    "dynasty": "Maison de Bolkiah",
    "script": 137
+  },
+  "MY_JOH": {
+   "entry": "ff234677-92d8-5ffb-8c46-af67cf06e952",
+   "country": "MYS",
+   "dynasty": "Sultans de Johor",
+   "script": 138
   }
  },
  "flags": [
@@ -38496,6 +38562,14 @@
    "rels": 6,
    "trees": [
     "Maison de Bolkiah (BRN)"
+   ]
+  },
+  "138": {
+   "label": "Malaisie (sultans de Johor)",
+   "members": 6,
+   "rels": 5,
+   "trees": [
+    "Sultans de Johor (MYS)"
    ]
   }
  },
@@ -63618,6 +63692,31 @@
   [
    "cad96bb4-8ab7-5acf-8769-892db46013e7",
    "26921d84-67c4-5c10-a396-500b47ad9842",
+   "parent"
+  ],
+  [
+   "4d3358f5-7819-53d1-8056-7c2540f21beb",
+   "1156c637-d67d-50cd-b647-024fe9f5d75a",
+   "parent"
+  ],
+  [
+   "1156c637-d67d-50cd-b647-024fe9f5d75a",
+   "3ccb13bd-3491-557c-a310-56f63f4bcad2",
+   "parent"
+  ],
+  [
+   "3ccb13bd-3491-557c-a310-56f63f4bcad2",
+   "5502aa70-f5aa-5b00-8515-bdbdf84c2d02",
+   "parent"
+  ],
+  [
+   "5502aa70-f5aa-5b00-8515-bdbdf84c2d02",
+   "3a253d3f-7827-5345-94a6-ebf90ee2a83d",
+   "parent"
+  ],
+  [
+   "3a253d3f-7827-5345-94a6-ebf90ee2a83d",
+   "aa654db8-ce0d-55f5-a041-6bc7074afa89",
    "parent"
   ]
  ],

@@ -207,4 +207,5 @@ RLS**. Règles :
 | arbres_v135 | v135 : Zoulous, sourcé |
 | arbres_v136 | v136 : Laos, sourcé |
 | arbres_v137 | Brunéi : Maison de Bolkiah (7 personnes, lignée directe) |
+| arbres_v138 | Malaisie : sultans de Johor (6 personnes) |
 | `data_owid_load.sql` + `owid_chunks/` | Chargement des données d'indicateurs (rejouable, upserts) — à exécuter après v1 à v7 |
