@@ -20935,7 +20935,7 @@
    "id": "67d76c43-cf2f-5f4d-aa5f-c6d87e479026",
    "name": "Djötchi",
    "b": 1182,
-   "d": 1227,
+   "d": 1225,
    "tree": "MN_GEN",
    "title": "Fils aîné de Gengis Khan",
    "g": "h",
@@ -20944,7 +20944,7 @@
   "gn.chagatai": {
    "id": "2537c4ee-cd74-5d42-b49e-9107afb31a36",
    "name": "Djaghataï",
-   "b": 1183,
+   "b": 1184,
    "d": 1242,
    "tree": "MN_GEN",
    "title": "Fils de Gengis Khan, khan du Djaghataï",
@@ -20964,7 +20964,7 @@
   "gn.tolui": {
    "id": "803faf60-4bed-5c59-b510-6acd886a017b",
    "name": "Tolui",
-   "b": 1192,
+   "b": 1191,
    "d": 1232,
    "tree": "MN_GEN",
    "title": "Fils cadet de Gengis Khan, régent",
@@ -21014,7 +21014,7 @@
   "gn.hulagu": {
    "id": "b001eb0f-d510-50f5-a440-9076b9ad3b79",
    "name": "Houlagou",
-   "b": 1218,
+   "b": 1217,
    "d": 1265,
    "tree": "MN_GEN",
    "title": "Fondateur de l'Ilkhanat",
@@ -31760,6 +31760,176 @@
    "title": "Dernier roi de Birmanie (1878-1885)",
    "g": "h",
    "script": 133
+  },
+  "gn.berke": {
+   "id": "1685d2bc-7a6d-54e5-817c-88c31928700b",
+   "name": "Berke",
+   "b": 1207,
+   "d": 1266,
+   "tree": "MN_GEN",
+   "title": "Khan de la Horde d'Or (1257-1266)",
+   "g": "h",
+   "script": 134
+  },
+  "za.senzangakhona": {
+   "id": "aab6cab5-c9b9-5813-97b8-2ca5805baf5d",
+   "name": "Senzangakhona",
+   "b": null,
+   "d": null,
+   "tree": "ZA_ZUL",
+   "title": "Chef zoulou, père de Shaka, Dingane et Mpande",
+   "g": "h",
+   "script": 135
+  },
+  "za.shaka": {
+   "id": "b60ef6b9-0e59-570e-b872-97d81d2a02fa",
+   "name": "Shaka",
+   "b": 1787,
+   "d": 1828,
+   "tree": "ZA_ZUL",
+   "title": "Roi des Zoulous (1816-1828)",
+   "g": "h",
+   "script": 135
+  },
+  "za.dingane": {
+   "id": "d6ad81e8-3b62-523e-8733-beb737d60dc0",
+   "name": "Dingane",
+   "b": 1795,
+   "d": 1840,
+   "tree": "ZA_ZUL",
+   "title": "Roi des Zoulous (1828-1840)",
+   "g": "h",
+   "script": 135
+  },
+  "za.mpande": {
+   "id": "e95e29ef-e3b3-558e-b1fe-ae88c6b16875",
+   "name": "Mpande",
+   "b": 1798,
+   "d": 1872,
+   "tree": "ZA_ZUL",
+   "title": "Roi des Zoulous (1840-1872)",
+   "g": "h",
+   "script": 135
+  },
+  "za.cetshwayo": {
+   "id": "8994678c-128d-5180-840d-24f8518951d1",
+   "name": "Cetshwayo",
+   "b": 1834,
+   "d": 1884,
+   "tree": "ZA_ZUL",
+   "title": "Roi des Zoulous (1872-1879 ; 1883-1884)",
+   "g": "h",
+   "script": 135
+  },
+  "za.dinuzulu": {
+   "id": "4849064f-a353-5e1b-9b47-1f246f8aeb19",
+   "name": "Dinuzulu",
+   "b": 1868,
+   "d": 1913,
+   "tree": "ZA_ZUL",
+   "title": "Roi des Zoulous (1884-1913)",
+   "g": "h",
+   "script": 135
+  },
+  "za.solomon": {
+   "id": "3039f221-fcdb-5b65-bd51-a892d404fd5c",
+   "name": "Solomon kaDinuzulu (Phumuzuzulu)",
+   "b": 1891,
+   "d": 1933,
+   "tree": "ZA_ZUL",
+   "title": "Roi des Zoulous (1913-1933)",
+   "g": "h",
+   "script": 135
+  },
+  "za.bhekuzulu": {
+   "id": "16795fc1-84d1-598d-a140-0b753a3e5039",
+   "name": "Cyprian Bhekuzulu",
+   "b": 1924,
+   "d": 1968,
+   "tree": "ZA_ZUL",
+   "title": "Roi des Zoulous (1948-1968)",
+   "g": "h",
+   "script": 135
+  },
+  "za.zwelithini": {
+   "id": "fc4f61de-594e-5cb2-8ddd-2ad6d3ec1568",
+   "name": "Goodwill Zwelithini",
+   "b": 1948,
+   "d": 2021,
+   "tree": "ZA_ZUL",
+   "title": "Roi des Zoulous (1968-2021)",
+   "g": "h",
+   "script": 135
+  },
+  "za.misuzulu": {
+   "id": "833041cd-3fbb-5a76-a4bd-e12da03e84d6",
+   "name": "Misuzulu",
+   "b": 1974,
+   "d": null,
+   "tree": "ZA_ZUL",
+   "title": "Roi des Zoulous (depuis 2021)",
+   "g": "h",
+   "script": 135
+  },
+  "la.khamsouk": {
+   "id": "f4c058c3-a03b-58ad-ad18-e3a9e3d1711c",
+   "name": "Kham Souk (Luang Prabang)",
+   "b": 1840,
+   "d": 1904,
+   "tree": "LA_ROY",
+   "title": "Roi de Luang Prabang (1895-1904)",
+   "g": "h",
+   "script": 136
+  },
+  "la.sisavangvong": {
+   "id": "334d4c71-3bd2-514b-ac52-6dd9b5501fd1",
+   "name": "Sisavang Vong",
+   "b": 1885,
+   "d": 1959,
+   "tree": "LA_ROY",
+   "title": "Roi de Luang Prabang puis du Laos (1904-1959)",
+   "g": "h",
+   "script": 136
+  },
+  "la.vatthana": {
+   "id": "c80238c9-a7cb-542b-b9d7-6010bd7d0fcd",
+   "name": "Sisavang Vatthana",
+   "b": 1907,
+   "d": 1978,
+   "tree": "LA_ROY",
+   "title": "Dernier roi du Laos (1959-1975)",
+   "g": "h",
+   "script": 136
+  },
+  "la.khamsouk2": {
+   "id": "62edc692-f889-5820-864d-bb73394460a8",
+   "name": "Kham Souk (Champassak)",
+   "b": 1839,
+   "d": 1900,
+   "tree": "LA_ROY",
+   "title": "Prince de Champassak, père de Ratsadanay",
+   "g": "h",
+   "script": 136
+  },
+  "la.ratsadanay": {
+   "id": "edd9f0ae-cc0f-5c58-a42b-83184dcda64f",
+   "name": "Ratsadanay",
+   "b": 1874,
+   "d": 1945,
+   "tree": "LA_ROY",
+   "title": "Roi de Champassak (1900-1904)",
+   "g": "h",
+   "script": 136
+  },
+  "la.bounoum": {
+   "id": "d489c975-5089-5162-8562-9ddace6feac9",
+   "name": "Boun Oum",
+   "b": 1912,
+   "d": 1980,
+   "tree": "LA_ROY",
+   "title": "Prince de Champassak, renonce à ses droits en 1946",
+   "g": "h",
+   "script": 136
   }
  },
  "trees": {
@@ -32830,6 +33000,18 @@
    "country": "MMR",
    "dynasty": "Konbaung",
    "script": 133
+  },
+  "ZA_ZUL": {
+   "entry": "d43efa7f-a346-5ad7-8234-4dfc792b56ad",
+   "country": "ZAF",
+   "dynasty": "Rois zoulous",
+   "script": 135
+  },
+  "LA_ROY": {
+   "entry": "88570d33-cf45-5b84-acb5-6a37ea9fb3a4",
+   "country": "LAO",
+   "dynasty": "Maisons royales du Laos",
+   "script": 136
   }
  },
  "flags": [
@@ -38208,6 +38390,28 @@
    "rels": 9,
    "trees": [
     "Konbaung (MMR)"
+   ]
+  },
+  "134": {
+   "label": "Sources — Gengiskhanides (v84)",
+   "members": 1,
+   "rels": 1,
+   "trees": []
+  },
+  "135": {
+   "label": "Afrique du Sud (rois zoulous)",
+   "members": 10,
+   "rels": 9,
+   "trees": [
+    "Rois zoulous (ZAF)"
+   ]
+  },
+  "136": {
+   "label": "Laos (Luang Prabang, Champassak)",
+   "members": 6,
+   "rels": 4,
+   "trees": [
+    "Maisons royales du Laos (LAO)"
    ]
   }
  },
@@ -63230,6 +63434,76 @@
   [
    "a96062ef-2fc8-591f-bc27-2d25a63d8bb6",
    "412cbb5f-3c83-557c-a0f7-d79d36e16eeb",
+   "parent"
+  ],
+  [
+   "67d76c43-cf2f-5f4d-aa5f-c6d87e479026",
+   "1685d2bc-7a6d-54e5-817c-88c31928700b",
+   "parent"
+  ],
+  [
+   "aab6cab5-c9b9-5813-97b8-2ca5805baf5d",
+   "b60ef6b9-0e59-570e-b872-97d81d2a02fa",
+   "parent"
+  ],
+  [
+   "aab6cab5-c9b9-5813-97b8-2ca5805baf5d",
+   "d6ad81e8-3b62-523e-8733-beb737d60dc0",
+   "parent"
+  ],
+  [
+   "aab6cab5-c9b9-5813-97b8-2ca5805baf5d",
+   "e95e29ef-e3b3-558e-b1fe-ae88c6b16875",
+   "parent"
+  ],
+  [
+   "e95e29ef-e3b3-558e-b1fe-ae88c6b16875",
+   "8994678c-128d-5180-840d-24f8518951d1",
+   "parent"
+  ],
+  [
+   "8994678c-128d-5180-840d-24f8518951d1",
+   "4849064f-a353-5e1b-9b47-1f246f8aeb19",
+   "parent"
+  ],
+  [
+   "4849064f-a353-5e1b-9b47-1f246f8aeb19",
+   "3039f221-fcdb-5b65-bd51-a892d404fd5c",
+   "parent"
+  ],
+  [
+   "3039f221-fcdb-5b65-bd51-a892d404fd5c",
+   "16795fc1-84d1-598d-a140-0b753a3e5039",
+   "parent"
+  ],
+  [
+   "16795fc1-84d1-598d-a140-0b753a3e5039",
+   "fc4f61de-594e-5cb2-8ddd-2ad6d3ec1568",
+   "parent"
+  ],
+  [
+   "fc4f61de-594e-5cb2-8ddd-2ad6d3ec1568",
+   "833041cd-3fbb-5a76-a4bd-e12da03e84d6",
+   "parent"
+  ],
+  [
+   "f4c058c3-a03b-58ad-ad18-e3a9e3d1711c",
+   "334d4c71-3bd2-514b-ac52-6dd9b5501fd1",
+   "parent"
+  ],
+  [
+   "334d4c71-3bd2-514b-ac52-6dd9b5501fd1",
+   "c80238c9-a7cb-542b-b9d7-6010bd7d0fcd",
+   "parent"
+  ],
+  [
+   "62edc692-f889-5820-864d-bb73394460a8",
+   "edd9f0ae-cc0f-5c58-a42b-83184dcda64f",
+   "parent"
+  ],
+  [
+   "edd9f0ae-cc0f-5c58-a42b-83184dcda64f",
+   "d489c975-5089-5162-8562-9ddace6feac9",
    "parent"
   ]
  ],
