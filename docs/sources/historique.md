@@ -39,3 +39,6 @@ Format : voir `README.md`. Consultation : 2026-10-23 et 2026-10-24.
 
 ### Fenêtre des dates assouplie (2026-10-28)
 - Un relevé « P » décrit l'année P, pas un instant : un événement daté de P elle-même est retenu (ex. Autriche-Hongrie 1918, Estonie 1918). Cran 2 : l'intervalle précédent est aussi accepté (ex. Almoravides 1040, Empire d'Autriche 1804, Confédération du Rhin 1806). Les formes ne bougent pas, seule la date d'affichage change.
+
+### Corrections de formes (2026-10-28)
+- `scripts/historique/corrections_formes_manuelles.json` : 6 règles, chacune avec sa source (dates de création P571 des États concernés sur Wikidata, CC0 ; surfaces de Cliopatria elle-même, CC BY 4.0). On ne dessine rien de nouveau : on retire d'un contour une zone déjà dessinée ailleurs par la source.

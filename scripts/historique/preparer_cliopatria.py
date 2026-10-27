@@ -51,6 +51,7 @@ from shapely.validation import make_valid
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from caler_cotes import Cote  # noqa: E402  (calage sur la côte réelle)
 from corrections_dates import Corrections, lire_manuelles, lire_wikidata  # noqa: E402  (dates réelles)
+import corrections_formes  # noqa: E402  (retire d'un contour un État indépendant recouvert à tort)
 
 VERSION_SOURCE = "0.2.1"
 CENTIEMES = 100  # précision des coordonnées : 0,01° ≈ 1 km
@@ -164,6 +165,13 @@ def main():
         os.path.dirname(os.path.abspath(__file__)), "..", "..", "public", "data", "historique"
     )
     appliquer_dates = "--sans-dates" not in options
+    # --debut -700 : la carte commence à cette année (décision de Martin, 2026-10-28). Les lignes qui finissent avant sont
+    # écartées, celles qui la traversent sont raccourcies. Défaut : tout garder (-3400). Les données complètes sont
+    # sauvegardées sur la branche GitHub « sauvegarde-historique-donnees-completes ».
+    debut_carte = -3400
+    if "--debut" in sys.argv:
+        debut_carte = int(sys.argv[sys.argv.index("--debut") + 1])
+        args = [a for a in args if a != str(debut_carte)]
     if terres:
         print("Trait de côte réel :", terres)
         COTE = Cote(terres)
@@ -203,6 +211,27 @@ def main():
         for r in rapport:
             nb[r["statut"]] = nb.get(r["statut"], 0) + 1
         print("Corrections de dates :", nb)
+
+    if appliquer_dates:
+        d = os.path.dirname(os.path.abspath(__file__))
+        rapport_formes = corrections_formes.appliquer(
+            entites, dates, corrections_formes.lire_regles(os.path.join(d, "corrections_formes_manuelles.json")))
+        with open(os.path.join(d, "corrections_formes_rapport.json"), "w", encoding="utf8") as f:
+            json.dump(rapport_formes, f, ensure_ascii=False, indent=0)
+        for r in rapport_formes:
+            print("Forme corrigée :", r["id"], "—", len(r["lignes"]), "ligne(s)")
+        # les lignes ajoutées par une coupure sont rangées par année de début (ordre attendu pour les morceaux)
+        ordre = sorted(range(len(entites)), key=lambda k: (dates[k]["de"], dates[k]["a"], dates[k]["nom"]))
+        entites[:] = [entites[k] for k in ordre]
+        dates[:] = [dates[k] for k in ordre]
+    if debut_carte > -3400:
+        gardees = [k for k in range(len(entites)) if dates[k]["a"] >= max(debut_carte, dates[k]["de"])]
+        print("Début de la carte :", debut_carte, "—", len(entites) - len(gardees), "ligne(s) écartée(s)")
+        for k in gardees:
+            dates[k]["de"] = max(dates[k]["de"], debut_carte)
+        entites[:] = [entites[k] for k in gardees]
+        dates[:] = [dates[k] for k in gardees]
+    ENTITES[:] = [ft for ft in entites]
 
     # Les tracés sont calculés en parallèle (le calage sur la côte est coûteux).
     print("Calcul des tracés…")

@@ -14,7 +14,7 @@
 // tracé par période (durée médiane ≈ 8 ans), c'est sa résolution réelle.
 // ---------------------------------------------------------------------------
 
-export const ANNEE_MIN = -3400;
+export const ANNEE_MIN = -700;   // décision de Martin 2026-10-28 ; données complètes (-3400) : branche GitHub sauvegarde-historique-donnees-completes
 export const ANNEE_MAX = 2024;
 
 /** [indexMeta, anneeDebut, anneeFin, idTrace, indexNomEnsemble (-1 si aucun), aireKm2] */

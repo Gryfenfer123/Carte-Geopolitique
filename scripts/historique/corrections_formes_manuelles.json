@@ -1,0 +1,21 @@
+[
+  {"id": "algerie-france-ve", "grand": "French Fifth Republic", "petits": ["People's Democratic Republic of Algeria"],
+   "motif": "Le contour 1961-2023 de la Ve République (3,03 M km²) contient encore l'Algérie indépendante (2,32 M km²) ; celui de 2024 (0,68 M km²) est juste.",
+   "source": {"titre": "Wikidata Q262 (Algérie), date de création P571 = 1962 ; Wikidata Q200686 (Ve République)", "lien": "https://www.wikidata.org/wiki/Q262#P571", "licence": "CC0", "fiabilite": "Élevée pour la date d'indépendance ; la surface vient de Cliopatria (2024 : 680 260 km²)"}},
+  {"id": "afrique-orientale-britannique", "grand": "British East Africa",
+   "petits": ["Republic of Kenya", "Republic of Uganda", "Zambia", "Malawi", "Republic of Botswana", "Lesotho", "Rhodesia"],
+   "motif": "L'entité « British East Africa » recouvre à 100 % des États indépendants (Kenya 1963, Ouganda 1962, Malawi 1964, Zambie 1964, Botswana 1966, Lesotho 1966, Rhodésie 1965).",
+   "source": {"titre": "Wikidata, dates de création (P571) de chaque État", "lien": "https://www.wikidata.org/wiki/Q114#P571", "licence": "CC0", "fiabilite": "Élevée pour les dates ; fin de British East Africa P576 = 1920 (Q876185)"}},
+  {"id": "empire-colonial-britannique", "grand": "British Colonial Empire", "petits": ["Guyana", "Solomon Islands"],
+   "motif": "L'entité « British Colonial Empire » recouvre le Guyana (indépendant 1966) et les îles Salomon (1978).",
+   "source": {"titre": "Wikidata Q734 (Guyana) et Q685 (Salomon), P571", "lien": "https://www.wikidata.org/wiki/Q734#P571", "licence": "CC0", "fiabilite": "Élevée"}},
+  {"id": "royaume-uni-oman-emirats", "grand": "Kingdom of Great Britain", "petits": ["Sultanate of Oman", "United Arab Emirates"],
+   "motif": "Le contour du Royaume-Uni pour 1973-2023 recouvre Oman et les Émirats arabes unis, États souverains (EAU 1971, Oman 1970).",
+   "source": {"titre": "Wikidata Q842 (Oman) P571 = 1970-07-23 ; Q878 (EAU) P571 = 1971", "lien": "https://www.wikidata.org/wiki/Q842#P571", "licence": "CC0", "fiabilite": "Élevée"}},
+  {"id": "antilles-neerlandaises-suriname", "grand": "Netherlands Antilles", "petits": ["Republic of Suriname"],
+   "motif": "Le contour des Antilles néerlandaises recouvre le Suriname, indépendant depuis 1975.",
+   "source": {"titre": "Wikidata Q730 (Suriname) P571 = 1975-11-25", "lien": "https://www.wikidata.org/wiki/Q730#P571", "licence": "CC0", "fiabilite": "Élevée"}},
+  {"id": "cote-de-l-or-ghana", "grand": "British Gold Coast", "petits": ["Ghana"],
+   "motif": "La Gold Coast britannique (fin 1957, Wikidata Q503623 P576) est encore dessinée sur le Ghana indépendant.",
+   "source": {"titre": "Wikidata Q503623 (Gold Coast) P576 = 1957 ; Q117 (Ghana) P571 = 1957", "lien": "https://www.wikidata.org/wiki/Q503623#P576", "licence": "CC0", "fiabilite": "Élevée"}}
+]
