@@ -30,21 +30,6 @@
 "detail": "déjà corrigée par une autre source"
 },
 {
-"id": "wd-Q783489-debut",
-"nom": "Later Liang Dynasty",
-"op": "debut",
-"origine": 911,
-"vers": 907,
-"auto": true,
-"source": {
-"type": "wikidata",
-"qid": "Q783489",
-"propriete": "P571"
-},
-"statut": "refusee",
-"detail": "déjà corrigée par une autre source"
-},
-{
 "id": "wd-Q12560-debut",
 "nom": "Ottoman Empire",
 "op": "debut",
@@ -114,21 +99,6 @@
 "source": {
 "type": "wikidata",
 "qid": "Q46370",
-"propriete": "P576"
-},
-"statut": "refusee",
-"detail": "déjà corrigée par une autre source"
-},
-{
-"id": "wd-Q7313-fin",
-"nom": "Yuan Dynasty",
-"op": "fin",
-"origine": 1374,
-"vers": 1367,
-"auto": true,
-"source": {
-"type": "wikidata",
-"qid": "Q7313",
 "propriete": "P576"
 },
 "statut": "refusee",
@@ -261,6 +231,21 @@
 "evenement": "Fondation traditionnelle de l'État ottoman par Osman Ier"
 },
 {
+"id": "wd-Q25979-debut",
+"nom": "Kushan Empire",
+"op": "debut",
+"origine": 43,
+"vers": 30,
+"auto": true,
+"source": {
+"type": "wikidata",
+"qid": "Q25979",
+"propriete": "P571"
+},
+"statut": "appliquee",
+"detail": ""
+},
+{
 "id": "wd-Q2086608-debut",
 "nom": "Western Satraps",
 "op": "debut",
@@ -276,34 +261,19 @@
 "detail": "déduit : Indo-Scythians (changement de forme avancé)"
 },
 {
-"id": "wd-Q274488-debut",
-"nom": "Eastern Wu",
+"id": "wd-Q216786-debut",
+"nom": "Chámpa",
 "op": "debut",
 "origine": 207,
-"vers": 198,
+"vers": 192,
 "auto": true,
 "source": {
 "type": "wikidata",
-"qid": "Q274488",
+"qid": "Q216786",
 "propriete": "P571"
 },
 "statut": "appliquee",
-"detail": "déduit : Han Dynasty (changement de forme avancé)"
-},
-{
-"id": "wd-Q320930-debut",
-"nom": "Cao Wei",
-"op": "debut",
-"origine": 224,
-"vers": 220,
-"auto": true,
-"source": {
-"type": "wikidata",
-"qid": "Q320930",
-"propriete": "P571"
-},
-"statut": "appliquee",
-"detail": "déduit : Protectorate of the Western Regions (s'arrête la veille) ; Cao Cao (s'arrête la veille)"
+"detail": ""
 },
 {
 "id": "wd-Q320925-debut",
@@ -330,6 +300,21 @@
 "source": {
 "type": "wikidata",
 "qid": "Q1501306",
+"propriete": "P571"
+},
+"statut": "appliquee",
+"detail": ""
+},
+{
+"id": "wd-Q273025-debut",
+"nom": "Gallic Empire",
+"op": "debut",
+"origine": 261,
+"vers": 260,
+"auto": true,
+"source": {
+"type": "wikidata",
+"qid": "Q273025",
 "propriete": "P571"
 },
 "statut": "appliquee",
@@ -396,21 +381,6 @@
 "detail": "déduit : Western Jin (changement de forme avancé)"
 },
 {
-"id": "wd-Q1574107-debut",
-"nom": "Former Zhao",
-"op": "debut",
-"origine": 306,
-"vers": 304,
-"auto": true,
-"source": {
-"type": "wikidata",
-"qid": "Q1574107",
-"propriete": "P571"
-},
-"statut": "appliquee",
-"detail": ""
-},
-{
 "id": "wd-Q11774-debut",
 "nom": "Gupta Empire",
 "op": "debut",
@@ -441,19 +411,34 @@
 "detail": "déduit : Western Jin (changement de forme avancé)"
 },
 {
-"id": "wd-Q1471995-debut",
-"nom": "Former Qin",
+"id": "wd-Q2314907-debut",
+"nom": "Later Zhao",
 "op": "debut",
-"origine": 353,
-"vers": 350,
+"origine": 337,
+"vers": 319,
 "auto": true,
 "source": {
 "type": "wikidata",
-"qid": "Q1471995",
+"qid": "Q2314907",
 "propriete": "P571"
 },
 "statut": "appliquee",
-"detail": "déduit : Later Zhao (s'arrête la veille)"
+"detail": ""
+},
+{
+"id": "wd-Q1479952-debut",
+"nom": "Kadamba Empire",
+"op": "debut",
+"origine": 353,
+"vers": 345,
+"auto": true,
+"source": {
+"type": "wikidata",
+"qid": "Q1479952",
+"propriete": "P571"
+},
+"statut": "appliquee",
+"detail": ""
 },
 {
 "id": "wd-Q1194765-debut",
@@ -576,11 +561,26 @@
 "detail": "déduit : Later Yan (changement de forme avancé)"
 },
 {
+"id": "wd-Q2006864-debut",
+"nom": "Northern Yan",
+"op": "debut",
+"origine": 410,
+"vers": 407,
+"auto": true,
+"source": {
+"type": "wikidata",
+"qid": "Q2006864",
+"propriete": "P571"
+},
+"statut": "appliquee",
+"detail": ""
+},
+{
 "id": "wd-Q1048918-debut",
 "nom": "Kingdom of the Suebi",
 "op": "debut",
 "origine": 414,
-"vers": 411,
+"vers": 409,
 "auto": true,
 "source": {
 "type": "wikidata",
@@ -588,22 +588,7 @@
 "propriete": "P571"
 },
 "statut": "appliquee",
-"detail": "déduit : Vandals (changement de forme avancé)"
-},
-{
-"id": "wd-Q13590051-debut",
-"nom": "Burgundian Kingdom",
-"op": "debut",
-"origine": 414,
-"vers": 411,
-"auto": true,
-"source": {
-"type": "wikidata",
-"qid": "Q13590051",
-"propriete": "P571"
-},
-"statut": "appliquee",
-"detail": "déduit : Western Roman Empire (changement de forme avancé)"
+"detail": ""
 },
 {
 "id": "wd-Q49697-debut",
@@ -666,6 +651,21 @@
 "detail": "déduit : Liu Song Dynasty (s'arrête la veille)"
 },
 {
+"id": "wd-Q676184-debut",
+"nom": "Kingdom of Sussex",
+"op": "debut",
+"origine": 490,
+"vers": 477,
+"auto": true,
+"source": {
+"type": "wikidata",
+"qid": "Q676184",
+"propriete": "P571"
+},
+"statut": "appliquee",
+"detail": ""
+},
+{
 "id": "wd-Q583038-debut",
 "nom": "Ostrogothic Kingdom",
 "op": "debut",
@@ -691,6 +691,36 @@
 "type": "wikidata",
 "qid": "Q105092",
 "propriete": "P571"
+},
+"statut": "appliquee",
+"detail": ""
+},
+{
+"id": "wd-Q105313-debut",
+"nom": "Kingdom of Wessex",
+"op": "debut",
+"origine": 534,
+"vers": 519,
+"auto": true,
+"source": {
+"type": "wikidata",
+"qid": "Q105313",
+"propriete": "P571"
+},
+"statut": "appliquee",
+"detail": ""
+},
+{
+"id": "wd-Q110888-debut",
+"nom": "Kingdom of Essex",
+"op": "debut",
+"origine": 534,
+"vers": 527,
+"auto": true,
+"source": {
+"type": "wikidata",
+"qid": "Q110888",
+"propriete": "WP"
 },
 "statut": "appliquee",
 "detail": ""
@@ -741,19 +771,19 @@
 "detail": "déduit : Rouran Khaganate (s'arrête la veille)"
 },
 {
-"id": "wd-Q1143524-debut",
-"nom": "Northern Qi",
+"id": "wd-Q1395011-debut",
+"nom": "Chalukya Dynasty",
 "op": "debut",
 "origine": 555,
-"vers": 550,
+"vers": 543,
 "auto": true,
 "source": {
 "type": "wikidata",
-"qid": "Q1143524",
+"qid": "Q1395011",
 "propriete": "P571"
 },
 "statut": "appliquee",
-"detail": "déduit : Eastern Wei (s'arrête la veille)"
+"detail": ""
 },
 {
 "id": "wd-Q1057118-debut",
@@ -981,6 +1011,21 @@
 "detail": "déduit : Old Great Bulgaria (s'arrête la veille)"
 },
 {
+"id": "wd-Q715257-debut",
+"nom": "Unified Silla",
+"op": "debut",
+"origine": 682,
+"vers": 668,
+"auto": true,
+"source": {
+"type": "wikidata",
+"qid": "Q715257",
+"propriete": "P571"
+},
+"statut": "appliquee",
+"detail": "déduit : Tamna (s'arrête la veille)"
+},
+{
 "id": "wd-Q28322-debut",
 "nom": "Balhae",
 "op": "debut",
@@ -1009,6 +1054,21 @@
 },
 "statut": "appliquee",
 "detail": "déduit : Byzantine Empire (changement de forme avancé)"
+},
+{
+"id": "wd-Q231392-debut",
+"nom": "Kingdom of Asturias",
+"op": "debut",
+"origine": 724,
+"vers": 718,
+"auto": true,
+"source": {
+"type": "wikidata",
+"qid": "Q231392",
+"propriete": "P571"
+},
+"statut": "appliquee",
+"detail": ""
 },
 {
 "id": "wd-Q1045322-debut",
@@ -1116,6 +1176,36 @@
 "detail": ""
 },
 {
+"id": "wd-Q431575-debut",
+"nom": "Idrisids",
+"op": "debut",
+"origine": 793,
+"vers": 788,
+"auto": true,
+"source": {
+"type": "wikidata",
+"qid": "Q431575",
+"propriete": "P571"
+},
+"statut": "appliquee",
+"detail": ""
+},
+{
+"id": "wd-Q494354-debut",
+"nom": "Kara-Khanids",
+"op": "debut",
+"origine": 850,
+"vers": 840,
+"auto": true,
+"source": {
+"type": "wikidata",
+"qid": "Q494354",
+"propriete": "P571"
+},
+"statut": "appliquee",
+"detail": ""
+},
+{
 "id": "wd-Q888574-debut",
 "nom": "Pagan Kingdom",
 "op": "debut",
@@ -1161,6 +1251,51 @@
 "detail": "déduit : Middle Franks (s'arrête la veille)"
 },
 {
+"id": "wd-Q2662180-debut",
+"nom": "Qocho Kingdom",
+"op": "debut",
+"origine": 860,
+"vers": 843,
+"auto": true,
+"source": {
+"type": "wikidata",
+"qid": "Q2662180",
+"propriete": "WP"
+},
+"statut": "appliquee",
+"detail": ""
+},
+{
+"id": "wd-Q1000124-debut",
+"nom": "Ganzhou Kingdom",
+"op": "debut",
+"origine": 860,
+"vers": 848,
+"auto": true,
+"source": {
+"type": "wikidata",
+"qid": "Q1000124",
+"propriete": "P571"
+},
+"statut": "appliquee",
+"detail": ""
+},
+{
+"id": "wd-Q5636647-debut",
+"nom": "Sind-Habbari Dynasty",
+"op": "debut",
+"origine": 860,
+"vers": 854,
+"auto": true,
+"source": {
+"type": "wikidata",
+"qid": "Q5636647",
+"propriete": "WP"
+},
+"statut": "appliquee",
+"detail": ""
+},
+{
 "id": "wd-Q1990528-debut",
 "nom": "Zaydi Alid dynasties",
 "op": "debut",
@@ -1174,6 +1309,51 @@
 },
 "statut": "appliquee",
 "detail": "déduit : Abbasid Caliphate (changement de forme avancé)"
+},
+{
+"id": "wd-Q726798-debut",
+"nom": "Tulunids",
+"op": "debut",
+"origine": 875,
+"vers": 868,
+"auto": true,
+"source": {
+"type": "wikidata",
+"qid": "Q726798",
+"propriete": "P571"
+},
+"statut": "appliquee",
+"detail": ""
+},
+{
+"id": "wd-Q1541787-debut",
+"nom": "County of Pallars",
+"op": "debut",
+"origine": 875,
+"vers": 870,
+"auto": true,
+"source": {
+"type": "wikidata",
+"qid": "Q1541787",
+"propriete": "P571"
+},
+"statut": "appliquee",
+"detail": ""
+},
+{
+"id": "wd-Q2622868-debut",
+"nom": "Bagratid Armenia",
+"op": "debut",
+"origine": 886,
+"vers": 884,
+"auto": true,
+"source": {
+"type": "wikidata",
+"qid": "Q2622868",
+"propriete": "P571"
+},
+"statut": "appliquee",
+"detail": ""
 },
 {
 "id": "wd-Q160307-debut",
@@ -1305,6 +1485,36 @@
 "source": {
 "type": "wikidata",
 "qid": "Q1193822",
+"propriete": "P571"
+},
+"statut": "appliquee",
+"detail": ""
+},
+{
+"id": "wd-Q581741-debut",
+"nom": "Chimor",
+"op": "debut",
+"origine": 911,
+"vers": 900,
+"auto": true,
+"source": {
+"type": "wikidata",
+"qid": "Q581741",
+"propriete": "P580"
+},
+"statut": "appliquee",
+"detail": ""
+},
+{
+"id": "wd-Q842091-debut",
+"nom": "Duchy of Normandy",
+"op": "debut",
+"origine": 922,
+"vers": 911,
+"auto": true,
+"source": {
+"type": "wikidata",
+"qid": "Q842091",
 "propriete": "P571"
 },
 "statut": "appliquee",
@@ -1536,6 +1746,21 @@
 "detail": ""
 },
 {
+"id": "wd-Q1326742-debut",
+"nom": "Southern Tang",
+"op": "debut",
+"origine": 960,
+"vers": 937,
+"auto": true,
+"source": {
+"type": "wikidata",
+"qid": "Q1326742",
+"propriete": "P571"
+},
+"statut": "appliquee",
+"detail": ""
+},
+{
 "id": "wd-Q14624218-debut",
 "nom": "Western Chalukya Empire",
 "op": "debut",
@@ -1656,6 +1881,21 @@
 "detail": ""
 },
 {
+"id": "wd-Q2580032-debut",
+"nom": "Taifa of Almería",
+"op": "debut",
+"origine": 1015,
+"vers": 1010,
+"auto": true,
+"source": {
+"type": "wikidata",
+"qid": "Q2580032",
+"propriete": "P571"
+},
+"statut": "appliquee",
+"detail": ""
+},
+{
 "id": "wd-Q921067-debut",
 "nom": "Taifa of Murcia",
 "op": "debut",
@@ -1680,6 +1920,21 @@
 "source": {
 "type": "wikidata",
 "qid": "Q2060937",
+"propriete": "P571"
+},
+"statut": "appliquee",
+"detail": ""
+},
+{
+"id": "wd-Q2666791-debut",
+"nom": "Taifa of Morón",
+"op": "debut",
+"origine": 1015,
+"vers": 1010,
+"auto": true,
+"source": {
+"type": "wikidata",
+"qid": "Q2666791",
 "propriete": "P571"
 },
 "statut": "appliquee",
@@ -1714,6 +1969,21 @@
 },
 "statut": "appliquee",
 "detail": "déduit : Kingdom of Denmark (s'arrête la veille) ; Kingdom of England (s'arrête la veille)"
+},
+{
+"id": "wd-Q588672-debut",
+"nom": "Hammadid Dynasty",
+"op": "debut",
+"origine": 1018,
+"vers": 1014,
+"auto": true,
+"source": {
+"type": "wikidata",
+"qid": "Q588672",
+"propriete": "P571"
+},
+"statut": "appliquee",
+"detail": ""
 },
 {
 "id": "wd-Q12491034-debut",
@@ -1791,6 +2061,21 @@
 "detail": ""
 },
 {
+"id": "wd-Q75613-debut",
+"nom": "Almoravid Dynasty",
+"op": "debut",
+"origine": 1056,
+"vers": 1040,
+"auto": true,
+"source": {
+"type": "wikidata",
+"qid": "Q75613",
+"propriete": "P571"
+},
+"statut": "appliquee",
+"detail": ""
+},
+{
 "id": "wd-Q2364248-debut",
 "nom": "Sulayhid Dynasty",
 "op": "debut",
@@ -1815,6 +2100,81 @@
 "source": {
 "type": "wikidata",
 "qid": "Q5947557",
+"propriete": "P571"
+},
+"statut": "appliquee",
+"detail": ""
+},
+{
+"id": "wd-Q200485-debut",
+"nom": "Norman England",
+"op": "debut",
+"origine": 1072,
+"vers": 1066,
+"auto": true,
+"source": {
+"type": "wikidata",
+"qid": "Q200485",
+"propriete": "P580"
+},
+"statut": "appliquee",
+"detail": ""
+},
+{
+"id": "wd-Q2428714-debut",
+"nom": "Sena Dynasty",
+"op": "debut",
+"origine": 1072,
+"vers": 1070,
+"auto": true,
+"source": {
+"type": "wikidata",
+"qid": "Q2428714",
+"propriete": "WP"
+},
+"statut": "appliquee",
+"detail": "déduit : Pala Empire (changement de forme avancé)"
+},
+{
+"id": "wd-Q230385-debut",
+"nom": "Zurayid dynasty",
+"op": "debut",
+"origine": 1085,
+"vers": 1083,
+"auto": true,
+"source": {
+"type": "wikidata",
+"qid": "Q230385",
+"propriete": "WP"
+},
+"statut": "appliquee",
+"detail": "déduit : Ziyadid dynasty (changement de forme avancé)"
+},
+{
+"id": "wd-Q975405-debut",
+"nom": "Sultanate of Rum",
+"op": "debut",
+"origine": 1094,
+"vers": 1077,
+"auto": true,
+"source": {
+"type": "wikidata",
+"qid": "Q975405",
+"propriete": "P571"
+},
+"statut": "appliquee",
+"detail": ""
+},
+{
+"id": "wd-Q486918-debut",
+"nom": "Khwarezmid Dynasty",
+"op": "debut",
+"origine": 1094,
+"vers": 1077,
+"auto": true,
+"source": {
+"type": "wikidata",
+"qid": "Q486918",
 "propriete": "P571"
 },
 "statut": "appliquee",
@@ -1941,6 +2301,21 @@
 "detail": ""
 },
 {
+"id": "wd-Q199688-debut",
+"nom": "Almohad Caliphate",
+"op": "debut",
+"origine": 1139,
+"vers": 1121,
+"auto": true,
+"source": {
+"type": "wikidata",
+"qid": "Q199688",
+"propriete": "P571"
+},
+"statut": "appliquee",
+"detail": ""
+},
+{
 "id": "wd-Q2361927-debut",
 "nom": "Duchy of Masovia",
 "op": "debut",
@@ -2046,6 +2421,21 @@
 "detail": "déduit : Srivijaya (changement de forme avancé)"
 },
 {
+"id": "wd-Q45670-debut",
+"nom": "Kingdom of Portugal",
+"op": "debut",
+"origine": 1147,
+"vers": 1139,
+"auto": true,
+"source": {
+"type": "wikidata",
+"qid": "Q45670",
+"propriete": "P571"
+},
+"statut": "appliquee",
+"detail": ""
+},
+{
 "id": "wd-Q2522604-debut",
 "nom": "Taifa of Tejada",
 "op": "debut",
@@ -2055,6 +2445,21 @@
 "source": {
 "type": "wikidata",
 "qid": "Q2522604",
+"propriete": "P571"
+},
+"statut": "appliquee",
+"detail": ""
+},
+{
+"id": "wd-Q3932090-debut",
+"nom": "Kingdom of Africa",
+"op": "debut",
+"origine": 1152,
+"vers": 1146,
+"auto": true,
+"source": {
+"type": "wikidata",
+"qid": "Q3932090",
 "propriete": "P571"
 },
 "statut": "appliquee",
@@ -2136,6 +2541,21 @@
 "detail": "déduit : Fatimid Caliphate (s'arrête la veille) ; Nabhani Dynasty (s'arrête la veille) ; Zengid dynasty (changement de forme avancé) ; Zurayid dynasty (s'arrête la veille)"
 },
 {
+"id": "wd-Q2086556-debut",
+"nom": "Kakatiya Dynasty",
+"op": "debut",
+"origine": 1177,
+"vers": 1163,
+"auto": true,
+"source": {
+"type": "wikidata",
+"qid": "Q2086556",
+"propriete": "P571"
+},
+"statut": "appliquee",
+"detail": ""
+},
+{
 "id": "wd-Q661980-debut",
 "nom": "Duchy of Opole",
 "op": "debut",
@@ -2166,6 +2586,21 @@
 "detail": "déduit : Byzantine Empire (changement de forme avancé)"
 },
 {
+"id": "wd-Q5790-debut",
+"nom": "Yadava Dynasty",
+"op": "debut",
+"origine": 1188,
+"vers": 1173,
+"auto": true,
+"source": {
+"type": "wikidata",
+"qid": "Q5790",
+"propriete": "P571"
+},
+"statut": "appliquee",
+"detail": ""
+},
+{
 "id": "wd-Q6151113-debut",
 "nom": "Shunten Dynasty",
 "op": "debut",
@@ -2194,21 +2629,6 @@
 },
 "statut": "appliquee",
 "detail": "déduit : Holy Roman Empire (changement de forme avancé)"
-},
-{
-"id": "wd-Q239502-debut",
-"nom": "Principality of Galicia-Volhynia",
-"op": "debut",
-"origine": 1202,
-"vers": 1199,
-"auto": true,
-"source": {
-"type": "wikidata",
-"qid": "Q239502",
-"propriete": "P571"
-},
-"statut": "appliquee",
-"detail": "déduit : Principality of Halych (s'arrête la veille) ; Principality of Volhynia (s'arrête la veille)"
 },
 {
 "id": "wd-Q178913-debut",
@@ -2316,6 +2736,21 @@
 "detail": ""
 },
 {
+"id": "wd-Q847420-debut",
+"nom": "Mamluk Dynasty",
+"op": "debut",
+"origine": 1210,
+"vers": 1206,
+"auto": true,
+"source": {
+"type": "wikidata",
+"qid": "Q847420",
+"propriete": "P571"
+},
+"statut": "appliquee",
+"detail": ""
+},
+{
 "id": "wd-Q777981-debut",
 "nom": "Duchy of the Archipelago",
 "op": "debut",
@@ -2361,6 +2796,21 @@
 "detail": "déduit : Kingdom of Castile (s'arrête la veille) ; Kingdom of León (s'arrête la veille)"
 },
 {
+"id": "wd-Q623151-debut",
+"nom": "Empire of Thessalonica",
+"op": "debut",
+"origine": 1236,
+"vers": 1224,
+"auto": true,
+"source": {
+"type": "wikidata",
+"qid": "Q623151",
+"propriete": "P571"
+},
+"statut": "appliquee",
+"detail": ""
+},
+{
 "id": "wd-Q184536-debut",
 "nom": "Mali Empire",
 "op": "debut",
@@ -2374,6 +2824,21 @@
 },
 "statut": "appliquee",
 "detail": "déduit : Sosso Empire (s'arrête la veille) ; Takrur (s'arrête la veille)"
+},
+{
+"id": "wd-Q3136869-debut",
+"nom": "Kingdom of Dambadeniya",
+"op": "debut",
+"origine": 1236,
+"vers": 1220,
+"auto": true,
+"source": {
+"type": "wikidata",
+"qid": "Q3136869",
+"propriete": "P571"
+},
+"statut": "appliquee",
+"detail": ""
 },
 {
 "id": "wd-Q752662-debut",
@@ -2449,21 +2914,6 @@
 },
 "statut": "appliquee",
 "detail": "déduit : Khmer Empire (changement de forme avancé)"
-},
-{
-"id": "wd-Q939200-debut",
-"nom": "House of Anjou-Sicily",
-"op": "debut",
-"origine": 1272,
-"vers": 1266,
-"auto": true,
-"source": {
-"type": "wikidata",
-"qid": "Q939200",
-"propriete": "P571"
-},
-"statut": "appliquee",
-"detail": "déduit : Despotate of Epirus (changement de forme avancé)"
 },
 {
 "id": "wd-Q207521-debut",
@@ -2676,19 +3126,19 @@
 "detail": "déduit : Malaya (changement de forme avancé)"
 },
 {
-"id": "wd-Q1968654-debut",
-"nom": "Beylik of Saruhan",
+"id": "wd-Q1501196-debut",
+"nom": "Catalan Company",
 "op": "debut",
 "origine": 1314,
-"vers": 1313,
+"vers": 1302,
 "auto": true,
 "source": {
 "type": "wikidata",
-"qid": "Q1968654",
+"qid": "Q1501196",
 "propriete": "P571"
 },
 "statut": "appliquee",
-"detail": "déduit : Byzantine Empire (changement de forme avancé)"
+"detail": ""
 },
 {
 "id": "wd-Q3446213-debut",
@@ -2976,6 +3426,21 @@
 "detail": "déduit : Khmer Empire (changement de forme avancé)"
 },
 {
+"id": "wd-Q10957559-debut",
+"nom": "Principality of Moldavia",
+"op": "debut",
+"origine": 1363,
+"vers": 1346,
+"auto": true,
+"source": {
+"type": "wikidata",
+"qid": "Q10957559",
+"propriete": "P571"
+},
+"statut": "appliquee",
+"detail": ""
+},
+{
 "id": "wd-Q9903-debut",
 "nom": "Ming Dynasty",
 "op": "debut",
@@ -3000,6 +3465,21 @@
 "source": {
 "type": "wikidata",
 "qid": "Q484195",
+"propriete": "P571"
+},
+"statut": "appliquee",
+"detail": ""
+},
+{
+"id": "wd-Q2331954-debut",
+"nom": "Despotate of Arta",
+"op": "debut",
+"origine": 1375,
+"vers": 1358,
+"auto": true,
+"source": {
+"type": "wikidata",
+"qid": "Q2331954",
 "propriete": "P571"
 },
 "statut": "appliquee",
@@ -3060,6 +3540,21 @@
 "source": {
 "type": "wikidata",
 "qid": "Q167134",
+"propriete": "P571"
+},
+"statut": "appliquee",
+"detail": ""
+},
+{
+"id": "wd-Q153529-debut",
+"nom": "Duchy of Milan",
+"op": "debut",
+"origine": 1402,
+"vers": 1395,
+"auto": true,
+"source": {
+"type": "wikidata",
+"qid": "Q153529",
 "propriete": "P571"
 },
 "statut": "appliquee",
@@ -3171,6 +3666,21 @@
 "detail": "déduit : Duchy of Milan (s'arrête la veille)"
 },
 {
+"id": "wd-Q631210-debut",
+"nom": "Nogai Horde",
+"op": "debut",
+"origine": 1450,
+"vers": 1440,
+"auto": true,
+"source": {
+"type": "wikidata",
+"qid": "Q631210",
+"propriete": "P571"
+},
+"statut": "appliquee",
+"detail": "déduit : Golden Horde (changement de forme avancé)"
+},
+{
 "id": "wd-Q160440-debut",
 "nom": "Crimean Khanate",
 "op": "debut",
@@ -3183,7 +3693,22 @@
 "propriete": "P571"
 },
 "statut": "appliquee",
-"detail": "déduit : Blue Horde (s'arrête la veille) ; Golden Horde (changement de forme avancé)"
+"detail": "déduit : Blue Horde (s'arrête la veille)"
+},
+{
+"id": "wd-Q106311455-debut",
+"nom": "Duchy of Saint Sava",
+"op": "debut",
+"origine": 1453,
+"vers": 1448,
+"auto": true,
+"source": {
+"type": "wikidata",
+"qid": "Q106311455",
+"propriete": "P571"
+},
+"statut": "appliquee",
+"detail": ""
 },
 {
 "id": "wd-Q11709-debut",
@@ -3259,6 +3784,21 @@
 },
 "statut": "appliquee",
 "detail": "déduit : Ashikaga Shogunate (changement de forme avancé)"
+},
+{
+"id": "wd-Q1760473-debut",
+"nom": "Principality of Abkhazia",
+"op": "debut",
+"origine": 1468,
+"vers": 1463,
+"auto": true,
+"source": {
+"type": "wikidata",
+"qid": "Q1760473",
+"propriete": "P571"
+},
+"statut": "appliquee",
+"detail": ""
 },
 {
 "id": "wd-Q1209822-debut",
@@ -3411,6 +3951,21 @@
 "detail": "déduit : Teutonic Order (s'arrête la veille)"
 },
 {
+"id": "wd-Q33296-debut",
+"nom": "Mughal Empire",
+"op": "debut",
+"origine": 1529,
+"vers": 1526,
+"auto": true,
+"source": {
+"type": "wikidata",
+"qid": "Q33296",
+"propriete": "P571"
+},
+"statut": "appliquee",
+"detail": ""
+},
+{
 "id": "wd-Q1317991-debut",
 "nom": "Đại Việt",
 "op": "debut",
@@ -3424,6 +3979,21 @@
 },
 "statut": "appliquee",
 "detail": "déduit : Lê Dynasty (s'arrête la veille)"
+},
+{
+"id": "wd-Q625380-debut",
+"nom": "Eastern Hungarian Kingdom",
+"op": "debut",
+"origine": 1529,
+"vers": 1526,
+"auto": true,
+"source": {
+"type": "wikidata",
+"qid": "Q625380",
+"propriete": "P571"
+},
+"statut": "appliquee",
+"detail": ""
 },
 {
 "id": "wd-Q734867-debut",
@@ -3486,6 +4056,21 @@
 "detail": ""
 },
 {
+"id": "wd-Q1136188-debut",
+"nom": "Saadi Sultanate",
+"op": "debut",
+"origine": 1556,
+"vers": 1549,
+"auto": true,
+"source": {
+"type": "wikidata",
+"qid": "Q1136188",
+"propriete": "P571"
+},
+"statut": "appliquee",
+"detail": ""
+},
+{
 "id": "wd-Q172107-debut",
 "nom": "Polish-Lithuanian Commonwealth",
 "op": "debut",
@@ -3514,6 +4099,21 @@
 },
 "statut": "appliquee",
 "detail": "déduit : Eastern Hungarian Kingdom (s'arrête la veille)"
+},
+{
+"id": "wd-Q2301908-debut",
+"nom": "Nguyễn lords",
+"op": "debut",
+"origine": 1572,
+"vers": 1558,
+"auto": true,
+"source": {
+"type": "wikidata",
+"qid": "Q2301908",
+"propriete": "P571"
+},
+"statut": "appliquee",
+"detail": ""
 },
 {
 "id": "wd-Q170072-debut",
@@ -3621,6 +4221,36 @@
 "detail": "déduit : Duchy of Prussia (s'arrête la veille) ; Electorate of Brandenburg (s'arrête la veille)"
 },
 {
+"id": "wd-Q3109927-debut",
+"nom": "Sultanate of Sambas",
+"op": "debut",
+"origine": 1619,
+"vers": 1609,
+"auto": true,
+"source": {
+"type": "wikidata",
+"qid": "Q3109927",
+"propriete": "P571"
+},
+"statut": "appliquee",
+"detail": ""
+},
+{
+"id": "wd-Q2817348-debut",
+"nom": "Sultanate of Bima",
+"op": "debut",
+"origine": 1626,
+"vers": 1621,
+"auto": true,
+"source": {
+"type": "wikidata",
+"qid": "Q2817348",
+"propriete": "P571"
+},
+"statut": "appliquee",
+"detail": ""
+},
+{
 "id": "wd-Q4210248-debut",
 "nom": "Kalmyk Khanate",
 "op": "debut",
@@ -3726,6 +4356,21 @@
 "detail": "déduit : Swedish Empire (changement de forme avancé)"
 },
 {
+"id": "wd-Q646374-debut",
+"nom": "French India",
+"op": "debut",
+"origine": 1673,
+"vers": 1668,
+"auto": true,
+"source": {
+"type": "wikidata",
+"qid": "Q646374",
+"propriete": "P571"
+},
+"statut": "appliquee",
+"detail": ""
+},
+{
 "id": "wd-Q83618-debut",
 "nom": "Maratha Empire",
 "op": "debut",
@@ -3799,6 +4444,21 @@
 },
 "statut": "appliquee",
 "detail": "déduit : Ottoman Empire (changement de forme avancé)"
+},
+{
+"id": "wd-Q10543737-debut",
+"nom": "Pro-Swedish Poland",
+"op": "debut",
+"origine": 1706,
+"vers": 1701,
+"auto": true,
+"source": {
+"type": "wikidata",
+"qid": "Q10543737",
+"propriete": "P580"
+},
+"statut": "appliquee",
+"detail": ""
 },
 {
 "id": "wd-Q762084-debut",
@@ -4071,19 +4731,19 @@
 "detail": "déduit : Swiss Confederation (s'arrête la veille)"
 },
 {
-"id": "wd-Q175881-debut",
-"nom": "Revolutionary Roman Republic",
+"id": "wd-Q877619-debut",
+"nom": "French Consulate",
 "op": "debut",
-"origine": 1799,
-"vers": 1798,
+"origine": 1800,
+"vers": 1799,
 "auto": true,
 "source": {
 "type": "wikidata",
-"qid": "Q175881",
+"qid": "Q877619",
 "propriete": "P571"
 },
 "statut": "appliquee",
-"detail": "déduit : Papal States (s'arrête la veille)"
+"detail": ""
 },
 {
 "id": "wd-Q223793-debut",
@@ -4101,36 +4761,6 @@
 "detail": "déduit : Habsburg Monarchy (changement de forme avancé)"
 },
 {
-"id": "wd-Q71084-debut",
-"nom": "First French Empire",
-"op": "debut",
-"origine": 1805,
-"vers": 1804,
-"auto": true,
-"source": {
-"type": "wikidata",
-"qid": "Q71084",
-"propriete": "P571"
-},
-"statut": "appliquee",
-"detail": "déduit : French Consulate (s'arrête la veille) ; Kingdom of Hanover (s'arrête la veille) ; Ligurian Republic (s'arrête la veille)"
-},
-{
-"id": "wd-Q2006756-debut",
-"nom": "Empire of Haiti",
-"op": "debut",
-"origine": 1805,
-"vers": 1804,
-"auto": true,
-"source": {
-"type": "wikidata",
-"qid": "Q2006756",
-"propriete": "P571"
-},
-"statut": "appliquee",
-"detail": ""
-},
-{
 "id": "wd-Q600524-debut",
 "nom": "Sokoto Caliphate",
 "op": "debut",
@@ -4146,15 +4776,90 @@
 "detail": ""
 },
 {
-"id": "wd-Q71084-debut",
-"nom": "First French colonial empire",
+"id": "wd-Q701969-debut",
+"nom": "Principality of Regensberg",
 "op": "debut",
-"origine": 1805,
+"origine": 1806,
+"vers": 1803,
+"auto": true,
+"source": {
+"type": "wikidata",
+"qid": "Q701969",
+"propriete": "P571"
+},
+"statut": "appliquee",
+"detail": ""
+},
+{
+"id": "wd-Q131964-debut",
+"nom": "Austrian Empire",
+"op": "debut",
+"origine": 1806,
 "vers": 1804,
 "auto": true,
 "source": {
 "type": "wikidata",
-"qid": "Q71084",
+"qid": "Q131964",
+"propriete": "P571"
+},
+"statut": "appliquee",
+"detail": ""
+},
+{
+"id": "wd-Q152115-debut",
+"nom": "Duchy of Warsaw",
+"op": "debut",
+"origine": 1809,
+"vers": 1807,
+"auto": true,
+"source": {
+"type": "wikidata",
+"qid": "Q152115",
+"propriete": "P571"
+},
+"statut": "appliquee",
+"detail": ""
+},
+{
+"id": "wd-Q153943-debut",
+"nom": "Kingdom of Westphalia",
+"op": "debut",
+"origine": 1809,
+"vers": 1807,
+"auto": true,
+"source": {
+"type": "wikidata",
+"qid": "Q153943",
+"propriete": "P571"
+},
+"statut": "appliquee",
+"detail": ""
+},
+{
+"id": "wd-Q154741-debut",
+"nom": "Confederation of the Rhine",
+"op": "debut",
+"origine": 1809,
+"vers": 1806,
+"auto": true,
+"source": {
+"type": "wikidata",
+"qid": "Q154741",
+"propriete": "P571"
+},
+"statut": "appliquee",
+"detail": ""
+},
+{
+"id": "wd-Q298-debut",
+"nom": "Republic of Chile",
+"op": "debut",
+"origine": 1812,
+"vers": 1810,
+"auto": true,
+"source": {
+"type": "wikidata",
+"qid": "Q298",
 "propriete": "P571"
 },
 "statut": "appliquee",
@@ -4174,6 +4879,21 @@
 },
 "statut": "appliquee",
 "detail": "déduit : First French Empire (changement de forme avancé)"
+},
+{
+"id": "wd-Q62589-debut",
+"nom": "United Kingdoms of Sweden and Norway",
+"op": "debut",
+"origine": 1815,
+"vers": 1814,
+"auto": true,
+"source": {
+"type": "wikidata",
+"qid": "Q62589",
+"propriete": "P571"
+},
+"statut": "appliquee",
+"detail": ""
 },
 {
 "id": "wd-Q635394-debut",
@@ -4221,6 +4941,21 @@
 "detail": "déduit : German Confederation (changement de forme avancé)"
 },
 {
+"id": "wd-Q199821-debut",
+"nom": "Gran Colombia",
+"op": "debut",
+"origine": 1822,
+"vers": 1819,
+"auto": true,
+"source": {
+"type": "wikidata",
+"qid": "Q199821",
+"propriete": "P571"
+},
+"statut": "appliquee",
+"detail": ""
+},
+{
 "id": "wd-Q419-debut",
 "nom": "Republic of Peru",
 "op": "debut",
@@ -4266,6 +5001,21 @@
 "detail": ""
 },
 {
+"id": "wd-Q77-debut",
+"nom": "Oriental Republic of Uruguay",
+"op": "debut",
+"origine": 1828,
+"vers": 1825,
+"auto": true,
+"source": {
+"type": "wikidata",
+"qid": "Q77",
+"propriete": "P571"
+},
+"statut": "appliquee",
+"detail": ""
+},
+{
 "id": "wd-Q832554-debut",
 "nom": "Argentine Confederation",
 "op": "debut",
@@ -4290,6 +5040,21 @@
 "source": {
 "type": "wikidata",
 "qid": "Q630882",
+"propriete": "P571"
+},
+"statut": "appliquee",
+"detail": ""
+},
+{
+"id": "wd-Q736-debut",
+"nom": "Republic of Ecuador",
+"op": "debut",
+"origine": 1834,
+"vers": 1830,
+"auto": true,
+"source": {
+"type": "wikidata",
+"qid": "Q736",
 "propriete": "P571"
 },
 "statut": "appliquee",
@@ -4416,6 +5181,21 @@
 "detail": "déduit : Argentine Confederation (changement de forme avancé)"
 },
 {
+"id": "wd-Q33788-debut",
+"nom": "New Caledonia",
+"op": "debut",
+"origine": 1856,
+"vers": 1853,
+"auto": true,
+"source": {
+"type": "wikidata",
+"qid": "Q33788",
+"propriete": "P571"
+},
+"statut": "appliquee",
+"detail": ""
+},
+{
 "id": "wd-Q218023-debut",
 "nom": "Free Orange State",
 "op": "debut",
@@ -4429,6 +5209,21 @@
 },
 "statut": "appliquee",
 "detail": "déduit : British Cape Colony (changement de forme avancé)"
+},
+{
+"id": "wd-Q550374-debut",
+"nom": "South African Republic",
+"op": "debut",
+"origine": 1856,
+"vers": 1852,
+"auto": true,
+"source": {
+"type": "wikidata",
+"qid": "Q550374",
+"propriete": "P571"
+},
+"statut": "appliquee",
+"detail": ""
 },
 {
 "id": "wd-Q129286-debut",
@@ -4461,6 +5256,21 @@
 "detail": "déduit : Republic of New Granada (s'arrête la veille)"
 },
 {
+"id": "wd-Q371334-debut",
+"nom": "Second Mexican Empire",
+"op": "debut",
+"origine": 1865,
+"vers": 1864,
+"auto": true,
+"source": {
+"type": "wikidata",
+"qid": "Q371334",
+"propriete": "P571"
+},
+"statut": "appliquee",
+"detail": ""
+},
+{
 "id": "wd-Q150981-debut",
 "nom": "North German Confederation",
 "op": "debut",
@@ -4476,19 +5286,19 @@
 "detail": "déduit : Electorate of Hesse (s'arrête la veille) ; German Confederation (s'arrête la veille)"
 },
 {
-"id": "wd-Q28513-debut",
-"nom": "Austria-Hungary",
+"id": "wd-Q70802-debut",
+"nom": "French Third Republic",
 "op": "debut",
-"origine": 1868,
-"vers": 1867,
+"origine": 1871,
+"vers": 1870,
 "auto": true,
 "source": {
 "type": "wikidata",
-"qid": "Q28513",
+"qid": "Q70802",
 "propriete": "P571"
 },
 "statut": "appliquee",
-"detail": "déduit : Austrian Empire (s'arrête la veille)"
+"detail": ""
 },
 {
 "id": "wd-Q815731-debut",
@@ -4536,6 +5346,36 @@
 "detail": ""
 },
 {
+"id": "wd-Q926295-debut",
+"nom": "Italian Africa",
+"op": "debut",
+"origine": 1890,
+"vers": 1882,
+"auto": true,
+"source": {
+"type": "wikidata",
+"qid": "Q926295",
+"propriete": "P571"
+},
+"statut": "appliquee",
+"detail": ""
+},
+{
+"id": "wd-Q3125368-debut",
+"nom": "Mahdist State",
+"op": "debut",
+"origine": 1890,
+"vers": 1885,
+"auto": true,
+"source": {
+"type": "wikidata",
+"qid": "Q3125368",
+"propriete": "P571"
+},
+"statut": "appliquee",
+"detail": ""
+},
+{
 "id": "wd-Q1057542-debut",
 "nom": "Republic of Hawai'i",
 "op": "debut",
@@ -4564,6 +5404,21 @@
 },
 "statut": "appliquee",
 "detail": "déduit : Joseon (s'arrête la veille)"
+},
+{
+"id": "wd-Q241-debut",
+"nom": "Republic of Cuba",
+"op": "debut",
+"origine": 1905,
+"vers": 1898,
+"auto": true,
+"source": {
+"type": "wikidata",
+"qid": "Q241",
+"propriete": "P571"
+},
+"statut": "appliquee",
+"detail": ""
 },
 {
 "id": "wd-Q408-debut",
@@ -4611,6 +5466,156 @@
 "detail": "déduit : Kingdom of Portugal (changement de forme avancé) ; Portuguese Colonies (s'arrête la veille)"
 },
 {
+"id": "wd-Q56282578-debut",
+"nom": "Republic of Uryankhay",
+"op": "debut",
+"origine": 1912,
+"vers": 1911,
+"auto": true,
+"source": {
+"type": "wikidata",
+"qid": "Q56282578",
+"propriete": "P571"
+},
+"statut": "appliquee",
+"detail": ""
+},
+{
+"id": "wd-Q175379-debut",
+"nom": "Empire of China",
+"op": "debut",
+"origine": 1916,
+"vers": 1915,
+"auto": true,
+"source": {
+"type": "wikidata",
+"qid": "Q175379",
+"propriete": "P571"
+},
+"statut": "appliquee",
+"detail": "déduit : Republic of China (s'arrête la veille)"
+},
+{
+"id": "wd-Q33-debut",
+"nom": "Republic of Finland",
+"op": "debut",
+"origine": 1918,
+"vers": 1917,
+"auto": true,
+"source": {
+"type": "wikidata",
+"qid": "Q33",
+"propriete": "P571"
+},
+"statut": "appliquee",
+"detail": ""
+},
+{
+"id": "wd-Q33946-debut",
+"nom": "Czechoslovakia",
+"op": "debut",
+"origine": 1919,
+"vers": 1918,
+"auto": true,
+"source": {
+"type": "wikidata",
+"qid": "Q33946",
+"propriete": "P571"
+},
+"statut": "appliquee",
+"detail": ""
+},
+{
+"id": "wd-Q191-debut",
+"nom": "Estonia",
+"op": "debut",
+"origine": 1919,
+"vers": 1918,
+"auto": true,
+"source": {
+"type": "wikidata",
+"qid": "Q191",
+"propriete": "P571"
+},
+"statut": "appliquee",
+"detail": ""
+},
+{
+"id": "wd-Q40-debut",
+"nom": "Republic of Austria",
+"op": "debut",
+"origine": 1919,
+"vers": 1918,
+"auto": true,
+"source": {
+"type": "wikidata",
+"qid": "Q40",
+"propriete": "P571"
+},
+"statut": "appliquee",
+"detail": ""
+},
+{
+"id": "wd-Q207272-debut",
+"nom": "Second Polish Republic",
+"op": "debut",
+"origine": 1919,
+"vers": 1918,
+"auto": true,
+"source": {
+"type": "wikidata",
+"qid": "Q207272",
+"propriete": "P571"
+},
+"statut": "appliquee",
+"detail": ""
+},
+{
+"id": "wd-Q1508143-debut",
+"nom": "Ukrainian People's Republic",
+"op": "debut",
+"origine": 1919,
+"vers": 1918,
+"auto": true,
+"source": {
+"type": "wikidata",
+"qid": "Q1508143",
+"propriete": "P571"
+},
+"statut": "appliquee",
+"detail": ""
+},
+{
+"id": "wd-Q41304-debut",
+"nom": "Weimar Republic",
+"op": "debut",
+"origine": 1920,
+"vers": 1918,
+"auto": true,
+"source": {
+"type": "wikidata",
+"qid": "Q41304",
+"propriete": "P571"
+},
+"statut": "appliquee",
+"detail": ""
+},
+{
+"id": "wd-Q211-debut",
+"nom": "Republic of Latvia",
+"op": "debut",
+"origine": 1920,
+"vers": 1918,
+"auto": true,
+"source": {
+"type": "wikidata",
+"qid": "Q211",
+"propriete": "P571"
+},
+"statut": "appliquee",
+"detail": ""
+},
+{
 "id": "wd-Q1381504-debut",
 "nom": "Provisional Priamurye Government",
 "op": "debut",
@@ -4656,6 +5661,21 @@
 "detail": "déduit : Ottoman Empire (s'arrête la veille)"
 },
 {
+"id": "wd-Q212056-debut",
+"nom": "Mongolian People's Republic",
+"op": "debut",
+"origine": 1926,
+"vers": 1924,
+"auto": true,
+"source": {
+"type": "wikidata",
+"qid": "Q212056",
+"propriete": "P571"
+},
+"statut": "appliquee",
+"detail": ""
+},
+{
 "id": "wd-Q178038-debut",
 "nom": "Second Spanish Republic",
 "op": "debut",
@@ -4684,6 +5704,126 @@
 },
 "statut": "appliquee",
 "detail": "déduit : Weimar Republic (s'arrête la veille)"
+},
+{
+"id": "wd-Q252-debut",
+"nom": "Republic of Indonesia",
+"op": "debut",
+"origine": 1946,
+"vers": 1945,
+"auto": true,
+"source": {
+"type": "wikidata",
+"qid": "Q252",
+"propriete": "P571"
+},
+"statut": "appliquee",
+"detail": ""
+},
+{
+"id": "wd-Q189-debut",
+"nom": "Republic of Iceland",
+"op": "debut",
+"origine": 1946,
+"vers": 1944,
+"auto": true,
+"source": {
+"type": "wikidata",
+"qid": "Q189",
+"propriete": "P571"
+},
+"statut": "appliquee",
+"detail": ""
+},
+{
+"id": "wd-Q810-debut",
+"nom": "Kingdom of Jordan",
+"op": "debut",
+"origine": 1947,
+"vers": 1946,
+"auto": true,
+"source": {
+"type": "wikidata",
+"qid": "Q810",
+"propriete": "P571"
+},
+"statut": "appliquee",
+"detail": ""
+},
+{
+"id": "wd-Q928-debut",
+"nom": "Republic of the Philippines",
+"op": "debut",
+"origine": 1947,
+"vers": 1946,
+"auto": true,
+"source": {
+"type": "wikidata",
+"qid": "Q928",
+"propriete": "P571"
+},
+"statut": "appliquee",
+"detail": ""
+},
+{
+"id": "wd-Q121932-debut",
+"nom": "People's Republic of Bulgaria",
+"op": "debut",
+"origine": 1948,
+"vers": 1946,
+"auto": true,
+"source": {
+"type": "wikidata",
+"qid": "Q121932",
+"propriete": "P571"
+},
+"statut": "appliquee",
+"detail": ""
+},
+{
+"id": "wd-Q664-debut",
+"nom": "New Zealand",
+"op": "debut",
+"origine": 1948,
+"vers": 1947,
+"auto": true,
+"source": {
+"type": "wikidata",
+"qid": "Q664",
+"propriete": "P571"
+},
+"statut": "appliquee",
+"detail": ""
+},
+{
+"id": "wd-Q16410-debut",
+"nom": "Hungarian People's Republic",
+"op": "debut",
+"origine": 1950,
+"vers": 1949,
+"auto": true,
+"source": {
+"type": "wikidata",
+"qid": "Q16410",
+"propriete": "P571"
+},
+"statut": "appliquee",
+"detail": "déduit : Hungary (s'arrête la veille)"
+},
+{
+"id": "wd-Q713750-debut",
+"nom": "Federal Republic of Germany",
+"op": "debut",
+"origine": 1950,
+"vers": 1949,
+"auto": true,
+"source": {
+"type": "wikidata",
+"qid": "Q713750",
+"propriete": "P571"
+},
+"statut": "appliquee",
+"detail": ""
 },
 {
 "id": "wd-Q31454-debut",
@@ -4729,6 +5869,141 @@
 },
 "statut": "appliquee",
 "detail": "déduit : French Fifth Republic (changement de forme avancé)"
+},
+{
+"id": "wd-Q962-debut",
+"nom": "Republic of Benin",
+"op": "debut",
+"origine": 1961,
+"vers": 1960,
+"auto": true,
+"source": {
+"type": "wikidata",
+"qid": "Q962",
+"propriete": "P571"
+},
+"statut": "appliquee",
+"detail": "déduit : French Fifth Republic (changement de forme avancé)"
+},
+{
+"id": "wd-Q1025-debut",
+"nom": "Mauritania",
+"op": "debut",
+"origine": 1961,
+"vers": 1960,
+"auto": true,
+"source": {
+"type": "wikidata",
+"qid": "Q1025",
+"propriete": "P571"
+},
+"statut": "appliquee",
+"detail": ""
+},
+{
+"id": "wd-Q929-debut",
+"nom": "Central African Republic",
+"op": "debut",
+"origine": 1961,
+"vers": 1960,
+"auto": true,
+"source": {
+"type": "wikidata",
+"qid": "Q929",
+"propriete": "P571"
+},
+"statut": "appliquee",
+"detail": ""
+},
+{
+"id": "wd-Q965-debut",
+"nom": "Burkina Faso",
+"op": "debut",
+"origine": 1961,
+"vers": 1960,
+"auto": true,
+"source": {
+"type": "wikidata",
+"qid": "Q965",
+"propriete": "P571"
+},
+"statut": "appliquee",
+"detail": ""
+},
+{
+"id": "wd-Q1000-debut",
+"nom": "Gabon",
+"op": "debut",
+"origine": 1961,
+"vers": 1960,
+"auto": true,
+"source": {
+"type": "wikidata",
+"qid": "Q1000",
+"propriete": "P571"
+},
+"statut": "appliquee",
+"detail": ""
+},
+{
+"id": "wd-Q657-debut",
+"nom": "Republic of Chad",
+"op": "debut",
+"origine": 1961,
+"vers": 1960,
+"auto": true,
+"source": {
+"type": "wikidata",
+"qid": "Q657",
+"propriete": "P571"
+},
+"statut": "appliquee",
+"detail": ""
+},
+{
+"id": "wd-Q1008-debut",
+"nom": "Republic of Côte d'Ivoire",
+"op": "debut",
+"origine": 1961,
+"vers": 1960,
+"auto": true,
+"source": {
+"type": "wikidata",
+"qid": "Q1008",
+"propriete": "P571"
+},
+"statut": "appliquee",
+"detail": ""
+},
+{
+"id": "wd-Q1041-debut",
+"nom": "Republic of Senegal",
+"op": "debut",
+"origine": 1961,
+"vers": 1960,
+"auto": true,
+"source": {
+"type": "wikidata",
+"qid": "Q1041",
+"propriete": "P571"
+},
+"statut": "appliquee",
+"detail": "déduit : Mali Federation (changement de forme avancé)"
+},
+{
+"id": "wd-Q1032-debut",
+"nom": "Republic of the Niger",
+"op": "debut",
+"origine": 1961,
+"vers": 1960,
+"auto": true,
+"source": {
+"type": "wikidata",
+"qid": "Q1032",
+"propriete": "P571"
+},
+"statut": "appliquee",
+"detail": ""
 },
 {
 "id": "wd-Q262-debut",
@@ -4956,34 +6231,19 @@
 "detail": ""
 },
 {
-"id": "wd-Q1050-debut",
-"nom": "Eswatini",
+"id": "wd-Q199841-debut",
+"nom": "People's Democratic Republic of Yemen",
 "op": "debut",
 "origine": 1969,
-"vers": 1968,
+"vers": 1967,
 "auto": true,
 "source": {
 "type": "wikidata",
-"qid": "Q1050",
+"qid": "Q199841",
 "propriete": "P571"
 },
 "statut": "appliquee",
-"detail": "déduit : British East Africa (changement de forme avancé)"
-},
-{
-"id": "wd-Q983-debut",
-"nom": "Equatorial Guinea",
-"op": "debut",
-"origine": 1969,
-"vers": 1968,
-"auto": true,
-"source": {
-"type": "wikidata",
-"qid": "Q983",
-"propriete": "P571"
-},
-"statut": "appliquee",
-"detail": ""
+"detail": "déduit : Kingdom of Great Britain (changement de forme avancé)"
 },
 {
 "id": "wd-Q1027-debut",
@@ -5014,21 +6274,6 @@
 },
 "statut": "appliquee",
 "detail": "déduit : Democratic Republic of the Congo (s'arrête la veille)"
-},
-{
-"id": "wd-Q398-debut",
-"nom": "Kingdom of Bahrain",
-"op": "debut",
-"origine": 1973,
-"vers": 1971,
-"auto": true,
-"source": {
-"type": "wikidata",
-"qid": "Q398",
-"propriete": "P571"
-},
-"statut": "appliquee",
-"detail": ""
 },
 {
 "id": "wd-Q902-debut",
@@ -5181,21 +6426,6 @@
 "detail": ""
 },
 {
-"id": "wd-Q889-debut",
-"nom": "Afghanistan",
-"op": "debut",
-"origine": 1979,
-"vers": 1978,
-"auto": true,
-"source": {
-"type": "wikidata",
-"qid": "Q889",
-"propriete": "P571"
-},
-"statut": "appliquee",
-"detail": "déduit : Republic of Afghanistan (s'arrête la veille)"
-},
-{
 "id": "wd-Q977-debut",
 "nom": "Republic of Djibouti",
 "op": "debut",
@@ -5284,6 +6514,171 @@
 },
 "statut": "appliquee",
 "detail": "déduit : New Hebrides (s'arrête la veille)"
+},
+{
+"id": "wd-Q232-debut",
+"nom": "Kazakhstan",
+"op": "debut",
+"origine": 1992,
+"vers": 1991,
+"auto": true,
+"source": {
+"type": "wikidata",
+"qid": "Q232",
+"propriete": "P571"
+},
+"statut": "appliquee",
+"detail": ""
+},
+{
+"id": "wd-Q224-debut",
+"nom": "Republic of Croatia",
+"op": "debut",
+"origine": 1992,
+"vers": 1991,
+"auto": true,
+"source": {
+"type": "wikidata",
+"qid": "Q224",
+"propriete": "P571"
+},
+"statut": "appliquee",
+"detail": ""
+},
+{
+"id": "wd-Q265-debut",
+"nom": "Republic of Uzbekistan",
+"op": "debut",
+"origine": 1992,
+"vers": 1991,
+"auto": true,
+"source": {
+"type": "wikidata",
+"qid": "Q265",
+"propriete": "P571"
+},
+"statut": "appliquee",
+"detail": ""
+},
+{
+"id": "wd-Q159-debut",
+"nom": "Russian Federation",
+"op": "debut",
+"origine": 1992,
+"vers": 1991,
+"auto": true,
+"source": {
+"type": "wikidata",
+"qid": "Q159",
+"propriete": "P571"
+},
+"statut": "appliquee",
+"detail": ""
+},
+{
+"id": "wd-Q221-debut",
+"nom": "Former Yugoslav Republic of Macedonia",
+"op": "debut",
+"origine": 1992,
+"vers": 1991,
+"auto": true,
+"source": {
+"type": "wikidata",
+"qid": "Q221",
+"propriete": "P571"
+},
+"statut": "appliquee",
+"detail": ""
+},
+{
+"id": "wd-Q863-debut",
+"nom": "Republic of Tajikistan",
+"op": "debut",
+"origine": 1992,
+"vers": 1991,
+"auto": true,
+"source": {
+"type": "wikidata",
+"qid": "Q863",
+"propriete": "P571"
+},
+"statut": "appliquee",
+"detail": ""
+},
+{
+"id": "wd-Q813-debut",
+"nom": "Kyrgyzstan",
+"op": "debut",
+"origine": 1992,
+"vers": 1991,
+"auto": true,
+"source": {
+"type": "wikidata",
+"qid": "Q813",
+"propriete": "P571"
+},
+"statut": "appliquee",
+"detail": ""
+},
+{
+"id": "wd-Q184-debut",
+"nom": "Republic of Belarus",
+"op": "debut",
+"origine": 1992,
+"vers": 1991,
+"auto": true,
+"source": {
+"type": "wikidata",
+"qid": "Q184",
+"propriete": "P571"
+},
+"statut": "appliquee",
+"detail": ""
+},
+{
+"id": "wd-Q217-debut",
+"nom": "Republic of Moldova",
+"op": "debut",
+"origine": 1992,
+"vers": 1991,
+"auto": true,
+"source": {
+"type": "wikidata",
+"qid": "Q217",
+"propriete": "P571"
+},
+"statut": "appliquee",
+"detail": ""
+},
+{
+"id": "wd-Q215-debut",
+"nom": "Republic of Slovenia",
+"op": "debut",
+"origine": 1992,
+"vers": 1991,
+"auto": true,
+"source": {
+"type": "wikidata",
+"qid": "Q215",
+"propriete": "P571"
+},
+"statut": "appliquee",
+"detail": ""
+},
+{
+"id": "wd-Q874-debut",
+"nom": "Turkmenistan",
+"op": "debut",
+"origine": 1992,
+"vers": 1991,
+"auto": true,
+"source": {
+"type": "wikidata",
+"qid": "Q874",
+"propriete": "P571"
+},
+"statut": "appliquee",
+"detail": ""
 },
 {
 "id": "wd-Q42418-debut",
@@ -5616,7 +7011,7 @@
 "propriete": "P576"
 },
 "statut": "appliquee",
-"detail": "déduit : reprise avancée pour Later Zhao"
+"detail": "territoire repris par : Cheng Han, Western Jin, Former Liang, Later Zhao"
 },
 {
 "id": "wd-Q11774-fin",
@@ -5661,7 +7056,7 @@
 "propriete": "P576"
 },
 "statut": "appliquee",
-"detail": "territoire repris par : Former Liang, Former Yan, Western Jin, Former Qin"
+"detail": "déduit : reprise avancée pour Former Qin"
 },
 {
 "id": "wd-Q1472004-fin",
@@ -5766,7 +7161,7 @@
 "propriete": "P576"
 },
 "statut": "appliquee",
-"detail": "déduit : reprise avancée pour Northern Yan"
+"detail": "territoire repris par : Northern Wei, Goguryeo, Rouran Khaganate, Northern Yan"
 },
 {
 "id": "wd-Q1668970-fin",
@@ -5812,6 +7207,21 @@
 },
 "statut": "refusee",
 "detail": "territoire non repris entre 436 et 438 (aurait créé un trou)"
+},
+{
+"id": "wd-Q41761342-fin",
+"nom": "White Huns",
+"op": "fin",
+"origine": 560,
+"vers": 559,
+"auto": true,
+"source": {
+"type": "wikidata",
+"qid": "Q41761342",
+"propriete": "WP"
+},
+"statut": "appliquee",
+"detail": "déduit : reprise avancée pour Göktürk Khaganate"
 },
 {
 "id": "wd-Q1048918-fin",
@@ -5931,7 +7341,7 @@
 "propriete": "P576"
 },
 "statut": "appliquee",
-"detail": "territoire repris par : Goguryeo, Western Wei, Liang Dynasty, Rouran Khaganate"
+"detail": "déduit : reprise avancée pour Northern Qi"
 },
 {
 "id": "wd-Q105313-fin",
@@ -6504,6 +7914,21 @@
 "detail": "territoire non repris entre 933 et 935 (aurait créé un trou)"
 },
 {
+"id": "wd-Q5032034-fin",
+"nom": "Chandra Dynasty",
+"op": "fin",
+"origine": 1055,
+"vers": 1049,
+"auto": true,
+"source": {
+"type": "wikidata",
+"qid": "Q5032034",
+"propriete": "WP"
+},
+"statut": "refusee",
+"detail": "territoire non repris entre 1050 et 1055 (aurait créé un trou)"
+},
+{
 "id": "wd-Q1991742-fin",
 "nom": "Kingdom of Alba",
 "op": "fin",
@@ -6635,8 +8060,8 @@
 "qid": "Q1192347",
 "propriete": "P576"
 },
-"statut": "refusee",
-"detail": "territoire non repris entre 951 et 959 (aurait créé un trou)"
+"statut": "appliquee",
+"detail": "territoire repris par : Jingnan, Later Han, Southern Han, Southern Wu"
 },
 {
 "id": "wd-Q5228183-fin",
@@ -7101,7 +8526,7 @@
 "propriete": "P576"
 },
 "statut": "appliquee",
-"detail": "déduit : reprise avancée pour Kingdom of Africa"
+"detail": "territoire repris par : Fatimid Caliphate, Hammadid Dynasty, Kingdom of Africa"
 },
 {
 "id": "wd-Q1261908-fin",
@@ -7164,6 +8589,21 @@
 "detail": "déduit : reprise avancée pour Almoravid Dynasty"
 },
 {
+"id": "wd-Q2428714-fin",
+"nom": "Sena Dynasty",
+"op": "fin",
+"origine": 1235,
+"vers": 1229,
+"auto": true,
+"source": {
+"type": "wikidata",
+"qid": "Q2428714",
+"propriete": "WP"
+},
+"statut": "refusee",
+"detail": "territoire non repris entre 1230 et 1235 (aurait créé un trou)"
+},
+{
 "id": "wd-Q680530-fin",
 "nom": "Principality of Terebovlia",
 "op": "fin",
@@ -7192,6 +8632,21 @@
 },
 "statut": "refusee",
 "detail": "territoire non repris entre 1197 et 1201 (aurait créé un trou)"
+},
+{
+"id": "wd-Q230385-fin",
+"nom": "Zurayid dynasty",
+"op": "fin",
+"origine": 1176,
+"vers": 1173,
+"auto": true,
+"source": {
+"type": "wikidata",
+"qid": "Q230385",
+"propriete": "WP"
+},
+"statut": "appliquee",
+"detail": "territoire repris par : Ayyubid Sultanate"
 },
 {
 "id": "wd-Q846670-fin",
@@ -7326,7 +8781,7 @@
 "propriete": "P576"
 },
 "statut": "appliquee",
-"detail": "déduit : reprise avancée pour Kingdom of Portugal"
+"detail": "territoire repris par : Kingdom of Castile, Almoravid Dynasty, Kingdom of Portugal"
 },
 {
 "id": "wd-Q1317579-fin",
@@ -8211,7 +9666,7 @@
 "propriete": "P576"
 },
 "statut": "appliquee",
-"detail": "déduit : reprise avancée pour Saadi Sultanate"
+"detail": "territoire repris par : Portuguese Africa, Zayyanid dynasty, Spanish Empire, Saadi Sultanate"
 },
 {
 "id": "wd-Q2195101-fin",
@@ -8394,6 +9849,21 @@
 "detail": "territoire repris par : Polish-Lithuanian Commonwealth, Brandenburg-Prussia"
 },
 {
+"id": "wd-Q1530838-fin",
+"nom": "Nayaks of Madurai",
+"op": "fin",
+"origine": 1737,
+"vers": 1735,
+"auto": true,
+"source": {
+"type": "wikidata",
+"qid": "Q1530838",
+"propriete": "WP"
+},
+"statut": "appliquee",
+"detail": "déduit : reprise avancée pour Carnatic Sultanate"
+},
+{
 "id": "wd-Q625380-fin",
 "nom": "Eastern Hungarian Kingdom",
 "op": "fin",
@@ -8437,6 +9907,21 @@
 },
 "statut": "appliquee",
 "detail": "déduit : reprise avancée pour Portuguese Empire"
+},
+{
+"id": "wd-Q2267508-fin",
+"nom": "Trịnh lords",
+"op": "fin",
+"origine": 1787,
+"vers": 1786,
+"auto": true,
+"source": {
+"type": "wikidata",
+"qid": "Q2267508",
+"propriete": "WP"
+},
+"statut": "appliquee",
+"detail": "déduit : reprise avancée pour Qing Dynasty"
 },
 {
 "id": "wd-Q170072-fin",
@@ -8572,21 +10057,6 @@
 },
 "statut": "appliquee",
 "detail": "déduit : reprise avancée pour British Gold Coast"
-},
-{
-"id": "wd-Q4807130-fin",
-"nom": "Dutch Cape Colony",
-"op": "fin",
-"origine": 1795,
-"vers": 1794,
-"auto": true,
-"source": {
-"type": "wikidata",
-"qid": "Q4807130",
-"propriete": "P576"
-},
-"statut": "appliquee",
-"detail": "territoire repris par : British Cape Colony"
 },
 {
 "id": "wd-Q770833-fin",
@@ -8780,8 +10250,8 @@
 "qid": "Q877619",
 "propriete": "P576"
 },
-"statut": "appliquee",
-"detail": "territoire repris par : French India, Ashanti Empire, Kingdom of Sardinia, Electorate of Baden"
+"statut": "refusee",
+"detail": "territoire non repris entre 1804 et 1804 (aurait créé un trou)"
 },
 {
 "id": "wd-Q600524-fin",
@@ -8811,7 +10281,7 @@
 "propriete": "P576"
 },
 "statut": "appliquee",
-"detail": "territoire repris par : Montenegro, Serbs, United Principalities of Moldavia and Wallachia, Russian Empire"
+"detail": "déduit : reprise avancée pour Austria-Hungary"
 },
 {
 "id": "wd-Q157013-fin",
@@ -8885,8 +10355,8 @@
 "qid": "Q199821",
 "propriete": "P576"
 },
-"statut": "refusee",
-"detail": "territoire non repris entre 1831 et 1833 (aurait créé un trou)"
+"statut": "appliquee",
+"detail": "territoire repris par : United Provinces of Central America, Empire of Brazil, Republic of Peru, Republic of New Granada"
 },
 {
 "id": "wd-Q5362837-fin",
@@ -9216,6 +10686,6 @@
 "propriete": "P576"
 },
 "statut": "appliquee",
-"detail": "territoire repris par : People's Republic of China, Islamic Republic of Pakistan, Pahlavi Dynasty, Republic of India"
+"detail": "déduit : reprise avancée pour Afghanistan"
 }
 ]

@@ -32,6 +32,10 @@ from shapely.geometry import shape
 from shapely import make_valid
 
 SEUIL_REPRISE = 0.5   # part du territoire qui doit être reprise / remplacée pour déduire une date
+# Souplesse de la FENÊTRE (voir garde-fou 1). Le relevé « P » décrit la situation de l'année P, pas un instant précis :
+# un événement daté de l'année P elle-même peut donc être retenu. Un cran de plus (SOUPLESSE = 2) accepte aussi
+# l'intervalle précédent. 0 = ancien comportement (strict). Les formes ne changent pas : seule la date d'affichage bouge.
+SOUPLESSE = 2
 
 
 def lire_wikidata(chemin):
@@ -146,13 +150,21 @@ class Corrections:
             return None, pb
         if c["op"] == "debut":
             P = self.avant(c["origine"])
-            if P is None or not (P + 1 <= c["vers"] < c["origine"]):
+            bas = P
+            if P is not None and SOUPLESSE >= 2:
+                bas = self.avant(P) if self.avant(P) is not None else P
+            if SOUPLESSE == 0 and P is not None:
+                bas = P + 1
+            if P is None or not (bas <= c["vers"] < c["origine"]):
                 return None, "hors fenêtre ]%s ; %s[" % (P, c["origine"])
             if c["vers"] > l["a"]:
                 return None, "naissance après la fin de la ligne"
         else:
             P0 = self.dernier_instantane(c["origine"])
-            if P0 is None or not (P0 <= c["vers"] < c["origine"]):
+            bas = P0 - 1 if SOUPLESSE >= 1 else P0
+            if P0 is not None and SOUPLESSE >= 2 and self.avant(P0) is not None:
+                bas = self.avant(P0) - 1
+            if P0 is None or not (bas <= c["vers"] < c["origine"]):
                 return None, "hors fenêtre [%s ; %s[" % (P0, c["origine"])
             if c["vers"] < l["de"]:
                 return None, "fin avant le début de la ligne"

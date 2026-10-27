@@ -61,6 +61,8 @@ def main():
 
     with open(os.path.join(ICI, "wikidata_dates_brut.json"), encoding="utf8") as f:
         wd = json.load(f)
+    with open(os.path.join(ICI, "wikipedia_dates_brut.json"), encoding="utf8") as f:
+        wp = json.load(f)["valeurs"]    # {qid: [titre, année_début|null, année_fin|null]} (infobox Wikipédia, secours)
     with open(os.path.join(RACINE, "public", "data", "historique", "noms_fr.json"), encoding="utf8") as f:
         noms_fr = json.load(f)["fr"]
     with open(source, encoding="utf8") as f:
@@ -88,6 +90,7 @@ def main():
         premiere, derniere = lignes[0], lignes[-1]
         qid = qid_de.get(nom, "")
         w = wd.get(qid, {}) if qid else {}
+        freres = [n for n, q in qid_de.items() if q == qid and n != nom and n in moteur.par_nom] if qid else []
         for op, props, origine in (("debut", ("P571", "P580"), premiere["de0"]), ("fin", ("P576", "P582"), derniere["a0"])):
             vals = valeurs(w, props)
             info = {"nom": nom, "op": op, "qid": qid, "origine": origine, "wd": vals, "choix": None, "statut": "", "detail": ""}
@@ -95,13 +98,32 @@ def main():
             if not qid:
                 info["statut"], info["detail"] = "source manquante", "pas d'identifiant Wikidata dans Cliopatria"
                 continue
+            if freres:
+                # même identifiant Wikidata donné à plusieurs territoires de Cliopatria : la date n'appartient qu'à celui
+                # qui apparaît le premier (création) / disparaît le dernier (fin) ; en cas d'égalité, on ne tranche pas.
+                if op == "debut":
+                    mien, autres = origine, [moteur.par_nom[n][0]["de0"] for n in freres]
+                    ok = all(mien < a for a in autres)
+                else:
+                    mien, autres = origine, [moteur.par_nom[n][-1]["a0"] for n in freres]
+                    ok = all(mien > a for a in autres)
+                if not ok:
+                    info["statut"], info["detail"] = "source manquante", "identifiant Wikidata %s partagé par plusieurs territoires de Cliopatria : date non attribuable à celui-ci" % qid
+                    continue
+            exacte = [v for v in vals if v[1] >= PRECISION_MIN and v[0] >= 1]
+            if not exacte and qid in wp:
+                # secours : l'année de l'infobox Wikipédia (anglais), seulement si Wikidata n'a RIEN d'utilisable
+                a_wp = wp[qid][1 if op == "debut" else 2]
+                if a_wp is not None and a_wp >= 1:
+                    exacte = vals = [(a_wp, 9, False, 0, "WP")]
+                    info["wd"] = vals
+                    w = w or {"wp": True}
             if not w:
                 info["statut"], info["detail"] = "source manquante", "identifiant Wikidata sans date"
                 continue
             if not vals:
                 info["statut"], info["detail"] = "source manquante", "Wikidata ne donne pas de date de %s" % ("création" if op == "debut" else "fin")
                 continue
-            exacte = [v for v in vals if v[1] >= PRECISION_MIN and v[0] >= 1]
             if not exacte:
                 info["statut"], info["detail"] = "imprécis", "date Wikidata trop imprécise (siècle/décennie) ou avant J.-C."
                 continue
@@ -173,6 +195,10 @@ def main():
         source = lien_wikidata(info["qid"], info.get("prop", "P571" if op == "debut" else "P576")) if info["qid"] else ""
         fiab = "Wikidata, CC0 ; fiabilité variable selon la référence (voir Wikidata)"
         licence = "CC0" if info["qid"] else ""
+        if info.get("prop") == "WP":
+            source = "https://en.wikipedia.org/wiki/" + wp[info["qid"]][0].replace(" ", "_")
+            fiab = "Wikipédia (infobox, année seule) ; fiabilité moyenne, à recouper"
+            licence = "CC BY-SA 4.0"
         if r is not None:
             if r["statut"] == "appliquee":
                 statut = "appliquée"

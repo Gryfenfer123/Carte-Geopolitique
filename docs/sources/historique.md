@@ -32,3 +32,10 @@ Format : voir `README.md`. Consultation : 2026-10-23 et 2026-10-24.
 - `docs/sources/historique_dates_registre.csv` : une ligne par naissance, disparition ou changement de forme, avec date d'origine, date Wikidata, date finale, statut et lien précis (`wikidata.org/wiki/<Q>#<propriété>`).
 - Statuts : appliquée, identique, refusée (garde-fou), divergence (date hors fenêtre, probablement autre entité : non appliquée), imprécis, ambigu, source manquante, avancé (déduit). Les changements de forme internes sont « source manquante » : non sourcés, donc non modifiés.
 - Généré hors ligne par `scripts/historique/generer_registre_dates.py`.
+
+### Wikipédia en secours (2026-10-28)
+- `scripts/historique/wikipedia_dates_brut.json` : paramètres `year_start` / `year_end` de l'infobox de la page Wikipédia (anglais) liée à l'identifiant Wikidata, API MediaWiki, consultés le 2026-10-28, licence CC BY-SA 4.0, fiabilité moyenne (année seule, à recouper). Utilisés SEULEMENT quand Wikidata n'a aucune date exploitable pour ce territoire ; années « circa », siècles et fourchettes exclus. Même fenêtre et mêmes garde-fous que pour Wikidata. Le lien de chaque ligne du registre pointe vers la page Wikipédia.
+- Un identifiant Wikidata partagé par plusieurs territoires de Cliopatria n'est attribué qu'au territoire qui apparaît le premier (création) ou disparaît le dernier (fin) ; en cas d'égalité, aucune date n'est appliquée.
+
+### Fenêtre des dates assouplie (2026-10-28)
+- Un relevé « P » décrit l'année P, pas un instant : un événement daté de P elle-même est retenu (ex. Autriche-Hongrie 1918, Estonie 1918). Cran 2 : l'intervalle précédent est aussi accepté (ex. Almoravides 1040, Empire d'Autriche 1804, Confédération du Rhin 1806). Les formes ne bougent pas, seule la date d'affichage change.

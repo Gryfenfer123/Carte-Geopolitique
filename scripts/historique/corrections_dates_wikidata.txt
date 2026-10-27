@@ -5,30 +5,31 @@ Satavahana Dynasty|fin|223|219|Q5257|P576
 Indo-Greeks|fin|13|9|Q215643|P576
 Kingdom of Osroene|fin|214|213|Q237234|P576
 Kingdom of Commagene|fin|77|71|Q332137|P576
+Kushan Empire|debut|43|30|Q25979|P571
 Western Satraps|debut|43|35|Q2086608|P571
-Eastern Wu|debut|207|198|Q274488|P571
 Eastern Wu|fin|282|279|Q274488|P576
-Cao Wei|debut|224|220|Q320930|P571
+Chámpa|debut|207|192|Q216786|P571
 Shu Han|debut|224|221|Q320925|P571
 Vakataka Kingdom|debut|260|250|Q1501306|P571
+Gallic Empire|debut|261|260|Q273025|P571
 Gallic Empire|fin|282|273|Q273025|P576
 Western Jin|fin|425|419|Q7352|P576
 Lakhmid Kingdom|debut|270|268|Q943191|P571
 Late Pallava Empire|debut|283|275|Q466803|P571
 Tuyuhun|debut|287|285|Q1196201|P571
 Cheng Han|debut|306|304|Q1069905|P571
-Former Zhao|debut|306|304|Q1574107|P571
 Former Zhao|fin|336|328|Q1574107|P576
 Gupta Empire|debut|324|320|Q11774|P571
 Gupta Empire|fin|554|549|Q11774|P576
 Former Liang|debut|324|320|Q943392|P571
 Former Liang|fin|377|375|Q943392|P576
+Later Zhao|debut|337|319|Q2314907|P571
 Later Zhao|fin|352|350|Q2314907|P576
 Former Yan|fin|370|369|Q1472004|P576
 Baekje|fin|660|659|Q28428|P576
 Alodia|fin|1506|1503|Q449639|P576
 Nobatia|fin|655|649|Q568523|P576
-Former Qin|debut|353|350|Q1471995|P571
+Kadamba Empire|debut|353|345|Q1479952|P571
 Kamarupa Kingdom|debut|353|350|Q1194765|P571
 Kalabhra Dynasty|fin|601|599|Q2572901|P576
 Tarumanagara|fin|673|668|Q2247225|P576
@@ -42,10 +43,11 @@ Western Qin|fin|438|430|Q1668970|P576
 Later Liang|debut|387|386|Q2314869|P571
 Later Liang|fin|406|402|Q2314869|P576
 Southern Yan|debut|402|398|Q1329439|P571
+Northern Yan|debut|410|407|Q2006864|P571
 Northern Yan|fin|438|435|Q2006864|P576
-Kingdom of the Suebi|debut|414|411|Q1048918|P571
+White Huns|fin|560|559|Q41761342|WP
+Kingdom of the Suebi|debut|414|409|Q1048918|P571
 Kingdom of the Suebi|fin|586|584|Q1048918|P576
-Burgundian Kingdom|debut|414|411|Q13590051|P571
 Liu Song Dynasty|debut|426|420|Q49697|P571
 Liu Song Dynasty|fin|479|478|Q49697|P576
 Vandal Kingdom|debut|439|435|Q10416611|P571
@@ -55,17 +57,20 @@ Kingdom of Soissons|fin|489|485|Q1247508|P576
 Maitraka Dynasty|debut|476|475|Q6737189|P571
 Southern Qi|debut|480|479|Q62456|P571
 Southern Qi|fin|509|501|Q62456|P576
+Kingdom of Sussex|debut|490|477|Q676184|P571
 Ostrogothic Kingdom|debut|500|493|Q583038|P571
 Wihtgar|fin|691|685|Q3568009|P576
 Western Wei|fin|560|556|Q1143164|P576
 Eastern Wei|fin|554|549|Q307069|P576
 Kingdom of Mercia|debut|534|527|Q105092|P571
+Kingdom of Wessex|debut|534|519|Q105313|P571
 Kingdom of Wessex|fin|935|926|Q105313|P576
+Kingdom of Essex|debut|534|527|Q110888|WP
 Kingdom of Powys|fin|1168|1159|Q769782|P576
 Asuka Japan|debut|540|538|Q210688|P580
 Early Lý Dynasty|debut|546|544|Q2441129|P571
 Göktürk Khaganate|debut|555|551|Q15146034|P571
-Northern Qi|debut|555|550|Q1143524|P571
+Chalukya Dynasty|debut|555|543|Q1395011|P571
 Maukhari Dynasty|fin|611|605|Q12448145|P576
 Chenla|debut|555|550|Q1057118|P571
 Northern Zhou|debut|561|557|Q551067|P571
@@ -91,8 +96,10 @@ Carantania|debut|661|658|Q501754|P571
 Galuh Kingdom|debut|674|669|Q5519387|P571
 Sunda Kingdom|debut|674|669|Q1469742|P571
 First Bulgarian Empire|debut|682|681|Q203817|P571
+Unified Silla|debut|682|668|Q715257|P571
 Balhae|debut|705|698|Q28322|P571
 Republic of Venice|debut|705|697|Q4948|P571
+Kingdom of Asturias|debut|724|718|Q231392|P571
 Kingdom of Asturias|fin|925|923|Q231392|P576
 Gurjara-Pratihara Dynasty|fin|1039|1035|Q5324|P576
 Nanzhao|debut|741|738|Q1045322|P571
@@ -111,30 +118,39 @@ Duchy of Naples|fin|1138|1136|Q1051600|P576
 Rustamid dynasty|debut|778|777|Q940123|P571
 Rustamid dynasty|fin|910|908|Q940123|P576
 Heian Japan|fin|1187|1184|Q193292|P582
+Idrisids|debut|793|788|Q431575|P571
 Idrisids|fin|979|973|Q431575|P576
 Aghlabid Dynasty|fin|910|908|Q207600|P576
 Great Moravia|fin|910|906|Q193152|P576
 Principality of Salerno|fin|1084|1075|Q1065299|P576
 East Franks|debut|850|843|Q153080|P571
 Emirate of Sicily|fin|1093|1090|Q118780154|P576
+Kara-Khanids|debut|850|840|Q494354|P571
 Pagan Kingdom|debut|850|849|Q888574|P571
 West Franks|debut|850|843|Q46370|P571
 West Franks|fin|989|986|Q46370|P576
 Chola Empire|debut|850|848|Q6806806|P571
 Lower Burgundy|debut|860|855|Q33242|P571
+Qocho Kingdom|debut|860|843|Q2662180|WP
+Ganzhou Kingdom|debut|860|848|Q1000124|P571
 Ganzhou Kingdom|fin|1039|1035|Q1000124|P582
+Sind-Habbari Dynasty|debut|860|854|Q5636647|WP
 Zaydi Alid dynasties|debut|866|864|Q1990528|P571
 Zaydi Alid dynasties|fin|935|927|Q1990528|P576
 Giudicato of Arborea|fin|1421|1419|Q1241847|P576
 Giudicato of Logudoro|fin|1259|1258|Q1761381|P576
+Tulunids|debut|875|868|Q726798|P571
 Tulunids|fin|910|904|Q726798|P576
+County of Pallars|debut|875|870|Q1541787|P571
 County of Pallars|fin|1014|1010|Q1541787|P576
 Kievan Rus'|fin|1240|1239|Q1108445|P576
 Samanid Empire|fin|999|998|Q486181|P576
+Bagratid Armenia|debut|886|884|Q2622868|P571
 Bagratid Armenia|fin|1045|1044|Q2622868|P576
 Kingdom of Khotan|fin|1009|1005|Q914898|P576
 Sajid Dynasty|fin|935|928|Q3432153|P576
 Kingdom of Lower Burgundy|fin|935|932|Q33242|P576
+Chandra Dynasty|fin|1055|1049|Q5032034|WP
 Kingdom of Alba|fin|1293|1285|Q1991742|P576
 Fatimid Caliphate|debut|911|909|Q160307|P571
 Fatimid Caliphate|fin|1176|1170|Q160307|P576
@@ -142,7 +158,6 @@ Former Shu|debut|911|907|Q571453|P571
 Former Shu|fin|925|924|Q571453|P576
 Kingdom of Galicia|debut|911|910|Q303421|P571
 Kingdom of León|debut|911|910|Q175276|P571
-Later Liang Dynasty|debut|911|907|Q783489|P571
 Later Liang Dynasty|fin|925|922|Q783489|P576
 Liao Dynasty|fin|1125|1124|Q4958|P576
 Qi Kingdom|debut|911|907|Q1319681|P571
@@ -157,6 +172,8 @@ Kingdom of Vaspurakan|fin|1027|1020|Q5228183|P576
 Southern Han|fin|979|970|Q1198071|P576
 Wuyue|debut|911|907|Q1193822|P571
 Wuyue|fin|979|977|Q1193822|P576
+Chimor|debut|911|900|Q581741|P580
+Duchy of Normandy|debut|922|911|Q842091|P571
 Former Jin|fin|925|922|Q6201794|P576
 Goryeo|debut|922|918|Q28208|P571
 Goryeo|fin|1394|1391|Q28208|P576
@@ -183,6 +200,7 @@ Duchy of Brittany|debut|947|939|Q71747|P571
 Zagwe dynasty|fin|1271|1269|Q140446|P576
 Northern Han|debut|960|951|Q1141471|P571
 Northern Han|fin|979|978|Q1141471|P576
+Southern Tang|debut|960|937|Q1326742|P571
 Southern Tang|fin|979|975|Q1326742|P576
 Chandela Kingdom|fin|1313|1310|Q2039087|P576
 Western Chalukya Empire|debut|980|973|Q14624218|P571
@@ -198,14 +216,17 @@ Taifa of Zaragoza|fin|1110|1109|Q33061|P576
 Taifa of Arcos|debut|1015|1011|Q2390604|P571
 Taifa of Carmona|debut|1015|1013|Q2668584|P571
 Taifa of Carmona|fin|1151|1149|Q2668584|P576
+Taifa of Almería|debut|1015|1010|Q2580032|P571
 Taifa of Murcia|debut|1015|1011|Q921067|P571
 Taifa of Albarracín|debut|1015|1012|Q2060937|P571
 Taifa of Albarracín|fin|1110|1103|Q2060937|P576
+Taifa of Morón|debut|1015|1010|Q2666791|P571
 Taifa of Granada|debut|1015|1013|Q205708|P571
 Taifa of Granada|fin|1093|1089|Q205708|P576
 North Sea Empire|debut|1018|1016|Q3281269|P571
 North Sea Empire|fin|1039|1034|Q3281269|P576
 Taifa of Santa Maria do Algarve|fin|1055|1050|Q2077765|P576
+Hammadid Dynasty|debut|1018|1014|Q588672|P571
 Kahuripan|debut|1028|1019|Q12491034|P571
 Kahuripan|fin|1045|1044|Q12491034|P576
 Taifa of Seville|debut|1028|1023|Q276951|P571
@@ -216,6 +237,7 @@ Taifa of Ronda|debut|1040|1039|Q2524715|P571
 Taifa of Ronda|fin|1065|1064|Q2524715|P576
 Kediri Kingdom|debut|1046|1045|Q756895|P571
 Kediri Kingdom|fin|1226|1220|Q756895|P576
+Almoravid Dynasty|debut|1056|1040|Q75613|P571
 Sulayhid Dynasty|debut|1056|1047|Q2364248|P580
 Zirid dynasty|fin|1151|1147|Q205718|P576
 Principality of Pereyaslavl|fin|1240|1238|Q1261908|P576
@@ -223,10 +245,17 @@ Novgorod Republic|fin|1481|1477|Q151536|P576
 Najahid Dynasty|fin|1168|1157|Q1411866|P576
 Taifa of Ceuta|debut|1066|1061|Q5947557|P571
 Taifa of Ceuta|fin|1084|1083|Q5947557|P576
+Norman England|debut|1072|1066|Q200485|P580
+Sena Dynasty|debut|1072|1070|Q2428714|WP
+Sena Dynasty|fin|1235|1229|Q2428714|WP
 Principality of Terebovlia|fin|1146|1140|Q680530|P576
 Gahadavala Dynasty|fin|1201|1196|Q1147823|P576
+Zurayid dynasty|debut|1085|1083|Q230385|WP
+Zurayid dynasty|fin|1176|1173|Q230385|WP
 Danishmendids|fin|1187|1177|Q846670|P576
+Sultanate of Rum|debut|1094|1077|Q975405|P571
 Sultanate of Rum|fin|1313|1306|Q975405|P576
+Khwarezmid Dynasty|debut|1094|1077|Q486918|P571
 County of Edessa|debut|1099|1098|Q232806|P571
 County of Edessa|fin|1151|1149|Q232806|P576
 Kingdom of Jerusalem|fin|1293|1290|Q55502|P576
@@ -241,6 +270,7 @@ Great Jin|debut|1126|1115|Q5066|P571
 Great Jin|fin|1235|1233|Q5066|P576
 Kara-Khitans|debut|1126|1124|Q862304|P571
 Kara-Khitans|fin|1219|1217|Q862304|P576
+Almohad Caliphate|debut|1139|1121|Q199688|P571
 County of Portugal|fin|1146|1142|Q1139807|P576
 Duchy of Masovia|debut|1139|1138|Q2361927|P571
 Duchy of Sandomierz|debut|1139|1138|Q16933165|P571
@@ -250,27 +280,30 @@ Zengid dynasty|debut|1139|1127|Q189545|P571
 Duchy of Greater Poland|debut|1139|1138|Q1515009|P571
 Sultanate of Kedah|debut|1139|1136|Q1317579|P571
 Sultanate of Kedah|fin|1910|1908|Q1317579|P576
+Kingdom of Portugal|debut|1147|1139|Q45670|P571
 Taifa of Tejada|debut|1147|1146|Q2522604|P571
 Taifa of Tejada|fin|1151|1149|Q2522604|P576
 Principality of Halych|fin|1201|1198|Q3403551|P576
+Kingdom of Africa|debut|1152|1146|Q3932090|P571
 Kingdom of Africa|fin|1168|1159|Q3932090|P576
 Crown of Aragon|debut|1169|1162|Q204920|P571
 Nabhani Dynasty|debut|1169|1154|Q11938308|P571
 Kingdom of Powys Wenwynwyn|debut|1169|1160|Q2670639|P571
 Kingdom of Powys Fadog|debut|1169|1160|Q2564694|P571
 Ayyubid Sultanate|debut|1177|1171|Q180114|P571
+Kakatiya Dynasty|debut|1177|1163|Q2086556|P571
 Kakatiya Dynasty|fin|1325|1322|Q2086556|P576
 Duchy of Opole|debut|1177|1172|Q661980|P571
 Kingdom of Mann|fin|1271|1265|Q459188|P576
 Second Bulgarian Empire|debut|1188|1185|Q420759|P571
 Banate of Bosnia|fin|1384|1376|Q3627069|P576
+Yadava Dynasty|debut|1188|1173|Q5790|P571
 Yadava Dynasty|fin|1325|1316|Q5790|P576
 Shunten Dynasty|debut|1188|1187|Q6151113|P571
 Kingdom of Cyprus|fin|1491|1488|Q213638|P576
 Khwarezmid Empire|fin|1235|1230|Q63134381|P576
 Kingdom of Bohemia|debut|1202|1198|Q42585|P571
 Livonian Brothers of the Sword|fin|1240|1236|Q157605|P576
-Principality of Galicia-Volhynia|debut|1202|1199|Q239502|P571
 Namayan|fin|1571|1570|Q4401026|P576
 Empire of Trebizond|debut|1206|1204|Q178913|P571
 Empire of Trebizond|fin|1462|1460|Q178913|P576
@@ -283,13 +316,16 @@ Principality of Achaea|fin|1439|1431|Q332005|P576
 Despotate of Epirus|debut|1206|1205|Q187684|P571
 Despotate of Epirus|fin|1481|1478|Q187684|P576
 Duchy of Athens|debut|1206|1205|Q334714|P571
+Mamluk Dynasty|debut|1210|1206|Q847420|P571
 Mamluk Dynasty|fin|1293|1289|Q847420|P576
 Duchy of the Archipelago|debut|1210|1207|Q777981|P571
 Singhasari|debut|1227|1222|Q2060657|P571
 Singhasari|fin|1293|1291|Q2060657|P576
 Crown of Castile|debut|1236|1230|Q217196|P571
+Empire of Thessalonica|debut|1236|1224|Q623151|P571
 Empire of Thessalonica|fin|1249|1245|Q623151|P576
 Mali Empire|debut|1236|1235|Q184536|P571
+Kingdom of Dambadeniya|debut|1236|1220|Q3136869|P571
 Hafsid Dynasty|debut|1236|1229|Q752662|P571
 Rasulid Dynasty|debut|1236|1229|Q2132267|P571
 Rasulid Dynasty|fin|1458|1453|Q2132267|P576
@@ -298,7 +334,6 @@ Mamluk Sultanate|fin|1518|1516|Q282428|P576
 County of Artois|debut|1241|1237|Q778266|P571
 Sukhothai Kingdom|debut|1241|1238|Q863279|P571
 Marinid Sultanate|fin|1467|1464|Q582861|P576
-House of Anjou-Sicily|debut|1272|1266|Q939200|P571
 Ethiopian Empire|debut|1272|1270|Q207521|P571
 Samudera Pasai Sultanate|debut|1272|1267|Q3284315|P571
 Duchy of Jawor|debut|1279|1274|Q561204|P571
@@ -316,7 +351,6 @@ Swiss Confederation|debut|1294|1291|Q39|P571
 Phayao Kingdom|fin|1343|1337|Q4202088|P576
 Lan Na Kingdom|debut|1294|1292|Q1059707|P571
 Majapahit|debut|1294|1293|Q49326|P571
-Yuan Dynasty|fin|1374|1367|Q7313|P576
 Hanthawaddy Kingdom|debut|1294|1287|Q1572529|P571
 Beylik of Karasi|debut|1305|1297|Q941887|P571
 Beylik of Aydin|debut|1305|1300|Q717112|P571
@@ -326,8 +360,8 @@ Ottoman Empire|debut|1305|1299|Q12560|P571
 Beylik of Isfendiyar|fin|1462|1460|Q2096678|P576
 Kingdom of Singapura|debut|1305|1299|Q27842|P571
 Kingdom of Singapura|fin|1401|1397|Q27842|P576
-Beylik of Saruhan|debut|1314|1313|Q1968654|P571
 Beylik of Saruhan|fin|1414|1411|Q1968654|P576
+Catalan Company|debut|1314|1302|Q1501196|P571
 Kingdom of Pinya|debut|1314|1310|Q3446213|P571
 Kingdom of Pinya|fin|1374|1363|Q3446213|P576
 Hokuzan|fin|1421|1415|Q55523|P576
@@ -359,9 +393,11 @@ Despotate of Vidin|fin|1401|1395|Q927154|P576
 Electorate of Saxony|debut|1363|1356|Q156199|P571
 Lan Xang|debut|1363|1354|Q853477|P571
 Lan Xang|fin|1708|1706|Q853477|P576
+Principality of Moldavia|debut|1363|1346|Q10957559|P571
 Ming Dynasty|debut|1375|1368|Q9903|P571
 Ming Dynasty|fin|1644|1643|Q9903|P576
 Timurid Empire|debut|1375|1370|Q484195|P571
+Despotate of Arta|debut|1375|1358|Q2331954|P571
 Despotate of Arta|fin|1421|1415|Q2331954|P576
 Northern Yuan|debut|1375|1368|Q8959|P571
 Ava Kingdom|debut|1375|1364|Q2500952|P571
@@ -370,6 +406,7 @@ Republic of Ragusa|fin|1808|1807|Q208169|P576
 Principality of Valona and Kanina|fin|1421|1416|Q7245121|P576
 Jaunpur Sultanate|debut|1395|1394|Q167134|P571
 Jaunpur Sultanate|fin|1481|1478|Q167134|P576
+Duchy of Milan|debut|1402|1395|Q153529|P571
 Kalmar Union|debut|1402|1397|Q62623|P571
 Kalmar Union|fin|1525|1522|Q62623|P576
 Four Oirats|debut|1402|1399|Q4332415|P571
@@ -383,7 +420,9 @@ Duchy of Lorraine|fin|1768|1765|Q155019|P576
 Inca Empire|debut|1440|1438|Q28573|P571
 Khanate of Kazan|debut|1440|1438|Q186537|P571
 Ambrosian Republic|debut|1450|1447|Q746443|P571
+Nogai Horde|debut|1450|1440|Q631210|P571
 Crimean Khanate|debut|1450|1441|Q160440|P571
+Duchy of Saint Sava|debut|1453|1448|Q106311455|P571
 Lodi Dynasty|debut|1453|1451|Q11709|P571
 Qasim Khanate|debut|1453|1452|Q836169|P571
 Astrakhan Khanate|debut|1468|1466|Q210163|P571
@@ -392,6 +431,7 @@ Kazakh Khanate|fin|1847|1846|Q1433867|P576
 Warring States Japan|debut|1468|1467|Q204023|P580
 Wattasid dynasty|fin|1555|1553|Q970799|P576
 Principality of Guria|fin|1829|1828|Q2195101|P576
+Principality of Abkhazia|debut|1468|1463|Q1760473|P571
 Kingdom of Imereti|fin|1810|1809|Q1069959|P576
 Kingdom of Kakheti|debut|1468|1465|Q1209822|P571
 Demak Sultanate|fin|1551|1547|Q49322|P576
@@ -413,7 +453,10 @@ Golconda Sultanate|debut|1519|1518|Q1148042|P571
 Blambangan Kingdom|fin|1743|1742|Q287996|P576
 Duchy of Prussia|debut|1526|1525|Q153091|P571
 Duchy of Prussia|fin|1618|1617|Q153091|P576
+Mughal Empire|debut|1529|1526|Q33296|P571
+Nayaks of Madurai|fin|1737|1735|Q1530838|WP
 Đại Việt|debut|1529|1527|Q1317991|P571
+Eastern Hungarian Kingdom|debut|1529|1526|Q625380|P571
 Eastern Hungarian Kingdom|fin|1571|1569|Q625380|P576
 Sultanate of Banten|debut|1529|1527|Q734867|P571
 Sultanate of Johor|debut|1529|1528|Q1150344|P571
@@ -421,8 +464,11 @@ Nayaks of Thanjavur|debut|1534|1532|Q1588434|P571
 Sultanate of Harar|fin|1578|1576|Q2365048|P576
 France Antarctique|debut|1556|1555|Q1353951|P571
 France Antarctique|fin|1571|1566|Q1353951|P576
+Saadi Sultanate|debut|1556|1549|Q1136188|P571
 Polish-Lithuanian Commonwealth|debut|1572|1569|Q172107|P571
 Principality of Transylvania|debut|1572|1570|Q655621|P571
+Trịnh lords|fin|1787|1786|Q2267508|WP
+Nguyễn lords|debut|1572|1558|Q2301908|P571
 Dutch Republic|debut|1582|1581|Q170072|P571
 Dutch Republic|fin|1795|1794|Q170072|P576
 Iberian Union|debut|1582|1580|Q377350|P571
@@ -432,7 +478,9 @@ Sultanate of Darfur|fin|1876|1873|Q1474791|P576
 Swedish Empire|debut|1612|1611|Q215443|P580
 Later Jin Dynasty|debut|1619|1616|Q1062546|P571
 Brandenburg-Prussia|debut|1619|1618|Q157367|P571
+Sultanate of Sambas|debut|1619|1609|Q3109927|P571
 Yarubid dynasty|fin|1743|1741|Q1752110|P576
+Sultanate of Bima|debut|1626|1621|Q2817348|P571
 Kalmyk Khanate|debut|1632|1630|Q4210248|P571
 Kalmyk Khanate|fin|1771|1770|Q4210248|P576
 Wadai Empire|debut|1636|1635|Q1132786|P571
@@ -445,10 +493,10 @@ Qing Dynasty|debut|1645|1644|Q8733|P571
 Southern Ming|debut|1645|1644|Q1198163|P571
 Dutch Gold Coast|fin|1872|1871|Q770776|P576
 Dutch Cape Colony|debut|1653|1652|Q4807130|P571
-Dutch Cape Colony|fin|1795|1794|Q4807130|P576
 Danish Gold Coast|debut|1659|1658|Q770833|P571
 Danish Gold Coast|fin|1852|1849|Q770833|P576
 Sultanate of Jambi|fin|1904|1903|Q1679856|P576
+French India|debut|1673|1668|Q646374|P571
 Maratha Empire|debut|1677|1674|Q83618|P571
 Thanjavur Maratha Kingdom|debut|1677|1674|Q3530610|P571
 Principality of Upper Hungary|debut|1683|1682|Q7245120|P571
@@ -457,6 +505,7 @@ Kingdom of Prussia|debut|1702|1701|Q27306|P571
 Beylik of Tunis|debut|1706|1705|Q4899891|P571
 Beylik of Tunis|fin|1884|1880|Q4899891|P576
 British Colonial Empire|fin|1999|1996|Q8680|P576
+Pro-Swedish Poland|debut|1706|1701|Q10543737|P580
 Khanate of Kokand|fin|1876|1875|Q696241|P576
 Bamana Empire|debut|1713|1712|Q762084|P571
 Karamanli Dynasty|debut|1713|1711|Q1929987|P571
@@ -482,31 +531,38 @@ British Cape Colony|debut|1796|1795|Q370736|P571
 French Directory|debut|1796|1795|Q219817|P571
 Batavian Republic|debut|1796|1795|Q188553|P571
 Helvetic Republic|debut|1799|1798|Q206696|P571
-Revolutionary Roman Republic|debut|1799|1798|Q175881|P571
+French Consulate|debut|1800|1799|Q877619|P571
 French Consulate|fin|1804|1803|Q877619|P576
 Kingdom of Etruria|debut|1803|1801|Q223793|P571
-First French Empire|debut|1805|1804|Q71084|P571
-Empire of Haiti|debut|1805|1804|Q2006756|P571
 Sokoto Caliphate|debut|1805|1804|Q600524|P571
 Sokoto Caliphate|fin|1904|1902|Q600524|P576
-First French colonial empire|debut|1805|1804|Q71084|P571
+Principality of Regensberg|debut|1806|1803|Q701969|P571
+Austrian Empire|debut|1806|1804|Q131964|P571
 Austrian Empire|fin|1867|1866|Q131964|P576
 Principality of Hohenzollern-Sigmaringen|fin|1852|1849|Q157013|P576
+Duchy of Warsaw|debut|1809|1807|Q152115|P571
+Kingdom of Westphalia|debut|1809|1807|Q153943|P571
 Kingdom of Westphalia|fin|1813|1812|Q153943|P576
+Confederation of the Rhine|debut|1809|1806|Q154741|P571
+Republic of Chile|debut|1812|1810|Q298|P571
 Sovereign Principality of the United Netherlands|debut|1814|1813|Q774783|P571
+United Kingdoms of Sweden and Norway|debut|1815|1814|Q62589|P571
 Massina Empire|debut|1820|1819|Q635394|P571
 Riau-Lingga Sultanate|debut|1820|1819|Q3503553|P571
 Principality of Lichtenberg|debut|1820|1816|Q547629|P571
 Empire of Brazil|fin|1889|1888|Q217230|P576
 First Mexican Empire|fin|1823|1822|Q285658|P576
+Gran Colombia|debut|1822|1819|Q199821|P571
 Gran Colombia|fin|1833|1830|Q199821|P576
 Republic of Peru|debut|1822|1821|Q419|P571
 Federated Republic of Mexico|debut|1824|1823|Q1109279|P571
 United Provinces of Central America|debut|1824|1823|Q190025|P571
 Emirate of Jabal Shammar|fin|1921|1920|Q5362837|P576
+Oriental Republic of Uruguay|debut|1828|1825|Q77|P571
 Argentine Confederation|debut|1834|1831|Q832554|P571
 Republic of New Granada|debut|1834|1831|Q630882|P571
 Republic of New Granada|fin|1858|1857|Q630882|P576
+Republic of Ecuador|debut|1834|1830|Q736|P571
 Centralist Mexico|debut|1836|1835|Q5062192|P571
 Peru-Bolivian Confederation|fin|1839|1838|Q899706|P576
 Riograndense Republic|fin|1845|1844|Q162192|P576
@@ -518,41 +574,75 @@ French Second Republic|fin|1852|1851|Q58326|P576
 Second French Empire|debut|1853|1852|Q71092|P571
 Taiping Heavenly Kingdom|debut|1853|1851|Q3486676|P571
 State of Buenos Aires|debut|1853|1852|Q6553448|P571
+New Caledonia|debut|1856|1853|Q33788|P571
 Free Orange State|debut|1856|1854|Q218023|P571
+South African Republic|debut|1856|1852|Q550374|P571
 British Raj|debut|1859|1858|Q129286|P571
 Granadine Confederation|debut|1859|1858|Q1141215|P571
+Second Mexican Empire|debut|1865|1864|Q371334|P571
 Second Mexican Empire|fin|1867|1866|Q371334|P576
 North German Confederation|debut|1868|1867|Q150981|P571
-Austria-Hungary|debut|1868|1867|Q28513|P571
+French Third Republic|debut|1871|1870|Q70802|P571
 Kingdom of Fiji|fin|1876|1873|Q17515160|P576
 First Spanish Republic|fin|1876|1873|Q497777|P576
 Principality of Bulgaria|debut|1880|1878|Q815731|P571
 Sultanate of Hobyo|debut|1880|1878|Q862404|P571
 Nieuwe Republiek|debut|1885|1884|Q552157|P571
 Nieuwe Republiek|fin|1889|1887|Q552157|P576
+Italian Africa|debut|1890|1882|Q926295|P571
+Mahdist State|debut|1890|1885|Q3125368|P571
 Mahdist State|fin|1899|1898|Q3125368|P576
 New Hebrides|fin|1982|1979|Q752431|P576
 Republic of Hawai'i|debut|1895|1894|Q1057542|P571
 Korean Empire|debut|1898|1897|Q28233|P571
 Korean Empire|fin|1910|1909|Q28233|P576
+Republic of Cuba|debut|1905|1898|Q241|P571
 Commonwealth of Australia|debut|1905|1901|Q408|P571
 Republic of Panama|debut|1905|1903|Q804|P571
 Portuguese Republic|debut|1911|1910|Q167360|P571
+Republic of Uryankhay|debut|1912|1911|Q56282578|P571
+Empire of China|debut|1916|1915|Q175379|P571
+Republic of Finland|debut|1918|1917|Q33|P571
+Czechoslovakia|debut|1919|1918|Q33946|P571
+Estonia|debut|1919|1918|Q191|P571
+Republic of Austria|debut|1919|1918|Q40|P571
+Second Polish Republic|debut|1919|1918|Q207272|P571
+Ukrainian People's Republic|debut|1919|1918|Q1508143|P571
+Weimar Republic|debut|1920|1918|Q41304|P571
 Weimar Republic|fin|1935|1932|Q41304|P576
+Republic of Latvia|debut|1920|1918|Q211|P571
 Provisional Priamurye Government|debut|1922|1921|Q1381504|P571
 Republic of the Rif|debut|1922|1921|Q37102|P571
 Irish Free State|fin|1937|1936|Q31747|P576
 Republic of Turkey|debut|1924|1923|Q43|P571
+Mongolian People's Republic|debut|1926|1924|Q212056|P571
 Second Spanish Republic|debut|1932|1931|Q178038|P571
 Nazi Germany|debut|1936|1933|Q7318|P571
 Francoist Spain|fin|1975|1974|Q13474305|P576
+Republic of Indonesia|debut|1946|1945|Q252|P571
+Republic of Iceland|debut|1946|1944|Q189|P571
+Kingdom of Jordan|debut|1947|1946|Q810|P571
+Republic of the Philippines|debut|1947|1946|Q928|P571
+People's Republic of Bulgaria|debut|1948|1946|Q121932|P571
 Socialist Republic of Romania|fin|1989|1988|Q842794|P576
+New Zealand|debut|1948|1947|Q664|P571
+Hungarian People's Republic|debut|1950|1949|Q16410|P571
 Hungarian People's Republic|fin|1989|1988|Q16410|P576
+Federal Republic of Germany|debut|1950|1949|Q713750|P571
 Kingdom of Libya|debut|1953|1951|Q31454|P571
 Kingdom of Laos|fin|1975|1974|Q870055|P576
 Ghana|debut|1958|1957|Q117|P571
 United Arab Republic|fin|1972|1970|Q170468|P576
 Mali Federation|debut|1960|1959|Q216632|P571
+Republic of Benin|debut|1961|1960|Q962|P571
+Mauritania|debut|1961|1960|Q1025|P571
+Central African Republic|debut|1961|1960|Q929|P571
+Burkina Faso|debut|1961|1960|Q965|P571
+Gabon|debut|1961|1960|Q1000|P571
+Republic of Chad|debut|1961|1960|Q657|P571
+Republic of Côte d'Ivoire|debut|1961|1960|Q1008|P571
+Republic of Senegal|debut|1961|1960|Q1041|P571
+Republic of the Niger|debut|1961|1960|Q1032|P571
 Sultanate of Zanzibar|fin|1966|1963|Q157904|P576
 People's Democratic Republic of Algeria|debut|1963|1962|Q262|P571
 Jamaica|debut|1963|1962|Q766|P571
@@ -570,12 +660,10 @@ Malta|debut|1967|1964|Q233|P571
 Republic of Singapore|debut|1967|1965|Q334|P571
 Republic of The Gambia|debut|1967|1965|Q1005|P571
 Zambia|debut|1967|1964|Q953|P571
-Eswatini|debut|1969|1968|Q1050|P571
-Equatorial Guinea|debut|1969|1968|Q983|P571
+People's Democratic Republic of Yemen|debut|1969|1967|Q199841|P571
 Mauritius|debut|1969|1968|Q1027|P571
 Republic of Afghanistan|fin|1978|1977|Q1415128|P576
 Zaire|debut|1973|1971|Q6500954|P571
-Kingdom of Bahrain|debut|1973|1971|Q398|P571
 People's Republic of Bangladesh|debut|1973|1971|Q902|P571
 Republic of Fiji|debut|1973|1970|Q712|P571
 United Arab Emirates|debut|1973|1971|Q878|P571
@@ -586,13 +674,23 @@ People's Republic of Angola|debut|1976|1975|Q916|P571
 Republic of Cabo Verde|debut|1976|1975|Q1011|P571
 Republic of Suriname|debut|1976|1975|Q730|P571
 São Tomé and Príncipe|debut|1976|1975|Q1039|P571
-Afghanistan|debut|1979|1978|Q889|P571
 Republic of Djibouti|debut|1979|1977|Q977|P571
 Commonwealth of Dominica|debut|1979|1978|Q784|P571
 Solomon Islands|debut|1979|1978|Q685|P571
 Belize|debut|1983|1981|Q242|P571
 Republic of Zimbabwe|debut|1983|1980|Q954|P571
 Vanuatu|debut|1983|1980|Q686|P571
+Kazakhstan|debut|1992|1991|Q232|P571
+Republic of Croatia|debut|1992|1991|Q224|P571
+Republic of Uzbekistan|debut|1992|1991|Q265|P571
+Russian Federation|debut|1992|1991|Q159|P571
+Former Yugoslav Republic of Macedonia|debut|1992|1991|Q221|P571
+Republic of Tajikistan|debut|1992|1991|Q863|P571
+Kyrgyzstan|debut|1992|1991|Q813|P571
+Republic of Belarus|debut|1992|1991|Q184|P571
+Republic of Moldova|debut|1992|1991|Q217|P571
+Republic of Slovenia|debut|1992|1991|Q215|P571
+Turkmenistan|debut|1992|1991|Q874|P571
 Taliban|debut|1996|1994|Q42418|P571
 Palau|debut|1996|1994|Q695|P571
 Gaza/Hamas|debut|2014|2007|Q5588642|P571

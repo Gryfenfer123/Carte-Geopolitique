@@ -1,0 +1,547 @@
+{
+"consulte": "2026-10-28",
+"licence": "CC BY-SA 4.0",
+"source": "Wikipédia en anglais, paramètres year_start / year_end de l'infobox de la page liée à l'identifiant Wikidata (API MediaWiki). Années simples uniquement (« circa », siècles et fourchettes exclus).",
+"valeurs": {
+"Q1051600": [
+"Duchy of Naples",
+600,
+1137
+],
+"Q10921634": [
+"Khoshut Khanate",
+1642,
+1717
+],
+"Q1108445": [
+"Kievan Rus'",
+null,
+1240
+],
+"Q110888": [
+"Kingdom of Essex",
+527,
+825
+],
+"Q1122052": [
+"Cumania",
+null,
+1241
+],
+"Q1139762": [
+"Kanem–Bornu Empire",
+null,
+1902
+],
+"Q1143524": [
+"Northern Qi",
+550,
+577
+],
+"Q1191125": [
+"Moghulistan",
+1347,
+1462
+],
+"Q1241847": [
+"Judicate of Arborea",
+null,
+1420
+],
+"Q12491027": [
+"Bali Kingdom",
+914,
+1908
+],
+"Q12536": [
+"Abbasid Caliphate",
+750,
+1517
+],
+"Q1255614": [
+"Indo-Parthian kingdom",
+null,
+226
+],
+"Q1261908": [
+"Principality of Pereyaslavl",
+988,
+null
+],
+"Q12844800": [
+"Ghaznavid Empire",
+977,
+1186
+],
+"Q1297894": [
+"County of Ribagorza",
+872,
+1598
+],
+"Q1311990": [
+"Grand Principality of Serbia",
+1091,
+1217
+],
+"Q13590051": [
+"Kingdom of the Burgundians",
+411,
+534
+],
+"Q1365493": [
+"Republic of Pisa",
+null,
+1406
+],
+"Q136884": [
+"Lazica",
+131,
+697
+],
+"Q138803": [
+"Qarmatians",
+899,
+1077
+],
+"Q1411866": [
+"Najahid dynasty",
+1022,
+1158
+],
+"Q146246": [
+"Francia",
+481,
+843
+],
+"Q1471995": [
+"Former Qin",
+null,
+394
+],
+"Q1472004": [
+"Former Yan",
+null,
+370
+],
+"Q1479726": [
+"Federation of Malaya",
+1948,
+1963
+],
+"Q1481436": [
+"County of Foix",
+null,
+1789
+],
+"Q1483430": [
+"Principality of Kiev",
+1132,
+1471
+],
+"Q148499": [
+"Margraviate of Brandenburg",
+1157,
+1806
+],
+"Q1530838": [
+"Madurai Nayak dynasty",
+1529,
+1736
+],
+"Q156108": [
+"Obotrites",
+null,
+1167
+],
+"Q1574107": [
+"Han-Zhao",
+null,
+329
+],
+"Q1642472": [
+"Tondo (historical polity)",
+null,
+1589
+],
+"Q16570037": [
+"Duchy of Kalisz",
+1177,
+1279
+],
+"Q17076645": [
+"Kingdom of Gauda",
+null,
+636
+],
+"Q175881": [
+"Roman Republic (1798–1799)",
+1798,
+1799
+],
+"Q1761381": [
+"Judicate of Logudoro",
+null,
+1259
+],
+"Q18211496": [
+"Chaulukya dynasty",
+null,
+1244
+],
+"Q200262": [
+"Kingdom of Navarre",
+824,
+1841
+],
+"Q200464": [
+"Portuguese Empire",
+1498,
+null
+],
+"Q2006756": [
+"First Empire of Haiti",
+1804,
+1806
+],
+"Q201706": [
+"Gepids",
+454,
+567
+],
+"Q207017": [
+"Ziyadid dynasty",
+819,
+1018
+],
+"Q207162": [
+"Bourbon Restoration in France",
+1815,
+1830
+],
+"Q2096678": [
+"Candar dynasty",
+1291,
+1461
+],
+"Q2208978": [
+"Alamannia",
+213,
+911
+],
+"Q2247225": [
+"Tarumanagara",
+null,
+669
+],
+"Q2257830": [
+"Majeerteen Sultanate",
+null,
+1927
+],
+"Q2267508": [
+"Trịnh lords",
+1545,
+1787
+],
+"Q2272880": [
+"Takrur",
+null,
+1456
+],
+"Q230385": [
+"Zurayid dynasty",
+1083,
+1174
+],
+"Q2365048": [
+"Adal Sultanate",
+1415,
+1577
+],
+"Q2428714": [
+"Sena dynasty",
+1070,
+1230
+],
+"Q2502248": [
+"Principality of Koknese",
+null,
+1208
+],
+"Q25979": [
+"Kushan Empire",
+null,
+375
+],
+"Q2662180": [
+"Qocho",
+843,
+null
+],
+"Q267816": [
+"Duchy of Benevento",
+577,
+774
+],
+"Q269109": [
+"Principality of Ryazan",
+1129,
+1521
+],
+"Q26996": [
+"Kidarites",
+320,
+467
+],
+"Q2719360": [
+"Duchy of Luxembourg",
+963,
+1482
+],
+"Q2723760": [
+"Judicate of Gallura",
+null,
+1296
+],
+"Q274488": [
+"Eastern Wu",
+222,
+280
+],
+"Q28428": [
+"Paekche",
+null,
+660
+],
+"Q28456": [
+"Silla",
+null,
+935
+],
+"Q28513": [
+"Austria-Hungary",
+1867,
+null
+],
+"Q287996": [
+"Blambangan Kingdom",
+1478,
+1768
+],
+"Q2991374": [
+"County of Poitou",
+778,
+1416
+],
+"Q320930": [
+"Cao Wei",
+220,
+266
+],
+"Q33235": [
+"Upper Burgundy",
+888,
+933
+],
+"Q33242": [
+"Lower Burgundy",
+879,
+933
+],
+"Q339271": [
+"Danelaw",
+null,
+1066
+],
+"Q3503555": [
+"Palembang Sultanate",
+1659,
+1823
+],
+"Q41761342": [
+"Hephthalites",
+null,
+560
+],
+"Q4332415": [
+"Oirat Confederation",
+1399,
+1634
+],
+"Q4401026": [
+"Namayan",
+null,
+1571
+],
+"Q45813": [
+"Huns",
+null,
+469
+],
+"Q459188": [
+"Kingdom of the Isles",
+null,
+1265
+],
+"Q71084": [
+"First French Empire",
+1804,
+1815
+],
+"Q7135130": [
+"Paramara dynasty",
+948,
+1305
+],
+"Q7245121": [
+"Principality of Valona",
+1346,
+null
+],
+"Q7313": [
+"Yuan dynasty",
+1271,
+1368
+],
+"Q733799": [
+"Hwicce",
+577,
+null
+],
+"Q736839": [
+"Kamakura shogunate",
+1192,
+1333
+],
+"Q7427": [
+"Western Xia",
+1038,
+1227
+],
+"Q7462": [
+"Song dynasty",
+960,
+1279
+],
+"Q769782": [
+"Kingdom of Powys",
+828,
+1160
+],
+"Q783489": [
+"Later Liang (Five Dynasties)",
+907,
+923
+],
+"Q784963": [
+"History of Anglo-Saxon England",
+410,
+1066
+],
+"Q83546": [
+"Vladimir-Suzdal",
+1125,
+1389
+],
+"Q837998": [
+"Kingdom of East Anglia",
+null,
+918
+],
+"Q844910": [
+"Pandya dynasty",
+null,
+1618
+],
+"Q874954": [
+"Principality of Theodoro",
+null,
+1475
+],
+"Q918153": [
+"British Ceylon",
+1796,
+1948
+],
+"Q4807130": [
+"Dutch Cape Colony",
+1652,
+1806
+],
+"Q494354": [
+"Kara-Khanid Khanate",
+840,
+1212
+],
+"Q5032034": [
+"Chandra dynasty",
+370,
+1050
+],
+"Q5062192": [
+"Centralist Republic of Mexico",
+1835,
+1846
+],
+"Q5324": [
+"Pratihara dynasty",
+null,
+1036
+],
+"Q555994": [
+"Aq Qoyunlu",
+1348,
+null
+],
+"Q5636647": [
+"Habbari Emirate",
+854,
+1011
+],
+"Q568638": [
+"Duchy of Silesia",
+1138,
+1335
+],
+"Q581741": [
+"Chimor",
+null,
+1470
+],
+"Q603771": [
+"Emirate of Crete",
+null,
+961
+],
+"Q6201794": [
+"Jin (Later Tang precursor)",
+null,
+923
+],
+"Q623751": [
+"Bernicia",
+null,
+654
+],
+"Q62651": [
+"Denmark–Norway",
+1537,
+1814
+],
+"Q631210": [
+"Nogai Horde",
+1480,
+1634
+],
+"Q6398879": [
+"Khadga dynasty",
+625,
+716
+],
+"Q676745": [
+"County of Armagnac",
+null,
+1790
+]
+}
+}

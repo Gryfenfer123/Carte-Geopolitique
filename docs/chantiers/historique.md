@@ -83,3 +83,8 @@ clavier, bornes (999999 → 2024, -99999 → -3400, champ vide ignoré), lecture
 - Dates Wikidata brutes versionnées, générateur de registre ajouté, `corrections_dates_wikidata.txt` régénéré (599 lignes retenues, dont environ 500 appliquées après garde-fous).
 - Données de la carte régénérées (livrées au commit suivant) : 503 corrections de dates appliquées, 109 refusées par les garde-fous ; 12 064 lignes, 22,5 Mo. Tests du modèle OK.
 - Reste : 1 179 divergences à arbitrer, changements de forme internes à sourcer un par un.
+
+## Journal — 2026-10-28 : dates plus nombreuses
+- Fenêtre de dates assouplie (`SOUPLESSE = 2` dans `corrections_dates.py`), règle des identifiants Wikidata partagés, Wikipédia (infobox) en secours : environ 600 dates de naissance/disparition appliquées (503 la veille).
+- Données de la carte pas encore régénérées dans ce commit (calcul en cours).
+- Reste : environ 940 divergences (autre entité probable), environ 900 territoires sans date sourcée, changements de forme internes.
