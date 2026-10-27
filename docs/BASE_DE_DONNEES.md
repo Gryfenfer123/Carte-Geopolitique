@@ -226,4 +226,5 @@ RLS**. Règles :
 | arbres_v154 | Ouzbékistan : Samanides (18 personnes) |
 | arbres_v155 | Syrie : Zengides (20 personnes) |
 | arbres_v156 | Azerbaïdjan : Aq Qoyunlu (7 personnes) |
+| arbres_v157 | Yémen : Rasoulides (4 personnes) |
 | `data_owid_load.sql` + `owid_chunks/` | Chargement des données d'indicateurs (rejouable, upserts) — à exécuter après v1 à v7 |
