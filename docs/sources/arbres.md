@@ -46,6 +46,11 @@ Chaque fiche sourcée porte aussi l'adresse de sa page dans « Notes / biographi
 | 2026-10-28 | v146 — Mexique : tlatoani de Tenochtitlan (7) | Wikipédia anglais : Aztec_Empire | https://en.wikipedia.org/wiki/Aztec_Empire | CC BY-SA 4.0 | tertiaire / à recouper ; liens oncle/neveu/frère en « famille », aucune date de naissance ou de mort |
 | 2026-10-28 | v147 — Ouzbékistan : Timourides (15) | Wikipédia anglais : Timurid_dynasty | https://en.wikipedia.org/wiki/Timurid_dynasty | CC BY-SA 4.0 | tertiaire / à recouper ; dates absentes pour la plupart ; 3 liens « famille » |
 | 2026-10-28 | v148 — Iran : Seldjoukides (9) | Wikipédia anglais : Seljuk_Empire, Chaghri_Beg, Alp_Arslan, Malik-Shah_I | https://en.wikipedia.org/wiki/Seljuk_Empire | CC BY-SA 4.0 | tertiaire / à recouper ; Tughril lié en « famille » (frère de Chaghri) |
+| 2026-10-28 | v149 — Afghanistan : Ghaznévides (17) | Wikipédia anglais : Ghaznavid_Empire | https://en.wikipedia.org/wiki/Ghaznavid_Empire | CC BY-SA 4.0 | tertiaire / à recouper ; pas de naissances, peu de morts |
+| 2026-10-28 | v150 — Égypte : Qalawunides (15) | Wikipédia anglais : Bahri_Mamluks | https://en.wikipedia.org/wiki/Bahri_Mamluks | CC BY-SA 4.0 | tertiaire / à recouper ; aucune date ; Shaban II lié en « famille » |
+| 2026-10-28 | v151 — Iran : Bouyides (6) | Wikipédia anglais : Buyid_dynasty | https://en.wikipedia.org/wiki/Buyid_dynasty | CC BY-SA 4.0 | tertiaire / à recouper ; aucune date ; Adud al-Dawla non ajouté (père non indiqué) |
+| 2026-10-28 | v152 — Rwanda : bami (5) | Wikipédia anglais : Kigeli_IV_Rwabugiri, Mibambwe_IV_Rutarindwa, Yuhi_Musinga, Mutara_III_Rudahigwa, Mutara_II_of_Rwanda | https://en.wikipedia.org/wiki/Kigeli_IV_Rwabugiri | CC BY-SA 4.0 | tertiaire / à recouper ; Rutarindwa adopté ou fils selon la page |
+| 2026-10-28 | v153 — Nigeria : Oba du Bénin (3) | Wikipédia anglais : Eweka_dynasty | https://en.wikipedia.org/wiki/Eweka_dynasty | CC BY-SA 4.0 | tertiaire / à recouper ; chronologie d'Egharevba contestée |
 
 ## Lots NON sourcés (à reprendre) — SOURCE MANQUANTE
 Dates saisies de mémoire, sans page consultée ; en cours de reprise, une ligne ci-dessus remplace la ligne ici au fur et à mesure.

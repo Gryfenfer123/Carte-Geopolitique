@@ -2,6 +2,8 @@
 
 ## Dernières nouvelles (la plus récente en haut)
 
+- 2026-10-23 — v149 : arbre Ghaznévides, 17 personnes sourcées.
+
 - 2026-10-23 — v148 : arbre Seldjoukides (Iran), 9 personnes sourcées.
 
 - 2026-10-23 — v147 : arbre Timourides (Ouzbékistan), 15 personnes sourcées.
@@ -176,7 +178,7 @@
 
 Code : `src/genealogy.ts`, `genealogyLayers.ts`, `genealogyBus.ts`, `genealogyLod.ts/.css`, `genealogyLayersWorker.ts`,
 `genealogyLayout.ts`, `genealogyRouting.ts`. Outils de remplissage : [`scripts/arbres/`](../../scripts/arbres/README.md).
-Prochaine migration : **arbres_v149** (`supabase/arbres/arbres_v149.sql`) — générateur : `Gen(149, "…")`.  (v148 livrée, à exécuter par Martin si ce n'est pas déjà fait.)
+Prochaine migration : **arbres_v150** (`supabase/arbres/arbres_v150.sql`) — générateur : `Gen(150, "…")`.  (v149 livrée, à exécuter par Martin si ce n'est pas déjà fait.)
 
 ## Règles de contenu (décidées par Martin — ne pas rouvrir)
 - Un pays n'a que les dynasties qui ont **régné sur lui**. Dynastie étrangère : branche principale dans son pays
