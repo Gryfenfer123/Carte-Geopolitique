@@ -1,0 +1,7 @@
+# Chantier « carte » — journal
+
+## Dernières nouvelles (la plus récente en haut)
+- 2026-10-28 — **Zones naturelles reprises à zéro avec de vrais contours.** Les ellipses (fichier généré à la main, mal placées) sont remplacées par les contours Natural Earth 5.1.2 (domaine public) : 14 déserts et 16 chaînes de montagnes, plus 9 sommets affichés comme points. `public/data/raw/NATURAL_FEATURES.json` est régénéré par `scripts/gen_natural_zones.py` ; chaque entrée porte sa `source`. Le code n'a changé que d'un type (`main.ts` accepte les contours à plusieurs morceaux). Sources dans `docs/sources/carte.md`.
+  **Retiré faute de source** (liste dans le registre) : 13 forêts, 10 fosses, 8 volcans, Désert d'Arabie, Mojave, Patagonie. Les anciennes notes descriptives (superficies, etc.) ne sont pas reprises : non sourcées. L'ancienne version est dans l'historique git.
+  Vérifié : script exécuté (39 entrées, emprises contrôlées), `check:repo`, `build`, rendu réel de la couche dans un navigateur (39 éléments, aucune erreur). Non vérifié : fonds de carte réels (réseau bloqué), affichage sur écran tactile, fenêtre d'information au clic.
+  Prochaine étape : trouver des sources pour forêts, fosses et volcans manquants (jeux WWF/GEBCO/Smithsonian inaccessibles depuis le bac à sable : à télécharger via le navigateur de Martin ou à fournir) ; Rub' al-Khali et Grand Bassin sont disponibles dans Natural Earth si Martin veut les ajouter.

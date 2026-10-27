@@ -133,7 +133,7 @@ solidité, par ordre d'importance.
    sans appeler leur propre logique de fermeture ; une sauvegarde en attente dans la fiche
    pays pourrait ne pas être enregistrée si on ouvre un autre panneau (limite signalée dans
    `docs/archive/PORT_STATUS-2026-10-02.md`, non corrigée à notre connaissance).
-8. **Zones naturelles approximatives** : ellipses, pas de vrais contours (limite assumée).
+8. **Zones naturelles : couverture partielle** : seuls les déserts, chaînes de montagnes et sommets présents dans Natural Earth sont affichés (vrais contours). Forêts, fosses océaniques et plusieurs volcans manquent faute de source (voir `docs/chantiers/carte.md`).
 9. **Pas de vérification visuelle automatique** (captures d'écran comparées). Les vérifications
    Playwright de la session du 2026-10-21 ont été faites à la main, non conservées.
 

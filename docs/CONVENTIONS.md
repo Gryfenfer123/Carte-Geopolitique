@@ -104,8 +104,9 @@ Tout est dans `docs/BASE_DE_DONNEES.md` ; l'essentiel :
   combler un trou.
 - Pas de source fiable à large couverture → on **retire** l'indicateur plutôt que d'afficher du
   vide ou de l'approximatif (4 indicateurs retirés le 2026-10-21, voir `DECISIONS.md`).
-- Quand une donnée est volontairement approximative (ex. zones naturelles), c'est écrit dans le
-  fichier qui la produit et dans `DECISIONS.md`.
+- Quand une donnée est volontairement approximative, c'est écrit dans le fichier qui la produit et
+  dans `DECISIONS.md`. (Les zones naturelles n'en font plus partie depuis le 2026-10-28 : vrais contours
+  sourcés, ce qui n'a pas de source n'est pas affiché.)
 
 ## 8. Documentation : dans le même commit que le changement
 

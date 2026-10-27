@@ -1066,21 +1066,18 @@ type CableEntry = { name: string; owner: string; note: string; points: [number, 
 type RiverEntry = { name: string; scalerank: number; points: [number, number][] };
 type LakeEntry = { name: string; type: string; coordinates: unknown };
 type CityEntry = LonLat & { n: string; note?: string };
-// Zones naturelles (point 5, 2026-10-03 ; refonte 2026-10-16) — déserts/
-// montagnes/volcans/forêts/fosses océaniques, voir
-// public/data/raw/NATURAL_FEATURES.json. `geometry` (ajouté le 2026-10-16,
-// demande de Martin : "je ne veux pas des triangles partout, mais de
-// belle zone délimité") est un polygone GeoJSON approximatif généré par
-// scripts/gen_natural_zones.py — PAS un contour cartographique exact (ce
-// sandbox n'a pas accès à un jeu de données de frontières réelles), mais
-// une zone organique dimensionnée/orientée à partir de la surface ou de
-// l'azimut réel connus de chaque entité, qui change d'échelle avec le
-// zoom comme les lacs (gLakes) au lieu d'un symbole de taille fixe.
+// Zones naturelles — public/data/raw/NATURAL_FEATURES.json, généré par
+// scripts/gen_natural_zones.py (refonte du 2026-10-28). `geometry` est un
+// VRAI contour Natural Earth (domaine public) pour les déserts et chaînes de
+// montagnes ; les sommets (volcans) n'ont pas de `geometry` et s'affichent
+// comme un point. Chaque entrée porte sa `source`. Rien n'est affiché sans
+// source (voir docs/chantiers/carte.md pour ce qui reste à sourcer).
 type NaturalFeatureEntry = LonLat & {
   name: string;
   type: "desert" | "montagne" | "volcan" | "foret" | "fosse";
   note: string;
-  geometry?: GeoJSON.Polygon;
+  geometry?: GeoJSON.Polygon | GeoJSON.MultiPolygon;
+  source?: string;
 };
 
 function slugify(s: string): string {
