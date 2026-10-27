@@ -32160,6 +32160,146 @@
    "title": "Sultan de Yogyakarta (depuis 1989)",
    "g": "h",
    "script": 139
+  },
+  "sz.mbandzeni": {
+   "id": "c493e418-6569-58ff-859b-8c616b25797e",
+   "name": "Mbandzeni",
+   "b": null,
+   "d": null,
+   "tree": "SZ_DLA",
+   "title": "Roi d'Eswatini (1875-1889)",
+   "g": "h",
+   "script": 140
+  },
+  "sz.bhunu": {
+   "id": "dccb04bd-acaf-5b9a-a68f-fb9003f63bbb",
+   "name": "Bhunu (Ngwane V)",
+   "b": 1876,
+   "d": 1899,
+   "tree": "SZ_DLA",
+   "title": "Roi d'Eswatini (1895-1899)",
+   "g": "h",
+   "script": 140
+  },
+  "sz.sobhuza2": {
+   "id": "e3ef42f6-6c4d-59ee-b12c-a691cccac15e",
+   "name": "Sobhuza II",
+   "b": 1899,
+   "d": 1982,
+   "tree": "SZ_DLA",
+   "title": "Roi d'Eswatini (1921-1982)",
+   "g": "h",
+   "script": 140
+  },
+  "sz.mswati3": {
+   "id": "7fb113d8-4984-5bbd-ab4c-28dc414a8fcb",
+   "name": "Mswati III",
+   "b": 1968,
+   "d": null,
+   "tree": "SZ_DLA",
+   "title": "Roi d'Eswatini (depuis 1986)",
+   "g": "h",
+   "script": 140
+  },
+  "to.t2": {
+   "id": "dbfb4757-3319-5ded-b604-ba550fbceb08",
+   "name": "George Tupou II",
+   "b": 1874,
+   "d": 1918,
+   "tree": "TO_TUP",
+   "title": "Roi de Tonga (1893-1918)",
+   "g": "h",
+   "script": 141
+  },
+  "to.t3": {
+   "id": "021a1f46-51d6-5736-962f-8411fb1a0109",
+   "name": "Sālote Tupou III",
+   "b": 1900,
+   "d": 1965,
+   "tree": "TO_TUP",
+   "title": "Reine de Tonga (1918-1965)",
+   "g": "h",
+   "script": 141
+  },
+  "to.t4": {
+   "id": "a38e2c9d-6671-57dc-a0a2-1d5785308bac",
+   "name": "Tāufaʻāhau Tupou IV",
+   "b": 1918,
+   "d": 2006,
+   "tree": "TO_TUP",
+   "title": "Roi de Tonga (1965-2006)",
+   "g": "h",
+   "script": 141
+  },
+  "to.t5": {
+   "id": "144f190f-23d1-59d9-b39b-115fb1cb94eb",
+   "name": "George Tupou V",
+   "b": 1948,
+   "d": 2012,
+   "tree": "TO_TUP",
+   "title": "Roi de Tonga (2006-2012)",
+   "g": "h",
+   "script": 141
+  },
+  "to.t6": {
+   "id": "1632dc5b-8b23-5eb0-83ec-465fd24d0619",
+   "name": "Tupou VI",
+   "b": 1959,
+   "d": null,
+   "tree": "TO_TUP",
+   "title": "Roi de Tonga (depuis 2012)",
+   "g": "h",
+   "script": 141
+  },
+  "ls.m1": {
+   "id": "11e5dc8f-d862-5643-9bfc-4e4e8bed2621",
+   "name": "Moshoeshoe I",
+   "b": 1786,
+   "d": 1870,
+   "tree": "LS_MOS",
+   "title": "Fondateur du royaume basotho (1822-1870)",
+   "g": "h",
+   "script": 142
+  },
+  "ls.l1": {
+   "id": "84e5ba22-5b7d-5934-b7bf-b2377c175362",
+   "name": "Letsie I",
+   "b": null,
+   "d": 1891,
+   "tree": "LS_MOS",
+   "title": "Chef suprême des Basotho (1870-1891)",
+   "g": "h",
+   "script": 142
+  },
+  "ls.seeiso": {
+   "id": "e442e9d5-135e-5079-a5dd-5300d2ac20a7",
+   "name": "Simon Seeiso Griffith",
+   "b": null,
+   "d": 1940,
+   "tree": "LS_MOS",
+   "title": "Chef suprême des Basotho (1939-1940)",
+   "g": "h",
+   "script": 142
+  },
+  "ls.m2": {
+   "id": "ac06de1e-6a6c-52b1-bfa1-a0c2ef4f5db2",
+   "name": "Moshoeshoe II",
+   "b": 1938,
+   "d": 1996,
+   "tree": "LS_MOS",
+   "title": "Roi du Lesotho (1960-1990 ; 1995-1996)",
+   "g": "h",
+   "script": 142
+  },
+  "ls.l3": {
+   "id": "b314422e-c955-5595-92d1-8d111f5d0ef7",
+   "name": "Letsie III",
+   "b": 1963,
+   "d": null,
+   "tree": "LS_MOS",
+   "title": "Roi du Lesotho (1990-1995 ; depuis 1996)",
+   "g": "h",
+   "script": 142
   }
  },
  "trees": {
@@ -33260,6 +33400,24 @@
    "country": "IDN",
    "dynasty": "Sultans de Yogyakarta",
    "script": 139
+  },
+  "SZ_DLA": {
+   "entry": "219a47c8-99cd-52a2-8ecf-9b3f0e8dd7b7",
+   "country": "SWZ",
+   "dynasty": "Rois d'Eswatini",
+   "script": 140
+  },
+  "TO_TUP": {
+   "entry": "f35ca9bd-6664-5c90-9bc8-652d9449ea76",
+   "country": "TON",
+   "dynasty": "Maison Tupou",
+   "script": 141
+  },
+  "LS_MOS": {
+   "entry": "361e6daf-c0f6-5fff-bad6-26660c0458bb",
+   "country": "LSO",
+   "dynasty": "Rois du Lesotho",
+   "script": 142
   }
  },
  "flags": [
@@ -38684,6 +38842,30 @@
    "rels": 9,
    "trees": [
     "Sultans de Yogyakarta (IDN)"
+   ]
+  },
+  "140": {
+   "label": "Eswatini (Dlamini)",
+   "members": 4,
+   "rels": 3,
+   "trees": [
+    "Rois d'Eswatini (SWZ)"
+   ]
+  },
+  "141": {
+   "label": "Tonga (Tupou)",
+   "members": 5,
+   "rels": 4,
+   "trees": [
+    "Maison Tupou (TON)"
+   ]
+  },
+  "142": {
+   "label": "Lesotho (Moshoeshoe)",
+   "members": 5,
+   "rels": 3,
+   "trees": [
+    "Rois du Lesotho (LSO)"
    ]
   }
  },
@@ -63877,6 +64059,56 @@
    "35bb553a-f2f5-5812-920a-c5f1dafb2fd4",
    "410873ac-3198-5368-a192-31a6834eecf6",
    "family"
+  ],
+  [
+   "c493e418-6569-58ff-859b-8c616b25797e",
+   "dccb04bd-acaf-5b9a-a68f-fb9003f63bbb",
+   "parent"
+  ],
+  [
+   "dccb04bd-acaf-5b9a-a68f-fb9003f63bbb",
+   "e3ef42f6-6c4d-59ee-b12c-a691cccac15e",
+   "parent"
+  ],
+  [
+   "e3ef42f6-6c4d-59ee-b12c-a691cccac15e",
+   "7fb113d8-4984-5bbd-ab4c-28dc414a8fcb",
+   "parent"
+  ],
+  [
+   "dbfb4757-3319-5ded-b604-ba550fbceb08",
+   "021a1f46-51d6-5736-962f-8411fb1a0109",
+   "parent"
+  ],
+  [
+   "021a1f46-51d6-5736-962f-8411fb1a0109",
+   "a38e2c9d-6671-57dc-a0a2-1d5785308bac",
+   "parent"
+  ],
+  [
+   "a38e2c9d-6671-57dc-a0a2-1d5785308bac",
+   "144f190f-23d1-59d9-b39b-115fb1cb94eb",
+   "parent"
+  ],
+  [
+   "a38e2c9d-6671-57dc-a0a2-1d5785308bac",
+   "1632dc5b-8b23-5eb0-83ec-465fd24d0619",
+   "parent"
+  ],
+  [
+   "11e5dc8f-d862-5643-9bfc-4e4e8bed2621",
+   "84e5ba22-5b7d-5934-b7bf-b2377c175362",
+   "parent"
+  ],
+  [
+   "e442e9d5-135e-5079-a5dd-5300d2ac20a7",
+   "ac06de1e-6a6c-52b1-bfa1-a0c2ef4f5db2",
+   "parent"
+  ],
+  [
+   "ac06de1e-6a6c-52b1-bfa1-a0c2ef4f5db2",
+   "b314422e-c955-5595-92d1-8d111f5d0ef7",
+   "parent"
   ]
  ],
  "dateflags": [
