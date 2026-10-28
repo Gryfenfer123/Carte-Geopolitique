@@ -239,4 +239,5 @@ RLS**. Règles :
 | arbres_v167 | Syrie : Séleucides (15) |
 | arbres_v168 | Italie : Théodosiens (20) |
 | arbres_v169 | Italie : Constantiniens (18) |
+| arbres_v170 | Afghanistan : Ghurides (8) |
 | `data_owid_load.sql` + `owid_chunks/` | Chargement des données d'indicateurs (rejouable, upserts) — à exécuter après v1 à v7 |
