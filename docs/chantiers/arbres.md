@@ -2,6 +2,8 @@
 
 ## Dernières nouvelles (la plus récente en haut)
 
+- 2026-10-23 — v171 : Ilkhans (9).
+
 - 2026-10-23 — v170 : Ghurides (8).
 
 - 2026-10-23 — v169 : Constantiniens (18).
@@ -220,7 +222,7 @@
 
 Code : `src/genealogy.ts`, `genealogyLayers.ts`, `genealogyBus.ts`, `genealogyLod.ts/.css`, `genealogyLayersWorker.ts`,
 `genealogyLayout.ts`, `genealogyRouting.ts`. Outils de remplissage : [`scripts/arbres/`](../../scripts/arbres/README.md).
-Prochaine migration : **arbres_v171** (`supabase/arbres/arbres_v171.sql`) — générateur : `Gen(171, "…")`.  (v170 livrée, à exécuter par Martin si ce n'est pas déjà fait.)
+Prochaine migration : **arbres_v172** (`supabase/arbres/arbres_v172.sql`) — générateur : `Gen(172, "…")`.  (v171 livrée, à exécuter par Martin si ce n'est pas déjà fait.)
 
 ## Règles de contenu (décidées par Martin — ne pas rouvrir)
 - Un pays n'a que les dynasties qui ont **régné sur lui**. Dynastie étrangère : branche principale dans son pays
