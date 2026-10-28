@@ -236,4 +236,5 @@ RLS**. Règles :
 | arbres_v164 | Italie : Flaviens (8) |
 | arbres_v165 | Italie : Sévères (9) |
 | arbres_v166 | Grèce : Argéades (21) |
+| arbres_v167 | Syrie : Séleucides (15) |
 | `data_owid_load.sql` + `owid_chunks/` | Chargement des données d'indicateurs (rejouable, upserts) — à exécuter après v1 à v7 |
