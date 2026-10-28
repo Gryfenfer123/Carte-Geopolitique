@@ -35750,6 +35750,906 @@
    "title": "Roi (1605-1628)",
    "g": "h",
    "script": 173
+  },
+  "nas.m1": {
+   "id": "ac7d2d3f-606e-5ebd-96d6-475c19ffb02b",
+   "name": "Muhammad Ier (Ibn al-Ahmar)",
+   "b": null,
+   "d": 1273,
+   "tree": "ES_NAS",
+   "title": "Émir de Grenade (1232-1273)",
+   "g": "h",
+   "script": 174
+  },
+  "nas.m2": {
+   "id": "28783954-c931-5e58-b57b-f330501f19f7",
+   "name": "Muhammad II",
+   "b": null,
+   "d": 1302,
+   "tree": "ES_NAS",
+   "title": "Émir de Grenade (1273-1302)",
+   "g": "h",
+   "script": 174
+  },
+  "nas.m3": {
+   "id": "1f0f923c-fbce-5ec0-91ba-886a19fa2abb",
+   "name": "Muhammad III",
+   "b": null,
+   "d": null,
+   "tree": "ES_NAS",
+   "title": "Émir de Grenade (1302-1309)",
+   "g": "h",
+   "script": 174
+  },
+  "nas.nasr": {
+   "id": "991660fa-f885-5a71-9ad9-5a6a2d5d2882",
+   "name": "Nasr",
+   "b": null,
+   "d": null,
+   "tree": "ES_NAS",
+   "title": "Émir de Grenade (1309-1314)",
+   "g": "h",
+   "script": 174
+  },
+  "nas.i1": {
+   "id": "e8c5cded-97de-5281-9b15-5d0dd5960552",
+   "name": "Isma'il Ier",
+   "b": null,
+   "d": 1325,
+   "tree": "ES_NAS",
+   "title": "Émir de Grenade (1314-1325)",
+   "g": "h",
+   "script": 174
+  },
+  "nas.m4": {
+   "id": "0f604033-aecd-588c-b535-3dd60ccf177e",
+   "name": "Muhammad IV",
+   "b": null,
+   "d": 1333,
+   "tree": "ES_NAS",
+   "title": "Émir de Grenade (1325-1333)",
+   "g": "h",
+   "script": 174
+  },
+  "nas.y1": {
+   "id": "78cd1d8d-9475-54d8-92f9-29ac8bae2efd",
+   "name": "Yusuf Ier",
+   "b": null,
+   "d": 1354,
+   "tree": "ES_NAS",
+   "title": "Émir de Grenade (1333-1354)",
+   "g": "h",
+   "script": 174
+  },
+  "nas.m5": {
+   "id": "de95c3c4-3276-588c-abb8-9927769d46e9",
+   "name": "Muhammad V",
+   "b": null,
+   "d": 1391,
+   "tree": "ES_NAS",
+   "title": "Émir de Grenade",
+   "g": "h",
+   "script": 174
+  },
+  "nas.i2": {
+   "id": "88d75cea-3156-5cc3-860c-2a716bf369d4",
+   "name": "Isma'il II",
+   "b": null,
+   "d": 1360,
+   "tree": "ES_NAS",
+   "title": "Émir de Grenade (1359-1360)",
+   "g": "h",
+   "script": 174
+  },
+  "nas.m6": {
+   "id": "7f5ec1f9-62a7-5f7c-98a8-2df475ff1168",
+   "name": "Muhammad VI",
+   "b": null,
+   "d": null,
+   "tree": "ES_NAS",
+   "title": "Émir de Grenade (1360-1362)",
+   "g": "h",
+   "script": 174
+  },
+  "nas.ah": {
+   "id": "30326743-735f-5f23-95d3-568b05721486",
+   "name": "Abu'l Hasan",
+   "b": null,
+   "d": 1485,
+   "tree": "ES_NAS",
+   "title": "Émir de Grenade",
+   "g": "h",
+   "script": 174
+  },
+  "nas.m11": {
+   "id": "3636a294-25e6-50bb-a879-1ac59e47067c",
+   "name": "Muhammad XI (Boabdil)",
+   "b": null,
+   "d": null,
+   "tree": "ES_NAS",
+   "title": "Émir de Grenade (1487-1492)",
+   "g": "h",
+   "script": 174
+  },
+  "nas.zag": {
+   "id": "685a937d-1c28-50c5-a300-ca62cd6c32d1",
+   "name": "Muhammad XII (al-Zaghal)",
+   "b": null,
+   "d": null,
+   "tree": "ES_NAS",
+   "title": "Émir de Grenade",
+   "g": "h",
+   "script": 174
+  },
+  "vb.p6": {
+   "id": "b748a0ed-0862-5f3e-a44d-743d66c44dbf",
+   "name": "Philippe VI de France",
+   "b": null,
+   "d": null,
+   "tree": "BE_VB",
+   "title": "Roi de France, père de Jean II",
+   "g": "h",
+   "script": 175
+  },
+  "vb.j2": {
+   "id": "797bd2c4-5102-51be-a5d1-2607dfa17f66",
+   "name": "Jean II de France",
+   "b": null,
+   "d": null,
+   "tree": "BE_VB",
+   "title": "Roi de France, duc de Bourgogne (1361-1363)",
+   "g": "h",
+   "script": 175
+  },
+  "vb.bon": {
+   "id": "862c91eb-4d63-5571-ae64-157d45c08803",
+   "name": "Bonne de Luxembourg",
+   "b": null,
+   "d": null,
+   "tree": "BE_VB",
+   "title": "Épouse de Jean II (m. 1332)",
+   "g": "f",
+   "script": 175
+  },
+  "vb.phb": {
+   "id": "3fa88d2c-f9a2-5545-b103-d25d8775265d",
+   "name": "Philippe le Hardi",
+   "b": null,
+   "d": null,
+   "tree": "BE_VB",
+   "title": "Duc de Bourgogne (1363-1404)",
+   "g": "h",
+   "script": 175
+  },
+  "vb.mf": {
+   "id": "5fd64f13-2544-5284-8de3-56a13f9c1836",
+   "name": "Marguerite III de Flandre",
+   "b": null,
+   "d": null,
+   "tree": "BE_VB",
+   "title": "Épouse de Philippe le Hardi (m. 1369)",
+   "g": "f",
+   "script": 175
+  },
+  "vb.jsp": {
+   "id": "4a30e038-8d0a-5c12-83ce-8f18ee0f4fc4",
+   "name": "Jean sans Peur",
+   "b": null,
+   "d": null,
+   "tree": "BE_VB",
+   "title": "Duc de Bourgogne (1404-1419)",
+   "g": "h",
+   "script": 175
+  },
+  "vb.mb": {
+   "id": "afbdc73f-4c5d-5434-acc7-564fb20c3a04",
+   "name": "Marguerite de Bavière",
+   "b": null,
+   "d": null,
+   "tree": "BE_VB",
+   "title": "Épouse de Jean sans Peur (m. 1385)",
+   "g": "f",
+   "script": 175
+  },
+  "vb.pbg": {
+   "id": "e7557023-d810-5a19-8156-688155f75d1d",
+   "name": "Philippe le Bon",
+   "b": null,
+   "d": null,
+   "tree": "BE_VB",
+   "title": "Duc de Bourgogne (1419-1467)",
+   "g": "h",
+   "script": 175
+  },
+  "vb.ipo": {
+   "id": "666d47aa-cdfa-514a-b1d5-1d67d50741f9",
+   "name": "Isabelle de Portugal",
+   "b": null,
+   "d": null,
+   "tree": "BE_VB",
+   "title": "Mère de Charles le Téméraire",
+   "g": "f",
+   "script": 175
+  },
+  "vb.ctb": {
+   "id": "187785de-02bd-55c9-a528-f9f9e52f7be2",
+   "name": "Charles le Téméraire",
+   "b": null,
+   "d": 1477,
+   "tree": "BE_VB",
+   "title": "Duc de Bourgogne (1467-1477)",
+   "g": "h",
+   "script": 175
+  },
+  "vb.ibb": {
+   "id": "a68e4485-83da-5736-9647-c8c381864235",
+   "name": "Isabelle de Bourbon",
+   "b": null,
+   "d": null,
+   "tree": "BE_VB",
+   "title": "Seconde épouse de Charles le Téméraire, mère de Marie",
+   "g": "f",
+   "script": 175
+  },
+  "vb.mar": {
+   "id": "cab4c411-7bad-510a-a558-e9ba6b0eef6b",
+   "name": "Marie de Bourgogne",
+   "b": null,
+   "d": null,
+   "tree": "BE_VB",
+   "title": "Duchesse de Bourgogne (1477-1482)",
+   "g": "f",
+   "script": 175
+  },
+  "vb.max": {
+   "id": "4929dab1-5917-5e74-bd71-2ec2b6a146d6",
+   "name": "Maximilien Ier d'Autriche",
+   "b": null,
+   "d": null,
+   "tree": "BE_VB",
+   "title": "Époux de Marie (m. 1477)",
+   "g": "h",
+   "script": 175
+  },
+  "gwy.cun": {
+   "id": "8c24ea19-ed55-5cd8-9ba8-98effb2418a7",
+   "name": "Cunedda",
+   "b": null,
+   "d": null,
+   "tree": "GB_GWY",
+   "title": "Roi de Gwynedd (vers 450-460)",
+   "g": "h",
+   "script": 176
+  },
+  "gwy.eiy": {
+   "id": "6fc4ca46-4825-56b3-934b-d73f43be07ba",
+   "name": "Einion Yrth ap Cunedda",
+   "b": null,
+   "d": null,
+   "tree": "GB_GWY",
+   "title": "Roi de Gwynedd (vers 470-480)",
+   "g": "h",
+   "script": 176
+  },
+  "gwy.owd": {
+   "id": "b7af6671-e699-5fba-b258-7d255d64599e",
+   "name": "Owain Danwyn ap Einion",
+   "b": null,
+   "d": null,
+   "tree": "GB_GWY",
+   "title": "Roi de Gwynedd (fin Ve s.)",
+   "g": "h",
+   "script": 176
+  },
+  "gwy.cng": {
+   "id": "7d5cfa2f-7e78-5142-9a8a-b41750df2cf4",
+   "name": "Cuneglasus",
+   "b": null,
+   "d": null,
+   "tree": "GB_GWY",
+   "title": "Roi de Gwynedd (fin Ve-début VIe s.)",
+   "g": "h",
+   "script": 176
+  },
+  "gwy.eio": {
+   "id": "5f1c6124-5f45-5f89-9e34-cd5a91e14efd",
+   "name": "Saint Einion ap Owain",
+   "b": null,
+   "d": null,
+   "tree": "GB_GWY",
+   "title": "Roi de Gwynedd (fin Ve-début VIe s.)",
+   "g": "h",
+   "script": 176
+  },
+  "gwy.cwl": {
+   "id": "bc2cf851-00ad-5763-a31e-af2991972e26",
+   "name": "Cadwallon Lawhir ap Einion",
+   "b": null,
+   "d": null,
+   "tree": "GB_GWY",
+   "title": "Roi de Gwynedd (vers 500-534)",
+   "g": "h",
+   "script": 176
+  },
+  "gwy.mae": {
+   "id": "0cf606aa-cf24-54e0-a4b6-dffdcee95d13",
+   "name": "Maelgwn Gwynedd",
+   "b": null,
+   "d": 547,
+   "tree": "GB_GWY",
+   "title": "Roi de Gwynedd (vers 520-547)",
+   "g": "h",
+   "script": 176
+  },
+  "gwy.rhh": {
+   "id": "146cf8b0-5f91-59f8-b9df-565d401f1139",
+   "name": "Rhun Hir ap Maelgwn",
+   "b": null,
+   "d": null,
+   "tree": "GB_GWY",
+   "title": "Roi de Gwynedd (vers 547-580)",
+   "g": "h",
+   "script": 176
+  },
+  "gwy.bel": {
+   "id": "17ee639f-a4dc-52f2-bd57-3bccbd6b314b",
+   "name": "Beli ap Rhun",
+   "b": null,
+   "d": null,
+   "tree": "GB_GWY",
+   "title": "Roi de Gwynedd (vers 580-599)",
+   "g": "h",
+   "script": 176
+  },
+  "gwy.iab": {
+   "id": "0b458a42-2433-5808-939a-c3034ecff0d3",
+   "name": "Iago ap Beli",
+   "b": null,
+   "d": null,
+   "tree": "GB_GWY",
+   "title": "Roi de Gwynedd (vers 599-616)",
+   "g": "h",
+   "script": 176
+  },
+  "gwy.cdf": {
+   "id": "76d46c3e-fd00-584c-9bda-5880721d5afa",
+   "name": "Cadfan ap Iago",
+   "b": null,
+   "d": null,
+   "tree": "GB_GWY",
+   "title": "Roi de Gwynedd (vers 616-625)",
+   "g": "h",
+   "script": 176
+  },
+  "gwy.cwa": {
+   "id": "1c4bd36d-daae-51a7-8f4e-6aadff9efc83",
+   "name": "Cadwallon ap Cadfan",
+   "b": null,
+   "d": 633,
+   "tree": "GB_GWY",
+   "title": "Roi de Gwynedd (625-634)",
+   "g": "h",
+   "script": 176
+  },
+  "gwy.mer": {
+   "id": "5e45fc23-5c7d-5e06-93fe-c4ba4375e305",
+   "name": "Merfyn Frych",
+   "b": null,
+   "d": 844,
+   "tree": "GB_GWY",
+   "title": "Roi de Gwynedd (825-844)",
+   "g": "h",
+   "script": 176
+  },
+  "gwy.cyn": {
+   "id": "3c2df99a-f971-54a3-9f1c-7c744f067c9a",
+   "name": "Cynan Dindaethwy",
+   "b": null,
+   "d": 816,
+   "tree": "GB_GWY",
+   "title": "Roi de Gwynedd (vers 798-816)",
+   "g": "h",
+   "script": 176
+  },
+  "gwy.rhm": {
+   "id": "2cd897ee-6654-5f23-9422-a47b2b96c4db",
+   "name": "Rhodri Mawr",
+   "b": null,
+   "d": 877,
+   "tree": "GB_GWY",
+   "title": "Roi de Gwynedd (844-878)",
+   "g": "h",
+   "script": 176
+  },
+  "gwy.ana": {
+   "id": "277bd2a4-c174-5d89-8db0-588d383507cf",
+   "name": "Anarawd ap Rhodri",
+   "b": null,
+   "d": 916,
+   "tree": "GB_GWY",
+   "title": "Roi de Gwynedd (878-916)",
+   "g": "h",
+   "script": 176
+  },
+  "gwy.ifo": {
+   "id": "4a0a862b-b31f-55d4-84d3-9344c5e96b23",
+   "name": "Idwal Foel ab Anarawd",
+   "b": null,
+   "d": 942,
+   "tree": "GB_GWY",
+   "title": "Roi de Gwynedd (916-942)",
+   "g": "h",
+   "script": 176
+  },
+  "gwy.iai": {
+   "id": "d420385c-8545-55af-9d71-cd28456591c5",
+   "name": "Iago ab Idwal",
+   "b": null,
+   "d": 1039,
+   "tree": "GB_GWY",
+   "title": "Roi de Gwynedd (950-979)",
+   "g": "h",
+   "script": 176
+  },
+  "gwy.ieu": {
+   "id": "5418475b-46fe-5a0a-8b90-f78f7627da10",
+   "name": "Ieuaf ab Idwal",
+   "b": null,
+   "d": 985,
+   "tree": "GB_GWY",
+   "title": "Roi de Gwynedd (950-969)",
+   "g": "h",
+   "script": 176
+  },
+  "gwy.hyi": {
+   "id": "8e628cc5-d57d-5499-8dff-2426a614466a",
+   "name": "Hywel ap Ieuaf",
+   "b": null,
+   "d": 985,
+   "tree": "GB_GWY",
+   "title": "Roi de Gwynedd (979-985)",
+   "g": "h",
+   "script": 176
+  },
+  "gwy.cai": {
+   "id": "a4ce6bc7-ea0c-5a21-a227-1edd29a26667",
+   "name": "Cadwallon ab Ieuaf",
+   "b": null,
+   "d": null,
+   "tree": "GB_GWY",
+   "title": "Roi de Gwynedd (985-986)",
+   "g": "h",
+   "script": 176
+  },
+  "gwy.lse": {
+   "id": "70fa89bb-15c6-579c-9db6-873dcb2c059f",
+   "name": "Llywelyn ap Seisyll",
+   "b": null,
+   "d": 1023,
+   "tree": "GB_GWY",
+   "title": "Roi de Gwynedd (1018-1023)",
+   "g": "h",
+   "script": 176
+  },
+  "gwy.gwl": {
+   "id": "25b0f1f8-8703-5083-b7ad-68fab90362f6",
+   "name": "Gruffudd ap Llywelyn",
+   "b": null,
+   "d": null,
+   "tree": "GB_GWY",
+   "title": "Roi de Gwynedd (1039-1063)",
+   "g": "h",
+   "script": 176
+  },
+  "gwy.gca": {
+   "id": "33d7f0a4-ae0e-5046-b458-000374d59cda",
+   "name": "Gruffudd ap Cynan",
+   "b": 1055,
+   "d": 1137,
+   "tree": "GB_GWY",
+   "title": "Roi de Gwynedd (1081-1137)",
+   "g": "h",
+   "script": 176
+  },
+  "gwy.owg": {
+   "id": "8085e611-0f4e-5331-8b09-d4e92625b63d",
+   "name": "Owain Gwynedd",
+   "b": 1100,
+   "d": 1170,
+   "tree": "GB_GWY",
+   "title": "Roi de Gwynedd (1137-1170)",
+   "g": "h",
+   "script": 176
+  },
+  "gwy.hoo": {
+   "id": "9f52f744-3937-57ad-aae8-86fe166cf3d4",
+   "name": "Hywel ab Owain Gwynedd",
+   "b": null,
+   "d": 1170,
+   "tree": "GB_GWY",
+   "title": "Roi de Gwynedd (1170)",
+   "g": "h",
+   "script": 176
+  },
+  "gwy.doo": {
+   "id": "1da03e61-028c-5323-a5c1-fa2cfcd8dc0c",
+   "name": "Dafydd ab Owain Gwynedd",
+   "b": null,
+   "d": 1203,
+   "tree": "GB_GWY",
+   "title": "Roi de Gwynedd (1170-1195)",
+   "g": "h",
+   "script": 176
+  },
+  "gwy.roo": {
+   "id": "a3cc1e79-74eb-566c-96a5-0dfe8a5e3682",
+   "name": "Rhodri ab Owain Gwynedd",
+   "b": null,
+   "d": 1195,
+   "tree": "GB_GWY",
+   "title": "Roi de Gwynedd (1175-1195)",
+   "g": "h",
+   "script": 176
+  },
+  "gwy.moo": {
+   "id": "bc2d8f61-aae1-57ac-9acb-21f45b480f0c",
+   "name": "Maelgwn ab Owain Gwynedd",
+   "b": null,
+   "d": null,
+   "tree": "GB_GWY",
+   "title": "Roi de Gwynedd (1170-1173)",
+   "g": "h",
+   "script": 176
+  },
+  "gwy.lli": {
+   "id": "f86d2316-d338-51e5-98ab-11438c23f545",
+   "name": "Llywelyn ab Iorwerth",
+   "b": null,
+   "d": null,
+   "tree": "GB_GWY",
+   "title": "Roi de Gwynedd (1195-1240)",
+   "g": "h",
+   "script": 176
+  },
+  "gwy.dal": {
+   "id": "413081c2-f7f1-5177-b1f9-80bd9e787a2f",
+   "name": "Dafydd ap Llywelyn",
+   "b": null,
+   "d": 1246,
+   "tree": "GB_GWY",
+   "title": "Roi de Gwynedd (1240-1246)",
+   "g": "h",
+   "script": 176
+  },
+  "gwy.ogg": {
+   "id": "5c032a6e-9b4a-5a77-8ea2-4766190a5240",
+   "name": "Owain Goch ap Gruffydd",
+   "b": null,
+   "d": null,
+   "tree": "GB_GWY",
+   "title": "Roi de Gwynedd (1246-1255)",
+   "g": "h",
+   "script": 176
+  },
+  "gwy.llg": {
+   "id": "d8e571c6-809b-5185-a3d1-29d654a45bb7",
+   "name": "Llywelyn ap Gruffudd",
+   "b": null,
+   "d": 1282,
+   "tree": "GB_GWY",
+   "title": "Roi de Gwynedd (1246-1282)",
+   "g": "h",
+   "script": 176
+  },
+  "gwy.dgg": {
+   "id": "113f0ab3-1690-564f-a1f8-0cdeea1ddc99",
+   "name": "Dafydd ap Gruffydd",
+   "b": null,
+   "d": 1283,
+   "tree": "GB_GWY",
+   "title": "Roi de Gwynedd (1282-1283)",
+   "g": "h",
+   "script": 176
+  },
+  "dsu.aib": {
+   "id": "ebf84f47-2c62-598d-b822-426f8b19f9a1",
+   "name": "Qutb al-Din Aibak",
+   "b": 1150,
+   "d": 1210,
+   "tree": "IN_DSU",
+   "title": "Sultan de Delhi (1206-1210), dynastie des Mamelouks",
+   "g": "h",
+   "script": 177
+  },
+  "dsu.ara": {
+   "id": "83def12b-ccb8-5e3d-a8c0-5360793f71b3",
+   "name": "Aram Shah",
+   "b": 1176,
+   "d": 1211,
+   "tree": "IN_DSU",
+   "title": "Sultan de Delhi (1210-1211)",
+   "g": "h",
+   "script": 177
+  },
+  "dsu.ilt": {
+   "id": "897a6b09-419f-5d5e-a62f-14ead7af0089",
+   "name": "Iltutmish",
+   "b": 1192,
+   "d": 1236,
+   "tree": "IN_DSU",
+   "title": "Sultan de Delhi (1211-1236)",
+   "g": "h",
+   "script": 177
+  },
+  "dsu.fi1": {
+   "id": "3a91264a-cad6-545f-8dec-57a18caf8145",
+   "name": "Firuz Ier (Rukn al-Din)",
+   "b": 1211,
+   "d": 1236,
+   "tree": "IN_DSU",
+   "title": "Sultan de Delhi (1236)",
+   "g": "h",
+   "script": 177
+  },
+  "dsu.raz": {
+   "id": "080f94fe-3a49-5160-8307-1bfc31404b31",
+   "name": "Razia",
+   "b": 1205,
+   "d": 1240,
+   "tree": "IN_DSU",
+   "title": "Sultane de Delhi (1236-1240)",
+   "g": "f",
+   "script": 177
+  },
+  "dsu.bah": {
+   "id": "66e14865-d065-5fac-bddc-d6115b2ec267",
+   "name": "Bahram Shah",
+   "b": 1212,
+   "d": 1242,
+   "tree": "IN_DSU",
+   "title": "Sultan de Delhi (1240-1242)",
+   "g": "h",
+   "script": 177
+  },
+  "dsu.ms1": {
+   "id": "42c85d3d-e538-5a34-a080-e3e7b9c5468c",
+   "name": "Masud Ier",
+   "b": null,
+   "d": 1246,
+   "tree": "IN_DSU",
+   "title": "Sultan de Delhi (1242-1246)",
+   "g": "h",
+   "script": 177
+  },
+  "dsu.mh1": {
+   "id": "b6f4514e-fd7c-55ae-a1f6-66d25b94fbdf",
+   "name": "Mahmud Ier",
+   "b": null,
+   "d": 1266,
+   "tree": "IN_DSU",
+   "title": "Sultan de Delhi (1246-1266)",
+   "g": "h",
+   "script": 177
+  },
+  "dsu.bal": {
+   "id": "c2950f27-3e12-5624-8177-a2af52a88a61",
+   "name": "Balban",
+   "b": null,
+   "d": 1287,
+   "tree": "IN_DSU",
+   "title": "Sultan de Delhi (1266-1287)",
+   "g": "h",
+   "script": 177
+  },
+  "dsu.kqb": {
+   "id": "02887bba-135e-5025-a679-61f2cedaaae0",
+   "name": "Kayqabad",
+   "b": null,
+   "d": 1290,
+   "tree": "IN_DSU",
+   "title": "Sultan de Delhi (1287-1290)",
+   "g": "h",
+   "script": 177
+  },
+  "dsu.kym": {
+   "id": "6a9af1d1-b42d-5366-a3a4-624770071e40",
+   "name": "Kayumars",
+   "b": null,
+   "d": 1290,
+   "tree": "IN_DSU",
+   "title": "Sultan de Delhi (1290)",
+   "g": "h",
+   "script": 177
+  },
+  "dsu.fi2": {
+   "id": "0d8e93c1-eae1-5f6f-a5d0-acfab61a8fea",
+   "name": "Firuz II (Jalal al-Din Khalji)",
+   "b": 1220,
+   "d": 1296,
+   "tree": "IN_DSU",
+   "title": "Sultan de Delhi (1290-1296), dynastie Khalji",
+   "g": "h",
+   "script": 177
+  },
+  "dsu.mu1": {
+   "id": "1dab34c6-cd65-5c61-84ab-c9a1f003cc73",
+   "name": "Muhammad Ier (Ala al-Din Khalji)",
+   "b": 1266,
+   "d": 1316,
+   "tree": "IN_DSU",
+   "title": "Sultan de Delhi (1296-1316)",
+   "g": "h",
+   "script": 177
+  },
+  "dsu.omr": {
+   "id": "4bb7e521-817f-5839-815e-cccfa2c948e9",
+   "name": "Omar Shah",
+   "b": null,
+   "d": 1316,
+   "tree": "IN_DSU",
+   "title": "Sultan de Delhi (1316)",
+   "g": "h",
+   "script": 177
+  },
+  "dsu.mub": {
+   "id": "da330ff7-b2b4-5e5e-bfe3-5e0216e30e54",
+   "name": "Moubarak Ier",
+   "b": 1299,
+   "d": 1320,
+   "tree": "IN_DSU",
+   "title": "Sultan de Delhi (1316-1320)",
+   "g": "h",
+   "script": 177
+  },
+  "dsu.tu1": {
+   "id": "69d1fcc8-64ea-590d-9c0b-1fcd404724ff",
+   "name": "Ghiyath al-Din Tughluq (Tughluq Ier)",
+   "b": null,
+   "d": 1325,
+   "tree": "IN_DSU",
+   "title": "Sultan de Delhi (1320-1325), dynastie Tughluq",
+   "g": "h",
+   "script": 177
+  },
+  "dsu.mu2": {
+   "id": "30c3dfc5-58e8-5276-9a5b-8a9bd908f2e6",
+   "name": "Muhammad II (Muhammad bin Tughluq)",
+   "b": 1290,
+   "d": 1351,
+   "tree": "IN_DSU",
+   "title": "Sultan de Delhi (1325-1351)",
+   "g": "h",
+   "script": 177
+  },
+  "dsu.fi3": {
+   "id": "f11c5885-7f1b-5888-abac-4892714cd5ba",
+   "name": "Firuz III (Firuz Shah Tughluq)",
+   "b": 1309,
+   "d": 1388,
+   "tree": "IN_DSU",
+   "title": "Sultan de Delhi (1351-1388)",
+   "g": "h",
+   "script": 177
+  },
+  "dsu.tu2": {
+   "id": "8525ec7e-a036-510b-8ca7-90327ca5072c",
+   "name": "Tughluq II",
+   "b": null,
+   "d": 1389,
+   "tree": "IN_DSU",
+   "title": "Sultan de Delhi (1388-1389)",
+   "g": "h",
+   "script": 177
+  },
+  "dsu.abu": {
+   "id": "87b1b50e-4075-57d2-9b1a-40d7b9110ab3",
+   "name": "Abu Bakr",
+   "b": null,
+   "d": null,
+   "tree": "IN_DSU",
+   "title": "Sultan de Delhi (1389-1390)",
+   "g": "h",
+   "script": 177
+  },
+  "dsu.mu3": {
+   "id": "59e14108-586d-52cc-a90e-501e42bdc392",
+   "name": "Muhammad III",
+   "b": 1352,
+   "d": 1394,
+   "tree": "IN_DSU",
+   "title": "Sultan de Delhi (1390-1394)",
+   "g": "h",
+   "script": 177
+  },
+  "dsu.sk1": {
+   "id": "f49f797e-05e5-5939-a0d7-6ebe9ca4aef8",
+   "name": "Sikandar Ier",
+   "b": null,
+   "d": 1394,
+   "tree": "IN_DSU",
+   "title": "Sultan de Delhi (1394)",
+   "g": "h",
+   "script": 177
+  },
+  "dsu.mh2": {
+   "id": "92117617-8732-5fed-ab80-60b22a3433fa",
+   "name": "Mahmud II",
+   "b": null,
+   "d": 1413,
+   "tree": "IN_DSU",
+   "title": "Sultan de Delhi (1394-1413)",
+   "g": "h",
+   "script": 177
+  },
+  "dsu.khi": {
+   "id": "d5e62332-5855-5957-b27a-40c683e0dbf4",
+   "name": "Khizr Khan",
+   "b": null,
+   "d": 1421,
+   "tree": "IN_DSU",
+   "title": "Sultan de Delhi (1414-1421), dynastie Sayyid",
+   "g": "h",
+   "script": 177
+  },
+  "dsu.mu5": {
+   "id": "90fee3e0-a35b-52a4-b034-a810e705d10e",
+   "name": "Moubarak II",
+   "b": null,
+   "d": 1434,
+   "tree": "IN_DSU",
+   "title": "Sultan de Delhi (1421-1434)",
+   "g": "h",
+   "script": 177
+  },
+  "dsu.mu4": {
+   "id": "38effc62-5798-5969-8aff-0c26fdffb07d",
+   "name": "Muhammad IV",
+   "b": null,
+   "d": 1445,
+   "tree": "IN_DSU",
+   "title": "Sultan de Delhi (1434-1445)",
+   "g": "h",
+   "script": 177
+  },
+  "dsu.ala": {
+   "id": "0c26d07f-73fa-5d61-9458-83a8c8284863",
+   "name": "Alam Shah",
+   "b": null,
+   "d": 1478,
+   "tree": "IN_DSU",
+   "title": "Sultan de Delhi (1445-1451)",
+   "g": "h",
+   "script": 177
+  },
+  "dsu.bhl": {
+   "id": "84bfb1ea-0e6d-5bda-97ba-b00b2d66a3f2",
+   "name": "Bahlul Lodi",
+   "b": 1420,
+   "d": 1489,
+   "tree": "IN_DSU",
+   "title": "Sultan de Delhi (1451-1489), dynastie Lodi",
+   "g": "h",
+   "script": 177
+  },
+  "dsu.sk2": {
+   "id": "018d89c0-c5e7-5b64-9111-a3926f8d7b7c",
+   "name": "Sikandar II (Sikandar Lodi)",
+   "b": 1458,
+   "d": 1517,
+   "tree": "IN_DSU",
+   "title": "Sultan de Delhi (1489-1517)",
+   "g": "h",
+   "script": 177
+  },
+  "dsu.ibr": {
+   "id": "15f18c19-ee2c-5ee3-bd88-bb5768f391ce",
+   "name": "Ibrahim Lodi",
+   "b": 1480,
+   "d": 1526,
+   "tree": "IN_DSU",
+   "title": "Sultan de Delhi (1517-1526)",
+   "g": "h",
+   "script": 177
   }
  },
  "trees": {
@@ -37054,6 +37954,30 @@
    "country": "MMR",
    "dynasty": "Toungoo",
    "script": 173
+  },
+  "ES_NAS": {
+   "entry": "d98ae57b-8204-53be-80b5-e05ae5527d16",
+   "country": "ESP",
+   "dynasty": "Nasrides",
+   "script": 174
+  },
+  "BE_VB": {
+   "entry": "0a4f48be-e04e-56ef-8ba8-6e8179e890bf",
+   "country": "BEL",
+   "dynasty": "Valois-Bourgogne",
+   "script": 175
+  },
+  "GB_GWY": {
+   "entry": "22d01192-b1d3-5d66-b6a3-e9624bfbb9e5",
+   "country": "GBR",
+   "dynasty": "Rois de Gwynedd",
+   "script": 176
+  },
+  "IN_DSU": {
+   "entry": "35505175-54f7-5d31-9dec-f2aec692999e",
+   "country": "IND",
+   "dynasty": "Sultanat de Delhi",
+   "script": 177
   }
  },
  "flags": [
@@ -42750,6 +43674,38 @@
    "rels": 3,
    "trees": [
     "Toungoo (MMR)"
+   ]
+  },
+  "174": {
+   "label": "Espagne (Nasrides)",
+   "members": 13,
+   "rels": 11,
+   "trees": [
+    "Nasrides (ESP)"
+   ]
+  },
+  "175": {
+   "label": "Belgique (Valois-Bourgogne)",
+   "members": 13,
+   "rels": 16,
+   "trees": [
+    "Valois-Bourgogne (BEL)"
+   ]
+  },
+  "176": {
+   "label": "Royaume-Uni (Gwynedd)",
+   "members": 34,
+   "rels": 26,
+   "trees": [
+    "Rois de Gwynedd (GBR)"
+   ]
+  },
+  "177": {
+   "label": "Inde (Sultanat de Delhi)",
+   "members": 30,
+   "rels": 25,
+   "trees": [
+    "Sultanat de Delhi (IND)"
    ]
   }
  },
@@ -69647,6 +70603,396 @@
   [
    "1344c854-280e-5f80-a326-72d63ebdf8ed",
    "626ffae8-df8f-585b-a3c7-f8ca226dcabc",
+   "family"
+  ],
+  [
+   "ac7d2d3f-606e-5ebd-96d6-475c19ffb02b",
+   "28783954-c931-5e58-b57b-f330501f19f7",
+   "parent"
+  ],
+  [
+   "28783954-c931-5e58-b57b-f330501f19f7",
+   "1f0f923c-fbce-5ec0-91ba-886a19fa2abb",
+   "parent"
+  ],
+  [
+   "e8c5cded-97de-5281-9b15-5d0dd5960552",
+   "0f604033-aecd-588c-b535-3dd60ccf177e",
+   "parent"
+  ],
+  [
+   "78cd1d8d-9475-54d8-92f9-29ac8bae2efd",
+   "de95c3c4-3276-588c-abb8-9927769d46e9",
+   "parent"
+  ],
+  [
+   "30326743-735f-5f23-95d3-568b05721486",
+   "3636a294-25e6-50bb-a879-1ac59e47067c",
+   "parent"
+  ],
+  [
+   "1f0f923c-fbce-5ec0-91ba-886a19fa2abb",
+   "991660fa-f885-5a71-9ad9-5a6a2d5d2882",
+   "family"
+  ],
+  [
+   "991660fa-f885-5a71-9ad9-5a6a2d5d2882",
+   "e8c5cded-97de-5281-9b15-5d0dd5960552",
+   "family"
+  ],
+  [
+   "0f604033-aecd-588c-b535-3dd60ccf177e",
+   "78cd1d8d-9475-54d8-92f9-29ac8bae2efd",
+   "family"
+  ],
+  [
+   "de95c3c4-3276-588c-abb8-9927769d46e9",
+   "88d75cea-3156-5cc3-860c-2a716bf369d4",
+   "family"
+  ],
+  [
+   "88d75cea-3156-5cc3-860c-2a716bf369d4",
+   "7f5ec1f9-62a7-5f7c-98a8-2df475ff1168",
+   "family"
+  ],
+  [
+   "30326743-735f-5f23-95d3-568b05721486",
+   "685a937d-1c28-50c5-a300-ca62cd6c32d1",
+   "family"
+  ],
+  [
+   "b748a0ed-0862-5f3e-a44d-743d66c44dbf",
+   "797bd2c4-5102-51be-a5d1-2607dfa17f66",
+   "parent"
+  ],
+  [
+   "797bd2c4-5102-51be-a5d1-2607dfa17f66",
+   "3fa88d2c-f9a2-5545-b103-d25d8775265d",
+   "parent"
+  ],
+  [
+   "862c91eb-4d63-5571-ae64-157d45c08803",
+   "3fa88d2c-f9a2-5545-b103-d25d8775265d",
+   "parent"
+  ],
+  [
+   "3fa88d2c-f9a2-5545-b103-d25d8775265d",
+   "4a30e038-8d0a-5c12-83ce-8f18ee0f4fc4",
+   "parent"
+  ],
+  [
+   "5fd64f13-2544-5284-8de3-56a13f9c1836",
+   "4a30e038-8d0a-5c12-83ce-8f18ee0f4fc4",
+   "parent"
+  ],
+  [
+   "4a30e038-8d0a-5c12-83ce-8f18ee0f4fc4",
+   "e7557023-d810-5a19-8156-688155f75d1d",
+   "parent"
+  ],
+  [
+   "afbdc73f-4c5d-5434-acc7-564fb20c3a04",
+   "e7557023-d810-5a19-8156-688155f75d1d",
+   "parent"
+  ],
+  [
+   "e7557023-d810-5a19-8156-688155f75d1d",
+   "187785de-02bd-55c9-a528-f9f9e52f7be2",
+   "parent"
+  ],
+  [
+   "666d47aa-cdfa-514a-b1d5-1d67d50741f9",
+   "187785de-02bd-55c9-a528-f9f9e52f7be2",
+   "parent"
+  ],
+  [
+   "187785de-02bd-55c9-a528-f9f9e52f7be2",
+   "cab4c411-7bad-510a-a558-e9ba6b0eef6b",
+   "parent"
+  ],
+  [
+   "a68e4485-83da-5736-9647-c8c381864235",
+   "cab4c411-7bad-510a-a558-e9ba6b0eef6b",
+   "parent"
+  ],
+  [
+   "797bd2c4-5102-51be-a5d1-2607dfa17f66",
+   "862c91eb-4d63-5571-ae64-157d45c08803",
+   "spouse"
+  ],
+  [
+   "3fa88d2c-f9a2-5545-b103-d25d8775265d",
+   "5fd64f13-2544-5284-8de3-56a13f9c1836",
+   "spouse"
+  ],
+  [
+   "4a30e038-8d0a-5c12-83ce-8f18ee0f4fc4",
+   "afbdc73f-4c5d-5434-acc7-564fb20c3a04",
+   "spouse"
+  ],
+  [
+   "187785de-02bd-55c9-a528-f9f9e52f7be2",
+   "a68e4485-83da-5736-9647-c8c381864235",
+   "spouse"
+  ],
+  [
+   "cab4c411-7bad-510a-a558-e9ba6b0eef6b",
+   "4929dab1-5917-5e74-bd71-2ec2b6a146d6",
+   "spouse"
+  ],
+  [
+   "8c24ea19-ed55-5cd8-9ba8-98effb2418a7",
+   "6fc4ca46-4825-56b3-934b-d73f43be07ba",
+   "parent"
+  ],
+  [
+   "6fc4ca46-4825-56b3-934b-d73f43be07ba",
+   "b7af6671-e699-5fba-b258-7d255d64599e",
+   "parent"
+  ],
+  [
+   "b7af6671-e699-5fba-b258-7d255d64599e",
+   "7d5cfa2f-7e78-5142-9a8a-b41750df2cf4",
+   "parent"
+  ],
+  [
+   "b7af6671-e699-5fba-b258-7d255d64599e",
+   "5f1c6124-5f45-5f89-9e34-cd5a91e14efd",
+   "parent"
+  ],
+  [
+   "6fc4ca46-4825-56b3-934b-d73f43be07ba",
+   "bc2cf851-00ad-5763-a31e-af2991972e26",
+   "parent"
+  ],
+  [
+   "0cf606aa-cf24-54e0-a4b6-dffdcee95d13",
+   "146cf8b0-5f91-59f8-b9df-565d401f1139",
+   "parent"
+  ],
+  [
+   "146cf8b0-5f91-59f8-b9df-565d401f1139",
+   "17ee639f-a4dc-52f2-bd57-3bccbd6b314b",
+   "parent"
+  ],
+  [
+   "17ee639f-a4dc-52f2-bd57-3bccbd6b314b",
+   "0b458a42-2433-5808-939a-c3034ecff0d3",
+   "parent"
+  ],
+  [
+   "0b458a42-2433-5808-939a-c3034ecff0d3",
+   "76d46c3e-fd00-584c-9bda-5880721d5afa",
+   "parent"
+  ],
+  [
+   "76d46c3e-fd00-584c-9bda-5880721d5afa",
+   "1c4bd36d-daae-51a7-8f4e-6aadff9efc83",
+   "parent"
+  ],
+  [
+   "2cd897ee-6654-5f23-9422-a47b2b96c4db",
+   "277bd2a4-c174-5d89-8db0-588d383507cf",
+   "parent"
+  ],
+  [
+   "277bd2a4-c174-5d89-8db0-588d383507cf",
+   "4a0a862b-b31f-55d4-84d3-9344c5e96b23",
+   "parent"
+  ],
+  [
+   "4a0a862b-b31f-55d4-84d3-9344c5e96b23",
+   "d420385c-8545-55af-9d71-cd28456591c5",
+   "parent"
+  ],
+  [
+   "4a0a862b-b31f-55d4-84d3-9344c5e96b23",
+   "5418475b-46fe-5a0a-8b90-f78f7627da10",
+   "parent"
+  ],
+  [
+   "5418475b-46fe-5a0a-8b90-f78f7627da10",
+   "8e628cc5-d57d-5499-8dff-2426a614466a",
+   "parent"
+  ],
+  [
+   "5418475b-46fe-5a0a-8b90-f78f7627da10",
+   "a4ce6bc7-ea0c-5a21-a227-1edd29a26667",
+   "parent"
+  ],
+  [
+   "8085e611-0f4e-5331-8b09-d4e92625b63d",
+   "9f52f744-3937-57ad-aae8-86fe166cf3d4",
+   "parent"
+  ],
+  [
+   "8085e611-0f4e-5331-8b09-d4e92625b63d",
+   "1da03e61-028c-5323-a5c1-fa2cfcd8dc0c",
+   "parent"
+  ],
+  [
+   "8085e611-0f4e-5331-8b09-d4e92625b63d",
+   "a3cc1e79-74eb-566c-96a5-0dfe8a5e3682",
+   "parent"
+  ],
+  [
+   "8085e611-0f4e-5331-8b09-d4e92625b63d",
+   "bc2d8f61-aae1-57ac-9acb-21f45b480f0c",
+   "parent"
+  ],
+  [
+   "3c2df99a-f971-54a3-9f1c-7c744f067c9a",
+   "5e45fc23-5c7d-5e06-93fe-c4ba4375e305",
+   "family"
+  ],
+  [
+   "70fa89bb-15c6-579c-9db6-873dcb2c059f",
+   "25b0f1f8-8703-5083-b7ad-68fab90362f6",
+   "family"
+  ],
+  [
+   "f86d2316-d338-51e5-98ab-11438c23f545",
+   "413081c2-f7f1-5177-b1f9-80bd9e787a2f",
+   "family"
+  ],
+  [
+   "5c032a6e-9b4a-5a77-8ea2-4766190a5240",
+   "d8e571c6-809b-5185-a3d1-29d654a45bb7",
+   "family"
+  ],
+  [
+   "d8e571c6-809b-5185-a3d1-29d654a45bb7",
+   "113f0ab3-1690-564f-a1f8-0cdeea1ddc99",
+   "family"
+  ],
+  [
+   "5c032a6e-9b4a-5a77-8ea2-4766190a5240",
+   "113f0ab3-1690-564f-a1f8-0cdeea1ddc99",
+   "family"
+  ],
+  [
+   "897a6b09-419f-5d5e-a62f-14ead7af0089",
+   "3a91264a-cad6-545f-8dec-57a18caf8145",
+   "parent"
+  ],
+  [
+   "897a6b09-419f-5d5e-a62f-14ead7af0089",
+   "080f94fe-3a49-5160-8307-1bfc31404b31",
+   "parent"
+  ],
+  [
+   "897a6b09-419f-5d5e-a62f-14ead7af0089",
+   "66e14865-d065-5fac-bddc-d6115b2ec267",
+   "parent"
+  ],
+  [
+   "3a91264a-cad6-545f-8dec-57a18caf8145",
+   "42c85d3d-e538-5a34-a080-e3e7b9c5468c",
+   "parent"
+  ],
+  [
+   "02887bba-135e-5025-a679-61f2cedaaae0",
+   "6a9af1d1-b42d-5366-a3a4-624770071e40",
+   "parent"
+  ],
+  [
+   "1dab34c6-cd65-5c61-84ab-c9a1f003cc73",
+   "4bb7e521-817f-5839-815e-cccfa2c948e9",
+   "parent"
+  ],
+  [
+   "1dab34c6-cd65-5c61-84ab-c9a1f003cc73",
+   "da330ff7-b2b4-5e5e-bfe3-5e0216e30e54",
+   "parent"
+  ],
+  [
+   "69d1fcc8-64ea-590d-9c0b-1fcd404724ff",
+   "30c3dfc5-58e8-5276-9a5b-8a9bd908f2e6",
+   "parent"
+  ],
+  [
+   "f11c5885-7f1b-5888-abac-4892714cd5ba",
+   "59e14108-586d-52cc-a90e-501e42bdc392",
+   "parent"
+  ],
+  [
+   "59e14108-586d-52cc-a90e-501e42bdc392",
+   "f49f797e-05e5-5939-a0d7-6ebe9ca4aef8",
+   "parent"
+  ],
+  [
+   "d5e62332-5855-5957-b27a-40c683e0dbf4",
+   "90fee3e0-a35b-52a4-b034-a810e705d10e",
+   "parent"
+  ],
+  [
+   "38effc62-5798-5969-8aff-0c26fdffb07d",
+   "0c26d07f-73fa-5d61-9458-83a8c8284863",
+   "parent"
+  ],
+  [
+   "84bfb1ea-0e6d-5bda-97ba-b00b2d66a3f2",
+   "018d89c0-c5e7-5b64-9111-a3926f8d7b7c",
+   "parent"
+  ],
+  [
+   "018d89c0-c5e7-5b64-9111-a3926f8d7b7c",
+   "15f18c19-ee2c-5ee3-bd88-bb5768f391ce",
+   "parent"
+  ],
+  [
+   "ebf84f47-2c62-598d-b822-426f8b19f9a1",
+   "83def12b-ccb8-5e3d-a8c0-5360793f71b3",
+   "family"
+  ],
+  [
+   "ebf84f47-2c62-598d-b822-426f8b19f9a1",
+   "897a6b09-419f-5d5e-a62f-14ead7af0089",
+   "family"
+  ],
+  [
+   "897a6b09-419f-5d5e-a62f-14ead7af0089",
+   "b6f4514e-fd7c-55ae-a1f6-66d25b94fbdf",
+   "family"
+  ],
+  [
+   "c2950f27-3e12-5624-8177-a2af52a88a61",
+   "b6f4514e-fd7c-55ae-a1f6-66d25b94fbdf",
+   "family"
+  ],
+  [
+   "c2950f27-3e12-5624-8177-a2af52a88a61",
+   "02887bba-135e-5025-a679-61f2cedaaae0",
+   "family"
+  ],
+  [
+   "0d8e93c1-eae1-5f6f-a5d0-acfab61a8fea",
+   "1dab34c6-cd65-5c61-84ab-c9a1f003cc73",
+   "family"
+  ],
+  [
+   "69d1fcc8-64ea-590d-9c0b-1fcd404724ff",
+   "f11c5885-7f1b-5888-abac-4892714cd5ba",
+   "family"
+  ],
+  [
+   "f11c5885-7f1b-5888-abac-4892714cd5ba",
+   "8525ec7e-a036-510b-8ca7-90327ca5072c",
+   "family"
+  ],
+  [
+   "f11c5885-7f1b-5888-abac-4892714cd5ba",
+   "87b1b50e-4075-57d2-9b1a-40d7b9110ab3",
+   "family"
+  ],
+  [
+   "f49f797e-05e5-5939-a0d7-6ebe9ca4aef8",
+   "92117617-8732-5fed-ab80-60b22a3433fa",
+   "family"
+  ],
+  [
+   "d5e62332-5855-5957-b27a-40c683e0dbf4",
+   "38effc62-5798-5969-8aff-0c26fdffb07d",
    "family"
   ]
  ],

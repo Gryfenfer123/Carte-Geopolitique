@@ -2,6 +2,8 @@
 
 ## Dernières nouvelles (la plus récente en haut)
 
+- 2026-10-23 — v174-v177 : Nasrides (13), Valois-Bourgogne (13), Gwynedd (34), Sultanat de Delhi (30). Omeyyades de Cordoue, Trần, Majapahit, Ayutthaya non faits (pages sans parenté exploitable).
+
 - 2026-10-23 — v173 : Toungoo (5).
 
 - 2026-10-23 — v172 : Mérinides (19).
@@ -226,7 +228,7 @@
 
 Code : `src/genealogy.ts`, `genealogyLayers.ts`, `genealogyBus.ts`, `genealogyLod.ts/.css`, `genealogyLayersWorker.ts`,
 `genealogyLayout.ts`, `genealogyRouting.ts`. Outils de remplissage : [`scripts/arbres/`](../../scripts/arbres/README.md).
-Prochaine migration : **arbres_v174** (`supabase/arbres/arbres_v174.sql`) — générateur : `Gen(174, "…")`.  (v173 livrée, à exécuter par Martin si ce n'est pas déjà fait.)
+Prochaine migration : **arbres_v178** (`supabase/arbres/arbres_v178.sql`) — générateur : `Gen(178, "…")`.  (v177 livrée, à exécuter par Martin si ce n'est pas déjà fait.)
 
 ## Règles de contenu (décidées par Martin — ne pas rouvrir)
 - Un pays n'a que les dynasties qui ont **régné sur lui**. Dynastie étrangère : branche principale dans son pays

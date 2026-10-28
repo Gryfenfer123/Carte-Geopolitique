@@ -1,0 +1,35 @@
+import sys
+import os; sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), '..'))
+from lib import *
+
+g = Gen(174, 'Espagne (Nasrides)')
+g.notes = ['Nouvel arbre « Nasrides » (émirat de Grenade). Source : page « Emirate of Granada » (anglais).', "Seules les relations écrites sur la page sont saisies ; frères, cousins et demi-frères via des liens « famille ». Naissances non indiquées. Dates de mort telles que sur la page ; mort de Boabdil contestée (1518, 1533 ou 1536) : non saisie. Les Omeyyades de Cordoue n'ont pas été faits : la page consultée ne donne aucune parenté."]
+g.tree('ES_NAS', 'ESP', 'Nasrides', section_title='Nasrides')
+W = 'https://en.wikipedia.org/wiki/'
+def K(code, name, b, d, title, page, note=None, gnd='h'):
+    return g.m('nas.' + code, name, b, d, title, 'Nasrides', 'ES_NAS', gnd, True, src=W + page + (' - ' + note if note else ''))
+K('m1', 'Muhammad Ier (Ibn al-Ahmar)', None, 1273, 'Émir de Grenade (1232-1273)', 'Emirate_of_Granada', 'père non indiqué', 'h')
+K('m2', 'Muhammad II', None, 1302, 'Émir de Grenade (1273-1302)', 'Emirate_of_Granada', None, 'h')
+K('m3', 'Muhammad III', None, None, 'Émir de Grenade (1302-1309)', 'Emirate_of_Granada', 'abdique en 1309', 'h')
+K('nasr', 'Nasr', None, None, 'Émir de Grenade (1309-1314)', 'Emirate_of_Granada', 'frère de Muhammad III', 'h')
+K('i1', "Isma'il Ier", None, 1325, 'Émir de Grenade (1314-1325)', 'Emirate_of_Granada', 'cousin de Nasr ; assassiné en juillet 1325', 'h')
+K('m4', 'Muhammad IV', None, 1333, 'Émir de Grenade (1325-1333)', 'Emirate_of_Granada', 'assassiné le 25 août 1333', 'h')
+K('y1', 'Yusuf Ier', None, 1354, 'Émir de Grenade (1333-1354)', 'Emirate_of_Granada', 'frère de Muhammad IV ; assassiné', 'h')
+K('m5', 'Muhammad V', None, 1391, 'Émir de Grenade', 'Emirate_of_Granada', 'règne 1354-1359 puis 1362-1391 (selon le texte de la page)', 'h')
+K('i2', "Isma'il II", None, 1360, 'Émir de Grenade (1359-1360)', 'Emirate_of_Granada', 'demi-frère de Muhammad V ; assassiné en juin 1360', 'h')
+K('m6', 'Muhammad VI', None, None, 'Émir de Grenade (1360-1362)', 'Emirate_of_Granada', "cousin d'Isma'il II ; exécuté par Pierre de Castille (année non indiquée)", 'h')
+K('ah', "Abu'l Hasan", None, 1485, 'Émir de Grenade', 'Emirate_of_Granada', 'père de Muhammad XI', 'h')
+K('m11', 'Muhammad XI (Boabdil)', None, None, 'Émir de Grenade (1487-1492)', 'Emirate_of_Granada', 'mort contestée (1518, 1533 ou 1536)', 'h')
+K('zag', 'Muhammad XII (al-Zaghal)', None, None, 'Émir de Grenade', 'Emirate_of_Granada', "frère d'Abu'l Hasan", 'h')
+g.par('nas.m1', 'nas.m2')
+g.par('nas.m2', 'nas.m3')
+g.par('nas.i1', 'nas.m4')
+g.par('nas.y1', 'nas.m5')
+g.par('nas.ah', 'nas.m11')
+g.fam('nas.m3', 'nas.nasr')
+g.fam('nas.nasr', 'nas.i1')
+g.fam('nas.m4', 'nas.y1')
+g.fam('nas.m5', 'nas.i2')
+g.fam('nas.i2', 'nas.m6')
+g.fam('nas.ah', 'nas.zag')
+g.write()

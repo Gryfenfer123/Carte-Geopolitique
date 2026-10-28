@@ -243,4 +243,8 @@ RLS**. Règles :
 | arbres_v171 | Iran : Ilkhans (9) |
 | arbres_v172 | Maroc : Mérinides (19) |
 | arbres_v173 | Birmanie : Toungoo (5) |
+| arbres_v174 | Arbre généalogique : Nasrides (13 membres). Idempotente, aucune suppression. |
+| arbres_v175 | Arbre généalogique : Valois-Bourgogne (13). Idempotente, aucune suppression. |
+| arbres_v176 | Arbre généalogique : Rois de Gwynedd (34). Idempotente, aucune suppression. |
+| arbres_v177 | Arbre généalogique : Sultanat de Delhi (30). Idempotente, aucune suppression. |
 | `data_owid_load.sql` + `owid_chunks/` | Chargement des données d'indicateurs (rejouable, upserts) — à exécuter après v1 à v7 |

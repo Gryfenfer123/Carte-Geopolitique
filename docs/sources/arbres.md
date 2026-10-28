@@ -71,6 +71,10 @@ Chaque fiche sourcée porte aussi l'adresse de sa page dans « Notes / biographi
 | 2026-10-28 | v171 — Iran : Ilkhans (9) | Wikipédia anglais : Ilkhanate ; Ghazan | https://en.wikipedia.org/wiki/Ilkhanate | CC BY-SA 4.0 | tertiaire / à recouper ; voir les notes de l'arbre |
 | 2026-10-28 | v172 — Maroc : Mérinides (19) | Wikipédia anglais : Marinid_dynasty | https://en.wikipedia.org/wiki/Marinid_dynasty | CC BY-SA 4.0 | tertiaire / à recouper ; voir les notes de l'arbre |
 | 2026-10-28 | v173 — Birmanie : Toungoo (5) | Wikipédia anglais : Toungoo_dynasty | https://en.wikipedia.org/wiki/Toungoo_dynasty | CC BY-SA 4.0 | tertiaire / à recouper ; voir les notes de l'arbre |
+| 2026-10-28 | v174 — Espagne : Nasrides (13) | Wikipédia anglais : Emirate_of_Granada | https://en.wikipedia.org/wiki/Emirate_of_Granada | CC BY-SA 4.0 | tertiaire / à recouper ; voir les notes de l'arbre |
+| 2026-10-28 | v175 — Belgique : Valois-Bourgogne (13) | Wikipédia anglais : House_of_Valois-Burgundy | https://en.wikipedia.org/wiki/House_of_Valois-Burgundy | CC BY-SA 4.0 | tertiaire / à recouper ; voir les notes de l'arbre |
+| 2026-10-28 | v176 — Royaume-Uni : Rois de Gwynedd (34) | Wikipédia anglais : List_of_kings_of_Gwynedd | https://en.wikipedia.org/wiki/List_of_kings_of_Gwynedd | CC BY-SA 4.0 | tertiaire / à recouper ; voir les notes de l'arbre |
+| 2026-10-28 | v177 — Inde : Sultanat de Delhi (30) | Wikipédia anglais : List_of_sultans_of_Delhi | https://en.wikipedia.org/wiki/List_of_sultans_of_Delhi | CC BY-SA 4.0 | tertiaire / à recouper ; voir les notes de l'arbre |
 
 ## Lots NON sourcés (à reprendre) — SOURCE MANQUANTE
 Dates saisies de mémoire, sans page consultée ; en cours de reprise, une ligne ci-dessus remplace la ligne ici au fur et à mesure.
