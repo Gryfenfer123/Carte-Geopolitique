@@ -2,6 +2,8 @@
 
 ## Dernières nouvelles (la plus récente en haut)
 
+- 2026-10-23 — v168 : Théodosiens (20).
+
 - 2026-10-23 — v167 : Séleucides (15).
 
 - 2026-10-23 — v166 : Argéades (21).
@@ -214,7 +216,7 @@
 
 Code : `src/genealogy.ts`, `genealogyLayers.ts`, `genealogyBus.ts`, `genealogyLod.ts/.css`, `genealogyLayersWorker.ts`,
 `genealogyLayout.ts`, `genealogyRouting.ts`. Outils de remplissage : [`scripts/arbres/`](../../scripts/arbres/README.md).
-Prochaine migration : **arbres_v168** (`supabase/arbres/arbres_v168.sql`) — générateur : `Gen(168, "…")`.  (v167 livrée, à exécuter par Martin si ce n'est pas déjà fait.)
+Prochaine migration : **arbres_v169** (`supabase/arbres/arbres_v169.sql`) — générateur : `Gen(169, "…")`.  (v168 livrée, à exécuter par Martin si ce n'est pas déjà fait.)
 
 ## Règles de contenu (décidées par Martin — ne pas rouvrir)
 - Un pays n'a que les dynasties qui ont **régné sur lui**. Dynastie étrangère : branche principale dans son pays

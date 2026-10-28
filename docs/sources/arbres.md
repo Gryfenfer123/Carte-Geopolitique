@@ -65,6 +65,12 @@ Chaque fiche sourcée porte aussi l'adresse de sa page dans « Notes / biographi
 | 2026-10-28 | v165 — Italie : Sévères (9) | Wikipédia anglais : Severan_dynasty | https://en.wikipedia.org/wiki/Severan_dynasty | CC BY-SA 4.0 | tertiaire / à recouper ; voir les notes de l'arbre |
 | 2026-10-28 | v166 — Grèce : Argéades (21) | Wikipédia anglais : List_of_kings_of_Macedonia ; Argead_dynasty ; Philip_II_of_Macedon | https://en.wikipedia.org/wiki/List_of_kings_of_Macedonia | CC BY-SA 4.0 | tertiaire / à recouper ; voir les notes de l'arbre |
 | 2026-10-28 | v167 — Syrie : Séleucides (15) | Wikipédia anglais : Seleucid_dynasty ; Seleucid_Empire | https://en.wikipedia.org/wiki/Seleucid_dynasty | CC BY-SA 4.0 | tertiaire / à recouper ; voir les notes de l'arbre |
+| 2026-10-28 | v168 — Italie : Théodosiens (20) | Wikipédia anglais : Theodosian_dynasty | https://en.wikipedia.org/wiki/Theodosian_dynasty | CC BY-SA 4.0 | tertiaire / à recouper ; voir les notes de l'arbre |
+| 2026-10-28 | v169 — Italie : Constantiniens (18) | Wikipédia anglais : Constantinian_dynasty (schéma mal extrait : liens à revérifier) | https://en.wikipedia.org/wiki/Constantinian_dynasty | CC BY-SA 4.0 | tertiaire / à recouper ; voir les notes de l'arbre |
+| 2026-10-28 | v170 — Afghanistan : Ghurides (8) | Wikipédia anglais : Ghurid_dynasty ; Muhammad_of_Ghor | https://en.wikipedia.org/wiki/Ghurid_dynasty | CC BY-SA 4.0 | tertiaire / à recouper ; voir les notes de l'arbre |
+| 2026-10-28 | v171 — Iran : Ilkhans (9) | Wikipédia anglais : Ilkhanate ; Ghazan | https://en.wikipedia.org/wiki/Ilkhanate | CC BY-SA 4.0 | tertiaire / à recouper ; voir les notes de l'arbre |
+| 2026-10-28 | v172 — Maroc : Mérinides (19) | Wikipédia anglais : Marinid_dynasty | https://en.wikipedia.org/wiki/Marinid_dynasty | CC BY-SA 4.0 | tertiaire / à recouper ; voir les notes de l'arbre |
+| 2026-10-28 | v173 — Birmanie : Toungoo (5) | Wikipédia anglais : Toungoo_dynasty | https://en.wikipedia.org/wiki/Toungoo_dynasty | CC BY-SA 4.0 | tertiaire / à recouper ; voir les notes de l'arbre |
 
 ## Lots NON sourcés (à reprendre) — SOURCE MANQUANTE
 Dates saisies de mémoire, sans page consultée ; en cours de reprise, une ligne ci-dessus remplace la ligne ici au fur et à mesure.

@@ -34960,6 +34960,796 @@
    "title": "Roi séleucide (138-129 av. J.-C.)",
    "g": "h",
    "script": 167
+  },
+  "th.cth": {
+   "id": "4a853f98-c1e2-57ea-849a-13da2816ce5a",
+   "name": "Comte Théodose",
+   "b": null,
+   "d": null,
+   "tree": "IT_THE",
+   "title": "Père de Théodose Ier",
+   "g": "h",
+   "script": 168
+  },
+  "th.fth": {
+   "id": "a6b4ea7c-e660-5bb0-960d-25e5a51d25d6",
+   "name": "Flavia Thermantia",
+   "b": null,
+   "d": null,
+   "tree": "IT_THE",
+   "title": "Mère de Théodose Ier",
+   "g": "f",
+   "script": 168
+  },
+  "th.th1": {
+   "id": "b0facf69-eb3b-5628-897f-868aa150ce87",
+   "name": "Théodose Ier",
+   "b": null,
+   "d": 395,
+   "tree": "IT_THE",
+   "title": "Empereur romain (379-395)",
+   "g": "h",
+   "script": 168
+  },
+  "th.fla": {
+   "id": "9b676ced-9346-509e-9a82-433a830e278a",
+   "name": "Aelia Flaccilla",
+   "b": null,
+   "d": null,
+   "tree": "IT_THE",
+   "title": "Première épouse de Théodose Ier, augusta (379-386)",
+   "g": "f",
+   "script": 168
+  },
+  "th.va1": {
+   "id": "340c07a2-668e-52d4-af76-d365a7939f48",
+   "name": "Valentinien Ier",
+   "b": null,
+   "d": null,
+   "tree": "IT_THE",
+   "title": "Père de Galla",
+   "g": "h",
+   "script": 168
+  },
+  "th.jus": {
+   "id": "bd1d04a2-5261-50cb-8468-59f131ede1db",
+   "name": "Justine",
+   "b": null,
+   "d": null,
+   "tree": "IT_THE",
+   "title": "Mère de Galla",
+   "g": "f",
+   "script": 168
+  },
+  "th.gal": {
+   "id": "888ca6ab-2589-584d-ae9e-ba7e19708052",
+   "name": "Galla",
+   "b": null,
+   "d": null,
+   "tree": "IT_THE",
+   "title": "Seconde épouse de Théodose Ier",
+   "g": "f",
+   "script": 168
+  },
+  "th.arc": {
+   "id": "8d70d834-8061-55b1-a0be-7547f271dbc3",
+   "name": "Arcadius",
+   "b": null,
+   "d": null,
+   "tree": "IT_THE",
+   "title": "Empereur romain (395-408)",
+   "g": "h",
+   "script": 168
+  },
+  "th.hon": {
+   "id": "b0785320-a7a3-5823-9d34-eac5b06b2f18",
+   "name": "Honorius",
+   "b": 384,
+   "d": 423,
+   "tree": "IT_THE",
+   "title": "Empereur romain (395-423)",
+   "g": "h",
+   "script": 168
+  },
+  "th.pul": {
+   "id": "e2e58571-8883-5962-a764-079c01ebd992",
+   "name": "Pulchérie",
+   "b": null,
+   "d": null,
+   "tree": "IT_THE",
+   "title": "Augusta (414-453)",
+   "g": "f",
+   "script": 168
+  },
+  "th.gpl": {
+   "id": "4f89b94a-bc7b-5d3e-b4fa-8cb3e035f4bf",
+   "name": "Galla Placidie",
+   "b": null,
+   "d": 450,
+   "tree": "IT_THE",
+   "title": "Augusta (421-450)",
+   "g": "f",
+   "script": 168
+  },
+  "th.gra": {
+   "id": "e2423707-2c70-535d-9ca5-f3e2d576db25",
+   "name": "Gratien (fils de Théodose Ier)",
+   "b": null,
+   "d": 394,
+   "tree": "IT_THE",
+   "title": "Fils de Théodose Ier et de Galla",
+   "g": "h",
+   "script": 168
+  },
+  "th.joh": {
+   "id": "74bbdda8-4329-5442-8181-46d9df9974c8",
+   "name": "Jean (fils de Théodose Ier)",
+   "b": null,
+   "d": null,
+   "tree": "IT_THE",
+   "title": "Fils de Théodose Ier et de Galla",
+   "g": "h",
+   "script": 168
+  },
+  "th.eud": {
+   "id": "a3afdd04-68d7-5cac-ac25-04f5d993316e",
+   "name": "Aelia Eudoxia",
+   "b": null,
+   "d": null,
+   "tree": "IT_THE",
+   "title": "Épouse d'Arcadius",
+   "g": "f",
+   "script": 168
+  },
+  "th.th2": {
+   "id": "8cfe4868-0e64-51d7-9b85-482da6fc7665",
+   "name": "Théodose II",
+   "b": null,
+   "d": null,
+   "tree": "IT_THE",
+   "title": "Empereur romain d'Orient (408-450)",
+   "g": "h",
+   "script": 168
+  },
+  "th.euc": {
+   "id": "37be3c5f-2dd4-5b4f-9d93-d8224c8e99b6",
+   "name": "Aelia Eudocia",
+   "b": null,
+   "d": null,
+   "tree": "IT_THE",
+   "title": "Épouse de Théodose II",
+   "g": "f",
+   "script": 168
+  },
+  "th.c3": {
+   "id": "3b5ac67c-9c8e-5252-b4a7-b444fc6fa43a",
+   "name": "Constance III",
+   "b": null,
+   "d": 421,
+   "tree": "IT_THE",
+   "title": "Empereur romain d'Occident (421)",
+   "g": "h",
+   "script": 168
+  },
+  "th.v3": {
+   "id": "9209a634-ec98-5206-9436-d65c77fd21fa",
+   "name": "Valentinien III",
+   "b": null,
+   "d": 455,
+   "tree": "IT_THE",
+   "title": "Empereur romain d'Occident (425-455)",
+   "g": "h",
+   "script": 168
+  },
+  "th.lic": {
+   "id": "bd928960-faa8-5e6c-9897-6c9c5baedca2",
+   "name": "Licinia Eudoxia",
+   "b": null,
+   "d": null,
+   "tree": "IT_THE",
+   "title": "Épouse de Valentinien III",
+   "g": "f",
+   "script": 168
+  },
+  "th.mcn": {
+   "id": "6c0802d5-b48b-522a-8bc2-700e1e5a3dde",
+   "name": "Marcien",
+   "b": null,
+   "d": 457,
+   "tree": "IT_THE",
+   "title": "Empereur romain d'Orient (450-457)",
+   "g": "h",
+   "script": 168
+  },
+  "co.ccl": {
+   "id": "4f5a353b-b535-5f3a-97cb-836a5c2eb991",
+   "name": "Constance Chlore",
+   "b": null,
+   "d": 306,
+   "tree": "IT_CON",
+   "title": "Empereur romain (père de Constantin Ier)",
+   "g": "h",
+   "script": 169
+  },
+  "co.thd": {
+   "id": "a1216a8e-a84d-5ad4-a5c0-b2f52c10862d",
+   "name": "Théodora",
+   "b": null,
+   "d": null,
+   "tree": "IT_CON",
+   "title": "Épouse de Constance Chlore",
+   "g": "f",
+   "script": 169
+  },
+  "co.hel": {
+   "id": "df8d38be-b958-5747-bd67-effc41675ebd",
+   "name": "Hélène",
+   "b": null,
+   "d": null,
+   "tree": "IT_CON",
+   "title": "Mère de Constantin Ier",
+   "g": "f",
+   "script": 169
+  },
+  "co.c1": {
+   "id": "42e23d84-a37c-5a01-a4a6-53cee94c211f",
+   "name": "Constantin Ier",
+   "b": null,
+   "d": 337,
+   "tree": "IT_CON",
+   "title": "Empereur romain (306-337)",
+   "g": "h",
+   "script": 169
+  },
+  "co.fau": {
+   "id": "9e042b24-3dbd-5604-a169-4d633d9543d9",
+   "name": "Fausta",
+   "b": null,
+   "d": null,
+   "tree": "IT_CON",
+   "title": "Épouse de Constantin Ier",
+   "g": "f",
+   "script": 169
+  },
+  "co.c2": {
+   "id": "02e43629-6bb0-55ad-b919-0789b835f7fa",
+   "name": "Constantin II",
+   "b": null,
+   "d": 340,
+   "tree": "IT_CON",
+   "title": "Empereur romain d'Occident",
+   "g": "h",
+   "script": 169
+  },
+  "co.cs2": {
+   "id": "7f0c1f74-ca74-5b66-ab40-758359bd126b",
+   "name": "Constance II",
+   "b": null,
+   "d": 361,
+   "tree": "IT_CON",
+   "title": "Empereur romain",
+   "g": "h",
+   "script": 169
+  },
+  "co.cns": {
+   "id": "1418d70f-1f07-58b1-8d9f-598be87e3f88",
+   "name": "Constant",
+   "b": null,
+   "d": 350,
+   "tree": "IT_CON",
+   "title": "Empereur romain d'Occident",
+   "g": "h",
+   "script": 169
+  },
+  "co.dal": {
+   "id": "cea79c68-924f-5905-ac3d-80c46f0193ed",
+   "name": "Flavius Dalmatius",
+   "b": null,
+   "d": null,
+   "tree": "IT_CON",
+   "title": "Fils de Constance Chlore et de Théodora",
+   "g": "h",
+   "script": 169
+  },
+  "co.han": {
+   "id": "5a6d5ed9-1e40-5068-ae37-2fc846b78d83",
+   "name": "Hannibalianus",
+   "b": null,
+   "d": null,
+   "tree": "IT_CON",
+   "title": "Fils de Flavius Dalmatius",
+   "g": "h",
+   "script": 169
+  },
+  "co.jcs": {
+   "id": "2a13b036-6805-5241-ade8-7fb9c6783a0b",
+   "name": "Julius Constantius",
+   "b": null,
+   "d": null,
+   "tree": "IT_CON",
+   "title": "Père de Gallus et de Julien",
+   "g": "h",
+   "script": 169
+  },
+  "co.gla": {
+   "id": "d0465998-3e0c-5d7c-8a97-9e8279e4afa6",
+   "name": "Galla (mère de Gallus)",
+   "b": null,
+   "d": null,
+   "tree": "IT_CON",
+   "title": "Mère de Constance Gallus",
+   "g": "f",
+   "script": 169
+  },
+  "co.bas": {
+   "id": "17d68feb-b8a1-569e-a126-7eb3f7e452ee",
+   "name": "Basilina",
+   "b": null,
+   "d": null,
+   "tree": "IT_CON",
+   "title": "Mère de Julien",
+   "g": "f",
+   "script": 169
+  },
+  "co.gus": {
+   "id": "42f08ae4-8ba2-5c2e-8481-8c4e7ac5d76b",
+   "name": "Constance Gallus",
+   "b": null,
+   "d": null,
+   "tree": "IT_CON",
+   "title": "César",
+   "g": "h",
+   "script": 169
+  },
+  "co.jul": {
+   "id": "0351677a-4463-58ab-8fa0-88ef75ce5d99",
+   "name": "Julien",
+   "b": null,
+   "d": 363,
+   "tree": "IT_CON",
+   "title": "Empereur romain (360-363)",
+   "g": "h",
+   "script": 169
+  },
+  "co.hej": {
+   "id": "a17fcaae-263d-5f08-9dc9-852f68b132ef",
+   "name": "Hélène (épouse de Julien)",
+   "b": null,
+   "d": null,
+   "tree": "IT_CON",
+   "title": "Fille de Constantin Ier",
+   "g": "f",
+   "script": 169
+  },
+  "co.fas": {
+   "id": "590306ed-ac67-53b5-a219-0b7ce374843f",
+   "name": "Faustine",
+   "b": null,
+   "d": null,
+   "tree": "IT_CON",
+   "title": "Mère de Constantia",
+   "g": "f",
+   "script": 169
+  },
+  "co.cta": {
+   "id": "70131c76-5a79-5c83-9db9-410d0628e2d4",
+   "name": "Constantia (épouse de Gratien)",
+   "b": null,
+   "d": null,
+   "tree": "IT_CON",
+   "title": "Fille de Constance II",
+   "g": "f",
+   "script": 169
+  },
+  "gh.suri": {
+   "id": "bb43357a-8433-539a-bc5c-07f6e68b2c2a",
+   "name": "Sayf al-Din Suri",
+   "b": null,
+   "d": null,
+   "tree": "AF_GHU",
+   "title": "Souverain ghouride (1146-1149)",
+   "g": "h",
+   "script": 170
+  },
+  "gh.qutb": {
+   "id": "e6d2f555-128f-596a-a841-2cad5a057084",
+   "name": "Qutb al-Din Muhammad",
+   "b": null,
+   "d": 1149,
+   "tree": "AF_GHU",
+   "title": "Frère de Sayf al-Din Suri",
+   "g": "h",
+   "script": 170
+  },
+  "gh.sam1": {
+   "id": "1e51d643-7384-5db1-a465-2da7572c5421",
+   "name": "Baha al-Din Sam Ier",
+   "b": null,
+   "d": 1149,
+   "tree": "AF_GHU",
+   "title": "Souverain ghouride (1149)",
+   "g": "h",
+   "script": 170
+  },
+  "gh.husayn": {
+   "id": "df16c84a-4617-57a4-8811-535151bcd3be",
+   "name": "Ala al-Din Husayn",
+   "b": null,
+   "d": 1161,
+   "tree": "AF_GHU",
+   "title": "Souverain ghouride (1149-1161)",
+   "g": "h",
+   "script": 170
+  },
+  "gh.smuh": {
+   "id": "a4ea176c-de1c-588f-839b-12fa100bb9e1",
+   "name": "Sayf al-Din Muhammad",
+   "b": null,
+   "d": 1163,
+   "tree": "AF_GHU",
+   "title": "Souverain ghouride (1161-1163)",
+   "g": "h",
+   "script": 170
+  },
+  "gh.masud": {
+   "id": "1c98386d-904d-5e48-ac6e-40d4958f66c1",
+   "name": "Fakhr al-Din Masud",
+   "b": null,
+   "d": null,
+   "tree": "AF_GHU",
+   "title": "Souverain à Bamiyan (1152-1163)",
+   "g": "h",
+   "script": 170
+  },
+  "gh.ghiy": {
+   "id": "bdeb705e-1953-5bda-b8cf-d14ea9e18750",
+   "name": "Ghiyath al-Din Muhammad",
+   "b": null,
+   "d": 1203,
+   "tree": "AF_GHU",
+   "title": "Souverain ghouride (1163-1203)",
+   "g": "h",
+   "script": 170
+  },
+  "gh.mog": {
+   "id": "e45584dc-83b2-5828-bb51-c0b9f814af48",
+   "name": "Muhammad de Ghor",
+   "b": 1144,
+   "d": 1206,
+   "tree": "AF_GHU",
+   "title": "Souverain ghouride (1203-1206)",
+   "g": "h",
+   "script": 170
+  },
+  "il.tol": {
+   "id": "f11886d1-0687-5575-975e-36f9fa70c921",
+   "name": "Tolui",
+   "b": null,
+   "d": null,
+   "tree": "IR_ILK",
+   "title": "Père de Houlagou",
+   "g": "h",
+   "script": 171
+  },
+  "il.hul": {
+   "id": "2dfe81d7-5c0f-5797-b56e-d6cdb826b0f4",
+   "name": "Houlagou",
+   "b": 1217,
+   "d": 1265,
+   "tree": "IR_ILK",
+   "title": "Premier ilkhan (1256-1265)",
+   "g": "h",
+   "script": 171
+  },
+  "il.aba": {
+   "id": "49f8f2dc-cb08-5e99-84a2-282fa4b35583",
+   "name": "Abaqa",
+   "b": 1234,
+   "d": 1282,
+   "tree": "IR_ILK",
+   "title": "Ilkhan (1265-1282)",
+   "g": "h",
+   "script": 171
+  },
+  "il.ahm": {
+   "id": "0b3281d5-5c65-55e4-8bfa-12d6d4aed3d5",
+   "name": "Ahmad Tegüder",
+   "b": 1233,
+   "d": 1284,
+   "tree": "IR_ILK",
+   "title": "Ilkhan (1282-1284)",
+   "g": "h",
+   "script": 171
+  },
+  "il.arg": {
+   "id": "317a8426-83c9-5e5c-8754-315e2039ba6e",
+   "name": "Arghun",
+   "b": null,
+   "d": 1292,
+   "tree": "IR_ILK",
+   "title": "Ilkhan (1284-1291)",
+   "g": "h",
+   "script": 171
+  },
+  "il.gay": {
+   "id": "89a77283-2eff-50d6-aca0-b227466e5baa",
+   "name": "Gaykhatu",
+   "b": null,
+   "d": 1295,
+   "tree": "IR_ILK",
+   "title": "Ilkhan (1291-1295)",
+   "g": "h",
+   "script": 171
+  },
+  "il.gha": {
+   "id": "58cd0499-8dc4-542e-b82e-b38ab8c8b4f8",
+   "name": "Ghazan",
+   "b": 1271,
+   "d": 1304,
+   "tree": "IR_ILK",
+   "title": "Ilkhan (1295-1304)",
+   "g": "h",
+   "script": 171
+  },
+  "il.olj": {
+   "id": "715b5577-86ee-564c-b548-60d195961081",
+   "name": "Öljaitü",
+   "b": 1280,
+   "d": 1316,
+   "tree": "IR_ILK",
+   "title": "Ilkhan (1304-1316)",
+   "g": "h",
+   "script": 171
+  },
+  "il.abu": {
+   "id": "b1f3cca4-b0b9-5a4b-92cf-eba6164b6a52",
+   "name": "Abu Saïd",
+   "b": 1305,
+   "d": 1335,
+   "tree": "IR_ILK",
+   "title": "Ilkhan (1316-1335)",
+   "g": "h",
+   "script": 171
+  },
+  "mr.mah": {
+   "id": "d44238b5-209e-512e-bddc-0a0797e9ed71",
+   "name": "Mahyu",
+   "b": null,
+   "d": null,
+   "tree": "MA_MER",
+   "title": "Père d'Abd al-Haqq Ier",
+   "g": "h",
+   "script": 172
+  },
+  "mr.ah1": {
+   "id": "458d574b-2252-5ebd-903e-895bdabe3ebd",
+   "name": "Abd al-Haqq Ier",
+   "b": null,
+   "d": null,
+   "tree": "MA_MER",
+   "title": "Émir mérinide (1215-1217)",
+   "g": "h",
+   "script": 172
+  },
+  "mr.ut1": {
+   "id": "8521cca9-e76d-5585-93db-fc432efcf50a",
+   "name": "Uthman Ier",
+   "b": null,
+   "d": null,
+   "tree": "MA_MER",
+   "title": "Émir mérinide (1217-1240)",
+   "g": "h",
+   "script": 172
+  },
+  "mr.mu1": {
+   "id": "2a6e6b4a-55d6-5ef1-a19c-3dea68b8a378",
+   "name": "Muhammad Ier",
+   "b": null,
+   "d": null,
+   "tree": "MA_MER",
+   "title": "Émir mérinide (1240-1244)",
+   "g": "h",
+   "script": 172
+  },
+  "mr.yah": {
+   "id": "c482d8c6-27c7-576f-9257-b41e6de0aff7",
+   "name": "Abu Yahya ibn Abd al-Haqq",
+   "b": null,
+   "d": null,
+   "tree": "MA_MER",
+   "title": "Émir mérinide (1244-1258)",
+   "g": "h",
+   "script": 172
+  },
+  "mr.yaq": {
+   "id": "32ca17d4-b075-5d37-8ee2-2cc86135f8b4",
+   "name": "Abu Yusuf Yaqub",
+   "b": null,
+   "d": null,
+   "tree": "MA_MER",
+   "title": "Sultan mérinide (1258-1286)",
+   "g": "h",
+   "script": 172
+  },
+  "mr.yus": {
+   "id": "7d451cad-7f31-52d2-a6ae-a7d37a0ee8d9",
+   "name": "Abu Yaqub Yusuf an-Nasr",
+   "b": null,
+   "d": null,
+   "tree": "MA_MER",
+   "title": "Sultan mérinide (1286-1307)",
+   "g": "h",
+   "script": 172
+  },
+  "mr.ami": {
+   "id": "378ab1e2-b50d-55fc-8be3-62abf589b4ef",
+   "name": "Abu Thabit Amir",
+   "b": null,
+   "d": null,
+   "tree": "MA_MER",
+   "title": "Sultan mérinide (1307-1308)",
+   "g": "h",
+   "script": 172
+  },
+  "mr.sul": {
+   "id": "56097673-03ae-5125-bf72-f3be3a3d86a4",
+   "name": "Abu al-Rabi Sulayman",
+   "b": null,
+   "d": null,
+   "tree": "MA_MER",
+   "title": "Sultan mérinide (1308-1310)",
+   "g": "h",
+   "script": 172
+  },
+  "mr.ut2": {
+   "id": "b7562d7e-fb9b-5027-ae46-df5f57884207",
+   "name": "Abu Said Uthman II",
+   "b": null,
+   "d": null,
+   "tree": "MA_MER",
+   "title": "Sultan mérinide (1310-1331)",
+   "g": "h",
+   "script": 172
+  },
+  "mr.has": {
+   "id": "a46b2eb5-47a2-5fe4-bcb3-38e7c9020824",
+   "name": "Abu al-Hasan Ali",
+   "b": null,
+   "d": null,
+   "tree": "MA_MER",
+   "title": "Sultan mérinide (1331-1351)",
+   "g": "h",
+   "script": 172
+  },
+  "mr.ina": {
+   "id": "dc24670b-8cb3-531e-9d5a-208bbc798da4",
+   "name": "Abu Inan Faris",
+   "b": null,
+   "d": null,
+   "tree": "MA_MER",
+   "title": "Sultan mérinide (1348-1358)",
+   "g": "h",
+   "script": 172
+  },
+  "mr.ibr": {
+   "id": "2102f80e-fe39-5ef0-912c-65c9178796dc",
+   "name": "Abu Salim Ibrahim",
+   "b": null,
+   "d": null,
+   "tree": "MA_MER",
+   "title": "Sultan mérinide (1359-1361)",
+   "g": "h",
+   "script": 172
+  },
+  "mr.az1": {
+   "id": "effd74da-5c32-574c-859d-1aa82f009df2",
+   "name": "Abu Faris Abd al-Aziz Ier",
+   "b": null,
+   "d": null,
+   "tree": "MA_MER",
+   "title": "Sultan mérinide (1365-1372)",
+   "g": "h",
+   "script": 172
+  },
+  "mr.mu3": {
+   "id": "985d2066-10fd-55f1-8b18-8bf33496d769",
+   "name": "Abu Zayyan Muhammad III",
+   "b": null,
+   "d": null,
+   "tree": "MA_MER",
+   "title": "Sultan mérinide (1372-1374)",
+   "g": "h",
+   "script": 172
+  },
+  "mr.mus": {
+   "id": "735a917a-04d0-522d-98ae-5d103216cd41",
+   "name": "Abu Faris Musa",
+   "b": null,
+   "d": null,
+   "tree": "MA_MER",
+   "title": "Sultan mérinide (1384-1386)",
+   "g": "h",
+   "script": 172
+  },
+  "mr.ut3": {
+   "id": "f0f011e2-5a8a-5129-b6cf-9ebf45e4200e",
+   "name": "Abu Said Uthman III",
+   "b": null,
+   "d": null,
+   "tree": "MA_MER",
+   "title": "Sultan mérinide (1398-1420)",
+   "g": "h",
+   "script": 172
+  },
+  "mr.abd": {
+   "id": "c2b00a05-1a6c-5e06-9fe5-4c325c4b3281",
+   "name": "Abu Amir Abdallah",
+   "b": null,
+   "d": null,
+   "tree": "MA_MER",
+   "title": "Sultan mérinide (1396-1397)",
+   "g": "h",
+   "script": 172
+  },
+  "mr.ah2": {
+   "id": "a8b18aea-6fba-5032-bda9-d1e155f09aa4",
+   "name": "Abu Muhammad Abd al-Haqq II",
+   "b": null,
+   "d": null,
+   "tree": "MA_MER",
+   "title": "Dernier sultan mérinide (1420-1465)",
+   "g": "h",
+   "script": 172
+  },
+  "tg.min": {
+   "id": "887f4cee-5031-5167-9661-077492ae7fa4",
+   "name": "Mingyi Nyo",
+   "b": null,
+   "d": null,
+   "tree": "MM_TOU",
+   "title": "Roi de Toungoo (1485-1530)",
+   "g": "h",
+   "script": 173
+  },
+  "tg.tab": {
+   "id": "76eb0755-f50d-5ff0-acc3-591ba99974e8",
+   "name": "Tabinshwehti",
+   "b": null,
+   "d": null,
+   "tree": "MM_TOU",
+   "title": "Roi (1530-1550)",
+   "g": "h",
+   "script": 173
+  },
+  "tg.bay": {
+   "id": "1344c854-280e-5f80-a326-72d63ebdf8ed",
+   "name": "Bayinnaung",
+   "b": null,
+   "d": null,
+   "tree": "MM_TOU",
+   "title": "Roi (1550-1581)",
+   "g": "h",
+   "script": 173
+  },
+  "tg.nan": {
+   "id": "dcec3d47-4ab4-5b50-bcec-1d704b9cbc16",
+   "name": "Nanda Bayin",
+   "b": null,
+   "d": null,
+   "tree": "MM_TOU",
+   "title": "Roi (1581-1599)",
+   "g": "h",
+   "script": 173
+  },
+  "tg.ana": {
+   "id": "626ffae8-df8f-585b-a3c7-f8ca226dcabc",
+   "name": "Anaukpetlun",
+   "b": null,
+   "d": null,
+   "tree": "MM_TOU",
+   "title": "Roi (1605-1628)",
+   "g": "h",
+   "script": 173
   }
  },
  "trees": {
@@ -36228,6 +37018,42 @@
    "country": "SYR",
    "dynasty": "Séleucides",
    "script": 167
+  },
+  "IT_THE": {
+   "entry": "e2300896-14d8-54f5-a4c6-772510af80ba",
+   "country": "ITA",
+   "dynasty": "Théodosiens",
+   "script": 168
+  },
+  "IT_CON": {
+   "entry": "b5e75d8c-d5b9-597c-8dd5-f34e9962f266",
+   "country": "ITA",
+   "dynasty": "Constantiniens",
+   "script": 169
+  },
+  "AF_GHU": {
+   "entry": "5895b3ab-4b72-57d5-87dd-a7e1ac35f621",
+   "country": "AFG",
+   "dynasty": "Ghurides",
+   "script": 170
+  },
+  "IR_ILK": {
+   "entry": "14cf2ab2-d01a-54ab-9be7-2aa91c81054c",
+   "country": "IRN",
+   "dynasty": "Ilkhans",
+   "script": 171
+  },
+  "MA_MER": {
+   "entry": "f3dbc4dd-1fcc-5a30-880b-d82f384587f2",
+   "country": "MAR",
+   "dynasty": "Mérinides",
+   "script": 172
+  },
+  "MM_TOU": {
+   "entry": "c09d4a20-409b-53d9-9b94-5a7981ba4d3f",
+   "country": "MMR",
+   "dynasty": "Toungoo",
+   "script": 173
   }
  },
  "flags": [
@@ -41876,6 +42702,54 @@
    "rels": 14,
    "trees": [
     "Séleucides (SYR)"
+   ]
+  },
+  "168": {
+   "label": "Italie (Théodosiens)",
+   "members": 20,
+   "rels": 27,
+   "trees": [
+    "Théodosiens (ITA)"
+   ]
+  },
+  "169": {
+   "label": "Italie (Constantiniens)",
+   "members": 18,
+   "rels": 22,
+   "trees": [
+    "Constantiniens (ITA)"
+   ]
+  },
+  "170": {
+   "label": "Afghanistan (Ghurides)",
+   "members": 8,
+   "rels": 7,
+   "trees": [
+    "Ghurides (AFG)"
+   ]
+  },
+  "171": {
+   "label": "Iran (Ilkhans)",
+   "members": 9,
+   "rels": 8,
+   "trees": [
+    "Ilkhans (IRN)"
+   ]
+  },
+  "172": {
+   "label": "Maroc (Mérinides)",
+   "members": 19,
+   "rels": 17,
+   "trees": [
+    "Mérinides (MAR)"
+   ]
+  },
+  "173": {
+   "label": "Birmanie (Toungoo)",
+   "members": 5,
+   "rels": 3,
+   "trees": [
+    "Toungoo (MMR)"
    ]
   }
  },
@@ -68353,6 +69227,426 @@
   [
    "25e261a7-f440-59a2-9bd4-424cf041e8d4",
    "4fb4c33e-6295-57d5-861b-469ab98b5f30",
+   "family"
+  ],
+  [
+   "4a853f98-c1e2-57ea-849a-13da2816ce5a",
+   "b0facf69-eb3b-5628-897f-868aa150ce87",
+   "parent"
+  ],
+  [
+   "a6b4ea7c-e660-5bb0-960d-25e5a51d25d6",
+   "b0facf69-eb3b-5628-897f-868aa150ce87",
+   "parent"
+  ],
+  [
+   "b0facf69-eb3b-5628-897f-868aa150ce87",
+   "8d70d834-8061-55b1-a0be-7547f271dbc3",
+   "parent"
+  ],
+  [
+   "9b676ced-9346-509e-9a82-433a830e278a",
+   "8d70d834-8061-55b1-a0be-7547f271dbc3",
+   "parent"
+  ],
+  [
+   "b0facf69-eb3b-5628-897f-868aa150ce87",
+   "b0785320-a7a3-5823-9d34-eac5b06b2f18",
+   "parent"
+  ],
+  [
+   "9b676ced-9346-509e-9a82-433a830e278a",
+   "b0785320-a7a3-5823-9d34-eac5b06b2f18",
+   "parent"
+  ],
+  [
+   "b0facf69-eb3b-5628-897f-868aa150ce87",
+   "e2e58571-8883-5962-a764-079c01ebd992",
+   "parent"
+  ],
+  [
+   "9b676ced-9346-509e-9a82-433a830e278a",
+   "e2e58571-8883-5962-a764-079c01ebd992",
+   "parent"
+  ],
+  [
+   "b0facf69-eb3b-5628-897f-868aa150ce87",
+   "4f89b94a-bc7b-5d3e-b4fa-8cb3e035f4bf",
+   "parent"
+  ],
+  [
+   "888ca6ab-2589-584d-ae9e-ba7e19708052",
+   "4f89b94a-bc7b-5d3e-b4fa-8cb3e035f4bf",
+   "parent"
+  ],
+  [
+   "b0facf69-eb3b-5628-897f-868aa150ce87",
+   "e2423707-2c70-535d-9ca5-f3e2d576db25",
+   "parent"
+  ],
+  [
+   "888ca6ab-2589-584d-ae9e-ba7e19708052",
+   "e2423707-2c70-535d-9ca5-f3e2d576db25",
+   "parent"
+  ],
+  [
+   "b0facf69-eb3b-5628-897f-868aa150ce87",
+   "74bbdda8-4329-5442-8181-46d9df9974c8",
+   "parent"
+  ],
+  [
+   "888ca6ab-2589-584d-ae9e-ba7e19708052",
+   "74bbdda8-4329-5442-8181-46d9df9974c8",
+   "parent"
+  ],
+  [
+   "340c07a2-668e-52d4-af76-d365a7939f48",
+   "888ca6ab-2589-584d-ae9e-ba7e19708052",
+   "parent"
+  ],
+  [
+   "bd1d04a2-5261-50cb-8468-59f131ede1db",
+   "888ca6ab-2589-584d-ae9e-ba7e19708052",
+   "parent"
+  ],
+  [
+   "8d70d834-8061-55b1-a0be-7547f271dbc3",
+   "8cfe4868-0e64-51d7-9b85-482da6fc7665",
+   "parent"
+  ],
+  [
+   "a3afdd04-68d7-5cac-ac25-04f5d993316e",
+   "8cfe4868-0e64-51d7-9b85-482da6fc7665",
+   "parent"
+  ],
+  [
+   "3b5ac67c-9c8e-5252-b4a7-b444fc6fa43a",
+   "9209a634-ec98-5206-9436-d65c77fd21fa",
+   "parent"
+  ],
+  [
+   "4f89b94a-bc7b-5d3e-b4fa-8cb3e035f4bf",
+   "9209a634-ec98-5206-9436-d65c77fd21fa",
+   "parent"
+  ],
+  [
+   "b0facf69-eb3b-5628-897f-868aa150ce87",
+   "9b676ced-9346-509e-9a82-433a830e278a",
+   "spouse"
+  ],
+  [
+   "b0facf69-eb3b-5628-897f-868aa150ce87",
+   "888ca6ab-2589-584d-ae9e-ba7e19708052",
+   "spouse"
+  ],
+  [
+   "8d70d834-8061-55b1-a0be-7547f271dbc3",
+   "a3afdd04-68d7-5cac-ac25-04f5d993316e",
+   "spouse"
+  ],
+  [
+   "8cfe4868-0e64-51d7-9b85-482da6fc7665",
+   "37be3c5f-2dd4-5b4f-9d93-d8224c8e99b6",
+   "spouse"
+  ],
+  [
+   "4f89b94a-bc7b-5d3e-b4fa-8cb3e035f4bf",
+   "3b5ac67c-9c8e-5252-b4a7-b444fc6fa43a",
+   "spouse"
+  ],
+  [
+   "9209a634-ec98-5206-9436-d65c77fd21fa",
+   "bd928960-faa8-5e6c-9897-6c9c5baedca2",
+   "spouse"
+  ],
+  [
+   "e2e58571-8883-5962-a764-079c01ebd992",
+   "6c0802d5-b48b-522a-8bc2-700e1e5a3dde",
+   "spouse"
+  ],
+  [
+   "4f5a353b-b535-5f3a-97cb-836a5c2eb991",
+   "42e23d84-a37c-5a01-a4a6-53cee94c211f",
+   "parent"
+  ],
+  [
+   "df8d38be-b958-5747-bd67-effc41675ebd",
+   "42e23d84-a37c-5a01-a4a6-53cee94c211f",
+   "parent"
+  ],
+  [
+   "42e23d84-a37c-5a01-a4a6-53cee94c211f",
+   "02e43629-6bb0-55ad-b919-0789b835f7fa",
+   "parent"
+  ],
+  [
+   "9e042b24-3dbd-5604-a169-4d633d9543d9",
+   "02e43629-6bb0-55ad-b919-0789b835f7fa",
+   "parent"
+  ],
+  [
+   "42e23d84-a37c-5a01-a4a6-53cee94c211f",
+   "7f0c1f74-ca74-5b66-ab40-758359bd126b",
+   "parent"
+  ],
+  [
+   "9e042b24-3dbd-5604-a169-4d633d9543d9",
+   "7f0c1f74-ca74-5b66-ab40-758359bd126b",
+   "parent"
+  ],
+  [
+   "42e23d84-a37c-5a01-a4a6-53cee94c211f",
+   "1418d70f-1f07-58b1-8d9f-598be87e3f88",
+   "parent"
+  ],
+  [
+   "9e042b24-3dbd-5604-a169-4d633d9543d9",
+   "1418d70f-1f07-58b1-8d9f-598be87e3f88",
+   "parent"
+  ],
+  [
+   "4f5a353b-b535-5f3a-97cb-836a5c2eb991",
+   "cea79c68-924f-5905-ac3d-80c46f0193ed",
+   "parent"
+  ],
+  [
+   "a1216a8e-a84d-5ad4-a5c0-b2f52c10862d",
+   "cea79c68-924f-5905-ac3d-80c46f0193ed",
+   "parent"
+  ],
+  [
+   "cea79c68-924f-5905-ac3d-80c46f0193ed",
+   "5a6d5ed9-1e40-5068-ae37-2fc846b78d83",
+   "parent"
+  ],
+  [
+   "2a13b036-6805-5241-ade8-7fb9c6783a0b",
+   "42f08ae4-8ba2-5c2e-8481-8c4e7ac5d76b",
+   "parent"
+  ],
+  [
+   "d0465998-3e0c-5d7c-8a97-9e8279e4afa6",
+   "42f08ae4-8ba2-5c2e-8481-8c4e7ac5d76b",
+   "parent"
+  ],
+  [
+   "2a13b036-6805-5241-ade8-7fb9c6783a0b",
+   "0351677a-4463-58ab-8fa0-88ef75ce5d99",
+   "parent"
+  ],
+  [
+   "17d68feb-b8a1-569e-a126-7eb3f7e452ee",
+   "0351677a-4463-58ab-8fa0-88ef75ce5d99",
+   "parent"
+  ],
+  [
+   "42e23d84-a37c-5a01-a4a6-53cee94c211f",
+   "a17fcaae-263d-5f08-9dc9-852f68b132ef",
+   "parent"
+  ],
+  [
+   "7f0c1f74-ca74-5b66-ab40-758359bd126b",
+   "70131c76-5a79-5c83-9db9-410d0628e2d4",
+   "parent"
+  ],
+  [
+   "590306ed-ac67-53b5-a219-0b7ce374843f",
+   "70131c76-5a79-5c83-9db9-410d0628e2d4",
+   "parent"
+  ],
+  [
+   "4f5a353b-b535-5f3a-97cb-836a5c2eb991",
+   "a1216a8e-a84d-5ad4-a5c0-b2f52c10862d",
+   "spouse"
+  ],
+  [
+   "42e23d84-a37c-5a01-a4a6-53cee94c211f",
+   "9e042b24-3dbd-5604-a169-4d633d9543d9",
+   "spouse"
+  ],
+  [
+   "0351677a-4463-58ab-8fa0-88ef75ce5d99",
+   "a17fcaae-263d-5f08-9dc9-852f68b132ef",
+   "spouse"
+  ],
+  [
+   "7f0c1f74-ca74-5b66-ab40-758359bd126b",
+   "590306ed-ac67-53b5-a219-0b7ce374843f",
+   "spouse"
+  ],
+  [
+   "df16c84a-4617-57a4-8811-535151bcd3be",
+   "a4ea176c-de1c-588f-839b-12fa100bb9e1",
+   "parent"
+  ],
+  [
+   "1e51d643-7384-5db1-a465-2da7572c5421",
+   "bdeb705e-1953-5bda-b8cf-d14ea9e18750",
+   "parent"
+  ],
+  [
+   "1e51d643-7384-5db1-a465-2da7572c5421",
+   "e45584dc-83b2-5828-bb51-c0b9f814af48",
+   "parent"
+  ],
+  [
+   "bb43357a-8433-539a-bc5c-07f6e68b2c2a",
+   "e6d2f555-128f-596a-a841-2cad5a057084",
+   "family"
+  ],
+  [
+   "bb43357a-8433-539a-bc5c-07f6e68b2c2a",
+   "1e51d643-7384-5db1-a465-2da7572c5421",
+   "family"
+  ],
+  [
+   "bb43357a-8433-539a-bc5c-07f6e68b2c2a",
+   "df16c84a-4617-57a4-8811-535151bcd3be",
+   "family"
+  ],
+  [
+   "1c98386d-904d-5e48-ac6e-40d4958f66c1",
+   "bdeb705e-1953-5bda-b8cf-d14ea9e18750",
+   "family"
+  ],
+  [
+   "f11886d1-0687-5575-975e-36f9fa70c921",
+   "2dfe81d7-5c0f-5797-b56e-d6cdb826b0f4",
+   "parent"
+  ],
+  [
+   "2dfe81d7-5c0f-5797-b56e-d6cdb826b0f4",
+   "49f8f2dc-cb08-5e99-84a2-282fa4b35583",
+   "parent"
+  ],
+  [
+   "49f8f2dc-cb08-5e99-84a2-282fa4b35583",
+   "317a8426-83c9-5e5c-8754-315e2039ba6e",
+   "parent"
+  ],
+  [
+   "317a8426-83c9-5e5c-8754-315e2039ba6e",
+   "58cd0499-8dc4-542e-b82e-b38ab8c8b4f8",
+   "parent"
+  ],
+  [
+   "715b5577-86ee-564c-b548-60d195961081",
+   "b1f3cca4-b0b9-5a4b-92cf-eba6164b6a52",
+   "parent"
+  ],
+  [
+   "49f8f2dc-cb08-5e99-84a2-282fa4b35583",
+   "0b3281d5-5c65-55e4-8bfa-12d6d4aed3d5",
+   "family"
+  ],
+  [
+   "317a8426-83c9-5e5c-8754-315e2039ba6e",
+   "89a77283-2eff-50d6-aca0-b227466e5baa",
+   "family"
+  ],
+  [
+   "58cd0499-8dc4-542e-b82e-b38ab8c8b4f8",
+   "715b5577-86ee-564c-b548-60d195961081",
+   "family"
+  ],
+  [
+   "d44238b5-209e-512e-bddc-0a0797e9ed71",
+   "458d574b-2252-5ebd-903e-895bdabe3ebd",
+   "parent"
+  ],
+  [
+   "458d574b-2252-5ebd-903e-895bdabe3ebd",
+   "8521cca9-e76d-5585-93db-fc432efcf50a",
+   "parent"
+  ],
+  [
+   "458d574b-2252-5ebd-903e-895bdabe3ebd",
+   "c482d8c6-27c7-576f-9257-b41e6de0aff7",
+   "parent"
+  ],
+  [
+   "458d574b-2252-5ebd-903e-895bdabe3ebd",
+   "32ca17d4-b075-5d37-8ee2-2cc86135f8b4",
+   "parent"
+  ],
+  [
+   "32ca17d4-b075-5d37-8ee2-2cc86135f8b4",
+   "7d451cad-7f31-52d2-a6ae-a7d37a0ee8d9",
+   "parent"
+  ],
+  [
+   "7d451cad-7f31-52d2-a6ae-a7d37a0ee8d9",
+   "378ab1e2-b50d-55fc-8be3-62abf589b4ef",
+   "parent"
+  ],
+  [
+   "b7562d7e-fb9b-5027-ae46-df5f57884207",
+   "a46b2eb5-47a2-5fe4-bcb3-38e7c9020824",
+   "parent"
+  ],
+  [
+   "a46b2eb5-47a2-5fe4-bcb3-38e7c9020824",
+   "dc24670b-8cb3-531e-9d5a-208bbc798da4",
+   "parent"
+  ],
+  [
+   "a46b2eb5-47a2-5fe4-bcb3-38e7c9020824",
+   "2102f80e-fe39-5ef0-912c-65c9178796dc",
+   "parent"
+  ],
+  [
+   "a46b2eb5-47a2-5fe4-bcb3-38e7c9020824",
+   "effd74da-5c32-574c-859d-1aa82f009df2",
+   "parent"
+  ],
+  [
+   "effd74da-5c32-574c-859d-1aa82f009df2",
+   "985d2066-10fd-55f1-8b18-8bf33496d769",
+   "parent"
+  ],
+  [
+   "dc24670b-8cb3-531e-9d5a-208bbc798da4",
+   "735a917a-04d0-522d-98ae-5d103216cd41",
+   "parent"
+  ],
+  [
+   "f0f011e2-5a8a-5129-b6cf-9ebf45e4200e",
+   "a8b18aea-6fba-5032-bda9-d1e155f09aa4",
+   "parent"
+  ],
+  [
+   "8521cca9-e76d-5585-93db-fc432efcf50a",
+   "2a6e6b4a-55d6-5ef1-a19c-3dea68b8a378",
+   "family"
+  ],
+  [
+   "378ab1e2-b50d-55fc-8be3-62abf589b4ef",
+   "56097673-03ae-5125-bf72-f3be3a3d86a4",
+   "family"
+  ],
+  [
+   "56097673-03ae-5125-bf72-f3be3a3d86a4",
+   "b7562d7e-fb9b-5027-ae46-df5f57884207",
+   "family"
+  ],
+  [
+   "f0f011e2-5a8a-5129-b6cf-9ebf45e4200e",
+   "c2b00a05-1a6c-5e06-9fe5-4c325c4b3281",
+   "family"
+  ],
+  [
+   "887f4cee-5031-5167-9661-077492ae7fa4",
+   "76eb0755-f50d-5ff0-acc3-591ba99974e8",
+   "parent"
+  ],
+  [
+   "1344c854-280e-5f80-a326-72d63ebdf8ed",
+   "dcec3d47-4ab4-5b50-bcec-1d704b9cbc16",
+   "parent"
+  ],
+  [
+   "1344c854-280e-5f80-a326-72d63ebdf8ed",
+   "626ffae8-df8f-585b-a3c7-f8ca226dcabc",
    "family"
   ]
  ],
