@@ -2,6 +2,8 @@
 
 ## Dernières nouvelles (la plus récente en haut)
 
+- 2026-10-23 — v165 : Sévères (9).
+
 - 2026-10-23 — v164 : Flaviens (8).
 
 - 2026-10-23 — v163 : Nerva-Antonins (7).
@@ -208,7 +210,7 @@
 
 Code : `src/genealogy.ts`, `genealogyLayers.ts`, `genealogyBus.ts`, `genealogyLod.ts/.css`, `genealogyLayersWorker.ts`,
 `genealogyLayout.ts`, `genealogyRouting.ts`. Outils de remplissage : [`scripts/arbres/`](../../scripts/arbres/README.md).
-Prochaine migration : **arbres_v165** (`supabase/arbres/arbres_v165.sql`) — générateur : `Gen(165, "…")`.  (v164 livrée, à exécuter par Martin si ce n'est pas déjà fait.)
+Prochaine migration : **arbres_v166** (`supabase/arbres/arbres_v166.sql`) — générateur : `Gen(166, "…")`.  (v165 livrée, à exécuter par Martin si ce n'est pas déjà fait.)
 
 ## Règles de contenu (décidées par Martin — ne pas rouvrir)
 - Un pays n'a que les dynasties qui ont **régné sur lui**. Dynastie étrangère : branche principale dans son pays

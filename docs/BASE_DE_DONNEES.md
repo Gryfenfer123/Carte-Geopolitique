@@ -234,4 +234,5 @@ RLS**. Règles :
 | arbres_v162 | Italie : Julio-Claudiens (24 personnes) |
 | arbres_v163 | Italie : Nerva-Antonins (7) |
 | arbres_v164 | Italie : Flaviens (8) |
+| arbres_v165 | Italie : Sévères (9) |
 | `data_owid_load.sql` + `owid_chunks/` | Chargement des données d'indicateurs (rejouable, upserts) — à exécuter après v1 à v7 |
