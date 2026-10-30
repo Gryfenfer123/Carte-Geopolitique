@@ -51,6 +51,7 @@ from shapely.validation import make_valid
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from caler_cotes import Cote  # noqa: E402  (calage sur la côte réelle)
 from corrections_dates import Corrections, lire_manuelles, lire_wikidata  # noqa: E402  (dates réelles)
+import iles  # noqa: E402  (ajoute des îles sourcées que Cliopatria ne dessine pas)
 import corrections_formes  # noqa: E402  (retire d'un contour un État indépendant recouvert à tort)
 
 VERSION_SOURCE = "0.2.1"
@@ -225,6 +226,16 @@ def main():
             json.dump(rapport_formes, f, ensure_ascii=False, indent=0)
         for r in rapport_formes:
             print("Forme corrigée :", r["id"], "—", len(r["lignes"]), "ligne(s)")
+        if terres:  # îles sourcées absentes de Cliopatria (voir iles.py) ; elles ne chevauchent aucune autre ligne
+            import shapely
+            from shapely.geometry import shape as _shape
+            with open(terres, encoding="utf8") as f:
+                _terres = [_shape(x["geometry"]) for x in json.load(f)["features"]]
+            rapport_iles = iles.appliquer(entites, dates, iles.lire_regles(os.path.join(d, "iles_manuelles.json")), _terres)
+            with open(os.path.join(d, "iles_rapport.json"), "w", encoding="utf8") as f:
+                json.dump(rapport_iles, f, ensure_ascii=False, indent=0)
+            for r in rapport_iles:
+                print("Îles ajoutées :", r["id"], "—", len(r["lignes"]), "ligne(s)")
         # les lignes ajoutées par une coupure sont rangées par année de début (ordre attendu pour les morceaux)
         ordre = sorted(range(len(entites)), key=lambda k: (dates[k]["de"], dates[k]["a"], dates[k]["nom"]))
         entites[:] = [entites[k] for k in ordre]

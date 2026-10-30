@@ -1,0 +1,132 @@
+[
+ {
+  "id": "arctique-canadien-1880",
+  "boite": [
+   -125,
+   67,
+   -60,
+   83.5
+  ],
+  "exclure_polygones_plus_grands_que_km2": 1000000,
+  "reference": [
+   -75.7,
+   45.4
+  ],
+  "de": 1880,
+  "a": 1931,
+  "motif": "Les îles de l'Arctique, britanniques, passent au Canada le 1er septembre 1880 ; Cliopatria ne dessine un Canada qu'à partir de 1932.",
+  "source": {
+   "titre": "Archives canadiennes « Transfer of the Arctic Territories » (décret du 31 juillet 1880, en vigueur le 1er septembre 1880)",
+   "lien": "https://canadianmysteries.ca/sites/franklin/archive/text/TransferTerritories_en.htm",
+   "licence": "Lecture, non reproduit",
+   "fiabilite": "Bonne (site universitaire d'archives)"
+  },
+  "etats": [
+   "British Colonial Empire"
+  ]
+ },
+ {
+  "id": "tahiti-moorea-1880",
+  "boite": [
+   -150.1,
+   -18.1,
+   -149.0,
+   -17.2
+  ],
+  "reference": [
+   2.3,
+   48.8
+  ],
+  "de": 1880,
+  "a": 2024,
+  "motif": "Tahiti est annexée par la France le 29 juin 1880 (protectorat depuis 1842) ; Moorea est incluse dans la même colonie, mais seule la date de Tahiti est ici sourcée.",
+  "source": {
+   "titre": "Hérodote.net, « 29 juin 1880 : annexion de Tahiti »",
+   "lien": "https://www.herodote.net/29_juin_1880-evenement-18800629.php",
+   "licence": "Lecture, non reproduit",
+   "fiabilite": "Bonne (site d'histoire grand public)"
+  },
+  "etats": [
+   "French Third Republic",
+   "French Fourth Republic",
+   "French Fifth Republic"
+  ]
+ },
+ {
+  "id": "dodecanese-italie-1912",
+  "boite": [
+   26,
+   35.3,
+   28.6,
+   37.5
+  ],
+  "reference": [
+   12.5,
+   41.9
+  ],
+  "de": 1912,
+  "a": 1946,
+  "motif": "Occupées par l'Italie en 1912, confirmées par le traité de Lausanne en 1923, cédées à la Grèce en 1947.",
+  "source": {
+   "titre": "Encyclopædia Britannica, « Dodecanese »",
+   "lien": "https://www.britannica.com/place/Dodecanese",
+   "licence": "Lecture, non reproduit",
+   "fiabilite": "Élevée"
+  },
+  "etats": [
+   "Kingdom of Italy"
+  ]
+ },
+ {
+  "id": "dodecanese-grece-1947",
+  "boite": [
+   26,
+   35.3,
+   28.6,
+   37.5
+  ],
+  "reference": [
+   23.7,
+   38.0
+  ],
+  "de": 1947,
+  "a": 2024,
+  "motif": "Cédées à la Grèce en 1947 (accord de 1946).",
+  "source": {
+   "titre": "Encyclopædia Britannica, « Dodecanese »",
+   "lien": "https://www.britannica.com/place/Dodecanese",
+   "licence": "Lecture, non reproduit",
+   "fiabilite": "Élevée"
+  },
+  "etats": [
+   "Kingdom of Greece",
+   "Greek junta",
+   "Third Hellenic Republic"
+  ]
+ },
+ {
+  "id": "svalbard-norvege-1925",
+  "boite": [
+   9,
+   74,
+   35,
+   81
+  ],
+  "reference": [
+   10.7,
+   59.9
+  ],
+  "de": 1925,
+  "a": 2024,
+  "motif": "Le traité de 1920 donne la souveraineté à la Norvège ; il entre en vigueur le 14 août 1925.",
+  "source": {
+   "titre": "Parlement norvégien (Storting), « The Svalbard Treaty »",
+   "lien": "https://stortinget.no/en/In-English/About-the-Storting/historical-highlights/the-svalbard-treaty/",
+   "licence": "Lecture, non reproduit",
+   "fiabilite": "Élevée (source officielle)"
+  },
+  "etats": [
+   "Kingdom of Norway"
+  ]
+ }
+]
