@@ -1074,7 +1074,7 @@ type CityEntry = LonLat & { n: string; note?: string };
 // source (voir docs/chantiers/carte.md pour ce qui reste à sourcer).
 type NaturalFeatureEntry = LonLat & {
   name: string;
-  type: "desert" | "montagne" | "volcan" | "foret" | "fosse";
+  type: "desert" | "montagne" | "volcan" | "foret" | "fosse" | "plateau" | "plaine" | "bassin" | "zone_humide" | "toundra" | "vallee";
   note: string;
   geometry?: GeoJSON.Polygon | GeoJSON.MultiPolygon;
   source?: string;
@@ -1112,6 +1112,12 @@ const NATURAL_TYPE_FR: Record<NaturalFeatureEntry["type"], string> = {
   volcan: "Volcan",
   foret: "Forêt",
   fosse: "Fosse océanique",
+  plateau: "Plateau",
+  plaine: "Plaine, steppe ou basses terres",
+  bassin: "Bassin ou dépression",
+  zone_humide: "Zone humide ou delta",
+  toundra: "Toundra",
+  vallee: "Vallée ou gorge",
 };
 // Couleur par type (garde une seule couleur de legend --natural-marker,
 // mais distingue les symboles sur la carte — demande de Martin, "garde
@@ -1119,9 +1125,15 @@ const NATURAL_TYPE_FR: Record<NaturalFeatureEntry["type"], string> = {
 const NATURAL_TYPE_COLOR: Record<NaturalFeatureEntry["type"], string> = {
   desert: "#e3c05a",
   montagne: "#9aa0b4",
-  volcan: "#e0435a",
+  volcan: "#ff7a2f",
   foret: "#3fbf6e",
   fosse: "#4fa7e8",
+  plateau: "#c47b4a",
+  plaine: "#a8c66c",
+  bassin: "#b08ad6",
+  zone_humide: "#36c2b4",
+  toundra: "#cfe3ee",
+  vallee: "#e08fb0",
 };
 // Repli si une entrée n'a pas (encore) de `geometry` — petit disque de
 // taille fixe à l'ancienne, seulement utilisé en dernier recours.
