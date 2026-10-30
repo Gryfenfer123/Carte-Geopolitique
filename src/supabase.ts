@@ -1,4 +1,5 @@
 import { createClient } from "@supabase/supabase-js";
+import { guardedFetch } from "./dbGuard"; // prévient quand la base refuse une action (audit 2026-10-30)
 
 const supabaseUrl = import.meta.env.VITE_SUPABASE_URL as string | undefined;
 const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY as
@@ -14,7 +15,6 @@ if (!supabaseUrl || !supabaseAnonKey) {
   );
 }
 
-export const supabase = createClient(
-  supabaseUrl ?? "",
-  supabaseAnonKey ?? ""
-);
+export const supabase = createClient(supabaseUrl ?? "", supabaseAnonKey ?? "", {
+  global: { fetch: guardedFetch },
+});

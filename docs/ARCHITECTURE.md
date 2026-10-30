@@ -74,6 +74,8 @@ périmé : des copies à la racine étaient ignorées par le build).
 | `friseAutoPlace.ts` | Frises : bloc « Date » du formulaire « + Texte » de `dossier.ts` et placement automatique du point sur la frise (branché par 4 petits crochets `onNewTextFormChange`, `checkNewFiche`, `afterFicheCreated`, `placeFicheOnFrise` dans `dossier.ts`/`main.ts` ; sans effet si le formulaire change) | 200 |
 | `friseSubPreview.ts` | Frises : aperçu d'une sous-frise au survol (lecture seule, cache 60 s) | 90 |
 | `historicalMap.ts` / `historiqueModel.ts` / `historiqueData.ts` / `historique.css` | Carte historique année par année (données Cliopatria) : interface Leaflet plein écran (curseur, lecture, zones, fiche d'un territoire, étiquettes) / logique pure (années, groupes, couleurs, décodage des tracés) / chargement à la demande des morceaux de tracés et des noms français (`noms_fr.json`, voir `construire_noms_fr.py`). Données : `public/data/historique/` (≈ 22 Mo, contours calés sur la côte et dates ajustées), préparées par `scripts/historique/` | 395 / 178 / 64 / 48 |
+| `dbGuard.ts` / `dbGuardModel.ts` | **Garde-fou des échanges avec la base** (audit 2026-10-30) : branché dans `supabase.ts` comme `fetch` du client, il observe TOUTES les requêtes ; erreur, réseau coupé ou « 0 ligne touchée » (règle de sécurité qui refuse sans erreur) → message rouge en bas de l'écran. Logique pure testée : `npm run test:dbguard` | 110 / 70 |
+| `tileSeamFix.ts` | Supprime les joints visibles entre tuiles de la carte (écran à 125 %…), voir `DECISIONS.md` | 30 |
 | `poi.ts` | Points d'intérêt posés sur la carte | 459 |
 | `compareExport.ts` | Comparateur de pays, export PNG de la carte, export JSON complet | 466 |
 | `countryNames.ts` | Noms français des pays et drapeaux | 74 |

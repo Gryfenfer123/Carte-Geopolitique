@@ -8,7 +8,8 @@
     "build": "tsc && vite build",
     "typecheck": "tsc --noEmit",
     "check:repo": "node scripts/check-repo.mjs",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "test:dbguard": "tsc src/dbGuardModel.ts --ignoreConfig --outDir node_modules/.cache/dbguard --module esnext --target es2020 && echo '{\"type\":\"module\"}' > node_modules/.cache/dbguard/package.json && node scripts/tests/dbGuardModel.test.mjs"
   },
   "devDependencies": {
     "@types/d3": "^7.4.3",

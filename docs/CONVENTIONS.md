@@ -87,6 +87,9 @@ Tout est dans `docs/BASE_DE_DONNEES.md` ; l'essentiel :
 
 ## 6. Sécurité
 
+- **Toute écriture en base lit `error`** et n'affiche « fait » qu'après la réponse. Le garde-fou global (`src/dbGuard.ts`) prévient
+  Martin des refus, mais ne remplace pas ce contrôle local (l'interface a déjà pu changer à l'écran).
+
 - Jamais de clé `service_role` / `sb_secret_…` dans le dépôt, ni dans une conversation. Seule la
   clé « anon » (publique par conception) est commitée.
 - Tout texte riche affiché passe par `src/sanitize.ts`. **Ne jamais contourner** cette liste

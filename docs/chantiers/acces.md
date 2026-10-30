@@ -24,3 +24,9 @@
   viendra à l'ouverture publique.
 - Panneau d'administration : liste des comptes, changement de rôle, journal des modifications récentes.
 - Toute migration de droits est annoncée clairement à Martin avant exécution (irréversible = demander d'abord).
+
+## Journal
+- 2026-10-30 : audit complet (`docs/audits/AUDIT_2026-10-30.md`). Premier chantier technique : garde-fou global des échecs de base
+  (`src/dbGuard.ts`, `npm run test:dbguard`). Vérifié : 16 cas de logique pure, et dans un navigateur avec base simulée (démarrage normal sans alerte,
+  lecture 500, écriture 403, suppression « 0 ligne », réseau coupé). Non vérifié : contre la vraie base (mon navigateur de test ne l'atteint pas) — à regarder à l'usage.
+  Suite : filtrer les schémas des liens (`link_url`), puis `acces_v1` (droits trop ouverts) après accord de Martin.
