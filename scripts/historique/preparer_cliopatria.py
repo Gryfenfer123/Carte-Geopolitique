@@ -240,11 +240,36 @@ def main():
     # Les tracés sont calculés en parallèle (le calage sur la côte est coûteux).
     print("Calcul des tracés…")
     with multiprocessing.get_context("fork").Pool(2) as pool:
+        # Reprise après interruption (la machine de travail peut être arrêtée en cours de calcul) : les tracés déjà
+        # calculés sont gardés dans un fichier « _reprise.jsonl » du dossier de sortie, un par ligne, dans l'ordre.
+        # Le fichier n'est réutilisé que si la signature (nombre de lignes, options, version du code) est identique.
+        signature = "%d|%s|%s|%s" % (len(entites), COMBLER, debut_carte, hashlib.md5(
+            (open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "caler_cotes.py"), encoding="utf8").read()
+             + open(__file__, encoding="utf8").read()).encode()).hexdigest()[:10])
+        chemin_reprise = os.path.join(dossier_sortie, "_reprise.jsonl")
         textes = []
-        for k, t in enumerate(pool.imap(_texte_trace, range(len(entites)), chunksize=40)):
+        if os.path.exists(chemin_reprise):
+            with open(chemin_reprise, encoding="utf8") as f:
+                lignes_r = f.read().split("\n")
+            if lignes_r and lignes_r[0] == signature:
+                textes = [json.loads(x) for x in lignes_r[1:] if x]
+                print("  reprise : %d tracés déjà calculés" % len(textes), flush=True)
+        if not textes:
+            with open(chemin_reprise, "w", encoding="utf8") as f:
+                f.write(signature + "\n")
+        reste = range(len(textes), len(entites))
+        tampon = []
+        for k, t in enumerate(pool.imap(_texte_trace, reste, chunksize=40), start=len(textes)):
             textes.append(t)
+            tampon.append(json.dumps(t))
+            if k % 250 == 249:
+                with open(chemin_reprise, "a", encoding="utf8") as f:
+                    f.write("\n".join(tampon) + "\n")
+                tampon = []
             if k % 1000 == 999:
                 print("  tracés calculés :", k + 1, "/", len(entites), flush=True)
+    if os.path.exists(chemin_reprise):
+        os.remove(chemin_reprise)
 
     metas, idx_meta = [], {}
     traces, idx_trace = [], {}  # traces[id] = (codage JSON compact)
