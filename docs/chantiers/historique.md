@@ -97,5 +97,5 @@ clavier, bornes (999999 → 2024, -99999 → -3400, champ vide ignoré), lecture
 
 ## Journal — 2026-10-30 : frontières plus proches des côtes (en cours)
 - `Cote.combler` (`caler_cotes.py`) : la terre située à moins de d degrés de la forme ET de la côte (d de 0,02° à 0,12° selon la taille de la forme) est ajoutée, mais seulement si elle touche la forme (aucun saut de détroit) ; rien n'est ajouté à l'intérieur des terres. Option `--sans-comblage` pour comparer. Bandes côtières mises en cache (premier essai trop lent : plus d'1 h 30 sans finir). Essai visuel (Adriatique 1279) : la côte dalmate se remplit.
-- Données de la carte PAS encore régénérées avec cette option : le calcul est en cours, mise en ligne après vérification de la taille et des chevauchements.
+- Données régénérées avec cette option : 25,6 Mo (22,5 avant), 55 morceaux, 11 922 lignes, 0 polygone invalide, tests du modèle OK. Contrôle visuel avant/après : côte dalmate (1279) et îles britanniques (1500) mieux suivies. Non vérifié : les autres régions, une par une.
 - `preparer_cliopatria.py` : calcul des tracés **reprenable** (fichier `_reprise.jsonl` dans le dossier de sortie, supprimé à la fin) et progression affichée ; la machine de travail s'était arrêtée à 11 000/11 922 tracés.
