@@ -1,7 +1,7 @@
 // Fonds de carte de la carte historique (module à part, voir docs/DECISIONS.md).
 // Demande de Martin (2026-10-30) : l'ancien fond (Esri « World_Physical_Map ») était « trop clair, pas joli ».
 // Choix : trois fonds SANS frontières ni noms de pays modernes, sans clé d'accès, choisis dans un petit sélecteur.
-//  - « Relief sombre » (défaut) : NASA Blue Marble (relief + fonds marins), assombri par un filtre CSS (voir historique.css)
+//  - « Relief sombre » (défaut) : NASA Blue Marble (relief + fonds marins), légèrement assombri par un filtre CSS (voir historique.css)
 //  - « Satellite sombre » : Esri World Imagery, assombri de la même façon
 //  - « Physique clair » : l'ancien fond, gardé au cas où
 import L from "leaflet";
