@@ -240,7 +240,11 @@ def main():
     # Les tracés sont calculés en parallèle (le calage sur la côte est coûteux).
     print("Calcul des tracés…")
     with multiprocessing.get_context("fork").Pool(2) as pool:
-        textes = pool.map(_texte_trace, range(len(entites)), chunksize=40)
+        textes = []
+        for k, t in enumerate(pool.imap(_texte_trace, range(len(entites)), chunksize=40)):
+            textes.append(t)
+            if k % 1000 == 999:
+                print("  tracés calculés :", k + 1, "/", len(entites), flush=True)
 
     metas, idx_meta = [], {}
     traces, idx_trace = [], {}  # traces[id] = (codage JSON compact)

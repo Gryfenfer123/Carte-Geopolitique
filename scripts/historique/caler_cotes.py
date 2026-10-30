@@ -55,6 +55,7 @@ class Cote:
         # lignes de côte seules (sans les bords artificiels des cases), pour combler les écarts (voir « combler »)
         cote = terre.boundary
         self.cotes = [cote.intersection(b) for b, _ in self.cases]
+        self._bandes = {}   # (case, d) -> terre de la case à moins de d de la côte (calculé à la demande)
 
     def terre_autour(self, geom):
         idx = self.arbre.query(geom)
@@ -68,15 +69,21 @@ class Cote:
         Raison (Martin, 2026-10-30) : après simplification, le contour s'arrête parfois à quelques km de la côte et
         laisse un liseré de terre vide ; le long d'une côte, la frontière doit suivre la côte. On n'ajoute rien à l'intérieur
         des terres (hors bande côtière), donc les frontières terrestres ne bougent pas."""
-        zone = geom.buffer(d)
+        d = min(q for q in (0.02, 0.04, 0.08, 0.12) if q >= min(d, 0.12))   # d arrondi au palier supérieur (bandes mises en cache)
+        zone = geom.buffer(d, quad_segs=2)
         idx = self.arbre.query(zone)
         if len(idx) == 0:
             return geom
-        terre = shapely.union_all([self.cases[i][1] for i in idx])
-        lignes = shapely.union_all([self.cotes[i] for i in idx])
-        if lignes.is_empty:
+        morceaux = []
+        for i in idx:
+            if (i, d) not in self._bandes:
+                lignes = self.cotes[i].simplify(0.005)   # la bande n'a pas besoin du détail fin de la côte
+                self._bandes[(i, d)] = self.cases[i][1].intersection(lignes.buffer(d, quad_segs=2)) if not lignes.is_empty else None
+            if self._bandes[(i, d)] is not None:
+                morceaux.append(self._bandes[(i, d)])
+        if not morceaux:
             return geom
-        ajout = terre.intersection(zone).intersection(lignes.buffer(d)).difference(geom)
+        ajout = shapely.union_all(morceaux).intersection(zone).difference(geom)   # terre de la bande côtière proche de la forme
         gardes = [p for p in shapely.get_parts(ajout) if p.geom_type == "Polygon" and not p.is_empty and p.intersects(geom)]
         if not gardes:
             return geom
