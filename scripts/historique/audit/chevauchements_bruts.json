@@ -1,0 +1,2150 @@
+[
+{
+"x": "Blue Horde",
+"y": "Golden Horde",
+"de": 1385,
+"a": 1401,
+"part": 0.9899858001914215,
+"deg2": 228.75487314670127,
+"m": [
+"",
+""
+]
+},
+{
+"x": "French Fifth Republic",
+"y": "People's Democratic Republic of Algeria",
+"de": 1963,
+"a": 2023,
+"part": 0.9999247568939713,
+"deg2": 214.00775822856667,
+"m": [
+"",
+""
+]
+},
+{
+"x": "Free French",
+"y": "French Africa",
+"de": 1943,
+"a": 1943,
+"part": 0.9995746383147986,
+"deg2": 195.08970072273368,
+"m": [
+"",
+"(Vichy France)"
+]
+},
+{
+"x": "Communist Party of China",
+"y": "Union of Soviet Socialist Republics",
+"de": 1940,
+"a": 1942,
+"part": 0.9805384787371477,
+"deg2": 170.97679612317478,
+"m": [
+"",
+""
+]
+},
+{
+"x": "Communist Party of China",
+"y": "Republic of China",
+"de": 1943,
+"a": 1945,
+"part": 0.9804963099523261,
+"deg2": 170.9694431391955,
+"m": [
+"",
+""
+]
+},
+{
+"x": "Assyrian Egypt",
+"y": "Neo-Assyrian Empire",
+"de": -650,
+"a": -616,
+"part": 0.9989559645710416,
+"deg2": 134.5530300340946,
+"m": [
+"",
+""
+]
+},
+{
+"x": "Bolivia",
+"y": "Gran Colombia",
+"de": 1825,
+"a": 1829,
+"part": 0.8200351530473232,
+"deg2": 126.10898089991247,
+"m": [
+"",
+""
+]
+},
+{
+"x": "Turks",
+"y": "Türgesh",
+"de": 705,
+"a": 717,
+"part": 0.9986746277946859,
+"deg2": 105.15180927999921,
+"m": [
+"",
+""
+]
+},
+{
+"x": "Kingdom of Norway",
+"y": "Nazi Germany",
+"de": 1940,
+"a": 1940,
+"part": 0.656679171446978,
+"deg2": 63.09188501059211,
+"m": [
+"",
+""
+]
+},
+{
+"x": "British East Africa",
+"y": "Zambia",
+"de": 1967,
+"a": 1968,
+"part": 0.9994999222738529,
+"deg2": 62.39293886876402,
+"m": [
+"(British Empire)",
+""
+]
+},
+{
+"x": "Empire of Japan",
+"y": "French Indochina",
+"de": 1945,
+"a": 1945,
+"part": 0.9416392502440887,
+"deg2": 61.00009364531743,
+"m": [
+"(Vichy France)",
+""
+]
+},
+{
+"x": "Kidarites",
+"y": "White Huns",
+"de": 410,
+"a": 442,
+"part": 1.0,
+"deg2": 52.11627064406639,
+"m": [
+"",
+""
+]
+},
+{
+"x": "British East Africa",
+"y": "Republic of Botswana",
+"de": 1967,
+"a": 1968,
+"part": 1.0,
+"deg2": 50.601268485816036,
+"m": [
+"(British Empire)",
+""
+]
+},
+{
+"x": "British East Africa",
+"y": "Republic of Kenya",
+"de": 1963,
+"a": 1968,
+"part": 0.9996540991424456,
+"deg2": 47.588915923532895,
+"m": [
+"(British Empire)",
+""
+]
+},
+{
+"x": "North Sea Empire",
+"y": "Old Kingdom of Norway",
+"de": 1028,
+"a": 1039,
+"part": 0.9212244570567587,
+"deg2": 46.65556203159198,
+"m": [
+"",
+""
+]
+},
+{
+"x": "Republic of Iraq",
+"y": "United States of America",
+"de": 2014,
+"a": 2023,
+"part": 0.9998166505603274,
+"deg2": 42.35368863040965,
+"m": [
+"",
+""
+]
+},
+{
+"x": "Japan",
+"y": "United States of America",
+"de": 1953,
+"a": 1966,
+"part": 1.0,
+"deg2": 42.028612969836104,
+"m": [
+"",
+""
+]
+},
+{
+"x": "Emirate of Jabal Shammar",
+"y": "Emirate of Nejd",
+"de": 1840,
+"a": 1845,
+"part": 0.9971969728703411,
+"deg2": 41.076771829551284,
+"m": [
+"",
+""
+]
+},
+{
+"x": "Anti-Kuomintang Coalition",
+"y": "Republic of China",
+"de": 1930,
+"a": 1931,
+"part": 0.6427872296397551,
+"deg2": 34.522935827233596,
+"m": [
+"",
+""
+]
+},
+{
+"x": "British East Africa",
+"y": "Rhodesia",
+"de": 1967,
+"a": 1968,
+"part": 0.9999384957308872,
+"deg2": 33.68509122988032,
+"m": [
+"(British Empire)",
+""
+]
+},
+{
+"x": "Emirate of Nejd",
+"y": "Muhammad Ali dynasty",
+"de": 1840,
+"a": 1841,
+"part": 0.6611088281774857,
+"deg2": 33.411955732079385,
+"m": [
+"",
+""
+]
+},
+{
+"x": "British Colonial Empire",
+"y": "New Zealand",
+"de": 1948,
+"a": 1957,
+"part": 1.0,
+"deg2": 32.15446127927862,
+"m": [
+"(British Empire)",
+""
+]
+},
+{
+"x": "Communist Party of China",
+"y": "East Turkestan Republic",
+"de": 1945,
+"a": 1945,
+"part": 0.9999460283419636,
+"deg2": 31.64657896331265,
+"m": [
+"",
+""
+]
+},
+{
+"x": "Kievan Rus'",
+"y": "Novgorod Republic",
+"de": 1056,
+"a": 1125,
+"part": 0.5014756038119575,
+"deg2": 30.88839702458187,
+"m": [
+"",
+""
+]
+},
+{
+"x": "Kievan Rus'",
+"y": "Principality of Chernigov",
+"de": 1056,
+"a": 1235,
+"part": 0.9998814352865337,
+"deg2": 30.060574287863073,
+"m": [
+"",
+""
+]
+},
+{
+"x": "Kingdom of Great Britain",
+"y": "Sultanate of Oman",
+"de": 1973,
+"a": 2023,
+"part": 0.9981468167602163,
+"deg2": 27.185574306428272,
+"m": [
+"(British Empire)",
+""
+]
+},
+{
+"x": "British Cape Colony",
+"y": "Napoleonic Batavia Republic",
+"de": 1803,
+"a": 1805,
+"part": 1.0,
+"deg2": 26.78900204232923,
+"m": [
+"(British Empire)",
+""
+]
+},
+{
+"x": "Kievan Rus'",
+"y": "Principality of Rostov-Suzdal",
+"de": 1056,
+"a": 1235,
+"part": 0.998241534158615,
+"deg2": 25.761088879916727,
+"m": [
+"",
+""
+]
+},
+{
+"x": "Himyarite Kingdom",
+"y": "Kingdom of Axum",
+"de": 577,
+"a": 601,
+"part": 0.999427293209735,
+"deg2": 24.874757697982204,
+"m": [
+"",
+""
+]
+},
+{
+"x": "Federal Republic of Germany",
+"y": "United States of America",
+"de": 1950,
+"a": 1966,
+"part": 0.8004004470764498,
+"deg2": 24.86746956856201,
+"m": [
+"",
+""
+]
+},
+{
+"x": "Great Seljuk Empire",
+"y": "Hamdanid Emirates",
+"de": 1072,
+"a": 1125,
+"part": 0.9949833867784867,
+"deg2": 23.779125900345733,
+"m": [
+"",
+""
+]
+},
+{
+"x": "Almohad Caliphate",
+"y": "Almoravid Dynasty",
+"de": 1147,
+"a": 1151,
+"part": 0.5576192498259488,
+"deg2": 23.73435315007635,
+"m": [
+"",
+""
+]
+},
+{
+"x": "British Colonial Empire",
+"y": "Dutch East Indies",
+"de": 1811,
+"a": 1813,
+"part": 0.9894752290637098,
+"deg2": 23.432684636206382,
+"m": [
+"(Batavian Republic)",
+"(British Empire)"
+]
+},
+{
+"x": "British Colonial Empire",
+"y": "English Colonial Empire",
+"de": 1709,
+"a": 1712,
+"part": 0.992314397617204,
+"deg2": 22.782911238715684,
+"m": [
+"(Kingdom of England)",
+"(British Empire)"
+]
+},
+{
+"x": "British Empire",
+"y": "Mughal Empire",
+"de": 1820,
+"a": 1856,
+"part": 0.9972088322430943,
+"deg2": 21.849938831954056,
+"m": [
+"",
+"(British Empire)"
+]
+},
+{
+"x": "Denmark-Norway",
+"y": "Kingdom of Iceland",
+"de": 1918,
+"a": 1921,
+"part": 1.0,
+"deg2": 21.35616228203071,
+"m": [
+"",
+""
+]
+},
+{
+"x": "Kievan Rus'",
+"y": "Principality of Smolensk",
+"de": 1056,
+"a": 1235,
+"part": 1.0,
+"deg2": 21.201040679114705,
+"m": [
+"",
+""
+]
+},
+{
+"x": "British Gold Coast",
+"y": "Ghana",
+"de": 1958,
+"a": 1959,
+"part": 0.9999999999999998,
+"deg2": 19.74395965100767,
+"m": [
+"(British Empire)",
+""
+]
+},
+{
+"x": "Kievan Rus'",
+"y": "Principality of Kiev",
+"de": 1056,
+"a": 1235,
+"part": 0.9959831018251853,
+"deg2": 18.93557497882178,
+"m": [
+"",
+""
+]
+},
+{
+"x": "Ba'athist Syria",
+"y": "United Arab Republic",
+"de": 1963,
+"a": 1966,
+"part": 1.0,
+"deg2": 18.5635378631996,
+"m": [
+"",
+""
+]
+},
+{
+"x": "Republic of Syria",
+"y": "United Arab Republic",
+"de": 1961,
+"a": 1962,
+"part": 1.0,
+"deg2": 18.5635378631996,
+"m": [
+"",
+""
+]
+},
+{
+"x": "Kievan Rus'",
+"y": "Principality of Galicia-Volhynia",
+"de": 1202,
+"a": 1235,
+"part": 0.7763026881658284,
+"deg2": 18.507075680127876,
+"m": [
+"",
+""
+]
+},
+{
+"x": "Holy Roman Empire",
+"y": "Kingdom of Italy",
+"de": 962,
+"a": 969,
+"part": 0.9363269652101328,
+"deg2": 18.2056433520776,
+"m": [
+"",
+"(Holy Roman Empire)"
+]
+},
+{
+"x": "Kingdom of Germany",
+"y": "Kingdom of Italy",
+"de": 961,
+"a": 961,
+"part": 0.9353642548617382,
+"deg2": 18.186924718624283,
+"m": [
+"",
+"(Holy Roman Empire)"
+]
+},
+{
+"x": "British Colonial Empire",
+"y": "Guyana",
+"de": 1967,
+"a": 1968,
+"part": 1.0,
+"deg2": 17.327826022815543,
+"m": [
+"(British Empire)",
+""
+]
+},
+{
+"x": "British East Africa",
+"y": "Republic of Uganda",
+"de": 1963,
+"a": 1968,
+"part": 0.9994427696176238,
+"deg2": 17.062345980154678,
+"m": [
+"(British Empire)",
+""
+]
+},
+{
+"x": "Brandenburg-Prussia",
+"y": "Kingdom of Prussia",
+"de": 1702,
+"a": 1717,
+"part": 0.999648189165537,
+"deg2": 16.599785485958524,
+"m": [
+"",
+""
+]
+},
+{
+"x": "Huns",
+"y": "Kingdom of Armenia",
+"de": 402,
+"a": 406,
+"part": 0.9987932224938945,
+"deg2": 15.045997273181541,
+"m": [
+"",
+""
+]
+},
+{
+"x": "Kievan Rus'",
+"y": "Principality of Polotsky",
+"de": 1056,
+"a": 1235,
+"part": 0.999790644393644,
+"deg2": 14.53194860126128,
+"m": [
+"",
+""
+]
+},
+{
+"x": "Republic of Vietnam",
+"y": "United States of America",
+"de": 1973,
+"a": 1975,
+"part": 0.9973837005289419,
+"deg2": 14.007807768035418,
+"m": [
+"",
+""
+]
+},
+{
+"x": "Babylonia",
+"y": "Neo-Assyrian Empire",
+"de": -650,
+"a": -631,
+"part": 0.9968293142278059,
+"deg2": 12.700332349169898,
+"m": [
+"",
+""
+]
+},
+{
+"x": "Netherlands Antilles",
+"y": "Republic of Suriname",
+"de": 1976,
+"a": 2023,
+"part": 1.0,
+"deg2": 11.973092369795722,
+"m": [
+"",
+""
+]
+},
+{
+"x": "Kievan Rus'",
+"y": "Principality of Pereyaslavl",
+"de": 1056,
+"a": 1235,
+"part": 0.9974710771103233,
+"deg2": 11.96085226999806,
+"m": [
+"",
+""
+]
+},
+{
+"x": "Karkota Dynasty",
+"y": "Turk Shahis",
+"de": 644,
+"a": 655,
+"part": 0.5508973837265224,
+"deg2": 11.467923068989762,
+"m": [
+"",
+""
+]
+},
+{
+"x": "Kievan Rus'",
+"y": "Principality of Volhynia",
+"de": 1056,
+"a": 1201,
+"part": 0.9989947669797518,
+"deg2": 10.819661035796697,
+"m": [
+"",
+""
+]
+},
+{
+"x": "Wu",
+"y": "Yue",
+"de": -500,
+"a": -481,
+"part": 1.0,
+"deg2": 10.405655304515676,
+"m": [
+"(Spring and Autumn States)",
+""
+]
+},
+{
+"x": "Republic of Korea",
+"y": "United States of America",
+"de": 1948,
+"a": 1966,
+"part": 1.0,
+"deg2": 10.318310017275508,
+"m": [
+"",
+""
+]
+},
+{
+"x": "Kingdom of Naples (Napoleonic)",
+"y": "Kingdom of Spain",
+"de": 1762,
+"a": 1777,
+"part": 1.0,
+"deg2": 9.758792306638497,
+"m": [
+"(Spanish Empire)",
+""
+]
+},
+{
+"x": "Burgundian Kingdom",
+"y": "Western Roman Empire",
+"de": 443,
+"a": 450,
+"part": 1.0,
+"deg2": 9.384518179269435,
+"m": [
+"",
+""
+]
+},
+{
+"x": "Northern Liang",
+"y": "Western Liang",
+"de": 407,
+"a": 409,
+"part": 1.0,
+"deg2": 9.323369309597183,
+"m": [
+"",
+""
+]
+},
+{
+"x": "Kievan Rus'",
+"y": "Principality of Turov and Pinsk",
+"de": 1188,
+"a": 1235,
+"part": 1.0,
+"deg2": 9.15309781151775,
+"m": [
+"",
+""
+]
+},
+{
+"x": "Sultanate of Brunei",
+"y": "Sultanate of Maguindanao",
+"de": 1521,
+"a": 1581,
+"part": 1.0,
+"deg2": 8.726708463260366,
+"m": [
+"",
+""
+]
+},
+{
+"x": "Kievan Rus'",
+"y": "Principality of Halych",
+"de": 1147,
+"a": 1201,
+"part": 0.591667863810707,
+"deg2": 7.718851132738033,
+"m": [
+"",
+""
+]
+},
+{
+"x": "British East Africa",
+"y": "Malawi",
+"de": 1967,
+"a": 1968,
+"part": 0.9931219661548029,
+"deg2": 7.713110647133842,
+"m": [
+"(British Empire)",
+""
+]
+},
+{
+"x": "Kievan Rus'",
+"y": "Principality of Peremyshl",
+"de": 1056,
+"a": 1146,
+"part": 0.9971793056642213,
+"deg2": 7.696482532982179,
+"m": [
+"",
+""
+]
+},
+{
+"x": "Kievan Rus'",
+"y": "Principality of Minsk",
+"de": 1111,
+"a": 1235,
+"part": 0.9513167521523203,
+"deg2": 6.877385101036774,
+"m": [
+"",
+""
+]
+},
+{
+"x": "Kingdom of Great Britain",
+"y": "United Arab Emirates",
+"de": 1973,
+"a": 2023,
+"part": 0.9979142598680532,
+"deg2": 6.865409022856471,
+"m": [
+"(British Empire)",
+""
+]
+},
+{
+"x": "Germiyanids",
+"y": "Timurid Empire",
+"de": 1402,
+"a": 1406,
+"part": 0.5421386167128269,
+"deg2": 6.656987162887335,
+"m": [
+"",
+""
+]
+},
+{
+"x": "Bahrain",
+"y": "Emirate of Nejd",
+"de": 1840,
+"a": 1845,
+"part": 0.9975663521300571,
+"deg2": 6.563474319804664,
+"m": [
+"",
+""
+]
+},
+{
+"x": "Majapahit",
+"y": "Sultanate of Palembang",
+"de": 1459,
+"a": 1474,
+"part": 0.9976911871657981,
+"deg2": 6.2490951816768625,
+"m": [
+"",
+""
+]
+},
+{
+"x": "Abbasid Caliphate",
+"y": "Georgia",
+"de": 888,
+"a": 891,
+"part": 0.6481332736635479,
+"deg2": 6.105972106906264,
+"m": [
+"",
+""
+]
+},
+{
+"x": "Chola Empire",
+"y": "Kingdom of Polonnaruwa",
+"de": 1072,
+"a": 1093,
+"part": 0.9431684357152442,
+"deg2": 5.682464921054103,
+"m": [
+"",
+""
+]
+},
+{
+"x": "Almoravid Dynasty",
+"y": "Taifa of Valencia",
+"de": 1147,
+"a": 1151,
+"part": 0.9971084088845188,
+"deg2": 5.638617451457289,
+"m": [
+"",
+"(Taifas of Iberia)"
+]
+},
+{
+"x": "Germiyanids",
+"y": "Ottoman Empire",
+"de": 1429,
+"a": 1430,
+"part": 0.9040716043768406,
+"deg2": 5.4746786396650995,
+"m": [
+"",
+""
+]
+},
+{
+"x": "Old Kingdom of Norway",
+"y": "Viking settlements",
+"de": 990,
+"a": 1325,
+"part": 0.6486555093483666,
+"deg2": 5.049597445054822,
+"m": [
+"",
+""
+]
+},
+{
+"x": "Kievan Rus'",
+"y": "Principality of Vitebsk",
+"de": 1111,
+"a": 1187,
+"part": 0.9681003342235311,
+"deg2": 4.7814209453305025,
+"m": [
+"",
+""
+]
+},
+{
+"x": "Norse Greenland",
+"y": "Viking settlements",
+"de": 1072,
+"a": 1271,
+"part": 1.0,
+"deg2": 4.701774562599894,
+"m": [
+"",
+""
+]
+},
+{
+"x": "Dominican Republic",
+"y": "Spanish Empire",
+"de": 1865,
+"a": 1872,
+"part": 0.9989469615112874,
+"deg2": 4.509475983068114,
+"m": [
+"(Spanish Empire)",
+""
+]
+},
+{
+"x": "Kingdom of Pajana",
+"y": "Sultanate of Malacca",
+"de": 1572,
+"a": 1587,
+"part": 1.0000000000000002,
+"deg2": 3.7319715328212624,
+"m": [
+"",
+""
+]
+},
+{
+"x": "German Empire",
+"y": "Kingdom of Belgium",
+"de": 1915,
+"a": 1918,
+"part": 0.9494940885361033,
+"deg2": 3.7219114934792894,
+"m": [
+"",
+""
+]
+},
+{
+"x": "Mataram Sultanate",
+"y": "Sultanate of Malacca",
+"de": 1588,
+"a": 1639,
+"part": 0.9992677467759896,
+"deg2": 3.710478829406897,
+"m": [
+"",
+""
+]
+},
+{
+"x": "Kingdom of Great Britain",
+"y": "Second Republic of Austria",
+"de": 1946,
+"a": 1946,
+"part": 0.5109626546009716,
+"deg2": 3.6361777926838537,
+"m": [
+"(British Empire)",
+""
+]
+},
+{
+"x": "Kingdom of the Franks",
+"y": "Merovingian Empire",
+"de": 710,
+"a": 717,
+"part": 1.0,
+"deg2": 3.616741869955149,
+"m": [
+"(Kingdom of the Franks);(Merovingian Empire)",
+"(Merovingian Empire)"
+]
+},
+{
+"x": "First French Empire",
+"y": "Kingdom of Sardinia",
+"de": 1805,
+"a": 1813,
+"part": 0.5168757631778143,
+"deg2": 3.550407249199017,
+"m": [
+"",
+"(First French Empire)"
+]
+},
+{
+"x": "French Consulate",
+"y": "Kingdom of Sardinia",
+"de": 1803,
+"a": 1804,
+"part": 0.516768272429695,
+"deg2": 3.5496688978222797,
+"m": [
+"",
+"(French Consulate)"
+]
+},
+{
+"x": "Ceylon",
+"y": "Kingdom of Polonnaruwa",
+"de": 1236,
+"a": 1249,
+"part": 0.9949332395749474,
+"deg2": 3.381310081907617,
+"m": [
+"",
+""
+]
+},
+{
+"x": "First French Empire",
+"y": "Papal States",
+"de": 1809,
+"a": 1810,
+"part": 0.9926018794916641,
+"deg2": 3.259910125017808,
+"m": [
+"",
+"(First French Empire)"
+]
+},
+{
+"x": "French Directory",
+"y": "Kingdom of Sardinia",
+"de": 1799,
+"a": 1799,
+"part": 0.5253361127597515,
+"deg2": 3.216798131834778,
+"m": [
+"",
+"(French Directory)"
+]
+},
+{
+"x": "British Colonial Empire",
+"y": "Solomon Islands",
+"de": 1979,
+"a": 1995,
+"part": 1.0,
+"deg2": 3.101090800435486,
+"m": [
+"(British Empire)",
+""
+]
+},
+{
+"x": "Kingdom of Axum",
+"y": "Sabaeans",
+"de": 247,
+"a": 282,
+"part": 0.5625529759520786,
+"deg2": 3.038101962525194,
+"m": [
+"",
+""
+]
+},
+{
+"x": "British East Africa",
+"y": "Lesotho",
+"de": 1967,
+"a": 1968,
+"part": 1.0,
+"deg2": 2.9395599336476153,
+"m": [
+"(British Empire)",
+""
+]
+},
+{
+"x": "Kievan Rus'",
+"y": "Principality of Drutsk",
+"de": 1111,
+"a": 1235,
+"part": 1.0,
+"deg2": 2.7481478543923004,
+"m": [
+"",
+""
+]
+},
+{
+"x": "Estado Novo",
+"y": "Republic of Guinea-Bissau",
+"de": 1973,
+"a": 1975,
+"part": 1.0,
+"deg2": 2.7288781488432505,
+"m": [
+"",
+""
+]
+},
+{
+"x": "Greek City-States",
+"y": "Roman Empire",
+"de": 68,
+"a": 77,
+"part": 0.9355064985824411,
+"deg2": 2.5168612510814823,
+"m": [
+"",
+""
+]
+},
+{
+"x": "Equatorial Guinea",
+"y": "Francoist Spain",
+"de": 1969,
+"a": 1972,
+"part": 1.0,
+"deg2": 2.3211985113209437,
+"m": [
+"",
+""
+]
+},
+{
+"x": "Byzantine Empire",
+"y": "Ottoman Empire",
+"de": 1463,
+"a": 1467,
+"part": 0.8985734412916322,
+"deg2": 2.1797081278877215,
+"m": [
+"",
+""
+]
+},
+{
+"x": "Kingdom of the Isles",
+"y": "Viking settlements",
+"de": 1085,
+"a": 1176,
+"part": 1.0000000000000002,
+"deg2": 2.11692830562788,
+"m": [
+"",
+""
+]
+},
+{
+"x": "Greek City-States",
+"y": "Roman Republic",
+"de": -66,
+"a": -64,
+"part": 0.6197098211659287,
+"deg2": 2.0381485375340156,
+"m": [
+"",
+""
+]
+},
+{
+"x": "British Colonial Empire",
+"y": "New Netherland",
+"de": 1799,
+"a": 1799,
+"part": 0.9804460955091526,
+"deg2": 2.0342867192599705,
+"m": [
+"",
+"(British Empire)"
+]
+},
+{
+"x": "Belize",
+"y": "British Colonial Empire",
+"de": 1983,
+"a": 1995,
+"part": 1.0,
+"deg2": 1.943644734161353,
+"m": [
+"(British Empire)",
+""
+]
+},
+{
+"x": "British Colonial Empire",
+"y": "Republic of Fiji",
+"de": 1973,
+"a": 1995,
+"part": 1.0,
+"deg2": 1.8450184156827163,
+"m": [
+"(British Empire)",
+""
+]
+},
+{
+"x": "French Fifth Republic",
+"y": "Republic of Djibouti",
+"de": 1979,
+"a": 2023,
+"part": 1.0,
+"deg2": 1.8429121913741255,
+"m": [
+"",
+""
+]
+},
+{
+"x": "Kingdom of the Isles",
+"y": "Old Kingdom of Norway",
+"de": 1085,
+"a": 1176,
+"part": 1.0,
+"deg2": 1.7978349079985487,
+"m": [
+"",
+""
+]
+},
+{
+"x": "British Colonial Empire",
+"y": "Commonwealth of The Bahamas",
+"de": 1973,
+"a": 1995,
+"part": 1.0,
+"deg2": 1.663974952258286,
+"m": [
+"(British Empire)",
+""
+]
+},
+{
+"x": "Duchy of Lorraine",
+"y": "Kingdom of France",
+"de": 1700,
+"a": 1768,
+"part": 0.7753001424366815,
+"deg2": 1.6601839249942714,
+"m": [
+"",
+"(Kingdom of France)"
+]
+},
+{
+"x": "Kievan Rus'",
+"y": "Principality of Terebovlia",
+"de": 1085,
+"a": 1093,
+"part": 0.9894598737034075,
+"deg2": 1.625015389830008,
+"m": [
+"",
+""
+]
+},
+{
+"x": "Crown of Aragon",
+"y": "Republic of Pisa",
+"de": 1326,
+"a": 1374,
+"part": 0.5295486028545798,
+"deg2": 1.5752436609915732,
+"m": [
+"",
+""
+]
+},
+{
+"x": "Almoravid Dynasty",
+"y": "Taifa of Córdoba",
+"de": 1147,
+"a": 1151,
+"part": 1.0,
+"deg2": 1.5721266405230383,
+"m": [
+"",
+"(Taifas of Iberia)"
+]
+},
+{
+"x": "Almoravid Dynasty",
+"y": "Taifa of Dénia",
+"de": 1094,
+"a": 1151,
+"part": 1.0000000000000002,
+"deg2": 1.5543542589939534,
+"m": [
+"(Taifas of Iberia)",
+""
+]
+},
+{
+"x": "Giudicato of Arborea",
+"y": "Republic of Pisa",
+"de": 1375,
+"a": 1394,
+"part": 0.5467739456241525,
+"deg2": 1.5098226462731539,
+"m": [
+"",
+""
+]
+},
+{
+"x": "Kingdom of Sweden",
+"y": "Norse Greenland",
+"de": 1363,
+"a": 1374,
+"part": 1.0,
+"deg2": 1.417854199440626,
+"m": [
+"",
+""
+]
+},
+{
+"x": "Kingdom of Great Britain",
+"y": "State of Kuwait",
+"de": 1961,
+"a": 1968,
+"part": 1.0,
+"deg2": 1.3055192565734615,
+"m": [
+"(British Empire)",
+""
+]
+},
+{
+"x": "Byzantine Empire",
+"y": "Papal States",
+"de": 755,
+"a": 762,
+"part": 0.9107771299676019,
+"deg2": 1.3024452606460815,
+"m": [
+"",
+""
+]
+},
+{
+"x": "Holy Roman Empire Minor States",
+"y": "House of Luxembourg",
+"de": 1395,
+"a": 1414,
+"part": 1.0,
+"deg2": 1.2774843103898093,
+"m": [
+"",
+"(Holy Roman Empire)"
+]
+},
+{
+"x": "New France",
+"y": "Spanish Empire",
+"de": 1619,
+"a": 1625,
+"part": 0.8076310213758233,
+"deg2": 1.2417930642124333,
+"m": [
+"(Kingdom of France)",
+"(Spanish Empire)"
+]
+},
+{
+"x": "Kingdom of France",
+"y": "Republic of Genoa",
+"de": 1556,
+"a": 1791,
+"part": 0.8870540502938287,
+"deg2": 1.2239108519793649,
+"m": [
+"",
+"(Kingdom of France)"
+]
+},
+{
+"x": "Holy Roman Empire",
+"y": "Republic of Pisa",
+"de": 1085,
+"a": 1146,
+"part": 0.8092481634351718,
+"deg2": 1.2222414420066343,
+"m": [
+"(Holy Roman Empire)",
+""
+]
+},
+{
+"x": "French First Republic",
+"y": "Republic of Genoa",
+"de": 1792,
+"a": 1793,
+"part": 0.778178532722219,
+"deg2": 1.2222414420066343,
+"m": [
+"",
+"(French First Republic)"
+]
+},
+{
+"x": "Corsican Republic",
+"y": "Republic of Genoa",
+"de": 1757,
+"a": 1768,
+"part": 1.0,
+"deg2": 1.2222414420066343,
+"m": [
+"",
+""
+]
+},
+{
+"x": "Kingdom of Great Britain",
+"y": "State of Qatar",
+"de": 1973,
+"a": 2023,
+"part": 1.0,
+"deg2": 1.1456040875818871,
+"m": [
+"(British Empire)",
+""
+]
+},
+{
+"x": "Byzantine Empire",
+"y": "Cyprus Condominium",
+"de": 884,
+"a": 885,
+"part": 1.0,
+"deg2": 1.1304699558022548,
+"m": [
+"",
+""
+]
+},
+{
+"x": "Kingdom of Great Britain",
+"y": "Republic of Cyprus",
+"de": 1961,
+"a": 1968,
+"part": 1.0,
+"deg2": 1.1304699558022548,
+"m": [
+"(British Empire)",
+""
+]
+},
+{
+"x": "Giudicato of Cagliari",
+"y": "Taifa of Dénia",
+"de": 1015,
+"a": 1039,
+"part": 1.0,
+"deg2": 1.0476077799002173,
+"m": [
+"",
+"(Taifas of Iberia)"
+]
+},
+{
+"x": "Grand Principality of Moscow",
+"y": "Tver",
+"de": 1482,
+"a": 1486,
+"part": 1.0,
+"deg2": 1.0451328921553795,
+"m": [
+"",
+""
+]
+},
+{
+"x": "Almoravid Dynasty",
+"y": "Taifa of Murcia",
+"de": 1147,
+"a": 1151,
+"part": 0.9904181889124698,
+"deg2": 0.9537973703194861,
+"m": [
+"",
+"(Taifas of Iberia)"
+]
+},
+{
+"x": "British East Africa",
+"y": "Republic of The Gambia",
+"de": 1967,
+"a": 1968,
+"part": 1.0,
+"deg2": 0.9361651561935105,
+"m": [
+"(British Empire)",
+""
+]
+},
+{
+"x": "Kingdom of Mann",
+"y": "Viking settlements",
+"de": 1177,
+"a": 1271,
+"part": 1.0000000000000002,
+"deg2": 0.8966996983072016,
+"m": [
+"",
+""
+]
+},
+{
+"x": "Kingdom of Mann",
+"y": "Old Kingdom of Norway",
+"de": 1177,
+"a": 1187,
+"part": 1.0,
+"deg2": 0.8966996983072015,
+"m": [
+"",
+""
+]
+},
+{
+"x": "Almoravid Dynasty",
+"y": "Taifa of Almería",
+"de": 1147,
+"a": 1151,
+"part": 0.9800715804174565,
+"deg2": 0.894556626566165,
+"m": [
+"",
+"(Taifas of Iberia)"
+]
+},
+{
+"x": "Trịnh lords",
+"y": "Đại Việt",
+"de": 1677,
+"a": 1682,
+"part": 0.7366446380217533,
+"deg2": 0.8811175576054691,
+"m": [
+"",
+""
+]
+},
+{
+"x": "Giudicato of Logudoro",
+"y": "Taifa of Dénia",
+"de": 1015,
+"a": 1039,
+"part": 1.0,
+"deg2": 0.8768580859471241,
+"m": [
+"",
+"(Taifas of Iberia)"
+]
+},
+{
+"x": "Ottoman Empire",
+"y": "Qatar Dynasty",
+"de": 1873,
+"a": 1894,
+"part": 0.5848670638920501,
+"deg2": 0.7053970213637513,
+"m": [
+"",
+""
+]
+},
+{
+"x": "Kelantan",
+"y": "Sultanate of Malacca",
+"de": 1762,
+"a": 1799,
+"part": 1.0,
+"deg2": 0.6981627090226539,
+"m": [
+"",
+""
+]
+},
+{
+"x": "Almoravid Dynasty",
+"y": "Taifa of Silves",
+"de": 1147,
+"a": 1151,
+"part": 0.9670761820243363,
+"deg2": 0.6031752684825249,
+"m": [
+"",
+"(Taifas of Iberia)"
+]
+},
+{
+"x": "French First Republic",
+"y": "French India",
+"de": 1792,
+"a": 1795,
+"part": 0.6843150873124354,
+"deg2": 0.5921705130833705,
+"m": [
+"(Kingdom of France)",
+"(French First Republic)"
+]
+},
+{
+"x": "British Colonial Empire",
+"y": "Sultanate of Brunei",
+"de": 1987,
+"a": 1995,
+"part": 0.9800648710976099,
+"deg2": 0.580832970647944,
+"m": [
+"(British Empire)",
+""
+]
+},
+{
+"x": "Estado Novo",
+"y": "People's Republic of Angola",
+"de": 1979,
+"a": 2023,
+"part": 1.0,
+"deg2": 0.5622380507684289,
+"m": [
+"",
+""
+]
+},
+{
+"x": "Nguyễn dynasty",
+"y": "Tây Sơn dynasty",
+"de": 1792,
+"a": 1793,
+"part": 0.8073545814137616,
+"deg2": 0.5618107762165891,
+"m": [
+"",
+""
+]
+},
+{
+"x": "Cretan State",
+"y": "Ottoman Empire",
+"de": 1898,
+"a": 1899,
+"part": 1.0,
+"deg2": 0.5444923546929203,
+"m": [
+"",
+""
+]
+},
+{
+"x": "Majapahit",
+"y": "Sultanate of Malacca",
+"de": 1459,
+"a": 1474,
+"part": 0.9471730055222746,
+"deg2": 0.5341282321210065,
+"m": [
+"",
+""
+]
+},
+{
+"x": "British Colonial Empire",
+"y": "French India",
+"de": 1811,
+"a": 1814,
+"part": 0.5952891512694927,
+"deg2": 0.5151321206794819,
+"m": [
+"(Kingdom of France)",
+"(British Empire)"
+]
+},
+{
+"x": "French Directory",
+"y": "French India",
+"de": 1796,
+"a": 1799,
+"part": 0.5952891512694927,
+"deg2": 0.5151321206794819,
+"m": [
+"(Kingdom of France)",
+"(French Directory)"
+]
+},
+{
+"x": "French Consulate",
+"y": "French India",
+"de": 1800,
+"a": 1804,
+"part": 0.5952891512694927,
+"deg2": 0.5151321206794819,
+"m": [
+"(Kingdom of France)",
+"(French Consulate)"
+]
+},
+{
+"x": "First French Empire",
+"y": "French India",
+"de": 1805,
+"a": 1810,
+"part": 0.5952891512694927,
+"deg2": 0.5151321206794819,
+"m": [
+"(Kingdom of France)",
+"(First French Empire)"
+]
+},
+{
+"x": "Almoravid Dynasty",
+"y": "Taifa of Algeciras",
+"de": 1147,
+"a": 1151,
+"part": 0.9989546435105116,
+"deg2": 0.4781390696961958,
+"m": [
+"",
+"(Taifas of Iberia)"
+]
+},
+{
+"x": "Giudicato of Gallura",
+"y": "Taifa of Dénia",
+"de": 1015,
+"a": 1039,
+"part": 1.0,
+"deg2": 0.4730792821086788,
+"m": [
+"",
+"(Taifas of Iberia)"
+]
+},
+{
+"x": "Almoravid Dynasty",
+"y": "Taifa of Badajoz",
+"de": 1147,
+"a": 1151,
+"part": 1.0,
+"deg2": 0.46096282779762987,
+"m": [
+"",
+"(Taifas of Iberia)"
+]
+},
+{
+"x": "Grand Principality of Moscow",
+"y": "Principality of Vladimir-Suzdal",
+"de": 1482,
+"a": 1486,
+"part": 1.0,
+"deg2": 0.4540902842200012,
+"m": [
+"",
+""
+]
+},
+{
+"x": "Almoravid Dynasty",
+"y": "Taifa of Carmona",
+"de": 1147,
+"a": 1151,
+"part": 1.0,
+"deg2": 0.4361950727870862,
+"m": [
+"",
+"(Taifas of Iberia)"
+]
+},
+{
+"x": "Kingdom of Dambadeniya",
+"y": "Kingdom of Polonnaruwa",
+"de": 1236,
+"a": 1249,
+"part": 1.0,
+"deg2": 0.4276984594910496,
+"m": [
+"",
+""
+]
+},
+{
+"x": "Almoravid Dynasty",
+"y": "Taifa of Saltés and Huelva",
+"de": 1147,
+"a": 1151,
+"part": 0.9546927577656308,
+"deg2": 0.41058669436005996,
+"m": [
+"",
+"(Taifas of Iberia)"
+]
+},
+{
+"x": "Giudicato of Arborea",
+"y": "Taifa of Dénia",
+"de": 1015,
+"a": 1039,
+"part": 1.0,
+"deg2": 0.4011380679519707,
+"m": [
+"(Taifas of Iberia)",
+""
+]
+},
+{
+"x": "British East Africa",
+"y": "Sultanate of Zanzibar",
+"de": 1963,
+"a": 1966,
+"part": 1.0000000000000002,
+"deg2": 0.34690410435359853,
+"m": [
+"(British Empire)",
+""
+]
+},
+{
+"x": "Sultanate of Brunei",
+"y": "Sultanate of Sulu",
+"de": 1529,
+"a": 1581,
+"part": 1.0,
+"deg2": 0.31405630010885943,
+"m": [
+"",
+""
+]
+},
+{
+"x": "Luxembourg",
+"y": "Netherlands",
+"de": 1890,
+"a": 1914,
+"part": 0.9999999999999998,
+"deg2": 0.3002781294953817,
+"m": [
+"(Netherlands)",
+""
+]
+},
+{
+"x": "Comtat Venaissin",
+"y": "Kingdom of France",
+"de": 1482,
+"a": 1701,
+"part": 1.0,
+"deg2": 0.2608551114117292,
+"m": [
+"",
+"(Kingdom of France)"
+]
+},
+{
+"x": "County of Tripoli",
+"y": "Hamdanid Emirates",
+"de": 1111,
+"a": 1125,
+"part": 0.6299994541051055,
+"deg2": 0.2592091581732487,
+"m": [
+"",
+""
+]
+},
+{
+"x": "Byzantine Empire",
+"y": "Republic of Venice",
+"de": 1210,
+"a": 1226,
+"part": 0.576247427699547,
+"deg2": 0.25758087171561783,
+"m": [
+"",
+""
+]
+},
+{
+"x": "Almoravid Dynasty",
+"y": "Taifa of Tejada",
+"de": 1147,
+"a": 1151,
+"part": 1.0,
+"deg2": 0.22855316900313483,
+"m": [
+"",
+"(Taifas of Iberia)"
+]
+},
+{
+"x": "Danish India",
+"y": "Habsburg Monarchy",
+"de": 1778,
+"a": 1790,
+"part": 0.8955841197050166,
+"deg2": 0.1641439526447357,
+"m": [
+"",
+"(Habsburg Monarchy)"
+]
+},
+{
+"x": "Almoravid Dynasty",
+"y": "Taifa of Niebla",
+"de": 1147,
+"a": 1151,
+"part": 1.0,
+"deg2": 0.1485383368853946,
+"m": [
+"",
+"(Taifas of Iberia)"
+]
+},
+{
+"x": "Byzantine Empire",
+"y": "Duchy of the Archipelago",
+"de": 1210,
+"a": 1226,
+"part": 1.0,
+"deg2": 0.12585398880764842,
+"m": [
+"",
+""
+]
+},
+{
+"x": "Byzantine Empire",
+"y": "Duchy of Naples",
+"de": 763,
+"a": 767,
+"part": 1.0,
+"deg2": 0.1105052613074804,
+"m": [
+"",
+""
+]
+},
+{
+"x": "British Colonial Empire",
+"y": "Commonwealth of Dominica",
+"de": 1979,
+"a": 1995,
+"part": 1.0,
+"deg2": 0.10633601640256529,
+"m": [
+"(British Empire)",
+""
+]
+},
+{
+"x": "Isle of Man",
+"y": "Kingdom of Scotland",
+"de": 1344,
+"a": 1401,
+"part": 1.0,
+"deg2": 0.10569041325288708,
+"m": [
+"",
+""
+]
+},
+{
+"x": "Byzantine Empire",
+"y": "Republic of Genoa",
+"de": 1468,
+"a": 1474,
+"part": 1.0,
+"deg2": 0.08426580946252216,
+"m": [
+"",
+""
+]
+},
+{
+"x": "Kingdom of Bahrain",
+"y": "Kingdom of Great Britain",
+"de": 1973,
+"a": 2023,
+"part": 1.0,
+"deg2": 0.07952571408168296,
+"m": [
+"(British Empire)",
+""
+]
+},
+{
+"x": "British Colonial Empire",
+"y": "Saint Lucia",
+"de": 1979,
+"a": 1995,
+"part": 1.0,
+"deg2": 0.0661043577874807,
+"m": [
+"(British Empire)",
+""
+]
+},
+{
+"x": "Gorkha Kingdom",
+"y": "Kathmandu",
+"de": 1748,
+"a": 1756,
+"part": 1.0,
+"deg2": 0.06534686984377913,
+"m": [
+"",
+""
+]
+},
+{
+"x": "Barbados",
+"y": "British Colonial Empire",
+"de": 1967,
+"a": 1968,
+"part": 1.0,
+"deg2": 0.061313981354032876,
+"m": [
+"(British Empire)",
+""
+]
+},
+{
+"x": "Republic of Ragusa",
+"y": "Serbian Despots",
+"de": 1385,
+"a": 1394,
+"part": 1.0,
+"deg2": 0.06002503008858184,
+"m": [
+"",
+""
+]
+},
+{
+"x": "Palau",
+"y": "United States of America",
+"de": 1996,
+"a": 2005,
+"part": 1.0,
+"deg2": 0.05395725824200781,
+"m": [
+"",
+""
+]
+},
+{
+"x": "Byzantine Empire",
+"y": "House of Anjou-Sicily",
+"de": 1305,
+"a": 1325,
+"part": 0.6679151296383172,
+"deg2": 0.05127752311818749,
+"m": [
+"",
+""
+]
+},
+{
+"x": "Antigua and Barbuda",
+"y": "British Colonial Empire",
+"de": 1967,
+"a": 1968,
+"part": 1.0,
+"deg2": 0.04976734325464349,
+"m": [
+"(British Empire)",
+""
+]
+},
+{
+"x": "Kingdom of Great Britain",
+"y": "Malta",
+"de": 1967,
+"a": 1968,
+"part": 1.0,
+"deg2": 0.04739411643095082,
+"m": [
+"(British Empire)",
+""
+]
+},
+{
+"x": "British Colonial Empire",
+"y": "Saint Kitts",
+"de": 1967,
+"a": 1968,
+"part": 1.0,
+"deg2": 0.042707919325039256,
+"m": [
+"(British Empire)",
+""
+]
+},
+{
+"x": "British Colonial Empire",
+"y": "Grenada",
+"de": 1976,
+"a": 1995,
+"part": 1.0,
+"deg2": 0.04002020940060902,
+"m": [
+"(British Empire)",
+""
+]
+},
+{
+"x": "Micronesia",
+"y": "United States of America",
+"de": 1987,
+"a": 2005,
+"part": 1.0,
+"deg2": 0.03751405232833349,
+"m": [
+"",
+""
+]
+},
+{
+"x": "Kingdom of France",
+"y": "Principality of Orange",
+"de": 1482,
+"a": 1571,
+"part": 1.0,
+"deg2": 0.015821111166587798,
+"m": [
+"",
+"(Kingdom of France)"
+]
+}
+]

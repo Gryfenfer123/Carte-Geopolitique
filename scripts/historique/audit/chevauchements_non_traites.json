@@ -1,0 +1,861 @@
+{
+"avertissement": "Paires dont le contour le plus petit est recouvert à moins de 15 % (ou 10 %) : non traitées, listées pour mémoire.",
+"paires": [
+[
+"Rashidun Caliphate",
+"Sasanian Empire",
+632,
+632,
+0.15,
+32.64
+],
+[
+"British Colonial Empire",
+"Empire of Japan",
+1943,
+1944,
+0.11,
+19.28
+],
+[
+"Eastern Roman Empire",
+"Huns",
+402,
+406,
+0.11,
+17.48
+],
+[
+"Denmark-Norway",
+"Swedish Empire",
+1658,
+1658,
+0.14,
+13.57
+],
+[
+"Göktürk Khaganate",
+"Sui Dynasty",
+581,
+586,
+0.07,
+13.57
+],
+[
+"Ottoman Empire",
+"Russian Empire",
+1876,
+1876,
+0.05,
+12.24
+],
+[
+"Eastern Göktürks",
+"Sui Dynasty",
+618,
+622,
+0.06,
+9.77
+],
+[
+"Qocho Kingdom",
+"Uyghur Khaganate",
+843,
+849,
+0.08,
+5.32
+],
+[
+"Empire of Japan",
+"Russian Empire",
+1876,
+1876,
+0.1,
+4.96
+],
+[
+"Austria-Hungary",
+"Ukrainian People's Republic",
+1918,
+1918,
+0.08,
+4.9
+],
+[
+"Russian Republic",
+"Ukrainian People's Republic",
+1918,
+1918,
+0.05,
+3.3
+],
+[
+"Great Seljuk Empire",
+"Kingdom of Georgia",
+1127,
+1138,
+0.13,
+2.66
+],
+[
+"First Hellenic Republic",
+"Republic of Turkey",
+1923,
+1923,
+0.14,
+2.14
+],
+[
+"Ethiopian Empire",
+"Italian Africa",
+1882,
+1889,
+0.14,
+2.11
+],
+[
+"Novgorod Republic",
+"Teutonic Order",
+1237,
+1240,
+0.14,
+1.92
+],
+[
+"Lan Xang",
+"Ngô Dynasty",
+1354,
+1362,
+0.14,
+1.81
+],
+[
+"French Directory",
+"Holy Roman Empire Minor States",
+1795,
+1795,
+0.09,
+1.79
+],
+[
+"Emirate of Nejd",
+"Kingdom of Hejaz",
+1921,
+1921,
+0.06,
+1.62
+],
+[
+"Portuguese Empire",
+"Sultanate of Johor",
+1528,
+1528,
+0.13,
+1.56
+],
+[
+"Byzantine Empire",
+"First Bulgarian Empire",
+681,
+681,
+0.08,
+1.53
+],
+[
+"Karkota Dynasty",
+"Rashidun Caliphate",
+644,
+655,
+0.06,
+1.32
+],
+[
+"Rus'",
+"Viking settlements",
+880,
+881,
+0.1,
+1.19
+],
+[
+"Russian Empire",
+"United Principalities of Moldavia and Wallachia",
+1878,
+1879,
+0.08,
+1.18
+],
+[
+"Communist Laos",
+"Democratic Republic of Vietnam",
+1975,
+1975,
+0.07,
+1.12
+],
+[
+"Despotate of Epirus",
+"Latin Empire",
+1224,
+1226,
+0.11,
+1.04
+],
+[
+"Crown of Aragon",
+"Taifa of Murcia",
+1162,
+1168,
+0.13,
+0.85
+],
+[
+"Byzantine Empire",
+"Danishmendids",
+1098,
+1098,
+0.14,
+0.84
+],
+[
+"French Directory",
+"Republic of Venice",
+1795,
+1795,
+0.14,
+0.73
+],
+[
+"Spanish Empire",
+"Sultanate of Brunei",
+1752,
+1840,
+0.13,
+0.73
+],
+[
+"Brythons",
+"Kingdom of Mercia",
+628,
+632,
+0.15,
+0.69
+],
+[
+"Viking settlements",
+"West Franks",
+887,
+891,
+0.06,
+0.45
+],
+[
+"Italian Republic",
+"Kingdom of Sardinia",
+1803,
+1813,
+0.13,
+0.44
+],
+[
+"Electorate of Hanover",
+"Holy Roman Empire Minor States",
+1709,
+1740,
+0.13,
+0.42
+],
+[
+"German Empire",
+"Netherlands",
+1915,
+1916,
+0.06,
+0.32
+],
+[
+"First Hellenic Republic",
+"Kingdom of Great Britain",
+1864,
+1869,
+0.05,
+0.27
+],
+[
+"Dál Riata",
+"Viking settlements",
+825,
+839,
+0.06,
+0.22
+],
+[
+"Phoenicia",
+"Twenty-sixth Dynasty of Egypt",
+-550,
+-531,
+0.09,
+0.21
+],
+[
+"Ottoman Empire",
+"Republic of Florence",
+1415,
+1486,
+0.14,
+0.21
+],
+[
+"Kingdom of Poland",
+"Viking settlements",
+990,
+999,
+0.12,
+0.21
+],
+[
+"Dutch East Indies",
+"Portuguese Colonies",
+1853,
+1858,
+0.09,
+0.21
+],
+[
+"Despotate of Vidin",
+"Serbian Empire",
+1356,
+1362,
+0.11,
+0.21
+],
+[
+"Despotate of Epirus",
+"Republic of Venice",
+1216,
+1240,
+0.09,
+0.2
+],
+[
+"County of Flanders",
+"Holy Roman Empire",
+1005,
+1009,
+0.08,
+0.19
+],
+[
+"Blambangan Kingdom",
+"Mataram Sultanate",
+1626,
+1740,
+0.12,
+0.16
+],
+[
+"Blambangan Kingdom",
+"Sultanate of Malacca",
+1677,
+1682,
+0.12,
+0.16
+],
+[
+"British East Africa",
+"Estado Novo",
+1967,
+1968,
+0.08,
+0.14
+],
+[
+"Huns",
+"Lazica",
+402,
+406,
+0.05,
+0.14
+],
+[
+"Byzantine Empire",
+"Republic of Genoa",
+1333,
+1345,
+0.13,
+0.14
+],
+[
+"Mongol Empire",
+"Republic of Venice",
+1272,
+1278,
+0.06,
+0.13
+],
+[
+"Kingdom of Italy",
+"Papal States",
+754,
+754,
+0.09,
+0.12
+],
+[
+"Byzantine Empire",
+"Despotate of Arta",
+1358,
+1374,
+0.11,
+0.12
+],
+[
+"Crimean Khanate",
+"Republic of Genoa",
+1487,
+1525,
+0.07,
+0.12
+],
+[
+"Middle Franks",
+"Papal States",
+843,
+849,
+0.06,
+0.1
+],
+[
+"Kingdom of the Franks",
+"Papal States",
+825,
+842,
+0.06,
+0.1
+],
+[
+"Majapahit",
+"Sultanate of Kedah",
+1459,
+1474,
+0.08,
+0.09
+],
+[
+"Holy Roman Empire Minor States",
+"Republic of Genoa",
+1497,
+1501,
+0.05,
+0.09
+],
+[
+"Republic of Genoa",
+"Republic of Venice",
+1475,
+1481,
+0.05,
+0.08
+],
+[
+"Beylik of Teke",
+"Kingdom of Cyprus",
+1375,
+1428,
+0.07,
+0.08
+],
+[
+"Kingdom of Cyprus",
+"Ottoman Empire",
+1429,
+1486,
+0.07,
+0.08
+],
+[
+"British Empire",
+"French India",
+1757,
+1814,
+0.09,
+0.08
+],
+[
+"Kingdom of Prussia",
+"Principality of Regensberg",
+1803,
+1805,
+0.1,
+0.07
+],
+[
+"Abbasid Caliphate",
+"Saffarid Dynasty",
+864,
+865,
+0.13,
+0.06
+],
+[
+"Emirate of Nekor",
+"Idrisids",
+788,
+792,
+0.07,
+0.05
+],
+[
+"Duchy of Athens",
+"Principality of Achaea",
+1260,
+1271,
+0.05,
+0.05
+],
+[
+"Holy Roman Empire Minor States",
+"Principality of Regensberg",
+1805,
+1805,
+0.08,
+0.04
+],
+[
+"German Confederation",
+"Principality of Reuss-Gera",
+1816,
+1819,
+0.1,
+0.04
+],
+[
+"Maynila",
+"Sultanate of Brunei",
+1521,
+1571,
+0.11,
+0.03
+],
+[
+"Kakatiya Dynasty",
+"Kampili Kingdom",
+1285,
+1322,
+0.06,
+0.02
+],
+[
+"German Confederation",
+"Saxe-Altenburg",
+1816,
+1835,
+0.09,
+0.02
+],
+[
+"French India",
+"Mughal Empire",
+1668,
+1676,
+0.07,
+0.02
+],
+[
+"British Empire",
+"Danish India",
+1763,
+1793,
+0.1,
+0.02
+],
+[
+"Kingdom of Italy",
+"Republic of Venice",
+697,
+969,
+0.05,
+0.02
+],
+[
+"Holy Roman Empire",
+"Republic of Venice",
+970,
+999,
+0.05,
+0.02
+],
+[
+"Almohad Caliphate",
+"Taifa of Niebla",
+1238,
+1240,
+0.1,
+0.02
+],
+[
+"Achaean League",
+"Aetolian League",
+-272,
+-272,
+0.05,
+0.01
+],
+[
+"Kingdom of Bavaria",
+"Saxe-Altenburg",
+1834,
+1835,
+0.05,
+0.01
+],
+[
+"Etruscans",
+"Roman Kingdom",
+-700,
+-551,
+0.11,
+0.01
+],
+[
+"German Confederation",
+"Principality of Waldeck and Pyrmont",
+1816,
+1819,
+0.08,
+0.01
+],
+[
+"English Colonial Empire",
+"Maratha Empire",
+1741,
+1761,
+0.13,
+0.01
+],
+[
+"Grand Duchy of Berg",
+"Principality of Schwarzburg-Sonderhausen",
+1820,
+1827,
+0.05,
+0.01
+],
+[
+"Principality of Schwarzburg-Sonderhausen",
+"Saxe-Coburg and Gotha",
+1836,
+1839,
+0.05,
+0.01
+],
+[
+"County of Ampuria",
+"County of Berga",
+1188,
+1235,
+0.09,
+0.01
+],
+[
+"County of Ampuria",
+"Kingdom of Majorca",
+1279,
+1343,
+0.09,
+0.01
+],
+[
+"Brandenburg-Prussia",
+"British Colonial Empire",
+1718,
+1720,
+0.06,
+0.01
+],
+[
+"English Colonial Empire",
+"Mughal Empire",
+1713,
+1717,
+0.07,
+0.01
+],
+[
+"German Confederation",
+"Principality of Lippe",
+1816,
+1819,
+0.06,
+0.01
+],
+[
+"County of Ampuria",
+"County of Barcelona",
+1085,
+1110,
+0.08,
+0.01
+],
+[
+"Electorate of Hesse",
+"Saxe-Meiningen",
+1866,
+1866,
+0.15,
+0.01
+],
+[
+"Principality of Valona",
+"Serbian Empire",
+1346,
+1362,
+0.07,
+0.01
+],
+[
+"Electorate of Hesse",
+"Grand Duchy of Saxe-Weimar-Eisenach",
+1866,
+1866,
+0.13,
+0.01
+],
+[
+"Duchy of Naples",
+"Norman Italy",
+1046,
+1055,
+0.07,
+0.01
+],
+[
+"Principality of Andorra",
+"Second Spanish Republic",
+1938,
+1938,
+0.11,
+0.0
+],
+[
+"Kingdom of Spain",
+"Tangier International Zone",
+1912,
+1930,
+0.14,
+0.0
+],
+[
+"Second Spanish Republic",
+"Tangier International Zone",
+1931,
+1938,
+0.14,
+0.0
+],
+[
+"Francoist Spain",
+"Tangier International Zone",
+1939,
+1957,
+0.14,
+0.0
+],
+[
+"Centralist Mexico",
+"Federated Republic of Mexico",
+1846,
+1847,
+0.06,
+0.0
+],
+[
+"County of Urgell",
+"Kingdom of Spain",
+1519,
+1555,
+0.07,
+0.0
+],
+[
+"Cuman-Kipchak Confederation",
+"Principality of Peremyshl",
+1056,
+1065,
+0.06,
+0.0
+],
+[
+"Duchy of Oldenburg",
+"Principality of Lichtenberg",
+1820,
+1827,
+0.1,
+0.0
+],
+[
+"Giudicato of Gallura",
+"Giudicato of Logudoro",
+1015,
+1017,
+0.08,
+0.0
+],
+[
+"House of Savoy",
+"Principality of Monaco",
+1645,
+1719,
+0.09,
+0.0
+],
+[
+"Kingdom of Sardinia",
+"Principality of Monaco",
+1720,
+1814,
+0.09,
+0.0
+],
+[
+"Kingdom of France",
+"Principality of Monaco",
+1702,
+1705,
+0.09,
+0.0
+],
+[
+"French Louisiana",
+"New Netherland",
+1800,
+1802,
+0.05,
+0.0
+],
+[
+"Saadi Sultanate",
+"Songhai Empire",
+1595,
+1599,
+0.12,
+0.0
+],
+[
+"Kingdom of Monaco",
+"Kingdom of Sardinia",
+1815,
+1847,
+0.06,
+0.0
+],
+[
+"Maitraka Dynasty",
+"Western Satraps",
+476,
+489,
+0.1,
+0.0
+]
+]
+}

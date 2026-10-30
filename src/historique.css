@@ -46,3 +46,7 @@
 @media (max-width: 640px) {
   #historical-info { bottom: 40px; }
 }
+
+/* Fonds sombres de la carte historique (voir historiqueFonds.ts) : le filtre assombrit les tuiles, pas les territoires */
+.fond-sombre-relief { filter: brightness(0.62) saturate(0.85); }
+.fond-sombre-satellite { filter: brightness(0.7); }

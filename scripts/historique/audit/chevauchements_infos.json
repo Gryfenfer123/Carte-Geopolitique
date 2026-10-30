@@ -1,0 +1,10812 @@
+{
+"info": {
+"Sumerian City-States": {
+"q": "Q2345840",
+"w": "History of Sumer",
+"de": -3400,
+"a": -1761,
+"m": ""
+},
+"Elam": {
+"q": "Q128904",
+"w": "Elam",
+"de": -3200,
+"a": -601,
+"m": ""
+},
+"Early Dynastic Period of Egypt": {
+"q": "Q187979",
+"w": "Early Dynastic Period (Egypt)",
+"de": -3000,
+"a": -2501,
+"m": ""
+},
+"Indus Valley Civilization": {
+"q": "Q42534",
+"w": "Indus Valley Civilisation",
+"de": -3000,
+"a": -1701,
+"m": ""
+},
+"Old Kingdom of Egypt": {
+"q": "Q177819",
+"w": "Old Kingdom of Egypt",
+"de": -2500,
+"a": -2201,
+"m": ""
+},
+"Akkadian Empire": {
+"q": "Q4461035",
+"w": "Akkadian Empire",
+"de": -2300,
+"a": -2101,
+"m": ""
+},
+"Lower Egypt": {
+"q": "Q463871",
+"w": "Old Kingdom of Egypt",
+"de": -2200,
+"a": -2001,
+"m": ""
+},
+"Upper Egypt": {
+"q": "Q203751",
+"w": "Old Kingdom of Egypt",
+"de": -2200,
+"a": -2001,
+"m": ""
+},
+"Gutian Dynasty": {
+"q": "Q1064034",
+"w": "Gutian rule in Mesopotamia",
+"de": -2100,
+"a": -2001,
+"m": ""
+},
+"Middle Kingdom of Egypt": {
+"q": "Q191324",
+"w": "Middle Kingdom of Egypt",
+"de": -2000,
+"a": -1601,
+"m": ""
+},
+"Assyria": {
+"q": "Q41137",
+"w": "Assyria",
+"de": -1800,
+"a": -901,
+"m": ""
+},
+"Hyksos": {
+"q": "Q192319",
+"w": "Hyksos",
+"de": -1800,
+"a": -1401,
+"m": ""
+},
+"Babylonia": {
+"q": "Q47690",
+"w": "Babylonia",
+"de": -1800,
+"a": -601,
+"m": ""
+},
+"First Sealand Dynasty": {
+"q": "Q7440601",
+"w": "First Sealand dynasty",
+"de": -1700,
+"a": -1401,
+"m": ""
+},
+"Fifteenth Dynasty of Egypt": {
+"q": "Q728479",
+"w": "Fifteenth Dynasty of Egypt",
+"de": -1600,
+"a": -1501,
+"m": ""
+},
+"Seventeenth Dynasty of Egypt": {
+"q": "Q642301",
+"w": "Seventeenth Dynasty of Egypt",
+"de": -1600,
+"a": -1501,
+"m": ""
+},
+"Sixteenth Dynasty of Egypt": {
+"q": "Q737695",
+"w": "Sixteenth Dynasty of Egypt",
+"de": -1600,
+"a": -1501,
+"m": ""
+},
+"Minoan civilization": {
+"q": "Q134178",
+"w": "Minoan civilization",
+"de": -1600,
+"a": -1401,
+"m": ""
+},
+"Hittites": {
+"q": "Q5406",
+"w": "Hittites",
+"de": -1600,
+"a": -1151,
+"m": ""
+},
+"Shang Dynasty": {
+"q": "Q128938",
+"w": "Shang dynasty",
+"de": -1600,
+"a": -1001,
+"m": ""
+},
+"Mitanni": {
+"q": "Q178665",
+"w": "Mitanni",
+"de": -1500,
+"a": -1241,
+"m": ""
+},
+"Mycenaean Greece": {
+"q": "Q181264",
+"w": "Mycenaean Greece",
+"de": -1500,
+"a": -1101,
+"m": ""
+},
+"New Kingdom of Egypt": {
+"q": "Q180568",
+"w": "New Kingdom of Egypt",
+"de": -1500,
+"a": -801,
+"m": ""
+},
+"Neo-Hittite states": {
+"q": "Q770281",
+"w": "Neo-Hittite states",
+"de": -1150,
+"a": -801,
+"m": ""
+},
+"Phoenicia": {
+"q": "Q41642",
+"w": "Phoenicia",
+"de": -1150,
+"a": -501,
+"m": "(Phoenician Empire)"
+},
+"Philistia": {
+"q": "Q7185566",
+"w": "Philistia",
+"de": -1150,
+"a": -701,
+"m": ""
+},
+"Greek Dark Ages": {
+"q": "Q210443",
+"w": "Greek Dark Ages",
+"de": -1100,
+"a": -801,
+"m": ""
+},
+"Zhou Dynasty": {
+"q": "Q35216",
+"w": "Zhou dynasty",
+"de": -1000,
+"a": -751,
+"m": ""
+},
+"Kingdom of Israel": {
+"q": "Q3185305",
+"w": "Kingdom of Israel (united monarchy)",
+"de": -1000,
+"a": -701,
+"m": ""
+},
+"Kingdom of Kush": {
+"q": "Q241790",
+"w": "Kingdom of Kush",
+"de": -1000,
+"a": 346,
+"m": ""
+},
+"Kingdom of Judah": {
+"q": "Q48685",
+"w": "Kingdom of Judah",
+"de": -900,
+"a": -701,
+"m": ""
+},
+"Tabal Kingdom": {
+"q": "Q727710",
+"w": "Tabal (state)",
+"de": -900,
+"a": -701,
+"m": ""
+},
+"Neo-Assyrian Empire": {
+"q": "Q10914393",
+"w": "Neo-Assyrian Empire",
+"de": -900,
+"a": -601,
+"m": ""
+},
+"Phrygia": {
+"q": "Q32579",
+"w": "Phrygia",
+"de": -900,
+"a": -676,
+"m": ""
+},
+"Kingdom of Urartu": {
+"q": "Q185068",
+"w": "Urartu",
+"de": -800,
+"a": -551,
+"m": ""
+},
+"Sabaeans": {
+"q": "Q940785",
+"w": "Sabaeans",
+"de": -800,
+"a": 282,
+"m": ""
+},
+"Greek City-States": {
+"q": "Q148837",
+"w": "Polis",
+"de": -800,
+"a": 83,
+"m": ""
+},
+"Twenty-third Dynasty of Egypt": {
+"q": "Q748170",
+"w": "Twenty-third Dynasty of Egypt",
+"de": -800,
+"a": -701,
+"m": ""
+},
+"Twenty-second Dynasty of Egypt": {
+"q": "Q737629",
+"w": "Twenty-second Dynasty of Egypt",
+"de": -800,
+"a": -701,
+"m": ""
+},
+"Jin": {
+"q": "Q6201794",
+"w": "Jin (Chinese state)",
+"de": -750,
+"a": -405,
+"m": "(Spring and Autumn States)"
+},
+"Chu": {
+"q": "Q504759",
+"w": "Chu (state)",
+"de": -750,
+"a": -224,
+"m": "(Spring and Autumn States)"
+},
+"Qin": {
+"q": "Q1471995",
+"w": "Qin (state)",
+"de": -750,
+"a": -219,
+"m": "(Spring and Autumn States)"
+},
+"Etruscans": {
+"q": "Q17161",
+"w": "Etruscan civilization",
+"de": -750,
+"a": -265,
+"m": ""
+},
+"Roman Kingdom": {
+"q": "Q201038",
+"w": "Roman Kingdom",
+"de": -750,
+"a": -481,
+"m": ""
+},
+"Qi": {
+"q": "Q1143524",
+"w": "Qi (state)",
+"de": -750,
+"a": -204,
+"m": "(Spring and Autumn States)"
+},
+"Song": {
+"q": "Q7462",
+"w": "Song (state)",
+"de": -750,
+"a": -285,
+"m": "(Spring and Autumn States)"
+},
+"Teng": {
+"q": "Q1356151",
+"w": "Teng (state)",
+"de": -750,
+"a": -451,
+"m": "(Spring and Autumn States)"
+},
+"Chen": {
+"q": "Q1069690",
+"w": "Chen (state)",
+"de": -750,
+"a": -451,
+"m": "(Spring and Autumn States)"
+},
+"Wey": {
+"q": "Q1147897",
+"w": "Wey (state)",
+"de": -750,
+"a": -248,
+"m": "(Spring and Autumn States)"
+},
+"Cao": {
+"q": "Q204077",
+"w": "Cao (state)",
+"de": -750,
+"a": -451,
+"m": "(Spring and Autumn States)"
+},
+"Lu": {
+"q": "Q555994",
+"w": "Lu (state)",
+"de": -750,
+"a": -248,
+"m": "(Spring and Autumn States)"
+},
+"Zheng": {
+"q": "Q197598",
+"w": "Zheng (state)",
+"de": -750,
+"a": -367,
+"m": "(Spring and Autumn States)"
+},
+"Cai": {
+"q": "Q1025803",
+"w": "Cai (state)",
+"de": -750,
+"a": -451,
+"m": "(Spring and Autumn States)"
+},
+"Zhu": {
+"q": "Q227007",
+"w": "Zhu (state)",
+"de": -750,
+"a": -405,
+"m": "(Spring and Autumn States)"
+},
+"Yan": {
+"q": "Q1472004",
+"w": "Yan (state)",
+"de": -750,
+"a": -204,
+"m": "(Spring and Autumn States)"
+},
+"Later Zhou": {
+"q": "Q1154556",
+"w": "Later Zhou",
+"de": -750,
+"a": 960,
+"m": "(Spring and Autumn States)"
+},
+"Xu": {
+"q": "Q2650109",
+"w": "Xu (state)",
+"de": -750,
+"a": -285,
+"m": "(Spring and Autumn States)"
+},
+"Wu": {
+"q": "Q274488",
+"w": "Wu (state)",
+"de": -750,
+"a": -451,
+"m": "(Spring and Autumn States)"
+},
+"Phoenician Colonies": {
+"q": "Q1094394",
+"w": "Colonies in antiquity",
+"de": -700,
+"a": -616,
+"m": "(Phoenician Empire)"
+},
+"Hadhramaut": {
+"q": "Q1517159",
+"w": "Hadhramaut",
+"de": -700,
+"a": 305,
+"m": ""
+},
+"Lydia": {
+"q": "Q620765",
+"w": "Lydia",
+"de": -700,
+"a": -541,
+"m": ""
+},
+"Macedonian Empire": {
+"q": "Q83958",
+"w": "Macedonia (ancient kingdom)",
+"de": -675,
+"a": -292,
+"m": "(Macedonian Empire)"
+},
+"Olmec Civilization": {
+"q": "Q135364",
+"w": "Olmecs",
+"de": -650,
+"a": -351,
+"m": ""
+},
+"Scythia": {
+"q": "Q131802",
+"w": "Scythians",
+"de": -650,
+"a": -224,
+"m": ""
+},
+"Carthage": {
+"q": "Q2429397",
+"w": "Ancient Carthage",
+"de": -650,
+"a": -145,
+"m": ""
+},
+"Assyrian Egypt": {
+"q": "Q97357417",
+"w": "Assyrian conquest of Egypt",
+"de": -650,
+"a": -616,
+"m": ""
+},
+"Twenty-sixth Dynasty of Egypt": {
+"q": "Q662410",
+"w": "Twenty-sixth Dynasty of Egypt",
+"de": -615,
+"a": -501,
+"m": ""
+},
+"Median Kingdom": {
+"q": "Q1183338",
+"w": "Median dynasty",
+"de": -615,
+"a": -551,
+"m": ""
+},
+"Janapada of Avanti": {
+"q": "Q4827705",
+"w": "Avanti (region)",
+"de": -600,
+"a": -405,
+"m": "(Mahajanapadas)"
+},
+"Janapada of Anga": {
+"q": "Q1155818",
+"w": "Anga",
+"de": -600,
+"a": -501,
+"m": "(Mahajanapadas)"
+},
+"Neo-Babylonian Empire": {
+"q": "Q624887",
+"w": "Neo-Babylonian Empire",
+"de": -600,
+"a": -531,
+"m": ""
+},
+"Janapada of Magadha": {
+"q": "Q234009",
+"w": "Magadha",
+"de": -600,
+"a": -501,
+"m": "(Mahajanapadas)"
+},
+"Janapada of Malla": {
+"q": "Q1376303",
+"w": "Malla (tribe)",
+"de": -600,
+"a": -451,
+"m": "(Mahajanapadas)"
+},
+"Janapada of Aśmaka": {
+"q": "Q1194906",
+"w": "Asmaka",
+"de": -600,
+"a": -351,
+"m": "(Mahajanapadas)"
+},
+"Janapada of Vajji": {
+"q": "Q605199",
+"w": "Vajjika League",
+"de": -600,
+"a": -481,
+"m": "(Mahajanapadas)"
+},
+"Janapada of Cedī": {
+"q": "Q124207979",
+"w": "Cedī (tribe)",
+"de": -600,
+"a": -451,
+"m": "(Mahajanapadas)"
+},
+"Janapada of Kuru": {
+"q": "Q1068408",
+"w": "Kuru Kingdom",
+"de": -600,
+"a": -405,
+"m": "(Mahajanapadas)"
+},
+"Janapada of Kosala": {
+"q": "Q756854",
+"w": "Kosala",
+"de": -600,
+"a": -451,
+"m": "(Mahajanapadas)"
+},
+"Janapada of Matsya": {
+"q": "Q2665398",
+"w": "Matsya (tribe)",
+"de": -600,
+"a": -405,
+"m": "(Mahajanapadas)"
+},
+"Janapada of Surasena": {
+"q": "Q1330149",
+"w": "Surasena",
+"de": -600,
+"a": -405,
+"m": "(Mahajanapadas)"
+},
+"Janapada of Pañcāla": {
+"q": "Q558603",
+"w": "Pañcāla",
+"de": -600,
+"a": -405,
+"m": "(Mahajanapadas)"
+},
+"Janapada of Vatsa": {
+"q": "Q1331184",
+"w": "Vatsa",
+"de": -600,
+"a": -451,
+"m": "(Mahajanapadas)"
+},
+"Janapada of Gandhāra": {
+"q": "Q112980583",
+"w": "Gandhāra (kingdom)",
+"de": -600,
+"a": -501,
+"m": "(Mahajanapadas)"
+},
+"Janapada of Kāśī": {
+"q": "Q12660335",
+"w": "Kāśī (kingdom)",
+"de": -600,
+"a": -451,
+"m": "(Mahajanapadas)"
+},
+"Janapada of Kamboja": {
+"q": "Q2586782",
+"w": "Kambojas",
+"de": -600,
+"a": -501,
+"m": "(Mahajanapadas)"
+},
+"Peloponnesian League": {
+"q": "Q208742",
+"w": "Peloponnesian League",
+"de": -550,
+"a": -338,
+"m": ""
+},
+"Achaemenid Empire": {
+"q": "Q389688",
+"w": "Achaemenid Empire",
+"de": -550,
+"a": -327,
+"m": ""
+},
+"Yue": {
+"q": "Q1936158",
+"w": "Yue (state)",
+"de": -500,
+"a": -334,
+"m": ""
+},
+"Roman Republic": {
+"q": "Q175881",
+"w": "Roman Republic",
+"de": -500,
+"a": -32,
+"m": ""
+},
+"Zapotec Civilization": {
+"q": "Q844750",
+"w": "Zapotec civilization",
+"de": -500,
+"a": 895,
+"m": ""
+},
+"Magadha - Haryanka dynasty": {
+"q": "Q12459974",
+"w": "Haryanka dynasty",
+"de": -500,
+"a": -405,
+"m": "(Mahajanapadas)"
+},
+"Mahajanapadas": {
+"q": "Q846025",
+"w": "Mahajanapadas",
+"de": -480,
+"a": -451,
+"m": "(Mahajanapadas)"
+},
+"Odrysian Kingdom": {
+"q": "Q870517",
+"w": "Odrysian kingdom",
+"de": -450,
+"a": -338,
+"m": ""
+},
+"Yuezhi": {
+"q": "Q467985",
+"w": "Yuezhi",
+"de": -404,
+"a": 42,
+"m": ""
+},
+"Zhao": {
+"q": "Q1574107",
+"w": "Zhao (state)",
+"de": -404,
+"a": -226,
+"m": "(Warring States China)"
+},
+"Magadha - Shaishunaga dynasty": {
+"q": "Q972165",
+"w": "Shaishunaga dynasty",
+"de": -404,
+"a": -334,
+"m": "(Mahajanapadas)"
+},
+"Cimmerian Bosporus": {
+"q": "Q321371",
+"w": "Bosporan Kingdom",
+"de": -404,
+"a": 372,
+"m": ""
+},
+"Wei": {
+"q": "Q320930",
+"w": "Wei (state)",
+"de": -404,
+"a": -204,
+"m": "(Warring States China)"
+},
+"Han": {
+"q": "Q1968654",
+"w": "Han (state)",
+"de": -404,
+"a": -203,
+"m": "(Warring States China)"
+},
+"Thirtieth Dynasty of Egypt": {
+"q": "Q386303",
+"w": "Thirtieth Dynasty of Egypt",
+"de": -383,
+"a": -338,
+"m": ""
+},
+"Minaeans": {
+"q": "Q1177379",
+"w": "Minaeans",
+"de": -383,
+"a": -26,
+"m": ""
+},
+"Second Athenian League": {
+"q": "Q2338980",
+"w": "Second Athenian League",
+"de": -366,
+"a": -338,
+"m": ""
+},
+"Sacred Band of Thebes": {
+"q": "Q5760",
+"w": "Thebes, Greece",
+"de": -366,
+"a": -351,
+"m": ""
+},
+"Zhongshan": {
+"q": "Q59223",
+"w": "Zhongshan",
+"de": -366,
+"a": -292,
+"m": "(Warring States China)"
+},
+"Thebans": {
+"q": "Q7777597",
+"w": "Theban",
+"de": -350,
+"a": -338,
+"m": ""
+},
+"Qataban": {
+"q": "Q748595",
+"w": "Qataban",
+"de": -350,
+"a": 183,
+"m": ""
+},
+"Minyue": {
+"q": "Q1936158",
+"w": "Minyue",
+"de": -333,
+"a": -111,
+"m": ""
+},
+"Nanda Empire": {
+"q": "Q949268",
+"w": "Nanda Empire",
+"de": -333,
+"a": -319,
+"m": ""
+},
+"Kingdom of Bithynia": {
+"q": "Q3762571",
+"w": "Kingdom of Bithynia",
+"de": -333,
+"a": -67,
+"m": ""
+},
+"Ptolemaic Kingdom": {
+"q": "Q2320005",
+"w": "Ptolemaic Kingdom",
+"de": -331,
+"a": -28,
+"m": ""
+},
+"Cyrenaica": {
+"q": "Q165198",
+"w": "Cyrenaica",
+"de": -331,
+"a": -92,
+"m": ""
+},
+"Kingdom of Armenia": {
+"q": "Q208404",
+"w": "Kingdom of Armenia (antiquity)",
+"de": -326,
+"a": 646,
+"m": ""
+},
+"Laomedon": {
+"q": "Q977461",
+"w": "Laomedon of Mytilene",
+"de": -323,
+"a": -319,
+"m": "(Macedonian Empire)"
+},
+"Athenian Coalition": {
+"q": "Q33745",
+"w": "Peloponnesian War",
+"de": -323,
+"a": -257,
+"m": ""
+},
+"Kingdom of Lysimachus": {
+"q": "Q32133",
+"w": "Lysimachian Empire",
+"de": -323,
+"a": -282,
+"m": ""
+},
+"Perdiccas": {
+"q": "Q202113",
+"w": "Perdiccas",
+"de": -323,
+"a": -319,
+"m": "(Macedonian Empire)"
+},
+"Maurya Empire": {
+"q": "Q62943",
+"w": "Maurya Empire",
+"de": -318,
+"a": -171,
+"m": ""
+},
+"Seleucid Empire": {
+"q": "Q705904",
+"w": "Seleucid dynasty",
+"de": -318,
+"a": -64,
+"m": ""
+},
+"Kalinga": {
+"q": "Q356524",
+"w": "Kalinga",
+"de": -318,
+"a": -171,
+"m": ""
+},
+"Polyperchon": {
+"q": "Q312008",
+"w": "Polyperchon",
+"de": -318,
+"a": -316,
+"m": ""
+},
+"Atropatene": {
+"q": "Q260437",
+"w": "Atropatene",
+"de": -307,
+"a": -165,
+"m": ""
+},
+"Colchis": {
+"q": "Q183150",
+"w": "Colchis",
+"de": -301,
+"a": -231,
+"m": ""
+},
+"Early Cheras": {
+"q": "Q877155",
+"w": "Chera dynasty",
+"de": -291,
+"a": 305,
+"m": ""
+},
+"Early Pandyas": {
+"q": "Q3532152",
+"w": "Early Pandyas",
+"de": -291,
+"a": 305,
+"m": ""
+},
+"Anurādhapura": {
+"q": "Q5724",
+"w": "Anurādhapura",
+"de": -291,
+"a": 1017,
+"m": ""
+},
+"Early Cholas": {
+"q": "Q3532146",
+"w": "Early Cholas",
+"de": -291,
+"a": 305,
+"m": ""
+},
+"Antigonid Dynasty": {
+"q": "Q237325",
+"w": "Antigonid dynasty",
+"de": -291,
+"a": -278,
+"m": ""
+},
+"Aetolian League": {
+"q": "Q245273",
+"w": "Aetolian League",
+"de": -284,
+"a": -189,
+"m": ""
+},
+"Kingdom of Pontus": {
+"q": "Q7380487",
+"w": "Kingdom of Pontus",
+"de": -281,
+"a": 67,
+"m": ""
+},
+"Achaean League": {
+"q": "Q244796",
+"w": "Achaean League",
+"de": -279,
+"a": -145,
+"m": ""
+},
+"Paphlagonia": {
+"q": "Q622032",
+"w": "Paphlagonia",
+"de": -279,
+"a": -127,
+"m": ""
+},
+"Galatia": {
+"q": "Q26847",
+"w": "Galatia",
+"de": -279,
+"a": -26,
+"m": ""
+},
+"Kingdom of Pergamon": {
+"q": "Q2022162",
+"w": "Kingdom of Pergamon",
+"de": -279,
+"a": -127,
+"m": ""
+},
+"Antigonid Macedonia": {
+"q": "Q237325",
+"w": "Antigonid dynasty",
+"de": -277,
+"a": -165,
+"m": ""
+},
+"Greek Colonies": {
+"q": "Q828047",
+"w": "Greek colonisation",
+"de": -271,
+"a": -226,
+"m": ""
+},
+"Mamertines": {
+"q": "Q1164281",
+"w": "Mamertines",
+"de": -271,
+"a": -257,
+"m": ""
+},
+"Âu Lạc": {
+"q": "Q867227",
+"w": "Âu Lạc",
+"de": -256,
+"a": -207,
+"m": ""
+},
+"Kingdom of Sophene": {
+"q": "Q2626105",
+"w": "Kingdom of Sophene",
+"de": -256,
+"a": 113,
+"m": ""
+},
+"Illyrian Kingdom": {
+"q": "Q16084290",
+"w": "Illyrian kingdom",
+"de": -256,
+"a": -226,
+"m": ""
+},
+"Greco-Bactrian Kingdom": {
+"q": "Q488880",
+"w": "Greco-Bactrian Kingdom",
+"de": -247,
+"a": -127,
+"m": ""
+},
+"Mayan City-States": {
+"q": "Q28567",
+"w": "Maya civilization",
+"de": -247,
+"a": 849,
+"m": ""
+},
+"Parthian Empire": {
+"q": "Q1986139",
+"w": "Parthian Empire",
+"de": -239,
+"a": 237,
+"m": ""
+},
+"Kingdom of Cappadocia": {
+"q": "Q29654286",
+"w": "Kingdom of Cappadocia",
+"de": -239,
+"a": 22,
+"m": ""
+},
+"Satavahana Dynasty": {
+"q": "Q5257",
+"w": "Satavahana dynasty",
+"de": -225,
+"a": 223,
+"m": ""
+},
+"Qin Dynasty": {
+"q": "Q7183",
+"w": "Qin dynasty",
+"de": -218,
+"a": -209,
+"m": ""
+},
+"Mauretania": {
+"q": "Q309272",
+"w": "Mauretania",
+"de": -212,
+"a": 42,
+"m": ""
+},
+"Western Chu": {
+"q": "Q1151705",
+"w": "Chu-Han Contention",
+"de": -208,
+"a": -203,
+"m": "(Eighteen Kingdoms)"
+},
+"Xiongnu": {
+"q": "Q188836",
+"w": "Xiongnu",
+"de": -208,
+"a": 153,
+"m": ""
+},
+"Zhai": {
+"q": "Q7183",
+"w": "Qin dynasty",
+"de": -208,
+"a": -204,
+"m": "(Eighteen Kingdoms)"
+},
+"Dai": {
+"q": "Q5349053",
+"w": "Eighteen Kingdoms",
+"de": -208,
+"a": -204,
+"m": "(Eighteen Kingdoms)"
+},
+"Jibei": {
+"q": "Q5349053",
+"w": "Eighteen Kingdoms",
+"de": -208,
+"a": -204,
+"m": "(Eighteen Kingdoms)"
+},
+"Jiujiang": {
+"q": "Q5349053",
+"w": "Eighteen Kingdoms",
+"de": -206,
+"a": -204,
+"m": "(Eighteen Kingdoms)"
+},
+"Henan": {
+"q": "Q5349053",
+"w": "Eighteen Kingdoms",
+"de": -206,
+"a": -204,
+"m": "(Eighteen Kingdoms)"
+},
+"Hán": {
+"q": "Q5349053",
+"w": "Eighteen Kingdoms",
+"de": -206,
+"a": -204,
+"m": "(Eighteen Kingdoms)"
+},
+"Linjiang": {
+"q": "Q5349053",
+"w": "Eighteen Kingdoms",
+"de": -206,
+"a": -204,
+"m": "(Eighteen Kingdoms)"
+},
+"Chang-shan": {
+"q": "Q5349053",
+"w": "Eighteen Kingdoms",
+"de": -206,
+"a": -204,
+"m": "(Eighteen Kingdoms)"
+},
+"Nanyue": {
+"q": "Q827040",
+"w": "Nanyue",
+"de": -206,
+"a": -111,
+"m": ""
+},
+"Sai": {
+"q": "Q5349053",
+"w": "Eighteen Kingdoms",
+"de": -206,
+"a": -204,
+"m": "(Eighteen Kingdoms)"
+},
+"Liaodong": {
+"q": "Q5349053",
+"w": "Eighteen Kingdoms",
+"de": -206,
+"a": -204,
+"m": "(Eighteen Kingdoms)"
+},
+"Jiaodong": {
+"q": "Q5349053",
+"w": "Eighteen Kingdoms",
+"de": -206,
+"a": -204,
+"m": "(Eighteen Kingdoms)"
+},
+"Yong": {
+"q": "Q5349053",
+"w": "Eighteen Kingdoms",
+"de": -206,
+"a": -204,
+"m": "(Eighteen Kingdoms)"
+},
+"Yin": {
+"q": "Q5349053",
+"w": "Eighteen Kingdoms",
+"de": -206,
+"a": -204,
+"m": "(Eighteen Kingdoms)"
+},
+"Han Dynasty": {
+"q": "Q1068371",
+"w": "Han dynasty",
+"de": -202,
+"a": 237,
+"m": ""
+},
+"Gojoseon": {
+"q": "Q28405",
+"w": "Gojoseon",
+"de": -197,
+"a": -92,
+"m": ""
+},
+"Ankhwennefer": {
+"q": "Q489289",
+"w": "Ankhwennefer (pharaoh)",
+"de": -197,
+"a": -171,
+"m": ""
+},
+"Korean Jin": {
+"q": "Q1155101",
+"w": "Jin (Korean state)",
+"de": -197,
+"a": -92,
+"m": ""
+},
+"Kingdom of Numidia": {
+"q": "Q156173",
+"w": "Jugurtha",
+"de": -197,
+"a": -47,
+"m": ""
+},
+"Rhodes": {
+"q": "Q43048",
+"w": "Rhodes",
+"de": -188,
+"a": -165,
+"m": ""
+},
+"Mahameghavahana Dynasty": {
+"q": "Q6733051",
+"w": "Mahameghavahana dynasty",
+"de": -170,
+"a": -165,
+"m": ""
+},
+"Molossians": {
+"q": "Q827399",
+"w": "Molossians",
+"de": -170,
+"a": -165,
+"m": ""
+},
+"Wusun": {
+"q": "Q854062",
+"w": "Wusun",
+"de": -170,
+"a": 450,
+"m": ""
+},
+"Shunga Empire": {
+"q": "Q651377",
+"w": "Shunga Empire",
+"de": -170,
+"a": -67,
+"m": ""
+},
+"Nabataeans": {
+"q": "Q220594",
+"w": "Nabataeans",
+"de": -164,
+"a": 105,
+"m": ""
+},
+"Indo-Scythians": {
+"q": "Q240123",
+"w": "Indo-Scythians",
+"de": -144,
+"a": 282,
+"m": ""
+},
+"Judea": {
+"q": "Q104028",
+"w": "Judea",
+"de": -144,
+"a": 5,
+"m": ""
+},
+"Indo-Greeks": {
+"q": "Q215643",
+"w": "Indo-Greek Kingdom",
+"de": -126,
+"a": 13,
+"m": ""
+},
+"Himyarite Kingdom": {
+"q": "Q289577",
+"w": "Himyarite Kingdom",
+"de": -110,
+"a": 601,
+"m": ""
+},
+"Great Yuan": {
+"q": "Q7313",
+"w": "Yuan dynasty",
+"de": -110,
+"a": 50,
+"m": ""
+},
+"Byeonhan": {
+"q": "Q1378584",
+"w": "Byeonhan confederacy",
+"de": -91,
+"a": 566,
+"m": ""
+},
+"Dongye": {
+"q": "Q105946539",
+"w": "Dongye",
+"de": -91,
+"a": 391,
+"m": ""
+},
+"Italian City-States": {
+"q": "Q4115680",
+"w": "Italian city-states",
+"de": -91,
+"a": -88,
+"m": ""
+},
+"Jinhan": {
+"q": "Q701273",
+"w": "Jinhan confederacy",
+"de": -91,
+"a": 377,
+"m": ""
+},
+"Mahan": {
+"q": "Q421372",
+"w": "Mahan",
+"de": -91,
+"a": 346,
+"m": ""
+},
+"Thracian Kingdom": {
+"q": "Q104815700",
+"w": "Thracian kingdom",
+"de": -87,
+"a": 50,
+"m": ""
+},
+"Kanva Dynasty": {
+"q": "Q784974",
+"w": "Kanva dynasty",
+"de": -66,
+"a": -28,
+"m": ""
+},
+"Kingdom of Osroene": {
+"q": "Q237234",
+"w": "Osroene",
+"de": -63,
+"a": 214,
+"m": ""
+},
+"Caucasian Iberia": {
+"q": "Q19083",
+"w": "Kingdom of Iberia",
+"de": -63,
+"a": 533,
+"m": ""
+},
+"Caucasian Albania": {
+"q": "Q177076",
+"w": "Caucasian Albania",
+"de": -63,
+"a": 509,
+"m": ""
+},
+"Kingdom of Gordyene": {
+"q": "Q29237",
+"w": "Corduene",
+"de": -63,
+"a": 259,
+"m": ""
+},
+"Kingdom of Commagene": {
+"q": "Q332137",
+"w": "Commagene",
+"de": -63,
+"a": 77,
+"m": ""
+},
+"Lazica": {
+"q": "Q136884",
+"w": "Lazica",
+"de": -63,
+"a": 545,
+"m": ""
+},
+"Kingdom of Adiabene": {
+"q": "Q149747",
+"w": "Adiabene",
+"de": -63,
+"a": 370,
+"m": ""
+},
+"Teotihuacan": {
+"q": "Q172613",
+"w": "Teotihuacan",
+"de": -50,
+"a": 704,
+"m": ""
+},
+"Kingdom of Axum": {
+"q": "Q139377",
+"w": "Kingdom of Aksum",
+"de": -50,
+"a": 946,
+"m": ""
+},
+"Goguryeo": {
+"q": "Q28370",
+"w": "Goguryeo",
+"de": -36,
+"a": 681,
+"m": ""
+},
+"Dong-okjeo": {
+"q": "Q713393",
+"w": "Okjeo",
+"de": -36,
+"a": 153,
+"m": ""
+},
+"Roman Empire": {
+"q": "Q12544",
+"w": "Roman Empire",
+"de": -31,
+"a": 394,
+"m": ""
+},
+"Indo-Parthians": {
+"q": "Q1255614",
+"w": "Indo-Parthian Kingdom",
+"de": 1,
+"a": 90,
+"m": ""
+},
+"Xin Dynasty": {
+"q": "Q504769",
+"w": "Xin dynasty",
+"de": 6,
+"a": 29,
+"m": ""
+},
+"Goths": {
+"q": "Q42193",
+"w": "Goths",
+"de": 30,
+"a": 206,
+"m": ""
+},
+"Kushan Empire": {
+"q": "Q25979",
+"w": "Kushan Empire",
+"de": 43,
+"a": 237,
+"m": ""
+},
+"Western Satraps": {
+"q": "Q2086608",
+"w": "Western Satraps",
+"de": 43,
+"a": 489,
+"m": ""
+},
+"Trưng sisters": {
+"q": "Q1207428",
+"w": "Trưng sisters",
+"de": 43,
+"a": 50,
+"m": ""
+},
+"Funan": {
+"q": "Q867782",
+"w": "Funan",
+"de": 51,
+"a": 640,
+"m": ""
+},
+"Southern Xiongnu": {
+"q": "Q188836",
+"w": "Xiongnu",
+"de": 51,
+"a": 105,
+"m": ""
+},
+"Xianbei": {
+"q": "Q861054",
+"w": "Xianbei",
+"de": 60,
+"a": 237,
+"m": ""
+},
+"Pyu City-States": {
+"q": "Q1627675",
+"w": "Pyu city-states",
+"de": 84,
+"a": 1045,
+"m": ""
+},
+"Huns": {
+"q": "Q45813",
+"w": "Huns",
+"de": 106,
+"a": 425,
+"m": ""
+},
+"Protectorate of the Western Regions": {
+"q": "Q911440",
+"w": "Protectorate of the Western Regions",
+"de": 117,
+"a": 601,
+"m": ""
+},
+"Burgundians": {
+"q": "Q13590051",
+"w": "Burgundians",
+"de": 154,
+"a": 409,
+"m": ""
+},
+"Norse": {
+"q": "Q909583",
+"w": "Norse",
+"de": 161,
+"a": 499,
+"m": ""
+},
+"Cao Cao": {
+"q": "Q204077",
+"w": "Cao Cao",
+"de": 197,
+"a": 223,
+"m": ""
+},
+"Chámpa": {
+"q": "Q216786",
+"w": "Champa",
+"de": 207,
+"a": 1652,
+"m": ""
+},
+"Gothia": {
+"q": "Q422253",
+"w": "Gothia",
+"de": 207,
+"a": 382,
+"m": ""
+},
+"Eastern Wu": {
+"q": "Q274488",
+"w": "Eastern Wu",
+"de": 207,
+"a": 282,
+"m": ""
+},
+"Sasanian Empire": {
+"q": "Q1661685",
+"w": "Sasanian Empire",
+"de": 215,
+"a": 643,
+"m": ""
+},
+"Shu Han": {
+"q": "Q320925",
+"w": "Shu Han",
+"de": 224,
+"a": 262,
+"m": ""
+},
+"Cao Wei": {
+"q": "Q320930",
+"w": "Cao Wei",
+"de": 224,
+"a": 264,
+"m": ""
+},
+"Eastern Kushans": {
+"q": "Q25979",
+"w": "Kushan Empire",
+"de": 238,
+"a": 346,
+"m": ""
+},
+"Ripuarian Franks": {
+"q": "Q316860",
+"w": "Ripuarian Franks",
+"de": 238,
+"a": 509,
+"m": ""
+},
+"Western Kushans": {
+"q": "Q25979",
+"w": "Kushan Empire",
+"de": 238,
+"a": 259,
+"m": ""
+},
+"Vakataka Kingdom": {
+"q": "Q1501306",
+"w": "Vakataka dynasty",
+"de": 260,
+"a": 554,
+"m": ""
+},
+"Indo-Sasanian Empire": {
+"q": "Q1661685",
+"w": "Kushano-Sasanian Kingdom",
+"de": 260,
+"a": 357,
+"m": ""
+},
+"Gallic Empire": {
+"q": "Q273025",
+"w": "Gallic Empire",
+"de": 261,
+"a": 282,
+"m": ""
+},
+"Palmyrene Empire": {
+"q": "Q877875",
+"w": "Palmyrene Empire",
+"de": 261,
+"a": 269,
+"m": ""
+},
+"Tamna": {
+"q": "Q28057",
+"w": "Tamna",
+"de": 263,
+"a": 1278,
+"m": ""
+},
+"Western Jin": {
+"q": "Q7352",
+"w": "Jin dynasty (266-420)",
+"de": 265,
+"a": 425,
+"m": ""
+},
+"Lakhmid Kingdom": {
+"q": "Q943191",
+"w": "Lakhmid kingdom",
+"de": 270,
+"a": 633,
+"m": ""
+},
+"Saxons": {
+"q": "Q101985",
+"w": "Saxons",
+"de": 283,
+"a": 799,
+"m": ""
+},
+"Late Pallava Empire": {
+"q": "Q466803",
+"w": "Pallava dynasty",
+"de": 283,
+"a": 805,
+"m": ""
+},
+"Tuyuhun": {
+"q": "Q1196201",
+"w": "Tuyuhun",
+"de": 287,
+"a": 665,
+"m": ""
+},
+"Yaudheya Republic": {
+"q": "Q8050331",
+"w": "Yaudheya",
+"de": 306,
+"a": 377,
+"m": ""
+},
+"Cheng Han": {
+"q": "Q1069905",
+"w": "Cheng-Han",
+"de": 306,
+"a": 346,
+"m": ""
+},
+"Former Zhao": {
+"q": "Q1574107",
+"w": "Han-Zhao",
+"de": 306,
+"a": 336,
+"m": ""
+},
+"Former Liang": {
+"q": "Q943392",
+"w": "Former Liang",
+"de": 324,
+"a": 377,
+"m": ""
+},
+"Gupta Empire": {
+"q": "Q11774",
+"w": "Gupta Empire",
+"de": 324,
+"a": 554,
+"m": ""
+},
+"Vandals": {
+"q": "Q42211",
+"w": "Vandals",
+"de": 337,
+"a": 438,
+"m": ""
+},
+"Former Yan": {
+"q": "Q1472004",
+"w": "Former Yan",
+"de": 337,
+"a": 370,
+"m": ""
+},
+"Later Zhao": {
+"q": "Q2314907",
+"w": "Later Zhao",
+"de": 337,
+"a": 352,
+"m": ""
+},
+"Alodia": {
+"q": "Q449639",
+"w": "Alodia",
+"de": 347,
+"a": 1506,
+"m": ""
+},
+"Makuria": {
+"q": "Q829356",
+"w": "Makuria",
+"de": 347,
+"a": 1414,
+"m": ""
+},
+"Nobatia": {
+"q": "Q568523",
+"w": "Nobatia",
+"de": 347,
+"a": 655,
+"m": ""
+},
+"Baekje": {
+"q": "Q28428",
+"w": "Baekje",
+"de": 347,
+"a": 660,
+"m": ""
+},
+"Kadamba Empire": {
+"q": "Q1479952",
+"w": "Kadamba Empire",
+"de": 353,
+"a": 554,
+"m": ""
+},
+"Kalabhra Dynasty": {
+"q": "Q2572901",
+"w": "Kalabhra dynasty",
+"de": 353,
+"a": 601,
+"m": ""
+},
+"Former Qin": {
+"q": "Q1471995",
+"w": "Former Qin",
+"de": 353,
+"a": 393,
+"m": ""
+},
+"Kamarupa Kingdom": {
+"q": "Q1194765",
+"w": "Kamarupa",
+"de": 353,
+"a": 1138,
+"m": ""
+},
+"Kidarites": {
+"q": "Q26996",
+"w": "Kidarites",
+"de": 358,
+"a": 450,
+"m": ""
+},
+"Salian Franks": {
+"q": "Q939852",
+"w": "Salian Franks",
+"de": 358,
+"a": 509,
+"m": ""
+},
+"Tarumanagara": {
+"q": "Q2247225",
+"w": "Tarumanagara",
+"de": 367,
+"a": 673,
+"m": ""
+},
+"Silla": {
+"q": "Q28456",
+"w": "Silla",
+"de": 378,
+"a": 681,
+"m": ""
+},
+"Western Qin": {
+"q": "Q1668970",
+"w": "Western Qin",
+"de": 387,
+"a": 438,
+"m": ""
+},
+"Northern Wei": {
+"q": "Q875305",
+"w": "Northern Wei",
+"de": 387,
+"a": 533,
+"m": ""
+},
+"Western Yan": {
+"q": "Q1149230",
+"w": "Western Yan",
+"de": 387,
+"a": 393,
+"m": ""
+},
+"Angles": {
+"q": "Q234218",
+"w": "Angles",
+"de": 387,
+"a": 479,
+"m": ""
+},
+"Later Liang": {
+"q": "Q2314869",
+"w": "Later Liang (Sixteen Kingdoms)",
+"de": 387,
+"a": 406,
+"m": ""
+},
+"Later Yan": {
+"q": "Q1534482",
+"w": "Later Yan",
+"de": 387,
+"a": 409,
+"m": ""
+},
+"Later Qin": {
+"q": "Q1730130",
+"w": "Later Qin",
+"de": 387,
+"a": 416,
+"m": ""
+},
+"Xionites": {
+"q": "Q26264",
+"w": "Xionites",
+"de": 387,
+"a": 401,
+"m": ""
+},
+"Eastern Roman Empire": {
+"q": "Q12544",
+"w": "Byzantine Empire",
+"de": 395,
+"a": 632,
+"m": ""
+},
+"Western Roman Empire": {
+"q": "Q42834",
+"w": "Western Roman Empire",
+"de": 395,
+"a": 475,
+"m": ""
+},
+"Visigoths": {
+"q": "Q23693",
+"w": "Visigoths",
+"de": 396,
+"a": 425,
+"m": ""
+},
+"Northern Liang": {
+"q": "Q1539360",
+"w": "Northern Liang",
+"de": 397,
+"a": 440,
+"m": ""
+},
+"Southern Liang": {
+"q": "Q1069868",
+"w": "Liang dynasty",
+"de": 397,
+"a": 413,
+"m": ""
+},
+"Southern Yan": {
+"q": "Q1329439",
+"w": "Southern Yan",
+"de": 402,
+"a": 409,
+"m": ""
+},
+"Rouran Khaganate": {
+"q": "Q155361",
+"w": "Rouran Khaganate",
+"de": 402,
+"a": 554,
+"m": ""
+},
+"Western Liang": {
+"q": "Q4186404",
+"w": "Western Liang (Sixteen Kingdoms)",
+"de": 407,
+"a": 409,
+"m": ""
+},
+"Northern Yan": {
+"q": "Q2006864",
+"w": "Northern Yan",
+"de": 410,
+"a": 438,
+"m": ""
+},
+"Xia": {
+"q": "Q7427",
+"w": "Xia",
+"de": 410,
+"a": 438,
+"m": ""
+},
+"White Huns": {
+"q": "Q41761342",
+"w": "White Huns",
+"de": 410,
+"a": 560,
+"m": ""
+},
+"Burgundian Kingdom": {
+"q": "Q13590051",
+"w": "Kingdom of the Burgundians",
+"de": 414,
+"a": 660,
+"m": ""
+},
+"Kingdom of the Suebi": {
+"q": "Q1048918",
+"w": "Kingdom of the Suebi",
+"de": 414,
+"a": 586,
+"m": ""
+},
+"Alans": {
+"q": "Q178054",
+"w": "Alans",
+"de": 414,
+"a": 438,
+"m": ""
+},
+"Hunnic Empire": {
+"q": "Q45813",
+"w": "Huns",
+"de": 426,
+"a": 673,
+"m": ""
+},
+"Liu Song Dynasty": {
+"q": "Q49697",
+"w": "Liu Song dynasty",
+"de": 426,
+"a": 479,
+"m": ""
+},
+"Visigothic Kingdom": {
+"q": "Q126936",
+"w": "Visigothic Kingdom",
+"de": 426,
+"a": 723,
+"m": ""
+},
+"Brythons": {
+"q": "Q849967",
+"w": "Celtic Britons",
+"de": 439,
+"a": 1235,
+"m": "(Brythonic Kingdoms)"
+},
+"Vandal Kingdom": {
+"q": "Q10416611",
+"w": "Vandal Kingdom",
+"de": 439,
+"a": 533,
+"m": ""
+},
+"Anglo-Saxon England": {
+"q": "Q784963",
+"w": "History of Anglo-Saxon England",
+"de": 441,
+"a": 533,
+"m": "(Anglo-Saxon England)"
+},
+"Rugiland": {
+"q": "Q872644",
+"w": "Rugiland",
+"de": 455,
+"a": 489,
+"m": ""
+},
+"Ostrogoths": {
+"q": "Q103122",
+"w": "Ostrogoths",
+"de": 455,
+"a": 499,
+"m": ""
+},
+"Kingdom of Alamannia": {
+"q": "Q2208978",
+"w": "Alamannia",
+"de": 462,
+"a": 731,
+"m": ""
+},
+"Kingdom of the Franks": {
+"q": "Q146246",
+"w": "Francia",
+"de": 462,
+"a": 849,
+"m": "(Kingdom of the Franks);(Merovingian Empire)"
+},
+"Thuringian states": {
+"q": "Q315010",
+"w": "Thuringian states",
+"de": 469,
+"a": 475,
+"m": ""
+},
+"Maitraka Dynasty": {
+"q": "Q6737189",
+"w": "Maitraka dynasty",
+"de": 476,
+"a": 731,
+"m": ""
+},
+"Kingdom of Thuringia": {
+"q": "Q268562",
+"w": "Basina of Thuringia",
+"de": 476,
+"a": 533,
+"m": ""
+},
+"Kingdom of Soissons": {
+"q": "Q1247508",
+"w": "Kingdom of Soissons",
+"de": 476,
+"a": 489,
+"m": ""
+},
+"Lombards": {
+"q": "Q130900",
+"w": "Lombards",
+"de": 480,
+"a": 586,
+"m": ""
+},
+"Southern Qi": {
+"q": "Q62456",
+"w": "Southern Qi",
+"de": 480,
+"a": 509,
+"m": ""
+},
+"Kingdom of Kent": {
+"q": "Q328818",
+"w": "Kingdom of Kent",
+"de": 490,
+"a": 762,
+"m": "(Anglo-Saxon England)"
+},
+"Kingdom of Sussex": {
+"q": "Q676184",
+"w": "Kingdom of Sussex",
+"de": 490,
+"a": 771,
+"m": "(Anglo-Saxon England)"
+},
+"Ostrogothic Kingdom": {
+"q": "Q583038",
+"w": "Ostrogothic Kingdom",
+"de": 500,
+"a": 560,
+"m": ""
+},
+"Scandinavian minor kingdoms": {
+"q": "Q1275225",
+"w": "Vendel Period",
+"de": 500,
+"a": 1002,
+"m": ""
+},
+"Liang Dynasty": {
+"q": "Q783489",
+"w": "Liang dynasty",
+"de": 510,
+"a": 560,
+"m": ""
+},
+"Ghassanids": {
+"q": "Q733668",
+"w": "Ghassanids",
+"de": 510,
+"a": 633,
+"m": ""
+},
+"Kingdom of the Gepids": {
+"q": "Q201706",
+"w": "Gepids",
+"de": 510,
+"a": 566,
+"m": ""
+},
+"Wihtgar": {
+"q": "Q3568009",
+"w": "Wihtwara",
+"de": 523,
+"a": 691,
+"m": ""
+},
+"Eastern Wei": {
+"q": "Q307069",
+"w": "Eastern Wei",
+"de": 534,
+"a": 554,
+"m": ""
+},
+"Western Wei": {
+"q": "Q1143164",
+"w": "Western Wei",
+"de": 534,
+"a": 560,
+"m": ""
+},
+"Kingdom of East Anglia": {
+"q": "Q837998",
+"w": "Kingdom of East Anglia",
+"de": 534,
+"a": 869,
+"m": "(Anglo-Saxon England)"
+},
+"Kingdom of Deira": {
+"q": "Q506008",
+"w": "Deira",
+"de": 534,
+"a": 633,
+"m": "(Anglo-Saxon England)"
+},
+"Kingdom of Wessex": {
+"q": "Q105313",
+"w": "Wessex",
+"de": 534,
+"a": 935,
+"m": "(Anglo-Saxon England)"
+},
+"Kingdom of Mercia": {
+"q": "Q105092",
+"w": "Mercia",
+"de": 534,
+"a": 925,
+"m": "(Anglo-Saxon England)"
+},
+"Kingdom of Essex": {
+"q": "Q110888",
+"w": "Kingdom of Essex",
+"de": 534,
+"a": 665,
+"m": "(Anglo-Saxon England)"
+},
+"Kingdom of Lindsey": {
+"q": "Q886986",
+"w": "Kingdom of Lindsey",
+"de": 534,
+"a": 625,
+"m": ""
+},
+"Kingdom of Gwent": {
+"q": "Q2594661",
+"w": "Kingdom of Gwent",
+"de": 540,
+"a": 1055,
+"m": "(Brythonic Kingdoms)"
+},
+"Asuka Japan": {
+"q": "Q210688",
+"w": "Asuka period",
+"de": 540,
+"a": 709,
+"m": ""
+},
+"Kingdom of Brycheiniog": {
+"q": "Q954585",
+"w": "Brycheiniog",
+"de": 540,
+"a": 1084,
+"m": "(Brythonic Kingdoms)"
+},
+"Kingdom of Gwynedd": {
+"q": "Q816814",
+"w": "Kingdom of Gwynedd",
+"de": 540,
+"a": 1284,
+"m": "(Brythonic Kingdoms)"
+},
+"Kingdom of Powys": {
+"q": "Q769782",
+"w": "Kingdom of Powys",
+"de": 540,
+"a": 1168,
+"m": "(Brythonic Kingdoms)"
+},
+"Kingdom of Morgannwg": {
+"q": "Q13131807",
+"w": "Kingdom of Morgannwg",
+"de": 540,
+"a": 1055,
+"m": "(Brythonic Kingdoms)"
+},
+"Dál Riata": {
+"q": "Q111471",
+"w": "Dál Riata",
+"de": 540,
+"a": 899,
+"m": ""
+},
+"Bavarians": {
+"q": "Q13048507",
+"w": "Bavarians",
+"de": 540,
+"a": 787,
+"m": ""
+},
+"Early Lý Dynasty": {
+"q": "Q2441129",
+"w": "Early Lý dynasty",
+"de": 546,
+"a": 601,
+"m": ""
+},
+"Classic Veracruz Culture": {
+"q": "Q2379418",
+"w": "Classic Veracruz culture",
+"de": 555,
+"a": 1235,
+"m": ""
+},
+"Yenisei Kyrgyz": {
+"q": "Q83142",
+"w": "Yenisei Kyrgyz",
+"de": 555,
+"a": 1219,
+"m": ""
+},
+"Northern Qi": {
+"q": "Q1143524",
+"w": "Northern Qi",
+"de": 555,
+"a": 576,
+"m": ""
+},
+"Chalukya Dynasty": {
+"q": "Q1395011",
+"w": "Chalukya dynasty",
+"de": 555,
+"a": 756,
+"m": ""
+},
+"Chenla": {
+"q": "Q1057118",
+"w": "Chenla",
+"de": 555,
+"a": 717,
+"m": "(Chenla)"
+},
+"Maukhari Dynasty": {
+"q": "Q12448145",
+"w": "Maukhari dynasty",
+"de": 555,
+"a": 611,
+"m": ""
+},
+"Kingdom of Bernicia": {
+"q": "Q623751",
+"w": "Bernicia",
+"de": 555,
+"a": 633,
+"m": "(Anglo-Saxon England)"
+},
+"Göktürk Khaganate": {
+"q": "Q15146034",
+"w": "First Turkic Khaganate",
+"de": 555,
+"a": 586,
+"m": ""
+},
+"Avar Khaganate": {
+"q": "Q68962",
+"w": "Pannonian Avars",
+"de": 561,
+"a": 805,
+"m": ""
+},
+"Turk Shahis": {
+"q": "Q654380",
+"w": "Kabul Shahi",
+"de": 561,
+"a": 874,
+"m": ""
+},
+"Chen Dynasty": {
+"q": "Q62454",
+"w": "Chen dynasty",
+"de": 561,
+"a": 591,
+"m": ""
+},
+"Northern Zhou": {
+"q": "Q551067",
+"w": "Northern Zhou",
+"de": 561,
+"a": 586,
+"m": ""
+},
+"Later Western Liang": {
+"q": "Q4186404",
+"w": "Western Liang (555–587)",
+"de": 561,
+"a": 586,
+"m": ""
+},
+"Georgia": {
+"q": "Q4962",
+"w": "Georgia",
+"de": 567,
+"a": 2024,
+"m": ""
+},
+"Duchy of Thuringia": {
+"q": "Q5311389",
+"w": "Duchy of Thuringia",
+"de": 567,
+"a": 723,
+"m": ""
+},
+"Duchy of Tuscia": {
+"q": "Q1054580",
+"w": "Duchy of Tuscia",
+"de": 577,
+"a": 586,
+"m": ""
+},
+"Duchy of Benevento": {
+"q": "Q267816",
+"w": "Duchy of Benevento",
+"de": 577,
+"a": 1084,
+"m": ""
+},
+"Duchy of Spoleto": {
+"q": "Q2829270",
+"w": "Duchy of Spoleto",
+"de": 577,
+"a": 898,
+"m": ""
+},
+"Hwicce": {
+"q": "Q733799",
+"w": "Hwicce",
+"de": 577,
+"a": 627,
+"m": "(Anglo-Saxon England)"
+},
+"Kingdom of Italy": {
+"q": "Q172579",
+"w": "Kingdom of Italy",
+"de": 587,
+"a": 1946,
+"m": ""
+},
+"Eastern Göktürks": {
+"q": "Q205466",
+"w": "Göktürks",
+"de": 587,
+"a": 632,
+"m": ""
+},
+"Sui Dynasty": {
+"q": "Q7405",
+"w": "Sui dynasty",
+"de": 587,
+"a": 627,
+"m": ""
+},
+"Breton Kingdoms": {
+"q": "Q309197",
+"w": "Bretons",
+"de": 587,
+"a": 824,
+"m": ""
+},
+"Western Göktürks": {
+"q": "Q205466",
+"w": "Göktürks",
+"de": 587,
+"a": 660,
+"m": ""
+},
+"Karkota Dynasty": {
+"q": "Q466433",
+"w": "Karkota dynasty",
+"de": 592,
+"a": 859,
+"m": ""
+},
+"Kingdom of Dunoting": {
+"q": "Q2264840",
+"w": "Dunoding",
+"de": 592,
+"a": 625,
+"m": "(Brythonic Kingdoms)"
+},
+"Pandya Dynasty": {
+"q": "Q844910",
+"w": "Pandya dynasty",
+"de": 592,
+"a": 921,
+"m": ""
+},
+"Kingdom of Rheged": {
+"q": "Q633573",
+"w": "Rheged",
+"de": 592,
+"a": 646,
+"m": "(Brythonic Kingdoms)"
+},
+"Gauda Kingdom": {
+"q": "Q17076645",
+"w": "Gauda Kingdom",
+"de": 602,
+"a": 611,
+"m": ""
+},
+"Dumnonia": {
+"q": "Q313136",
+"w": "Dumnonia",
+"de": 602,
+"a": 709,
+"m": "(Brythonic Kingdoms)"
+},
+"Magna Frisia": {
+"q": "Q87791",
+"w": "Frisian Kingdom",
+"de": 602,
+"a": 771,
+"m": ""
+},
+"Frisia Kingdom": {
+"q": "Q4492881",
+"w": "Frisia",
+"de": 612,
+"a": 717,
+"m": ""
+},
+"Kingdom of Northumbria": {
+"q": "Q107299",
+"w": "Northumbria",
+"de": 612,
+"a": 935,
+"m": "(Anglo-Saxon England)"
+},
+"Harsha's Empire": {
+"q": "Q216895",
+"w": "Harsha",
+"de": 612,
+"a": 655,
+"m": ""
+},
+"Tibetan Empire": {
+"q": "Q2431480",
+"w": "Tibetan Empire",
+"de": 623,
+"a": 849,
+"m": ""
+},
+"Tang Dynasty": {
+"q": "Q9683",
+"w": "Tang dynasty",
+"de": 623,
+"a": 910,
+"m": ""
+},
+"Samo's Empire": {
+"q": "Q149427",
+"w": "Samo's Empire",
+"de": 623,
+"a": 660,
+"m": ""
+},
+"Gao Kaidao": {
+"q": "Q712564",
+"w": "Gao Kaidao",
+"de": 623,
+"a": 625,
+"m": ""
+},
+"Kashmir": {
+"q": "Q43100",
+"w": "Kashmir",
+"de": 626,
+"a": 1343,
+"m": ""
+},
+"Aquitaine": {
+"q": "Q1179",
+"w": "Aquitaine",
+"de": 629,
+"a": 895,
+"m": ""
+},
+"Khazaria": {
+"q": "Q173282",
+"w": "Khazars",
+"de": 630,
+"a": 979,
+"m": ""
+},
+"Rashidun Caliphate": {
+"q": "Q12490507",
+"w": "Rashidun Caliphate",
+"de": 633,
+"a": 665,
+"m": ""
+},
+"Byzantine Empire": {
+"q": "Q112039853",
+"w": "Byzantine Empire",
+"de": 633,
+"a": 1474,
+"m": ""
+},
+"Old Great Bulgaria": {
+"q": "Q191484",
+"w": "Old Great Bulgaria",
+"de": 633,
+"a": 681,
+"m": ""
+},
+"Balasagan": {
+"q": "Q3633213",
+"w": "Balasagan",
+"de": 638,
+"a": 646,
+"m": ""
+},
+"Kingdom of Lazica": {
+"q": "Q136884",
+"w": "Lazica",
+"de": 638,
+"a": 777,
+"m": ""
+},
+"Lavo Kingdom": {
+"q": "Q1332305",
+"w": "Lavo Kingdom",
+"de": 638,
+"a": 1394,
+"m": ""
+},
+"Dabuyid Dynasty": {
+"q": "Q2816439",
+"w": "Dabuyid dynasty",
+"de": 644,
+"a": 756,
+"m": ""
+},
+"Strathclyde": {
+"q": "Q124661",
+"w": "Strathclyde",
+"de": 644,
+"a": 1033,
+"m": "(Brythonic Kingdoms)"
+},
+"Khadga Dynasty": {
+"q": "Q6398879",
+"w": "Khadga Dynasty",
+"de": 656,
+"a": 704,
+"m": ""
+},
+"Umayyad Caliphate": {
+"q": "Q8575586",
+"w": "Umayyad Caliphate",
+"de": 656,
+"a": 756,
+"m": ""
+},
+"Haripuñjaya": {
+"q": "Q255931",
+"w": "Haripuñjaya",
+"de": 661,
+"a": 1293,
+"m": ""
+},
+"Carantania": {
+"q": "Q501754",
+"w": "Carantania",
+"de": 661,
+"a": 749,
+"m": ""
+},
+"Turks": {
+"q": "Q2118293",
+"w": "Turk",
+"de": 666,
+"a": 756,
+"m": ""
+},
+"Sunda Kingdom": {
+"q": "Q1469742",
+"w": "Sunda Kingdom",
+"de": 674,
+"a": 1578,
+"m": ""
+},
+"Srivijaya": {
+"q": "Q234197",
+"w": "Srivijaya",
+"de": 674,
+"a": 1293,
+"m": ""
+},
+"Volga Bulgaria": {
+"q": "Q185488",
+"w": "Volga Bulgaria",
+"de": 674,
+"a": 1235,
+"m": ""
+},
+"Galuh Kingdom": {
+"q": "Q5519387",
+"w": "Galuh Kingdom",
+"de": 674,
+"a": 1481,
+"m": ""
+},
+"Unified Silla": {
+"q": "Q715257",
+"w": "Unified Silla",
+"de": 682,
+"a": 935,
+"m": ""
+},
+"Principality of Iberia": {
+"q": "Q199389",
+"w": "Principality of Iberia",
+"de": 682,
+"a": 740,
+"m": ""
+},
+"First Bulgarian Empire": {
+"q": "Q203817",
+"w": "First Bulgarian Empire",
+"de": 682,
+"a": 1017,
+"m": ""
+},
+"Türgesh": {
+"q": "Q1277895",
+"w": "Türgesh",
+"de": 692,
+"a": 749,
+"m": ""
+},
+"Cyprus Condominium": {
+"q": "Q229",
+"w": "Cyprus",
+"de": 692,
+"a": 959,
+"m": ""
+},
+"Balhae": {
+"q": "Q28322",
+"w": "Balhae",
+"de": 705,
+"a": 925,
+"m": ""
+},
+"Republic of Venice": {
+"q": "Q4948",
+"w": "Republic of Venice",
+"de": 705,
+"a": 1796,
+"m": ""
+},
+"Nara Japan": {
+"q": "Q189178",
+"w": "Nara period",
+"de": 710,
+"a": 792,
+"m": ""
+},
+"Cornwall": {
+"q": "Q23148",
+"w": "Cornwall",
+"de": 710,
+"a": 946,
+"m": "(Brythonic Kingdoms)"
+},
+"Merovingian Empire": {
+"q": "Q146246",
+"w": "Francia",
+"de": 710,
+"a": 717,
+"m": "(Merovingian Empire)"
+},
+"Water Chenla": {
+"q": "Q1057118",
+"w": "Chenla",
+"de": 718,
+"a": 805,
+"m": ""
+},
+"Land Chenla": {
+"q": "Q1057118",
+"w": "Chenla",
+"de": 718,
+"a": 805,
+"m": ""
+},
+"Carolingian Empire": {
+"q": "Q146246",
+"w": "Francia",
+"de": 718,
+"a": 723,
+"m": "(Carolingian Empire)"
+},
+"Kingdom of Asturias": {
+"q": "Q231392",
+"w": "Kingdom of Asturias",
+"de": 724,
+"a": 925,
+"m": ""
+},
+"Kingdom of Neustria": {
+"q": "Q106577",
+"w": "Neustria",
+"de": 724,
+"a": 731,
+"m": ""
+},
+"Kannauj-Varman Dynasty": {
+"q": "Q614890",
+"w": "Kannauj",
+"de": 732,
+"a": 771,
+"m": ""
+},
+"Gurjara-Pratihara Dynasty": {
+"q": "Q5324",
+"w": "Gurjara-Pratihara dynasty",
+"de": 732,
+"a": 1039,
+"m": ""
+},
+"Mataram Kingdom": {
+"q": "Q402580",
+"w": "Mataram Kingdom",
+"de": 741,
+"a": 1009,
+"m": ""
+},
+"Nanzhao": {
+"q": "Q1045322",
+"w": "Nanzhao",
+"de": 741,
+"a": 910,
+"m": ""
+},
+"Duchy of Croatia": {
+"q": "Q2576305",
+"w": "Duchy of Croatia",
+"de": 741,
+"a": 925,
+"m": ""
+},
+"Oghuz Turks": {
+"q": "Q2118293",
+"w": "Oghuz Khagan",
+"de": 750,
+"a": 1055,
+"m": ""
+},
+"Pala Empire": {
+"q": "Q668412",
+"w": "Pala Empire",
+"de": 750,
+"a": 1168,
+"m": ""
+},
+"Uyghur Khaganate": {
+"q": "Q831218",
+"w": "Uyghur Khaganate",
+"de": 750,
+"a": 849,
+"m": ""
+},
+"Emirate of Nekor": {
+"q": "Q1709337",
+"w": "Emirate of Nekor",
+"de": 750,
+"a": 1027,
+"m": ""
+},
+"Abbasid Caliphate": {
+"q": "Q12536",
+"w": "Abbasid Caliphate",
+"de": 750,
+"a": 1259,
+"m": ""
+},
+"Kimek-Kipchak confederation": {
+"q": "Q2477776",
+"w": "Kimek-Kipchak confederation",
+"de": 750,
+"a": 1235,
+"m": ""
+},
+"Fihrids": {
+"q": "Q5448100",
+"w": "Fihrids",
+"de": 750,
+"a": 756,
+"m": ""
+},
+"Kharijites": {
+"q": "Q189570",
+"w": "Kharijites",
+"de": 751,
+"a": 762,
+"m": ""
+},
+"Rashtrakuta Dynasty": {
+"q": "Q856691",
+"w": "Rashtrakuta dynasty",
+"de": 755,
+"a": 989,
+"m": ""
+},
+"Papal States": {
+"q": "Q170174",
+"w": "Papal States",
+"de": 755,
+"a": 1870,
+"m": ""
+},
+"Emirate of Córdoba": {
+"q": "Q1337854",
+"w": "Emirate of Córdoba",
+"de": 757,
+"a": 935,
+"m": ""
+},
+"Duchy of Naples": {
+"q": "Q1051600",
+"w": "Duchy of Naples",
+"de": 763,
+"a": 1138,
+"m": ""
+},
+"Principality of Serbia": {
+"q": "Q1311990",
+"w": "Principality of Serbia",
+"de": 768,
+"a": 961,
+"m": ""
+},
+"Duchy of Gascony": {
+"q": "Q2295939",
+"w": "Duchy of Gascony",
+"de": 768,
+"a": 1065,
+"m": ""
+},
+"Rustamid dynasty": {
+"q": "Q940123",
+"w": "Rustamid dynasty",
+"de": 778,
+"a": 910,
+"m": ""
+},
+"Frisia": {
+"q": "Q4492881",
+"w": "Frisia",
+"de": 783,
+"a": 787,
+"m": ""
+},
+"Obotrites": {
+"q": "Q156108",
+"w": "Obotrites",
+"de": 793,
+"a": 946,
+"m": ""
+},
+"Viking settlements": {
+"q": "Q12567",
+"w": "Vikings",
+"de": 793,
+"a": 1332,
+"m": ""
+},
+"Frisians": {
+"q": "Q106416",
+"w": "Frisians",
+"de": 793,
+"a": 799,
+"m": ""
+},
+"Qarlugs": {
+"q": "Q2330335",
+"w": "Mongol invasion of Central Asia",
+"de": 793,
+"a": 849,
+"m": ""
+},
+"Idrisids": {
+"q": "Q431575",
+"w": "Idrisid dynasty",
+"de": 793,
+"a": 979,
+"m": ""
+},
+"Ghana Empire": {
+"q": "Q206789",
+"w": "Ghana Empire",
+"de": 793,
+"a": 1201,
+"m": ""
+},
+"Barghawata Conference": {
+"q": "Q7903",
+"w": "Casablanca",
+"de": 793,
+"a": 1065,
+"m": ""
+},
+"Heian Japan": {
+"q": "Q193292",
+"w": "Heian period",
+"de": 793,
+"a": 1187,
+"m": ""
+},
+"Aghlabid Dynasty": {
+"q": "Q207600",
+"w": "Aghlabids",
+"de": 800,
+"a": 910,
+"m": ""
+},
+"Khmer Empire": {
+"q": "Q201705",
+"w": "Khmer Empire",
+"de": 800,
+"a": 1867,
+"m": ""
+},
+"Kingdom of the Iberians": {
+"q": "Q154816",
+"w": "Kingdom of the Iberians",
+"de": 814,
+"a": 999,
+"m": ""
+},
+"Great Moravia": {
+"q": "Q193152",
+"w": "Great Moravia",
+"de": 814,
+"a": 910,
+"m": ""
+},
+"Principality of Nitra": {
+"q": "Q837326",
+"w": "Principality of Nitra",
+"de": 814,
+"a": 839,
+"m": ""
+},
+"Kingdom of Pamplona": {
+"q": "Q200262",
+"w": "Kingdom of Navarre",
+"de": 825,
+"a": 865,
+"m": ""
+},
+"Kingdom of Brittany": {
+"q": "Q771193",
+"w": "Kingdom of Brittany",
+"de": 825,
+"a": 921,
+"m": ""
+},
+"Shirvan": {
+"q": "Q638064",
+"w": "Shirvan",
+"de": 825,
+"a": 1539,
+"m": ""
+},
+"Kingdom of Sobrarbe": {
+"q": "Q3572492",
+"w": "Kingdom of Sobrarbe",
+"de": 825,
+"a": 829,
+"m": ""
+},
+"Emirate of Crete": {
+"q": "Q603771",
+"w": "Emirate of Crete",
+"de": 830,
+"a": 960,
+"m": ""
+},
+"County of Aragon": {
+"q": "Q1235737",
+"w": "County of Aragon",
+"de": 830,
+"a": 921,
+"m": ""
+},
+"Magyars": {
+"q": "Q133032",
+"w": "Hungarians",
+"de": 840,
+"a": 910,
+"m": ""
+},
+"Principality of Salerno": {
+"q": "Q1065299",
+"w": "Principality of Salerno",
+"de": 840,
+"a": 1084,
+"m": ""
+},
+"Principality of Capua": {
+"q": "Q1280122",
+"w": "Principality of Capua",
+"de": 840,
+"a": 1065,
+"m": ""
+},
+"Kara-Khanids": {
+"q": "Q494354",
+"w": "Kara-Khanid Khanate",
+"de": 850,
+"a": 1045,
+"m": ""
+},
+"Middle Franks": {
+"q": "Q6673921",
+"w": "Lotharingia",
+"de": 850,
+"a": 899,
+"m": "(Carolingian Empire)"
+},
+"Pagan Kingdom": {
+"q": "Q888574",
+"w": "Pagan Kingdom",
+"de": 850,
+"a": 1293,
+"m": ""
+},
+"West Franks": {
+"q": "Q46370",
+"w": "West Francia",
+"de": 850,
+"a": 989,
+"m": "(Carolingian Empire)"
+},
+"Chola Empire": {
+"q": "Q6806806",
+"w": "Chola Empire",
+"de": 850,
+"a": 1259,
+"m": ""
+},
+"Puebloans - Chaco Regional System": {
+"q": "Q478805",
+"w": "Ancestral Puebloans",
+"de": 850,
+"a": 1151,
+"m": ""
+},
+"East Franks": {
+"q": "Q153080",
+"w": "East Francia",
+"de": 850,
+"a": 910,
+"m": "(Carolingian Empire)"
+},
+"Later Mayan City-States": {
+"q": "Q28567",
+"w": "Maya civilization",
+"de": 850,
+"a": 1546,
+"m": ""
+},
+"Tibetans": {
+"q": "Q187985",
+"w": "Tibetan people",
+"de": 850,
+"a": 1259,
+"m": ""
+},
+"Emirate of Sicily": {
+"q": "Q118780154",
+"w": "Emirate of Sicily",
+"de": 850,
+"a": 1093,
+"m": ""
+},
+"Lower Burgundy": {
+"q": "Q33242",
+"w": "Lower Burgundy",
+"de": 860,
+"a": 925,
+"m": ""
+},
+"Ganzhou Kingdom": {
+"q": "Q1000124",
+"w": "Ganzhou Uyghur Kingdom",
+"de": 860,
+"a": 1039,
+"m": ""
+},
+"Saffarid Dynasty": {
+"q": "Q45310",
+"w": "Saffarid dynasty",
+"de": 860,
+"a": 899,
+"m": ""
+},
+"Qocho Kingdom": {
+"q": "Q2662180",
+"w": "Qocho",
+"de": 860,
+"a": 1138,
+"m": ""
+},
+"Sind-Habbari Dynasty": {
+"q": "Q5636647",
+"w": "Habbari dynasty",
+"de": 860,
+"a": 1201,
+"m": ""
+},
+"Giudicato of Cagliari": {
+"q": "Q2297073",
+"w": "Judicate of Cagliari",
+"de": 866,
+"a": 1187,
+"m": ""
+},
+"Ziyadid dynasty": {
+"q": "Q207017",
+"w": "Ziyadid dynasty",
+"de": 866,
+"a": 1138,
+"m": ""
+},
+"Giudicato of Gallura": {
+"q": "Q2723760",
+"w": "Judicate of Gallura",
+"de": 866,
+"a": 1209,
+"m": ""
+},
+"Zaydi Alid dynasties": {
+"q": "Q1990528",
+"w": "Alid dynasties of northern Iran",
+"de": 866,
+"a": 935,
+"m": ""
+},
+"Giudicato of Logudoro": {
+"q": "Q1761381",
+"w": "Judicate of Logudoro",
+"de": 866,
+"a": 1259,
+"m": ""
+},
+"Old Kingdom of Norway": {
+"q": "Q202266",
+"w": "Norway",
+"de": 866,
+"a": 1401,
+"m": ""
+},
+"Giudicato of Arborea": {
+"q": "Q1241847",
+"w": "Judicate of Arborea",
+"de": 866,
+"a": 1421,
+"m": ""
+},
+"County of Ribagorza": {
+"q": "Q1297894",
+"w": "County of Ribagorza",
+"de": 866,
+"a": 1084,
+"m": ""
+},
+"County of Urgell": {
+"q": "Q1514510",
+"w": "County of Urgell",
+"de": 870,
+"a": 1808,
+"m": ""
+},
+"Toltec": {
+"q": "Q187897",
+"w": "Toltec",
+"de": 875,
+"a": 1187,
+"m": ""
+},
+"Tulunids": {
+"q": "Q726798",
+"w": "Tulunids",
+"de": 875,
+"a": 910,
+"m": ""
+},
+"County of Pallars": {
+"q": "Q1541787",
+"w": "County of Pallars",
+"de": 875,
+"a": 1014,
+"m": ""
+},
+"Danelaw": {
+"q": "Q339271",
+"w": "Danelaw",
+"de": 878,
+"a": 959,
+"m": ""
+},
+"Kingdom of Seisyllwg": {
+"q": "Q2456191",
+"w": "Seisyllwg",
+"de": 878,
+"a": 959,
+"m": "(Brythonic Kingdoms)"
+},
+"Rus'": {
+"q": "Q1108445",
+"w": "Rus",
+"de": 880,
+"a": 881,
+"m": ""
+},
+"Kievan Rus'": {
+"q": "Q1108445",
+"w": "Kievan Rus'",
+"de": 882,
+"a": 1240,
+"m": ""
+},
+"Bagratid Armenia": {
+"q": "Q2622868",
+"w": "Bagratid Armenia",
+"de": 886,
+"a": 1045,
+"m": ""
+},
+"Samanid Empire": {
+"q": "Q486181",
+"w": "Samanid Empire",
+"de": 886,
+"a": 999,
+"m": ""
+},
+"Upper Burgundy": {
+"q": "Q33235",
+"w": "Upper Burgundy",
+"de": 887,
+"a": 959,
+"m": "(Carolingian Empire)"
+},
+"Kingdom of Khotan": {
+"q": "Q914898",
+"w": "Kingdom of Khotan",
+"de": 888,
+"a": 1009,
+"m": ""
+},
+"Hubaekje": {
+"q": "Q698239",
+"w": "Later Baekje",
+"de": 892,
+"a": 935,
+"m": ""
+},
+"Duchy of Bohemia": {
+"q": "Q2162698",
+"w": "Duchy of Bohemia",
+"de": 896,
+"a": 1002,
+"m": ""
+},
+"County of Rosellón": {
+"q": "Q13522657",
+"w": "Roussillon",
+"de": 896,
+"a": 1176,
+"m": ""
+},
+"Sajid Dynasty": {
+"q": "Q3432153",
+"w": "Sajid dynasty",
+"de": 898,
+"a": 935,
+"m": ""
+},
+"County of Besalú": {
+"q": "Q1541642",
+"w": "County of Besalú",
+"de": 898,
+"a": 989,
+"m": ""
+},
+"County of Berga": {
+"q": "Q15487",
+"w": "Berga",
+"de": 898,
+"a": 1235,
+"m": ""
+},
+"Nitra": {
+"q": "Q26397",
+"w": "Nitra",
+"de": 898,
+"a": 910,
+"m": ""
+},
+"County of Barcelona": {
+"q": "Q7038",
+"w": "Girona",
+"de": 898,
+"a": 1168,
+"m": ""
+},
+"Qarmatians": {
+"q": "Q138803",
+"w": "Qarmatians",
+"de": 899,
+"a": 1071,
+"m": ""
+},
+"Kingdom of Alba": {
+"q": "Q1991742",
+"w": "Kingdom of Alba",
+"de": 900,
+"a": 1293,
+"m": ""
+},
+"Principality of Hungary": {
+"q": "Q2899771",
+"w": "Principality of Hungary",
+"de": 900,
+"a": 999,
+"m": ""
+},
+"Chandra Dynasty": {
+"q": "Q5032034",
+"w": "Chandra dynasty",
+"de": 900,
+"a": 1055,
+"m": ""
+},
+"Kingdom of Lower Burgundy": {
+"q": "Q33242",
+"w": "Lower Burgundy",
+"de": 900,
+"a": 935,
+"m": "(Carolingian Empire)"
+},
+"Yan Kingdom": {
+"q": "Q1291919",
+"w": "Yan (Five Dynasties period)",
+"de": 911,
+"a": 921,
+"m": "(Five Dynasties and Ten Kingdoms)"
+},
+"Min": {
+"q": "Q224634",
+"w": "Min",
+"de": 911,
+"a": 946,
+"m": "(Five Dynasties and Ten Kingdoms)"
+},
+"Later Jin": {
+"q": "Q1154540",
+"w": "Later Jin (Five Dynasties)",
+"de": 911,
+"a": 946,
+"m": "(Five Dynasties and Ten Kingdoms)"
+},
+"Southern Han": {
+"q": "Q1198071",
+"w": "Southern Han",
+"de": 911,
+"a": 979,
+"m": "(Five Dynasties and Ten Kingdoms)"
+},
+"Fatimid Caliphate": {
+"q": "Q160307",
+"w": "Fatimid Caliphate",
+"de": 911,
+"a": 1176,
+"m": ""
+},
+"Kingdom of León": {
+"q": "Q175276",
+"w": "Kingdom of León",
+"de": 911,
+"a": 1235,
+"m": ""
+},
+"Liao Dynasty": {
+"q": "Q4958",
+"w": "Liao dynasty",
+"de": 911,
+"a": 1125,
+"m": ""
+},
+"Kingdom of Galicia": {
+"q": "Q303421",
+"w": "Kingdom of Galicia",
+"de": 911,
+"a": 1125,
+"m": ""
+},
+"Former Shu": {
+"q": "Q571453",
+"w": "Former Shu",
+"de": 911,
+"a": 925,
+"m": "(Five Dynasties and Ten Kingdoms)"
+},
+"Later Liang Dynasty": {
+"q": "Q783489",
+"w": "Later Liang (Five Dynasties)",
+"de": 911,
+"a": 925,
+"m": "(Five Dynasties and Ten Kingdoms)"
+},
+"Kingdom of Germany": {
+"q": "Q175211",
+"w": "Kingdom of Germany",
+"de": 911,
+"a": 961,
+"m": ""
+},
+"Taebong": {
+"q": "Q699871",
+"w": "Taebong",
+"de": 911,
+"a": 921,
+"m": ""
+},
+"Wuyue": {
+"q": "Q1193822",
+"w": "Wuyue",
+"de": 911,
+"a": 979,
+"m": "(Five Dynasties and Ten Kingdoms)"
+},
+"Kingdom of Vaspurakan": {
+"q": "Q5228183",
+"w": "Kingdom of Vaspurakan",
+"de": 911,
+"a": 1027,
+"m": ""
+},
+"Chimor": {
+"q": "Q581741",
+"w": "Chimor",
+"de": 911,
+"a": 1187,
+"m": ""
+},
+"Southern Chu": {
+"q": "Q1192347",
+"w": "Ma Chu",
+"de": 911,
+"a": 959,
+"m": "(Five Dynasties and Ten Kingdoms)"
+},
+"Southern Wu": {
+"q": "Q107994370",
+"w": "Southern Wu",
+"de": 911,
+"a": 959,
+"m": "(Five Dynasties and Ten Kingdoms)"
+},
+"Qi Kingdom": {
+"q": "Q1319681",
+"w": "Qi (Li Maozhen's state)",
+"de": 911,
+"a": 925,
+"m": "(Five Dynasties and Ten Kingdoms)"
+},
+"Early Balinese Kingdoms": {
+"q": "Q12491027",
+"w": "Bali Kingdom",
+"de": 922,
+"a": 1343,
+"m": ""
+},
+"Duchy of Normandy": {
+"q": "Q842091",
+"w": "Duchy of Normandy",
+"de": 922,
+"a": 1071,
+"m": ""
+},
+"Former Jin": {
+"q": "Q6201794",
+"w": "Jin (Later Tang precursor)",
+"de": 922,
+"a": 925,
+"m": "(Five Dynasties and Ten Kingdoms)"
+},
+"Upper Burgundy and Italy": {
+"q": "Q33235",
+"w": "Upper Burgundy",
+"de": 922,
+"a": 925,
+"m": ""
+},
+"Goryeo": {
+"q": "Q28208",
+"w": "Goryeo",
+"de": 922,
+"a": 1394,
+"m": ""
+},
+"Kingdom of Croatia": {
+"q": "Q858841",
+"w": "Kingdom of Croatia (925–1102)",
+"de": 926,
+"a": 1098,
+"m": ""
+},
+"Jingnan": {
+"q": "Q1325075",
+"w": "Jingnan",
+"de": 926,
+"a": 969,
+"m": "(Five Dynasties and Ten Kingdoms)"
+},
+"Later Tang": {
+"q": "Q1143126",
+"w": "Later Tang",
+"de": 926,
+"a": 935,
+"m": "(Five Dynasties and Ten Kingdoms)"
+},
+"Caliphate of Córdoba": {
+"q": "Q171740",
+"w": "Caliphate of Córdoba",
+"de": 936,
+"a": 1071,
+"m": ""
+},
+"Icelandic Commonwealth": {
+"q": "Q62389",
+"w": "Icelandic Commonwealth",
+"de": 936,
+"a": 1271,
+"m": ""
+},
+"Kingdom of England": {
+"q": "Q179876",
+"w": "Kingdom of England",
+"de": 936,
+"a": 1708,
+"m": "(Kingdom of England)"
+},
+"Kingdom of Arles": {
+"q": "Q3271735",
+"w": "Kingdom of Arles",
+"de": 936,
+"a": 1384,
+"m": ""
+},
+"Hamdanid Emirates": {
+"q": "Q837187",
+"w": "Hamdanid dynasty",
+"de": 936,
+"a": 1259,
+"m": ""
+},
+"Kingdom of Denmark": {
+"q": "Q756617",
+"w": "Danish Realm",
+"de": 936,
+"a": 1406,
+"m": "(Kingdom of Denmark)"
+},
+"Ziyarid dynasty": {
+"q": "Q207044",
+"w": "Ziyarid dynasty",
+"de": 936,
+"a": 979,
+"m": ""
+},
+"Later Shu": {
+"q": "Q526507",
+"w": "Later Shu",
+"de": 936,
+"a": 969,
+"m": "(Five Dynasties and Ten Kingdoms)"
+},
+"Buyid Dynasty": {
+"q": "Q12536",
+"w": "Buyid dynasty",
+"de": 936,
+"a": 1055,
+"m": ""
+},
+"Ngô Dynasty": {
+"q": "Q703919",
+"w": "Ngô dynasty",
+"de": 947,
+"a": 1406,
+"m": ""
+},
+"Zagwe dynasty": {
+"q": "Q140446",
+"w": "Zagwe kingdom",
+"de": 947,
+"a": 1271,
+"m": ""
+},
+"Kingdom of Dali": {
+"q": "Q26472",
+"w": "Dali Kingdom",
+"de": 947,
+"a": 1259,
+"m": ""
+},
+"Jaemtland": {
+"q": "Q211661",
+"w": "Jämtland",
+"de": 947,
+"a": 1187,
+"m": ""
+},
+"Abbasid Caliphate/Buyid Dynasty": {
+"q": "Q12536",
+"w": "Abbasid Caliphate",
+"de": 947,
+"a": 969,
+"m": ""
+},
+"Duchy of Brittany": {
+"q": "Q71747",
+"w": "Duchy of Brittany",
+"de": 947,
+"a": 1491,
+"m": ""
+},
+"Later Han": {
+"q": "Q957429",
+"w": "Later Han",
+"de": 947,
+"a": 959,
+"m": "(Five Dynasties and Ten Kingdoms)"
+},
+"Chaulukya Dynasty": {
+"q": "Q18211496",
+"w": "Chaulukya dynasty",
+"de": 947,
+"a": 1249,
+"m": ""
+},
+"Southern Tang": {
+"q": "Q1326742",
+"w": "Southern Tang",
+"de": 960,
+"a": 979,
+"m": "(Five Dynasties and Ten Kingdoms)"
+},
+"Northern Han": {
+"q": "Q1141471",
+"w": "Northern Han",
+"de": 960,
+"a": 979,
+"m": "(Five Dynasties and Ten Kingdoms)"
+},
+"Republic of Amalfi": {
+"q": "Q686312",
+"w": "Duchy of Amalfi",
+"de": 960,
+"a": 1033,
+"m": ""
+},
+"Chandela Kingdom": {
+"q": "Q2039087",
+"w": "Chandelas of Jejakabhukti",
+"de": 960,
+"a": 1313,
+"m": ""
+},
+"Utpala Dynasty": {
+"q": "Q1617123",
+"w": "Utpala dynasty",
+"de": 960,
+"a": 1002,
+"m": ""
+},
+"Kingdom of Castile": {
+"q": "Q179293",
+"w": "Kingdom of Castile",
+"de": 961,
+"a": 1235,
+"m": ""
+},
+"Northern Song": {
+"q": "Q7462",
+"w": "Song dynasty",
+"de": 961,
+"a": 1138,
+"m": ""
+},
+"Ghaznavid Empire": {
+"q": "Q12844800",
+"w": "Ghaznavids",
+"de": 962,
+"a": 1209,
+"m": ""
+},
+"Kingdom of Poland": {
+"q": "Q577867",
+"w": "Kingdom of Poland",
+"de": 962,
+"a": 1449,
+"m": "(Kingdom of Poland)"
+},
+"Holy Roman Empire": {
+"q": "Q12548",
+"w": "Holy Roman Empire",
+"de": 962,
+"a": 1621,
+"m": "(Holy Roman Empire)"
+},
+"Western Chalukya Empire": {
+"q": "Q14624218",
+"w": "Western Chalukya Empire",
+"de": 980,
+"a": 1187,
+"m": ""
+},
+"Paramara Dynasty": {
+"q": "Q7135130",
+"w": "Paramara dynasty",
+"de": 980,
+"a": 1235,
+"m": ""
+},
+"Chauhan Dynasty": {
+"q": "Q1068371",
+"w": "Chauhan Dynasty",
+"de": 980,
+"a": 1201,
+"m": ""
+},
+"Kingdom of Sweden": {
+"q": "Q34",
+"w": "Sweden",
+"de": 980,
+"a": 2024,
+"m": ""
+},
+"County of Toulouse": {
+"q": "Q1334322",
+"w": "County of Toulouse",
+"de": 990,
+"a": 1249,
+"m": "(Kingdom of France)"
+},
+"County of Blôis": {
+"q": "Q19336869",
+"w": "County of Blois",
+"de": 990,
+"a": 1401,
+"m": "(Kingdom of France)"
+},
+"County of Vexin": {
+"q": "Q1476089",
+"w": "Vexin",
+"de": 990,
+"a": 1084,
+"m": "(Kingdom of France)"
+},
+"County of Flanders": {
+"q": "Q157070",
+"w": "County of Flanders",
+"de": 990,
+"a": 1384,
+"m": "(Kingdom of France)"
+},
+"Western Xia": {
+"q": "Q7427",
+"w": "Western Xia",
+"de": 990,
+"a": 1226,
+"m": ""
+},
+"Seljuk Dynasty": {
+"q": "Q3708255",
+"w": "Seljuk dynasty",
+"de": 990,
+"a": 1039,
+"m": ""
+},
+"County of Maine": {
+"q": "Q732738",
+"w": "Maine (province)",
+"de": 990,
+"a": 1481,
+"m": "(Kingdom of France)"
+},
+"County of Vermandois": {
+"q": "Q26385",
+"w": "Vermandois",
+"de": 990,
+"a": 1215,
+"m": "(Kingdom of France)"
+},
+"County of Rouergue": {
+"q": "Q590016",
+"w": "Rouergue",
+"de": 990,
+"a": 1065,
+"m": "(Kingdom of France)"
+},
+"County of Champagne": {
+"q": "Q546266",
+"w": "County of Champagne",
+"de": 990,
+"a": 1284,
+"m": "(Kingdom of France)"
+},
+"County of Anjou": {
+"q": "Q2991084",
+"w": "County of Anjou",
+"de": 990,
+"a": 1332,
+"m": "(Kingdom of France)"
+},
+"Duchy of Aquitaine": {
+"q": "Q7703611",
+"w": "Duchy of Aquitaine",
+"de": 990,
+"a": 1439,
+"m": "(Kingdom of France)"
+},
+"County of Osona": {
+"q": "Q1541779",
+"w": "County of Osona",
+"de": 990,
+"a": 1110,
+"m": ""
+},
+"Kingdom of France": {
+"q": "Q207162",
+"w": "Kingdom of France",
+"de": 990,
+"a": 1791,
+"m": "(Kingdom of France)"
+},
+"County of Ampuria": {
+"q": "Q1541699",
+"w": "County of Empúries",
+"de": 1000,
+"a": 1414,
+"m": ""
+},
+"Kingdom of Hungary": {
+"q": "Q171150",
+"w": "Kingdom of Hungary",
+"de": 1000,
+"a": 1546,
+"m": ""
+},
+"Duchy of Burgundy": {
+"q": "Q4712",
+"w": "Duchy of Burgundy",
+"de": 1003,
+"a": 1481,
+"m": "(Kingdom of France)"
+},
+"Lohara Dynasty": {
+"q": "Q1315339",
+"w": "Lohara dynasty",
+"de": 1003,
+"a": 1259,
+"m": ""
+},
+"Taifa of Valencia": {
+"q": "Q676811",
+"w": "Taifa of Valencia",
+"de": 1010,
+"a": 1249,
+"m": "(Taifas of Iberia)"
+},
+"Kingdom of Georgia": {
+"q": "Q154667",
+"w": "Kingdom of Georgia",
+"de": 1010,
+"a": 1802,
+"m": ""
+},
+"Taifa of Alpuente": {
+"q": "Q2670895",
+"w": "Taifa of Alpuente",
+"de": 1010,
+"a": 1110,
+"m": "(Taifas of Iberia)"
+},
+"Taifa of Toledo": {
+"q": "Q13534654",
+"w": "Taifa of Toledo",
+"de": 1010,
+"a": 1093,
+"m": "(Taifas of Iberia)"
+},
+"Republic of Pisa": {
+"q": "Q1365493",
+"w": "Republic of Pisa",
+"de": 1010,
+"a": 1401,
+"m": ""
+},
+"Taifa of Dénia": {
+"q": "Q252323",
+"w": "Taifa of Dénia",
+"de": 1010,
+"a": 1249,
+"m": "(Taifas of Iberia)"
+},
+"Taifa of Badajoz": {
+"q": "Q276841",
+"w": "Taifa of Badajoz",
+"de": 1010,
+"a": 1151,
+"m": "(Taifas of Iberia)"
+},
+"Taifa of Tortosa": {
+"q": "Q605930",
+"w": "Taifa of Tortosa",
+"de": 1010,
+"a": 1110,
+"m": "(Taifas of Iberia)"
+},
+"County of Nevers": {
+"q": "Q2070440",
+"w": "County of Nevers",
+"de": 1010,
+"a": 1520,
+"m": "(Kingdom of France)"
+},
+"Republic of Genoa": {
+"q": "Q174306",
+"w": "Republic of Genoa",
+"de": 1010,
+"a": 1795,
+"m": ""
+},
+"Taifa of Arcos": {
+"q": "Q2390604",
+"w": "Taifa of Arcos",
+"de": 1015,
+"a": 1071,
+"m": "(Taifas of Iberia)"
+},
+"Taifa of Albarracín": {
+"q": "Q2060937",
+"w": "Taifa of Albarracín",
+"de": 1015,
+"a": 1110,
+"m": "(Taifas of Iberia)"
+},
+"Taifa of Almería": {
+"q": "Q2580032",
+"w": "Taifa of Almería",
+"de": 1015,
+"a": 1249,
+"m": "(Taifas of Iberia)"
+},
+"Taifa of Zaragoza": {
+"q": "Q33061",
+"w": "Taifa of Zaragoza",
+"de": 1015,
+"a": 1110,
+"m": "(Taifas of Iberia)"
+},
+"Taifa of Morón": {
+"q": "Q2666791",
+"w": "Taifa of Morón",
+"de": 1015,
+"a": 1065,
+"m": "(Taifas of Iberia)"
+},
+"Taifa of Saltés and Huelva": {
+"q": "Q2081763",
+"w": "Taifa of Saltés and Huelva",
+"de": 1015,
+"a": 1151,
+"m": "(Taifas of Iberia)"
+},
+"Taifa of Niebla": {
+"q": "Q2668600",
+"w": "Taifa of Niebla",
+"de": 1015,
+"a": 1249,
+"m": "(Taifas of Iberia)"
+},
+"Taifa of Murcia": {
+"q": "Q921067",
+"w": "Taifa of Murcia",
+"de": 1015,
+"a": 1249,
+"m": "(Taifas of Iberia)"
+},
+"Kingdom of Aragon": {
+"q": "Q199442",
+"w": "Kingdom of Aragon",
+"de": 1015,
+"a": 1168,
+"m": ""
+},
+"Taifa of Carmona": {
+"q": "Q2668584",
+"w": "Taifa of Carmona",
+"de": 1015,
+"a": 1151,
+"m": "(Taifas of Iberia)"
+},
+"Taifa of Granada": {
+"q": "Q205708",
+"w": "Taifa of Granada",
+"de": 1015,
+"a": 1093,
+"m": "(Taifas of Iberia)"
+},
+"Taifa of Santa Maria do Algarve": {
+"q": "Q2077765",
+"w": "Taifa of Santa Maria do Algarve",
+"de": 1018,
+"a": 1055,
+"m": "(Taifas of Iberia)"
+},
+"North Sea Empire": {
+"q": "Q3281269",
+"w": "North Sea Empire",
+"de": 1018,
+"a": 1039,
+"m": ""
+},
+"Hammadid Dynasty": {
+"q": "Q588672",
+"w": "Hammadid dynasty",
+"de": 1018,
+"a": 1151,
+"m": ""
+},
+"Taifa of Algeciras": {
+"q": "Q1183407",
+"w": "Taifa of Algeciras",
+"de": 1028,
+"a": 1168,
+"m": "(Taifas of Iberia)"
+},
+"Taifa of Seville": {
+"q": "Q276951",
+"w": "Taifa of Seville",
+"de": 1028,
+"a": 1093,
+"m": "(Taifas of Iberia)"
+},
+"Kahuripan": {
+"q": "Q12491034",
+"w": "Kahuripan",
+"de": 1028,
+"a": 1045,
+"m": ""
+},
+"Norman Italy": {
+"q": "Q74011",
+"w": "Norman conquest of southern Italy",
+"de": 1034,
+"a": 1138,
+"m": ""
+},
+"Taifa of Silves": {
+"q": "Q1994569",
+"w": "Taifa of Silves",
+"de": 1040,
+"a": 1168,
+"m": "(Taifas of Iberia)"
+},
+"County of Pallars Jussà": {
+"q": "Q12723",
+"w": "Pallars Jussà",
+"de": 1040,
+"a": 1191,
+"m": ""
+},
+"County of Pallars Sobirà": {
+"q": "Q12719",
+"w": "Pallars Sobirà",
+"de": 1040,
+"a": 1201,
+"m": ""
+},
+"Denmark-England": {
+"q": "Q111953993",
+"w": "Danish attacks on Norman England",
+"de": 1040,
+"a": 1045,
+"m": ""
+},
+"Great Seljuk Empire": {
+"q": "Q3708094",
+"w": "Seljuk Empire",
+"de": 1040,
+"a": 1201,
+"m": ""
+},
+"Takrur": {
+"q": "Q2272880",
+"w": "Takrur",
+"de": 1040,
+"a": 1235,
+"m": ""
+},
+"Taifa of Ronda": {
+"q": "Q2524715",
+"w": "Taifa of Ronda",
+"de": 1040,
+"a": 1065,
+"m": "(Taifas of Iberia)"
+},
+"Kingdom of Janggala": {
+"q": "Q13093931",
+"w": "Janggala",
+"de": 1046,
+"a": 1138,
+"m": ""
+},
+"Eastern Kara-Khanids": {
+"q": "Q494354",
+"w": "Kara-Khanid Khanate",
+"de": 1046,
+"a": 1138,
+"m": ""
+},
+"Norway-Denmark": {
+"q": "Q62651",
+"w": "Denmark-Norway",
+"de": 1046,
+"a": 1055,
+"m": ""
+},
+"Western Karakhanid Khanate": {
+"q": "Q494354",
+"w": "Kara-Khanid Khanate",
+"de": 1046,
+"a": 1084,
+"m": ""
+},
+"Kediri Kingdom": {
+"q": "Q756895",
+"w": "Kediri Kingdom",
+"de": 1046,
+"a": 1226,
+"m": ""
+},
+"Zirid dynasty": {
+"q": "Q205718",
+"w": "Zirid dynasty",
+"de": 1056,
+"a": 1151,
+"m": ""
+},
+"Sulayhid Dynasty": {
+"q": "Q2364248",
+"w": "Sulayhid dynasty",
+"de": 1056,
+"a": 1065,
+"m": ""
+},
+"Halych-Volhynia occupation": {
+"q": "Q239502",
+"w": "Kingdom of Galicia-Volhynia",
+"de": 1056,
+"a": 1240,
+"m": ""
+},
+"Principality of Volhynia": {
+"q": "Q680472",
+"w": "Principality of Volhynia",
+"de": 1056,
+"a": 1201,
+"m": ""
+},
+"Principality of Kiev": {
+"q": "Q1483430",
+"w": "Principality of Kiev",
+"de": 1056,
+"a": 1240,
+"m": ""
+},
+"Great Principality of Duklja": {
+"q": "Q1252942",
+"w": "Duklja",
+"de": 1056,
+"a": 1071,
+"m": ""
+},
+"Almoravid Dynasty": {
+"q": "Q75613",
+"w": "Almoravid dynasty",
+"de": 1056,
+"a": 1205,
+"m": ""
+},
+"Principality of Rostov-Suzdal": {
+"q": "Q83546",
+"w": "Vladimir-Suzdal",
+"de": 1056,
+"a": 1240,
+"m": ""
+},
+"Principality of Chernigov": {
+"q": "Q1322662",
+"w": "Principality of Chernigov",
+"de": 1056,
+"a": 1240,
+"m": ""
+},
+"Principality of Peremyshl": {
+"q": "Q4350658",
+"w": "Principality of Peremyshl",
+"de": 1056,
+"a": 1146,
+"m": ""
+},
+"Principality of Pereyaslavl": {
+"q": "Q1261908",
+"w": "Principality of Pereyaslavl",
+"de": 1056,
+"a": 1240,
+"m": ""
+},
+"Eastern Ganga Kingdom": {
+"q": "Q250515",
+"w": "Eastern Ganga dynasty",
+"de": 1056,
+"a": 1351,
+"m": ""
+},
+"Principality of Smolensk": {
+"q": "Q1483495",
+"w": "Principality of Smolensk",
+"de": 1056,
+"a": 1406,
+"m": ""
+},
+"Cuman-Kipchak Confederation": {
+"q": "Q1122052",
+"w": "Cumania",
+"de": 1056,
+"a": 1065,
+"m": ""
+},
+"Principality of Polotsky": {
+"q": "Q200797",
+"w": "Polotsk",
+"de": 1056,
+"a": 1249,
+"m": ""
+},
+"Novgorod Republic": {
+"q": "Q151536",
+"w": "Novgorod Republic",
+"de": 1056,
+"a": 1481,
+"m": ""
+},
+"Najahid Dynasty": {
+"q": "Q1411866",
+"w": "Najahid dynasty",
+"de": 1066,
+"a": 1168,
+"m": ""
+},
+"Taifa of Ceuta": {
+"q": "Q5947557",
+"w": "Taifa of Ceuta",
+"de": 1066,
+"a": 1084,
+"m": "(Taifas of Iberia)"
+},
+"Sena Dynasty": {
+"q": "Q2428714",
+"w": "Sena Dynasty",
+"de": 1072,
+"a": 1235,
+"m": ""
+},
+"Uyunid Emirate": {
+"q": "Q1448688",
+"w": "Uyunid dynasty",
+"de": 1072,
+"a": 1235,
+"m": ""
+},
+"Norman England": {
+"q": "Q200485",
+"w": "Norman Conquest",
+"de": 1072,
+"a": 1168,
+"m": "(Kingdom of England)"
+},
+"Kingdom of Polonnaruwa": {
+"q": "Q3167772",
+"w": "Kingdom of Polonnaruwa",
+"de": 1072,
+"a": 1259,
+"m": ""
+},
+"Empire of Kanem": {
+"q": "Q1139762",
+"w": "Kanem-Bornu Empire",
+"de": 1072,
+"a": 1384,
+"m": ""
+},
+"Kingdom of Duklja": {
+"q": "Q1252942",
+"w": "Duklja",
+"de": 1072,
+"a": 1138,
+"m": ""
+},
+"Norse Greenland": {
+"q": "Q582948",
+"w": "Norse colonization of North America",
+"de": 1072,
+"a": 1384,
+"m": ""
+},
+"Gahadavala Dynasty": {
+"q": "Q1147823",
+"w": "Gahadavala dynasty",
+"de": 1085,
+"a": 1201,
+"m": ""
+},
+"Zurayid dynasty": {
+"q": "Q230385",
+"w": "Zurayids",
+"de": 1085,
+"a": 1176,
+"m": ""
+},
+"Kingdom of the Isles": {
+"q": "Q459188",
+"w": "Kingdom of the Isles",
+"de": 1085,
+"a": 1176,
+"m": ""
+},
+"Principality of Terebovlia": {
+"q": "Q680530",
+"w": "Principality of Terebovlia",
+"de": 1085,
+"a": 1146,
+"m": ""
+},
+"Sultanate of Rum": {
+"q": "Q975405",
+"w": "Sultanate of Rum",
+"de": 1094,
+"a": 1313,
+"m": ""
+},
+"Danishmendids": {
+"q": "Q846670",
+"w": "Danishmendids",
+"de": 1094,
+"a": 1187,
+"m": ""
+},
+"Khwarezmid Dynasty": {
+"q": "Q486918",
+"w": "Anushtegin dynasty",
+"de": 1094,
+"a": 1201,
+"m": ""
+},
+"Northern Fujiwara": {
+"q": "Q1050942",
+"w": "Northern Fujiwara",
+"de": 1094,
+"a": 1191,
+"m": ""
+},
+"Grand Principality of Serbia": {
+"q": "Q1311990",
+"w": "Grand Principality of Serbia",
+"de": 1094,
+"a": 1168,
+"m": ""
+},
+"Principality of Ryazan": {
+"q": "Q269109",
+"w": "Principality of Ryazan",
+"de": 1094,
+"a": 1240,
+"m": ""
+},
+"County of Edessa": {
+"q": "Q232806",
+"w": "County of Edessa",
+"de": 1099,
+"a": 1151,
+"m": ""
+},
+"Armenian Kingdom of Cilicia": {
+"q": "Q335088",
+"w": "Armenian Kingdom of Cilicia",
+"de": 1099,
+"a": 1374,
+"m": ""
+},
+"Kingdom of Jerusalem": {
+"q": "Q55502",
+"w": "Kingdom of Jerusalem",
+"de": 1099,
+"a": 1293,
+"m": ""
+},
+"Principality of Antioch": {
+"q": "Q235030",
+"w": "Principality of Antioch",
+"de": 1099,
+"a": 1271,
+"m": ""
+},
+"Principality of Koknese": {
+"q": "Q2502248",
+"w": "Principality of Koknese",
+"de": 1111,
+"a": 1209,
+"m": ""
+},
+"Principality of Drutsk": {
+"q": "Q2596884",
+"w": "Principality of Drutsk",
+"de": 1111,
+"a": 1249,
+"m": ""
+},
+"Hoysala Kingdom": {
+"q": "Q466581",
+"w": "Hoysala Kingdom",
+"de": 1111,
+"a": 1351,
+"m": ""
+},
+"County of Tripoli": {
+"q": "Q272033",
+"w": "County of Tripoli",
+"de": 1111,
+"a": 1293,
+"m": ""
+},
+"Principality of Minsk": {
+"q": "Q2662372",
+"w": "Principality of Minsk",
+"de": 1111,
+"a": 1313,
+"m": ""
+},
+"Principality of Jersika": {
+"q": "Q1687929",
+"w": "Principality of Jersika",
+"de": 1111,
+"a": 1215,
+"m": ""
+},
+"Principality of Vitebsk": {
+"q": "Q2621010",
+"w": "Principality of Vitebsk",
+"de": 1111,
+"a": 1187,
+"m": ""
+},
+"Kara-Khitans": {
+"q": "Q862304",
+"w": "Qara Khitai",
+"de": 1126,
+"a": 1219,
+"m": ""
+},
+"Great Jin": {
+"q": "Q5066",
+"w": "Jin dynasty (1115-1234)",
+"de": 1126,
+"a": 1235,
+"m": ""
+},
+"Angevins": {
+"q": "Q81133615",
+"w": "Angevin",
+"de": 1126,
+"a": 1146,
+"m": "(Kingdom of France)"
+},
+"Duchy of Silesia": {
+"q": "Q568638",
+"w": "Duchy of Silesia",
+"de": 1139,
+"a": 1304,
+"m": "(Duchies of Poland)"
+},
+"Southern Song": {
+"q": "Q7462",
+"w": "Song dynasty",
+"de": 1139,
+"a": 1278,
+"m": ""
+},
+"County of Portugal": {
+"q": "Q1139807",
+"w": "County of Portugal",
+"de": 1139,
+"a": 1146,
+"m": ""
+},
+"Zengid dynasty": {
+"q": "Q189545",
+"w": "Zengid dynasty",
+"de": 1139,
+"a": 1259,
+"m": ""
+},
+"Kingdom of Navarre": {
+"q": "Q200262",
+"w": "Kingdom of Navarre",
+"de": 1139,
+"a": 1428,
+"m": ""
+},
+"Duchy of Łęczyca": {
+"q": "Q970940",
+"w": "Łęczyca Voivodeship",
+"de": 1139,
+"a": 1146,
+"m": "(Duchies of Poland)"
+},
+"Pomerania": {
+"q": "Q104520",
+"w": "Pomerania",
+"de": 1139,
+"a": 1187,
+"m": ""
+},
+"Kingdom of Sicily": {
+"q": "Q188586",
+"w": "Kingdom of Sicily",
+"de": 1139,
+"a": 1384,
+"m": ""
+},
+"Duchy of Greater Poland": {
+"q": "Q1515009",
+"w": "Duchy of Greater Poland",
+"de": 1139,
+"a": 1304,
+"m": "(Duchies of Poland)"
+},
+"Duchy of Sandomierz": {
+"q": "Q16933165",
+"w": "Duchy of Sandomierz",
+"de": 1139,
+"a": 1304,
+"m": "(Duchies of Poland)"
+},
+"Duchy of Masovia": {
+"q": "Q2361927",
+"w": "Duchy of Masovia",
+"de": 1139,
+"a": 1351,
+"m": "(Duchies of Poland)"
+},
+"Sultanate of Kedah": {
+"q": "Q1317579",
+"w": "Kedah Sultanate",
+"de": 1139,
+"a": 1910,
+"m": ""
+},
+"Almohad Caliphate": {
+"q": "Q199688",
+"w": "Almohad Caliphate",
+"de": 1139,
+"a": 1343,
+"m": ""
+},
+"Angevin Empire": {
+"q": "Q538677",
+"w": "Angevin Empire",
+"de": 1147,
+"a": 1209,
+"m": "(Kingdom of France)"
+},
+"Kingdom of Portugal": {
+"q": "Q45670",
+"w": "Kingdom of Portugal",
+"de": 1147,
+"a": 1911,
+"m": ""
+},
+"Taifa of Tejada": {
+"q": "Q2522604",
+"w": "Taifa of Tejada",
+"de": 1147,
+"a": 1151,
+"m": "(Taifas of Iberia)"
+},
+"Taifa of Córdoba": {
+"q": "Q2285679",
+"w": "Taifa of Córdoba",
+"de": 1147,
+"a": 1249,
+"m": "(Taifas of Iberia)"
+},
+"Principality of Halych": {
+"q": "Q3403551",
+"w": "Principality of Halych",
+"de": 1147,
+"a": 1201,
+"m": ""
+},
+"Kingdom of Africa": {
+"q": "Q3932090",
+"w": "Kingdom of Africa",
+"de": 1152,
+"a": 1168,
+"m": ""
+},
+"Ghurid Dynasty": {
+"q": "Q199443",
+"w": "Ghurid dynasty",
+"de": 1152,
+"a": 1209,
+"m": ""
+},
+"Puebloans - Aztec Regional System": {
+"q": "Q478805",
+"w": "Ancestral Puebloans",
+"de": 1152,
+"a": 1304,
+"m": ""
+},
+"Nabhani Dynasty": {
+"q": "Q11938308",
+"w": "Nabhani dynasty",
+"de": 1169,
+"a": 1176,
+"m": ""
+},
+"Duchy of Wrocław": {
+"q": "Q568638",
+"w": "Duchy of Wrocław",
+"de": 1169,
+"a": 1201,
+"m": "(Duchies of Poland)"
+},
+"Mahdids": {
+"q": "Q1884830",
+"w": "Mahdids",
+"de": 1169,
+"a": 1506,
+"m": ""
+},
+"Kingdom of Powys Wenwynwyn": {
+"q": "Q2670639",
+"w": "Powys Wenwynwyn",
+"de": 1169,
+"a": 1209,
+"m": "(Brythonic Kingdoms)"
+},
+"Kingdom of Powys Fadog": {
+"q": "Q2564694",
+"w": "Powys Fadog",
+"de": 1169,
+"a": 1215,
+"m": "(Brythonic Kingdoms)"
+},
+"Crown of Aragon": {
+"q": "Q204920",
+"w": "Crown of Aragon",
+"de": 1169,
+"a": 1515,
+"m": ""
+},
+"Duchy of Opole": {
+"q": "Q661980",
+"w": "Duchy of Opole",
+"de": 1177,
+"a": 1304,
+"m": "(Duchies of Poland)"
+},
+"Kingdom of Mann": {
+"q": "Q459188",
+"w": "Kingdom of the Isles",
+"de": 1177,
+"a": 1271,
+"m": ""
+},
+"Ayyubid Sultanate": {
+"q": "Q180114",
+"w": "Ayyubid dynasty",
+"de": 1177,
+"a": 1249,
+"m": ""
+},
+"Kakatiya Dynasty": {
+"q": "Q2086556",
+"w": "Kakatiya dynasty",
+"de": 1177,
+"a": 1325,
+"m": ""
+},
+"Kingdom of Serbia": {
+"q": "Q241748",
+"w": "Kingdom of Serbia",
+"de": 1188,
+"a": 1884,
+"m": ""
+},
+"Second Bulgarian Empire": {
+"q": "Q420759",
+"w": "Second Bulgarian Empire",
+"de": 1188,
+"a": 1394,
+"m": ""
+},
+"Shunten Dynasty": {
+"q": "Q6151113",
+"w": "Shunten dynasty",
+"de": 1188,
+"a": 1313,
+"m": ""
+},
+"Banate of Bosnia": {
+"q": "Q3627069",
+"w": "Banate of Bosnia",
+"de": 1188,
+"a": 1384,
+"m": ""
+},
+"Principality of Turov and Pinsk": {
+"q": "Q671362",
+"w": "Principality of Turov",
+"de": 1188,
+"a": 1240,
+"m": ""
+},
+"Kamakura Shogunate": {
+"q": "Q736839",
+"w": "Kamakura shogunate",
+"de": 1188,
+"a": 1332,
+"m": ""
+},
+"Yadava Dynasty": {
+"q": "Q5790",
+"w": "Yadava Dynasty",
+"de": 1188,
+"a": 1325,
+"m": ""
+},
+"Duchy of Kuyavia": {
+"q": "Q11750543",
+"w": "Duchy of Kuyavia",
+"de": 1188,
+"a": 1205,
+"m": "(Duchies of Poland)"
+},
+"Chimu Empire": {
+"q": "Q581741",
+"w": "Chimor",
+"de": 1188,
+"a": 1481,
+"m": ""
+},
+"County of Boulogne": {
+"q": "Q1431527",
+"w": "County of Boulogne",
+"de": 1188,
+"a": 1259,
+"m": "(Kingdom of France)"
+},
+"Kingdom of Cyprus": {
+"q": "Q213638",
+"w": "Kingdom of Cyprus",
+"de": 1192,
+"a": 1491,
+"m": ""
+},
+"Kathmandu": {
+"q": "Q3037",
+"w": "Kathmandu",
+"de": 1202,
+"a": 1761,
+"m": ""
+},
+"Texcoco": {
+"q": "Q1178043",
+"w": "Texcoco",
+"de": 1202,
+"a": 1428,
+"m": ""
+},
+"Principality of Galicia-Volhynia": {
+"q": "Q239502",
+"w": "Kingdom of Galicia-Volhynia",
+"de": 1202,
+"a": 1240,
+"m": ""
+},
+"Livonian Brothers of the Sword": {
+"q": "Q157605",
+"w": "Livonian Brothers of the Sword",
+"de": 1202,
+"a": 1240,
+"m": ""
+},
+"Sosso Empire": {
+"q": "Q13099593",
+"w": "Sosso Empire",
+"de": 1202,
+"a": 1235,
+"m": ""
+},
+"Kingdom of Bohemia": {
+"q": "Q42585",
+"w": "Kingdom of Bohemia",
+"de": 1202,
+"a": 1528,
+"m": "(Holy Roman Empire);(Kingdom of Bohemia)"
+},
+"Khwarezmid Empire": {
+"q": "Q63134381",
+"w": "Khwarazmian Empire",
+"de": 1202,
+"a": 1235,
+"m": ""
+},
+"Namayan": {
+"q": "Q4401026",
+"w": "Namayan",
+"de": 1202,
+"a": 1571,
+"m": ""
+},
+"Despotate of Epirus": {
+"q": "Q187684",
+"w": "Despotate of Epirus",
+"de": 1206,
+"a": 1481,
+"m": ""
+},
+"Latin Empire": {
+"q": "Q178897",
+"w": "Latin Empire",
+"de": 1206,
+"a": 1278,
+"m": ""
+},
+"Negroponte": {
+"q": "Q247067",
+"w": "Negroponte",
+"de": 1206,
+"a": 1209,
+"m": ""
+},
+"Mongol Empire": {
+"q": "Q12557",
+"w": "Mongol Empire",
+"de": 1206,
+"a": 1293,
+"m": ""
+},
+"County of Armagnac": {
+"q": "Q676745",
+"w": "County of Armagnac",
+"de": 1206,
+"a": 1496,
+"m": "(Kingdom of France)"
+},
+"County of Périgord": {
+"q": "Q1947408",
+"w": "County of Périgord",
+"de": 1206,
+"a": 1481,
+"m": "(Kingdom of France)"
+},
+"County of Poitou": {
+"q": "Q2991374",
+"w": "County of Poitou",
+"de": 1206,
+"a": 1249,
+"m": "(Kingdom of France)"
+},
+"Principality of Achaea": {
+"q": "Q332005",
+"w": "Principality of Achaea",
+"de": 1206,
+"a": 1439,
+"m": ""
+},
+"County of Auvergne": {
+"q": "Q1152",
+"w": "Auvergne",
+"de": 1206,
+"a": 1501,
+"m": "(Kingdom of France)"
+},
+"Duchy of Athens": {
+"q": "Q334714",
+"w": "Duchy of Athens",
+"de": 1206,
+"a": 1313,
+"m": ""
+},
+"Empire of Trebizond": {
+"q": "Q178913",
+"w": "Empire of Trebizond",
+"de": 1206,
+"a": 1462,
+"m": ""
+},
+"Nicaean Empire": {
+"q": "Q181254",
+"w": "Empire of Nicaea",
+"de": 1206,
+"a": 1278,
+"m": ""
+},
+"Kingdom of Thessalonica": {
+"q": "Q325461",
+"w": "Kingdom of Thessalonica",
+"de": 1206,
+"a": 1226,
+"m": ""
+},
+"Domain of Rhodes": {
+"q": "Q43048",
+"w": "Rhodes",
+"de": 1206,
+"a": 1249,
+"m": ""
+},
+"County of Touraine": {
+"q": "Q605051",
+"w": "Touraine",
+"de": 1206,
+"a": 1491,
+"m": "(Kingdom of France)"
+},
+"Duchy of the Archipelago": {
+"q": "Q777981",
+"w": "Duchy of the Archipelago",
+"de": 1210,
+"a": 1313,
+"m": ""
+},
+"Duchy of Kalisz": {
+"q": "Q16570037",
+"w": "Duchy of Kalisz",
+"de": 1210,
+"a": 1219,
+"m": "(Duchies of Poland)"
+},
+"Mamluk Dynasty": {
+"q": "Q847420",
+"w": "Mamluk dynasty (Delhi)",
+"de": 1210,
+"a": 1293,
+"m": "(Delhi Sultanate)"
+},
+"Pandya Empire": {
+"q": "Q844910",
+"w": "Pandya Empire",
+"de": 1216,
+"a": 1325,
+"m": ""
+},
+"Grand Duchy of Lithuania": {
+"q": "Q49683",
+"w": "Grand Duchy of Lithuania",
+"de": 1220,
+"a": 1449,
+"m": ""
+},
+"Singhasari": {
+"q": "Q2060657",
+"w": "Singhasari",
+"de": 1227,
+"a": 1293,
+"m": ""
+},
+"Teutonic Order": {
+"q": "Q48189",
+"w": "Teutonic Order",
+"de": 1236,
+"a": 1525,
+"m": "(Holy Roman Empire)"
+},
+"Rasulid Dynasty": {
+"q": "Q2132267",
+"w": "Rasulid dynasty",
+"de": 1236,
+"a": 1458,
+"m": ""
+},
+"County of Foix": {
+"q": "Q1481436",
+"w": "County of Foix",
+"de": 1236,
+"a": 1555,
+"m": "(Kingdom of France)"
+},
+"Mali Empire": {
+"q": "Q184536",
+"w": "Mali Empire",
+"de": 1236,
+"a": 1611,
+"m": ""
+},
+"Empire of Thessalonica": {
+"q": "Q623151",
+"w": "Empire of Thessalonica",
+"de": 1236,
+"a": 1249,
+"m": ""
+},
+"Hafsid Dynasty": {
+"q": "Q752662",
+"w": "Hafsid dynasty",
+"de": 1236,
+"a": 1571,
+"m": ""
+},
+"Zayyanid dynasty": {
+"q": "Q307697",
+"w": "Zayyanid dynasty",
+"de": 1236,
+"a": 1555,
+"m": ""
+},
+"Ceylon": {
+"q": "Q918153",
+"w": "Sri Lanka",
+"de": 1236,
+"a": 1506,
+"m": ""
+},
+"Kingdom of Dambadeniya": {
+"q": "Q3136869",
+"w": "Kingdom of Dambadeniya",
+"de": 1236,
+"a": 1293,
+"m": ""
+},
+"Crown of Castile": {
+"q": "Q217196",
+"w": "Crown of Castile",
+"de": 1236,
+"a": 1515,
+"m": ""
+},
+"Mamluk Sultanate": {
+"q": "Q282428",
+"w": "Mamluk Sultanate",
+"de": 1241,
+"a": 1518,
+"m": ""
+},
+"County of Artois": {
+"q": "Q778266",
+"w": "County of Artois",
+"de": 1241,
+"a": 1332,
+"m": "(Kingdom of France)"
+},
+"Sukhothai Kingdom": {
+"q": "Q863279",
+"w": "Sukhothai Kingdom",
+"de": 1241,
+"a": 1458,
+"m": ""
+},
+"Emirate of Granada": {
+"q": "Q238445",
+"w": "Emirate of Granada",
+"de": 1241,
+"a": 1491,
+"m": ""
+},
+"Capetian House of Anjou": {
+"q": "Q939200",
+"w": "Capetian House of Anjou",
+"de": 1250,
+"a": 1384,
+"m": "(Kingdom of France)"
+},
+"Duchy of Głogów": {
+"q": "Q684501",
+"w": "Duchy of Głogów",
+"de": 1250,
+"a": 1313,
+"m": "(Duchies of Poland)"
+},
+"Marinid Sultanate": {
+"q": "Q582861",
+"w": "Marinid Sultanate",
+"de": 1250,
+"a": 1467,
+"m": ""
+},
+"County of Holland": {
+"q": "Q762943",
+"w": "County of Holland",
+"de": 1260,
+"a": 1362,
+"m": "(Holy Roman Empire)"
+},
+"Republic of Florence": {
+"q": "Q148540",
+"w": "Republic of Florence",
+"de": 1260,
+"a": 1737,
+"m": "(Holy Roman Empire)"
+},
+"House of Luxembourg": {
+"q": "Q122293",
+"w": "House of Luxembourg",
+"de": 1260,
+"a": 1414,
+"m": "(Holy Roman Empire)"
+},
+"Margraviate of Brandenburg": {
+"q": "Q148499",
+"w": "Margraviate of Brandenburg",
+"de": 1260,
+"a": 1414,
+"m": "(Holy Roman Empire)"
+},
+"Duchy of Styria": {
+"q": "Q580447",
+"w": "Duchy of Styria",
+"de": 1260,
+"a": 1501,
+"m": "(Holy Roman Empire)"
+},
+"County of Savoy": {
+"q": "Q1232887",
+"w": "County of Savoy",
+"de": 1260,
+"a": 1539,
+"m": "(Holy Roman Empire)"
+},
+"House of Hohenstaufen": {
+"q": "Q130875",
+"w": "Hohenstaufen",
+"de": 1260,
+"a": 1271,
+"m": "(Holy Roman Empire)"
+},
+"Dauphiné": {
+"q": "Q151999",
+"w": "Dauphiné",
+"de": 1260,
+"a": 1351,
+"m": "(Kingdom of France)"
+},
+"House of Wittelsbach": {
+"q": "Q131621",
+"w": "House of Wittelsbach",
+"de": 1260,
+"a": 1332,
+"m": "(Holy Roman Empire)"
+},
+"County of Brabant": {
+"q": "Q751868",
+"w": "Landgraviate of Brabant",
+"de": 1260,
+"a": 1430,
+"m": "(Holy Roman Empire)"
+},
+"House of Habsburg": {
+"q": "Q65968",
+"w": "House of Habsburg",
+"de": 1260,
+"a": 1515,
+"m": "(Holy Roman Empire)"
+},
+"Bahrani Dynasty": {
+"q": "Q311341",
+"w": "Al-Ahsa Oasis",
+"de": 1260,
+"a": 1520,
+"m": ""
+},
+"Principality of Orange": {
+"q": "Q2281221",
+"w": "Principality of Orange",
+"de": 1260,
+"a": 1571,
+"m": "(Holy Roman Empire)"
+},
+"Duchy of Bavaria": {
+"q": "Q47261",
+"w": "Duchy of Bavaria",
+"de": 1260,
+"a": 1805,
+"m": "(Holy Roman Empire)"
+},
+"House of Ascania": {
+"q": "Q168352",
+"w": "House of Ascania",
+"de": 1260,
+"a": 1486,
+"m": "(Holy Roman Empire)"
+},
+"Patriarchate of Aquileia": {
+"q": "Q836894",
+"w": "Patriarchate of Aquileia",
+"de": 1260,
+"a": 1449,
+"m": "(Holy Roman Empire)"
+},
+"Holy Roman Empire Minor States": {
+"q": "Q12548",
+"w": "Holy Roman Empire",
+"de": 1260,
+"a": 1806,
+"m": "(Holy Roman Empire)"
+},
+"Thessaly": {
+"q": "Q166919",
+"w": "Thessaly",
+"de": 1272,
+"a": 1332,
+"m": ""
+},
+"House of Anjou-Sicily": {
+"q": "Q939200",
+"w": "Capetian House of Anjou",
+"de": 1272,
+"a": 1384,
+"m": ""
+},
+"Samudera Pasai Sultanate": {
+"q": "Q3284315",
+"w": "Samudera Pasai Sultanate",
+"de": 1272,
+"a": 1520,
+"m": ""
+},
+"Ethiopian Empire": {
+"q": "Q207521",
+"w": "Ethiopian Empire",
+"de": 1272,
+"a": 1935,
+"m": ""
+},
+"Comtat Venaissin": {
+"q": "Q1122980",
+"w": "Comtat Venaissin",
+"de": 1272,
+"a": 1790,
+"m": ""
+},
+"Kingdom of Majorca": {
+"q": "Q836676",
+"w": "Kingdom of Majorca",
+"de": 1279,
+"a": 1343,
+"m": ""
+},
+"Duchies of Poland": {
+"q": "Q2984183",
+"w": "Testament of Bolesław III Wrymouth",
+"de": 1279,
+"a": 1304,
+"m": "(Duchies of Poland)"
+},
+"Duchy of Jawor": {
+"q": "Q561204",
+"w": "Duchy of Jawor",
+"de": 1279,
+"a": 1313,
+"m": "(Duchies of Poland)"
+},
+"Duchy of Legnica": {
+"q": "Q570740",
+"w": "Duchy of Legnica",
+"de": 1279,
+"a": 1313,
+"m": "(Duchies of Poland)"
+},
+"Grand Duchy of Kraków": {
+"q": "Q688918",
+"w": "Grand Duchy of Kraków",
+"de": 1279,
+"a": 1293,
+"m": ""
+},
+"Kampili Kingdom": {
+"q": "Q1446192",
+"w": "Kampili Kingdom",
+"de": 1285,
+"a": 1332,
+"m": ""
+},
+"Pskov Republic": {
+"q": "Q317078",
+"w": "Pskov Republic",
+"de": 1285,
+"a": 1511,
+"m": ""
+},
+"Kingdom of Syrmia": {
+"q": "Q1309492",
+"w": "Syrmia",
+"de": 1285,
+"a": 1325,
+"m": ""
+},
+"Ifat Sultanate": {
+"q": "Q157727",
+"w": "Sultanate of Ifat",
+"de": 1285,
+"a": 1414,
+"m": ""
+},
+"Duchy of Racibórz": {
+"q": "Q700117",
+"w": "Duchy of Racibórz",
+"de": 1285,
+"a": 1304,
+"m": "(Duchies of Poland)"
+},
+"Kingdom of Naples": {
+"q": "Q173065",
+"w": "Kingdom of Naples",
+"de": 1285,
+"a": 1501,
+"m": ""
+},
+"Duchy of Bytom": {
+"q": "Q682001",
+"w": "Duchy of Bytom",
+"de": 1285,
+"a": 1304,
+"m": "(Duchies of Poland)"
+},
+"Cuzco": {
+"q": "Q5582862",
+"w": "Cusco",
+"de": 1294,
+"a": 1439,
+"m": ""
+},
+"Malaya": {
+"q": "Q1479726",
+"w": "Malaya",
+"de": 1294,
+"a": 1351,
+"m": ""
+},
+"Nizhny Novgorod": {
+"q": "Q891",
+"w": "Nizhny Novgorod",
+"de": 1294,
+"a": 1394,
+"m": ""
+},
+"Yuan Dynasty": {
+"q": "Q7313",
+"w": "Yuan dynasty",
+"de": 1294,
+"a": 1374,
+"m": ""
+},
+"Khalji Dynasty": {
+"q": "Q919071",
+"w": "Khalji dynasty",
+"de": 1294,
+"a": 1325,
+"m": "(Delhi Sultanate)"
+},
+"Grand Principality of Moscow": {
+"q": "Q170770",
+"w": "Principality of Moscow",
+"de": 1294,
+"a": 1546,
+"m": ""
+},
+"Kingdom of Scotland": {
+"q": "Q230791",
+"w": "Kingdom of Scotland",
+"de": 1294,
+"a": 1608,
+"m": ""
+},
+"Principality of Pinsk": {
+"q": "Q671362",
+"w": "Principality of Turov",
+"de": 1294,
+"a": 1325,
+"m": ""
+},
+"Majapahit": {
+"q": "Q49326",
+"w": "Majapahit",
+"de": 1294,
+"a": 1518,
+"m": ""
+},
+"Principality of Vladimir-Suzdal": {
+"q": "Q83546",
+"w": "Vladimir-Suzdal",
+"de": 1294,
+"a": 1486,
+"m": ""
+},
+"Shan States": {
+"q": "Q4765854",
+"w": "Shan States",
+"de": 1294,
+"a": 1563,
+"m": ""
+},
+"Ilkhanate": {
+"q": "Q178084",
+"w": "Ilkhanate",
+"de": 1294,
+"a": 1343,
+"m": ""
+},
+"Hanthawaddy Kingdom": {
+"q": "Q1572529",
+"w": "Hanthawaddy Kingdom",
+"de": 1294,
+"a": 1546,
+"m": ""
+},
+"Swiss Confederation": {
+"q": "Q39",
+"w": "Switzerland",
+"de": 1294,
+"a": 2024,
+"m": "(Holy Roman Empire)"
+},
+"Phayao Kingdom": {
+"q": "Q4202088",
+"w": "Phayao Kingdom",
+"de": 1294,
+"a": 1343,
+"m": ""
+},
+"Myinsaing Kingdom": {
+"q": "Q3446205",
+"w": "Myinsaing Kingdom",
+"de": 1294,
+"a": 1313,
+"m": ""
+},
+"Lan Na Kingdom": {
+"q": "Q1059707",
+"w": "Lan Na",
+"de": 1294,
+"a": 1563,
+"m": ""
+},
+"Principality of Beloozero": {
+"q": "Q1967380",
+"w": "Principality of Beloozero",
+"de": 1294,
+"a": 1343,
+"m": ""
+},
+"Chagatai Khanate": {
+"q": "Q487829",
+"w": "Chagatai Khanate",
+"de": 1294,
+"a": 1462,
+"m": ""
+},
+"Golden Horde": {
+"q": "Q79965",
+"w": "Golden Horde",
+"de": 1294,
+"a": 1695,
+"m": ""
+},
+"Galicia-Volhynia": {
+"q": "Q239502",
+"w": "Kingdom of Galicia-Volhynia",
+"de": 1294,
+"a": 1351,
+"m": ""
+},
+"Principality of Turov": {
+"q": "Q671362",
+"w": "Principality of Turov",
+"de": 1294,
+"a": 1325,
+"m": ""
+},
+"Tver": {
+"q": "Q2288",
+"w": "Tver",
+"de": 1294,
+"a": 1486,
+"m": ""
+},
+"Beylik of Aydin": {
+"q": "Q717112",
+"w": "Aydinids",
+"de": 1305,
+"a": 1428,
+"m": ""
+},
+"Beylik of Karasi": {
+"q": "Q941887",
+"w": "Karasids",
+"de": 1305,
+"a": 1343,
+"m": ""
+},
+"Beylik of Hamid": {
+"q": "Q2410637",
+"w": "Hamidids",
+"de": 1305,
+"a": 1343,
+"m": ""
+},
+"Beylik of Sinop": {
+"q": "Q2096678",
+"w": "Candar dynasty",
+"de": 1305,
+"a": 1332,
+"m": ""
+},
+"Eshrefids": {
+"q": "Q1386189",
+"w": "Eshrefids",
+"de": 1305,
+"a": 1325,
+"m": ""
+},
+"Germiyanids": {
+"q": "Q1324889",
+"w": "Germiyanids",
+"de": 1305,
+"a": 1439,
+"m": ""
+},
+"Kingdom of Singapura": {
+"q": "Q27842",
+"w": "Kingdom of Singapura",
+"de": 1305,
+"a": 1401,
+"m": ""
+},
+"Michoacán": {
+"q": "Q79861",
+"w": "Michoacán",
+"de": 1305,
+"a": 1533,
+"m": ""
+},
+"Kastamonu": {
+"q": "Q155915",
+"w": "Kastamonu",
+"de": 1305,
+"a": 1343,
+"m": ""
+},
+"Beylik of Menteshe": {
+"q": "Q1400572",
+"w": "Menteshe",
+"de": 1305,
+"a": 1414,
+"m": ""
+},
+"Beylik of Isfendiyar": {
+"q": "Q2096678",
+"w": "Candar dynasty",
+"de": 1305,
+"a": 1462,
+"m": ""
+},
+"Ahi Republic": {
+"q": "Q400290",
+"w": "Ahis",
+"de": 1305,
+"a": 1362,
+"m": ""
+},
+"Ottoman Empire": {
+"q": "Q12560",
+"w": "Ottoman Empire",
+"de": 1305,
+"a": 1923,
+"m": ""
+},
+"Beylik of Karaman": {
+"q": "Q1469100",
+"w": "Karamanids",
+"de": 1305,
+"a": 1467,
+"m": ""
+},
+"Principality of Wallachia": {
+"q": "Q171393",
+"w": "Wallachia",
+"de": 1314,
+"a": 1858,
+"m": ""
+},
+"Beylik of Saruhan": {
+"q": "Q1968654",
+"w": "Sarukhanids",
+"de": 1314,
+"a": 1414,
+"m": ""
+},
+"Nanzan": {
+"q": "Q55522",
+"w": "Nanzan",
+"de": 1314,
+"a": 1401,
+"m": ""
+},
+"Chüzan": {
+"q": "Q55521",
+"w": "Chūzan",
+"de": 1314,
+"a": 1428,
+"m": ""
+},
+"Hokuzan": {
+"q": "Q55523",
+"w": "Hokuzan",
+"de": 1314,
+"a": 1421,
+"m": ""
+},
+"Catalan Company": {
+"q": "Q1501196",
+"w": "Catalan Company",
+"de": 1314,
+"a": 1362,
+"m": ""
+},
+"Jaffna kingdom": {
+"q": "Q1311219",
+"w": "Jaffna kingdom",
+"de": 1314,
+"a": 1594,
+"m": ""
+},
+"Kingdom of Pinya": {
+"q": "Q3446213",
+"w": "Pinya Kingdom",
+"de": 1314,
+"a": 1374,
+"m": ""
+},
+"Tenochtitlan": {
+"q": "Q13695",
+"w": "Tenochtitlan",
+"de": 1326,
+"a": 1428,
+"m": ""
+},
+"Sagaing Kingdom": {
+"q": "Q3446223",
+"w": "Sagaing Kingdom",
+"de": 1326,
+"a": 1374,
+"m": ""
+},
+"Tughlaq Dynasty": {
+"q": "Q1124402",
+"w": "Tughlaq dynasty",
+"de": 1326,
+"a": 1414,
+"m": "(Delhi Sultanate)"
+},
+"Beylik of Teke": {
+"q": "Q373988",
+"w": "Beylik of Teke",
+"de": 1326,
+"a": 1428,
+"m": ""
+},
+"Earldom of Ulster": {
+"q": "Q19872858",
+"w": "Earldom of Ulster",
+"de": 1326,
+"a": 1332,
+"m": "(Kingdom of England)"
+},
+"Earldom of Desmond": {
+"q": "Q2991012",
+"w": "Earl of Desmond",
+"de": 1333,
+"a": 1458,
+"m": "(Kingdom of England)"
+},
+"Kenmu Restoration": {
+"q": "Q826021",
+"w": "Kenmu Restoration",
+"de": 1333,
+"a": 1343,
+"m": ""
+},
+"Principality of Theodoro": {
+"q": "Q874954",
+"w": "Principality of Theodoro",
+"de": 1333,
+"a": 1474,
+"m": ""
+},
+"Free County of Burgundy": {
+"q": "Q642314",
+"w": "County of Burgundy",
+"de": 1333,
+"a": 1384,
+"m": "(Holy Roman Empire)"
+},
+"Danish Magnates": {
+"q": "Q350186",
+"w": "Christopher II of Denmark",
+"de": 1333,
+"a": 1351,
+"m": "(Kingdom of Denmark)"
+},
+"House of Bourbon": {
+"q": "Q58389",
+"w": "House of Bourbon",
+"de": 1333,
+"a": 1594,
+"m": "(Kingdom of France)"
+},
+"Electorate of Trier": {
+"q": "Q1794352",
+"w": "Electorate of Trier",
+"de": 1333,
+"a": 1618,
+"m": "(Holy Roman Empire)"
+},
+"Principality of Valona": {
+"q": "Q7245121",
+"w": "Principality of Valona",
+"de": 1333,
+"a": 1374,
+"m": ""
+},
+"Kartids": {
+"q": "Q1734616",
+"w": "Kart dynasty",
+"de": 1344,
+"a": 1384,
+"m": ""
+},
+"Sarbadars": {
+"q": "Q1931074",
+"w": "Sarbadars",
+"de": 1344,
+"a": 1394,
+"m": ""
+},
+"Kashmiri Sultanate": {
+"q": "Q123027565",
+"w": "Kashmir Sultanate",
+"de": 1344,
+"a": 1587,
+"m": ""
+},
+"Isle of Man": {
+"q": "Q9676",
+"w": "Isle of Man",
+"de": 1344,
+"a": 1401,
+"m": ""
+},
+"Injuids": {
+"q": "Q1067513",
+"w": "Injuids",
+"de": 1344,
+"a": 1362,
+"m": ""
+},
+"Chobanids": {
+"q": "Q1089675",
+"w": "Chobanids",
+"de": 1344,
+"a": 1362,
+"m": ""
+},
+"Sultanate of Bengal": {
+"q": "Q4083686",
+"w": "Bengal Sultanate",
+"de": 1344,
+"a": 1533,
+"m": ""
+},
+"Sind-Samma Dynasty": {
+"q": "Q27260",
+"w": "Samma dynasty",
+"de": 1344,
+"a": 1525,
+"m": ""
+},
+"Ashikaga Shogunate": {
+"q": "Q1154406",
+"w": "Ashikaga shogunate",
+"de": 1344,
+"a": 1571,
+"m": ""
+},
+"Commune of the Zealots": {
+"q": "Q17151",
+"w": "Thessaloniki",
+"de": 1344,
+"a": 1351,
+"m": ""
+},
+"Vijayanagara Empire": {
+"q": "Q167639",
+"w": "Vijayanagara Empire",
+"de": 1344,
+"a": 1571,
+"m": ""
+},
+"Jalayirid Sultanate": {
+"q": "Q866716",
+"w": "Jalayirid Sultanate",
+"de": 1344,
+"a": 1401,
+"m": ""
+},
+"Beylik of Dulkadir": {
+"q": "Q1264808",
+"w": "Beylik of Dulkadir",
+"de": 1344,
+"a": 1515,
+"m": ""
+},
+"Muzaffarids": {
+"q": "Q6944360",
+"w": "Muzaffarids",
+"de": 1344,
+"a": 1394,
+"m": ""
+},
+"Serbian Empire": {
+"q": "Q1406298",
+"w": "Serbian Empire",
+"de": 1352,
+"a": 1458,
+"m": ""
+},
+"Ayutthaya Kingdom": {
+"q": "Q841364",
+"w": "Ayutthaya Kingdom",
+"de": 1352,
+"a": 1768,
+"m": ""
+},
+"Bahmani Sultanate": {
+"q": "Q374521",
+"w": "Bahmani Sultanate",
+"de": 1352,
+"a": 1491,
+"m": ""
+},
+"Principality of Moldavia": {
+"q": "Q10957559",
+"w": "Moldavia",
+"de": 1363,
+"a": 1858,
+"m": ""
+},
+"Sultanate of Brunei": {
+"q": "Q887803",
+"w": "Bruneian Sultanate (1368-1888)",
+"de": 1363,
+"a": 2024,
+"m": ""
+},
+"Electorate of Saxony": {
+"q": "Q156199",
+"w": "Electorate of Saxony",
+"de": 1363,
+"a": 1805,
+"m": "(Holy Roman Empire)"
+},
+"House of Tocco": {
+"q": "Q149846",
+"w": "County Palatine of Cephalonia and Zakynthos",
+"de": 1363,
+"a": 1414,
+"m": ""
+},
+"House of Valois-Anjou": {
+"q": "Q1716871",
+"w": "House of Valois-Anjou",
+"de": 1363,
+"a": 1486,
+"m": "(Kingdom of France)"
+},
+"Tibet": {
+"q": "Q521263",
+"w": "History of Tibet",
+"de": 1363,
+"a": 1952,
+"m": ""
+},
+"Despotate of Vidin": {
+"q": "Q927154",
+"w": "Tsardom of Vidin",
+"de": 1363,
+"a": 1401,
+"m": ""
+},
+"White Horde": {
+"q": "Q2553863",
+"w": "White Horde",
+"de": 1363,
+"a": 1384,
+"m": ""
+},
+"Blue Horde": {
+"q": "Q644979",
+"w": "Blue Horde",
+"de": 1363,
+"a": 1449,
+"m": ""
+},
+"Despotate of Dobruja": {
+"q": "Q542165",
+"w": "Despotate of Dobruja",
+"de": 1363,
+"a": 1394,
+"m": ""
+},
+"Lan Xang": {
+"q": "Q853477",
+"w": "Lan Xang",
+"de": 1363,
+"a": 1708,
+"m": ""
+},
+"Tondo": {
+"q": "Q1642472",
+"w": "Tondo (historical polity)",
+"de": 1375,
+"a": 1571,
+"m": ""
+},
+"Ava Kingdom": {
+"q": "Q2500952",
+"w": "Kingdom of Ava",
+"de": 1375,
+"a": 1528,
+"m": ""
+},
+"Ming Dynasty": {
+"q": "Q9903",
+"w": "Ming dynasty",
+"de": 1375,
+"a": 1644,
+"m": ""
+},
+"Northern Yuan": {
+"q": "Q8959",
+"w": "Northern Yuan",
+"de": 1375,
+"a": 1439,
+"m": ""
+},
+"Serbian Despots": {
+"q": "Q878319",
+"w": "Serbian Despotate",
+"de": 1375,
+"a": 1421,
+"m": ""
+},
+"Timurid Empire": {
+"q": "Q484195",
+"w": "Timurid Empire",
+"de": 1375,
+"a": 1528,
+"m": ""
+},
+"Qara Qoyunlu": {
+"q": "Q324470",
+"w": "Qara Qoyunlu",
+"de": 1375,
+"a": 1467,
+"m": ""
+},
+"Despotate of Arta": {
+"q": "Q2331954",
+"w": "Despotate of Arta",
+"de": 1375,
+"a": 1421,
+"m": ""
+},
+"Albanian Principalities": {
+"q": "Q2658979",
+"w": "Albanian principalities",
+"de": 1375,
+"a": 1421,
+"m": ""
+},
+"County of Béarn": {
+"q": "Q213763",
+"w": "Béarn",
+"de": 1385,
+"a": 1452,
+"m": "(Kingdom of France)"
+},
+"Margraviate of Moravia": {
+"q": "Q2670751",
+"w": "Margraviate of Moravia",
+"de": 1385,
+"a": 1414,
+"m": "(Holy Roman Empire);(Kingdom of Bohemia)"
+},
+"Kingdom of Bosnia": {
+"q": "Q2980623",
+"w": "Kingdom of Bosnia",
+"de": 1385,
+"a": 1481,
+"m": ""
+},
+"Bornu Empire": {
+"q": "Q1139762",
+"w": "Kanem-Bornu Empire",
+"de": 1385,
+"a": 1894,
+"m": ""
+},
+"Republic of Ragusa": {
+"q": "Q208169",
+"w": "Republic of Ragusa",
+"de": 1385,
+"a": 1808,
+"m": ""
+},
+"Ramadanid Emirate": {
+"q": "Q2261321",
+"w": "Ramadanid Emirate",
+"de": 1385,
+"a": 1515,
+"m": ""
+},
+"Joseon": {
+"q": "Q28405",
+"w": "Joseon",
+"de": 1395,
+"a": 1897,
+"m": ""
+},
+"Jaunpur Sultanate": {
+"q": "Q167134",
+"w": "Jaunpur Sultanate",
+"de": 1395,
+"a": 1481,
+"m": ""
+},
+"Principality of Valona and Kanina": {
+"q": "Q7245121",
+"w": "Principality of Valona",
+"de": 1395,
+"a": 1421,
+"m": ""
+},
+"Four Oirats": {
+"q": "Q4332415",
+"w": "Oirat Confederation",
+"de": 1402,
+"a": 1474,
+"m": ""
+},
+"Duchy of Milan": {
+"q": "Q153529",
+"w": "Duchy of Milan",
+"de": 1402,
+"a": 1539,
+"m": "(Holy Roman Empire)"
+},
+"Kalmar Union": {
+"q": "Q62623",
+"w": "Kalmar Union",
+"de": 1402,
+"a": 1525,
+"m": "(Kalmar Union)"
+},
+"Aq Qoyunlu": {
+"q": "Q555994",
+"w": "Aq Qoyunlu",
+"de": 1407,
+"a": 1511,
+"m": ""
+},
+"Sayyid Dynasty": {
+"q": "Q1331421",
+"w": "Sayyid dynasty",
+"de": 1415,
+"a": 1452,
+"m": "(Delhi Sultanate)"
+},
+"Hashemite Arab Federation": {
+"q": "Q6000379",
+"w": "Arab Iraq",
+"de": 1415,
+"a": 1439,
+"m": ""
+},
+"Adal Sultanate": {
+"q": "Q2365048",
+"w": "Adal Sultanate",
+"de": 1415,
+"a": 1546,
+"m": ""
+},
+"Makuria Kingdom": {
+"q": "Q829356",
+"w": "Makuria",
+"de": 1415,
+"a": 1518,
+"m": ""
+},
+"Electorate of Brandenburg": {
+"q": "Q148499",
+"w": "Margraviate of Brandenburg",
+"de": 1422,
+"a": 1618,
+"m": "(Holy Roman Empire)"
+},
+"Livonian Conference": {
+"q": "Q33698",
+"w": "Livonian language",
+"de": 1422,
+"a": 1563,
+"m": ""
+},
+"Lê Dynasty": {
+"q": "Q10800789",
+"w": "Lê dynasty",
+"de": 1429,
+"a": 1571,
+"m": ""
+},
+"Kingdom of Mrauk U": {
+"q": "Q10791211",
+"w": "Kingdom of Mrauk U",
+"de": 1429,
+"a": 1787,
+"m": ""
+},
+"Ryukyu Kingdom": {
+"q": "Q28025",
+"w": "Ryukyu Kingdom",
+"de": 1429,
+"a": 1520,
+"m": ""
+},
+"Khanate of Sibir": {
+"q": "Q190513",
+"w": "Khanate of Sibir",
+"de": 1429,
+"a": 1587,
+"m": ""
+},
+"Duchy of Luxembourg": {
+"q": "Q2719360",
+"w": "Duchy of Luxembourg",
+"de": 1429,
+"a": 1449,
+"m": "(Holy Roman Empire)"
+},
+"Aztec Triple Alliance": {
+"q": "Q2608489",
+"w": "Aztec Empire",
+"de": 1429,
+"a": 1520,
+"m": ""
+},
+"Duchy of Lorraine": {
+"q": "Q155019",
+"w": "Duchy of Lorraine",
+"de": 1431,
+"a": 1768,
+"m": "(Holy Roman Empire)"
+},
+"Inca Empire": {
+"q": "Q28573",
+"w": "Inca Empire",
+"de": 1440,
+"a": 1571,
+"m": ""
+},
+"Kingdom of Kongo": {
+"q": "Q796583",
+"w": "Kingdom of Kongo",
+"de": 1440,
+"a": 1669,
+"m": ""
+},
+"Khanate of Kazan": {
+"q": "Q186537",
+"w": "Khanate of Kazan",
+"de": 1440,
+"a": 1551,
+"m": ""
+},
+"Crimean Khanate": {
+"q": "Q160440",
+"w": "Crimean Khanate",
+"de": 1450,
+"a": 1782,
+"m": ""
+},
+"Nogai Horde": {
+"q": "Q631210",
+"w": "Nogai Horde",
+"de": 1450,
+"a": 1563,
+"m": ""
+},
+"House of Jagiellon": {
+"q": "Q194355",
+"w": "Jagiellonian dynasty",
+"de": 1450,
+"a": 1571,
+"m": ""
+},
+"Ambrosian Republic": {
+"q": "Q746443",
+"w": "Golden Ambrosian Republic",
+"de": 1450,
+"a": 1452,
+"m": "(Holy Roman Empire)"
+},
+"House of Oldenburg": {
+"q": "Q155594",
+"w": "House of Oldenburg",
+"de": 1450,
+"a": 1458,
+"m": "(Kalmar Union)"
+},
+"Haudenosaunee": {
+"q": "Q68518",
+"w": "Iroquois",
+"de": 1450,
+"a": 1782,
+"m": ""
+},
+"Ryazan": {
+"q": "Q269109",
+"w": "Ryazan",
+"de": 1453,
+"a": 1520,
+"m": ""
+},
+"Qasim Khanate": {
+"q": "Q836169",
+"w": "Qasim Khanate",
+"de": 1453,
+"a": 1551,
+"m": ""
+},
+"Lodi Dynasty": {
+"q": "Q11709",
+"w": "Lodi dynasty",
+"de": 1453,
+"a": 1528,
+"m": "(Delhi Sultanate)"
+},
+"Duchy of Saint Sava": {
+"q": "Q106311455",
+"w": "Duchy of Saint Sava",
+"de": 1453,
+"a": 1474,
+"m": ""
+},
+"Sultanate of Sulu": {
+"q": "Q422065",
+"w": "Sultanate of Sulu",
+"de": 1459,
+"a": 1879,
+"m": ""
+},
+"Tahirid Sultanate": {
+"q": "Q373981",
+"w": "Tahirid dynasty",
+"de": 1459,
+"a": 1515,
+"m": ""
+},
+"Sultanate of Palembang": {
+"q": "Q3503555",
+"w": "Palembang Sultanate",
+"de": 1459,
+"a": 1821,
+"m": ""
+},
+"Sultanate of Malacca": {
+"q": "Q46652",
+"w": "Malacca Sultanate",
+"de": 1459,
+"a": 1861,
+"m": ""
+},
+"Moghulistan": {
+"q": "Q1191125",
+"w": "Moghulistan",
+"de": 1463,
+"a": 1518,
+"m": ""
+},
+"Songhai Empire": {
+"q": "Q202687",
+"w": "Songhai Empire",
+"de": 1463,
+"a": 1608,
+"m": ""
+},
+"Kingdom of Kartli": {
+"q": "Q195972",
+"w": "Kingdom of Kartli",
+"de": 1463,
+"a": 1705,
+"m": ""
+},
+"East Turkestan": {
+"q": "Q840601",
+"w": "East Turkestan",
+"de": 1463,
+"a": 1474,
+"m": ""
+},
+"Kingdom of Imereti": {
+"q": "Q1069959",
+"w": "Kingdom of Imereti",
+"de": 1468,
+"a": 1810,
+"m": ""
+},
+"Principality of Abkhazia": {
+"q": "Q1760473",
+"w": "Principality of Abkhazia",
+"de": 1468,
+"a": 1829,
+"m": ""
+},
+"Samtskhe-Saatabago": {
+"q": "Q2029317",
+"w": "Samtskhe-Saatabago",
+"de": 1468,
+"a": 1506,
+"m": ""
+},
+"Astrakhan Khanate": {
+"q": "Q210163",
+"w": "Astrakhan Khanate",
+"de": 1468,
+"a": 1768,
+"m": ""
+},
+"Kazakh Khanate": {
+"q": "Q1433867",
+"w": "Kazakh Khanate",
+"de": 1468,
+"a": 1847,
+"m": ""
+},
+"Warring States Japan": {
+"q": "Q204023",
+"w": "Sengoku period",
+"de": 1468,
+"a": 1601,
+"m": ""
+},
+"Principality of Mingrelia": {
+"q": "Q2907860",
+"w": "Principality of Mingrelia",
+"de": 1468,
+"a": 1810,
+"m": ""
+},
+"Mongol Khanate": {
+"q": "Q19927420",
+"w": "Mongol khanate",
+"de": 1468,
+"a": 1635,
+"m": ""
+},
+"Kingdom of Kakheti": {
+"q": "Q1209822",
+"w": "Kingdom of Kakheti",
+"de": 1468,
+"a": 1762,
+"m": ""
+},
+"Wattasid dynasty": {
+"q": "Q970799",
+"w": "Wattasid dynasty",
+"de": 1468,
+"a": 1555,
+"m": ""
+},
+"Principality of Guria": {
+"q": "Q2195101",
+"w": "Principality of Guria",
+"de": 1468,
+"a": 1829,
+"m": ""
+},
+"Demak Sultanate": {
+"q": "Q49322",
+"w": "Demak Sultanate",
+"de": 1475,
+"a": 1551,
+"m": ""
+},
+"Kapisa": {
+"q": "Q28336424",
+"w": "Kapisa",
+"de": 1475,
+"a": 1506,
+"m": ""
+},
+"Prome Kingdom": {
+"q": "Q13576027",
+"w": "Prome Kingdom",
+"de": 1482,
+"a": 1546,
+"m": ""
+},
+"Sultanate of Cirebon": {
+"q": "Q2077648",
+"w": "Sultanate of Cirebon",
+"de": 1482,
+"a": 1676,
+"m": ""
+},
+"Habsburg Monarchy": {
+"q": "Q66504140",
+"w": "Habsburg Austria",
+"de": 1487,
+"a": 1805,
+"m": "(Habsburg Monarchy)"
+},
+"Ahmadnagar Sultanate": {
+"q": "Q400998",
+"w": "Ahmadnagar Sultanate",
+"de": 1492,
+"a": 1652,
+"m": ""
+},
+"Berar Sultanate": {
+"q": "Q818666",
+"w": "Berar Sultanate",
+"de": 1492,
+"a": 1578,
+"m": ""
+},
+"Bijapur Sultanate": {
+"q": "Q83821",
+"w": "Adil Shahi dynasty",
+"de": 1492,
+"a": 1686,
+"m": ""
+},
+"Eastern Chagatai Khanate": {
+"q": "Q1191125",
+"w": "Moghulistan",
+"de": 1492,
+"a": 1511,
+"m": ""
+},
+"Bidar Sultanate": {
+"q": "Q669317",
+"w": "Bidar Sultanate",
+"de": 1492,
+"a": 1618,
+"m": ""
+},
+"Shaybanids": {
+"q": "Q856361",
+"w": "Shaybanids",
+"de": 1497,
+"a": 1511,
+"m": ""
+},
+"Rajahnate of Cebu": {
+"q": "Q4401071",
+"w": "Cebu (historical polity)",
+"de": 1497,
+"a": 1571,
+"m": ""
+},
+"Portuguese Empire": {
+"q": "Q200464",
+"w": "Portuguese Empire",
+"de": 1502,
+"a": 1823,
+"m": "(Portuguese Empire)"
+},
+"Safavid Dynasty": {
+"q": "Q161205",
+"w": "Safavid dynasty",
+"de": 1502,
+"a": 1737,
+"m": ""
+},
+"First Toungoo Empire": {
+"q": "Q23039102",
+"w": "First Toungoo Empire",
+"de": 1502,
+"a": 1756,
+"m": ""
+},
+"Portuguese Ceylon": {
+"q": "Q1709007",
+"w": "Portuguese Ceylon",
+"de": 1507,
+"a": 1686,
+"m": "(Portuguese Empire)"
+},
+"Funj Sultanate": {
+"q": "Q1475713",
+"w": "Funj Sultanate",
+"de": 1507,
+"a": 1821,
+"m": ""
+},
+"Portuguese Africa": {
+"q": "Q16879646",
+"w": "Portuguese Africa",
+"de": 1507,
+"a": 1581,
+"m": "(Portuguese Empire)"
+},
+"Sultanate of Gowa": {
+"q": "Q1408641",
+"w": "Sultanate of Gowa",
+"de": 1512,
+"a": 1669,
+"m": ""
+},
+"Khanate of Khiva": {
+"q": "Q491106",
+"w": "Khanate of Khiva",
+"de": 1512,
+"a": 1919,
+"m": ""
+},
+"Sultanate of Bone": {
+"q": "Q43292",
+"w": "Sultan",
+"de": 1512,
+"a": 1858,
+"m": ""
+},
+"Spanish Empire": {
+"q": "Q80702",
+"w": "Spanish Empire",
+"de": 1516,
+"a": 1879,
+"m": "(Spanish Empire)"
+},
+"Sultanate of Aceh": {
+"q": "Q1061057",
+"w": "Aceh Sultanate",
+"de": 1516,
+"a": 1959,
+"m": ""
+},
+"Kingdom of Spain": {
+"q": "Q29",
+"w": "Spain",
+"de": 1516,
+"a": 2024,
+"m": "(Spanish Empire)"
+},
+"Khanate of Bukhara": {
+"q": "Q577668",
+"w": "Khanate of Bukhara",
+"de": 1516,
+"a": 1787,
+"m": ""
+},
+"Blambangan Kingdom": {
+"q": "Q287996",
+"w": "Blambangan Kingdom",
+"de": 1519,
+"a": 1743,
+"m": ""
+},
+"Golconda Sultanate": {
+"q": "Q1148042",
+"w": "Qutb Shahi dynasty",
+"de": 1519,
+"a": 1686,
+"m": ""
+},
+"Eastern Moghulistan": {
+"q": "Q1191125",
+"w": "Moghulistan",
+"de": 1519,
+"a": 1686,
+"m": ""
+},
+"Balinese Kingdom": {
+"q": "Q12491027",
+"w": "Bali Kingdom",
+"de": 1519,
+"a": 1686,
+"m": ""
+},
+"Western Moghulistan": {
+"q": "Q1191125",
+"w": "Moghulistan",
+"de": 1519,
+"a": 1635,
+"m": ""
+},
+"Sultanate of Maguindanao": {
+"q": "Q248572",
+"w": "Sultanate of Maguindanao",
+"de": 1521,
+"a": 1852,
+"m": ""
+},
+"Maynila": {
+"q": "Q4401247",
+"w": "Maynila (historical polity)",
+"de": 1521,
+"a": 1599,
+"m": ""
+},
+"Denmark-Norway": {
+"q": "Q62651",
+"w": "Denmark-Norway",
+"de": 1526,
+"a": 1940,
+"m": ""
+},
+"Sultanate of Banjar": {
+"q": "Q1660566",
+"w": "Sultanate of Banjar",
+"de": 1526,
+"a": 1859,
+"m": ""
+},
+"Duchy of Prussia": {
+"q": "Q153091",
+"w": "Duchy of Prussia",
+"de": 1526,
+"a": 1618,
+"m": ""
+},
+"Nayaks of Madurai": {
+"q": "Q1530838",
+"w": "Madurai Nayak dynasty",
+"de": 1529,
+"a": 1737,
+"m": ""
+},
+"Sultanate of Banten": {
+"q": "Q734867",
+"w": "Banten Sultanate",
+"de": 1529,
+"a": 1808,
+"m": ""
+},
+"Mughal Empire": {
+"q": "Q33296",
+"w": "Mughal Empire",
+"de": 1529,
+"a": 1858,
+"m": ""
+},
+"Đại Việt": {
+"q": "Q1317991",
+"w": "Mạc dynasty",
+"de": 1529,
+"a": 1833,
+"m": ""
+},
+"Sultanate of Perak": {
+"q": "Q2649311",
+"w": "Sultan of Perak",
+"de": 1529,
+"a": 1876,
+"m": ""
+},
+"Sultanate of Johor": {
+"q": "Q1150344",
+"w": "Johor Sultanate",
+"de": 1529,
+"a": 1884,
+"m": ""
+},
+"Eastern Hungarian Kingdom": {
+"q": "Q625380",
+"w": "Eastern Hungarian Kingdom",
+"de": 1529,
+"a": 1571,
+"m": ""
+},
+"Nayaks of Thanjavur": {
+"q": "Q1588434",
+"w": "Thanjavur Nayak kingdom",
+"de": 1534,
+"a": 1676,
+"m": ""
+},
+"Hussain Shahi Dynasty": {
+"q": "Q5949588",
+"w": "Hussain Shahi dynasty",
+"de": 1534,
+"a": 1539,
+"m": ""
+},
+"Sur Empire": {
+"q": "Q373650",
+"w": "Sur Empire",
+"de": 1540,
+"a": 1594,
+"m": ""
+},
+"Tümed": {
+"q": "Q3402317",
+"w": "Tumed",
+"de": 1547,
+"a": 1699,
+"m": ""
+},
+"Itza Mayans": {
+"q": "Q606377",
+"w": "Itza people",
+"de": 1547,
+"a": 1699,
+"m": ""
+},
+"Tsardom of Russia": {
+"q": "Q186096",
+"w": "Tsardom of Russia",
+"de": 1547,
+"a": 1720,
+"m": ""
+},
+"Sultanate of Harar": {
+"q": "Q2365048",
+"w": "Adal Sultanate",
+"de": 1547,
+"a": 1578,
+"m": ""
+},
+"Don Cossacks": {
+"q": "Q1057292",
+"w": "Don Cossacks",
+"de": 1552,
+"a": 1641,
+"m": ""
+},
+"France Antarctique": {
+"q": "Q1353951",
+"w": "France Antarctique",
+"de": 1556,
+"a": 1571,
+"m": ""
+},
+"Saadi Sultanate": {
+"q": "Q1136188",
+"w": "Saadi Sultanate",
+"de": 1556,
+"a": 1740,
+"m": ""
+},
+"Small Horde": {
+"q": "Q631210",
+"w": "Nogai Horde",
+"de": 1564,
+"a": 1737,
+"m": ""
+},
+"Portuguese Colonies": {
+"q": "Q200464",
+"w": "Portuguese Empire",
+"de": 1564,
+"a": 1910,
+"m": "(Portuguese Empire)"
+},
+"House of Savoy": {
+"q": "Q200229",
+"w": "House of Savoy",
+"de": 1564,
+"a": 1720,
+"m": ""
+},
+"Kingdom of Mysore": {
+"q": "Q266923",
+"w": "Kingdom of Mysore",
+"de": 1572,
+"a": 1799,
+"m": ""
+},
+"Trịnh lords": {
+"q": "Q2267508",
+"w": "Trịnh lords",
+"de": 1572,
+"a": 1787,
+"m": ""
+},
+"Kingdom of Pajana": {
+"q": "Q1074947",
+"w": "Lontara script",
+"de": 1572,
+"a": 1587,
+"m": ""
+},
+"Nguyễn lords": {
+"q": "Q2301908",
+"w": "Nguyễn lords",
+"de": 1572,
+"a": 1775,
+"m": ""
+},
+"Principality of Transylvania": {
+"q": "Q655621",
+"w": "Principality of Transylvania (1570-1711)",
+"de": 1572,
+"a": 1695,
+"m": ""
+},
+"Polish-Lithuanian Commonwealth": {
+"q": "Q172107",
+"w": "Polish-Lithuanian Commonwealth",
+"de": 1572,
+"a": 1793,
+"m": ""
+},
+"Patani Kingdom": {
+"q": "Q584435",
+"w": "Patani Kingdom",
+"de": 1572,
+"a": 1690,
+"m": ""
+},
+"Union of Utrecht": {
+"q": "Q216165",
+"w": "Union of Utrecht",
+"de": 1579,
+"a": 1581,
+"m": ""
+},
+"Iberian Union": {
+"q": "Q377350",
+"w": "Iberian Union",
+"de": 1582,
+"a": 1639,
+"m": "(Spanish Empire)"
+},
+"Dutch Republic": {
+"q": "Q170072",
+"w": "Dutch Republic",
+"de": 1582,
+"a": 1795,
+"m": "(Dutch Republic)"
+},
+"Khoshut Khanate": {
+"q": "Q10921634",
+"w": "Khoshut Khanate",
+"de": 1582,
+"a": 1695,
+"m": ""
+},
+"Mataram Sultanate": {
+"q": "Q402145",
+"w": "Mataram Sultanate",
+"de": 1588,
+"a": 1743,
+"m": ""
+},
+"Gorkha Kingdom": {
+"q": "Q3332217",
+"w": "Gorkha Kingdom",
+"de": 1588,
+"a": 1787,
+"m": ""
+},
+"Jesuit Reducciones": {
+"q": "Q465960",
+"w": "Jesuit missions among the Guaraní",
+"de": 1595,
+"a": 1768,
+"m": ""
+},
+"Nalyvaiko Uprising": {
+"q": "Q2560470",
+"w": "Nalyvaiko Uprising",
+"de": 1595,
+"a": 1599,
+"m": ""
+},
+"Tokugawa Shogunate": {
+"q": "Q205662",
+"w": "Tokugawa shogunate",
+"de": 1600,
+"a": 1869,
+"m": ""
+},
+"Lan Na": {
+"q": "Q1059707",
+"w": "Lan Na",
+"de": 1600,
+"a": 1761,
+"m": ""
+},
+"New France": {
+"q": "Q170604",
+"w": "New France",
+"de": 1609,
+"a": 1791,
+"m": "(Kingdom of France)"
+},
+"Oyo Empire": {
+"q": "Q849623",
+"w": "Oyo Empire",
+"de": 1609,
+"a": 1835,
+"m": ""
+},
+"Sultanate of Darfur": {
+"q": "Q1474791",
+"w": "Sultanate of Darfur",
+"de": 1609,
+"a": 1876,
+"m": ""
+},
+"English Colonial Empire": {
+"q": "Q617219",
+"w": "English overseas possessions",
+"de": 1609,
+"a": 1779,
+"m": "(Kingdom of England)"
+},
+"Dzungar Khanate": {
+"q": "Q1923401",
+"w": "Dzungar Khanate",
+"de": 1609,
+"a": 1756,
+"m": ""
+},
+"Swedish Empire": {
+"q": "Q215443",
+"w": "Swedish Empire",
+"de": 1612,
+"a": 1814,
+"m": ""
+},
+"Brandenburg-Prussia": {
+"q": "Q157367",
+"w": "Brandenburg-Prussia",
+"de": 1619,
+"a": 1720,
+"m": ""
+},
+"Sultanate of Sukadana": {
+"q": "Q3446232",
+"w": "Tanjungpura Kingdom",
+"de": 1619,
+"a": 1833,
+"m": ""
+},
+"Sultanate of Sambas": {
+"q": "Q3109927",
+"w": "Sultanate of Sambas",
+"de": 1619,
+"a": 1821,
+"m": ""
+},
+"Sultanate of Mempawah": {
+"q": "Q19746028",
+"w": "Mempawah Kingdom",
+"de": 1619,
+"a": 1827,
+"m": ""
+},
+"Later Jin Dynasty": {
+"q": "Q1062546",
+"w": "Later Jin (1616-1636)",
+"de": 1619,
+"a": 1644,
+"m": ""
+},
+"Oirat Confederation": {
+"q": "Q4332415",
+"w": "Oirat Confederation",
+"de": 1619,
+"a": 1676,
+"m": ""
+},
+"New Netherland": {
+"q": "Q382593",
+"w": "New Netherland",
+"de": 1622,
+"a": 1802,
+"m": ""
+},
+"Huguenots": {
+"q": "Q101935",
+"w": "Huguenots",
+"de": 1622,
+"a": 1631,
+"m": ""
+},
+"Sultanate of Bima": {
+"q": "Q2817348",
+"w": "Bima Sultanate",
+"de": 1626,
+"a": 1889,
+"m": ""
+},
+"Yarubid dynasty": {
+"q": "Q1752110",
+"w": "Ya'rubids",
+"de": 1626,
+"a": 1743,
+"m": ""
+},
+"Li Zicheng": {
+"q": "Q333567",
+"w": "Li Zicheng",
+"de": 1632,
+"a": 1644,
+"m": ""
+},
+"Kalmyk Khanate": {
+"q": "Q4210248",
+"w": "Kalmyk Khanate",
+"de": 1632,
+"a": 1771,
+"m": ""
+},
+"Kingdom of Bhutan": {
+"q": "Q917",
+"w": "Bhutan",
+"de": 1636,
+"a": 2024,
+"m": ""
+},
+"Qasimids": {
+"q": "Q5261548",
+"w": "Rassid dynasty",
+"de": 1636,
+"a": 1802,
+"m": ""
+},
+"Wadai Empire": {
+"q": "Q1132786",
+"w": "Wadai Empire",
+"de": 1636,
+"a": 1910,
+"m": ""
+},
+"New Sweden": {
+"q": "Q322187",
+"w": "New Sweden",
+"de": 1640,
+"a": 1658,
+"m": ""
+},
+"Catalonia": {
+"q": "Q5705",
+"w": "Catalonia",
+"de": 1640,
+"a": 1641,
+"m": ""
+},
+"Principality of Monaco": {
+"q": "Q235",
+"w": "Monaco",
+"de": 1642,
+"a": 2024,
+"m": ""
+},
+"Irish Catholic Confederation": {
+"q": "Q1407718",
+"w": "Confederate Ireland",
+"de": 1642,
+"a": 1652,
+"m": ""
+},
+"Southern Ming": {
+"q": "Q1198163",
+"w": "Southern Ming",
+"de": 1645,
+"a": 1682,
+"m": ""
+},
+"Commonwealth of England": {
+"q": "Q330362",
+"w": "Commonwealth of England",
+"de": 1645,
+"a": 1661,
+"m": ""
+},
+"Qing Dynasty": {
+"q": "Q8733",
+"w": "Qing dynasty",
+"de": 1645,
+"a": 1911,
+"m": ""
+},
+"Kutai Kingdom": {
+"q": "Q1794655",
+"w": "Kutai",
+"de": 1648,
+"a": 1733,
+"m": ""
+},
+"Dutch Cape Colony": {
+"q": "Q4807130",
+"w": "Dutch Cape Coast",
+"de": 1653,
+"a": 1795,
+"m": "(Dutch Republic)"
+},
+"Dutch Gold Coast": {
+"q": "Q770776",
+"w": "Dutch Gold Coast",
+"de": 1653,
+"a": 1872,
+"m": "(Dutch Republic)"
+},
+"Danish Gold Coast": {
+"q": "Q770833",
+"w": "Danish Gold Coast",
+"de": 1659,
+"a": 1852,
+"m": ""
+},
+"Zaporozhian Cossacks": {
+"q": "Q1076173",
+"w": "Zaporozhian Cossacks",
+"de": 1662,
+"a": 1774,
+"m": ""
+},
+"Sloboda Ukraine": {
+"q": "Q598570",
+"w": "Sloboda Ukraine",
+"de": 1670,
+"a": 1768,
+"m": ""
+},
+"Morocco": {
+"q": "Q1028",
+"w": "Morocco",
+"de": 1670,
+"a": 2024,
+"m": ""
+},
+"Sultanate of Jambi": {
+"q": "Q1679856",
+"w": "Jambi Sultanate",
+"de": 1670,
+"a": 1904,
+"m": ""
+},
+"French India": {
+"q": "Q646374",
+"w": "French India",
+"de": 1673,
+"a": 1847,
+"m": "(Kingdom of France)"
+},
+"Maratha Empire": {
+"q": "Q83618",
+"w": "Maratha Empire",
+"de": 1677,
+"a": 1845,
+"m": ""
+},
+"Thanjavur Maratha Kingdom": {
+"q": "Q3530610",
+"w": "Thanjavur Maratha Kingdom",
+"de": 1677,
+"a": 1799,
+"m": ""
+},
+"Principality of Upper Hungary": {
+"q": "Q7245120",
+"w": "Principality of Upper Hungary",
+"de": 1683,
+"a": 1686,
+"m": ""
+},
+"Dutch Ceylon": {
+"q": "Q1841483",
+"w": "Dutch Ceylon",
+"de": 1687,
+"a": 1795,
+"m": "(Dutch Republic)"
+},
+"Bali": {
+"q": "Q3125978",
+"w": "Bali",
+"de": 1687,
+"a": 1907,
+"m": ""
+},
+"Cambodia": {
+"q": "Q424",
+"w": "Cambodia Middle Period",
+"de": 1700,
+"a": 1802,
+"m": ""
+},
+"Kingdom of Prussia": {
+"q": "Q27306",
+"w": "Kingdom of Prussia",
+"de": 1702,
+"a": 1863,
+"m": ""
+},
+"Pro-Habsburg Spain": {
+"q": "Q600093",
+"w": "Habsburg Spain",
+"de": 1702,
+"a": 1708,
+"m": ""
+},
+"Ashanti Empire": {
+"q": "Q722071",
+"w": "Ashanti Empire",
+"de": 1702,
+"a": 1897,
+"m": ""
+},
+"British Colonial Empire": {
+"q": "Q8680",
+"w": "British Empire",
+"de": 1706,
+"a": 1999,
+"m": "(British Empire)"
+},
+"Regency of Algiers": {
+"q": "Q3045696",
+"w": "Regency of Algiers",
+"de": 1706,
+"a": 1845,
+"m": ""
+},
+"Pro-Swedish Poland": {
+"q": "Q10543737",
+"w": "Swedish invasion of Poland (1701-1706)",
+"de": 1706,
+"a": 1712,
+"m": ""
+},
+"Beylik of Tunis": {
+"q": "Q4899891",
+"w": "Beylik of Tunis",
+"de": 1706,
+"a": 1884,
+"m": ""
+},
+"Kingdom of Great Britain": {
+"q": "Q23666",
+"w": "Great Britain",
+"de": 1709,
+"a": 2024,
+"m": "(British Empire)"
+},
+"Vientiane": {
+"q": "Q9326",
+"w": "Vientiane",
+"de": 1709,
+"a": 1827,
+"m": ""
+},
+"Hotaki Dynasty": {
+"q": "Q627449",
+"w": "Hotak dynasty",
+"de": 1709,
+"a": 1737,
+"m": ""
+},
+"Sikhs": {
+"q": "Q582779",
+"w": "Sikhs",
+"de": 1709,
+"a": 1717,
+"m": ""
+},
+"Kingdom of Champasak": {
+"q": "Q403369",
+"w": "Champasak",
+"de": 1709,
+"a": 1894,
+"m": ""
+},
+"Kingdom of Luang Phrabang": {
+"q": "Q190165",
+"w": "Luang Prabang",
+"de": 1709,
+"a": 1894,
+"m": ""
+},
+"Electorate of Hanover": {
+"q": "Q706018",
+"w": "Electorate of Hanover",
+"de": 1709,
+"a": 1802,
+"m": ""
+},
+"Khanate of Kokand": {
+"q": "Q696241",
+"w": "Khanate of Kokand",
+"de": 1709,
+"a": 1876,
+"m": ""
+},
+"Kingdom of Lunda": {
+"q": "Q1796223",
+"w": "Kingdom of Lunda",
+"de": 1709,
+"a": 1889,
+"m": ""
+},
+"Karamanli Dynasty": {
+"q": "Q1929987",
+"w": "Karamanli dynasty",
+"de": 1713,
+"a": 1839,
+"m": ""
+},
+"Carnatic Sultanate": {
+"q": "Q3277580",
+"w": "Carnatic Sultanate",
+"de": 1713,
+"a": 1802,
+"m": ""
+},
+"Bamana Empire": {
+"q": "Q762084",
+"w": "Bamana Empire",
+"de": 1713,
+"a": 1821,
+"m": ""
+},
+"Nawabs of Bengal": {
+"q": "Q2637089",
+"w": "Nawabs of Bengal",
+"de": 1718,
+"a": 1761,
+"m": ""
+},
+"Kingdom of Sardinia": {
+"q": "Q2577303",
+"w": "Kingdom of Sardinia (1720-1861)",
+"de": 1721,
+"a": 1861,
+"m": ""
+},
+"Principality of Svaneti": {
+"q": "Q2919545",
+"w": "Principality of Svaneti",
+"de": 1721,
+"a": 1833,
+"m": ""
+},
+"Russian Empire": {
+"q": "Q34266",
+"w": "Russian Empire",
+"de": 1721,
+"a": 1916,
+"m": ""
+},
+"Principality of Liechtenstein": {
+"q": "Q347",
+"w": "Liechtenstein",
+"de": 1721,
+"a": 1814,
+"m": ""
+},
+"Nawab of Awadh": {
+"q": "Q2614237",
+"w": "Nawab of Awadh",
+"de": 1727,
+"a": 1802,
+"m": ""
+},
+"Sultanate of Terengganu": {
+"q": "Q5769444",
+"w": "Sultan of Terengganu",
+"de": 1727,
+"a": 1904,
+"m": ""
+},
+"Hyderabad State": {
+"q": "Q1240096",
+"w": "Hyderabad State",
+"de": 1727,
+"a": 1947,
+"m": ""
+},
+"Greenland": {
+"q": "Q223",
+"w": "Greenland",
+"de": 1734,
+"a": 1940,
+"m": ""
+},
+"Duchy of Courland": {
+"q": "Q156038",
+"w": "Duchy of Courland and Semigallia",
+"de": 1734,
+"a": 1793,
+"m": ""
+},
+"Sultanate of Kutai Kartanegara": {
+"q": "Q1794655",
+"w": "Kutai",
+"de": 1734,
+"a": 1845,
+"m": ""
+},
+"Kingdom of Bulungan": {
+"q": "Q3503548",
+"w": "Sultanate of Bulungan",
+"de": 1734,
+"a": 1747,
+"m": ""
+},
+"Afsharid Iran": {
+"q": "Q63149558",
+"w": "Afsharid Iran",
+"de": 1734,
+"a": 1756,
+"m": ""
+},
+"Konbaung Dynasty": {
+"q": "Q1062422",
+"w": "Konbaung dynasty",
+"de": 1741,
+"a": 1819,
+"m": ""
+},
+"Sultanate of Oman": {
+"q": "Q842",
+"w": "Oman",
+"de": 1744,
+"a": 2024,
+"m": ""
+},
+"Sultanate of Selangor": {
+"q": "Q7636765",
+"w": "Sultan of Selangor",
+"de": 1744,
+"a": 1876,
+"m": ""
+},
+"Emirate of Diriyah": {
+"q": "Q146871",
+"w": "Emirate of Diriyah",
+"de": 1744,
+"a": 1819,
+"m": ""
+},
+"Sultan of Yogyakarta": {
+"q": "Q1050326",
+"w": "Hamengkubuwono",
+"de": 1744,
+"a": 1829,
+"m": ""
+},
+"Surakarta Sunanate": {
+"q": "Q2122499",
+"w": "Surakarta Sunanate",
+"de": 1744,
+"a": 1829,
+"m": ""
+},
+"Khanates of the Caucasus": {
+"q": "Q406684",
+"w": "Khanates of the Caucasus",
+"de": 1748,
+"a": 1796,
+"m": ""
+},
+"Durrani Empire": {
+"q": "Q467627",
+"w": "Durrani Empire",
+"de": 1748,
+"a": 1827,
+"m": ""
+},
+"Zand Dynasty": {
+"q": "Q97629053",
+"w": "Zand dynasty",
+"de": 1748,
+"a": 1793,
+"m": ""
+},
+"Corsican Republic": {
+"q": "Q71234",
+"w": "Corsican Republic",
+"de": 1757,
+"a": 1768,
+"m": ""
+},
+"Kuwait": {
+"q": "Q817",
+"w": "Kuwait",
+"de": 1757,
+"a": 2024,
+"m": ""
+},
+"Bahrain": {
+"q": "Q398",
+"w": "Bahrain",
+"de": 1757,
+"a": 1845,
+"m": ""
+},
+"Danish India": {
+"q": "Q912382",
+"w": "Danish India",
+"de": 1757,
+"a": 1808,
+"m": ""
+},
+"British Empire": {
+"q": "Q8680",
+"w": "British Empire",
+"de": 1757,
+"a": 1858,
+"m": "(British Empire)"
+},
+"Kelantan": {
+"q": "Q185944",
+"w": "Kelantan",
+"de": 1762,
+"a": 1904,
+"m": ""
+},
+"Kingdom of Naples (Napoleonic)": {
+"q": "Q48779892",
+"w": "Kingdom of Naples (Napoleonic)",
+"de": 1762,
+"a": 1814,
+"m": ""
+},
+"Sikh Confederacy": {
+"q": "Q2578028",
+"w": "Misl",
+"de": 1762,
+"a": 1806,
+"m": ""
+},
+"Thonburi Kingdom": {
+"q": "Q1115291",
+"w": "Thonburi Kingdom",
+"de": 1769,
+"a": 1782,
+"m": ""
+},
+"Pontianak Kadriyah Sultanate": {
+"q": "Q3048747",
+"w": "Pontianak Sultanate",
+"de": 1772,
+"a": 1827,
+"m": ""
+},
+"Tây Sơn dynasty": {
+"q": "Q1034173",
+"w": "Tây Sơn dynasty",
+"de": 1775,
+"a": 1802,
+"m": ""
+},
+"Negeri Sembilan": {
+"q": "Q213893",
+"w": "Negeri Sembilan",
+"de": 1775,
+"a": 1894,
+"m": ""
+},
+"Chiangmai": {
+"q": "Q52028",
+"w": "Chiang Mai",
+"de": 1775,
+"a": 1884,
+"m": ""
+},
+"Nepal": {
+"q": "Q837",
+"w": "Nepal",
+"de": 1775,
+"a": 2024,
+"m": ""
+},
+"United States of America": {
+"q": "Q30",
+"w": "United States",
+"de": 1776,
+"a": 2024,
+"m": ""
+},
+"Vermont Republic": {
+"q": "Q1649602",
+"w": "Vermont Republic",
+"de": 1783,
+"a": 1790,
+"m": ""
+},
+"House of Khalifa": {
+"q": "Q1158126",
+"w": "House of Khalifa",
+"de": 1783,
+"a": 1894,
+"m": ""
+},
+"Rattanakosin Kingdom": {
+"q": "Q1155700",
+"w": "Rattanakosin Kingdom (1782–1932)",
+"de": 1783,
+"a": 1931,
+"m": ""
+},
+"Emirate of Bukhara": {
+"q": "Q746558",
+"w": "Emirate of Bukhara",
+"de": 1788,
+"a": 1919,
+"m": ""
+},
+"Qajar Dynasty": {
+"q": "Q189326",
+"w": "Qajar dynasty",
+"de": 1788,
+"a": 1923,
+"m": ""
+},
+"Freetown Colony": {
+"q": "Q3780",
+"w": "Freetown",
+"de": 1788,
+"a": 1796,
+"m": "(British Empire)"
+},
+"French Colony of Guiana": {
+"q": "Q3769",
+"w": "French Guiana",
+"de": 1791,
+"a": 1791,
+"m": "(Kingdom of France)"
+},
+"Kingdom of Hawaï'i": {
+"q": "Q156418",
+"w": "Hawaiian Kingdom",
+"de": 1791,
+"a": 1894,
+"m": ""
+},
+"Nguyễn dynasty": {
+"q": "Q6500483",
+"w": "Nguyen dynasty",
+"de": 1791,
+"a": 1884,
+"m": ""
+},
+"French First Republic": {
+"q": "Q58296",
+"w": "French First Republic",
+"de": 1792,
+"a": 1795,
+"m": "(French First Republic)"
+},
+"Haiti": {
+"q": "Q2006756",
+"w": "Haiti",
+"de": 1792,
+"a": 1802,
+"m": ""
+},
+"Merina Kingdom": {
+"q": "Q1071439",
+"w": "Merina Kingdom",
+"de": 1792,
+"a": 1897,
+"m": ""
+},
+"British Cape Colony": {
+"q": "Q370736",
+"w": "Cape Colony",
+"de": 1796,
+"a": 1884,
+"m": "(British Empire)"
+},
+"Batavian Republic": {
+"q": "Q188553",
+"w": "Batavian Republic",
+"de": 1796,
+"a": 1810,
+"m": "(Batavian Republic)"
+},
+"British Ceylon": {
+"q": "Q918153",
+"w": "British Ceylon",
+"de": 1796,
+"a": 1814,
+"m": "(British Empire)"
+},
+"French Directory": {
+"q": "Q219817",
+"w": "French Directory",
+"de": 1796,
+"a": 1799,
+"m": "(French Directory)"
+},
+"Ligurian Republic": {
+"q": "Q659312",
+"w": "Ligurian Republic",
+"de": 1797,
+"a": 1814,
+"m": ""
+},
+"Grand Duchy of Tuscany": {
+"q": "Q154849",
+"w": "Grand Duchy of Tuscany",
+"de": 1797,
+"a": 1848,
+"m": ""
+},
+"Cisalpine Republic": {
+"q": "Q213353",
+"w": "Cisalpine Republic",
+"de": 1797,
+"a": 1799,
+"m": ""
+},
+"Republic of San Marino": {
+"q": "Q238",
+"w": "San Marino",
+"de": 1797,
+"a": 1799,
+"m": ""
+},
+"Helvetic Republic": {
+"q": "Q206696",
+"w": "Helvetic Republic",
+"de": 1799,
+"a": 1814,
+"m": ""
+},
+"Revolutionary Roman Republic": {
+"q": "Q175881",
+"w": "Roman Republic (1798-1799)",
+"de": 1799,
+"a": 1799,
+"m": ""
+},
+"Sikh Empire": {
+"q": "Q83572",
+"w": "Sikh Empire",
+"de": 1799,
+"a": 1848,
+"m": ""
+},
+"Cispadane Republic": {
+"q": "Q463289",
+"w": "Cispadane Republic",
+"de": 1800,
+"a": 1802,
+"m": ""
+},
+"Septinsular Republic": {
+"q": "Q1077630",
+"w": "Septinsular Republic",
+"de": 1800,
+"a": 1819,
+"m": ""
+},
+"Dutch East Indies": {
+"q": "Q188161",
+"w": "Dutch East Indies",
+"de": 1800,
+"a": 1949,
+"m": "(Batavian Republic)"
+},
+"French Louisiana": {
+"q": "Q5501836",
+"w": "French Louisiana",
+"de": 1800,
+"a": 1804,
+"m": ""
+},
+"French Consulate": {
+"q": "Q877619",
+"w": "French Consulate",
+"de": 1800,
+"a": 1804,
+"m": "(French Consulate)"
+},
+"Napoleonic Batavia Republic": {
+"q": "Q4807130",
+"w": "Dutch Cape Colony",
+"de": 1803,
+"a": 1805,
+"m": ""
+},
+"Electorate of Württemberg": {
+"q": "Q2172530",
+"w": "Electorate of Württemberg",
+"de": 1803,
+"a": 1805,
+"m": ""
+},
+"Kingdom of Hanover": {
+"q": "Q164079",
+"w": "Kingdom of Hanover",
+"de": 1803,
+"a": 1865,
+"m": ""
+},
+"Electorate of Hesse": {
+"q": "Q529605",
+"w": "Electorate of Hesse",
+"de": 1803,
+"a": 1867,
+"m": ""
+},
+"Electorate of Salzburg": {
+"q": "Q646390",
+"w": "Electorate of Salzburg",
+"de": 1803,
+"a": 1805,
+"m": ""
+},
+"Kingdom of Etruria": {
+"q": "Q223793",
+"w": "Kingdom of Etruria",
+"de": 1803,
+"a": 1806,
+"m": ""
+},
+"Electorate of Baden": {
+"q": "Q637238",
+"w": "Electorate of Baden",
+"de": 1803,
+"a": 1805,
+"m": ""
+},
+"Italian Republic": {
+"q": "Q38",
+"w": "Italy",
+"de": 1803,
+"a": 1813,
+"m": ""
+},
+"Empire of Haiti": {
+"q": "Q2006756",
+"w": "First Empire of Haiti",
+"de": 1805,
+"a": 1915,
+"m": ""
+},
+"Muhammad Ali dynasty": {
+"q": "Q3057606",
+"w": "History of Egypt under the Muhammad Ali dynasty",
+"de": 1805,
+"a": 1865,
+"m": ""
+},
+"First French colonial empire": {
+"q": "Q71084",
+"w": "French colonial empire ",
+"de": 1805,
+"a": 1814,
+"m": ""
+},
+"Sokoto Caliphate": {
+"q": "Q600524",
+"w": "Sokoto Caliphate",
+"de": 1805,
+"a": 1904,
+"m": ""
+},
+"Serbs": {
+"q": "Q127885",
+"w": "Serbs",
+"de": 1805,
+"a": 1915,
+"m": ""
+},
+"First French Empire": {
+"q": "Q71084",
+"w": "First French Empire",
+"de": 1805,
+"a": 1814,
+"m": "(First French Empire)"
+},
+"Duchy of Nassau": {
+"q": "Q836680",
+"w": "Duchy of Nassau",
+"de": 1806,
+"a": 1865,
+"m": ""
+},
+"Saxe-Altenburg": {
+"q": "Q158151",
+"w": "Saxe-Altenburg",
+"de": 1806,
+"a": 1870,
+"m": ""
+},
+"Grand Duchy of Baden": {
+"q": "Q186320",
+"w": "Grand Duchy of Baden",
+"de": 1806,
+"a": 1870,
+"m": ""
+},
+"Austrian Empire": {
+"q": "Q131964",
+"w": "Austrian Empire",
+"de": 1806,
+"a": 1867,
+"m": ""
+},
+"Free City of Bremen": {
+"q": "Q474779",
+"w": "History of Bremen (city)",
+"de": 1806,
+"a": 1870,
+"m": ""
+},
+"Duchy of Oldenburg": {
+"q": "Q697084",
+"w": "Duchy of Oldenburg",
+"de": 1806,
+"a": 1870,
+"m": ""
+},
+"Free City of Lübeck": {
+"q": "Q950240",
+"w": "Free City of Lübeck",
+"de": 1806,
+"a": 1870,
+"m": ""
+},
+"Principality of Regensberg": {
+"q": "Q701969",
+"w": "Principality of Regensburg",
+"de": 1806,
+"a": 1813,
+"m": ""
+},
+"Principality of Waldeck and Pyrmont": {
+"q": "Q165763",
+"w": "Principality of Waldeck and Pyrmont",
+"de": 1806,
+"a": 1870,
+"m": ""
+},
+"Kingdom of Württemberg": {
+"q": "Q159631",
+"w": "Kingdom of Württemberg",
+"de": 1806,
+"a": 1870,
+"m": ""
+},
+"Principality of Lippe": {
+"q": "Q14551680",
+"w": "Principality of Lippe",
+"de": 1806,
+"a": 1870,
+"m": ""
+},
+"Kingdom of Bavaria": {
+"q": "Q154195",
+"w": "Kingdom of Bavaria",
+"de": 1806,
+"a": 1870,
+"m": ""
+},
+"Grand Duchy of Würzburg": {
+"q": "Q698089",
+"w": "Grand Duchy of Würzburg",
+"de": 1806,
+"a": 1814,
+"m": ""
+},
+"Principality of Reuss-Gera": {
+"q": "Q639100",
+"w": "Principality of Reuss-Gera",
+"de": 1806,
+"a": 1870,
+"m": ""
+},
+"Duchy of Mecklenburg": {
+"q": "Q109252949",
+"w": "Duchy of Mecklenburg",
+"de": 1806,
+"a": 1870,
+"m": ""
+},
+"Grand Duchy of Hesse": {
+"q": "Q20135",
+"w": "Grand Duchy of Hesse",
+"de": 1806,
+"a": 1870,
+"m": ""
+},
+"Grand Duchy of Saxe-Weimar-Eisenach": {
+"q": "Q155570",
+"w": "Saxe-Weimar-Eisenach",
+"de": 1806,
+"a": 1870,
+"m": ""
+},
+"Principality of Hohenzollern-Sigmaringen": {
+"q": "Q157013",
+"w": "Hohenzollern-Sigmaringen",
+"de": 1806,
+"a": 1852,
+"m": ""
+},
+"Duchy of Anhalt": {
+"q": "Q16550783",
+"w": "Duchy of Anhalt",
+"de": 1806,
+"a": 1870,
+"m": ""
+},
+"Kingdom of Saxony": {
+"q": "Q153015",
+"w": "Kingdom of Saxony",
+"de": 1806,
+"a": 1870,
+"m": ""
+},
+"Grand Duchy of Berg": {
+"q": "Q249428",
+"w": "Grand Duchy of Berg",
+"de": 1806,
+"a": 1827,
+"m": ""
+},
+"Duchy of Warsaw": {
+"q": "Q152115",
+"w": "Duchy of Warsaw",
+"de": 1809,
+"a": 1813,
+"m": ""
+},
+"Free City of Danzig": {
+"q": "Q216173",
+"w": "Free City of Danzig",
+"de": 1809,
+"a": 1939,
+"m": ""
+},
+"Kingdom of Westphalia": {
+"q": "Q153943",
+"w": "Kingdom of Westphalia",
+"de": 1809,
+"a": 1813,
+"m": ""
+},
+"Confederation of the Rhine": {
+"q": "Q154741",
+"w": "Confederation of the Rhine",
+"de": 1809,
+"a": 1814,
+"m": ""
+},
+"New Granada": {
+"q": "Q1863715",
+"w": "New Granada",
+"de": 1811,
+"a": 1821,
+"m": ""
+},
+"Republic of Venezuela": {
+"q": "Q717",
+"w": "Venezuela",
+"de": 1811,
+"a": 1814,
+"m": ""
+},
+"Mexicans": {
+"q": "Q1209676",
+"w": "Mexicans",
+"de": 1811,
+"a": 1819,
+"m": ""
+},
+"Paraguay": {
+"q": "Q733",
+"w": "Paraguay",
+"de": 1811,
+"a": 2024,
+"m": ""
+},
+"Río de la Plata": {
+"q": "Q35827",
+"w": "Río de la Plata",
+"de": 1811,
+"a": 1833,
+"m": ""
+},
+"Bessarabia": {
+"q": "Q174994",
+"w": "Bessarabia",
+"de": 1812,
+"a": 1813,
+"m": ""
+},
+"Guayaquil Junta": {
+"q": "Q5334383",
+"w": "Ecuadorian War of Independence",
+"de": 1812,
+"a": 1813,
+"m": ""
+},
+"Republic of Chile": {
+"q": "Q298",
+"w": "Chile",
+"de": 1812,
+"a": 2024,
+"m": ""
+},
+"Omani Slave Coast": {
+"q": "Q4334533",
+"w": "Omanis",
+"de": 1814,
+"a": 1855,
+"m": ""
+},
+"Cundinamarca": {
+"q": "Q5194225",
+"w": "Cundinamarca",
+"de": 1814,
+"a": 1814,
+"m": ""
+},
+"Imamate of Yemen": {
+"q": "Q1042069",
+"w": "Imams of Yemen",
+"de": 1814,
+"a": 1872,
+"m": ""
+},
+"Federal League": {
+"q": "Q2625228",
+"w": "Federal League (1815-1820)",
+"de": 1814,
+"a": 1819,
+"m": ""
+},
+"Free City of Hamburg": {
+"q": "Q1055",
+"w": "Hamburg",
+"de": 1814,
+"a": 1870,
+"m": ""
+},
+"Sovereign Principality of the United Netherlands": {
+"q": "Q774783",
+"w": "Sovereign Principality of the United Netherlands",
+"de": 1814,
+"a": 1814,
+"m": ""
+},
+"Duchy of Brunswick": {
+"q": "Q326029",
+"w": "Duchy of Brunswick",
+"de": 1814,
+"a": 1870,
+"m": ""
+},
+"Kingdom of Norway": {
+"q": "Q20",
+"w": "Norway",
+"de": 1814,
+"a": 2024,
+"m": ""
+},
+"Netherlands": {
+"q": "Q55",
+"w": "Netherlands",
+"de": 1815,
+"a": 2024,
+"m": "(Netherlands)"
+},
+"Kingdom of Monaco": {
+"q": "Q235",
+"w": "Monaco",
+"de": 1815,
+"a": 1939,
+"m": ""
+},
+"Bourbon Kingdom of France": {
+"q": "Q207162",
+"w": "Bourbon Restoration in France",
+"de": 1815,
+"a": 1847,
+"m": "(Bourbon Kingdom of France)"
+},
+"Free City of Krakow": {
+"q": "Q501303",
+"w": "Free City of Cracow",
+"de": 1815,
+"a": 1845,
+"m": ""
+},
+"Duchy of Parma and Piacenza": {
+"q": "Q165040",
+"w": "Duchy of Parma and Piacenza",
+"de": 1815,
+"a": 1859,
+"m": ""
+},
+"Kingdom of the Two Sicilies": {
+"q": "Q180393",
+"w": "Kingdom of the Two Sicilies",
+"de": 1815,
+"a": 1860,
+"m": ""
+},
+"United Kingdoms of Sweden and Norway": {
+"q": "Q62589",
+"w": "Union between Sweden and Norway",
+"de": 1815,
+"a": 1904,
+"m": ""
+},
+"Duchy of Modena and Reggio": {
+"q": "Q252580",
+"w": "Duchy of Modena and Reggio",
+"de": 1815,
+"a": 1859,
+"m": ""
+},
+"German Confederation": {
+"q": "Q151624",
+"w": "German Confederation",
+"de": 1815,
+"a": 1867,
+"m": ""
+},
+"Netherlands Antilles": {
+"q": "Q25227",
+"w": "Netherlands Antilles",
+"de": 1815,
+"a": 2024,
+"m": ""
+},
+"Principality of Andorra": {
+"q": "Q228",
+"w": "Andorra",
+"de": 1815,
+"a": 2024,
+"m": ""
+},
+"Principality of Schwarzburg-Sonderhausen": {
+"q": "Q708821",
+"w": "House of Schwarzburg",
+"de": 1820,
+"a": 1870,
+"m": ""
+},
+"Talpur Dynasty": {
+"q": "Q19569014",
+"w": "Talpur dynasty",
+"de": 1820,
+"a": 1894,
+"m": ""
+},
+"Saxe-Meiningen": {
+"q": "Q157710",
+"w": "Saxe-Meiningen",
+"de": 1820,
+"a": 1870,
+"m": ""
+},
+"Massina Empire": {
+"q": "Q635394",
+"w": "Massina Empire",
+"de": 1820,
+"a": 1861,
+"m": ""
+},
+"Zululand": {
+"q": "Q13558877",
+"w": "Zululand",
+"de": 1820,
+"a": 1897,
+"m": ""
+},
+"Burma": {
+"q": "Q836",
+"w": "Myanmar",
+"de": 1820,
+"a": 1989,
+"m": ""
+},
+"Principality of Lichtenberg": {
+"q": "Q547629",
+"w": "Principality of Lichtenberg",
+"de": 1820,
+"a": 1827,
+"m": ""
+},
+"Trucial States": {
+"q": "Q1852345",
+"w": "Trucial States",
+"de": 1820,
+"a": 1894,
+"m": "(British Empire)"
+},
+"Qatar Dynasty": {
+"q": "Q846",
+"w": "Qatar",
+"de": 1820,
+"a": 1904,
+"m": ""
+},
+"Free City of Frankfurt": {
+"q": "Q704300",
+"w": "Free City of Frankfurt",
+"de": 1820,
+"a": 1865,
+"m": ""
+},
+"Riau-Lingga Sultanate": {
+"q": "Q3503553",
+"w": "Riau-Lingga Sultanate",
+"de": 1820,
+"a": 1856,
+"m": ""
+},
+"Empire of Brazil": {
+"q": "Q217230",
+"w": "Empire of Brazil",
+"de": 1822,
+"a": 1889,
+"m": ""
+},
+"Gran Colombia": {
+"q": "Q199821",
+"w": "Gran Colombia",
+"de": 1822,
+"a": 1833,
+"m": ""
+},
+"First Mexican Empire": {
+"q": "Q285658",
+"w": "First Mexican Empire",
+"de": 1822,
+"a": 1823,
+"m": ""
+},
+"First Hellenic Republic": {
+"q": "Q528546",
+"w": "First Hellenic Republic",
+"de": 1822,
+"a": 1940,
+"m": ""
+},
+"Republic of Peru": {
+"q": "Q419",
+"w": "Peru",
+"de": 1822,
+"a": 2024,
+"m": ""
+},
+"United Provinces of Central America": {
+"q": "Q190025",
+"w": "Federal Republic of Central America",
+"de": 1824,
+"a": 1839,
+"m": ""
+},
+"Emirate of Nejd": {
+"q": "Q146862",
+"w": "Emirate of Nejd",
+"de": 1824,
+"a": 1925,
+"m": ""
+},
+"Federated Republic of Mexico": {
+"q": "Q1109279",
+"w": "First Mexican Republic",
+"de": 1824,
+"a": 1865,
+"m": ""
+},
+"Bolivia": {
+"q": "Q750",
+"w": "Bolivia",
+"de": 1825,
+"a": 2024,
+"m": ""
+},
+"Emirate of Jabal Shammar": {
+"q": "Q5362837",
+"w": "Emirate of Jabal Shammar",
+"de": 1825,
+"a": 1921,
+"m": ""
+},
+"Emirate of Afghanistan": {
+"q": "Q1335260",
+"w": "Emirate of Afghanistan",
+"de": 1828,
+"a": 1925,
+"m": ""
+},
+"Caucasian Imamate": {
+"q": "Q2088141",
+"w": "Caucasian Imamate",
+"de": 1828,
+"a": 1858,
+"m": ""
+},
+"Oriental Republic of Uruguay": {
+"q": "Q77",
+"w": "Uruguay",
+"de": 1828,
+"a": 2024,
+"m": ""
+},
+"Poles": {
+"q": "Q1026",
+"w": "Polish people",
+"de": 1830,
+"a": 1833,
+"m": ""
+},
+"Sultanate of Sambaliung": {
+"q": "Q19727688",
+"w": "id.wikipedia.org/wiki/Kesultanan_Sambaliung",
+"de": 1830,
+"a": 1848,
+"m": ""
+},
+"Kingdom of Belgium": {
+"q": "Q31",
+"w": "Belgium",
+"de": 1830,
+"a": 2024,
+"m": ""
+},
+"French Algeria": {
+"q": "Q218272",
+"w": "French Algeria",
+"de": 1830,
+"a": 1847,
+"m": "(Bourbon Kingdom of France)"
+},
+"Venezuela": {
+"q": "Q717",
+"w": "Venezuela",
+"de": 1834,
+"a": 2024,
+"m": ""
+},
+"Republic of New Granada": {
+"q": "Q630882",
+"w": "Republic of New Granada",
+"de": 1834,
+"a": 1858,
+"m": ""
+},
+"Republic of Ecuador": {
+"q": "Q736",
+"w": "Ecuador",
+"de": 1834,
+"a": 2024,
+"m": ""
+},
+"Argentine Confederation": {
+"q": "Q832554",
+"w": "Argentine Confederation",
+"de": 1834,
+"a": 1929,
+"m": ""
+},
+"Peru-Bolivian Confederation": {
+"q": "Q899706",
+"w": "Peru-Bolivian Confederation",
+"de": 1836,
+"a": 1839,
+"m": ""
+},
+"Centralist Mexico": {
+"q": "Q5062192",
+"w": "Centralist Republic of Mexico",
+"de": 1836,
+"a": 1847,
+"m": ""
+},
+"Riograndense Republic": {
+"q": "Q162192",
+"w": "Riograndense Republic",
+"de": 1836,
+"a": 1845,
+"m": ""
+},
+"Republic of Texas": {
+"q": "Q170588",
+"w": "Republic of Texas",
+"de": 1836,
+"a": 1845,
+"m": ""
+},
+"Saxe-Coburg and Gotha": {
+"q": "Q3462133",
+"w": "Saxe-Coburg and Gotha",
+"de": 1836,
+"a": 1839,
+"m": ""
+},
+"Durrani Dynasty": {
+"q": "Q5316729",
+"w": "Durrani dynasty",
+"de": 1840,
+"a": 1845,
+"m": ""
+},
+"Honduras": {
+"q": "Q783",
+"w": "Honduras",
+"de": 1840,
+"a": 2024,
+"m": ""
+},
+"Republic of the Rio Grande": {
+"q": "Q2014442",
+"w": "Republic of the Rio Grande",
+"de": 1840,
+"a": 1841,
+"m": ""
+},
+"Republic of Costa Rica": {
+"q": "Q800",
+"w": "Costa Rica",
+"de": 1840,
+"a": 2024,
+"m": ""
+},
+"Guatemala": {
+"q": "Q774",
+"w": "Guatemala",
+"de": 1840,
+"a": 2024,
+"m": ""
+},
+"Natalia Republic": {
+"q": "Q1029847",
+"w": "Natalia Republic",
+"de": 1840,
+"a": 1910,
+"m": ""
+},
+"Ottoman Tripolitania": {
+"q": "Q1529261",
+"w": "Ottoman Tripolitania",
+"de": 1840,
+"a": 1911,
+"m": ""
+},
+"Republic of Nicaragua": {
+"q": "Q811",
+"w": "Nicaragua",
+"de": 1840,
+"a": 2024,
+"m": ""
+},
+"Republic of El Salvador": {
+"q": "Q792",
+"w": "El Salvador",
+"de": 1840,
+"a": 2024,
+"m": ""
+},
+"Los Altos": {
+"q": "Q738264",
+"w": "Los Altos (state)",
+"de": 1840,
+"a": 1841,
+"m": ""
+},
+"Kingdom of Sarawak": {
+"q": "Q1658411",
+"w": "Raj of Sarawak",
+"de": 1842,
+"a": 1946,
+"m": ""
+},
+"Kedah-Perlis District": {
+"q": "Q213467",
+"w": "Perlis",
+"de": 1842,
+"a": 1910,
+"m": ""
+},
+"Kashmir and Jammu": {
+"q": "Q2571484",
+"w": "Jammu and Kashmir (princely state)",
+"de": 1846,
+"a": 1947,
+"m": ""
+},
+"Dominican Republic": {
+"q": "Q786",
+"w": "Dominican Republic",
+"de": 1846,
+"a": 2024,
+"m": ""
+},
+"California Republic": {
+"q": "Q17557",
+"w": "California Republic",
+"de": 1846,
+"a": 1847,
+"m": ""
+},
+"French Africa": {
+"q": "Q19951607",
+"w": "French Africa",
+"de": 1846,
+"a": 1957,
+"m": "(Bourbon Kingdom of France)"
+},
+"Republic of Liberia": {
+"q": "Q1014",
+"w": "Liberia",
+"de": 1848,
+"a": 2024,
+"m": ""
+},
+"Italian Nationalists": {
+"q": "Q6093359",
+"w": "Italian nationalism",
+"de": 1848,
+"a": 1848,
+"m": ""
+},
+"French Second Republic": {
+"q": "Q58326",
+"w": "French Second Republic",
+"de": 1848,
+"a": 1852,
+"m": "(French Second Republic)"
+},
+"Duchy of Holstein": {
+"q": "Q704288",
+"w": "Duchy of Holstein",
+"de": 1848,
+"a": 1852,
+"m": ""
+},
+"Republic of Baden": {
+"q": "Q690821",
+"w": "Republic of Baden",
+"de": 1849,
+"a": 1852,
+"m": ""
+},
+"Hungarian Nationalists": {
+"q": "Q28513",
+"w": "Austria-Hungary",
+"de": 1849,
+"a": 1957,
+"m": ""
+},
+"Pahang Sultanate": {
+"q": "Q30592233",
+"w": "Pahang Sultanate",
+"de": 1853,
+"a": 1889,
+"m": ""
+},
+"Republic of Baja California": {
+"q": "Q7314427",
+"w": "Republic of Baja California",
+"de": 1853,
+"a": 1856,
+"m": ""
+},
+"Montenegro": {
+"q": "Q236",
+"w": "Montenegro",
+"de": 1853,
+"a": 2024,
+"m": ""
+},
+"Taiping Heavenly Kingdom": {
+"q": "Q3486676",
+"w": "Taiping Heavenly Kingdom",
+"de": 1853,
+"a": 1864,
+"m": ""
+},
+"Mosquito Kingdom": {
+"q": "Q1165546",
+"w": "Mosquito Coast",
+"de": 1853,
+"a": 1859,
+"m": ""
+},
+"State of Buenos Aires": {
+"q": "Q6553448",
+"w": "State of Buenos Aires",
+"de": 1853,
+"a": 1860,
+"m": ""
+},
+"Second French Empire": {
+"q": "Q71092",
+"w": "Second French Empire",
+"de": 1853,
+"a": 1870,
+"m": "(Second French Empire)"
+},
+"Majeerteen Sultanate": {
+"q": "Q2257830",
+"w": "Majeerteen Sultanate",
+"de": 1856,
+"a": 1889,
+"m": ""
+},
+"Free Orange State": {
+"q": "Q218023",
+"w": "Orange Free State",
+"de": 1856,
+"a": 1899,
+"m": ""
+},
+"South African Republic": {
+"q": "Q550374",
+"w": "South African Republic",
+"de": 1856,
+"a": 1899,
+"m": ""
+},
+"New Caledonia": {
+"q": "Q33788",
+"w": "New Caledonia",
+"de": 1856,
+"a": 1859,
+"m": ""
+},
+"People's Republic of Zanzibar": {
+"q": "Q157535",
+"w": "People's Republic of Zanzibar",
+"de": 1856,
+"a": 1889,
+"m": ""
+},
+"Panthay Rebellion": {
+"q": "Q1230569",
+"w": "Panthay Rebellion",
+"de": 1856,
+"a": 1872,
+"m": ""
+},
+"United Principalities of Moldavia and Wallachia": {
+"q": "Q958291",
+"w": "United Principalities of Moldavia and Wallachia",
+"de": 1859,
+"a": 1916,
+"m": ""
+},
+"British Raj": {
+"q": "Q129286",
+"w": "British Raj",
+"de": 1859,
+"a": 1947,
+"m": "(British Empire)"
+},
+"Granadine Confederation": {
+"q": "Q1141215",
+"w": "Granadine Confederation",
+"de": 1859,
+"a": 1862,
+"m": ""
+},
+"French Indochina": {
+"q": "Q185682",
+"w": "French Indochina",
+"de": 1860,
+"a": 1957,
+"m": "(Second French Empire)"
+},
+"Confederate States of America": {
+"q": "Q81931",
+"w": "Confederate States of America",
+"de": 1861,
+"a": 1865,
+"m": ""
+},
+"United States of Colombia": {
+"q": "Q1061488",
+"w": "United States of Colombia",
+"de": 1863,
+"a": 1865,
+"m": ""
+},
+"Mexican Monarchists": {
+"q": "Q15984928",
+"w": "Conservative Party (Mexico)",
+"de": 1864,
+"a": 1864,
+"m": ""
+},
+"Second Mexican Empire": {
+"q": "Q371334",
+"w": "Second Mexican Empire",
+"de": 1865,
+"a": 1867,
+"m": ""
+},
+"Khedivate of Egypt": {
+"q": "Q127861",
+"w": "Khedivate of Egypt",
+"de": 1866,
+"a": 1884,
+"m": ""
+},
+"Republic of Colombia": {
+"q": "Q739",
+"w": "Colombia",
+"de": 1866,
+"a": 2024,
+"m": ""
+},
+"Austria-Hungary": {
+"q": "Q28513",
+"w": "Austria-Hungary",
+"de": 1868,
+"a": 1918,
+"m": ""
+},
+"Kamerun": {
+"q": "Q668294",
+"w": "Kamerun",
+"de": 1868,
+"a": 1870,
+"m": ""
+},
+"Empire of Japan": {
+"q": "Q188712",
+"w": "Empire of Japan",
+"de": 1868,
+"a": 1945,
+"m": ""
+},
+"North German Confederation": {
+"q": "Q150981",
+"w": "North German Confederation",
+"de": 1868,
+"a": 1870,
+"m": ""
+},
+"Mexico": {
+"q": "Q5062192",
+"w": "Mexico",
+"de": 1868,
+"a": 2024,
+"m": ""
+},
+"German Africa": {
+"q": "Q5551337",
+"w": "German colonization of Africa",
+"de": 1871,
+"a": 1918,
+"m": ""
+},
+"French Third Republic": {
+"q": "Q70802",
+"w": "French Third Republic",
+"de": 1871,
+"a": 1939,
+"m": "(French Third Republic)"
+},
+"German Empire": {
+"q": "Q43287",
+"w": "German Empire",
+"de": 1871,
+"a": 1919,
+"m": ""
+},
+"Kingdom of Fiji": {
+"q": "Q17515160",
+"w": "Kingdom of Fiji",
+"de": 1871,
+"a": 1876,
+"m": ""
+},
+"British Gold Coast": {
+"q": "Q503623",
+"w": "Gold Coast (British colony)",
+"de": 1873,
+"a": 1960,
+"m": "(British Empire)"
+},
+"First Spanish Republic": {
+"q": "Q497777",
+"w": "First Spanish Republic",
+"de": 1873,
+"a": 1876,
+"m": ""
+},
+"Sultanate of Hobyo": {
+"q": "Q862404",
+"w": "Sultanate of Hobyo",
+"de": 1880,
+"a": 1894,
+"m": ""
+},
+"Principality of Bulgaria": {
+"q": "Q815731",
+"w": "Principality of Bulgaria",
+"de": 1880,
+"a": 1944,
+"m": ""
+},
+"Nieuwe Republiek": {
+"q": "Q552157",
+"w": "Nieuwe Republiek",
+"de": 1885,
+"a": 1889,
+"m": ""
+},
+"Swaziland": {
+"q": "Q1050",
+"w": "Eswatini",
+"de": 1885,
+"a": 1907,
+"m": ""
+},
+"British Africa": {
+"q": "Q179848",
+"w": "Scramble for Africa",
+"de": 1885,
+"a": 1960,
+"m": "(British Empire)"
+},
+"Italian Africa": {
+"q": "Q926295",
+"w": "Italian Empire",
+"de": 1890,
+"a": 1943,
+"m": ""
+},
+"New Hebrides": {
+"q": "Q752431",
+"w": "New Hebrides",
+"de": 1890,
+"a": 1982,
+"m": ""
+},
+"Luxembourg": {
+"q": "Q2719360",
+"w": "Luxembourg",
+"de": 1890,
+"a": 2024,
+"m": ""
+},
+"Brazilian Republic": {
+"q": "Q155",
+"w": "Brazil",
+"de": 1890,
+"a": 1966,
+"m": ""
+},
+"Belgian Congo": {
+"q": "Q213510",
+"w": "Belgian Congo",
+"de": 1890,
+"a": 1962,
+"m": ""
+},
+"Mahdist State": {
+"q": "Q3125368",
+"w": "Mahdist State",
+"de": 1890,
+"a": 1899,
+"m": ""
+},
+"Cuban Nationalists": {
+"q": "Q11256",
+"w": "Fidel Castro",
+"de": 1895,
+"a": 1899,
+"m": ""
+},
+"Republic of Hawai'i": {
+"q": "Q1057542",
+"w": "Republic of Hawaii",
+"de": 1895,
+"a": 1897,
+"m": ""
+},
+"Korean Empire": {
+"q": "Q28233",
+"w": "Korean Empire",
+"de": 1898,
+"a": 1910,
+"m": ""
+},
+"Cretan State": {
+"q": "Q72785",
+"w": "Cretan State",
+"de": 1898,
+"a": 1907,
+"m": ""
+},
+"Sultanate of Muscat and Oman": {
+"q": "Q157734",
+"w": "Muscat and Oman",
+"de": 1900,
+"a": 1946,
+"m": ""
+},
+"Commonwealth of Australia": {
+"q": "Q408",
+"w": "Australia",
+"de": 1905,
+"a": 2024,
+"m": ""
+},
+"Republic of Cuba": {
+"q": "Q241",
+"w": "Cuba",
+"de": 1905,
+"a": 1959,
+"m": ""
+},
+"Republic of Panama": {
+"q": "Q804",
+"w": "Panama",
+"de": 1905,
+"a": 2024,
+"m": ""
+},
+"Portuguese Republic": {
+"q": "Q167360",
+"w": "Portugal",
+"de": 1911,
+"a": 1925,
+"m": ""
+},
+"Maderistas": {
+"q": "Q5428692",
+"w": "List of factions in the Mexican Revolution",
+"de": 1911,
+"a": 1911,
+"m": ""
+},
+"Tangier International Zone": {
+"q": "Q3497642",
+"w": "Tangier International Zone",
+"de": 1912,
+"a": 1957,
+"m": ""
+},
+"Republic of Uryankhay": {
+"q": "Q56282578",
+"w": "Uryankhay Republic",
+"de": 1912,
+"a": 1913,
+"m": ""
+},
+"Republic of China": {
+"q": "Q148",
+"w": "Republic of China (1912-1949)",
+"de": 1912,
+"a": 2024,
+"m": ""
+},
+"Great Mongol State": {
+"q": "Q7313",
+"w": "Yuan dynasty",
+"de": 1912,
+"a": 1925,
+"m": ""
+},
+"Albania": {
+"q": "Q222",
+"w": "Albania",
+"de": 1912,
+"a": 1945,
+"m": ""
+},
+"Qatar": {
+"q": "Q846",
+"w": "Qatar",
+"de": 1913,
+"a": 1915,
+"m": ""
+},
+"Imamate of Oman": {
+"q": "Q2342282",
+"w": "Imamate of Oman",
+"de": 1913,
+"a": 1919,
+"m": ""
+},
+"Kingdom of Hejaz": {
+"q": "Q956357",
+"w": "Kingdom of Hejaz",
+"de": 1916,
+"a": 1925,
+"m": ""
+},
+"Empire of China": {
+"q": "Q175379",
+"w": "Empire of China (1915–1916)",
+"de": 1916,
+"a": 1916,
+"m": ""
+},
+"Russian Republic": {
+"q": "Q139319",
+"w": "Russian Republic",
+"de": 1917,
+"a": 1919,
+"m": ""
+},
+"Kuomintang": {
+"q": "Q31113",
+"w": "Kuomintang",
+"de": 1917,
+"a": 1929,
+"m": ""
+},
+"Asir": {
+"q": "Q15728206",
+"w": "Asir Province",
+"de": 1917,
+"a": 1923,
+"m": ""
+},
+"Azerbaijan Democratic Republic": {
+"q": "Q227",
+"w": "Azerbaijan",
+"de": 1918,
+"a": 1919,
+"m": ""
+},
+"Armenia": {
+"q": "Q399",
+"w": "Armenia",
+"de": 1918,
+"a": 1919,
+"m": ""
+},
+"Republic of Finland": {
+"q": "Q33",
+"w": "Finland",
+"de": 1918,
+"a": 2024,
+"m": ""
+},
+"Serbia": {
+"q": "Q1311990",
+"w": "Serbia",
+"de": 1918,
+"a": 1918,
+"m": ""
+},
+"Polish Armed Forces": {
+"q": "Q248989",
+"w": "Polish Land Forces",
+"de": 1918,
+"a": 1918,
+"m": ""
+},
+"Kingdom of Iceland": {
+"q": "Q62567",
+"w": "Kingdom of Iceland",
+"de": 1918,
+"a": 1939,
+"m": ""
+},
+"Czechoslovakia": {
+"q": "Q33946",
+"w": "Czechoslovakia",
+"de": 1919,
+"a": 1991,
+"m": ""
+},
+"Hungarian Republic": {
+"q": "Q28",
+"w": "Hungary",
+"de": 1919,
+"a": 1943,
+"m": ""
+},
+"Kingdom of Romania": {
+"q": "Q203493",
+"w": "Kingdom of Romania",
+"de": 1919,
+"a": 1947,
+"m": ""
+},
+"North Yemen": {
+"q": "Q1998401",
+"w": "North Yemen",
+"de": 1919,
+"a": 1989,
+"m": ""
+},
+"Kingdom of Lithuania": {
+"q": "Q1656775",
+"w": "Kingdom of Lithuania",
+"de": 1919,
+"a": 1939,
+"m": ""
+},
+"Ukrainian People's Republic": {
+"q": "Q1508143",
+"w": "Ukrainian State",
+"de": 1919,
+"a": 1919,
+"m": ""
+},
+"Yugoslavia": {
+"q": "Q83286",
+"w": "Yugoslavia",
+"de": 1919,
+"a": 1945,
+"m": ""
+},
+"Estonia": {
+"q": "Q191",
+"w": "Estonia",
+"de": 1919,
+"a": 1939,
+"m": ""
+},
+"Second Polish Republic": {
+"q": "Q207272",
+"w": "Second Polish Republic",
+"de": 1919,
+"a": 1939,
+"m": ""
+},
+"Republic of Austria": {
+"q": "Q40",
+"w": "Austria",
+"de": 1919,
+"a": 1937,
+"m": ""
+},
+"Weimar Republic": {
+"q": "Q41304",
+"w": "Weimar Republic",
+"de": 1920,
+"a": 1935,
+"m": ""
+},
+"Republic of Latvia": {
+"q": "Q211",
+"w": "Latvia",
+"de": 1920,
+"a": 2024,
+"m": ""
+},
+"Republics of the Soviet Union": {
+"q": "Q236036",
+"w": "Republics of the Soviet Union",
+"de": 1920,
+"a": 1921,
+"m": ""
+},
+"French Mandate for Syria and Lebanon": {
+"q": "Q139708",
+"w": "Mandate for Syria and the Lebanon",
+"de": 1920,
+"a": 1945,
+"m": "(French Third Republic)"
+},
+"Union of Soviet Socialist Republics": {
+"q": "Q15180",
+"w": "Soviet Union",
+"de": 1922,
+"a": 1991,
+"m": ""
+},
+"Kingdom of Egypt": {
+"q": "Q124943",
+"w": "Kingdom of Egypt",
+"de": 1922,
+"a": 1952,
+"m": ""
+},
+"Republic of the Rif": {
+"q": "Q37102",
+"w": "Republic of the Rif",
+"de": 1922,
+"a": 1925,
+"m": ""
+},
+"Irish Free State": {
+"q": "Q31747",
+"w": "Irish Free State",
+"de": 1922,
+"a": 1937,
+"m": ""
+},
+"Provisional Priamurye Government": {
+"q": "Q1381504",
+"w": "Provisional Priamurye Government",
+"de": 1922,
+"a": 1923,
+"m": ""
+},
+"Republic of Turkey": {
+"q": "Q43",
+"w": "Turkey",
+"de": 1924,
+"a": 2024,
+"m": ""
+},
+"Pahlavi Dynasty": {
+"q": "Q207991",
+"w": "Pahlavi dynasty",
+"de": 1924,
+"a": 1978,
+"m": ""
+},
+"Kingdom of Afghanistan": {
+"q": "Q1138904",
+"w": "Kingdom of Afghanistan",
+"de": 1926,
+"a": 1972,
+"m": ""
+},
+"Mongolian People's Republic": {
+"q": "Q212056",
+"w": "Mongolian People's Republic",
+"de": 1926,
+"a": 1991,
+"m": ""
+},
+"Kingdom of Hejaz and Nejd": {
+"q": "Q1756546",
+"w": "Kingdom of Hejaz and Nejd",
+"de": 1926,
+"a": 1935,
+"m": ""
+},
+"Estado Novo": {
+"q": "Q824489",
+"w": "Estado Novo (Portugal)",
+"de": 1926,
+"a": 2024,
+"m": ""
+},
+"Chinese Communists": {
+"q": "Q17427",
+"w": "Chinese Communist Party",
+"de": 1928,
+"a": 1931,
+"m": ""
+},
+"Argentine Republic": {
+"q": "Q414",
+"w": "Argentina",
+"de": 1930,
+"a": 2024,
+"m": ""
+},
+"Anti-Kuomintang Coalition": {
+"q": "Q717809",
+"w": "Central Plains War",
+"de": 1930,
+"a": 1931,
+"m": ""
+},
+"South Africa": {
+"q": "Q258",
+"w": "South Africa",
+"de": 1932,
+"a": 2024,
+"m": ""
+},
+"Canada": {
+"q": "Q16",
+"w": "Canada",
+"de": 1932,
+"a": 2024,
+"m": ""
+},
+"Kingdom of Thailand": {
+"q": "Q869",
+"w": "Thailand",
+"de": 1932,
+"a": 2024,
+"m": ""
+},
+"Kingdom of Iraq": {
+"q": "Q149805",
+"w": "Kingdom of Iraq",
+"de": 1932,
+"a": 1957,
+"m": ""
+},
+"Second Spanish Republic": {
+"q": "Q178038",
+"w": "Second Spanish Republic",
+"de": 1932,
+"a": 1938,
+"m": ""
+},
+"Unitary State of Brazil": {
+"q": "Q155",
+"w": "Brazil",
+"de": 1932,
+"a": 1945,
+"m": ""
+},
+"Communist Party of China": {
+"q": "Q17427",
+"w": "Chinese Communist Party",
+"de": 1932,
+"a": 1949,
+"m": ""
+},
+"Kingdom of Saudi Arabia": {
+"q": "Q851",
+"w": "Saudi Arabia",
+"de": 1936,
+"a": 2024,
+"m": ""
+},
+"Spanish Nationalists": {
+"q": "Q2742116",
+"w": "Nationalist faction (Spanish Civil War)",
+"de": 1936,
+"a": 1938,
+"m": ""
+},
+"Nazi Germany": {
+"q": "Q7318",
+"w": "Nazi Germany",
+"de": 1936,
+"a": 1944,
+"m": ""
+},
+"Republic of Haiti": {
+"q": "Q790",
+"w": "Haiti",
+"de": 1936,
+"a": 2024,
+"m": ""
+},
+"Éire": {
+"q": "Q5306909",
+"w": "Éire",
+"de": 1938,
+"a": 2024,
+"m": ""
+},
+"Francoist Spain": {
+"q": "Q13474305",
+"w": "Francoist Spain",
+"de": 1939,
+"a": 1975,
+"m": ""
+},
+"Free French": {
+"q": "Q152582",
+"w": "Free France",
+"de": 1940,
+"a": 1944,
+"m": ""
+},
+"Vichy France": {
+"q": "Q69808",
+"w": "Vichy France",
+"de": 1940,
+"a": 1943,
+"m": "(Vichy France)"
+},
+"Independent State of Croatia": {
+"q": "Q153128",
+"w": "Independent State of Croatia",
+"de": 1941,
+"a": 1944,
+"m": ""
+},
+"Ethiopia": {
+"q": "Q115",
+"w": "Ethiopia",
+"de": 1942,
+"a": 2024,
+"m": ""
+},
+"Yugoslav Partisans": {
+"q": "Q155198",
+"w": "Yugoslav Partisans",
+"de": 1944,
+"a": 1944,
+"m": ""
+},
+"Lebanon": {
+"q": "Q139708",
+"w": "Lebanon",
+"de": 1944,
+"a": 2024,
+"m": ""
+},
+"Kingdom of Greece": {
+"q": "Q209065",
+"w": "Kingdom of Greece",
+"de": 1945,
+"a": 1966,
+"m": ""
+},
+"French Fourth Republic": {
+"q": "Q69829",
+"w": "French Fourth Republic",
+"de": 1945,
+"a": 1957,
+"m": "(French Fourth Republic)"
+},
+"East Turkestan Republic": {
+"q": "Q840601",
+"w": "East Turkestan",
+"de": 1945,
+"a": 1949,
+"m": ""
+},
+"Denmark": {
+"q": "Q350186",
+"w": "Denmark",
+"de": 1945,
+"a": 2024,
+"m": ""
+},
+"People's Socialist Republic of Albania": {
+"q": "Q467864",
+"w": "People's Socialist Republic of Albania",
+"de": 1946,
+"a": 1990,
+"m": ""
+},
+"Socialist Federal Republic of Yugoslavia": {
+"q": "Q83286",
+"w": "Socialist Federal Republic of Yugoslavia",
+"de": 1946,
+"a": 1991,
+"m": ""
+},
+"Republic of Italy": {
+"q": "Q38",
+"w": "Italy",
+"de": 1946,
+"a": 2024,
+"m": ""
+},
+"Republic of Indonesia": {
+"q": "Q252",
+"w": "Indonesia",
+"de": 1946,
+"a": 2024,
+"m": ""
+},
+"Papua New Guinea": {
+"q": "Q691",
+"w": "Papua New Guinea",
+"de": 1946,
+"a": 2024,
+"m": ""
+},
+"Republic of Iceland": {
+"q": "Q189",
+"w": "Iceland",
+"de": 1946,
+"a": 2024,
+"m": ""
+},
+"Second Republic of Austria": {
+"q": "Q187830",
+"w": "History of Austria",
+"de": 1946,
+"a": 2024,
+"m": ""
+},
+"Second Syrian Republic": {
+"q": "Q146885",
+"w": "Second Syrian Republic",
+"de": 1946,
+"a": 1957,
+"m": ""
+},
+"Kingdom of Bulgaria": {
+"q": "Q147909",
+"w": "Kingdom of Bulgaria",
+"de": 1947,
+"a": 1947,
+"m": ""
+},
+"Republic of India": {
+"q": "Q668",
+"w": "India",
+"de": 1947,
+"a": 2024,
+"m": ""
+},
+"Republic of the Philippines": {
+"q": "Q928",
+"w": "Philippines",
+"de": 1947,
+"a": 2024,
+"m": ""
+},
+"Islamic Republic of Pakistan": {
+"q": "Q843",
+"w": "Pakistan",
+"de": 1947,
+"a": 2024,
+"m": ""
+},
+"Qatar Protectorate": {
+"q": "Q944391",
+"w": "History of Qatar",
+"de": 1947,
+"a": 1955,
+"m": ""
+},
+"Kingdom of Jordan": {
+"q": "Q810",
+"w": "Jordan",
+"de": 1947,
+"a": 2024,
+"m": ""
+},
+"Hungary": {
+"q": "Q28513",
+"w": "Hungary",
+"de": 1947,
+"a": 2024,
+"m": ""
+},
+"New Zealand": {
+"q": "Q664",
+"w": "New Zealand",
+"de": 1948,
+"a": 2024,
+"m": ""
+},
+"People's Republic of Bulgaria": {
+"q": "Q121932",
+"w": "People's Republic of Bulgaria",
+"de": 1948,
+"a": 1990,
+"m": ""
+},
+"Democratic People's Republic of Korea": {
+"q": "Q423",
+"w": "North Korea",
+"de": 1948,
+"a": 2024,
+"m": ""
+},
+"Republic of Korea": {
+"q": "Q423",
+"w": "South Korea",
+"de": 1948,
+"a": 2024,
+"m": ""
+},
+"Sri Lanka": {
+"q": "Q854",
+"w": "Sri Lanka",
+"de": 1948,
+"a": 2024,
+"m": ""
+},
+"Socialist Republic of Romania": {
+"q": "Q842794",
+"w": "Socialist Republic of Romania",
+"de": 1948,
+"a": 1989,
+"m": ""
+},
+"Palestinians": {
+"q": "Q201190",
+"w": "Palestinians",
+"de": 1948,
+"a": 1948,
+"m": ""
+},
+"State of Israel": {
+"q": "Q801",
+"w": "Israel",
+"de": 1948,
+"a": 2024,
+"m": ""
+},
+"German Democratic Republic": {
+"q": "Q16957",
+"w": "East Germany",
+"de": 1949,
+"a": 1990,
+"m": ""
+},
+"People's Republic of China": {
+"q": "Q148",
+"w": "China",
+"de": 1950,
+"a": 2024,
+"m": ""
+},
+"Federal Republic of Germany": {
+"q": "Q713750",
+"w": "West Germany",
+"de": 1950,
+"a": 1990,
+"m": ""
+},
+"Hungarian People's Republic": {
+"q": "Q16410",
+"w": "Hungarian People's Republic",
+"de": 1950,
+"a": 1989,
+"m": ""
+},
+"Republic of Poland": {
+"q": "Q36",
+"w": "Poland",
+"de": 1953,
+"a": 2024,
+"m": ""
+},
+"Japan": {
+"q": "Q188712",
+"w": "Japan",
+"de": 1953,
+"a": 2024,
+"m": ""
+},
+"Republic of Egypt": {
+"q": "Q79",
+"w": "Egypt",
+"de": 1953,
+"a": 1957,
+"m": ""
+},
+"Kingdom of Libya": {
+"q": "Q31454",
+"w": "Kingdom of Libya",
+"de": 1953,
+"a": 1968,
+"m": ""
+},
+"Republic of Vietnam": {
+"q": "Q172640",
+"w": "South Vietnam",
+"de": 1956,
+"a": 1975,
+"m": ""
+},
+"Kingdom of Laos": {
+"q": "Q870055",
+"w": "Kingdom of Laos",
+"de": 1956,
+"a": 1975,
+"m": ""
+},
+"Republic of Tunisia": {
+"q": "Q948",
+"w": "Tunisia",
+"de": 1956,
+"a": 2024,
+"m": ""
+},
+"Kingdom of Cambodia": {
+"q": "Q424",
+"w": "Cambodia",
+"de": 1956,
+"a": 2024,
+"m": ""
+},
+"Democratic Republic of Vietnam": {
+"q": "Q172640",
+"w": "North Vietnam",
+"de": 1956,
+"a": 1975,
+"m": ""
+},
+"Republic of Sudan": {
+"q": "Q1049",
+"w": "Sudan",
+"de": 1956,
+"a": 2024,
+"m": ""
+},
+"Ghana": {
+"q": "Q117",
+"w": "Ghana",
+"de": 1958,
+"a": 2024,
+"m": ""
+},
+"United Arab Republic": {
+"q": "Q170468",
+"w": "United Arab Republic",
+"de": 1958,
+"a": 1972,
+"m": ""
+},
+"Cuban Communists": {
+"q": "Q371402",
+"w": "Communist Party of Cuba",
+"de": 1958,
+"a": 1959,
+"m": ""
+},
+"Arab Federation": {
+"q": "Q146713",
+"w": "Arab Federation",
+"de": 1958,
+"a": 1959,
+"m": ""
+},
+"French Fifth Republic": {
+"q": "Q200686",
+"w": "French Fifth Republic",
+"de": 1958,
+"a": 2024,
+"m": ""
+},
+"Federation of Malaya": {
+"q": "Q1479726",
+"w": "Federation of Malaya",
+"de": 1958,
+"a": 1962,
+"m": ""
+},
+"Madagascar": {
+"q": "Q1019",
+"w": "Madagascar",
+"de": 1960,
+"a": 2024,
+"m": ""
+},
+"Mali Federation": {
+"q": "Q216632",
+"w": "Mali Federation",
+"de": 1960,
+"a": 2024,
+"m": ""
+},
+"Guinea": {
+"q": "Q983",
+"w": "Guinea",
+"de": 1960,
+"a": 2024,
+"m": ""
+},
+"Togo": {
+"q": "Q945",
+"w": "Togo",
+"de": 1960,
+"a": 2024,
+"m": ""
+},
+"Federal Republic of Somalia": {
+"q": "Q1045",
+"w": "Somalia",
+"de": 1960,
+"a": 2024,
+"m": ""
+},
+"Democratic Republic of the Congo": {
+"q": "Q974",
+"w": "Democratic Republic of the Congo",
+"de": 1960,
+"a": 2024,
+"m": ""
+},
+"Iraqi Republic": {
+"q": "Q796",
+"w": "Iraq",
+"de": 1960,
+"a": 2005,
+"m": ""
+},
+"Communist Cuba": {
+"q": "Q241",
+"w": "Cuba",
+"de": 1960,
+"a": 2024,
+"m": ""
+},
+"Republic of Cameroon": {
+"q": "Q1009",
+"w": "Cameroon",
+"de": 1960,
+"a": 2024,
+"m": ""
+},
+"Republic of the Congo": {
+"q": "Q974",
+"w": "Republic of the Congo",
+"de": 1961,
+"a": 2024,
+"m": ""
+},
+"Gabon": {
+"q": "Q1000",
+"w": "Gabon",
+"de": 1961,
+"a": 2024,
+"m": ""
+},
+"Republic of Syria": {
+"q": "Q858",
+"w": "Syria",
+"de": 1961,
+"a": 1962,
+"m": ""
+},
+"Tanzania": {
+"q": "Q924",
+"w": "Tanzania",
+"de": 1961,
+"a": 2024,
+"m": ""
+},
+"State of Kuwait": {
+"q": "Q817",
+"w": "Kuwait",
+"de": 1961,
+"a": 1989,
+"m": ""
+},
+"Sierra Leone": {
+"q": "Q1044",
+"w": "Sierra Leone",
+"de": 1961,
+"a": 2024,
+"m": ""
+},
+"British East Africa": {
+"q": "Q876185",
+"w": "East Africa Protectorate",
+"de": 1961,
+"a": 1972,
+"m": "(British Empire)"
+},
+"Central African Republic": {
+"q": "Q929",
+"w": "Central African Republic",
+"de": 1961,
+"a": 2024,
+"m": ""
+},
+"Republic of Côte d'Ivoire": {
+"q": "Q1008",
+"w": "Ivory Coast",
+"de": 1961,
+"a": 2024,
+"m": ""
+},
+"Republic of Senegal": {
+"q": "Q1041",
+"w": "Senegal",
+"de": 1961,
+"a": 2024,
+"m": ""
+},
+"Republic of Chad": {
+"q": "Q657",
+"w": "Chad",
+"de": 1961,
+"a": 2024,
+"m": ""
+},
+"Republic of Cyprus": {
+"q": "Q229",
+"w": "Cyprus",
+"de": 1961,
+"a": 2024,
+"m": ""
+},
+"Republic of Benin": {
+"q": "Q962",
+"w": "Benin",
+"de": 1961,
+"a": 2024,
+"m": ""
+},
+"Federal Republic of Nigeria": {
+"q": "Q1033",
+"w": "Nigeria",
+"de": 1961,
+"a": 2024,
+"m": ""
+},
+"Mauritania": {
+"q": "Q1025",
+"w": "Mauritania",
+"de": 1961,
+"a": 2024,
+"m": ""
+},
+"Burkina Faso": {
+"q": "Q965",
+"w": "Burkina Faso",
+"de": 1961,
+"a": 2024,
+"m": ""
+},
+"Republic of the Niger": {
+"q": "Q1032",
+"w": "Niger",
+"de": 1961,
+"a": 2024,
+"m": ""
+},
+"Republic of Kenya": {
+"q": "Q114",
+"w": "Kenya",
+"de": 1963,
+"a": 2024,
+"m": ""
+},
+"Republic of Rwanda": {
+"q": "Q1037",
+"w": "Rwanda",
+"de": 1963,
+"a": 2024,
+"m": ""
+},
+"Jamaica": {
+"q": "Q766",
+"w": "Jamaica",
+"de": 1963,
+"a": 2024,
+"m": ""
+},
+"Republic of Trinidad and Tobago": {
+"q": "Q754",
+"w": "Trinidad and Tobago",
+"de": 1963,
+"a": 2024,
+"m": ""
+},
+"People's Democratic Republic of Algeria": {
+"q": "Q262",
+"w": "Algeria",
+"de": 1963,
+"a": 2024,
+"m": ""
+},
+"Ba'athist Syria": {
+"q": "Q858",
+"w": "Syria",
+"de": 1963,
+"a": 1966,
+"m": ""
+},
+"Malaysia": {
+"q": "Q833",
+"w": "Malaysia",
+"de": 1963,
+"a": 2024,
+"m": ""
+},
+"Republic of Uganda": {
+"q": "Q1036",
+"w": "Uganda",
+"de": 1963,
+"a": 2024,
+"m": ""
+},
+"Republic of Burundi": {
+"q": "Q967",
+"w": "Burundi",
+"de": 1963,
+"a": 2024,
+"m": ""
+},
+"Sultanate of Zanzibar": {
+"q": "Q157904",
+"w": "Sultanate of Zanzibar",
+"de": 1963,
+"a": 1966,
+"m": ""
+},
+"Malawi": {
+"q": "Q1020",
+"w": "Malawi",
+"de": 1967,
+"a": 2024,
+"m": ""
+},
+"Federated Republic of Brazil": {
+"q": "Q155",
+"w": "Brazil",
+"de": 1967,
+"a": 1986,
+"m": ""
+},
+"Lesotho": {
+"q": "Q1013",
+"w": "Lesotho",
+"de": 1967,
+"a": 2024,
+"m": ""
+},
+"Guyana": {
+"q": "Q734",
+"w": "Guyana",
+"de": 1967,
+"a": 2024,
+"m": ""
+},
+"Arab Socialist Ba'ath Party": {
+"q": "Q16243030",
+"w": "Arab Socialist Ba'ath Party - Syria Region",
+"de": 1967,
+"a": 1972,
+"m": ""
+},
+"Zambia": {
+"q": "Q953",
+"w": "Zambia",
+"de": 1967,
+"a": 2024,
+"m": ""
+},
+"Republic of The Gambia": {
+"q": "Q1005",
+"w": "The Gambia",
+"de": 1967,
+"a": 2024,
+"m": ""
+},
+"Barbados": {
+"q": "Q244",
+"w": "Barbados",
+"de": 1967,
+"a": 2024,
+"m": ""
+},
+"Rhodesia": {
+"q": "Q217169",
+"w": "Rhodesia",
+"de": 1967,
+"a": 1978,
+"m": ""
+},
+"Malta": {
+"q": "Q233",
+"w": "Malta",
+"de": 1967,
+"a": 2024,
+"m": ""
+},
+"Greek junta": {
+"q": "Q504081",
+"w": "Greek junta",
+"de": 1967,
+"a": 1975,
+"m": ""
+},
+"Republic of Singapore": {
+"q": "Q334",
+"w": "Singapore",
+"de": 1967,
+"a": 2024,
+"m": ""
+},
+"Saint Kitts": {
+"q": "Q204989",
+"w": "Saint Kitts",
+"de": 1967,
+"a": 2024,
+"m": ""
+},
+"Antigua and Barbuda": {
+"q": "Q781",
+"w": "Antigua and Barbuda",
+"de": 1967,
+"a": 2024,
+"m": ""
+},
+"Republic of Botswana": {
+"q": "Q963",
+"w": "Botswana",
+"de": 1967,
+"a": 2024,
+"m": ""
+},
+"Libyan Arab Republic": {
+"q": "Q17435890",
+"w": "History of Libya under Muammar Gaddafi",
+"de": 1969,
+"a": 2013,
+"m": ""
+},
+"Mauritius": {
+"q": "Q1027",
+"w": "Mauritius",
+"de": 1969,
+"a": 2024,
+"m": ""
+},
+"People's Democratic Republic of Yemen": {
+"q": "Q199841",
+"w": "South Yemen",
+"de": 1969,
+"a": 1989,
+"m": ""
+},
+"Saint Vincent": {
+"q": "Q757",
+"w": "Saint Vincent and the Grenadines",
+"de": 1969,
+"a": 2024,
+"m": ""
+},
+"Eswatini": {
+"q": "Q1050",
+"w": "Eswatini",
+"de": 1969,
+"a": 2024,
+"m": ""
+},
+"Equatorial Guinea": {
+"q": "Q983",
+"w": "Equatorial Guinea",
+"de": 1969,
+"a": 2024,
+"m": ""
+},
+"Commonwealth of The Bahamas": {
+"q": "Q778",
+"w": "The Bahamas",
+"de": 1973,
+"a": 2024,
+"m": ""
+},
+"Republic of Guinea-Bissau": {
+"q": "Q1007",
+"w": "Guinea-Bissau",
+"de": 1973,
+"a": 2024,
+"m": ""
+},
+"Arab Republic of Egypt": {
+"q": "Q79",
+"w": "Egypt",
+"de": 1973,
+"a": 2024,
+"m": ""
+},
+"Kingdom of Bahrain": {
+"q": "Q398",
+"w": "Bahrain",
+"de": 1973,
+"a": 2024,
+"m": ""
+},
+"Syria": {
+"q": "Q41137",
+"w": "Syria",
+"de": 1973,
+"a": 2024,
+"m": ""
+},
+"Republic of Fiji": {
+"q": "Q712",
+"w": "Fiji",
+"de": 1973,
+"a": 2024,
+"m": ""
+},
+"Republic of Afghanistan": {
+"q": "Q1415128",
+"w": "Republic of Afghanistan (1973–1978)",
+"de": 1973,
+"a": 1978,
+"m": ""
+},
+"People's Republic of Bangladesh": {
+"q": "Q902",
+"w": "Bangladesh",
+"de": 1973,
+"a": 2024,
+"m": ""
+},
+"State of Qatar": {
+"q": "Q846",
+"w": "Qatar",
+"de": 1973,
+"a": 2024,
+"m": ""
+},
+"United Arab Emirates": {
+"q": "Q878",
+"w": "United Arab Emirates",
+"de": 1973,
+"a": 2024,
+"m": ""
+},
+"Zaire": {
+"q": "Q6500954",
+"w": "Zaire",
+"de": 1973,
+"a": 1995,
+"m": ""
+},
+"Seychelles": {
+"q": "Q1042",
+"w": "Seychelles",
+"de": 1976,
+"a": 2024,
+"m": ""
+},
+"Turkish Republic of Northern Cyprus": {
+"q": "Q23681",
+"w": "Northern Cyprus",
+"de": 1976,
+"a": 2024,
+"m": ""
+},
+"Socialist Republic of Vietnam": {
+"q": "Q881",
+"w": "Vietnam",
+"de": 1976,
+"a": 2024,
+"m": ""
+},
+"Third Hellenic Republic": {
+"q": "Q17765809",
+"w": "Third Hellenic Republic",
+"de": 1976,
+"a": 2024,
+"m": ""
+},
+"People's Republic of Angola": {
+"q": "Q916",
+"w": "Angola",
+"de": 1976,
+"a": 2024,
+"m": ""
+},
+"Mozambique": {
+"q": "Q1029",
+"w": "Mozambique",
+"de": 1976,
+"a": 2024,
+"m": ""
+},
+"Republic of Cabo Verde": {
+"q": "Q1011",
+"w": "Cape Verde",
+"de": 1976,
+"a": 2024,
+"m": ""
+},
+"Khmer Rouge": {
+"q": "Q191764",
+"w": "Khmer Rouge",
+"de": 1976,
+"a": 1978,
+"m": ""
+},
+"Grenada": {
+"q": "Q769",
+"w": "Grenada",
+"de": 1976,
+"a": 2024,
+"m": ""
+},
+"Republic of Suriname": {
+"q": "Q730",
+"w": "Suriname",
+"de": 1976,
+"a": 2024,
+"m": ""
+},
+"São Tomé and Príncipe": {
+"q": "Q1039",
+"w": "São Tomé and Príncipe",
+"de": 1976,
+"a": 2024,
+"m": ""
+},
+"Communist Laos": {
+"q": "Q819",
+"w": "Laos",
+"de": 1976,
+"a": 2024,
+"m": ""
+},
+"Portugal": {
+"q": "Q45",
+"w": "Portugal",
+"de": 1976,
+"a": 2024,
+"m": ""
+},
+"People's Republic of Kampuchea": {
+"q": "Q867778",
+"w": "People's Republic of Kampuchea",
+"de": 1979,
+"a": 1995,
+"m": ""
+},
+"Commonwealth of Dominica": {
+"q": "Q784",
+"w": "Dominica",
+"de": 1979,
+"a": 2024,
+"m": ""
+},
+"Zimbabwe Rhodesia": {
+"q": "Q890120",
+"w": "Zimbabwe Rhodesia",
+"de": 1979,
+"a": 1982,
+"m": ""
+},
+"Saint Lucia": {
+"q": "Q760",
+"w": "Saint Lucia",
+"de": 1979,
+"a": 2024,
+"m": ""
+},
+"Islamic Republic of Iran": {
+"q": "Q794",
+"w": "Iran",
+"de": 1979,
+"a": 2024,
+"m": ""
+},
+"Solomon Islands": {
+"q": "Q685",
+"w": "Solomon Islands",
+"de": 1979,
+"a": 2024,
+"m": ""
+},
+"Afghanistan": {
+"q": "Q889",
+"w": "Afghanistan",
+"de": 1979,
+"a": 2024,
+"m": ""
+},
+"Republic of Djibouti": {
+"q": "Q977",
+"w": "Djibouti",
+"de": 1979,
+"a": 2024,
+"m": ""
+},
+"Republic of Zimbabwe": {
+"q": "Q954",
+"w": "Zimbabwe",
+"de": 1983,
+"a": 2024,
+"m": ""
+},
+"Vanuatu": {
+"q": "Q686",
+"w": "Vanuatu",
+"de": 1983,
+"a": 2024,
+"m": ""
+},
+"Belize": {
+"q": "Q242",
+"w": "Belize",
+"de": 1983,
+"a": 2024,
+"m": ""
+},
+"Micronesia": {
+"q": "Q3359409",
+"w": "Micronesia",
+"de": 1987,
+"a": 2024,
+"m": ""
+},
+"Mujahideen": {
+"q": "Q42759",
+"w": "Mujahideen",
+"de": 1987,
+"a": 2024,
+"m": ""
+},
+"Republic of Brazil": {
+"q": "Q155",
+"w": "Brazil",
+"de": 1987,
+"a": 2024,
+"m": ""
+},
+"Romania": {
+"q": "Q203493",
+"w": "Romania",
+"de": 1990,
+"a": 2024,
+"m": ""
+},
+"Republic of Yemen": {
+"q": "Q199841",
+"w": "Yemen",
+"de": 1990,
+"a": 2024,
+"m": ""
+},
+"Republic of Lithuania": {
+"q": "Q37",
+"w": "Lithuania",
+"de": 1990,
+"a": 2024,
+"m": ""
+},
+"Namibia": {
+"q": "Q1030",
+"w": "Namibia",
+"de": 1990,
+"a": 2024,
+"m": ""
+},
+"Union of Myanmar": {
+"q": "Q836",
+"w": "Myanmar",
+"de": 1990,
+"a": 2024,
+"m": ""
+},
+"Federated Republic of Germany": {
+"q": "Q183",
+"w": "Germany",
+"de": 1991,
+"a": 2024,
+"m": ""
+},
+"Republic of Albania": {
+"q": "Q467864",
+"w": "Albania",
+"de": 1991,
+"a": 2024,
+"m": ""
+},
+"Republic of Bulgaria": {
+"q": "Q121932",
+"w": "Bulgaria",
+"de": 1991,
+"a": 2024,
+"m": ""
+},
+"Republic of Tajikistan": {
+"q": "Q863",
+"w": "Tajikistan",
+"de": 1992,
+"a": 2024,
+"m": ""
+},
+"Kazakhstan": {
+"q": "Q232",
+"w": "Kazakhstan",
+"de": 1992,
+"a": 2024,
+"m": ""
+},
+"Republic of Croatia": {
+"q": "Q224",
+"w": "Croatia",
+"de": 1992,
+"a": 2024,
+"m": ""
+},
+"Chechen Republic": {
+"q": "Q5187",
+"w": "Chechnya",
+"de": 1992,
+"a": 2005,
+"m": ""
+},
+"Republic of Armenia": {
+"q": "Q399",
+"w": "Armenia",
+"de": 1992,
+"a": 2024,
+"m": ""
+},
+"Serbia-Montenegro": {
+"q": "Q37024",
+"w": "Serbia and Montenegro",
+"de": 1992,
+"a": 2005,
+"m": ""
+},
+"Republic of Slovenia": {
+"q": "Q215",
+"w": "Slovenia",
+"de": 1992,
+"a": 2024,
+"m": ""
+},
+"Russian-occupied territories": {
+"q": "Q106809413",
+"w": "Russian-occupied territories",
+"de": 1992,
+"a": 2024,
+"m": "(Russian Federation)"
+},
+"Mongolia": {
+"q": "Q711",
+"w": "Mongolia",
+"de": 1992,
+"a": 2024,
+"m": ""
+},
+"Republic of Belarus": {
+"q": "Q184",
+"w": "Belarus",
+"de": 1992,
+"a": 2024,
+"m": ""
+},
+"Kyrgyzstan": {
+"q": "Q813",
+"w": "Kyrgyzstan",
+"de": 1992,
+"a": 2024,
+"m": ""
+},
+"Slovakia": {
+"q": "Q33946",
+"w": "Slovakia",
+"de": 1992,
+"a": 2024,
+"m": ""
+},
+"Republic of Azerbaijan": {
+"q": "Q227",
+"w": "Azerbaijan",
+"de": 1992,
+"a": 2024,
+"m": ""
+},
+"Bosnia and Herzegovina": {
+"q": "Q225",
+"w": "Bosnia and Herzegovina",
+"de": 1992,
+"a": 2024,
+"m": ""
+},
+"Czech Republic": {
+"q": "Q213",
+"w": "Czech Republic",
+"de": 1992,
+"a": 2024,
+"m": ""
+},
+"Former Yugoslav Republic of Macedonia": {
+"q": "Q221",
+"w": "North Macedonia",
+"de": 1992,
+"a": 2024,
+"m": ""
+},
+"State of Eritrea": {
+"q": "Q986",
+"w": "Eritrea",
+"de": 1992,
+"a": 2024,
+"m": ""
+},
+"Republic of Uzbekistan": {
+"q": "Q265",
+"w": "Uzbekistan",
+"de": 1992,
+"a": 2024,
+"m": ""
+},
+"Republic of Estonia": {
+"q": "Q191",
+"w": "Estonia",
+"de": 1992,
+"a": 2024,
+"m": ""
+},
+"Republic of Moldova": {
+"q": "Q217",
+"w": "Moldova",
+"de": 1992,
+"a": 2024,
+"m": ""
+},
+"Ukraine": {
+"q": "Q598570",
+"w": "Ukraine",
+"de": 1992,
+"a": 2024,
+"m": ""
+},
+"Russian Federation": {
+"q": "Q159",
+"w": "Russia",
+"de": 1992,
+"a": 2024,
+"m": "(Russian Federation)"
+},
+"Turkmenistan": {
+"q": "Q874",
+"w": "Turkmenistan",
+"de": 1992,
+"a": 2024,
+"m": ""
+},
+"Taliban": {
+"q": "Q42418",
+"w": "Taliban",
+"de": 1996,
+"a": 2005,
+"m": ""
+},
+"Palau": {
+"q": "Q695",
+"w": "Palau",
+"de": 1996,
+"a": 2024,
+"m": ""
+},
+"Kosovo": {
+"q": "Q1246",
+"w": "Kosovo",
+"de": 2000,
+"a": 2024,
+"m": ""
+},
+"British Overseas Territories": {
+"q": "Q46395",
+"w": "British Overseas Territories",
+"de": 2000,
+"a": 2024,
+"m": "(Commonwealth of Nations)"
+},
+"Republic of Serbia": {
+"q": "Q403",
+"w": "Serbia",
+"de": 2006,
+"a": 2024,
+"m": ""
+},
+"East Timor": {
+"q": "Q574",
+"w": "East Timor",
+"de": 2006,
+"a": 2024,
+"m": ""
+},
+"State of Libya": {
+"q": "Q1016",
+"w": "Libya",
+"de": 2014,
+"a": 2024,
+"m": ""
+},
+"South Sudan": {
+"q": "Q958",
+"w": "South Sudan",
+"de": 2014,
+"a": 2024,
+"m": ""
+},
+"Gaza/Hamas": {
+"q": "Q5588642",
+"w": "Governance of the Gaza Strip",
+"de": 2014,
+"a": 2024,
+"m": ""
+},
+"Republic of Iraq": {
+"q": "Q796",
+"w": "Iraq",
+"de": 2014,
+"a": 2024,
+"m": ""
+}
+}
+}

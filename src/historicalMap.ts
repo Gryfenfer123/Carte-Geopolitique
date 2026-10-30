@@ -26,6 +26,7 @@
 // lorsqu'une entité change de tracé.
 // ---------------------------------------------------------------------------
 
+import { ajouterFonds } from "./historiqueFonds";
 import L from "leaflet";
 import "./historique.css";
 import { assurerTraces, chargerIndex, chargerNomsFr, traceChargee } from "./historiqueData";
@@ -145,12 +146,8 @@ export function initHistoricalMapSystem() {
       maxBounds: [[-85, -190], [85, 190]],
       maxBoundsViscosity: 0.8,
     });
-    // Fond « physique » (relief et océans, SANS frontières ni noms de pays modernes) — retour de
-    // Martin du 2026-10-06 : « c'est le fond de carte des pays actuels ».
-    L.tileLayer("https://services.arcgisonline.com/ArcGIS/rest/services/World_Physical_Map/MapServer/tile/{z}/{y}/{x}", {
-      attribution: '&copy; <a href="https://www.esri.com">Esri</a> — Esri, US National Park Service',
-      maxZoom: 8,
-    }).addTo(carte);
+    // Fonds de carte : voir historiqueFonds.ts (sans frontières ni noms de pays modernes ; relief sombre par défaut).
+    ajouterFonds(carte);
     couchePolygones = L.featureGroup().addTo(carte);
     coucheEtiquettes = L.layerGroup().addTo(carte);
     carte.fitBounds(REGIONS[0].bornes);

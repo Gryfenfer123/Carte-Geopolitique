@@ -42,3 +42,9 @@ Format : voir `README.md`. Consultation : 2026-10-23 et 2026-10-24.
 
 ### Corrections de formes (2026-10-28)
 - `scripts/historique/corrections_formes_manuelles.json` : 6 règles, chacune avec sa source (dates de création P571 des États concernés sur Wikidata, CC0 ; surfaces de Cliopatria elle-même, CC BY 4.0). On ne dessine rien de nouveau : on retire d'un contour une zone déjà dessinée ailleurs par la source.
+
+## Chevauchements entre entités (2026-10-30)
+Une ligne par décision dans `docs/sources/historique_chevauchements.csv` (entités, années, part recouverte, décision, motif, contrôle des dates, liens).
+- Pour chaque paire : article Wikipédia (en) de chaque entité (CC BY-SA 4.0, fiabilité bonne, classement à contre-vérifier sur la page) et dates Wikidata de naissance/fin (CC0, `wikidata_dates_brut.json`).
+- Le « contrôle des dates » compare la naissance Wikidata du nouvel État (ou la fin de l'ancien) à l'année du recouvrement ; « ✘ NON CONFIRMÉ » = Wikidata ne l'appuie pas (souvent l'identifiant renvoie à l'État moderne) : à regarder en priorité.
+- Fond de carte : NASA GIBS, Blue Marble Shaded Relief + Bathymetry (image du domaine public, usage libre avec mention) ; Esri World Imagery (conditions Esri, mention affichée).

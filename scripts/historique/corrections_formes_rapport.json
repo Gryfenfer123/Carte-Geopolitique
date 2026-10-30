@@ -168,7 +168,8 @@
 {
 "de": 1975,
 "a": 2023,
-"surface_retiree_pct": 98.5
+"surface_retiree_pct": 100.0,
+"supprimee": true
 }
 ]
 },
@@ -194,6 +195,8938 @@
 "de": 1957,
 "a": 1959,
 "surface_retiree_pct": 20.1
+}
+]
+},
+{
+"id": "chev-abbasid-caliphate",
+"grand": "Abbasid Caliphate",
+"petits": [
+"Bagratid Armenia",
+"Georgia",
+"Sind-Habbari Dynasty",
+"Tulunids"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 850,
+"a": 853,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 854,
+"a": 859,
+"surface_retiree_pct": 1.0
+},
+{
+"de": 864,
+"a": 867,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 868,
+"a": 869,
+"surface_retiree_pct": 9.2
+},
+{
+"de": 870,
+"a": 874,
+"surface_retiree_pct": 9.5
+},
+{
+"de": 884,
+"a": 885,
+"surface_retiree_pct": 2.2
+},
+{
+"de": 886,
+"a": 887,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 888,
+"a": 891,
+"surface_retiree_pct": 1.5
+}
+]
+},
+{
+"id": "chev-afsharid-iran",
+"grand": "Afsharid Iran",
+"petits": [
+"Sultanate of Oman"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 1741,
+"a": 1741,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1742,
+"a": 1743,
+"surface_retiree_pct": 1.9
+}
+]
+},
+{
+"id": "chev-almoravid-dynasty",
+"grand": "Almoravid Dynasty",
+"petits": [
+"Almohad Caliphate",
+"Kingdom of Portugal",
+"Taifa of Algeciras",
+"Taifa of Almería",
+"Taifa of Badajoz",
+"Taifa of Carmona",
+"Taifa of Córdoba",
+"Taifa of Dénia",
+"Taifa of Murcia",
+"Taifa of Niebla",
+"Taifa of Saltés and Huelva",
+"Taifa of Silves",
+"Taifa of Tejada",
+"Taifa of Valencia"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 1094,
+"a": 1098,
+"surface_retiree_pct": 0.8
+},
+{
+"de": 1099,
+"a": 1110,
+"surface_retiree_pct": 0.8
+},
+{
+"de": 1111,
+"a": 1120,
+"surface_retiree_pct": 0.8
+},
+{
+"de": 1121,
+"a": 1125,
+"surface_retiree_pct": 15.0
+},
+{
+"de": 1126,
+"a": 1138,
+"surface_retiree_pct": 14.3
+},
+{
+"de": 1139,
+"a": 1145,
+"surface_retiree_pct": 3.9
+},
+{
+"de": 1146,
+"a": 1146,
+"surface_retiree_pct": 4.4
+},
+{
+"de": 1147,
+"a": 1149,
+"surface_retiree_pct": 91.0
+},
+{
+"de": 1150,
+"a": 1150,
+"surface_retiree_pct": 89.5
+},
+{
+"de": 1151,
+"a": 1151,
+"surface_retiree_pct": 88.4
+}
+]
+},
+{
+"id": "chev-antigonid-macedonia",
+"grand": "Antigonid Macedonia",
+"petits": [
+"Rhodes"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": -197,
+"a": -189,
+"surface_retiree_pct": 0.0
+},
+{
+"de": -188,
+"a": -171,
+"surface_retiree_pct": 9.4
+}
+]
+},
+{
+"id": "chev-austria-hungary-1918-1918",
+"grand": "Austria-Hungary",
+"petits": [
+"Czechoslovakia",
+"Republic of Austria",
+"Second Polish Republic"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 1918,
+"a": 1918,
+"surface_retiree_pct": 27.1
+}
+]
+},
+{
+"id": "chev-avar-khaganate",
+"grand": "Avar Khaganate",
+"petits": [
+"First Bulgarian Empire",
+"Old Great Bulgaria"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 630,
+"a": 631,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 632,
+"a": 632,
+"surface_retiree_pct": 12.0
+},
+{
+"de": 674,
+"a": 680,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 681,
+"a": 681,
+"surface_retiree_pct": 16.5
+}
+]
+},
+{
+"id": "chev-bahmani-sultanate-1490-1491",
+"grand": "Bahmani Sultanate",
+"petits": [
+"Ahmadnagar Sultanate",
+"Berar Sultanate",
+"Bijapur Sultanate"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 1487,
+"a": 1489,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1490,
+"a": 1491,
+"surface_retiree_pct": 64.9
+}
+]
+},
+{
+"id": "chev-barghawata-conference-1061-1065",
+"grand": "Barghawata Conference",
+"petits": [
+"Taifa of Ceuta"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 1056,
+"a": 1060,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1061,
+"a": 1065,
+"surface_retiree_pct": 4.0
+}
+]
+},
+{
+"id": "chev-blue-horde",
+"grand": "Blue Horde",
+"petits": [
+"Golden Horde"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 1375,
+"a": 1384,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1385,
+"a": 1394,
+"surface_retiree_pct": 100.0,
+"supprimee": true
+},
+{
+"de": 1395,
+"a": 1401,
+"surface_retiree_pct": 95.4
+}
+]
+},
+{
+"id": "chev-brandenburg-prussia",
+"grand": "Brandenburg-Prussia",
+"petits": [
+"Kingdom of Prussia"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 1700,
+"a": 1700,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1701,
+"a": 1705,
+"surface_retiree_pct": 100.0,
+"supprimee": true
+},
+{
+"de": 1706,
+"a": 1708,
+"surface_retiree_pct": 100.0,
+"supprimee": true
+},
+{
+"de": 1709,
+"a": 1712,
+"surface_retiree_pct": 100.0,
+"supprimee": true
+},
+{
+"de": 1713,
+"a": 1717,
+"surface_retiree_pct": 100.0,
+"supprimee": true
+}
+]
+},
+{
+"id": "chev-british-africa",
+"grand": "British Africa",
+"petits": [
+"Mahdist State"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 1885,
+"a": 1889,
+"surface_retiree_pct": 48.3
+}
+]
+},
+{
+"id": "chev-british-cape-colony",
+"grand": "British Cape Colony",
+"petits": [
+"Napoleonic Batavia Republic"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 1797,
+"a": 1802,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1803,
+"a": 1804,
+"surface_retiree_pct": 100.0,
+"supprimee": true
+},
+{
+"de": 1805,
+"a": 1805,
+"surface_retiree_pct": 100.0,
+"supprimee": true
+},
+{
+"de": 1806,
+"a": 1808,
+"surface_retiree_pct": 0.0
+}
+]
+},
+{
+"id": "chev-british-colonial-empire",
+"grand": "British Colonial Empire",
+"petits": [
+"Antigua and Barbuda",
+"Barbados",
+"Belize",
+"Canada",
+"Commonwealth of Australia",
+"Commonwealth of Dominica",
+"Commonwealth of The Bahamas",
+"Danish Gold Coast",
+"Grenada",
+"Guyana",
+"Kelantan",
+"Kingdom of Jordan",
+"New Zealand",
+"Republic of Fiji",
+"Saint Kitts",
+"Saint Lucia",
+"Solomon Islands",
+"Sultanate of Brunei",
+"Sultanate of Terengganu"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 1709,
+"a": 1712,
+"surface_retiree_pct": 0.2
+},
+{
+"de": 1713,
+"a": 1717,
+"surface_retiree_pct": 0.1
+},
+{
+"de": 1718,
+"a": 1720,
+"surface_retiree_pct": 0.1
+},
+{
+"de": 1721,
+"a": 1724,
+"surface_retiree_pct": 0.1
+},
+{
+"de": 1725,
+"a": 1726,
+"surface_retiree_pct": 0.1
+},
+{
+"de": 1727,
+"a": 1733,
+"surface_retiree_pct": 0.1
+},
+{
+"de": 1901,
+"a": 1904,
+"surface_retiree_pct": 0.2
+},
+{
+"de": 1905,
+"a": 1907,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1942,
+"a": 1942,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1943,
+"a": 1943,
+"surface_retiree_pct": 8.7
+},
+{
+"de": 1944,
+"a": 1944,
+"surface_retiree_pct": 14.3
+},
+{
+"de": 1945,
+"a": 1945,
+"surface_retiree_pct": 16.0
+},
+{
+"de": 1946,
+"a": 1946,
+"surface_retiree_pct": 4.9
+},
+{
+"de": 1947,
+"a": 1947,
+"surface_retiree_pct": 22.2
+},
+{
+"de": 1948,
+"a": 1948,
+"surface_retiree_pct": 22.2
+},
+{
+"de": 1949,
+"a": 1952,
+"surface_retiree_pct": 58.5
+},
+{
+"de": 1953,
+"a": 1955,
+"surface_retiree_pct": 58.5
+},
+{
+"de": 1956,
+"a": 1957,
+"surface_retiree_pct": 58.5
+},
+{
+"de": 1968,
+"a": 1969,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1970,
+"a": 1972,
+"surface_retiree_pct": 15.0
+},
+{
+"de": 1973,
+"a": 1973,
+"surface_retiree_pct": 28.5
+},
+{
+"de": 1974,
+"a": 1975,
+"surface_retiree_pct": 28.8
+},
+{
+"de": 1976,
+"a": 1977,
+"surface_retiree_pct": 28.8
+},
+{
+"de": 1966,
+"a": 1966,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1967,
+"a": 1967,
+"surface_retiree_pct": 1.2
+},
+{
+"de": 1978,
+"a": 1978,
+"surface_retiree_pct": 39.7
+},
+{
+"de": 1979,
+"a": 1980,
+"surface_retiree_pct": 40.4
+},
+{
+"de": 1981,
+"a": 1982,
+"surface_retiree_pct": 61.5
+},
+{
+"de": 1983,
+"a": 1986,
+"surface_retiree_pct": 61.5
+},
+{
+"de": 1987,
+"a": 1995,
+"surface_retiree_pct": 67.8
+}
+]
+},
+{
+"id": "chev-british-east-africa",
+"grand": "British East Africa",
+"petits": [
+"Lesotho",
+"Malawi",
+"People's Democratic Republic of Yemen",
+"Republic of Botswana",
+"Republic of Kenya",
+"Republic of The Gambia",
+"Republic of Uganda",
+"Rhodesia",
+"Sultanate of Zanzibar",
+"Tanzania",
+"Zambia"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 1963,
+"a": 1963,
+"surface_retiree_pct": 0.2
+},
+{
+"de": 1965,
+"a": 1965,
+"surface_retiree_pct": 1.6
+},
+{
+"de": 1966,
+"a": 1966,
+"surface_retiree_pct": 26.6
+},
+{
+"de": 1967,
+"a": 1968,
+"surface_retiree_pct": 49.7
+}
+]
+},
+{
+"id": "chev-british-empire",
+"grand": "British Empire",
+"petits": [
+"Mughal Empire"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 1820,
+"a": 1821,
+"surface_retiree_pct": 8.5
+},
+{
+"de": 1822,
+"a": 1823,
+"surface_retiree_pct": 8.4
+},
+{
+"de": 1824,
+"a": 1824,
+"surface_retiree_pct": 8.6
+},
+{
+"de": 1825,
+"a": 1827,
+"surface_retiree_pct": 8.1
+},
+{
+"de": 1828,
+"a": 1829,
+"surface_retiree_pct": 8.1
+},
+{
+"de": 1830,
+"a": 1833,
+"surface_retiree_pct": 8.1
+},
+{
+"de": 1834,
+"a": 1835,
+"surface_retiree_pct": 8.0
+},
+{
+"de": 1836,
+"a": 1839,
+"surface_retiree_pct": 7.9
+},
+{
+"de": 1840,
+"a": 1841,
+"surface_retiree_pct": 6.8
+},
+{
+"de": 1842,
+"a": 1845,
+"surface_retiree_pct": 7.0
+},
+{
+"de": 1846,
+"a": 1847,
+"surface_retiree_pct": 6.6
+},
+{
+"de": 1848,
+"a": 1848,
+"surface_retiree_pct": 6.6
+},
+{
+"de": 1849,
+"a": 1852,
+"surface_retiree_pct": 6.2
+},
+{
+"de": 1853,
+"a": 1855,
+"surface_retiree_pct": 5.9
+},
+{
+"de": 1856,
+"a": 1856,
+"surface_retiree_pct": 5.9
+}
+]
+},
+{
+"id": "chev-british-gold-coast",
+"grand": "British Gold Coast",
+"petits": [
+"Ghana"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": []
+},
+{
+"id": "chev-brythons",
+"grand": "Brythons",
+"petits": [
+"Kingdom of England",
+"Kingdom of Sussex",
+"Norman England"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 469,
+"a": 476,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 477,
+"a": 479,
+"surface_retiree_pct": 3.2
+},
+{
+"de": 878,
+"a": 926,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 927,
+"a": 935,
+"surface_retiree_pct": 30.5
+},
+{
+"de": 1085,
+"a": 1093,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1094,
+"a": 1098,
+"surface_retiree_pct": 30.0
+}
+]
+},
+{
+"id": "chev-byzantine-empire",
+"grand": "Byzantine Empire",
+"petits": [
+"Beylik of Karasi",
+"Cyprus Condominium",
+"Duchy of Naples",
+"Duchy of the Archipelago",
+"House of Anjou-Sicily",
+"Kingdom of Georgia",
+"Latin Empire",
+"Ottoman Empire",
+"Papal States",
+"Republic of Genoa",
+"Republic of Venice",
+"Serbian Empire",
+"Sultanate of Rum"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 751,
+"a": 753,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 754,
+"a": 756,
+"surface_retiree_pct": 1.7
+},
+{
+"de": 757,
+"a": 762,
+"surface_retiree_pct": 1.8
+},
+{
+"de": 763,
+"a": 767,
+"surface_retiree_pct": 1.9
+},
+{
+"de": 880,
+"a": 881,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 882,
+"a": 883,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 884,
+"a": 885,
+"surface_retiree_pct": 1.7
+},
+{
+"de": 1072,
+"a": 1076,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1077,
+"a": 1084,
+"surface_retiree_pct": 34.8
+},
+{
+"de": 1098,
+"a": 1098,
+"surface_retiree_pct": 33.1
+},
+{
+"de": 1099,
+"a": 1110,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1177,
+"a": 1177,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1178,
+"a": 1184,
+"surface_retiree_pct": 5.5
+},
+{
+"de": 1204,
+"a": 1205,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1206,
+"a": 1206,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1207,
+"a": 1209,
+"surface_retiree_pct": 28.7
+},
+{
+"de": 1210,
+"a": 1215,
+"surface_retiree_pct": 100.0,
+"supprimee": true
+},
+{
+"de": 1216,
+"a": 1219,
+"surface_retiree_pct": 100.0,
+"supprimee": true
+},
+{
+"de": 1220,
+"a": 1226,
+"surface_retiree_pct": 100.0,
+"supprimee": true
+},
+{
+"de": 1279,
+"a": 1284,
+"surface_retiree_pct": 0.1
+},
+{
+"de": 1285,
+"a": 1293,
+"surface_retiree_pct": 0.1
+},
+{
+"de": 1294,
+"a": 1296,
+"surface_retiree_pct": 0.1
+},
+{
+"de": 1297,
+"a": 1298,
+"surface_retiree_pct": 7.0
+},
+{
+"de": 1299,
+"a": 1304,
+"surface_retiree_pct": 0.6
+},
+{
+"de": 1305,
+"a": 1306,
+"surface_retiree_pct": 0.3
+},
+{
+"de": 1307,
+"a": 1313,
+"surface_retiree_pct": 0.3
+},
+{
+"de": 1314,
+"a": 1325,
+"surface_retiree_pct": 0.3
+},
+{
+"de": 1344,
+"a": 1345,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1346,
+"a": 1351,
+"surface_retiree_pct": 52.8
+},
+{
+"de": 1432,
+"a": 1439,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1440,
+"a": 1449,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1450,
+"a": 1452,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1453,
+"a": 1458,
+"surface_retiree_pct": 10.2
+},
+{
+"de": 1459,
+"a": 1462,
+"surface_retiree_pct": 12.4
+},
+{
+"de": 1463,
+"a": 1467,
+"surface_retiree_pct": 93.6
+},
+{
+"de": 1468,
+"a": 1474,
+"surface_retiree_pct": 100.0,
+"supprimee": true
+}
+]
+},
+{
+"id": "chev-caliphate-of-córdoba",
+"grand": "Caliphate of Córdoba",
+"petits": [
+"Taifa of Almería",
+"Taifa of Arcos",
+"Taifa of Morón",
+"Taifa of Murcia"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 1009,
+"a": 1009,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1010,
+"a": 1010,
+"surface_retiree_pct": 4.6
+},
+{
+"de": 1011,
+"a": 1011,
+"surface_retiree_pct": 7.9
+}
+]
+},
+{
+"id": "chev-chola-empire",
+"grand": "Chola Empire",
+"petits": [
+"Kakatiya Dynasty",
+"Kingdom of Polonnaruwa"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 1056,
+"a": 1071,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1072,
+"a": 1093,
+"surface_retiree_pct": 13.5
+},
+{
+"de": 1152,
+"a": 1162,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1163,
+"a": 1176,
+"surface_retiree_pct": 34.2
+}
+]
+},
+{
+"id": "chev-chámpa",
+"grand": "Chámpa",
+"petits": [
+"Lê Dynasty"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 1363,
+"a": 1427,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1428,
+"a": 1428,
+"surface_retiree_pct": 16.4
+}
+]
+},
+{
+"id": "chev-communist-party-of-china",
+"grand": "Communist Party of China",
+"petits": [
+"East Turkestan Republic",
+"Union of Soviet Socialist Republics"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 1938,
+"a": 1939,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1940,
+"a": 1940,
+"surface_retiree_pct": 98.1
+},
+{
+"de": 1941,
+"a": 1941,
+"surface_retiree_pct": 98.1
+},
+{
+"de": 1942,
+"a": 1942,
+"surface_retiree_pct": 98.1
+},
+{
+"de": 1943,
+"a": 1943,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1944,
+"a": 1944,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1945,
+"a": 1945,
+"surface_retiree_pct": 18.2
+}
+]
+},
+{
+"id": "chev-county-of-edessa",
+"grand": "County of Edessa",
+"petits": [
+"Hamdanid Emirates"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 1098,
+"a": 1110,
+"surface_retiree_pct": 13.5
+},
+{
+"de": 1111,
+"a": 1125,
+"surface_retiree_pct": 5.4
+}
+]
+},
+{
+"id": "chev-county-of-tripoli",
+"grand": "County of Tripoli",
+"petits": [
+"Mamluk Sultanate"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 1272,
+"a": 1278,
+"surface_retiree_pct": 31.8
+},
+{
+"de": 1279,
+"a": 1284,
+"surface_retiree_pct": 31.8
+},
+{
+"de": 1285,
+"a": 1293,
+"surface_retiree_pct": 31.8
+}
+]
+},
+{
+"id": "chev-crimean-khanate",
+"grand": "Crimean Khanate",
+"petits": [
+"Small Horde"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 1552,
+"a": 1563,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1564,
+"a": 1571,
+"surface_retiree_pct": 36.7
+}
+]
+},
+{
+"id": "chev-crown-of-aragon",
+"grand": "Crown of Aragon",
+"petits": [
+"Kingdom of Majorca"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 1294,
+"a": 1304,
+"surface_retiree_pct": 4.8
+}
+]
+},
+{
+"id": "chev-cuban-nationalists-1898-1899",
+"grand": "Cuban Nationalists",
+"petits": [
+"Republic of Cuba"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 1898,
+"a": 1899,
+"surface_retiree_pct": 98.5
+}
+]
+},
+{
+"id": "chev-denmark-norway",
+"grand": "Denmark-Norway",
+"petits": [
+"Kingdom of Iceland"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 1864,
+"a": 1917,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1918,
+"a": 1921,
+"surface_retiree_pct": 75.3
+}
+]
+},
+{
+"id": "chev-despotate-of-epirus",
+"grand": "Despotate of Epirus",
+"petits": [
+"Empire of Thessalonica"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 1224,
+"a": 1235,
+"surface_retiree_pct": 20.1
+}
+]
+},
+{
+"id": "chev-duchy-of-athens-1302-1313",
+"grand": "Duchy of Athens",
+"petits": [
+"Catalan Company"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 1279,
+"a": 1301,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1302,
+"a": 1304,
+"surface_retiree_pct": 100.0,
+"supprimee": true
+},
+{
+"de": 1305,
+"a": 1313,
+"surface_retiree_pct": 100.0,
+"supprimee": true
+}
+]
+},
+{
+"id": "chev-duchy-of-bavaria-1803-1805",
+"grand": "Duchy of Bavaria",
+"petits": [
+"Principality of Regensberg"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 1803,
+"a": 1804,
+"surface_retiree_pct": 6.7
+},
+{
+"de": 1805,
+"a": 1805,
+"surface_retiree_pct": 8.2
+}
+]
+},
+{
+"id": "chev-duchy-of-naples-1130-1136",
+"grand": "Duchy of Naples",
+"petits": [
+"Kingdom of Sicily"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 1126,
+"a": 1129,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1130,
+"a": 1136,
+"surface_retiree_pct": 100.0,
+"supprimee": true
+}
+]
+},
+{
+"id": "chev-dutch-east-indies",
+"grand": "Dutch East Indies",
+"petits": [
+"British Colonial Empire"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 1809,
+"a": 1810,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1811,
+"a": 1811,
+"surface_retiree_pct": 57.9
+},
+{
+"de": 1812,
+"a": 1813,
+"surface_retiree_pct": 100.0,
+"supprimee": true
+}
+]
+},
+{
+"id": "chev-dutch-republic",
+"grand": "Dutch Republic",
+"petits": [
+"Sultanate of Bima"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 1662,
+"a": 1669,
+"surface_retiree_pct": 1.3
+},
+{
+"de": 1670,
+"a": 1672,
+"surface_retiree_pct": 1.0
+},
+{
+"de": 1673,
+"a": 1676,
+"surface_retiree_pct": 1.0
+},
+{
+"de": 1677,
+"a": 1682,
+"surface_retiree_pct": 0.9
+},
+{
+"de": 1683,
+"a": 1686,
+"surface_retiree_pct": 0.8
+},
+{
+"de": 1687,
+"a": 1690,
+"surface_retiree_pct": 0.8
+},
+{
+"de": 1691,
+"a": 1699,
+"surface_retiree_pct": 0.8
+},
+{
+"de": 1700,
+"a": 1701,
+"surface_retiree_pct": 0.8
+},
+{
+"de": 1702,
+"a": 1705,
+"surface_retiree_pct": 0.8
+},
+{
+"de": 1706,
+"a": 1708,
+"surface_retiree_pct": 0.8
+},
+{
+"de": 1709,
+"a": 1712,
+"surface_retiree_pct": 0.8
+},
+{
+"de": 1713,
+"a": 1720,
+"surface_retiree_pct": 0.8
+},
+{
+"de": 1721,
+"a": 1733,
+"surface_retiree_pct": 0.8
+},
+{
+"de": 1734,
+"a": 1743,
+"surface_retiree_pct": 0.8
+},
+{
+"de": 1744,
+"a": 1756,
+"surface_retiree_pct": 0.6
+},
+{
+"de": 1757,
+"a": 1761,
+"surface_retiree_pct": 0.6
+},
+{
+"de": 1762,
+"a": 1762,
+"surface_retiree_pct": 0.6
+},
+{
+"de": 1763,
+"a": 1768,
+"surface_retiree_pct": 0.6
+},
+{
+"de": 1769,
+"a": 1774,
+"surface_retiree_pct": 0.6
+},
+{
+"de": 1775,
+"a": 1779,
+"surface_retiree_pct": 0.6
+},
+{
+"de": 1780,
+"a": 1787,
+"surface_retiree_pct": 0.6
+},
+{
+"de": 1788,
+"a": 1790,
+"surface_retiree_pct": 0.6
+},
+{
+"de": 1791,
+"a": 1793,
+"surface_retiree_pct": 0.6
+},
+{
+"de": 1794,
+"a": 1794,
+"surface_retiree_pct": 0.7
+}
+]
+},
+{
+"id": "chev-eastern-roman-empire",
+"grand": "Eastern Roman Empire",
+"petits": [
+"Georgia"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 570,
+"a": 576,
+"surface_retiree_pct": 1.1
+},
+{
+"de": 577,
+"a": 586,
+"surface_retiree_pct": 0.0
+}
+]
+},
+{
+"id": "chev-electorate-of-salzburg-1804-1805",
+"grand": "Electorate of Salzburg",
+"petits": [
+"Austrian Empire"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 1803,
+"a": 1803,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1804,
+"a": 1804,
+"surface_retiree_pct": 75.4
+},
+{
+"de": 1805,
+"a": 1805,
+"surface_retiree_pct": 75.4
+}
+]
+},
+{
+"id": "chev-emirate-of-diriyah",
+"grand": "Emirate of Diriyah",
+"petits": [
+"House of Khalifa"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 1796,
+"a": 1796,
+"surface_retiree_pct": 0.1
+},
+{
+"de": 1797,
+"a": 1798,
+"surface_retiree_pct": 0.1
+},
+{
+"de": 1799,
+"a": 1799,
+"surface_retiree_pct": 0.1
+}
+]
+},
+{
+"id": "chev-emirate-of-nejd",
+"grand": "Emirate of Nejd",
+"petits": [
+"Bahrain",
+"Emirate of Jabal Shammar"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 1830,
+"a": 1839,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1840,
+"a": 1841,
+"surface_retiree_pct": 28.2
+},
+{
+"de": 1842,
+"a": 1845,
+"surface_retiree_pct": 94.3
+}
+]
+},
+{
+"id": "chev-empire-of-brazil",
+"grand": "Empire of Brazil",
+"petits": [
+"Oriental Republic of Uruguay"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 1825,
+"a": 1827,
+"surface_retiree_pct": 2.6
+}
+]
+},
+{
+"id": "chev-empire-of-japan-1945-1945",
+"grand": "Empire of Japan",
+"petits": [
+"Republic of Indonesia"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 1945,
+"a": 1945,
+"surface_retiree_pct": 7.5
+}
+]
+},
+{
+"id": "chev-english-colonial-empire",
+"grand": "English Colonial Empire",
+"petits": [
+"British Colonial Empire",
+"British Empire",
+"Danish Gold Coast"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 1670,
+"a": 1672,
+"surface_retiree_pct": 0.2
+},
+{
+"de": 1673,
+"a": 1676,
+"surface_retiree_pct": 0.2
+},
+{
+"de": 1677,
+"a": 1682,
+"surface_retiree_pct": 0.2
+},
+{
+"de": 1683,
+"a": 1686,
+"surface_retiree_pct": 0.2
+},
+{
+"de": 1687,
+"a": 1690,
+"surface_retiree_pct": 0.2
+},
+{
+"de": 1691,
+"a": 1695,
+"surface_retiree_pct": 0.2
+},
+{
+"de": 1696,
+"a": 1699,
+"surface_retiree_pct": 0.2
+},
+{
+"de": 1700,
+"a": 1701,
+"surface_retiree_pct": 0.2
+},
+{
+"de": 1702,
+"a": 1705,
+"surface_retiree_pct": 0.2
+},
+{
+"de": 1706,
+"a": 1708,
+"surface_retiree_pct": 0.2
+},
+{
+"de": 1709,
+"a": 1712,
+"surface_retiree_pct": 100.0,
+"supprimee": true
+},
+{
+"de": 1713,
+"a": 1717,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1718,
+"a": 1720,
+"surface_retiree_pct": 41.9
+},
+{
+"de": 1721,
+"a": 1724,
+"surface_retiree_pct": 41.9
+},
+{
+"de": 1725,
+"a": 1726,
+"surface_retiree_pct": 41.9
+},
+{
+"de": 1727,
+"a": 1733,
+"surface_retiree_pct": 41.9
+},
+{
+"de": 1734,
+"a": 1737,
+"surface_retiree_pct": 41.9
+},
+{
+"de": 1738,
+"a": 1740,
+"surface_retiree_pct": 41.9
+},
+{
+"de": 1741,
+"a": 1743,
+"surface_retiree_pct": 33.5
+},
+{
+"de": 1744,
+"a": 1751,
+"surface_retiree_pct": 33.5
+},
+{
+"de": 1752,
+"a": 1756,
+"surface_retiree_pct": 33.5
+},
+{
+"de": 1757,
+"a": 1761,
+"surface_retiree_pct": 33.5
+},
+{
+"de": 1763,
+"a": 1768,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1769,
+"a": 1771,
+"surface_retiree_pct": 36.5
+},
+{
+"de": 1772,
+"a": 1774,
+"surface_retiree_pct": 36.5
+},
+{
+"de": 1775,
+"a": 1775,
+"surface_retiree_pct": 36.5
+},
+{
+"de": 1776,
+"a": 1777,
+"surface_retiree_pct": 36.5
+}
+]
+},
+{
+"id": "chev-eshrefids-1321-1325",
+"grand": "Eshrefids",
+"petits": [
+"Beylik of Teke"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 1314,
+"a": 1320,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1321,
+"a": 1325,
+"surface_retiree_pct": 28.3
+}
+]
+},
+{
+"id": "chev-estado-novo",
+"grand": "Estado Novo",
+"petits": [
+"People's Republic of Angola",
+"Republic of Guinea-Bissau"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 1967,
+"a": 1972,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1973,
+"a": 1974,
+"surface_retiree_pct": 1.5
+},
+{
+"de": 1979,
+"a": 2023,
+"surface_retiree_pct": 100.0,
+"supprimee": true
+}
+]
+},
+{
+"id": "chev-fatimid-caliphate",
+"grand": "Fatimid Caliphate",
+"petits": [
+"Hammadid Dynasty",
+"Kingdom of Africa"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 990,
+"a": 1013,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1014,
+"a": 1014,
+"surface_retiree_pct": 9.0
+},
+{
+"de": 1015,
+"a": 1017,
+"surface_retiree_pct": 9.0
+},
+{
+"de": 1111,
+"a": 1138,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1139,
+"a": 1145,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1146,
+"a": 1146,
+"surface_retiree_pct": 1.2
+},
+{
+"de": 1147,
+"a": 1151,
+"surface_retiree_pct": 1.2
+}
+]
+},
+{
+"id": "chev-first-french-empire",
+"grand": "First French Empire",
+"petits": [
+"Confederation of the Rhine",
+"Duchy of Warsaw",
+"French India",
+"Kingdom of Westphalia"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 1805,
+"a": 1805,
+"surface_retiree_pct": 0.6
+},
+{
+"de": 1806,
+"a": 1806,
+"surface_retiree_pct": 0.6
+},
+{
+"de": 1807,
+"a": 1808,
+"surface_retiree_pct": 32.2
+},
+{
+"de": 1809,
+"a": 1810,
+"surface_retiree_pct": 0.4
+}
+]
+},
+{
+"id": "chev-former-zhao-319-328",
+"grand": "Former Zhao",
+"petits": [
+"Later Zhao"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 311,
+"a": 318,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 319,
+"a": 323,
+"surface_retiree_pct": 100.0,
+"supprimee": true
+},
+{
+"de": 324,
+"a": 328,
+"surface_retiree_pct": 100.0,
+"supprimee": true
+}
+]
+},
+{
+"id": "chev-francoist-spain",
+"grand": "Francoist Spain",
+"petits": [
+"Equatorial Guinea"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 1961,
+"a": 1968,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1969,
+"a": 1972,
+"surface_retiree_pct": 2.9
+}
+]
+},
+{
+"id": "chev-free-city-of-danzig",
+"grand": "Free City of Danzig",
+"petits": [
+"Kingdom of Lithuania"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 1920,
+"a": 1923,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1924,
+"a": 1935,
+"surface_retiree_pct": 45.0
+}
+]
+},
+{
+"id": "chev-french-africa",
+"grand": "French Africa",
+"petits": [
+"Free French",
+"Kingdom of Libya"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 1943,
+"a": 1943,
+"surface_retiree_pct": 20.4
+},
+{
+"de": 1946,
+"a": 1950,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1951,
+"a": 1952,
+"surface_retiree_pct": 5.2
+}
+]
+},
+{
+"id": "chev-french-consulate",
+"grand": "French Consulate",
+"petits": [
+"French India"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 1799,
+"a": 1802,
+"surface_retiree_pct": 0.7
+},
+{
+"de": 1803,
+"a": 1804,
+"surface_retiree_pct": 0.7
+}
+]
+},
+{
+"id": "chev-french-directory-1799-1799",
+"grand": "French Directory",
+"petits": [
+"French Consulate"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 1799,
+"a": 1799,
+"surface_retiree_pct": 89.8
+}
+]
+},
+{
+"id": "chev-french-directory",
+"grand": "French Directory",
+"petits": [
+"French India"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 1795,
+"a": 1796,
+"surface_retiree_pct": 0.6
+},
+{
+"de": 1797,
+"a": 1798,
+"surface_retiree_pct": 0.7
+},
+{
+"de": 1799,
+"a": 1799,
+"surface_retiree_pct": 5.8
+}
+]
+},
+{
+"id": "chev-french-fifth-republic",
+"grand": "French Fifth Republic",
+"petits": [
+"People's Democratic Republic of Algeria",
+"Principality of Monaco",
+"Republic of Cabo Verde",
+"Republic of Djibouti"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 1958,
+"a": 1958,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1959,
+"a": 1959,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1960,
+"a": 1961,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 2024,
+"a": 2024,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1962,
+"a": 1974,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1975,
+"a": 1975,
+"surface_retiree_pct": 0.4
+},
+{
+"de": 1976,
+"a": 1976,
+"surface_retiree_pct": 0.4
+},
+{
+"de": 1977,
+"a": 1991,
+"surface_retiree_pct": 2.7
+},
+{
+"de": 1992,
+"a": 2023,
+"surface_retiree_pct": 2.7
+}
+]
+},
+{
+"id": "chev-french-first-republic",
+"grand": "French First Republic",
+"petits": [
+"French India",
+"Republic of Genoa"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 1792,
+"a": 1793,
+"surface_retiree_pct": 2.7
+},
+{
+"de": 1794,
+"a": 1794,
+"surface_retiree_pct": 0.7
+}
+]
+},
+{
+"id": "chev-french-fourth-republic",
+"grand": "French Fourth Republic",
+"petits": [
+"Federal Republic of Germany",
+"Principality of Monaco"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 1945,
+"a": 1945,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1946,
+"a": 1946,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1947,
+"a": 1948,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1949,
+"a": 1949,
+"surface_retiree_pct": 7.8
+},
+{
+"de": 1950,
+"a": 1955,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1956,
+"a": 1957,
+"surface_retiree_pct": 0.0
+}
+]
+},
+{
+"id": "chev-french-india",
+"grand": "French India",
+"petits": [
+"Bourbon Kingdom of France"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 1840,
+"a": 1841,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1842,
+"a": 1845,
+"surface_retiree_pct": 35.2
+}
+]
+},
+{
+"id": "chev-french-third-republic",
+"grand": "French Third Republic",
+"petits": [
+"Kingdom of Monaco"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 1870,
+"a": 1872,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1873,
+"a": 1914,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1915,
+"a": 1915,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1916,
+"a": 1916,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1917,
+"a": 1917,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1918,
+"a": 1918,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1919,
+"a": 1923,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1924,
+"a": 1925,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1926,
+"a": 1929,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1930,
+"a": 1931,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1932,
+"a": 1935,
+"surface_retiree_pct": 0.0
+}
+]
+},
+{
+"id": "chev-german-empire-1918-1918",
+"grand": "German Empire",
+"petits": [
+"Estonia",
+"Second Polish Republic",
+"Ukrainian People's Republic"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 1918,
+"a": 1918,
+"surface_retiree_pct": 42.0
+}
+]
+},
+{
+"id": "chev-german-empire-1918-1919",
+"grand": "German Empire",
+"petits": [
+"Republic of Latvia",
+"Weimar Republic"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 1918,
+"a": 1918,
+"surface_retiree_pct": 64.4
+},
+{
+"de": 1919,
+"a": 1919,
+"surface_retiree_pct": 100.0,
+"supprimee": true
+}
+]
+},
+{
+"id": "chev-germiyanids",
+"grand": "Germiyanids",
+"petits": [
+"Ottoman Empire"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 1415,
+"a": 1421,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1422,
+"a": 1428,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1429,
+"a": 1430,
+"surface_retiree_pct": 90.4
+}
+]
+},
+{
+"id": "chev-ghurid-dynasty-1206-1209",
+"grand": "Ghurid Dynasty",
+"petits": [
+"Mamluk Dynasty"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 1206,
+"a": 1209,
+"surface_retiree_pct": 21.4
+}
+]
+},
+{
+"id": "chev-golden-horde",
+"grand": "Golden Horde",
+"petits": [
+"Principality of Moldavia"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 1344,
+"a": 1345,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1346,
+"a": 1351,
+"surface_retiree_pct": 2.0
+},
+{
+"de": 1352,
+"a": 1362,
+"surface_retiree_pct": 2.0
+}
+]
+},
+{
+"id": "chev-gorkha-kingdom",
+"grand": "Gorkha Kingdom",
+"petits": [
+"Kathmandu"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 1748,
+"a": 1756,
+"surface_retiree_pct": 0.5
+}
+]
+},
+{
+"id": "chev-gran-colombia-1830-1830",
+"grand": "Gran Colombia",
+"petits": [
+"Republic of Ecuador"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 1830,
+"a": 1830,
+"surface_retiree_pct": 8.8
+}
+]
+},
+{
+"id": "chev-gran-colombia",
+"grand": "Gran Colombia",
+"petits": [
+"Bolivia"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 1824,
+"a": 1824,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1825,
+"a": 1829,
+"surface_retiree_pct": 35.2
+}
+]
+},
+{
+"id": "chev-grand-duchy-of-hesse",
+"grand": "Grand Duchy of Hesse",
+"petits": [
+"German Confederation"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 1815,
+"a": 1815,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1816,
+"a": 1819,
+"surface_retiree_pct": 47.7
+}
+]
+},
+{
+"id": "chev-grand-duchy-of-saxe-weimar-eisenach",
+"grand": "Grand Duchy of Saxe-Weimar-Eisenach",
+"petits": [
+"Saxe-Altenburg"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 1828,
+"a": 1835,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1836,
+"a": 1839,
+"surface_retiree_pct": 36.2
+},
+{
+"de": 1840,
+"a": 1865,
+"surface_retiree_pct": 0.0
+}
+]
+},
+{
+"id": "chev-grand-principality-of-moscow-1482-1484",
+"grand": "Grand Principality of Moscow",
+"petits": [
+"Tver"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 1482,
+"a": 1484,
+"surface_retiree_pct": 0.3
+},
+{
+"de": 1485,
+"a": 1486,
+"surface_retiree_pct": 0.0
+}
+]
+},
+{
+"id": "chev-great-mongol-state-1924-1925",
+"grand": "Great Mongol State",
+"petits": [
+"Mongolian People's Republic"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 1924,
+"a": 1925,
+"surface_retiree_pct": 100.0,
+"supprimee": true
+}
+]
+},
+{
+"id": "chev-great-seljuk-empire",
+"grand": "Great Seljuk Empire",
+"petits": [
+"Khwarezmid Dynasty",
+"Sultanate of Rum"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 1072,
+"a": 1076,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1077,
+"a": 1084,
+"surface_retiree_pct": 21.2
+},
+{
+"de": 1085,
+"a": 1093,
+"surface_retiree_pct": 24.8
+}
+]
+},
+{
+"id": "chev-greek-city-states",
+"grand": "Greek City-States",
+"petits": [
+"Kingdom of Pontus",
+"Macedonian Empire",
+"Roman Empire",
+"Roman Republic"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": -318,
+"a": -316,
+"surface_retiree_pct": 0.0
+},
+{
+"de": -315,
+"a": -308,
+"surface_retiree_pct": 37.3
+},
+{
+"de": -223,
+"a": -223,
+"surface_retiree_pct": 0.0
+},
+{
+"de": -222,
+"a": -219,
+"surface_retiree_pct": 0.0
+},
+{
+"de": -218,
+"a": -217,
+"surface_retiree_pct": 0.0
+},
+{
+"de": -216,
+"a": -213,
+"surface_retiree_pct": 0.0
+},
+{
+"de": -212,
+"a": -211,
+"surface_retiree_pct": 3.5
+},
+{
+"de": -110,
+"a": -92,
+"surface_retiree_pct": 0.0
+},
+{
+"de": -91,
+"a": -88,
+"surface_retiree_pct": 18.0
+},
+{
+"de": -77,
+"a": -67,
+"surface_retiree_pct": 0.0
+},
+{
+"de": -66,
+"a": -64,
+"surface_retiree_pct": 62.0
+},
+{
+"de": -63,
+"a": -51,
+"surface_retiree_pct": 0.0
+},
+{
+"de": -50,
+"a": -50,
+"surface_retiree_pct": 0.0
+},
+{
+"de": -49,
+"a": -49,
+"surface_retiree_pct": 0.0
+},
+{
+"de": -48,
+"a": -47,
+"surface_retiree_pct": 2.9
+},
+{
+"de": -46,
+"a": -45,
+"surface_retiree_pct": 2.9
+},
+{
+"de": -44,
+"a": -43,
+"surface_retiree_pct": 2.9
+},
+{
+"de": -42,
+"a": -42,
+"surface_retiree_pct": 0.0
+},
+{
+"de": -41,
+"a": -41,
+"surface_retiree_pct": 4.2
+},
+{
+"de": -40,
+"a": -37,
+"surface_retiree_pct": 4.2
+},
+{
+"de": -36,
+"a": -32,
+"surface_retiree_pct": 4.2
+},
+{
+"de": -31,
+"a": -31,
+"surface_retiree_pct": 0.0
+},
+{
+"de": -30,
+"a": -28,
+"surface_retiree_pct": 4.2
+},
+{
+"de": -27,
+"a": -26,
+"surface_retiree_pct": 40.7
+},
+{
+"de": -25,
+"a": -20,
+"surface_retiree_pct": 40.7
+},
+{
+"de": -19,
+"a": -15,
+"surface_retiree_pct": 40.7
+},
+{
+"de": -14,
+"a": 0,
+"surface_retiree_pct": 40.7
+},
+{
+"de": 1,
+"a": 5,
+"surface_retiree_pct": 40.7
+},
+{
+"de": 6,
+"a": 8,
+"surface_retiree_pct": 40.7
+},
+{
+"de": 9,
+"a": 13,
+"surface_retiree_pct": 40.7
+},
+{
+"de": 14,
+"a": 22,
+"surface_retiree_pct": 40.7
+},
+{
+"de": 23,
+"a": 42,
+"surface_retiree_pct": 40.7
+},
+{
+"de": 43,
+"a": 50,
+"surface_retiree_pct": 40.7
+},
+{
+"de": 51,
+"a": 59,
+"surface_retiree_pct": 41.2
+},
+{
+"de": 60,
+"a": 67,
+"surface_retiree_pct": 41.2
+},
+{
+"de": 68,
+"a": 77,
+"surface_retiree_pct": 93.6
+}
+]
+},
+{
+"id": "chev-gupta-empire",
+"grand": "Gupta Empire",
+"petits": [
+"Kamarupa Kingdom"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 347,
+"a": 349,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 350,
+"a": 352,
+"surface_retiree_pct": 1.5
+}
+]
+},
+{
+"id": "chev-habsburg-monarchy-1804-1805",
+"grand": "Habsburg Monarchy",
+"petits": [
+"Austrian Empire"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 1801,
+"a": 1803,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1804,
+"a": 1804,
+"surface_retiree_pct": 95.7
+},
+{
+"de": 1805,
+"a": 1805,
+"surface_retiree_pct": 95.7
+}
+]
+},
+{
+"id": "chev-habsburg-monarchy",
+"grand": "Habsburg Monarchy",
+"petits": [
+"Danish India"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 1778,
+"a": 1779,
+"surface_retiree_pct": 0.2
+},
+{
+"de": 1780,
+"a": 1790,
+"surface_retiree_pct": 0.2
+}
+]
+},
+{
+"id": "chev-hamdanid-emirates",
+"grand": "Hamdanid Emirates",
+"petits": [
+"County of Tripoli",
+"Great Seljuk Empire",
+"Kingdom of Jerusalem",
+"Principality of Antioch"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 1066,
+"a": 1071,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1072,
+"a": 1076,
+"surface_retiree_pct": 100.0,
+"supprimee": true
+},
+{
+"de": 1077,
+"a": 1084,
+"surface_retiree_pct": 100.0,
+"supprimee": true
+},
+{
+"de": 1085,
+"a": 1093,
+"surface_retiree_pct": 100.0,
+"supprimee": true
+},
+{
+"de": 1094,
+"a": 1097,
+"surface_retiree_pct": 100.0,
+"supprimee": true
+},
+{
+"de": 1098,
+"a": 1098,
+"surface_retiree_pct": 98.4
+},
+{
+"de": 1099,
+"a": 1101,
+"surface_retiree_pct": 98.4
+},
+{
+"de": 1102,
+"a": 1110,
+"surface_retiree_pct": 93.8
+},
+{
+"de": 1111,
+"a": 1125,
+"surface_retiree_pct": 100.0,
+"supprimee": true
+}
+]
+},
+{
+"id": "chev-holy-roman-empire",
+"grand": "Holy Roman Empire",
+"petits": [
+"Kingdom of Italy",
+"Kingdom of Poland",
+"Republic of Pisa"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 962,
+"a": 969,
+"surface_retiree_pct": 20.0
+},
+{
+"de": 1005,
+"a": 1009,
+"surface_retiree_pct": 12.5
+},
+{
+"de": 1010,
+"a": 1017,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1066,
+"a": 1084,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1085,
+"a": 1093,
+"surface_retiree_pct": 1.1
+},
+{
+"de": 1139,
+"a": 1146,
+"surface_retiree_pct": 1.1
+}
+]
+},
+{
+"id": "chev-holy-roman-empire-minor-states",
+"grand": "Holy Roman Empire Minor States",
+"petits": [
+"House of Luxembourg",
+"Principality of Regensberg"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 1291,
+"a": 1293,
+"surface_retiree_pct": 1.1
+},
+{
+"de": 1294,
+"a": 1304,
+"surface_retiree_pct": 1.0
+},
+{
+"de": 1305,
+"a": 1313,
+"surface_retiree_pct": 1.0
+},
+{
+"de": 1314,
+"a": 1325,
+"surface_retiree_pct": 1.0
+},
+{
+"de": 1326,
+"a": 1332,
+"surface_retiree_pct": 1.0
+},
+{
+"de": 1333,
+"a": 1343,
+"surface_retiree_pct": 1.1
+},
+{
+"de": 1344,
+"a": 1351,
+"surface_retiree_pct": 1.1
+},
+{
+"de": 1352,
+"a": 1355,
+"surface_retiree_pct": 1.2
+},
+{
+"de": 1356,
+"a": 1362,
+"surface_retiree_pct": 1.2
+},
+{
+"de": 1363,
+"a": 1374,
+"surface_retiree_pct": 2.1
+},
+{
+"de": 1375,
+"a": 1384,
+"surface_retiree_pct": 2.2
+},
+{
+"de": 1385,
+"a": 1394,
+"surface_retiree_pct": 2.2
+},
+{
+"de": 1395,
+"a": 1401,
+"surface_retiree_pct": 2.2
+},
+{
+"de": 1402,
+"a": 1406,
+"surface_retiree_pct": 2.5
+},
+{
+"de": 1407,
+"a": 1414,
+"surface_retiree_pct": 2.5
+},
+{
+"de": 1803,
+"a": 1804,
+"surface_retiree_pct": 2.0
+}
+]
+},
+{
+"id": "chev-hunnic-empire",
+"grand": "Hunnic Empire",
+"petits": [
+"Avar Khaganate"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 476,
+"a": 560,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 561,
+"a": 566,
+"surface_retiree_pct": 33.4
+},
+{
+"de": 567,
+"a": 568,
+"surface_retiree_pct": 33.4
+},
+{
+"de": 569,
+"a": 576,
+"surface_retiree_pct": 33.4
+},
+{
+"de": 577,
+"a": 586,
+"surface_retiree_pct": 33.4
+},
+{
+"de": 587,
+"a": 616,
+"surface_retiree_pct": 33.4
+},
+{
+"de": 617,
+"a": 622,
+"surface_retiree_pct": 33.4
+},
+{
+"de": 623,
+"a": 625,
+"surface_retiree_pct": 33.4
+},
+{
+"de": 626,
+"a": 626,
+"surface_retiree_pct": 33.4
+},
+{
+"de": 627,
+"a": 627,
+"surface_retiree_pct": 33.4
+},
+{
+"de": 628,
+"a": 629,
+"surface_retiree_pct": 33.4
+}
+]
+},
+{
+"id": "chev-huns",
+"grand": "Huns",
+"petits": [
+"Kingdom of Armenia"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 397,
+"a": 401,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 402,
+"a": 406,
+"surface_retiree_pct": 9.0
+}
+]
+},
+{
+"id": "chev-ilkhanate-1335-1343",
+"grand": "Ilkhanate",
+"petits": [
+"Chobanids",
+"Injuids",
+"Jalayirid Sultanate",
+"Sind-Samma Dynasty"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 1333,
+"a": 1334,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1335,
+"a": 1343,
+"surface_retiree_pct": 23.4
+}
+]
+},
+{
+"id": "chev-ilkhanate-1337-1343",
+"grand": "Ilkhanate",
+"petits": [
+"Beylik of Dulkadir",
+"Sarbadars"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 1335,
+"a": 1336,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1337,
+"a": 1343,
+"surface_retiree_pct": 17.1
+}
+]
+},
+{
+"id": "chev-ilkhanate",
+"grand": "Ilkhanate",
+"petits": [
+"Germiyanids",
+"Ottoman Empire"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 1294,
+"a": 1298,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1299,
+"a": 1299,
+"surface_retiree_pct": 0.1
+},
+{
+"de": 1300,
+"a": 1304,
+"surface_retiree_pct": 0.4
+}
+]
+},
+{
+"id": "chev-italian-africa",
+"grand": "Italian Africa",
+"petits": [
+"Majeerteen Sultanate"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 1882,
+"a": 1884,
+"surface_retiree_pct": 32.2
+},
+{
+"de": 1885,
+"a": 1889,
+"surface_retiree_pct": 32.2
+},
+{
+"de": 1890,
+"a": 1894,
+"surface_retiree_pct": 0.0
+}
+]
+},
+{
+"id": "chev-kadamba-empire-543-554",
+"grand": "Kadamba Empire",
+"petits": [
+"Chalukya Dynasty"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 451,
+"a": 542,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 543,
+"a": 545,
+"surface_retiree_pct": 53.8
+},
+{
+"de": 546,
+"a": 554,
+"surface_retiree_pct": 53.8
+}
+]
+},
+{
+"id": "chev-kahuripan-1045-1045",
+"grand": "Kahuripan",
+"petits": [
+"Kediri Kingdom"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 1040,
+"a": 1044,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1045,
+"a": 1045,
+"surface_retiree_pct": 47.9
+}
+]
+},
+{
+"id": "chev-kakatiya-dynasty-1320-1322",
+"grand": "Kakatiya Dynasty",
+"petits": [
+"Tughlaq Dynasty"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 1314,
+"a": 1319,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1320,
+"a": 1322,
+"surface_retiree_pct": 61.3
+}
+]
+},
+{
+"id": "chev-kalmar-union",
+"grand": "Kalmar Union",
+"petits": [
+"Kingdom of Denmark"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 1397,
+"a": 1401,
+"surface_retiree_pct": 8.2
+},
+{
+"de": 1402,
+"a": 1406,
+"surface_retiree_pct": 0.0
+}
+]
+},
+{
+"id": "chev-kievan-rus",
+"grand": "Kievan Rus'",
+"petits": [
+"Kingdom of Hungary",
+"Novgorod Republic",
+"Principality of Chernigov",
+"Principality of Drutsk",
+"Principality of Galicia-Volhynia",
+"Principality of Halych",
+"Principality of Kiev",
+"Principality of Minsk",
+"Principality of Peremyshl",
+"Principality of Pereyaslavl",
+"Principality of Polotsky",
+"Principality of Rostov-Suzdal",
+"Principality of Ryazan",
+"Principality of Smolensk",
+"Principality of Terebovlia",
+"Principality of Turov and Pinsk",
+"Principality of Vitebsk",
+"Principality of Volhynia"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 1040,
+"a": 1055,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1056,
+"a": 1065,
+"surface_retiree_pct": 100.0,
+"supprimee": true
+},
+{
+"de": 1066,
+"a": 1071,
+"surface_retiree_pct": 100.0,
+"supprimee": true
+},
+{
+"de": 1072,
+"a": 1084,
+"surface_retiree_pct": 100.0,
+"supprimee": true
+},
+{
+"de": 1085,
+"a": 1093,
+"surface_retiree_pct": 100.0,
+"supprimee": true
+},
+{
+"de": 1094,
+"a": 1098,
+"surface_retiree_pct": 100.0,
+"supprimee": true
+},
+{
+"de": 1099,
+"a": 1100,
+"surface_retiree_pct": 100.0,
+"supprimee": true
+},
+{
+"de": 1101,
+"a": 1110,
+"surface_retiree_pct": 100.0,
+"supprimee": true
+},
+{
+"de": 1111,
+"a": 1125,
+"surface_retiree_pct": 100.0,
+"supprimee": true
+},
+{
+"de": 1126,
+"a": 1138,
+"surface_retiree_pct": 100.0,
+"supprimee": true
+},
+{
+"de": 1139,
+"a": 1146,
+"surface_retiree_pct": 100.0,
+"supprimee": true
+},
+{
+"de": 1147,
+"a": 1168,
+"surface_retiree_pct": 100.0,
+"supprimee": true
+},
+{
+"de": 1169,
+"a": 1176,
+"surface_retiree_pct": 100.0,
+"supprimee": true
+},
+{
+"de": 1177,
+"a": 1187,
+"surface_retiree_pct": 100.0,
+"supprimee": true
+},
+{
+"de": 1188,
+"a": 1191,
+"surface_retiree_pct": 100.0,
+"supprimee": true
+},
+{
+"de": 1192,
+"a": 1198,
+"surface_retiree_pct": 100.0,
+"supprimee": true
+},
+{
+"de": 1199,
+"a": 1201,
+"surface_retiree_pct": 95.1
+},
+{
+"de": 1202,
+"a": 1205,
+"surface_retiree_pct": 100.0,
+"supprimee": true
+},
+{
+"de": 1206,
+"a": 1209,
+"surface_retiree_pct": 100.0,
+"supprimee": true
+},
+{
+"de": 1210,
+"a": 1215,
+"surface_retiree_pct": 100.0,
+"supprimee": true
+},
+{
+"de": 1216,
+"a": 1219,
+"surface_retiree_pct": 100.0,
+"supprimee": true
+},
+{
+"de": 1220,
+"a": 1226,
+"surface_retiree_pct": 100.0,
+"supprimee": true
+},
+{
+"de": 1227,
+"a": 1235,
+"surface_retiree_pct": 100.0,
+"supprimee": true
+}
+]
+},
+{
+"id": "chev-kingdom-of-arles",
+"grand": "Kingdom of Arles",
+"petits": [
+"Upper Burgundy"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 933,
+"a": 935,
+"surface_retiree_pct": 39.8
+},
+{
+"de": 936,
+"a": 946,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 947,
+"a": 959,
+"surface_retiree_pct": 0.0
+}
+]
+},
+{
+"id": "chev-kingdom-of-asturias",
+"grand": "Kingdom of Asturias",
+"petits": [
+"Emirate of Córdoba"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 910,
+"a": 910,
+"surface_retiree_pct": 16.8
+},
+{
+"de": 911,
+"a": 921,
+"surface_retiree_pct": 0.0
+}
+]
+},
+{
+"id": "chev-kingdom-of-axum",
+"grand": "Kingdom of Axum",
+"petits": [
+"Himyarite Kingdom"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 238,
+"a": 269,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 270,
+"a": 282,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 283,
+"a": 305,
+"surface_retiree_pct": 27.0
+},
+{
+"de": 306,
+"a": 346,
+"surface_retiree_pct": 27.0
+},
+{
+"de": 347,
+"a": 352,
+"surface_retiree_pct": 27.0
+},
+{
+"de": 534,
+"a": 576,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 577,
+"a": 591,
+"surface_retiree_pct": 75.4
+},
+{
+"de": 592,
+"a": 601,
+"surface_retiree_pct": 75.4
+}
+]
+},
+{
+"id": "chev-kingdom-of-belgium",
+"grand": "Kingdom of Belgium",
+"petits": [
+"Belgian Congo"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 1885,
+"a": 1889,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1890,
+"a": 1894,
+"surface_retiree_pct": 25.1
+},
+{
+"de": 1895,
+"a": 1897,
+"surface_retiree_pct": 24.4
+},
+{
+"de": 1898,
+"a": 1899,
+"surface_retiree_pct": 24.4
+}
+]
+},
+{
+"id": "chev-kingdom-of-bohemia",
+"grand": "Kingdom of Bohemia",
+"petits": [
+"Duchy of Bavaria"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 1375,
+"a": 1384,
+"surface_retiree_pct": 25.4
+}
+]
+},
+{
+"id": "chev-kingdom-of-brycheiniog",
+"grand": "Kingdom of Brycheiniog",
+"petits": [
+"Norman England"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 1066,
+"a": 1071,
+"surface_retiree_pct": 27.3
+}
+]
+},
+{
+"id": "chev-kingdom-of-bulgaria-1947-1947",
+"grand": "Kingdom of Bulgaria",
+"petits": [
+"People's Republic of Bulgaria"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 1947,
+"a": 1947,
+"surface_retiree_pct": 100.0,
+"supprimee": true
+}
+]
+},
+{
+"id": "chev-kingdom-of-castile",
+"grand": "Kingdom of Castile",
+"petits": [
+"Almoravid Dynasty"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 1147,
+"a": 1149,
+"surface_retiree_pct": 12.8
+},
+{
+"de": 1150,
+"a": 1150,
+"surface_retiree_pct": 12.8
+},
+{
+"de": 1151,
+"a": 1151,
+"surface_retiree_pct": 12.8
+}
+]
+},
+{
+"id": "chev-kingdom-of-denmark",
+"grand": "Kingdom of Denmark",
+"petits": [
+"Kingdom of Sweden"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 1363,
+"a": 1374,
+"surface_retiree_pct": 34.4
+},
+{
+"de": 1375,
+"a": 1384,
+"surface_retiree_pct": 0.0
+}
+]
+},
+{
+"id": "chev-kingdom-of-england",
+"grand": "Kingdom of England",
+"petits": [
+"County of Foix"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 1363,
+"a": 1374,
+"surface_retiree_pct": 1.3
+}
+]
+},
+{
+"id": "chev-kingdom-of-france",
+"grand": "Kingdom of France",
+"petits": [
+"Comtat Venaissin",
+"Duchy of Lorraine",
+"Principality of Orange",
+"Republic of Genoa"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 1220,
+"a": 1226,
+"surface_retiree_pct": 0.4
+},
+{
+"de": 1459,
+"a": 1462,
+"surface_retiree_pct": 2.1
+},
+{
+"de": 1482,
+"a": 1486,
+"surface_retiree_pct": 0.7
+},
+{
+"de": 1487,
+"a": 1491,
+"surface_retiree_pct": 0.7
+},
+{
+"de": 1492,
+"a": 1496,
+"surface_retiree_pct": 0.6
+},
+{
+"de": 1497,
+"a": 1501,
+"surface_retiree_pct": 0.6
+},
+{
+"de": 1502,
+"a": 1506,
+"surface_retiree_pct": 1.4
+},
+{
+"de": 1507,
+"a": 1511,
+"surface_retiree_pct": 1.6
+},
+{
+"de": 1512,
+"a": 1515,
+"surface_retiree_pct": 1.6
+},
+{
+"de": 1516,
+"a": 1518,
+"surface_retiree_pct": 1.6
+},
+{
+"de": 1519,
+"a": 1520,
+"surface_retiree_pct": 1.6
+},
+{
+"de": 1521,
+"a": 1525,
+"surface_retiree_pct": 1.5
+},
+{
+"de": 1526,
+"a": 1528,
+"surface_retiree_pct": 0.6
+},
+{
+"de": 1529,
+"a": 1539,
+"surface_retiree_pct": 0.6
+},
+{
+"de": 1540,
+"a": 1546,
+"surface_retiree_pct": 0.5
+},
+{
+"de": 1547,
+"a": 1551,
+"surface_retiree_pct": 0.5
+},
+{
+"de": 1552,
+"a": 1555,
+"surface_retiree_pct": 0.5
+},
+{
+"de": 1556,
+"a": 1563,
+"surface_retiree_pct": 2.5
+},
+{
+"de": 1564,
+"a": 1571,
+"surface_retiree_pct": 0.6
+},
+{
+"de": 1572,
+"a": 1578,
+"surface_retiree_pct": 0.6
+},
+{
+"de": 1579,
+"a": 1587,
+"surface_retiree_pct": 0.6
+},
+{
+"de": 1588,
+"a": 1594,
+"surface_retiree_pct": 0.6
+},
+{
+"de": 1595,
+"a": 1601,
+"surface_retiree_pct": 0.5
+},
+{
+"de": 1602,
+"a": 1608,
+"surface_retiree_pct": 0.5
+},
+{
+"de": 1609,
+"a": 1621,
+"surface_retiree_pct": 0.5
+},
+{
+"de": 1622,
+"a": 1628,
+"surface_retiree_pct": 0.5
+},
+{
+"de": 1629,
+"a": 1631,
+"surface_retiree_pct": 0.5
+},
+{
+"de": 1632,
+"a": 1635,
+"surface_retiree_pct": 0.5
+},
+{
+"de": 1636,
+"a": 1639,
+"surface_retiree_pct": 0.5
+},
+{
+"de": 1640,
+"a": 1641,
+"surface_retiree_pct": 0.4
+},
+{
+"de": 1642,
+"a": 1644,
+"surface_retiree_pct": 0.4
+},
+{
+"de": 1645,
+"a": 1647,
+"surface_retiree_pct": 0.4
+},
+{
+"de": 1648,
+"a": 1652,
+"surface_retiree_pct": 0.5
+},
+{
+"de": 1653,
+"a": 1658,
+"surface_retiree_pct": 0.5
+},
+{
+"de": 1659,
+"a": 1661,
+"surface_retiree_pct": 0.5
+},
+{
+"de": 1662,
+"a": 1669,
+"surface_retiree_pct": 0.5
+},
+{
+"de": 1670,
+"a": 1672,
+"surface_retiree_pct": 0.5
+},
+{
+"de": 1677,
+"a": 1682,
+"surface_retiree_pct": 0.4
+},
+{
+"de": 1683,
+"a": 1686,
+"surface_retiree_pct": 0.4
+},
+{
+"de": 1687,
+"a": 1690,
+"surface_retiree_pct": 0.4
+},
+{
+"de": 1691,
+"a": 1695,
+"surface_retiree_pct": 0.4
+},
+{
+"de": 1696,
+"a": 1699,
+"surface_retiree_pct": 0.4
+},
+{
+"de": 1700,
+"a": 1701,
+"surface_retiree_pct": 3.1
+},
+{
+"de": 1713,
+"a": 1733,
+"surface_retiree_pct": 2.7
+},
+{
+"de": 1748,
+"a": 1756,
+"surface_retiree_pct": 2.7
+},
+{
+"de": 1763,
+"a": 1765,
+"surface_retiree_pct": 2.7
+},
+{
+"de": 1766,
+"a": 1768,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1769,
+"a": 1779,
+"surface_retiree_pct": 1.9
+},
+{
+"de": 1780,
+"a": 1787,
+"surface_retiree_pct": 1.9
+},
+{
+"de": 1788,
+"a": 1790,
+"surface_retiree_pct": 1.9
+},
+{
+"de": 1791,
+"a": 1791,
+"surface_retiree_pct": 1.8
+}
+]
+},
+{
+"id": "chev-kingdom-of-germany",
+"grand": "Kingdom of Germany",
+"petits": [
+"Kingdom of Italy"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 961,
+"a": 961,
+"surface_retiree_pct": 20.0
+}
+]
+},
+{
+"id": "chev-kingdom-of-great-britain",
+"grand": "Kingdom of Great Britain",
+"petits": [
+"Kingdom of Bahrain",
+"Malta",
+"Republic of Cyprus",
+"Republic of Iceland",
+"Second Republic of Austria",
+"State of Kuwait",
+"State of Qatar",
+"Sultanate of Oman",
+"United Arab Emirates",
+"United States of America"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 1941,
+"a": 1941,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1942,
+"a": 1943,
+"surface_retiree_pct": 22.4
+},
+{
+"de": 1944,
+"a": 1944,
+"surface_retiree_pct": 22.4
+},
+{
+"de": 1945,
+"a": 1945,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1946,
+"a": 1946,
+"surface_retiree_pct": 4.1
+},
+{
+"de": 1956,
+"a": 1960,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1961,
+"a": 1963,
+"surface_retiree_pct": 2.4
+},
+{
+"de": 1964,
+"a": 1966,
+"surface_retiree_pct": 2.5
+},
+{
+"de": 1973,
+"a": 1975,
+"surface_retiree_pct": 3.2
+},
+{
+"de": 1976,
+"a": 1986,
+"surface_retiree_pct": 3.2
+},
+{
+"de": 1987,
+"a": 1989,
+"surface_retiree_pct": 3.2
+},
+{
+"de": 1990,
+"a": 1991,
+"surface_retiree_pct": 3.2
+},
+{
+"de": 1992,
+"a": 2005,
+"surface_retiree_pct": 3.2
+},
+{
+"de": 2006,
+"a": 2023,
+"surface_retiree_pct": 3.2
+}
+]
+},
+{
+"id": "chev-kingdom-of-hungary",
+"grand": "Kingdom of Hungary",
+"petits": [
+"Eastern Hungarian Kingdom"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 1526,
+"a": 1528,
+"surface_retiree_pct": 17.4
+}
+]
+},
+{
+"id": "chev-kingdom-of-kartli",
+"grand": "Kingdom of Kartli",
+"petits": [
+"Kingdom of Kakheti",
+"Principality of Abkhazia"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 1463,
+"a": 1464,
+"surface_retiree_pct": 4.4
+},
+{
+"de": 1465,
+"a": 1467,
+"surface_retiree_pct": 22.3
+}
+]
+},
+{
+"id": "chev-kingdom-of-lower-burgundy-933-935",
+"grand": "Kingdom of Lower Burgundy",
+"petits": [
+"Kingdom of Arles"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 926,
+"a": 932,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 933,
+"a": 935,
+"surface_retiree_pct": 29.4
+}
+]
+},
+{
+"id": "chev-kingdom-of-poland",
+"grand": "Kingdom of Poland",
+"petits": [
+"Duchy of Greater Poland",
+"Duchy of Masovia",
+"Duchy of Sandomierz",
+"Duchy of Silesia"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 1126,
+"a": 1137,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1138,
+"a": 1138,
+"surface_retiree_pct": 83.7
+}
+]
+},
+{
+"id": "chev-kingdom-of-polonnaruwa",
+"grand": "Kingdom of Polonnaruwa",
+"petits": [
+"Ceylon",
+"Kingdom of Dambadeniya"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 1072,
+"a": 1219,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1220,
+"a": 1235,
+"surface_retiree_pct": 7.1
+},
+{
+"de": 1236,
+"a": 1249,
+"surface_retiree_pct": 63.2
+}
+]
+},
+{
+"id": "chev-kingdom-of-portugal",
+"grand": "Kingdom of Portugal",
+"petits": [
+"County of Portugal",
+"Portuguese Empire"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 1139,
+"a": 1142,
+"surface_retiree_pct": 74.9
+},
+{
+"de": 1143,
+"a": 1151,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1497,
+"a": 1501,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1502,
+"a": 1506,
+"surface_retiree_pct": 12.6
+}
+]
+},
+{
+"id": "chev-kingdom-of-prussia",
+"grand": "Kingdom of Prussia",
+"petits": [
+"Confederation of the Rhine",
+"German Confederation"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 1806,
+"a": 1806,
+"surface_retiree_pct": 49.6
+},
+{
+"de": 1807,
+"a": 1808,
+"surface_retiree_pct": 100.0,
+"supprimee": true
+},
+{
+"de": 1834,
+"a": 1835,
+"surface_retiree_pct": 6.1
+},
+{
+"de": 1836,
+"a": 1839,
+"surface_retiree_pct": 44.3
+},
+{
+"de": 1840,
+"a": 1845,
+"surface_retiree_pct": 44.3
+},
+{
+"de": 1846,
+"a": 1847,
+"surface_retiree_pct": 44.3
+},
+{
+"de": 1863,
+"a": 1863,
+"surface_retiree_pct": 12.9
+}
+]
+},
+{
+"id": "chev-kingdom-of-sardinia",
+"grand": "Kingdom of Sardinia",
+"petits": [
+"First French Empire",
+"French Consulate",
+"French Directory",
+"Kingdom of Monaco"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 1794,
+"a": 1794,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1795,
+"a": 1795,
+"surface_retiree_pct": 18.4
+},
+{
+"de": 1797,
+"a": 1798,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1799,
+"a": 1799,
+"surface_retiree_pct": 52.5
+},
+{
+"de": 1800,
+"a": 1802,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1803,
+"a": 1804,
+"surface_retiree_pct": 51.7
+},
+{
+"de": 1805,
+"a": 1805,
+"surface_retiree_pct": 51.7
+},
+{
+"de": 1806,
+"a": 1806,
+"surface_retiree_pct": 51.7
+},
+{
+"de": 1807,
+"a": 1808,
+"surface_retiree_pct": 51.7
+},
+{
+"de": 1809,
+"a": 1810,
+"surface_retiree_pct": 51.7
+},
+{
+"de": 1811,
+"a": 1811,
+"surface_retiree_pct": 51.7
+},
+{
+"de": 1812,
+"a": 1812,
+"surface_retiree_pct": 51.7
+},
+{
+"de": 1813,
+"a": 1813,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1853,
+"a": 1858,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1859,
+"a": 1859,
+"surface_retiree_pct": 0.0
+}
+]
+},
+{
+"id": "chev-kingdom-of-spain",
+"grand": "Kingdom of Spain",
+"petits": [
+"Kingdom of Naples (Napoleonic)",
+"Kingdom of Sardinia",
+"Republic of Cuba"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 1718,
+"a": 1719,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1720,
+"a": 1733,
+"surface_retiree_pct": 5.0
+},
+{
+"de": 1748,
+"a": 1761,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1762,
+"a": 1777,
+"surface_retiree_pct": 15.5
+},
+{
+"de": 1898,
+"a": 1899,
+"surface_retiree_pct": 4.7
+}
+]
+},
+{
+"id": "chev-kingdom-of-sweden",
+"grand": "Kingdom of Sweden",
+"petits": [
+"Norse Greenland"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 1344,
+"a": 1362,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1363,
+"a": 1374,
+"surface_retiree_pct": 2.3
+}
+]
+},
+{
+"id": "chev-kingdom-of-the-franks",
+"grand": "Kingdom of the Franks",
+"petits": [
+"Magna Frisia",
+"Merovingian Empire"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 692,
+"a": 704,
+"surface_retiree_pct": 2.1
+},
+{
+"de": 705,
+"a": 709,
+"surface_retiree_pct": 2.1
+},
+{
+"de": 710,
+"a": 717,
+"surface_retiree_pct": 8.7
+},
+{
+"de": 724,
+"a": 731,
+"surface_retiree_pct": 2.6
+},
+{
+"de": 732,
+"a": 740,
+"surface_retiree_pct": 1.3
+}
+]
+},
+{
+"id": "chev-lan-na-kingdom",
+"grand": "Lan Na Kingdom",
+"petits": [
+"Lan Xang"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 1338,
+"a": 1353,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1354,
+"a": 1362,
+"surface_retiree_pct": 33.8
+}
+]
+},
+{
+"id": "chev-late-pallava-empire",
+"grand": "Late Pallava Empire",
+"petits": [
+"Kadamba Empire"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 306,
+"a": 344,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 345,
+"a": 352,
+"surface_retiree_pct": 12.0
+}
+]
+},
+{
+"id": "chev-later-yan-407-408",
+"grand": "Later Yan",
+"petits": [
+"Northern Yan"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 407,
+"a": 408,
+"surface_retiree_pct": 100.0,
+"supprimee": true
+}
+]
+},
+{
+"id": "chev-liao-dynasty-1115-1125",
+"grand": "Liao Dynasty",
+"petits": [
+"Great Jin"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 1111,
+"a": 1114,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1115,
+"a": 1125,
+"surface_retiree_pct": 47.9
+}
+]
+},
+{
+"id": "chev-lodi-dynasty-1526-1528",
+"grand": "Lodi Dynasty",
+"petits": [
+"Mughal Empire"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 1526,
+"a": 1528,
+"surface_retiree_pct": 100.0,
+"supprimee": true
+}
+]
+},
+{
+"id": "chev-lê-dynasty-1558-1571",
+"grand": "Lê Dynasty",
+"petits": [
+"Nguyễn lords"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 1540,
+"a": 1557,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1558,
+"a": 1563,
+"surface_retiree_pct": 65.3
+},
+{
+"de": 1564,
+"a": 1571,
+"surface_retiree_pct": 65.3
+}
+]
+},
+{
+"id": "chev-majapahit",
+"grand": "Majapahit",
+"petits": [
+"Sultanate of Malacca",
+"Sultanate of Palembang"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 1398,
+"a": 1458,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1459,
+"a": 1474,
+"surface_retiree_pct": 8.3
+}
+]
+},
+{
+"id": "chev-mexican-monarchists",
+"grand": "Mexican Monarchists",
+"petits": [
+"Second Mexican Empire"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 1864,
+"a": 1864,
+"surface_retiree_pct": 100.0,
+"supprimee": true
+}
+]
+},
+{
+"id": "chev-mughal-empire",
+"grand": "Mughal Empire",
+"petits": [
+"Sikhs"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 1717,
+"a": 1717,
+"surface_retiree_pct": 0.8
+},
+{
+"de": 1718,
+"a": 1720,
+"surface_retiree_pct": 0.0
+}
+]
+},
+{
+"id": "chev-myinsaing-kingdom-1310-1312",
+"grand": "Myinsaing Kingdom",
+"petits": [
+"Kingdom of Pinya"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 1305,
+"a": 1309,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1310,
+"a": 1312,
+"surface_retiree_pct": 100.0,
+"supprimee": true
+}
+]
+},
+{
+"id": "chev-najahid-dynasty-1154-1157",
+"grand": "Najahid Dynasty",
+"petits": [
+"Nabhani Dynasty"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 1152,
+"a": 1153,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1154,
+"a": 1157,
+"surface_retiree_pct": 100.0,
+"supprimee": true
+}
+]
+},
+{
+"id": "chev-nazi-germany",
+"grand": "Nazi Germany",
+"petits": [
+"Kingdom of Monaco"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 1933,
+"a": 1935,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1936,
+"a": 1937,
+"surface_retiree_pct": 0.0
+}
+]
+},
+{
+"id": "chev-neo-assyrian-empire",
+"grand": "Neo-Assyrian Empire",
+"petits": [
+"Assyrian Egypt",
+"Babylonia"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": -675,
+"a": -651,
+"surface_retiree_pct": 0.0
+},
+{
+"de": -650,
+"a": -631,
+"surface_retiree_pct": 100.0,
+"supprimee": true
+},
+{
+"de": -630,
+"a": -616,
+"surface_retiree_pct": 100.0,
+"supprimee": true
+}
+]
+},
+{
+"id": "chev-netherlands",
+"grand": "Netherlands",
+"petits": [
+"Luxembourg"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 1871,
+"a": 1889,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1890,
+"a": 1914,
+"surface_retiree_pct": 5.6
+},
+{
+"de": 1915,
+"a": 1916,
+"surface_retiree_pct": 0.0
+}
+]
+},
+{
+"id": "chev-netherlands-antilles",
+"grand": "Netherlands Antilles",
+"petits": [
+"Republic of Suriname"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": []
+},
+{
+"id": "chev-new-france",
+"grand": "New France",
+"petits": [
+"New Netherland"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 1629,
+"a": 1631,
+"surface_retiree_pct": 7.8
+},
+{
+"de": 1783,
+"a": 1787,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1788,
+"a": 1790,
+"surface_retiree_pct": 22.6
+}
+]
+},
+{
+"id": "chev-new-granada-1819-1821",
+"grand": "New Granada",
+"petits": [
+"Gran Colombia"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 1815,
+"a": 1818,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1819,
+"a": 1819,
+"surface_retiree_pct": 100.0,
+"supprimee": true
+},
+{
+"de": 1820,
+"a": 1821,
+"surface_retiree_pct": 100.0,
+"supprimee": true
+}
+]
+},
+{
+"id": "chev-north-sea-empire-1035-1039",
+"grand": "North Sea Empire",
+"petits": [
+"Old Kingdom of Norway"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": []
+},
+{
+"id": "chev-northern-liang",
+"grand": "Northern Liang",
+"petits": [
+"Western Liang"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 402,
+"a": 406,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 407,
+"a": 409,
+"surface_retiree_pct": 74.8
+},
+{
+"de": 410,
+"a": 425,
+"surface_retiree_pct": 0.0
+}
+]
+},
+{
+"id": "chev-old-kingdom-of-norway-1028-1034",
+"grand": "Old Kingdom of Norway",
+"petits": [
+"North Sea Empire"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 1015,
+"a": 1027,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1028,
+"a": 1033,
+"surface_retiree_pct": 92.1
+},
+{
+"de": 1034,
+"a": 1034,
+"surface_retiree_pct": 92.1
+},
+{
+"de": 1035,
+"a": 1039,
+"surface_retiree_pct": 0.0
+}
+]
+},
+{
+"id": "chev-old-kingdom-of-norway",
+"grand": "Old Kingdom of Norway",
+"petits": [
+"Kingdom of Denmark",
+"Kingdom of Mann",
+"Kingdom of the Isles"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 980,
+"a": 989,
+"surface_retiree_pct": 9.0
+},
+{
+"de": 1066,
+"a": 1084,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1085,
+"a": 1093,
+"surface_retiree_pct": 3.5
+},
+{
+"de": 1094,
+"a": 1146,
+"surface_retiree_pct": 3.5
+},
+{
+"de": 1147,
+"a": 1168,
+"surface_retiree_pct": 3.5
+},
+{
+"de": 1169,
+"a": 1176,
+"surface_retiree_pct": 1.8
+},
+{
+"de": 1177,
+"a": 1187,
+"surface_retiree_pct": 1.8
+}
+]
+},
+{
+"id": "chev-ottoman-empire",
+"grand": "Ottoman Empire",
+"petits": [
+"Cretan State"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 1895,
+"a": 1897,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1898,
+"a": 1899,
+"surface_retiree_pct": 0.3
+}
+]
+},
+{
+"id": "chev-pagan-kingdom-1287-1293",
+"grand": "Pagan Kingdom",
+"petits": [
+"Hanthawaddy Kingdom"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 1285,
+"a": 1286,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1287,
+"a": 1293,
+"surface_retiree_pct": 17.5
+}
+]
+},
+{
+"id": "chev-pandya-empire-1320-1325",
+"grand": "Pandya Empire",
+"petits": [
+"Tughlaq Dynasty"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 1314,
+"a": 1319,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1320,
+"a": 1325,
+"surface_retiree_pct": 40.2
+}
+]
+},
+{
+"id": "chev-papal-states",
+"grand": "Papal States",
+"petits": [
+"First French Empire"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 1807,
+"a": 1808,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1809,
+"a": 1810,
+"surface_retiree_pct": 100.0,
+"supprimee": true
+}
+]
+},
+{
+"id": "chev-paramara-dynasty",
+"grand": "Paramara Dynasty",
+"petits": [
+"Yadava Dynasty"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 1111,
+"a": 1172,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1173,
+"a": 1187,
+"surface_retiree_pct": 15.6
+}
+]
+},
+{
+"id": "chev-patriarchate-of-aquileia",
+"grand": "Patriarchate of Aquileia",
+"petits": [
+"Duchy of Styria"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 1422,
+"a": 1439,
+"surface_retiree_pct": 3.2
+},
+{
+"de": 1440,
+"a": 1449,
+"surface_retiree_pct": 3.2
+}
+]
+},
+{
+"id": "chev-phoenicia",
+"grand": "Phoenicia",
+"petits": [
+"Carthage",
+"Neo-Assyrian Empire",
+"Neo-Babylonian Empire"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": -750,
+"a": -701,
+"surface_retiree_pct": 0.0
+},
+{
+"de": -700,
+"a": -676,
+"surface_retiree_pct": 43.7
+},
+{
+"de": -650,
+"a": -631,
+"surface_retiree_pct": 0.0
+},
+{
+"de": -630,
+"a": -616,
+"surface_retiree_pct": 33.0
+},
+{
+"de": -615,
+"a": -601,
+"surface_retiree_pct": 0.0
+},
+{
+"de": -600,
+"a": -551,
+"surface_retiree_pct": 29.1
+},
+{
+"de": -550,
+"a": -541,
+"surface_retiree_pct": 29.1
+},
+{
+"de": -540,
+"a": -531,
+"surface_retiree_pct": 29.1
+}
+]
+},
+{
+"id": "chev-polish-lithuanian-commonwealth",
+"grand": "Polish-Lithuanian Commonwealth",
+"petits": [
+"Pro-Swedish Poland"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 1700,
+"a": 1700,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1701,
+"a": 1701,
+"surface_retiree_pct": 44.8
+},
+{
+"de": 1702,
+"a": 1705,
+"surface_retiree_pct": 44.8
+}
+]
+},
+{
+"id": "chev-portuguese-colonies",
+"grand": "Portuguese Colonies",
+"petits": [
+"Dutch Republic"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 1640,
+"a": 1641,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1642,
+"a": 1644,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1645,
+"a": 1647,
+"surface_retiree_pct": 7.1
+},
+{
+"de": 1653,
+"a": 1658,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1659,
+"a": 1661,
+"surface_retiree_pct": 18.5
+}
+]
+},
+{
+"id": "chev-principality-of-hungary",
+"grand": "Principality of Hungary",
+"petits": [
+"Kingdom of Croatia"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 922,
+"a": 924,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 925,
+"a": 925,
+"surface_retiree_pct": 3.0
+}
+]
+},
+{
+"id": "chev-principality-of-orange",
+"grand": "Principality of Orange",
+"petits": [
+"Comtat Venaissin"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 1272,
+"a": 1351,
+"surface_retiree_pct": 4.4
+},
+{
+"de": 1352,
+"a": 1384,
+"surface_retiree_pct": 16.6
+},
+{
+"de": 1385,
+"a": 1458,
+"surface_retiree_pct": 28.6
+},
+{
+"de": 1459,
+"a": 1481,
+"surface_retiree_pct": 28.6
+},
+{
+"de": 1482,
+"a": 1563,
+"surface_retiree_pct": 20.2
+},
+{
+"de": 1564,
+"a": 1571,
+"surface_retiree_pct": 20.2
+}
+]
+},
+{
+"id": "chev-principality-of-polotsky",
+"grand": "Principality of Polotsky",
+"petits": [
+"Principality of Drutsk",
+"Principality of Minsk",
+"Principality of Vitebsk"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 1085,
+"a": 1100,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1101,
+"a": 1110,
+"surface_retiree_pct": 79.8
+}
+]
+},
+{
+"id": "chev-principality-of-regensberg",
+"grand": "Principality of Regensberg",
+"petits": [
+"First French Empire"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 1803,
+"a": 1804,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1805,
+"a": 1805,
+"surface_retiree_pct": 30.5
+},
+{
+"de": 1806,
+"a": 1806,
+"surface_retiree_pct": 0.0
+}
+]
+},
+{
+"id": "chev-principality-of-transylvania",
+"grand": "Principality of Transylvania",
+"petits": [
+"Principality of Upper Hungary"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 1673,
+"a": 1681,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1682,
+"a": 1682,
+"surface_retiree_pct": 22.2
+}
+]
+},
+{
+"id": "chev-principality-of-vladimir-suzdal",
+"grand": "Principality of Vladimir-Suzdal",
+"petits": [
+"Grand Principality of Moscow"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 1482,
+"a": 1484,
+"surface_retiree_pct": 100.0,
+"supprimee": true
+},
+{
+"de": 1485,
+"a": 1486,
+"surface_retiree_pct": 100.0,
+"supprimee": true
+}
+]
+},
+{
+"id": "chev-qarlugs-840-849",
+"grand": "Qarlugs",
+"petits": [
+"Kara-Khanids"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 840,
+"a": 849,
+"surface_retiree_pct": 100.0,
+"supprimee": true
+}
+]
+},
+{
+"id": "chev-qing-dynasty-1911-1911",
+"grand": "Qing Dynasty",
+"petits": [
+"Republic of Uryankhay"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 1911,
+"a": 1911,
+"surface_retiree_pct": 1.7
+}
+]
+},
+{
+"id": "chev-republic-of-genoa",
+"grand": "Republic of Genoa",
+"petits": [
+"Crown of Aragon",
+"Duchy of Milan",
+"Ottoman Empire",
+"Republic of Pisa"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 1202,
+"a": 1205,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1206,
+"a": 1209,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1210,
+"a": 1215,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1216,
+"a": 1226,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1227,
+"a": 1235,
+"surface_retiree_pct": 1.7
+},
+{
+"de": 1236,
+"a": 1240,
+"surface_retiree_pct": 1.7
+},
+{
+"de": 1241,
+"a": 1249,
+"surface_retiree_pct": 1.7
+},
+{
+"de": 1285,
+"a": 1293,
+"surface_retiree_pct": 39.4
+},
+{
+"de": 1294,
+"a": 1298,
+"surface_retiree_pct": 39.4
+},
+{
+"de": 1299,
+"a": 1304,
+"surface_retiree_pct": 39.4
+},
+{
+"de": 1305,
+"a": 1313,
+"surface_retiree_pct": 37.8
+},
+{
+"de": 1314,
+"a": 1325,
+"surface_retiree_pct": 35.9
+},
+{
+"de": 1326,
+"a": 1332,
+"surface_retiree_pct": 63.8
+},
+{
+"de": 1333,
+"a": 1343,
+"surface_retiree_pct": 63.8
+},
+{
+"de": 1344,
+"a": 1351,
+"surface_retiree_pct": 64.4
+},
+{
+"de": 1352,
+"a": 1362,
+"surface_retiree_pct": 48.4
+},
+{
+"de": 1363,
+"a": 1374,
+"surface_retiree_pct": 43.6
+},
+{
+"de": 1385,
+"a": 1394,
+"surface_retiree_pct": 40.0
+},
+{
+"de": 1415,
+"a": 1419,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1420,
+"a": 1421,
+"surface_retiree_pct": 41.3
+},
+{
+"de": 1422,
+"a": 1428,
+"surface_retiree_pct": 2.6
+},
+{
+"de": 1429,
+"a": 1430,
+"surface_retiree_pct": 2.6
+},
+{
+"de": 1431,
+"a": 1439,
+"surface_retiree_pct": 2.6
+},
+{
+"de": 1440,
+"a": 1446,
+"surface_retiree_pct": 1.7
+},
+{
+"de": 1447,
+"a": 1449,
+"surface_retiree_pct": 1.7
+},
+{
+"de": 1453,
+"a": 1458,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1459,
+"a": 1462,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1463,
+"a": 1467,
+"surface_retiree_pct": 29.2
+},
+{
+"de": 1468,
+"a": 1474,
+"surface_retiree_pct": 29.2
+},
+{
+"de": 1475,
+"a": 1481,
+"surface_retiree_pct": 42.0
+},
+{
+"de": 1482,
+"a": 1486,
+"surface_retiree_pct": 24.3
+},
+{
+"de": 1487,
+"a": 1491,
+"surface_retiree_pct": 24.3
+},
+{
+"de": 1492,
+"a": 1496,
+"surface_retiree_pct": 44.9
+},
+{
+"de": 1497,
+"a": 1501,
+"surface_retiree_pct": 41.7
+},
+{
+"de": 1502,
+"a": 1506,
+"surface_retiree_pct": 24.3
+},
+{
+"de": 1507,
+"a": 1511,
+"surface_retiree_pct": 24.0
+},
+{
+"de": 1512,
+"a": 1515,
+"surface_retiree_pct": 24.0
+},
+{
+"de": 1516,
+"a": 1516,
+"surface_retiree_pct": 24.0
+},
+{
+"de": 1517,
+"a": 1520,
+"surface_retiree_pct": 24.0
+},
+{
+"de": 1521,
+"a": 1525,
+"surface_retiree_pct": 24.0
+},
+{
+"de": 1564,
+"a": 1571,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1572,
+"a": 1578,
+"surface_retiree_pct": 7.9
+},
+{
+"de": 1579,
+"a": 1587,
+"surface_retiree_pct": 7.9
+},
+{
+"de": 1588,
+"a": 1594,
+"surface_retiree_pct": 7.9
+},
+{
+"de": 1595,
+"a": 1599,
+"surface_retiree_pct": 7.9
+},
+{
+"de": 1600,
+"a": 1601,
+"surface_retiree_pct": 7.9
+},
+{
+"de": 1602,
+"a": 1608,
+"surface_retiree_pct": 7.9
+},
+{
+"de": 1609,
+"a": 1611,
+"surface_retiree_pct": 7.9
+},
+{
+"de": 1612,
+"a": 1625,
+"surface_retiree_pct": 7.9
+},
+{
+"de": 1626,
+"a": 1631,
+"surface_retiree_pct": 7.9
+}
+]
+},
+{
+"id": "chev-republic-of-pisa",
+"grand": "Republic of Pisa",
+"petits": [
+"Crown of Aragon",
+"Giudicato of Arborea"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 1260,
+"a": 1278,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1279,
+"a": 1284,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1285,
+"a": 1293,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1294,
+"a": 1304,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1305,
+"a": 1325,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1326,
+"a": 1343,
+"surface_retiree_pct": 53.0
+},
+{
+"de": 1344,
+"a": 1362,
+"surface_retiree_pct": 53.0
+},
+{
+"de": 1363,
+"a": 1374,
+"surface_retiree_pct": 53.0
+},
+{
+"de": 1375,
+"a": 1384,
+"surface_retiree_pct": 89.4
+},
+{
+"de": 1385,
+"a": 1394,
+"surface_retiree_pct": 52.3
+}
+]
+},
+{
+"id": "chev-republic-of-venice",
+"grand": "Republic of Venice",
+"petits": [
+"Duchy of Styria"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 1422,
+"a": 1428,
+"surface_retiree_pct": 0.1
+},
+{
+"de": 1429,
+"a": 1439,
+"surface_retiree_pct": 0.1
+},
+{
+"de": 1440,
+"a": 1449,
+"surface_retiree_pct": 0.1
+}
+]
+},
+{
+"id": "chev-republics-of-the-soviet-union-1921-1921",
+"grand": "Republics of the Soviet Union",
+"petits": [
+"Provisional Priamurye Government"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 1920,
+"a": 1920,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1921,
+"a": 1921,
+"surface_retiree_pct": 1.2
+}
+]
+},
+{
+"id": "chev-roman-empire",
+"grand": "Roman Empire",
+"petits": [
+"Gallic Empire"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 260,
+"a": 260,
+"surface_retiree_pct": 18.4
+}
+]
+},
+{
+"id": "chev-russian-republic",
+"grand": "Russian Republic",
+"petits": [
+"Republic of Finland"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 1917,
+"a": 1917,
+"surface_retiree_pct": 2.0
+}
+]
+},
+{
+"id": "chev-rustamid-dynasty-909-910",
+"grand": "Rustamid dynasty",
+"petits": [
+"Fatimid Caliphate"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 900,
+"a": 908,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 909,
+"a": 910,
+"surface_retiree_pct": 25.0
+}
+]
+},
+{
+"id": "chev-safavid-dynasty",
+"grand": "Safavid Dynasty",
+"petits": [
+"Shaybanids"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 1508,
+"a": 1511,
+"surface_retiree_pct": 31.0
+},
+{
+"de": 1512,
+"a": 1515,
+"surface_retiree_pct": 0.0
+}
+]
+},
+{
+"id": "chev-samos-empire-658-660",
+"grand": "Samo's Empire",
+"petits": [
+"Carantania"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 656,
+"a": 657,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 658,
+"a": 660,
+"surface_retiree_pct": 20.7
+}
+]
+},
+{
+"id": "chev-sasanian-empire-642-643",
+"grand": "Sasanian Empire",
+"petits": [
+"Dabuyid Dynasty"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 641,
+"a": 641,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 642,
+"a": 643,
+"surface_retiree_pct": 2.6
+}
+]
+},
+{
+"id": "chev-second-french-empire-1870-1870",
+"grand": "Second French Empire",
+"petits": [
+"French Third Republic"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 1870,
+"a": 1870,
+"surface_retiree_pct": 92.1
+}
+]
+},
+{
+"id": "chev-second-french-empire",
+"grand": "Second French Empire",
+"petits": [
+"Kingdom of Monaco",
+"New Caledonia"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 1852,
+"a": 1852,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1853,
+"a": 1855,
+"surface_retiree_pct": 0.6
+},
+{
+"de": 1860,
+"a": 1861,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1862,
+"a": 1862,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1863,
+"a": 1869,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1870,
+"a": 1870,
+"surface_retiree_pct": 0.1
+}
+]
+},
+{
+"id": "chev-serbian-despots",
+"grand": "Serbian Despots",
+"petits": [
+"Republic of Ragusa"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 1375,
+"a": 1384,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1385,
+"a": 1394,
+"surface_retiree_pct": 1.9
+}
+]
+},
+{
+"id": "chev-serbian-empire",
+"grand": "Serbian Empire",
+"petits": [
+"Despotate of Arta",
+"Duchy of Saint Sava"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 1346,
+"a": 1357,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1358,
+"a": 1362,
+"surface_retiree_pct": 4.7
+},
+{
+"de": 1363,
+"a": 1374,
+"surface_retiree_pct": 4.8
+},
+{
+"de": 1429,
+"a": 1447,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1448,
+"a": 1449,
+"surface_retiree_pct": 3.7
+},
+{
+"de": 1450,
+"a": 1452,
+"surface_retiree_pct": 3.7
+}
+]
+},
+{
+"id": "chev-shaybanids-1511-1511",
+"grand": "Shaybanids",
+"petits": [
+"Khanate of Khiva"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 1507,
+"a": 1510,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1511,
+"a": 1511,
+"surface_retiree_pct": 5.2
+}
+]
+},
+{
+"id": "chev-silla-668-681",
+"grand": "Silla",
+"petits": [
+"Unified Silla"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 666,
+"a": 667,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 668,
+"a": 673,
+"surface_retiree_pct": 100.0,
+"supprimee": true
+},
+{
+"de": 674,
+"a": 681,
+"surface_retiree_pct": 100.0,
+"supprimee": true
+}
+]
+},
+{
+"id": "chev-socialist-federal-republic-of-yugoslavia-1991-1991",
+"grand": "Socialist Federal Republic of Yugoslavia",
+"petits": [
+"Former Yugoslav Republic of Macedonia",
+"Republic of Croatia",
+"Republic of Slovenia"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 1991,
+"a": 1991,
+"surface_retiree_pct": 35.6
+}
+]
+},
+{
+"id": "chev-spanish-empire",
+"grand": "Spanish Empire",
+"petits": [
+"Dominican Republic",
+"Gran Colombia",
+"Republic of Chile"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 1809,
+"a": 1809,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1810,
+"a": 1810,
+"surface_retiree_pct": 2.2
+},
+{
+"de": 1811,
+"a": 1811,
+"surface_retiree_pct": 3.0
+},
+{
+"de": 1815,
+"a": 1818,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1819,
+"a": 1819,
+"surface_retiree_pct": 25.2
+},
+{
+"de": 1820,
+"a": 1820,
+"surface_retiree_pct": 18.4
+},
+{
+"de": 1824,
+"a": 1824,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1825,
+"a": 1827,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1828,
+"a": 1829,
+"surface_retiree_pct": 2.7
+},
+{
+"de": 1830,
+"a": 1830,
+"surface_retiree_pct": 2.7
+},
+{
+"de": 1831,
+"a": 1843,
+"surface_retiree_pct": 2.7
+},
+{
+"de": 1844,
+"a": 1852,
+"surface_retiree_pct": 2.7
+},
+{
+"de": 1861,
+"a": 1864,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1865,
+"a": 1865,
+"surface_retiree_pct": 9.9
+},
+{
+"de": 1866,
+"a": 1872,
+"surface_retiree_pct": 9.9
+}
+]
+},
+{
+"id": "chev-sukhothai-kingdom",
+"grand": "Sukhothai Kingdom",
+"petits": [
+"Lan Na Kingdom",
+"Lan Xang"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 1352,
+"a": 1353,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1354,
+"a": 1362,
+"surface_retiree_pct": 30.0
+},
+{
+"de": 1453,
+"a": 1458,
+"surface_retiree_pct": 18.8
+}
+]
+},
+{
+"id": "chev-sultanate-of-bengal",
+"grand": "Sultanate of Bengal",
+"petits": [
+"Jaunpur Sultanate"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 1352,
+"a": 1393,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1394,
+"a": 1394,
+"surface_retiree_pct": 8.1
+}
+]
+},
+{
+"id": "chev-sultanate-of-bima",
+"grand": "Sultanate of Bima",
+"petits": [
+"Batavian Republic",
+"British Colonial Empire",
+"Dutch East Indies"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 1621,
+"a": 1705,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1706,
+"a": 1708,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1709,
+"a": 1712,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1713,
+"a": 1717,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1718,
+"a": 1720,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1721,
+"a": 1724,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1725,
+"a": 1726,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1727,
+"a": 1733,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1734,
+"a": 1737,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1738,
+"a": 1740,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1741,
+"a": 1743,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1744,
+"a": 1751,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1752,
+"a": 1756,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1757,
+"a": 1761,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1762,
+"a": 1762,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1763,
+"a": 1768,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1769,
+"a": 1771,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1772,
+"a": 1774,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1775,
+"a": 1775,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1776,
+"a": 1777,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1778,
+"a": 1779,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1780,
+"a": 1780,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1781,
+"a": 1782,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1783,
+"a": 1787,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1788,
+"a": 1793,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1794,
+"a": 1794,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1795,
+"a": 1795,
+"surface_retiree_pct": 21.2
+},
+{
+"de": 1796,
+"a": 1796,
+"surface_retiree_pct": 21.2
+},
+{
+"de": 1797,
+"a": 1798,
+"surface_retiree_pct": 21.2
+},
+{
+"de": 1799,
+"a": 1799,
+"surface_retiree_pct": 21.2
+},
+{
+"de": 1800,
+"a": 1802,
+"surface_retiree_pct": 21.2
+},
+{
+"de": 1803,
+"a": 1804,
+"surface_retiree_pct": 21.2
+},
+{
+"de": 1805,
+"a": 1805,
+"surface_retiree_pct": 21.2
+},
+{
+"de": 1806,
+"a": 1806,
+"surface_retiree_pct": 21.2
+},
+{
+"de": 1807,
+"a": 1808,
+"surface_retiree_pct": 21.2
+},
+{
+"de": 1809,
+"a": 1810,
+"surface_retiree_pct": 21.2
+},
+{
+"de": 1811,
+"a": 1811,
+"surface_retiree_pct": 21.2
+},
+{
+"de": 1812,
+"a": 1813,
+"surface_retiree_pct": 21.2
+},
+{
+"de": 1814,
+"a": 1814,
+"surface_retiree_pct": 21.2
+},
+{
+"de": 1815,
+"a": 1819,
+"surface_retiree_pct": 21.2
+},
+{
+"de": 1820,
+"a": 1821,
+"surface_retiree_pct": 21.2
+},
+{
+"de": 1822,
+"a": 1823,
+"surface_retiree_pct": 21.2
+},
+{
+"de": 1824,
+"a": 1824,
+"surface_retiree_pct": 21.2
+},
+{
+"de": 1825,
+"a": 1827,
+"surface_retiree_pct": 21.2
+},
+{
+"de": 1828,
+"a": 1829,
+"surface_retiree_pct": 21.2
+},
+{
+"de": 1830,
+"a": 1833,
+"surface_retiree_pct": 21.2
+},
+{
+"de": 1834,
+"a": 1835,
+"surface_retiree_pct": 21.2
+},
+{
+"de": 1836,
+"a": 1839,
+"surface_retiree_pct": 21.2
+},
+{
+"de": 1840,
+"a": 1841,
+"surface_retiree_pct": 21.2
+},
+{
+"de": 1842,
+"a": 1843,
+"surface_retiree_pct": 21.2
+},
+{
+"de": 1844,
+"a": 1845,
+"surface_retiree_pct": 21.2
+},
+{
+"de": 1846,
+"a": 1847,
+"surface_retiree_pct": 21.2
+},
+{
+"de": 1848,
+"a": 1848,
+"surface_retiree_pct": 21.2
+},
+{
+"de": 1849,
+"a": 1852,
+"surface_retiree_pct": 21.2
+},
+{
+"de": 1853,
+"a": 1855,
+"surface_retiree_pct": 21.2
+},
+{
+"de": 1856,
+"a": 1856,
+"surface_retiree_pct": 21.2
+},
+{
+"de": 1857,
+"a": 1858,
+"surface_retiree_pct": 21.2
+},
+{
+"de": 1859,
+"a": 1859,
+"surface_retiree_pct": 21.2
+},
+{
+"de": 1860,
+"a": 1861,
+"surface_retiree_pct": 21.2
+},
+{
+"de": 1862,
+"a": 1862,
+"surface_retiree_pct": 21.2
+},
+{
+"de": 1863,
+"a": 1863,
+"surface_retiree_pct": 21.2
+},
+{
+"de": 1864,
+"a": 1865,
+"surface_retiree_pct": 21.2
+}
+]
+},
+{
+"id": "chev-sultanate-of-brunei",
+"grand": "Sultanate of Brunei",
+"petits": [
+"Sultanate of Maguindanao",
+"Sultanate of Sambas",
+"Sultanate of Sulu"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 1512,
+"a": 1520,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1521,
+"a": 1528,
+"surface_retiree_pct": 46.2
+},
+{
+"de": 1529,
+"a": 1581,
+"surface_retiree_pct": 47.9
+},
+{
+"de": 1588,
+"a": 1608,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1609,
+"a": 1611,
+"surface_retiree_pct": 0.9
+},
+{
+"de": 1612,
+"a": 1618,
+"surface_retiree_pct": 0.9
+}
+]
+},
+{
+"id": "chev-sultanate-of-hobyo",
+"grand": "Sultanate of Hobyo",
+"petits": [
+"Italian Africa"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 1878,
+"a": 1881,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1882,
+"a": 1884,
+"surface_retiree_pct": 19.6
+},
+{
+"de": 1885,
+"a": 1889,
+"surface_retiree_pct": 19.6
+}
+]
+},
+{
+"id": "chev-sultanate-of-malacca",
+"grand": "Sultanate of Malacca",
+"petits": [
+"Dutch East Indies",
+"Kelantan",
+"Kingdom of Pajana",
+"Mataram Sultanate",
+"Patani Kingdom"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 1548,
+"a": 1571,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1572,
+"a": 1578,
+"surface_retiree_pct": 69.4
+},
+{
+"de": 1579,
+"a": 1581,
+"surface_retiree_pct": 69.0
+},
+{
+"de": 1582,
+"a": 1585,
+"surface_retiree_pct": 69.0
+},
+{
+"de": 1586,
+"a": 1587,
+"surface_retiree_pct": 69.0
+},
+{
+"de": 1588,
+"a": 1608,
+"surface_retiree_pct": 69.0
+},
+{
+"de": 1609,
+"a": 1618,
+"surface_retiree_pct": 81.5
+},
+{
+"de": 1619,
+"a": 1621,
+"surface_retiree_pct": 81.1
+},
+{
+"de": 1622,
+"a": 1625,
+"surface_retiree_pct": 81.1
+},
+{
+"de": 1626,
+"a": 1639,
+"surface_retiree_pct": 81.1
+},
+{
+"de": 1744,
+"a": 1761,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1762,
+"a": 1799,
+"surface_retiree_pct": 17.7
+},
+{
+"de": 1803,
+"a": 1804,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1805,
+"a": 1808,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1809,
+"a": 1810,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1811,
+"a": 1811,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1812,
+"a": 1813,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1814,
+"a": 1814,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1815,
+"a": 1821,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1822,
+"a": 1823,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1824,
+"a": 1827,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1828,
+"a": 1829,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1830,
+"a": 1833,
+"surface_retiree_pct": 35.7
+},
+{
+"de": 1834,
+"a": 1835,
+"surface_retiree_pct": 35.7
+},
+{
+"de": 1836,
+"a": 1843,
+"surface_retiree_pct": 35.7
+},
+{
+"de": 1844,
+"a": 1848,
+"surface_retiree_pct": 35.7
+},
+{
+"de": 1849,
+"a": 1852,
+"surface_retiree_pct": 35.5
+},
+{
+"de": 1853,
+"a": 1855,
+"surface_retiree_pct": 35.5
+},
+{
+"de": 1856,
+"a": 1856,
+"surface_retiree_pct": 35.5
+},
+{
+"de": 1857,
+"a": 1858,
+"surface_retiree_pct": 35.5
+},
+{
+"de": 1859,
+"a": 1859,
+"surface_retiree_pct": 35.5
+},
+{
+"de": 1860,
+"a": 1860,
+"surface_retiree_pct": 35.5
+}
+]
+},
+{
+"id": "chev-sultanate-of-oman",
+"grand": "Sultanate of Oman",
+"petits": [
+"Omani Slave Coast"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 1812,
+"a": 1813,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1814,
+"a": 1814,
+"surface_retiree_pct": 25.5
+}
+]
+},
+{
+"id": "chev-sultanate-of-palembang",
+"grand": "Sultanate of Palembang",
+"petits": [
+"British Colonial Empire",
+"Dutch East Indies"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 1809,
+"a": 1810,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1811,
+"a": 1811,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1812,
+"a": 1813,
+"surface_retiree_pct": 27.0
+},
+{
+"de": 1814,
+"a": 1814,
+"surface_retiree_pct": 27.0
+},
+{
+"de": 1815,
+"a": 1819,
+"surface_retiree_pct": 27.0
+}
+]
+},
+{
+"id": "chev-sultanate-of-sulu",
+"grand": "Sultanate of Sulu",
+"petits": [
+"Dutch East Indies"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 1830,
+"a": 1833,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1834,
+"a": 1835,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1836,
+"a": 1843,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1844,
+"a": 1848,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1849,
+"a": 1852,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1853,
+"a": 1855,
+"surface_retiree_pct": 29.2
+},
+{
+"de": 1856,
+"a": 1856,
+"surface_retiree_pct": 29.2
+},
+{
+"de": 1857,
+"a": 1858,
+"surface_retiree_pct": 29.2
+},
+{
+"de": 1859,
+"a": 1859,
+"surface_retiree_pct": 29.2
+},
+{
+"de": 1860,
+"a": 1861,
+"surface_retiree_pct": 29.2
+},
+{
+"de": 1862,
+"a": 1865,
+"surface_retiree_pct": 29.2
+},
+{
+"de": 1866,
+"a": 1872,
+"surface_retiree_pct": 29.2
+},
+{
+"de": 1873,
+"a": 1876,
+"surface_retiree_pct": 29.2
+}
+]
+},
+{
+"id": "chev-swedish-empire-1814-1814",
+"grand": "Swedish Empire",
+"petits": [
+"United Kingdoms of Sweden and Norway"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 1814,
+"a": 1814,
+"surface_retiree_pct": 100.0,
+"supprimee": true
+}
+]
+},
+{
+"id": "chev-swedish-empire",
+"grand": "Swedish Empire",
+"petits": [
+"Danish Gold Coast"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 1662,
+"a": 1669,
+"surface_retiree_pct": 0.0
+}
+]
+},
+{
+"id": "chev-taifa-of-almería",
+"grand": "Taifa of Almería",
+"petits": [
+"Emirate of Granada"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 1236,
+"a": 1237,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1238,
+"a": 1240,
+"surface_retiree_pct": 27.3
+}
+]
+},
+{
+"id": "chev-taifa-of-dénia",
+"grand": "Taifa of Dénia",
+"petits": [
+"Giudicato of Arborea",
+"Giudicato of Cagliari",
+"Giudicato of Gallura",
+"Giudicato of Logudoro"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 1015,
+"a": 1017,
+"surface_retiree_pct": 18.2
+},
+{
+"de": 1018,
+"a": 1039,
+"surface_retiree_pct": 55.5
+}
+]
+},
+{
+"id": "chev-tang-dynasty",
+"grand": "Tang Dynasty",
+"petits": [
+"Unified Silla"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 666,
+"a": 667,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 668,
+"a": 673,
+"surface_retiree_pct": 0.4
+},
+{
+"de": 674,
+"a": 681,
+"surface_retiree_pct": 0.9
+}
+]
+},
+{
+"id": "chev-texcoco",
+"grand": "Texcoco",
+"petits": [
+"Tenochtitlan"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 1202,
+"a": 1324,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1325,
+"a": 1325,
+"surface_retiree_pct": 23.8
+}
+]
+},
+{
+"id": "chev-tibetan-empire-840-849",
+"grand": "Tibetan Empire",
+"petits": [
+"Kara-Khanids"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 840,
+"a": 849,
+"surface_retiree_pct": 9.9
+}
+]
+},
+{
+"id": "chev-tibetan-empire-843-849",
+"grand": "Tibetan Empire",
+"petits": [
+"Qocho Kingdom"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 840,
+"a": 842,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 843,
+"a": 849,
+"surface_retiree_pct": 18.7
+}
+]
+},
+{
+"id": "chev-tibetan-empire-848-849",
+"grand": "Tibetan Empire",
+"petits": [
+"Ganzhou Kingdom"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 843,
+"a": 847,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 848,
+"a": 849,
+"surface_retiree_pct": 3.4
+}
+]
+},
+{
+"id": "chev-timurid-empire-1526-1528",
+"grand": "Timurid Empire",
+"petits": [
+"Mughal Empire"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 1526,
+"a": 1528,
+"surface_retiree_pct": 100.0,
+"supprimee": true
+}
+]
+},
+{
+"id": "chev-timurid-empire",
+"grand": "Timurid Empire",
+"petits": [
+"Blue Horde",
+"Germiyanids",
+"Nogai Horde"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 1395,
+"a": 1401,
+"surface_retiree_pct": 2.1
+},
+{
+"de": 1402,
+"a": 1406,
+"surface_retiree_pct": 1.3
+},
+{
+"de": 1440,
+"a": 1440,
+"surface_retiree_pct": 6.0
+},
+{
+"de": 1441,
+"a": 1449,
+"surface_retiree_pct": 6.0
+}
+]
+},
+{
+"id": "chev-tsardom-of-russia",
+"grand": "Tsardom of Russia",
+"petits": [
+"Small Horde"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 1595,
+"a": 1599,
+"surface_retiree_pct": 0.4
+},
+{
+"de": 1600,
+"a": 1601,
+"surface_retiree_pct": 0.4
+},
+{
+"de": 1602,
+"a": 1608,
+"surface_retiree_pct": 0.4
+},
+{
+"de": 1609,
+"a": 1611,
+"surface_retiree_pct": 0.3
+},
+{
+"de": 1612,
+"a": 1618,
+"surface_retiree_pct": 0.3
+},
+{
+"de": 1619,
+"a": 1628,
+"surface_retiree_pct": 0.3
+},
+{
+"de": 1629,
+"a": 1631,
+"surface_retiree_pct": 0.3
+},
+{
+"de": 1632,
+"a": 1635,
+"surface_retiree_pct": 0.2
+}
+]
+},
+{
+"id": "chev-turks",
+"grand": "Turks",
+"petits": [
+"Türgesh"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 692,
+"a": 704,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 705,
+"a": 717,
+"surface_retiree_pct": 100.0,
+"supprimee": true
+}
+]
+},
+{
+"id": "chev-tver-1485-1486",
+"grand": "Tver",
+"petits": [
+"Grand Principality of Moscow"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": []
+},
+{
+"id": "chev-unified-silla",
+"grand": "Unified Silla",
+"petits": [
+"Goguryeo"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 668,
+"a": 673,
+"surface_retiree_pct": 18.1
+},
+{
+"de": 674,
+"a": 681,
+"surface_retiree_pct": 0.1
+},
+{
+"de": 682,
+"a": 891,
+"surface_retiree_pct": 0.0
+}
+]
+},
+{
+"id": "chev-union-of-soviet-socialist-republics-1991-1991",
+"grand": "Union of Soviet Socialist Republics",
+"petits": [
+"Kazakhstan",
+"Kyrgyzstan",
+"Republic of Belarus",
+"Republic of Moldova",
+"Republic of Tajikistan",
+"Republic of Uzbekistan",
+"Russian Federation",
+"Turkmenistan"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 1991,
+"a": 1991,
+"surface_retiree_pct": 96.8
+}
+]
+},
+{
+"id": "chev-union-of-soviet-socialist-republics",
+"grand": "Union of Soviet Socialist Republics",
+"petits": [
+"People's Republic of Bulgaria"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 1946,
+"a": 1946,
+"surface_retiree_pct": 0.3
+}
+]
+},
+{
+"id": "chev-union-of-utrecht-1580-1580",
+"grand": "Union of Utrecht",
+"petits": [
+"Iberian Union"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 1579,
+"a": 1579,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1580,
+"a": 1580,
+"surface_retiree_pct": 17.9
+}
+]
+},
+{
+"id": "chev-united-arab-republic",
+"grand": "United Arab Republic",
+"petits": [
+"Ba'athist Syria",
+"Republic of Syria"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 1960,
+"a": 1960,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1961,
+"a": 1962,
+"surface_retiree_pct": 16.8
+},
+{
+"de": 1963,
+"a": 1966,
+"surface_retiree_pct": 16.8
+}
+]
+},
+{
+"id": "chev-united-kingdoms-of-sweden-and-norway",
+"grand": "United Kingdoms of Sweden and Norway",
+"petits": [
+"Kingdom of Norway"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 1814,
+"a": 1814,
+"surface_retiree_pct": 44.7
+},
+{
+"de": 1815,
+"a": 1819,
+"surface_retiree_pct": 0.0
+}
+]
+},
+{
+"id": "chev-united-provinces-of-central-america-1838-1839",
+"grand": "United Provinces of Central America",
+"petits": [
+"Los Altos"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 1836,
+"a": 1837,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1838,
+"a": 1839,
+"surface_retiree_pct": 8.0
+}
+]
+},
+{
+"id": "chev-united-states-of-america",
+"grand": "United States of America",
+"petits": [
+"Federal Republic of Germany",
+"Japan",
+"Micronesia",
+"Palau",
+"Republic of Cuba",
+"Republic of Iceland",
+"Republic of Iraq",
+"Republic of Korea",
+"Republic of Vietnam",
+"Republic of the Philippines",
+"Socialist Republic of Vietnam"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 1900,
+"a": 1904,
+"surface_retiree_pct": 0.9
+},
+{
+"de": 1944,
+"a": 1944,
+"surface_retiree_pct": 1.2
+},
+{
+"de": 1945,
+"a": 1945,
+"surface_retiree_pct": 1.1
+},
+{
+"de": 1946,
+"a": 1946,
+"surface_retiree_pct": 2.4
+},
+{
+"de": 1947,
+"a": 1947,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1948,
+"a": 1948,
+"surface_retiree_pct": 0.9
+},
+{
+"de": 1949,
+"a": 1952,
+"surface_retiree_pct": 2.9
+},
+{
+"de": 1953,
+"a": 1955,
+"surface_retiree_pct": 6.4
+},
+{
+"de": 1956,
+"a": 1957,
+"surface_retiree_pct": 6.4
+},
+{
+"de": 1958,
+"a": 1959,
+"surface_retiree_pct": 6.4
+},
+{
+"de": 1960,
+"a": 1966,
+"surface_retiree_pct": 6.4
+},
+{
+"de": 1967,
+"a": 1972,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1973,
+"a": 1975,
+"surface_retiree_pct": 1.3
+},
+{
+"de": 1976,
+"a": 1986,
+"surface_retiree_pct": 1.3
+},
+{
+"de": 1987,
+"a": 1989,
+"surface_retiree_pct": 1.3
+},
+{
+"de": 1990,
+"a": 1990,
+"surface_retiree_pct": 1.3
+},
+{
+"de": 1991,
+"a": 1993,
+"surface_retiree_pct": 1.3
+},
+{
+"de": 1994,
+"a": 2005,
+"surface_retiree_pct": 1.3
+},
+{
+"de": 2006,
+"a": 2013,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 2014,
+"a": 2023,
+"surface_retiree_pct": 3.7
+}
+]
+},
+{
+"id": "chev-uyghur-khaganate-848-849",
+"grand": "Uyghur Khaganate",
+"petits": [
+"Ganzhou Kingdom"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 840,
+"a": 847,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 848,
+"a": 849,
+"surface_retiree_pct": 4.3
+}
+]
+},
+{
+"id": "chev-vakataka-kingdom-543-554",
+"grand": "Vakataka Kingdom",
+"petits": [
+"Chalukya Dynasty"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 490,
+"a": 542,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 543,
+"a": 545,
+"surface_retiree_pct": 5.8
+},
+{
+"de": 546,
+"a": 554,
+"surface_retiree_pct": 5.8
+}
+]
+},
+{
+"id": "chev-vakataka-kingdom",
+"grand": "Vakataka Kingdom",
+"petits": [
+"Kadamba Empire"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 306,
+"a": 344,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 345,
+"a": 346,
+"surface_retiree_pct": 19.1
+},
+{
+"de": 347,
+"a": 352,
+"surface_retiree_pct": 19.1
+}
+]
+},
+{
+"id": "chev-vandals",
+"grand": "Vandals",
+"petits": [
+"Kingdom of the Suebi"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 410,
+"a": 413,
+"surface_retiree_pct": 13.0
+}
+]
+},
+{
+"id": "chev-vijayanagara-empire",
+"grand": "Vijayanagara Empire",
+"petits": [
+"Golconda Sultanate"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 1507,
+"a": 1517,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1518,
+"a": 1518,
+"surface_retiree_pct": 2.8
+}
+]
+},
+{
+"id": "chev-viking-settlements",
+"grand": "Viking settlements",
+"petits": [
+"Angevin Empire",
+"Duchy of Normandy",
+"Icelandic Commonwealth",
+"Kingdom of Alba",
+"Kingdom of England",
+"Kingdom of Mann",
+"Kingdom of Scotland",
+"Kingdom of the Isles",
+"Norse Greenland",
+"Old Kingdom of Norway"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 911,
+"a": 921,
+"surface_retiree_pct": 13.0
+},
+{
+"de": 926,
+"a": 926,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 927,
+"a": 929,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 930,
+"a": 935,
+"surface_retiree_pct": 27.7
+},
+{
+"de": 980,
+"a": 989,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 990,
+"a": 999,
+"surface_retiree_pct": 50.0
+},
+{
+"de": 1018,
+"a": 1027,
+"surface_retiree_pct": 23.3
+},
+{
+"de": 1028,
+"a": 1033,
+"surface_retiree_pct": 23.8
+},
+{
+"de": 1034,
+"a": 1034,
+"surface_retiree_pct": 23.8
+},
+{
+"de": 1035,
+"a": 1039,
+"surface_retiree_pct": 23.8
+},
+{
+"de": 1040,
+"a": 1045,
+"surface_retiree_pct": 27.6
+},
+{
+"de": 1046,
+"a": 1055,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1056,
+"a": 1065,
+"surface_retiree_pct": 27.6
+},
+{
+"de": 1066,
+"a": 1071,
+"surface_retiree_pct": 27.6
+},
+{
+"de": 1072,
+"a": 1084,
+"surface_retiree_pct": 88.0
+},
+{
+"de": 1085,
+"a": 1093,
+"surface_retiree_pct": 88.0
+},
+{
+"de": 1094,
+"a": 1098,
+"surface_retiree_pct": 92.1
+},
+{
+"de": 1099,
+"a": 1146,
+"surface_retiree_pct": 92.1
+},
+{
+"de": 1147,
+"a": 1151,
+"surface_retiree_pct": 92.1
+},
+{
+"de": 1152,
+"a": 1168,
+"surface_retiree_pct": 92.1
+},
+{
+"de": 1169,
+"a": 1176,
+"surface_retiree_pct": 88.0
+},
+{
+"de": 1177,
+"a": 1187,
+"surface_retiree_pct": 94.8
+},
+{
+"de": 1188,
+"a": 1191,
+"surface_retiree_pct": 88.6
+},
+{
+"de": 1192,
+"a": 1201,
+"surface_retiree_pct": 88.6
+},
+{
+"de": 1202,
+"a": 1205,
+"surface_retiree_pct": 88.6
+},
+{
+"de": 1206,
+"a": 1209,
+"surface_retiree_pct": 88.6
+},
+{
+"de": 1210,
+"a": 1215,
+"surface_retiree_pct": 88.6
+},
+{
+"de": 1216,
+"a": 1219,
+"surface_retiree_pct": 88.6
+},
+{
+"de": 1220,
+"a": 1235,
+"surface_retiree_pct": 88.6
+},
+{
+"de": 1236,
+"a": 1249,
+"surface_retiree_pct": 88.6
+},
+{
+"de": 1250,
+"a": 1259,
+"surface_retiree_pct": 88.5
+},
+{
+"de": 1260,
+"a": 1265,
+"surface_retiree_pct": 88.5
+},
+{
+"de": 1266,
+"a": 1271,
+"surface_retiree_pct": 77.0
+},
+{
+"de": 1272,
+"a": 1278,
+"surface_retiree_pct": 96.8
+},
+{
+"de": 1279,
+"a": 1284,
+"surface_retiree_pct": 96.8
+},
+{
+"de": 1285,
+"a": 1285,
+"surface_retiree_pct": 98.1
+},
+{
+"de": 1286,
+"a": 1293,
+"surface_retiree_pct": 98.1
+},
+{
+"de": 1294,
+"a": 1304,
+"surface_retiree_pct": 98.1
+},
+{
+"de": 1305,
+"a": 1313,
+"surface_retiree_pct": 98.1
+},
+{
+"de": 1314,
+"a": 1325,
+"surface_retiree_pct": 98.1
+}
+]
+},
+{
+"id": "chev-visigothic-kingdom-718-723",
+"grand": "Visigothic Kingdom",
+"petits": [
+"Kingdom of Asturias"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 718,
+"a": 723,
+"surface_retiree_pct": 78.1
+}
+]
+},
+{
+"id": "chev-wattasid-dynasty-1549-1553",
+"grand": "Wattasid dynasty",
+"petits": [
+"Saadi Sultanate"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 1547,
+"a": 1548,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1549,
+"a": 1551,
+"surface_retiree_pct": 100.0,
+"supprimee": true
+},
+{
+"de": 1552,
+"a": 1553,
+"surface_retiree_pct": 100.0,
+"supprimee": true
+}
+]
+},
+{
+"id": "chev-west-franks-987-989",
+"grand": "West Franks",
+"petits": [
+"Kingdom of France"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 980,
+"a": 986,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 987,
+"a": 989,
+"surface_retiree_pct": 14.1
+}
+]
+},
+{
+"id": "chev-west-franks",
+"grand": "West Franks",
+"petits": [
+"County of Pallars"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 870,
+"a": 874,
+"surface_retiree_pct": 0.6
+}
+]
+},
+{
+"id": "chev-western-chalukya-empire-1173-1187",
+"grand": "Western Chalukya Empire",
+"petits": [
+"Yadava Dynasty"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 1139,
+"a": 1172,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1173,
+"a": 1176,
+"surface_retiree_pct": 64.8
+},
+{
+"de": 1177,
+"a": 1187,
+"surface_retiree_pct": 76.2
+}
+]
+},
+{
+"id": "chev-western-chalukya-empire",
+"grand": "Western Chalukya Empire",
+"petits": [
+"Kakatiya Dynasty"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 1139,
+"a": 1162,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1163,
+"a": 1172,
+"surface_retiree_pct": 14.9
+},
+{
+"de": 1173,
+"a": 1176,
+"surface_retiree_pct": 42.4
+}
+]
+},
+{
+"id": "chev-western-jin",
+"grand": "Western Jin",
+"petits": [
+"Later Yan"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 383,
+"a": 383,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 384,
+"a": 386,
+"surface_retiree_pct": 6.6
+}
+]
+},
+{
+"id": "chev-western-roman-empire",
+"grand": "Western Roman Empire",
+"petits": [
+"Burgundian Kingdom",
+"Kingdom of the Suebi"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 407,
+"a": 408,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 409,
+"a": 409,
+"surface_retiree_pct": 2.5
+},
+{
+"de": 435,
+"a": 438,
+"surface_retiree_pct": 0.5
+},
+{
+"de": 439,
+"a": 440,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 443,
+"a": 450,
+"surface_retiree_pct": 6.4
+}
+]
+},
+{
+"id": "chev-western-satraps",
+"grand": "Western Satraps",
+"petits": [
+"Vakataka Kingdom"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 224,
+"a": 249,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 250,
+"a": 259,
+"surface_retiree_pct": 17.6
+}
+]
+},
+{
+"id": "chev-white-huns",
+"grand": "White Huns",
+"petits": [
+"Kidarites"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 410,
+"a": 442,
+"surface_retiree_pct": 100.0,
+"supprimee": true
+},
+{
+"de": 443,
+"a": 450,
+"surface_retiree_pct": 0.0
+}
+]
+},
+{
+"id": "chev-wu",
+"grand": "Wu",
+"petits": [
+"Yue"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": -550,
+"a": -501,
+"surface_retiree_pct": 0.0
+},
+{
+"de": -500,
+"a": -481,
+"surface_retiree_pct": 56.5
+}
+]
+},
+{
+"id": "chev-yuezhi-30-42",
+"grand": "Yuezhi",
+"petits": [
+"Kushan Empire"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 30,
+"a": 42,
+"surface_retiree_pct": 100.0,
+"supprimee": true
+}
+]
+},
+{
+"id": "chev-zirid-dynasty-1146-1147",
+"grand": "Zirid dynasty",
+"petits": [
+"Kingdom of Africa"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 1066,
+"a": 1145,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1146,
+"a": 1146,
+"surface_retiree_pct": 100.0,
+"supprimee": true
+},
+{
+"de": 1147,
+"a": 1147,
+"surface_retiree_pct": 100.0,
+"supprimee": true
+}
+]
+},
+{
+"id": "chev-zurayid-dynasty-1171-1173",
+"grand": "Zurayid dynasty",
+"petits": [
+"Ayyubid Sultanate"
+],
+"source": {
+"titre": "voir docs/sources/historique_chevauchements.csv (une ligne par décision)",
+"lien": "",
+"licence": "CC BY-SA 4.0 / CC0",
+"fiabilite": "voir le document"
+},
+"lignes": [
+{
+"de": 1169,
+"a": 1170,
+"surface_retiree_pct": 0.0
+},
+{
+"de": 1171,
+"a": 1173,
+"surface_retiree_pct": 95.3
 }
 ]
 }

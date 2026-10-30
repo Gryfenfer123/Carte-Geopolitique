@@ -218,8 +218,9 @@ def main():
 
     if appliquer_dates:
         d = os.path.dirname(os.path.abspath(__file__))
-        rapport_formes = corrections_formes.appliquer(
-            entites, dates, corrections_formes.lire_regles(os.path.join(d, "corrections_formes_manuelles.json")))
+        regles_formes = corrections_formes.lire_regles(os.path.join(d, "corrections_formes_manuelles.json")) + \
+            corrections_formes.regles_depuis_decisions(os.path.join(d, "chevauchements_decisions.json"))
+        rapport_formes = corrections_formes.appliquer(entites, dates, regles_formes)
         with open(os.path.join(d, "corrections_formes_rapport.json"), "w", encoding="utf8") as f:
             json.dump(rapport_formes, f, ensure_ascii=False, indent=0)
         for r in rapport_formes:
@@ -228,6 +229,22 @@ def main():
         ordre = sorted(range(len(entites)), key=lambda k: (dates[k]["de"], dates[k]["a"], dates[k]["nom"]))
         entites[:] = [entites[k] for k in ordre]
         dates[:] = [dates[k] for k in ordre]
+    # les lignes entièrement recouvertes par un voisin (voir corrections_formes) ont un intervalle vide : on les écarte
+    vides = [k for k in range(len(entites)) if dates[k]["a"] < dates[k]["de"]]
+    if vides:
+        print("Lignes supprimées car entièrement recouvertes :", len(vides))
+        entites[:] = [ft for k, ft in enumerate(entites) if k not in set(vides)]
+        dates[:] = [dd for k, dd in enumerate(dates) if k not in set(vides)]
+    if "--arret-apres-formes" in sys.argv:
+        # contrôle rapide (sans calage sur la côte) : écrit les contours corrigés pour refaire l'audit des chevauchements
+        feats = []
+        for ft, dd in zip(entites, dates):
+            pr = dict(ft["properties"]); pr["FromYear"], pr["ToYear"] = dd["de"], dd["a"]
+            feats.append({"type": "Feature", "properties": pr, "geometry": ft["geometry"]})
+        with open(os.path.join(dossier_sortie, "_apres_formes.geojson"), "w", encoding="utf8") as fo:
+            json.dump({"type": "FeatureCollection", "features": feats}, fo)
+        print("Arrêt demandé après les corrections de formes :", len(feats), "lignes")
+        return
     if debut_carte > -3400:
         gardees = [k for k in range(len(entites)) if dates[k]["a"] >= max(debut_carte, dates[k]["de"])]
         print("Début de la carte :", debut_carte, "—", len(entites) - len(gardees), "ligne(s) écartée(s)")

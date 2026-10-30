@@ -1,0 +1,54 @@
+[
+{
+"x": "New Caledonia",
+"y": "Second French Empire",
+"de": 1853,
+"a": 1855,
+"part": 0.16555208537393912,
+"deg2": 0.3929325679091562,
+"m": [
+"",
+"(Second French Empire)"
+],
+"aire": {
+"Second French Empire": 70.70996588455169,
+"New Caledonia": 2.373467945279117
+},
+"existe": {
+"New Caledonia": [
+1853,
+1859
+],
+"Second French Empire": [
+1852,
+1870
+]
+}
+},
+{
+"x": "British East Africa",
+"y": "Tanzania",
+"de": 1967,
+"a": 1968,
+"part": 0.1703548233229992,
+"deg2": 0.36355916134201327,
+"m": [
+"(British Empire)",
+""
+],
+"aire": {
+"British East Africa": 2.134128956552591,
+"Tanzania": 72.53980003900926
+},
+"existe": {
+"British East Africa": [
+1961,
+1972
+],
+"Tanzania": [
+1961,
+2024
+]
+}
+}
+]

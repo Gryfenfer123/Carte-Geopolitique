@@ -1,0 +1,886 @@
+[
+{
+"x": "New Caledonia",
+"y": "Second French Empire",
+"de": 1853,
+"a": 1855,
+"part": 0.16555208537393912,
+"deg2": 0.3929325679091562,
+"m": [
+"",
+"(Second French Empire)"
+],
+"aire": {
+"Second French Empire": 70.70996588455169,
+"New Caledonia": 2.373467945279117
+},
+"existe": {
+"New Caledonia": [
+1853,
+1859
+],
+"Second French Empire": [
+1852,
+1870
+]
+}
+},
+{
+"x": "British East Africa",
+"y": "Tanzania",
+"de": 1967,
+"a": 1968,
+"part": 0.1703548233229992,
+"deg2": 0.36355916134201327,
+"m": [
+"(British Empire)",
+""
+],
+"aire": {
+"British East Africa": 2.134128956552591,
+"Tanzania": 72.53980003900926
+},
+"existe": {
+"British East Africa": [
+1961,
+1972
+],
+"Tanzania": [
+1961,
+2024
+]
+}
+},
+{
+"x": "Bourbon Kingdom of France",
+"y": "French India",
+"de": 1842,
+"a": 1845,
+"part": 0.351798049312304,
+"deg2": 0.273177225206382,
+"m": [
+"(Bourbon Kingdom of France)",
+""
+],
+"aire": {
+"French India": 0.7765171687005932,
+"Bourbon Kingdom of France": 71.95674336057783
+},
+"existe": {
+"Bourbon Kingdom of France": [
+1815,
+1847
+],
+"French India": [
+1668,
+1847
+]
+}
+},
+{
+"x": "French Fifth Republic",
+"y": "Republic of Cabo Verde",
+"de": 1975,
+"a": 2023,
+"part": 0.34517847392591255,
+"deg2": 0.273177225206382,
+"m": [
+"",
+""
+],
+"aire": {
+"French Fifth Republic": 78.16719478177335,
+"Republic of Cabo Verde": 0.7914086359423891
+},
+"existe": {
+"French Fifth Republic": [
+1958,
+2024
+],
+"Republic of Cabo Verde": [
+1975,
+2024
+]
+}
+},
+{
+"x": "Holy Roman Empire Minor States",
+"y": "Principality of Regensberg",
+"de": 1803,
+"a": 1804,
+"part": 0.3119403150275245,
+"deg2": 0.24140669293709704,
+"m": [
+"(Holy Roman Empire)",
+""
+],
+"aire": {
+"Holy Roman Empire Minor States": 11.891936570580583,
+"Principality of Regensberg": 0.7738874435508478
+},
+"existe": {
+"Holy Roman Empire Minor States": [
+1260,
+1806
+],
+"Principality of Regensberg": [
+1803,
+1813
+]
+}
+},
+{
+"x": "First French Empire",
+"y": "Principality of Regensberg",
+"de": 1805,
+"a": 1805,
+"part": 0.3046377556496952,
+"deg2": 0.23575533392881048,
+"m": [
+"(First French Empire)",
+""
+],
+"aire": {
+"Principality of Regensberg": 0.7738874435508478,
+"First French Empire": 86.44891569134283
+},
+"existe": {
+"First French Empire": [
+1805,
+1814
+],
+"Principality of Regensberg": [
+1803,
+1813
+]
+}
+},
+{
+"x": "Grand Duchy of Saxe-Weimar-Eisenach",
+"y": "Saxe-Altenburg",
+"de": 1836,
+"a": 1839,
+"part": 0.482665567360425,
+"deg2": 0.1916602473314093,
+"m": [
+"",
+""
+],
+"aire": {
+"Grand Duchy of Saxe-Weimar-Eisenach": 0.5293227529747216,
+"Saxe-Altenburg": 0.39708705217890383
+},
+"existe": {
+"Grand Duchy of Saxe-Weimar-Eisenach": [
+1806,
+1870
+],
+"Saxe-Altenburg": [
+1806,
+1870
+]
+}
+},
+{
+"x": "Dutch East Indies",
+"y": "Sultanate of Bima",
+"de": 1800,
+"a": 1865,
+"part": 0.21221169087865072,
+"deg2": 0.1813370975299155,
+"m": [
+"(Batavian Republic)",
+""
+],
+"aire": {
+"Sultanate of Bima": 0.8545104031691153,
+"Dutch East Indies": 65.62845283287389
+},
+"existe": {
+"Dutch East Indies": [
+1800,
+1949
+],
+"Sultanate of Bima": [
+1621,
+1889
+]
+}
+},
+{
+"x": "Dutch Republic",
+"y": "Sultanate of Bima",
+"de": 1662,
+"a": 1794,
+"part": 0.21221169087865072,
+"deg2": 0.1813370975299155,
+"m": [
+"(Dutch Republic)",
+""
+],
+"aire": {
+"Sultanate of Bima": 0.8545104031691153,
+"Dutch Republic": 29.158612374177352
+},
+"existe": {
+"Dutch Republic": [
+1581,
+1794
+],
+"Sultanate of Bima": [
+1621,
+1889
+]
+}
+},
+{
+"x": "Batavian Republic",
+"y": "Sultanate of Bima",
+"de": 1795,
+"a": 1802,
+"part": 0.21221169087865072,
+"deg2": 0.1813370975299155,
+"m": [
+"(Batavian Republic)",
+""
+],
+"aire": {
+"Sultanate of Bima": 0.8545104031691153,
+"Batavian Republic": 23.036389822357705
+},
+"existe": {
+"Batavian Republic": [
+1795,
+1810
+],
+"Sultanate of Bima": [
+1621,
+1889
+]
+}
+},
+{
+"x": "British Colonial Empire",
+"y": "Sultanate of Bima",
+"de": 1811,
+"a": 1813,
+"part": 0.21221169087865072,
+"deg2": 0.1813370975299155,
+"m": [
+"(British Empire)",
+""
+],
+"aire": {
+"Sultanate of Bima": 0.8545104031691153,
+"British Colonial Empire": 134.3112032184669
+},
+"existe": {
+"British Colonial Empire": [
+1706,
+1996
+],
+"Sultanate of Bima": [
+1621,
+1889
+]
+}
+},
+{
+"x": "Kingdom of Brycheiniog",
+"y": "Norman England",
+"de": 1066,
+"a": 1071,
+"part": 0.27293736480515307,
+"deg2": 0.17616530347504553,
+"m": [
+"(Brythonic Kingdoms)",
+"(Kingdom of England)"
+],
+"aire": {
+"Kingdom of Brycheiniog": 0.6454422376386904,
+"Norman England": 22.446765227663096
+},
+"existe": {
+"Kingdom of Brycheiniog": [
+540,
+1084
+],
+"Norman England": [
+1066,
+1168
+]
+}
+},
+{
+"x": "Emirate of Granada",
+"y": "Taifa of Almería",
+"de": 1238,
+"a": 1240,
+"part": 0.27286502717090194,
+"deg2": 0.14362932273855553,
+"m": [
+"",
+"(Taifas of Iberia)"
+],
+"aire": {
+"Taifa of Almería": 0.5263749782363902,
+"Emirate of Granada": 3.1870833684242825
+},
+"existe": {
+"Emirate of Granada": [
+1238,
+1491
+],
+"Taifa of Almería": [
+1010,
+1249
+]
+}
+},
+{
+"x": "Sultanate of Brunei",
+"y": "Sultanate of Sambas",
+"de": 1609,
+"a": 1618,
+"part": 0.1953808351849078,
+"deg2": 0.09279091288659179,
+"m": [
+"",
+""
+],
+"aire": {
+"Sultanate of Brunei": 9.811308368901337,
+"Sultanate of Sambas": 0.47492330964178125
+},
+"existe": {
+"Sultanate of Brunei": [
+1363,
+2024
+],
+"Sultanate of Sambas": [
+1609,
+1821
+]
+}
+},
+{
+"x": "Emirate of Diriyah",
+"y": "House of Khalifa",
+"de": 1796,
+"a": 1799,
+"part": 0.440565648152232,
+"deg2": 0.0626280857189771,
+"m": [
+"",
+""
+],
+"aire": {
+"House of Khalifa": 0.14215381063331733,
+"Emirate of Diriyah": 72.3170278215257
+},
+"existe": {
+"Emirate of Diriyah": [
+1744,
+1817
+],
+"House of Khalifa": [
+1783,
+1894
+]
+}
+},
+{
+"x": "German Confederation",
+"y": "Kingdom of Prussia",
+"de": 1836,
+"a": 1847,
+"part": 0.44257982789885975,
+"deg2": 0.059343268932744046,
+"m": [
+"",
+""
+],
+"aire": {
+"Kingdom of Prussia": 0.13408489314679164,
+"German Confederation": 37.42993802355795
+},
+"existe": {
+"German Confederation": [
+1815,
+1866
+],
+"Kingdom of Prussia": [
+1701,
+1863
+]
+}
+},
+{
+"x": "Tenochtitlan",
+"y": "Texcoco",
+"de": 1325,
+"a": 1325,
+"part": 0.2627251222552371,
+"deg2": 0.05373455067312774,
+"m": [
+"",
+""
+],
+"aire": {
+"Texcoco": 0.22597956233948935,
+"Tenochtitlan": 0.20452764551737346
+},
+"existe": {
+"Tenochtitlan": [
+1325,
+1428
+],
+"Texcoco": [
+1202,
+1428
+]
+}
+},
+{
+"x": "British Empire",
+"y": "English Colonial Empire",
+"de": 1757,
+"a": 1777,
+"part": 0.3647468599631254,
+"deg2": 0.03805353884672513,
+"m": [
+"(British Empire)",
+""
+],
+"aire": {
+"British Empire": 44.74156761176531,
+"English Colonial Empire": 0.11353879410307854
+},
+"existe": {
+"British Empire": [
+1757,
+1857
+],
+"English Colonial Empire": [
+1609,
+1779
+]
+}
+},
+{
+"x": "Danish Gold Coast",
+"y": "English Colonial Empire",
+"de": 1670,
+"a": 1708,
+"part": 0.47054287578835824,
+"deg2": 0.03748505611469003,
+"m": [
+"",
+"(Kingdom of England)"
+],
+"aire": {
+"Danish Gold Coast": 0.07966342291738392,
+"English Colonial Empire": 22.984513818675993
+},
+"existe": {
+"Danish Gold Coast": [
+1658,
+1849
+],
+"English Colonial Empire": [
+1609,
+1779
+]
+}
+},
+{
+"x": "British Colonial Empire",
+"y": "Danish Gold Coast",
+"de": 1709,
+"a": 1733,
+"part": 0.47054287578835824,
+"deg2": 0.03748505611469003,
+"m": [
+"(British Empire)",
+""
+],
+"aire": {
+"Danish Gold Coast": 0.07966342291738392,
+"British Colonial Empire": 74.69358603090043
+},
+"existe": {
+"British Colonial Empire": [
+1706,
+1996
+],
+"Danish Gold Coast": [
+1658,
+1849
+]
+}
+},
+{
+"x": "Danish Gold Coast",
+"y": "Swedish Empire",
+"de": 1662,
+"a": 1669,
+"part": 0.47054287578835824,
+"deg2": 0.03748505611469003,
+"m": [
+"",
+""
+],
+"aire": {
+"Danish Gold Coast": 0.07966342291738392,
+"Swedish Empire": 162.97189454659468
+},
+"existe": {
+"Danish Gold Coast": [
+1658,
+1849
+],
+"Swedish Empire": [
+1611,
+1813
+]
+}
+},
+{
+"x": "County of Tripoli",
+"y": "Mamluk Sultanate",
+"de": 1272,
+"a": 1293,
+"part": 0.31807848859770754,
+"deg2": 0.014177106442715047,
+"m": [
+"",
+""
+],
+"aire": {
+"Mamluk Sultanate": 153.38373382888676,
+"County of Tripoli": 0.044571094716957305
+},
+"existe": {
+"County of Tripoli": [
+1102,
+1293
+],
+"Mamluk Sultanate": [
+1241,
+1516
+]
+}
+},
+{
+"x": "Duchy of Styria",
+"y": "Republic of Venice",
+"de": 1422,
+"a": 1449,
+"part": 0.22974142207604453,
+"deg2": 0.007385818646536941,
+"m": [
+"",
+""
+],
+"aire": {
+"Republic of Venice": 5.857869469240541,
+"Duchy of Styria": 0.03214839788051904
+},
+"existe": {
+"Duchy of Styria": [
+1260,
+1501
+],
+"Republic of Venice": [
+697,
+1796
+]
+}
+},
+{
+"x": "Avar Khaganate",
+"y": "Hunnic Empire",
+"de": 561,
+"a": 629,
+"part": 0.33386665903914836,
+"deg2": 0.007137633781810719,
+"m": [
+"",
+""
+],
+"aire": {
+"Hunnic Empire": 0.021378695921157487,
+"Avar Khaganate": 121.60580428009234
+},
+"existe": {
+"Avar Khaganate": [
+561,
+805
+],
+"Hunnic Empire": [
+426,
+673
+]
+}
+},
+{
+"x": "Duchy of Styria",
+"y": "Patriarchate of Aquileia",
+"de": 1422,
+"a": 1449,
+"part": 0.19439099147820701,
+"deg2": 0.006249358938429986,
+"m": [
+"",
+"(Holy Roman Empire)"
+],
+"aire": {
+"Patriarchate of Aquileia": 0.19573924346150307,
+"Duchy of Styria": 0.03214839788051904
+},
+"existe": {
+"Duchy of Styria": [
+1260,
+1501
+],
+"Patriarchate of Aquileia": [
+1260,
+1449
+]
+}
+},
+{
+"x": "Kingdom of Monaco",
+"y": "Nazi Germany",
+"de": 1933,
+"a": 1935,
+"part": 0.4998760381860361,
+"deg2": 0.005249786609056173,
+"m": [
+"",
+""
+],
+"aire": {
+"Kingdom of Monaco": 0.010502176955924399,
+"Nazi Germany": 64.90947241240885
+},
+"existe": {
+"Kingdom of Monaco": [
+1815,
+1939
+],
+"Nazi Germany": [
+1933,
+1944
+]
+}
+},
+{
+"x": "Byzantine Empire",
+"y": "Kingdom of Georgia",
+"de": 1210,
+"a": 1226,
+"part": 0.4996610932518647,
+"deg2": 0.0051439616138673205,
+"m": [
+"",
+""
+],
+"aire": {
+"Byzantine Empire": 0.01029490125074517,
+"Kingdom of Georgia": 20.48821770343784
+},
+"existe": {
+"Byzantine Empire": [
+633,
+1467
+],
+"Kingdom of Georgia": [
+1008,
+1802
+]
+}
+},
+{
+"x": "Comtat Venaissin",
+"y": "Principality of Orange",
+"de": 1352,
+"a": 1571,
+"part": 0.28582159169907784,
+"deg2": 0.004522015176082178,
+"m": [
+"",
+"(Holy Roman Empire)"
+],
+"aire": {
+"Principality of Orange": 0.015821111166587798,
+"Comtat Venaissin": 0.2740932506603714
+},
+"existe": {
+"Comtat Venaissin": [
+1272,
+1790
+],
+"Principality of Orange": [
+1260,
+1571
+]
+}
+},
+{
+"x": "French Third Republic",
+"y": "Kingdom of Monaco",
+"de": 1870,
+"a": 1935,
+"part": 0.3759315455576883,
+"deg2": 0.003948099614760997,
+"m": [
+"(French Third Republic)",
+""
+],
+"aire": {
+"Kingdom of Monaco": 0.010502176955924399,
+"French Third Republic": 75.7617576179508
+},
+"existe": {
+"French Third Republic": [
+1870,
+1939
+],
+"Kingdom of Monaco": [
+1815,
+1939
+]
+}
+},
+{
+"x": "Kingdom of Monaco",
+"y": "Second French Empire",
+"de": 1860,
+"a": 1869,
+"part": 0.3759315455576883,
+"deg2": 0.003948099614760997,
+"m": [
+"",
+"(Second French Empire)"
+],
+"aire": {
+"Kingdom of Monaco": 0.010502176955924399,
+"Second French Empire": 74.84656433311362
+},
+"existe": {
+"Kingdom of Monaco": [
+1815,
+1939
+],
+"Second French Empire": [
+1852,
+1870
+]
+}
+},
+{
+"x": "French Fourth Republic",
+"y": "Principality of Monaco",
+"de": 1945,
+"a": 1957,
+"part": 0.3759315455576883,
+"deg2": 0.003948099614760997,
+"m": [
+"(French Fourth Republic)",
+""
+],
+"aire": {
+"French Fourth Republic": 80.72660833741416,
+"Principality of Monaco": 0.010502176955924399
+},
+"existe": {
+"French Fourth Republic": [
+1945,
+1957
+],
+"Principality of Monaco": [
+1642,
+2024
+]
+}
+},
+{
+"x": "French Fifth Republic",
+"y": "Principality of Monaco",
+"de": 1958,
+"a": 2024,
+"part": 0.3759315455576883,
+"deg2": 0.003948099614760997,
+"m": [
+"",
+""
+],
+"aire": {
+"Principality of Monaco": 0.010502176955924399,
+"French Fifth Republic": 985.0162890192461
+},
+"existe": {
+"French Fifth Republic": [
+1958,
+2024
+],
+"Principality of Monaco": [
+1642,
+2024
+]
+}
+},
+{
+"x": "Lan Na Kingdom",
+"y": "Sukhothai Kingdom",
+"de": 1453,
+"a": 1458,
+"part": 0.1875075120042543,
+"deg2": 0.0035602771399521507,
+"m": [
+"",
+""
+],
+"aire": {
+"Lan Na Kingdom": 4.516362703339837,
+"Sukhothai Kingdom": 0.018987384035426658
+},
+"existe": {
+"Lan Na Kingdom": [
+1292,
+1563
+],
+"Sukhothai Kingdom": [
+1238,
+1458
+]
+}
+},
+{
+"x": "Kingdom of Monaco",
+"y": "Kingdom of Sardinia",
+"de": 1853,
+"a": 1859,
+"part": 0.2505798429010361,
+"deg2": 0.0026316338517344173,
+"m": [
+"",
+""
+],
+"aire": {
+"Kingdom of Monaco": 0.010502176955924399,
+"Kingdom of Sardinia": 13.678946930327584
+},
+"existe": {
+"Kingdom of Monaco": [
+1815,
+1939
+],
+"Kingdom of Sardinia": [
+1720,
+1861
+]
+}
+}
+]

@@ -1,0 +1,4214 @@
+[
+{
+"x": "Russian Federation",
+"y": "Union of Soviet Socialist Republics",
+"de": 1991,
+"a": 1991,
+"part": 0.9998277187475707,
+"deg2": 2928.814756582332,
+"m": [
+"(Russian Federation)",
+""
+],
+"aire": {
+"Union of Soviet Socialist Republics": 3522.334706461661,
+"Russian Federation": 2929.319423401361
+},
+"existe": {
+"Russian Federation": [
+1991,
+2024
+],
+"Union of Soviet Socialist Republics": [
+1922,
+1991
+]
+}
+},
+{
+"x": "Kazakhstan",
+"y": "Union of Soviet Socialist Republics",
+"de": 1991,
+"a": 1991,
+"part": 0.9996685369347896,
+"deg2": 320.15583923369667,
+"m": [
+"",
+""
+],
+"aire": {
+"Union of Soviet Socialist Republics": 3522.334706461661,
+"Kazakhstan": 320.26199425598315
+},
+"existe": {
+"Kazakhstan": [
+1991,
+2024
+],
+"Union of Soviet Socialist Republics": [
+1922,
+1991
+]
+}
+},
+{
+"x": "British Africa",
+"y": "Mahdist State",
+"de": 1885,
+"a": 1889,
+"part": 0.9991509426426591,
+"deg2": 195.02158068773795,
+"m": [
+"(British Empire)",
+""
+],
+"aire": {
+"British Africa": 403.4531860442256,
+"Mahdist State": 195.18730590587688
+},
+"existe": {
+"British Africa": [
+1885,
+1960
+],
+"Mahdist State": [
+1885,
+1899
+]
+}
+},
+{
+"x": "Great Mongol State",
+"y": "Mongolian People's Republic",
+"de": 1924,
+"a": 1925,
+"part": 1.0,
+"deg2": 185.20108861212793,
+"m": [
+"",
+""
+],
+"aire": {
+"Great Mongol State": 185.21601118289982,
+"Mongolian People's Republic": 185.20108861212793
+},
+"existe": {
+"Great Mongol State": [
+1912,
+1925
+],
+"Mongolian People's Republic": [
+1924,
+1991
+]
+}
+},
+{
+"x": "Gran Colombia",
+"y": "Spanish Empire",
+"de": 1819,
+"a": 1820,
+"part": 0.7882437077990606,
+"deg2": 183.1690180194346,
+"m": [
+"",
+"(Spanish Empire)"
+],
+"aire": {
+"Spanish Empire": 725.9477448435223,
+"Gran Colombia": 232.37612455021093
+},
+"existe": {
+"Gran Colombia": [
+1819,
+1830
+],
+"Spanish Empire": [
+1516,
+1879
+]
+}
+},
+{
+"x": "Communist Party of China",
+"y": "Republic of China",
+"de": 1943,
+"a": 1945,
+"part": 0.9804963099523261,
+"deg2": 170.9694431391955,
+"m": [
+"",
+""
+],
+"aire": {
+"Communist Party of China": 174.37030757158936,
+"Republic of China": 571.3359568136657
+},
+"existe": {
+"Communist Party of China": [
+1932,
+1949
+],
+"Republic of China": [
+1912,
+2024
+]
+}
+},
+{
+"x": "Federated Republic of Mexico",
+"y": "Second Mexican Empire",
+"de": 1864,
+"a": 1864,
+"part": 0.998956510397835,
+"deg2": 158.18871939517285,
+"m": [
+"",
+""
+],
+"aire": {
+"Federated Republic of Mexico": 158.35396010600513,
+"Second Mexican Empire": 178.53149576892974
+},
+"existe": {
+"Federated Republic of Mexico": [
+1823,
+1865
+],
+"Second Mexican Empire": [
+1864,
+1866
+]
+}
+},
+{
+"x": "Gran Colombia",
+"y": "New Granada",
+"de": 1819,
+"a": 1821,
+"part": 0.9994101960691278,
+"deg2": 109.24715326417902,
+"m": [
+"",
+""
+],
+"aire": {
+"New Granada": 109.31862909312076,
+"Gran Colombia": 232.37612455021093
+},
+"existe": {
+"Gran Colombia": [
+1819,
+1830
+],
+"New Granada": [
+1811,
+1821
+]
+}
+},
+{
+"x": "Great Jin",
+"y": "Liao Dynasty",
+"de": 1115,
+"a": 1125,
+"part": 0.6670363925851244,
+"deg2": 102.73431407862752,
+"m": [
+"",
+""
+],
+"aire": {
+"Liao Dynasty": 214.47303599800216,
+"Great Jin": 154.0160555265611
+},
+"existe": {
+"Great Jin": [
+1115,
+1235
+],
+"Liao Dynasty": [
+911,
+1125
+]
+}
+},
+{
+"x": "Gallic Empire",
+"y": "Roman Empire",
+"de": 260,
+"a": 260,
+"part": 0.9990297644647621,
+"deg2": 87.07070895427015,
+"m": [
+"",
+""
+],
+"aire": {
+"Roman Empire": 472.17182457586995,
+"Gallic Empire": 87.15527009439899
+},
+"existe": {
+"Gallic Empire": [
+260,
+273
+],
+"Roman Empire": [
+-31,
+394
+]
+}
+},
+{
+"x": "Swedish Empire",
+"y": "United Kingdoms of Sweden and Norway",
+"de": 1814,
+"a": 1814,
+"part": 0.9965457274399915,
+"deg2": 80.49562015347762,
+"m": [
+"",
+""
+],
+"aire": {
+"Swedish Empire": 80.77463776826517,
+"United Kingdoms of Sweden and Norway": 145.80652473880946
+},
+"existe": {
+"Swedish Empire": [
+1611,
+1814
+],
+"United Kingdoms of Sweden and Norway": [
+1814,
+1904
+]
+}
+},
+{
+"x": "Austrian Empire",
+"y": "Habsburg Monarchy",
+"de": 1804,
+"a": 1805,
+"part": 0.9896912862615037,
+"deg2": 78.37268266872542,
+"m": [
+"",
+"(Habsburg Monarchy)"
+],
+"aire": {
+"Habsburg Monarchy": 81.87527033504739,
+"Austrian Empire": 79.18901960304538
+},
+"existe": {
+"Austrian Empire": [
+1804,
+1866
+],
+"Habsburg Monarchy": [
+1487,
+1805
+]
+}
+},
+{
+"x": "French Consulate",
+"y": "French Directory",
+"de": 1799,
+"a": 1799,
+"part": 0.9989372550168332,
+"deg2": 77.42450669475902,
+"m": [
+"(French Consulate)",
+"(French Directory)"
+],
+"aire": {
+"French Directory": 85.7314923472009,
+"French Consulate": 77.5068767391745
+},
+"existe": {
+"French Consulate": [
+1799,
+1804
+],
+"French Directory": [
+1795,
+1799
+]
+}
+},
+{
+"x": "Republic of Finland",
+"y": "Russian Republic",
+"de": 1917,
+"a": 1917,
+"part": 0.9973128619999324,
+"deg2": 70.15138498469092,
+"m": [
+"",
+""
+],
+"aire": {
+"Russian Republic": 3578.808713114475,
+"Republic of Finland": 70.34039934471002
+},
+"existe": {
+"Republic of Finland": [
+1917,
+2024
+],
+"Russian Republic": [
+1917,
+1919
+]
+}
+},
+{
+"x": "Great Seljuk Empire",
+"y": "Khwarezmid Dynasty",
+"de": 1077,
+"a": 1093,
+"part": 0.999901775252901,
+"deg2": 66.37163084013363,
+"m": [
+"",
+""
+],
+"aire": {
+"Great Seljuk Empire": 419.14072170820145,
+"Khwarezmid Dynasty": 66.37815081721055
+},
+"existe": {
+"Great Seljuk Empire": [
+1037,
+1201
+],
+"Khwarezmid Dynasty": [
+1077,
+1201
+]
+}
+},
+{
+"x": "Former Zhao",
+"y": "Later Zhao",
+"de": 319,
+"a": 328,
+"part": 0.9995599389393064,
+"deg2": 65.36792423862235,
+"m": [
+"",
+""
+],
+"aire": {
+"Former Zhao": 65.39670278101403,
+"Later Zhao": 66.82124790955277
+},
+"existe": {
+"Former Zhao": [
+306,
+328
+],
+"Later Zhao": [
+319,
+350
+]
+}
+},
+{
+"x": "Kingdom of Norway",
+"y": "United Kingdoms of Sweden and Norway",
+"de": 1814,
+"a": 1814,
+"part": 0.9981953127547123,
+"deg2": 65.14253667434409,
+"m": [
+"",
+""
+],
+"aire": {
+"Kingdom of Norway": 65.2603111254557,
+"United Kingdoms of Sweden and Norway": 145.80652473880946
+},
+"existe": {
+"Kingdom of Norway": [
+1814,
+2024
+],
+"United Kingdoms of Sweden and Norway": [
+1814,
+1904
+]
+}
+},
+{
+"x": "Qocho Kingdom",
+"y": "Tibetan Empire",
+"de": 843,
+"a": 849,
+"part": 0.9243454915664855,
+"deg2": 65.0513485589556,
+"m": [
+"",
+""
+],
+"aire": {
+"Tibetan Empire": 386.25453582045657,
+"Qocho Kingdom": 70.37557834431936
+},
+"existe": {
+"Qocho Kingdom": [
+843,
+1138
+],
+"Tibetan Empire": [
+618,
+849
+]
+}
+},
+{
+"x": "Abbasid Caliphate",
+"y": "Tulunids",
+"de": 868,
+"a": 874,
+"part": 0.9980484976343382,
+"deg2": 64.74435214498897,
+"m": [
+"",
+""
+],
+"aire": {
+"Abbasid Caliphate": 701.3263336755481,
+"Tulunids": 64.87094795338271
+},
+"existe": {
+"Abbasid Caliphate": [
+750,
+1259
+],
+"Tulunids": [
+868,
+904
+]
+}
+},
+{
+"x": "Kingdom of Norway",
+"y": "Nazi Germany",
+"de": 1940,
+"a": 1940,
+"part": 0.656679171446978,
+"deg2": 63.09188501059211,
+"m": [
+"",
+""
+],
+"aire": {
+"Kingdom of Norway": 96.07718312668658,
+"Nazi Germany": 228.95029170760228
+},
+"existe": {
+"Kingdom of Norway": [
+1814,
+2024
+],
+"Nazi Germany": [
+1933,
+1944
+]
+}
+},
+{
+"x": "Empire of Japan",
+"y": "French Indochina",
+"de": 1945,
+"a": 1945,
+"part": 0.9416392502440887,
+"deg2": 61.00009364531743,
+"m": [
+"",
+"(Vichy France)"
+],
+"aire": {
+"French Indochina": 64.78074658581318,
+"Empire of Japan": 615.5576473778722
+},
+"existe": {
+"Empire of Japan": [
+1868,
+1945
+],
+"French Indochina": [
+1860,
+1957
+]
+}
+},
+{
+"x": "German Empire",
+"y": "Weimar Republic",
+"de": 1918,
+"a": 1919,
+"part": 0.9997800774577515,
+"deg2": 59.61602994364539,
+"m": [
+"",
+""
+],
+"aire": {
+"German Empire": 185.5260282123254,
+"Weimar Republic": 59.62914373652802
+},
+"existe": {
+"German Empire": [
+1871,
+1919
+],
+"Weimar Republic": [
+1918,
+1932
+]
+}
+},
+{
+"x": "Mughal Empire",
+"y": "Timurid Empire",
+"de": 1526,
+"a": 1528,
+"part": 0.9985327311345431,
+"deg2": 58.23415210343512,
+"m": [
+"",
+""
+],
+"aire": {
+"Timurid Empire": 58.31972281696653,
+"Mughal Empire": 112.61238700811373
+},
+"existe": {
+"Mughal Empire": [
+1526,
+1857
+],
+"Timurid Empire": [
+1370,
+1528
+]
+}
+},
+{
+"x": "French Third Republic",
+"y": "Second French Empire",
+"de": 1870,
+"a": 1870,
+"part": 0.9996641929890876,
+"deg2": 57.88830343247109,
+"m": [
+"(French Third Republic)",
+"(Second French Empire)"
+],
+"aire": {
+"Second French Empire": 62.86999825634881,
+"French Third Republic": 57.907749260658974
+},
+"existe": {
+"French Third Republic": [
+1870,
+1939
+],
+"Second French Empire": [
+1852,
+1870
+]
+}
+},
+{
+"x": "Ilkhanate",
+"y": "Jalayirid Sultanate",
+"de": 1335,
+"a": 1343,
+"part": 0.9999480800000842,
+"deg2": 48.98436364154585,
+"m": [
+"",
+""
+],
+"aire": {
+"Ilkhanate": 348.43603846833867,
+"Jalayirid Sultanate": 48.98690704175533
+},
+"existe": {
+"Ilkhanate": [
+1294,
+1343
+],
+"Jalayirid Sultanate": [
+1335,
+1401
+]
+}
+},
+{
+"x": "Turkmenistan",
+"y": "Union of Soviet Socialist Republics",
+"de": 1991,
+"a": 1991,
+"part": 0.9984217837916783,
+"deg2": 48.67078655038766,
+"m": [
+"",
+""
+],
+"aire": {
+"Union of Soviet Socialist Republics": 3522.334706461661,
+"Turkmenistan": 48.747720993778785
+},
+"existe": {
+"Turkmenistan": [
+1991,
+2024
+],
+"Union of Soviet Socialist Republics": [
+1922,
+1991
+]
+}
+},
+{
+"x": "Polish-Lithuanian Commonwealth",
+"y": "Pro-Swedish Poland",
+"de": 1701,
+"a": 1705,
+"part": 0.9993427622227175,
+"deg2": 46.95200079346387,
+"m": [
+"",
+""
+],
+"aire": {
+"Polish-Lithuanian Commonwealth": 104.84963896655063,
+"Pro-Swedish Poland": 46.98287971689933
+},
+"existe": {
+"Polish-Lithuanian Commonwealth": [
+1569,
+1793
+],
+"Pro-Swedish Poland": [
+1701,
+1712
+]
+}
+},
+{
+"x": "Kushan Empire",
+"y": "Yuezhi",
+"de": 30,
+"a": 42,
+"part": 1.0,
+"deg2": 46.81224974223005,
+"m": [
+"",
+""
+],
+"aire": {
+"Yuezhi": 46.81224974223005,
+"Kushan Empire": 46.81224974223005
+},
+"existe": {
+"Kushan Empire": [
+30,
+237
+],
+"Yuezhi": [
+-404,
+42
+]
+}
+},
+{
+"x": "Empire of Japan",
+"y": "Republic of Indonesia",
+"de": 1945,
+"a": 1945,
+"part": 0.9969112438151182,
+"deg2": 46.21962807274714,
+"m": [
+"",
+""
+],
+"aire": {
+"Empire of Japan": 615.5576473778722,
+"Republic of Indonesia": 46.36283155546271
+},
+"existe": {
+"Empire of Japan": [
+1868,
+1945
+],
+"Republic of Indonesia": [
+1945,
+2024
+]
+}
+},
+{
+"x": "German Empire",
+"y": "Ukrainian People's Republic",
+"de": 1918,
+"a": 1918,
+"part": 0.7105371287639682,
+"deg2": 45.889930303958074,
+"m": [
+"",
+""
+],
+"aire": {
+"German Empire": 185.5260282123254,
+"Ukrainian People's Republic": 64.58484496621168
+},
+"existe": {
+"German Empire": [
+1871,
+1919
+],
+"Ukrainian People's Republic": [
+1918,
+1919
+]
+}
+},
+{
+"x": "Kara-Khanids",
+"y": "Qarlugs",
+"de": 840,
+"a": 849,
+"part": 0.999809483828358,
+"deg2": 45.781526011704926,
+"m": [
+"",
+""
+],
+"aire": {
+"Qarlugs": 45.79024979479436,
+"Kara-Khanids": 89.21623866392474
+},
+"existe": {
+"Kara-Khanids": [
+840,
+1045
+],
+"Qarlugs": [
+793,
+849
+]
+}
+},
+{
+"x": "Republic of Uzbekistan",
+"y": "Union of Soviet Socialist Republics",
+"de": 1991,
+"a": 1991,
+"part": 0.9984471545154371,
+"deg2": 44.62977749147503,
+"m": [
+"",
+""
+],
+"aire": {
+"Union of Soviet Socialist Republics": 3522.334706461661,
+"Republic of Uzbekistan": 44.699188424383465
+},
+"existe": {
+"Republic of Uzbekistan": [
+1991,
+2024
+],
+"Union of Soviet Socialist Republics": [
+1922,
+1991
+]
+}
+},
+{
+"x": "Ilkhanate",
+"y": "Sarbadars",
+"de": 1337,
+"a": 1343,
+"part": 0.997927999158869,
+"deg2": 42.49863248285598,
+"m": [
+"",
+""
+],
+"aire": {
+"Ilkhanate": 348.43603846833867,
+"Sarbadars": 42.58687251853553
+},
+"existe": {
+"Ilkhanate": [
+1294,
+1343
+],
+"Sarbadars": [
+1337,
+1394
+]
+}
+},
+{
+"x": "Provisional Priamurye Government",
+"y": "Republics of the Soviet Union",
+"de": 1921,
+"a": 1921,
+"part": 0.9987143796384631,
+"deg2": 41.68998229698075,
+"m": [
+"",
+""
+],
+"aire": {
+"Republics of the Soviet Union": 3455.3475466851305,
+"Provisional Priamurye Government": 41.7436487818195
+},
+"existe": {
+"Provisional Priamurye Government": [
+1921,
+1923
+],
+"Republics of the Soviet Union": [
+1920,
+1921
+]
+}
+},
+{
+"x": "Byzantine Empire",
+"y": "Sultanate of Rum",
+"de": 1077,
+"a": 1098,
+"part": 0.9983110674149098,
+"deg2": 38.09548414940743,
+"m": [
+"",
+""
+],
+"aire": {
+"Byzantine Empire": 109.44247017800808,
+"Sultanate of Rum": 38.1599337048865
+},
+"existe": {
+"Byzantine Empire": [
+633,
+1467
+],
+"Sultanate of Rum": [
+1077,
+1306
+]
+}
+},
+{
+"x": "Great Seljuk Empire",
+"y": "Sultanate of Rum",
+"de": 1085,
+"a": 1093,
+"part": 0.9899723827750511,
+"deg2": 37.77728049636447,
+"m": [
+"",
+""
+],
+"aire": {
+"Sultanate of Rum": 38.1599337048865,
+"Great Seljuk Empire": 419.14072170820145
+},
+"existe": {
+"Great Seljuk Empire": [
+1037,
+1201
+],
+"Sultanate of Rum": [
+1077,
+1306
+]
+}
+},
+{
+"x": "Saadi Sultanate",
+"y": "Wattasid dynasty",
+"de": 1549,
+"a": 1553,
+"part": 1.0,
+"deg2": 36.652402581982415,
+"m": [
+"",
+""
+],
+"aire": {
+"Wattasid dynasty": 36.652402581982415,
+"Saadi Sultanate": 36.652402581982415
+},
+"existe": {
+"Saadi Sultanate": [
+1549,
+1740
+],
+"Wattasid dynasty": [
+1465,
+1553
+]
+}
+},
+{
+"x": "Ghurid Dynasty",
+"y": "Mamluk Dynasty",
+"de": 1206,
+"a": 1209,
+"part": 0.9977672534669098,
+"deg2": 36.29162209217047,
+"m": [
+"",
+"(Delhi Sultanate)"
+],
+"aire": {
+"Ghurid Dynasty": 169.32098741187056,
+"Mamluk Dynasty": 36.37283340986502
+},
+"existe": {
+"Ghurid Dynasty": [
+1152,
+1209
+],
+"Mamluk Dynasty": [
+1206,
+1289
+]
+}
+},
+{
+"x": "Anti-Kuomintang Coalition",
+"y": "Republic of China",
+"de": 1930,
+"a": 1931,
+"part": 0.6427872296397551,
+"deg2": 34.522935827233596,
+"m": [
+"",
+""
+],
+"aire": {
+"Anti-Kuomintang Coalition": 53.70818559444888,
+"Republic of China": 810.225818163126
+},
+"existe": {
+"Anti-Kuomintang Coalition": [
+1930,
+1931
+],
+"Republic of China": [
+1912,
+2024
+]
+}
+},
+{
+"x": "Western Chalukya Empire",
+"y": "Yadava Dynasty",
+"de": 1173,
+"a": 1187,
+"part": 0.8682986040236511,
+"deg2": 33.47009383620529,
+"m": [
+"",
+""
+],
+"aire": {
+"Western Chalukya Empire": 51.5345886277595,
+"Yadava Dynasty": 38.54675532254295
+},
+"existe": {
+"Western Chalukya Empire": [
+973,
+1187
+],
+"Yadava Dynasty": [
+1173,
+1319
+]
+}
+},
+{
+"x": "Emirate of Nejd",
+"y": "Muhammad Ali dynasty",
+"de": 1840,
+"a": 1841,
+"part": 0.9201612409149869,
+"deg2": 33.411955732079385,
+"m": [
+"",
+""
+],
+"aire": {
+"Emirate of Nejd": 36.31097925713032,
+"Muhammad Ali dynasty": 238.01859655764292
+},
+"existe": {
+"Emirate of Nejd": [
+1824,
+1925
+],
+"Muhammad Ali dynasty": [
+1805,
+1865
+]
+}
+},
+{
+"x": "Republic of the Philippines",
+"y": "United States of America",
+"de": 1946,
+"a": 1946,
+"part": 1.0,
+"deg2": 28.54922609814821,
+"m": [
+"",
+""
+],
+"aire": {
+"United States of America": 1209.9468168396024,
+"Republic of the Philippines": 28.54922609814821
+},
+"existe": {
+"Republic of the Philippines": [
+1946,
+2024
+],
+"United States of America": [
+1776,
+2024
+]
+}
+},
+{
+"x": "Republic of Belarus",
+"y": "Union of Soviet Socialist Republics",
+"de": 1991,
+"a": 1991,
+"part": 0.999385736104931,
+"deg2": 28.25168732027374,
+"m": [
+"",
+""
+],
+"aire": {
+"Union of Soviet Socialist Republics": 3522.334706461661,
+"Republic of Belarus": 28.26905197825181
+},
+"existe": {
+"Republic of Belarus": [
+1991,
+2024
+],
+"Union of Soviet Socialist Republics": [
+1922,
+1991
+]
+}
+},
+{
+"x": "German Empire",
+"y": "Second Polish Republic",
+"de": 1918,
+"a": 1918,
+"part": 0.8477608886873237,
+"deg2": 24.712589700954343,
+"m": [
+"",
+""
+],
+"aire": {
+"German Empire": 185.5260282123254,
+"Second Polish Republic": 29.150424407074752
+},
+"existe": {
+"German Empire": [
+1871,
+1919
+],
+"Second Polish Republic": [
+1918,
+1939
+]
+}
+},
+{
+"x": "Confederation of the Rhine",
+"y": "Kingdom of Prussia",
+"de": 1806,
+"a": 1808,
+"part": 0.9998684696067962,
+"deg2": 22.817308583022065,
+"m": [
+"",
+""
+],
+"aire": {
+"Kingdom of Prussia": 46.003950217201236,
+"Confederation of the Rhine": 22.874078154358358
+},
+"existe": {
+"Confederation of the Rhine": [
+1806,
+1814
+],
+"Kingdom of Prussia": [
+1701,
+1863
+]
+}
+},
+{
+"x": "Confederation of the Rhine",
+"y": "First French Empire",
+"de": 1807,
+"a": 1808,
+"part": 0.9658254639783121,
+"deg2": 22.092367146509336,
+"m": [
+"",
+"(First French Empire)"
+],
+"aire": {
+"Confederation of the Rhine": 22.874078154358358,
+"First French Empire": 128.24722472462923
+},
+"existe": {
+"Confederation of the Rhine": [
+1806,
+1814
+],
+"First French Empire": [
+1805,
+1814
+]
+}
+},
+{
+"x": "Republic of Chile",
+"y": "Spanish Empire",
+"de": 1810,
+"a": 1811,
+"part": 0.9992234494818082,
+"deg2": 21.487300138661674,
+"m": [
+"",
+"(Spanish Empire)"
+],
+"aire": {
+"Spanish Empire": 981.6486339759985,
+"Republic of Chile": 21.50399908029067
+},
+"existe": {
+"Republic of Chile": [
+1810,
+2024
+],
+"Spanish Empire": [
+1516,
+1879
+]
+}
+},
+{
+"x": "Kingdom of Great Britain",
+"y": "Republic of Iceland",
+"de": 1944,
+"a": 1944,
+"part": 1.0,
+"deg2": 21.35616228203071,
+"m": [
+"(British Empire)",
+""
+],
+"aire": {
+"Kingdom of Great Britain": 95.44502024950543,
+"Republic of Iceland": 21.35616228203071
+},
+"existe": {
+"Kingdom of Great Britain": [
+1707,
+2024
+],
+"Republic of Iceland": [
+1944,
+2024
+]
+}
+},
+{
+"x": "Republic of Iceland",
+"y": "United States of America",
+"de": 1944,
+"a": 1945,
+"part": 1.0,
+"deg2": 21.35616228203071,
+"m": [
+"",
+""
+],
+"aire": {
+"United States of America": 1858.5749315047296,
+"Republic of Iceland": 21.35616228203071
+},
+"existe": {
+"Republic of Iceland": [
+1944,
+2024
+],
+"United States of America": [
+1776,
+2024
+]
+}
+},
+{
+"x": "Chobanids",
+"y": "Ilkhanate",
+"de": 1335,
+"a": 1343,
+"part": 0.9958884298502755,
+"deg2": 21.073023757463258,
+"m": [
+"",
+""
+],
+"aire": {
+"Ilkhanate": 348.43603846833867,
+"Chobanids": 21.160024683318625
+},
+"existe": {
+"Chobanids": [
+1335,
+1356
+],
+"Ilkhanate": [
+1294,
+1343
+]
+}
+},
+{
+"x": "Kyrgyzstan",
+"y": "Union of Soviet Socialist Republics",
+"de": 1991,
+"a": 1991,
+"part": 0.9969721668203828,
+"deg2": 20.73175012467094,
+"m": [
+"",
+""
+],
+"aire": {
+"Union of Soviet Socialist Republics": 3522.334706461661,
+"Kyrgyzstan": 20.79471304679464
+},
+"existe": {
+"Kyrgyzstan": [
+1991,
+2024
+],
+"Union of Soviet Socialist Republics": [
+1922,
+1991
+]
+}
+},
+{
+"x": "Gran Colombia",
+"y": "Republic of Ecuador",
+"de": 1830,
+"a": 1830,
+"part": 0.9603722532020701,
+"deg2": 20.518375822121286,
+"m": [
+"",
+""
+],
+"aire": {
+"Gran Colombia": 232.37612455021093,
+"Republic of Ecuador": 21.365023566340014
+},
+"existe": {
+"Gran Colombia": [
+1819,
+1830
+],
+"Republic of Ecuador": [
+1830,
+2024
+]
+}
+},
+{
+"x": "Lodi Dynasty",
+"y": "Mughal Empire",
+"de": 1526,
+"a": 1528,
+"part": 0.9981186694728583,
+"deg2": 20.240621948968045,
+"m": [
+"(Delhi Sultanate)",
+""
+],
+"aire": {
+"Lodi Dynasty": 20.278773023710528,
+"Mughal Empire": 112.61238700811373
+},
+"existe": {
+"Lodi Dynasty": [
+1451,
+1528
+],
+"Mughal Empire": [
+1526,
+1857
+]
+}
+},
+{
+"x": "Mexican Monarchists",
+"y": "Second Mexican Empire",
+"de": 1864,
+"a": 1864,
+"part": 0.9979365106513106,
+"deg2": 20.07048272753584,
+"m": [
+"",
+""
+],
+"aire": {
+"Mexican Monarchists": 20.11198359145783,
+"Second Mexican Empire": 178.53149576892974
+},
+"existe": {
+"Mexican Monarchists": [
+1864,
+1864
+],
+"Second Mexican Empire": [
+1864,
+1866
+]
+}
+},
+{
+"x": "Qing Dynasty",
+"y": "Republic of Uryankhay",
+"de": 1911,
+"a": 1911,
+"part": 0.9992417283517989,
+"deg2": 19.231189011723977,
+"m": [
+"",
+""
+],
+"aire": {
+"Qing Dynasty": 1155.8877211017825,
+"Republic of Uryankhay": 19.245782542973757
+},
+"existe": {
+"Qing Dynasty": [
+1644,
+1911
+],
+"Republic of Uryankhay": [
+1911,
+1913
+]
+}
+},
+{
+"x": "Nabhani Dynasty",
+"y": "Najahid Dynasty",
+"de": 1154,
+"a": 1157,
+"part": 1.0,
+"deg2": 17.8762067935113,
+"m": [
+"",
+""
+],
+"aire": {
+"Najahid Dynasty": 17.8762067935113,
+"Nabhani Dynasty": 17.8762067935113
+},
+"existe": {
+"Nabhani Dynasty": [
+1154,
+1170
+],
+"Najahid Dynasty": [
+1066,
+1157
+]
+}
+},
+{
+"x": "Empire of Brazil",
+"y": "Oriental Republic of Uruguay",
+"de": 1825,
+"a": 1827,
+"part": 0.9998560795913178,
+"deg2": 17.408682943092572,
+"m": [
+"",
+""
+],
+"aire": {
+"Empire of Brazil": 670.3640465322568,
+"Oriental Republic of Uruguay": 17.411188768495776
+},
+"existe": {
+"Empire of Brazil": [
+1822,
+1888
+],
+"Oriental Republic of Uruguay": [
+1825,
+2024
+]
+}
+},
+{
+"x": "Kingdom of Pinya",
+"y": "Myinsaing Kingdom",
+"de": 1310,
+"a": 1312,
+"part": 1.0,
+"deg2": 16.830747945801704,
+"m": [
+"",
+""
+],
+"aire": {
+"Myinsaing Kingdom": 16.830747945801704,
+"Kingdom of Pinya": 16.830747945801704
+},
+"existe": {
+"Kingdom of Pinya": [
+1310,
+1363
+],
+"Myinsaing Kingdom": [
+1294,
+1312
+]
+}
+},
+{
+"x": "Fatimid Caliphate",
+"y": "Hammadid Dynasty",
+"de": 1014,
+"a": 1017,
+"part": 0.9957464069181589,
+"deg2": 16.36422109143077,
+"m": [
+"",
+""
+],
+"aire": {
+"Fatimid Caliphate": 181.30445975028874,
+"Hammadid Dynasty": 16.43412517257093
+},
+"existe": {
+"Fatimid Caliphate": [
+909,
+1170
+],
+"Hammadid Dynasty": [
+1014,
+1151
+]
+}
+},
+{
+"x": "Duchy of Silesia",
+"y": "Kingdom of Poland",
+"de": 1138,
+"a": 1138,
+"part": 0.9993937381708492,
+"deg2": 15.802777515309671,
+"m": [
+"(Duchies of Poland)",
+"(Kingdom of Poland)"
+],
+"aire": {
+"Kingdom of Poland": 33.601163727571475,
+"Duchy of Silesia": 15.812363947999984
+},
+"existe": {
+"Duchy of Silesia": [
+1138,
+1304
+],
+"Kingdom of Poland": [
+962,
+1449
+]
+}
+},
+{
+"x": "Kakatiya Dynasty",
+"y": "Tughlaq Dynasty",
+"de": 1320,
+"a": 1322,
+"part": 0.6130244497483671,
+"deg2": 15.48412887795696,
+"m": [
+"",
+"(Delhi Sultanate)"
+],
+"aire": {
+"Kakatiya Dynasty": 25.25858289063813,
+"Tughlaq Dynasty": 217.42480215340143
+},
+"existe": {
+"Kakatiya Dynasty": [
+1163,
+1322
+],
+"Tughlaq Dynasty": [
+1320,
+1412
+]
+}
+},
+{
+"x": "Austria-Hungary",
+"y": "Czechoslovakia",
+"de": 1918,
+"a": 1918,
+"part": 0.9968845882114014,
+"deg2": 14.923539034951624,
+"m": [
+"",
+""
+],
+"aire": {
+"Austria-Hungary": 109.82656551847867,
+"Czechoslovakia": 14.970177301795047
+},
+"existe": {
+"Austria-Hungary": [
+1867,
+1918
+],
+"Czechoslovakia": [
+1918,
+1991
+]
+}
+},
+{
+"x": "Ganzhou Kingdom",
+"y": "Uyghur Khaganate",
+"de": 848,
+"a": 849,
+"part": 0.6086366663071562,
+"deg2": 14.893020005876082,
+"m": [
+"",
+""
+],
+"aire": {
+"Uyghur Khaganate": 349.8345757756033,
+"Ganzhou Kingdom": 24.469475518519175
+},
+"existe": {
+"Ganzhou Kingdom": [
+848,
+1035
+],
+"Uyghur Khaganate": [
+744,
+849
+]
+}
+},
+{
+"x": "Republic of Tajikistan",
+"y": "Union of Soviet Socialist Republics",
+"de": 1991,
+"a": 1991,
+"part": 0.9998293696810667,
+"deg2": 14.68031726678802,
+"m": [
+"",
+""
+],
+"aire": {
+"Union of Soviet Socialist Republics": 3522.334706461661,
+"Republic of Tajikistan": 14.682822601491353
+},
+"existe": {
+"Republic of Tajikistan": [
+1991,
+2024
+],
+"Union of Soviet Socialist Republics": [
+1922,
+1991
+]
+}
+},
+{
+"x": "Kalmar Union",
+"y": "Kingdom of Denmark",
+"de": 1397,
+"a": 1401,
+"part": 0.9533723050842493,
+"deg2": 13.397608158253107,
+"m": [
+"(Kalmar Union)",
+"(Kingdom of Denmark)"
+],
+"aire": {
+"Kingdom of Denmark": 14.0528606576936,
+"Kalmar Union": 164.16078526552656
+},
+"existe": {
+"Kalmar Union": [
+1397,
+1525
+],
+"Kingdom of Denmark": [
+936,
+1406
+]
+}
+},
+{
+"x": "Duchy of Warsaw",
+"y": "First French Empire",
+"de": 1807,
+"a": 1808,
+"part": 0.9986518838204889,
+"deg2": 13.220625325329072,
+"m": [
+"",
+"(First French Empire)"
+],
+"aire": {
+"First French Empire": 128.24722472462923,
+"Duchy of Warsaw": 13.23847232406115
+},
+"existe": {
+"Duchy of Warsaw": [
+1807,
+1813
+],
+"First French Empire": [
+1805,
+1814
+]
+}
+},
+{
+"x": "Kingdom of Bulgaria",
+"y": "People's Republic of Bulgaria",
+"de": 1947,
+"a": 1947,
+"part": 0.9984301027460474,
+"deg2": 12.038572115622433,
+"m": [
+"",
+""
+],
+"aire": {
+"People's Republic of Bulgaria": 12.057501153572957,
+"Kingdom of Bulgaria": 12.101330957364553
+},
+"existe": {
+"Kingdom of Bulgaria": [
+1947,
+1947
+],
+"People's Republic of Bulgaria": [
+1946,
+1990
+]
+}
+},
+{
+"x": "People's Republic of Bulgaria",
+"y": "Union of Soviet Socialist Republics",
+"de": 1946,
+"a": 1946,
+"part": 0.9977749036734463,
+"deg2": 12.030672052048725,
+"m": [
+"",
+""
+],
+"aire": {
+"Union of Soviet Socialist Republics": 3839.893163833871,
+"People's Republic of Bulgaria": 12.057501153572957
+},
+"existe": {
+"People's Republic of Bulgaria": [
+1946,
+1990
+],
+"Union of Soviet Socialist Republics": [
+1922,
+1991
+]
+}
+},
+{
+"x": "Golden Horde",
+"y": "Principality of Moldavia",
+"de": 1346,
+"a": 1362,
+"part": 0.991854263001447,
+"deg2": 11.96316579993205,
+"m": [
+"",
+""
+],
+"aire": {
+"Golden Horde": 611.9657597113401,
+"Principality of Moldavia": 12.06141491364906
+},
+"existe": {
+"Golden Horde": [
+1294,
+1695
+],
+"Principality of Moldavia": [
+1346,
+1858
+]
+}
+},
+{
+"x": "Karkota Dynasty",
+"y": "Turk Shahis",
+"de": 644,
+"a": 655,
+"part": 0.5508973837265224,
+"deg2": 11.467923068989762,
+"m": [
+"",
+""
+],
+"aire": {
+"Karkota Dynasty": 20.816804377278892,
+"Turk Shahis": 27.233005416339438
+},
+"existe": {
+"Karkota Dynasty": [
+592,
+859
+],
+"Turk Shahis": [
+561,
+874
+]
+}
+},
+{
+"x": "Republic of Cuba",
+"y": "United States of America",
+"de": 1900,
+"a": 1904,
+"part": 1.0,
+"deg2": 10.54739098756545,
+"m": [
+"",
+""
+],
+"aire": {
+"Republic of Cuba": 10.54739098756545,
+"United States of America": 1155.7735853253907
+},
+"existe": {
+"Republic of Cuba": [
+1898,
+1959
+],
+"United States of America": [
+1776,
+2024
+]
+}
+},
+{
+"x": "Austria-Hungary",
+"y": "Republic of Austria",
+"de": 1918,
+"a": 1918,
+"part": 0.999172264891277,
+"deg2": 10.409786372991636,
+"m": [
+"",
+""
+],
+"aire": {
+"Austria-Hungary": 109.82656551847867,
+"Republic of Austria": 10.4184100567727
+},
+"existe": {
+"Austria-Hungary": [
+1867,
+1918
+],
+"Republic of Austria": [
+1918,
+1937
+]
+}
+},
+{
+"x": "Abbasid Caliphate",
+"y": "Bagratid Armenia",
+"de": 884,
+"a": 885,
+"part": 0.9991187173434414,
+"deg2": 10.385110275267467,
+"m": [
+"",
+""
+],
+"aire": {
+"Abbasid Caliphate": 476.56985037402956,
+"Bagratid Armenia": 10.394270565644547
+},
+"existe": {
+"Abbasid Caliphate": [
+750,
+1259
+],
+"Bagratid Armenia": [
+884,
+1044
+]
+}
+},
+{
+"x": "Bahmani Sultanate",
+"y": "Bijapur Sultanate",
+"de": 1490,
+"a": 1491,
+"part": 0.9923184857435386,
+"deg2": 10.011138742175701,
+"m": [
+"",
+""
+],
+"aire": {
+"Bahmani Sultanate": 34.708532618984464,
+"Bijapur Sultanate": 10.088634733710933
+},
+"existe": {
+"Bahmani Sultanate": [
+1347,
+1491
+],
+"Bijapur Sultanate": [
+1490,
+1685
+]
+}
+},
+{
+"x": "German Empire",
+"y": "Republic of Latvia",
+"de": 1918,
+"a": 1919,
+"part": 0.9705542873366592,
+"deg2": 9.697389506522212,
+"m": [
+"",
+""
+],
+"aire": {
+"German Empire": 185.5260282123254,
+"Republic of Latvia": 9.991599267603306
+},
+"existe": {
+"German Empire": [
+1871,
+1919
+],
+"Republic of Latvia": [
+1918,
+2024
+]
+}
+},
+{
+"x": "Khanate of Khiva",
+"y": "Shaybanids",
+"de": 1511,
+"a": 1511,
+"part": 0.9963783116376511,
+"deg2": 9.476579450949004,
+"m": [
+"",
+""
+],
+"aire": {
+"Shaybanids": 181.5826835467269,
+"Khanate of Khiva": 9.511025421030354
+},
+"existe": {
+"Khanate of Khiva": [
+1511,
+1919
+],
+"Shaybanids": [
+1497,
+1511
+]
+}
+},
+{
+"x": "Kadamba Empire",
+"y": "Vakataka Kingdom",
+"de": 345,
+"a": 352,
+"part": 0.5560623088912777,
+"deg2": 9.459120645317162,
+"m": [
+"",
+""
+],
+"aire": {
+"Vakataka Kingdom": 49.50297792531219,
+"Kadamba Empire": 17.01090056648063
+},
+"existe": {
+"Kadamba Empire": [
+345,
+554
+],
+"Vakataka Kingdom": [
+250,
+554
+]
+}
+},
+{
+"x": "British Colonial Empire",
+"y": "Kingdom of Jordan",
+"de": 1946,
+"a": 1946,
+"part": 0.9980105378959991,
+"deg2": 9.277122563355942,
+"m": [
+"(British Empire)",
+""
+],
+"aire": {
+"British Colonial Empire": 189.90499546517253,
+"Kingdom of Jordan": 9.295615838800586
+},
+"existe": {
+"British Colonial Empire": [
+1706,
+1996
+],
+"Kingdom of Jordan": [
+1946,
+2024
+]
+}
+},
+{
+"x": "Chalukya Dynasty",
+"y": "Kadamba Empire",
+"de": 543,
+"a": 554,
+"part": 0.5382676073402644,
+"deg2": 9.192342929278922,
+"m": [
+"",
+""
+],
+"aire": {
+"Kadamba Empire": 17.07764465839017,
+"Chalukya Dynasty": 17.091608588175472
+},
+"existe": {
+"Chalukya Dynasty": [
+543,
+756
+],
+"Kadamba Empire": [
+345,
+554
+]
+}
+},
+{
+"x": "Byzantine Empire",
+"y": "Serbian Empire",
+"de": 1346,
+"a": 1351,
+"part": 0.5200875503803469,
+"deg2": 9.03092824458871,
+"m": [
+"",
+""
+],
+"aire": {
+"Byzantine Empire": 17.364246150449617,
+"Serbian Empire": 20.275396525637916
+},
+"existe": {
+"Byzantine Empire": [
+633,
+1467
+],
+"Serbian Empire": [
+1346,
+1458
+]
+}
+},
+{
+"x": "Silla",
+"y": "Unified Silla",
+"de": 668,
+"a": 681,
+"part": 0.9946600005061961,
+"deg2": 8.752094370418185,
+"m": [
+"",
+""
+],
+"aire": {
+"Silla": 8.799081460965681,
+"Unified Silla": 15.199776264082175
+},
+"existe": {
+"Silla": [
+378,
+681
+],
+"Unified Silla": [
+668,
+935
+]
+}
+},
+{
+"x": "Kingdom of Asturias",
+"y": "Visigothic Kingdom",
+"de": 718,
+"a": 723,
+"part": 1.0,
+"deg2": 8.610949188404902,
+"m": [
+"",
+""
+],
+"aire": {
+"Visigothic Kingdom": 11.021462224652623,
+"Kingdom of Asturias": 8.610949188404902
+},
+"existe": {
+"Kingdom of Asturias": [
+718,
+923
+],
+"Visigothic Kingdom": [
+426,
+723
+]
+}
+},
+{
+"x": "Kingdom of Arles",
+"y": "Kingdom of Lower Burgundy",
+"de": 933,
+"a": 935,
+"part": 0.5996945879461123,
+"deg2": 8.109772269707674,
+"m": [
+"",
+"(Carolingian Empire)"
+],
+"aire": {
+"Kingdom of Lower Burgundy": 27.603896406250442,
+"Kingdom of Arles": 13.523170681734427
+},
+"existe": {
+"Kingdom of Arles": [
+933,
+1384
+],
+"Kingdom of Lower Burgundy": [
+900,
+935
+]
+}
+},
+{
+"x": "Ilkhanate",
+"y": "Injuids",
+"de": 1335,
+"a": 1343,
+"part": 1.0,
+"deg2": 8.094050824180158,
+"m": [
+"",
+""
+],
+"aire": {
+"Ilkhanate": 348.43603846833867,
+"Injuids": 8.094050824180158
+},
+"existe": {
+"Ilkhanate": [
+1294,
+1343
+],
+"Injuids": [
+1335,
+1356
+]
+}
+},
+{
+"x": "Blue Horde",
+"y": "Timurid Empire",
+"de": 1395,
+"a": 1401,
+"part": 0.7592016719191436,
+"deg2": 8.07954792173999,
+"m": [
+"",
+""
+],
+"aire": {
+"Blue Horde": 10.64216297273971,
+"Timurid Empire": 392.8137388297764
+},
+"existe": {
+"Blue Horde": [
+1363,
+1440
+],
+"Timurid Empire": [
+1370,
+1528
+]
+}
+},
+{
+"x": "Kievan Rus'",
+"y": "Kingdom of Hungary",
+"de": 1188,
+"a": 1191,
+"part": 0.6969411927187189,
+"deg2": 7.729751843565672,
+"m": [
+"",
+""
+],
+"aire": {
+"Kievan Rus'": 11.090967106438995,
+"Kingdom of Hungary": 52.528724448267894
+},
+"existe": {
+"Kievan Rus'": [
+882,
+1240
+],
+"Kingdom of Hungary": [
+1000,
+1546
+]
+}
+},
+{
+"x": "Lê Dynasty",
+"y": "Nguyễn lords",
+"de": 1558,
+"a": 1571,
+"part": 0.9917304136704198,
+"deg2": 7.489539154201025,
+"m": [
+"",
+""
+],
+"aire": {
+"Lê Dynasty": 11.464990531581861,
+"Nguyễn lords": 7.55199099570018
+},
+"existe": {
+"Lê Dynasty": [
+1428,
+1571
+],
+"Nguyễn lords": [
+1558,
+1775
+]
+}
+},
+{
+"x": "Estonia",
+"y": "German Empire",
+"de": 1918,
+"a": 1918,
+"part": 0.984266491721842,
+"deg2": 7.381640093471779,
+"m": [
+"",
+""
+],
+"aire": {
+"German Empire": 185.5260282123254,
+"Estonia": 7.499635673422745
+},
+"existe": {
+"Estonia": [
+1918,
+1939
+],
+"German Empire": [
+1871,
+1919
+]
+}
+},
+{
+"x": "Principality of Minsk",
+"y": "Principality of Polotsky",
+"de": 1101,
+"a": 1110,
+"part": 1.0,
+"deg2": 7.288118049011246,
+"m": [
+"",
+""
+],
+"aire": {
+"Principality of Polotsky": 18.759868423428998,
+"Principality of Minsk": 7.288118049011246
+},
+"existe": {
+"Principality of Minsk": [
+1101,
+1313
+],
+"Principality of Polotsky": [
+1056,
+1249
+]
+}
+},
+{
+"x": "Italian Africa",
+"y": "Majeerteen Sultanate",
+"de": 1882,
+"a": 1889,
+"part": 0.9650217483149992,
+"deg2": 7.243091339465981,
+"m": [
+"",
+""
+],
+"aire": {
+"Majeerteen Sultanate": 7.505624979035929,
+"Italian Africa": 22.489844125298333
+},
+"existe": {
+"Italian Africa": [
+1882,
+1943
+],
+"Majeerteen Sultanate": [
+1856,
+1889
+]
+}
+},
+{
+"x": "Later Yan",
+"y": "Northern Yan",
+"de": 407,
+"a": 408,
+"part": 1.0,
+"deg2": 6.755021186196245,
+"m": [
+"",
+""
+],
+"aire": {
+"Later Yan": 6.760658920102287,
+"Northern Yan": 6.755021186196245
+},
+"existe": {
+"Later Yan": [
+384,
+408
+],
+"Northern Yan": [
+407,
+438
+]
+}
+},
+{
+"x": "Eastern Hungarian Kingdom",
+"y": "Kingdom of Hungary",
+"de": 1526,
+"a": 1528,
+"part": 0.9954249092621816,
+"deg2": 6.6564032656231795,
+"m": [
+"",
+""
+],
+"aire": {
+"Kingdom of Hungary": 38.33866949652656,
+"Eastern Hungarian Kingdom": 6.686996883126994
+},
+"existe": {
+"Eastern Hungarian Kingdom": [
+1526,
+1569
+],
+"Kingdom of Hungary": [
+1000,
+1546
+]
+}
+},
+{
+"x": "Hanthawaddy Kingdom",
+"y": "Pagan Kingdom",
+"de": 1287,
+"a": 1293,
+"part": 0.9942814608694333,
+"deg2": 6.645105810572803,
+"m": [
+"",
+""
+],
+"aire": {
+"Pagan Kingdom": 38.0683030618311,
+"Hanthawaddy Kingdom": 6.683324664187239
+},
+"existe": {
+"Hanthawaddy Kingdom": [
+1287,
+1546
+],
+"Pagan Kingdom": [
+849,
+1293
+]
+}
+},
+{
+"x": "Dabuyid Dynasty",
+"y": "Sasanian Empire",
+"de": 642,
+"a": 643,
+"part": 0.9911250607764,
+"deg2": 6.506221349496814,
+"m": [
+"",
+""
+],
+"aire": {
+"Sasanian Empire": 246.88688998881844,
+"Dabuyid Dynasty": 6.5644807168937405
+},
+"existe": {
+"Dabuyid Dynasty": [
+642,
+756
+],
+"Sasanian Empire": [
+215,
+643
+]
+}
+},
+{
+"x": "Ahmadnagar Sultanate",
+"y": "Bahmani Sultanate",
+"de": 1490,
+"a": 1491,
+"part": 1.0,
+"deg2": 6.352285652872524,
+"m": [
+"",
+""
+],
+"aire": {
+"Bahmani Sultanate": 34.708532618984464,
+"Ahmadnagar Sultanate": 6.352285652872524
+},
+"existe": {
+"Ahmadnagar Sultanate": [
+1490,
+1652
+],
+"Bahmani Sultanate": [
+1347,
+1491
+]
+}
+},
+{
+"x": "Afsharid Iran",
+"y": "Sultanate of Oman",
+"de": 1742,
+"a": 1743,
+"part": 0.7273193147898586,
+"deg2": 6.336568317676571,
+"m": [
+"",
+""
+],
+"aire": {
+"Afsharid Iran": 331.1238649576917,
+"Sultanate of Oman": 8.712223350630211
+},
+"existe": {
+"Afsharid Iran": [
+1734,
+1756
+],
+"Sultanate of Oman": [
+1742,
+2024
+]
+}
+},
+{
+"x": "Bahmani Sultanate",
+"y": "Berar Sultanate",
+"de": 1490,
+"a": 1491,
+"part": 0.8897370020886225,
+"deg2": 6.161159212719182,
+"m": [
+"",
+""
+],
+"aire": {
+"Bahmani Sultanate": 34.708532618984464,
+"Berar Sultanate": 6.924697071444825
+},
+"existe": {
+"Bahmani Sultanate": [
+1347,
+1491
+],
+"Berar Sultanate": [
+1490,
+1573
+]
+}
+},
+{
+"x": "Kingdom of France",
+"y": "West Franks",
+"de": 987,
+"a": 989,
+"part": 0.9988073847000254,
+"deg2": 5.867445079794106,
+"m": [
+"(Kingdom of France)",
+"(Carolingian Empire)"
+],
+"aire": {
+"West Franks": 41.56200541111511,
+"Kingdom of France": 5.874451039983342
+},
+"existe": {
+"Kingdom of France": [
+987,
+1791
+],
+"West Franks": [
+843,
+989
+]
+}
+},
+{
+"x": "Kingdom of the Suebi",
+"y": "Western Roman Empire",
+"de": 409,
+"a": 409,
+"part": 0.9998252465931047,
+"deg2": 5.7534169297174325,
+"m": [
+"",
+""
+],
+"aire": {
+"Western Roman Empire": 232.00554160267413,
+"Kingdom of the Suebi": 5.75442253466008
+},
+"existe": {
+"Kingdom of the Suebi": [
+409,
+584
+],
+"Western Roman Empire": [
+395,
+475
+]
+}
+},
+{
+"x": "Kingdom of the Suebi",
+"y": "Vandals",
+"de": 410,
+"a": 413,
+"part": 0.9971057443621686,
+"deg2": 5.737767764796676,
+"m": [
+"",
+""
+],
+"aire": {
+"Kingdom of the Suebi": 5.75442253466008,
+"Vandals": 44.22936006493754
+},
+"existe": {
+"Kingdom of the Suebi": [
+409,
+584
+],
+"Vandals": [
+337,
+438
+]
+}
+},
+{
+"x": "First French Empire",
+"y": "Kingdom of Westphalia",
+"de": 1807,
+"a": 1808,
+"part": 0.9965454280224122,
+"deg2": 5.6114630493868685,
+"m": [
+"(First French Empire)",
+""
+],
+"aire": {
+"First French Empire": 128.24722472462923,
+"Kingdom of Westphalia": 5.630915452115914
+},
+"existe": {
+"First French Empire": [
+1805,
+1814
+],
+"Kingdom of Westphalia": [
+1807,
+1813
+]
+}
+},
+{
+"x": "Kingdom of Spain",
+"y": "Republic of Cuba",
+"de": 1898,
+"a": 1899,
+"part": 0.5179355783453904,
+"deg2": 5.46286905117967,
+"m": [
+"(Spanish Empire)",
+""
+],
+"aire": {
+"Kingdom of Spain": 116.0099807009671,
+"Republic of Cuba": 10.54739098756545
+},
+"existe": {
+"Kingdom of Spain": [
+1516,
+2024
+],
+"Republic of Cuba": [
+1898,
+1959
+]
+}
+},
+{
+"x": "Kingdom of Arles",
+"y": "Upper Burgundy",
+"de": 933,
+"a": 935,
+"part": 0.9962840519268865,
+"deg2": 5.380359767555972,
+"m": [
+"",
+"(Carolingian Empire)"
+],
+"aire": {
+"Upper Burgundy": 5.400427475628021,
+"Kingdom of Arles": 13.523170681734427
+},
+"existe": {
+"Kingdom of Arles": [
+933,
+1384
+],
+"Upper Burgundy": [
+887,
+959
+]
+}
+},
+{
+"x": "Carantania",
+"y": "Samo's Empire",
+"de": 658,
+"a": 660,
+"part": 0.9926785745849671,
+"deg2": 5.366779286704129,
+"m": [
+"",
+""
+],
+"aire": {
+"Samo's Empire": 25.895958454388165,
+"Carantania": 5.406361559629659
+},
+"existe": {
+"Carantania": [
+658,
+749
+],
+"Samo's Empire": [
+623,
+660
+]
+}
+},
+{
+"x": "Republic of Croatia",
+"y": "Socialist Federal Republic of Yugoslavia",
+"de": 1991,
+"a": 1991,
+"part": 0.9986846030022891,
+"deg2": 5.062707796489784,
+"m": [
+"",
+""
+],
+"aire": {
+"Socialist Federal Republic of Yugoslavia": 28.167985247779143,
+"Republic of Croatia": 5.069376038511109
+},
+"existe": {
+"Republic of Croatia": [
+1991,
+2024
+],
+"Socialist Federal Republic of Yugoslavia": [
+1946,
+1991
+]
+}
+},
+{
+"x": "Principality of Polotsky",
+"y": "Principality of Vitebsk",
+"de": 1101,
+"a": 1110,
+"part": 0.9993895664190884,
+"deg2": 4.935957603251543,
+"m": [
+"",
+""
+],
+"aire": {
+"Principality of Polotsky": 18.759868423428998,
+"Principality of Vitebsk": 4.938972517931688
+},
+"existe": {
+"Principality of Polotsky": [
+1056,
+1249
+],
+"Principality of Vitebsk": [
+1101,
+1187
+]
+}
+},
+{
+"x": "County of Portugal",
+"y": "Kingdom of Portugal",
+"de": 1139,
+"a": 1142,
+"part": 0.9968680710180273,
+"deg2": 4.908469900659095,
+"m": [
+"",
+""
+],
+"aire": {
+"County of Portugal": 4.923891178144004,
+"Kingdom of Portugal": 6.556868795824812
+},
+"existe": {
+"County of Portugal": [
+1139,
+1142
+],
+"Kingdom of Portugal": [
+1139,
+1911
+]
+}
+},
+{
+"x": "Cuban Nationalists",
+"y": "Republic of Cuba",
+"de": 1898,
+"a": 1899,
+"part": 0.9845344282826612,
+"deg2": 4.855597141400523,
+"m": [
+"",
+""
+],
+"aire": {
+"Cuban Nationalists": 4.9318713514876436,
+"Republic of Cuba": 10.54739098756545
+},
+"existe": {
+"Cuban Nationalists": [
+1895,
+1899
+],
+"Republic of Cuba": [
+1898,
+1959
+]
+}
+},
+{
+"x": "Duchy of Masovia",
+"y": "Kingdom of Poland",
+"de": 1138,
+"a": 1138,
+"part": 0.9981415667558816,
+"deg2": 4.763007344655977,
+"m": [
+"(Duchies of Poland)",
+"(Kingdom of Poland)"
+],
+"aire": {
+"Kingdom of Poland": 33.601163727571475,
+"Duchy of Masovia": 4.771875556827581
+},
+"existe": {
+"Duchy of Masovia": [
+1138,
+1351
+],
+"Kingdom of Poland": [
+962,
+1449
+]
+}
+},
+{
+"x": "Duchy of Sandomierz",
+"y": "Kingdom of Poland",
+"de": 1138,
+"a": 1138,
+"part": 1.0,
+"deg2": 3.92279577228328,
+"m": [
+"(Duchies of Poland)",
+"(Kingdom of Poland)"
+],
+"aire": {
+"Kingdom of Poland": 33.601163727571475,
+"Duchy of Sandomierz": 3.92279577228328
+},
+"existe": {
+"Duchy of Sandomierz": [
+1138,
+1304
+],
+"Kingdom of Poland": [
+962,
+1449
+]
+}
+},
+{
+"x": "German Empire",
+"y": "Kingdom of Belgium",
+"de": 1915,
+"a": 1918,
+"part": 0.9494940885361033,
+"deg2": 3.7219114934792894,
+"m": [
+"",
+""
+],
+"aire": {
+"Kingdom of Belgium": 3.9198890634670533,
+"German Empire": 185.5260282123254
+},
+"existe": {
+"German Empire": [
+1871,
+1919
+],
+"Kingdom of Belgium": [
+1830,
+2024
+]
+}
+},
+{
+"x": "Duchy of Greater Poland",
+"y": "Kingdom of Poland",
+"de": 1138,
+"a": 1138,
+"part": 1.0,
+"deg2": 3.622067558913841,
+"m": [
+"(Duchies of Poland)",
+"(Kingdom of Poland)"
+],
+"aire": {
+"Kingdom of Poland": 33.601163727571475,
+"Duchy of Greater Poland": 3.622067558913841
+},
+"existe": {
+"Duchy of Greater Poland": [
+1138,
+1304
+],
+"Kingdom of Poland": [
+962,
+1449
+]
+}
+},
+{
+"x": "Republic of Moldova",
+"y": "Union of Soviet Socialist Republics",
+"de": 1991,
+"a": 1991,
+"part": 0.988766811572892,
+"deg2": 3.2066029223365073,
+"m": [
+"",
+""
+],
+"aire": {
+"Union of Soviet Socialist Republics": 3522.334706461661,
+"Republic of Moldova": 3.2430325176828774
+},
+"existe": {
+"Republic of Moldova": [
+1991,
+2024
+],
+"Union of Soviet Socialist Republics": [
+1922,
+1991
+]
+}
+},
+{
+"x": "Kahuripan",
+"y": "Kediri Kingdom",
+"de": 1045,
+"a": 1045,
+"part": 0.987515728746789,
+"deg2": 3.171341317762675,
+"m": [
+"",
+""
+],
+"aire": {
+"Kahuripan": 6.6203832778410305,
+"Kediri Kingdom": 3.211433727528856
+},
+"existe": {
+"Kahuripan": [
+1019,
+1045
+],
+"Kediri Kingdom": [
+1045,
+1220
+]
+}
+},
+{
+"x": "Beylik of Dulkadir",
+"y": "Ilkhanate",
+"de": 1337,
+"a": 1343,
+"part": 0.991115531281908,
+"deg2": 3.086136170549675,
+"m": [
+"",
+""
+],
+"aire": {
+"Ilkhanate": 348.43603846833867,
+"Beylik of Dulkadir": 3.113800634884683
+},
+"existe": {
+"Beylik of Dulkadir": [
+1337,
+1515
+],
+"Ilkhanate": [
+1294,
+1343
+]
+}
+},
+{
+"x": "Kingdom of Axum",
+"y": "Sabaeans",
+"de": 247,
+"a": 274,
+"part": 0.5625529759520786,
+"deg2": 3.0381019625251944,
+"m": [
+"",
+""
+],
+"aire": {
+"Kingdom of Axum": 11.1593251943832,
+"Sabaeans": 5.4005615335754555
+},
+"existe": {
+"Kingdom of Axum": [
+-50,
+946
+],
+"Sabaeans": [
+-700,
+274
+]
+}
+},
+{
+"x": "Los Altos",
+"y": "United Provinces of Central America",
+"de": 1838,
+"a": 1839,
+"part": 0.9957120982711873,
+"deg2": 2.9821450736773585,
+"m": [
+"",
+""
+],
+"aire": {
+"United Provinces of Central America": 37.07292741487254,
+"Los Altos": 2.994987284833769
+},
+"existe": {
+"Los Altos": [
+1838,
+1841
+],
+"United Provinces of Central America": [
+1823,
+1839
+]
+}
+},
+{
+"x": "Almoravid Dynasty",
+"y": "Kingdom of Castile",
+"de": 1147,
+"a": 1149,
+"part": 0.5454244674865818,
+"deg2": 2.9779228096831503,
+"m": [
+"",
+""
+],
+"aire": {
+"Almoravid Dynasty": 5.45982622196246,
+"Kingdom of Castile": 23.268759826201403
+},
+"existe": {
+"Almoravid Dynasty": [
+1040,
+1205
+],
+"Kingdom of Castile": [
+961,
+1229
+]
+}
+},
+{
+"x": "Kingdom of Africa",
+"y": "Zirid dynasty",
+"de": 1146,
+"a": 1147,
+"part": 0.9954449192542082,
+"deg2": 2.937434156003281,
+"m": [
+"",
+""
+],
+"aire": {
+"Zirid dynasty": 2.95087563278139,
+"Kingdom of Africa": 3.905287162748209
+},
+"existe": {
+"Kingdom of Africa": [
+1146,
+1168
+],
+"Zirid dynasty": [
+1056,
+1147
+]
+}
+},
+{
+"x": "Kievan Rus'",
+"y": "Principality of Ryazan",
+"de": 1094,
+"a": 1235,
+"part": 0.8635867997479567,
+"deg2": 2.9278954812276194,
+"m": [
+"",
+""
+],
+"aire": {
+"Principality of Ryazan": 9.031857810550719,
+"Kievan Rus'": 3.5284594726008818
+},
+"existe": {
+"Kievan Rus'": [
+882,
+1240
+],
+"Principality of Ryazan": [
+1094,
+1240
+]
+}
+},
+{
+"x": "Principality of Drutsk",
+"y": "Principality of Polotsky",
+"de": 1101,
+"a": 1110,
+"part": 1.0,
+"deg2": 2.7481478543923004,
+"m": [
+"",
+""
+],
+"aire": {
+"Principality of Polotsky": 18.759868423428998,
+"Principality of Drutsk": 2.7481478543923004
+},
+"existe": {
+"Principality of Drutsk": [
+1101,
+1249
+],
+"Principality of Polotsky": [
+1056,
+1249
+]
+}
+},
+{
+"x": "Former Yugoslav Republic of Macedonia",
+"y": "Socialist Federal Republic of Yugoslavia",
+"de": 1991,
+"a": 1991,
+"part": 0.9858924707619068,
+"deg2": 2.6896704520818484,
+"m": [
+"",
+""
+],
+"aire": {
+"Socialist Federal Republic of Yugoslavia": 28.167985247779143,
+"Former Yugoslav Republic of Macedonia": 2.728158021131094
+},
+"existe": {
+"Former Yugoslav Republic of Macedonia": [
+1991,
+2024
+],
+"Socialist Federal Republic of Yugoslavia": [
+1946,
+1991
+]
+}
+},
+{
+"x": "Eastern Roman Empire",
+"y": "Georgia",
+"de": 570,
+"a": 576,
+"part": 0.979255424878112,
+"deg2": 2.645906853502172,
+"m": [
+"",
+""
+],
+"aire": {
+"Georgia": 2.7019578204854042,
+"Eastern Roman Empire": 239.39907658566668
+},
+"existe": {
+"Eastern Roman Empire": [
+395,
+632
+],
+"Georgia": [
+567,
+2024
+]
+}
+},
+{
+"x": "Kingdom of England",
+"y": "Viking settlements",
+"de": 1305,
+"a": 1313,
+"part": 0.947227214926675,
+"deg2": 2.5907765743579194,
+"m": [
+"(Kingdom of England)",
+""
+],
+"aire": {
+"Viking settlements": 2.7351162778388622,
+"Kingdom of England": 42.01223815685783
+},
+"existe": {
+"Kingdom of England": [
+927,
+1706
+],
+"Viking settlements": [
+793,
+1332
+]
+}
+},
+{
+"x": "Kingdom of Kakheti",
+"y": "Kingdom of Kartli",
+"de": 1465,
+"a": 1467,
+"part": 0.9966591970174405,
+"deg2": 2.523932131997839,
+"m": [
+"",
+""
+],
+"aire": {
+"Kingdom of Kartli": 14.059183112651226,
+"Kingdom of Kakheti": 2.5323923559335526
+},
+"existe": {
+"Kingdom of Kakheti": [
+1465,
+1762
+],
+"Kingdom of Kartli": [
+1463,
+1705
+]
+}
+},
+{
+"x": "Despotate of Epirus",
+"y": "Empire of Thessalonica",
+"de": 1224,
+"a": 1235,
+"part": 0.9956214863756986,
+"deg2": 2.3144154341825924,
+"m": [
+"",
+""
+],
+"aire": {
+"Despotate of Epirus": 11.528599833352928,
+"Empire of Thessalonica": 2.3245936993662326
+},
+"existe": {
+"Despotate of Epirus": [
+1205,
+1481
+],
+"Empire of Thessalonica": [
+1224,
+1249
+]
+}
+},
+{
+"x": "Mughal Empire",
+"y": "Sikhs",
+"de": 1717,
+"a": 1717,
+"part": 1.0,
+"deg2": 2.3137243126766407,
+"m": [
+"",
+""
+],
+"aire": {
+"Sikhs": 2.3137243126766407,
+"Mughal Empire": 293.58568708210095
+},
+"existe": {
+"Mughal Empire": [
+1526,
+1857
+],
+"Sikhs": [
+1709,
+1717
+]
+}
+},
+{
+"x": "Republic of Slovenia",
+"y": "Socialist Federal Republic of Yugoslavia",
+"de": 1991,
+"a": 1991,
+"part": 0.9994080746959131,
+"deg2": 2.2777396690118223,
+"m": [
+"",
+""
+],
+"aire": {
+"Socialist Federal Republic of Yugoslavia": 28.167985247779143,
+"Republic of Slovenia": 2.279088719295032
+},
+"existe": {
+"Republic of Slovenia": [
+1991,
+2024
+],
+"Socialist Federal Republic of Yugoslavia": [
+1946,
+1991
+]
+}
+},
+{
+"x": "British Colonial Empire",
+"y": "New Netherland",
+"de": 1799,
+"a": 1799,
+"part": 0.9804460955091526,
+"deg2": 2.0342867192599705,
+"m": [
+"(British Empire)",
+""
+],
+"aire": {
+"New Netherland": 2.0748583002960004,
+"British Colonial Empire": 90.81906543402252
+},
+"existe": {
+"British Colonial Empire": [
+1706,
+1996
+],
+"New Netherland": [
+1622,
+1802
+]
+}
+},
+{
+"x": "Beylik of Karasi",
+"y": "Byzantine Empire",
+"de": 1297,
+"a": 1298,
+"part": 0.9989441334947419,
+"deg2": 1.840755645288613,
+"m": [
+"",
+""
+],
+"aire": {
+"Byzantine Empire": 26.612919590565333,
+"Beylik of Karasi": 1.8427012918618857
+},
+"existe": {
+"Beylik of Karasi": [
+1297,
+1343
+],
+"Byzantine Empire": [
+633,
+1467
+]
+}
+},
+{
+"x": "Kingdom of Scotland",
+"y": "Viking settlements",
+"de": 1286,
+"a": 1325,
+"part": 0.6384059977428623,
+"deg2": 1.7461146362964626,
+"m": [
+"",
+""
+],
+"aire": {
+"Viking settlements": 2.7351162778388622,
+"Kingdom of Scotland": 12.631746027346708
+},
+"existe": {
+"Kingdom of Scotland": [
+1286,
+1608
+],
+"Viking settlements": [
+793,
+1332
+]
+}
+},
+{
+"x": "Kingdom of Alba",
+"y": "Viking settlements",
+"de": 1272,
+"a": 1285,
+"part": 0.5997639794457837,
+"deg2": 1.640424223043576,
+"m": [
+"",
+""
+],
+"aire": {
+"Kingdom of Alba": 12.52605561409382,
+"Viking settlements": 2.7351162778388622
+},
+"existe": {
+"Kingdom of Alba": [
+900,
+1285
+],
+"Viking settlements": [
+793,
+1332
+]
+}
+},
+{
+"x": "Caliphate of Córdoba",
+"y": "Taifa of Almería",
+"de": 1010,
+"a": 1011,
+"part": 0.9779300022679482,
+"deg2": 1.4730276428908093,
+"m": [
+"",
+"(Taifas of Iberia)"
+],
+"aire": {
+"Caliphate of Córdoba": 34.60859525181031,
+"Taifa of Almería": 1.506271041357423
+},
+"existe": {
+"Caliphate of Córdoba": [
+929,
+1071
+],
+"Taifa of Almería": [
+1010,
+1249
+]
+}
+},
+{
+"x": "New France",
+"y": "Spanish Empire",
+"de": 1619,
+"a": 1625,
+"part": 0.8076310213758233,
+"deg2": 1.2417930642124333,
+"m": [
+"(Kingdom of France)",
+"(Spanish Empire)"
+],
+"aire": {
+"New France": 1.5375747480538848,
+"Spanish Empire": 595.8166022997825
+},
+"existe": {
+"New France": [
+1609,
+1791
+],
+"Spanish Empire": [
+1516,
+1879
+]
+}
+},
+{
+"x": "Corsican Republic",
+"y": "Republic of Genoa",
+"de": 1755,
+"a": 1768,
+"part": 1.0,
+"deg2": 1.2222414420066343,
+"m": [
+"",
+""
+],
+"aire": {
+"Republic of Genoa": 1.5706439982750453,
+"Corsican Republic": 1.2222414420066343
+},
+"existe": {
+"Corsican Republic": [
+1755,
+1768
+],
+"Republic of Genoa": [
+1005,
+1794
+]
+}
+},
+{
+"x": "British Colonial Empire",
+"y": "Sultanate of Terengganu",
+"de": 1901,
+"a": 1904,
+"part": 0.9771185831377094,
+"deg2": 1.1494552096557598,
+"m": [
+"(British Empire)",
+""
+],
+"aire": {
+"Sultanate of Terengganu": 1.1763722740433873,
+"British Colonial Empire": 817.7606702531393
+},
+"existe": {
+"British Colonial Empire": [
+1706,
+1996
+],
+"Sultanate of Terengganu": [
+1725,
+1904
+]
+}
+},
+{
+"x": "Duchy of Normandy",
+"y": "Viking settlements",
+"de": 911,
+"a": 921,
+"part": 1.0000000000000002,
+"deg2": 1.1160415417569503,
+"m": [
+"",
+""
+],
+"aire": {
+"Viking settlements": 8.5673146515343,
+"Duchy of Normandy": 1.11604154175695
+},
+"existe": {
+"Duchy of Normandy": [
+911,
+1071
+],
+"Viking settlements": [
+793,
+1332
+]
+}
+},
+{
+"x": "Republic of Genoa",
+"y": "Republic of Pisa",
+"de": 1326,
+"a": 1394,
+"part": 0.7878756943659747,
+"deg2": 1.1025908385652543,
+"m": [
+"",
+""
+],
+"aire": {
+"Republic of Genoa": 3.0738611651895553,
+"Republic of Pisa": 1.4188830461624318
+},
+"existe": {
+"Republic of Genoa": [
+1005,
+1794
+],
+"Republic of Pisa": [
+1010,
+1401
+]
+}
+},
+{
+"x": "Despotate of Arta",
+"y": "Serbian Empire",
+"de": 1358,
+"a": 1374,
+"part": 0.8482158980557825,
+"deg2": 0.9575761280480453,
+"m": [
+"",
+""
+],
+"aire": {
+"Serbian Empire": 20.275396525637916,
+"Despotate of Arta": 1.128929710281227
+},
+"existe": {
+"Despotate of Arta": [
+1358,
+1415
+],
+"Serbian Empire": [
+1346,
+1458
+]
+}
+},
+{
+"x": "Trịnh lords",
+"y": "Đại Việt",
+"de": 1677,
+"a": 1682,
+"part": 0.7366446380217533,
+"deg2": 0.8811175576054691,
+"m": [
+"",
+""
+],
+"aire": {
+"Đại Việt": 1.1961229500993795,
+"Trịnh lords": 9.83603294747445
+},
+"existe": {
+"Trịnh lords": [
+1572,
+1786
+],
+"Đại Việt": [
+1527,
+1833
+]
+}
+},
+{
+"x": "Catalan Company",
+"y": "Duchy of Athens",
+"de": 1302,
+"a": 1313,
+"part": 1.0,
+"deg2": 0.8495373001096596,
+"m": [
+"",
+""
+],
+"aire": {
+"Duchy of Athens": 0.8495373001096596,
+"Catalan Company": 0.8495373001096596
+},
+"existe": {
+"Catalan Company": [
+1302,
+1362
+],
+"Duchy of Athens": [
+1205,
+1313
+]
+}
+},
+{
+"x": "Austrian Empire",
+"y": "Electorate of Salzburg",
+"de": 1804,
+"a": 1805,
+"part": 0.754162933238028,
+"deg2": 0.7844155279192278,
+"m": [
+"",
+""
+],
+"aire": {
+"Electorate of Salzburg": 1.0401141362799535,
+"Austrian Empire": 79.18901960304538
+},
+"existe": {
+"Austrian Empire": [
+1804,
+1866
+],
+"Electorate of Salzburg": [
+1803,
+1805
+]
+}
+},
+{
+"x": "Ottoman Empire",
+"y": "Qatar Dynasty",
+"de": 1873,
+"a": 1894,
+"part": 0.5848670638920501,
+"deg2": 0.7053970213637513,
+"m": [
+"",
+""
+],
+"aire": {
+"Qatar Dynasty": 1.2060809454196715,
+"Ottoman Empire": 237.1245611802333
+},
+"existe": {
+"Ottoman Empire": [
+1299,
+1922
+],
+"Qatar Dynasty": [
+1820,
+1904
+]
+}
+},
+{
+"x": "Brythons",
+"y": "Kingdom of Sussex",
+"de": 477,
+"a": 479,
+"part": 0.9408896386755748,
+"deg2": 0.681239862091403,
+"m": [
+"(Brythonic Kingdoms)",
+"(Anglo-Saxon England)"
+],
+"aire": {
+"Brythons": 21.603585635027752,
+"Kingdom of Sussex": 0.7240380105049696
+},
+"existe": {
+"Brythons": [
+439,
+1235
+],
+"Kingdom of Sussex": [
+477,
+771
+]
+}
+},
+{
+"x": "British Colonial Empire",
+"y": "Kelantan",
+"de": 1901,
+"a": 1904,
+"part": 0.9942534810540509,
+"deg2": 0.675519996211591,
+"m": [
+"(British Empire)",
+""
+],
+"aire": {
+"Kelantan": 0.6794243209442357,
+"British Colonial Empire": 817.7606702531393
+},
+"existe": {
+"British Colonial Empire": [
+1706,
+1996
+],
+"Kelantan": [
+1762,
+1904
+]
+}
+},
+{
+"x": "Caliphate of Córdoba",
+"y": "Taifa of Murcia",
+"de": 1011,
+"a": 1011,
+"part": 0.9836864519681713,
+"deg2": 0.6351442462231407,
+"m": [
+"",
+"(Taifas of Iberia)"
+],
+"aire": {
+"Caliphate of Córdoba": 34.60859525181031,
+"Taifa of Murcia": 0.64567753774827
+},
+"existe": {
+"Caliphate of Córdoba": [
+929,
+1071
+],
+"Taifa of Murcia": [
+1011,
+1249
+]
+}
+},
+{
+"x": "Kingdom of Kartli",
+"y": "Principality of Abkhazia",
+"de": 1463,
+"a": 1467,
+"part": 0.9107065275332752,
+"deg2": 0.6126853221553372,
+"m": [
+"",
+""
+],
+"aire": {
+"Kingdom of Kartli": 14.059183112651226,
+"Principality of Abkhazia": 0.6727582416860969
+},
+"existe": {
+"Kingdom of Kartli": [
+1463,
+1705
+],
+"Principality of Abkhazia": [
+1463,
+1829
+]
+}
+},
+{
+"x": "Nguyễn dynasty",
+"y": "Tây Sơn dynasty",
+"de": 1792,
+"a": 1793,
+"part": 0.8073545814137616,
+"deg2": 0.5618107762165891,
+"m": [
+"",
+""
+],
+"aire": {
+"Nguyễn dynasty": 0.6958662143624679,
+"Tây Sơn dynasty": 18.275250588787458
+},
+"existe": {
+"Nguyễn dynasty": [
+1791,
+1884
+],
+"Tây Sơn dynasty": [
+1775,
+1802
+]
+}
+},
+{
+"x": "Angevin Empire",
+"y": "Viking settlements",
+"de": 1177,
+"a": 1187,
+"part": 0.5670138879168561,
+"deg2": 0.531451553585193,
+"m": [
+"(Kingdom of England)",
+""
+],
+"aire": {
+"Angevin Empire": 46.076822083762565,
+"Viking settlements": 0.9372813698403136
+},
+"existe": {
+"Angevin Empire": [
+1147,
+1209
+],
+"Viking settlements": [
+793,
+1332
+]
+}
+},
+{
+"x": "County of Pallars",
+"y": "West Franks",
+"de": 870,
+"a": 874,
+"part": 1.0000000000000002,
+"deg2": 0.530340979802304,
+"m": [
+"",
+"(Carolingian Empire)"
+],
+"aire": {
+"West Franks": 82.70626914025405,
+"County of Pallars": 0.5303409798023039
+},
+"existe": {
+"County of Pallars": [
+870,
+1010
+],
+"West Franks": [
+843,
+989
+]
+}
+},
+{
+"x": "British Colonial Empire",
+"y": "French India",
+"de": 1811,
+"a": 1814,
+"part": 0.5952891512694927,
+"deg2": 0.5151321206794819,
+"m": [
+"(British Empire)",
+"(Kingdom of France)"
+],
+"aire": {
+"French India": 0.8653477382897525,
+"British Colonial Empire": 134.3112032184669
+},
+"existe": {
+"British Colonial Empire": [
+1706,
+1996
+],
+"French India": [
+1668,
+1847
+]
+}
+},
+{
+"x": "Caliphate of Córdoba",
+"y": "Taifa of Arcos",
+"de": 1011,
+"a": 1011,
+"part": 0.980122905115843,
+"deg2": 0.4859256344280386,
+"m": [
+"",
+"(Taifas of Iberia)"
+],
+"aire": {
+"Caliphate of Córdoba": 34.60859525181031,
+"Taifa of Arcos": 0.49578030662451045
+},
+"existe": {
+"Caliphate of Córdoba": [
+929,
+1071
+],
+"Taifa of Arcos": [
+1011,
+1071
+]
+}
+},
+{
+"x": "Duchy of Bavaria",
+"y": "Principality of Regensberg",
+"de": 1803,
+"a": 1805,
+"part": 0.607266051183495,
+"deg2": 0.4699555719056132,
+"m": [
+"",
+""
+],
+"aire": {
+"Duchy of Bavaria": 6.808262412225304,
+"Principality of Regensberg": 0.7738874435508478
+},
+"existe": {
+"Duchy of Bavaria": [
+1260,
+1805
+],
+"Principality of Regensberg": [
+1803,
+1813
+]
+}
+},
+{
+"x": "Duchy of Saint Sava",
+"y": "Serbian Empire",
+"de": 1448,
+"a": 1452,
+"part": 0.9913967733755912,
+"deg2": 0.30175652748279475,
+"m": [
+"",
+""
+],
+"aire": {
+"Serbian Empire": 8.116840924474673,
+"Duchy of Saint Sava": 0.3043751357545261
+},
+"existe": {
+"Duchy of Saint Sava": [
+1448,
+1474
+],
+"Serbian Empire": [
+1346,
+1458
+]
+}
+},
+{
+"x": "Ayyubid Sultanate",
+"y": "Zurayid dynasty",
+"de": 1171,
+"a": 1173,
+"part": 0.9526703440188774,
+"deg2": 0.26267765727608733,
+"m": [
+"",
+""
+],
+"aire": {
+"Zurayid dynasty": 0.2757277571672603,
+"Ayyubid Sultanate": 155.4122058322755
+},
+"existe": {
+"Ayyubid Sultanate": [
+1171,
+1249
+],
+"Zurayid dynasty": [
+1083,
+1173
+]
+}
+},
+{
+"x": "County of Edessa",
+"y": "Hamdanid Emirates",
+"de": 1098,
+"a": 1101,
+"part": 0.585039648020866,
+"deg2": 0.23470154464236498,
+"m": [
+"",
+""
+],
+"aire": {
+"Hamdanid Emirates": 0.4011720324192355,
+"County of Edessa": 1.7401161267553107
+},
+"existe": {
+"County of Edessa": [
+1098,
+1149
+],
+"Hamdanid Emirates": [
+936,
+1259
+]
+}
+},
+{
+"x": "Barghawata Conference",
+"y": "Taifa of Ceuta",
+"de": 1061,
+"a": 1065,
+"part": 1.0,
+"deg2": 0.14700649458973192,
+"m": [
+"",
+"(Taifas of Iberia)"
+],
+"aire": {
+"Barghawata Conference": 3.651315783564314,
+"Taifa of Ceuta": 0.14700649458973192
+},
+"existe": {
+"Barghawata Conference": [
+793,
+1065
+],
+"Taifa of Ceuta": [
+1061,
+1083
+]
+}
+},
+{
+"x": "Caliphate of Córdoba",
+"y": "Taifa of Morón",
+"de": 1010,
+"a": 1011,
+"part": 1.0,
+"deg2": 0.13047126511810347,
+"m": [
+"",
+"(Taifas of Iberia)"
+],
+"aire": {
+"Caliphate of Córdoba": 34.60859525181031,
+"Taifa of Morón": 0.13047126511810347
+},
+"existe": {
+"Caliphate of Córdoba": [
+929,
+1071
+],
+"Taifa of Morón": [
+1010,
+1065
+]
+}
+},
+{
+"x": "Isle of Man",
+"y": "Kingdom of Scotland",
+"de": 1344,
+"a": 1401,
+"part": 1.0,
+"deg2": 0.10569041325288708,
+"m": [
+"",
+""
+],
+"aire": {
+"Kingdom of Scotland": 12.631746027346708,
+"Isle of Man": 0.10569041325288708
+},
+"existe": {
+"Isle of Man": [
+1344,
+1401
+],
+"Kingdom of Scotland": [
+1286,
+1608
+]
+}
+},
+{
+"x": "Duchy of Naples",
+"y": "Kingdom of Sicily",
+"de": 1130,
+"a": 1136,
+"part": 0.9999903193812762,
+"deg2": 0.07452046551225067,
+"m": [
+"",
+""
+],
+"aire": {
+"Duchy of Naples": 0.07452118692344811,
+"Kingdom of Sicily": 8.43740187734329
+},
+"existe": {
+"Duchy of Naples": [
+763,
+1136
+],
+"Kingdom of Sicily": [
+1130,
+1384
+]
+}
+},
+{
+"x": "Byzantine Empire",
+"y": "Latin Empire",
+"de": 1210,
+"a": 1226,
+"part": 0.8380340677978442,
+"deg2": 0.05326723870530259,
+"m": [
+"",
+""
+],
+"aire": {
+"Latin Empire": 9.916557443841157,
+"Byzantine Empire": 0.06356213995604776
+},
+"existe": {
+"Byzantine Empire": [
+633,
+1467
+],
+"Latin Empire": [
+1204,
+1278
+]
+}
+},
+{
+"x": "Goguryeo",
+"y": "Unified Silla",
+"de": 674,
+"a": 681,
+"part": 0.9559883436093051,
+"deg2": 0.014442917665450887,
+"m": [
+"",
+""
+],
+"aire": {
+"Unified Silla": 15.199776264082175,
+"Goguryeo": 0.015107838669791818
+},
+"existe": {
+"Goguryeo": [
+-36,
+681
+],
+"Unified Silla": [
+668,
+935
+]
+}
+}
+]

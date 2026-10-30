@@ -1,0 +1,522 @@
+[
+{
+"x": "Communist Party of China",
+"y": "Republic of China",
+"de": 1943,
+"a": 1945,
+"part": 0.9804963099523261,
+"deg2": 170.9694431391955,
+"m": [
+"",
+""
+],
+"aire": {
+"Communist Party of China": 174.37030757158936,
+"Republic of China": 571.3359568136657
+},
+"existe": {
+"Communist Party of China": [
+1932,
+1949
+],
+"Republic of China": [
+1912,
+2024
+]
+}
+},
+{
+"x": "Federated Republic of Mexico",
+"y": "Second Mexican Empire",
+"de": 1864,
+"a": 1864,
+"part": 0.998956510397835,
+"deg2": 158.18871939517285,
+"m": [
+"",
+""
+],
+"aire": {
+"Federated Republic of Mexico": 158.35396010600513,
+"Second Mexican Empire": 178.53149576892974
+},
+"existe": {
+"Federated Republic of Mexico": [
+1823,
+1865
+],
+"Second Mexican Empire": [
+1864,
+1866
+]
+}
+},
+{
+"x": "Safavid Dynasty",
+"y": "Shaybanids",
+"de": 1511,
+"a": 1511,
+"part": 0.5004389871335636,
+"deg2": 86.12860441319476,
+"m": [
+"",
+""
+],
+"aire": {
+"Safavid Dynasty": 278.2136129465325,
+"Shaybanids": 172.1061040957779
+},
+"existe": {
+"Safavid Dynasty": [
+1501,
+1737
+],
+"Shaybanids": [
+1497,
+1511
+]
+}
+},
+{
+"x": "Kingdom of Norway",
+"y": "Nazi Germany",
+"de": 1940,
+"a": 1940,
+"part": 0.656679171446978,
+"deg2": 63.09188501059211,
+"m": [
+"",
+""
+],
+"aire": {
+"Kingdom of Norway": 96.07718312668658,
+"Nazi Germany": 228.95029170760228
+},
+"existe": {
+"Kingdom of Norway": [
+1814,
+2024
+],
+"Nazi Germany": [
+1933,
+1944
+]
+}
+},
+{
+"x": "Empire of Japan",
+"y": "French Indochina",
+"de": 1945,
+"a": 1945,
+"part": 0.9416392502440887,
+"deg2": 61.00009364531743,
+"m": [
+"",
+"(Vichy France)"
+],
+"aire": {
+"French Indochina": 64.78074658581318,
+"Empire of Japan": 569.3380193051248
+},
+"existe": {
+"Empire of Japan": [
+1868,
+1945
+],
+"French Indochina": [
+1860,
+1957
+]
+}
+},
+{
+"x": "Anti-Kuomintang Coalition",
+"y": "Republic of China",
+"de": 1930,
+"a": 1931,
+"part": 0.6427872296397551,
+"deg2": 34.522935827233596,
+"m": [
+"",
+""
+],
+"aire": {
+"Anti-Kuomintang Coalition": 53.70818559444888,
+"Republic of China": 810.225818163126
+},
+"existe": {
+"Anti-Kuomintang Coalition": [
+1930,
+1931
+],
+"Republic of China": [
+1912,
+2024
+]
+}
+},
+{
+"x": "Emirate of Nejd",
+"y": "Muhammad Ali dynasty",
+"de": 1840,
+"a": 1841,
+"part": 0.9201612409149869,
+"deg2": 33.411955732079385,
+"m": [
+"",
+""
+],
+"aire": {
+"Emirate of Nejd": 36.31097925713032,
+"Muhammad Ali dynasty": 238.01859655764292
+},
+"existe": {
+"Emirate of Nejd": [
+1824,
+1925
+],
+"Muhammad Ali dynasty": [
+1805,
+1865
+]
+}
+},
+{
+"x": "Karkota Dynasty",
+"y": "Turk Shahis",
+"de": 644,
+"a": 655,
+"part": 0.5508973837265224,
+"deg2": 11.467923068989762,
+"m": [
+"",
+""
+],
+"aire": {
+"Karkota Dynasty": 20.816804377278892,
+"Turk Shahis": 27.233005416339438
+},
+"existe": {
+"Karkota Dynasty": [
+592,
+859
+],
+"Turk Shahis": [
+561,
+874
+]
+}
+},
+{
+"x": "German Empire",
+"y": "Kingdom of Belgium",
+"de": 1915,
+"a": 1918,
+"part": 0.9494940885361033,
+"deg2": 3.7219114934792894,
+"m": [
+"",
+""
+],
+"aire": {
+"Kingdom of Belgium": 3.9198890634670533,
+"German Empire": 117.1538514234926
+},
+"existe": {
+"German Empire": [
+1871,
+1918
+],
+"Kingdom of Belgium": [
+1830,
+2024
+]
+}
+},
+{
+"x": "Kingdom of Axum",
+"y": "Sabaeans",
+"de": 247,
+"a": 274,
+"part": 0.5625529759520786,
+"deg2": 3.0381019625251944,
+"m": [
+"",
+""
+],
+"aire": {
+"Kingdom of Axum": 11.1593251943832,
+"Sabaeans": 5.4005615335754555
+},
+"existe": {
+"Kingdom of Axum": [
+-50,
+946
+],
+"Sabaeans": [
+-700,
+274
+]
+}
+},
+{
+"x": "British Colonial Empire",
+"y": "New Netherland",
+"de": 1799,
+"a": 1799,
+"part": 0.9804460955091526,
+"deg2": 2.0342867192599705,
+"m": [
+"(British Empire)",
+""
+],
+"aire": {
+"New Netherland": 2.0748583002960004,
+"British Colonial Empire": 90.81906543402252
+},
+"existe": {
+"British Colonial Empire": [
+1706,
+1996
+],
+"New Netherland": [
+1622,
+1802
+]
+}
+},
+{
+"x": "Almoravid Dynasty",
+"y": "Kingdom of Portugal",
+"de": 1139,
+"a": 1151,
+"part": 0.9944767787266341,
+"deg2": 1.639294423320945,
+"m": [
+"",
+""
+],
+"aire": {
+"Kingdom of Portugal": 1.6483988951657171,
+"Almoravid Dynasty": 42.56372633743297
+},
+"existe": {
+"Almoravid Dynasty": [
+1040,
+1205
+],
+"Kingdom of Portugal": [
+1139,
+1911
+]
+}
+},
+{
+"x": "New France",
+"y": "Spanish Empire",
+"de": 1619,
+"a": 1625,
+"part": 0.8076310213758233,
+"deg2": 1.2417930642124333,
+"m": [
+"(Kingdom of France)",
+"(Spanish Empire)"
+],
+"aire": {
+"New France": 1.5375747480538848,
+"Spanish Empire": 595.8166022997825
+},
+"existe": {
+"New France": [
+1609,
+1791
+],
+"Spanish Empire": [
+1516,
+1879
+]
+}
+},
+{
+"x": "Corsican Republic",
+"y": "Republic of Genoa",
+"de": 1755,
+"a": 1768,
+"part": 1.0,
+"deg2": 1.2222414420066343,
+"m": [
+"",
+""
+],
+"aire": {
+"Republic of Genoa": 1.5706439982750453,
+"Corsican Republic": 1.2222414420066343
+},
+"existe": {
+"Corsican Republic": [
+1755,
+1768
+],
+"Republic of Genoa": [
+1005,
+1794
+]
+}
+},
+{
+"x": "Kingdom of England",
+"y": "Viking settlements",
+"de": 1272,
+"a": 1325,
+"part": 0.8681458380476375,
+"deg2": 0.9503523513143435,
+"m": [
+"(Kingdom of England)",
+""
+],
+"aire": {
+"Kingdom of England": 29.86220359422333,
+"Viking settlements": 1.0946920547952856
+},
+"existe": {
+"Kingdom of England": [
+927,
+1706
+],
+"Viking settlements": [
+793,
+1332
+]
+}
+},
+{
+"x": "Trịnh lords",
+"y": "Đại Việt",
+"de": 1677,
+"a": 1682,
+"part": 0.7366446380217533,
+"deg2": 0.8811175576054691,
+"m": [
+"",
+""
+],
+"aire": {
+"Đại Việt": 1.1961229500993795,
+"Trịnh lords": 9.83603294747445
+},
+"existe": {
+"Trịnh lords": [
+1572,
+1786
+],
+"Đại Việt": [
+1527,
+1833
+]
+}
+},
+{
+"x": "Ottoman Empire",
+"y": "Qatar Dynasty",
+"de": 1873,
+"a": 1894,
+"part": 0.5848670638920501,
+"deg2": 0.7053970213637513,
+"m": [
+"",
+""
+],
+"aire": {
+"Qatar Dynasty": 1.2060809454196715,
+"Ottoman Empire": 237.1245611802333
+},
+"existe": {
+"Ottoman Empire": [
+1299,
+1922
+],
+"Qatar Dynasty": [
+1820,
+1904
+]
+}
+},
+{
+"x": "Nguyễn dynasty",
+"y": "Tây Sơn dynasty",
+"de": 1792,
+"a": 1793,
+"part": 0.8073545814137616,
+"deg2": 0.5618107762165891,
+"m": [
+"",
+""
+],
+"aire": {
+"Nguyễn dynasty": 0.6958662143624679,
+"Tây Sơn dynasty": 18.275250588787458
+},
+"existe": {
+"Nguyễn dynasty": [
+1791,
+1884
+],
+"Tây Sơn dynasty": [
+1775,
+1802
+]
+}
+},
+{
+"x": "British Colonial Empire",
+"y": "French India",
+"de": 1811,
+"a": 1814,
+"part": 0.5952891512694927,
+"deg2": 0.5151321206794819,
+"m": [
+"(British Empire)",
+"(Kingdom of France)"
+],
+"aire": {
+"French India": 0.8653477382897525,
+"British Colonial Empire": 134.3112032184669
+},
+"existe": {
+"British Colonial Empire": [
+1706,
+1996
+],
+"French India": [
+1668,
+1847
+]
+}
+},
+{
+"x": "Isle of Man",
+"y": "Kingdom of Scotland",
+"de": 1344,
+"a": 1401,
+"part": 1.0,
+"deg2": 0.10569041325288708,
+"m": [
+"",
+""
+],
+"aire": {
+"Kingdom of Scotland": 12.631746027346708,
+"Isle of Man": 0.10569041325288708
+},
+"existe": {
+"Isle of Man": [
+1344,
+1401
+],
+"Kingdom of Scotland": [
+1286,
+1608
+]
+}
+}
+]

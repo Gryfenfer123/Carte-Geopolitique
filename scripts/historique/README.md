@@ -26,3 +26,7 @@ Puis mettre à jour la version dans `SOURCE.md`, dans l'en-tête de `src/histori
 
 ## Registre des dates
 `python3 -I scripts/historique/generer_registre_dates.py <cliopatria.geojson> [dossier]` (hors ligne) relit `wikidata_dates_brut.json` et `corrections_dates_manuelles.json`, régénère `corrections_dates_wikidata.txt`, `corrections_dates_rapport.json` et `docs/sources/historique_dates_registre.csv`. Puis relancer `preparer_cliopatria.py` pour reconstruire les données.
+
+## Chevauchements (2026-10-30)
+- `audit/a4_chevauchements_corriges.py` : liste les entités qui se recouvrent encore (lecture seule). `preparer_cliopatria.py … --arret-apres-formes` écrit d'abord les contours corrigés.
+- `chevauchements_table.py` (classement manuel) + `audit/chevauchements_apres_passe*.json` → `generer_decisions_chevauchements.py` → `chevauchements_decisions.json` (lu par `corrections_formes.py`) et `docs/sources/historique_chevauchements.csv`.

@@ -1,0 +1,216 @@
+# (x, y) -> (action, cut, categorie, note)   action: R = retirer ; G = garder
+# categorie codes expliqués dans CAT
+CAT = {
+ 'IND': "Un État indépendant (ou un territoire rendu/retiré) est encore recouvert par la forme de son ancien maître : on retire cette zone au maître.",
+ 'DOUBLON': "Deux entités représentent le même territoire à la même époque (l'une est la forme générale, l'autre la forme précise) : on retire la zone en double à la forme générale ou périmée.",
+ 'PERIME': "La forme de l'entité est périmée à cette date (l'entité a perdu ce territoire, d'après la page citée) : on retire la zone perdue.",
+ 'DEMEMBRE': "Une entité « parapluie » (empire, royaume) recouvre des principautés ou États qui avaient leur propre existence : on retire de l'ensemble la zone de chaque État.",
+ 'VASSAL': "Un État vassal/tributaire est dessiné à l'intérieur de la forme de son suzerain : on retire la zone du vassal au suzerain (le lien de suzeraineté viendra dans la couche « suzerainetés »).",
+ 'ANNEXION': "Le territoire est annexé : l'annexant garde la zone, l'annexé est retiré à partir de la date d'annexion.",
+ 'OCCUPATION': "Occupation militaire ou revendication réelle des deux côtés à la date : chevauchement justifié, conservé.",
+ 'CONTESTE': "Territoire réellement disputé ou conflit en cours entre les deux États : chevauchement justifié, conservé.",
+ 'RELAIS': "Passage de relais entre deux États : l'ancien disparaît quand le nouveau apparaît ; le nouveau a la zone dès l'année D, l'ancien jusqu'à D-1 (règle de Martin).",
+ 'ENSEMBLE_PARTIE': "Un grand contour contient un contour bien plus petit (un État ou une province qui existait en propre) : on retire la zone du petit au grand.",
+ 'A_REVOIR': "Deux contours de taille proche se recouvrent sans que le motif soit évident : on retire la zone au plus ancien, et c'est signalé comme à contre-vérifier.",
+ 'FRONTIERE': "Deux voisins dont les contours se recouvrent sur une bande de frontière : on retire la bande au plus ancien ; classement automatique, à contre-vérifier.",
+ 'NONTRANCHE': "Je n'ai pas trouvé de source qui tranche : conservé en l'état et signalé à Martin (rien n'est supprimé sans source).",
+}
+T = {}
+def r(x,y,cut,cat,note=''): T[(x,y)]=('R',cut,cat,note)
+def g(x,y,cat,note=''): T[(x,y)]=('G',None,cat,note)
+
+r('Blue Horde','Golden Horde','Blue Horde','DOUBLON',"La Horde bleue est l'aile orientale de la Horde d'or, pas un État séparé sur 99 % du même territoire.")
+r('French Fifth Republic',"People's Democratic Republic of Algeria",'French Fifth Republic','IND')
+r('Free French','French Africa','French Africa','PERIME',"En 1943 l'Afrique équatoriale française est ralliée à la France libre ; la forme « Afrique française » (Vichy) est périmée.")
+r('Communist Party of China','Union of Soviet Socialist Republics','Communist Party of China','PERIME',"Le contour du PCC 1940-42 déborde sur le territoire soviétique ; on le coupe.")
+g('Communist Party of China','Republic of China','CONTESTE',"Guerre civile chinoise : les zones tenues par le PCC sont revendiquées par la République de Chine.")
+r('Assyrian Egypt','Neo-Assyrian Empire','Neo-Assyrian Empire','DOUBLON',"Même zone dessinée deux fois (l'empire et l'entité « Égypte assyrienne »). Limite : l'Égypte est en réalité indépendante dès ~656 av. J.-C. (XXVIe dynastie) ; les dates de « Égypte assyrienne » restent à corriger.")
+r('Bolivia','Gran Colombia','Gran Colombia','IND')
+r('Turks','Türgesh','Turks','DEMEMBRE',"Les Türgesh sont indépendants des Turcs orientaux à cette époque.")
+g('Kingdom of Norway','Nazi Germany','OCCUPATION',"Occupation allemande de la Norvège, avril 1940.")
+for e in ['Zambia','Republic of Botswana','Republic of Kenya','Rhodesia','Republic of Uganda','Malawi','Lesotho','Republic of The Gambia','Sultanate of Zanzibar']:
+    r('British East Africa',e,'British East Africa','IND')
+g('Empire of Japan','French Indochina','OCCUPATION',"Occupation japonaise de l'Indochine (mars-août 1945).")
+r('Kidarites','White Huns','White Huns','DOUBLON',"Les Kidarites sont la précision de la grande forme « Huns blancs ».")
+r('North Sea Empire','Old Kingdom of Norway','Old Kingdom of Norway','ANNEXION',"La Norvège est dans l'Empire de la mer du Nord de 1028 à 1035.")
+r('Republic of Iraq','United States of America','United States of America','IND',"Les troupes américaines en Irak ne font pas de l'Irak un territoire des États-Unis.")
+r('Japan','United States of America','United States of America','IND',"Fin de l'occupation américaine en 1952.")
+r('Emirate of Jabal Shammar','Emirate of Nejd','Emirate of Nejd','VASSAL')
+g('Anti-Kuomintang Coalition','Republic of China','CONTESTE',"Guerre des plaines centrales 1930 : conflit réel entre la coalition et le gouvernement de Nankin.")
+r('Emirate of Nejd','Muhammad Ali dynasty','Muhammad Ali dynasty','PERIME',"Retrait égyptien du Nedjd en 1840 (convention de Londres).") if False else g('Emirate of Nejd','Muhammad Ali dynasty','OCCUPATION',"Retrait égyptien du Nedjd en 1840-41 : occupation en cours.")
+for e in ['New Zealand','Dutch East Indies','English Colonial Empire','Guyana','Solomon Islands','Belize','Republic of Fiji','Commonwealth of The Bahamas','Sultanate of Brunei','Commonwealth of Dominica','Saint Lucia','Barbados','Antigua and Barbuda','Saint Kitts','Grenada']:
+    if e=='Dutch East Indies':
+        r('British Colonial Empire',e,'Dutch East Indies','OCCUPATION',"Les Britanniques occupent Java 1811-16 : on garde la zone aux Britanniques.")
+    elif e=='English Colonial Empire':
+        r('British Colonial Empire',e,'English Colonial Empire','DOUBLON',"L'Empire colonial anglais devient l'Empire colonial britannique en 1707 ; les deux formes se recouvrent 1709-12.")
+    else:
+        r('British Colonial Empire',e,'British Colonial Empire','IND')
+r('Communist Party of China','East Turkestan Republic','Communist Party of China','PERIME',"Le PCC n'est pas au Xinjiang en 1945.")
+r("Kievan Rus'",'Novgorod Republic',"Kievan Rus'",'DEMEMBRE')
+for e in ['Principality of Chernigov','Principality of Rostov-Suzdal','Principality of Smolensk','Principality of Kiev','Principality of Galicia-Volhynia','Principality of Polotsky','Principality of Pereyaslavl','Principality of Volhynia','Principality of Turov and Pinsk','Principality of Halych','Principality of Peremyshl','Principality of Minsk','Principality of Vitebsk','Principality of Drutsk','Principality of Terebovlia']:
+    r("Kievan Rus'",e,"Kievan Rus'",'DEMEMBRE')
+for e in ['Sultanate of Oman','United Arab Emirates','State of Kuwait','State of Qatar','Republic of Cyprus','Kingdom of Bahrain','Malta']:
+    r('Kingdom of Great Britain',e,'Kingdom of Great Britain','IND')
+r('British Cape Colony','Napoleonic Batavia Republic','British Cape Colony','PERIME',"Le Cap est rendu à la République batave en 1803 (paix d'Amiens) et repris par les Britanniques en 1806.")
+r('Himyarite Kingdom','Kingdom of Axum','Kingdom of Axum','PERIME',"Les Aksoumites quittent le Yémen vers 570 ; la forme d'Aksoum est périmée en 577-601.")
+r('Federal Republic of Germany','United States of America','United States of America','IND')
+r('Great Seljuk Empire','Hamdanid Emirates','Hamdanid Emirates','PERIME',"La dynastie hamdanide d'Alep s'éteint en 1004 ; sa forme en 1072-1125 est périmée.")
+r('Almohad Caliphate','Almoravid Dynasty','Almoravid Dynasty','PERIME',"Les Almohades prennent Marrakech en 1147 ; la forme almoravide 1147-51 est périmée.")
+r('British Empire','Mughal Empire','British Empire','VASSAL',"L'empereur moghol garde Delhi sous tutelle de la Compagnie des Indes.")
+r('Denmark-Norway','Kingdom of Iceland','Denmark-Norway','IND',"Union personnelle : l'Islande est un royaume souverain depuis 1918.")
+r('Ba\'athist Syria','United Arab Republic',"United Arab Republic",'IND',"Après la sortie de la Syrie de la RAU (1961), la forme de la RAU garde à tort la Syrie.")
+r('Republic of Syria','United Arab Republic','United Arab Republic','IND')
+r('Holy Roman Empire','Kingdom of Italy','Holy Roman Empire','DEMEMBRE',"Le royaume d'Italie est un royaume distinct au sein de l'Empire.")
+r('Kingdom of Germany','Kingdom of Italy','Kingdom of Germany','DEMEMBRE',"En 961 Otton Ier prend la couronne d'Italie.")
+r('Brandenburg-Prussia','Kingdom of Prussia','Brandenburg-Prussia','DOUBLON',"Le royaume de Prusse (1701) remplace le Brandebourg-Prusse.")
+r('Huns','Kingdom of Armenia','Huns','PERIME',"Les Huns n'ont pas dominé l'Arménie en 402-406 (raids seulement).")
+r('Republic of Vietnam','United States of America','United States of America','IND')
+r('Babylonia','Neo-Assyrian Empire','Neo-Assyrian Empire','VASSAL',"Babylone est un royaume vassal de l'Assyrie.")
+r('Netherlands Antilles','Republic of Suriname','Netherlands Antilles','IND',"Le Suriname est indépendant en 1975 ; les Antilles néerlandaises ne l'incluent pas.")
+g('Karkota Dynasty','Turk Shahis','NONTRANCHE')
+r('Wu','Yue','Wu','PERIME',"Yue est un État distinct de Wu jusqu'à sa conquête de Wu (473 av. J.-C.).")
+r('Republic of Korea','United States of America','United States of America','IND')
+r('Kingdom of Naples (Napoleonic)','Kingdom of Spain','Kingdom of Spain','PERIME',"Les couronnes de Naples et d'Espagne sont séparées depuis 1759.")
+r('Burgundian Kingdom','Western Roman Empire','Western Roman Empire','VASSAL',"Burgondes installés comme fédérés en Sapaudia (443).")
+r('Northern Liang','Western Liang','Northern Liang','PERIME')
+r('Sultanate of Brunei','Sultanate of Maguindanao','Sultanate of Brunei','PERIME',"Le sultanat de Maguindanao est un État distinct, pas une dépendance de Brunei.")
+r('Sultanate of Brunei','Sultanate of Sulu','Sultanate of Brunei','PERIME')
+r('Germiyanids','Timurid Empire','Timurid Empire','VASSAL')
+r('Bahrain','Emirate of Nejd','Emirate of Nejd','VASSAL')
+r('Majapahit','Sultanate of Palembang','Majapahit','PERIME')
+r('Abbasid Caliphate','Georgia','Abbasid Caliphate','PERIME',"Le royaume bagratide de Géorgie est restauré en 888.")
+r('Chola Empire','Kingdom of Polonnaruwa','Chola Empire','PERIME',"Les Chola sont chassés de Ceylan vers 1070.")
+r('Almoravid Dynasty','Taifa of Valencia','Almoravid Dynasty','PERIME',"Soulèvements des seconds taïfas, 1144-1151.")
+r('Germiyanids','Ottoman Empire','Germiyanids','ANNEXION',"Germiyan est légué aux Ottomans en 1429.")
+r('Old Kingdom of Norway','Viking settlements','Viking settlements','DOUBLON')
+r('Norse Greenland','Viking settlements','Viking settlements','DOUBLON')
+g('Dominican Republic','Spanish Empire','CONTESTE') if False else r('Dominican Republic','Spanish Empire','Spanish Empire','IND',"L'Espagne quitte Saint-Domingue en 1865.")
+r('Kingdom of Pajana','Sultanate of Malacca','Sultanate of Malacca','PERIME',"Malacca prise par les Portugais en 1511 ; la forme persiste en 1572-87.")
+g('German Empire','Kingdom of Belgium','OCCUPATION',"Occupation allemande de la Belgique, 1914-1918.")
+r('Mataram Sultanate','Sultanate of Malacca','Sultanate of Malacca','PERIME')
+r('Kingdom of Great Britain','Second Republic of Austria','Kingdom of Great Britain','IND',"La zone d'occupation britannique n'est pas un territoire du Royaume-Uni.")
+r('Kingdom of the Franks','Merovingian Empire','Kingdom of the Franks','DOUBLON')
+r('First French Empire','Kingdom of Sardinia','Kingdom of Sardinia','ANNEXION',"Le Piémont est annexé par la France en 1802.")
+r('French Consulate','Kingdom of Sardinia','Kingdom of Sardinia','ANNEXION')
+r('Ceylon','Kingdom of Polonnaruwa','Kingdom of Polonnaruwa','PERIME',"Le royaume de Polonnaruwa s'achève en 1232.")
+r('First French Empire','Papal States','Papal States','ANNEXION',"États pontificaux annexés par la France le 17 mai 1809.")
+r('French Directory','Kingdom of Sardinia','Kingdom of Sardinia','ANNEXION')
+g('Kingdom of Axum','Sabaeans','CONTESTE',"Guerres aksoumito-sabéennes au IIIe siècle.")
+r("Estado Novo",'Republic of Guinea-Bissau','Estado Novo','IND')
+r('Greek City-States','Roman Empire','Greek City-States','ANNEXION',"La Grèce est province romaine depuis 146 av. J.-C.")
+r('Equatorial Guinea','Francoist Spain','Francoist Spain','IND')
+r('Byzantine Empire','Ottoman Empire','Byzantine Empire','PERIME',"Constantinople est prise en 1453 ; la Morée en 1460.")
+r('Kingdom of the Isles','Viking settlements','Viking settlements','DOUBLON')
+r('Greek City-States','Roman Republic','Greek City-States','ANNEXION')
+g('British Colonial Empire','New Netherland','OCCUPATION',"Occupation britannique de la Guyane néerlandaise (1796-1802).") if False else g('British Colonial Empire','New Netherland','OCCUPATION',"Occupation britannique de la Guyane néerlandaise (1796-1802).")
+r('French Fifth Republic','Republic of Djibouti','French Fifth Republic','IND')
+r('Kingdom of the Isles','Old Kingdom of Norway','Kingdom of the Isles','VASSAL') if False else r('Kingdom of the Isles','Old Kingdom of Norway','Old Kingdom of Norway','VASSAL',"Le Royaume des Îles est vassal de la Norvège.")
+r('Duchy of Lorraine','Kingdom of France','Kingdom of France','PERIME',"La Lorraine n'est française qu'en 1766.")
+r("Kievan Rus'",'Principality of Terebovlia',"Kievan Rus'",'DEMEMBRE') if False else None
+r('Crown of Aragon','Republic of Pisa','Republic of Pisa','PERIME',"Pise perd la Sardaigne en 1326.")
+r('Almoravid Dynasty','Taifa of Córdoba','Almoravid Dynasty','PERIME')
+r('Almoravid Dynasty','Taifa of Dénia','Almoravid Dynasty','PERIME')
+r('Giudicato of Arborea','Republic of Pisa','Republic of Pisa','PERIME')
+r('Kingdom of Sweden','Norse Greenland','Kingdom of Sweden','PERIME')
+r('Byzantine Empire','Papal States','Byzantine Empire','PERIME',"Donation de Pépin 756 : l'exarchat de Ravenne passe aux papes.")
+r('Holy Roman Empire Minor States','House of Luxembourg','Holy Roman Empire Minor States','DEMEMBRE')
+g('New France','Spanish Empire','CONTESTE',"Revendications concurrentes en Amérique du Nord (Floride).")
+r('Kingdom of France','Republic of Genoa','Kingdom of France','PERIME')
+r('Holy Roman Empire','Republic of Pisa','Holy Roman Empire','DEMEMBRE')
+r('French First Republic','Republic of Genoa','French First Republic','PERIME')
+g('Corsican Republic','Republic of Genoa','CONTESTE',"Insurrection corse contre Gênes, 1755-68.")
+r('Byzantine Empire','Cyprus Condominium','Byzantine Empire','DOUBLON')
+r('Giudicato of Cagliari','Taifa of Dénia','Taifa of Dénia','PERIME')
+r('Grand Principality of Moscow','Tver','Grand Principality of Moscow','ANNEXION',"Tver est indépendante jusqu'en 1485.")
+r('Almoravid Dynasty','Taifa of Murcia','Almoravid Dynasty','PERIME')
+r('Kingdom of Mann','Viking settlements','Viking settlements','DOUBLON')
+r('Kingdom of Mann','Old Kingdom of Norway','Old Kingdom of Norway','VASSAL')
+r('Almoravid Dynasty','Taifa of Almería','Almoravid Dynasty','PERIME')
+g('Trịnh lords','Đại Việt','NONTRANCHE')
+r('Giudicato of Logudoro','Taifa of Dénia','Taifa of Dénia','PERIME')
+g('Ottoman Empire','Qatar Dynasty','OCCUPATION',"Garnison ottomane à Doha dès 1871.")
+r('Kelantan','Sultanate of Malacca','Sultanate of Malacca','PERIME')
+r('Almoravid Dynasty','Taifa of Silves','Almoravid Dynasty','PERIME')
+r('French First Republic','French India','French First Republic','PERIME')
+r('Estado Novo',"People's Republic of Angola",'Estado Novo','IND')
+r('Nguyễn dynasty','Tây Sơn dynasty','Nguyễn dynasty','PERIME') if False else g('Nguyễn dynasty','Tây Sơn dynasty','CONTESTE',"Guerre Nguyễn–Tây Sơn, 1792-93.")
+r('Cretan State','Ottoman Empire','Ottoman Empire','VASSAL',"État crétois autonome sous suzeraineté ottomane.")
+r('Majapahit','Sultanate of Malacca','Majapahit','PERIME')
+g('British Colonial Empire','French India','OCCUPATION',"Occupation britannique de Pondichéry.")
+r('French Directory','French India','French Directory','PERIME') 
+r('French Consulate','French India','French Consulate','PERIME')
+r('First French Empire','French India','First French Empire','PERIME')
+r('Almoravid Dynasty','Taifa of Algeciras','Almoravid Dynasty','PERIME')
+r('Giudicato of Gallura','Taifa of Dénia','Taifa of Dénia','PERIME')
+r('Almoravid Dynasty','Taifa of Badajoz','Almoravid Dynasty','PERIME')
+r('Grand Principality of Moscow','Principality of Vladimir-Suzdal','Principality of Vladimir-Suzdal','DOUBLON')
+r('Almoravid Dynasty','Taifa of Carmona','Almoravid Dynasty','PERIME')
+r('Kingdom of Dambadeniya','Kingdom of Polonnaruwa','Kingdom of Polonnaruwa','PERIME')
+r('Almoravid Dynasty','Taifa of Saltés and Huelva','Almoravid Dynasty','PERIME')
+r('Giudicato of Arborea','Taifa of Dénia','Taifa of Dénia','PERIME')
+r('Luxembourg','Netherlands','Netherlands','IND',"Séparation des couronnes néerlandaise et luxembourgeoise en 1890.")
+r('Comtat Venaissin','Kingdom of France','Kingdom of France','ANNEXION')
+r('County of Tripoli','Hamdanid Emirates','Hamdanid Emirates','PERIME')
+r('Byzantine Empire','Republic of Venice','Byzantine Empire','PERIME')
+r('Almoravid Dynasty','Taifa of Tejada','Almoravid Dynasty','PERIME')
+r('Danish India','Habsburg Monarchy','Habsburg Monarchy','PERIME')
+r('Almoravid Dynasty','Taifa of Niebla','Almoravid Dynasty','PERIME')
+r('Byzantine Empire','Duchy of the Archipelago','Byzantine Empire','PERIME')
+r('Byzantine Empire','Duchy of Naples','Byzantine Empire','PERIME')
+g('Isle of Man','Kingdom of Scotland','CONTESTE',"Île de Man disputée entre Écosse et Angleterre au XIVe s.")
+r('Byzantine Empire','Republic of Genoa','Byzantine Empire','PERIME')
+r('Gorkha Kingdom','Kathmandu','Gorkha Kingdom','PERIME')
+r('Republic of Ragusa','Serbian Despots','Serbian Despots','PERIME')
+r('Palau','United States of America','United States of America','IND')
+r('Byzantine Empire','House of Anjou-Sicily','Byzantine Empire','PERIME')
+r('Micronesia','United States of America','United States of America','IND')
+r('Kingdom of France','Principality of Orange','Kingdom of France','PERIME')
+
+r('British Gold Coast','Ghana','British Gold Coast','IND')
+
+FENETRES = {   # (cut, par) -> (de, a) : on ne coupe que sur ces années
+ ('Old Kingdom of Norway','North Sea Empire'): (1028,1034),
+ ('Grand Principality of Moscow','Tver'): (1482,1484),
+}
+EXTRA = [   # coupes supplémentaires sans paire d'origine (moitié complémentaire des fenêtres ci-dessus)
+ ('North Sea Empire','Old Kingdom of Norway',(1035,1039),'ANNEXION',"Après la mort de Knut (1035) l'Empire de la mer du Nord n'existe plus ; la Norvège redevient royaume."),
+ ('Tver','Grand Principality of Moscow',(1485,1486),'ANNEXION',"Moscou annexe Tver en 1485."),
+]
+
+# Décisions manuelles de la deuxième passe : (paire triée) -> (catégorie, entité à qui on retire, note)
+PASSE2 = {}
+def p2(a, b, cat, cut, note):
+    PASSE2[tuple(sorted((a, b)))] = (cat, cut, note)
+for e in ['Kingdom of England', 'Kingdom of Scotland', 'Kingdom of Alba', 'Duchy of Normandy', 'Angevin Empire']:
+    p2('Viking settlements', e, 'DEMEMBRE', 'Viking settlements', "« Viking settlements » est une forme générale ; %s est un État à part entière." % e)
+p2('British Africa', 'Mahdist State', 'IND', 'British Africa', "L'État mahdiste (1885-1898) est indépendant des Britanniques.")
+p2('Italian Africa', 'Majeerteen Sultanate', 'IND', 'Italian Africa', "Le sultanat des Majeerteen est protectorat italien seulement à partir de 1889.")
+p2('British Colonial Empire', 'Sultanate of Terengganu', 'VASSAL', 'British Colonial Empire', "Le Terengganu est sous influence siamoise puis britannique (traité de 1909) ; indépendant en 1901-04.")
+p2('British Colonial Empire', 'Kelantan', 'VASSAL', 'British Colonial Empire', "Idem pour le Kelantan (traité anglo-siamois de 1909).")
+p2('Republic of Cuba', 'United States of America', 'IND', 'United States of America', "Cuba est indépendante en 1902 ; les États-Unis n'ont qu'une occupation temporaire (1898-1902).")
+p2('Kievan Rus\'', 'Principality of Ryazan', 'DEMEMBRE', "Kievan Rus'", "Ryazan est une principauté à part entière.")
+p2('Kievan Rus\'', 'Kingdom of Hungary', 'PERIME', "Kievan Rus'", "La Hongrie n'est pas dans la Rus' ; la Galicie est disputée mais hongroise seulement en 1189-1190.")
+p2('Byzantine Empire', 'Latin Empire', 'PERIME', 'Byzantine Empire', "Constantinople est aux Latins de 1204 à 1261 ; la forme byzantine de 1210-26 est périmée sur cette zone.")
+p2('Kingdom of Bulgaria', "People's Republic of Bulgaria", 'RELAIS', 'Kingdom of Bulgaria', "La monarchie bulgare est abolie en septembre 1946.")
+p2('Federated Republic of Mexico', 'Second Mexican Empire', 'CONTESTE', None, "Intervention française : la République de Juárez et l'Empire de Maximilien se disputent le pays en 1864.")
+p2('Mexican Monarchists', 'Second Mexican Empire', 'DOUBLON', 'Mexican Monarchists', "Les monarchistes mexicains sont le parti de l'Empire (même zone).")
+p2('British Colonial Empire', 'Canada', 'IND', 'British Colonial Empire', "Le Canada est un dominion souverain (Statut de Westminster 1931) ; Terre-Neuve s'y joint en 1949.")
+p2('French Africa', 'Kingdom of Libya', 'IND', 'French Africa', "La Libye est indépendante le 24 décembre 1951 ; le Fezzan était sous administration française jusque-là.")
+p2('British Colonial Empire', 'Commonwealth of Australia', 'IND', 'British Colonial Empire', "L'Australie est un dominion souverain.")
+p2('British Colonial Empire', 'Empire of Japan', 'OCCUPATION', None, "Occupation japonaise de colonies britanniques (Malaisie, Birmanie, Hong Kong), 1941-45.")
+p2('Rashidun Caliphate', 'Sasanian Empire', 'CONTESTE', None, "Conquête arabe de la Perse : guerre en cours en 632.")
+p2('Denmark-Norway', 'Swedish Empire', 'CONTESTE', None, "Guerre dano-suédoise de 1657-58 (traité de Roskilde).")
+p2('Habsburg Monarchy', 'Ottoman Empire', 'CONTESTE', None, "Grande guerre turque, 1683-99.")
+p2('Kingdom of Portugal', 'Ottoman Empire', 'CONTESTE', None, "Rivalité ottomane-portugaise dans l'océan Indien et la mer Rouge.")
+p2('Golconda Sultanate', 'Mughal Empire', 'CONTESTE', None, "Conquête moghole de Golconde, 1686-87.")
+p2('Kingdom of England', 'Kingdom of France', 'CONTESTE', None, "Fin de la guerre de Cent Ans (1450-58).")
+p2('Great Seljuk Empire', 'Kingdom of Georgia', 'CONTESTE', None, "Guerres géorgio-seldjoukides.")
+p2("People's Republic of China", 'Republic of China', 'CONTESTE', None, "Revendications concurrentes depuis 1949 (Taïwan et îles).")
+for e in ['French Third Republic', 'Second French Empire', 'French Fourth Republic', 'French Fifth Republic', 'Kingdom of Sardinia', 'Nazi Germany']:
+    for m in ['Kingdom of Monaco', 'Principality of Monaco']:
+        p2(m, e, 'DEMEMBRE', e, "Monaco est un État à part entière (protectorat sarde, puis français, mais principauté distincte).")
+p2('Danish Gold Coast', 'English Colonial Empire', 'DEMEMBRE', 'English Colonial Empire', "La Côte-de-l'Or danoise (forts d'Osu, etc.) est une colonie distincte.")
+p2('British Colonial Empire', 'Danish Gold Coast', 'DEMEMBRE', 'British Colonial Empire', "Idem (cédée aux Britanniques en 1850).")
+p2('Danish Gold Coast', 'Swedish Empire', 'DEMEMBRE', 'Swedish Empire', "Idem.")
+p2('French Fifth Republic', 'Republic of Cabo Verde', 'IND', 'French Fifth Republic', "Le Cap-Vert est indépendant depuis 1975.")
+p2('British East Africa', 'Tanzania', 'IND', 'British East Africa', "La Tanzanie est indépendante (Tanganyika 1961, union 1964).")
