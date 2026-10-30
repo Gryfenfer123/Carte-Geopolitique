@@ -52,6 +52,9 @@ class Cote:
                 if not morceau.is_empty:
                     self.cases.append((b, morceau))
         self.arbre = STRtree([b for b, _ in self.cases])
+        # lignes de côte seules (sans les bords artificiels des cases), pour combler les écarts (voir « combler »)
+        cote = terre.boundary
+        self.cotes = [cote.intersection(b) for b, _ in self.cases]
 
     def terre_autour(self, geom):
         idx = self.arbre.query(geom)
@@ -59,7 +62,27 @@ class Cote:
             return None
         return shapely.union_all([self.cases[i][1] for i in idx])
 
-    def caler(self, geom, tol=None):
+    def combler(self, geom, d):
+        """Ajoute à la forme la terre située à moins de d degrés d'elle ET à moins de d degrés de la côte, mais seulement
+        les morceaux qui TOUCHENT la forme (on ne saute jamais un détroit : pas de bande sur la rive d'en face).
+        Raison (Martin, 2026-10-30) : après simplification, le contour s'arrête parfois à quelques km de la côte et
+        laisse un liseré de terre vide ; le long d'une côte, la frontière doit suivre la côte. On n'ajoute rien à l'intérieur
+        des terres (hors bande côtière), donc les frontières terrestres ne bougent pas."""
+        zone = geom.buffer(d)
+        idx = self.arbre.query(zone)
+        if len(idx) == 0:
+            return geom
+        terre = shapely.union_all([self.cases[i][1] for i in idx])
+        lignes = shapely.union_all([self.cotes[i] for i in idx])
+        if lignes.is_empty:
+            return geom
+        ajout = terre.intersection(zone).intersection(lignes.buffer(d)).difference(geom)
+        gardes = [p for p in shapely.get_parts(ajout) if p.geom_type == "Polygon" and not p.is_empty and p.intersects(geom)]
+        if not gardes:
+            return geom
+        return shapely.make_valid(geom.union(shapely.union_all(gardes)))
+
+    def caler(self, geom, tol=None, comble=0.0):
         """Retourne (nouvelle_geometrie, part_retiree). La forme d'origine est rendue si on ne doit pas toucher.
         tol : tolérance (degrés) de re-simplification du résultat, pour limiter le nombre de sommets."""
         if geom.is_empty:
@@ -67,8 +90,9 @@ class Cote:
         terre = self.terre_autour(geom)
         if terre is None:
             return geom, 0.0
-        coupe = geom.intersection(terre)
         a0 = geom.area
+        forme = self.combler(geom, comble) if comble > 0 else geom
+        coupe = forme.intersection(terre)
         if coupe.is_empty or coupe.area < (1 - PERTE_MAX) * a0:
             return geom, 0.0
         import math

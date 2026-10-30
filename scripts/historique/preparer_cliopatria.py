@@ -117,6 +117,7 @@ def simplifier(geom):
 
 
 COTE = None  # trait de côte réel (objet Cote), fixé dans main() ; hérité par les processus enfants (fork)
+COMBLER = True  # combler les liserés de terre vide entre le contour et la côte (--sans-comblage pour désactiver)
 FACTEUR_COTE = 0.5  # tolérance de re-simplification après calage = FACTEUR_COTE × tolérance de la forme
 
 
@@ -130,7 +131,8 @@ def preparer_trace(geometrie_geojson):
     lisse = simplifier(geom)
     if COTE is not None:
         # on ne fait que RETIRER ce qui est en pleine mer (voir caler_cotes.py)
-        cale, _ = COTE.caler(lisse, tol=max(0.004, FACTEUR_COTE * tolerance(geom)))
+        d_comble = min(0.12, max(0.02, 2 * tolerance(geom))) if COMBLER else 0.0   # voir Cote.combler (écarts à la côte)
+        cale, _ = COTE.caler(lisse, tol=max(0.004, FACTEUR_COTE * tolerance(geom)), comble=d_comble)
         if not cale.is_empty:
             lisse = cale
     simple = shapely.set_precision(lisse, pas)
@@ -165,6 +167,8 @@ def main():
         os.path.dirname(os.path.abspath(__file__)), "..", "..", "public", "data", "historique"
     )
     appliquer_dates = "--sans-dates" not in options
+    global COMBLER
+    COMBLER = "--sans-comblage" not in options
     # --debut -700 : la carte commence à cette année (décision de Martin, 2026-10-28). Les lignes qui finissent avant sont
     # écartées, celles qui la traversent sont raccourcies. Défaut : tout garder (-3400). Les données complètes sont
     # sauvegardées sur la branche GitHub « sauvegarde-historique-donnees-completes ».
