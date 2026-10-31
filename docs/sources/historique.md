@@ -48,3 +48,14 @@ Une ligne par décision dans `docs/sources/historique_chevauchements.csv` (entit
 - Pour chaque paire : article Wikipédia (en) de chaque entité (CC BY-SA 4.0, fiabilité bonne, classement à contre-vérifier sur la page) et dates Wikidata de naissance/fin (CC0, `wikidata_dates_brut.json`).
 - Le « contrôle des dates » compare la naissance Wikidata du nouvel État (ou la fin de l'ancien) à l'année du recouvrement ; « ✘ NON CONFIRMÉ » = Wikidata ne l'appuie pas (souvent l'identifiant renvoie à l'État moderne) : à regarder en priorité.
 - Fond de carte : NASA GIBS, Blue Marble Shaded Relief + Bathymetry (image du domaine public, usage libre avec mention) ; Esri World Imagery (conditions Esri, mention affichée).
+
+## Îles ajoutées (2026-10-31)
+| Date | Ce qui a été fait | Source | Lien précis | Licence | Fiabilité |
+|---|---|---|---|---|---|
+| 2026-10-31 | Arctique canadien rattaché au Canada dès 1880 (décret du 31 juillet 1880, en vigueur le 1er septembre) | Archives canadiennes, « Transfer of the Arctic Territories » | https://canadianmysteries.ca/sites/franklin/archive/text/TransferTerritories_en.htm | Lecture, non reproduit | Bonne |
+| 2026-10-31 | Tahiti et Moorea à la France dès 1880 (annexion le 29 juin 1880) ; seule la date de Tahiti est sourcée | Hérodote.net, « 29 juin 1880 » | https://www.herodote.net/29_juin_1880-evenement-18800629.php | Lecture, non reproduit | Bonne |
+| 2026-10-31 | Dodécanèse : Italie 1912–1946, Grèce dès 1947 | Encyclopædia Britannica, « Dodecanese » | https://www.britannica.com/place/Dodecanese | Lecture, non reproduit | Élevée |
+| 2026-10-31 | Svalbard : souveraineté norvégienne effective en 1925 (traité de 1920) | Storting, « The Svalbard Treaty » | https://stortinget.no/en/In-English/About-the-Storting/historical-highlights/the-svalbard-treaty/ | Lecture, non reproduit | Élevée |
+| 2026-10-31 | Contours des îles | Natural Earth 10 m, terres émergées | https://github.com/nvkelso/natural-earth-vector | Domaine public | Élevée |
+
+Limites : trou Tahiti 1940-1944 (Vichy exclu, ralliement non sourcé) ; l'Arctique est étiqueté « British Colonial Empire » jusqu'en 1931 car Cliopatria ne dessine un Canada qu'à partir de 1932 ; autres archipels non ajoutés faute de dates sourcées.
