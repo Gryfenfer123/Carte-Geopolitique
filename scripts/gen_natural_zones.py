@@ -18,10 +18,12 @@ pris s'il n'est pas sourcé. Ce script ne garde donc QUE ce qui a une source :
 Natural Earth : https://github.com/nvkelso/natural-earth-vector (version figée v5.1.2),
 domaine public (https://www.naturalearthdata.com/about/terms-of-use/).
 
-Sélection des volcans : tous ceux du GVP ayant connu au moins une éruption d'indice
-d'explosivité VEI >= 5, plus la liste d'origine du projet (Etna, Vésuve, Fuji, Krakatoa,
-Popocatépetl, Merapi, Pinatubo, Erebus, Stromboli, Kilauea, Cotopaxi, Nyiragongo,
-St Helens, Eyjafjallajökull, Ol Doinyo Lengai, Yellowstone).
+SÉLECTION (2026-11-01, demande de Martin : « entre-deux », seulement les grands points
+d'intérêt géopolitiques / géostratégiques) : POLY_MAP est le CATALOGUE complet des
+entités sourcées disponibles ; seules celles dont le NAME est dans SELECTION sont écrites
+dans le fichier. Les autres restent « en réserve » (à ajouter sur demande, sans rien
+retélécharger). Volcans : la liste d'origine du projet + GVP_EXTRA ; la règle
+« VEI >= 5 » (102 volcans) est désactivée (GVP_MIN_VEI = None).
 
 NON couvert (pas de source exploitable à ce jour) : forêts, fosses océaniques,
 Antarctique (la projection de la carte ne l'affiche pas correctement), îles et
@@ -48,7 +50,7 @@ GVP_FILES = {
     "volcano.csv": "3ab7c7b02f813d68512a360d1f2da23098409b564a70f0e84610db8fdad9f8f8",
     "eruptions.csv": "460d4f5afcd23465ff30a50973d04ffb63cc4cabb845cdf40db44bf27005db1f",
 }
-GVP_MIN_VEI = 5
+GVP_MIN_VEI = None  # règle « VEI >= 5 » désactivée depuis le 2026-11-01 (trop de volcans)
 
 OUT = "public/data/raw/NATURAL_FEATURES.json"
 COORD_DECIMALS = 3  # ~110 m : largement sous la précision de la source à l'échelle de la carte
@@ -268,6 +270,34 @@ POLY_MAP = [
 ]
 MULTI_OK = {"GREAT RIFT VALLEY"}  # NAME présent plusieurs fois dans Natural Earth
 
+# Zones réellement affichées (NAME Natural Earth). Critère : grands ensembles naturels à enjeux
+# géopolitiques/géostratégiques (frontières et barrières, eau, ressources, grandes populations,
+# conflits, couloirs d'invasion). Tout le reste de POLY_MAP est en réserve.
+SELECTION = {
+    # déserts
+    "SAHARA", "GOBI DESERT", "RUB’ AL KHALI", "SYRIAN DESERT", "KALAHARI DESERT", "NAMIB DESERT",
+    "DESIERTO DE ATACAMA", "TAKLIMAKAN DESERT", "THAR DESERT", "GARAGUM DESERT", "QIZILQUM DESERT",
+    "Negev Desert", "SONORAN DESERT", "CHIHUAHUAN DESERT",
+    # massifs
+    "HIMALAYAS", "KARAKORAM RA.", "HINDU KUSH", "PAMIRS", "TIAN SHAN", "ALPS", "PYRENEES",
+    "CARPATHIAN MOUNTAINS", "CAUCASUS MTS.", "URAL MOUNTAINS", "ALTAY MOUNTAINS", "ZAGROS MOUNTAINS",
+    "ATLAS MOUNTAINS", "ANDES", "ROCKY MOUNTAINS", "APPALACHIAN MTS.", "DRAKENSBERG",
+    "KJØLEN MOUNTAINS", "ETHIOPIAN HIGHLANDS",
+    # plateaux
+    "PLATEAU OF TIBET", "ALTIPLANO",
+    # plaines et steppes
+    "SAHEL", "NORTHERN EUROPEAN PLAIN", "PONTIC STEPPE", "KAZAKH STEPPE", "NORTH CHINA PLAIN",
+    "GANGES PLAIN", "WESTERN SIBERIAN PLAIN", "GREAT PLAINS", "PAMPAS",
+    # bassins, deltas, vallée
+    "AMAZON BASIN", "CONGO BASIN", "Ganges Delta", "Niger Delta", "GREAT RIFT VALLEY",
+}
+# Volcans ajoutés à la liste d'origine : nom GVP exact -> nom affiché
+GVP_EXTRA = {
+    "Tambora": "Tambora",
+    "Santorini": "Santorin",
+    "Campi Flegrei": "Champs Phlégréens",
+}
+
 # nom affiché, type, name exact dans la couche de points Natural Earth
 POINT_MAP = [
     ("Kilimandjaro", M, "Mount Kilimanjaro"),
@@ -414,7 +444,11 @@ def main():
         pts_by_name.setdefault(ft["properties"]["name"], []).append(ft)
 
     zones = []
+    known = {t[2] for t in POLY_MAP}
+    assert SELECTION <= known, f"SELECTION : noms inconnus {sorted(SELECTION - known)}"
     for fr, typ, ne_name, cls in POLY_MAP:
+        if ne_name not in SELECTION:
+            continue  # en réserve
         found = by_name.get(ne_name, [])
         want = 2 if ne_name in MULTI_OK else 1
         assert len(found) == want, f"{ne_name}: {len(found)} correspondance(s) (attendu {want})"
@@ -470,16 +504,18 @@ def main():
         names_count[r["volcano_name"]] = names_count.get(r["volcano_name"], 0) + 1
     by_vname = {r["volcano_name"]: r for r in volcanoes}
     originals = set()
-    for gname in GVP_ORIGINAL:
+    for gname in list(GVP_ORIGINAL) + list(GVP_EXTRA):
         assert names_count.get(gname) == 1, f"volcan {gname}: {names_count.get(gname)} entrée(s) GVP"
         originals.add(by_vname[gname]["volcano_number"])
     used = set(z["name"] for z in out)
     vol_out = []
     for r in volcanoes:
         n = r["volcano_number"]
-        if not (n in originals or max_vei.get(n, -1) >= GVP_MIN_VEI):
+        by_rule = GVP_MIN_VEI is not None and max_vei.get(n, -1) >= GVP_MIN_VEI
+        if not (n in originals or by_rule):
             continue
-        fr = GVP_ORIGINAL.get(r["volcano_name"]) or gvp_display_name(r["volcano_name"])
+        fr = (GVP_ORIGINAL.get(r["volcano_name"]) or GVP_EXTRA.get(r["volcano_name"])
+              or gvp_display_name(r["volcano_name"]))
         assert fr not in used, f"nom en double : {fr}"
         used.add(fr)
         elev = r["elevation"]
