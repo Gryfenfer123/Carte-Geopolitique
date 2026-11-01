@@ -185,8 +185,6 @@ def main():
         args = [a for a in args if a != str(debut_carte)]
     if terres:
         print("Trait de côte réel :", terres)
-        lacs = sys.argv[sys.argv.index("--lacs") + 1] if "--lacs" in sys.argv else None  # lacs Natural Earth 10 m (rives suivies)
-        COTE = Cote(terres, lacs)
     os.makedirs(dossier_sortie, exist_ok=True)
 
     print("Lecture de", source)
@@ -252,14 +250,20 @@ def main():
             print("Forme corrigée :", r["id"], "—", len(r["lignes"]), "ligne(s)")
         if terres:  # îles sourcées absentes de Cliopatria (voir iles.py) ; elles ne chevauchent aucune autre ligne
             from shapely.geometry import shape as _shape
+            import gc
             with open(terres, encoding="utf8") as f:
-                _terres = [_shape(x["geometry"]) for x in json.load(f)["features"]]
+                _donnees = json.load(f)["features"]
+            _terres = [_shape(x["geometry"]) for x in _donnees]
+            del _donnees
+            gc.collect()
             rapport_iles = iles.appliquer(entites, dates, iles.lire_regles(os.path.join(d, "iles_manuelles.json")), _terres)
             with open(os.path.join(d, "iles_rapport.json"), "w", encoding="utf8") as f:
                 json.dump(rapport_iles, f, ensure_ascii=False, indent=0)
             for r in rapport_iles:
                 print("Îles ajoutées :", r["id"], "—", len(r["lignes"]), "ligne(s)")
-            rapport_c = iles_completees.completer(entites, dates, iles_completees.charger_iles(terres))
+            rapport_c = iles_completees.completer(entites, dates, iles_completees.petites_iles(_terres))
+            del _terres
+            gc.collect()
             with open(os.path.join(d, "iles_completees_rapport.json"), "w", encoding="utf8") as f:
                 json.dump(rapport_c, f, ensure_ascii=False, indent=0)
             print("Îles complétées :", rapport_c["iles_completees"], "morceau(x) sur", rapport_c["lignes_modifiees"], "ligne(s),", rapport_c["km2_ajoutes"], "km² de terre ajoutés", flush=True)
@@ -293,6 +297,9 @@ def main():
     ENTITES[:] = [ft for ft in entites]
 
     # Les tracés sont calculés en parallèle (le calage sur la côte est coûteux).
+    if terres:  # la côte (3 niveaux de détail, plusieurs Go) n'est construite qu'ici, pour ne pas dépasser la mémoire de la machine
+        lacs = sys.argv[sys.argv.index("--lacs") + 1] if "--lacs" in sys.argv else None  # lacs Natural Earth 10 m (rives suivies)
+        COTE = Cote(terres, lacs)
     print("Calcul des tracés…")
     with multiprocessing.get_context("fork").Pool(2) as pool:
         # Reprise après interruption (la machine de travail peut être arrêtée en cours de calcul) : les tracés déjà

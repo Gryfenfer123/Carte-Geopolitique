@@ -26,6 +26,11 @@ def _km2(g):
     return g.area * 111.32 ** 2 * math.cos(math.radians((y0 + y1) / 2))
 
 
+def petites_iles(polys):
+    """Garde les polygones de terre de moins de MAX_KM2 (îles)."""
+    return [make_valid(p) for p in polys if _km2(p) <= MAX_KM2]
+
+
 def charger_iles(chemin_terres):
     with open(chemin_terres, encoding="utf8") as f:
         polys = [make_valid(shape(x["geometry"])) for x in json.load(f)["features"]]
