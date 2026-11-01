@@ -59,3 +59,9 @@ Une ligne par décision dans `docs/sources/historique_chevauchements.csv` (entit
 | 2026-10-31 | Contours des îles | Natural Earth 10 m, terres émergées | https://github.com/nvkelso/natural-earth-vector | Domaine public | Élevée |
 
 Limites : trou Tahiti 1940-1944 (Vichy exclu, ralliement non sourcé) ; l'Arctique est étiqueté « British Colonial Empire » jusqu'en 1931 car Cliopatria ne dessine un Canada qu'à partir de 1932 ; autres archipels non ajoutés faute de dates sourcées.
+
+## Précision des côtes et des lacs (2026-11-01)
+| Date | Ce qui a été fait | Source | Lien précis | Licence | Fiabilité |
+|---|---|---|---|---|---|
+| 2026-11-01 | Rives des grands lacs (≥ 1 000 km²) suivies | Natural Earth 10 m, lacs (ne_10m_lakes) | https://github.com/nvkelso/natural-earth-vector/blob/master/geojson/ne_10m_lakes.geojson | Domaine public | Élevée |
+| 2026-11-01 | Trois carrés « Allemagne nazie » près de Monaco retirés (mal placés) | Cliopatria v0.2.1 ; position de Monaco : Natural Earth 10 m | https://github.com/nvkelso/natural-earth-vector | CC BY 4.0 / domaine public | Élevée pour la position ; l'occupation allemande de Monaco (1943-44) n'est pas dessinée, faute de contour |

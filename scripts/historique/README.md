@@ -30,3 +30,5 @@ Puis mettre à jour la version dans `SOURCE.md`, dans l'en-tête de `src/histori
 ## Chevauchements (2026-10-30)
 - `audit/a4_chevauchements_corriges.py` : liste les entités qui se recouvrent encore (lecture seule). `preparer_cliopatria.py … --arret-apres-formes` écrit d'abord les contours corrigés.
 - `chevauchements_table.py` (classement manuel) + `audit/chevauchements_apres_passe*.json` → `generer_decisions_chevauchements.py` → `chevauchements_decisions.json` (lu par `corrections_formes.py`) et `docs/sources/historique_chevauchements.csv`.
+
+`--lacs <ne_10m_lakes.geojson>` : traite les lacs ≥ 1 000 km² comme de l'eau (rives suivies). Commande complète 2026-11-01 : `... --terres terres_10m.geojson --lacs lacs_10m.geojson --debut -700` (≈ 2 h 15). `parties_retirees.json` : parties de contours mal placées retirées. `audit/a5_chevauchements_donnees.py` : audit des données finales.

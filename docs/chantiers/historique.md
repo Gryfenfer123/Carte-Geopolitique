@@ -113,7 +113,13 @@ clavier, bornes (999999 → 2024, -99999 → -3400, champ vide ignoré), lecture
 - Données régénérées (12 502 lignes, 10 109 tracés) ; tests, vérification des données, check:repo et build passent ; aucun chevauchement nouveau avec les îles (audit à 15 %).
 - **Non vérifié** : rendu visuel sur le site en ligne ; trou Tahiti 1940-1944 (Vichy exclu, non sourcé) ; autres archipels (Polynésie hors Tahiti, Aléoutiennes, Galápagos…) en attente de dates sourcées.
 
-## 2026-11-01 — retours de Martin (précision des côtes/lacs, Monaco) — en cours
+## 2026-11-01 — retours de Martin (précision des côtes/lacs, Monaco) 
 - Retour : contours qui ne suivent pas les rives des Grands Lacs ni les côtes (Svalbard) ; fond encore trop sombre ; « Troisième Reich autour de Monaco ».
 - Monaco : 3 carrés de ≈ 45 km² « Nazi Germany » (1936-1943) de Cliopatria sont à ≈ 20 km à l'ouest de Monaco ; règle de retrait dans `parties_retirees.json` (appliquée à la prochaine régénération).
-- Précision : `Cote` sait maintenant traiter les grands lacs (Natural Earth 10 m) comme de l'eau ; réglages de simplification rendus paramétrables. **Pas encore activé ni régénéré** (essai de mesure en cours).
+- Précision : `Cote` sait maintenant traiter les grands lacs (Natural Earth 10 m) comme de l'eau ; réglages de simplification rendus paramétrables. Activé et régénéré le 2026-11-01 :
+- Contours plus fins : simplification max 0,03° (avant 0,08°), coordonnées au 0,005° (échelle 200, lue dans `index.json` champ `echelle`), côte Natural Earth moins simplifiée, comblage des liserés jusqu'à 0,15° le long des côtes ET des rives des lacs ≥ 1 000 km². Données ×2,2 (59 Mo, 126 morceaux).
+- Mesure sur 5 cas (États-Unis 1900, Canada 1950, Norvège 1950, Russie 1900, Italie 1930) : surface de forme en pleine eau divisée par 3,5 à 10 (ex. Russie 32,6 → 2,8 deg², Canada 28,1 → 4,2).
+- Audit a5 (`audit/a5_chevauchements_donnees.py`, 2 317 paires >0,005 deg²) vs ancienne version (3 293) : recouvrements >0,1 deg² passés de 557 à 168 ; les 6 nouveaux >0,1 sont des lisières ≤ 0,16 deg² (Paraguay/Brésil, Zambie/Rhodésie, Khazarie/Magyars…).
+- Fond « Relief clair » : NASA, luminosité 1,45 (testé côte à côte dans le navigateur avec les autres fonds).
+
+**Non vérifié** (2026-11-01) : rendu visuel en ligne (rives des Grands Lacs, Svalbard) ; les frontières terrestres restent celles de Cliopatria (aucune source pour les corriger) ; lisières ≤ 0,16 deg² pas relues ; recouvrement de l'Arctique canadien avec le contour principal de l'Empire britannique (même nom, même couleur).
