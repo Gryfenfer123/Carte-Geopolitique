@@ -29,41 +29,49 @@ from shapely import STRtree, make_valid
 from shapely.geometry import box, shape
 
 MARGE = 0.001          # degrés (≈ 0,5 km)
-SIMPLIF_TERRE = 0.0007  # degrés (≈ 0,4 km) : inférieur à la grille de sortie (0,01°)
+SIMPLIF_TERRE = 0.0012  # degrés (≈ 0,4 km) : inférieur à la grille de sortie (0,01°)
 PERTE_MAX = 0.6        # au-delà, l'entité est considérée comme maritime
 PETITE_PARTIE_KM2 = 3000
 MICRO_ETAT_KM2 = 30000  # en dessous, si le calage retirerait plus de 30 %, on garde la forme (îles/micro-États restent visibles)
 LAC_MIN_KM2 = 1000     # seuls les lacs plus grands sont traités comme de l'eau (Natural Earth 10 m, domaine public)
-CASE = 10.0            # taille (degrés) des cases de pré-découpage de la terre
+CASE = 5.0            # taille (degrés) des cases de pré-découpage de la terre
 
 
 class Cote:
     def __init__(self, chemin_terre, chemin_lacs=None):
+        """chemin_terre : GeoJSON de polygones de terre DISJOINTS (ex. GSHHG converti par gshhg_vers_terres.py, lacs déjà retirés)
+        ou Natural Earth (alors `chemin_lacs` permet de retirer les grands lacs). Chaque case de CASE degrés est construite
+        séparément (pas d'union mondiale : trop lent avec une côte à 100 m)."""
         with open(chemin_terre, encoding="utf8") as f:
             data = json.load(f)
-        terre = shapely.union_all([make_valid(shape(f["geometry"])) for f in data["features"]])
+        polys = [make_valid(shape(f["geometry"])) for f in data["features"]]
         if chemin_lacs:
-            # les grands lacs sont de l'EAU (décision de Martin, 2026-11-01 : les contours doivent suivre les rives des lacs) :
-            # on les retire de la terre, ce qui retire aussi des formes ce qui est dans le lac et comble les rives
             with open(chemin_lacs, encoding="utf8") as f:
                 lacs = [make_valid(shape(x["geometry"])) for x in json.load(f)["features"]]
-            lacs = [l for l in lacs if l.area * 12000 >= LAC_MIN_KM2]   # ≈ 12 000 km² par degré² à moyenne latitude
+            lacs = [l for l in lacs if l.area * 12000 >= LAC_MIN_KM2]
             if lacs:
-                terre = terre.difference(shapely.union_all(lacs))
-        terre = shapely.union_all([p for p in shapely.get_parts(terre) if p.geom_type == "Polygon"])
-        terre = shapely.make_valid(terre.simplify(SIMPLIF_TERRE, preserve_topology=True).buffer(MARGE))
-        # pré-découpage en cases pour que chaque forme ne soit comparée qu'à la terre voisine
-        self.cases = []
+                grand = shapely.union_all(lacs)
+                polys = [p.difference(grand) if p.intersects(grand) else p for p in polys]
+        arbre_p = STRtree(polys)
+        self.cases, self.cotes = [], []
+        ext = 0.05  # on construit un peu au-delà de la case pour que la côte ne soit pas coupée au bord de la case
         for x in range(-180, 180, int(CASE)):
             for y in range(-90, 90, int(CASE)):
                 b = box(x, y, x + CASE, y + CASE)
+                bb = box(x - ext, y - ext, x + CASE + ext, y + CASE + ext)
+                idx = arbre_p.query(bb)
+                if len(idx) == 0:
+                    continue
+                morceaux = [polys[i] if polys[i].within(bb) else polys[i].intersection(bb) for i in idx]
+                terre = shapely.union_all(morceaux)
+                terre = shapely.make_valid(terre.simplify(SIMPLIF_TERRE, preserve_topology=True).buffer(MARGE))
                 morceau = terre.intersection(b)
-                if not morceau.is_empty:
-                    self.cases.append((b, morceau))
+                if morceau.is_empty:
+                    continue
+                self.cases.append((b, morceau))
+                # lignes de côte seules (sans les bords artificiels de la case), pour combler les écarts (voir « combler »)
+                self.cotes.append(terre.boundary.intersection(b))
         self.arbre = STRtree([b for b, _ in self.cases])
-        # lignes de côte seules (sans les bords artificiels des cases), pour combler les écarts (voir « combler »)
-        cote = terre.boundary
-        self.cotes = [cote.intersection(b) for b, _ in self.cases]
         self._bandes = {}   # (case, d) -> terre de la case à moins de d de la côte (calculé à la demande)
 
     def terre_autour(self, geom):
