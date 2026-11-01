@@ -30,3 +30,5 @@
   (`src/dbGuard.ts`, `npm run test:dbguard`). Vérifié : 16 cas de logique pure, et dans un navigateur avec base simulée (démarrage normal sans alerte,
   lecture 500, écriture 403, suppression « 0 ligne », réseau coupé). Non vérifié : contre la vraie base (mon navigateur de test ne l'atteint pas) — à regarder à l'usage.
   Suite : filtrer les schémas des liens (`link_url`), puis `acces_v1` (droits trop ouverts) après accord de Martin.
+- 2026-11-01 : vérification des licences d'images (demande de Martin : tout doit être libre). Registre : `docs/sources/images.md` ; script `scripts/images/verifier-licences-wikimedia.js`.
+  Vérifié : 302 fichiers Commons, aucun non libre. Non vérifiable : 874 fichiers téléversés (origine perdue), dont 40 couvertures manifestement issues du web (Adobe Stock, Getty…) et ~33 photos récentes de personnes vivantes. Aucune image supprimée ni modifiée (accord de Martin à demander).
