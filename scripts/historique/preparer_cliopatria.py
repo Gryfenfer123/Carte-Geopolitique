@@ -250,7 +250,6 @@ def main():
         for r in rapport_formes:
             print("Forme corrigée :", r["id"], "—", len(r["lignes"]), "ligne(s)")
         if terres:  # îles sourcées absentes de Cliopatria (voir iles.py) ; elles ne chevauchent aucune autre ligne
-            import shapely
             from shapely.geometry import shape as _shape
             with open(terres, encoding="utf8") as f:
                 _terres = [_shape(x["geometry"]) for x in json.load(f)["features"]]
