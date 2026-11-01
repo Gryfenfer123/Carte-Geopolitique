@@ -9,6 +9,7 @@ On ne fait qu'AJOUTER de la terre émergée réelle (jamais de mer) ; chaque ajo
 Logique pure (shapely), sans réseau."""
 import json
 
+import numpy as np
 import shapely
 from shapely import STRtree
 from shapely.geometry import shape
@@ -34,6 +35,7 @@ def charger_iles(chemin_terres):
 def completer(entites, dates, iles):
     """entites/dates : listes parallèles (modifiées sur place). iles : polygones de terre (petites îles)."""
     arbre_iles = STRtree(iles)
+    iles_arr = np.array(iles, dtype=object)
     geoms = [make_valid(shape(ft["geometry"])).buffer(0) for ft in entites]
     arbre_lignes = STRtree(geoms)
     rapport = {"lignes_modifiees": 0, "iles_completees": 0, "km2_ajoutes": 0.0, "exemples": []}
@@ -41,7 +43,12 @@ def completer(entites, dates, iles):
     for k, g in enumerate(geoms):
         if g.is_empty:
             continue
+        shapely.prepare(g)
         cand = arbre_iles.query(g, predicate="intersects")
+        if len(cand) == 0:
+            continue
+        # les îles entièrement dans le contour n'ont rien à compléter : on les écarte d'un coup (rapide, géométrie préparée)
+        cand = cand[~shapely.contains(g, iles_arr[cand])]
         if len(cand) == 0:
             continue
         voisins = None
