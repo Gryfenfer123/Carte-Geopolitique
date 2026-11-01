@@ -28,8 +28,8 @@ import shapely
 from shapely import STRtree, make_valid
 from shapely.geometry import box, shape
 
-MARGE = 0.003          # degrés (≈ 0,5 km)
-SIMPLIF_TERRE = 0.002  # degrés (≈ 0,4 km) : inférieur à la grille de sortie (0,01°)
+MARGE = 0.001          # degrés (≈ 0,5 km)
+SIMPLIF_TERRE = 0.0007  # degrés (≈ 0,4 km) : inférieur à la grille de sortie (0,01°)
 PERTE_MAX = 0.6        # au-delà, l'entité est considérée comme maritime
 PETITE_PARTIE_KM2 = 3000
 MICRO_ETAT_KM2 = 30000  # en dessous, si le calage retirerait plus de 30 %, on garde la forme (îles/micro-États restent visibles)
