@@ -3,6 +3,7 @@
 Spécification de référence : [`../specs/frises-chronologiques.md`](../specs/frises-chronologiques.md).
 
 ## Dernières nouvelles (la plus récente en haut)
+- 2026-11-01 — exemple « Histoire de France » en 3 niveaux (grandes périodes → Révolution → Convention), 40 points sourcés : `supabase/frises/frises_v1.sql`, **à exécuter par Martin** (SQL Editor). Vérifié : script testé 2 fois sur une base locale, affichage testé dans l'appli ; non vérifié : exécution sur la vraie base.
 - 2026-10-27 — aperçu de la sous-frise au survol (période ou point avec durée) : périodes + premiers points, sans ouvrir. Aucune migration. Vérifié : `check:repo`, `build`, lecture des données ; non vérifié : rendu à l'écran.
 - 2026-10-23 (4) — correction : créer une période dans la frise d'un point avec durée (ex. « Guerre » 500→700) ne fait plus disparaître la durée ; les parties non couvertes restent affichées au nom du point. Vérifié : `check:repo`, `build`, calcul du découpage ; non vérifié : écran réel.
 - 2026-10-23 (3) — le nom d'un point avec durée (ex. « Guerre ») est centré au milieu de la barre. Vérifié : `check:repo`, `build` ; non vérifié : rendu visuel dans le navigateur.
@@ -16,9 +17,16 @@ Spécification de référence : [`../specs/frises-chronologiques.md`](../specs/f
   branches colorées (côté haut/bas, empilement automatique, hauteur à la main) — migrations `schema_v27` à `schema_v31` ;
   placements multiples et remontée sur la frise parente (voir ci-dessus).
 - **Reste à faire** : faire valider par Martin les choix de la spec §7bis et §9.
-- Prochaine migration de ce chantier : **frises_v1** (`supabase/frises/frises_v1.sql`) — aucune écrite pour l'instant.
+- Migration : **frises_v1** (exemple « Histoire de France », données) écrite, en attente d'exécution par Martin. Prochaine : **frises_v2**.
 
 ## Détail des livraisons
+
+### 2026-11-01 — exemple « Histoire de France » (frises_v1)
+- **Ce qui change pour Martin** : après exécution du script, France > Histoire contient la frise « Histoire de France » (14 grandes périodes, 12 points). Cliquer « Révolution française » ouvre une sous-frise (4 périodes, 18 points), puis « Convention nationale » une 3e frise (3 périodes, 16 points). Certains points sont sur deux frises (même événement). Chaque point a une fiche vide rangée dans la sous-catégorie de sa période, avec ses sources.
+- **Code** : aucun changement d'appli ; `supabase/frises/frises_v1.sql` (données).
+- **Sources** : `docs/sources/frises.md` (dates recoupées ; celles absentes des textes lus ont été écartées, voir ce fichier).
+- **Vérifié** : script exécuté 2 fois sur PostgreSQL local avec les mêmes contraintes que la base (3 frises, 21 périodes, 40 événements, 46 placements, rien de dupliqué) ; affichage des 3 niveaux, du survol de sous-frise et du fil d'Ariane dans un vrai Chromium avec ces données ; `check:repo`, `build`.
+- **Non vérifié** : exécution sur la vraie base Supabase ; vérification humaine des dates (certaines bornes sont des conventions, voir sources).
 
 ### 2026-10-23 (2) — placer une fiche existante sur une frise + placement automatique
 - **Ce qui change pour Martin** : bouton « Placer sur une frise » en lisant une fiche. Dans « + Texte », choisir une période de frise comme sous-catégorie fait apparaître une date facultative ; avec une date, le point apparaît tout seul sur la frise. Date hors période : refus clair, texte conservé.

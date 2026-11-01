@@ -248,3 +248,4 @@ RLS**. Règles :
 | arbres_v176 | Arbre généalogique : Rois de Gwynedd (34). Idempotente, aucune suppression. |
 | arbres_v177 | Arbre généalogique : Sultanat de Delhi (30). Idempotente, aucune suppression. |
 | `data_owid_load.sql` + `owid_chunks/` | Chargement des données d'indicateurs (rejouable, upserts) — à exécuter après v1 à v7 |
+| frises_v1 | Frises : EXEMPLE « Histoire de France » — 3 frises emboîtées (14 périodes ; Révolution : 4 ; Convention : 3), 40 points avec fiches vides sourcées ; ajoute des données, ne modifie aucune table, idempotent — à exécuter une seule fois (une 2e exécution ne duplique rien) |
