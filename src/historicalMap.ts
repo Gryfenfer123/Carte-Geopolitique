@@ -141,7 +141,7 @@ export function initHistoricalMapSystem() {
     carte = L.map("historical-map-container", {
       zoomControl: true,
       minZoom: 2,
-      maxZoom: 8,
+      maxZoom: 9,
       preferCanvas: true,
       maxBounds: [[-85, -190], [85, 190]],
       maxBoundsViscosity: 0.8,

@@ -1,23 +1,13 @@
-// Fonds de carte de la carte historique (module à part, voir docs/DECISIONS.md).
-// Demande de Martin (2026-10-30) : l'ancien fond (Esri « World_Physical_Map ») était « trop clair, pas joli ».
-// Choix : trois fonds SANS frontières ni noms de pays modernes, sans clé d'accès, choisis dans un petit sélecteur.
-//  - « Relief clair » (défaut) : NASA Blue Marble (relief + fonds marins), éclairci par un filtre CSS (voir historique.css)
-//  - « Satellite clair » : Esri World Imagery, éclairci de la même façon
-//  - « Physique clair » : l'ancien fond, gardé au cas où
+// Fond de carte de la carte historique (module à part, voir docs/DECISIONS.md).
+// Demande de Martin (2026-11-01) : UN SEUL fond, précis, qui fasse bien ressortir les couleurs des territoires.
+// Choix : Esri « World_Ocean_Base » — mers bleu clair, terres claires avec un léger relief, côtes et lacs détaillés, AUCUNE
+// frontière ni nom de pays modernes (les seules frontières affichées sont celles de l'époque choisie). Sans clé d'accès.
+// (Historique des essais : NASA Blue Marble trop sombre, Esri Physical trop clair, CartoDB Positron exige maintenant une clé.)
 import L from "leaflet";
 
 export function ajouterFonds(carte: L.Map): void {
-  const relief = L.tileLayer(
-    "https://gibs.earthdata.nasa.gov/wmts/epsg3857/best/BlueMarble_ShadedRelief_Bathymetry/default/GoogleMapsCompatible_Level8/{z}/{y}/{x}.jpeg",
-    { maxZoom: 8, maxNativeZoom: 8, className: "fond-sombre-relief",
-      attribution: 'Fond : <a href="https://earthdata.nasa.gov/gibs">NASA GIBS</a> (Blue Marble, relief et bathymétrie)' });
-  const satellite = L.tileLayer(
-    "https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
-    { maxZoom: 8, className: "fond-sombre-satellite",
-      attribution: '&copy; <a href="https://www.esri.com">Esri</a> — imagerie satellite' });
-  const physique = L.tileLayer(
-    "https://services.arcgisonline.com/ArcGIS/rest/services/World_Physical_Map/MapServer/tile/{z}/{y}/{x}",
-    { maxZoom: 8, attribution: '&copy; <a href="https://www.esri.com">Esri</a> — Esri, US National Park Service' });
-  relief.addTo(carte);
-  L.control.layers({ "Relief clair": relief, "Satellite clair": satellite, "Physique très clair": physique }, {}, { position: "topright", collapsed: true }).addTo(carte);
+  L.tileLayer(
+    "https://services.arcgisonline.com/ArcGIS/rest/services/Ocean/World_Ocean_Base/MapServer/tile/{z}/{y}/{x}",
+    { maxZoom: 9, maxNativeZoom: 9,
+      attribution: '&copy; <a href="https://www.esri.com">Esri</a> — Ocean Basemap (GEBCO, NOAA, National Geographic, DeLorme, HERE, Geonames.org, Esri et autres)' }).addTo(carte);
 }

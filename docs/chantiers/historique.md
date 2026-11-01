@@ -120,6 +120,6 @@ clavier, bornes (999999 → 2024, -99999 → -3400, champ vide ignoré), lecture
 - Contours plus fins : simplification max 0,03° (avant 0,08°), coordonnées au 0,005° (échelle 200, lue dans `index.json` champ `echelle`), côte Natural Earth moins simplifiée, comblage des liserés jusqu'à 0,15° le long des côtes ET des rives des lacs ≥ 1 000 km². Données ×2,2 (59 Mo, 126 morceaux).
 - Mesure sur 5 cas (États-Unis 1900, Canada 1950, Norvège 1950, Russie 1900, Italie 1930) : surface de forme en pleine eau divisée par 3,5 à 10 (ex. Russie 32,6 → 2,8 deg², Canada 28,1 → 4,2).
 - Audit a5 (`audit/a5_chevauchements_donnees.py`, 2 317 paires >0,005 deg²) vs ancienne version (3 293) : recouvrements >0,1 deg² passés de 557 à 168 ; les 6 nouveaux >0,1 sont des lisières ≤ 0,16 deg² (Paraguay/Brésil, Zambie/Rhodésie, Khazarie/Magyars…).
-- Fond « Relief clair » : NASA, luminosité 1,45 (testé côte à côte dans le navigateur avec les autres fonds).
+- Fond : remplacé le soir du 2026-11-01 par un fond unique Esri World_Ocean_Base (voir DECISIONS).
 
 **Non vérifié** (2026-11-01) : rendu visuel en ligne (rives des Grands Lacs, Svalbard) ; les frontières terrestres restent celles de Cliopatria (aucune source pour les corriger) ; lisières ≤ 0,16 deg² pas relues ; recouvrement de l'Arctique canadien avec le contour principal de l'Empire britannique (même nom, même couleur).
