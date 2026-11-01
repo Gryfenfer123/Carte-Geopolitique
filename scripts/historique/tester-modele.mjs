@@ -8,6 +8,7 @@ import * as M from "../../src/historiqueModel.ts";
 
 const racine = path.resolve(path.dirname(new URL(import.meta.url).pathname), "..", "..", "public", "data", "historique");
 const index = JSON.parse(readFileSync(path.join(racine, "index.json"), "utf8"));
+M.fixerEchelle(index);
 const morceaux = index.morceaux.map((_, i) => JSON.parse(readFileSync(path.join(racine, `geo_${String(i).padStart(3, "0")}.json`), "utf8")));
 const trace = (id) => {
   const m = M.morceauDeTrace(index, id);

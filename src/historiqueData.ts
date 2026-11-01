@@ -8,7 +8,7 @@
 // Format : voir scripts/historique/preparer_cliopatria.py.
 // ---------------------------------------------------------------------------
 
-import { morceauDeTrace, morceauxNecessaires } from "./historiqueModel";
+import { fixerEchelle, morceauDeTrace, morceauxNecessaires } from "./historiqueModel";
 import type { HistoriqueIndex, Ligne, NomsFr, TraceCodee } from "./historiqueModel";
 
 const BASE = import.meta.env.BASE_URL + "data/historique/";
@@ -23,6 +23,10 @@ export function chargerIndex(): Promise<HistoriqueIndex> {
       .then((r) => {
         if (!r.ok) throw new Error("HTTP " + r.status);
         return r.json() as Promise<HistoriqueIndex>;
+      })
+      .then((idx) => {
+        fixerEchelle(idx);
+        return idx;
       })
       .catch((e) => {
         promesseIndex = null; // permet de réessayer plus tard

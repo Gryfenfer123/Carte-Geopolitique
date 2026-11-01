@@ -19,7 +19,7 @@ from shapely.geometry import Polygon, shape
 from shapely.validation import make_valid
 
 RACINE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", "public", "data", "historique")
-CENTIEMES = 100
+CENTIEMES = 100  # remplacé par index["echelle"] dans main()
 
 
 def decoder_polygones(trace):
@@ -51,6 +51,8 @@ def main():
     erreurs = []
     with open(os.path.join(RACINE, "index.json"), encoding="utf8") as f:
         index = json.load(f)
+    global CENTIEMES
+    CENTIEMES = index.get("echelle", 100)
     lignes, morceaux = index["lignes"], index["morceaux"]
 
     # --- structure ---------------------------------------------------------------------------------------------

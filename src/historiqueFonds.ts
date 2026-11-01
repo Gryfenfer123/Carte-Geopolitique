@@ -1,8 +1,8 @@
 // Fonds de carte de la carte historique (module à part, voir docs/DECISIONS.md).
 // Demande de Martin (2026-10-30) : l'ancien fond (Esri « World_Physical_Map ») était « trop clair, pas joli ».
 // Choix : trois fonds SANS frontières ni noms de pays modernes, sans clé d'accès, choisis dans un petit sélecteur.
-//  - « Relief sombre » (défaut) : NASA Blue Marble (relief + fonds marins), légèrement assombri par un filtre CSS (voir historique.css)
-//  - « Satellite sombre » : Esri World Imagery, assombri de la même façon
+//  - « Relief clair » (défaut) : NASA Blue Marble (relief + fonds marins), éclairci par un filtre CSS (voir historique.css)
+//  - « Satellite clair » : Esri World Imagery, éclairci de la même façon
 //  - « Physique clair » : l'ancien fond, gardé au cas où
 import L from "leaflet";
 
@@ -19,5 +19,5 @@ export function ajouterFonds(carte: L.Map): void {
     "https://services.arcgisonline.com/ArcGIS/rest/services/World_Physical_Map/MapServer/tile/{z}/{y}/{x}",
     { maxZoom: 8, attribution: '&copy; <a href="https://www.esri.com">Esri</a> — Esri, US National Park Service' });
   relief.addTo(carte);
-  L.control.layers({ "Relief sombre": relief, "Satellite sombre": satellite, "Physique clair": physique }, {}, { position: "topright", collapsed: true }).addTo(carte);
+  L.control.layers({ "Relief clair": relief, "Satellite clair": satellite, "Physique très clair": physique }, {}, { position: "topright", collapsed: true }).addTo(carte);
 }

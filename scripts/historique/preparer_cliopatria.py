@@ -55,11 +55,11 @@ import iles  # noqa: E402  (ajoute des îles sourcées que Cliopatria ne dessine
 import corrections_formes  # noqa: E402  (retire d'un contour un État indépendant recouvert à tort)
 
 VERSION_SOURCE = "0.2.1"
-CENTIEMES = 100  # précision des coordonnées : 0,01° ≈ 1 km
+CENTIEMES = 200  # précision des coordonnées : 0,005° ≈ 0,5 km (200 pas par degré ; 100 jusqu'au 2026-10-31)
 TAILLE_MORCEAU = 450_000  # octets visés par fichier de tracés (le site ne charge que ceux dont il a besoin)
 
 
-TOL_MAX, TOL_MIN, TOL_FACT = 0.08, 0.01, 0.012  # degrés ; réglage de la simplification (voir tolerance)
+TOL_MAX, TOL_MIN, TOL_FACT = 0.03, 0.004, 0.005  # avant 2026-11-01 : 0.08, 0.01, 0.012 (contours plus fins : retour de Martin)  # degrés ; réglage de la simplification (voir tolerance)
 
 
 def tolerance(geom):
@@ -135,7 +135,7 @@ def preparer_trace(geometrie_geojson):
     lisse = simplifier(geom)
     if COTE is not None:
         # on ne fait que RETIRER ce qui est en pleine mer (voir caler_cotes.py)
-        d_comble = min(0.12, max(0.02, 2 * tolerance(geom))) if COMBLER else 0.0   # voir Cote.combler (écarts à la côte)
+        d_comble = min(0.15, max(0.06, 2 * tolerance(geom))) if COMBLER else 0.0   # voir Cote.combler (écarts à la côte)
         cale, _ = COTE.caler(lisse, tol=max(0.004, FACTEUR_COTE * tolerance(geom)), comble=d_comble)
         if not cale.is_empty:
             lisse = cale
@@ -164,6 +164,8 @@ def main():
     if "--terres" in sys.argv:  # le chemin suit l'option : on le retire des arguments positionnels
         terres = sys.argv[sys.argv.index("--terres") + 1]
         args = [a for a in args if a != terres]
+    if "--lacs" in sys.argv:
+        args = [a for a in args if a != sys.argv[sys.argv.index("--lacs") + 1]]
     if len(args) < 1:
         sys.exit(__doc__)
     source = args[0]
@@ -182,7 +184,8 @@ def main():
         args = [a for a in args if a != str(debut_carte)]
     if terres:
         print("Trait de côte réel :", terres)
-        COTE = Cote(terres)
+        lacs = sys.argv[sys.argv.index("--lacs") + 1] if "--lacs" in sys.argv else None  # lacs Natural Earth 10 m (rives suivies)
+        COTE = Cote(terres, lacs)
     os.makedirs(dossier_sortie, exist_ok=True)
 
     print("Lecture de", source)
@@ -364,6 +367,7 @@ def main():
 
     index = {
         "version": VERSION_SOURCE,
+        "echelle": CENTIEMES,
         "noms": noms,
         "meta": metas,
         "lignes": lignes,

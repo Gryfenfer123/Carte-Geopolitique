@@ -24,6 +24,8 @@ export type Meta = [nom: number, wikipedia: string, wikidata: string, seshat: st
 
 export type HistoriqueIndex = {
   version: string;
+  /** pas par degré des coordonnées (100 : 0,01° ; 200 : 0,005°) ; absent = 100 */
+  echelle?: number;
   noms: string[];
   meta: Meta[];
   lignes: Ligne[];
@@ -43,7 +45,12 @@ export type TraceDecodee = {
   boite: [[number, number], [number, number]];
 };
 
-const CENTIEMES = 100;
+let CENTIEMES = 100;  // pas par degré des coordonnées codées ; lu dans index.json (« echelle »), 100 si absent
+
+/** Fixe l'échelle des coordonnées d'après index.json (à appeler dès que l'index est chargé). */
+export function fixerEchelle(index: { echelle?: number }): void {
+  CENTIEMES = index.echelle && index.echelle > 0 ? index.echelle : 100;
+}
 
 /** « 1550 », « 202 av. J.-C. ». L'année 0 existe dans la source : elle est affichée telle quelle. */
 export function formatAnnee(annee: number): string {

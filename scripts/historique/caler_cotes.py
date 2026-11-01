@@ -28,8 +28,8 @@ import shapely
 from shapely import STRtree, make_valid
 from shapely.geometry import box, shape
 
-MARGE = 0.005          # degrés (≈ 0,5 km)
-SIMPLIF_TERRE = 0.004  # degrés (≈ 0,4 km) : inférieur à la grille de sortie (0,01°)
+MARGE = 0.003          # degrés (≈ 0,5 km)
+SIMPLIF_TERRE = 0.002  # degrés (≈ 0,4 km) : inférieur à la grille de sortie (0,01°)
 PERTE_MAX = 0.6        # au-delà, l'entité est considérée comme maritime
 PETITE_PARTIE_KM2 = 3000
 MICRO_ETAT_KM2 = 30000  # en dessous, si le calage retirerait plus de 30 %, on garde la forme (îles/micro-États restent visibles)
@@ -78,7 +78,7 @@ class Cote:
         Raison (Martin, 2026-10-30) : après simplification, le contour s'arrête parfois à quelques km de la côte et
         laisse un liseré de terre vide ; le long d'une côte, la frontière doit suivre la côte. On n'ajoute rien à l'intérieur
         des terres (hors bande côtière), donc les frontières terrestres ne bougent pas."""
-        d = min(q for q in (0.02, 0.04, 0.08, 0.12) if q >= min(d, 0.12))   # d arrondi au palier supérieur (bandes mises en cache)
+        d = min(q for q in (0.06, 0.1, 0.15) if q >= min(d, 0.15))   # d arrondi au palier supérieur (bandes mises en cache)
         zone = geom.buffer(d, quad_segs=2)
         idx = self.arbre.query(zone)
         if len(idx) == 0:
@@ -86,7 +86,7 @@ class Cote:
         morceaux = []
         for i in idx:
             if (i, d) not in self._bandes:
-                lignes = self.cotes[i].simplify(0.005)   # la bande n'a pas besoin du détail fin de la côte
+                lignes = self.cotes[i].simplify(0.003)   # la bande n'a pas besoin du détail fin de la côte
                 self._bandes[(i, d)] = self.cases[i][1].intersection(lignes.buffer(d, quad_segs=2)) if not lignes.is_empty else None
             if self._bandes[(i, d)] is not None:
                 morceaux.append(self._bandes[(i, d)])
