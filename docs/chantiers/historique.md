@@ -112,3 +112,8 @@ clavier, bornes (999999 → 2024, -99999 → -3400, champ vide ignoré), lecture
 - Nouveau module `scripts/historique/iles.py` + `iles_manuelles.json` : ajoute des îles que Cliopatria ne dessine pas, avec le même nom d'État (même couleur), sans jamais chevaucher une autre ligne. Règles sourcées : Arctique canadien 1880, Tahiti-Moorea 1880, Dodécanèse (Italie 1912, Grèce 1947), Svalbard 1925. Sources lues : Britannica, Storting, archives canadiennes, Hérodote.net.
 - Données régénérées (12 502 lignes, 10 109 tracés) ; tests, vérification des données, check:repo et build passent ; aucun chevauchement nouveau avec les îles (audit à 15 %).
 - **Non vérifié** : rendu visuel sur le site en ligne ; trou Tahiti 1940-1944 (Vichy exclu, non sourcé) ; autres archipels (Polynésie hors Tahiti, Aléoutiennes, Galápagos…) en attente de dates sourcées.
+
+## 2026-11-01 — retours de Martin (précision des côtes/lacs, Monaco) — en cours
+- Retour : contours qui ne suivent pas les rives des Grands Lacs ni les côtes (Svalbard) ; fond encore trop sombre ; « Troisième Reich autour de Monaco ».
+- Monaco : 3 carrés de ≈ 45 km² « Nazi Germany » (1936-1943) de Cliopatria sont à ≈ 20 km à l'ouest de Monaco ; règle de retrait dans `parties_retirees.json` (appliquée à la prochaine régénération).
+- Précision : `Cote` sait maintenant traiter les grands lacs (Natural Earth 10 m) comme de l'eau ; réglages de simplification rendus paramétrables. **Pas encore activé ni régénéré** (essai de mesure en cours).

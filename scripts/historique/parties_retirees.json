@@ -1,0 +1,6 @@
+[
+ {"id": "allemagne-nazie-carres-monaco",
+  "entite": "Nazi Germany", "boite": [7.0, 43.55, 7.3, 43.85], "surface_max_km2": 100,
+  "motif": "Trois petits carrés (≈ 45 km² chacun) rattachés à l'Allemagne nazie dessinés autour de 7,07–7,23° E, 43,6–43,8° N de 1936 à 1943 : ils ne recouvrent pas Monaco (7,41–7,44° E, 43,72–43,75° N) mais l'arrière-pays de Nice-Cannes, alors français. Aucune source ne montre l'Allemagne y exerçant un contrôle avant 1943 ; l'occupation allemande de Monaco (septembre 1943 – septembre 1944) n'est pas dessinée, faute de contour fiable (Monaco ≈ 2 km²).",
+  "source": {"titre": "Cliopatria v0.2.1 (géométries) ; position de Monaco : Natural Earth 10 m, pays (domaine public)", "lien": "https://github.com/nvkelso/natural-earth-vector", "licence": "Domaine public (Natural Earth) ; CC BY 4.0 (Cliopatria)", "fiabilite": "Élevée pour la position de Monaco ; le retrait est une correction de donnée source, signalée"}}
+]

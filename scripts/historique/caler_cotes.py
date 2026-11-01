@@ -33,14 +33,23 @@ SIMPLIF_TERRE = 0.004  # degrés (≈ 0,4 km) : inférieur à la grille de sorti
 PERTE_MAX = 0.6        # au-delà, l'entité est considérée comme maritime
 PETITE_PARTIE_KM2 = 3000
 MICRO_ETAT_KM2 = 30000  # en dessous, si le calage retirerait plus de 30 %, on garde la forme (îles/micro-États restent visibles)
+LAC_MIN_KM2 = 1000     # seuls les lacs plus grands sont traités comme de l'eau (Natural Earth 10 m, domaine public)
 CASE = 10.0            # taille (degrés) des cases de pré-découpage de la terre
 
 
 class Cote:
-    def __init__(self, chemin_terre):
+    def __init__(self, chemin_terre, chemin_lacs=None):
         with open(chemin_terre, encoding="utf8") as f:
             data = json.load(f)
         terre = shapely.union_all([make_valid(shape(f["geometry"])) for f in data["features"]])
+        if chemin_lacs:
+            # les grands lacs sont de l'EAU (décision de Martin, 2026-11-01 : les contours doivent suivre les rives des lacs) :
+            # on les retire de la terre, ce qui retire aussi des formes ce qui est dans le lac et comble les rives
+            with open(chemin_lacs, encoding="utf8") as f:
+                lacs = [make_valid(shape(x["geometry"])) for x in json.load(f)["features"]]
+            lacs = [l for l in lacs if l.area * 12000 >= LAC_MIN_KM2]   # ≈ 12 000 km² par degré² à moyenne latitude
+            if lacs:
+                terre = terre.difference(shapely.union_all(lacs))
         terre = shapely.union_all([p for p in shapely.get_parts(terre) if p.geom_type == "Polygon"])
         terre = shapely.make_valid(terre.simplify(SIMPLIF_TERRE, preserve_topology=True).buffer(MARGE))
         # pré-découpage en cases pour que chaque forme ne soit comparée qu'à la terre voisine

@@ -59,12 +59,15 @@ CENTIEMES = 100  # précision des coordonnées : 0,01° ≈ 1 km
 TAILLE_MORCEAU = 450_000  # octets visés par fichier de tracés (le site ne charge que ceux dont il a besoin)
 
 
+TOL_MAX, TOL_MIN, TOL_FACT = 0.08, 0.01, 0.012  # degrés ; réglage de la simplification (voir tolerance)
+
+
 def tolerance(geom):
     """Simplification proportionnelle à la taille de la forme : les petits territoires gardent du détail,
     les grands empires sont allégés davantage (au plus ≈ 8 km, invisible à l'échelle du monde)."""
     minx, miny, maxx, maxy = geom.bounds
     largeur, hauteur = max(maxx - minx, 0.01), max(maxy - miny, 0.01)
-    return min(0.08, max(0.01, 0.012 * math.sqrt(largeur * hauteur)))
+    return min(TOL_MAX, max(TOL_MIN, TOL_FACT * math.sqrt(largeur * hauteur)))
 
 
 def coder_anneau(coords):
@@ -217,6 +220,23 @@ def main():
             nb[r["statut"]] = nb.get(r["statut"], 0) + 1
         print("Corrections de dates :", nb)
 
+    if appliquer_dates:
+        # parties de contours manifestement mal placées (voir parties_retirees.json) : retirées avant toute autre correction
+        d0 = os.path.dirname(os.path.abspath(__file__))
+        for r in json.load(open(os.path.join(d0, "parties_retirees.json"), encoding="utf8")):
+            zone = shapely.geometry.box(*r["boite"])
+            nb = 0
+            for k, ft in enumerate(entites):
+                if ft["properties"]["Name"] != r["entite"]:
+                    continue
+                g = shape(ft["geometry"])
+                parties = list(shapely.get_parts(g))
+                gardees = [q for q in parties if not (q.intersects(zone) and q.area * 8500 <= r["surface_max_km2"])]
+                if len(gardees) != len(parties):
+                    nb += len(parties) - len(gardees)
+                    ft["geometry"] = shapely.geometry.mapping(shapely.union_all(gardees)) if gardees else ft["geometry"]
+                    dates[k]["geometrie"] = ft["geometry"]
+            print("Parties retirées :", r["id"], "—", nb)
     if appliquer_dates:
         d = os.path.dirname(os.path.abspath(__file__))
         regles_formes = corrections_formes.lire_regles(os.path.join(d, "corrections_formes_manuelles.json")) + \
