@@ -41,11 +41,14 @@ def completer(entites, dates, iles):
     """entites/dates : listes parallèles (modifiées sur place). iles : polygones de terre (petites îles)."""
     arbre_iles = STRtree(iles)
     iles_arr = np.array(iles, dtype=object)
-    geoms = [make_valid(shape(ft["geometry"])).buffer(0) for ft in entites]
+    # mémoire : les voisins ne sont gardés que sous forme simplifiée (0,003° ≈ 300 m) ; le contour exact de chaque ligne
+    # n'est construit qu'au moment de la traiter, puis jeté
+    geoms = [shapely.simplify(make_valid(shape(ft["geometry"])).buffer(0), 0.003) for ft in entites]
     arbre_lignes = STRtree(geoms)
     rapport = {"lignes_modifiees": 0, "iles_completees": 0, "km2_ajoutes": 0.0, "exemples": []}
     ajouts = {}
-    for k, g in enumerate(geoms):
+    for k in range(len(entites)):
+        g = make_valid(shape(entites[k]["geometry"])).buffer(0)
         if g.is_empty:
             continue
         shapely.prepare(g)
@@ -79,7 +82,7 @@ def completer(entites, dates, iles):
         if morceaux:
             ajouts[k] = shapely.union_all(morceaux)
     for k, ajout in ajouts.items():
-        nouvelle = shapely.make_valid(geoms[k].union(ajout))
+        nouvelle = shapely.make_valid(make_valid(shape(entites[k]["geometry"])).buffer(0).union(ajout))
         entites[k]["geometry"] = shapely.geometry.mapping(nouvelle)
         dates[k]["geometrie"] = entites[k]["geometry"]
         rapport["lignes_modifiees"] += 1
