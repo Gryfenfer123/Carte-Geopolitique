@@ -6,7 +6,7 @@ import shapely
 from shapely import STRtree
 from shapely.geometry import Polygon
 
-RACINE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", "..", "public", "data", "historique")
+RACINE = os.environ.get("RACINE_DONNEES") or os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", "..", "public", "data", "historique")
 index = json.load(open(os.path.join(RACINE, "index.json"), encoding="utf8"))
 E = index.get("echelle", 100)
 seuil = float(sys.argv[2]) if len(sys.argv) > 2 else 0.005
