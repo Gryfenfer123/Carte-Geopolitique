@@ -29,29 +29,19 @@ from shapely import STRtree, make_valid
 from shapely.geometry import box, shape
 
 MARGE = 0.001          # degrés (≈ 0,5 km)
-SIMPLIF_TERRE = 0.0012  # degrés (≈ 0,4 km) : inférieur à la grille de sortie (0,01°)
+SIMPLIF_TERRE = 0.0025  # degrés (≈ 0,4 km) : inférieur à la grille de sortie (0,01°)
 PERTE_MAX = 0.6        # au-delà, l'entité est considérée comme maritime
 PETITE_PARTIE_KM2 = 3000
 MICRO_ETAT_KM2 = 30000  # en dessous, si le calage retirerait plus de 30 %, on garde la forme (îles/micro-États restent visibles)
 LAC_MIN_KM2 = 1000     # seuls les lacs plus grands sont traités comme de l'eau (Natural Earth 10 m, domaine public)
+MIN_ILE_DEG2 = 0.00003  # on ignore les îlots < ≈ 0,4 km² (invisibles à la grille de 0,5 km, et très coûteux : des dizaines de milliers)
 CASE = 5.0            # taille (degrés) des cases de pré-découpage de la terre
 
 
-class Cote:
-    def __init__(self, chemin_terre, chemin_lacs=None):
-        """chemin_terre : GeoJSON de polygones de terre DISJOINTS (ex. GSHHG converti par gshhg_vers_terres.py, lacs déjà retirés)
-        ou Natural Earth (alors `chemin_lacs` permet de retirer les grands lacs). Chaque case de CASE degrés est construite
-        séparément (pas d'union mondiale : trop lent avec une côte à 100 m)."""
-        with open(chemin_terre, encoding="utf8") as f:
-            data = json.load(f)
-        polys = [make_valid(shape(f["geometry"])) for f in data["features"]]
-        if chemin_lacs:
-            with open(chemin_lacs, encoding="utf8") as f:
-                lacs = [make_valid(shape(x["geometry"])) for x in json.load(f)["features"]]
-            lacs = [l for l in lacs if l.area * 12000 >= LAC_MIN_KM2]
-            if lacs:
-                grand = shapely.union_all(lacs)
-                polys = [p.difference(grand) if p.intersects(grand) else p for p in polys]
+class _CoteNiveau:
+    """La côte à UN niveau de détail (tolérance de simplification `simplif`)."""
+    def __init__(self, polys, simplif):
+        self.simplif = simplif
         arbre_p = STRtree(polys)
         self.cases, self.cotes = [], []
         ext = 0.05  # on construit un peu au-delà de la case pour que la côte ne soit pas coupée au bord de la case
@@ -64,7 +54,7 @@ class Cote:
                     continue
                 morceaux = [polys[i] if polys[i].within(bb) else polys[i].intersection(bb) for i in idx]
                 terre = shapely.union_all(morceaux)
-                terre = shapely.make_valid(terre.simplify(SIMPLIF_TERRE, preserve_topology=True).buffer(MARGE))
+                terre = shapely.make_valid(terre.simplify(self.simplif, preserve_topology=True).buffer(MARGE))
                 morceau = terre.intersection(b)
                 if morceau.is_empty:
                     continue
@@ -80,6 +70,21 @@ class Cote:
             return None
         return shapely.union_all([self.cases[i][1] for i in idx])
 
+    def couper(self, forme):
+        """forme ∩ terre, case par case (une union mondiale de la côte à 100 m est beaucoup trop lourde)."""
+        morceaux = []
+        for i in self.arbre.query(forme, predicate="intersects"):
+            b, terre = self.cases[i]
+            part = forme.intersection(b)
+            if part.is_empty:
+                continue
+            m = part.intersection(terre)
+            if not m.is_empty:
+                morceaux.append(m)
+        if not morceaux:
+            return shapely.Polygon()
+        return shapely.union_all(morceaux)
+
     def combler(self, geom, d):
         """Ajoute à la forme la terre située à moins de d degrés d'elle ET à moins de d degrés de la côte, mais seulement
         les morceaux qui TOUCHENT la forme (on ne saute jamais un détroit : pas de bande sur la rive d'en face).
@@ -88,7 +93,7 @@ class Cote:
         des terres (hors bande côtière), donc les frontières terrestres ne bougent pas."""
         d = min(q for q in (0.06, 0.1, 0.15) if q >= min(d, 0.15))   # d arrondi au palier supérieur (bandes mises en cache)
         zone = geom.buffer(d, quad_segs=2)
-        idx = self.arbre.query(zone)
+        idx = self.arbre.query(zone, predicate="intersects")
         if len(idx) == 0:
             return geom
         morceaux = []
@@ -100,7 +105,7 @@ class Cote:
                 morceaux.append(self._bandes[(i, d)])
         if not morceaux:
             return geom
-        ajout = shapely.union_all(morceaux).intersection(zone).difference(geom)   # terre de la bande côtière proche de la forme
+        ajout = shapely.union_all([m.intersection(zone) for m in morceaux]).difference(geom)   # terre de la bande côtière proche de la forme
         gardes = [p for p in shapely.get_parts(ajout) if p.geom_type == "Polygon" and not p.is_empty and p.intersects(geom)]
         if not gardes:
             return geom
@@ -111,12 +116,11 @@ class Cote:
         tol : tolérance (degrés) de re-simplification du résultat, pour limiter le nombre de sommets."""
         if geom.is_empty:
             return geom, 0.0
-        terre = self.terre_autour(geom)
-        if terre is None:
+        if len(self.arbre.query(geom, predicate="intersects")) == 0:
             return geom, 0.0
         a0 = geom.area
         forme = self.combler(geom, comble) if comble > 0 else geom
-        coupe = forme.intersection(terre)
+        coupe = self.couper(forme)
         if coupe.is_empty or coupe.area < (1 - PERTE_MAX) * a0:
             return geom, 0.0
         import math
@@ -139,3 +143,34 @@ class Cote:
             if not simple.is_empty:
                 resultat = simple
         return resultat, 1 - resultat.area / a0
+
+
+SIMPLIFS = (0.0025, 0.006, 0.012)   # niveaux de détail de la côte (°) : un grand empire n'a pas besoin d'une côte à 250 m
+                                     # (sa forme est de toute façon re-simplifiée à 0,5 × sa tolérance, jusqu'à 0,015°)
+
+
+class Cote:
+    def __init__(self, chemin_terre, chemin_lacs=None):
+        """chemin_terre : GeoJSON de polygones de terre DISJOINTS (ex. GSHHG converti par gshhg_vers_terres.py, lacs déjà retirés)
+        ou Natural Earth (alors `chemin_lacs` permet de retirer les grands lacs)."""
+        with open(chemin_terre, encoding="utf8") as f:
+            data = json.load(f)
+        polys = [make_valid(shape(f["geometry"])) for f in data["features"]]
+        polys = [p for p in polys if p.area >= MIN_ILE_DEG2]
+        if chemin_lacs:
+            with open(chemin_lacs, encoding="utf8") as f:
+                lacs = [make_valid(shape(x["geometry"])) for x in json.load(f)["features"]]
+            lacs = [l for l in lacs if l.area * 12000 >= LAC_MIN_KM2]
+            if lacs:
+                grand = shapely.union_all(lacs)
+                polys = [p.difference(grand) if p.intersects(grand) else p for p in polys]
+        self.niveaux = [_CoteNiveau(polys, s) for s in SIMPLIFS]
+
+    def terre_autour(self, geom):
+        return self.niveaux[0].terre_autour(geom)
+
+    def caler(self, geom, tol=None, comble=0.0):
+        """Choisit le niveau de détail d'après la tolérance de la forme (tol), puis cale (voir _CoteNiveau.caler)."""
+        cible = max(SIMPLIFS[0], (tol or 0) / 2)
+        niv = [n for n in self.niveaux if n.simplif <= cible][-1]
+        return niv.caler(geom, tol=tol, comble=comble)

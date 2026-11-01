@@ -51,6 +51,7 @@ from shapely.validation import make_valid
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from caler_cotes import Cote  # noqa: E402  (calage sur la côte réelle)
 from corrections_dates import Corrections, lire_manuelles, lire_wikidata  # noqa: E402  (dates réelles)
+import iles_completees  # noqa: E402  (complète les petites îles à moitié couvertes)
 import iles  # noqa: E402  (ajoute des îles sourcées que Cliopatria ne dessine pas)
 import corrections_formes  # noqa: E402  (retire d'un contour un État indépendant recouvert à tort)
 
@@ -258,6 +259,10 @@ def main():
                 json.dump(rapport_iles, f, ensure_ascii=False, indent=0)
             for r in rapport_iles:
                 print("Îles ajoutées :", r["id"], "—", len(r["lignes"]), "ligne(s)")
+            rapport_c = iles_completees.completer(entites, dates, iles_completees.charger_iles(terres))
+            with open(os.path.join(d, "iles_completees_rapport.json"), "w", encoding="utf8") as f:
+                json.dump(rapport_c, f, ensure_ascii=False, indent=0)
+            print("Îles complétées :", rapport_c["iles_completees"], "morceau(x) sur", rapport_c["lignes_modifiees"], "ligne(s),", rapport_c["km2_ajoutes"], "km² de terre ajoutés", flush=True)
         # les lignes ajoutées par une coupure sont rangées par année de début (ordre attendu pour les morceaux)
         ordre = sorted(range(len(entites)), key=lambda k: (dates[k]["de"], dates[k]["a"], dates[k]["nom"]))
         entites[:] = [entites[k] for k in ordre]
