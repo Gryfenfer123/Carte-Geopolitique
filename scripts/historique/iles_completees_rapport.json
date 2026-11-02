@@ -1,0 +1,187 @@
+{
+"lignes_modifiees": 6196,
+"iles_completees": 364884,
+"km2_ajoutes": 9379564,
+"exemples": [
+{
+"nom": "Indus Valley Civilization",
+"de": -2300,
+"a": -2001,
+"km2": 13
+},
+{
+"nom": "Akkadian Empire",
+"de": -2250,
+"a": -2201,
+"km2": 1
+},
+{
+"nom": "Elam",
+"de": -2200,
+"a": -2101,
+"km2": 0
+},
+{
+"nom": "Lower Egypt",
+"de": -2200,
+"a": -2101,
+"km2": 4
+},
+{
+"nom": "Elam",
+"de": -2100,
+"a": -2001,
+"km2": 0
+},
+{
+"nom": "Gutian Dynasty",
+"de": -2100,
+"a": -2001,
+"km2": 2
+},
+{
+"nom": "Lower Egypt",
+"de": -2100,
+"a": -2001,
+"km2": 4
+},
+{
+"nom": "Elam",
+"de": -2000,
+"a": -1801,
+"km2": 2
+},
+{
+"nom": "Indus Valley Civilization",
+"de": -2000,
+"a": -1801,
+"km2": 13
+},
+{
+"nom": "Elam",
+"de": -1800,
+"a": -1761,
+"km2": 0
+},
+{
+"nom": "Indus Valley Civilization",
+"de": -1800,
+"a": -1761,
+"km2": 14
+},
+{
+"nom": "Hyksos",
+"de": -1800,
+"a": -1701,
+"km2": 0
+},
+{
+"nom": "Middle Kingdom of Egypt",
+"de": -1800,
+"a": -1701,
+"km2": 4
+},
+{
+"nom": "Indus Valley Civilization",
+"de": -1760,
+"a": -1751,
+"km2": 19
+},
+{
+"nom": "Elam",
+"de": -1760,
+"a": -1601,
+"km2": 0
+},
+{
+"nom": "Indus Valley Civilization",
+"de": -1750,
+"a": -1701,
+"km2": 19
+},
+{
+"nom": "Hyksos",
+"de": -1700,
+"a": -1601,
+"km2": 0
+},
+{
+"nom": "Middle Kingdom of Egypt",
+"de": -1700,
+"a": -1601,
+"km2": 4
+},
+{
+"nom": "Hyksos",
+"de": -1600,
+"a": -1501,
+"km2": 0
+},
+{
+"nom": "Minoan civilization",
+"de": -1600,
+"a": -1501,
+"km2": 2919
+},
+{
+"nom": "Elam",
+"de": -1600,
+"a": -1401,
+"km2": 0
+},
+{
+"nom": "Minoan civilization",
+"de": -1500,
+"a": -1401,
+"km2": 2919
+},
+{
+"nom": "Mycenaean Greece",
+"de": -1500,
+"a": -1401,
+"km2": 1751
+},
+{
+"nom": "New Kingdom of Egypt",
+"de": -1500,
+"a": -1401,
+"km2": 2
+},
+{
+"nom": "Elam",
+"de": -1400,
+"a": -1301,
+"km2": 0
+},
+{
+"nom": "Mycenaean Greece",
+"de": -1400,
+"a": -1301,
+"km2": 4762
+},
+{
+"nom": "New Kingdom of Egypt",
+"de": -1400,
+"a": -1301,
+"km2": 5
+},
+{
+"nom": "Mycenaean Greece",
+"de": -1300,
+"a": -1241,
+"km2": 4762
+},
+{
+"nom": "New Kingdom of Egypt",
+"de": -1300,
+"a": -1241,
+"km2": 5
+},
+{
+"nom": "Elam",
+"de": -1300,
+"a": -1151,
+"km2": 0
+}
+]
+}
