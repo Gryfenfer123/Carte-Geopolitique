@@ -20,8 +20,13 @@ universitaire**. Il est inconcevable de publier quelque chose de faux ou d'appro
    les sources en d'autres langues (langue du pays concerné) sont bienvenues, voire nécessaires.
 2. **Wikipédia et Wikidata ne sont PAS des preuves** : ce sont des pistes pour trouver les vraies sources (leurs notes et
    bibliographies). Une donnée qui n'a que Wikipédia/Wikidata derrière elle n'est pas écrite.
-3. **Seuls les faits non contestés** sont écrits comme faits. Si les spécialistes divergent (date, filiation, chiffre) :
-   on n'en choisit pas une en silence ; on écrit la divergence attribuée (« selon X… ; selon Y… ») ou on s'abstient.
+3. **Désaccord entre spécialistes (précisé par Martin le 2026-11-02)** — trois cas :
+   - **Convention établie** (la datation ou la version enseignée, usuelle dans les manuels et ouvrages de référence) : on **utilise
+     la convention**, même s'il existe un désaccord ; on peut noter la divergence en une ligne dans le registre et/ou la fiche.
+   - **Désaccord mineur** sans convention nette : on prend la position majoritaire des sources savantes, en notant la divergence.
+   - **Énorme désaccord notable**, sans convention retenue : **on n'écrit rien dans la base, on le note dans le registre comme
+     « désaccord », et on demande à Martin.**
+   Dans tous les cas on ne choisit jamais « en silence » : la convention retenue et la source qui la porte sont écrites.
 4. **Les sources qui se contredisent** ou qui se recopient (une seule source d'origine répétée) comptent pour une seule.
 5. **Aucune valeur de mémoire.** Une connaissance « générale » de l'IA n'est jamais une source.
 6. **Dans le doute, on ne pousse pas** (ni GitHub ni Supabase) : on le signale à Martin comme « non vérifié ».

@@ -32,7 +32,7 @@ Martin **ne programme pas** : il décrit en français, tu fais, tu expliques sim
 7. **Aucun secret** (`service_role`) dans le dépôt. Texte riche = toujours via `sanitize.ts`.
 8. **Données — niveau de preuve maximal** : uniquement des **faits non contestés**, **recoupés par plusieurs sources indépendantes dont
    au moins une universitaire** (voir `docs/sources/README.md`, § « Barème de preuve »). Wikipédia/Wikidata = pistes, jamais preuve.
-   Jamais de valeur inventée ou approximative : **dans le doute, on n'écrit pas** (ni en base, ni sur GitHub). Tout est sourcé dans
+   Désaccord entre spécialistes : on suit la **convention enseignée** (en la notant) ; énorme désaccord sans convention = on n'écrit rien et on demande à Martin. Jamais de valeur inventée ou approximative : **dans le doute, on n'écrit pas** (ni en base, ni sur GitHub). Tout est sourcé dans
    `docs/sources/<chantier>.md` au moment du travail ; **rien n'est pris s'il n'est pas sourcé**.
 9. **Docs dans le même commit** que le changement (`docs/`).
 10. **Irréversible = demander d'abord** (suppression de données, changement de droits). Une migration non destructive s'exécute directement.

@@ -108,7 +108,7 @@ Tout est dans `docs/BASE_DE_DONNEES.md` ; l'essentiel :
   Rien n'est pris s'il n'est pas sourcé. Ces fichiers serviront à écrire le grand document de sources.
 
 - **Barème de preuve (Martin, 2026-11-02)** : faits non contestés uniquement, ≥ 2 sources indépendantes dont ≥ 1 universitaire,
-  Wikipédia/Wikidata = pistes seulement, divergence entre spécialistes = attribuée ou non écrite, jamais d'approximation.
+  Wikipédia/Wikidata = pistes seulement, désaccord entre spécialistes = convention enseignée retenue (et notée), ou, si énorme désaccord sans convention, rien d'écrit + question à Martin ; jamais d'approximation.
   Détail dans `docs/sources/README.md`. Il s'applique aussi à ce qui existe déjà : voir `docs/audits/VERIF_FRANCE.md`.
 - Une donnée affichée vient d'une **source fiable identifiable** ; on la note (nom, année,
   couverture) à côté du fichier ou dans le commit. **On n'invente jamais de valeurs** pour

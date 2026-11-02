@@ -37,3 +37,4 @@
 - Décision de Martin : l'IA exécute elle-même les migrations (connecteur Supabase) ; Martin ne copie plus rien. Mis à jour : `CLAUDE.md` (règles 6, 8, 10), `docs/CONVENTIONS.md` (§0, §5, §7), `docs/BASE_DE_DONNEES.md`. Les en-têtes des anciens fichiers SQL (« à coller dans SQL Editor ») ne sont pas modifiés (migrations exécutées).
 - Décision de Martin : barème de preuve maximal (`docs/sources/README.md`). Vérification globale ouverte par la France : `docs/audits/VERIF_FRANCE.md`.
 - Reste hors dépôt : instructions du projet claude.ai et documents `claude/lisez-moi-chaque-session.md` / `claude/contexte-complet-projet.md` (dire encore « Martin exécute les migrations »).
+- 2026-11-02 (précision de Martin) : désaccord entre spécialistes → convention enseignée retenue et notée ; énorme désaccord sans convention → rien écrit + question à Martin (`docs/sources/README.md` §3).
