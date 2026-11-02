@@ -32,3 +32,10 @@ Puis mettre à jour la version dans `SOURCE.md`, dans l'en-tête de `src/histori
 - `chevauchements_table.py` (classement manuel) + `audit/chevauchements_apres_passe*.json` → `generer_decisions_chevauchements.py` → `chevauchements_decisions.json` (lu par `corrections_formes.py`) et `docs/sources/historique_chevauchements.csv`.
 
 `--lacs <ne_10m_lakes.geojson>` : traite les lacs ≥ 1 000 km² comme de l'eau (rives suivies). Commande complète 2026-11-01 : `... --terres terres_10m.geojson --lacs lacs_10m.geojson --debut -700` (≈ 2 h 15). `parties_retirees.json` : parties de contours mal placées retirées. `audit/a5_chevauchements_donnees.py` : audit des données finales.
+
+## Côte GSHHG et îles complétées (2026-11-02)
+```bash
+python3 -I gshhg_vers_terres.py <dossier gshhg res_f> /tmp/terres_gshhg.geojson 100 0.001
+python3 -I preparer_cliopatria.py <cliopatria.geojson> <sortie> --terres /tmp/terres_gshhg.geojson --debut -700
+```
+La complétion des îles (`iles_completees.py`) est appliquée automatiquement ; rapport dans `iles_completees_rapport.json`. Mémoire : ≈ 6 Go, un processus tué fige le calcul : le relancer reprend où il en était.

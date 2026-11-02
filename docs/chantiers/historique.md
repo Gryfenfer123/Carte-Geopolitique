@@ -123,3 +123,11 @@ clavier, bornes (999999 → 2024, -99999 → -3400, champ vide ignoré), lecture
 - Fond : remplacé le soir du 2026-11-01 par un fond unique Esri World_Ocean_Base (voir DECISIONS).
 
 **Non vérifié** (2026-11-01) : rendu visuel en ligne (rives des Grands Lacs, Svalbard) ; les frontières terrestres restent celles de Cliopatria (aucune source pour les corriger) ; lisières ≤ 0,16 deg² pas relues ; recouvrement de l'Arctique canadien avec le contour principal de l'Empire britannique (même nom, même couleur).
+
+## 2026-11-02 — grand correctif côtes / îles
+- Demande de Martin : contours collés à la côte et aux îles partout (les zones montrées n'étaient que des exemples).
+- Côte : GSHHG 2.3.7 pleine résolution (lacs ≥ 100 km² en eau), convertie par `gshhg_vers_terres.py` ; ajustement par cases de 5° avec 3 niveaux de détail.
+- Îles : nouveau module `iles_completees.py` (364 884 îles complétées, voir `iles_completees_rapport.json`).
+- Données régénérées : 12 501 lignes, 10 100 tracés, 160 morceaux (75 Mo). Tests, vérification des données OK ; audit a5 : 2 265 paires > 0,005 deg² (avant : 2 317).
+- Régénération ≈ 4 h, reprise possible (`_reprise.jsonl`) ; piège : un processus tué par manque de mémoire fige le calcul → relancer (la reprise est conservée).
+- **Non vérifié** : rendu visuel en ligne (Grands Lacs, Canada, Svalbard, François-Joseph) ; plausibilité îlot par îlot.

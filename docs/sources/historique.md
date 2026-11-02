@@ -65,3 +65,10 @@ Limites : trou Tahiti 1940-1944 (Vichy exclu, ralliement non sourcé) ; l'Arctiq
 |---|---|---|---|---|---|
 | 2026-11-01 | Rives des grands lacs (≥ 1 000 km²) suivies | Natural Earth 10 m, lacs (ne_10m_lakes) | https://github.com/nvkelso/natural-earth-vector/blob/master/geojson/ne_10m_lakes.geojson | Domaine public | Élevée |
 | 2026-11-01 | Trois carrés « Allemagne nazie » près de Monaco retirés (mal placés) | Cliopatria v0.2.1 ; position de Monaco : Natural Earth 10 m | https://github.com/nvkelso/natural-earth-vector | CC BY 4.0 / domaine public | Élevée pour la position ; l'occupation allemande de Monaco (1943-44) n'est pas dessinée, faute de contour |
+
+## Côte détaillée GSHHG et îles complétées (2026-11-02)
+
+| Date | Ce qui a été fait / touché | Source | Lien précis | Licence | Fiabilité |
+|---|---|---|---|---|---|
+| 2026-11-02 | Côtes et rives des lacs ≥ 100 km² : les contours sont recalés sur ce trait de côte (remplace Natural Earth 10 m + lacs ≥ 1000 km²) | GSHHG 2.3.7 (Global Self-consistent, Hierarchical, High-resolution Geography Database), résolution pleine « f » ; Wessel & Smith 1996, J. Geophys. Res. 101(B4) | https://www.soest.hawaii.edu/pwessel/gshhg/ (dépôt utilisé : https://github.com/GenericMappingTools/gshhg-gmt) | LGPL v3 | Haute (base de référence mondiale, ≈ 1 : 100 000 ou mieux) |
+| 2026-11-02 | Îles complétées : une île ≤ 20 000 km² déjà couverte à ≥ 50 % par une entité l'est entièrement, moins les autres entités actives à la même époque (aucune donnée de date ajoutée) | Mêmes îles GSHHG + contours Cliopatria v0.2.1 ; règle de complétion de Claude (`scripts/historique/iles_completees.py`) | voir ci-dessus | LGPL v3 / CC BY 4.0 | Moyenne : la règle est une convention de dessin, pas une donnée historique ; limite : île partiellement couverte supposée entièrement à l'État |
