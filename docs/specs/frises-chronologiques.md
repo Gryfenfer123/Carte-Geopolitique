@@ -11,7 +11,7 @@ Les anciennes frises (prototype `src/frise.ts` + table `timeline_items`, schema_
 
 - Une frise est une **entrée de dossier** (type `frise`) que l'on peut placer n'importe où : pays, groupe, catégorie, sous-catégorie à n'importe quelle profondeur — comme un arbre généalogique ou un hémicycle.
 - Elle n'est pas propre à un pays : on peut en faire pour un pays, un groupe (BRICS, OTAN…) ou tout autre sujet.
-- Il n'y a PAS de frise mondiale générale. Chaque pays aura, à terme, sa frise générale d'histoire (prévue dans Histoire > « Conflits, traités et crises », les autres catégories d'Histoire étant Dynastie, Religion, Institution politique, Économie et société, Relations avec le monde, Territoire), et on peut ajouter des frises thématiques (ex. une frise dans Religion).
+- Il n'y a PAS de frise mondiale générale. Chaque pays aura, à terme, sa frise générale d'histoire (prévue dans Histoire > « Chronologie » — renommée le 2026-11-02, voir `DECISIONS.md` —, les autres catégories d'Histoire étant Dynastie, Religion, Institutions et politique, Économie et société, Relations avec le monde, Territoires), et on peut ajouter des frises thématiques (ex. une frise dans Religion).
 - Une frise est une suite d'éléments rangés en catégories qui s'ouvrent vers d'autres catégories, des événements, ou les deux.
 
 ## 2. Périodes et sous-frises
