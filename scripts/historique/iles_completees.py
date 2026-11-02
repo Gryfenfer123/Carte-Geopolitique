@@ -51,12 +51,9 @@ def completer(entites, dates, iles):
         g = make_valid(shape(entites[k]["geometry"])).buffer(0)
         if g.is_empty:
             continue
-        shapely.prepare(g)
-        cand = arbre_iles.query(g, predicate="intersects")
-        if len(cand) == 0:
-            continue
-        # les îles entièrement dans le contour n'ont rien à compléter : on les écarte d'un coup (rapide, géométrie préparée)
-        cand = cand[~shapely.contains(g, iles_arr[cand])]
+        # seules les îles que la LIMITE du contour traverse peuvent être à moitié couvertes (les autres sont entières dedans
+        # ou entièrement dehors) : on ne teste que celles-là (rapide et peu gourmand en mémoire, même pour un grand empire)
+        cand = arbre_iles.query(g.boundary, predicate="intersects")
         if len(cand) == 0:
             continue
         voisins = None
