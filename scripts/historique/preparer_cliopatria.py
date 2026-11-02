@@ -195,8 +195,12 @@ def main():
         if ft["properties"]["Type"] == "POLITY" and not ft["properties"]["Name"].startswith("(")
     ]
     entites.sort(key=lambda ft: (ft["properties"]["FromYear"], ft["properties"]["ToYear"], ft["properties"]["Name"]))
-    print(len(entites), "lignes à dessiner sur", len(data["features"]))
+    print(len(entites), "lignes à dessiner")
     ENTITES[:] = [ft for ft in entites]
+    nb_total = len(data["features"])
+    del data  # libère les entités non dessinées (mémoire : la machine tue les calculs au-delà de ≈ 6 Go)
+    import gc
+    gc.collect()
 
     noms, idx_nom = [], {}
 
