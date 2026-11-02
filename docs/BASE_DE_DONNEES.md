@@ -254,3 +254,4 @@ RLS**. Règles :
 
 - `supabase/dossiers/dossiers_v1.sql` (2026-11-02, **exécutée**) : renomme « Conflits, traités et crises » en « Chronologie » (196 sections racine de la catégorie Histoire des pays). Aucune suppression ; retour arrière indiqué en tête du fichier.
 - `supabase/groupes/groupes_v1.sql` (2026-11-02, **exécutée**) : nouvel espace de catégories `group` dans `dossier_categories` + 7 catégories de base pour les dossiers de groupes. Aucune suppression ni déplacement.
+- `supabase/groupes/groupes_v2.sql`, `groupes_v3.sql`, `groupes_v4.sql` (2026-11-02, **exécutées**) : contenu du dossier d'exemple « OTAN » (60 entrées de texte, 21 sous-catégories, chaque entrée avec ses sources). Données seulement, aucune structure nouvelle ; retour arrière indiqué en tête de `groupes_v2.sql` (balise « Exemple OTAN »).
