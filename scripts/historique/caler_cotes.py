@@ -145,6 +145,7 @@ class _CoteNiveau:
         return resultat, 1 - resultat.area / a0
 
 
+MIN_ILE_PAR_NIVEAU = (MIN_ILE_DEG2, 0.0003, 0.001)   # surface minimale (deg²) des îles gardées à chaque niveau
 SIMPLIFS = (0.0025, 0.006, 0.012)   # niveaux de détail de la côte (°) : un grand empire n'a pas besoin d'une côte à 250 m
                                      # (sa forme est de toute façon re-simplifiée à 0,5 × sa tolérance, jusqu'à 0,015°)
 
@@ -156,6 +157,7 @@ class Cote:
         with open(chemin_terre, encoding="utf8") as f:
             data = json.load(f)
         polys = [make_valid(shape(f["geometry"])) for f in data["features"]]
+        del data   # mémoire : la machine tue les calculs au-delà de ≈ 6 Go
         polys = [p for p in polys if p.area >= MIN_ILE_DEG2]
         if chemin_lacs:
             with open(chemin_lacs, encoding="utf8") as f:
@@ -164,7 +166,9 @@ class Cote:
             if lacs:
                 grand = shapely.union_all(lacs)
                 polys = [p.difference(grand) if p.intersects(grand) else p for p in polys]
-        self.niveaux = [_CoteNiveau(polys, s) for s in SIMPLIFS]
+        # les niveaux grossiers ignorent les petites îles (inutiles à cette précision, et très coûteuses en mémoire)
+        self.niveaux = [_CoteNiveau([p for p in polys if p.area >= m], s) for s, m in zip(SIMPLIFS, MIN_ILE_PAR_NIVEAU)]
+        del polys
 
     def terre_autour(self, geom):
         return self.niveaux[0].terre_autour(geom)

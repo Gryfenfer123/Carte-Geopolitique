@@ -304,6 +304,10 @@ def main():
     if terres:  # la côte (3 niveaux de détail, plusieurs Go) n'est construite qu'ici, pour ne pas dépasser la mémoire de la machine
         lacs = sys.argv[sys.argv.index("--lacs") + 1] if "--lacs" in sys.argv else None  # lacs Natural Earth 10 m (rives suivies)
         COTE = Cote(terres, lacs)
+    # Les processus enfants (fork) partagent la mémoire du parent ; le ramasse-miettes de Python écrirait dans tous les objets
+    # et les copierait (3 × plusieurs Go : la machine tuait le calcul). gc.freeze() les met à l'abri.
+    gc.collect()
+    gc.freeze()
     print("Calcul des tracés…")
     with multiprocessing.get_context("fork").Pool(2) as pool:
         # Reprise après interruption (la machine de travail peut être arrêtée en cours de calcul) : les tracés déjà
