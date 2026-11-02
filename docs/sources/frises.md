@@ -4,6 +4,11 @@ Format : voir `README.md`. Consultation : 2026-11-01 (les pages Wikipédia peuve
 Ce fichier couvre l'**exemple « Histoire de France »** (`supabase/frises/frises_v1.sql`). Chaque fiche créée par
 ce script porte aussi ses sources dans le champ « sources » de la fiche (titre + lien).
 
+> **2026-11-02 — le test « Histoire de France » (frises_v1) a été supprimé** de la base par `frises_v3` à la demande de Martin
+> (« c'était un test, on reprend sur des bases saines »). Les lignes de la section « Lots sourcés » ci-dessous ne décrivent donc plus
+> aucune donnée en base ; elles sont gardées comme historique de recherche seulement (aucune de ces dates n'est reprise sans
+> nouveau recoupement, et Wikipédia n'est pas une preuve : barème de `README.md`).
+
 ## Méthode et limites
 - Les pages Wikipédia ont été lues avec un outil de lecture qui **perd certains jours/mois** (dates écrites par
   modèles). Une date n'est donc retenue que si elle est **écrite dans le texte lu**, ou recoupée par une 2e source
@@ -39,3 +44,48 @@ ce script porte aussi ses sources dans le champ « sources » de la fiche (titre
 ## Noms et bornes qui sont des conventions (à valider)
 - « Convention girondine » (21 sept. 1792 → 2 juin 1793), « Convention montagnarde » (→ 27 juil. 1794) et « Convention thermidorienne » (→ 26 oct. 1795) : les mots « montagnarde » et « thermidorienne » et les dates 27 juil. 1794 et 26 oct. 1795 viennent de la Chronologie Wikipédia ; « girondine » et la borne du 2 juin 1793 (arrestation des Girondins) sont un **choix de découpage**, signalé ici comme **à recouper**.
 - Les points « à la frontière » (par ex. 9 thermidor, 27 juil. 1794) se rangent dans la période qui commence ce jour-là.
+
+## frises_v3 — découpage de l'histoire de France (2026-11-02)
+Consultation : 2026-11-02. Barème appliqué : `README.md` (≥ 2 sources indépendantes dont ≥ 1 universitaire/institutionnelle ;
+convention établie retenue avec divergence notée). Sources universitaires/institutionnelles = **U** : notices **BnF RAMEAU**
+(vedettes-matière « France — dates »), collections **Belin/Cornette** et **Seuil** (notices des Bibliothèques numériques de la Défense), revue
+**ATALA n°17 (2014)** (Mazel, Hamon, Inglebert), **Inrap**, manuels de lycée (Nathan) = programmes officiels (B).
+Résultat de recoupement : « concordantes » = au moins 2 sources dont 1 U s'accordent ; « divergence » = le désaccord est noté.
+
+| Borne retenue | Sources (U = universitaire/institutionnelle) | Résultat | Autres dates trouvées (non retenues) |
+|---|---|---|---|
+| **476** (Antiquité → Moyen Âge) | U : RAMEAU « France 476-1483 (Moyen âge) » ; U : Mazel (ATALA) ; B : Nathan 2de, Orléans-Tours | concordantes, **convention établie** | 481 (Clovis, volume Belin), 486 (fin de la Gaule romaine), 496 |
+| **987** (haut MA → MA central) | U : RAMEAU « France 987-1328 (Capétiens) » ; U : Seuil (Barthélemy) ; Larousse | concordantes | an mil / XIe s. (Mazel, Nathan : tripartition par siècles Ve-Xe, XIe-XIIIe, XIVe-XVe) |
+| **1328** (MA central → bas MA) | U : RAMEAU « 1328-1589 (Valois) » ; U : Belin (Cassard 1180-1328 ; Bove 1328-1453) ; Larousse | concordantes | 1300 (siècles : Nathan, Seuil Bourin/Demurger), 1348 |
+| **1492** (Moyen Âge → moderne) | U : Hamon (ATALA : 1492 « la plus évoquée aujourd'hui ») ; B : programmes (Nathan, Orléans-Tours, BO) | concordantes, **convention établie** | 1453 (Belin Hamon ; la plus ancienne), 1483 (RAMEAU « Moyen âge 476-1483 »), 1517 |
+| **1562** (Renaissance → guerres de religion) | U : RAMEAU « France 1562-1598 (Guerres de religion) » (vedette portée par la notice Belin Le Roux) ; B : programmes | concordantes | 1559 (Belin Le Roux ; Larousse) |
+| **1598** (guerres de religion → monarchie absolue) | U : RAMEAU (même vedette) ; B : programmes (édit de Nantes) | **divergence** | 1589 (Larousse), 1629 (Belin Le Roux : paix d'Alès) |
+| **1715** (absolue → Lumières) | U : Belin (Drévillon : mort de Louis XIV, 1er sept. 1715 ; Beaurepaire 1715-1789) ; U : Seuil/Zysberg (1715-1786) ; Larousse | concordantes | — |
+| **1789** (moderne → contemporaine) | U : RAMEAU « France 1789-1799 (Révolution) » ; U : Belin (1789-1815) ; B : programmes | concordantes, **convention établie** | 1815 (minorité : historiens modernistes) |
+| **1799** (Révolution → Consulat) | U : RAMEAU « 1789-1799 (Révolution) » et « 1799-1815 (Consulat et Empire) » ; U : Bertaud (Colin) ; Seuil | concordantes | — |
+| **1815** (Empire → Restauration) | U : RAMEAU « 1799-1815 (Consulat et Empire) » ; U : Seuil (1815-1848) ; U : Belin (Aprile 1815-1870) | **divergence mineure** | 1814 (RAMEAU « Restauration 1814-1830 » ; programmes) |
+| **1870** (→ IIIe République) | U : RAMEAU « 1870-1940 (3e République) » (4 sept. 1870) ; U : Belin (Duclert 1870-1914) | concordantes | 1871 (Seuil Mayeur 1871-1898) |
+| **1914** | U : Belin (Duclert ; Beaupré 1914-1945) ; U : Seuil (1898-1914 / 1914-1929) | concordantes | — |
+| **1945** | U : Belin (Zancarini-Fournel 1945-2005) ; U : RAMEAU « France 1945-… » | concordantes | 1944 (Seuil), 1946 (IVe République) |
+| **−52** (Gaule indépendante → romaine) | U : Inrap (âge du Fer −800 → −52, conquête) ; U : Delaplace & France, *Histoire des Gaules* ; B : programmes (Alésia) | concordantes | −121/−118 (Narbonnaise), −58 (début de la guerre des Gaules) |
+| **235** (Haut-Empire → crise) | U : Y. Roman, *Le Haut-Empire romain 27 av. J.-C.-235* (notice) ; Universalis ; Delaplace & France (chapitre « 235-406 ») | concordantes | 192 (Commode), fin IIIe s. (Inrap) |
+| **284** (crise → Bas-Empire) | U : RAMEAU « Rome 284-476 (Bas-Empire) » (notice P. Brown) ; World History Encyclopedia (tertiaire) | **à valider** : une seule source universitaire indépendante lue | 250 (OCLA), 150 (Brown, début de l'Antiquité tardive) |
+
+### Points qui n'atteignent PAS le barème (signalés à Martin, non cachés)
+- **Début de l'Antiquité pour la France : ≈ −600** (fondation de Marseille ; début de la Gaule écrite). C'est un **choix de Claude**, pas une
+  convention établie : la convention de l'Antiquité est l'écriture (−3500/−3300, programmes officiels), qui n'a pas de sens local en Gaule ;
+  les archéologues (Inrap) placent l'Antiquité en France à −52 ; *Histoire des Gaules* (Delaplace & France) commence au VIe s. av. J.-C.
+  Sources : Inrap (frise : ≈ −600 fondation de Marseille), Delaplace & France. **À valider par Martin.**
+- **« Crise du IIIe siècle » (235 → 284) comme sous-période à part** : portée par World History Encyclopedia (tertiaire) ; Delaplace & France
+  traitent 235-406 d'un bloc. **À valider** (sinon fusionner avec le Bas-Empire).
+- **Noms des sous-périodes** (« Monarchie absolue », « Monarchie des Lumières », « La France de 1870 à 1914 »…) : libellés descriptifs de Claude ;
+  les bornes sont sourcées, pas les noms.
+- **Années seules** : aucune borne ne porte de mois/jour (ce sont des conventions d'historiens) ; −600 est marqué « vers ».
+- **Non lu en entier** : les sommaires complets des volumes Belin/Seuil (seuls titres, dates et résumés d'éditeur ont été lus).
+- **Liens** (tous consultés le 2026-11-02) : ATALA — https://www.lycee-chateaubriand.fr/wp-content/uploads/sites/2/2017/01/Mazel17.pdf ,
+  https://www.lycee-chateaubriand.fr/revue-atala/wp-content/uploads/sites/2/2017/01/Hamon17.pdf ,
+  https://www.lycee-chateaubriand.fr/revue-atala/wp-content/uploads/sites/2/2014/06/Inglebert17.pdf ;
+  RAMEAU — https://catalogue.bnf.fr/ark:/12148/cb11941855d (3e République), https://catalogue.bnf.fr/ark:/12148/cb119418484 (1789-1815),
+  https://catalogue.bnf.fr/ark:/12148/cb11941853q (Restauration) ; Inrap — https://multimedia.inrap.fr/archeologie-preventive/periode/8/Age-du-Bronze-et-age-du-Fer ;
+  Belin/Seuil : notices Bibliothèques numériques de la Défense (liens complets dans le champ « sources » des frises en base).
+  Licences : notices et pages en consultation, aucun texte repris ; liens uniquement.
