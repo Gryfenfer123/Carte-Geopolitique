@@ -27,11 +27,15 @@ Martin **ne programme pas** : il décrit en français, tu fais, tu expliques sim
 5. **Minimalisme** : pas de fonctionnalité non demandée, pas de dépendance sans justification.
 6. **Migrations SQL** : `supabase/<chantier>/<chantier>_vN.sql` (un compteur par chantier, voir
    `docs/CHANTIERS.md` ; jamais de doublon), idempotente, sans suppression de données, RLS incluse ;
-   **c'est Martin qui l'exécute** — le lui dire. Les anciennes `schema_v1…v60` ne se renomment pas.
+   **tu l'exécutes toi-même** via le connecteur Supabase (décision de Martin, 2026-11-02), tu contrôles le résultat
+   dans la base, puis tu pousses sur GitHub. Martin ne copie plus rien. Les anciennes `schema_v1…v60` ne se renomment pas.
 7. **Aucun secret** (`service_role`) dans le dépôt. Texte riche = toujours via `sanitize.ts`.
-8. **Données** : source fiable notée, jamais de valeur inventée. **Sourcer systématiquement, à chaque travail, dans `docs/sources/<chantier>.md`** (format dans `docs/sources/README.md`) ; **rien n'est pris s'il n'est pas sourcé**.
+8. **Données — niveau de preuve maximal** : uniquement des **faits non contestés**, **recoupés par plusieurs sources indépendantes dont
+   au moins une universitaire** (voir `docs/sources/README.md`, § « Barème de preuve »). Wikipédia/Wikidata = pistes, jamais preuve.
+   Jamais de valeur inventée ou approximative : **dans le doute, on n'écrit pas** (ni en base, ni sur GitHub). Tout est sourcé dans
+   `docs/sources/<chantier>.md` au moment du travail ; **rien n'est pris s'il n'est pas sourcé**.
 9. **Docs dans le même commit** que le changement (`docs/`).
-10. **Irréversible = demander d'abord** (suppression de données, droits, migration).
+10. **Irréversible = demander d'abord** (suppression de données, changement de droits). Une migration non destructive s'exécute directement.
 
 ## Commandes
 

@@ -8,9 +8,13 @@ résultat reste solide, relisable par un développeur, et que chaque session rep
 
 - Martin décrit ce qu'il veut en français, sans lire le code. **Expliquer en français simple**,
   sans jargon ; dire ce qui change **pour lui** dans l'appli.
-- Avant tout ce qui est difficile à annuler (suppression de données, migration SQL, changement
-  de droits), **demander et attendre un accord clair**.
-- Les migrations SQL sont exécutées **par Martin** dans Supabase : on ne peut pas le faire à sa place.
+- Avant tout ce qui est difficile à annuler (**suppression de données**, **changement de droits**),
+  **demander et attendre un accord clair**.
+- **Depuis le 2026-11-02, les migrations SQL sont exécutées par l'IA elle-même** (connecteur Supabase :
+  `execute_sql` / `apply_migration`), puis poussées sur GitHub. Martin n'a plus rien à copier dans Supabase.
+  Ordre : écrire le fichier → le tester → l'exécuter → **relire le résultat dans la base** → noter « exécutée »
+  dans `docs/BASE_DE_DONNEES.md` → commit + push. Si le connecteur Supabase est absent de la conversation,
+  le dire à Martin au lieu de lui faire copier le fichier sans explication.
 
 ## 1. Avant de commencer une session
 
@@ -82,8 +86,9 @@ Tout est dans `docs/BASE_DE_DONNEES.md` ; l'essentiel :
   Réserver le numéro en poussant le fichier tout de suite quand plusieurs conversations travaillent en parallèle.
 - **Ne jamais modifier une migration déjà exécutée** : en écrire une corrective.
 - Toute nouvelle table : **RLS activée et policies écrites dans la même migration**.
-- Prévenir Martin que le fichier est **à exécuter dans le SQL Editor**, et que le code qui en
-  dépend ne marchera pas avant.
+- **Exécuter la migration soi-même** via le connecteur Supabase, vérifier le résultat par une requête de contrôle,
+  et dire à Martin ce qui a été appliqué (jamais « à exécuter par Martin »). Suppression de données ou droits :
+  accord de Martin d'abord.
 
 ## 6. Sécurité
 
@@ -102,6 +107,9 @@ Tout est dans `docs/BASE_DE_DONNEES.md` ; l'essentiel :
   `docs/sources/<chantier>.md` (voir `docs/sources/README.md`), dans le même commit que le travail.
   Rien n'est pris s'il n'est pas sourcé. Ces fichiers serviront à écrire le grand document de sources.
 
+- **Barème de preuve (Martin, 2026-11-02)** : faits non contestés uniquement, ≥ 2 sources indépendantes dont ≥ 1 universitaire,
+  Wikipédia/Wikidata = pistes seulement, divergence entre spécialistes = attribuée ou non écrite, jamais d'approximation.
+  Détail dans `docs/sources/README.md`. Il s'applique aussi à ce qui existe déjà : voir `docs/audits/VERIF_FRANCE.md`.
 - Une donnée affichée vient d'une **source fiable identifiable** ; on la note (nom, année,
   couverture) à côté du fichier ou dans le commit. **On n'invente jamais de valeurs** pour
   combler un trou.

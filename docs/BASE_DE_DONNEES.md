@@ -2,9 +2,9 @@
 
 L'appli utilise un projet **Supabase** (PostgreSQL + authentification + stockage de fichiers).
 L'adresse du projet et la clé « anon » sont dans `.env.production` (voir plus bas pourquoi
-c'est acceptable de les commiter). **Aucune migration ne s'applique automatiquement** :
-chaque fichier `supabase/schema_vN.sql` est collé et exécuté **à la main par Martin** dans
-Supabase → SQL Editor.
+c'est acceptable de les commiter). **Aucune migration ne s'applique automatiquement par le site** ;
+**depuis le 2026-11-02 c'est l'IA qui exécute chaque migration** via le connecteur Supabase (avant, Martin les collait
+à la main dans SQL Editor, d'où les mentions « à lancer dans SQL Editor » dans les anciens fichiers, qu'on ne modifie pas).
 
 ## ⚠️ Le dépôt ne permet pas, à ce jour, de reconstruire la base à l'identique
 
@@ -75,8 +75,8 @@ RLS**. Règles :
    données**, sauf accord explicite de Martin.
 4. Ne **jamais modifier** une migration déjà exécutée : écrire une migration corrective
    (comme v28, v34, v35).
-5. Dire clairement à Martin « ce fichier est à exécuter dans le SQL Editor » : tant que ce
-   n'est pas fait, le code qui en dépend ne fonctionne pas en production.
+5. **Exécuter le fichier soi-même** (connecteur Supabase), contrôler le résultat par une requête, puis le dire à Martin.
+   Suppression de données ou changement de droits : accord de Martin d'abord.
 6. Ajouter une ligne ci-dessous.
 
 ## Historique des migrations présentes

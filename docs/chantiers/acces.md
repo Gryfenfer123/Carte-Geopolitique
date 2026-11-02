@@ -32,3 +32,8 @@
   Suite : filtrer les schémas des liens (`link_url`), puis `acces_v1` (droits trop ouverts) après accord de Martin.
 - 2026-11-01 : vérification des licences d'images (demande de Martin : tout doit être libre). Registre : `docs/sources/images.md` ; script `scripts/images/verifier-licences-wikimedia.js`.
   Vérifié : 302 fichiers Commons, aucun non libre. Non vérifiable : 874 fichiers téléversés (origine perdue), dont 40 couvertures manifestement issues du web (Adobe Stock, Getty…) et ~33 photos récentes de personnes vivantes. Aucune image supprimée ni modifiée (accord de Martin à demander).
+
+## 2026-11-02 — Migrations par l'IA + barème de preuve
+- Décision de Martin : l'IA exécute elle-même les migrations (connecteur Supabase) ; Martin ne copie plus rien. Mis à jour : `CLAUDE.md` (règles 6, 8, 10), `docs/CONVENTIONS.md` (§0, §5, §7), `docs/BASE_DE_DONNEES.md`. Les en-têtes des anciens fichiers SQL (« à coller dans SQL Editor ») ne sont pas modifiés (migrations exécutées).
+- Décision de Martin : barème de preuve maximal (`docs/sources/README.md`). Vérification globale ouverte par la France : `docs/audits/VERIF_FRANCE.md`.
+- Reste hors dépôt : instructions du projet claude.ai et documents `claude/lisez-moi-chaque-session.md` / `claude/contexte-complet-projet.md` (dire encore « Martin exécute les migrations »).
