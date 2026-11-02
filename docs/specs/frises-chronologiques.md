@@ -134,3 +134,10 @@ de se contenter des dates de vie ? (b) par quel pays commencer ? (c) ruban sous 
 des périodes ? (d) une régence (ex. Anne d'Autriche) compte-t-elle comme règne ? (e) qui remplit : moi, avec sources
 (page par page), ou toi dans l'arbre ?
 
+
+## 11. Outil « Règnes » (2026-11-02, codé ; table `timeline_reigns` à créer par `frises_v2`)
+- **Saisie** : bouton « + Règne » (admin) sur une frise → recherche d'un membre d'arbre par nom, titre exercé (facultatif), début, fin (vide = en cours / inconnue), jusqu'à 3 sources (titre, lien, case « universitaire »). **Sans source, rien n'est enregistré.**
+- **Preuve** : règne « vérifié » = au moins 2 sources distinctes dont 1 universitaire (`isReignVerified`) ; sinon affiché en pointillés « à vérifier ».
+- **Affichage** : ruban sous la frise, une barre par règne (rangées séparées si chevauchement), rogné aux bornes de la frise ; bouton « Règnes » pour le masquer ; clic = carte (dates, sources, « Ouvrir l'arbre »).
+- **Pont vers les arbres** : « Ouvrir l'arbre » appelle `openGenealogyMember`. Sens inverse (afficher le règne dans l'arbre, « Voir sur la frise ») : à faire par le chantier « arbres » avec `fetchReignsOfMember`.
+- **Pas de données** : l'outil n'invente rien ; les règnes sont saisis par Martin avec leurs sources.

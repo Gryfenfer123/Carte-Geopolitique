@@ -4,6 +4,7 @@ Spécification de référence : [`../specs/frises-chronologiques.md`](../specs/f
 
 ## Dernières nouvelles (la plus récente en haut)
 - 2026-11-02 (3) — « Histoire de France » REFAITE : test frises_v1 supprimé, nouvelle frise dans Histoire > Chronologie (4 époques + 17 sous-périodes, sans événements) : `supabase/frises/frises_v3.sql`, **exécuté par Claude via Supabase** sur demande de Martin. Vérifié : contrôles intégrés au script, relecture en base ; non vérifié : affichage dans l'appli, 2 points à valider (début ≈ −600, « Crise du IIIe siècle »), voir `docs/sources/frises.md`. Prochaine étape : 3e niveau (dynasties/régimes) après validation.
+- 2026-11-02 (3) — **outil « Règnes »** : bouton « + Règne » (choisir un souverain d'un arbre, dates de début/fin, au moins une source obligatoire) ; ruban « Règnes » sous la frise (trait plein = vérifié : 2 sources dont 1 universitaire ; pointillés = à vérifier) ; clic sur un règne → carte avec sources et bouton « Ouvrir l'arbre » ; bouton « Règnes » pour masquer/afficher. **La table `timeline_reigns` n'existe pas encore sur la vraie base** (`frises_v2.sql` écrit, exécution refusée par le système de permissions : décision de Martin attendue) ; en attendant, la frise s'affiche normalement sans règnes. Aucune donnée ajoutée. Vérifié : `check:repo`, `build`, test navigateur (fausse base) ; non vérifié : vraie base, mobile. Pour le chantier « arbres » : `fetchReignsOfMember(supabase, memberId)` dans `src/friseReigns.ts`.
 - 2026-11-02 (2) — proposition écrite (spec §10, rien codé) : ruban « Règnes » sur la frise relié aux arbres ; il manque les dates de règne en base (seulement naissance/décès) → nouvelle table à valider avec Martin. Catégories de points : à revoir ensemble plus tard.
 - 2026-11-02 — confort de la frise : tout est ~30 % plus grand, la frise s'ajuste à l'écran à l'ouverture et sur « Recentrer », grandes marges pour glisser aussi vers la gauche, boutons ← →, flèches du clavier, geste horizontal ; noms de périodes étroites sur 2 lignes. Aucune migration. Vérifié : `check:repo`, `build`, test navigateur ; non vérifié : mobile/tactile, vraie base.
 - 2026-11-01 — exemple « Histoire de France » en 3 niveaux (grandes périodes → Révolution → Convention), 40 points sourcés : `supabase/frises/frises_v1.sql`, **à exécuter par Martin** (SQL Editor). Vérifié : script testé 2 fois sur une base locale, affichage testé dans l'appli ; non vérifié : exécution sur la vraie base.
@@ -20,7 +21,7 @@ Spécification de référence : [`../specs/frises-chronologiques.md`](../specs/f
   branches colorées (côté haut/bas, empilement automatique, hauteur à la main) — migrations `schema_v27` à `schema_v31` ;
   placements multiples et remontée sur la frise parente (voir ci-dessus).
 - **Reste à faire** : faire valider par Martin les choix de la spec §7bis et §9 ; trancher la proposition §10 (règnes) ; revoir les catégories de points avec Martin.
-- Migration : **frises_v1** (exemple « Histoire de France », données) écrite, en attente d'exécution par Martin. Prochaine : **frises_v2**.
+- Migration : **frises_v1** (exemple « Histoire de France », données) écrite, en attente d'exécution par Martin. **frises_v2** (table des règnes, sans données) écrite et poussée, **non exécutée** (attente de Martin).
 
 ## Détail des livraisons
 

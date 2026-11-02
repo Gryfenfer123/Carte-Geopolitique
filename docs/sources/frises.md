@@ -89,3 +89,5 @@ Résultat de recoupement : « concordantes » = au moins 2 sources dont 1 U s'ac
   https://catalogue.bnf.fr/ark:/12148/cb11941853q (Restauration) ; Inrap — https://multimedia.inrap.fr/archeologie-preventive/periode/8/Age-du-Bronze-et-age-du-Fer ;
   Belin/Seuil : notices Bibliothèques numériques de la Défense (liens complets dans le champ « sources » des frises en base).
   Licences : notices et pages en consultation, aucun texte repris ; liens uniquement.
+## 2026-11-02 — outil « Règnes »
+Aucune donnée ajoutée par cet outil (code uniquement). Chaque règne saisi portera ses propres sources dans la colonne `sources` de `timeline_reigns`.

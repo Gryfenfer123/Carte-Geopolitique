@@ -1,0 +1,47 @@
+/* Règnes sur les frises (src/friseReignsUi.ts). Les classes .tl-field, .tl-note, .tl-error, .tl-actions,
+   .tl-results, .tl-fiche-row, .tl-primary viennent de style.css / friseMulti.css. */
+.tl-reigns { position: relative; margin-top: 18px; }
+.tl-reigns-label {
+  position: absolute; left: 0; top: -17px; font-size: calc(10.5px * var(--tl-s, 1)); color: var(--text-dim);
+  text-transform: uppercase; letter-spacing: 0.06em;
+}
+.tl-reign {
+  position: absolute; box-sizing: border-box; padding: 0 8px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis;
+  text-align: left; font: 600 calc(12.5px * var(--tl-s, 1)) "IBM Plex Sans", sans-serif; cursor: pointer;
+  color: var(--text); background: color-mix(in srgb, var(--accent) 28%, var(--surface));
+  border: 1.5px solid var(--accent); border-radius: 6px;
+}
+.tl-reign.todo {
+  border-style: dashed; background: repeating-linear-gradient(135deg, transparent 0 6px, color-mix(in srgb, var(--accent) 22%, transparent) 6px 7px);
+}
+.tl-reign.open { border-right-style: dotted; border-top-right-radius: 14px; border-bottom-right-radius: 14px; }
+.tl-reign:hover { background: color-mix(in srgb, var(--accent) 45%, var(--surface)); }
+#tl-reign-card {
+  position: fixed; z-index: 10700; width: 290px; padding: 10px 12px; background: var(--surface); color: var(--text);
+  border: 1px solid var(--surface-border); border-radius: 8px; box-shadow: 0 6px 20px rgba(0,0,0,0.35); font-size: 13px;
+}
+.tl-reign-dates { margin: 2px 0 4px; }
+.tl-reign-ok { color: #27ae60; font-size: 12px; margin-bottom: 4px; }
+.tl-reign-todo { color: #e67e22; font-size: 12px; margin-bottom: 4px; }
+.tl-reign-sources { margin: 4px 0 8px; padding-left: 18px; font-size: 12px; }
+#tl-reign-overlay {
+  display: none; position: fixed; inset: 0; z-index: 10600; background: rgba(0,0,0,0.45);
+  align-items: center; justify-content: center; padding: 16px;
+}
+#tl-reign-overlay.open { display: flex; }
+#tl-reign-box {
+  width: min(560px, 100%); max-height: 100%; overflow: auto; box-sizing: border-box;
+  background: var(--surface); color: var(--text); border: 1px solid var(--surface-border);
+  border-radius: 10px; padding: 18px 20px; font-family: "IBM Plex Sans", sans-serif;
+}
+#tl-reign-box h3 { margin: 0 0 6px; font-family: "Fraunces", serif; font-size: 19px; }
+#tl-reign-box input[type="text"] {
+  font: inherit; font-size: 13.5px; padding: 6px 8px; box-sizing: border-box; width: 100%;
+  border: 1px solid var(--surface-border); border-radius: 6px; background: var(--surface); color: var(--text);
+}
+#tl-reign-box .tl-date input[type="text"] { width: 74px; }
+#tl-reign-box .tl-date input[type="text"]:first-of-type { width: 92px; }
+.tl-reign-chosen { font-size: 13px; margin-top: 4px; color: var(--text-dim); }
+.tl-reign-src { display: grid; grid-template-columns: 1fr 1fr auto; gap: 6px; margin-top: 6px; align-items: center; }
+@media (max-width: 560px) { .tl-reign-src { grid-template-columns: 1fr; } }
+.tl-reign-sources a { color: var(--accent); }

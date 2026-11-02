@@ -25,6 +25,8 @@ import type { SupabaseClient, Session } from "@supabase/supabase-js";
 import { customConfirm } from "./dossier";
 import { fetchPlacements } from "./friseEvents";
 import { initFriseMulti } from "./friseMulti";
+import { fetchReigns, type Reign } from "./friseReigns";
+import { initFriseReigns } from "./friseReignsUi";
 import { buildSubPreview, loadSubPreview } from "./friseSubPreview";
 import {
   computeLinearWidths,
@@ -159,6 +161,8 @@ export function initTimelineSystem(deps: {
   getOwnerLabel: (ownerType: string, ownerId: string) => string | null;
   // Pays proposés pour créer la fiche d'un autre pays.
   getCountryChoices: () => { id: string; label: string }[];
+  // Ouvre l'arbre généalogique d'un membre (main.ts) — utilisé par les règnes.
+  openGenealogyMember: (ownerType: string, ownerId: string, memberId: string) => Promise<void> | void;
 }) {
   const { supabase } = deps;
 
@@ -191,6 +195,8 @@ export function initTimelineSystem(deps: {
   let suppressPointClick = false;
   let pointEls = new Map<string, HTMLElement>(); // étiquettes affichées (pour la recherche)
   let categories: Category[] = [];
+  let reigns: Reign[] = [];
+  let showReigns = true;
   let hiddenCats = new Set<string>();
   const showDates = false; // l'affichage des dates se fait au survol (voir showHover)
   try {
@@ -221,6 +227,8 @@ export function initTimelineSystem(deps: {
         <div id="timeline-toolbar">
           <button id="timeline-add-point" class="btn-small edit-control">&#43; Point</button>
           <button id="timeline-add-period" class="btn-small edit-control">&#43; P&eacute;riode</button>
+          <button id="timeline-add-reign" class="btn-small edit-control">&#43; R&egrave;gne</button>
+          <button id="timeline-toggle-reigns" class="btn-small" title="Afficher ou masquer le ruban des règnes">R&egrave;gnes</button>
           <button id="timeline-pan-left" class="btn-small" aria-label="Défiler vers la gauche" title="Défiler vers la gauche (flèche gauche)">&larr;</button>
           <button id="timeline-pan-right" class="btn-small" aria-label="Défiler vers la droite" title="Défiler vers la droite (flèche droite)">&rarr;</button>
           <button id="timeline-zoom-out" class="btn-small" aria-label="Dézoomer">&minus;</button>
@@ -525,6 +533,7 @@ export function initTimelineSystem(deps: {
     }
     categories = await fetchCategories();
     const pts = await loadPoints(entry.id);
+    const loadedReigns = await fetchReigns(supabase, entry.id);
 
     // Ancêtres : la frise parente, soit parce que celle-ci est posée dans une période / transition
     // d'une frise, soit parce qu'elle est la sous-frise d'un événement avec durée.
@@ -581,6 +590,7 @@ export function initTimelineSystem(deps: {
     periods = pRows.map(rowToPeriod);
     subFrises = subs;
     points = pts;
+    reigns = loadedReigns;
     ancestors = chain;
     context = ctx;
     void evBounds;
@@ -923,6 +933,17 @@ export function initTimelineSystem(deps: {
     const layer = document.createElement("div");
     layer.className = "tl-layer";
     wrap.appendChild(layer);
+    // Ruban des règnes : ajouté APRÈS la zone du bas, donc sans effet sur les positions des points.
+    if (showReigns && reigns.length && segments.length) {
+      const ribbon = reignsUi.renderRibbon({
+        reigns,
+        rangeStart: segments[0].startDec,
+        rangeEnd: segments[segments.length - 1].endDec,
+        xOf: (dec) => xForDecimal(dec, segments, widths),
+        scale: TL_SCALE,
+      });
+      if (ribbon) wrap.appendChild(ribbon);
+    }
     const bandEl = band;
     const BAND_H = 84 * TL_SCALE;
     pointEls = new Map();
@@ -2511,6 +2532,13 @@ export function initTimelineSystem(deps: {
     const parent = ancestors[ancestors.length - 1];
     if (parent) void openForEntry(parent.id);
   });
+  $("timeline-add-reign").addEventListener("click", () => requireAdminOr(() => frise && reignsUi.openDialog(frise.id)));
+  $("timeline-toggle-reigns").addEventListener("click", () => {
+    showReigns = !showReigns;
+    $("timeline-toggle-reigns").classList.toggle("active", showReigns);
+    render();
+  });
+  $("timeline-toggle-reigns").classList.add("active");
   $("timeline-add-period").addEventListener("click", () => requireAdminOr(() => void openPeriodDialog(null, null)));
   $("timeline-add-point").addEventListener("click", () => requireAdminOr(() => openPointDialog(null)));
   $("tl-period-cancel").addEventListener("click", closePeriodDialog);
@@ -2619,6 +2647,16 @@ export function initTimelineSystem(deps: {
     const pt = points.find((p) => p.eventId === eventId);
     if (pt) setTimeout(() => focusPoint(pt), 80);
   }
+  const reignsUi = initFriseReigns({
+    supabase,
+    getSession: deps.getSession,
+    isAdmin,
+    showBanner: deps.showBanner,
+    openGenealogyMember: deps.openGenealogyMember,
+    onChanged: async () => {
+      if (frise && $("timeline-view").classList.contains("open")) await reload();
+    },
+  });
   const multi = initFriseMulti({
     supabase,
     getSession: deps.getSession,

@@ -2093,6 +2093,7 @@ const friseSystem = initTimelineSystem({
   openFicheEverywhere: (f) =>
     ficheDossier.openLinkTarget({ kind: "entry", ownerType: f.ownerType as DossierOwnerKind, ownerId: f.ownerId, categoryId: f.categoryId, entryId: f.id, read: true } as Parameters<typeof ficheDossier.openLinkTarget>[0]),
   getOwnerLabel,
+  openGenealogyMember: (o, i, m) => ficheDeps.openGenealogyMember?.(o, i, m),
   getCountryChoices: () => getAllCountryRefs().map((c) => ({ id: c.isoA3, label: frenchCountryName(c.name) })).sort((a, b) => a.label.localeCompare(b.label, "fr")),
 });
 ficheDeps.friseLinkForFiche = (id) => friseSystem.isFicheOnFrise(id);

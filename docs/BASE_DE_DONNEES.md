@@ -248,6 +248,7 @@ RLS**. Règles :
 | arbres_v176 | Arbre généalogique : Rois de Gwynedd (34). Idempotente, aucune suppression. |
 | arbres_v177 | Arbre généalogique : Sultanat de Delhi (30). Idempotente, aucune suppression. |
 | `data_owid_load.sql` + `owid_chunks/` | Chargement des données d'indicateurs (rejouable, upserts) — à exécuter après v1 à v7 |
+| frises_v2 | Frises : table `timeline_reigns` (règnes d'un membre d'arbre sur une frise : dates + sources) ; lecture publique, écriture admin ; ne touche à aucune donnée existante — **non exécutée** au 2026-11-02 |
 | frises_v1 | Frises : EXEMPLE « Histoire de France » — 3 frises emboîtées (14 périodes ; Révolution : 4 ; Convention : 3), 40 points avec fiches vides sourcées ; ajoute des données, ne modifie aucune table, idempotent — à exécuter une seule fois (une 2e exécution ne duplique rien) |
 | frises_v3 | Frises : « Histoire de France » refaite — SUPPRIME le test de frises_v1 (21 sections, 3 frises, 40 fiches vides, 40 événements, repérés par identifiants ; garde-fou si contenu étranger) puis crée la frise dans Histoire > Chronologie (4 époques + 17 sous-périodes). Exécutée le 2026-11-02 par Claude (Supabase), idempotente |
 
