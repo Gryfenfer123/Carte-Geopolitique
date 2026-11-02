@@ -56,7 +56,6 @@ def completer(entites, dates, iles):
         cand = arbre_iles.query(g.boundary, predicate="intersects")
         if len(cand) == 0:
             continue
-        voisins = None
         morceaux = []
         for i in cand:
             p = iles[i]
@@ -66,13 +65,12 @@ def completer(entites, dates, iles):
             if part < SEUIL_COUVERT or part > 0.999:
                 continue
             reste = p.difference(g)
-            if voisins is None:  # lignes actives en même temps, qui touchent la ligne
-                idx = arbre_lignes.query(g.buffer(0.3))
-                voisins = [geoms[j] for j in idx if j != k and dates[j]["a"] >= dates[k]["de"] and dates[j]["de"] <= dates[k]["a"]]
-            if voisins:
-                autres = [v for v in voisins if v.intersects(p)]
-                if autres:
-                    reste = reste.difference(shapely.union_all(autres))
+            # lignes actives en même temps qui touchent CETTE île (la boîte de l'île suffit : pas de tampon sur tout le contour,
+            # qui faisait exploser la mémoire pour un grand empire)
+            autres = [geoms[j] for j in arbre_lignes.query(p)
+                      if j != k and dates[j]["a"] >= dates[k]["de"] and dates[j]["de"] <= dates[k]["a"] and geoms[j].intersects(p)]
+            if autres:
+                reste = reste.difference(shapely.union_all(autres))
             if reste.is_empty or _km2(reste) < MIN_AJOUT_KM2:
                 continue
             morceaux.append(reste)
