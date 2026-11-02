@@ -3,6 +3,7 @@
 Spécification de référence : [`../specs/frises-chronologiques.md`](../specs/frises-chronologiques.md).
 
 ## Dernières nouvelles (la plus récente en haut)
+- 2026-11-02 — confort de la frise : tout est ~30 % plus grand, la frise s'ajuste à l'écran à l'ouverture et sur « Recentrer », grandes marges pour glisser aussi vers la gauche, boutons ← →, flèches du clavier, geste horizontal ; noms de périodes étroites sur 2 lignes. Aucune migration. Vérifié : `check:repo`, `build`, test navigateur ; non vérifié : mobile/tactile, vraie base.
 - 2026-11-01 — exemple « Histoire de France » en 3 niveaux (grandes périodes → Révolution → Convention), 40 points sourcés : `supabase/frises/frises_v1.sql`, **à exécuter par Martin** (SQL Editor). Vérifié : script testé 2 fois sur une base locale, affichage testé dans l'appli ; non vérifié : exécution sur la vraie base.
 - 2026-10-27 — aperçu de la sous-frise au survol (période ou point avec durée) : périodes + premiers points, sans ouvrir. Aucune migration. Vérifié : `check:repo`, `build`, lecture des données ; non vérifié : rendu à l'écran.
 - 2026-10-23 (4) — correction : créer une période dans la frise d'un point avec durée (ex. « Guerre » 500→700) ne fait plus disparaître la durée ; les parties non couvertes restent affichées au nom du point. Vérifié : `check:repo`, `build`, calcul du découpage ; non vérifié : écran réel.
@@ -20,6 +21,12 @@ Spécification de référence : [`../specs/frises-chronologiques.md`](../specs/f
 - Migration : **frises_v1** (exemple « Histoire de France », données) écrite, en attente d'exécution par Martin. Prochaine : **frises_v2**.
 
 ## Détail des livraisons
+
+### 2026-11-02 — confort d'utilisation de la frise
+- **Ce qui change pour Martin** : (1) police, bandeau, branches et graduations plus grands (échelle `TL_SCALE = 1.3` dans `frise.ts`, répercutée en CSS par `--tl-s`) ; (2) à l'ouverture et sur « Recentrer », la frise est ajustée à la largeur de l'écran (zoom mini 0,05) et centrée, au lieu d'être collée à gauche ; (3) marges latérales de 40 % de l'écran : on peut faire glisser dans les deux sens ; (4) boutons ← →, flèches gauche/droite du clavier, Maj + molette ou geste horizontal du pavé tactile pour défiler (la molette seule zoome toujours) ; (5) une période a une largeur minimale de 84 px, son nom se réduit et passe sur 2 lignes au lieu d'être coupé.
+- **Code** : `src/frise.ts` (rendu, `fitZoom`, `centerView`, défilement), `src/style.css` (tailles en `calc(… * var(--tl-s))`). Aucune migration.
+- **Vérifié** : Chromium sur l'exemple « Histoire de France » : tout tient à l'écran, glisser vers la gauche et vers la droite, boutons, flèches, geste horizontal, Recentrer ; `check:repo`, `build`.
+- **Non vérifié** : écran tactile / mobile ; frises très chargées (beaucoup de points) ; export image après le changement d'échelle (marges forcées à 100 px pour l'export, non retesté).
 
 ### 2026-11-01 — exemple « Histoire de France » (frises_v1)
 - **Ce qui change pour Martin** : après exécution du script, France > Histoire contient la frise « Histoire de France » (14 grandes périodes, 12 points). Cliquer « Révolution française » ouvre une sous-frise (4 périodes, 18 points), puis « Convention nationale » une 3e frise (3 périodes, 16 points). Certains points sont sur deux frises (même événement). Chaque point a une fiche vide rangée dans la sous-catégorie de sa période, avec ses sources.

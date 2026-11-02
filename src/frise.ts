@@ -125,11 +125,14 @@ function dateColumns(prefix: "period_start" | "period_end", d: FriseDate | null)
 }
 
 let measureCtx: CanvasRenderingContext2D | null = null;
+// Échelle d'affichage de la frise (polices, bandeau, branches) : même valeur que --tl-s dans le CSS.
+const TL_SCALE = 1.3;
+
 function textWidth(text: string): number {
   try {
     if (!measureCtx) {
       measureCtx = document.createElement("canvas").getContext("2d");
-      if (measureCtx) measureCtx.font = '600 13px "IBM Plex Sans", sans-serif';
+      if (measureCtx) measureCtx.font = '600 ' + 13 * TL_SCALE + 'px "IBM Plex Sans", sans-serif';
     }
     if (measureCtx) return measureCtx.measureText(text).width;
   } catch {
@@ -218,6 +221,8 @@ export function initTimelineSystem(deps: {
         <div id="timeline-toolbar">
           <button id="timeline-add-point" class="btn-small edit-control">&#43; Point</button>
           <button id="timeline-add-period" class="btn-small edit-control">&#43; P&eacute;riode</button>
+          <button id="timeline-pan-left" class="btn-small" aria-label="Défiler vers la gauche" title="Défiler vers la gauche (flèche gauche)">&larr;</button>
+          <button id="timeline-pan-right" class="btn-small" aria-label="Défiler vers la droite" title="Défiler vers la droite (flèche droite)">&rarr;</button>
           <button id="timeline-zoom-out" class="btn-small" aria-label="Dézoomer">&minus;</button>
           <button id="timeline-zoom-in" class="btn-small" aria-label="Zoomer">&#43;</button>
           <button id="timeline-zoom-reset" class="btn-small">Recentrer</button>
@@ -601,13 +606,15 @@ export function initTimelineSystem(deps: {
   }
 
   // --- Rendu -----------------------------------------------------------------------
-  const STEM_BASE = 26;
-  const STEM_STEP = 30;
-  const LABEL_PAD = 14;
+  const FIT_MARGIN = 160; // marge laissée de chaque côté quand la frise est ajustée à l'écran
+  let exporting = false;
+  const STEM_BASE = 26 * TL_SCALE;
+  const STEM_STEP = 30 * TL_SCALE;
+  const LABEL_PAD = 14 * TL_SCALE;
 
   // Les points dont la hauteur est réglée à la main gardent leur hauteur ; les autres
   // sont rangés automatiquement en branches empilées (niveaux).
-  const RULER_H = 26;
+  const RULER_H = 26 * TL_SCALE;
   type Placed = { p: Point; x: number; x2: number; len: number; w: number };
   function pointLabel(p: Point): string {
     return showDates ? formatFriseDate(p.date) + (p.end ? " → " + formatFriseDate(p.end) : "") + " · " + p.title : p.title;
@@ -666,6 +673,8 @@ export function initTimelineSystem(deps: {
   // graduations exactes), mais s'élargit tant qu'il contient de nombreux points ou des
   // dates très proches, pour que les étiquettes restent lisibles. Tous les points comptent,
   // filtrés ou non, pour que la mise en page ne bouge pas quand on masque une catégorie.
+  // Largeur minimale d'une période : même très courte, son nom et ses dates restent cliquables.
+  const MIN_SEG_PX = 84;
   function adaptiveWidths(segments: Segment[], totalPx: number): number[] {
     const lin = computeLinearWidths(segments, totalPx);
     const perSeg: number[][] = segments.map(() => []);
@@ -676,14 +685,14 @@ export function initTimelineSystem(deps: {
     }
     return segments.map((seg, i) => {
       const decs = perSeg[i].sort((a, b) => a - b);
-      if (!decs.length) return lin[i];
+      if (!decs.length) return Math.max(lin[i], MIN_SEG_PX);
       const span = Math.max(seg.endDec - seg.startDec, 1e-6);
       let need = decs.length * 120;
       for (let k = 1; k < decs.length; k++) {
         const gap = Math.max(decs[k] - decs[k - 1], span * 0.002);
         need = Math.max(need, Math.min(decs.length * 260, (70 / gap) * span));
       }
-      return Math.max(lin[i], need * zoom);
+      return Math.max(lin[i], need * zoom, MIN_SEG_PX);
     });
   }
 
@@ -741,7 +750,10 @@ export function initTimelineSystem(deps: {
 
     const { segments, issues } = layoutPeriods(eff);
     const scroll = $("timeline-scroll");
-    const baseWidth = Math.max(scroll.clientWidth - 200, 320);
+    const baseWidth = Math.max(scroll.clientWidth - FIT_MARGIN, 320);
+    // Marges latérales larges : on peut faire glisser la frise vers la gauche comme vers la droite.
+    const padX = exporting ? 100 : Math.round(scroll.clientWidth * 0.4);
+    stage.style.paddingLeft = stage.style.paddingRight = padX + "px";
     const widths = adaptiveWidths(segments, baseWidth * zoom);
     const total = widths.reduce((s, w) => s + w, 0);
 
@@ -761,7 +773,7 @@ export function initTimelineSystem(deps: {
     }
     const up = placeSide(placedItems.filter((i) => i.p.side === "up"), "up");
     const down = placeSide(placedItems.filter((i) => i.p.side === "down"), "down");
-    const zoneH = (pl: Placed[]) => Math.max(80, (pl.length ? Math.max(...pl.map((i) => i.len)) : 0) + 40);
+    const zoneH = (pl: Placed[]) => Math.max(80 * TL_SCALE, (pl.length ? Math.max(...pl.map((i) => i.len)) : 0) + 40 * TL_SCALE);
 
     const wrap = document.createElement("div");
     wrap.className = "tl-band-wrap";
@@ -912,7 +924,7 @@ export function initTimelineSystem(deps: {
     layer.className = "tl-layer";
     wrap.appendChild(layer);
     const bandEl = band;
-    const BAND_H = 84;
+    const BAND_H = 84 * TL_SCALE;
     pointEls = new Map();
     type Parts = { stem: HTMLElement; stem2: HTMLElement | null; bar: HTMLElement | null };
     const parts = new Map<string, Parts>();
@@ -1182,6 +1194,7 @@ export function initTimelineSystem(deps: {
 
   async function openForEntry(entryId: string) {
     $("timeline-view").classList.add("open");
+    $("timeline-view").style.setProperty("--tl-s", String(TL_SCALE));
     const fresh = !frise || frise.id !== entryId;
     const ok = await load(entryId);
     if (!ok) {
@@ -1189,14 +1202,44 @@ export function initTimelineSystem(deps: {
       if (!frise) closeView();
       return;
     }
-    if (fresh) zoom = 1;
+    if (fresh) zoom = fitZoom();
     render();
     if (fresh) centerView();
   }
 
+  // Zoom qui fait tenir toute la frise dans la largeur de l'écran (jamais plus que 1).
+  function fitZoom(): number {
+    const sc = $("timeline-scroll");
+    const eff = effectivePeriods();
+    if (!eff.length) return 1;
+    const { segments } = layoutPeriods(eff);
+    const baseWidth = Math.max(sc.clientWidth - FIT_MARGIN, 320);
+    const avail = Math.max(sc.clientWidth - FIT_MARGIN, 320);
+    const saved = zoom;
+    const widthAt = (z: number) => {
+      zoom = z;
+      return adaptiveWidths(segments, baseWidth * z).reduce((a, w) => a + w, 0);
+    };
+    let best = 1;
+    if (widthAt(1) > avail) {
+      let lo = MIN_ZOOM;
+      let hi = 1;
+      for (let i = 0; i < 14; i++) {
+        const mid = (lo + hi) / 2;
+        if (widthAt(mid) <= avail) lo = mid;
+        else hi = mid;
+      }
+      best = lo;
+    }
+    zoom = saved;
+    return best;
+  }
+
+  // Place la frise au milieu de l'écran (horizontalement et verticalement).
   function centerView() {
     const sc = $("timeline-scroll");
-    sc.scrollLeft = 0;
+    const wrapEl = document.querySelector<HTMLElement>(".tl-band-wrap");
+    sc.scrollLeft = wrapEl ? Math.max(0, wrapEl.offsetLeft - (sc.clientWidth - wrapEl.offsetWidth) / 2) : 0;
     sc.scrollTop = Math.max(0, (sc.scrollHeight - sc.clientHeight) / 2);
   }
 
@@ -1254,9 +1297,10 @@ export function initTimelineSystem(deps: {
     true
   );
 
+  const MIN_ZOOM = 0.05;
   function setZoom(newZoom: number, anchorClientX?: number) {
     if (!frise || !periods.length) return;
-    const z = Math.min(10, Math.max(0.4, newZoom));
+    const z = Math.min(10, Math.max(MIN_ZOOM, newZoom));
     if (z === zoom) return;
     const wrapEl = document.querySelector<HTMLElement>(".tl-band-wrap");
     const rect = scrollEl.getBoundingClientRect();
@@ -1274,6 +1318,11 @@ export function initTimelineSystem(deps: {
     (ev) => {
       if (!$("timeline-view").classList.contains("open") || !periods.length) return;
       ev.preventDefault();
+      // Geste horizontal (pavé tactile) ou Maj + molette : on fait défiler ; molette seule : zoom.
+      if (!ev.ctrlKey && (ev.shiftKey || Math.abs(ev.deltaX) > Math.abs(ev.deltaY))) {
+        scrollEl.scrollLeft += ev.deltaX || ev.deltaY;
+        return;
+      }
       setZoom(zoom * Math.exp(-ev.deltaY * 0.0015), ev.clientX);
     },
     { passive: false }
@@ -1281,9 +1330,21 @@ export function initTimelineSystem(deps: {
   $("timeline-zoom-in").addEventListener("click", () => setZoom(zoom * 1.4));
   $("timeline-zoom-out").addEventListener("click", () => setZoom(zoom / 1.4));
   $("timeline-zoom-reset").addEventListener("click", () => {
-    zoom = 1;
+    zoom = fitZoom();
     render();
     centerView();
+  });
+  // Défilement gauche-droite : boutons, flèches du clavier (le glisser et le geste horizontal marchent aussi).
+  const panBy = (dir: 1 | -1) => scrollEl.scrollBy({ left: dir * scrollEl.clientWidth * 0.35, behavior: "smooth" });
+  $("timeline-pan-left").addEventListener("click", () => panBy(-1));
+  $("timeline-pan-right").addEventListener("click", () => panBy(1));
+  document.addEventListener("keydown", (ev) => {
+    if (!$("timeline-view").classList.contains("open")) return;
+    if ((ev.target as HTMLElement).closest("input, select, textarea")) return;
+    if (ev.key === "ArrowLeft") panBy(-1);
+    else if (ev.key === "ArrowRight") panBy(1);
+    else return;
+    ev.preventDefault();
   });
 
   // --- Dialogue période / transition ------------------------------------------------------
@@ -2370,6 +2431,7 @@ export function initTimelineSystem(deps: {
       hideHover();
       closePointCard();
       zoom = 1.5;
+      exporting = true;
       render();
       await new Promise((r) => requestAnimationFrame(() => r(null)));
       const stage = $("timeline-stage");
@@ -2434,6 +2496,7 @@ export function initTimelineSystem(deps: {
       deps.showBanner?.("Échec de l'export : " + (e instanceof Error ? e.message : "erreur inconnue."));
     } finally {
       zoom = savedZoom;
+      exporting = false;
       render();
       scrollEl.scrollLeft = savedLeft;
       scrollEl.scrollTop = savedTop;
