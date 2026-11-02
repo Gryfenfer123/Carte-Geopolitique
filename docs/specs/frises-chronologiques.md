@@ -100,3 +100,37 @@ Plan :
 - Une erreur de placement ne bloque jamais la création de la fiche (message affiché, fiche conservée).
 - Sous-frise d'un événement avec durée : la frise couvre toujours toute la durée de l'événement. Les périodes créées dedans se posent sur cette durée ; les parties non couvertes sont des bandes virtuelles au nom de l'événement (non modifiables). (Correction du bug « la période remplace la durée ».)
 - Aperçu au survol : une période ou un point avec durée qui a une sous-frise affiche, dans le volet de survol, ses périodes (6 max) et ses points (6 max, par date). Module `src/friseSubPreview.ts` (données gardées 60 s). Le texte de survol natif « Ouvrir la sous-frise » est retiré pour ne pas faire doublon.
+
+## 10. PROPOSITION (2026-11-02, rien n'est codé) : pont frises ↔ arbres généalogiques
+
+**Demande de Martin** : sur une frise de pays, un petit fil montre qui règne à chaque moment (ex. Clovis de 481 à 511) ;
+un clic mène à la fiche, à l'arbre et à la place sur la frise. Doit apparaître automatiquement pour tous les membres
+au **cadre rouge** (`is_leader`) des arbres.
+
+**Ce que la base contient aujourd'hui (lu le 2026-11-02, lecture seule)** : 4 817 membres dans 234 arbres, dont 2 356
+`is_leader`. Chaque membre n'a que `birth_year`, `death_year`, `title` (ex. « Roi des Francs ») et `dynasty`.
+**Il n'y a PAS de dates de règne** (une vie n'est pas un règne : Clovis I, 466-511, règne de 481 à 511). Un arbre est
+rattaché à une entrée de dossier (`owner_type = 'entry'`), elle-même rangée dans un pays ou un groupe : c'est par là
+qu'on sait « de quel pays » est un souverain.
+
+**Conception proposée**
+1. **Nouvelle table `genealogy_reigns`** (migration `frises_vN`) : un règne = (membre, pays/groupe dirigé, titre, début, fin,
+   source). Un membre peut avoir plusieurs règnes (Charles Quint : Espagne et Empire) ; les co-règnes et régences se
+   superposent. Lecture publique, écriture réservée aux administrateurs. **Rien n'est déduit des dates de naissance/décès.**
+2. **Saisie** : champs « début / fin de règne + source » dans la fiche d'un membre au cadre rouge (module séparé, petit
+   crochet dans `genealogy.ts`), ou en lots par le chantier « arbres », qui connaît ses données. 2 356 règnes ne se
+   remplissent pas d'un coup : on commence par un pays (ex. France : Mérovingiens → Ve République), chaque règne sourcé.
+3. **Affichage** : un **ruban « Règnes »** sous la graduation de la frise du pays (bouton pour l'afficher/le masquer),
+   une barre par souverain avec son nom, sur plusieurs rangées en cas de superposition. Seuls les règnes qui touchent la
+   période de la frise s'affichent, et les noms n'apparaissent que si la barre est assez large (sinon au survol).
+   Un membre au cadre rouge **sans** dates de règne n'est pas affiché (et sera listé « règne à compléter »).
+4. **Clic** : volet avec trois accès — la fiche du souverain, son arbre (ouvre l'arbre centré sur lui), et sa position sur
+   la frise. Dans l'arbre, un bouton « Voir sur la frise » ramène sur le ruban à l'année de son règne.
+5. **Module** : `src/friseReigns.ts` (données + rendu), logique pure dans un fichier sans DOM ; branchement minimal
+   dans `frise.ts` et `genealogy.ts`.
+
+**Questions à trancher avec Martin** : (a) d'accord pour saisir/sourcer les dates de règne (nouvelle table) plutôt que
+de se contenter des dates de vie ? (b) par quel pays commencer ? (c) ruban sous la frise, ou barre au-dessus de la bande
+des périodes ? (d) une régence (ex. Anne d'Autriche) compte-t-elle comme règne ? (e) qui remplit : moi, avec sources
+(page par page), ou toi dans l'arbre ?
+

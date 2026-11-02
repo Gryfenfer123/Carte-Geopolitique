@@ -3,6 +3,7 @@
 Spécification de référence : [`../specs/frises-chronologiques.md`](../specs/frises-chronologiques.md).
 
 ## Dernières nouvelles (la plus récente en haut)
+- 2026-11-02 (2) — proposition écrite (spec §10, rien codé) : ruban « Règnes » sur la frise relié aux arbres ; il manque les dates de règne en base (seulement naissance/décès) → nouvelle table à valider avec Martin. Catégories de points : à revoir ensemble plus tard.
 - 2026-11-02 — confort de la frise : tout est ~30 % plus grand, la frise s'ajuste à l'écran à l'ouverture et sur « Recentrer », grandes marges pour glisser aussi vers la gauche, boutons ← →, flèches du clavier, geste horizontal ; noms de périodes étroites sur 2 lignes. Aucune migration. Vérifié : `check:repo`, `build`, test navigateur ; non vérifié : mobile/tactile, vraie base.
 - 2026-11-01 — exemple « Histoire de France » en 3 niveaux (grandes périodes → Révolution → Convention), 40 points sourcés : `supabase/frises/frises_v1.sql`, **à exécuter par Martin** (SQL Editor). Vérifié : script testé 2 fois sur une base locale, affichage testé dans l'appli ; non vérifié : exécution sur la vraie base.
 - 2026-10-27 — aperçu de la sous-frise au survol (période ou point avec durée) : périodes + premiers points, sans ouvrir. Aucune migration. Vérifié : `check:repo`, `build`, lecture des données ; non vérifié : rendu à l'écran.
@@ -17,7 +18,7 @@ Spécification de référence : [`../specs/frises-chronologiques.md`](../specs/f
   (glisser/zoom, couleurs, légende, recherche, durées, export PDF/image, fiches multi-pays), rendu en tiges et
   branches colorées (côté haut/bas, empilement automatique, hauteur à la main) — migrations `schema_v27` à `schema_v31` ;
   placements multiples et remontée sur la frise parente (voir ci-dessus).
-- **Reste à faire** : faire valider par Martin les choix de la spec §7bis et §9.
+- **Reste à faire** : faire valider par Martin les choix de la spec §7bis et §9 ; trancher la proposition §10 (règnes) ; revoir les catégories de points avec Martin.
 - Migration : **frises_v1** (exemple « Histoire de France », données) écrite, en attente d'exécution par Martin. Prochaine : **frises_v2**.
 
 ## Détail des livraisons
