@@ -251,3 +251,4 @@ RLS**. Règles :
 | frises_v1 | Frises : EXEMPLE « Histoire de France » — 3 frises emboîtées (14 périodes ; Révolution : 4 ; Convention : 3), 40 points avec fiches vides sourcées ; ajoute des données, ne modifie aucune table, idempotent — à exécuter une seule fois (une 2e exécution ne duplique rien) |
 
 - `supabase/dossiers/dossiers_v1.sql` (2026-11-02, **exécutée**) : renomme « Conflits, traités et crises » en « Chronologie » (196 sections racine de la catégorie Histoire des pays). Aucune suppression ; retour arrière indiqué en tête du fichier.
+- `supabase/groupes/groupes_v1.sql` (2026-11-02, **exécutée**) : nouvel espace de catégories `group` dans `dossier_categories` + 7 catégories de base pour les dossiers de groupes. Aucune suppression ni déplacement.

@@ -70,21 +70,15 @@ export type CountryRef = {
 // ainsi avoir plusieurs arbres indépendants (un par dynastie/section). Le
 // genealogy_members.owner_id correspondant est alors l'id de l'entrée.
 export type DossierOwnerKind = "country" | "group" | "encyclopedie" | "port" | "strait" | "pipeline" | "base" | "cable" | "entry";
-// "Dossier plat" (demande de Martin, 2026-10-14) : un groupe ne doit PAS
-// avoir la même division en catégories/sous-catégories qu'un pays — toutes
-// ses entrées vivent à plat, sans catégorie assignée, sans sommaire de
-// thèmes, sans flèches prev/next de thème. Seul "group" est concerné (pas
-// les mini-dossiers port/strait/pipeline/base/cable, qui gardent le même
-// classement que les pays).
-function isFlatDossierOwner(o: DossierOwnerRef | null): boolean {
-  return !!o && o.type === "group";
-}
+// Dossiers de groupes : depuis le 2026-11-02 (demande de Martin) ils ont leurs
+// propres grandes catégories (espace 'group', voir supabase/groupes/groupes_v1.sql),
+// et ne sont plus « plats » comme entre le 2026-10-14 et le 2026-11-02.
 export type MiniDossierKind = "port" | "strait" | "pipeline" | "base" | "cable";
 export type DossierOwnerRef = {
   type: DossierOwnerKind;
   id: string;
   label: string;
-  categorySpace: "country" | "encyclopedie";
+  categorySpace: "country" | "encyclopedie" | "group";
   flagSlug?: string;
   iso2?: string | null;
   colorDot?: string;
@@ -183,7 +177,20 @@ const DEFAULT_DOSSIER_CATEGORIES: { name: string }[] = [
 // demande de Martin : Histoire/Politique/Géographie/Droit/Actualité/Culture
 // générale. orderedCategories() trie explicitement selon ce tableau au lieu
 // de dépendre de l'ordre renvoyé par Supabase (non garanti sans .order()).
-const CATEGORY_ORDER = ["Histoire", "Politique", "Géographie", "Droit", "Actualité", "Culture générale"];
+// Catégories de base des dossiers de GROUPES (mêmes pour tous les groupes ; groupes_v1.sql).
+const DEFAULT_GROUP_CATEGORIES: { name: string }[] = [
+  { name: "Présentation" },
+  { name: "Origines et raison d'être" },
+  { name: "Membres et adhésion" },
+  { name: "Fonctionnement" },
+  { name: "Actions et compétences" },
+  { name: "Poids et chiffres" },
+  { name: "Relations, tensions et critiques" },
+];
+const CATEGORY_ORDER = [
+  "Histoire", "Politique", "Géographie", "Droit", "Actualité", "Culture générale",
+  ...DEFAULT_GROUP_CATEGORIES.map((c) => c.name),
+];
 // Catégories par défaut de l'espace 'encyclopedie' — portées de
 // ENCYCLOPEDIA_DOSSIER_CATEGORIES.json (mêmes 6 catégories que
 // NOTION_CATEGORIES_SEED.json, migrées telles quelles par
@@ -973,7 +980,7 @@ export function initFicheDossierSystem(deps: {
   // (panneau latéral, pays uniquement) plus bas.
   let currentOwner: DossierOwnerRef | null = null;
   const categoryDocs = new Map<string, Category>();
-  let currentCategorySpace: "country" | "encyclopedie" = "country";
+  let currentCategorySpace: "country" | "encyclopedie" | "group" = "country";
   let currentSections: Section[] = [];
   let currentEntries: Entry[] = [];
   let activeCategory = "__all__";
@@ -1016,7 +1023,7 @@ export function initFicheDossierSystem(deps: {
   // -------------------------------------------------------------------------
   // Catégories
   // -------------------------------------------------------------------------
-  async function ensureDefaultCategories(space: "country" | "encyclopedie") {
+  async function ensureDefaultCategories(space: "country" | "encyclopedie" | "group") {
     const { count } = await supabase
       .from("dossier_categories")
       .select("id", { count: "exact", head: true })
@@ -1024,7 +1031,8 @@ export function initFicheDossierSystem(deps: {
     if (count && count > 0) return;
     const session = deps.getSession();
     if (!session) return; // best-effort : retentera à la prochaine ouverture par un utilisateur connecté
-    const defaults = space === "encyclopedie" ? DEFAULT_ENCYCLOPEDIA_CATEGORIES : DEFAULT_DOSSIER_CATEGORIES;
+    const defaults =
+      space === "encyclopedie" ? DEFAULT_ENCYCLOPEDIA_CATEGORIES : space === "group" ? DEFAULT_GROUP_CATEGORIES : DEFAULT_DOSSIER_CATEGORIES;
     try {
       await supabase.from("dossier_categories").insert(
         defaults.map((c) => ({
@@ -1049,7 +1057,7 @@ export function initFicheDossierSystem(deps: {
       date_label: (row.date_label as string) ?? null,
     };
   }
-  async function loadCategories(space: "country" | "encyclopedie") {
+  async function loadCategories(space: "country" | "encyclopedie" | "group") {
     currentCategorySpace = space;
     const { data, error } = await supabase
       .from("dossier_categories")
@@ -2134,20 +2142,6 @@ export function initFicheDossierSystem(deps: {
       }
       return;
     }
-    // Dossier "plat" (groupe — demande de Martin, 2026-10-14 : "pour les
-    // groupes, ne pas faire la division de Catégorie des pays") : liste
-    // continue de toutes les entrées, sans titre de catégorie entre elles
-    // ni bloc "Non classé" — un groupe n'a d'ailleurs jamais de catégorie
-    // assignée à ses entrées (voir isFlatDossierOwner()/populateCategorySelects,
-    // qui masquent/désactivent le choix de catégorie dans ce cas).
-    if (isFlatDossierOwner(currentOwner)) {
-      entries.forEach((entry) => container.appendChild(buildEntryEl(entry)));
-      if (!container.children.length) {
-        container.innerHTML =
-          '<p class="muted">Aucune entrée pour le moment. Utilisez les boutons ci-dessus pour ajouter du texte, une photo ou un lien.</p>';
-      }
-      return;
-    }
     const cats = orderedCategories();
     cats.forEach(([id, cat]) => {
       const inCat = entries.filter((e) => (e.category_id || null) === id);
@@ -2207,12 +2201,7 @@ export function initFicheDossierSystem(deps: {
     const heading = $("dossier-theme-heading");
     const backBtn = $("dossier-summary-back") as HTMLButtonElement;
     let deepestSectionName: string | null = null;
-    // Dossier plat (groupe) : pas de sommaire vers lequel revenir, donc pas
-    // de flèche "← Sommaire" — voir isFlatDossierOwner().
-    if (isFlatDossierOwner(currentOwner)) {
-      heading.textContent = currentOwner!.label;
-      backBtn.style.display = "none";
-    } else if (activeCategory === "__all__") {
+    if (activeCategory === "__all__") {
       backBtn.style.display = "";
       heading.textContent = "Toutes les entrées";
       backBtn.textContent = "← Sommaire";
@@ -2800,12 +2789,7 @@ export function initFicheDossierSystem(deps: {
   // Sélecteurs de catégorie / sous-section (barre d'ajout + formulaires)
   // -------------------------------------------------------------------------
   function populateCategorySelects() {
-    // Dossier plat (groupe) : aucune catégorie à proposer — les selects
-    // restent vides (donc sel.value === "" partout, category_id enregistré
-    // à null) et sont masqués en CSS (.flat-dossier, voir style.css) pour ne
-    // pas laisser un menu déroulant vide traîner dans la barre d'ajout/les
-    // formulaires. Voir isFlatDossierOwner().
-    const cats: [string, Category][] = isFlatDossierOwner(currentOwner) ? [] : orderedCategories();
+    const cats: [string, Category][] = orderedCategories();
     ([$("dossier-entry-category"), $("dossier-text-category"), $("dossier-link-category"), $("dossier-hemicycle-category"), $("dossier-genealogy-entry-category"), $("dossier-frise-entry-category")] as HTMLSelectElement[]).forEach((sel) => {
       const prev = sel.value;
       sel.innerHTML = "";
@@ -4159,7 +4143,6 @@ export function initFicheDossierSystem(deps: {
     $("dossier-theme-view").classList.remove("reading-mode");
     ($("dossier-reading-toggle") as HTMLButtonElement).textContent = "Mode lecture";
     $("dossier-view").classList.add("open");
-    $("dossier-view").classList.toggle("flat-dossier", isFlatDossierOwner(owner));
     // Rafraîchit l'index de liens (pays/groupes/sous-catégories/fiches/
     // membres d'arbres) en parallèle du reste — demande de Martin,
     // 2026-10-03 : liens auto rétroactifs dans les textes + rattachement
@@ -4176,10 +4159,7 @@ export function initFicheDossierSystem(deps: {
     if (currentOwner !== owner) return;
     await linkIndexPromise;
     if (currentOwner !== owner) return;
-    // Groupe : pas de sommaire de thèmes, on va direct à la liste à plat
-    // (demande de Martin, 2026-10-14) — voir isFlatDossierOwner().
-    if (isFlatDossierOwner(owner)) showThemeView("__all__");
-    else showDossierSummary();
+    showDossierSummary();
   }
   async function openDossier(country: CountryRef) {
     await openDossierForOwner({
@@ -4192,7 +4172,7 @@ export function initFicheDossierSystem(deps: {
     });
   }
   async function openGroupDossier(id: string, name: string, color?: string) {
-    await openDossierForOwner({ type: "group", id, label: name, categorySpace: "country", colorDot: color });
+    await openDossierForOwner({ type: "group", id, label: name, categorySpace: "group", colorDot: color });
   }
   async function openEncyclopedieDossier() {
     await openDossierForOwner({ type: "encyclopedie", id: "encyclopedie", label: "Encyclopédie", categorySpace: "encyclopedie" });
