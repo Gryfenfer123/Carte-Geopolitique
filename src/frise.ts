@@ -24,6 +24,7 @@
 import type { SupabaseClient, Session } from "@supabase/supabase-js";
 import { customConfirm } from "./dossier";
 import { fetchPlacements } from "./friseEvents";
+import { initFriseImmersive } from "./friseImmersive";
 import { initFriseMulti } from "./friseMulti";
 import { fetchReigns, type Reign } from "./friseReigns";
 import { initFriseReigns } from "./friseReignsUi";
@@ -128,7 +129,13 @@ function dateColumns(prefix: "period_start" | "period_end", d: FriseDate | null)
 
 let measureCtx: CanvasRenderingContext2D | null = null;
 // Échelle d'affichage de la frise (polices, bandeau, branches) : même valeur que --tl-s dans le CSS.
-const TL_SCALE = 1.3;
+let TL_SCALE = 2.2;
+const SCALE_MIN = 1.2;
+const SCALE_MAX = 3.6;
+
+function resetTextMeasure() {
+  measureCtx = null;
+}
 
 function textWidth(text: string): number {
   try {
@@ -217,6 +224,7 @@ export function initTimelineSystem(deps: {
   const root = document.createElement("div");
   root.innerHTML = `
     <div id="timeline-view">
+      <div id="timeline-chrome">
       <div id="timeline-topbar">
         <button id="timeline-back" class="btn-small">Retour au dossier</button>
         <nav id="timeline-breadcrumb" aria-label="Frises parentes"></nav>
@@ -235,6 +243,10 @@ export function initTimelineSystem(deps: {
           <button id="timeline-zoom-in" class="btn-small" aria-label="Zoomer">&#43;</button>
           <button id="timeline-zoom-reset" class="btn-small">Recentrer</button>
           <button id="timeline-manage-cats" class="btn-small edit-control">Cat&eacute;gories</button>
+          <button id="timeline-size-down" class="btn-small" title="Réduire la taille de la frise">A&minus;</button>
+          <button id="timeline-size-up" class="btn-small" title="Agrandir la frise">A&#43;</button>
+          <button id="timeline-immersive" class="btn-small" title="Cacher les barres : la frise prend tout l'écran">Immersif</button>
+          <button id="timeline-fullscreen" class="btn-small" title="Plein écran du navigateur">Plein &eacute;cran</button>
           <button id="timeline-export-img" class="btn-small" title="T&eacute;l&eacute;charger toute la frise en image">Image</button>
         </div>
       </div>
@@ -243,6 +255,7 @@ export function initTimelineSystem(deps: {
         <div id="timeline-subtitle"></div>
       </div>
       <div id="timeline-legend"></div>
+      </div>
       <div id="timeline-scroll">
         <div id="timeline-stage"></div>
         <p id="timeline-empty-hint" class="muted" style="display:none;"></p>
@@ -616,15 +629,15 @@ export function initTimelineSystem(deps: {
   }
 
   // --- Rendu -----------------------------------------------------------------------
-  const FIT_MARGIN = 160; // marge laissée de chaque côté quand la frise est ajustée à l'écran
+  const FIT_MARGIN = 90; // marge laissée de chaque côté quand la frise est ajustée à l'écran
   let exporting = false;
-  const STEM_BASE = 26 * TL_SCALE;
-  const STEM_STEP = 30 * TL_SCALE;
-  const LABEL_PAD = 14 * TL_SCALE;
+  let STEM_BASE = 26 * TL_SCALE;
+  let STEM_STEP = 30 * TL_SCALE;
+  let LABEL_PAD = 14 * TL_SCALE;
 
   // Les points dont la hauteur est réglée à la main gardent leur hauteur ; les autres
   // sont rangés automatiquement en branches empilées (niveaux).
-  const RULER_H = 26 * TL_SCALE;
+  let RULER_H = 26 * TL_SCALE;
   type Placed = { p: Point; x: number; x2: number; len: number; w: number };
   function pointLabel(p: Point): string {
     return showDates ? formatFriseDate(p.date) + (p.end ? " → " + formatFriseDate(p.end) : "") + " · " + p.title : p.title;
@@ -635,7 +648,7 @@ export function initTimelineSystem(deps: {
     const lastRight: number[] = [];
     const out: Placed[] = [];
     for (const it of sorted) {
-      const w = Math.min(textWidth(pointLabel(it.p)) + LABEL_PAD, 300);
+      const w = Math.min(textWidth(pointLabel(it.p)) + LABEL_PAD, 240 * TL_SCALE);
       if (it.p.stem != null) {
         out.push({ p: it.p, x: it.x, x2: it.x2, len: it.p.stem, w });
         continue;
@@ -684,7 +697,7 @@ export function initTimelineSystem(deps: {
   // dates très proches, pour que les étiquettes restent lisibles. Tous les points comptent,
   // filtrés ou non, pour que la mise en page ne bouge pas quand on masque une catégorie.
   // Largeur minimale d'une période : même très courte, son nom et ses dates restent cliquables.
-  const MIN_SEG_PX = 84;
+  const MIN_SEG_PX = () => 44 * TL_SCALE;
   function adaptiveWidths(segments: Segment[], totalPx: number): number[] {
     const lin = computeLinearWidths(segments, totalPx);
     const perSeg: number[][] = segments.map(() => []);
@@ -695,14 +708,14 @@ export function initTimelineSystem(deps: {
     }
     return segments.map((seg, i) => {
       const decs = perSeg[i].sort((a, b) => a - b);
-      if (!decs.length) return Math.max(lin[i], MIN_SEG_PX);
+      if (!decs.length) return Math.max(lin[i], MIN_SEG_PX());
       const span = Math.max(seg.endDec - seg.startDec, 1e-6);
       let need = decs.length * 120;
       for (let k = 1; k < decs.length; k++) {
         const gap = Math.max(decs[k] - decs[k - 1], span * 0.002);
         need = Math.max(need, Math.min(decs.length * 260, (70 / gap) * span));
       }
-      return Math.max(lin[i], need * zoom, MIN_SEG_PX);
+      return Math.max(lin[i], need * zoom, MIN_SEG_PX());
     });
   }
 
@@ -906,12 +919,15 @@ export function initTimelineSystem(deps: {
     const ruler = document.createElement("div");
     ruler.className = "tl-ruler";
     let segX = 0;
+    let lastTickX = -1e9;
     segments.forEach((seg, i) => {
       const w = widths[i];
       const ppy = w / Math.max(seg.endDec - seg.startDec, 1e-6);
-      for (const t of niceTicks(seg.startDec, seg.endDec, ppy)) {
+      for (const t of niceTicks(seg.startDec, seg.endDec, ppy, 60 * TL_SCALE)) {
         if (i < segments.length - 1 && t.dec >= seg.endDec - 1e-9) continue;
         const x = segX + ((t.dec - seg.startDec) / Math.max(seg.endDec - seg.startDec, 1e-6)) * w;
+        if (x - lastTickX < 38 * TL_SCALE) continue; // étiquettes trop proches : on n'en garde qu'une
+        lastTickX = x;
         const tick = document.createElement("span");
         tick.className = "tl-tick" + (t.month === 1 ? " year" : "");
         tick.style.left = x + "px";
@@ -1087,6 +1103,7 @@ export function initTimelineSystem(deps: {
       wrap.appendChild(warn);
     }
     stage.appendChild(wrap);
+    immersive.refresh();
   }
 
   // --- Navigation ------------------------------------------------------------------
@@ -1213,9 +1230,51 @@ export function initTimelineSystem(deps: {
     await openForEntry(entryId);
   }
 
+  // Change l'échelle d'affichage (polices, bandeau, branches) : recalcul des constantes, --tl-s, police mesurée.
+  function applyScale(s: number) {
+    TL_SCALE = Math.min(SCALE_MAX, Math.max(SCALE_MIN, s));
+    STEM_BASE = 26 * TL_SCALE;
+    STEM_STEP = 30 * TL_SCALE;
+    LABEL_PAD = 14 * TL_SCALE;
+    RULER_H = 26 * TL_SCALE;
+    resetTextMeasure();
+    $("timeline-view").style.setProperty("--tl-s", String(TL_SCALE));
+  }
+  let userScale: number | null = null;
+  try {
+    const v = parseFloat(localStorage.getItem("tl-scale") ?? "");
+    if (v >= SCALE_MIN && v <= SCALE_MAX) userScale = v;
+  } catch {
+    /* stockage indisponible */
+  }
+  // Frise « plein écran » : on prend la plus grande échelle pour laquelle tout tient dans la hauteur.
+  function renderFitted() {
+    const sc = $("timeline-scroll");
+    const stage = $("timeline-stage");
+    const candidates = userScale ? [userScale] : [3.2, 2.8, 2.5, 2.2, 1.9, 1.6, 1.3];
+    for (let i = 0; i < candidates.length; i++) {
+      applyScale(candidates[i]);
+      zoom = fitZoom();
+      render();
+      if (i === candidates.length - 1 || stage.offsetHeight <= sc.clientHeight) break;
+    }
+    centerView();
+  }
+  function stepScale(dir: 1 | -1) {
+    userScale = Math.min(SCALE_MAX, Math.max(SCALE_MIN, (userScale ?? TL_SCALE) * (dir > 0 ? 1.15 : 1 / 1.15)));
+    try {
+      localStorage.setItem("tl-scale", String(userScale));
+    } catch {
+      /* ignoré */
+    }
+    applyScale(userScale);
+    zoom = fitZoom();
+    render();
+    centerView();
+  }
+
   async function openForEntry(entryId: string) {
     $("timeline-view").classList.add("open");
-    $("timeline-view").style.setProperty("--tl-s", String(TL_SCALE));
     const fresh = !frise || frise.id !== entryId;
     const ok = await load(entryId);
     if (!ok) {
@@ -1223,9 +1282,8 @@ export function initTimelineSystem(deps: {
       if (!frise) closeView();
       return;
     }
-    if (fresh) zoom = fitZoom();
-    render();
-    if (fresh) centerView();
+    if (fresh) renderFitted();
+    else render();
   }
 
   // Zoom qui fait tenir toute la frise dans la largeur de l'écran (jamais plus que 1).
@@ -1350,11 +1408,9 @@ export function initTimelineSystem(deps: {
   );
   $("timeline-zoom-in").addEventListener("click", () => setZoom(zoom * 1.4));
   $("timeline-zoom-out").addEventListener("click", () => setZoom(zoom / 1.4));
-  $("timeline-zoom-reset").addEventListener("click", () => {
-    zoom = fitZoom();
-    render();
-    centerView();
-  });
+  $("timeline-zoom-reset").addEventListener("click", () => renderFitted());
+  $("timeline-size-up").addEventListener("click", () => stepScale(1));
+  $("timeline-size-down").addEventListener("click", () => stepScale(-1));
   // Défilement gauche-droite : boutons, flèches du clavier (le glisser et le geste horizontal marchent aussi).
   const panBy = (dir: 1 | -1) => scrollEl.scrollBy({ left: dir * scrollEl.clientWidth * 0.35, behavior: "smooth" });
   $("timeline-pan-left").addEventListener("click", () => panBy(-1));
@@ -2647,6 +2703,12 @@ export function initTimelineSystem(deps: {
     const pt = points.find((p) => p.eventId === eventId);
     if (pt) setTimeout(() => focusPoint(pt), 80);
   }
+  const immersive = initFriseImmersive({
+    view: $("timeline-view"),
+    scroll: scrollEl,
+    toggleBtn: $("timeline-immersive"),
+    fullscreenBtn: $("timeline-fullscreen"),
+  });
   const reignsUi = initFriseReigns({
     supabase,
     getSession: deps.getSession,

@@ -141,3 +141,9 @@ des périodes ? (d) une régence (ex. Anne d'Autriche) compte-t-elle comme règn
 - **Affichage** : ruban sous la frise, une barre par règne (rangées séparées si chevauchement), rogné aux bornes de la frise ; bouton « Règnes » pour le masquer ; clic = carte (dates, sources, « Ouvrir l'arbre »).
 - **Pont vers les arbres** : « Ouvrir l'arbre » appelle `openGenealogyMember`. Sens inverse (afficher le règne dans l'arbre, « Voir sur la frise ») : à faire par le chantier « arbres » avec `fetchReignsOfMember`.
 - **Pas de données** : l'outil n'invente rien ; les règnes sont saisis par Martin avec leurs sources.
+
+## 12. Frise immersive (2026-11-03, demande de Martin : « on entre dans une frise »)
+- La frise occupe tout l'écran ; échelle automatique (la plus grande où tout tient en hauteur, 1,3 à 3,2) ou choisie avec A−/A+ (mémorisée).
+- Barres du haut cachées par défaut (réapparaissent en haut de l'écran) ; bouton « Barres fixes » pour les garder ; « Plein écran » = plein écran du navigateur.
+- Mini-carte en bas : toute la frise + zone visible ; clic ou glisser pour s'y rendre.
+- Idées non faites : zoom animé sur une période au clic, mode « diaporama » point par point, cartes de points avec image plein écran.

@@ -2419,7 +2419,7 @@ path.link-autre { stroke: var(--link-autre, #c9bfa9); }
   touch-action: none; user-select: none; -webkit-user-select: none;
 }
 #timeline-scroll.dragging { cursor: grabbing; }
-#timeline-stage { flex: none; width: max-content; min-width: 100%; margin: auto 0; padding: 70px 100px; box-sizing: border-box; } /* marges latérales fixées par frise.ts */
+#timeline-stage { flex: none; width: max-content; min-width: 100%; margin: auto 0; padding: 36px 100px; box-sizing: border-box; } /* marges latérales fixées par frise.ts */
 #timeline-empty-hint { text-align: center; max-width: 520px; margin: auto; }
 .tl-band-wrap { position: relative; }
 .tl-zone { position: relative; }
@@ -2518,7 +2518,7 @@ body.read-only-mode #timeline-add-period, body.read-only-mode #timeline-add-poin
 .tl-cell-name {
   max-width: 100%; overflow: hidden; overflow-wrap: break-word; white-space: normal;
   display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;
-  font-size: clamp(10px, 14cqw, calc(18px * var(--tl-s, 1)));
+  font-size: clamp(11px, 13cqw, calc(18px * var(--tl-s, 1)));
 }
 .tl-point.movable { cursor: ns-resize; touch-action: none; }
 .tl-point.dragging { box-shadow: 0 0 0 2px var(--accent); z-index: 5; }
