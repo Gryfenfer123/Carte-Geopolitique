@@ -1,11 +1,13 @@
 /* Vue Atlas des frises (src/friseAtlas.ts). */
 #tl-side { display: none; }
 #timeline-main.atlas > #tl-side {
-  display: flex; flex-direction: column; position: absolute; z-index: 14; top: 0; left: 0; bottom: 0; width: 250px;
+  display: flex; flex-direction: column; position: absolute; z-index: 14; top: 0; right: 0; bottom: 0; width: 270px;
   padding: 18px 16px; box-sizing: border-box; overflow-y: auto; background: color-mix(in srgb, var(--surface) 92%, #000);
-  border-right: 1px solid var(--surface-border);
+  border-left: 1px solid var(--surface-border);
 }
-#timeline-main.atlas > #timeline-scroll { margin-left: 250px; }
+#timeline-main.atlas > #timeline-scroll { margin-right: 270px; }
+#timeline-main.atlas.panel-open > #timeline-scroll { margin-right: min(400px, 92vw); }
+#timeline-main.atlas.panel-open > #tl-side { display: none; } /* le volet du point prend la place du sommaire */
 .tl-side-title { margin: 0 0 4px; font: 600 25px/1.15 "Fraunces", serif; }
 .tl-side-sub { font-size: 12.5px; color: var(--accent); font-style: italic; }
 .tl-side-rule { height: 2px; width: 40px; background: var(--accent); margin: 14px 0; }
@@ -30,6 +32,10 @@
 .tl-atlas-ruler .tl-ruler { position: absolute; inset: 0; height: auto; }
 .tl-atlas-ruler .tl-tick-label { font: 700 calc(13px * var(--tl-k, 1)) "IBM Plex Sans", sans-serif; color: var(--text); }
 .tl-atlas-lanes { position: relative; }
+.tl-atlas-up { position: relative; z-index: 3; pointer-events: none; }
+.tl-atlas-up > * { pointer-events: auto; }
+.tl-atlas-up > .tl-aline { pointer-events: none; }
+.tl-atlas-up > .tl-adot { position: absolute; z-index: 4; padding: 0; cursor: pointer; pointer-events: auto !important; border: 2px solid var(--surface); }
 .tl-abar { position: absolute; top: -3px; height: 5px; border-radius: 3px; opacity: 0.85; pointer-events: none; }
 .tl-aline { position: absolute; top: 0; width: 2px; opacity: 0.8; pointer-events: none; }
 .tl-atlas-lanes .tl-adot { position: absolute; top: 0; padding: 0; cursor: pointer; pointer-events: auto !important; z-index: 3; border: 2px solid var(--surface); }
@@ -46,6 +52,6 @@
 .tl-acard-title { font-size: calc(13px * var(--tl-k, 1)); font-weight: 600; line-height: 1.25; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
 @media (max-width: 900px) {
   #timeline-main.atlas > #tl-side { display: none; }
-  #timeline-main.atlas > #timeline-scroll { margin-left: 0; }
+  #timeline-main.atlas > #timeline-scroll { margin-right: 0; }
   }
 .tl-reigns-atlas { position: absolute; left: 0; bottom: 64px; margin: 0; width: 100%; }

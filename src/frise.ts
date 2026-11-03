@@ -145,7 +145,7 @@ function textWidth(text: string): number {
   try {
     if (!measureCtx) {
       measureCtx = document.createElement("canvas").getContext("2d");
-      if (measureCtx) measureCtx.font = '600 ' + 13 * TL_SCALE + 'px "IBM Plex Sans", sans-serif';
+      if (measureCtx) measureCtx.font = '600 ' + 9 * TL_SCALE + 'px "Archivo Narrow", "IBM Plex Sans", sans-serif';
     }
     if (measureCtx) return measureCtx.measureText(text).width;
   } catch {
@@ -992,7 +992,7 @@ export function initTimelineSystem(deps: {
           ruler: buildRuler(segments, widths),
           rulerH,
           items,
-          reservedBottom: 78,
+          reservedBottom: 8,
           register: (id, e) => pointEls.set(id, e),
           onOpen: (id, e) => {
             const q = byId.get(id);
@@ -1482,9 +1482,15 @@ export function initTimelineSystem(deps: {
   const scrollEl = $("timeline-scroll");
   let drag: { x: number; y: number; sl: number; st: number; moved: boolean } | null = null;
   let suppressClick = false;
+  let velX = 0; // vitesse du glissé (px/ms), pour continuer sur l'élan
+  let lastT = 0;
+  let glide = 0;
   scrollEl.addEventListener("pointerdown", (ev) => {
     if (ev.button !== 0) return;
     if ((ev.target as HTMLElement).closest("input, select, textarea")) return;
+    cancelAnimationFrame(glide);
+    velX = 0;
+    lastT = performance.now();
     drag = { x: ev.clientX, y: ev.clientY, sl: scrollEl.scrollLeft, st: scrollEl.scrollTop, moved: false };
   });
   window.addEventListener("pointermove", (ev) => {
@@ -1496,6 +1502,9 @@ export function initTimelineSystem(deps: {
       scrollEl.classList.add("dragging");
     }
     if (drag.moved) {
+      const now = performance.now();
+      if (now > lastT) velX = (scrollEl.scrollLeft - (drag.sl - dx)) / (now - lastT) * -1;
+      lastT = now;
       scrollEl.scrollLeft = drag.sl - dx;
       scrollEl.scrollTop = drag.st - dy;
     }
@@ -1504,6 +1513,16 @@ export function initTimelineSystem(deps: {
     if (drag && drag.moved) {
       suppressClick = true;
       setTimeout(() => (suppressClick = false), 0);
+      // Élan : la frise continue un peu après le lâcher (comme une carte).
+      let v = velX * 16 * 1.6;
+      if (performance.now() - lastT > 80) v = 0;
+      const step = () => {
+        if (Math.abs(v) < 0.5) return;
+        scrollEl.scrollLeft += v;
+        v *= 0.94;
+        glide = requestAnimationFrame(step);
+      };
+      glide = requestAnimationFrame(step);
     }
     drag = null;
     scrollEl.classList.remove("dragging");
@@ -1548,7 +1567,7 @@ export function initTimelineSystem(deps: {
       ev.preventDefault();
       // Geste horizontal (pavé tactile) ou Maj + molette : on fait défiler ; molette seule : zoom.
       if (!ev.ctrlKey && (ev.shiftKey || Math.abs(ev.deltaX) > Math.abs(ev.deltaY))) {
-        scrollEl.scrollLeft += ev.deltaX || ev.deltaY;
+        scrollEl.scrollLeft += (ev.deltaX || ev.deltaY) * 2.5;
         return;
       }
       wheelDelta += ev.deltaY;
@@ -1558,17 +1577,17 @@ export function initTimelineSystem(deps: {
           wheelRaf = 0;
           const d = wheelDelta;
           wheelDelta = 0;
-          setZoom(zoom * Math.exp(-d * 0.0015), wheelX);
+          setZoom(zoom * Math.exp(-d * 0.007), wheelX);
         });
       }
     },
     { passive: false }
   );
-  $("timeline-zoom-in").addEventListener("click", () => setZoom(zoom * 1.4));
-  $("timeline-zoom-out").addEventListener("click", () => setZoom(zoom / 1.4));
+  $("timeline-zoom-in").addEventListener("click", () => setZoom(zoom * 2));
+  $("timeline-zoom-out").addEventListener("click", () => setZoom(zoom / 2));
   $("timeline-zoom-reset").addEventListener("click", () => renderFitted());
   // Défilement gauche-droite : boutons, flèches du clavier (le glisser et le geste horizontal marchent aussi).
-  const panBy = (dir: 1 | -1) => scrollEl.scrollBy({ left: dir * scrollEl.clientWidth * 0.35, behavior: "smooth" });
+  const panBy = (dir: 1 | -1) => scrollEl.scrollBy({ left: dir * scrollEl.clientWidth * 0.6, behavior: "smooth" });
   document.addEventListener("keydown", (ev) => {
     if (!$("timeline-view").classList.contains("open")) return;
     if ((ev.target as HTMLElement).closest("input, select, textarea")) return;
@@ -1576,8 +1595,8 @@ export function initTimelineSystem(deps: {
     if (ev.key === "ArrowLeft") (panelOpen ? stepPoint(-1) : panBy(-1));
     else if (ev.key === "ArrowRight") (panelOpen ? stepPoint(1) : panBy(1));
     else if (ev.key === "Escape") closePointCard();
-    else if (ev.key === "+" || ev.key === "=") setZoom(zoom * 1.4);
-    else if (ev.key === "-") setZoom(zoom / 1.4);
+    else if (ev.key === "+" || ev.key === "=") setZoom(zoom * 2);
+    else if (ev.key === "-") setZoom(zoom / 2);
     else if (ev.key === "0") renderFitted();
     else return;
     ev.preventDefault();

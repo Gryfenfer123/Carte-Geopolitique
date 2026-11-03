@@ -56,32 +56,46 @@ export function buildAtlas(o: AtlasOptions): HTMLElement {
   root.style.width = o.total + "px";
   root.style.height = o.height + "px";
 
+  // Hauteurs fixes : zone du haut (cartes au-dessus), bandeau des époques, règle, zone du bas.
+  // Ainsi la frise reste au centre de l'écran, avec des événements des deux côtés.
+  const bandH = Math.round(76 * k);
+  const sideH = Math.max(0, Math.floor((o.height - bandH - o.rulerH - o.reservedBottom) / 2));
+  const lineY = sideH + bandH + o.rulerH; // ligne des dates, en haut du bas ; repère de la zone du haut
+
+  const upBox = el("div", "tl-atlas-up");
+  upBox.style.height = sideH + "px";
+  root.appendChild(upBox);
   o.band.classList.add("tl-atlas-band");
+  o.band.style.height = bandH + "px";
   root.appendChild(o.band);
   const rulerBox = el("div", "tl-atlas-ruler");
   rulerBox.style.height = o.rulerH + "px";
   rulerBox.appendChild(o.ruler);
   root.appendChild(rulerBox);
-
-  const bandH = o.band.offsetHeight || 46 * k;
-  void bandH;
   const lanes = el("div", "tl-atlas-lanes");
+  lanes.style.height = sideH + "px";
   root.appendChild(lanes);
 
   const anyPhoto = o.items.some((i) => i.photo);
-  const cardW = Math.round(184 * k);
-  const cardH = Math.round((anyPhoto ? 132 : 64) * k);
-  const gap = Math.round(10 * k);
-  const bandHeight = Math.round(48 * k);
-  const areaH = Math.max(0, o.height - bandHeight - o.rulerH - o.reservedBottom - 16);
-  const maxLanes = Math.max(1, Math.floor((areaH + gap) / (cardH + gap)));
+  const cardW = Math.round(158 * k);
+  const cardH = Math.round((anyPhoto ? 112 : 54) * k);
+  const gap = Math.round(8 * k);
+  const margin = Math.round(12 * k);
+  const maxLanes = Math.max(1, Math.floor((sideH - margin + gap) / (cardH + gap)));
 
+  // Les événements alternent au-dessus / en dessous de la règle : deux fois plus de place.
   const sorted = [...o.items].sort((a, b) => a.x - b.x);
-  const laneOf = assignCardLanes(sorted.map((i) => i.x), cardW, maxLanes);
+  const upItems = sorted.filter((_, i) => i % 2 === 1);
+  const downItems = sorted.filter((_, i) => i % 2 === 0);
+  const laneUp = assignCardLanes(upItems.map((i) => i.x), cardW, maxLanes);
+  const laneDown = assignCardLanes(downItems.map((i) => i.x), cardW, maxLanes);
+  const place: { it: AtlasItem; up: boolean; lane: number }[] = [
+    ...upItems.map((it, i) => ({ it, up: true, lane: laneUp[i] })),
+    ...downItems.map((it, i) => ({ it, up: false, lane: laneDown[i] })),
+  ];
 
-  sorted.forEach((it, idx) => {
-    const lane = laneOf[idx];
-    // Durée : trait sur la ligne de départ des cartes.
+  place.forEach(({ it, up, lane }) => {
+    // Durée : trait sur la ligne des dates.
     if (it.x2 - it.x > 3) {
       const bar = el("span", "tl-abar");
       bar.style.left = it.x + "px";
@@ -89,20 +103,29 @@ export function buildAtlas(o: AtlasOptions): HTMLElement {
       bar.style.background = it.color;
       lanes.appendChild(bar);
     }
-    const top = lane < 0 ? 0 : 14 * k + lane * (cardH + gap);
+    const box = up ? upBox : lanes;
+    // Zone du bas : y compté depuis la ligne. Zone du haut : y compté depuis le haut de la zone.
+    const top = up ? sideH - margin - (lane + 1) * cardH - lane * gap : margin + lane * (cardH + gap);
     if (lane >= 0) {
       const line = el("span", "tl-aline");
       line.style.left = it.x + "px";
-      line.style.height = top + cardH / 2 + "px";
+      if (up) {
+        line.style.top = top + cardH / 2 + "px";
+        line.style.height = lineY - (top + cardH / 2) + "px";
+      } else {
+        line.style.top = "0px";
+        line.style.height = top + cardH / 2 + "px";
+      }
       line.style.background = it.color;
-      lanes.appendChild(line);
+      box.appendChild(line);
     }
     const dot = el("button", "tl-dot tl-adot");
     dot.type = "button";
     dot.style.left = it.x + "px";
+    dot.style.top = up ? lineY + "px" : "0px";
     dot.style.background = it.color;
     dot.setAttribute("aria-label", it.title);
-    lanes.appendChild(dot);
+    box.appendChild(dot);
 
     let target: HTMLElement = dot;
     if (lane >= 0) {
@@ -132,7 +155,7 @@ export function buildAtlas(o: AtlasOptions): HTMLElement {
       const t = el("span", "tl-acard-title");
       t.textContent = it.title + (it.hasSub ? "  ›" : "");
       card.append(d, t);
-      lanes.appendChild(card);
+      box.appendChild(card);
       target = card;
       card.addEventListener("click", (ev) => {
         ev.stopPropagation();

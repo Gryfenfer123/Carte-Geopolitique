@@ -5,17 +5,23 @@
 @import url("https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Archivo+Narrow:wght@400;500;600;700&display=swap");
 
 #timeline-view, #tl-hover-card, #tl-multi-overlay, #tl-fiches-box {
-  --surface: #ecede6;
+  --tl-ground: #d3d4cc;
+  --surface: #e4e5dd;
   --surface-border: #b9bfc0;
   --ink: #1b2530;
   --text: #1b2530;
   --text-dim: #5a6670;
   --accent: #d6402b;
-  --tl-paper-deep: #d3dee2;
+  --tl-paper-deep: #c9d3d5;
   --tl-serif: "EB Garamond", Georgia, serif;
   --tl-label: "Archivo Narrow", "Arial Narrow", sans-serif;
 }
-#timeline-view { font-family: var(--tl-serif); font-size: 17px; }
+#timeline-view {
+  font-family: var(--tl-serif); font-size: 17px; background-color: var(--tl-ground);
+  /* grain de papier : bruit très léger, pour un gris doux et un peu texturé */
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.10  0 0 0 0 0.12  0 0 0 0 0.14  0 0 0 0.16 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+}
+#timeline-chrome, #timeline-main { background: transparent; }
 
 /* Barre du haut : titre en livre, commandes en petites capitales étroites */
 #timeline-title { font-family: var(--tl-serif); font-weight: 500; font-size: 28px; letter-spacing: 0.01em; }
@@ -34,7 +40,7 @@
 #timeline-subbar { padding-bottom: 6px; }
 
 /* Cadre de planche : filet épais dehors, filet fin dedans */
-#timeline-main { margin: 0; border-top: 0; border-bottom: 2px solid var(--ink); background: var(--surface); }
+#timeline-main { margin: 0; border-top: 0; border-bottom: 2px solid var(--ink); }
 #timeline-main::after {
   content: ""; position: absolute; inset: 5px; border: 1px solid var(--ink); pointer-events: none; z-index: 1;
 }
@@ -79,7 +85,7 @@
 .tl-panel-body h3 { font: 500 30px/1.1 var(--tl-serif); }
 .tl-card-date { font-family: var(--tl-label); font-weight: 600; letter-spacing: 0.06em; color: var(--accent); }
 .tl-panel-text { line-height: 1.55; }
-#timeline-main.atlas > #tl-side { background: var(--tl-paper-deep); border-right: 1px solid var(--ink); }
+#timeline-main.atlas > #tl-side { background: #c3ccce; border-left: 1px solid var(--ink); }
 .tl-side-title { font: 500 30px/1.05 var(--tl-serif); }
 .tl-side-sub { font-family: var(--tl-serif); font-size: 16px; }
 .tl-side-rule { height: 3px; width: 56px; }
@@ -112,3 +118,10 @@
 .tl-cell-name { font-size: clamp(12.5px, 17cqw, calc(21px * var(--tl-s, 1))); font-weight: 700; -webkit-line-clamp: 3; hyphens: auto; overflow-wrap: anywhere; }
 .tl-legend-chip { font-family: var(--tl-label); font-size: 14px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; border-radius: 0; border: 1.5px solid var(--ink); color: var(--ink); background: transparent; padding: 4px 11px; }
 .tl-legend-chip.off { opacity: 0.4; text-decoration: line-through; }
+
+/* Points plus petits : on peut en mettre plusieurs à des dates proches */
+.tl-point { font-size: calc(8.5px * var(--tl-s, 1)); padding: 1px 6px; line-height: 1.2; }
+.tl-dot { width: calc(6px * var(--tl-s, 1)); height: calc(6px * var(--tl-s, 1)); border-width: 1.5px; }
+.tl-point.compact { width: calc(10px * var(--tl-s, 1)); height: calc(10px * var(--tl-s, 1)); }
+.tl-acard-date { font-size: calc(10.5px * var(--tl-k, 1)); }
+.tl-acard-title { font-size: calc(12px * var(--tl-k, 1)); }
