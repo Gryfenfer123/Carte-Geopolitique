@@ -1,0 +1,53 @@
+/* Vue Atlas des frises (src/friseAtlas.ts). */
+#tl-side { display: none; }
+#timeline-main.atlas > #tl-side {
+  display: flex; flex-direction: column; position: absolute; z-index: 14; top: 0; left: 0; bottom: 0; width: 250px;
+  padding: 18px 16px; box-sizing: border-box; overflow-y: auto; background: color-mix(in srgb, var(--surface) 92%, #000);
+  border-right: 1px solid var(--surface-border);
+}
+#timeline-main.atlas > #timeline-scroll { margin-left: 250px; }
+#timeline-main.atlas > #tl-minimap, #timeline-main.atlas > #tl-keyhint { margin-left: 125px; }
+.tl-side-title { margin: 0 0 4px; font: 600 25px/1.15 "Fraunces", serif; }
+.tl-side-sub { font-size: 12.5px; color: var(--accent); font-style: italic; }
+.tl-side-rule { height: 2px; width: 40px; background: var(--accent); margin: 14px 0; }
+.tl-side-help { font-size: 12.5px; line-height: 1.5; color: var(--text-dim); margin: 0 0 6px; }
+.tl-side-count { font-size: 12px; color: var(--text-dim); margin-bottom: 12px; }
+.tl-side-nav { display: flex; flex-direction: column; gap: 2px; }
+.tl-side-item {
+  display: grid; grid-template-columns: 10px 1fr; column-gap: 9px; text-align: left; padding: 7px 8px; border: 0; border-radius: 6px;
+  background: none; color: var(--text); font: inherit; cursor: pointer;
+}
+.tl-side-item:hover { background: var(--surface-border); }
+.tl-side-dot { width: 10px; height: 10px; border-radius: 50%; margin-top: 5px; background: var(--text-dim); }
+.tl-side-name { font-size: 13.5px; font-weight: 600; }
+.tl-side-dates { grid-column: 2; font-size: 11.5px; color: var(--text-dim); }
+
+.tl-atlas-body { position: relative; }
+.tl-atlas-band.tl-band { height: calc(48px * var(--tl-k, 1)); border-bottom: 0; }
+.tl-atlas-band .tl-date-start, .tl-atlas-band .tl-date-end { display: none; }
+.tl-atlas-band .tl-cell { align-items: center; justify-content: center; text-align: center; padding: 2px 6px; }
+.tl-atlas-band .tl-cell-name { font: 700 calc(14px * var(--tl-k, 1)) "IBM Plex Sans", sans-serif; text-transform: uppercase; letter-spacing: 0.04em; -webkit-line-clamp: 1; }
+.tl-atlas-ruler { position: relative; border-bottom: 1px solid var(--surface-border); }
+.tl-atlas-ruler .tl-ruler { position: absolute; inset: 0; height: auto; }
+.tl-atlas-ruler .tl-tick-label { font: 700 calc(13px * var(--tl-k, 1)) "IBM Plex Sans", sans-serif; color: var(--text); }
+.tl-atlas-lanes { position: relative; }
+.tl-abar { position: absolute; top: -3px; height: 5px; border-radius: 3px; opacity: 0.85; pointer-events: none; }
+.tl-aline { position: absolute; top: 0; width: 2px; opacity: 0.8; pointer-events: none; }
+.tl-atlas-lanes .tl-adot { position: absolute; top: 0; padding: 0; cursor: pointer; pointer-events: auto !important; z-index: 3; border: 2px solid var(--surface); }
+.tl-acard {
+  position: absolute; z-index: 2; display: flex; flex-direction: column; gap: 3px; padding: 0 0 6px; overflow: hidden; text-align: left;
+  font: inherit; color: var(--text); cursor: pointer; background: var(--surface); border: 1px solid var(--surface-border);
+  border-left: 4px solid; border-radius: 4px; box-shadow: 0 3px 10px rgba(0,0,0,0.3);
+}
+.tl-acard:hover { background: color-mix(in srgb, var(--surface) 82%, var(--text)); z-index: 5; }
+.tl-acard.selected, .tl-adot.selected { box-shadow: 0 0 0 3px var(--accent); z-index: 6; }
+.tl-acard-img { display: block; width: 100%; flex: 1 1 0; min-height: 0; object-fit: cover; }
+.tl-acard-date, .tl-acard-title { padding: 0 8px; }
+.tl-acard-date { margin-top: 5px; font-size: calc(11.5px * var(--tl-k, 1)); font-weight: 700; color: var(--accent); }
+.tl-acard-title { font-size: calc(13px * var(--tl-k, 1)); font-weight: 600; line-height: 1.25; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+@media (max-width: 900px) {
+  #timeline-main.atlas > #tl-side { display: none; }
+  #timeline-main.atlas > #timeline-scroll { margin-left: 0; }
+  #timeline-main.atlas > #tl-minimap, #timeline-main.atlas > #tl-keyhint { margin-left: 0; }
+}
+.tl-reigns-atlas { position: absolute; left: 0; bottom: 64px; margin: 0; width: 100%; }

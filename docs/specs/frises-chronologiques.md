@@ -149,3 +149,8 @@ des périodes ? (d) une régence (ex. Anne d'Autriche) compte-t-elle comme règn
 - Anti-encombrement : au-delà du nombre de niveaux qui tient dans l'écran, les points deviennent des pastilles.
 - Mini-carte en bas (toute la frise, zone visible, clic/glisser) ; plein écran navigateur.
 - Idées non faites : axe collé en haut pendant le défilement vertical, regroupement des points en grappes avec compteur, lignes (« couloirs ») par catégorie, diaporama.
+
+## 13. Vue Atlas (2026-11-03, essai)
+- Barre latérale (titre, dates, sommaire des périodes cliquable = zoom), bandeau des époques en haut, règle des dates en gras, cartes (image + date + titre) rangées sous la règle, reliées à leur date par un trait coloré ; durée = barre sur la règle.
+- Rangées : autant que la hauteur le permet, le reste en pastilles. Bouton « Vue Tiges » = vue d'origine (§7bis), conservée.
+- Quand beaucoup de fiches auront une image, c'est cette vue qui rendra le mieux ; sans image, les cartes sont des aplats colorés.

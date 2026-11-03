@@ -25,6 +25,7 @@ import type { SupabaseClient, Session } from "@supabase/supabase-js";
 import { customConfirm } from "./dossier";
 import { fetchPlacements } from "./friseEvents";
 import "./friseLayout.css";
+import { buildAtlas, buildSidebar } from "./friseAtlas";
 import { fetchExcerpt } from "./friseDetail";
 import { initFriseImmersive } from "./friseImmersive";
 import { initFriseMulti } from "./friseMulti";
@@ -206,6 +207,13 @@ export function initTimelineSystem(deps: {
   let categories: Category[] = [];
   let reigns: Reign[] = [];
   let showReigns = true;
+  // Vue Atlas (cartes illustrées sous une règle) ou vue Tiges (croquis de Martin) : mémorisé.
+  let atlasMode = true;
+  try {
+    atlasMode = localStorage.getItem("tl-atlas") !== "0";
+  } catch {
+    /* stockage indisponible */
+  }
   let hiddenCats = new Set<string>();
   const showDates = false; // l'affichage des dates se fait au survol (voir showHover)
   try {
@@ -245,6 +253,7 @@ export function initTimelineSystem(deps: {
           <div class="tl-tgroup" role="group" aria-label="Affichage">
             <button id="timeline-size-down" class="btn-small" title="Réduire les textes">A&minus;</button>
             <button id="timeline-size-up" class="btn-small" title="Agrandir les textes">A&#43;</button>
+            <button id="timeline-view-mode" class="btn-small" title="Changer l'aspect de la frise">Vue Atlas</button>
             <button id="timeline-toggle-reigns" class="btn-small" title="Afficher ou masquer le ruban des règnes">R&egrave;gnes</button>
             <button id="timeline-fullscreen" class="btn-small" title="Plein &eacute;cran du navigateur">Plein &eacute;cran</button>
             <button id="timeline-export-img" class="btn-small" title="T&eacute;l&eacute;charger toute la frise en image">Image</button>
@@ -269,6 +278,7 @@ export function initTimelineSystem(deps: {
           <div id="timeline-stage"></div>
           <p id="timeline-empty-hint" class="muted" style="display:none;"></p>
         </div>
+        <aside id="tl-side" aria-label="Sommaire"></aside>
         <aside id="tl-point-card" aria-label="Détail" style="display:none;"></aside>
         <div id="tl-keyhint">Molette : zoom &middot; Glisser : d&eacute;placer &middot; Clic sur une p&eacute;riode : zoom &middot; Double-clic : ouvrir &middot; &larr; &rarr; : point pr&eacute;c&eacute;dent / suivant &middot; 0 : vue d'ensemble</div>
       </div>
@@ -911,6 +921,8 @@ export function initTimelineSystem(deps: {
       sub.style.display = "none";
     }
 
+    // La barre latérale change la largeur disponible : à poser AVANT toute mesure.
+    $("timeline-main").classList.toggle("atlas", atlasMode);
     const stage = $("timeline-stage");
     stage.innerHTML = "";
     const hint = $("timeline-empty-hint");
@@ -957,6 +969,83 @@ export function initTimelineSystem(deps: {
     const wrap = document.createElement("div");
     wrap.className = "tl-band-wrap";
     wrap.style.width = total + "px";
+
+    stage.style.paddingTop = stage.style.paddingBottom = atlasMode ? "0" : "";
+    if (atlasMode) {
+      const k = TL_SCALE / 1.9;
+      const rulerH = Math.round(34 * k);
+      wrap.style.height = scroll.clientHeight + "px";
+      pointEls = new Map();
+      const items = placedItems.map((i) => ({
+        id: i.p.eventId,
+        title: i.p.title,
+        dateText: dateRangeText(i.p),
+        color: i.p.color,
+        x: i.x,
+        x2: i.x2,
+        photo: i.p.fiches.find((f) => f.photo)?.photo ?? null,
+        hasSub: !!i.p.subFriseId,
+      }));
+      const byId = new Map(points.map((q) => [q.eventId, q]));
+      wrap.appendChild(
+        buildAtlas({
+          total,
+          height: scroll.clientHeight,
+          k,
+          band: buildBand(segments, widths, admin),
+          ruler: buildRuler(segments, widths),
+          rulerH,
+          items,
+          reservedBottom: 78,
+          register: (id, e) => pointEls.set(id, e),
+          onOpen: (id, e) => {
+            const q = byId.get(id);
+            if (q && !suppressPointClick) {
+              hideHover();
+              openPointCard(q, e);
+            }
+          },
+          onHover: (id, e) => {
+            const q = byId.get(id);
+            if (q) showHover(q, e);
+          },
+          onLeave: hideHover,
+        })
+      );
+      if (showReigns && reigns.length && segments.length) {
+        const ribbon = reignsUi.renderRibbon({
+          reigns,
+          rangeStart: segments[0].startDec,
+          rangeEnd: segments[segments.length - 1].endDec,
+          xOf: (dec) => xForDecimal(dec, segments, widths),
+          scale: TL_SCALE,
+        });
+        if (ribbon) {
+          ribbon.classList.add("tl-reigns-atlas");
+          wrap.appendChild(ribbon);
+        }
+      }
+      buildSidebar($("tl-side"), {
+        title: frise.title || "Frise chronologique",
+        subtitle: segments.length ? formatFriseDate(eff[0].start) + " → " + (eff[eff.length - 1].end ? formatFriseDate(eff[eff.length - 1].end as FriseDate) : "aujourd'hui") : "",
+        count: placedItems.length,
+        entries: segments.flatMap((seg, si) =>
+          seg.kind === "period"
+            ? [{ name: seg.period.name, color: seg.period.color, dates: formatFriseDate(seg.period.start), onClick: () => { openPeriodCard(seg); zoomToSegment(si); } }]
+            : []
+        ),
+      });
+      if (issues.length) {
+        const warn = document.createElement("p");
+        warn.className = "tl-issues";
+        warn.textContent = issues.map((i) => i.message).join(" ");
+        wrap.appendChild(warn);
+      }
+      stage.appendChild(wrap);
+      immersive.refresh();
+      markSelected();
+      return;
+    }
 
     const upH = zoneH(up);
     const upZone = document.createElement("div");
@@ -1279,6 +1368,7 @@ export function initTimelineSystem(deps: {
     RULER_H = 26 * TL_SCALE;
     resetTextMeasure();
     $("timeline-view").style.setProperty("--tl-s", String(TL_SCALE));
+    $("timeline-view").style.setProperty("--tl-k", String(TL_SCALE / 1.9));
   }
   let userScale: number | null = null;
   try {
@@ -1290,6 +1380,7 @@ export function initTimelineSystem(deps: {
   // Frise « plein écran » : on prend la plus grande échelle pour laquelle tout tient dans la hauteur.
   function renderFitted() {
     const sc = $("timeline-scroll");
+    $("timeline-main").classList.toggle("atlas", atlasMode);
     const stage = $("timeline-stage");
     const auto = Math.min(2.2, Math.max(1.5, sc.clientHeight / 480));
     const candidates = [userScale ?? auto];
@@ -2791,6 +2882,17 @@ export function initTimelineSystem(deps: {
     if (parent) void openForEntry(parent.id);
   });
   $("timeline-add-reign").addEventListener("click", () => requireAdminOr(() => frise && reignsUi.openDialog(frise.id)));
+  $("timeline-view-mode").textContent = atlasMode ? "Vue Tiges" : "Vue Atlas";
+  $("timeline-view-mode").addEventListener("click", () => {
+    atlasMode = !atlasMode;
+    try {
+      localStorage.setItem("tl-atlas", atlasMode ? "1" : "0");
+    } catch {
+      /* ignoré */
+    }
+    $("timeline-view-mode").textContent = atlasMode ? "Vue Tiges" : "Vue Atlas";
+    renderFitted();
+  });
   $("timeline-toggle-reigns").addEventListener("click", () => {
     showReigns = !showReigns;
     $("timeline-toggle-reigns").classList.toggle("active", showReigns);

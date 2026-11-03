@@ -42,3 +42,4 @@ body:not(.tl-can-edit) .tl-tgroup-edit { display: none; }
 /* Dates de début / fin d'une période : suivent la largeur de la case, jamais coupées ; la date de fin se masque si la case est étroite. */
 .tl-date-start, .tl-date-end { font-size: clamp(9px, 10.5cqw, calc(10.5px * var(--tl-s, 1))); max-width: 100%; overflow: hidden; text-overflow: ellipsis; }
 @container (max-width: 150px) { .tl-date-end { display: none; } }
+#timeline-main > #timeline-scroll { position: relative; } /* les décalages (offsetLeft) se mesurent depuis la zone de défilement */
