@@ -198,6 +198,8 @@ def main():
                 continue
             g = shapely.union_all([base] + [x for _, x in ex])
             g = shapely.set_precision(g, pas)
+            parts = [q for q in shapely.get_parts(g) if q.geom_type == "Polygon" and not q.is_empty]  # pas de lignes/points parasites
+            g = shapely.union_all(parts) if parts else shapely.Polygon()
             codee = prep.coder_geometrie(g) if not g.is_empty else None
             if codee is None:
                 nouvelles.append((c0, c1, l[0], ("trace", l[3]), l[4], l[5]))
