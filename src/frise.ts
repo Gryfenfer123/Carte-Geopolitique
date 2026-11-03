@@ -31,6 +31,7 @@ import { initFriseImmersive } from "./friseImmersive";
 import { initFriseMulti } from "./friseMulti";
 import { fetchReigns, type Reign } from "./friseReigns";
 import { initFriseReigns } from "./friseReignsUi";
+import "./friseTheme.css"; // en dernier : redéfinit l'apparence des feuilles de style ci-dessus
 import { buildSubPreview, loadSubPreview } from "./friseSubPreview";
 import {
   computeLinearWidths,

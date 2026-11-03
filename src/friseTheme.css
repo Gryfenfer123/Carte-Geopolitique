@@ -1,0 +1,100 @@
+/* Identité visuelle des frises : « planche d'atlas » (choix de Martin, 2026-11-03, piste B de la planche de maquettes).
+   Papier clair, encre bleu nuit, rouge vermillon pour l'accent ; titres en EB Garamond, repères en Archivo Narrow ;
+   angles droits, filets fins, double cadre. Ne s'applique qu'aux frises (variables redéfinies localement) :
+   le reste du site garde son style tant que l'identité du site entier n'est pas refaite. */
+@import url("https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Archivo+Narrow:wght@400;500;600;700&display=swap");
+
+#timeline-view, #tl-hover-card, #tl-multi-overlay, #tl-fiches-box {
+  --surface: #ecede6;
+  --surface-border: #b9bfc0;
+  --ink: #1b2530;
+  --text: #1b2530;
+  --text-dim: #5a6670;
+  --accent: #d6402b;
+  --tl-paper-deep: #d3dee2;
+  --tl-serif: "EB Garamond", Georgia, serif;
+  --tl-label: "Archivo Narrow", "Arial Narrow", sans-serif;
+}
+#timeline-view { font-family: var(--tl-serif); font-size: 17px; }
+
+/* Barre du haut : titre en livre, commandes en petites capitales étroites */
+#timeline-title { font-family: var(--tl-serif); font-weight: 500; font-size: 28px; letter-spacing: 0.01em; }
+#timeline-view .btn-small, #timeline-view select, #timeline-view input[type="search"] {
+  font-family: var(--tl-label); font-size: 12.5px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase;
+  border-radius: 0; background: transparent; color: var(--ink); border: 1px solid var(--ink); box-shadow: none;
+}
+#timeline-view input[type="search"] { text-transform: none; letter-spacing: 0.02em; font-weight: 500; }
+#timeline-view .btn-small:hover { background: var(--ink); color: var(--surface); }
+#timeline-view .btn-small.active, #timeline-toggle-reigns.active { background: var(--accent); border-color: var(--accent); color: #fff; }
+.tl-tgroup { border-left: 1px solid var(--ink); }
+.tl-tgroup-label { font-family: var(--tl-label); font-weight: 600; color: var(--accent); }
+.tl-crumb { font-family: var(--tl-label); font-size: 13px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent); }
+#timeline-subtitle { font-style: italic; font-size: 16px; }
+#timeline-chrome { border-bottom: 2px solid var(--ink); }
+
+/* Cadre de planche : filet épais dehors, filet fin dedans */
+#timeline-main { margin: 10px 14px 14px; border: 2px solid var(--ink); background: var(--surface); }
+#timeline-main::after {
+  content: ""; position: absolute; inset: 5px; border: 1px solid var(--ink); pointer-events: none; z-index: 1;
+}
+#timeline-main > #timeline-scroll { margin-top: 8px; }
+
+/* Périodes : aplats à plat, filets, titres en capitales étroites */
+.tl-band { border-top: 2px solid var(--ink); border-bottom: 2px solid var(--ink); }
+.tl-period { border-left: 1px solid var(--ink); }
+.tl-period.colored { background: color-mix(in srgb, var(--tl-color) 26%, var(--surface)); }
+.tl-cell-name { font-family: var(--tl-serif); font-weight: 600; letter-spacing: 0.01em; }
+.tl-atlas-band .tl-cell-name { font: 700 calc(14px * var(--tl-k, 1)) var(--tl-label); letter-spacing: 0.1em; }
+.tl-gap .tl-cell-name { font-family: var(--tl-serif); font-size: 15px; }
+.tl-date-start, .tl-date-end { font-family: var(--tl-label); font-weight: 500; }
+.tl-cell:hover, .tl-cell:focus-visible { box-shadow: inset 0 0 0 100px color-mix(in srgb, var(--accent) 12%, transparent); }
+
+/* Règle des dates */
+.tl-tick { background: var(--ink); }
+.tl-tick-label, .tl-atlas-ruler .tl-tick-label { font-family: var(--tl-label); font-weight: 600; letter-spacing: 0.04em; color: var(--ink); }
+.tl-atlas-ruler { border-bottom: 1px solid var(--ink); }
+
+/* Points et cartes : angles droits, filet fin, ombre supprimée */
+.tl-point { border-radius: 0; font-family: var(--tl-label); font-weight: 600; letter-spacing: 0.02em; background: var(--surface); }
+.tl-point:hover { background: var(--tl-paper-deep); }
+.tl-point.selected, .tl-acard.selected, .tl-adot.selected { box-shadow: 0 0 0 2px var(--accent); }
+.tl-stem { border-radius: 0; width: 1.5px; }
+.tl-atlas-lanes .tl-adot { border-color: var(--surface); }
+.tl-abar { border-radius: 0; height: 4px; opacity: 1; }
+.tl-aline { width: 1px; opacity: 0.9; }
+.tl-acard { border-radius: 0; box-shadow: none; border: 1px solid var(--ink); border-left-width: 5px; background: var(--surface); }
+.tl-acard:hover { background: var(--tl-paper-deep); }
+.tl-acard-date { font-family: var(--tl-label); font-weight: 700; letter-spacing: 0.06em; color: var(--accent); }
+.tl-acard-title { font-family: var(--tl-serif); font-weight: 600; line-height: 1.15; }
+.tl-card-img { border-radius: 0; filter: saturate(0.85) contrast(1.02); }
+
+/* Volet de détail et sommaire latéral */
+#timeline-main #tl-point-card, #tl-point-card, #tl-hover-card {
+  border-radius: 0; box-shadow: none; background: var(--surface); color: var(--ink); border: 1px solid var(--ink); font-family: var(--tl-serif);
+}
+#timeline-main #tl-point-card { border: 0; border-left: 1px solid var(--ink); font-size: 17px; }
+.tl-panel-head { border-bottom: 1px solid var(--ink); }
+.tl-panel-kicker { font-family: var(--tl-label); font-weight: 600; letter-spacing: 0.1em; color: var(--accent); }
+.tl-panel-body h3 { font: 500 30px/1.1 var(--tl-serif); }
+.tl-card-date { font-family: var(--tl-label); font-weight: 600; letter-spacing: 0.06em; color: var(--accent); }
+.tl-panel-text { line-height: 1.55; }
+#timeline-main.atlas > #tl-side { background: var(--tl-paper-deep); border-right: 1px solid var(--ink); }
+.tl-side-title { font: 500 30px/1.05 var(--tl-serif); }
+.tl-side-sub { font-family: var(--tl-serif); font-size: 16px; }
+.tl-side-rule { height: 3px; width: 56px; }
+.tl-side-help, .tl-side-count { font-family: var(--tl-label); letter-spacing: 0.02em; }
+.tl-side-item { border-radius: 0; border-bottom: 1px solid color-mix(in srgb, var(--ink) 25%, transparent); }
+.tl-side-item:hover { background: color-mix(in srgb, var(--ink) 10%, transparent); }
+.tl-side-name { font: 600 17px var(--tl-serif); }
+.tl-side-dates { font-family: var(--tl-label); font-size: 12.5px; }
+#tl-keyhint { font-family: var(--tl-label); letter-spacing: 0.03em; }
+
+/* Boîtes de dialogue des frises */
+#tl-multi-box, #tl-fiches-box { border-radius: 0; border: 2px solid var(--ink); background: var(--surface); color: var(--ink); font-family: var(--tl-serif); }
+#tl-multi-box h3 { font-family: var(--tl-serif); font-weight: 500; font-size: 24px; }
+
+/* Mini-carte : bandeau plat, fenêtre en filet rouge */
+#tl-minimap { border-radius: 0; box-shadow: none; border: 1px solid var(--ink); backdrop-filter: none; background: var(--surface); }
+.tl-mini-seg { opacity: 0.7; border-right-color: var(--ink); }
+.tl-mini-tick { border-radius: 0; }
+.tl-mini-win { border-radius: 0; border-width: 2px; background: color-mix(in srgb, var(--accent) 10%, transparent); }

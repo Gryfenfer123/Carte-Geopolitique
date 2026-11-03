@@ -154,3 +154,7 @@ des périodes ? (d) une régence (ex. Anne d'Autriche) compte-t-elle comme règn
 - Barre latérale (titre, dates, sommaire des périodes cliquable = zoom), bandeau des époques en haut, règle des dates en gras, cartes (image + date + titre) rangées sous la règle, reliées à leur date par un trait coloré ; durée = barre sur la règle.
 - Rangées : autant que la hauteur le permet, le reste en pastilles. Bouton « Vue Tiges » = vue d'origine (§7bis), conservée.
 - Quand beaucoup de fiches auront une image, c'est cette vue qui rendra le mieux ; sans image, les cartes sont des aplats colorés.
+
+## 14. Identité visuelle (2026-11-03, essai)
+- Piste « planche d'atlas » retenue par Martin : papier `#ecede6`, encre `#1b2530`, accent `#d6402b`, fond du sommaire `#d3dee2` ; EB Garamond (titres, textes) + Archivo Narrow (repères, boutons) ; angles droits, filets, double cadre autour de la zone de frise.
+- Tout est dans `src/friseTheme.css`, limité aux frises ; l'identité du reste du site viendra plus tard.

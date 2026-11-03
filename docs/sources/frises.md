@@ -91,3 +91,5 @@ Résultat de recoupement : « concordantes » = au moins 2 sources dont 1 U s'ac
   Licences : notices et pages en consultation, aucun texte repris ; liens uniquement.
 ## 2026-11-02 — outil « Règnes »
 Aucune donnée ajoutée par cet outil (code uniquement). Chaque règne saisi portera ses propres sources dans la colonne `sources` de `timeline_reigns`.
+## 2026-11-03 — identité visuelle (polices)
+Aucune donnée d'histoire ajoutée. Polices : EB Garamond (Georg Duffner, Octavio Pardo), Archivo Narrow (Omnibus-Type) — Google Fonts, licence SIL Open Font License 1.1, https://fonts.google.com/specimen/EB+Garamond et https://fonts.google.com/specimen/Archivo+Narrow ; fiabilité : source officielle de distribution.

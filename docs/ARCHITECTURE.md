@@ -75,6 +75,7 @@ périmé : des copies à la racine étaient ignorées par le build).
 | `friseReignModel.ts` / `friseReigns.ts` / `friseReignsUi.ts` (+ `.css`) | Frises : règnes (logique pure, accès base, ruban + dialogue) ; `fetchReignsOfMember` = point d'entrée pour les arbres | 120 |
 | `friseImmersive.ts` (+ `.css`) | Frises : mini-carte + plein écran (ne lit que le DOM) | 90 |
 | `friseAtlas.ts` (+ `.css`) | Frises : « Vue Atlas » (cartes sous une règle, sommaire latéral) ; DOM pur | 190 |
+| `friseTheme.css` | Frises : identité « planche d'atlas » (papier, encre, Garamond), variables locales à `#timeline-view` | — |
 | `friseDetail.ts`, `friseLayout.css` | Frises : extrait de texte du volet de détail ; mise en page de l'outil | 40 |
 | `friseSubPreview.ts` | Frises : aperçu d'une sous-frise au survol (lecture seule, cache 60 s) | 90 |
 | `historicalMap.ts` / `historiqueModel.ts` / `historiqueData.ts` / `historique.css` | Carte historique année par année (données Cliopatria) : interface Leaflet plein écran (curseur, lecture, zones, fiche d'un territoire, étiquettes) / logique pure (années, groupes, couleurs, décodage des tracés) / chargement à la demande des morceaux de tracés et des noms français (`noms_fr.json`, voir `construire_noms_fr.py`). Données : `public/data/historique/` (≈ 22 Mo, contours calés sur la côte et dates ajustées), préparées par `scripts/historique/` | 395 / 178 / 64 / 48 |

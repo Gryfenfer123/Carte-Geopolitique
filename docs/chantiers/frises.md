@@ -62,3 +62,12 @@ Spécification de référence : [`../specs/frises-chronologiques.md`](../specs/f
   le dernier, fiche rangée dans la bonne période (Moyen Âge / Antiquité), aucune erreur JavaScript.
 - **Non vérifié** : le comportement sur la vraie base Supabase (droits réels, `schema_v28`/`v29` exécutés ?) ;
   l'aspect sur mobile ; le banc d'essai (fausse base) n'est pas dans le dépôt.
+
+## 2026-11-03 (4) — Identité visuelle « planche d'atlas »
+- **Pourquoi** : Martin trouvait le rendu (fond noir + or, cartes arrondies, tout symétrique) « style IA ». Quatre maquettes très différentes lui ont été montrées (A papier découpé, B planche d'atlas, C strates, D affiche) ; il a choisi **B** « pour le moment » (essai, pas définitif).
+- **Ce qui change pour lui** : la frise passe sur papier clair, encre bleu nuit, rouge vermillon pour l'accent ; titres en EB Garamond, repères et boutons en Archivo Narrow majuscules ; angles droits, filets fins, double cadre ; ombres supprimées. Le reste du site garde son style.
+- **Code** : nouveau `src/friseTheme.css` (variables redéfinies uniquement sous `#timeline-view` et les boîtes de frise, importé en dernier dans `frise.ts`). Aucune logique modifiée.
+- **Polices** : EB Garamond et Archivo Narrow chargées depuis Google Fonts (`@import`), licence SIL OFL.
+- **Vérifié** : `check:repo` et `build` passent ; capture dans Chromium (fausse base) de la Vue Atlas, de la Vue Tiges et du volet de détail, aucune erreur JavaScript.
+- **Non vérifié** : mobile/tactile ; boîtes de dialogue d'édition (règnes, catégories) ; contraste des couleurs de catégories choisies pour l'ancien fond sombre ; vrai navigateur de Martin.
+- **Suite** : retours de Martin sur B (à garder / à changer), puis éventuels éléments propres à B (légende « Signes conventionnels », accolades pour les périodes, encart de situation).
