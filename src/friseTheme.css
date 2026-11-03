@@ -31,13 +31,14 @@
 .tl-crumb { font-family: var(--tl-label); font-size: 13px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent); }
 #timeline-subtitle { font-style: italic; font-size: 16px; }
 #timeline-chrome { border-bottom: 2px solid var(--ink); }
+#timeline-subbar { padding-bottom: 6px; }
 
 /* Cadre de planche : filet épais dehors, filet fin dedans */
-#timeline-main { margin: 10px 14px 14px; border: 2px solid var(--ink); background: var(--surface); }
+#timeline-main { margin: 0; border-top: 0; border-bottom: 2px solid var(--ink); background: var(--surface); }
 #timeline-main::after {
   content: ""; position: absolute; inset: 5px; border: 1px solid var(--ink); pointer-events: none; z-index: 1;
 }
-#timeline-main > #timeline-scroll { margin-top: 8px; }
+#timeline-main > #timeline-scroll { margin-top: 4px; }
 
 /* Périodes : aplats à plat, filets, titres en capitales étroites */
 .tl-band { border-top: 2px solid var(--ink); border-bottom: 2px solid var(--ink); }
@@ -87,14 +88,27 @@
 .tl-side-item:hover { background: color-mix(in srgb, var(--ink) 10%, transparent); }
 .tl-side-name { font: 600 17px var(--tl-serif); }
 .tl-side-dates { font-family: var(--tl-label); font-size: 12.5px; }
-#tl-keyhint { font-family: var(--tl-label); letter-spacing: 0.03em; }
 
 /* Boîtes de dialogue des frises */
 #tl-multi-box, #tl-fiches-box { border-radius: 0; border: 2px solid var(--ink); background: var(--surface); color: var(--ink); font-family: var(--tl-serif); }
 #tl-multi-box h3 { font-family: var(--tl-serif); font-weight: 500; font-size: 24px; }
 
-/* Mini-carte : bandeau plat, fenêtre en filet rouge */
-#tl-minimap { border-radius: 0; box-shadow: none; border: 1px solid var(--ink); backdrop-filter: none; background: var(--surface); }
-.tl-mini-seg { opacity: 0.7; border-right-color: var(--ink); }
-.tl-mini-tick { border-radius: 0; }
-.tl-mini-win { border-radius: 0; border-width: 2px; background: color-mix(in srgb, var(--accent) 10%, transparent); }
+
+/* Barre du haut : titre sur une ligne, légende des catégories à côté, outils en dessous */
+#timeline-topbar { align-items: center; }
+#timeline-breadcrumb { flex: 0 0 auto; flex-wrap: nowrap; }
+#timeline-title { white-space: nowrap; }
+#timeline-legend { flex: 1 1 280px; display: flex; flex-wrap: wrap; gap: 6px; padding: 0; margin: 0; border: 0; }
+#timeline-toolbar { flex: 1 0 100%; margin-left: 0; }
+#timeline-view #timeline-search-wrap { margin-left: auto; }
+#timeline-subbar:not([style*="flex"]) { display: none; }
+
+/* Noms de périodes et de catégories : lisibles, qui s'adaptent à la largeur de la case, jamais réduits à « GAULE… » */
+.tl-atlas-band.tl-band { height: calc(76px * var(--tl-k, 1)); }
+.tl-atlas-band .tl-cell-name {
+  font: 700 clamp(10.5px, 15cqw, calc(17px * var(--tl-k, 1))) / 1.05 var(--tl-label); letter-spacing: 0.04em;
+  -webkit-line-clamp: 4; overflow-wrap: anywhere; hyphens: auto;
+}
+.tl-cell-name { font-size: clamp(12.5px, 17cqw, calc(21px * var(--tl-s, 1))); font-weight: 700; -webkit-line-clamp: 3; hyphens: auto; overflow-wrap: anywhere; }
+.tl-legend-chip { font-family: var(--tl-label); font-size: 14px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; border-radius: 0; border: 1.5px solid var(--ink); color: var(--ink); background: transparent; padding: 4px 11px; }
+.tl-legend-chip.off { opacity: 0.4; text-decoration: line-through; }

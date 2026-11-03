@@ -24,20 +24,7 @@ body:not(.tl-can-edit) .tl-tgroup-edit { display: none; }
 .tl-panel-body .tl-card-img { max-height: 220px; width: 100%; object-fit: cover; margin: 0 0 12px; }
 .tl-panel-text { line-height: 1.6; margin: 0 0 16px; color: var(--text); }
 .tl-panel-text:empty { display: none; }
-#tl-keyhint {
-  position: absolute; left: 50%; bottom: 58px; transform: translateX(-50%); z-index: 11; pointer-events: none;
-  font-size: 11.5px; color: var(--text-dim); white-space: nowrap; opacity: 0.85; max-width: calc(100% - 32px); overflow: hidden; text-overflow: ellipsis;
-}
-#timeline-main.panel-open > #tl-minimap, #timeline-main.panel-open > #tl-keyhint { left: calc((100% - min(400px, 92vw)) / 2); }
-#timeline-main.panel-open > #tl-minimap { width: min(760px, calc(100% - min(400px, 92vw) - 48px)); }
-
-.tl-point.compact {
-  width: calc(15px * var(--tl-s, 1)); height: calc(15px * var(--tl-s, 1)); min-width: 0; padding: 0; border-radius: 50%;
-  border: 2px solid var(--surface); transform: translate(-50%, -50%); overflow: visible;
-}
-.tl-point.compact:hover { transform: translate(-50%, -50%) scale(1.35); }
 .tl-point.selected { box-shadow: 0 0 0 3px var(--accent); z-index: 6; }
-@media (max-width: 760px) { #tl-keyhint { display: none; } }
 
 /* Dates de début / fin d'une période : suivent la largeur de la case, jamais coupées ; la date de fin se masque si la case est étroite. */
 .tl-date-start, .tl-date-end { font-size: clamp(9px, 10.5cqw, calc(10.5px * var(--tl-s, 1))); max-width: 100%; overflow: hidden; text-overflow: ellipsis; }

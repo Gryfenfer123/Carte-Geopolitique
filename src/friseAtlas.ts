@@ -159,6 +159,7 @@ export function buildSidebar(side: HTMLElement, o: { title: string; subtitle: st
   side.innerHTML = "";
   const h = el("h2", "tl-side-title");
   h.textContent = o.title;
+  h.hidden = !o.title; // le titre est déjà dans la barre du haut : une seule fois
   const sub = el("div", "tl-side-sub");
   sub.textContent = o.subtitle;
   const rule = el("div", "tl-side-rule");

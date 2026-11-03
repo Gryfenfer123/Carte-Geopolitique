@@ -239,21 +239,18 @@ export function initTimelineSystem(deps: {
       <div id="timeline-topbar">
         <button id="timeline-back" class="btn-small">Retour au dossier</button>
         <nav id="timeline-breadcrumb" aria-label="Frises parentes"></nav>
+        <div id="timeline-legend"></div>
         <div id="timeline-search-wrap">
           <input id="timeline-search" type="search" placeholder="Chercher un point…" autocomplete="off" aria-label="Chercher un point">
           <div id="timeline-search-results"></div>
         </div>
         <div id="timeline-toolbar">
           <div class="tl-tgroup" role="group" aria-label="Navigation">
-            <button id="timeline-pan-left" class="btn-small" aria-label="Défiler vers la gauche" title="Défiler à gauche (←)">&larr;</button>
-            <button id="timeline-pan-right" class="btn-small" aria-label="Défiler vers la droite" title="Défiler à droite (→)">&rarr;</button>
             <button id="timeline-zoom-out" class="btn-small" aria-label="Dézoomer" title="Dézoomer (−)">&minus;</button>
             <button id="timeline-zoom-in" class="btn-small" aria-label="Zoomer" title="Zoomer (+)">&#43;</button>
             <button id="timeline-zoom-reset" class="btn-small" title="Vue d'ensemble (touche 0)">Vue d'ensemble</button>
           </div>
           <div class="tl-tgroup" role="group" aria-label="Affichage">
-            <button id="timeline-size-down" class="btn-small" title="Réduire les textes">A&minus;</button>
-            <button id="timeline-size-up" class="btn-small" title="Agrandir les textes">A&#43;</button>
             <button id="timeline-view-mode" class="btn-small" title="Changer l'aspect de la frise">Vue Atlas</button>
             <button id="timeline-toggle-reigns" class="btn-small" title="Afficher ou masquer le ruban des règnes">R&egrave;gnes</button>
             <button id="timeline-fullscreen" class="btn-small" title="Plein &eacute;cran du navigateur">Plein &eacute;cran</button>
@@ -272,7 +269,6 @@ export function initTimelineSystem(deps: {
         <button id="timeline-prev" class="btn-small" style="display:none;" aria-label="Frise mère" title="Revenir à la frise mère">&larr; <span id="timeline-prev-label"></span></button>
         <div id="timeline-subtitle"></div>
       </div>
-      <div id="timeline-legend"></div>
       </div>
       <div id="timeline-main">
         <div id="timeline-scroll">
@@ -281,7 +277,6 @@ export function initTimelineSystem(deps: {
         </div>
         <aside id="tl-side" aria-label="Sommaire"></aside>
         <aside id="tl-point-card" aria-label="Détail" style="display:none;"></aside>
-        <div id="tl-keyhint">Molette : zoom &middot; Glisser : d&eacute;placer &middot; Clic sur une p&eacute;riode : zoom &middot; Double-clic : ouvrir &middot; &larr; &rarr; : point pr&eacute;c&eacute;dent / suivant &middot; 0 : vue d'ensemble</div>
       </div>
       <div id="tl-hover-card" style="display:none;"></div>
     </div>
@@ -1027,7 +1022,7 @@ export function initTimelineSystem(deps: {
         }
       }
       buildSidebar($("tl-side"), {
-        title: frise.title || "Frise chronologique",
+        title: "",
         subtitle: segments.length ? formatFriseDate(eff[0].start) + " → " + (eff[eff.length - 1].end ? formatFriseDate(eff[eff.length - 1].end as FriseDate) : "aujourd'hui") : "",
         count: placedItems.length,
         entries: segments.flatMap((seg, si) =>
@@ -1393,19 +1388,6 @@ export function initTimelineSystem(deps: {
     }
     centerView();
   }
-  function stepScale(dir: 1 | -1) {
-    userScale = Math.min(SCALE_MAX, Math.max(SCALE_MIN, (userScale ?? TL_SCALE) * (dir > 0 ? 1.15 : 1 / 1.15)));
-    try {
-      localStorage.setItem("tl-scale", String(userScale));
-    } catch {
-      /* ignoré */
-    }
-    applyScale(userScale);
-    zoom = fitZoom();
-    render();
-    centerView();
-  }
-
   async function openForEntry(entryId: string) {
     $("timeline-view").classList.add("open");
     const fresh = !frise || frise.id !== entryId;
@@ -1585,12 +1567,8 @@ export function initTimelineSystem(deps: {
   $("timeline-zoom-in").addEventListener("click", () => setZoom(zoom * 1.4));
   $("timeline-zoom-out").addEventListener("click", () => setZoom(zoom / 1.4));
   $("timeline-zoom-reset").addEventListener("click", () => renderFitted());
-  $("timeline-size-up").addEventListener("click", () => stepScale(1));
-  $("timeline-size-down").addEventListener("click", () => stepScale(-1));
   // Défilement gauche-droite : boutons, flèches du clavier (le glisser et le geste horizontal marchent aussi).
   const panBy = (dir: 1 | -1) => scrollEl.scrollBy({ left: dir * scrollEl.clientWidth * 0.35, behavior: "smooth" });
-  $("timeline-pan-left").addEventListener("click", () => panBy(-1));
-  $("timeline-pan-right").addEventListener("click", () => panBy(1));
   document.addEventListener("keydown", (ev) => {
     if (!$("timeline-view").classList.contains("open")) return;
     if ((ev.target as HTMLElement).closest("input, select, textarea")) return;

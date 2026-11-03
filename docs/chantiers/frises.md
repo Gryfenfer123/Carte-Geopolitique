@@ -71,3 +71,9 @@ Spécification de référence : [`../specs/frises-chronologiques.md`](../specs/f
 - **Vérifié** : `check:repo` et `build` passent ; capture dans Chromium (fausse base) de la Vue Atlas, de la Vue Tiges et du volet de détail, aucune erreur JavaScript.
 - **Non vérifié** : mobile/tactile ; boîtes de dialogue d'édition (règnes, catégories) ; contraste des couleurs de catégories choisies pour l'ancien fond sombre ; vrai navigateur de Martin.
 - **Suite** : retours de Martin sur B (à garder / à changer), puis éventuels éléments propres à B (légende « Signes conventionnels », accolades pour les périodes, encart de situation).
+
+## 2026-11-03 (5) — Frise plus intégrée, éléments inutiles retirés
+- **Demande de Martin** : frise plus importante à l'écran (mieux intégrée, pas seulement plus grosse) ; retirer A−/A+, les flèches gauche/droite, la mini-carte « où en est-on », la ligne d'aide en bas ; titre de la frise une seule fois ; noms de catégories/périodes bien visibles.
+- **Fait** : boutons A−/A+ et flèches retirés (clavier ← → + − 0 inchangé) ; mini-carte et aide du bas supprimées (`friseImmersive.ts` ne garde que le plein écran, `friseImmersive.css` supprimé) ; titre seulement en haut (le sommaire latéral n'affiche plus que les dates) ; cadre collé aux bords de l'écran (plus de marge) ; légende des catégories remontée sur la ligne du titre (une ligne gagnée) ; noms de périodes agrandis, qui s'adaptent à la largeur de leur case et passent à la ligne au lieu d'être coupés (« GAULE… ») ; pastilles de catégories plus grandes.
+- **Vérifié** : `check:repo` et `build` ; captures Vue Atlas / Vue Tiges / volet, aucune erreur JavaScript.
+- **Non vérifié** : écrans étroits et mobile ; nom de frise très long (retour à la ligne de la barre) ; frise sans événement.
