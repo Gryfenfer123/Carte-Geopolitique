@@ -48,6 +48,12 @@ def lire(chemin):
 
 def vers_polygones(arr, tol):
     """Polygone(s) en longitude -180..180 (les contours qui passent 180° E sont coupés en deux)."""
+    # Les contours GSHHG sont en longitude 0..360 : un contour qui passe le méridien de Greenwich saute de 360° à 0°.
+    # Sans « déroulage », l'Eurasie devenait un polygone tordu qui laissait un trou de 40° à 49° N sur toute la carte
+    # (bug du 2026-11-02). On déroule donc la longitude (continuité), puis on ramène le contour dans -180..180.
+    arr = arr.copy()
+    arr[:, 0] = np.unwrap(arr[:, 0], period=360)
+    arr[:, 0] -= 360 * np.floor((arr[:, 0].min() + 180) / 360)
     p = shapely.make_valid(Polygon(arr)).simplify(tol, preserve_topology=True)
     if p.is_empty:
         return []
