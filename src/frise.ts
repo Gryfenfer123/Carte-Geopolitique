@@ -24,6 +24,8 @@
 import type { SupabaseClient, Session } from "@supabase/supabase-js";
 import { customConfirm } from "./dossier";
 import { fetchPlacements } from "./friseEvents";
+import "./friseLayout.css";
+import { fetchExcerpt } from "./friseDetail";
 import { initFriseImmersive } from "./friseImmersive";
 import { initFriseMulti } from "./friseMulti";
 import { fetchReigns, type Reign } from "./friseReigns";
@@ -233,21 +235,27 @@ export function initTimelineSystem(deps: {
           <div id="timeline-search-results"></div>
         </div>
         <div id="timeline-toolbar">
-          <button id="timeline-add-point" class="btn-small edit-control">&#43; Point</button>
-          <button id="timeline-add-period" class="btn-small edit-control">&#43; P&eacute;riode</button>
-          <button id="timeline-add-reign" class="btn-small edit-control">&#43; R&egrave;gne</button>
-          <button id="timeline-toggle-reigns" class="btn-small" title="Afficher ou masquer le ruban des règnes">R&egrave;gnes</button>
-          <button id="timeline-pan-left" class="btn-small" aria-label="Défiler vers la gauche" title="Défiler vers la gauche (flèche gauche)">&larr;</button>
-          <button id="timeline-pan-right" class="btn-small" aria-label="Défiler vers la droite" title="Défiler vers la droite (flèche droite)">&rarr;</button>
-          <button id="timeline-zoom-out" class="btn-small" aria-label="Dézoomer">&minus;</button>
-          <button id="timeline-zoom-in" class="btn-small" aria-label="Zoomer">&#43;</button>
-          <button id="timeline-zoom-reset" class="btn-small">Recentrer</button>
-          <button id="timeline-manage-cats" class="btn-small edit-control">Cat&eacute;gories</button>
-          <button id="timeline-size-down" class="btn-small" title="Réduire la taille de la frise">A&minus;</button>
-          <button id="timeline-size-up" class="btn-small" title="Agrandir la frise">A&#43;</button>
-          <button id="timeline-immersive" class="btn-small" title="Cacher les barres : la frise prend tout l'écran">Immersif</button>
-          <button id="timeline-fullscreen" class="btn-small" title="Plein écran du navigateur">Plein &eacute;cran</button>
-          <button id="timeline-export-img" class="btn-small" title="T&eacute;l&eacute;charger toute la frise en image">Image</button>
+          <div class="tl-tgroup" role="group" aria-label="Navigation">
+            <button id="timeline-pan-left" class="btn-small" aria-label="Défiler vers la gauche" title="Défiler à gauche (←)">&larr;</button>
+            <button id="timeline-pan-right" class="btn-small" aria-label="Défiler vers la droite" title="Défiler à droite (→)">&rarr;</button>
+            <button id="timeline-zoom-out" class="btn-small" aria-label="Dézoomer" title="Dézoomer (−)">&minus;</button>
+            <button id="timeline-zoom-in" class="btn-small" aria-label="Zoomer" title="Zoomer (+)">&#43;</button>
+            <button id="timeline-zoom-reset" class="btn-small" title="Vue d'ensemble (touche 0)">Vue d'ensemble</button>
+          </div>
+          <div class="tl-tgroup" role="group" aria-label="Affichage">
+            <button id="timeline-size-down" class="btn-small" title="Réduire les textes">A&minus;</button>
+            <button id="timeline-size-up" class="btn-small" title="Agrandir les textes">A&#43;</button>
+            <button id="timeline-toggle-reigns" class="btn-small" title="Afficher ou masquer le ruban des règnes">R&egrave;gnes</button>
+            <button id="timeline-fullscreen" class="btn-small" title="Plein &eacute;cran du navigateur">Plein &eacute;cran</button>
+            <button id="timeline-export-img" class="btn-small" title="T&eacute;l&eacute;charger toute la frise en image">Image</button>
+          </div>
+          <div class="tl-tgroup tl-tgroup-edit edit-control" role="group" aria-label="&Eacute;dition">
+            <span class="tl-tgroup-label">&Eacute;dition</span>
+            <button id="timeline-add-point" class="btn-small">&#43; Point</button>
+            <button id="timeline-add-period" class="btn-small">&#43; P&eacute;riode</button>
+            <button id="timeline-add-reign" class="btn-small">&#43; R&egrave;gne</button>
+            <button id="timeline-manage-cats" class="btn-small">Cat&eacute;gories</button>
+          </div>
         </div>
       </div>
       <div id="timeline-subbar">
@@ -256,11 +264,14 @@ export function initTimelineSystem(deps: {
       </div>
       <div id="timeline-legend"></div>
       </div>
-      <div id="timeline-scroll">
-        <div id="timeline-stage"></div>
-        <p id="timeline-empty-hint" class="muted" style="display:none;"></p>
+      <div id="timeline-main">
+        <div id="timeline-scroll">
+          <div id="timeline-stage"></div>
+          <p id="timeline-empty-hint" class="muted" style="display:none;"></p>
+        </div>
+        <aside id="tl-point-card" aria-label="Détail" style="display:none;"></aside>
+        <div id="tl-keyhint">Molette : zoom &middot; Glisser : d&eacute;placer &middot; Clic sur une p&eacute;riode : zoom &middot; Double-clic : ouvrir &middot; &larr; &rarr; : point pr&eacute;c&eacute;dent / suivant &middot; 0 : vue d'ensemble</div>
       </div>
-      <div id="tl-point-card" role="dialog" style="display:none;"></div>
       <div id="tl-hover-card" style="display:none;"></div>
     </div>
 
@@ -638,11 +649,11 @@ export function initTimelineSystem(deps: {
   // Les points dont la hauteur est réglée à la main gardent leur hauteur ; les autres
   // sont rangés automatiquement en branches empilées (niveaux).
   let RULER_H = 26 * TL_SCALE;
-  type Placed = { p: Point; x: number; x2: number; len: number; w: number };
+  type Placed = { p: Point; x: number; x2: number; len: number; w: number; compact?: boolean };
   function pointLabel(p: Point): string {
     return showDates ? formatFriseDate(p.date) + (p.end ? " → " + formatFriseDate(p.end) : "") + " · " + p.title : p.title;
   }
-  function placeSide(items: { p: Point; x: number; x2: number }[], side: "up" | "down"): Placed[] {
+  function placeSide(items: { p: Point; x: number; x2: number }[], side: "up" | "down", maxLevels: number): Placed[] {
     const base = STEM_BASE + (side === "down" ? RULER_H : 0);
     const sorted = [...items].sort((a, b) => a.x - b.x || dateSortKey(a.p.date) - dateSortKey(b.p.date));
     const lastRight: number[] = [];
@@ -658,6 +669,11 @@ export function initTimelineSystem(deps: {
       const right = it.p.end ? Math.max(it.x2, (it.x + it.x2) / 2 + w / 2) : it.x + 6 + w;
       let level = 0;
       while (level < lastRight.length && lastRight[level] > left - 2) level++;
+      if (level >= maxLevels) {
+        // Trop de points au même endroit : simple pastille près de la bande (le titre s'affiche au survol).
+        out.push({ p: it.p, x: it.x, x2: it.x2, len: base * 0.42, w, compact: true });
+        continue;
+      }
       lastRight[level] = Math.max(it.x2, right);
       out.push({ p: it.p, x: it.x, x2: it.x2, len: base + level * STEM_STEP, w });
     }
@@ -719,95 +735,8 @@ export function initTimelineSystem(deps: {
     });
   }
 
-  function render() {
-    if (!frise) return;
-    const admin = isAdmin();
-    document.body.classList.toggle("tl-can-edit", admin);
-    closePointCard();
-    hideHover();
-
-    const bc = $("timeline-breadcrumb");
-    bc.innerHTML = "";
-    for (const a of ancestors) {
-      const b = document.createElement("button");
-      b.type = "button";
-      b.className = "tl-crumb";
-      b.textContent = a.title;
-      b.addEventListener("click", () => void goTo(a.id));
-      bc.appendChild(b);
-      const sep = document.createElement("span");
-      sep.className = "tl-crumb-sep";
-      sep.textContent = "›";
-      bc.appendChild(sep);
-    }
-    const here = document.createElement("h2");
-    here.id = "timeline-title";
-    here.textContent = frise.title || "Frise chronologique";
-    bc.appendChild(here);
-
-    updatePrevButton();
-    $("timeline-subbar").style.display = ancestors.length || context ? "flex" : "none";
-    const sub = $("timeline-subtitle");
-    if (context && context.from) {
-      sub.innerHTML = "« <strong>" + esc(context.periodName) + "</strong> » · " + esc(context.from) + " → " + esc(context.to);
-      sub.style.display = "";
-    } else if (context) {
-      sub.innerHTML = "« <strong>" + esc(context.periodName) + "</strong> »";
-      sub.style.display = "";
-    } else {
-      sub.style.display = "none";
-    }
-
-    const stage = $("timeline-stage");
-    stage.innerHTML = "";
-    const hint = $("timeline-empty-hint");
-    const eff = effectivePeriods();
-    if (!eff.length) {
-      hint.style.display = "";
-      hint.textContent = admin
-        ? "Cette frise n'a pas encore de période. Utilise « + Période » : chaque période devient une sous-catégorie du dossier."
-        : "Cette frise n'a pas encore de période.";
-      return;
-    }
-    hint.style.display = "none";
-
-    const { segments, issues } = layoutPeriods(eff);
-    const scroll = $("timeline-scroll");
-    const baseWidth = Math.max(scroll.clientWidth - FIT_MARGIN, 320);
-    // Marges latérales larges : on peut faire glisser la frise vers la gauche comme vers la droite.
-    const padX = exporting ? 100 : Math.round(scroll.clientWidth * 0.4);
-    stage.style.paddingLeft = stage.style.paddingRight = padX + "px";
-    const widths = adaptiveWidths(segments, baseWidth * zoom);
-    const total = widths.reduce((s, w) => s + w, 0);
-
-    // Points : position x, niveaux (branches empilées) de chaque côté ; la légende filtre par catégorie.
-    renderLegend();
-    const placedItems: { p: Point; x: number; x2: number }[] = [];
-    let outside = 0;
-    for (const p of points) {
-      if (hiddenCats.has(p.categoryId ?? NO_CATEGORY)) continue;
-      const x = xForDecimal(dateToDecimal(p.date), segments, widths);
-      if (x === null) {
-        outside++;
-        continue;
-      }
-      const x2 = p.end ? (xForDecimal(dateToDecimal(p.end), segments, widths) ?? x) : x;
-      placedItems.push({ p, x, x2: Math.max(x, x2) });
-    }
-    const up = placeSide(placedItems.filter((i) => i.p.side === "up"), "up");
-    const down = placeSide(placedItems.filter((i) => i.p.side === "down"), "down");
-    const zoneH = (pl: Placed[]) => Math.max(80 * TL_SCALE, (pl.length ? Math.max(...pl.map((i) => i.len)) : 0) + 40 * TL_SCALE);
-
-    const wrap = document.createElement("div");
-    wrap.className = "tl-band-wrap";
-    wrap.style.width = total + "px";
-
-    const upH = zoneH(up);
-    const upZone = document.createElement("div");
-    upZone.className = "tl-zone tl-zone-up";
-    upZone.style.height = upH + "px";
-    wrap.appendChild(upZone);
-
+  // Bande des périodes (cases cliquables, survol, outils) — partagée par la vue classique et la vue pro.
+  function buildBand(segments: Segment[], widths: number[], admin: boolean): HTMLElement {
     const band = document.createElement("div");
     band.className = "tl-band";
     segments.forEach((seg, i) => {
@@ -897,9 +826,14 @@ export function initTimelineSystem(deps: {
         cell.addEventListener("mouseleave", hideHover);
       }
       const go = () => {
-        if (!isVirtual) void onCellActivate(seg);
+        if (isVirtual) return;
+        openPeriodCard(seg);
+        zoomToSegment(i);
       };
       cell.addEventListener("click", go);
+      cell.addEventListener("dblclick", () => {
+        if (!isVirtual) void onCellActivate(seg);
+      });
       cell.addEventListener("keydown", (ev) => {
         if (ev.key === "Enter" || ev.key === " ") {
           ev.preventDefault();
@@ -908,14 +842,11 @@ export function initTimelineSystem(deps: {
       });
       band.appendChild(cell);
     });
-    wrap.appendChild(band);
+    return band;
+  }
 
-    const downZone = document.createElement("div");
-    downZone.className = "tl-zone tl-zone-down";
-    downZone.style.height = zoneH(down) + "px";
-    wrap.appendChild(downZone);
-
-    // Règle graduée : échelle constante À L'INTÉRIEUR de chaque période (pixels par année).
+  // Règle graduée : échelle constante À L'INTÉRIEUR de chaque période (pixels par année).
+  function buildRuler(segments: Segment[], widths: number[]): HTMLElement {
     const ruler = document.createElement("div");
     ruler.className = "tl-ruler";
     let segX = 0;
@@ -939,6 +870,109 @@ export function initTimelineSystem(deps: {
       }
       segX += w;
     });
+    return ruler;
+  }
+
+  function render() {
+    if (!frise) return;
+    const admin = isAdmin();
+    document.body.classList.toggle("tl-can-edit", admin);
+    hideHover();
+
+    const bc = $("timeline-breadcrumb");
+    bc.innerHTML = "";
+    for (const a of ancestors) {
+      const b = document.createElement("button");
+      b.type = "button";
+      b.className = "tl-crumb";
+      b.textContent = a.title;
+      b.addEventListener("click", () => void goTo(a.id));
+      bc.appendChild(b);
+      const sep = document.createElement("span");
+      sep.className = "tl-crumb-sep";
+      sep.textContent = "›";
+      bc.appendChild(sep);
+    }
+    const here = document.createElement("h2");
+    here.id = "timeline-title";
+    here.textContent = frise.title || "Frise chronologique";
+    bc.appendChild(here);
+
+    updatePrevButton();
+    $("timeline-subbar").style.display = ancestors.length || context ? "flex" : "none";
+    const sub = $("timeline-subtitle");
+    if (context && context.from) {
+      sub.innerHTML = "« <strong>" + esc(context.periodName) + "</strong> » · " + esc(context.from) + " → " + esc(context.to);
+      sub.style.display = "";
+    } else if (context) {
+      sub.innerHTML = "« <strong>" + esc(context.periodName) + "</strong> »";
+      sub.style.display = "";
+    } else {
+      sub.style.display = "none";
+    }
+
+    const stage = $("timeline-stage");
+    stage.innerHTML = "";
+    const hint = $("timeline-empty-hint");
+    const eff = effectivePeriods();
+    if (!eff.length) {
+      hint.style.display = "";
+      hint.textContent = admin
+        ? "Cette frise n'a pas encore de période. Utilise « + Période » : chaque période devient une sous-catégorie du dossier."
+        : "Cette frise n'a pas encore de période.";
+      return;
+    }
+    hint.style.display = "none";
+
+    const { segments, issues } = layoutPeriods(eff);
+    const scroll = $("timeline-scroll");
+    const baseWidth = Math.max(scroll.clientWidth - FIT_MARGIN, 320);
+    // Marges latérales larges : on peut faire glisser la frise vers la gauche comme vers la droite.
+    const padX = exporting ? 100 : Math.round(scroll.clientWidth * 0.4);
+    stage.style.paddingLeft = stage.style.paddingRight = padX + "px";
+    const widths = adaptiveWidths(segments, baseWidth * zoom);
+    const total = widths.reduce((s, w) => s + w, 0);
+
+    // Points : position x, niveaux (branches empilées) de chaque côté ; la légende filtre par catégorie.
+    renderLegend();
+    const placedItems: { p: Point; x: number; x2: number }[] = [];
+    let outside = 0;
+    for (const p of points) {
+      if (hiddenCats.has(p.categoryId ?? NO_CATEGORY)) continue;
+      const x = xForDecimal(dateToDecimal(p.date), segments, widths);
+      if (x === null) {
+        outside++;
+        continue;
+      }
+      const x2 = p.end ? (xForDecimal(dateToDecimal(p.end), segments, widths) ?? x) : x;
+      placedItems.push({ p, x, x2: Math.max(x, x2) });
+    }
+    // Niveaux d'étiquettes : autant que la hauteur de l'écran le permet (le reste = pastilles).
+    const halfH = (scroll.clientHeight - 84 * TL_SCALE - RULER_H - 2 * 36) / 2;
+    const maxLevels = Math.max(2, Math.floor((halfH - STEM_BASE - 30 * TL_SCALE) / STEM_STEP) + 1);
+    const up = placeSide(placedItems.filter((i) => i.p.side === "up"), "up", maxLevels);
+    const down = placeSide(placedItems.filter((i) => i.p.side === "down"), "down", maxLevels);
+    const zoneH = (pl: Placed[]) => Math.max(80 * TL_SCALE, (pl.length ? Math.max(...pl.map((i) => i.len)) : 0) + 40 * TL_SCALE);
+
+    const wrap = document.createElement("div");
+    wrap.className = "tl-band-wrap";
+    wrap.style.width = total + "px";
+
+    const upH = zoneH(up);
+    const upZone = document.createElement("div");
+    upZone.className = "tl-zone tl-zone-up";
+    upZone.style.height = upH + "px";
+    wrap.appendChild(upZone);
+
+    const band = buildBand(segments, widths, admin);
+    wrap.appendChild(band);
+
+    const downZone = document.createElement("div");
+    downZone.className = "tl-zone tl-zone-down";
+    downZone.style.height = zoneH(down) + "px";
+    wrap.appendChild(downZone);
+
+    const ruler = buildRuler(segments, widths);
     downZone.appendChild(ruler);
 
     // Tiges et branches : les plus longues d'abord pour que, à date égale,
@@ -997,8 +1031,13 @@ export function initTimelineSystem(deps: {
         const lab = document.createElement("button");
         lab.type = "button";
         lab.className = "tl-point" + (admin ? " movable" : "") + (pt.end ? " is-duration" : "") + (pt.subFriseId ? " has-sub" : "");
-        lab.textContent = pointLabel(pt) + (pt.subFriseId ? "  ›" : "");
-        lab.style.left = (pt.end ? (it.x + it.x2) / 2 : it.x + 3) + "px";
+        lab.textContent = it.compact ? "" : pointLabel(pt) + (pt.subFriseId ? "  ›" : "");
+        if (it.compact) {
+          lab.classList.add("compact");
+          lab.setAttribute("aria-label", pt.title);
+          lab.style.background = pt.color;
+        }
+        lab.style.left = it.compact ? it.x + "px" : (pt.end ? (it.x + it.x2) / 2 : it.x + 3) + "px";
         lab.style.maxWidth = "300px";
         lab.style.borderColor = pt.color;
         layer.appendChild(lab);
@@ -1104,6 +1143,7 @@ export function initTimelineSystem(deps: {
     }
     stage.appendChild(wrap);
     immersive.refresh();
+    markSelected();
   }
 
   // --- Navigation ------------------------------------------------------------------
@@ -1251,12 +1291,13 @@ export function initTimelineSystem(deps: {
   function renderFitted() {
     const sc = $("timeline-scroll");
     const stage = $("timeline-stage");
-    const candidates = userScale ? [userScale] : [3.2, 2.8, 2.5, 2.2, 1.9, 1.6, 1.3];
+    const auto = Math.min(2.2, Math.max(1.5, sc.clientHeight / 480));
+    const candidates = [userScale ?? auto];
     for (let i = 0; i < candidates.length; i++) {
       applyScale(candidates[i]);
       zoom = fitZoom();
       render();
-      if (i === candidates.length - 1 || stage.offsetHeight <= sc.clientHeight) break;
+      if (stage.offsetHeight <= sc.clientHeight) break;
     }
     centerView();
   }
@@ -1314,6 +1355,38 @@ export function initTimelineSystem(deps: {
     return best;
   }
 
+  // Zoom animé sur une période : elle occupe ~80 % de la largeur visible, centrée.
+  let zoomAnim = 0;
+  function zoomToSegment(index: number) {
+    const sc = $("timeline-scroll");
+    const cell = document.querySelectorAll<HTMLElement>(".tl-band .tl-cell")[index];
+    const wrapEl = document.querySelector<HTMLElement>(".tl-band-wrap");
+    if (!cell || !wrapEl || !cell.offsetWidth) return;
+    const frac = (cell.offsetLeft + cell.offsetWidth / 2) / wrapEl.offsetWidth;
+    const factor = Math.min(12, Math.max(0.25, (sc.clientWidth * 0.8) / cell.offsetWidth));
+    const z0 = zoom;
+    const z1 = Math.min(10, Math.max(MIN_ZOOM, z0 * factor));
+    const startLeft = sc.scrollLeft;
+    const id = ++zoomAnim;
+    const frames = 10;
+    let k = 0;
+    const step = () => {
+      if (id !== zoomAnim) return;
+      k++;
+      const t = k / frames;
+      const e = 1 - Math.pow(1 - t, 3);
+      zoom = z0 * Math.pow(z1 / z0, e);
+      render();
+      const nw = document.querySelector<HTMLElement>(".tl-band-wrap");
+      if (nw) {
+        const target = nw.offsetLeft + frac * nw.offsetWidth - sc.clientWidth / 2;
+        sc.scrollLeft = k === frames ? target : startLeft + (target - startLeft) * e;
+      }
+      if (k < frames) requestAnimationFrame(step);
+    };
+    requestAnimationFrame(step);
+  }
+
   // Place la frise au milieu de l'écran (horizontalement et verticalement).
   function centerView() {
     const sc = $("timeline-scroll");
@@ -1347,7 +1420,6 @@ export function initTimelineSystem(deps: {
     if (!drag.moved && Math.hypot(dx, dy) > 5) {
       drag.moved = true;
       scrollEl.classList.add("dragging");
-      closePointCard();
     }
     if (drag.moved) {
       scrollEl.scrollLeft = drag.sl - dx;
@@ -1392,6 +1464,9 @@ export function initTimelineSystem(deps: {
     const nw = document.querySelector<HTMLElement>(".tl-band-wrap");
     if (nw) scrollEl.scrollLeft = frac * nw.offsetWidth + nw.offsetLeft - cx;
   }
+  let wheelDelta = 0;
+  let wheelX = 0;
+  let wheelRaf = 0;
   scrollEl.addEventListener(
     "wheel",
     (ev) => {
@@ -1402,7 +1477,16 @@ export function initTimelineSystem(deps: {
         scrollEl.scrollLeft += ev.deltaX || ev.deltaY;
         return;
       }
-      setZoom(zoom * Math.exp(-ev.deltaY * 0.0015), ev.clientX);
+      wheelDelta += ev.deltaY;
+      wheelX = ev.clientX;
+      if (!wheelRaf) {
+        wheelRaf = requestAnimationFrame(() => {
+          wheelRaf = 0;
+          const d = wheelDelta;
+          wheelDelta = 0;
+          setZoom(zoom * Math.exp(-d * 0.0015), wheelX);
+        });
+      }
     },
     { passive: false }
   );
@@ -1418,8 +1502,13 @@ export function initTimelineSystem(deps: {
   document.addEventListener("keydown", (ev) => {
     if (!$("timeline-view").classList.contains("open")) return;
     if ((ev.target as HTMLElement).closest("input, select, textarea")) return;
-    if (ev.key === "ArrowLeft") panBy(-1);
-    else if (ev.key === "ArrowRight") panBy(1);
+    const panelOpen = $("tl-point-card").style.display !== "none" && !!cardPoint;
+    if (ev.key === "ArrowLeft") (panelOpen ? stepPoint(-1) : panBy(-1));
+    else if (ev.key === "ArrowRight") (panelOpen ? stepPoint(1) : panBy(1));
+    else if (ev.key === "Escape") closePointCard();
+    else if (ev.key === "+" || ev.key === "=") setZoom(zoom * 1.4);
+    else if (ev.key === "-") setZoom(zoom / 1.4);
+    else if (ev.key === "0") renderFitted();
     else return;
     ev.preventDefault();
   });
@@ -2138,24 +2227,139 @@ export function initTimelineSystem(deps: {
   }
 
   // --- Carte au clic sur un point -------------------------------------------------------------
-  function openPointCard(p: Point, anchor: HTMLElement) {
+  // Volet de détail (à droite) : point précédent / suivant dans l'ordre des dates.
+  let cardPoint: Point | null = null;
+  function visiblePoints(): Point[] {
+    return points
+      .filter((q) => !hiddenCats.has(q.categoryId ?? NO_CATEGORY))
+      .sort((a, b) => dateSortKey(a.date) - dateSortKey(b.date));
+  }
+  function stepPoint(dir: 1 | -1) {
+    const list = visiblePoints();
+    if (!list.length) return;
+    const i = cardPoint ? list.findIndex((q) => q.eventId === cardPoint!.eventId) : -1;
+    const next = list[i < 0 ? (dir > 0 ? 0 : list.length - 1) : Math.min(list.length - 1, Math.max(0, i + dir))];
+    focusPoint(next);
+    const el = pointEls.get(next.eventId);
+    if (el) openPointCard(next, el);
+  }
+  function panelHeader(card: HTMLElement, kicker: string, canStep: boolean) {
+    const head = document.createElement("div");
+    head.className = "tl-panel-head";
+    const k = document.createElement("span");
+    k.className = "tl-panel-kicker";
+    k.textContent = kicker;
+    head.appendChild(k);
+    if (canStep) {
+      for (const [label, dir, tip] of [["‹", -1, "Point précédent (←)"], ["›", 1, "Point suivant (→)"]] as const) {
+        const b = document.createElement("button");
+        b.type = "button";
+        b.className = "btn-small";
+        b.textContent = label;
+        b.title = tip;
+        b.addEventListener("click", () => stepPoint(dir));
+        head.appendChild(b);
+      }
+    }
+    const x = document.createElement("button");
+    x.type = "button";
+    x.className = "btn-small";
+    x.textContent = "✕";
+    x.title = "Fermer (Échap)";
+    x.addEventListener("click", closePointCard);
+    head.appendChild(x);
+    card.appendChild(head);
+  }
+  function markSelected() {
+    pointEls.forEach((e) => e.classList.remove("selected"));
+    if (cardPoint) pointEls.get(cardPoint.eventId)?.classList.add("selected");
+  }
+  function showPanel() {
+    $("tl-point-card").style.display = "flex";
+    $("timeline-main").classList.add("panel-open");
+  }
+  // Période : même volet.
+  function openPeriodCard(seg: Segment) {
     hideHover();
     const card = $("tl-point-card");
     card.innerHTML = "";
+    cardPoint = null;
+    panelHeader(card, "Période", false);
+    let row: SectionRow | undefined;
+    let name: string;
+    let dates = "";
+    if (seg.kind === "gap") {
+      row = transitionRows.find((r) => r.transition_after_id === seg.afterPeriodId);
+      name = row ? row.title : "Transition";
+    } else {
+      row = periodRows.find((r) => r.id === seg.period.id);
+      name = seg.period.name;
+      dates = formatFriseDate(seg.period.start) + " → " + (seg.period.end && !seg.openEnded ? formatFriseDate(seg.period.end) : "aujourd'hui");
+    }
+    const body = document.createElement("div");
+    body.className = "tl-panel-body";
+    const h = document.createElement("h3");
+    h.textContent = name;
+    body.appendChild(h);
+    if (dates) {
+      const d = document.createElement("div");
+      d.className = "tl-card-date";
+      d.textContent = dates;
+      body.appendChild(d);
+    }
+    const sub = row ? subFrises.get(row.id) : undefined;
+    const actions = document.createElement("div");
+    actions.className = "tl-card-actions";
+    const open = document.createElement("button");
+    open.type = "button";
+    open.className = "btn-small tl-primary";
+    open.textContent = sub ? "Ouvrir la sous-frise ›" : isAdmin() ? "Créer la sous-frise" : "Pas de sous-frise";
+    open.disabled = !sub && !isAdmin();
+    open.addEventListener("click", () => void onCellActivate(seg));
+    actions.appendChild(open);
+    if (row) {
+      const r = row;
+      const cat = document.createElement("button");
+      cat.type = "button";
+      cat.className = "btn-small";
+      cat.textContent = "Sous-catégorie du dossier";
+      cat.addEventListener("click", () => {
+        closeView();
+        deps.revealSection(r.id, r.category_id);
+      });
+      actions.appendChild(cat);
+    }
+    body.appendChild(actions);
+    card.appendChild(body);
+    showPanel();
+  }
+  function openPointCard(p: Point, anchor: HTMLElement) {
+    void anchor;
+    hideHover();
+    const card = $("tl-point-card");
+    card.innerHTML = "";
+    cardPoint = p;
+    panelHeader(card, categoryName(p.categoryId), true);
+    const content = document.createElement("div");
+    content.className = "tl-panel-body";
+    card.appendChild(content);
     const photo = p.fiches.find((f) => f.photo)?.photo;
     if (photo) {
       const img = document.createElement("img");
       img.className = "tl-card-img";
       img.src = photo;
       img.alt = "";
-      card.appendChild(img);
+      content.appendChild(img);
     }
-    const h = document.createElement("strong");
+    const h = document.createElement("h3");
     h.textContent = p.title;
     const d = document.createElement("div");
     d.className = "tl-card-date";
     d.textContent = dateRangeText(p) + " · " + categoryName(p.categoryId);
-    card.append(h, d);
+    content.append(h, d);
+    const excerpt = document.createElement("p");
+    excerpt.className = "tl-panel-text";
+    content.appendChild(excerpt);
     const row = document.createElement("div");
     row.className = "tl-card-actions";
     // Fiche à ouvrir en priorité : celle du dossier de cette frise.
@@ -2232,24 +2436,22 @@ export function initTimelineSystem(deps: {
       });
       row.appendChild(edit);
     }
-    card.appendChild(row);
-    card.style.display = "block";
-    const r = anchor.getBoundingClientRect();
-    const cw = card.offsetWidth;
-    card.style.left = Math.max(8, Math.min(window.innerWidth - cw - 8, r.left)) + "px";
-    const below = r.bottom + 8;
-    card.style.top = (below + card.offsetHeight > window.innerHeight ? Math.max(8, r.top - card.offsetHeight - 8) : below) + "px";
+    content.appendChild(row);
+    showPanel();
+    markSelected();
+    const src = p.fiches.find((f) => frise && f.ownerType === frise.owner_type && f.ownerId === frise.owner_id) ?? p.fiches[0];
+    if (src) {
+      void fetchExcerpt(supabase, src.id).then((t) => {
+        if (t && cardPoint === p) excerpt.textContent = t;
+      });
+    }
   }
   function closePointCard() {
     const card = document.getElementById("tl-point-card");
     if (card) card.style.display = "none";
+    document.getElementById("timeline-main")?.classList.remove("panel-open");
+    cardPoint = null;
   }
-  document.addEventListener("pointerdown", (ev) => {
-    const card = document.getElementById("tl-point-card");
-    const t = ev.target as HTMLElement;
-    if (card && card.style.display !== "none" && !card.contains(t) && !t.closest(".tl-point, .tl-bar")) closePointCard();
-  });
-
   // --- Fiches d'un événement (une par pays) -------------------------------------------------------
   let fichesPoint: Point | null = null;
   function showFichesError(msg: string) {
@@ -2704,9 +2906,8 @@ export function initTimelineSystem(deps: {
     if (pt) setTimeout(() => focusPoint(pt), 80);
   }
   const immersive = initFriseImmersive({
-    view: $("timeline-view"),
+    main: $("timeline-main"),
     scroll: scrollEl,
-    toggleBtn: $("timeline-immersive"),
     fullscreenBtn: $("timeline-fullscreen"),
   });
   const reignsUi = initFriseReigns({

@@ -142,8 +142,10 @@ des périodes ? (d) une régence (ex. Anne d'Autriche) compte-t-elle comme règn
 - **Pont vers les arbres** : « Ouvrir l'arbre » appelle `openGenealogyMember`. Sens inverse (afficher le règne dans l'arbre, « Voir sur la frise ») : à faire par le chantier « arbres » avec `fetchReignsOfMember`.
 - **Pas de données** : l'outil n'invente rien ; les règnes sont saisis par Martin avec leurs sources.
 
-## 12. Frise immersive (2026-11-03, demande de Martin : « on entre dans une frise »)
-- La frise occupe tout l'écran ; échelle automatique (la plus grande où tout tient en hauteur, 1,3 à 3,2) ou choisie avec A−/A+ (mémorisée).
-- Barres du haut cachées par défaut (réapparaissent en haut de l'écran) ; bouton « Barres fixes » pour les garder ; « Plein écran » = plein écran du navigateur.
-- Mini-carte en bas : toute la frise + zone visible ; clic ou glisser pour s'y rendre.
-- Idées non faites : zoom animé sur une période au clic, mode « diaporama » point par point, cartes de points avec image plein écran.
+## 12. Frise « outil » (2026-11-03, demande de Martin : ergonomie professionnelle)
+- Barre fixe en 3 groupes (Navigation, Affichage, Édition) ; recherche ; légende-filtre.
+- **Volet de détail** à droite (point ou période), ‹ › = précédent / suivant par date ; extrait du texte de la fiche (`friseDetail.ts`, texte brut).
+- Clic période = zoom animé + volet ; double-clic = sous-frise. Molette = zoom (un rendu par image). Raccourcis : ← →, + −, 0, Échap.
+- Anti-encombrement : au-delà du nombre de niveaux qui tient dans l'écran, les points deviennent des pastilles.
+- Mini-carte en bas (toute la frise, zone visible, clic/glisser) ; plein écran navigateur.
+- Idées non faites : axe collé en haut pendant le défilement vertical, regroupement des points en grappes avec compteur, lignes (« couloirs ») par catégorie, diaporama.

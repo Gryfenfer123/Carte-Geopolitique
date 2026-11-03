@@ -1,0 +1,44 @@
+/* Mise en page « outil » des frises : barre fixe en groupes, volet de détail à droite, aide, pastilles.
+   (src/frise.ts) */
+#timeline-chrome { background: var(--surface); border-bottom: 1px solid var(--surface-border); }
+#timeline-topbar { padding: 8px 14px; gap: 10px 14px; }
+#timeline-toolbar { display: flex; align-items: center; gap: 4px 6px; flex-wrap: wrap; margin-left: auto; }
+.tl-tgroup { display: flex; align-items: center; gap: 4px; padding-left: 10px; margin-left: 4px; border-left: 1px solid var(--surface-border); }
+.tl-tgroup:first-child { border-left: 0; padding-left: 0; margin-left: 0; }
+.tl-tgroup-label { font-size: 10.5px; letter-spacing: 0.07em; text-transform: uppercase; color: var(--text-dim); margin-right: 2px; }
+body:not(.tl-can-edit) .tl-tgroup-edit { display: none; }
+#timeline-toggle-reigns.active { border-color: var(--accent); color: var(--accent); }
+
+#timeline-main { position: relative; flex: 1; min-height: 0; display: flex; flex-direction: column; overflow: hidden; }
+#timeline-main > #timeline-scroll { flex: 1; min-height: 0; }
+#timeline-main.panel-open > #timeline-scroll { margin-right: min(400px, 92vw); }
+#timeline-main #tl-point-card {
+  position: absolute; z-index: 15; top: 0; right: 0; bottom: 0; width: min(400px, 92vw); max-width: none; min-width: 0;
+  padding: 0; border-radius: 0; border: 0; border-left: 1px solid var(--surface-border); box-shadow: -10px 0 30px rgba(0,0,0,0.3);
+  flex-direction: column; overflow: hidden; font-size: 14.5px;
+}
+.tl-panel-head { display: flex; align-items: center; gap: 6px; padding: 10px 12px; border-bottom: 1px solid var(--surface-border); }
+.tl-panel-kicker { flex: 1; font-size: 11.5px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-dim); }
+.tl-panel-body { flex: 1; overflow-y: auto; padding: 14px 18px 20px; }
+.tl-panel-body h3 { margin: 0 0 4px; font: 600 24px/1.2 "Fraunces", serif; }
+.tl-panel-body .tl-card-img { max-height: 220px; width: 100%; object-fit: cover; margin: 0 0 12px; }
+.tl-panel-text { line-height: 1.6; margin: 0 0 16px; color: var(--text); }
+.tl-panel-text:empty { display: none; }
+#tl-keyhint {
+  position: absolute; left: 50%; bottom: 58px; transform: translateX(-50%); z-index: 11; pointer-events: none;
+  font-size: 11.5px; color: var(--text-dim); white-space: nowrap; opacity: 0.85; max-width: calc(100% - 32px); overflow: hidden; text-overflow: ellipsis;
+}
+#timeline-main.panel-open > #tl-minimap, #timeline-main.panel-open > #tl-keyhint { left: calc((100% - min(400px, 92vw)) / 2); }
+#timeline-main.panel-open > #tl-minimap { width: min(760px, calc(100% - min(400px, 92vw) - 48px)); }
+
+.tl-point.compact {
+  width: calc(15px * var(--tl-s, 1)); height: calc(15px * var(--tl-s, 1)); min-width: 0; padding: 0; border-radius: 50%;
+  border: 2px solid var(--surface); transform: translate(-50%, -50%); overflow: visible;
+}
+.tl-point.compact:hover { transform: translate(-50%, -50%) scale(1.35); }
+.tl-point.selected { box-shadow: 0 0 0 3px var(--accent); z-index: 6; }
+@media (max-width: 760px) { #tl-keyhint { display: none; } }
+
+/* Dates de début / fin d'une période : suivent la largeur de la case, jamais coupées ; la date de fin se masque si la case est étroite. */
+.tl-date-start, .tl-date-end { font-size: clamp(9px, 10.5cqw, calc(10.5px * var(--tl-s, 1))); max-width: 100%; overflow: hidden; text-overflow: ellipsis; }
+@container (max-width: 150px) { .tl-date-end { display: none; } }

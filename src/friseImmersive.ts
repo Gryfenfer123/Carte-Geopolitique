@@ -1,29 +1,13 @@
 // ---------------------------------------------------------------------------
-// Frises — mode immersif : la frise occupe tout l'écran. Les barres du haut
-// (titre, boutons, légende) se cachent et réapparaissent quand la souris monte
-// en haut de l'écran ; un titre flottant reste visible ; une mini-carte en bas
-// montre toute la frise et la zone affichée (clic / glisser pour s'y rendre).
-// Aucun accès à la base : ce module ne lit que le DOM de la frise.
+// Frises — navigation : mini-carte en bas (toute la frise + zone affichée, clic /
+// glisser pour s'y rendre) et plein écran du navigateur. Ne lit que le DOM.
 // ---------------------------------------------------------------------------
 
 import "./friseImmersive.css";
 
-export function initFriseImmersive(opts: { view: HTMLElement; scroll: HTMLElement; toggleBtn: HTMLElement; fullscreenBtn: HTMLElement }) {
-  const { view, scroll } = opts;
-  const chrome = view.querySelector<HTMLElement>("#timeline-chrome")!;
-  let immersive = true;
-  try {
-    immersive = localStorage.getItem("tl-immersive") !== "0";
-  } catch {
-    /* stockage indisponible */
-  }
+export function initFriseImmersive(opts: { main: HTMLElement; scroll: HTMLElement; fullscreenBtn: HTMLElement }) {
+  const { main, scroll } = opts;
 
-  // Titre flottant
-  const floatTitle = document.createElement("div");
-  floatTitle.id = "tl-float-title";
-  view.appendChild(floatTitle);
-
-  // Mini-carte
   const mini = document.createElement("div");
   mini.id = "tl-minimap";
   const track = document.createElement("div");
@@ -31,54 +15,18 @@ export function initFriseImmersive(opts: { view: HTMLElement; scroll: HTMLElemen
   const win = document.createElement("div");
   win.className = "tl-mini-win";
   mini.append(track, win);
-  view.appendChild(mini);
+  main.appendChild(mini);
 
-  function apply() {
-    view.classList.toggle("tl-immersive", immersive);
-    opts.toggleBtn.classList.toggle("active", immersive);
-    opts.toggleBtn.textContent = immersive ? "Barres fixes" : "Immersif";
-    if (!immersive) chrome.classList.remove("tl-chrome-open");
-  }
-  opts.toggleBtn.addEventListener("click", () => {
-    immersive = !immersive;
-    try {
-      localStorage.setItem("tl-immersive", immersive ? "1" : "0");
-    } catch {
-      /* ignoré */
-    }
-    apply();
-  });
   opts.fullscreenBtn.addEventListener("click", () => {
     if (document.fullscreenElement) void document.exitFullscreen();
     else void document.documentElement.requestFullscreen?.().catch(() => undefined);
   });
 
-  // Les barres du haut se montrent quand la souris approche du bord supérieur (ou reste dessus).
-  view.addEventListener("mousemove", (ev) => {
-    if (!immersive) return;
-    const open = chrome.classList.contains("tl-chrome-open");
-    const limit = open ? chrome.offsetHeight + 12 : 14;
-    if (ev.clientY <= limit) chrome.classList.add("tl-chrome-open");
-    else if (open && !chrome.contains(document.activeElement as Node)) chrome.classList.remove("tl-chrome-open");
-  });
-  chrome.addEventListener("focusin", () => immersive && chrome.classList.add("tl-chrome-open"));
+  const wrapEl = () => scroll.querySelector<HTMLElement>(".tl-band-wrap");
 
-  function wrapEl(): HTMLElement | null {
-    return scroll.querySelector<HTMLElement>(".tl-band-wrap");
-  }
-
-  /** À appeler après chaque rendu de la frise : reconstruit la mini-carte et le titre flottant. */
+  /** À appeler après chaque rendu de la frise. */
   function refresh() {
     const wrap = wrapEl();
-    const title = view.querySelector<HTMLElement>("#timeline-title")?.textContent ?? "";
-    const parent = view.querySelector<HTMLElement>(".tl-crumb:last-of-type")?.textContent ?? "";
-    floatTitle.textContent = "";
-    if (parent) {
-      const p = document.createElement("span");
-      p.textContent = parent + " › ";
-      floatTitle.appendChild(p);
-    }
-    floatTitle.appendChild(document.createTextNode(title));
     track.innerHTML = "";
     if (!wrap || !wrap.offsetWidth) {
       mini.style.display = "none";
@@ -98,7 +46,7 @@ export function initFriseImmersive(opts: { view: HTMLElement; scroll: HTMLElemen
       const t = document.createElement("span");
       t.className = "tl-mini-tick";
       t.style.left = (parseFloat(dot.style.left) / total) * 100 + "%";
-      t.style.background = dot.style.background || dot.style.backgroundColor || "#fff";
+      t.style.background = dot.style.background || "#fff";
       track.appendChild(t);
     }
     updateWindow();
@@ -108,16 +56,13 @@ export function initFriseImmersive(opts: { view: HTMLElement; scroll: HTMLElemen
     const wrap = wrapEl();
     if (!wrap || !wrap.offsetWidth) return;
     const total = wrap.offsetWidth;
-    const x0 = (scroll.scrollLeft - wrap.offsetLeft) / total;
-    const x1 = (scroll.scrollLeft + scroll.clientWidth - wrap.offsetLeft) / total;
-    const a = Math.max(0, Math.min(1, x0));
-    const b = Math.max(0, Math.min(1, x1));
+    const a = Math.max(0, Math.min(1, (scroll.scrollLeft - wrap.offsetLeft) / total));
+    const b = Math.max(0, Math.min(1, (scroll.scrollLeft + scroll.clientWidth - wrap.offsetLeft) / total));
     win.style.left = a * 100 + "%";
     win.style.width = Math.max(b - a, 0.008) * 100 + "%";
   }
   scroll.addEventListener("scroll", updateWindow, { passive: true });
 
-  // Clic ou glisser sur la mini-carte : le centre de l'écran va à cet endroit.
   function jump(clientX: number) {
     const wrap = wrapEl();
     if (!wrap) return;
@@ -135,6 +80,5 @@ export function initFriseImmersive(opts: { view: HTMLElement; scroll: HTMLElemen
   mini.addEventListener("pointermove", (ev) => dragging && jump(ev.clientX));
   mini.addEventListener("pointerup", () => (dragging = false));
 
-  apply();
   return { refresh };
 }
