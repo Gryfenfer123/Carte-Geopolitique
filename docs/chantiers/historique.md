@@ -131,3 +131,11 @@ clavier, bornes (999999 → 2024, -99999 → -3400, champ vide ignoré), lecture
 - Données régénérées : 12 501 lignes, 10 100 tracés, 160 morceaux (75 Mo). Tests, vérification des données OK ; audit a5 : 2 265 paires > 0,005 deg² (avant : 2 317).
 - Régénération ≈ 4 h, reprise possible (`_reprise.jsonl`) ; piège : un processus tué par manque de mémoire fige le calcul → relancer (la reprise est conservée).
 - **Non vérifié** : rendu visuel en ligne (Grands Lacs, Canada, Svalbard, François-Joseph) ; plausibilité îlot par îlot.
+
+## 2026-11-03 — bug de la côte (bande vide) et lacs dans les pays
+- Retour de Martin : gros trou au milieu de la carte, frontières grossières, lacs traités « comme s'ils n'étaient pas dans les pays ».
+- Cause 1 : `gshhg_vers_terres.py` ne déroulait pas les longitudes 0-360 de l'Eurasie → polygone tordu, terre absente de 40° à 49° N sur toute la carte (déployé le 2026-11-02). Corrigé (`np.unwrap`).
+- Cause 2 : choix de Martin « lacs dans les pays » → lacs ≥ 500 km² complétés par le nouveau module `lacs_completes.py` (6 106 morceaux, 2 100 lignes) ; la Caspienne reste de l'eau.
+- Données régénérées : 12 541 lignes, 10 261 tracés, 167 morceaux. Tests et vérification OK ; audit a5 : 2 220 paires > 0,005 deg² (2 265 avant).
+- Leçon : dessiner la carte (`/tmp`-script de rendu) avant de publier ; les tests de structure ne voient pas un trou.
+- **Non vérifié** : rendu en ligne ; frontières dans les lacs = approximation ; reste des bords en escalier d'origine Cliopatria ailleurs que sur les lacs.

@@ -72,3 +72,10 @@ Limites : trou Tahiti 1940-1944 (Vichy exclu, ralliement non sourcé) ; l'Arctiq
 |---|---|---|---|---|---|
 | 2026-11-02 | Côtes et rives des lacs ≥ 100 km² : les contours sont recalés sur ce trait de côte (remplace Natural Earth 10 m + lacs ≥ 1000 km²) | GSHHG 2.3.7 (Global Self-consistent, Hierarchical, High-resolution Geography Database), résolution pleine « f » ; Wessel & Smith 1996, J. Geophys. Res. 101(B4) | https://www.soest.hawaii.edu/pwessel/gshhg/ (dépôt utilisé : https://github.com/GenericMappingTools/gshhg-gmt) | LGPL v3 | Haute (base de référence mondiale, ≈ 1 : 100 000 ou mieux) |
 | 2026-11-02 | Îles complétées : une île ≤ 20 000 km² déjà couverte à ≥ 50 % par une entité l'est entièrement, moins les autres entités actives à la même époque (aucune donnée de date ajoutée) | Mêmes îles GSHHG + contours Cliopatria v0.2.1 ; règle de complétion de Claude (`scripts/historique/iles_completees.py`) | voir ci-dessus | LGPL v3 / CC BY 4.0 | Moyenne : la règle est une convention de dessin, pas une donnée historique ; limite : île partiellement couverte supposée entièrement à l'État |
+
+## Correction du 2026-11-03 : bug de la côte, lacs dans les pays
+
+| Date | Ce qui a été fait / touché | Source | Lien précis | Licence | Fiabilité |
+|---|---|---|---|---|---|
+| 2026-11-03 | Côte GSHHG corrigée (les contours en longitude 0-360 sont « déroulés » au méridien de Greenwich) ; les lacs ne sont plus retirés de la terre, sauf mers fermées ≥ 300 000 km² (Caspienne) | GSHHG 2.3.7 (voir ligne du 2026-11-02) | https://www.soest.hawaii.edu/pwessel/gshhg/ | LGPL v3 | Haute |
+| 2026-11-03 | Lacs ≥ 500 km² attribués aux lignes voisines (partage de Voronoï des points de rive, ≤ 0,3° ; liseré ≤ 0,1°), sans chevauchement (`scripts/historique/lacs_completes.py`) | Lacs GSHHG 2.3.7 niveau 2 (îles de lac niveau 3 retirées) ; règle de Claude | idem | LGPL v3 | Moyenne : convention de dessin (un lac frontalier est coupé à mi-distance des rives, pas selon la frontière juridique réelle) |

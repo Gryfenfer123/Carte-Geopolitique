@@ -39,3 +39,10 @@ python3 -I gshhg_vers_terres.py <dossier gshhg res_f> /tmp/terres_gshhg.geojson 
 python3 -I preparer_cliopatria.py <cliopatria.geojson> <sortie> --terres /tmp/terres_gshhg.geojson --debut -700
 ```
 La complétion des îles (`iles_completees.py`) est appliquée automatiquement ; rapport dans `iles_completees_rapport.json`. Mémoire : ≈ 6 Go, un processus tué fige le calcul : le relancer reprend où il en était.
+
+## Lacs dans les pays (2026-11-03)
+```bash
+python3 -I gshhg_vers_terres.py <res_f> /tmp/terres_gshhg2.geojson 300000 0.001   # seule la Caspienne est retirée
+python3 -I preparer_cliopatria.py <cliopatria.geojson> /tmp/s5 --terres /tmp/terres_gshhg2.geojson --debut -700
+python3 -I lacs_completes.py /tmp/s5 /tmp/s7 <res_f> /tmp/terres_gshhg2.geojson 500      # ≈ 1 h
+```
