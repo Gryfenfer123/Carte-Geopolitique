@@ -84,3 +84,13 @@ Spécification de référence : [`../specs/frises-chronologiques.md`](../specs/f
 - **Mesuré** : 3 crans de molette = largeur de frise ×5 (avant : ×1,5).
 - **Vérifié** : `check:repo`, `build` ; captures Vue Atlas / Tiges / volet, aucune erreur JavaScript.
 - **Non vérifié** : élan du glissé au toucher ; mobile ; beaucoup d'événements très proches (au-delà des rangées, retour aux pastilles) ; sensation de la molette sur pavé tactile ; côté choisi par alternance (pas encore réglable par événement en Vue Atlas).
+
+## 2026-11-06 — Une seule vue, plus aucun point masqué, ruban des règnes retiré
+- **Demande de Martin** : supprimer la Vue Tiges (une seule vue) ; les dates se chevauchaient et certaines disparaissaient ; il ne comprend pas la « vue règnes ».
+- **Fait** :
+  - Vue Tiges supprimée (branche de rendu, placement par niveaux, mesure de texte, glissé des points, bouton de bascule) : `frise.ts` perd ~250 lignes. Une seule vue : l'ex-« Vue Atlas ».
+  - Convention des frises/cartes en ligne pour les événements serrés : quand il n'y a plus de place pour une carte, les événements voisins (< 24 px) sont **regroupés en une pastille numérotée** sur la ligne des dates ; clic = liste de tous les événements du groupe (ouvrir l'un d'eux) + bouton « Zoomer ici ». Plus aucun point ne se superpose ni ne disparaît ; en zoomant, les cartes se séparent.
+  - Bouton « Règnes » et ruban des règnes retirés de l'écran. Gardé : bouton admin « + Règne » (saisie des dates de règne pour le futur lien avec l'arbre généalogique), module `friseReigns*.ts` et table `timeline_reigns`. Le chargement des règnes n'est plus fait à l'ouverture d'une frise.
+  - Avertissement « N point(s) hors de la frise » conservé.
+- **Vérifié** : `tsc`, `check:repo`, `build` ; frise de test à 27 événements dont 15 sur 1789-1795 : 1 pastille « 12 » + 15 cartes, liste complète au clic, « Zoomer ici » sépare le groupe ; aucune erreur JavaScript.
+- **Non vérifié** : mobile/tactile ; plusieurs groupes sur la même frise ; événements à la date identique au jour près (visibles uniquement via la liste du groupe) ; réglage de hauteur/côté d'un point (supprimé avec les Tiges : la colonne `side` des placements n'est plus utilisée) ; CSS des Tiges encore présent dans `style.css` (inactif, à nettoyer avec le chantier d'identité du site).

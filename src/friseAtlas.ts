@@ -29,6 +29,7 @@ export type AtlasOptions = {
   onHover: (id: string, el: HTMLElement) => void;
   onLeave: () => void;
   register: (id: string, el: HTMLElement) => void;
+  onZoomAt: (el: HTMLElement) => void; // zoom centré sur un groupe d'événements trop serrés
   reservedBottom: number; // place laissée en bas (mini-carte)
 };
 
@@ -48,6 +49,46 @@ export function assignCardLanes(xs: number[], width: number, maxLanes: number, g
     lastRight[lane] = x + width;
     return lane;
   });
+}
+
+function openClusterList(box: HTMLElement, badge: HTMLElement, items: AtlasItem[], o: AtlasOptions) {
+  box.querySelectorAll(".tl-acluster-pop").forEach((n) => n.remove());
+  const pop = el("div", "tl-acluster-pop");
+  pop.style.left = badge.style.left;
+  const head = el("div", "tl-acluster-head");
+  head.textContent = items.length + " événements très proches";
+  pop.appendChild(head);
+  for (const it of items) {
+    const b = el("button", "tl-acluster-item");
+    b.type = "button";
+    const d = el("span", "tl-acluster-date");
+    d.textContent = it.dateText;
+    const t = el("span");
+    t.textContent = it.title;
+    b.append(d, t);
+    b.addEventListener("click", (ev) => {
+      ev.stopPropagation();
+      pop.remove();
+      o.onOpen(it.id, badge);
+    });
+    pop.appendChild(b);
+  }
+  const zoom = el("button", "tl-acluster-zoom");
+  zoom.type = "button";
+  zoom.textContent = "Zoomer ici";
+  zoom.addEventListener("click", (ev) => {
+    ev.stopPropagation();
+    pop.remove();
+    o.onZoomAt(badge);
+  });
+  pop.appendChild(zoom);
+  pop.addEventListener("click", (ev) => ev.stopPropagation());
+  box.appendChild(pop);
+  const close = () => {
+    pop.remove();
+    document.removeEventListener("click", close);
+  };
+  setTimeout(() => document.addEventListener("click", close), 0);
 }
 
 export function buildAtlas(o: AtlasOptions): HTMLElement {
@@ -94,7 +135,33 @@ export function buildAtlas(o: AtlasOptions): HTMLElement {
     ...downItems.map((it, i) => ({ it, up: false, lane: laneDown[i] })),
   ];
 
+  // Événements sans place pour une carte : on les REGROUPE en pastilles « N » (comme les cartes en ligne),
+  // au lieu de les laisser se superposer. Un clic liste tous les événements du groupe.
+  const overflow = place.filter((q) => q.lane < 0).sort((a, b) => a.it.x - b.it.x);
+  const groups: AtlasItem[][] = [];
+  for (const q of overflow) {
+    const g = groups[groups.length - 1];
+    if (g && q.it.x - g[g.length - 1].x < 24 * k) g.push(q.it);
+    else groups.push([q.it]);
+  }
+  const grouped = new Set<string>();
+  groups.filter((g) => g.length > 1).forEach((g) => {
+    g.forEach((i) => grouped.add(i.id));
+    const cx = (g[0].x + g[g.length - 1].x) / 2;
+    const badge = el("button", "tl-acluster");
+    badge.type = "button";
+    badge.style.left = cx + "px";
+    badge.textContent = String(g.length);
+    badge.title = g.map((i) => i.dateText + " · " + i.title).join("\n");
+    badge.addEventListener("click", (ev) => {
+      ev.stopPropagation();
+      openClusterList(lanes, badge, g, o);
+    });
+    lanes.appendChild(badge);
+  });
+
   place.forEach(({ it, up, lane }) => {
+    if (grouped.has(it.id)) return; // représenté par sa pastille de groupe
     // Durée : trait sur la ligne des dates.
     if (it.x2 - it.x > 3) {
       const bar = el("span", "tl-abar");

@@ -29,7 +29,6 @@ import { buildAtlas, buildSidebar } from "./friseAtlas";
 import { fetchExcerpt } from "./friseDetail";
 import { initFriseImmersive } from "./friseImmersive";
 import { initFriseMulti } from "./friseMulti";
-import { fetchReigns, type Reign } from "./friseReigns";
 import { initFriseReigns } from "./friseReignsUi";
 import "./friseTheme.css"; // en dernier : redéfinit l'apparence des feuilles de style ci-dessus
 import { buildSubPreview, loadSubPreview } from "./friseSubPreview";
@@ -131,28 +130,10 @@ function dateColumns(prefix: "period_start" | "period_end", d: FriseDate | null)
   };
 }
 
-let measureCtx: CanvasRenderingContext2D | null = null;
 // Échelle d'affichage de la frise (polices, bandeau, branches) : même valeur que --tl-s dans le CSS.
 let TL_SCALE = 2.2;
 const SCALE_MIN = 1.2;
 const SCALE_MAX = 3.6;
-
-function resetTextMeasure() {
-  measureCtx = null;
-}
-
-function textWidth(text: string): number {
-  try {
-    if (!measureCtx) {
-      measureCtx = document.createElement("canvas").getContext("2d");
-      if (measureCtx) measureCtx.font = '600 ' + 9 * TL_SCALE + 'px "Archivo Narrow", "IBM Plex Sans", sans-serif';
-    }
-    if (measureCtx) return measureCtx.measureText(text).width;
-  } catch {
-    /* repli ci-dessous */
-  }
-  return text.length * 7.2;
-}
 
 export function initTimelineSystem(deps: {
   supabase: SupabaseClient;
@@ -206,17 +187,7 @@ export function initTimelineSystem(deps: {
   let suppressPointClick = false;
   let pointEls = new Map<string, HTMLElement>(); // étiquettes affichées (pour la recherche)
   let categories: Category[] = [];
-  let reigns: Reign[] = [];
-  let showReigns = true;
-  // Vue Atlas (cartes illustrées sous une règle) ou vue Tiges (croquis de Martin) : mémorisé.
-  let atlasMode = true;
-  try {
-    atlasMode = localStorage.getItem("tl-atlas") !== "0";
-  } catch {
-    /* stockage indisponible */
-  }
   let hiddenCats = new Set<string>();
-  const showDates = false; // l'affichage des dates se fait au survol (voir showHover)
   try {
     hiddenCats = new Set<string>(JSON.parse(localStorage.getItem("tl-hidden-cats") || "[]"));
   } catch {
@@ -251,8 +222,6 @@ export function initTimelineSystem(deps: {
             <button id="timeline-zoom-reset" class="btn-small" title="Vue d'ensemble (touche 0)">Vue d'ensemble</button>
           </div>
           <div class="tl-tgroup" role="group" aria-label="Affichage">
-            <button id="timeline-view-mode" class="btn-small" title="Changer l'aspect de la frise">Vue Atlas</button>
-            <button id="timeline-toggle-reigns" class="btn-small" title="Afficher ou masquer le ruban des règnes">R&egrave;gnes</button>
             <button id="timeline-fullscreen" class="btn-small" title="Plein &eacute;cran du navigateur">Plein &eacute;cran</button>
             <button id="timeline-export-img" class="btn-small" title="T&eacute;l&eacute;charger toute la frise en image">Image</button>
           </div>
@@ -563,7 +532,6 @@ export function initTimelineSystem(deps: {
     }
     categories = await fetchCategories();
     const pts = await loadPoints(entry.id);
-    const loadedReigns = await fetchReigns(supabase, entry.id);
 
     // Ancêtres : la frise parente, soit parce que celle-ci est posée dans une période / transition
     // d'une frise, soit parce qu'elle est la sous-frise d'un événement avec durée.
@@ -620,7 +588,6 @@ export function initTimelineSystem(deps: {
     periods = pRows.map(rowToPeriod);
     subFrises = subs;
     points = pts;
-    reigns = loadedReigns;
     ancestors = chain;
     context = ctx;
     void evBounds;
@@ -648,43 +615,6 @@ export function initTimelineSystem(deps: {
   // --- Rendu -----------------------------------------------------------------------
   const FIT_MARGIN = 90; // marge laissée de chaque côté quand la frise est ajustée à l'écran
   let exporting = false;
-  let STEM_BASE = 26 * TL_SCALE;
-  let STEM_STEP = 30 * TL_SCALE;
-  let LABEL_PAD = 14 * TL_SCALE;
-
-  // Les points dont la hauteur est réglée à la main gardent leur hauteur ; les autres
-  // sont rangés automatiquement en branches empilées (niveaux).
-  let RULER_H = 26 * TL_SCALE;
-  type Placed = { p: Point; x: number; x2: number; len: number; w: number; compact?: boolean };
-  function pointLabel(p: Point): string {
-    return showDates ? formatFriseDate(p.date) + (p.end ? " → " + formatFriseDate(p.end) : "") + " · " + p.title : p.title;
-  }
-  function placeSide(items: { p: Point; x: number; x2: number }[], side: "up" | "down", maxLevels: number): Placed[] {
-    const base = STEM_BASE + (side === "down" ? RULER_H : 0);
-    const sorted = [...items].sort((a, b) => a.x - b.x || dateSortKey(a.p.date) - dateSortKey(b.p.date));
-    const lastRight: number[] = [];
-    const out: Placed[] = [];
-    for (const it of sorted) {
-      const w = Math.min(textWidth(pointLabel(it.p)) + LABEL_PAD, 240 * TL_SCALE);
-      if (it.p.stem != null) {
-        out.push({ p: it.p, x: it.x, x2: it.x2, len: it.p.stem, w });
-        continue;
-      }
-      // Une durée : l'étiquette est centrée sur la barre ; sinon elle part du point.
-      const left = it.p.end ? Math.min(it.x, (it.x + it.x2) / 2 - w / 2) : it.x;
-      const right = it.p.end ? Math.max(it.x2, (it.x + it.x2) / 2 + w / 2) : it.x + 6 + w;
-      let level = 0;
-      while (level < lastRight.length && lastRight[level] > left - 2) level++;
-      if (level >= maxLevels) {
-        // Trop de points au même endroit : simple pastille près de la bande (le titre s'affiche au survol).
-        out.push({ p: it.p, x: it.x, x2: it.x2, len: base * 0.42, w, compact: true });
-        continue;
-      }
-      lastRight[level] = Math.max(it.x2, right);
-      out.push({ p: it.p, x: it.x, x2: it.x2, len: base + level * STEM_STEP, w });
-    }
-    return out;
-  }
 
   // Période "virtuelle" : une sous-frise sans période propre affiche la période (ou la durée)
   // dont elle dépend comme bande unique, pour pouvoir y poser des points tout de suite.
@@ -918,7 +848,7 @@ export function initTimelineSystem(deps: {
     }
 
     // La barre latérale change la largeur disponible : à poser AVANT toute mesure.
-    $("timeline-main").classList.toggle("atlas", atlasMode);
+    $("timeline-main").classList.add("atlas");
     const stage = $("timeline-stage");
     stage.innerHTML = "";
     const hint = $("timeline-empty-hint");
@@ -955,19 +885,13 @@ export function initTimelineSystem(deps: {
       const x2 = p.end ? (xForDecimal(dateToDecimal(p.end), segments, widths) ?? x) : x;
       placedItems.push({ p, x, x2: Math.max(x, x2) });
     }
-    // Niveaux d'étiquettes : autant que la hauteur de l'écran le permet (le reste = pastilles).
-    const halfH = (scroll.clientHeight - 84 * TL_SCALE - RULER_H - 2 * 36) / 2;
-    const maxLevels = Math.max(2, Math.floor((halfH - STEM_BASE - 30 * TL_SCALE) / STEM_STEP) + 1);
-    const up = placeSide(placedItems.filter((i) => i.p.side === "up"), "up", maxLevels);
-    const down = placeSide(placedItems.filter((i) => i.p.side === "down"), "down", maxLevels);
-    const zoneH = (pl: Placed[]) => Math.max(80 * TL_SCALE, (pl.length ? Math.max(...pl.map((i) => i.len)) : 0) + 40 * TL_SCALE);
 
     const wrap = document.createElement("div");
     wrap.className = "tl-band-wrap";
     wrap.style.width = total + "px";
 
-    stage.style.paddingTop = stage.style.paddingBottom = atlasMode ? "0" : "";
-    if (atlasMode) {
+    stage.style.paddingTop = stage.style.paddingBottom = "0";
+    {
       const k = TL_SCALE / 1.9;
       const rulerH = Math.round(34 * k);
       wrap.style.height = scroll.clientHeight + "px";
@@ -993,6 +917,7 @@ export function initTimelineSystem(deps: {
           rulerH,
           items,
           reservedBottom: 8,
+          onZoomAt: (e) => setZoom(zoom * 3, e.getBoundingClientRect().left + e.offsetWidth / 2),
           register: (id, e) => pointEls.set(id, e),
           onOpen: (id, e) => {
             const q = byId.get(id);
@@ -1008,19 +933,6 @@ export function initTimelineSystem(deps: {
           onLeave: hideHover,
         })
       );
-      if (showReigns && reigns.length && segments.length) {
-        const ribbon = reignsUi.renderRibbon({
-          reigns,
-          rangeStart: segments[0].startDec,
-          rangeEnd: segments[segments.length - 1].endDec,
-          xOf: (dec) => xForDecimal(dec, segments, widths),
-          scale: TL_SCALE,
-        });
-        if (ribbon) {
-          ribbon.classList.add("tl-reigns-atlas");
-          wrap.appendChild(ribbon);
-        }
-      }
       buildSidebar($("tl-side"), {
         title: "",
         subtitle: segments.length ? formatFriseDate(eff[0].start) + " → " + (eff[eff.length - 1].end ? formatFriseDate(eff[eff.length - 1].end as FriseDate) : "aujourd'hui") : "",
@@ -1031,204 +943,18 @@ export function initTimelineSystem(deps: {
             : []
         ),
       });
-      if (issues.length) {
+      const notes: string[] = issues.map((i) => i.message);
+      if (outside) notes.push(outside + " point(s) ont une date en dehors de la frise et ne sont pas affichés.");
+      if (notes.length) {
         const warn = document.createElement("p");
         warn.className = "tl-issues";
-        warn.textContent = issues.map((i) => i.message).join(" ");
+        warn.textContent = notes.join(" ");
         wrap.appendChild(warn);
       }
       stage.appendChild(wrap);
       immersive.refresh();
       markSelected();
-      return;
     }
-
-    const upH = zoneH(up);
-    const upZone = document.createElement("div");
-    upZone.className = "tl-zone tl-zone-up";
-    upZone.style.height = upH + "px";
-    wrap.appendChild(upZone);
-
-    const band = buildBand(segments, widths, admin);
-    wrap.appendChild(band);
-
-    const downZone = document.createElement("div");
-    downZone.className = "tl-zone tl-zone-down";
-    downZone.style.height = zoneH(down) + "px";
-    wrap.appendChild(downZone);
-
-    const ruler = buildRuler(segments, widths);
-    downZone.appendChild(ruler);
-
-    // Tiges et branches : les plus longues d'abord pour que, à date égale,
-    // chaque segment de tige prenne la couleur de sa propre branche.
-    // Couche unique pour les tiges, points et pastilles (coordonnées absolues) : un point
-    // glissé de l'autre côté de la bande ne change jamais de parent DOM (sinon le glissement
-    // serait interrompu).
-    const layer = document.createElement("div");
-    layer.className = "tl-layer";
-    wrap.appendChild(layer);
-    // Ruban des règnes : ajouté APRÈS la zone du bas, donc sans effet sur les positions des points.
-    if (showReigns && reigns.length && segments.length) {
-      const ribbon = reignsUi.renderRibbon({
-        reigns,
-        rangeStart: segments[0].startDec,
-        rangeEnd: segments[segments.length - 1].endDec,
-        xOf: (dec) => xForDecimal(dec, segments, widths),
-        scale: TL_SCALE,
-      });
-      if (ribbon) wrap.appendChild(ribbon);
-    }
-    const bandEl = band;
-    const BAND_H = 84 * TL_SCALE;
-    pointEls = new Map();
-    type Parts = { stem: HTMLElement; stem2: HTMLElement | null; bar: HTMLElement | null };
-    const parts = new Map<string, Parts>();
-    const drawSide = (list: Placed[], side: "up" | "down") => {
-      [...list].sort((a, b) => b.len - a.len).forEach((it) => {
-        const stem = document.createElement("span");
-        stem.className = "tl-stem";
-        stem.style.left = it.x - 1 + "px";
-        stem.style.background = it.p.color;
-        layer.appendChild(stem);
-        let stem2: HTMLElement | null = null;
-        let bar: HTMLElement | null = null;
-        if (it.p.end) {
-          if (it.x2 - it.x > 12) {
-            stem2 = document.createElement("span");
-            stem2.className = "tl-stem tl-stem-end";
-            stem2.style.left = it.x2 - 1 + "px";
-            stem2.style.background = it.p.color;
-            layer.appendChild(stem2);
-          }
-          bar = document.createElement("span");
-          bar.className = "tl-bar";
-          bar.style.left = it.x + "px";
-          bar.style.width = Math.max(it.x2 - it.x, 6) + "px";
-          bar.style.background = it.p.color;
-          layer.appendChild(bar);
-        }
-        parts.set(it.p.eventId, { stem, stem2, bar });
-      });
-      list.forEach((it) => {
-        const pt = it.p;
-        const pr = parts.get(pt.eventId) as Parts;
-        const lab = document.createElement("button");
-        lab.type = "button";
-        lab.className = "tl-point" + (admin ? " movable" : "") + (pt.end ? " is-duration" : "") + (pt.subFriseId ? " has-sub" : "");
-        lab.textContent = it.compact ? "" : pointLabel(pt) + (pt.subFriseId ? "  ›" : "");
-        if (it.compact) {
-          lab.classList.add("compact");
-          lab.setAttribute("aria-label", pt.title);
-          lab.style.background = pt.color;
-        }
-        lab.style.left = it.compact ? it.x + "px" : (pt.end ? (it.x + it.x2) / 2 : it.x + 3) + "px";
-        lab.style.maxWidth = "300px";
-        lab.style.borderColor = pt.color;
-        layer.appendChild(lab);
-        pointEls.set(pt.eventId, lab);
-        const dot = document.createElement("span");
-        dot.className = "tl-dot";
-        dot.style.left = it.x + "px";
-        dot.style.background = pt.color;
-        layer.appendChild(dot);
-        const place = (s: "up" | "down", len: number) => {
-          const stemTop = s === "up" ? upH - len : upH + BAND_H;
-          const centerY = s === "up" ? stemTop : stemTop + len;
-          pr.stem.style.top = stemTop + "px";
-          pr.stem.style.height = len + "px";
-          if (pr.stem2) {
-            pr.stem2.style.top = stemTop + "px";
-            pr.stem2.style.height = len + "px";
-          }
-          if (pr.bar) pr.bar.style.top = centerY - 4 + "px";
-          // Une durée : la barre est à la hauteur de la tige, l'étiquette juste au-dessus.
-          lab.style.top = (pt.end ? centerY - 18 : centerY) + "px";
-          dot.style.top = centerY + "px";
-        };
-        place(side, it.len);
-
-        // Survol : petit volet (dates, catégorie, image de la fiche).
-        const hoverTargets = [lab, ...(pr.bar ? [pr.bar] : [])];
-        for (const el of hoverTargets) {
-          el.addEventListener("mouseenter", () => showHover(pt, lab));
-          el.addEventListener("mouseleave", hideHover);
-          el.addEventListener("click", (ev) => {
-            ev.stopPropagation();
-            if (suppressPointClick) return;
-            hideHover();
-            openPointCard(pt, lab);
-          });
-        }
-        if (pr.bar) pr.bar.style.cursor = "pointer";
-
-        // Hauteur à la main : on glisse le point verticalement (jamais horizontalement,
-        // la date ne change pas). Passer de l'autre côté de la bande le fait changer de côté.
-        let press: { moved: boolean; side: "up" | "down"; len: number } | null = null;
-        lab.addEventListener("pointerdown", (ev) => {
-          if (!admin || ev.button !== 0) return;
-          ev.stopPropagation();
-          lab.setPointerCapture(ev.pointerId);
-          press = { moved: false, side: side, len: it.len };
-          closePointCard();
-          hideHover();
-        });
-        lab.addEventListener("pointermove", (ev) => {
-          if (!press) return;
-          const r = bandEl.getBoundingClientRect();
-          let s: "up" | "down";
-          let len: number;
-          if (ev.clientY <= r.top - 8) {
-            s = "up";
-            len = r.top - ev.clientY;
-          } else if (ev.clientY >= r.bottom + 8) {
-            s = "down";
-            len = ev.clientY - r.bottom;
-          } else {
-            s = (ev.clientY < (r.top + r.bottom) / 2 ? "up" : "down") as "up" | "down";
-            len = 8;
-          }
-          len = Math.round(Math.min(900, Math.max(8, len)));
-          if (!press.moved && s === press.side && Math.abs(len - press.len) < 4) return;
-          press.moved = true;
-          press.side = s;
-          press.len = len;
-          lab.classList.add("dragging");
-          place(s, len);
-        });
-        const finish = async () => {
-          const pressed = press;
-          press = null;
-          lab.classList.remove("dragging");
-          if (!pressed || !pressed.moved || !frise) return;
-          suppressPointClick = true;
-          setTimeout(() => (suppressPointClick = false), 0);
-          const { error } = await supabase
-            .from("timeline_placements")
-            .update({ side: pressed.side, stem_length: pressed.len })
-            .eq("frise_entry_id", frise.id)
-            .eq("event_id", pt.eventId);
-          if (error) deps.showBanner?.("Échec de l'enregistrement de la hauteur : " + error.message);
-          await reload();
-        };
-        lab.addEventListener("pointerup", () => void finish());
-        lab.addEventListener("pointercancel", () => void finish());
-      });
-    };
-    drawSide(up, "up");
-    drawSide(down, "down");
-
-    const notes: string[] = issues.map((i) => i.message);
-    if (outside) notes.push(outside + " point(s) ont une date en dehors de la frise et ne sont pas affichés.");
-    if (notes.length) {
-      const warn = document.createElement("p");
-      warn.className = "tl-issues";
-      warn.textContent = notes.join(" ");
-      wrap.appendChild(warn);
-    }
-    stage.appendChild(wrap);
-    immersive.refresh();
-    markSelected();
   }
 
   // --- Navigation ------------------------------------------------------------------
@@ -1358,11 +1084,6 @@ export function initTimelineSystem(deps: {
   // Change l'échelle d'affichage (polices, bandeau, branches) : recalcul des constantes, --tl-s, police mesurée.
   function applyScale(s: number) {
     TL_SCALE = Math.min(SCALE_MAX, Math.max(SCALE_MIN, s));
-    STEM_BASE = 26 * TL_SCALE;
-    STEM_STEP = 30 * TL_SCALE;
-    LABEL_PAD = 14 * TL_SCALE;
-    RULER_H = 26 * TL_SCALE;
-    resetTextMeasure();
     $("timeline-view").style.setProperty("--tl-s", String(TL_SCALE));
     $("timeline-view").style.setProperty("--tl-k", String(TL_SCALE / 1.9));
   }
@@ -1376,7 +1097,7 @@ export function initTimelineSystem(deps: {
   // Frise « plein écran » : on prend la plus grande échelle pour laquelle tout tient dans la hauteur.
   function renderFitted() {
     const sc = $("timeline-scroll");
-    $("timeline-main").classList.toggle("atlas", atlasMode);
+    $("timeline-main").classList.add("atlas");
     const stage = $("timeline-stage");
     const auto = Math.min(2.2, Math.max(1.5, sc.clientHeight / 480));
     const candidates = [userScale ?? auto];
@@ -2880,23 +2601,6 @@ export function initTimelineSystem(deps: {
     if (parent) void openForEntry(parent.id);
   });
   $("timeline-add-reign").addEventListener("click", () => requireAdminOr(() => frise && reignsUi.openDialog(frise.id)));
-  $("timeline-view-mode").textContent = atlasMode ? "Vue Tiges" : "Vue Atlas";
-  $("timeline-view-mode").addEventListener("click", () => {
-    atlasMode = !atlasMode;
-    try {
-      localStorage.setItem("tl-atlas", atlasMode ? "1" : "0");
-    } catch {
-      /* ignoré */
-    }
-    $("timeline-view-mode").textContent = atlasMode ? "Vue Tiges" : "Vue Atlas";
-    renderFitted();
-  });
-  $("timeline-toggle-reigns").addEventListener("click", () => {
-    showReigns = !showReigns;
-    $("timeline-toggle-reigns").classList.toggle("active", showReigns);
-    render();
-  });
-  $("timeline-toggle-reigns").classList.add("active");
   $("timeline-add-period").addEventListener("click", () => requireAdminOr(() => void openPeriodDialog(null, null)));
   $("timeline-add-point").addEventListener("click", () => requireAdminOr(() => openPointDialog(null)));
   $("tl-period-cancel").addEventListener("click", closePeriodDialog);

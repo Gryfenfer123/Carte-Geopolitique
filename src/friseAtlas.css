@@ -55,3 +55,13 @@
   #timeline-main.atlas > #timeline-scroll { margin-right: 0; }
   }
 .tl-reigns-atlas { position: absolute; left: 0; bottom: 64px; margin: 0; width: 100%; }
+
+/* Groupes d'événements trop serrés : pastille numérotée + liste au clic */
+.tl-acluster { position: absolute; top: 0; transform: translate(-50%, -50%); z-index: 5; min-width: 24px; height: 24px; padding: 0 6px; border-radius: 12px; font: 700 12px/22px "Archivo Narrow", sans-serif; text-align: center; cursor: pointer; border: 2px solid var(--ink, #222); background: var(--accent, #d6402b); color: #fff; box-sizing: border-box; }
+.tl-acluster:hover { transform: translate(-50%, -50%) scale(1.15); }
+.tl-acluster-pop { position: absolute; top: 18px; transform: translateX(-50%); z-index: 12; min-width: 230px; max-width: 320px; max-height: min(55vh, 380px); overflow-y: auto; background: var(--surface); border: 1.5px solid var(--ink, #222); padding: 6px; display: flex; flex-direction: column; gap: 2px; }
+.tl-acluster-head { font: 700 12px "Archivo Narrow", sans-serif; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent, #d6402b); padding: 2px 4px 6px; }
+.tl-acluster-item { display: flex; flex-direction: column; text-align: left; background: transparent; border: 0; border-bottom: 1px solid rgba(0,0,0,0.12); padding: 5px 4px; cursor: pointer; font: 600 14px var(--tl-serif, serif); color: inherit; }
+.tl-acluster-item:hover { background: rgba(0,0,0,0.08); }
+.tl-acluster-date { font: 700 11px "Archivo Narrow", sans-serif; letter-spacing: 0.06em; color: var(--accent, #d6402b); }
+.tl-acluster-zoom { margin-top: 4px; align-self: flex-start; font: 700 12px "Archivo Narrow", sans-serif; letter-spacing: 0.08em; text-transform: uppercase; background: var(--ink, #222); color: var(--surface); border: 0; padding: 5px 10px; cursor: pointer; }
