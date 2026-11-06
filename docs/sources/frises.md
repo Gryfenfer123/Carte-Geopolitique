@@ -142,6 +142,11 @@ Consultation : 2026-11-06. Barème : `README.md`. **U** = universitaire/institut
   Buchner — https://www.ccbuchner.de/_files_media/mediathek/downloads/2744.docx .
   Licences : consultation seule, aucun texte repris ; liens uniquement.
 
+### Allemagne — peuples d'avant le Saint-Empire (Saxons, Thuringiens, Alamans, Bavarois…) — pistes, 2026-11-06, RIEN écrit en base
+- **Cadre savant** : la théorie de l'ethnogenèse (R. Wenskus, *Stammesbildung und Verfassung*, 1961 ; W. Pohl, *Die Germanen*, EdG 57, 2000 ; J. Jarnut) : ces « peuples » sont des groupes qui se forment et se recomposent, pas des tribus fixes. Il faut donc écrire « peuples/gentes » avec prudence. Sources : https://epub.oeaw.ac.at/0xc1aa5576 0x00390713.pdf (Pohl), https://journals.ub.uni-heidelberg.de/index.php/gfa/article/view/75206/68876 (compte rendu citant Jarnut), https://neu.aggb-katalog.de/vufind/Record/fzh.31089834X (Pohl, notice).
+- **Dates lues (U = universitaire/institutionnelle)** : Thuringiens soumis par les Francs en **531** (U : Universalis « Thuringiens, Alamans et Bavarois » ; U : Haus der Bayerischen Geschichte, https://archiv.hdbg.de/polges/pages/druck/kapitel1.pdf) → concordantes. Alamans soumis par Clovis en **496/497**, « faits et dates discutés » (U : Dictionnaire historique de la Suisse, https://hls-dhs-dss.ch/fr/articles/008027) → **à ne pas écrire sans 2e source** ; 1re mention des Alamans au début du IIIe s. (U : Universalis). Bavarois (788) et Saxons (804) : **seule source = blog non savant (jassa.org) → non sourcé, rien à écrire.**
+- Liens : https://www.universalis.fr/encyclopedie/thuringiens-alamans-et-bavarois/ ; https://hls-dhs-dss.ch/fr/articles/008027 .
+
 ## 2026-11-02 — outil « Règnes »
 Aucune donnée ajoutée par cet outil (code uniquement). Chaque règne saisi portera ses propres sources dans la colonne `sources` de `timeline_reigns`.
 ## 2026-11-03 — identité visuelle (polices)
