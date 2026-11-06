@@ -159,6 +159,13 @@ Demande de Martin : « dates officielles, utilisées par les universitaires et/o
 - **Autres dates trouvées (non retenues)** : −12 (campagnes de Drusus au-delà du Rhin, Volkmann ; Universalis −9 Elbe), −15 (début de la Frühgeschichte pour l'Autriche, fiche scolaire), −27 (début de la « römische Kaiserzeit », Landesamt Sachsen), 85 apr. J.-C. (provinces de Germanie ; source non savante seule), ≈ −500 (début de l'âge du fer germanique, Clio) ; la convention générale de l'Antiquité (écriture, −3300/−3500) n'a pas de sens local.
 - **Limite** : −58 est la date où l'histoire écrite commence pour la Germanie rhénane et où la Vorgeschichte finit, pas une « date officielle de l'Antiquité allemande » : aucun manuel lu ne définit le début de l'Antiquité pour l'Allemagne.
 
+### Allemagne — frise écrite en base (frises_v4, 2026-11-06)
+Bornes retenues sur demande de Martin (« dates les plus enseignées ») : −58, 476, 1495, 1806, 1849, 1918 ; autres bornes : 843, 1024, 1125, 1273, 1555, 1618, 1648, 1763, 1871, 1933, 1945, 1949, 1990 (tableau et liens ci-dessus).
+- **476** (Antiquité → Moyen Âge) : convention européenne enseignée (Nathan, académie d'Orléans-Tours, Mazel, Inglebert, mêmes liens que la frise de France) ; **pas une date propre à l'historiographie allemande** (Gebhardt tome 1 couvre le IVe-VIIIe s. d'un bloc).
+- **1125** (et non 1138) : suit Gebhardt (tomes 4-5) ; 1138 chez Larousse. **1849** : Gebhardt (tomes 14-15) ; 1848 ailleurs. **1918** : RAMEAU, Gebhardt, Droz, Bogdan ; 1919 chez Larousse/Dunod/Universalis.
+- **1949-1990** : une seule période (deux États simultanés) en attendant les frises parallèles. **Antiquité** : pas de sous-frise, aucune sous-borne sourcée. Noms des sous-périodes = libellés de Claude.
+- Les sources de chaque frise sont stockées dans l'entrée de la frise (champ « sources »).
+
 ## 2026-11-02 — outil « Règnes »
 Aucune donnée ajoutée par cet outil (code uniquement). Chaque règne saisi portera ses propres sources dans la colonne `sources` de `timeline_reigns`.
 ## 2026-11-03 — identité visuelle (polices)
