@@ -160,3 +160,4 @@ des périodes ? (d) une régence (ex. Anne d'Autriche) compte-t-elle comme règn
 - Tout est dans `src/friseTheme.css`, limité aux frises ; l'identité du reste du site viendra plus tard.
 - (2026-11-03) Vue Atlas : événements alternés au-dessus/en dessous de la règle, sommaire à droite (remplacé par le volet de détail), fond gris texturé `#d3d4cc` + cartes `#e4e5dd`.
 - (2026-11-06) **Une seule vue** : la « Vue Tiges » (§7bis) est supprimée à la demande de Martin ; seule la vue Atlas reste. Événements trop serrés = pastille numérotée + liste (jamais de superposition). Le ruban des règnes n'est plus affiché ; la saisie « + Règne » reste.
+- (2026-11-06) Période « actuelle » : la date de fin peut rester vide (case dans la fenêtre de période) ; la dernière période sans fin va jusqu'à l'année en cours.

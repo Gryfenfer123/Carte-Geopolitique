@@ -94,3 +94,9 @@ Spécification de référence : [`../specs/frises-chronologiques.md`](../specs/f
   - Avertissement « N point(s) hors de la frise » conservé.
 - **Vérifié** : `tsc`, `check:repo`, `build` ; frise de test à 27 événements dont 15 sur 1789-1795 : 1 pastille « 12 » + 15 cartes, liste complète au clic, « Zoomer ici » sépare le groupe ; aucune erreur JavaScript.
 - **Non vérifié** : mobile/tactile ; plusieurs groupes sur la même frise ; événements à la date identique au jour près (visibles uniquement via la liste du groupe) ; réglage de hauteur/côté d'un point (supprimé avec les Tiges : la colonne `side` des placements n'est plus utilisée) ; CSS des Tiges encore présent dans `style.css` (inactif, à nettoyer avec le chantier d'identité du site).
+
+## 2026-11-06 (2) — Époque « actuelle » (sans fin)
+- **Demande de Martin** : une époque peut ne pas avoir de fin (époque actuelle).
+- **Fait** : dans la fenêtre d'une période, case « Époque actuelle (pas de fin, jusqu'à aujourd'hui) » : elle grise les champs de fin et enregistre une fin vide (`period_end_* = null`). À la réouverture, la case est cochée si la période n'a pas de fin. Aucun changement de base (colonnes déjà optionnelles) ni de modèle : la dernière période sans fin va déjà « jusqu'à aujourd'hui » (affiché « aujourd'hui » partout) ; une période sans fin suivie d'une autre s'arrête au début de la suivante.
+- **Vérifié** : `tsc`, `build`, `check:repo` ; test navigateur (fausse base) : ouverture de « Cinquième République » → case cochée, champs de fin grisés, enregistrement sans erreur, fin vide en base.
+- **Non vérifié** : décocher puis saisir une fin sur une période existante ; période sans fin au milieu de la frise ; vraie base Supabase.

@@ -276,6 +276,7 @@ export function initTimelineSystem(deps: {
             <input type="text" inputmode="numeric" id="tl-end-month" placeholder="Mois" aria-label="Mois de fin">
             <input type="text" inputmode="numeric" id="tl-end-day" placeholder="Jour" aria-label="Jour de fin">
             <label class="tl-inline"><input type="checkbox" id="tl-end-circa"> vers</label>
+            <label class="tl-inline tl-open-end"><input type="checkbox" id="tl-end-open"> &Eacute;poque actuelle (pas de fin, jusqu'&agrave; aujourd'hui)</label>
           </fieldset>
         </div>
         <div class="tl-field">Couleur
@@ -1352,6 +1353,12 @@ export function initTimelineSystem(deps: {
       circa: checked(prefix + "-circa"),
     });
   }
+  // « Époque actuelle » : pas de date de fin ; la période va jusqu'à aujourd'hui (ou jusqu'à la suivante).
+  function setOpenEnd(open: boolean) {
+    setChecked("tl-end-open", open);
+    for (const id of ["year", "bc", "month", "day", "circa"]) ($("tl-end-" + id) as HTMLInputElement).disabled = open;
+    $("tl-end-fields").classList.toggle("is-open-end", open);
+  }
   function showPeriodError(msg: string) {
     $("tl-period-error").textContent = msg;
   }
@@ -1389,6 +1396,7 @@ export function initTimelineSystem(deps: {
       setField("tl-period-name", p.name);
       fillDate("tl-start", p.start);
       fillDate("tl-end", p.end);
+      setOpenEnd(!p.end);
       periodColor = p.color;
       $("tl-period-remove").style.display = "";
     } else {
@@ -1419,6 +1427,7 @@ export function initTimelineSystem(deps: {
       const last = sorted[sorted.length - 1];
       fillDate("tl-start", last ? (last.end ?? last.start) : null);
       fillDate("tl-end", null);
+      setOpenEnd(false);
       periodColor = null;
       $("tl-period-remove").style.display = "none";
     }
@@ -1465,16 +1474,18 @@ export function initTimelineSystem(deps: {
       if (!name) return showPeriodError("Donne un nom à la période.");
       const start = readDate("tl-start");
       if (!start.ok) return showPeriodError("Début : " + start.error);
-      const end = readDate("tl-end");
-      if (!end.ok) return showPeriodError("Fin : " + end.error);
-      if (dateSortKey(end.date) < dateSortKey(start.date)) {
+      const openEnd = checked("tl-end-open");
+      const endRead = openEnd ? null : readDate("tl-end");
+      if (endRead && !endRead.ok) return showPeriodError("Fin : " + endRead.error);
+      const endDate: FriseDate | null = endRead && endRead.ok ? endRead.date : null;
+      if (endDate && dateSortKey(endDate) < dateSortKey(start.date)) {
         return showPeriodError("La fin ne peut pas être avant le début.");
       }
 
       // Aucune NOUVELLE anomalie (chevauchement...) ne doit apparaître.
       const before = new Set(layoutPeriods(periods).issues.map((i) => i.periodId + i.message));
       const targetId = editingPeriodId ?? "__new__";
-      const candidate: Period = { id: targetId, name, start: start.date, end: end.date, color: periodColor };
+      const candidate: Period = { id: targetId, name, start: start.date, end: endDate, color: periodColor };
       const hypothetical = periods.filter((p) => p.id !== editingPeriodId).concat(candidate);
       const fresh = layoutPeriods(hypothetical).issues.filter((i) => !before.has(i.periodId + i.message));
       if (fresh.length) return showPeriodError(fresh[0].message);
@@ -1485,7 +1496,7 @@ export function initTimelineSystem(deps: {
         period_is_transition: false,
         period_color: periodColor,
         ...dateColumns("period_start", start.date),
-        ...dateColumns("period_end", end.date),
+        ...dateColumns("period_end", endDate),
       };
       if (editingPeriodId) {
         const { error } = await supabase.from("dossier_sections").update(cols).eq("id", editingPeriodId);
@@ -2604,6 +2615,7 @@ export function initTimelineSystem(deps: {
   $("timeline-add-period").addEventListener("click", () => requireAdminOr(() => void openPeriodDialog(null, null)));
   $("timeline-add-point").addEventListener("click", () => requireAdminOr(() => openPointDialog(null)));
   $("tl-period-cancel").addEventListener("click", closePeriodDialog);
+  $("tl-end-open").addEventListener("change", () => setOpenEnd(checked("tl-end-open")));
   $("tl-period-save").addEventListener("click", () => void savePeriod());
   $("tl-period-remove").addEventListener("click", () => void removePeriod());
   $("tl-period-source").addEventListener("change", () => {
