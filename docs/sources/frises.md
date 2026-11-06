@@ -89,6 +89,59 @@ Résultat de recoupement : « concordantes » = au moins 2 sources dont 1 U s'ac
   https://catalogue.bnf.fr/ark:/12148/cb11941853q (Restauration) ; Inrap — https://multimedia.inrap.fr/archeologie-preventive/periode/8/Age-du-Bronze-et-age-du-Fer ;
   Belin/Seuil : notices Bibliothèques numériques de la Défense (liens complets dans le champ « sources » des frises en base).
   Licences : notices et pages en consultation, aucun texte repris ; liens uniquement.
+## Histoire de l'Allemagne — recherche du découpage (2026-11-06) — PROPOSITION, rien écrit en base
+Consultation : 2026-11-06. Barème : `README.md`. **U** = universitaire/institutionnelle : **Gebhardt, *Handbuch der deutschen Geschichte*,
+10e éd. (Klett-Cotta, 2001-2014)** = manuel de référence de l'histoire allemande (volumes de tête de série lus : sommaires et préfaces),
+**Propyläen Geschichte Deutschlands**, **Siedler Deutsche Geschichte / Das Reich und die Deutschen**, **Neue Deutsche Geschichte (Beck)**,
+**Enzyklopädie deutscher Geschichte (Oldenbourg)**, **Oldenbourg Grundriss der Geschichte**, notices **BnF RAMEAU**, **Larousse**,
+**Universalis**, PUF *Que sais-je ?* (Droz, Chapoutot), Colin (Roth), Perrin (Bogdan), Dunod ; programmes d'universités allemandes
+(Marburg, Frankfurt, Regensburg) et de lycée (C.C. Buchner « Das waren Zeiten », Berlin/Brandenburg) = manuels (B).
+**Limite** : seuls sommaires, tables des matières, préfaces et notices ont été lus (pas les chapitres entiers).
+
+| Borne | Sources (U = universitaire/institutionnelle) | Résultat | Autres dates trouvées |
+|---|---|---|---|
+| **1495** (Moyen Âge → Frühe Neuzeit) | U : Gebhardt (tomes 9-12 « 1495-1806 », éd. Reinhard ; tome 8 jusqu'à 1495) ; U : G. Schmidt, *Geschichte des alten Reiches 1495-1806* (Beck 1999) ; U : A. Gotthard, *Das Alte Reich 1495-1806* ; B : univ. Marburg, Frankfurt (Cordes) | concordantes, **convention établie en Allemagne** | 1517 (Boockmann, *Deutschland 1125-1517* ; Schilling 1517-1648 ; Burkhardt), 1490 (Propyläen Moraw 1250-1490 ; Lutz 1490-1648), 1500 (Marburg, Vocelka ; manuel Buchner : Moyen Âge « ca. 1000-ca. 1500 »), 1492 (programmes français, cf. frise France). Reinhard consacre un § entier au problème (« Beginn und Ende der Frühen Neuzeit ») ; Boockmann relativise lui-même la coupure vers 1500 |
+| **1806** (Frühe Neuzeit → époque contemporaine) | U : Gebhardt (tomes 9-12 jusqu'à 1806, tomes 13-17 « 1806-1918 », éd. Kocka) ; U : Universalis (« époque des confédérations 1806-1871 ») ; U : Chapoutot, *Histoire de l'Allemagne de 1806 à nos jours* (PUF) ; BnF RAMEAU « Saint-Empire 962-1806 » ; Larousse (« fin du Ier Reich 1648-1806 ») | concordantes | 1789 (RAMEAU « Allemagne 1789-1900 » ; Gebhardt reconnaît le « long XIXe s. » « non sans controverse »), 1815 (Marburg : FNZ jusqu'à 1815 ; Droz, Roth : 1815-…) |
+| **843** (Verdun : début de la Francie orientale) | U : BnF RAMEAU « Germanie, Royaume de 843-962 » et « Allemagne 843-1273 » ; U : F. Prinz, *Grundlagen und Anfänge* (Beck, « Ostfrankenreich 843-918 ») ; U : Ehlers, *Die Entstehung des Deutschen Reiches* (EdG 31, sujets 843-1100) ; DHM (Berlin) | concordantes **comme étape**, mais voir « désaccords » | 911 (Haller 1959), 919 (Schlesinger 1975…), 962 |
+| **1024** (Ottoniens → Saliens) | U : Gebhardt (tome 3 jusqu'à 1024 ; tome 4 « Salierzeit 1024-1125 ») ; U : Propyläen (Fried « bis 1024 » ; Keller « 1024-1250 ») ; U : Prinz (Ottoniens 919-1024) ; Larousse (Saxons 919-1024) | concordantes | — |
+| **1125 / 1138** (Saliens → Staufer) | U : Gebhardt (tome 4 jusqu'à 1125 ; tome 5 « 1125-1198 », Haverkamp) ; U : Boockmann (« 1125-1517 ») ; Larousse (Francs 1024-1138, Staufer 1138-1250) | **divergence** | 1138 (Larousse), Keller traite Saliens + Staufer d'un bloc (1024-1250) |
+| **1250 / 1273** (Staufer → Interrègne → Habsbourg) | U : Gebhardt (tome 6 « 1198-1273 » ; tome 7a à partir de 1273) ; U : Propyläen (Moraw « 1250-1490 ») ; U : BnF « Allemagne 843-1273 » ; Larousse (Interrègne 1250-1273) | **divergence mineure** | Gebhardt traite l'Interrègne comme jalon (1198-1273) |
+| **1555 / 1618 / 1648** (Frühe Neuzeit) | U : Gebhardt (tome 9 « 1495-1555 » ; tome 10 « Konfessionelles Zeitalter 1555-1618 ; Dreißigjähriger Krieg 1618-1648 ») ; Larousse (guerre de Trente Ans 1618-1648 ; « 1648-1806 ») ; U : Universalis (« importance de la date de 1648 ») ; U : Schilling, *Höfe und Allianzen 1648-1763* (Siedler) | concordantes | 1517-1648 (Schilling, Vocelka, Jung), 1490-1648 (Lutz) |
+| **1763** (→ fin du Reich) | U : Gebhardt tome 12 (Demel, « 1763-1806 ») ; U : Schilling (1648-1763) ; U : Möller, *Fürstenstaat oder Bürgernation 1763-1815* | concordantes | 1789 (Vocelka : Révolution comme limite) |
+| **1815 / 1849 / 1866 / 1871** | U : Gebhardt (tome 14 « 1806-1848/49 » ; tome 15 « 1849-1871 » ; tome 16 « 1871-1918 ») ; U : Droz (PUF : 1815-1850, 1850-1871) ; U : Larousse (Confédération du Rhin 1806-1814 ; Confédération germanique 1815-1866 ; 1848-49 ; Confédération du Nord 1867) ; U : Universalis (1806-1871) | concordantes (le détail des sous-périodes varie) | 1814/1815 |
+| **1871** (→ Reich) | U : BnF RAMEAU « Allemagne 1871-1918 (Empire allemand) » : 18 janv. 1871 → 9 nov. 1918 ; U : Gebhardt tome 16 ; U : Droz ; U : Bogdan ; U : Roth (Colin) ; Larousse ; Dunod | concordantes, **convention établie** | — |
+| **1890** (Reich bismarckien → wilhelmien) | U : Droz (1871-1890 / 1890-1918) ; Larousse ; Dunod (Abbad/Flonneau) | concordantes | — |
+| **1918 / 1919** (→ Weimar) | U : BnF RAMEAU « 1918-1933 (République de Weimar) » ; U : Gebhardt (« 20e s. 1918-2000 ») ; U : Droz, Bogdan (1918-1933) | **divergence mineure** | 1919 (Larousse, Dunod, Universalis « Weimar 1919-1933 ») |
+| **1933** (→ IIIe Reich) | U : BnF RAMEAU « 1933-1945 » ; U : Droz, Bogdan ; Larousse ; Dunod | concordantes | — |
+| **1945 / 1949** (→ occupation → deux États) | U : BnF RAMEAU « 1945-1949 » et « 1945-1990 » ; U : Gebhardt tome 22 (Benz/Scholz, « Besatzung 1945-1949 ; DDR 1949-1990 ») ; U : Broszat (dir.), *Zäsuren nach 1945* (IfZ) : « 1945/49 et 1989/90 » ; U : Wirsching (1945 = plus profonde césure) ; Larousse | concordantes | 1944 |
+| **1949-1990** (RFA et RDA, **deux États en même temps**) | U : Gebhardt tome 23 (Wolfrum, « Bundesrepublik 1949-1990 ») ; U : Benz/Scholz (DDR 1949-1990) ; U : RAMEAU « 1945-1990 » | concordantes | — |
+| **1990** (réunification) | U : BnF RAMEAU « 1989-1990 (Unification) » et « 1990-… » ; U : Droz (« La réunification ») ; U : Broszat (1989/90) | concordantes | 1989 (chute du Mur) |
+
+### Désaccords et points qui n'atteignent PAS le barème (à décider par Martin)
+- **Début de l'« histoire allemande »** : **énorme désaccord, sans date convenue**. Ancien : 919 (Schlesinger 1975…) ; aujourd'hui, presque unanimement
+  (Jarnut, Fried, Ehlers, cités par Koch, univ. Paderborn) : **pas de date fondatrice, un long processus**, 843 / 911 / 919 / 962 étant des étapes.
+  Le Gebhardt commence à la Spätantike (IVe s.) et traite la Francie orientale dans le cadre franc (714/715-887/888). **Aucune date n'est donc écrite** tant que Martin n'a pas tranché.
+- **Frontière Antiquité → Moyen Âge pour l'Allemagne** : pas de date allemande nette (Gebhardt tome 1 : « Europäische Grundlagen deutscher Geschichte, 4e-8e s. » ; Wolfram, *Das Reich und die Germanen. Zwischen Antike und Mittelalter*).
+  La convention européenne 476 existe mais n'est pas la division des manuels allemands. **À décider.**
+- **Début de la période « Antiquité » en Germanie** : aucune source lue ne donne de borne de début (Germanen, Rome, limes) → **non sourcé, rien écrit**.
+- **RFA/RDA simultanées** : l'outil de frise sait-il montrer deux périodes en parallèle (1949-1990) ? **À vérifier dans la spec avant de construire**.
+- **Noms des sous-périodes** : libellés descriptifs de Claude (les bornes sont sourcées, pas les noms), sauf termes d'historiens : « Konfessionelles Zeitalter », « Interrègne », « Vormärz ».
+- **Années seules** : aucune borne ne porte de mois/jour (sauf RAMEAU 1871 : 18 janvier ; 1918 : 9 novembre, à ne pas utiliser sans autre source).
+- **Liens** (consultés le 2026-11-06) : Gebhardt (Klett-Cotta) — https://www.lehmanns.ch/media/120933979 (tomes 1-23, bornes) ,
+  https://klett-cotta.de/_files_media/reading_samples/10606.pdf (registre, justification des phases) ,
+  https://www.klett-cotta.de/_files_media/reading_samples/3057.pdf (tome 14, 1806-1848/49) ,
+  https://www.lehmanns.ch/media/1347592/1 (tome 9, « Periodisierungsprobleme ») , https://www.lehmanns.ch/media/69948/1 (tome 23, Wolfrum) ;
+  Propyläen / Das Reich und die Deutschen — https://www.hendrik.maekeler.eu/handbucher/ (liste des volumes et bornes) ;
+  Prinz, *Grundlagen und Anfänge* — https://www.lehmanns.ch/media/1064838/1 ; Ehlers — https://neu.aggb-katalog.de/vufind/Record/ifz.206312 ;
+  Koch (Paderborn) — https://digital.ub.uni-paderborn.de/download/pdf/6461713.pdf ; DHM — https://www.dhm.de/mediathek/der-rhein-von-basel-bis-koblenz/chronologie-der-deutsch-franzoesischen-geschichte/strassburger-eide/ ;
+  RAMEAU — https://catalogue.bnf.fr/ark:/12148/cb119347320 (1871-1918), https://catalogue.bnf.fr/ark:/12148/cb15342264g (Saint-Empire 962-1806), https://catalogue.bnf.fr/ark:/12148/cb119744471 (843-1273), https://catalogue.bnf.fr/ark:/12148/cb119347309 (1789-1900), https://plus.cobiss.net/cobiss/up/en/sgc/8694376 (liste des vedettes 1918-1990) ;
+  Larousse — https://www.larousse.fr/encyclopedie/divers/Allemagne%C2%A0_histoire/185779 ; Universalis — https://www.universalis.fr/encyclopedie/allemagne-histoire-allemagne-moderne-et-contemporaine/2-l-epoque-des-confederations-1806-1871/ ;
+  Droz (PUF) — https://bibliotheques-numeriques.defense.gouv.fr/impression/document/6901005f-cee2-4923-87be-8435d5309e9a ; Bogdan (Perrin) — https://bibliotheques-numeriques.defense.gouv.fr/impression/document/c6121bbf-32b0-4e99-ba8c-98a79067380d ;
+  Broszat, *Zäsuren nach 1945* — https://open.ifz-muenchen.de/bitstreams/c6983b02-bc57-439b-a0e5-3507b9cc55b4/download ; Benz/Scholz — https://cir.nii.ac.jp/crid/1130000794434588672?lang=en ;
+  Marburg — https://www.uni-marburg.de/de/fb06/fnz/studium/studium ; Regensburg — https://uni-regensburg.de/assets/philosophie-kunst-geschichte-gesellschaft/geschichte/staatsexamen/Auswahlbibliographie_Fruehe_Neuzeit.pdf ;
+  Buchner — https://www.ccbuchner.de/_files_media/mediathek/downloads/2744.docx .
+  Licences : consultation seule, aucun texte repris ; liens uniquement.
+
 ## 2026-11-02 — outil « Règnes »
 Aucune donnée ajoutée par cet outil (code uniquement). Chaque règne saisi portera ses propres sources dans la colonne `sources` de `timeline_reigns`.
 ## 2026-11-03 — identité visuelle (polices)
