@@ -139,3 +139,8 @@ clavier, bornes (999999 → 2024, -99999 → -3400, champ vide ignoré), lecture
 - Données régénérées : 12 541 lignes, 10 261 tracés, 167 morceaux. Tests et vérification OK ; audit a5 : 2 220 paires > 0,005 deg² (2 265 avant).
 - Leçon : dessiner la carte (`/tmp`-script de rendu) avant de publier ; les tests de structure ne voient pas un trou.
 - **Non vérifié** : rendu en ligne ; frontières dans les lacs = approximation ; reste des bords en escalier d'origine Cliopatria ailleurs que sur les lacs.
+
+## 2026-11-12 — Couleurs par famille (livraison 1)
+- Nouveau : `scripts/historique/construire_familles.py` (+ `familles/`), `public/data/historique/couleurs.json`, `src/historiqueCouleurs.ts`.
+- 2 familles actives sur 44 prévues (sources lues) ; surbrillance au survol par famille ; mention dans la fiche ; fond relief Esri (non vérifié visuellement).
+- À faire : sourcer les 42 autres familles, légende des familles, comparaison de deux dates, fiche d'État propre.

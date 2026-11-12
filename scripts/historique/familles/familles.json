@@ -1,0 +1,635 @@
+{
+ "version": 1,
+ "familles": [
+  {
+   "id": "rome",
+   "nom": "Rome et Byzance",
+   "membres": [
+    "Roman Republic",
+    "Roman Empire",
+    "Western Roman Empire",
+    "Eastern Roman Empire",
+    "Byzantine Empire"
+   ],
+   "statut": "source",
+   "sources": [
+    {
+     "titre": "Fordham University, Internet Medieval Sourcebook — Byzantium",
+     "url": "https://sourcebooks.web.fordham.edu/halsall/byzantium/",
+     "type": "universitaire",
+     "licence": "usage pédagogique libre (citation)",
+     "fiabilite": "haute",
+     "constat": "« the continuation of the Roman state » (Byzance)"
+    },
+    {
+     "titre": "Encyclopaedia Britannica — Roman Empire",
+     "url": "https://www.britannica.com/print/article/2237745",
+     "type": "ouvrage de référence",
+     "licence": "citation",
+     "fiabilite": "haute",
+     "constat": "Auguste 1er empereur 27 av. J.-C. ; scission Est/Ouest 364 ; Ouest disparaît 476 ; l'Empire d'Orient devient l'Empire byzantin"
+    }
+   ]
+  },
+  {
+   "id": "perse",
+   "nom": "Perse et Iran",
+   "membres": [
+    "Median Kingdom",
+    "Achaemenid Empire",
+    "Parthian Empire",
+    "Sasanian Empire",
+    "Safavid Dynasty",
+    "Afsharid Iran",
+    "Zand Dynasty",
+    "Qajar Dynasty",
+    "Pahlavi Dynasty",
+    "Islamic Republic of Iran"
+   ],
+   "statut": "a_sourcer",
+   "sources": []
+  },
+  {
+   "id": "chine",
+   "nom": "Chine (dynasties et républiques)",
+   "membres": [
+    "Qin Dynasty",
+    "Han Dynasty",
+    "Xin Dynasty",
+    "Cao Wei",
+    "Shu Han",
+    "Eastern Wu",
+    "Western Jin",
+    "Liu Song Dynasty",
+    "Southern Qi",
+    "Liang Dynasty",
+    "Chen Dynasty",
+    "Sui Dynasty",
+    "Tang Dynasty",
+    "Northern Song",
+    "Southern Song",
+    "Ming Dynasty",
+    "Qing Dynasty",
+    "Empire of China",
+    "Republic of China",
+    "People's Republic of China"
+   ],
+   "statut": "a_sourcer",
+   "sources": []
+  },
+  {
+   "id": "mongols",
+   "nom": "Empire mongol",
+   "membres": [
+    "Mongol Empire",
+    "Great Mongol State",
+    "Yuan Dynasty",
+    "Great Yuan",
+    "Ilkhanate",
+    "Chagatai Khanate"
+   ],
+   "statut": "source",
+   "sources": [
+    {
+     "titre": "Arkansas Tech University, World History to 1500, ch. 12.4 « The Mongol Empire Fragments » (LibreTexts)",
+     "url": "https://human.libretexts.org/Courses/Arkansas_Tech_University/World_History_to_1500/12%3A_Pax_Mongolica-_The_Steppe_Empire_of_the_Mongols/12.04%3A_The_Mongol_Empire_Fragments",
+     "type": "universitaire (cours)",
+     "licence": "CC (LibreTexts)",
+     "fiabilite": "moyenne-haute",
+     "constat": "quatre khanats succèdent à l'empire de Gengis Khan : Yuan, Ilkhanat, Chagatai, Horde d'Or"
+    },
+    {
+     "titre": "Encyclopaedia Britannica — Mongolia, « The successor states of the Mongol empire »",
+     "url": "https://www.britannica.com/place/Mongolia/The-successor-states-of-the-Mongol-empire",
+     "type": "ouvrage de référence",
+     "licence": "citation",
+     "fiabilite": "haute",
+     "constat": "Horde d'Or, maison de Djaghataï, Il-Khans d'Iran, dynastie Yuan fondée par Khubilai : États successeurs"
+    }
+   ]
+  },
+  {
+   "id": "horde-or",
+   "nom": "Horde d'Or et héritiers",
+   "membres": [
+    "Golden Horde",
+    "White Horde",
+    "Blue Horde",
+    "Khanate of Kazan",
+    "Crimean Khanate",
+    "Astrakhan Khanate",
+    "Khanate of Sibir",
+    "Nogai Horde",
+    "Kazakh Khanate"
+   ],
+   "statut": "a_sourcer",
+   "sources": []
+  },
+  {
+   "id": "russie",
+   "nom": "Russie",
+   "membres": [
+    "Grand Principality of Moscow",
+    "Tsardom of Russia",
+    "Russian Empire",
+    "Russian Republic",
+    "Union of Soviet Socialist Republics",
+    "Russian Federation"
+   ],
+   "statut": "a_sourcer",
+   "sources": []
+  },
+  {
+   "id": "ottoman",
+   "nom": "Ottomans et Turquie",
+   "membres": [
+    "Ottoman Empire",
+    "Ottoman Tripolitania",
+    "Republic of Turkey"
+   ],
+   "statut": "a_sourcer",
+   "sources": []
+  },
+  {
+   "id": "france",
+   "nom": "France",
+   "membres": [
+    "West Franks",
+    "Kingdom of France",
+    "Bourbon Kingdom of France",
+    "French First Republic",
+    "French Directory",
+    "French Consulate",
+    "First French Empire",
+    "French Second Republic",
+    "Second French Empire",
+    "French Third Republic",
+    "Vichy France",
+    "Free French",
+    "French Fourth Republic",
+    "French Fifth Republic"
+   ],
+   "statut": "a_sourcer",
+   "sources": []
+  },
+  {
+   "id": "grande-bretagne",
+   "nom": "Angleterre et Royaume-Uni",
+   "membres": [
+    "Anglo-Saxon England",
+    "Norman England",
+    "Kingdom of England",
+    "Commonwealth of England",
+    "Kingdom of Great Britain"
+   ],
+   "statut": "a_sourcer",
+   "sources": []
+  },
+  {
+   "id": "espagne",
+   "nom": "Espagne",
+   "membres": [
+    "Crown of Castile",
+    "Crown of Aragon",
+    "Kingdom of Spain",
+    "First Spanish Republic",
+    "Second Spanish Republic",
+    "Francoist Spain"
+   ],
+   "statut": "a_sourcer",
+   "sources": []
+  },
+  {
+   "id": "portugal",
+   "nom": "Portugal",
+   "membres": [
+    "County of Portugal",
+    "Kingdom of Portugal",
+    "Portuguese Republic",
+    "Estado Novo",
+    "Portugal"
+   ],
+   "statut": "a_sourcer",
+   "sources": []
+  },
+  {
+   "id": "allemagne",
+   "nom": "Reich allemand et Allemagne",
+   "membres": [
+    "German Empire",
+    "Weimar Republic",
+    "Nazi Germany",
+    "Federal Republic of Germany",
+    "German Democratic Republic",
+    "Federated Republic of Germany"
+   ],
+   "statut": "a_sourcer",
+   "sources": []
+  },
+  {
+   "id": "prusse",
+   "nom": "Prusse",
+   "membres": [
+    "Duchy of Prussia",
+    "Electorate of Brandenburg",
+    "Brandenburg-Prussia",
+    "Kingdom of Prussia"
+   ],
+   "statut": "a_sourcer",
+   "sources": []
+  },
+  {
+   "id": "habsbourg",
+   "nom": "Habsbourg et Autriche",
+   "membres": [
+    "House of Habsburg",
+    "Habsburg Monarchy",
+    "Austrian Empire",
+    "Austria-Hungary",
+    "Republic of Austria",
+    "Second Republic of Austria"
+   ],
+   "statut": "a_sourcer",
+   "sources": []
+  },
+  {
+   "id": "saint-empire",
+   "nom": "Saint-Empire romain germanique",
+   "membres": [
+    "East Franks",
+    "Kingdom of Germany",
+    "Holy Roman Empire",
+    "Holy Roman Empire Minor States"
+   ],
+   "statut": "a_sourcer",
+   "sources": []
+  },
+  {
+   "id": "japon",
+   "nom": "Japon",
+   "membres": [
+    "Asuka Japan",
+    "Nara Japan",
+    "Heian Japan",
+    "Kamakura Shogunate",
+    "Kenmu Restoration",
+    "Ashikaga Shogunate",
+    "Warring States Japan",
+    "Tokugawa Shogunate",
+    "Empire of Japan",
+    "Japan"
+   ],
+   "statut": "a_sourcer",
+   "sources": []
+  },
+  {
+   "id": "coree",
+   "nom": "Corée",
+   "membres": [
+    "Unified Silla",
+    "Goryeo",
+    "Joseon",
+    "Korean Empire",
+    "Republic of Korea",
+    "Democratic People's Republic of Korea"
+   ],
+   "statut": "a_sourcer",
+   "sources": []
+  },
+  {
+   "id": "khmer",
+   "nom": "Khmers et Cambodge",
+   "membres": [
+    "Khmer Empire",
+    "Kingdom of Cambodia",
+    "Cambodia"
+   ],
+   "statut": "a_sourcer",
+   "sources": []
+  },
+  {
+   "id": "thai",
+   "nom": "Siam et Thaïlande",
+   "membres": [
+    "Sukhothai Kingdom",
+    "Ayutthaya Kingdom",
+    "Thonburi Kingdom",
+    "Rattanakosin Kingdom",
+    "Kingdom of Thailand"
+   ],
+   "statut": "a_sourcer",
+   "sources": []
+  },
+  {
+   "id": "birmanie",
+   "nom": "Birmanie",
+   "membres": [
+    "Pagan Kingdom",
+    "First Toungoo Empire",
+    "Konbaung Dynasty",
+    "Burma",
+    "Union of Myanmar"
+   ],
+   "statut": "a_sourcer",
+   "sources": []
+  },
+  {
+   "id": "delhi",
+   "nom": "Sultanat de Delhi",
+   "membres": [
+    "Mamluk Dynasty",
+    "Khalji Dynasty",
+    "Tughlaq Dynasty",
+    "Sayyid Dynasty",
+    "Lodi Dynasty"
+   ],
+   "statut": "a_sourcer",
+   "sources": []
+  },
+  {
+   "id": "magadha",
+   "nom": "Dynasties du Magadha",
+   "membres": [
+    "Magadha - Haryanka dynasty",
+    "Magadha - Shaishunaga dynasty",
+    "Nanda Empire",
+    "Maurya Empire",
+    "Shunga Empire",
+    "Kanva Dynasty"
+   ],
+   "statut": "a_sourcer",
+   "sources": []
+  },
+  {
+   "id": "egypte",
+   "nom": "Égypte moderne",
+   "membres": [
+    "Muhammad Ali dynasty",
+    "Khedivate of Egypt",
+    "Kingdom of Egypt",
+    "Republic of Egypt",
+    "United Arab Republic",
+    "Arab Republic of Egypt"
+   ],
+   "statut": "a_sourcer",
+   "sources": []
+  },
+  {
+   "id": "bresil",
+   "nom": "Brésil",
+   "membres": [
+    "Empire of Brazil",
+    "Brazilian Republic",
+    "Republic of Brazil",
+    "Federated Republic of Brazil",
+    "Unitary State of Brazil"
+   ],
+   "statut": "a_sourcer",
+   "sources": []
+  },
+  {
+   "id": "colombie",
+   "nom": "Colombie",
+   "membres": [
+    "Gran Colombia",
+    "New Granada",
+    "Republic of New Granada",
+    "Granadine Confederation",
+    "United States of Colombia",
+    "Republic of Colombia"
+   ],
+   "statut": "a_sourcer",
+   "sources": []
+  },
+  {
+   "id": "argentine",
+   "nom": "Argentine",
+   "membres": [
+    "Río de la Plata",
+    "Argentine Confederation",
+    "State of Buenos Aires",
+    "Argentine Republic"
+   ],
+   "statut": "a_sourcer",
+   "sources": []
+  },
+  {
+   "id": "mexique",
+   "nom": "Mexique",
+   "membres": [
+    "First Mexican Empire",
+    "Federated Republic of Mexico",
+    "Centralist Mexico",
+    "Second Mexican Empire",
+    "Mexico"
+   ],
+   "statut": "a_sourcer",
+   "sources": []
+  },
+  {
+   "id": "califats",
+   "nom": "Califats",
+   "membres": [
+    "Rashidun Caliphate",
+    "Umayyad Caliphate",
+    "Abbasid Caliphate"
+   ],
+   "statut": "a_sourcer",
+   "sources": []
+  },
+  {
+   "id": "gokturks",
+   "nom": "Khaganats turcs",
+   "membres": [
+    "Göktürk Khaganate",
+    "Eastern Göktürks",
+    "Western Göktürks",
+    "Turks"
+   ],
+   "statut": "a_sourcer",
+   "sources": []
+  },
+  {
+   "id": "seldjoukides",
+   "nom": "Seldjoukides",
+   "membres": [
+    "Great Seljuk Empire",
+    "Seljuk Dynasty",
+    "Sultanate of Rum"
+   ],
+   "statut": "a_sourcer",
+   "sources": []
+  },
+  {
+   "id": "ethiopie",
+   "nom": "Éthiopie",
+   "membres": [
+    "Kingdom of Axum",
+    "Zagwe dynasty",
+    "Ethiopian Empire",
+    "Ethiopia"
+   ],
+   "statut": "a_sourcer",
+   "sources": []
+  },
+  {
+   "id": "afrique-ouest",
+   "nom": "Ghana, Mali, Songhaï",
+   "membres": [
+    "Ghana Empire",
+    "Sosso Empire",
+    "Mali Empire",
+    "Songhai Empire"
+   ],
+   "statut": "a_sourcer",
+   "sources": []
+  },
+  {
+   "id": "suede",
+   "nom": "Suède",
+   "membres": [
+    "Kingdom of Sweden",
+    "Swedish Empire"
+   ],
+   "statut": "a_sourcer",
+   "sources": []
+  },
+  {
+   "id": "danemark",
+   "nom": "Danemark",
+   "membres": [
+    "Kingdom of Denmark",
+    "Denmark-Norway",
+    "Denmark"
+   ],
+   "statut": "a_sourcer",
+   "sources": []
+  },
+  {
+   "id": "norvege",
+   "nom": "Norvège",
+   "membres": [
+    "Old Kingdom of Norway",
+    "Kingdom of Norway"
+   ],
+   "statut": "a_sourcer",
+   "sources": []
+  },
+  {
+   "id": "pologne",
+   "nom": "Pologne",
+   "membres": [
+    "Kingdom of Poland",
+    "Polish-Lithuanian Commonwealth",
+    "Duchy of Warsaw",
+    "Second Polish Republic",
+    "Republic of Poland"
+   ],
+   "statut": "a_sourcer",
+   "sources": []
+  },
+  {
+   "id": "pays-bas",
+   "nom": "Pays-Bas",
+   "membres": [
+    "Dutch Republic",
+    "Batavian Republic",
+    "Napoleonic Batavia Republic",
+    "Netherlands"
+   ],
+   "statut": "a_sourcer",
+   "sources": []
+  },
+  {
+   "id": "bulgarie",
+   "nom": "Bulgarie",
+   "membres": [
+    "First Bulgarian Empire",
+    "Second Bulgarian Empire",
+    "Principality of Bulgaria",
+    "Republic of Bulgaria",
+    "People's Republic of Bulgaria"
+   ],
+   "statut": "a_sourcer",
+   "sources": []
+  },
+  {
+   "id": "grece",
+   "nom": "Grèce moderne",
+   "membres": [
+    "Kingdom of Greece",
+    "First Hellenic Republic",
+    "Third Hellenic Republic",
+    "Greek junta"
+   ],
+   "statut": "a_sourcer",
+   "sources": []
+  },
+  {
+   "id": "roumanie",
+   "nom": "Roumanie",
+   "membres": [
+    "Principality of Moldavia",
+    "Principality of Wallachia",
+    "United Principalities of Moldavia and Wallachia",
+    "Kingdom of Romania",
+    "Socialist Republic of Romania",
+    "Romania"
+   ],
+   "statut": "a_sourcer",
+   "sources": []
+  },
+  {
+   "id": "hongrie",
+   "nom": "Hongrie",
+   "membres": [
+    "Principality of Hungary",
+    "Kingdom of Hungary",
+    "Hungarian Republic",
+    "Hungarian People's Republic",
+    "Hungary"
+   ],
+   "statut": "a_sourcer",
+   "sources": []
+  },
+  {
+   "id": "yougoslavie",
+   "nom": "Serbie et Yougoslavie",
+   "membres": [
+    "Kingdom of Serbia",
+    "Yugoslavia",
+    "Socialist Federal Republic of Yugoslavia",
+    "Serbia-Montenegro",
+    "Republic of Serbia"
+   ],
+   "statut": "a_sourcer",
+   "sources": []
+  },
+  {
+   "id": "congo",
+   "nom": "Congo (RDC)",
+   "membres": [
+    "Belgian Congo",
+    "Democratic Republic of the Congo",
+    "Zaire"
+   ],
+   "statut": "a_sourcer",
+   "sources": []
+  },
+  {
+   "id": "maroc",
+   "nom": "Maroc",
+   "membres": [
+    "Idrisids",
+    "Almoravid Dynasty",
+    "Almohad Caliphate",
+    "Marinid Sultanate",
+    "Wattasid dynasty",
+    "Saadi Sultanate",
+    "Morocco"
+   ],
+   "statut": "a_sourcer",
+   "sources": []
+  }
+ ]
+}

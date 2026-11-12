@@ -29,12 +29,13 @@
 import { ajouterFonds } from "./historiqueFonds";
 import L from "leaflet";
 import "./historique.css";
-import { assurerTraces, chargerIndex, chargerNomsFr, traceChargee } from "./historiqueData";
+import { cleUnite, couleurEntite, familleDe } from "./historiqueCouleurs";
+import type { CouleursFamilles } from "./historiqueCouleurs";
+import { assurerTraces, chargerCouleurs, chargerIndex, chargerNomsFr, traceChargee } from "./historiqueData";
 import {
   ANNEE_MAX,
   ANNEE_MIN,
   bornerAnnee,
-  couleurDuGroupe,
   decoderTrace,
   estTraduction,
   formatAnnee,
@@ -101,7 +102,7 @@ export function initHistoricalMapSystem() {
       <div id="historical-map-container">
         <div id="historical-info" hidden></div>
       </div>
-      <p id="historical-slider-hint" class="muted">Données : <a href="https://github.com/Seshat-Global-History-Databank/cliopatria" target="_blank" rel="noopener">Cliopatria</a> v0.2.1 — Seshat Global History Databank (Bennett et al., <a href="https://doi.org/10.1038/s41597-025-04516-9" target="_blank" rel="noopener">Scientific Data, 2025</a>), licence <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a> ; contours simplifiés pour le web et calés sur le trait de côte actuel (<a href="https://www.naturalearthdata.com" target="_blank" rel="noopener">Natural Earth</a>, domaine public) ; dates de naissance et de fin d'États ajustées d'après Wikidata et Wikipédia lorsqu'elles sont connues. Noms français : <a href="https://www.wikidata.org" target="_blank" rel="noopener">Wikidata</a> (CC0) et traductions de l'équipe. Les frontières, noms et dates du passé sont débattus par les historiens : ces cartes montrent une version possible.</p>
+      <p id="historical-slider-hint" class="muted">Données : <a href="https://github.com/Seshat-Global-History-Databank/cliopatria" target="_blank" rel="noopener">Cliopatria</a> v0.2.1 — Seshat Global History Databank (Bennett et al., <a href="https://doi.org/10.1038/s41597-025-04516-9" target="_blank" rel="noopener">Scientific Data, 2025</a>), licence <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a> ; contours simplifiés pour le web et calés sur le trait de côte actuel et les grands lacs (<a href="https://www.soest.hawaii.edu/pwessel/gshhg/" target="_blank" rel="noopener">GSHHG</a> 2.3.7, LGPL v3) ; couleurs : un même État et ses successeurs reconnus par les manuels partagent une teinte (regroupement de couleurs par convention, voir docs/sources/historique_familles.md) ; dates de naissance et de fin d'États ajustées d'après Wikidata et Wikipédia lorsqu'elles sont connues. Noms français : <a href="https://www.wikidata.org" target="_blank" rel="noopener">Wikidata</a> (CC0) et traductions de l'équipe. Les frontières, noms et dates du passé sont débattus par les historiens : ces cartes montrent une version possible.</p>
     </div>
   `;
   document.body.appendChild(racine);
@@ -110,6 +111,7 @@ export function initHistoricalMapSystem() {
   let annee = ANNEE_DE_DEPART;
   let index: HistoriqueIndex | null = null;
   let nomsFr: NomsFr | null = null;
+  let couleursFam: CouleursFamilles | null = null;
   let carte: L.Map | null = null;
   let couchePolygones: L.FeatureGroup | null = null;
   let coucheEtiquettes: L.LayerGroup | null = null;
@@ -157,8 +159,11 @@ export function initHistoricalMapSystem() {
     return carte;
   }
 
+  // clé de surbrillance (unité de couleur) → nom d'une entité qui la porte, pour retrouver la couleur
+  const entiteDeCle = new Map<string, string>();
+
   function styleDuGroupe(groupe: string, survol: boolean) {
-    const c = couleurDuGroupe(groupe);
+    const c = couleurEntite(couleursFam, entiteDeCle.get(groupe) ?? groupe, groupe);
     const selectionne = groupe === groupeSelectionne;
     return { color: c.contour, fillColor: c.remplissage, ...(survol || selectionne ? STYLE_SURVOL : STYLE_NORMAL) };
   }
@@ -177,10 +182,13 @@ export function initHistoricalMapSystem() {
       const decode = decoder(ligne[3], brut);
       const nomSource = nomDeLigne(idx, ligne);
       const nom = nomAffiche(nomsFr, nomSource);
-      const groupe = groupeDeLigne(idx, ligne); // nom d'origine : sert de clé de couleur et de surbrillance
+      const groupe0 = groupeDeLigne(idx, ligne);
+      const groupe = cleUnite(couleursFam, nomSource, groupe0); // unité de couleur : sert de clé de surbrillance
+      entiteDeCle.set(groupe, nomSource);
       const groupeAffiche = nomAffiche(nomsFr, ligne[4] >= 0 ? idx.noms[ligne[4]] : nomSource);
       // bubblingMouseEvents:false → un clic sur un territoire n'est pas pris pour un clic sur le fond (qui ferme la fiche)
-      const calque = L.polygon(decode.latlngs, { ...styleDuGroupe(groupe, false), bubblingMouseEvents: false });
+      const couleur = couleurEntite(couleursFam, nomSource, groupe0);
+      const calque = L.polygon(decode.latlngs, { ...styleDuGroupe(groupe, false), color: couleur.contour, fillColor: couleur.remplissage, bubblingMouseEvents: false });
       calque.bindTooltip(groupeAffiche !== nom ? `${nom} — ${groupeAffiche}` : nom, { sticky: true, className: "historical-tooltip" });
       calque.on("mouseover", () => surligner(groupe, true));
       calque.on("mouseout", () => surligner(groupe, false));
@@ -239,6 +247,8 @@ export function initHistoricalMapSystem() {
       fiche.append(p);
     };
     if (groupeAffiche !== nom) ligneTexte(`Membre de : ${groupeAffiche}`);
+    const famille = familleDe(couleursFam, nomSource);
+    if (famille) ligneTexte(`Famille de couleurs (convention d'affichage) : ${famille}`);
     if (nomSource !== nom) {
       ligneTexte(`Nom d'origine (source, anglais) : ${nomSource}${estTraduction(nomsFr, nomSource) ? " — traduction française proposée, à confirmer" : ""}`);
     }
@@ -291,6 +301,7 @@ export function initHistoricalMapSystem() {
     try {
       index ??= await chargerIndex();
       nomsFr ??= await chargerNomsFr();
+      couleursFam ??= await chargerCouleurs();
       const lignes = lignesALAnnee(index, an);
       await assurerTraces(index, lignes);
       if (mon !== jeton) return; // une sélection plus récente a pris le dessus

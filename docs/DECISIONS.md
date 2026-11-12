@@ -63,3 +63,8 @@ des documents de session. Quand une date n'est pas connue, c'est indiqué.
 | 2026-11-02 | **Le dossier de l'OTAN sert de modèle pour tous les groupes** : texte reformulé (jamais copié), chaque entrée avec ses sources, positions des deux côtés dans « Relations, tensions et critiques », et une entrée « à compléter » qui liste ce qui n'a pas été sourcé. Pas de point de vue propre au projet sur les sujets disputés | Demande de Martin (« ultra rempli, détaillé, sourcé ») | `supabase/groupes/groupes_v2.sql` à `_v4.sql`, `docs/sources/groupes.md` |
 | 2026-11-02 | Côte GSHHG pleine résolution + complétion des îles à ≥ 50 % couvertes (Martin : « un grand correctif », contours qui collent à la côte partout) | Remplace Natural Earth ; les frontières terrestres restent celles de Cliopatria (Martin : pas besoin d'autre source) |
 | 2026-11-03 | Les grands lacs sont DANS les pays (choix de Martin) : lacs ≥ 500 km² attribués aux lignes voisines ; seule la Caspienne reste en eau. Remplace « lacs ≥ 1000 km² en eau » du 2026-11-01 | Frontière dans un lac = partage à mi-distance des rives (convention, pas la frontière juridique) |
+
+## 2026-11-12 — Couleurs par famille d'États + fond relief (historique)
+- Un État et ses successeurs reconnus par les manuels partagent une teinte (convention « enseignée », 1 source universitaire + 1 référence par famille, voir docs/sources/historique_familles.md). Affichage : « regroupement de couleurs (convention) ». Cas contestés exclus.
+- Seules 2 familles sont actives (Rome→Byzance, empire mongol) ; les autres sont à sourcer (scripts/historique/familles/familles.json).
+- Fond de carte : Esri World_Shaded_Relief (réversible en changeant une URL dans src/historiqueFonds.ts).

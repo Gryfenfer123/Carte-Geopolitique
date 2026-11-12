@@ -9,6 +9,7 @@
 // ---------------------------------------------------------------------------
 
 import { fixerEchelle, morceauDeTrace, morceauxNecessaires } from "./historiqueModel";
+import type { CouleursFamilles } from "./historiqueCouleurs";
 import type { HistoriqueIndex, Ligne, NomsFr, TraceCodee } from "./historiqueModel";
 
 const BASE = import.meta.env.BASE_URL + "data/historique/";
@@ -50,6 +51,22 @@ export function chargerNomsFr(): Promise<NomsFr | null> {
       return null;
     });
   return promesseNoms;
+}
+
+let promesseCouleurs: Promise<CouleursFamilles | null> | null = null;
+
+/** Couleurs par famille (couleurs.json). Jamais bloquant : sans lui, on garde les couleurs tirées du nom. */
+export function chargerCouleurs(): Promise<CouleursFamilles | null> {
+  promesseCouleurs ??= fetch(BASE + "couleurs.json")
+    .then((r) => {
+      if (!r.ok) throw new Error("HTTP " + r.status);
+      return r.json() as Promise<CouleursFamilles>;
+    })
+    .catch((e) => {
+      console.warn("Vue historique : couleurs par famille indisponibles", e);
+      return null;
+    });
+  return promesseCouleurs;
 }
 
 function chargerMorceau(numero: number): Promise<void> {
