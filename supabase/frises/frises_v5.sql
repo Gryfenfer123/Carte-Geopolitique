@@ -1,69 +1,31 @@
 -- ============================================================
--- Atlas Géopolitique — frises_v5 (2026-11-12) : catégories de points PERTINENTES (nature de l'événement)
+-- Atlas Géopolitique — frises_v5 (2026-11-12) : suppression du contenu de TEST de l'Allemagne
 --
--- Demande de Martin (2026-11-12) : les catégories de points (Conflit, Dynastie, Religion, Institution politique, Crise...)
--- recoupaient les grandes catégories thématiques du site ; un point doit dire CE QU'IL EST concrètement (bataille ? traité ?
--- révolution ? mort d'un souverain ?...), chaque catégorie gardant sa couleur.
---
--- Nouvelle liste (11 natures d'événement, une couleur chacune) :
---   Guerre et bataille · Traité et accord · Révolte, révolution, coup d'État · Conquête et territoire ·
---   Naissance, avènement, mort · Fondation d'un État ou d'une institution · Loi, réforme, constitution ·
---   Élection et changement de régime · Religion, idées et culture · Science, technique et économie ·
---   Crise, catastrophe, épidémie
---
--- NON DESTRUCTIF : les catégories existantes sont RENOMMÉES (même identifiant, donc les points déjà classés gardent leur catégorie),
--- 2 catégories sont ajoutées. Aucune ligne supprimée. Au 2026-11-12 seuls 11 points de TEST utilisaient une catégorie.
---   Conflit -> Guerre et bataille · Traité -> Traité et accord · Crise -> Révolte, révolution, coup d'État ·
---   Territoire -> Conquête et territoire · Dynastie -> Naissance, avènement, mort ·
---   Institution politique -> Fondation d'un État ou d'une institution · Religion -> Religion, idées et culture ·
---   Économie et société -> Science, technique et économie · Relations avec le monde -> Crise, catastrophe, épidémie
---   + nouvelles : Loi, réforme, constitution · Élection et changement de régime
--- Les noms et couleurs restent modifiables ensuite depuis la frise (bouton « Catégories »).
---
--- Prérequis : schema_v31 (table timeline_categories). Idempotent : une 2e exécution ne change plus rien.
--- Exécuté par Claude via le connecteur Supabase (décision de Martin, 2026-11-02).
--- Retour arrière : renommer à la main depuis « Catégories » (aucune donnée perdue).
+-- Demande de Martin (2026-11-12) : « Tout ce qu'il y a sur la frise de l'Allemagne actuellement, ce sont des tests que j'ai faits.
+-- Tu peux tout supprimer. » Suppression ciblée, par identifiants, de : 4 frises de test (« Histoire Allemande », « test », « Guerre »,
+-- « pipoland »), leurs 8 sections-périodes, 9 fiches de test et les événements/placements qui y étaient rattachés.
+-- Ne touche PAS : la frise « Histoire de l'Allemagne » (frises_v4), les dynasties/arbres, ni les sections vides de la 2e « Chronologie ».
+-- Garde-fou : s'arrête si un événement de test est aussi placé sur une autre frise. Idempotent (une 2e exécution ne supprime plus rien).
+-- Exécuté par Claude via le connecteur Supabase sur demande de Martin (2026-11-12) ; le contrôle « il reste les 4 frises de frises_v4 »
+-- a été fait à l'exécution (retiré ici pour que le fichier reste rejouable quand d'autres frises existeront).
+-- Retour arrière : impossible (suppression voulue de données de test).
 -- ============================================================
-
 do $$
 declare
-  r record;
+  fr uuid[] := array['a130b2e9-2bc2-4248-aeba-95bdd040318f','2c28a4a4-617c-41d4-9383-9194a3c90c34','f798abd5-a8e0-457f-847e-d548d0a5bb9f','237f332c-6296-4d28-98bb-fa2ce41e9d75']::uuid[];
+  secs uuid[] := array['416cb471-1ed4-4101-b628-8066f9b75b32','96f57986-3768-46e4-81c4-33138667e398','6a5542e0-ce6b-446b-9d8b-45eb4d67ec70','add05448-cdaa-4176-af84-28fc202d5d23','d1f5c3bd-5fe1-41fb-8a85-eb47ed6da347','88ac0b11-909f-432c-9ada-4585ffa402c4','09c270d2-f5eb-459a-8440-0082ffc53610','34249e30-7ff8-45d9-818a-cdb93d89053e']::uuid[];
+  ev uuid[];
 begin
-  -- 1. Renommages (par ancien nom ; ignoré si le nouveau nom existe déjà)
-  for r in
-    select * from (values
-      ('Conflit',                'Guerre et bataille',                         '#c0392b', 0),
-      ('Traité',                 'Traité et accord',                           '#2980b9', 1),
-      ('Crise',                  'Révolte, révolution, coup d''État',          '#e67e22', 2),
-      ('Territoire',             'Conquête et territoire',                     '#a04000', 3),
-      ('Dynastie',               'Naissance, avènement, mort',                 '#8e44ad', 4),
-      ('Institution politique',  'Fondation d''un État ou d''une institution', '#16a085', 5),
-      ('Religion',               'Religion, idées et culture',                 '#d4ac0d', 8),
-      ('Économie et société',    'Science, technique et économie',             '#27ae60', 9),
-      ('Relations avec le monde','Crise, catastrophe, épidémie',               '#5d6d7e', 10)
-    ) as t(old_name, new_name, color, pos)
-  loop
-    if exists (select 1 from public.timeline_categories where lower(name) = lower(r.old_name))
-       and not exists (select 1 from public.timeline_categories where lower(name) = lower(r.new_name)) then
-      update public.timeline_categories set name = r.new_name, color = r.color, position = r.pos
-      where lower(name) = lower(r.old_name);
-    end if;
-  end loop;
-
-  -- 2. Catégories ajoutées
-  insert into public.timeline_categories (name, color, position) values
-    ('Loi, réforme, constitution',       '#7d8c2f', 6),
-    ('Élection et changement de régime', '#c0568c', 7)
-  on conflict do nothing;
-
-  -- 3. Ordre et couleurs de la liste finale (au cas où une catégorie existait déjà sous son nouveau nom)
-  update public.timeline_categories c set color = t.color, position = t.pos
-  from (values
-    ('Guerre et bataille', '#c0392b', 0), ('Traité et accord', '#2980b9', 1), ('Révolte, révolution, coup d''État', '#e67e22', 2),
-    ('Conquête et territoire', '#a04000', 3), ('Naissance, avènement, mort', '#8e44ad', 4),
-    ('Fondation d''un État ou d''une institution', '#16a085', 5), ('Loi, réforme, constitution', '#7d8c2f', 6),
-    ('Élection et changement de régime', '#c0568c', 7), ('Religion, idées et culture', '#d4ac0d', 8),
-    ('Science, technique et économie', '#27ae60', 9), ('Crise, catastrophe, épidémie', '#5d6d7e', 10)
-  ) as t(name, color, pos)
-  where lower(c.name) = lower(t.name);
+  select array_agg(distinct event_id) into ev from (
+    select event_id from public.timeline_placements where frise_entry_id = any(fr)
+    union select id from public.timeline_events where sub_frise_entry_id = any(fr)) x;
+  if exists (select 1 from public.timeline_placements where event_id = any(coalesce(ev,'{}')) and frise_entry_id <> all(fr)) then
+    raise exception 'Un événement de test est aussi placé ailleurs : rien supprimé.';
+  end if;
+  delete from public.timeline_events where id = any(coalesce(ev,'{}'));
+  delete from public.dossier_sections where id = any(secs);
+  delete from public.dossier_entries where id = any(fr);
+  if exists (select 1 from public.dossier_entries where id = any(fr)) or exists (select 1 from public.dossier_sections where id = any(secs)) then
+    raise exception 'Suppression incomplète : tout est annulé.';
+  end if;
 end $$;
