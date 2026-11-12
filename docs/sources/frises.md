@@ -170,3 +170,5 @@ Bornes retenues sur demande de Martin (« dates les plus enseignées ») : −58
 Aucune donnée ajoutée par cet outil (code uniquement). Chaque règne saisi portera ses propres sources dans la colonne `sources` de `timeline_reigns`.
 ## 2026-11-03 — identité visuelle (polices)
 Aucune donnée d'histoire ajoutée. Polices : EB Garamond (Georg Duffner, Octavio Pardo), Archivo Narrow (Omnibus-Type) — Google Fonts, licence SIL Open Font License 1.1, https://fonts.google.com/specimen/EB+Garamond et https://fonts.google.com/specimen/Archivo+Narrow ; fiabilité : source officielle de distribution.
+## 2026-11-12 — catégories de points (frises_v5)
+Aucune donnée d'histoire ajoutée : typologie de travail (natures d'événement), choisie pour un usage de classement ; noms et couleurs modifiables par Martin. Aucune source externe nécessaire.
