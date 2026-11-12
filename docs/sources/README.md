@@ -36,7 +36,7 @@ universitaire**. Il est inconcevable de publier quelque chose de faux ou d'appro
 
 ## Où noter
 Un fichier **par chantier** (pas de collision entre conversations) : `docs/sources/<chantier>.md`
-(arbres, frises, historique, carte, groupes, dossiers, indicateurs, acces). Une ligne par source
+(arbres, frises, historique, carte, groupes, dossiers, indicateurs, acces, listes). Une ligne par source
 utilisée, ajoutée **dans le même commit** que le travail.
 
 ## Format d'une ligne (tableau Markdown)

@@ -15,6 +15,7 @@ pas dessus, **chaque conversation a UN chantier** et ne touche qu'à ce qui lui 
 | `groupes` | Groupes géopolitiques et liens entre pays | `groups.ts`, `links.ts`, `linkIndex.ts` | `supabase/groupes/groupes_vN.sql` (**groupes_v1**) | à créer |
 | `dossiers` | Fiches pays, catégories, entrées, recherche, encyclopédie | `dossier.ts`, `sanitize.ts`, `imageCrop.ts`, `search.ts`, `encyclopedie.ts`, `countryNames.ts` | `supabase/dossiers/dossiers_vN.sql` (**dossiers_v1**) | à créer |
 | `indicateurs` | Indicateurs chiffrés | `indicators.ts`, `public/data/raw/OWID_*.json` | `supabase/indicateurs/indicateurs_vN.sql` (**indicateurs_v1**) | à créer |
+| `listes` | Listes de personnes avec photos alignées (présidents, dirigeants…), même principe que les arbres sans l'arbre | nouveaux modules `liste*.ts` (+ `liste.css`) | `supabase/listes/listes_vN.sql` (**listes_v1**, après accord de Martin) | [`chantiers/listes.md`](chantiers/listes.md) |
 
 Fichiers **partagés** (tout le monde peut avoir à y brancher une ligne, jamais plus) : `main.ts`,
 `style.css`, `supabase.ts`, `index.html`. Pour une nouvelle fonctionnalité : un **nouveau fichier**
